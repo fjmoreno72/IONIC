@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SREQ Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #1976D2;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .level-1 { background-color: #1976D2; color: white; }
+        .level-2 { background-color: #2E7D32; color: white; }
+        .level-3 { background-color: #6A1B9A; color: white; }
+        .level-4 { background-color: #FFB74D; color: white; }
+    </style>
+</head>
+<body>
+    <h1>SREQ Hierarchy Viewer</h1>
+    <ul>
+        {% for (si_key, tins) in data.items() %}
+        <li class="level-1">
+            {{ si_key[0] }} -> {{ si_key[1] }}
+            <ul>
+                {% for (tin_key, sreqs) in tins.items() %}
+                <li class="level-2">
+                    {{ tin_key[0] }} -> {{ tin_key[1] }}
+                    <ul>
+                        {% for (sreq_key, sreq_data) in sreqs.items() %}
+                        <li class="level-3">
+                            {{ sreq_key }} -> {{ sreq_data.sreq_name }}
+                            <ul>
+                                {% for test in sreq_data.test_cases %}
+                                <li class="level-4">{{ test[0] }} -> {{ test[1] }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

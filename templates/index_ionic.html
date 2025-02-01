@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOCore2 Coverage Analysis Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/marked/lib/marked.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            max-width: 150px;
+            height: auto;
+        }
+        .tab-content {
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-top: none;
+        }
+        .report-content {
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .hidden {
+            display: none;
+        }
+        .loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .report-actions {
+            margin-top: 10px;
+            text-align: right;
+        }
+        .btn-download {
+            margin-left: 10px;
+        }
+        .btn-tree-view {
+            background-color: #28a745;
+            color: white;
+            margin-left: 10px;
+        }
+        .btn-tree-view:hover {
+            background-color: #218838;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loader" class="loader hidden">
+        <i class="fas fa-spinner fa-spin fa-3x"></i>
+        <p class="mt-2">Processing...</p>
+    </div>
+
+    <div class="container mt-5">
+        <!-- Login Form -->
+        <div id="loginForm">
+            <div class="logo-container">
+                <img src="/static/iocore2_logo.png" alt="IOCore2 Logo">
+            </div>
+            <h2 class="text-center">Coverage Analysis Tool</h2>
+            <form id="login" class="mb-4">
+                <div class="mb-3">
+                    <label for="url" class="form-label">URL</label>
+                    <input type="text" class="form-control" id="url" value="{{ default_url }}">
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+
+        <!-- Reports Section -->
+        <div id="reportsSection" class="hidden">
+            <div class="mb-3">
+                <button id="getIER" class="btn btn-primary me-2">Get IER Coverage</button>
+                <button id="getSREQ" class="btn btn-primary">Get Requirement Coverage</button>
+                <button id="viewTree" class="btn btn-tree-view">
+                    <i class="fas fa-tree"></i> View Last Requirement Coverage
+                </button>
+                <button id="logout" class="btn btn-secondary float-end">Logout</button>
+            </div>
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="reportTabs" role="tablist"></ul>
+            <div class="tab-content" id="reportTabContent"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        let tabCounter = 0;
+
+        document.getElementById('login').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                document.getElementById('loader').classList.remove('hidden');
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        url: document.getElementById('url').value,
+                        username: document.getElementById('username').value,
+                        password: document.getElementById('password').value
+                    })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    document.getElementById('loginForm').classList.add('hidden');
+                    document.getElementById('reportsSection').classList.remove('hidden');
+                } else {
+                    alert('Login failed: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                alert('Error during login: ' + error.message);
+            } finally {
+                document.getElementById('loader').classList.add('hidden');
+            }
+        });
+
+        document.getElementById('logout').addEventListener('click', () => {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('reportsSection').classList.add('hidden');
+            document.getElementById('reportTabs').innerHTML = '';
+            document.getElementById('reportTabContent').innerHTML = '';
+            document.getElementById('login').reset();
+        });
+
+        // View Tree button handler
+        document.getElementById('viewTree').addEventListener('click', () => {
+            window.open('/view_tree', '_blank');
+        });
+
+        document.getElementById('getIER').addEventListener('click', () => {
+            fetchReport('/get_ier_coverage', 'IER Coverage');
+        });
+
+        document.getElementById('getSREQ').addEventListener('click', () => {
+            fetchReport('/get_requirement_coverage', 'Requirement Coverage');
+        });
+
+        async function fetchReport(endpoint, title) {
+            try {
+                document.getElementById('loader').classList.remove('hidden');
+                const response = await fetch(endpoint);
+                const data = await response.json();
+
+                if (data.success) {
+                    createNewTab(title, marked.parse(data.markdown));
+                } else {
+                    alert('Failed to fetch report: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                alert('Error fetching report: ' + error.message);
+            } finally {
+                document.getElementById('loader').classList.add('hidden');
+            }
+        }
+
+        function createNewTab(title, content) {
+            const tabId = `tab${++tabCounter}`;
+
+            // Create tab
+            const tabLi = document.createElement('li');
+            tabLi.className = 'nav-item';
+            tabLi.innerHTML = `
+                <a class="nav-link" id="${tabId}-tab" data-bs-toggle="tab" href="#${tabId}" role="tab">
+                    ${title}
+                    <button type="button" class="btn-close ms-2" aria-label="Close"></button>
+                </a>
+            `;
+
+            // Create tab content
+            const tabContent = document.createElement('div');
+            tabContent.className = 'tab-pane fade';
+            tabContent.id = tabId;
+            tabContent.role = 'tabpanel';
+            tabContent.innerHTML = `
+                <div class="report-actions">
+                    <button class="btn btn-sm btn-outline-primary btn-download" onclick="downloadPDF('${title.toLowerCase().includes('ier') ? 'ier' : 'sreq'}')">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </button>
+                </div>
+                <div class="report-content">${content}</div>
+            `;
+
+            // Add close button handler
+            const closeBtn = tabLi.querySelector('.btn-close');
+            closeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                tabLi.remove();
+                tabContent.remove();
+
+                // If this was the active tab, activate the first remaining tab
+                const firstTab = document.querySelector('.nav-link');
+                if (firstTab) {
+                    new bootstrap.Tab(firstTab).show();
+                }
+            });
+
+            // Add to DOM
+            document.getElementById('reportTabs').appendChild(tabLi);
+            document.getElementById('reportTabContent').appendChild(tabContent);
+
+            // Activate the new tab
+            new bootstrap.Tab(document.getElementById(`${tabId}-tab`)).show();
+        }
+
+        async function downloadPDF(reportType) {
+            try {
+                document.getElementById('loader').classList.remove('hidden');
+                const response = await fetch(`/generate_pdf/${reportType}`);
+
+                if (response.ok) {
+                    if (response.headers.get('content-type')?.includes('application/pdf')) {
+                        const blob = await response.blob();
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `${reportType}_coverage_report.pdf`;
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                        document.body.removeChild(a);
+                    } else {
+                        try {
+                            const errorData = await response.json();
+                            alert('Failed to generate PDF: ' + (errorData.error || 'Unknown error'));
+                        } catch (e) {
+                            alert('Failed to generate PDF. Please try again.');
+                        }
+                    }
+                } else {
+                    if (response.headers.get('content-type')?.includes('application/json')) {
+                        const errorData = await response.json();
+                        alert('Failed to generate PDF: ' + (errorData.error || 'Unknown error'));
+                    } else {
+                        alert(`Failed to generate PDF: HTTP ${response.status}`);
+                    }
+                }
+            } catch (error) {
+                console.error('PDF download error:', error);
+                alert('Error downloading PDF. Please try again.');
+            } finally {
+                document.getElementById('loader').classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,561 @@
+# SREQ Analysis Report - Null TestCase Entries
+
+## SI Number: SP5-SI-AIRC2
+
+### TIN: SP5-TIN-344 (MTF Exchange - Air Tasking and Control)
+
+#### EP SP5-EP-C-TIN-344: MTF Exchange - Air Tasking and Control Consumer
+
+- **SP5-SREQ-1140**: Air Tasking and Control - Data Exchange - MNPs shall be able to exchange Forma
+- **SP5-SREQ-1296**: Need-to-know for ATO and ACO MTF messages shall be managed based on their resp
+
+#### EP SP5-EP-P-TIN-344: MTF Exchange - Air Tasking and Control Provider
+
+- **SP5-SREQ-1140**: Air Tasking and Control - Data Exchange - MNPs shall be able to exchange Forma
+- **SP5-SREQ-1296**: Need-to-know for ATO and ACO MTF messages shall be managed based on their resp
+
+
+
+## SI Number: SP5-SI-AV
+
+### TIN: SP5-TIN-119 (Push-To-Talk Tactical Voice)
+
+#### EP SP5-EP-F-TIN-119: Push-To-Talk Tactical Voice Collaborator
+
+- **SP5-SREQ-1192**: MELPe 2400bps must be used as codec for the IP voice stream and they must be i
+- **SP5-SREQ-1193**: The IOP-HD shall use VARC-based half-duplex PTT control
+- **SP5-SREQ-1195**: The destination address of the voice packets must be IPv4
+- **SP5-SREQ-1196**: The identified voice stream must be mapped to the internal PTT voice service o
+- **SP5-SREQ-1197**: Each voice group must be backed by a specific voice channel of the radio
+- **SP5-SREQ-1198**: Destination addresses for the received voice stream for each voice group withi
+- **SP5-SREQ-1199**: Pre-emption of voice streams must be based on the source IP-address and/or the
+- **SP5-SREQ-1219**: Each voice group within the radios must be addressed via a combination of IP a
+- **SP5-SREQ-1220**: A radio as well as a client / intercom must accept any number of MELPe frames 
+- **SP5-SREQ-1221**: The Radio IP Access function must either be embedded on the same radio device 
+- **SP5-SREQ-1222**: Each platform must not have more than one active radio channel/line per radio 
+
+
+### TIN: SP5-TIN-142 (Push-To-Talk Tactical Voice Relay)
+
+#### EP SP5-EP-F-TIN-142: Push-To-Talk Tactical Voice Relay Collaborator
+
+- **SP5-SREQ-1223**: Every radio of the relay platform taking part in the relay functionality must 
+- **SP5-SREQ-1224**: Relaying must not be performed between more than two radio networks
+- **SP5-SREQ-1225**: There must not be more than one platform acting as relay between two particula
+- **SP5-SREQ-1265**: When a PTT button at a radio is pressed, the radio must also send the the voic
+
+
+### TIN: SP5-TIN-183 (Call Routing)
+
+#### EP SP5-EP-F-TIN-183: Call Routing Collaborator
+
+- **SP5-SREQ-1297**: Media prefixes shall be coded in to the IPv6 routes with IP next-hop indicatin
+- **SP5-SREQ-1298**: SBCs supporting dynamic voice routing shall implement BGP routing for exchange
+- **SP5-SREQ-1308**: SBCs shall support call routing based on the variable length prefix
+
+
+### TIN: SP5-TIN-198 (Media Infrastructure Security)
+
+#### EP SP5-EP-F-TIN-198: Media Infrastructure Security Collaborator
+
+- **SP5-SREQ-1301**: SIP signaling and RTP media between SBCs shall be secured with IPsec tunnel
+- **SP5-SREQ-1302**: RTP media between SBCs shall be secured with SRTP
+
+
+### TIN: SP5-TIN-365 (Audio/Video Media Infrastructure)
+
+#### EP SP5-EP-F-TIN-365: Audio/Video Media Infrastructure Collaborator
+
+- **SP5-SREQ-216**: Service providers shall provide at least one Session Border Controller.
+
+
+### TIN: SP5-TIN-375 (End-to-End Media Security)
+
+#### EP SP5-EP-F-TIN-375: End-to-End Media Security Collaborator
+
+- **SP5-SREQ-1303**: Signaling and media between audio/video end-points shall be secured with SCIP
+- **SP5-SREQ-1304**: SCIP shall signal call on underlying media infrastructure with one of the code
+
+
+
+## SI Number: SP5-SI-CALENDAR
+
+### TIN: SP5-TIN-13 (Calendar Dissemination)
+
+#### EP SP5-EP-C-TIN-13: Calendar Dissemination Consumer
+
+- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
+- **SP5-SREQ-421**: The service operator shall be notified when the verification of digital certif
+
+
+### TIN: SP5-TIN-367 (Calendar Exchange via Web Hosting)
+
+#### EP SP5-EP-M-TIN-367: Calendar Exchange via Web Hosting Mediator
+
+- **SP5-SREQ-421**: The service operator shall be notified when the verification of digital certif
+
+
+### TIN: SP5-TIN-368 (Calendar Exchange via Email)
+
+#### EP SP5-EP-M-TIN-368: Calendar Exchange via Email Mediator
+
+- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
+- **SP5-SREQ-421**: The service operator shall be notified when the verification of digital certif
+
+
+
+## SI Number: SP5-SI-CHAT
+
+### TIN: SP5-TIN-122 (Presence Sharing)
+
+#### EP SP5-EP-C-TIN-122: Presence Sharing Consumer
+
+- **SP5-SREQ-1233**: If enabled, the presence function shall use allowed values "away", "chat" (def
+
+#### EP SP5-EP-P-TIN-122: Presence Sharing Provider
+
+- **SP5-SREQ-130**: All Mission Network contributing participants shall provide the following capa
+
+
+### TIN: SP5-TIN-124 (Information Discovery)
+
+#### EP SP5-EP-F-TIN-124: Information Discovery Collaborator
+
+- **SP5-SREQ-1267**: Users shall be able to list available chat rooms hosted on federated chat serv
+
+
+### TIN: SP5-TIN-141 (Publish-Subscribe)
+
+#### EP SP5-EP-F-TIN-141: Publish-Subscribe Collaborator
+
+- **SP5-SREQ-131**: Within the Mission Network, all server to server connections must support the 
+- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
+- **SP5-SREQ-313**: Event logs must include full accounting of chat rooms, including: room title; 
+- **SP5-SREQ-59**: All (item-structured) IQ and message stanzas shall be labelled with the classi
+- **SP5-SREQ-64**: Events shall be logged by all chat servers.
+- **SP5-SREQ-65**: Event logs must include, where relevant: user IDs; dates, times and details of
+- **SP5-SREQ-66**: Communication between chat servers shall be secured via TLS with mutual authen
+- **SP5-SREQ-85**: Complete instant messaging dialogs with time-stamps shall be preserved.
+
+
+
+## SI Number: SP5-SI-COMMS
+
+### TIN: SP5-TIN-107 (Consumer to Provider Inter-domain Routing)
+
+#### EP SP5-EP-C-TIN-107: Consumer to Provider Inter-domain Routing Consumer
+
+- **SP5-SREQ-1204**: MIssion Network Communications Consumer shall not transit any unicast traffic.
+
+
+### TIN: SP5-TIN-151 (Exchange of data packets between attached IP networks across Tactical Radio Network)
+
+#### EP SP5-EP-P-TIN-151: Exchange of data packets between attached IP networks across Tactical Radio Network Provider
+
+- **SP5-SREQ-1274**: Data services using this TIN must be conservative in their use of bandwidth an
+
+
+### TIN: SP5-TIN-162 (Inter-domain Routing)
+
+#### EP SP5-EP-F-TIN-162: Inter-domain Routing Collaborator
+
+- **SP5-SREQ-1104**: Control method for valid service instance must be implemented in conjunction w
+- **SP5-SREQ-188**: Communications Services Providers must provide transparent routing infrastruct
+
+
+### TIN: SP5-TIN-82 (Provider to Provider Inter-domain Routing)
+
+#### EP SP5-EP-F-TIN-82: Provider to Provider Inter-domain Routing Collaborator
+
+- **SP5-SREQ-184**: MN Communications Services Provider shall transit unicast traffic on behalf of
+
+
+
+## SI Number: SP5-SI-DDS
+
+### TIN: SP5-TIN-62 (Directory Replication)
+
+#### EP SP5-EP-P-TIN-62: Directory Replication Provider
+
+- **SP5-SREQ-45**: MNP Directories shall log events relevant to any accounts which are shared wit
+
+
+### TIN: SP5-TIN-63 (Mediated Directory Replication)
+
+#### EP SP5-EP-C-TIN-62: Directory Replication Consumer
+
+- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
+- **SP5-SREQ-41**: Access to the Directory Information Tree (DIT) shall be protected with name an
+- **SP5-SREQ-421**: The service operator shall be notified when the verification of digital certif
+- **SP5-SREQ-43**: Credentials for authentication to the central DIT shall be randomly generated 
+
+
+
+## SI Number: SP5-SI-DNS
+
+### TIN: SP5-TIN-114 (Anycast DNS Advertising)
+
+#### EP SP5-EP-P-TIN-114: Anycast DNS Advertising Provider
+
+- **SP5-SREQ-609**: The Domain Name Service shall support anycast with a configurable address
+- **SP5-SREQ-610**: The Domain Name Service shall respond the anycast queries using the same anyca
+
+
+### TIN: SP5-TIN-26 (DNS Query)
+
+#### EP SP5-EP-P-TIN-26: DNS Query Provider
+
+- **SP5-SREQ-379**: The Authoritative Name Services shall be able to delegate unsigned zones.
+
+
+
+## SI Number: SP5-SI-FFT
+
+### TIN: SP5-TIN-75 (FFT Gateway)
+
+#### EP SP5-EP-C-TIN-75: FFT Gateway Consumer
+
+- **SP5-SREQ-103**: The FFT Gateways, Hubs and Proxies shall be provided as a highly available sol
+- **SP5-SREQ-118**: The system shall support symbol standard required from the adopted version of 
+
+#### EP SP5-EP-P-TIN-75: FFT Gateway Provider
+
+- **SP5-SREQ-118**: The system shall support symbol standard required from the adopted version of 
+- **SP5-SREQ-1187**: A system supporting ADatP-36(B) shall support the use of the FFTSC (FRIENDLY F
+
+
+### TIN: SP5-TIN-78 (FFT Hub)
+
+#### EP SP5-EP-C-TIN-75: FFT Gateway Consumer
+
+- **SP5-SREQ-101**: FFT systems must log all events, registering at least: IP address and port num
+- **SP5-SREQ-533**: The system shall control the assignment and distribution of unique terminal id
+- **SP5-SREQ-534**: The system shall define periods for track aging which will be applied by all s
+
+#### EP SP5-EP-M-TIN-78: FFT Hub Mediator
+
+- **SP5-SREQ-101**: FFT systems must log all events, registering at least: IP address and port num
+
+#### EP SP5-EP-P-TIN-75: FFT Gateway Provider
+
+- **SP5-SREQ-101**: FFT systems must log all events, registering at least: IP address and port num
+- **SP5-SREQ-103**: The FFT Gateways, Hubs and Proxies shall be provided as a highly available sol
+- **SP5-SREQ-118**: The system shall support symbol standard required from the adopted version of 
+- **SP5-SREQ-1187**: A system supporting ADatP-36(B) shall support the use of the FFTSC (FRIENDLY F
+- **SP5-SREQ-533**: The system shall control the assignment and distribution of unique terminal id
+- **SP5-SREQ-534**: The system shall define periods for track aging which will be applied by all s
+
+
+
+## SI Number: SP5-SI-IBOX
+
+### TIN: SP5-TIN-371 (Intelligence BsO Synchronization)
+
+#### EP SP5-EP-P-TIN-371: Intelligence BsO Synchronization Provider
+
+- **SP5-SREQ-1247**: Local Intelligence BsO Server Administrator must be able to create/establish l
+- **SP5-SREQ-1254**: All battlespace objects held within, and exchanged between, intelligence struc
+- **SP5-SREQ-1255**: Need-to-know for Intelligence BsOs shall be managed based on their respective 
+
+
+
+## SI Number: SP5-SI-INFOEX
+
+### TIN: SP5-TIN-318 (Kinetic Indirect Fire Support)
+
+#### EP SP5-EP-F-TIN-318: Kinetic Indirect Fire Support Collaborator
+
+- **SP5-SREQ-1091**: Indirect Fire Support Service port range shall be 6411-6417. Default value is 
+- **SP5-SREQ-1146**: ASCA/CTIDP message shall be labelled with classification.
+- **SP5-SREQ-1147**: ASCA Gateways shall filter ASCA/CTIDP messages and only permit ASCA/CTIDP inte
+- **SP5-SREQ-1150**: ASCA Gateways must log security events.
+- **SP5-SREQ-1151**: Network Interconnection Points (NIPs) shall be locally provided to enable inte
+- **SP5-SREQ-1152**: ASCA Gateways shall perform technical coherency checks on ASCA/CTIDP messages.
+- **SP5-SREQ-1268**: ASCA Gateways interconnected through ''Kinetic Indirect Fire Support'' technic
+
+
+
+## SI Number: SP5-SI-JISRIE
+
+### TIN: SP5-TIN-307 (Exchange ISR Library data and metadata)
+
+#### EP SP5-EP-P-TIN-307: Exchange ISR Library data and metadata Provider
+
+- **SP5-SREQ-1236**: All data objects held within, and exchanged between, NATO Standard ISR Librari
+- **SP5-SREQ-1237**: Need-to-know for Intelligence and ISR products as well as for associated metad
+- **SP5-SREQ-1239**: All NSILs shall log all security events, including as a minimum all exceptiona
+- **SP5-SREQ-1240**: All synchronization between NSILs shall be secured in transit (https).
+- **SP5-SREQ-1241**: All user access to NSILs shall be secured in transit (https).
+- **SP5-SREQ-1242**: Agreements between MNPs captured at MOU level, and in JMEIs, for intelligence 
+- **SP5-SREQ-1243**: Strict data and metadata format validations, compliant with STANAG 4559, shall
+- **SP5-SREQ-303**: An appropriate set of procedures for information labelling shall be developed 
+
+
+### TIN: SP5-TIN-308 (ISR Streaming Services Access)
+
+#### EP SP5-EP-C-TIN-308: ISR Streaming Services Access Consumer
+
+- **SP5-SREQ-327**: ISR Streaming consumer must be able to update the metadata of a live or record
+
+#### EP SP5-EP-P-TIN-308: ISR Streaming Services Access Provider
+
+- **SP5-SREQ-1242**: Agreements between MNPs captured at MOU level, and in JMEIs, for intelligence 
+- **SP5-SREQ-1243**: Strict data and metadata format validations, compliant with STANAG 4559, shall
+- **SP5-SREQ-303**: An appropriate set of procedures for information labelling shall be developed 
+
+
+
+## SI Number: SP5-SI-LANDC2T
+
+### TIN: SP5-TIN-196 (JDSS Message Exchange)
+
+#### EP SP5-EP-C-TIN-196: JDSS Message Exchange Consumer
+
+- **SP5-SREQ-23**: C2 Information exchanged between mobile land tactical units (TACCIS) via coali
+- **SP5-SREQ-355**: The Service shall support the unilateral recovery of the service after a reset
+
+#### EP SP5-EP-P-TIN-196: JDSS Message Exchange Provider
+
+- **SP5-SREQ-23**: C2 Information exchanged between mobile land tactical units (TACCIS) via coali
+- **SP5-SREQ-355**: The Service shall support the unilateral recovery of the service after a reset
+
+
+
+## SI Number: SP5-SI-LC2IE
+
+### TIN: SP5-TIN-357 (Forward received MIP 4 data objects)
+
+#### EP SP5-EP-C-TIN-73: Exchange Recognized Ground Picture Consumer
+
+- **SP5-SREQ-264**: The LC2IE Service shall support the unilateral recovery of the service after a
+- **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
+- **SP5-SREQ-476**: The LC2IE Service shall support the exchange of large volumes of data during (
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-557**: The LC2IE Service shall enable the offline exchange of Information between Pro
+- **SP5-SREQ-564**: The LC2IE Service shall enable the exchange of Person BattleSpace Objects (inc
+- **SP5-SREQ-565**: The LC2IE Service shall enable the exchange of Geographic Feature BattleSpace 
+- **SP5-SREQ-566**: The LC2IE Service shall enable the exchange of Meteorological Feature BattleSp
+- **SP5-SREQ-576**: The LC2IE Service shall support the re-establishment of information exchange a
+- **SP5-SREQ-88**: The LC2IE Services must log all events, registering at least: IP addresses and
+
+#### EP SP5-EP-P-TIN-73: Exchange Recognized Ground Picture Provider
+
+- **SP5-SREQ-1153**: MIP4 Providers and MIP4 Consumers shall be able to exchange data objects at th
+- **SP5-SREQ-259**: The LC2IE Service shall enable the exchange of Consumable Objects (including s
+- **SP5-SREQ-264**: The LC2IE Service shall support the unilateral recovery of the service after a
+- **SP5-SREQ-352**: The LC2IE Service shall enable the exchange of updated information about an ex
+- **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
+- **SP5-SREQ-470**: The LC2IE Service shall enable the exchange of Organisation/Unit BattleSpace O
+- **SP5-SREQ-476**: The LC2IE Service shall support the exchange of large volumes of data during (
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-480**: The LC2IE Service shall enable the exchange of Overlays (groupings of BattleSp
+- **SP5-SREQ-481**: The LC2IE Service shall support periods of continuous operation.
+- **SP5-SREQ-484**: The LC2IE Service shall enable the exchange of Operational Comments on an exch
+- **SP5-SREQ-555**: The LC2IE Service shall enable the Provider to communicate the deletion of a p
+- **SP5-SREQ-557**: The LC2IE Service shall enable the offline exchange of Information between Pro
+- **SP5-SREQ-558**: The LC2IE Service shall enable the exchange of Control Feature BattleSpace Obj
+- **SP5-SREQ-559**: The LC2IE Service shall enable the exchange of Facility BattleSpace Objects (i
+- **SP5-SREQ-560**: The LC2IE Service shall enable the exchange of Equipment BattleSpace Objects (
+- **SP5-SREQ-561**: The LC2IE Service shall enable the exchange of Unexploded Ordnance BattleSpace
+- **SP5-SREQ-562**: The LC2IE Service shall enable the exchange of Task BattleSpace Objects (inclu
+- **SP5-SREQ-563**: The LC2IE Service shall enable the exchange of Event BattleSpace Objects (incl
+- **SP5-SREQ-564**: The LC2IE Service shall enable the exchange of Person BattleSpace Objects (inc
+- **SP5-SREQ-565**: The LC2IE Service shall enable the exchange of Geographic Feature BattleSpace 
+- **SP5-SREQ-566**: The LC2IE Service shall enable the exchange of Meteorological Feature BattleSp
+- **SP5-SREQ-575**: The LC2IE Service shall support the exchange of frequent transactions.
+- **SP5-SREQ-576**: The LC2IE Service shall support the re-establishment of information exchange a
+- **SP5-SREQ-7**: The LC2IE Service shall support the use of Managed Lists to specify details re
+- **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
+- **SP5-SREQ-88**: The LC2IE Services must log all events, registering at least: IP addresses and
+
+
+### TIN: SP5-TIN-44 (Exchange Non Friendly ORBAT)
+
+#### EP SP5-EP-C-TIN-44: Exchange Non Friendly ORBAT Consumer
+
+- **SP5-SREQ-264**: The LC2IE Service shall support the unilateral recovery of the service after a
+- **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
+- **SP5-SREQ-470**: The LC2IE Service shall enable the exchange of Organisation/Unit BattleSpace O
+- **SP5-SREQ-476**: The LC2IE Service shall support the exchange of large volumes of data during (
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-576**: The LC2IE Service shall support the re-establishment of information exchange a
+- **SP5-SREQ-7**: The LC2IE Service shall support the use of Managed Lists to specify details re
+- **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
+- **SP5-SREQ-88**: The LC2IE Services must log all events, registering at least: IP addresses and
+
+#### EP SP5-EP-P-TIN-44: Exchange Non Friendly ORBAT Provider
+
+- **SP5-SREQ-264**: The LC2IE Service shall support the unilateral recovery of the service after a
+- **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
+- **SP5-SREQ-470**: The LC2IE Service shall enable the exchange of Organisation/Unit BattleSpace O
+- **SP5-SREQ-476**: The LC2IE Service shall support the exchange of large volumes of data during (
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-481**: The LC2IE Service shall support periods of continuous operation.
+- **SP5-SREQ-575**: The LC2IE Service shall support the exchange of frequent transactions.
+- **SP5-SREQ-576**: The LC2IE Service shall support the re-establishment of information exchange a
+- **SP5-SREQ-7**: The LC2IE Service shall support the use of Managed Lists to specify details re
+- **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
+- **SP5-SREQ-88**: The LC2IE Services must log all events, registering at least: IP addresses and
+
+
+### TIN: SP5-TIN-45 (Exchange Friendly Land ORBAT and TaskOrg)
+
+#### EP SP5-EP-C-TIN-45: Exchange Friendly Land ORBAT and TaskOrg Consumer
+
+- **SP5-SREQ-264**: The LC2IE Service shall support the unilateral recovery of the service after a
+- **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
+- **SP5-SREQ-470**: The LC2IE Service shall enable the exchange of Organisation/Unit BattleSpace O
+- **SP5-SREQ-476**: The LC2IE Service shall support the exchange of large volumes of data during (
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-576**: The LC2IE Service shall support the re-establishment of information exchange a
+- **SP5-SREQ-7**: The LC2IE Service shall support the use of Managed Lists to specify details re
+- **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
+- **SP5-SREQ-88**: The LC2IE Services must log all events, registering at least: IP addresses and
+
+#### EP SP5-EP-P-TIN-45: Exchange Friendly Land ORBAT and TaskOrg Provider
+
+- **SP5-SREQ-264**: The LC2IE Service shall support the unilateral recovery of the service after a
+- **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
+- **SP5-SREQ-470**: The LC2IE Service shall enable the exchange of Organisation/Unit BattleSpace O
+- **SP5-SREQ-476**: The LC2IE Service shall support the exchange of large volumes of data during (
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-481**: The LC2IE Service shall support periods of continuous operation.
+- **SP5-SREQ-575**: The LC2IE Service shall support the exchange of frequent transactions.
+- **SP5-SREQ-576**: The LC2IE Service shall support the re-establishment of information exchange a
+- **SP5-SREQ-7**: The LC2IE Service shall support the use of Managed Lists to specify details re
+- **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
+- **SP5-SREQ-88**: The LC2IE Services must log all events, registering at least: IP addresses and
+
+
+### TIN: SP5-TIN-46 (Exchange Land Generic Overlay)
+
+#### EP SP5-EP-C-TIN-46: Exchange Land Generic Overlay Consumer
+
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
+
+#### EP SP5-EP-P-TIN-46: Exchange Land Generic Overlay Provider
+
+- **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-481**: The LC2IE Service shall support periods of continuous operation.
+- **SP5-SREQ-570**: The LC2IE Service shall enable the exchange of Planned Overlays
+- **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
+
+
+### TIN: SP5-TIN-73 (Exchange Recognized Ground Picture)
+
+#### EP SP5-EP-C-TIN-73: Exchange Recognized Ground Picture Consumer
+
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-557**: The LC2IE Service shall enable the offline exchange of Information between Pro
+
+#### EP SP5-EP-P-TIN-73: Exchange Recognized Ground Picture Provider
+
+- **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
+- **SP5-SREQ-472**: The LC2IE Service shall support the initialisation of a system upon joining th
+- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
+- **SP5-SREQ-481**: The LC2IE Service shall support periods of continuous operation.
+
+
+
+## SI Number: SP5-SI-OVLYD
+
+### TIN: SP5-TIN-17 (NVG Overlay Exchange via Files)
+
+#### EP SP5-EP-C-TIN-17: NVG Overlay Exchange via Files Consumer
+
+- **SP5-SREQ-232**: Only privileged users shall have access to generate and transfer files.
+- **SP5-SREQ-301**: MNP shall be able to save the data from its C2 system as a NVG file.
+- **SP5-SREQ-306**: Servers shall mutually authenticate using certificates.
+- **SP5-SREQ-509**: Mission Participants shall be able to provide standardized, representative, ba
+- **SP5-SREQ-590**: Mission Participants shall be able to provide standardized, representative, Ov
+- **SP5-SREQ-592**: MNP shall provide a Link-back (URL) for a symbol for which it can and will mak
+- **SP5-SREQ-82**: HTTPS shall be used as the transport protocol.
+- **SP5-SREQ-87**: MNP shall encode military symbols using the APP-6(D)(1) symbology standard whe
+- **SP5-SREQ-89**: NVG files shall be labelled using STANAG 4774/4778-compliant labels.
+- **SP5-SREQ-92**: Overlay Information shall be logged in the system Event Logs
+
+#### EP SP5-EP-P-TIN-17: NVG Overlay Exchange via Files Provider
+
+- **SP5-SREQ-306**: Servers shall mutually authenticate using certificates.
+- **SP5-SREQ-82**: HTTPS shall be used as the transport protocol.
+- **SP5-SREQ-90**: Services receiving NVG messages must validate received messages to ensure they
+
+
+### TIN: SP5-TIN-18 (KML Overlay Exchange via Files)
+
+#### EP SP5-EP-C-TIN-18: KML Overlay Exchange via Files Consumer
+
+- **SP5-SREQ-231**: Exchange and control of KML files shall be controlled.
+- **SP5-SREQ-232**: Only privileged users shall have access to generate and transfer files.
+- **SP5-SREQ-302**: MNP shall be able to provide standardized, representative, KML Overlays.
+- **SP5-SREQ-306**: Servers shall mutually authenticate using certificates.
+- **SP5-SREQ-509**: Mission Participants shall be able to provide standardized, representative, ba
+- **SP5-SREQ-591**: Mission Participant shall be able to support multiple different Overlay Exchan
+- **SP5-SREQ-82**: HTTPS shall be used as the transport protocol.
+- **SP5-SREQ-92**: Overlay Information shall be logged in the system Event Logs
+
+#### EP SP5-EP-P-TIN-18: KML Overlay Exchange via Files Provider
+
+- **SP5-SREQ-258**: MNP shall be able to load a KML file and display the content in its C2 system.
+- **SP5-SREQ-306**: Servers shall mutually authenticate using certificates.
+- **SP5-SREQ-591**: Mission Participant shall be able to support multiple different Overlay Exchan
+- **SP5-SREQ-82**: HTTPS shall be used as the transport protocol.
+
+
+### TIN: SP5-TIN-19 (NVG Overlay Exchange via Web Services)
+
+#### EP SP5-EP-C-TIN-19: NVG Overlay Exchange via Web Services Consumer
+
+- **SP5-SREQ-232**: Only privileged users shall have access to generate and transfer files.
+- **SP5-SREQ-255**: MNP shall be capable to host a Request-Response NVG Service to share NVG overl
+- **SP5-SREQ-257**: MNP shall provide additional information for a symbol via the provided link-ba
+- **SP5-SREQ-509**: Mission Participants shall be able to provide standardized, representative, ba
+- **SP5-SREQ-591**: Mission Participant shall be able to support multiple different Overlay Exchan
+
+#### EP SP5-EP-P-TIN-19: NVG Overlay Exchange via Web Services Provider
+
+- **SP5-SREQ-232**: Only privileged users shall have access to generate and transfer files.
+- **SP5-SREQ-254**: MNP shall be able to connect to a Request-Response NVG Service, request an NVG
+- **SP5-SREQ-256**: MNP shall be able to obtain the additional information for a symbol by followi
+- **SP5-SREQ-591**: Mission Participant shall be able to support multiple different Overlay Exchan
+
+
+
+## SI Number: SP5-SI-VP
+
+### TIN: SP5-TIN-15 (Virtual Machine Hosting)
+
+#### EP SP5-EP-P-TIN-15: Virtual Machine Hosting Provider
+
+- **SP5-SREQ-72**: Virtualized network provided to the Service Consumer shall be protected to the
+
+
+
+## SI Number: SP5-SI-WEBAUTH
+
+### TIN: SP5-TIN-65 (Web Authentication Brokering)
+
+#### EP SP5-EP-C-TIN-64: Web Authentication Consumer
+
+- **SP5-SREQ-177**: The Identity Provider and Relying Party shall use HTTP redirection to redirect
+- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
+- **SP5-SREQ-307**: The Relying Party shall validate digitally signed security tokens.
+- **SP5-SREQ-308**: Event logs shall include, as a minimum records of successful and rejected auth
+- **SP5-SREQ-74**: Communications between Service Consumer and Web Application/Relying Party; or 
+
+#### EP SP5-EP-P-TIN-64: Web Authentication Provider
+
+- **SP5-SREQ-171**: The Identity Provider shall include attributes from its local attribute store 
+- **SP5-SREQ-174**: All Tokens shall include an AudienceRestriction element to prevent wide-spread
+- **SP5-SREQ-175**: The Identity Provider shall digitally sign the security tokens.
+- **SP5-SREQ-177**: The Identity Provider and Relying Party shall use HTTP redirection to redirect
+- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
+- **SP5-SREQ-308**: Event logs shall include, as a minimum records of successful and rejected auth
+- **SP5-SREQ-71**: Events shall be logged by the MNP domain identity management solution and by t
+- **SP5-SREQ-73**: Event logs must include, as a minimum: user authentication attempts; and recor
+- **SP5-SREQ-74**: Communications between Service Consumer and Web Application/Relying Party; or 
+- **SP5-SREQ-75**: Sensitive data passed in SAML tokens shall be encrypted.
+
+

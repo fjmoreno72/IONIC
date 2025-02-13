@@ -6,11 +6,6 @@
     <title>SREQ Viewer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
         :root {
             --primary-color: #003366;
             --secondary-color: #0066cc;
@@ -124,11 +119,6 @@
             box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
         }
 
-        .search-input:hover {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.05);
-        }
-
         .controls {
             background-color: var(--card-background);
             border-radius: 0.5rem;
@@ -218,21 +208,7 @@
             box-shadow: var(--shadow-md);
         }
 
-        .level-2 {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 0.625rem 1rem;
-            margin: 0.5rem 0;
-            border-radius: 0.375rem;
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-        }
-
-        .level-2:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        li.level-3 > div.tree-item {
+        li.level-2 > div.tree-item {
             background-color: #28a745;
             color: white;
             padding: 0.5rem 1rem;
@@ -242,11 +218,11 @@
             transition: background-color var(--transition-speed) ease;
         }
 
-        li.level-3 > div.tree-item:hover {
+        li.level-2 > div.tree-item:hover {
             background-color: #218838;
         }
 
-        li.level-4 > div.tree-item {
+        li.level-3 > div.tree-item {
             background-color: var(--card-background);
             color: var(--text-primary);
             padding: 0.5rem 1rem;
@@ -256,18 +232,18 @@
             transition: background-color var(--transition-speed) ease;
         }
 
-        li.level-4 > div.tree-item:hover {
+        li.level-3 > div.tree-item:hover {
             background-color: var(--hover-bg);
         }
 
-        .no-children > .tree-item {
-            background-color: var(--danger-color) !important;
+        li.no-children.level-2 > div.tree-item {
+            background-color: var(--danger-color);
+            border-color: var(--danger-color);
             color: white;
-            border-color: var(--danger-color) !important;
         }
 
-        .no-children > .tree-item:hover {
-            background-color: #b32d2d !important;
+        li.no-children.level-2:hover > div.tree-item {
+            background-color: #b32d2d;
         }
 
         .nested {
@@ -391,6 +367,17 @@
             animation: spin 1s linear infinite;
         }
 
+        .search-input:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.05);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
         .tooltip {
             position: relative;
         }
@@ -437,14 +424,9 @@
                         <button class="btn" onclick="toggleLevel(1, true)">Expand All SI</button>
                     </div>
                     <div class="control-group">
-                        <div class="control-group-title">Technical Interactions (TINs)</div>
-                        <button class="btn" onclick="toggleLevel(2, false)">Collapse All TINs</button>
-                        <button class="btn" onclick="toggleLevel(2, true)">Expand All TINs</button>
-                    </div>
-                    <div class="control-group">
-                        <div class="control-group-title">Specifications Requirements (SREQs)</div>
-                        <button class="btn" onclick="toggleLevel(3, false)">Collapse All SREQs</button>
-                        <button class="btn" onclick="toggleLevel(3, true)">Expand All SREQs</button>
+                        <div class="control-group-title">Specifications Requirements</div>
+                        <button class="btn" onclick="toggleLevel(2, false)">Collapse All SREQs</button>
+                        <button class="btn" onclick="toggleLevel(2, true)">Expand All SREQs</button>
                     </div>
                 </div>
             </div>
@@ -453,100 +435,78 @@
         <h1>SREQ Hierarchy Viewer</h1>
 
         <div class="tree-container">
-
             <ul id="sreqRoot">
-        {%- for (si_key, tins) in data.items() -%}
-            {% set tin_percentages = [] %}
-            {%- for (tin_key, sreqs) in tins.items() -%}
-                {% set sreqs_with_tests = namespace(count=0) %}
-                {%- for (sreq_number, sreq_data) in sreqs.items() -%}
-                    {%- if sreq_data.test_cases|length > 0 -%}
-                        {% set sreqs_with_tests.count = sreqs_with_tests.count + 1 %}
-                    {%- endif -%}
-                {%- endfor -%}
-                {%- if sreqs|length > 0 -%}
-                    {% set percentage = (sreqs_with_tests.count / sreqs|length * 100)|round(1) %}
-                    {% set _ = tin_percentages.append(percentage) %}
-                {%- endif -%}
-            {%- endfor -%}
+                {%- for (si_key, tins) in data.items() -%}
+                    {% set unique_sreqs = {} %}
+                    {% set sreqs_with_tests = namespace(count=0) %}
 
-            {% set avg_percentage = 0 %}
-            {%- if tin_percentages|length > 0 -%}
-                {% set avg_percentage = (tin_percentages|sum / tin_percentages|length)|round(1) %}
-            {%- endif -%}
-
-            <li class="level-1 tree-toggle">
-                <div class="tree-item tooltip" data-tooltip="Coverage: {{ avg_percentage }}%">
-                    {{ si_key[0] }} -> {{ si_key[1] }} ({{ avg_percentage }}%)
-                    {%- if avg_percentage <= 25 -%}
-                        <span class="percentage-circle" style="background-color: var(--danger-color)"></span>
-                    {%- elif avg_percentage <= 50 -%}
-                        <span class="percentage-circle" style="background-color: var(--warning-color)"></span>
-                    {%- elif avg_percentage <= 75 -%}
-                        <span class="percentage-circle" style="background-color: var(--accent-color)"></span>
-                    {%- else -%}
-                        <span class="percentage-circle" style="background-color: var(--success-color)"></span>
-                    {%- endif -%}
-                </div>
-                {%- if tins|length > 0 -%}
-                <ul class="nested">
                     {%- for (tin_key, sreqs) in tins.items() -%}
-                        {% set sreqs_with_tests = namespace(count=0) %}
                         {%- for (sreq_number, sreq_data) in sreqs.items() -%}
-                            {%- if sreq_data.test_cases|length > 0 -%}
-                                {% set sreqs_with_tests.count = sreqs_with_tests.count + 1 %}
+                            {%- if sreq_number not in unique_sreqs -%}
+                                {% set _ = unique_sreqs.update({
+                                    sreq_number: {
+                                        'sreq_name': sreq_data.sreq_name,
+                                        'test_cases': []
+                                    }
+                                }) %}
                             {%- endif -%}
-                        {%- endfor -%}
-
-                        {% set percentage = 0 %}
-                        {%- if sreqs|length > 0 -%}
-                            {% set percentage = (sreqs_with_tests.count / sreqs|length * 100)|round(1) %}
-                        {%- endif -%}
-
-                        <li class="level-2 tree-toggle">
-                            <div class="tree-item tooltip" data-tooltip="Coverage: {{ percentage }}%">
-                                {{ tin_key[0] }} -> {{ tin_key[1] }} ({{ percentage }}%)
-                                {%- if percentage <= 25 -%}
-                                    <span class="percentage-circle" style="background-color: var(--danger-color)"></span>
-                                {%- elif percentage <= 50 -%}
-                                    <span class="percentage-circle" style="background-color: var(--warning-color)"></span>
-                                {%- elif percentage <= 75 -%}
-                                    <span class="percentage-circle" style="background-color: var(--accent-color)"></span>
-                                {%- else -%}
-                                    <span class="percentage-circle" style="background-color: var(--success-color)"></span>
+                            {%- for test in sreq_data.test_cases -%}
+                                {%- if test not in unique_sreqs[sreq_number]['test_cases'] -%}
+                                    {% set _ = unique_sreqs[sreq_number]['test_cases'].append(test) %}
                                 {%- endif -%}
-                            </div>
-                            {%- if sreqs|length > 0 -%}
-                            <ul class="nested">
-                                {%- for (sreq_number, sreq_data) in sreqs.items() -%}
-                                    {% set test_count = sreq_data.test_cases|length %}
-                                    <li class="level-3 tree-toggle collapsed {% if test_count == 0 %}no-children{% endif %}">
-                                        <div class="tree-item tooltip" data-tooltip="Test Cases: {{ test_count }}">
-                                            {{ sreq_number }} -> {{ sreq_data.sreq_name }} ({{ test_count }})
-                                        </div>
-                                        {%- if test_count > 0 -%}
-                                        <ul class="nested">
-                                            {%- for test in sreq_data.test_cases -%}
-                                                <li class="level-4 leaf">
-                                                    <div class="tree-item">
-                                                        {{ test[0] }} -> {{ test[1] }}
-                                                    </div>
-                                                </li>
-                                            {%- endfor -%}
-                                        </ul>
-                                        {%- endif -%}
-                                    </li>
-                                {%- endfor -%}
-                            </ul>
-                            {%- endif -%}
-                        </li>
+                            {%- endfor -%}
+                        {%- endfor -%}
                     {%- endfor -%}
-                </ul>
-                {%- endif -%}
-            </li>
-        {%- endfor -%}
-    </ul>
 
+                    {%- for sreq_number, sreq_data in unique_sreqs.items() -%}
+                        {%- if sreq_data.test_cases|length > 0 -%}
+                            {% set sreqs_with_tests.count = sreqs_with_tests.count + 1 %}
+                        {%- endif -%}
+                    {%- endfor -%}
+
+                    {% set percentage = 0 %}
+                    {%- if unique_sreqs|length > 0 -%}
+                        {% set percentage = (sreqs_with_tests.count / unique_sreqs|length * 100)|round(1) %}
+                    {%- endif -%}
+
+                    <li class="level-1 tree-toggle">
+                        <div class="tree-item tooltip" data-tooltip="Coverage: {{ percentage }}%">
+                            {{ si_key[0] }} -> {{ si_key[1] }} ({{ percentage }}%)
+                            {%- if percentage <= 25 -%}
+                                <span class="percentage-circle" style="background-color: var(--danger-color)"></span>
+                            {%- elif percentage <= 50 -%}
+                                <span class="percentage-circle" style="background-color: var(--warning-color)"></span>
+                            {%- elif percentage <= 75 -%}
+                                <span class="percentage-circle" style="background-color: var(--accent-color)"></span>
+                            {%- else -%}
+                                <span class="percentage-circle" style="background-color: var(--success-color)"></span>
+                            {%- endif -%}
+                        </div>
+
+                        <ul class="nested">
+                            {%- for sreq_number, sreq_data in unique_sreqs|dictsort -%}
+                                {% set test_count = sreq_data.test_cases|length %}
+                                <li class="level-2 tree-toggle collapsed {% if test_count == 0 %}no-children{% endif %}">
+                                    <div class="tree-item tooltip" data-tooltip="Test Cases: {{ test_count }}">
+                                        {{ sreq_number }} -> {{ sreq_data.sreq_name }} ({{ test_count }})
+                                    </div>
+                                    {%- if test_count > 0 -%}
+                                    <ul class="nested">
+                                        {%- for test in sreq_data.test_cases|sort -%}
+                                            <li class="level-3">
+                                                <div class="tree-item">
+                                                    {{ test[0] }} -> {{ test[1] }}
+                                                </div>
+                                            </li>
+                                        {%- endfor -%}
+                                    </ul>
+                                    {%- endif -%}
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    </li>
+                {%- endfor -%}
+            </ul>
         </div>
     </div>
 
@@ -560,6 +520,26 @@
             document.documentElement.setAttribute('data-theme', 
                 document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
             );
+        }
+
+        // Tree toggling
+        const toggles = document.querySelectorAll('.tree-toggle');
+        toggles.forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggle.classList.toggle('collapsed');
+            });
+        });
+
+        function toggleLevel(level, expand) {
+            const elements = document.querySelectorAll(`.level-${level}`);
+            elements.forEach(element => {
+                if (expand) {
+                    element.classList.remove('collapsed');
+                } else {
+                    element.classList.add('collapsed');
+                }
+            });
         }
 
         // Enhanced Search functionality
@@ -579,25 +559,27 @@
             const matchedItems = new Set();
             
             if (searchType === 'sreq') {
-                // For SREQ search, match level-3 items (SREQs)
-                document.querySelectorAll('.level-3').forEach(li => {
-                    const item = li.querySelector('.tree-item');
-                    if (item && item.textContent.toLowerCase().includes(searchTerm)) {
-                        matchedItems.add(item);
-                        // Add parent items to matches
-                        let parent = li.parentElement;
-                        while (parent && parent.id !== 'sreqRoot') {
-                            const parentItem = parent.closest('li')?.querySelector('.tree-item');
-                            if (parentItem) {
-                                matchedItems.add(parentItem);
+                // For SREQ search, match level-1 and level-2 items
+                allItems.forEach(item => {
+                    const li = item.closest('li');
+                    if (li.classList.contains('level-1') || li.classList.contains('level-2')) {
+                        if (item.textContent.toLowerCase().includes(searchTerm)) {
+                            matchedItems.add(item);
+                            // Add all parent items to matches
+                            let parent = li.parentElement;
+                            while (parent && parent.id !== 'sreqRoot') {
+                                const parentItem = parent.closest('li')?.querySelector('.tree-item');
+                                if (parentItem) {
+                                    matchedItems.add(parentItem);
+                                }
+                                parent = parent.closest('li')?.parentElement;
                             }
-                            parent = parent.closest('li')?.parentElement;
                         }
                     }
                 });
             } else if (searchType === 'tca') {
-                // For TCA search, match level-4 items (test cases)
-                document.querySelectorAll('.level-4').forEach(li => {
+                // For TCA search, match level-3 items (test cases)
+                document.querySelectorAll('.level-3').forEach(li => {
                     if (li.textContent.toLowerCase().includes(searchTerm)) {
                         // Add parent items to matches
                         let parent = li.parentElement;
@@ -618,9 +600,9 @@
                 const isMatched = matchedItems.has(item);
                 
                 if (searchType === 'tca') {
-                    // For TCA search, also check if this item has any visible level-4 children
-                    const hasVisibleTestCase = li.querySelectorAll('.level-4').length > 0 &&
-                        Array.from(li.querySelectorAll('.level-4')).some(testCase => 
+                    // For TCA search, also check if this item has any visible level-3 children
+                    const hasVisibleTestCase = li.querySelectorAll('.level-3').length > 0 &&
+                        Array.from(li.querySelectorAll('.level-3')).some(testCase => 
                             testCase.textContent.toLowerCase().includes(searchTerm)
                         );
                     
@@ -655,9 +637,9 @@
                 }
             });
 
-            // For TCA search, handle level-4 items separately
+            // For TCA search, handle level-3 items separately
             if (searchType === 'tca') {
-                document.querySelectorAll('.level-4').forEach(li => {
+                document.querySelectorAll('.level-3').forEach(li => {
                     if (!li.textContent.toLowerCase().includes(searchTerm)) {
                         li.style.display = 'none';
                     } else {
@@ -678,42 +660,29 @@
             performSearch(e.target.value.toLowerCase(), 'tca');
         });
 
-        const toggles = document.querySelectorAll('.tree-toggle');
-
-        // Function to expand first two levels on load
+        // Initialize
         function expandInitialLevels() {
             document.querySelectorAll('.level-1').forEach(element => {
                 element.classList.remove('collapsed');
             });
-            // Ensure level 2-3 starts collapsed
-            document.querySelectorAll('.level-2, .level-3').forEach(element => {
+            document.querySelectorAll('.level-2').forEach(element => {
                 element.classList.add('collapsed');
             });
         }
 
-        toggles.forEach(function(toggle) {
-            const nestedUl = toggle.querySelector('.nested');
+        // Loading state
+        function showLoading() {
+            const loader = document.createElement('div');
+            loader.className = 'loading';
+            loader.innerHTML = '<div class="loading-spinner"></div>';
+            document.body.appendChild(loader);
+        }
 
-            if (!nestedUl) {
-                toggle.classList.add('leaf');
-                return;
+        function hideLoading() {
+            const loader = document.querySelector('.loading');
+            if (loader) {
+                loader.remove();
             }
-
-            toggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggle.classList.toggle('collapsed');
-            });
-        });
-
-        function toggleLevel(level, expand) {
-            const elements = document.querySelectorAll(`.level-${level}`);
-            elements.forEach(element => {
-                if (expand) {
-                    element.classList.remove('collapsed');
-                } else {
-                    element.classList.add('collapsed');
-                }
-            });
         }
 
         // Initialize on load

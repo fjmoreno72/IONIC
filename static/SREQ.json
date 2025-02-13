@@ -2348,11 +2348,26 @@
         "epName": "Calendar Dissemination Consumer",
         "sreqNumber": "SP5-SREQ-230",
         "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "cc6474bd-925d-4d66-86fb-964b3c4562e8",
+        "testCaseKey": "TCA-CIAV-013927",
+        "testCaseName": "Calendar sharing and functionalities via Web Hosting",
+        "actor": "Calendar Client Reader",
+        "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-CALENDAR",
+        "siName": "Calendaring and Scheduling",
+        "tinNumber": "SP5-TIN-13",
+        "tinName": "Calendar Dissemination",
+        "epNumber": "SP5-EP-C-TIN-13",
+        "epName": "Calendar Dissemination Consumer",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status.",
+        "testCaseId": "cc6474bd-925d-4d66-86fb-964b3c4562e8",
+        "testCaseKey": "TCA-CIAV-013927",
+        "testCaseName": "Calendar sharing and functionalities via Web Hosting",
+        "actor": "Calendar Provider",
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CALENDAR",
@@ -2618,6 +2633,36 @@
         "epName": "Calendar Exchange via Web Hosting Mediator",
         "sreqNumber": "SP5-SREQ-230",
         "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status.",
+        "testCaseId": "cc6474bd-925d-4d66-86fb-964b3c4562e8",
+        "testCaseKey": "TCA-CIAV-013927",
+        "testCaseName": "Calendar sharing and functionalities via Web Hosting",
+        "actor": "Calendar Client Reader",
+        "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-CALENDAR",
+        "siName": "Calendaring and Scheduling",
+        "tinNumber": "SP5-TIN-367",
+        "tinName": "Calendar Exchange via Web Hosting",
+        "epNumber": "SP5-EP-M-TIN-367",
+        "epName": "Calendar Exchange via Web Hosting Mediator",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status.",
+        "testCaseId": "cc6474bd-925d-4d66-86fb-964b3c4562e8",
+        "testCaseKey": "TCA-CIAV-013927",
+        "testCaseName": "Calendar sharing and functionalities via Web Hosting",
+        "actor": "Calendar Provider",
+        "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-CALENDAR",
+        "siName": "Calendaring and Scheduling",
+        "tinNumber": "SP5-TIN-367",
+        "tinName": "Calendar Exchange via Web Hosting",
+        "epNumber": "SP5-EP-M-TIN-367",
+        "epName": "Calendar Exchange via Web Hosting Mediator",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status.",
         "testCaseId": "88bb716e-df10-4eb0-87f1-d99c40ef3299",
         "testCaseKey": "TCA-CIAV-013927",
         "testCaseName": "Calendar sharing and functionalities via Web Hosting",
@@ -2723,6 +2768,21 @@
         "epName": "Calendar Exchange via Web Hosting Mediator",
         "sreqNumber": "SP5-SREQ-462",
         "sreqName": "A Service Provider shall allow a calendar user\u2019s calendar to be published via Web Hosting Services.",
+        "testCaseId": "cc6474bd-925d-4d66-86fb-964b3c4562e8",
+        "testCaseKey": "TCA-CIAV-013927",
+        "testCaseName": "Calendar sharing and functionalities via Web Hosting",
+        "actor": "Calendar Provider",
+        "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-CALENDAR",
+        "siName": "Calendaring and Scheduling",
+        "tinNumber": "SP5-TIN-367",
+        "tinName": "Calendar Exchange via Web Hosting",
+        "epNumber": "SP5-EP-M-TIN-367",
+        "epName": "Calendar Exchange via Web Hosting Mediator",
+        "sreqNumber": "SP5-SREQ-462",
+        "sreqName": "A Service Provider shall allow a calendar user\u2019s calendar to be published via Web Hosting Services.",
         "testCaseId": "88bb716e-df10-4eb0-87f1-d99c40ef3299",
         "testCaseKey": "TCA-CIAV-013927",
         "testCaseName": "Calendar sharing and functionalities via Web Hosting",
@@ -2786,6 +2846,21 @@
         "testCaseId": "a55592c9-33ca-4f21-a645-80372c1af17f",
         "testCaseKey": "TCA-CIAV-013927",
         "testCaseName": "Calendar sharing and functionalities via Web Hosting - SP5",
+        "actor": "Calendar Client Reader",
+        "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-CALENDAR",
+        "siName": "Calendaring and Scheduling",
+        "tinNumber": "SP5-TIN-367",
+        "tinName": "Calendar Exchange via Web Hosting",
+        "epNumber": "SP5-EP-M-TIN-367",
+        "epName": "Calendar Exchange via Web Hosting Mediator",
+        "sreqNumber": "SP5-SREQ-463",
+        "sreqName": "A Service Consumer shall allow a calendar user\u2019s calendar to be retrieved.",
+        "testCaseId": "cc6474bd-925d-4d66-86fb-964b3c4562e8",
+        "testCaseKey": "TCA-CIAV-013927",
+        "testCaseName": "Calendar sharing and functionalities via Web Hosting",
         "actor": "Calendar Client Reader",
         "status": "ReadyForEvent"
     },
@@ -3141,6 +3216,21 @@
         "tinName": "Information Discovery",
         "epNumber": "SP5-EP-F-TIN-124",
         "epName": "Information Discovery Collaborator",
+        "sreqNumber": "SP5-SREQ-130",
+        "sreqName": "All Mission Network contributing participants shall provide the following capabilities to their users: Instant Messaging, Presence Indicator and Contact Lists.",
+        "testCaseId": "516c9e88-8a07-45cf-9336-5fda75c1f81b",
+        "testCaseKey": "TCA-CIAV-017421",
+        "testCaseName": "NEW - REPO-00061-Contact Lists - Adding Groups and Contacts to the Client Contact List",
+        "actor": "Chat Server",
+        "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-124",
+        "tinName": "Information Discovery",
+        "epNumber": "SP5-EP-F-TIN-124",
+        "epName": "Information Discovery Collaborator",
         "sreqNumber": "SP5-SREQ-604",
         "sreqName": "Each user of a Text-based Collaboration service shall be identifiable using a full JID in the form of \"username@domainpart/resource\".",
         "testCaseId": "79caaa31-aa2b-4ef5-81dd-1ac9dbc375c4",
@@ -3152,16 +3242,16 @@
     {
         "siNumber": "SP5-SI-CHAT",
         "siName": "Text-based Collaboration",
-        "tinNumber": "SP5-TIN-127",
-        "tinName": "Exchange of Data Forms",
-        "epNumber": "SP5-EP-F-TIN-127",
-        "epName": "Exchange of Data Forms Collaborator",
-        "sreqNumber": "SP5-SREQ-260",
-        "sreqName": "The Form Exchange functionality shall provide the exchange of structured data via data forms.",
-        "testCaseId": "65e84bd4-5c13-4636-9349-1405f8004787",
-        "testCaseKey": "TCA-CIAV-017503",
-        "testCaseName": "NEW - REPO-05431-Structured forms within the chat client (Federated)",
-        "actor": "Chat Client",
+        "tinNumber": "SP5-TIN-124",
+        "tinName": "Information Discovery",
+        "epNumber": "SP5-EP-F-TIN-124",
+        "epName": "Information Discovery Collaborator",
+        "sreqNumber": "SP5-SREQ-604",
+        "sreqName": "Each user of a Text-based Collaboration service shall be identifiable using a full JID in the form of \"username@domainpart/resource\".",
+        "testCaseId": "9c032486-4b64-4d31-9706-2d33e9200bcd",
+        "testCaseKey": "TCA-CIAV-017410",
+        "testCaseName": "NEW - REPO-00587-JIDS available to all Users",
+        "actor": "Chat Server",
         "status": "ReadyForReview"
     },
     {
@@ -3176,8 +3266,8 @@
         "testCaseId": "65e84bd4-5c13-4636-9349-1405f8004787",
         "testCaseKey": "TCA-CIAV-017503",
         "testCaseName": "NEW - REPO-05431-Structured forms within the chat client (Federated)",
-        "actor": "Chat Client Partner",
-        "status": "ReadyForReview"
+        "actor": "Chat Server Partner",
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3192,7 +3282,7 @@
         "testCaseKey": "TCA-CIAV-017411",
         "testCaseName": "NEW - REPO-03647-Structured forms within the chat client",
         "actor": "Chat Server",
-        "status": "ReadyForReview"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3222,22 +3312,7 @@
         "testCaseKey": "TCA-CIAV-017503",
         "testCaseName": "NEW - REPO-05431-Structured forms within the chat client (Federated)",
         "actor": "Chat Client",
-        "status": "ReadyForReview"
-    },
-    {
-        "siNumber": "SP5-SI-CHAT",
-        "siName": "Text-based Collaboration",
-        "tinNumber": "SP5-TIN-127",
-        "tinName": "Exchange of Data Forms",
-        "epNumber": "SP5-EP-F-TIN-127",
-        "epName": "Exchange of Data Forms Collaborator",
-        "sreqNumber": "SP5-SREQ-261",
-        "sreqName": "Data Forms shall be discoverable",
-        "testCaseId": "65e84bd4-5c13-4636-9349-1405f8004787",
-        "testCaseKey": "TCA-CIAV-017503",
-        "testCaseName": "NEW - REPO-05431-Structured forms within the chat client (Federated)",
-        "actor": "Chat Client Partner",
-        "status": "ReadyForReview"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3252,7 +3327,7 @@
         "testCaseKey": "TCA-CIAV-017411",
         "testCaseName": "NEW - REPO-03647-Structured forms within the chat client",
         "actor": "Chat Server",
-        "status": "ReadyForReview"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3321,6 +3396,21 @@
         "tinName": "Instant Messaging",
         "epNumber": "SP5-EP-F-TIN-138",
         "epName": "Instant Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-1234",
+        "sreqName": "XMPP stanzas shall be labeled with security policies and confidentiality metadata following ADatP-4774.",
+        "testCaseId": "261285bd-42dc-4393-9aa9-fad7963094a3",
+        "testCaseKey": "TCA-CIAV-017396",
+        "testCaseName": "NEW - REPO-05433-Security Labeling",
+        "actor": "Chat Server",
+        "status": "Draft"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-138",
+        "tinName": "Instant Messaging",
+        "epNumber": "SP5-EP-F-TIN-138",
+        "epName": "Instant Messaging Collaborator",
         "sreqNumber": "SP5-SREQ-1235",
         "sreqName": "XMPP stanzas shall be bound to confidentiality information labels following ADatP-4778.",
         "testCaseId": "09ccb231-2e5e-475b-bdff-26fe75b366c6",
@@ -3373,6 +3463,21 @@
         "testCaseName": "NEW - REPO-05456-Messages are properly labeled in chat rooms",
         "actor": "Chat Server",
         "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-138",
+        "tinName": "Instant Messaging",
+        "epNumber": "SP5-EP-F-TIN-138",
+        "epName": "Instant Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-1235",
+        "sreqName": "XMPP stanzas shall be bound to confidentiality information labels following ADatP-4778.",
+        "testCaseId": "261285bd-42dc-4393-9aa9-fad7963094a3",
+        "testCaseKey": "TCA-CIAV-017396",
+        "testCaseName": "NEW - REPO-05433-Security Labeling",
+        "actor": "Chat Server",
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3477,7 +3582,7 @@
         "testCaseKey": "TCA-CIAV-017458",
         "testCaseName": "NEW - REPO-00227-Partner certificates are trusted",
         "actor": "Chat Server",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3492,7 +3597,7 @@
         "testCaseKey": "TCA-CIAV-017458",
         "testCaseName": "NEW - REPO-00227-Partner certificates are trusted",
         "actor": "Chat Server Partner",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3537,7 +3642,7 @@
         "testCaseKey": "TCA-CIAV-017458",
         "testCaseName": "NEW - REPO-00227-Partner certificates are trusted",
         "actor": "Chat Server",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3552,7 +3657,7 @@
         "testCaseKey": "TCA-CIAV-017458",
         "testCaseName": "NEW - REPO-00227-Partner certificates are trusted",
         "actor": "Chat Server Partner",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3593,9 +3698,9 @@
         "epName": "Instant Messaging Collaborator",
         "sreqNumber": "SP5-SREQ-313",
         "sreqName": "Event logs must include full accounting of chat rooms, including: room title; all messages including timestamps and classifications; user access; and administrator actions.",
-        "testCaseId": "0ec8fe41-a7b8-4aac-9acc-89ed5b4ef5e2",
-        "testCaseKey": "TCA-CIAV-017403",
-        "testCaseName": "NEW - REPO-00232-Room History Logging",
+        "testCaseId": "bd25240b-8a54-4985-9b6e-4f4ec02a39dc",
+        "testCaseKey": "TCA-CIAV-017418",
+        "testCaseName": "NEW - REPO-00397-Rooms Archiving",
         "actor": "Chat Server",
         "status": "ReadyForReview"
     },
@@ -3771,6 +3876,21 @@
         "tinName": "Instant Messaging",
         "epNumber": "SP5-EP-F-TIN-138",
         "epName": "Instant Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-377",
+        "sreqName": "If a stanza carries a label, the labels shall be made visible to the user.",
+        "testCaseId": "261285bd-42dc-4393-9aa9-fad7963094a3",
+        "testCaseKey": "TCA-CIAV-017396",
+        "testCaseName": "NEW - REPO-05433-Security Labeling",
+        "actor": "Chat Client",
+        "status": "Draft"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-138",
+        "tinName": "Instant Messaging",
+        "epNumber": "SP5-EP-F-TIN-138",
+        "epName": "Instant Messaging Collaborator",
         "sreqNumber": "SP5-SREQ-421",
         "sreqName": "The service operator shall be notified when the verification of digital certificates fails.",
         "testCaseId": "09ccb231-2e5e-475b-bdff-26fe75b366c6",
@@ -3793,36 +3913,6 @@
         "testCaseName": "Request for Information Responses - Text-based Collaboration (IER-76)",
         "actor": "Joint Task Force - B",
         "status": "ReadyForEvent"
-    },
-    {
-        "siNumber": "SP5-SI-CHAT",
-        "siName": "Text-based Collaboration",
-        "tinNumber": "SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "epNumber": "SP5-EP-F-TIN-138",
-        "epName": "Instant Messaging Collaborator",
-        "sreqNumber": "SP5-SREQ-421",
-        "sreqName": "The service operator shall be notified when the verification of digital certificates fails.",
-        "testCaseId": "6e332ec7-7ca5-48cb-8df7-eb42fe1b79ad",
-        "testCaseKey": "TCA-CIAV-017458",
-        "testCaseName": "NEW - REPO-00227-Partner certificates are trusted",
-        "actor": "Chat Server",
-        "status": "ReadyForReview"
-    },
-    {
-        "siNumber": "SP5-SI-CHAT",
-        "siName": "Text-based Collaboration",
-        "tinNumber": "SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "epNumber": "SP5-EP-F-TIN-138",
-        "epName": "Instant Messaging Collaborator",
-        "sreqNumber": "SP5-SREQ-421",
-        "sreqName": "The service operator shall be notified when the verification of digital certificates fails.",
-        "testCaseId": "6e332ec7-7ca5-48cb-8df7-eb42fe1b79ad",
-        "testCaseKey": "TCA-CIAV-017458",
-        "testCaseName": "NEW - REPO-00227-Partner certificates are trusted",
-        "actor": "Chat Server Partner",
-        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3882,7 +3972,7 @@
         "testCaseKey": "TCA-CIAV-017403",
         "testCaseName": "NEW - REPO-00232-Room History Logging",
         "actor": "Chat Server",
-        "status": "ReadyForReview"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -3943,6 +4033,21 @@
         "testCaseName": "NEW - REPO-05456-Messages are properly labeled in chat rooms",
         "actor": "Chat Server",
         "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-138",
+        "tinName": "Instant Messaging",
+        "epNumber": "SP5-EP-F-TIN-138",
+        "epName": "Instant Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-59",
+        "sreqName": "All (item-structured) IQ and message stanzas shall be labelled with the classification of the message content.",
+        "testCaseId": "261285bd-42dc-4393-9aa9-fad7963094a3",
+        "testCaseKey": "TCA-CIAV-017396",
+        "testCaseName": "NEW - REPO-05433-Security Labeling",
+        "actor": "Chat Server",
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -4088,6 +4193,21 @@
         "epName": "Instant Messaging Collaborator",
         "sreqNumber": "SP5-SREQ-63",
         "sreqName": "If user authentication is not integrated with local MNP domain identity and access management solution, secure log-on shall be enforced for user authentication.",
+        "testCaseId": "eb7f6023-712d-4153-9edb-11e1e6c47eea",
+        "testCaseKey": "TCA-CIAV-017409",
+        "testCaseName": "NEW - REPO-04707-No Integrated User Authentication - Secure Log-on shall be enforced",
+        "actor": "Chat Server",
+        "status": "Draft"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-138",
+        "tinName": "Instant Messaging",
+        "epNumber": "SP5-EP-F-TIN-138",
+        "epName": "Instant Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-63",
+        "sreqName": "If user authentication is not integrated with local MNP domain identity and access management solution, secure log-on shall be enforced for user authentication.",
         "testCaseId": "09ccb231-2e5e-475b-bdff-26fe75b366c6",
         "testCaseKey": "TCA-CIAV-017465",
         "testCaseName": "Request for Information Responses - Text-based Collaboration (IER-76)",
@@ -4161,6 +4281,21 @@
         "tinName": "Instant Messaging",
         "epNumber": "SP5-EP-F-TIN-138",
         "epName": "Instant Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-64",
+        "sreqName": "Events shall be logged by all chat servers.",
+        "testCaseId": "bd25240b-8a54-4985-9b6e-4f4ec02a39dc",
+        "testCaseKey": "TCA-CIAV-017418",
+        "testCaseName": "NEW - REPO-00397-Rooms Archiving",
+        "actor": "Chat Server",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-138",
+        "tinName": "Instant Messaging",
+        "epNumber": "SP5-EP-F-TIN-138",
+        "epName": "Instant Messaging Collaborator",
         "sreqNumber": "SP5-SREQ-65",
         "sreqName": "Event logs must include, where relevant: user IDs; dates, times and details of key events; and administrator actions.",
         "testCaseId": "09ccb231-2e5e-475b-bdff-26fe75b366c6",
@@ -4193,11 +4328,41 @@
         "epName": "Instant Messaging Collaborator",
         "sreqNumber": "SP5-SREQ-65",
         "sreqName": "Event logs must include, where relevant: user IDs; dates, times and details of key events; and administrator actions.",
+        "testCaseId": "bd25240b-8a54-4985-9b6e-4f4ec02a39dc",
+        "testCaseKey": "TCA-CIAV-017418",
+        "testCaseName": "NEW - REPO-00397-Rooms Archiving",
+        "actor": "Chat Server",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-138",
+        "tinName": "Instant Messaging",
+        "epNumber": "SP5-EP-F-TIN-138",
+        "epName": "Instant Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-65",
+        "sreqName": "Event logs must include, where relevant: user IDs; dates, times and details of key events; and administrator actions.",
         "testCaseId": "b0d9935b-1163-42c3-a094-b874cbc73e43",
         "testCaseKey": "TCA-CIAV-017414",
         "testCaseName": "NEW - REPO-00028-Client Date Time Format and Timezone - Chat Client",
         "actor": "Chat Client",
         "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-138",
+        "tinName": "Instant Messaging",
+        "epNumber": "SP5-EP-F-TIN-138",
+        "epName": "Instant Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-66",
+        "sreqName": "Communication between chat servers shall be secured via TLS with mutual authentication.",
+        "testCaseId": "509adf02-f303-4bb9-9a61-0c1a14c5b927",
+        "testCaseKey": "TCA-CIAV-017428",
+        "testCaseName": "NEW - REPO-03505-Transport Layer Security Profile",
+        "actor": "Chat Server",
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -4272,7 +4437,7 @@
         "testCaseKey": "TCA-CIAV-017458",
         "testCaseName": "NEW - REPO-00227-Partner certificates are trusted",
         "actor": "Chat Server",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -4287,7 +4452,7 @@
         "testCaseKey": "TCA-CIAV-017458",
         "testCaseName": "NEW - REPO-00227-Partner certificates are trusted",
         "actor": "Chat Server Partner",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -4422,7 +4587,7 @@
         "testCaseKey": "TCA-CIAV-017403",
         "testCaseName": "NEW - REPO-00232-Room History Logging",
         "actor": "Chat Server",
-        "status": "ReadyForReview"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -4493,11 +4658,26 @@
         "epName": "Publish-Subscribe Collaborator",
         "sreqNumber": "SP5-SREQ-313",
         "sreqName": "Event logs must include full accounting of chat rooms, including: room title; all messages including timestamps and classifications; user access; and administrator actions.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "bd25240b-8a54-4985-9b6e-4f4ec02a39dc",
+        "testCaseKey": "TCA-CIAV-017418",
+        "testCaseName": "NEW - REPO-00397-Rooms Archiving",
+        "actor": "Chat Server",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-141",
+        "tinName": "Publish-Subscribe",
+        "epNumber": "SP5-EP-F-TIN-141",
+        "epName": "Publish-Subscribe Collaborator",
+        "sreqNumber": "SP5-SREQ-52",
+        "sreqName": "Message content shall be preserved.",
+        "testCaseId": "0ec8fe41-a7b8-4aac-9acc-89ed5b4ef5e2",
+        "testCaseKey": "TCA-CIAV-017403",
+        "testCaseName": "NEW - REPO-00232-Room History Logging",
+        "actor": "Chat Server",
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -4613,11 +4793,11 @@
         "epName": "Publish-Subscribe Collaborator",
         "sreqNumber": "SP5-SREQ-85",
         "sreqName": "Complete instant messaging dialogs with time-stamps shall be preserved.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "0ec8fe41-a7b8-4aac-9acc-89ed5b4ef5e2",
+        "testCaseKey": "TCA-CIAV-017403",
+        "testCaseName": "NEW - REPO-00232-Room History Logging",
+        "actor": "Chat Server",
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -5121,21 +5301,6 @@
         "tinName": "Group Messaging",
         "epNumber": "SP5-EP-P-TIN-244",
         "epName": "Group Messaging Provider",
-        "sreqNumber": "SP5-SREQ-139",
-        "sreqName": "Chat room management functionality shall be available which allows moderators to grant and revoke voice (i.e., the privilege to speak) in a moderated room, and to manage the voice list.",
-        "testCaseId": "68ed153b-8788-490f-b6a7-5e68097d30a1",
-        "testCaseKey": "TCA-CIAV-017401",
-        "testCaseName": "NEW- REPO-00205-Create and manage the Banned user list",
-        "actor": "Chat Server",
-        "status": "ReadyForReview"
-    },
-    {
-        "siNumber": "SP5-SI-CHAT",
-        "siName": "Text-based Collaboration",
-        "tinNumber": "SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "epNumber": "SP5-EP-P-TIN-244",
-        "epName": "Group Messaging Provider",
         "sreqNumber": "SP5-SREQ-140",
         "sreqName": "Chat room management functionality shall be available which allows admins to grant and revoke moderator status, and to manage the moderator list.",
         "testCaseId": "213f7928-9a2b-45c7-be3a-1f1c43309b53",
@@ -5346,21 +5511,6 @@
         "tinName": "Group Messaging",
         "epNumber": "SP5-EP-P-TIN-244",
         "epName": "Group Messaging Provider",
-        "sreqNumber": "SP5-SREQ-150",
-        "sreqName": "The service shall warn the user that the chat conversations are logged.",
-        "testCaseId": "bd25240b-8a54-4985-9b6e-4f4ec02a39dc",
-        "testCaseKey": "TCA-CIAV-017418",
-        "testCaseName": "NEW - REPO-00397-Rooms Archiving",
-        "actor": "Chat Server",
-        "status": "ReadyForReview"
-    },
-    {
-        "siNumber": "SP5-SI-CHAT",
-        "siName": "Text-based Collaboration",
-        "tinNumber": "SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "epNumber": "SP5-EP-P-TIN-244",
-        "epName": "Group Messaging Provider",
         "sreqNumber": "SP5-SREQ-383",
         "sreqName": "Complete multi-user chat rooms with time-stamps shall be preserved.",
         "testCaseId": "09ccb231-2e5e-475b-bdff-26fe75b366c6",
@@ -5397,7 +5547,7 @@
         "testCaseKey": "TCA-CIAV-017403",
         "testCaseName": "NEW - REPO-00232-Room History Logging",
         "actor": "Chat Server",
-        "status": "ReadyForReview"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-CHAT",
@@ -5498,6 +5648,36 @@
         "epName": "One-to-one Messaging Collaborator",
         "sreqNumber": "SP5-SREQ-1266",
         "sreqName": "Users shall be able to send private messages to other users.",
+        "testCaseId": "322b7a56-64b9-4a74-9810-7d11eb3c92fa",
+        "testCaseKey": "TCA-CIAV-017366",
+        "testCaseName": "NEW - REPO-00127-Private Chat ",
+        "actor": "Chat Client",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-250",
+        "tinName": "One-to-one Messaging",
+        "epNumber": "SP5-EP-F-TIN-250",
+        "epName": "One-to-one Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-1266",
+        "sreqName": "Users shall be able to send private messages to other users.",
+        "testCaseId": "322b7a56-64b9-4a74-9810-7d11eb3c92fa",
+        "testCaseKey": "TCA-CIAV-017366",
+        "testCaseName": "NEW - REPO-00127-Private Chat ",
+        "actor": "Chat Server",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-CHAT",
+        "siName": "Text-based Collaboration",
+        "tinNumber": "SP5-TIN-250",
+        "tinName": "One-to-one Messaging",
+        "epNumber": "SP5-EP-F-TIN-250",
+        "epName": "One-to-one Messaging Collaborator",
+        "sreqNumber": "SP5-SREQ-1266",
+        "sreqName": "Users shall be able to send private messages to other users.",
         "testCaseId": "5132f46a-1f83-4421-8f1b-c60421abde56",
         "testCaseKey": "TCA-CIAV-017366",
         "testCaseName": "NEW - REPO-00127-Private Chat ",
@@ -5573,11 +5753,11 @@
         "epName": "Consumer to Provider Inter-domain Routing Consumer",
         "sreqNumber": "SP5-SREQ-1204",
         "sreqName": "MIssion Network Communications Consumer shall not transit any unicast traffic.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "a7ca3881-f4eb-4549-8800-6676662f63ff",
+        "testCaseKey": "TCA-CIAV-018476",
+        "testCaseName": "[Consumer] [BGP]Only local traffic transmited",
+        "actor": "Router B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-COMMS",
@@ -5873,6 +6053,21 @@
         "epName": "Inter-domain Routing Collaborator",
         "sreqNumber": "SP5-SREQ-1102",
         "sreqName": "Route import filtering for BGP must be implemented to prevent direct propagation of Service Provider internal routing protocol routes to the MN routing.",
+        "testCaseId": "cf56f046-8e88-4f4c-94d5-05fa240c8164",
+        "testCaseKey": "TCA-CIAV-017378",
+        "testCaseName": "REPO-00363-BGP routes aggretation and filtering - SP5",
+        "actor": "Router",
+        "status": "Draft"
+    },
+    {
+        "siNumber": "SP5-SI-COMMS",
+        "siName": "Communications",
+        "tinNumber": "SP5-TIN-162",
+        "tinName": "Inter-domain Routing",
+        "epNumber": "SP5-EP-F-TIN-162",
+        "epName": "Inter-domain Routing Collaborator",
+        "sreqNumber": "SP5-SREQ-1102",
+        "sreqName": "Route import filtering for BGP must be implemented to prevent direct propagation of Service Provider internal routing protocol routes to the MN routing.",
         "testCaseId": "37d602b8-78bc-407c-a5cb-1e807a866d8c",
         "testCaseKey": "TCA-CIAV-017392",
         "testCaseName": "REPO-00137-[Unicast] BGP Routes: aggregate, non-internal, no default - SP5",
@@ -5908,6 +6103,21 @@
         "testCaseName": "REPO-00363-BGP routes aggretation and filtering - SP5",
         "actor": "Router",
         "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-COMMS",
+        "siName": "Communications",
+        "tinNumber": "SP5-TIN-162",
+        "tinName": "Inter-domain Routing",
+        "epNumber": "SP5-EP-F-TIN-162",
+        "epName": "Inter-domain Routing Collaborator",
+        "sreqNumber": "SP5-SREQ-1103",
+        "sreqName": "Originating routing information with the BGP shall be done with largest possible prefixes to minimize routing table size. More specific routing updates are only allowed for traffic engineering purposes under guidance of MNSMA as well as indication of certain service endpoints, like MN testing endpoint.",
+        "testCaseId": "cf56f046-8e88-4f4c-94d5-05fa240c8164",
+        "testCaseKey": "TCA-CIAV-017378",
+        "testCaseName": "REPO-00363-BGP routes aggretation and filtering - SP5",
+        "actor": "Router",
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-COMMS",
@@ -6328,6 +6538,21 @@
         "testCaseName": "REPO-00420-BGP Authentication - SP5",
         "actor": "Router",
         "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-COMMS",
+        "siName": "Communications",
+        "tinNumber": "SP5-TIN-82",
+        "tinName": "Provider to Provider Inter-domain Routing",
+        "epNumber": "SP5-EP-F-TIN-82",
+        "epName": "Provider to Provider Inter-domain Routing Collaborator",
+        "sreqNumber": "SP5-SREQ-1101",
+        "sreqName": "Route filtering of valid mission network prefixes shall be implemented in BGP.",
+        "testCaseId": "cf56f046-8e88-4f4c-94d5-05fa240c8164",
+        "testCaseKey": "TCA-CIAV-017378",
+        "testCaseName": "REPO-00363-BGP routes aggretation and filtering - SP5",
+        "actor": "Router",
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-COMMS",
@@ -12267,7 +12492,7 @@
         "testCaseKey": "TCA-CIAV-017513",
         "testCaseName": "Digital GI Designation letter - Email (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-EMAIL",
@@ -12747,7 +12972,7 @@
         "testCaseKey": "TCA-CIAV-017513",
         "testCaseName": "Digital GI Designation letter - Email (Alternative)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-EMAIL",
@@ -12852,7 +13077,7 @@
         "testCaseKey": "TCA-CIAV-017521",
         "testCaseName": "Update Mission GI GAP and send it via email (Alternative)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-EMAIL",
@@ -12867,7 +13092,7 @@
         "testCaseKey": "TCA-CIAV-017521",
         "testCaseName": "Update Mission GI GAP and send it via email (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-EMAIL",
@@ -18657,7 +18882,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Consumer",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -18687,7 +18912,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Consumer",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -18747,7 +18972,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Consumer",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -18837,7 +19062,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Consumer",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -19077,7 +19302,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Forwarder",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -19122,7 +19347,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Forwarder",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -19257,7 +19482,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Forwarder",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -19512,7 +19737,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Forwarder",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -19632,7 +19857,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Provider",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -19812,7 +20037,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Provider",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -19947,7 +20172,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Provider",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -20082,7 +20307,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Provider",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -20217,7 +20442,7 @@
         "testCaseKey": "TCA-CIAV-013030",
         "testCaseName": "Hub Verification of the Exchange of Tracks",
         "actor": "FFT Provider",
-        "status": "ReadyForReview"
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-FFT",
@@ -22197,7 +22422,7 @@
         "testCaseKey": "TCA-CIAV-017522",
         "testCaseName": "Designated GI Dissemination Package shared by removable media (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22212,7 +22437,7 @@
         "testCaseKey": "TCA-CIAV-017522",
         "testCaseName": "Designated GI Dissemination Package shared by removable media (Primary)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22242,7 +22467,7 @@
         "testCaseKey": "TCA-CIAV-017515",
         "testCaseName": "Digital GI Submission Package",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22257,7 +22482,7 @@
         "testCaseKey": "TCA-CIAV-017515",
         "testCaseName": "Digital GI Submission Package",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22272,7 +22497,7 @@
         "testCaseKey": "TCA-CIAV-017519",
         "testCaseName": "Digital GI Designation letter - via Digital GI package (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22287,7 +22512,7 @@
         "testCaseKey": "TCA-CIAV-017519",
         "testCaseName": "Digital GI Designation letter - via Digital GI package (Primary)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22392,7 +22617,7 @@
         "testCaseKey": "TCA-CIAV-017522",
         "testCaseName": "Designated GI Dissemination Package shared by removable media (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22407,7 +22632,7 @@
         "testCaseKey": "TCA-CIAV-017522",
         "testCaseName": "Designated GI Dissemination Package shared by removable media (Primary)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22437,7 +22662,7 @@
         "testCaseKey": "TCA-CIAV-017515",
         "testCaseName": "Digital GI Submission Package",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22452,7 +22677,7 @@
         "testCaseKey": "TCA-CIAV-017515",
         "testCaseName": "Digital GI Submission Package",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22467,7 +22692,7 @@
         "testCaseKey": "TCA-CIAV-017519",
         "testCaseName": "Digital GI Designation letter - via Digital GI package (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22482,7 +22707,7 @@
         "testCaseKey": "TCA-CIAV-017519",
         "testCaseName": "Digital GI Designation letter - via Digital GI package (Primary)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22572,7 +22797,7 @@
         "testCaseKey": "TCA-CIAV-017522",
         "testCaseName": "Designated GI Dissemination Package shared by removable media (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22587,7 +22812,7 @@
         "testCaseKey": "TCA-CIAV-017522",
         "testCaseName": "Designated GI Dissemination Package shared by removable media (Primary)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22617,7 +22842,7 @@
         "testCaseKey": "TCA-CIAV-017515",
         "testCaseName": "Digital GI Submission Package",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22632,7 +22857,7 @@
         "testCaseKey": "TCA-CIAV-017515",
         "testCaseName": "Digital GI Submission Package",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22647,7 +22872,7 @@
         "testCaseKey": "TCA-CIAV-017519",
         "testCaseName": "Digital GI Designation letter - via Digital GI package (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22662,7 +22887,7 @@
         "testCaseKey": "TCA-CIAV-017519",
         "testCaseName": "Digital GI Designation letter - via Digital GI package (Primary)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22677,7 +22902,7 @@
         "testCaseKey": "TCA-CIAV-017520",
         "testCaseName": "Update Mission GI GAP and Publish in Web Portal (Primary)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22692,7 +22917,7 @@
         "testCaseKey": "TCA-CIAV-017520",
         "testCaseName": "Update Mission GI GAP and Publish in Web Portal (Primary)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22737,7 +22962,7 @@
         "testCaseKey": "TCA-CIAV-017520",
         "testCaseName": "Update Mission GI GAP and Publish in Web Portal (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22782,7 +23007,7 @@
         "testCaseKey": "TCA-CIAV-017520",
         "testCaseName": "Update Mission GI GAP and Publish in Web Portal (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22857,7 +23082,7 @@
         "testCaseKey": "TCA-CIAV-017520",
         "testCaseName": "Update Mission GI GAP and Publish in Web Portal (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22932,7 +23157,7 @@
         "testCaseKey": "TCA-CIAV-017520",
         "testCaseName": "Update Mission GI GAP and Publish in Web Portal (Primary)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -22992,7 +23217,7 @@
         "testCaseKey": "TCA-CIAV-017524",
         "testCaseName": "Designated GI Dissemination Package - WMS (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -23037,7 +23262,7 @@
         "testCaseKey": "TCA-CIAV-017524",
         "testCaseName": "Designated GI Dissemination Package - WMS (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -23262,7 +23487,7 @@
         "testCaseKey": "TCA-CIAV-017524",
         "testCaseName": "Designated GI Dissemination Package - WMS (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -23577,7 +23802,7 @@
         "testCaseKey": "TCA-CIAV-017524",
         "testCaseName": "Designated GI Dissemination Package - WMS (Alternative)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -23607,7 +23832,7 @@
         "testCaseKey": "TCA-CIAV-017523",
         "testCaseName": "Designated GI Dissemination Package - WFS (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "Approved"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -23637,7 +23862,7 @@
         "testCaseKey": "TCA-CIAV-017523",
         "testCaseName": "Designated GI Dissemination Package - WFS (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "Approved"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -23757,7 +23982,7 @@
         "testCaseKey": "TCA-CIAV-017523",
         "testCaseName": "Designated GI Dissemination Package - WFS (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "Approved"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -23922,7 +24147,7 @@
         "testCaseKey": "TCA-CIAV-017523",
         "testCaseName": "Designated GI Dissemination Package - WFS (Alternative)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "Approved"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -23997,7 +24222,7 @@
         "testCaseKey": "TCA-CIAV-017525",
         "testCaseName": "Designated GI Dissemination Package - WMTS (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -24027,7 +24252,7 @@
         "testCaseKey": "TCA-CIAV-017525",
         "testCaseName": "Designated GI Dissemination Package - WMTS (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -24057,7 +24282,7 @@
         "testCaseKey": "TCA-CIAV-017525",
         "testCaseName": "Designated GI Dissemination Package - WMTS (Alternative)",
         "actor": "Subordinate Entity",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -24297,7 +24522,7 @@
         "testCaseKey": "TCA-CIAV-017525",
         "testCaseName": "Designated GI Dissemination Package - WMTS (Alternative)",
         "actor": "Joint Task Force",
-        "status": "Draft"
+        "status": "ReadyForEvent"
     },
     {
         "siNumber": "SP5-SI-GEO",
@@ -47262,7 +47487,7 @@
         "testCaseKey": "TCA-CIAV-016695",
         "testCaseName": "Consumer: Display grouped NVG objects",
         "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -47337,7 +47562,7 @@
         "testCaseKey": "TCA-CIAV-016998",
         "testCaseName": "Consumer: Security markings from NVG overlays can be displayed",
         "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -47532,7 +47757,7 @@
         "testCaseKey": "TCA-CIAV-016565",
         "testCaseName": "REPO-02881 Exchange NVG overlay files using Informal Messaging Service",
         "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -47547,7 +47772,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -47622,7 +47847,7 @@
         "testCaseKey": "TCA-CIAV-016565",
         "testCaseName": "REPO-02881 Exchange NVG overlay files using Informal Messaging Service",
         "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -47637,7 +47862,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -47667,7 +47892,7 @@
         "testCaseKey": "TCA-CIAV-016565",
         "testCaseName": "REPO-02881 Exchange NVG overlay files using Informal Messaging Service",
         "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -47952,7 +48177,7 @@
         "testCaseKey": "TCA-CIAV-016565",
         "testCaseName": "REPO-02881 Exchange NVG overlay files using Informal Messaging Service",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -47967,7 +48192,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48087,7 +48312,7 @@
         "testCaseKey": "TCA-CIAV-016565",
         "testCaseName": "REPO-02881 Exchange NVG overlay files using Informal Messaging Service",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48102,7 +48327,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48117,7 +48342,7 @@
         "testCaseKey": "TCA-CIAV-016565",
         "testCaseName": "REPO-02881 Exchange NVG overlay files using Informal Messaging Service",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48132,7 +48357,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48237,7 +48462,7 @@
         "testCaseKey": "TCA-CIAV-016565",
         "testCaseName": "REPO-02881 Exchange NVG overlay files using Informal Messaging Service",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48252,7 +48477,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48267,7 +48492,7 @@
         "testCaseKey": "TCA-CIAV-016565",
         "testCaseName": "REPO-02881 Exchange NVG overlay files using Informal Messaging Service",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48342,7 +48567,7 @@
         "testCaseKey": "TCA-CIAV-016565",
         "testCaseName": "REPO-02881 Exchange NVG overlay files using Informal Messaging Service",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48447,7 +48672,7 @@
         "testCaseKey": "TCA-CIAV-016563",
         "testCaseName": "REPO-03394 Exchange KML overlay files",
         "actor": "KML Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48477,7 +48702,7 @@
         "testCaseKey": "TCA-CIAV-016623",
         "testCaseName": "Metadata on KML overlays",
         "actor": "KML Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48507,7 +48732,7 @@
         "testCaseKey": "TCA-CIAV-016686",
         "testCaseName": "Export unclassified KML to civilian parties",
         "actor": "KML Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48552,22 +48777,7 @@
         "testCaseKey": "TCA-CIAV-016644",
         "testCaseName": "Provider: Save and Load KML File Locally",
         "actor": "KML Provider",
-        "status": "Draft"
-    },
-    {
-        "siNumber": "SP5-SI-OVLYD",
-        "siName": "Overlay Distribution",
-        "tinNumber": "SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "epNumber": "SP5-EP-C-TIN-18",
-        "epName": "KML Overlay Exchange via Files Consumer",
-        "sreqNumber": "SP5-SREQ-258",
-        "sreqName": "MNP shall be able to load a KML file and display the content in its C2 system.",
-        "testCaseId": "9ebbb7cf-dab5-4ade-9d72-fb13bd27c884",
-        "testCaseKey": "TCA-CIAV-016641",
-        "testCaseName": "Attribute mapping from C2 data sources",
-        "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48582,7 +48792,7 @@
         "testCaseKey": "TCA-CIAV-016563",
         "testCaseName": "REPO-03394 Exchange KML overlay files",
         "actor": "KML Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48597,7 +48807,7 @@
         "testCaseKey": "TCA-CIAV-016686",
         "testCaseName": "Export unclassified KML to civilian parties",
         "actor": "KML Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48612,7 +48822,7 @@
         "testCaseKey": "TCA-CIAV-016644",
         "testCaseName": "Provider: Save and Load KML File Locally",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48672,22 +48882,7 @@
         "testCaseKey": "TCA-CIAV-016686",
         "testCaseName": "Export unclassified KML to civilian parties",
         "actor": "KML Consumer",
-        "status": "Draft"
-    },
-    {
-        "siNumber": "SP5-SI-OVLYD",
-        "siName": "Overlay Distribution",
-        "tinNumber": "SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "epNumber": "SP5-EP-C-TIN-18",
-        "epName": "KML Overlay Exchange via Files Consumer",
-        "sreqNumber": "SP5-SREQ-511",
-        "sreqName": "The Service shall enable the sharing of information across communities of interest",
-        "testCaseId": "9ebbb7cf-dab5-4ade-9d72-fb13bd27c884",
-        "testCaseKey": "TCA-CIAV-016641",
-        "testCaseName": "Attribute mapping from C2 data sources",
-        "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48792,7 +48987,7 @@
         "testCaseKey": "TCA-CIAV-016563",
         "testCaseName": "REPO-03394 Exchange KML overlay files",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48822,7 +49017,7 @@
         "testCaseKey": "TCA-CIAV-016623",
         "testCaseName": "Metadata on KML overlays",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48867,7 +49062,7 @@
         "testCaseKey": "TCA-CIAV-016686",
         "testCaseName": "Export unclassified KML to civilian parties",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48912,22 +49107,7 @@
         "testCaseKey": "TCA-CIAV-016644",
         "testCaseName": "Provider: Save and Load KML File Locally",
         "actor": "KML Provider",
-        "status": "Draft"
-    },
-    {
-        "siNumber": "SP5-SI-OVLYD",
-        "siName": "Overlay Distribution",
-        "tinNumber": "SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "epNumber": "SP5-EP-P-TIN-18",
-        "epName": "KML Overlay Exchange via Files Provider",
-        "sreqNumber": "SP5-SREQ-299",
-        "sreqName": "MNP shall be able to save data from its C2 system as a KML file.",
-        "testCaseId": "9ebbb7cf-dab5-4ade-9d72-fb13bd27c884",
-        "testCaseKey": "TCA-CIAV-016641",
-        "testCaseName": "Attribute mapping from C2 data sources",
-        "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48942,7 +49122,7 @@
         "testCaseKey": "TCA-CIAV-016563",
         "testCaseName": "REPO-03394 Exchange KML overlay files",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -48972,7 +49152,7 @@
         "testCaseKey": "TCA-CIAV-016623",
         "testCaseName": "Metadata on KML overlays",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49032,7 +49212,7 @@
         "testCaseKey": "TCA-CIAV-016686",
         "testCaseName": "Export unclassified KML to civilian parties",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49071,21 +49251,6 @@
         "tinName": "KML Overlay Exchange via Files",
         "epNumber": "SP5-EP-P-TIN-18",
         "epName": "KML Overlay Exchange via Files Provider",
-        "sreqNumber": "SP5-SREQ-302",
-        "sreqName": "MNP shall be able to provide standardized, representative, KML Overlays.",
-        "testCaseId": "9ebbb7cf-dab5-4ade-9d72-fb13bd27c884",
-        "testCaseKey": "TCA-CIAV-016641",
-        "testCaseName": "Attribute mapping from C2 data sources",
-        "actor": "Overlay Provider",
-        "status": "Draft"
-    },
-    {
-        "siNumber": "SP5-SI-OVLYD",
-        "siName": "Overlay Distribution",
-        "tinNumber": "SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "epNumber": "SP5-EP-P-TIN-18",
-        "epName": "KML Overlay Exchange via Files Provider",
         "sreqNumber": "SP5-SREQ-306",
         "sreqName": "Servers shall mutually authenticate using certificates.",
         "testCaseId": null,
@@ -49107,7 +49272,7 @@
         "testCaseKey": "TCA-CIAV-016563",
         "testCaseName": "REPO-03394 Exchange KML overlay files",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49122,7 +49287,7 @@
         "testCaseKey": "TCA-CIAV-016623",
         "testCaseName": "Metadata on KML overlays",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49167,7 +49332,7 @@
         "testCaseKey": "TCA-CIAV-016686",
         "testCaseName": "Export unclassified KML to civilian parties",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49191,28 +49356,13 @@
         "tinName": "KML Overlay Exchange via Files",
         "epNumber": "SP5-EP-P-TIN-18",
         "epName": "KML Overlay Exchange via Files Provider",
-        "sreqNumber": "SP5-SREQ-509",
-        "sreqName": "Mission Participants shall be able to provide standardized, representative, battlespace objects.",
-        "testCaseId": "9ebbb7cf-dab5-4ade-9d72-fb13bd27c884",
-        "testCaseKey": "TCA-CIAV-016641",
-        "testCaseName": "Attribute mapping from C2 data sources",
-        "actor": "Overlay Provider",
-        "status": "Draft"
-    },
-    {
-        "siNumber": "SP5-SI-OVLYD",
-        "siName": "Overlay Distribution",
-        "tinNumber": "SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "epNumber": "SP5-EP-P-TIN-18",
-        "epName": "KML Overlay Exchange via Files Provider",
         "sreqNumber": "SP5-SREQ-511",
         "sreqName": "The Service shall enable the sharing of information across communities of interest",
         "testCaseId": "919bc843-91e0-400c-9e06-04d820aa3a0e",
         "testCaseKey": "TCA-CIAV-016563",
         "testCaseName": "REPO-03394 Exchange KML overlay files",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49227,7 +49377,7 @@
         "testCaseKey": "TCA-CIAV-016623",
         "testCaseName": "Metadata on KML overlays",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49272,7 +49422,7 @@
         "testCaseKey": "TCA-CIAV-016686",
         "testCaseName": "Export unclassified KML to civilian parties",
         "actor": "KML Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49542,7 +49692,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49647,7 +49797,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Consumer",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -49992,7 +50142,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -50202,7 +50352,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -50217,7 +50367,7 @@
         "testCaseKey": "TCA-CIAV-016641",
         "testCaseName": "Attribute mapping from C2 data sources",
         "actor": "Overlay Provider",
-        "status": "Draft"
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-OVLYD",
@@ -51953,6 +52103,21 @@
         "epName": "Digital Certificate Validation (CRL) Provider",
         "sreqNumber": "SP5-SREQ-297",
         "sreqName": "CRLs and Certificates shall be signed by a trusted CA",
+        "testCaseId": "509adf02-f303-4bb9-9a61-0c1a14c5b927",
+        "testCaseKey": "TCA-CIAV-017428",
+        "testCaseName": "NEW - REPO-03505-Transport Layer Security Profile",
+        "actor": "Chat Server",
+        "status": "Draft"
+    },
+    {
+        "siNumber": "SP5-SI-PKI",
+        "siName": "Digital Certificates",
+        "tinNumber": "SP5-TIN-56",
+        "tinName": "Digital Certificate Validation (CRL)",
+        "epNumber": "SP5-EP-P-TIN-56",
+        "epName": "Digital Certificate Validation (CRL) Provider",
+        "sreqNumber": "SP5-SREQ-297",
+        "sreqName": "CRLs and Certificates shall be signed by a trusted CA",
         "testCaseId": "af6885de-f89f-4485-a764-719830d3e74d",
         "testCaseKey": "TCA-CIAV-017428",
         "testCaseName": "NEW - REPO-03505-Transport Layer Security Profile",
@@ -51988,6 +52153,21 @@
         "testCaseName": "CRL and Leaf Certificate Issuer Validation",
         "actor": "Certificate Server",
         "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-PKI",
+        "siName": "Digital Certificates",
+        "tinNumber": "SP5-TIN-56",
+        "tinName": "Digital Certificate Validation (CRL)",
+        "epNumber": "SP5-EP-P-TIN-56",
+        "epName": "Digital Certificate Validation (CRL) Provider",
+        "sreqNumber": "SP5-SREQ-548",
+        "sreqName": "The Digital Certificate Services shall make the revocation status of digital certificates available through an HTTP endpoint accessible from the Mission Network.",
+        "testCaseId": "509adf02-f303-4bb9-9a61-0c1a14c5b927",
+        "testCaseKey": "TCA-CIAV-017428",
+        "testCaseName": "NEW - REPO-03505-Transport Layer Security Profile",
+        "actor": "Chat Server",
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-PKI",
@@ -52153,6 +52333,21 @@
         "testCaseName": "Certificate Revocation List Status HTTP",
         "actor": "Certificate Server",
         "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-PKI",
+        "siName": "Digital Certificates",
+        "tinNumber": "SP5-TIN-56",
+        "tinName": "Digital Certificate Validation (CRL)",
+        "epNumber": "SP5-EP-P-TIN-56",
+        "epName": "Digital Certificate Validation (CRL) Provider",
+        "sreqNumber": "SP5-SREQ-679",
+        "sreqName": "Certificate revocation information shall be made available in a high availability mode to avoid single point of failure",
+        "testCaseId": "509adf02-f303-4bb9-9a61-0c1a14c5b927",
+        "testCaseKey": "TCA-CIAV-017428",
+        "testCaseName": "NEW - REPO-03505-Transport Layer Security Profile",
+        "actor": "Chat Server",
+        "status": "Draft"
     },
     {
         "siNumber": "SP5-SI-PKI",
@@ -63456,13 +63651,28 @@
         "tinName": "Web Authentication Brokering",
         "epNumber": "SP5-EP-C-TIN-64",
         "epName": "Web Authentication Consumer",
+        "sreqNumber": "SP5-SREQ-176",
+        "sreqName": "The Relying Party shall be able to handle encrypted tokens.",
+        "testCaseId": "6937f62a-8a48-4786-b789-c0f5c833f4f9",
+        "testCaseKey": "TCA-CIAV-017350",
+        "testCaseName": "4.65.1 - The IdP Broker (Hub) provides Security Tokens to other Identity Providers",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-C-TIN-64",
+        "epName": "Web Authentication Consumer",
         "sreqNumber": "SP5-SREQ-177",
         "sreqName": "The Identity Provider and Relying Party shall use HTTP redirection to redirect the client's browser.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "6937f62a-8a48-4786-b789-c0f5c833f4f9",
+        "testCaseKey": "TCA-CIAV-017350",
+        "testCaseName": "4.65.1 - The IdP Broker (Hub) provides Security Tokens to other Identity Providers",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63473,11 +63683,11 @@
         "epName": "Web Authentication Consumer",
         "sreqNumber": "SP5-SREQ-230",
         "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "6937f62a-8a48-4786-b789-c0f5c833f4f9",
+        "testCaseKey": "TCA-CIAV-017350",
+        "testCaseName": "4.65.1 - The IdP Broker (Hub) provides Security Tokens to other Identity Providers",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63488,11 +63698,11 @@
         "epName": "Web Authentication Consumer",
         "sreqNumber": "SP5-SREQ-307",
         "sreqName": "The Relying Party shall validate digitally signed security tokens.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "6937f62a-8a48-4786-b789-c0f5c833f4f9",
+        "testCaseKey": "TCA-CIAV-017350",
+        "testCaseName": "4.65.1 - The IdP Broker (Hub) provides Security Tokens to other Identity Providers",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63503,11 +63713,11 @@
         "epName": "Web Authentication Consumer",
         "sreqNumber": "SP5-SREQ-308",
         "sreqName": "Event logs shall include, as a minimum records of successful and rejected authentication attempts.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "6937f62a-8a48-4786-b789-c0f5c833f4f9",
+        "testCaseKey": "TCA-CIAV-017350",
+        "testCaseName": "4.65.1 - The IdP Broker (Hub) provides Security Tokens to other Identity Providers",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63538,6 +63748,21 @@
         "testCaseName": "Authentication end-to-end with IdP Broker (Hub)",
         "actor": "Identity Provider B",
         "status": "ReadyForEvent"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-C-TIN-64",
+        "epName": "Web Authentication Consumer",
+        "sreqNumber": "SP5-SREQ-606",
+        "sreqName": "The Relying Party shall be able to consume Security Assertion Markup Language (SAML) 2.0 security tokens.",
+        "testCaseId": "6937f62a-8a48-4786-b789-c0f5c833f4f9",
+        "testCaseKey": "TCA-CIAV-017350",
+        "testCaseName": "4.65.1 - The IdP Broker (Hub) provides Security Tokens to other Identity Providers",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63578,11 +63803,11 @@
         "epName": "Web Authentication Consumer",
         "sreqNumber": "SP5-SREQ-74",
         "sreqName": "Communications between Service Consumer and Web Application/Relying Party; or Service Consumer and Identity Provider, shall be done via HTTPS.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "6937f62a-8a48-4786-b789-c0f5c833f4f9",
+        "testCaseKey": "TCA-CIAV-017350",
+        "testCaseName": "4.65.1 - The IdP Broker (Hub) provides Security Tokens to other Identity Providers",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63761,6 +63986,21 @@
         "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
         "testCaseKey": "TCA-CIAV-017349",
         "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-168",
+        "sreqName": "The Identity Provider shall issue security tokens based on the Security Assertion Markup Language (SAML) 2.0.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
         "actor": "Identity Provider A",
         "status": "ReadyForReview"
     },
@@ -63851,6 +64091,21 @@
         "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
         "testCaseKey": "TCA-CIAV-017349",
         "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-169",
+        "sreqName": "The Identity Provider shall provide security tokens to the Relying Party.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
         "actor": "Identity Provider A",
         "status": "ReadyForReview"
     },
@@ -63878,11 +64133,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-171",
         "sreqName": "The Identity Provider shall include attributes from its local attribute store in the security token.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-171",
+        "sreqName": "The Identity Provider shall include attributes from its local attribute store in the security token.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-171",
+        "sreqName": "The Identity Provider shall include attributes from its local attribute store in the security token.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63893,11 +64178,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-174",
         "sreqName": "All Tokens shall include an AudienceRestriction element to prevent wide-spread reuse of a single token",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-174",
+        "sreqName": "All Tokens shall include an AudienceRestriction element to prevent wide-spread reuse of a single token",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-174",
+        "sreqName": "All Tokens shall include an AudienceRestriction element to prevent wide-spread reuse of a single token",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63908,11 +64223,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-175",
         "sreqName": "The Identity Provider shall digitally sign the security tokens.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-175",
+        "sreqName": "The Identity Provider shall digitally sign the security tokens.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-175",
+        "sreqName": "The Identity Provider shall digitally sign the security tokens.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63923,11 +64268,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-177",
         "sreqName": "The Identity Provider and Relying Party shall use HTTP redirection to redirect the client's browser.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-177",
+        "sreqName": "The Identity Provider and Relying Party shall use HTTP redirection to redirect the client's browser.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-177",
+        "sreqName": "The Identity Provider and Relying Party shall use HTTP redirection to redirect the client's browser.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63938,11 +64313,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-230",
         "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63953,11 +64358,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-308",
         "sreqName": "Event logs shall include, as a minimum records of successful and rejected authentication attempts.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-308",
+        "sreqName": "Event logs shall include, as a minimum records of successful and rejected authentication attempts.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-308",
+        "sreqName": "Event logs shall include, as a minimum records of successful and rejected authentication attempts.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63968,11 +64403,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-71",
         "sreqName": "Events shall be logged by the MNP domain identity management solution and by the service.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-71",
+        "sreqName": "Events shall be logged by the MNP domain identity management solution and by the service.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-71",
+        "sreqName": "Events shall be logged by the MNP domain identity management solution and by the service.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63983,11 +64448,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-73",
         "sreqName": "Event logs must include, as a minimum: user authentication attempts; and records of issued tokens, such as identification of the Relying Party (url), of Service Consumer (IP address) and the user identifier provided in the token (account attempting to use the service).",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-73",
+        "sreqName": "Event logs must include, as a minimum: user authentication attempts; and records of issued tokens, such as identification of the Relying Party (url), of Service Consumer (IP address) and the user identifier provided in the token (account attempting to use the service).",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-73",
+        "sreqName": "Event logs must include, as a minimum: user authentication attempts; and records of issued tokens, such as identification of the Relying Party (url), of Service Consumer (IP address) and the user identifier provided in the token (account attempting to use the service).",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -63998,11 +64493,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-74",
         "sreqName": "Communications between Service Consumer and Web Application/Relying Party; or Service Consumer and Identity Provider, shall be done via HTTPS.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-74",
+        "sreqName": "Communications between Service Consumer and Web Application/Relying Party; or Service Consumer and Identity Provider, shall be done via HTTPS.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-74",
+        "sreqName": "Communications between Service Consumer and Web Application/Relying Party; or Service Consumer and Identity Provider, shall be done via HTTPS.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",
@@ -64013,11 +64538,41 @@
         "epName": "Web Authentication Provider",
         "sreqNumber": "SP5-SREQ-75",
         "sreqName": "Sensitive data passed in SAML tokens shall be encrypted.",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "actor": null,
-        "status": null
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Hub",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-75",
+        "sreqName": "Sensitive data passed in SAML tokens shall be encrypted.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider A",
+        "status": "ReadyForReview"
+    },
+    {
+        "siNumber": "SP5-SI-WEBAUTH",
+        "siName": "Web Authentication",
+        "tinNumber": "SP5-TIN-65",
+        "tinName": "Web Authentication Brokering",
+        "epNumber": "SP5-EP-P-TIN-64",
+        "epName": "Web Authentication Provider",
+        "sreqNumber": "SP5-SREQ-75",
+        "sreqName": "Sensitive data passed in SAML tokens shall be encrypted.",
+        "testCaseId": "eb6fae8b-b3e4-4b0c-a714-ebb06f5a731d",
+        "testCaseKey": "TCA-CIAV-017349",
+        "testCaseName": "4.65.2 - Authentication end-to-end with IdP Broker (Hub)",
+        "actor": "Identity Provider B",
+        "status": "ReadyForReview"
     },
     {
         "siNumber": "SP5-SI-WEBAUTH",

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SREQ Viewer</title>
+  <style>
+      /*
+        Example Color Palette:
+        - We pick blues & golds from the logo to keep the page consistent.
+        - Adjust to your preference.
+      */
+
+      body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+          /* Light blue-ish background to complement the logo's blue tones */
+          background-color: #E3F2FD;
+      }
+      h1 {
+          color: #1976D2;  /* Deeper blue, consistent with some gear tones */
+          text-align: center;
+      }
+
+      /* Center the logo and give some spacing */
+      .logo-container {
+          text-align: center;
+          margin-bottom: 20px;
+      }
+      .logo {
+          max-width: 250px; /* adjust as needed */
+          height: auto;
+      }
+
+      ul {
+          list-style-type: none;
+          padding: 0;
+      }
+      li {
+          margin: 5px 0;
+          padding: 5px;
+          background-color: white;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          cursor: pointer;
+          position: relative;
+      }
+
+      /*
+        Levels updated with brand-like blues and golds:
+        Adjust the exact hex codes as you prefer.
+      */
+      .level-1 { background-color: #052659; color: white; }  /* Dark Blue */
+      .level-2 { background-color: #5483B3; color: white; }  /* Lighter Blue */
+      .level-3 { background-color: #4CAF50; color: white; }/* Bright Gold with dark text for readability */
+      .level-4 { background-color: #C1E8FF; color: black; }  /* Orange-Gold */
+
+      /* Parents with 0 children in red (as requested) */
+      .no-children {
+          background-color: #E63946; color: white; !important; /* Red override */
+      }
+
+      /* Show nested ULs by default if you want them expanded, or hide by default for collapsed */
+      .nested {
+          display: block;
+          margin-left: 20px; /* Indent */
+      }
+
+      /* Collapsing logic:
+         If a parent is marked .collapsed, hide its children */
+      .collapsed > .nested {
+          display: none;
+      }
+
+      /* Arrow icon: default is "open" (down arrow) */
+      .tree-toggle:before {
+          content: "▼";  /* down arrow by default */
+          font-size: 12px;
+          margin-right: 20px;
+      }
+      /* When collapsed, show right arrow */
+      .collapsed > .tree-toggle:before {
+          content: "▶";
+      }
+
+      /* Leaf nodes (no children): remove the pointer/arrow */
+      .leaf {
+          cursor: default;
+      }
+      .leaf:before {
+          content: "";
+          margin-right: 20px;
+      }
+  </style>
+</head>
+<body>
+  <!-- Logo Section -->
+  <div class="logo-container">
+    <img
+      class="logo"
+      src="{{ url_for('static', filename='iocore2_logo.png') }}"
+      alt="IOCore2 Logo"
+    />
+  </div>
+
+<!-- RELOAD BUTTON -->
+  <div style="text-align: center; margin-bottom: 10px;">
+    <button onclick="window.location.reload()">Reload Tree</button>
+  </div>
+
+  <h1>SREQ Hierarchy Viewer</h1>
+
+  <ul id="sreqRoot">
+    {% for (si_key, tins) in data.items() %}
+      {% set tin_count = tins|length %}
+      <li class="level-1 tree-toggle {% if tin_count == 0 %}no-children{% endif %}">
+        {{ si_key[0] }} -> {{ si_key[1] }} ({{ tin_count }})
+        <ul class="nested">
+          {% for (tin_key, sreqs) in tins.items() %}
+            {% set sreq_count = sreqs|length %}
+            <li class="level-2 tree-toggle {% if sreq_count == 0 %}no-children{% endif %}">
+              {{ tin_key[0] }} -> {{ tin_key[1] }} ({{ sreq_count }})
+              <ul class="nested">
+                {% for (sreq_number, sreq_data) in sreqs.items() %}
+                  {% set test_count = sreq_data.test_cases|length %}
+                  <li class="level-3 tree-toggle collapsed {% if test_count == 0 %}no-children{% endif %}">
+                    {{ sreq_number }} -> {{ sreq_data.sreq_name }} ({{ test_count }})
+                    <ul class="nested">
+                      {% for test in sreq_data.test_cases %}
+                        <li class="level-4 leaf">
+                          {{ test[0] }} -> {{ test[1] }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <script>
+    const toggles = document.querySelectorAll('.tree-toggle');
+
+    toggles.forEach(function(toggle) {
+      const nestedUl = toggle.querySelector('.nested');
+
+      // If there's no nested list, it's a leaf (no toggle needed)
+      if (!nestedUl) {
+        toggle.classList.add('leaf');
+        return;
+      }
+
+      // By default, let's start in expanded mode:
+      // the user can click to collapse or re-expand.
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggle.classList.toggle('collapsed');
+      });
+    });
+  </script>
+</body>
+</html>

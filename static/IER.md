@@ -324,7 +324,6 @@
 - TIN: Instant Messaging
 
 ### SP5-IER-58: Intelligence Request For Information
-- TIN: Group Messaging
 - TIN: Instant Messaging
 
 ### SP5-IER-76: Request for Information Responses

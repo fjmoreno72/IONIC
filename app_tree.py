@@ -8,7 +8,7 @@ def read_and_organize_requirements():
     """Read the JSON file and organize requirements hierarchically."""
     script_dir = Path(__file__).parent
     input_path = script_dir / "static" / "SREQ.json"
-
+    print("RELOAD DATA")
     try:
         with open(input_path, "r", encoding="utf-8") as file:
             data = json.load(file)

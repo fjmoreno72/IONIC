@@ -10,7 +10,7 @@ import urllib3
 from bs4 import BeautifulSoup
 from pathlib import Path
 from ier_analysis import analyze_ier_data, generate_ier_markdown_output
-from sreq_analysis import extract_null_testcase_entries, organize_hierarchical_data, generate_markdown
+from OLD.sreq_analysis import extract_null_testcase_entries, organize_hierarchical_data, generate_markdown
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -38,7 +38,7 @@ def read_and_organize_requirements():
     """Read the JSON file and organize requirements hierarchically."""
     script_dir = Path(__file__).parent
     input_path = script_dir / "static" / "SREQ.json"
-
+    print("READ AND ORGANIZE")
     try:
         with open(input_path, "r", encoding="utf-8") as file:
             data = json.load(file)
@@ -79,6 +79,7 @@ def index():
 
 @app.route('/view_tree')
 def view_tree():
+    print("VIEW TREE")
     """Render the tree view page with the organized data."""
     if 'cookies' not in session:
         return jsonify({'success': False, 'error': 'Not logged in'})
@@ -89,8 +90,23 @@ def view_tree():
 
     return render_template("index_tree.html", data=organized_data)
 
+
+@app.route('/view_tree2')
+def view_tree2():
+    print("VIEW TREE2")
+    """Render the tree view page with the organized data."""
+    if 'cookies' not in session:
+        return jsonify({'success': False, 'error': 'Not logged in'})
+
+    organized_data, message = read_and_organize_requirements()
+    if organized_data is None:
+        return f"<h1>Error: {message}</h1>"
+
+    return render_template("index_tree2.html", data=organized_data)
+
 @app.route('/api/data')
 def get_data():
+    print("GET DATA")
     """Provide the organized data as a JSON API."""
     organized_data, _ = read_and_organize_requirements()
     return jsonify(organized_data)
@@ -360,5 +376,167 @@ def login():
 
 # Keep other routes from app_login.py...
 
+def read_and_organize_ier2():
+    """Read the IER JSON file and organize data hierarchically."""
+    script_dir = Path(__file__).parent
+    input_path = script_dir / "static" / "IER.json"
+    print("READ AND ORGANIZE IER")
+    try:
+        with open(input_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+
+        pi_groups = {}
+        for item in data:
+            pi_key = (item['piNumber'], item['piName'])
+            ier_key = (item['ierNumber'], item['ierName'])
+            tin_info = (item['tinName'], item['idpTinName'])
+            test_case = (item['testCaseKey'], item['testCaseName'])
+
+            # Initialize PI level if not exists
+            if pi_key not in pi_groups:
+                pi_groups[pi_key] = {}
+
+            # Initialize IER level if not exists
+            if ier_key not in pi_groups[pi_key]:
+                pi_groups[pi_key][ier_key] = {}
+
+            # Initialize TIN level if not exists
+            if tin_info[0] not in pi_groups[pi_key][ier_key]:
+                pi_groups[pi_key][ier_key][tin_info[0]] = {
+                    'idp_tin_name': tin_info[1],
+                    'test_cases': set()
+                }
+
+            # Add test case only if both key and name are not None
+            if test_case[0] is not None and test_case[1] is not None:
+                pi_groups[pi_key][ier_key][tin_info[0]]['test_cases'].add(test_case)
+
+        return pi_groups, "Success"
+    except FileNotFoundError:
+        return None, f"Error: File not found at {input_path}"
+    except json.JSONDecodeError:
+        return None, "Error: Invalid JSON format in the input file"
+    except Exception as e:
+        return None, f"Unexpected error: {str(e)}"
+
+
+def get_idp_number(idp_tin_name):
+    """Extract IDP number from idpTinName string."""
+    if not idp_tin_name:
+        return None
+    parts = idp_tin_name.split(' -> ')[0].strip()  # Get the part before '->'
+    idp_parts = parts.split(' ')[0].strip()  # Get the part before any space
+    return idp_parts  # This will be like 'IDP-1242'
+
+
+def should_include_tin(tin_info, asterisk_idps):
+    """
+    Determine if a TIN should be included based on asterisk rules.
+
+    Args:
+        tin_info: Tuple of (tinName, idpTinName)
+        asterisk_idps: Set of IDP numbers that have asterisk entries
+
+    Returns:
+        bool: True if the TIN should be included, False otherwise
+    """
+    idp_tin_name = tin_info[1]
+    if not idp_tin_name:
+        return True
+
+    # If this is an asterisk entry, always include it
+    if '*' in idp_tin_name:
+        return True
+
+    # Get the IDP number for this entry
+    idp_number = get_idp_number(idp_tin_name)
+    if not idp_number:
+        return True
+
+    # If there's an asterisk entry for this IDP number, exclude this entry
+    return idp_number not in asterisk_idps
+
+
+def read_and_organize_ier():
+    """Read the IER JSON file and organize data hierarchically."""
+    script_dir = Path(__file__).parent
+    input_path = script_dir / "static" / "IER.json"
+    print("READ AND ORGANIZE IER")
+    try:
+        with open(input_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+
+        # First pass: collect all IDP numbers that have asterisk entries
+        asterisk_idps = set()
+        for item in data:
+            idp_tin_name = item.get('idpTinName', '')
+            if '*' in idp_tin_name:
+                idp_number = get_idp_number(idp_tin_name)
+                if idp_number:
+                    asterisk_idps.add(idp_number)
+
+        pi_groups = {}
+        for item in data:
+            pi_key = (item['piNumber'], item['piName'])
+            ier_key = (item['ierNumber'], item['ierName'])
+            tin_info = (item['tinName'], item['idpTinName'])
+            test_case = (item['testCaseKey'], item['testCaseName'])
+
+            # Skip this TIN if it shouldn't be included based on asterisk rules
+            if not should_include_tin(tin_info, asterisk_idps):
+                continue
+
+            # Initialize PI level if not exists
+            if pi_key not in pi_groups:
+                pi_groups[pi_key] = {}
+
+            # Initialize IER level if not exists
+            if ier_key not in pi_groups[pi_key]:
+                pi_groups[pi_key][ier_key] = {}
+
+            # Initialize TIN level if not exists
+            if tin_info[0] not in pi_groups[pi_key][ier_key]:
+                pi_groups[pi_key][ier_key][tin_info[0]] = {
+                    'idp_tin_name': tin_info[1],
+                    'test_cases': set()
+                }
+
+            # Add test case only if both key and name are not None
+            if test_case[0] is not None and test_case[1] is not None:
+                pi_groups[pi_key][ier_key][tin_info[0]]['test_cases'].add(test_case)
+
+        return pi_groups, "Success"
+    except FileNotFoundError:
+        return None, f"Error: File not found at {input_path}"
+    except json.JSONDecodeError:
+        return None, "Error: Invalid JSON format in the input file"
+    except Exception as e:
+        return None, f"Unexpected error: {str(e)}"
+
+
+# Add these routes to your Flask application
+@app.route('/view_ier_tree')
+def view_ier_tree():
+    print("VIEW IER TREE")
+    """Render the IER tree view page with the organized data."""
+    if 'cookies' not in session:
+        return jsonify({'success': False, 'error': 'Not logged in'})
+
+    organized_data, message = read_and_organize_ier()
+    if organized_data is None:
+        return f"<h1>Error: {message}</h1>"
+
+    return render_template("index_ier_tree.html", data=organized_data)
+
+
+@app.route('/api/ier_data')
+def get_ier_data():
+    print("GET IER DATA")
+    """Provide the organized IER data as a JSON API."""
+    organized_data, _ = read_and_organize_ier()
+    return jsonify(organized_data)
+
+
+
 if __name__ == '__main__':
-    app.run(debug=False, port=5000)
+    app.run(debug=False, port=5005)

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- [Previous head content remains the same until the style section] -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SREQ Viewer</title>
+    <style>
+        /* [Previous styles remain the same] */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #E3F2FD;
+        }
+        h1 {
+            color: #1976D2;
+            text-align: center;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            max-width: 250px;
+            height: auto;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .level-1 { background-color: #052659; color: white; }
+        .level-2 { background-color: #5483B3; color: white; }
+        .level-3 { background-color: #4CAF50; color: white; }
+        .level-4 { background-color: #C1E8FF; color: black; }
+
+        .no-children {
+            background-color: #E63946 !important;
+            color: white;
+        }
+
+        .nested {
+            display: block;
+            margin-left: 20px;
+        }
+
+        .collapsed > .nested {
+            display: none;
+        }
+
+        .tree-toggle:before {
+            content: "▼";
+            font-size: 12px;
+            margin-right: 20px;
+        }
+        .collapsed > .tree-toggle:before {
+            content: "▶";
+        }
+
+        .leaf {
+            cursor: default;
+        }
+        .leaf:before {
+            content: "";
+            margin-right: 20px;
+        }
+
+        .reload-button {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .reload-button button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #1976D2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .reload-button button:hover {
+            background-color: #1565C0;
+        }
+
+        .percentage-circle {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 5px;
+            vertical-align: middle;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img class="logo" src="{{ url_for('static', filename='iocore2_logo.png') }}" alt="IOCore2 Logo" />
+    </div>
+
+    <div class="reload-button">
+        <button onclick="window.location.reload()">Reload Tree</button>
+    </div>
+
+    <h1>SREQ Hierarchy Viewer</h1>
+
+    <ul id="sreqRoot">
+        {%- for (si_key, tins) in data.items() -%}
+            {% set tin_percentages = [] %}
+            {%- for (tin_key, sreqs) in tins.items() -%}
+                {% set sreqs_with_tests = namespace(count=0) %}
+                {%- for (sreq_number, sreq_data) in sreqs.items() -%}
+                    {%- if sreq_data.test_cases|length > 0 -%}
+                        {% set sreqs_with_tests.count = sreqs_with_tests.count + 1 %}
+                    {%- endif -%}
+                {%- endfor -%}
+                {%- if sreqs|length > 0 -%}
+                    {% set percentage = (sreqs_with_tests.count / sreqs|length * 100)|round(1) %}
+                    {% set _ = tin_percentages.append(percentage) %}
+                {%- endif -%}
+            {%- endfor -%}
+
+            {% set avg_percentage = 0 %}
+            {%- if tin_percentages|length > 0 -%}
+                {% set avg_percentage = (tin_percentages|sum / tin_percentages|length)|round(1) %}
+            {%- endif -%}
+
+            <li class="level-1 tree-toggle {% if tins|length == 0 %}no-children{% endif %}">
+                {{ si_key[0] }} -> {{ si_key[1] }} ({{ avg_percentage }}%)
+                {%- if avg_percentage <= 25 -%}
+                    <span class="percentage-circle" style="background-color: hsl(0, 100%, {{ 50 - (avg_percentage * 0.4) }}%)"></span>
+                {%- elif avg_percentage <= 50 -%}
+                    <span class="percentage-circle" style="background-color: hsl({{ (avg_percentage - 25) * 2.4 }}, 100%, 50%)"></span>
+                {%- elif avg_percentage <= 75 -%}
+                    <span class="percentage-circle" style="background-color: hsl(60, 100%, {{ 50 - ((avg_percentage - 50) * 0.4) }}%)"></span>
+                {%- else -%}
+                    <span class="percentage-circle" style="background-color: hsl({{ 60 + ((avg_percentage - 75) * 2.4) }}, 100%, 50%)"></span>
+                {%- endif -%}
+                {%- if tins|length > 0 -%}
+                <ul class="nested">
+                    {%- for (tin_key, sreqs) in tins.items() -%}
+                        {% set sreqs_with_tests = namespace(count=0) %}
+                        {%- for (sreq_number, sreq_data) in sreqs.items() -%}
+                            {%- if sreq_data.test_cases|length > 0 -%}
+                                {% set sreqs_with_tests.count = sreqs_with_tests.count + 1 %}
+                            {%- endif -%}
+                        {%- endfor -%}
+
+                        {% set percentage = 0 %}
+                        {%- if sreqs|length > 0 -%}
+                            {% set percentage = (sreqs_with_tests.count / sreqs|length * 100)|round(1) %}
+                        {%- endif -%}
+
+                        <li class="level-2 tree-toggle {% if sreqs|length == 0 %}no-children{% endif %}">
+                            {{ tin_key[0] }} -> {{ tin_key[1] }} ({{ percentage }}%)
+                            {%- if percentage <= 25 -%}
+                                <span class="percentage-circle" style="background-color: hsl(0, 100%, {{ 50 - (percentage * 0.4) }}%)"></span>
+                            {%- elif percentage <= 50 -%}
+                                <span class="percentage-circle" style="background-color: hsl({{ (percentage - 25) * 2.4 }}, 100%, 50%)"></span>
+                            {%- elif percentage <= 75 -%}
+                                <span class="percentage-circle" style="background-color: hsl(60, 100%, {{ 50 - ((percentage - 50) * 0.4) }}%)"></span>
+                            {%- else -%}
+                                <span class="percentage-circle" style="background-color: hsl({{ 60 + ((percentage - 75) * 2.4) }}, 100%, 50%)"></span>
+                            {%- endif -%}
+                            {%- if sreqs|length > 0 -%}
+                            <ul class="nested">
+                                {%- for (sreq_number, sreq_data) in sreqs.items() -%}
+                                    {% set test_count = sreq_data.test_cases|length %}
+                                    <li class="level-3 tree-toggle collapsed {% if test_count == 0 %}no-children{% endif %}">
+                                        {{ sreq_number }} -> {{ sreq_data.sreq_name }} ({{ test_count }})
+                                        {%- if test_count > 0 -%}
+                                        <ul class="nested">
+                                            {%- for test in sreq_data.test_cases -%}
+                                                <li class="level-4 leaf">
+                                                    {{ test[0] }} -> {{ test[1] }}
+                                                </li>
+                                            {%- endfor -%}
+                                        </ul>
+                                        {%- endif -%}
+                                    </li>
+                                {%- endfor -%}
+                            </ul>
+                            {%- endif -%}
+                        </li>
+                    {%- endfor -%}
+                </ul>
+                {%- endif -%}
+            </li>
+        {%- endfor -%}
+    </ul>
+
+    <script>
+        const toggles = document.querySelectorAll('.tree-toggle');
+
+        toggles.forEach(function(toggle) {
+            const nestedUl = toggle.querySelector('.nested');
+
+            if (!nestedUl) {
+                toggle.classList.add('leaf');
+                return;
+            }
+
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggle.classList.toggle('collapsed');
+            });
+        });
+    </script>
+</body>
+</html>

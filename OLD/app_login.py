@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify, session, send_file
 
 from ier_analysis import analyze_ier_data, generate_ier_markdown_output
-from sreq_analysis import extract_null_testcase_entries, organize_hierarchical_data, generate_markdown
+from OLD.sreq_analysis import extract_null_testcase_entries, organize_hierarchical_data, generate_markdown
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 

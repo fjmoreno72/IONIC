@@ -56,6 +56,15 @@
             background-color: #218838;
             color: white;
         }
+        .btn-tree-view2 {
+            background-color: #28a745;
+            color: white;
+            margin-left: 10px;
+        }
+        .btn-tree-view2:hover {
+            background-color: #218838;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -92,10 +101,16 @@
         <!-- Reports Section -->
         <div id="reportsSection" class="hidden">
             <div class="mb-3">
-                <button id="getIER" class="btn btn-primary me-2">Get IER Coverage</button>
-                <button id="getSREQ" class="btn btn-primary">Get Requirement Coverage</button>
+                <button id="getIER" class="btn btn-primary me-2">Get IER Cover</button>
+                <button id="getSREQ" class="btn btn-primary">Get SREQ Cover</button>
                 <button id="viewTree" class="btn btn-tree-view">
-                    <i class="fas fa-tree"></i> View Last Requirement Coverage
+                    <i class="fas fa-sitemap"></i> View SREQ Cover
+                </button>
+                <button id="viewTree2" class="btn btn-tree-view2">
+                    <i class="fas fa-sitemap"></i> View SREQ Cover FLAT
+                </button>
+                <button id="viewIERTree" class="btn btn-tree-view">
+                    <i class="fas fa-sitemap"></i> View IER Cover
                 </button>
                 <button id="logout" class="btn btn-secondary float-end">Logout</button>
             </div>
@@ -153,6 +168,17 @@
         document.getElementById('viewTree').addEventListener('click', () => {
             window.open('/view_tree', '_blank');
         });
+
+        // View Tree2 button handler
+        document.getElementById('viewTree2').addEventListener('click', () => {
+            window.open('/view_tree2', '_blank');
+        });
+
+        // View IER Tree button handler
+        document.getElementById('viewIERTree').addEventListener('click', () => {
+            window.open('/view_ier_tree', '_blank');
+        });
+
 
         document.getElementById('getIER').addEventListener('click', () => {
             fetchReport('/get_ier_coverage', 'IER Coverage');

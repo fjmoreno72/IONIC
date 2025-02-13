@@ -84,7 +84,6 @@
 
 #### EP SP5-EP-C-TIN-13: Calendar Dissemination Consumer
 
-- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
 - **SP5-SREQ-421**: The service operator shall be notified when the verification of digital certif
 
 
@@ -130,23 +129,14 @@
 
 - **SP5-SREQ-131**: Within the Mission Network, all server to server connections must support the 
 - **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
-- **SP5-SREQ-313**: Event logs must include full accounting of chat rooms, including: room title; 
 - **SP5-SREQ-59**: All (item-structured) IQ and message stanzas shall be labelled with the classi
 - **SP5-SREQ-64**: Events shall be logged by all chat servers.
 - **SP5-SREQ-65**: Event logs must include, where relevant: user IDs; dates, times and details of
 - **SP5-SREQ-66**: Communication between chat servers shall be secured via TLS with mutual authen
-- **SP5-SREQ-85**: Complete instant messaging dialogs with time-stamps shall be preserved.
 
 
 
 ## SI Number: SP5-SI-COMMS
-
-### TIN: SP5-TIN-107 (Consumer to Provider Inter-domain Routing)
-
-#### EP SP5-EP-C-TIN-107: Consumer to Provider Inter-domain Routing Consumer
-
-- **SP5-SREQ-1204**: MIssion Network Communications Consumer shall not transit any unicast traffic.
-
 
 ### TIN: SP5-TIN-151 (Exchange of data packets between attached IP networks across Tactical Radio Network)
 
@@ -530,32 +520,5 @@
 #### EP SP5-EP-P-TIN-15: Virtual Machine Hosting Provider
 
 - **SP5-SREQ-72**: Virtualized network provided to the Service Consumer shall be protected to the
-
-
-
-## SI Number: SP5-SI-WEBAUTH
-
-### TIN: SP5-TIN-65 (Web Authentication Brokering)
-
-#### EP SP5-EP-C-TIN-64: Web Authentication Consumer
-
-- **SP5-SREQ-177**: The Identity Provider and Relying Party shall use HTTP redirection to redirect
-- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
-- **SP5-SREQ-307**: The Relying Party shall validate digitally signed security tokens.
-- **SP5-SREQ-308**: Event logs shall include, as a minimum records of successful and rejected auth
-- **SP5-SREQ-74**: Communications between Service Consumer and Web Application/Relying Party; or 
-
-#### EP SP5-EP-P-TIN-64: Web Authentication Provider
-
-- **SP5-SREQ-171**: The Identity Provider shall include attributes from its local attribute store 
-- **SP5-SREQ-174**: All Tokens shall include an AudienceRestriction element to prevent wide-spread
-- **SP5-SREQ-175**: The Identity Provider shall digitally sign the security tokens.
-- **SP5-SREQ-177**: The Identity Provider and Relying Party shall use HTTP redirection to redirect
-- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
-- **SP5-SREQ-308**: Event logs shall include, as a minimum records of successful and rejected auth
-- **SP5-SREQ-71**: Events shall be logged by the MNP domain identity management solution and by t
-- **SP5-SREQ-73**: Event logs must include, as a minimum: user authentication attempts; and recor
-- **SP5-SREQ-74**: Communications between Service Consumer and Web Application/Relying Party; or 
-- **SP5-SREQ-75**: Sensitive data passed in SAML tokens shall be encrypted.
 
 

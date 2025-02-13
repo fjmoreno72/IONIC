@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SREQ Viewer</title>
+    <style>
+        /* ... (keeping all existing styles) ... */
+
+        /* Adding new styles for the view switch */
+        .view-switch {
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin: 0 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #1976D2;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .view-label {
+            display: inline-block;
+            vertical-align: middle;
+            color: #1976D2;
+            font-weight: bold;
+        }
+
+        /* Keep all existing styles from before */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #E3F2FD;
+        }
+        /* ... (rest of your existing styles) ... */
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img class="logo" src="{{ url_for('static', filename='iocore2_logo.png') }}" alt="IOCore2 Logo" />
+    </div>
+
+    <div class="view-switch">
+        <span class="view-label">Default View</span>
+        <label class="switch">
+            <input type="checkbox" id="viewToggle" onchange="toggleView(this.checked)">
+            <span class="slider"></span>
+        </label>
+        <span class="view-label">Simplified View</span>
+    </div>
+
+    <div class="reload-button">
+        <button class="btn" onclick="window.location.reload()">Reload Tree</button>
+    </div>
+
+    <div id="defaultView">
+        <!-- Original view content -->
+        <div class="control-buttons">
+            <div class="control-group">
+                <div class="control-group-title">Service Instructions</div>
+                <button class="btn" onclick="toggleLevel(1, false)">Collapse All SI</button>
+                <button class="btn" onclick="toggleLevel(1, true)">Expand All SI</button>
+            </div>
+            <div class="control-group">
+                <div class="control-group-title">Technical Interactions (TINs)</div>
+                <button class="btn btn-secondary" onclick="toggleLevel(2, false)">Collapse All TINs</button>
+                <button class="btn btn-secondary" onclick="toggleLevel(2, true)">Expand All TINs</button>
+            </div>
+            <div class="control-group">
+                <div class="control-group-title">Specifications Requirements (SREQs)</div>
+                <button class="btn" onclick="toggleLevel(3, false)">Collapse All SREQs</button>
+                <button class="btn" onclick="toggleLevel(3, true)">Expand All SREQs</button>
+            </div>
+        </div>
+
+        <h1>SREQ Hierarchy Viewer</h1>
+
+        <!-- Original tree structure -->
+        <ul id="sreqRoot">
+            {# Keep your original tree template logic here #}
+            {%- for (si_key, tins) in data.items() -%}
+                {# ... Your existing default view logic ... #}
+            {%- endfor -%}
+        </ul>
+    </div>
+
+    <div id="simplifiedView" style="display: none;">
+        <!-- Simplified view content -->
+        <div class="control-buttons">
+            <div class="control-group">
+                <div class="control-group-title">Service Instructions</div>
+                <button class="btn" onclick="toggleLevel(1, false)">Collapse All SI</button>
+                <button class="btn" onclick="toggleLevel(1, true)">Expand All SI</button>
+            </div>
+            <div class="control-group">
+                <div class="control-group-title">Specifications Requirements (SREQs)</div>
+                <button class="btn" onclick="toggleLevel(2, false)">Collapse All SREQs</button>
+                <button class="btn" onclick="toggleLevel(2, true)">Expand All SREQs</button>
+            </div>
+        </div>
+
+        <h1>SREQ Hierarchy Viewer (Simplified)</h1>
+
+        <!-- Simplified tree structure -->
+        <ul id="sreqRootSimplified">
+            {%- for (si_key, tins) in data.items() -%}
+                {% set unique_sreqs = {} %}
+                {% set sreqs_with_tests = namespace(count=0) %}
+
+                {# Collection of unique SREQs logic #}
+                {%- for (tin_key, sreqs) in tins.items() -%}
+                    {%- for (sreq_number, sreq_data) in sreqs.items() -%}
+                        {%- if sreq_number not in unique_sreqs -%}
+                            {% set _ = unique_sreqs.update({
+                                sreq_number: {
+                                    'sreq_name': sreq_data.sreq_name,
+                                    'test_cases': []
+                                }
+                            }) %}
+                        {%- endif -%}
+                        {%- for test in sreq_data.test_cases -%}
+                            {%- if test not in unique_sreqs[sreq_number]['test_cases'] -%}
+                                {% set _ = unique_sreqs[sreq_number]['test_cases'].append(test) %}
+                            {%- endif -%}
+                        {%- endfor -%}
+                    {%- endfor -%}
+                {%- endfor -%}
+
+                {# Calculate statistics #}
+                {%- for sreq_number, sreq_data in unique_sreqs.items() -%}
+                    {%- if sreq_data.test_cases|length > 0 -%}
+                        {% set sreqs_with_tests.count = sreqs_with_tests.count + 1 %}
+                    {%- endif -%}
+                {%- endfor -%}
+
+                {% set percentage = 0 %}
+                {%- if unique_sreqs|length > 0 -%}
+                    {% set percentage = (sreqs_with_tests.count / unique_sreqs|length * 100)|round(1) %}
+                {%- endif -%}
+
+                <li class="level-1 tree-toggle">
+                    {{ si_key[0] }} -> {{ si_key[1] }} ({{ percentage }}%)
+                    {%- if percentage <= 25 -%}
+                        <span class="percentage-circle" style="background-color: hsl(0, 100%, {{ 50 - (percentage * 0.4) }}%)"></span>
+                    {%- elif percentage <= 50 -%}
+                        <span class="percentage-circle" style="background-color: hsl({{ (percentage - 25) * 2.4 }}, 100%, 50%)"></span>
+                    {%- elif percentage <= 75 -%}
+                        <span class="percentage-circle" style="background-color: hsl(60, 100%, {{ 50 - ((percentage - 50) * 0.4) }}%)"></span>
+                    {%- else -%}
+                        <span class="percentage-circle" style="background-color: hsl({{ 60 + ((percentage - 75) * 2.4) }}, 100%, 50%)"></span>
+                    {%- endif -%}
+
+                    <ul class="nested">
+                        {%- for sreq_number, sreq_data in unique_sreqs|dictsort -%}
+                            {% set test_count = sreq_data.test_cases|length %}
+                            <li class="level-2 tree-toggle collapsed {% if test_count == 0 %}no-children{% endif %}">
+                                {{ sreq_number }} -> {{ sreq_data.sreq_name }} ({{ test_count }})
+                                {%- if test_count > 0 -%}
+                                <ul class="nested">
+                                    {%- for test in sreq_data.test_cases|sort -%}
+                                        <li class="level-3 leaf">
+                                            {{ test[0] }} -> {{ test[1] }}
+                                        </li>
+                                    {%- endfor -%}
+                                </ul>
+                                {%- endif -%}
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                </li>
+            {%- endfor -%}
+        </ul>
+    </div>
+
+    <script>
+        const toggles = document.querySelectorAll('.tree-toggle');
+
+        function expandInitialLevels() {
+            document.querySelectorAll('.level-1').forEach(element => {
+                element.classList.remove('collapsed');
+            });
+            document.querySelectorAll('.level-2, .level-3').forEach(element => {
+                element.classList.add('collapsed');
+            });
+        }
+
+        toggles.forEach(function(toggle) {
+            const nestedUl = toggle.querySelector('.nested');
+            if (!nestedUl) {
+                toggle.classList.add('leaf');
+                return;
+            }
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggle.classList.toggle('collapsed');
+            });
+        });
+
+        function toggleLevel(level, expand) {
+            const currentView = document.getElementById('viewToggle').checked ? 'simplifiedView' : 'defaultView';
+            const elements = document.getElementById(currentView).querySelectorAll(`.level-${level}`);
+            elements.forEach(element => {
+                if (expand) {
+                    element.classList.remove('collapsed');
+                } else {
+                    element.classList.add('collapsed');
+                }
+            });
+        }
+
+        function toggleView(isSimplified) {
+            document.getElementById('defaultView').style.display = isSimplified ? 'none' : 'block';
+            document.getElementById('simplifiedView').style.display = isSimplified ? 'block' : 'none';
+            expandInitialLevels();
+        }
+
+        // Call function when page loads
+        window.addEventListener('load', expandInitialLevels);
+    </script>
+</body>
+</html>

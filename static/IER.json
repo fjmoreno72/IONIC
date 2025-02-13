@@ -1881,7 +1881,7 @@
         "testCaseId": "5e0dc595-e59a-4616-a077-646ddd0eec47",
         "testCaseKey": "TCA-CIAV-017521",
         "testCaseName": "Update Mission GI GAP and send it via email (Alternative)",
-        "testCaseState": "Draft"
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-GEO",
@@ -1893,7 +1893,7 @@
         "testCaseId": "c2672e59-be1c-46f9-94ac-c9e78f3556ba",
         "testCaseKey": "TCA-CIAV-017520",
         "testCaseName": "Update Mission GI GAP and Publish in Web Portal (Primary)",
-        "testCaseState": "Draft"
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-GEO",
@@ -1905,7 +1905,7 @@
         "testCaseId": "96fbd369-a362-481d-8d97-e1ca6f9c17fb",
         "testCaseKey": "TCA-CIAV-017515",
         "testCaseName": "Digital GI Submission Package",
-        "testCaseState": "Draft"
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-GEO",
@@ -1917,7 +1917,7 @@
         "testCaseId": "80c2ca46-51f4-4771-af44-fee62a6a3d4a",
         "testCaseKey": "TCA-CIAV-017519",
         "testCaseName": "Digital GI Designation letter - via Digital GI package (Primary)",
-        "testCaseState": "Draft"
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-GEO",
@@ -1929,7 +1929,7 @@
         "testCaseId": "eda11e1a-5988-4303-9ebf-28f0e92c98d3",
         "testCaseKey": "TCA-CIAV-017513",
         "testCaseName": "Digital GI Designation letter - Email (Alternative)",
-        "testCaseState": "Draft"
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-GEO",
@@ -1941,7 +1941,7 @@
         "testCaseId": "eacb906b-975e-421e-aa26-eb40f80ccd85",
         "testCaseKey": "TCA-CIAV-017524",
         "testCaseName": "Designated GI Dissemination Package - WMS (Alternative)",
-        "testCaseState": "Draft"
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-GEO",
@@ -1953,7 +1953,7 @@
         "testCaseId": "5a9f796c-e57a-4b13-a889-00720cc795ea",
         "testCaseKey": "TCA-CIAV-017525",
         "testCaseName": "Designated GI Dissemination Package - WMTS (Alternative)",
-        "testCaseState": "Draft"
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-GEO",
@@ -1965,7 +1965,7 @@
         "testCaseId": "12887bbc-7fd8-4b3d-812e-a6727baeb48c",
         "testCaseKey": "TCA-CIAV-017523",
         "testCaseName": "Designated GI Dissemination Package - WFS (Alternative)",
-        "testCaseState": "Draft"
+        "testCaseState": "Approved"
     },
     {
         "piNumber": "SP5-PI-GEO",
@@ -1977,7 +1977,7 @@
         "testCaseId": "57206fe3-8bea-429b-9a9a-b638ce475113",
         "testCaseKey": "TCA-CIAV-017522",
         "testCaseName": "Designated GI Dissemination Package shared by removable media (Primary)",
-        "testCaseState": "Draft"
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -3054,10 +3054,10 @@
         "ierName": "Intelligence Request For Information",
         "idpTinName": "IDP-1254 * -> SP5-TIN-244",
         "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "testCaseId": "be7c2e8f-baee-40fd-8e4a-976a1e10b535",
+        "testCaseKey": "TCA-CIAV-017459",
+        "testCaseName": "IER-58 Intelligence Request for Information - Text-based Collaboration",
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -3067,6 +3067,18 @@
         "idpTinName": "IDP-1254 * -> SP5-TIN-250",
         "tinName": "One-to-one Messaging",
         "testCaseId": "c32d3b11-618a-4c46-ba94-7e6b632584a6",
+        "testCaseKey": "TCA-CIAV-017459",
+        "testCaseName": "IER-58 Intelligence Request for Information - Text-based Collaboration",
+        "testCaseState": "ReadyForEvent"
+    },
+    {
+        "piNumber": "SP5-PI-JTGT",
+        "piName": "Joint Targeting",
+        "ierNumber": "SP5-IER-58",
+        "ierName": "Intelligence Request For Information",
+        "idpTinName": "IDP-1254 * -> SP5-TIN-250",
+        "tinName": "One-to-one Messaging",
+        "testCaseId": "be7c2e8f-baee-40fd-8e4a-976a1e10b535",
         "testCaseKey": "TCA-CIAV-017459",
         "testCaseName": "IER-58 Intelligence Request for Information - Text-based Collaboration",
         "testCaseState": "ReadyForEvent"

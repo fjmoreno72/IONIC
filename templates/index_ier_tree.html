@@ -69,6 +69,33 @@
             padding: 1rem;
             box-shadow: var(--shadow-md);
             z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .header.collapsed {
+            transform: translateY(-100%);
+        }
+
+        .header-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 101;
+            transition: transform 0.3s ease;
+        }
+
+        .header-toggle.collapsed {
+            transform: rotate(180deg);
         }
 
         .header-content {
@@ -440,6 +467,7 @@
 </head>
 <body>
     <div class="container">
+        <button class="header-toggle" onclick="toggleHeader()">▼</button>
         <header class="header">
             <div class="header-content">
                 <div class="logo-container">
@@ -464,7 +492,7 @@
             <div class="controls">
                 <div class="control-buttons">
                     <div class="control-group">
-                        <div class="control-group-title">Program Instructions</div>
+                        <div class="control-group-title">Procedural Instructions</div>
                         <button class="btn" onclick="toggleLevel(1, false)">Collapse All PI</button>
                         <button class="btn" onclick="toggleLevel(1, true)">Expand All PI</button>
                     </div>
@@ -576,8 +604,16 @@
             🌓
         </div>
 
-        <script>
-            // Theme toggling
+            <script>
+                // Header toggling
+                function toggleHeader() {
+                    const header = document.querySelector('.header');
+                    const toggle = document.querySelector('.header-toggle');
+                    header.classList.toggle('collapsed');
+                    toggle.classList.toggle('collapsed');
+                }
+
+                // Theme toggling
             function toggleTheme() {
                 document.documentElement.setAttribute('data-theme', 
                     document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'

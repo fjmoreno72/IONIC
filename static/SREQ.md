@@ -1,21 +1,5 @@
 # SREQ Analysis Report - Null TestCase Entries
 
-## SI Number: SP5-SI-AIRC2
-
-### TIN: SP5-TIN-344 (MTF Exchange - Air Tasking and Control)
-
-#### EP SP5-EP-C-TIN-344: MTF Exchange - Air Tasking and Control Consumer
-
-- **SP5-SREQ-1140**: Air Tasking and Control - Data Exchange - MNPs shall be able to exchange Forma
-- **SP5-SREQ-1296**: Need-to-know for ATO and ACO MTF messages shall be managed based on their resp
-
-#### EP SP5-EP-P-TIN-344: MTF Exchange - Air Tasking and Control Provider
-
-- **SP5-SREQ-1140**: Air Tasking and Control - Data Exchange - MNPs shall be able to exchange Forma
-- **SP5-SREQ-1296**: Need-to-know for ATO and ACO MTF messages shall be managed based on their resp
-
-
-
 ## SI Number: SP5-SI-AV
 
 ### TIN: SP5-TIN-119 (Push-To-Talk Tactical Voice)
@@ -62,13 +46,6 @@
 - **SP5-SREQ-1302**: RTP media between SBCs shall be secured with SRTP
 
 
-### TIN: SP5-TIN-365 (Audio/Video Media Infrastructure)
-
-#### EP SP5-EP-F-TIN-365: Audio/Video Media Infrastructure Collaborator
-
-- **SP5-SREQ-216**: Service providers shall provide at least one Session Border Controller.
-
-
 ### TIN: SP5-TIN-375 (End-to-End Media Security)
 
 #### EP SP5-EP-F-TIN-375: End-to-End Media Security Collaborator
@@ -107,20 +84,9 @@
 
 ### TIN: SP5-TIN-122 (Presence Sharing)
 
-#### EP SP5-EP-C-TIN-122: Presence Sharing Consumer
-
-- **SP5-SREQ-1233**: If enabled, the presence function shall use allowed values "away", "chat" (def
-
 #### EP SP5-EP-P-TIN-122: Presence Sharing Provider
 
 - **SP5-SREQ-130**: All Mission Network contributing participants shall provide the following capa
-
-
-### TIN: SP5-TIN-124 (Information Discovery)
-
-#### EP SP5-EP-F-TIN-124: Information Discovery Collaborator
-
-- **SP5-SREQ-1267**: Users shall be able to list available chat rooms hosted on federated chat serv
 
 
 ### TIN: SP5-TIN-141 (Publish-Subscribe)
@@ -129,10 +95,6 @@
 
 - **SP5-SREQ-131**: Within the Mission Network, all server to server connections must support the 
 - **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
-- **SP5-SREQ-59**: All (item-structured) IQ and message stanzas shall be labelled with the classi
-- **SP5-SREQ-64**: Events shall be logged by all chat servers.
-- **SP5-SREQ-65**: Event logs must include, where relevant: user IDs; dates, times and details of
-- **SP5-SREQ-66**: Communication between chat servers shall be secured via TLS with mutual authen
 
 
 
@@ -150,34 +112,6 @@
 #### EP SP5-EP-F-TIN-162: Inter-domain Routing Collaborator
 
 - **SP5-SREQ-1104**: Control method for valid service instance must be implemented in conjunction w
-- **SP5-SREQ-188**: Communications Services Providers must provide transparent routing infrastruct
-
-
-### TIN: SP5-TIN-82 (Provider to Provider Inter-domain Routing)
-
-#### EP SP5-EP-F-TIN-82: Provider to Provider Inter-domain Routing Collaborator
-
-- **SP5-SREQ-184**: MN Communications Services Provider shall transit unicast traffic on behalf of
-
-
-
-## SI Number: SP5-SI-DDS
-
-### TIN: SP5-TIN-62 (Directory Replication)
-
-#### EP SP5-EP-P-TIN-62: Directory Replication Provider
-
-- **SP5-SREQ-45**: MNP Directories shall log events relevant to any accounts which are shared wit
-
-
-### TIN: SP5-TIN-63 (Mediated Directory Replication)
-
-#### EP SP5-EP-C-TIN-62: Directory Replication Consumer
-
-- **SP5-SREQ-230**: Federated services consuming digital certificates (relying parties) shall perf
-- **SP5-SREQ-41**: Access to the Directory Information Tree (DIT) shall be protected with name an
-- **SP5-SREQ-421**: The service operator shall be notified when the verification of digital certif
-- **SP5-SREQ-43**: Credentials for authentication to the central DIT shall be randomly generated 
 
 
 
@@ -237,18 +171,6 @@
 
 
 
-## SI Number: SP5-SI-IBOX
-
-### TIN: SP5-TIN-371 (Intelligence BsO Synchronization)
-
-#### EP SP5-EP-P-TIN-371: Intelligence BsO Synchronization Provider
-
-- **SP5-SREQ-1247**: Local Intelligence BsO Server Administrator must be able to create/establish l
-- **SP5-SREQ-1254**: All battlespace objects held within, and exchanged between, intelligence struc
-- **SP5-SREQ-1255**: Need-to-know for Intelligence BsOs shall be managed based on their respective 
-
-
-
 ## SI Number: SP5-SI-INFOEX
 
 ### TIN: SP5-TIN-318 (Kinetic Indirect Fire Support)
@@ -273,11 +195,9 @@
 
 - **SP5-SREQ-1236**: All data objects held within, and exchanged between, NATO Standard ISR Librari
 - **SP5-SREQ-1237**: Need-to-know for Intelligence and ISR products as well as for associated metad
-- **SP5-SREQ-1239**: All NSILs shall log all security events, including as a minimum all exceptiona
 - **SP5-SREQ-1240**: All synchronization between NSILs shall be secured in transit (https).
 - **SP5-SREQ-1241**: All user access to NSILs shall be secured in transit (https).
 - **SP5-SREQ-1242**: Agreements between MNPs captured at MOU level, and in JMEIs, for intelligence 
-- **SP5-SREQ-1243**: Strict data and metadata format validations, compliant with STANAG 4559, shall
 - **SP5-SREQ-303**: An appropriate set of procedures for information labelling shall be developed 
 
 
@@ -289,7 +209,6 @@
 
 #### EP SP5-EP-P-TIN-308: ISR Streaming Services Access Provider
 
-- **SP5-SREQ-1242**: Agreements between MNPs captured at MOU level, and in JMEIs, for intelligence 
 - **SP5-SREQ-1243**: Strict data and metadata format validations, compliant with STANAG 4559, shall
 - **SP5-SREQ-303**: An appropriate set of procedures for information labelling shall be developed 
 
@@ -330,32 +249,17 @@
 
 #### EP SP5-EP-P-TIN-73: Exchange Recognized Ground Picture Provider
 
-- **SP5-SREQ-1153**: MIP4 Providers and MIP4 Consumers shall be able to exchange data objects at th
-- **SP5-SREQ-259**: The LC2IE Service shall enable the exchange of Consumable Objects (including s
 - **SP5-SREQ-264**: The LC2IE Service shall support the unilateral recovery of the service after a
-- **SP5-SREQ-352**: The LC2IE Service shall enable the exchange of updated information about an ex
 - **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
-- **SP5-SREQ-470**: The LC2IE Service shall enable the exchange of Organisation/Unit BattleSpace O
 - **SP5-SREQ-476**: The LC2IE Service shall support the exchange of large volumes of data during (
 - **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
-- **SP5-SREQ-480**: The LC2IE Service shall enable the exchange of Overlays (groupings of BattleSp
 - **SP5-SREQ-481**: The LC2IE Service shall support periods of continuous operation.
-- **SP5-SREQ-484**: The LC2IE Service shall enable the exchange of Operational Comments on an exch
-- **SP5-SREQ-555**: The LC2IE Service shall enable the Provider to communicate the deletion of a p
 - **SP5-SREQ-557**: The LC2IE Service shall enable the offline exchange of Information between Pro
-- **SP5-SREQ-558**: The LC2IE Service shall enable the exchange of Control Feature BattleSpace Obj
-- **SP5-SREQ-559**: The LC2IE Service shall enable the exchange of Facility BattleSpace Objects (i
-- **SP5-SREQ-560**: The LC2IE Service shall enable the exchange of Equipment BattleSpace Objects (
-- **SP5-SREQ-561**: The LC2IE Service shall enable the exchange of Unexploded Ordnance BattleSpace
-- **SP5-SREQ-562**: The LC2IE Service shall enable the exchange of Task BattleSpace Objects (inclu
-- **SP5-SREQ-563**: The LC2IE Service shall enable the exchange of Event BattleSpace Objects (incl
 - **SP5-SREQ-564**: The LC2IE Service shall enable the exchange of Person BattleSpace Objects (inc
 - **SP5-SREQ-565**: The LC2IE Service shall enable the exchange of Geographic Feature BattleSpace 
 - **SP5-SREQ-566**: The LC2IE Service shall enable the exchange of Meteorological Feature BattleSp
 - **SP5-SREQ-575**: The LC2IE Service shall support the exchange of frequent transactions.
 - **SP5-SREQ-576**: The LC2IE Service shall support the re-establishment of information exchange a
-- **SP5-SREQ-7**: The LC2IE Service shall support the use of Managed Lists to specify details re
-- **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
 - **SP5-SREQ-88**: The LC2IE Services must log all events, registering at least: IP addresses and
 
 
@@ -421,13 +325,11 @@
 
 #### EP SP5-EP-C-TIN-46: Exchange Land Generic Overlay Consumer
 
-- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
 - **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
 
 #### EP SP5-EP-P-TIN-46: Exchange Land Generic Overlay Provider
 
 - **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
-- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
 - **SP5-SREQ-481**: The LC2IE Service shall support periods of continuous operation.
 - **SP5-SREQ-570**: The LC2IE Service shall enable the exchange of Planned Overlays
 - **SP5-SREQ-8**: The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Ob
@@ -437,14 +339,12 @@
 
 #### EP SP5-EP-C-TIN-73: Exchange Recognized Ground Picture Consumer
 
-- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
 - **SP5-SREQ-557**: The LC2IE Service shall enable the offline exchange of Information between Pro
 
 #### EP SP5-EP-P-TIN-73: Exchange Recognized Ground Picture Provider
 
 - **SP5-SREQ-395**: The LC2IE Service shall support the graceful handling of information exchange 
 - **SP5-SREQ-472**: The LC2IE Service shall support the initialisation of a system upon joining th
-- **SP5-SREQ-477**: The LC2IE Service shall enable the exchange of information grouped by Topic.
 - **SP5-SREQ-481**: The LC2IE Service shall support periods of continuous operation.
 
 
@@ -510,15 +410,5 @@
 - **SP5-SREQ-254**: MNP shall be able to connect to a Request-Response NVG Service, request an NVG
 - **SP5-SREQ-256**: MNP shall be able to obtain the additional information for a symbol by followi
 - **SP5-SREQ-591**: Mission Participant shall be able to support multiple different Overlay Exchan
-
-
-
-## SI Number: SP5-SI-VP
-
-### TIN: SP5-TIN-15 (Virtual Machine Hosting)
-
-#### EP SP5-EP-P-TIN-15: Virtual Machine Hosting Provider
-
-- **SP5-SREQ-72**: Virtualized network provided to the Service Consumer shall be protected to the
 
 

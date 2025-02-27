@@ -1,0 +1,25 @@
+2025-02-27 12:19:52 - INFO - ==================================================
+2025-02-27 12:19:52 - INFO - Starting scheduled update at 2025-02-27 12:19:52
+2025-02-27 12:19:52 - INFO - Starting login process...
+2025-02-27 12:19:52 - ERROR - Login error: Invalid URL '/IdentityManagement/Account/Login?ReturnUrl=%2FHome': No scheme supplied. Perhaps you meant https:///IdentityManagement/Account/Login?ReturnUrl=%2FHome?
+2025-02-27 12:19:52 - ERROR - Exiting due to login failure
+2025-02-27 12:28:43 - INFO - ==================================================
+2025-02-27 12:28:43 - INFO - Starting scheduled update at 2025-02-27 12:28:43
+2025-02-27 12:28:43 - INFO - Starting login process...
+2025-02-27 12:28:46 - INFO - Login successful
+2025-02-27 12:28:46 - INFO - Updating IER coverage...
+2025-02-27 12:29:03 - INFO - IER.json updated successfully. Size: 653 records
+2025-02-27 12:29:03 - INFO - Updating requirement coverage...
+2025-02-27 12:29:44 - INFO - SREQ.json updated successfully. Size: 4863 records
+2025-02-27 12:29:44 - INFO - Scheduled update completed successfully
+2025-02-27 12:29:44 - INFO - ==================================================
+2025-02-27 12:34:04 - INFO - ==================================================
+2025-02-27 12:34:04 - INFO - Starting scheduled update at 2025-02-27 12:34:04
+2025-02-27 12:34:04 - INFO - Starting login process...
+2025-02-27 12:34:07 - INFO - Login successful
+2025-02-27 12:34:07 - INFO - Updating IER coverage...
+2025-02-27 12:34:22 - INFO - IER.json updated successfully. Size: 653 records
+2025-02-27 12:34:22 - INFO - Updating requirement coverage...
+2025-02-27 12:35:06 - INFO - SREQ.json updated successfully. Size: 4863 records
+2025-02-27 12:35:06 - INFO - Scheduled update completed successfully
+2025-02-27 12:35:06 - INFO - ==================================================

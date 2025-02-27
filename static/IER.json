@@ -933,7 +933,7 @@
         "testCaseId": "e9ba0f65-1e46-4b4f-a794-9324ae364a35",
         "testCaseKey": "TCA-CIAV-017006",
         "testCaseName": "Initial MNP CIS Security Incident Report (e-mail)",
-        "testCaseState": "Draft"
+        "testCaseState": "ReadyForReview"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -945,6 +945,18 @@
         "testCaseId": "6df68fa1-790d-41be-9c55-6a3dd1ebc216",
         "testCaseKey": "TCA-CIAV-016858",
         "testCaseName": "Initial MNP CIS Security Report (Email)",
+        "testCaseState": "ReadyForReview"
+    },
+    {
+        "piNumber": "SP5-PI-CISSEC",
+        "piName": "CIS Security",
+        "ierNumber": "SP5-IER-470",
+        "ierName": "Initial MNP CIS Security Report",
+        "idpTinName": "IDP-942 -> SP5-TIN-11",
+        "tinName": "Email routing",
+        "testCaseId": "1f93b697-12a3-4436-88c2-f2fb1ed0378c",
+        "testCaseKey": "TCA-CIAV-017066",
+        "testCaseName": "MSOC-annotated CIS Security Report (e-mail)",
         "testCaseState": "Draft"
     },
     {
@@ -2910,10 +2922,10 @@
         "ierName": "Entity Criticality",
         "idpTinName": "IDP-861 -> SP5-TIN-11",
         "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "testCaseId": "e0ac54b7-5d74-4157-9d3a-a45478ae9e16",
+        "testCaseKey": "TCA-CIAV-017294",
+        "testCaseName": "Entity Criticality - Email (IER-478)",
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -3499,6 +3511,18 @@
         "idpTinName": "IDP-1268 * -> SP5-TIN-244",
         "tinName": "Group Messaging",
         "testCaseId": "09ccb231-2e5e-475b-bdff-26fe75b366c6",
+        "testCaseKey": "TCA-CIAV-017465",
+        "testCaseName": "Request for Information Responses - Text-based Collaboration (IER-76)",
+        "testCaseState": "ReadyForEvent"
+    },
+    {
+        "piNumber": "SP5-PI-JTGT",
+        "piName": "Joint Targeting",
+        "ierNumber": "SP5-IER-76",
+        "ierName": "Request for Information Responses",
+        "idpTinName": "IDP-1268 * -> SP5-TIN-244",
+        "tinName": "Group Messaging",
+        "testCaseId": "6fa9ff74-4bf8-4fa4-a632-555024f6ac6c",
         "testCaseKey": "TCA-CIAV-017465",
         "testCaseName": "Request for Information Responses - Text-based Collaboration (IER-76)",
         "testCaseState": "ReadyForEvent"

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SREQ TIN-EP Viewer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0066cc;
+            --accent-color: #3399ff;
+            --danger-color: #cc3333;
+            --success-color: #339966;
+            --warning-color: #ffcc00;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --hover-bg: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.2s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+            transition: background-color var(--transition-speed) ease;
+            margin-top: 140px !important; /* Space for fixed nav menu (140px) */
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .header {
+            position: sticky;
+            top: 140px; /* Adjusted to account for nav menu height (140px) */
+            background-color: var(--card-background);
+            padding: 1rem;
+            box-shadow: var(--shadow-md);
+            z-index: 999; /* Below nav menu (1002) but above other content */
+            transition: transform 0.3s ease;
+        }
+
+        .header.collapsed {
+            transform: translateY(-100%);
+        }
+
+        .header-toggle {
+            position: fixed;
+            top: calc(140px + 1rem); /* Adjusted to account for nav menu height (140px) */
+            right: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1003; /* Higher than nav menu (1002) to ensure visibility */
+            transition: transform 0.3s ease;
+        }
+
+        .header-toggle.collapsed {
+            transform: rotate(180deg);
+            top: 145px; /* Position just below nav menu when header is collapsed */
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .search-controls {
+            flex-grow: 1;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            max-width: 800px;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            padding-left: 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background-color: var(--card-background);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 0.75rem center;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+        }
+
+        .search-input:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.05);
+        }
+
+        .controls {
+            background-color: var(--card-background);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .control-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .control-group {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .control-group:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .control-group-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            padding: 0.625rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0.25rem;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .tree-container {
+            background-color: var(--card-background);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .level-1 {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .level-1:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .level-2 {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.625rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0.375rem;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .level-2:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        li.level-3 > div.tree-item {
+            background-color: #28a745;
+            color: white;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem 0;
+            border: 1px solid #1e7e34;
+            border-radius: 0.25rem;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        li.level-3 > div.tree-item:hover {
+            background-color: #218838;
+        }
+
+        li.level-4 > div.tree-item {
+            background-color: var(--card-background);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            margin: 0.25rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 0.25rem;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        li.level-4 > div.tree-item:hover {
+            background-color: var(--hover-bg);
+        }
+
+        li.level-5 > div.tree-item {
+            background-color: var(--hover-bg);
+            color: var(--accent-color);
+            padding: 0.25rem 1rem;
+            margin: 0.125rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 0.25rem;
+            font-size: 0.9em;
+        }
+
+        li.level-5 > div.tree-item i {
+            color: var(--accent-color);
+        }
+
+        .no-children > .tree-item {
+            background-color: var(--danger-color) !important;
+            color: white;
+            border-color: var(--danger-color) !important;
+        }
+
+        .no-children > .tree-item:hover {
+            background-color: #b32d2d !important;
+        }
+
+        .nested {
+            margin-left: 1.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border-color);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .collapsed > .nested {
+            display: none;
+        }
+
+        .tree-toggle {
+            cursor: pointer;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .tree-toggle::before {
+            content: "▼";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .collapsed > .tree-toggle::before {
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
+        .percentage-circle {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            margin-left: 0.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            vertical-align: middle;
+            transition: all var(--transition-speed) ease;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-controls {
+                flex-direction: column;
+            }
+
+            .control-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                width: 100%;
+                margin: 0.25rem 0;
+            }
+
+            .nested {
+                margin-left: 0.75rem;
+                padding-left: 0.75rem;
+            }
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            width: 3rem;
+            height: 3rem;
+            border: 4px solid var(--card-background);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem;
+            background-color: var(--text-primary);
+            color: var(--card-background);
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav_menu.html' %}
+    <div class="container">
+        <button class="header-toggle" onclick="toggleHeader()">▼</button>
+        <header class="header">
+            <div class="header-content">
+                <div class="search-controls">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search SREQ..." id="searchInput">
+                    </div>
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search Test Cases (TCA)..." id="tcaSearchInput">
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="control-buttons">
+                    <div class="control-group">
+                        <div class="control-group-title">Service Instructions</div>
+                        <button class="btn" onclick="toggleLevel(1, false)">Collapse All SI</button>
+                        <button class="btn" onclick="toggleLevel(1, true)">Expand All SI</button>
+                    </div>
+                    <div class="control-group">
+                        <div class="control-group-title">Technical Interactions (TINs)</div>
+                        <button class="btn" onclick="toggleLevel(2, false)">Collapse All TINs</button>
+                        <button class="btn" onclick="toggleLevel(2, true)">Expand All TINs</button>
+                    </div>
+                    <div class="control-group">
+                        <div class="control-group-title">Specifications Requirements (SREQs)</div>
+                        <button class="btn" onclick="toggleLevel(3, false)">Collapse All SREQs</button>
+                        <button class="btn" onclick="toggleLevel(3, true)">Expand All SREQs</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <h1>SREQ TIN-EP Viewer</h1>
+
+        <div class="tree-container">
+            <ul id="sreqRoot">
+        {%- for (si_key, tins) in data.items() -%}
+            {% set tin_percentages = [] %}
+            {%- for (tin_key, sreqs) in tins.items() -%}
+                {% set sreqs_with_tests = namespace(count=0) %}
+                {%- for (sreq_number, sreq_data) in sreqs.items() -%}
+                    {%- if sreq_data.test_cases|length > 0 -%}
+                        {% set sreqs_with_tests.count = sreqs_with_tests.count + 1 %}
+                    {%- endif -%}
+                {%- endfor -%}
+                {%- if sreqs|length > 0 -%}
+                    {% set percentage = (sreqs_with_tests.count / sreqs|length * 100)|round(1) %}
+                    {% set _ = tin_percentages.append(percentage) %}
+                {%- endif -%}
+            {%- endfor -%}
+
+            {% set avg_percentage = 0 %}
+            {%- if tin_percentages|length > 0 -%}
+                {% set avg_percentage = (tin_percentages|sum / tin_percentages|length)|round(1) %}
+            {%- endif -%}
+
+            <li class="level-1 tree-toggle">
+                <div class="tree-item tooltip" data-tooltip="Coverage: {{ avg_percentage }}%">
+                    {{ si_key[0] }} -> {{ si_key[1] }} ({{ avg_percentage }}%)
+                    {%- if avg_percentage <= 25 -%}
+                        <span class="percentage-circle" style="background-color: var(--danger-color)"></span>
+                    {%- elif avg_percentage <= 50 -%}
+                        <span class="percentage-circle" style="background-color: var(--warning-color)"></span>
+                    {%- elif avg_percentage <= 75 -%}
+                        <span class="percentage-circle" style="background-color: var(--accent-color)"></span>
+                    {%- else -%}
+                        <span class="percentage-circle" style="background-color: var(--success-color)"></span>
+                    {%- endif -%}
+                </div>
+                {%- if tins|length > 0 -%}
+                <ul class="nested">
+                    {%- for (tin_key, sreqs) in tins.items() -%}
+                        {% set sreqs_with_tests = namespace(count=0) %}
+                        {%- for (sreq_number, sreq_data) in sreqs.items() -%}
+                            {%- if sreq_data.test_cases|length > 0 -%}
+                                {% set sreqs_with_tests.count = sreqs_with_tests.count + 1 %}
+                            {%- endif -%}
+                        {%- endfor -%}
+
+                        {% set percentage = 0 %}
+                        {%- if sreqs|length > 0 -%}
+                            {% set percentage = (sreqs_with_tests.count / sreqs|length * 100)|round(1) %}
+                        {%- endif -%}
+
+                        <li class="level-2 tree-toggle">
+                            <div class="tree-item tooltip" data-tooltip="Coverage: {{ percentage }}%">
+                                {{ tin_key[0] }} -> {{ tin_key[1] }} ({{ percentage }}%)
+                                {%- if percentage <= 25 -%}
+                                    <span class="percentage-circle" style="background-color: var(--danger-color)"></span>
+                                {%- elif percentage <= 50 -%}
+                                    <span class="percentage-circle" style="background-color: var(--warning-color)"></span>
+                                {%- elif percentage <= 75 -%}
+                                    <span class="percentage-circle" style="background-color: var(--accent-color)"></span>
+                                {%- else -%}
+                                    <span class="percentage-circle" style="background-color: var(--success-color)"></span>
+                                {%- endif -%}
+                            </div>
+                            {%- if sreqs|length > 0 -%}
+                            <ul class="nested">
+                                {%- for (sreq_number, sreq_data) in sreqs.items() -%}
+                                    {% set test_count = sreq_data.test_cases|length %}
+                                    <li class="level-3 tree-toggle collapsed {% if test_count == 0 %}no-children{% endif %}">
+                                        <div class="tree-item tooltip" data-tooltip="Test Cases: {{ test_count }}">
+                                            {{ sreq_number }} -> {{ sreq_data.sreq_name }} ({{ test_count }})
+                                        </div>
+                                        {%- if test_count > 0 -%}
+                                        <ul class="nested">
+                                            {%- for test_key, test_data in sreq_data.test_cases.items() -%}
+                                                <li class="level-4 tree-toggle collapsed">
+                                                    <div class="tree-item">
+                                                        {{ test_data[0] }} -> {{ test_data[1] }}
+                                                    </div>
+                                                    {%- if test_data[2] -%}
+                                                    <ul class="nested">
+                                                        {%- for actor in test_data[2] -%}
+                                                            <li class="level-5 leaf">
+                                                                <div class="tree-item">
+                                                                    <i class="fas fa-user-circle"></i> <span style="color: var(--accent-color);">{{ actor }}</span>
+                                                                </div>
+                                                            </li>
+                                                        {%- endfor -%}
+                                                    </ul>
+                                                    {%- endif -%}
+                                                </li>
+                                            {%- endfor -%}
+                                        </ul>
+                                        {%- endif -%}
+                                    </li>
+                                {%- endfor -%}
+                            </ul>
+                            {%- endif -%}
+                        </li>
+                    {%- endfor -%}
+                </ul>
+                {%- endif -%}
+            </li>
+        {%- endfor -%}
+    </ul>
+        </div>
+    </div>
+
+    <!-- Include the external JavaScript file -->
+    <script src="/static/js/tree_tin.js"></script>
+</body>
+</html>

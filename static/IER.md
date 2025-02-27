@@ -317,9 +317,6 @@
 
 ## SP5-PI-JTGT
 
-### SP5-IER-478: Entity Criticality
-- TIN: Email routing
-
 ### SP5-IER-57: Entity Criticality
 - TIN: Instant Messaging
 

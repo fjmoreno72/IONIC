@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Previous head and style sections remain unchanged -->
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>IER Viewer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* All existing styles remain unchanged */
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -31,17 +30,6 @@
             --transition-speed: 0.2s;
         }
 
-        [data-theme="dark"] {
-            --primary-color: #3399ff;
-            --secondary-color: #0066cc;
-            --background-color: #0f172a;
-            --card-background: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --border-color: #334155;
-            --hover-bg: #334155;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -54,6 +42,7 @@
             color: var(--text-primary);
             line-height: 1.5;
             transition: background-color var(--transition-speed) ease;
+            margin-top: 140px !important; /* Space for fixed nav menu (140px) */
         }
 
         .container {
@@ -64,11 +53,11 @@
 
         .header {
             position: sticky;
-            top: 0;
+            top: 140px; /* Adjusted to account for nav menu height (140px) */
             background-color: var(--card-background);
             padding: 1rem;
             box-shadow: var(--shadow-md);
-            z-index: 100;
+            z-index: 999; /* Below nav menu (1002) but above other content */
             transition: transform 0.3s ease;
         }
 
@@ -78,7 +67,7 @@
 
         .header-toggle {
             position: fixed;
-            top: 1rem;
+            top: calc(140px + 1rem); /* Adjusted to account for nav menu height (140px) */
             right: 1rem;
             background-color: var(--primary-color);
             color: white;
@@ -90,12 +79,13 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 101;
+            z-index: 1003; /* Higher than nav menu (1002) to ensure visibility */
             transition: transform 0.3s ease;
         }
 
         .header-toggle.collapsed {
             transform: rotate(180deg);
+            top: 145px; /* Position just below nav menu when header is collapsed */
         }
 
         .header-content {
@@ -103,20 +93,6 @@
             justify-content: space-between;
             align-items: center;
             gap: 2rem;
-        }
-
-        .logo-container {
-            flex-shrink: 0;
-        }
-
-        .logo {
-            max-width: 150px;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
         }
 
         .search-controls {
@@ -156,31 +132,6 @@
         .search-input:hover {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.05);
-        }
-
-        select.search-input {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.75rem center;
-            padding-right: 2.5rem;
-            padding-left: 1rem;
-            min-height: 100px;
-        }
-
-        select.search-input option {
-            padding: 0.5rem;
-            background-color: var(--card-background);
-            color: var(--text-primary);
-        }
-
-        select.search-input option:checked {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        select.search-input option:hover {
-            background-color: var(--hover-bg);
         }
 
         .controls {
@@ -366,27 +317,6 @@
             transition: all var(--transition-speed) ease;
         }
 
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow-md);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 0.5rem;
@@ -413,13 +343,6 @@
             .nested {
                 margin-left: 0.75rem;
                 padding-left: 0.75rem;
-            }
-
-            .theme-toggle {
-                bottom: 1rem;
-                right: 1rem;
-                width: 2.5rem;
-                height: 2.5rem;
             }
         }
 
@@ -466,20 +389,12 @@
     </style>
 </head>
 <body>
+    {% include 'nav_menu.html' %}
     <div class="container">
         <button class="header-toggle" onclick="toggleHeader()">▼</button>
         <header class="header">
             <div class="header-content">
-                <div class="logo-container">
-                    <img class="logo" src="{{ url_for('static', filename='iocore2_logo.png') }}" alt="IOCore2 Logo" />
-                </div>
-
                 <div class="search-controls">
-                    <div class="search-container">
-                        <select class="search-input" id="piFilter" multiple>
-                            <option value="">Select Level 1 PIs...</option>
-                        </select>
-                    </div>
                     <div class="search-container">
                         <input type="text" class="search-input" placeholder="Search IER..." id="ierSearchInput">
                     </div>
@@ -599,253 +514,9 @@
                 {%- endfor -%}
             </ul>
         </div>
+    </div>
 
-        <div class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
-            🌓
-        </div>
-
-            <script>
-                // Header toggling
-                function toggleHeader() {
-                    const header = document.querySelector('.header');
-                    const toggle = document.querySelector('.header-toggle');
-                    header.classList.toggle('collapsed');
-                    toggle.classList.toggle('collapsed');
-                }
-
-                // Theme toggling
-            function toggleTheme() {
-                document.documentElement.setAttribute('data-theme', 
-                    document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-                );
-            }
-
-            // Tree toggling
-            const toggles = document.querySelectorAll('.tree-toggle');
-            toggles.forEach(function(toggle) {
-                toggle.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    toggle.classList.toggle('collapsed');
-                });
-            });
-
-            function toggleLevel(level, expand) {
-                const elements = document.querySelectorAll(`.level-${level}`);
-                elements.forEach(element => {
-                    if (expand) {
-                        element.classList.remove('collapsed');
-                    } else {
-                        element.classList.add('collapsed');
-                    }
-                });
-            }
-
-            // Enhanced Search functionality
-            function performSearch(searchTerm, searchType) {
-                // Reset all items visibility first
-                document.querySelectorAll('.tree-item').forEach(item => {
-                    item.closest('li').style.display = '';
-                });
-                
-                if (searchTerm === '') {
-                    // If search is empty, restore initial state
-                    expandInitialLevels();
-                    return;
-                }
-
-                const allItems = document.querySelectorAll('.tree-item');
-                const matchedItems = new Set();
-                
-                if (searchType === 'ier') {
-                    // For IER search, match level-1 and level-2 items
-                    allItems.forEach(item => {
-                        const li = item.closest('li');
-                        if (li.classList.contains('level-1') || li.classList.contains('level-2')) {
-                            if (item.textContent.toLowerCase().includes(searchTerm)) {
-                                matchedItems.add(item);
-                                // Add all parent items to matches
-                                let parent = li.parentElement;
-                                while (parent && parent.id !== 'ierRoot') {
-                                    const parentItem = parent.closest('li')?.querySelector('.tree-item');
-                                    if (parentItem) {
-                                        matchedItems.add(parentItem);
-                                    }
-                                    parent = parent.closest('li')?.parentElement;
-                                }
-                            }
-                        }
-                    });
-                } else if (searchType === 'tca') {
-                    // For TCA search, match level-4 items (test cases)
-                    document.querySelectorAll('.level-4').forEach(li => {
-                        if (li.textContent.toLowerCase().includes(searchTerm)) {
-                            // Add parent items to matches
-                            let parent = li.parentElement;
-                            while (parent && parent.id !== 'ierRoot') {
-                                const parentItem = parent.closest('li')?.querySelector('.tree-item');
-                                if (parentItem) {
-                                    matchedItems.add(parentItem);
-                                }
-                                parent = parent.closest('li')?.parentElement;
-                            }
-                        }
-                    });
-                }
-                
-                // Hide/show items based on matches
-                allItems.forEach(item => {
-                    const li = item.closest('li');
-                    const isMatched = matchedItems.has(item);
-                    
-                    if (searchType === 'tca') {
-                        // For TCA search, also check if this item has any visible level-4 children
-                        const hasVisibleTestCase = li.querySelectorAll('.level-4').length > 0 &&
-                            Array.from(li.querySelectorAll('.level-4')).some(testCase => 
-                                testCase.textContent.toLowerCase().includes(searchTerm)
-                            );
-                        
-                        if (!isMatched && !hasVisibleTestCase) {
-                            li.style.display = 'none';
-                        } else {
-                            li.style.display = '';
-                            if (li.classList.contains('tree-toggle')) {
-                                li.classList.remove('collapsed');
-                            }
-                        }
-                    } else {
-                        // For IER search
-                        if (!isMatched) {
-                            li.style.display = 'none';
-                        } else {
-                            li.style.display = '';
-                            if (li.classList.contains('tree-toggle')) {
-                                li.classList.remove('collapsed');
-                            }
-                        }
-                    }
-
-                    // Ensure parent containers are visible and expanded
-                    let parent = li.parentElement;
-                    while (parent && parent.id !== 'ierRoot') {
-                        if (parent.classList.contains('nested')) {
-                            parent.style.display = '';
-                            parent.parentElement.classList.remove('collapsed');
-                        }
-                        parent = parent.parentElement;
-                    }
-                });
-
-                // For TCA search, handle level-4 items separately
-                if (searchType === 'tca') {
-                    document.querySelectorAll('.level-4').forEach(li => {
-                        if (!li.textContent.toLowerCase().includes(searchTerm)) {
-                            li.style.display = 'none';
-                        } else {
-                            li.style.display = '';
-                        }
-                    });
-                }
-            }
-
-            const ierSearchInput = document.getElementById('ierSearchInput');
-            const tcaSearchInput = document.getElementById('tcaSearchInput');
-
-            ierSearchInput.addEventListener('input', function(e) {
-                performSearch(e.target.value.toLowerCase(), 'ier');
-            });
-
-            tcaSearchInput.addEventListener('input', function(e) {
-                performSearch(e.target.value.toLowerCase(), 'tca');
-            });
-
-            // Initialize PI Filter
-            function initializePIFilter() {
-                const piFilter = document.getElementById('piFilter');
-                const level1Items = document.querySelectorAll('.level-1');
-                const uniquePIs = new Set();
-
-                // Clear existing options except the first one
-                while (piFilter.options.length > 1) {
-                    piFilter.remove(1);
-                }
-
-                level1Items.forEach(item => {
-                    const piText = item.querySelector('.tree-item').textContent.trim();
-                    const piMatch = piText.match(/^(.*?)\s*->/);
-                    if (piMatch && piMatch[1]) {
-                        const piCode = piMatch[1].trim();
-                        if (piCode.startsWith('SP')) { // Only add if it's a valid PI code
-                            uniquePIs.add(piCode);
-                        }
-                    }
-                });
-
-                // Convert to array and sort for consistent ordering
-                const sortedPIs = Array.from(uniquePIs).sort();
-
-                sortedPIs.forEach(pi => {
-                    const option = document.createElement('option');
-                    option.value = pi;
-                    option.textContent = pi;
-                    piFilter.appendChild(option);
-                });
-            }
-
-            // Filter by selected PIs
-            function filterByPI() {
-                const piFilter = document.getElementById('piFilter');
-                const selectedPIs = Array.from(piFilter.selectedOptions)
-                    .map(option => option.value)
-                    .filter(value => value !== ''); // Remove empty values
-                
-                document.querySelectorAll('.level-1').forEach(item => {
-                    const piText = item.querySelector('.tree-item').textContent.trim();
-                    const piMatch = piText.match(/^(.*?)\s*->/);
-                    const currentPI = piMatch ? piMatch[1].trim() : '';
-                    
-                    // Show all items if no PIs are selected, otherwise show only selected PIs
-                    const shouldShow = selectedPIs.length === 0 || selectedPIs.includes(currentPI);
-                    item.style.display = shouldShow ? '' : 'none';
-                });
-            }
-
-            // Initialize
-            function expandInitialLevels() {
-                document.querySelectorAll('.level-1').forEach(element => {
-                    element.classList.remove('collapsed');
-                });
-                document.querySelectorAll('.level-2, .level-3').forEach(element => {
-                    element.classList.add('collapsed');
-                });
-            }
-
-            // Loading state
-            function showLoading() {
-                const loader = document.createElement('div');
-                loader.className = 'loading';
-                loader.innerHTML = '<div class="loading-spinner"></div>';
-                document.body.appendChild(loader);
-            }
-
-            function hideLoading() {
-                const loader = document.querySelector('.loading');
-                if (loader) {
-                    loader.remove();
-                }
-            }
-
-            // Initialize on load
-            window.addEventListener('load', () => {
-                expandInitialLevels();
-                initializePIFilter();
-                // Check for preferred color scheme
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                }
-            });
-
-            // Add PI filter event listener
-            document.getElementById('piFilter').addEventListener('change', filterByPI);
-        </script>
-    </body>
+    <!-- Include the external JavaScript file -->
+    <script src="/static/js/tree_ier.js"></script>
+</body>
 </html>

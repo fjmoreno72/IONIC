@@ -5,25 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IOCore2 Coverage Analysis Tool</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/marked/lib/marked.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .container {
+            margin-top: 0 !important;
+        }
         .logo-container {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in;
         }
         .logo-container img {
-            max-width: 150px;
+            max-width: 180px;
             height: auto;
+            transition: transform 0.3s ease;
         }
-        .tab-content {
-            padding: 20px;
-            border: 1px solid #dee2e6;
-            border-top: none;
+        .logo-container img:hover {
+            transform: scale(1.05);
         }
-        .report-content {
-            white-space: pre-wrap;
-            font-family: monospace;
+        #loginForm {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            animation: slideUp 0.5s ease-out;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+            margin-bottom: 0.5rem;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+            border-color: #0d6efd;
+            background: #ffffff;
+        }
+        .btn-primary {
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #0d6efd, #0a58ca);
+            border: none;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+            background: linear-gradient(45deg, #0a58ca, #084298);
         }
         .hidden {
             display: none;
@@ -33,54 +78,57 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
-        .report-actions {
-            margin-top: 10px;
-            text-align: right;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        .btn-download {
-            margin-left: 10px;
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .btn-tree-view {
-            background-color: #28a745;
-            color: white;
-            margin-left: 10px;
+        #reportsSection {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
-        .btn-tree-view:hover {
-            background-color: #218838;
-            color: white;
+        #successMessages {
+            margin-top: 20px;
         }
-        .btn-tree-view2 {
-            background-color: #28a745;
-            color: white;
-            margin-left: 10px;
-        }
-        .btn-tree-view2:hover {
-            background-color: #218838;
-            color: white;
+        .alert {
+            animation: slideUp 0.3s ease-out;
         }
     </style>
 </head>
 <body>
+    {% include 'nav_menu.html' %}
+    
     <!-- Loading Spinner -->
     <div id="loader" class="loader hidden">
         <i class="fas fa-spinner fa-spin fa-3x"></i>
         <p class="mt-2">Processing...</p>
     </div>
 
-    <div class="container mt-5">
+    <div class="container">
         <!-- Login Form -->
         <div id="loginForm">
             <div class="logo-container">
                 <img src="/static/iocore2_logo.png" alt="IOCore2 Logo">
             </div>
-            <h2 class="text-center">Coverage Analysis Tool</h2>
+            <h2 class="text-center mb-4" style="color: #2c3e50; font-weight: 600;">Coverage Analysis Tool</h2>
             <form id="login" class="mb-4">
                 <div class="mb-3">
                     <label for="url" class="form-label">URL</label>
@@ -94,38 +142,21 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </button>
             </form>
         </div>
 
-        <!-- Reports Section -->
+        <!-- Reports Section (Hidden) -->
         <div id="reportsSection" class="hidden">
-            <div class="mb-3">
-                <button id="getIER" class="btn btn-primary me-2">Get IER Cover</button>
-                <button id="getSREQ" class="btn btn-primary">Get SREQ Cover</button>
-                <button id="viewTree" class="btn btn-tree-view">
-                    <i class="fas fa-sitemap"></i> View SREQ Cover
-                </button>
-                <button id="viewTree2" class="btn btn-tree-view2">
-                    <i class="fas fa-sitemap"></i> View SREQ Cover FLAT
-                </button>
-                <button id="viewIERTree" class="btn btn-tree-view">
-                    <i class="fas fa-sitemap"></i> View IER Cover
-                </button>
-                <button id="logout" class="btn btn-secondary float-end">Logout</button>
-            </div>
-
-            <!-- Tabs -->
-            <ul class="nav nav-tabs" id="reportTabs" role="tablist"></ul>
-            <div class="tab-content" id="reportTabContent"></div>
+            <!-- Success Messages -->
+            <div id="successMessages"></div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-        let tabCounter = 0;
-
         document.getElementById('login').addEventListener('submit', async (e) => {
             e.preventDefault();
             try {
@@ -144,8 +175,8 @@
 
                 const data = await response.json();
                 if (data.success) {
-                    document.getElementById('loginForm').classList.add('hidden');
-                    document.getElementById('reportsSection').classList.remove('hidden');
+                    // Redirect to tree functions view after successful login
+                    window.location.href = '/view_tree_func';
                 } else {
                     alert('Login failed: ' + (data.error || 'Unknown error'));
                 }
@@ -156,144 +187,20 @@
             }
         });
 
-        document.getElementById('logout').addEventListener('click', () => {
-            document.getElementById('loginForm').classList.remove('hidden');
-            document.getElementById('reportsSection').classList.add('hidden');
-            document.getElementById('reportTabs').innerHTML = '';
-            document.getElementById('reportTabContent').innerHTML = '';
-            document.getElementById('login').reset();
-        });
-
-        // View Tree button handler
-        document.getElementById('viewTree').addEventListener('click', () => {
-            window.open('/view_tree', '_blank');
-        });
-
-        // View Tree2 button handler
-        document.getElementById('viewTree2').addEventListener('click', () => {
-            window.open('/view_tree2', '_blank');
-        });
-
-        // View IER Tree button handler
-        document.getElementById('viewIERTree').addEventListener('click', () => {
-            window.open('/view_ier_tree', '_blank');
-        });
-
-
-        document.getElementById('getIER').addEventListener('click', () => {
-            fetchReport('/get_ier_coverage', 'IER Coverage');
-        });
-
-        document.getElementById('getSREQ').addEventListener('click', () => {
-            fetchReport('/get_requirement_coverage', 'Requirement Coverage');
-        });
-
-        async function fetchReport(endpoint, title) {
-            try {
-                document.getElementById('loader').classList.remove('hidden');
-                const response = await fetch(endpoint);
-                const data = await response.json();
-
-                if (data.success) {
-                    createNewTab(title, marked.parse(data.markdown));
-                } else {
-                    alert('Failed to fetch report: ' + (data.error || 'Unknown error'));
-                }
-            } catch (error) {
-                alert('Error fetching report: ' + error.message);
-            } finally {
-                document.getElementById('loader').classList.add('hidden');
-            }
-        }
-
-        function createNewTab(title, content) {
-            const tabId = `tab${++tabCounter}`;
-
-            // Create tab
-            const tabLi = document.createElement('li');
-            tabLi.className = 'nav-item';
-            tabLi.innerHTML = `
-                <a class="nav-link" id="${tabId}-tab" data-bs-toggle="tab" href="#${tabId}" role="tab">
-                    ${title}
-                    <button type="button" class="btn-close ms-2" aria-label="Close"></button>
-                </a>
+        function showSuccessMessage(title) {
+            const successDiv = document.getElementById('successMessages');
+            const message = document.createElement('div');
+            message.className = 'alert alert-success alert-dismissible fade show';
+            message.innerHTML = `
+                <strong>Success!</strong> ${title} has been generated.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             `;
-
-            // Create tab content
-            const tabContent = document.createElement('div');
-            tabContent.className = 'tab-pane fade';
-            tabContent.id = tabId;
-            tabContent.role = 'tabpanel';
-            tabContent.innerHTML = `
-                <div class="report-actions">
-                    <button class="btn btn-sm btn-outline-primary btn-download" onclick="downloadPDF('${title.toLowerCase().includes('ier') ? 'ier' : 'sreq'}')">
-                        <i class="fas fa-file-pdf"></i> Download PDF
-                    </button>
-                </div>
-                <div class="report-content">${content}</div>
-            `;
-
-            // Add close button handler
-            const closeBtn = tabLi.querySelector('.btn-close');
-            closeBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                tabLi.remove();
-                tabContent.remove();
-
-                // If this was the active tab, activate the first remaining tab
-                const firstTab = document.querySelector('.nav-link');
-                if (firstTab) {
-                    new bootstrap.Tab(firstTab).show();
-                }
-            });
-
-            // Add to DOM
-            document.getElementById('reportTabs').appendChild(tabLi);
-            document.getElementById('reportTabContent').appendChild(tabContent);
-
-            // Activate the new tab
-            new bootstrap.Tab(document.getElementById(`${tabId}-tab`)).show();
-        }
-
-        async function downloadPDF(reportType) {
-            try {
-                document.getElementById('loader').classList.remove('hidden');
-                const response = await fetch(`/generate_pdf/${reportType}`);
-
-                if (response.ok) {
-                    if (response.headers.get('content-type')?.includes('application/pdf')) {
-                        const blob = await response.blob();
-                        const url = window.URL.createObjectURL(blob);
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.download = `${reportType}_coverage_report.pdf`;
-                        document.body.appendChild(a);
-                        a.click();
-                        window.URL.revokeObjectURL(url);
-                        document.body.removeChild(a);
-                    } else {
-                        try {
-                            const errorData = await response.json();
-                            alert('Failed to generate PDF: ' + (errorData.error || 'Unknown error'));
-                        } catch (e) {
-                            alert('Failed to generate PDF. Please try again.');
-                        }
-                    }
-                } else {
-                    if (response.headers.get('content-type')?.includes('application/json')) {
-                        const errorData = await response.json();
-                        alert('Failed to generate PDF: ' + (errorData.error || 'Unknown error'));
-                    } else {
-                        alert(`Failed to generate PDF: HTTP ${response.status}`);
-                    }
-                }
-            } catch (error) {
-                console.error('PDF download error:', error);
-                alert('Error downloading PDF. Please try again.');
-            } finally {
-                document.getElementById('loader').classList.add('hidden');
-            }
+            successDiv.appendChild(message);
+            
+            // Auto-dismiss after 5 seconds
+            setTimeout(() => {
+                message.remove();
+            }, 5000);
         }
     </script>
 </body>

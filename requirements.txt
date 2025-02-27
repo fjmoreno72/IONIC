@@ -1,0 +1,6 @@
+flask
+markdown
+requests
+urllib3
+psutil
+beautifulsoup4

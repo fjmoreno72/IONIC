@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Resource Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% include 'nav_menu.html' %}
+    <style>
+        :root {
+            --primary-color: #003366;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3399ff;
+            --background-color: #0f172a;
+            --card-background: #1e293b;
+            --text-primary: #f1f5f9;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.2s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .metrics {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .chart-container {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>System Resource Monitor</h1>
+        </div>
+
+        <div class="metrics">
+            <div class="metric-card">
+                <h3>CPU Usage</h3>
+                <div id="cpuValue" class="metric-value">0%</div>
+            </div>
+            <div class="metric-card">
+                <h3>Memory Usage</h3>
+                <div id="memoryValue" class="metric-value">0 MB</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="resourceChart"></canvas>
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
+    <script>
+        // Initialize Chart.js
+        const ctx = document.getElementById('resourceChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'CPU Usage (%)',
+                    borderColor: '#003366',
+                    data: [],
+                    fill: false,
+                    yAxisID: 'cpu'
+                }, {
+                    label: 'Memory Usage (MB)',
+                    borderColor: '#28a745',
+                    data: [],
+                    fill: false,
+                    yAxisID: 'memory'
+                }]
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    },
+                    cpu: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'CPU Usage (%)'
+                        },
+                        min: 0,
+                        max: 100,
+                        grid: {
+                            drawOnChartArea: true
+                        }
+                    },
+                    memory: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Memory Usage (MB)'
+                        },
+                        min: 0,
+                        max: 65536, // 64GB in MB
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Function to update metrics and chart
+        async function updateMetrics() {
+            try {
+                const response = await fetch('/get_system_metrics');
+                const data = await response.json();
+                const cpuUsage = data.cpu;
+                const memoryUsage = data.memory;
+                const timestamp = new Date().toLocaleTimeString();
+
+                // Update metric cards
+                document.getElementById('cpuValue').textContent = `${cpuUsage.toFixed(1)}%`;
+                document.getElementById('memoryValue').textContent = `${memoryUsage} MB`;
+
+                // Update chart
+                chart.data.labels.push(timestamp);
+                chart.data.datasets[0].data.push(cpuUsage);
+                chart.data.datasets[1].data.push(memoryUsage);
+
+                // Keep only last 30 data points
+                if (chart.data.labels.length > 30) {
+                    chart.data.labels.shift();
+                    chart.data.datasets[0].data.shift();
+                    chart.data.datasets[1].data.shift();
+                }
+
+                chart.update();
+            } catch (error) {
+                console.error('Error fetching system metrics:', error);
+            }
+        }
+
+        // Theme toggling
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            // Update chart colors based on theme
+            chart.data.datasets[0].borderColor = theme === 'dark' ? '#3399ff' : '#003366';
+            chart.update();
+        }
+
+        // Check system dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            chart.data.datasets[0].borderColor = '#3399ff';
+            chart.update();
+        }
+
+        // Start updating metrics every 5 seconds
+        updateMetrics();
+        setInterval(updateMetrics, 5000);
+    </script>
+</body>
+</html>

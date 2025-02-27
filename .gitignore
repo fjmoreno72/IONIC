@@ -3,3 +3,5 @@ app-ionic.log
 .config.swp
 .DS_Store
 app-ionic.log
+.DS_Store
+.gitignore

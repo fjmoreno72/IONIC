@@ -1,4 +1,1 @@
- * Serving Flask app 'app-ionic'
- * Debug mode: on
-/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:276: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-6_zfz3rm'}
-  warnings.warn(
+/Library/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python: can't open file '/Users/fjmoreno72/WORK/IONIC2/app-ionic.py': [Errno 2] No such file or directory

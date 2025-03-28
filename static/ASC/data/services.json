@@ -1,0 +1,187 @@
+[
+  {
+    "name": "Air C2 Information Exchange",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0001"
+  },
+  {
+    "name": "Fires Information Exchange",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0002"
+  },
+  {
+    "name": "Intelligence Battlespace Objects Exchange",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0003"
+  },
+  {
+    "name": "Joint ISR Information Exchange",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0004"
+  },
+  {
+    "name": "Land C2 Information Exchange",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0005"
+  },
+  {
+    "name": "Land Tactical C2 Information Exchange",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0006"
+  },
+  {
+    "name": "Maritime C2 Information Exchange",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0007"
+  },
+  {
+    "name": "Data Links",
+    "spiral": "SP5",
+    "gps": [
+      "GP-0001",
+      "GP-0002",
+      "GP-0003",
+      "GP-0004"
+    ],
+    "iconPath": "./image/srv/icon_data_links.png",
+    "functionalDiagramPath": "./image/srv/diagram_data_links.jpg",
+    "id": "SRV-0008"
+  },
+  {
+    "name": "Friendly Force Tracking",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0009"
+  },
+  {
+    "name": "Ground-to-Air Information Exchange",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0010"
+  },
+  {
+    "name": "Overlay Distribution",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0011"
+  },
+  {
+    "name": "Audio and Video-based Collaboration",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0012"
+  },
+  {
+    "name": "Calendaring and Scheduling",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0013"
+  },
+  {
+    "name": "Digital Certificates",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0014"
+  },
+  {
+    "name": "Directory Data Synchronization",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0015"
+  },
+  {
+    "name": "Distributed Time",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0016"
+  },
+  {
+    "name": "Domain Naming",
+    "spiral": "SP5",
+    "gps": [
+      "GP-0007",
+      "GP-0008",
+      "GP-0009"
+    ],
+    "iconPath": "./image/srv/icon_domain_naming.jpg",
+    "functionalDiagramPath": "./image/srv/diagram_domain_naming.jpg",
+    "id": "SRV-0017"
+  },
+  {
+    "name": "Geospatial Information",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0018"
+  },
+  {
+    "name": "Informal Messaging",
+    "spiral": "SP5",
+    "gps": [
+      "GP-0010",
+      "GP-0011"
+    ],
+    "iconPath": "./image/srv/icon_informal_messaging.png",
+    "functionalDiagramPath": "./image/srv/diagram_informal_messaging.jpg",
+    "id": "SRV-0019"
+  },
+  {
+    "name": "Service Management and Control",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0020"
+  },
+  {
+    "name": "Text-based Collaboration",
+    "spiral": "SP5",
+    "gps": [
+      "GP-0005",
+      "GP-0006"
+    ],
+    "iconPath": "./image/srv/icon_text-based_collaboration.jpg",
+    "functionalDiagramPath": "./image/srv/diagram_text-based_collaboration.jpg",
+    "id": "SRV-0021"
+  },
+  {
+    "name": "Virtualized Processing",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0022"
+  },
+  {
+    "name": "Web Authentication",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0023"
+  },
+  {
+    "name": "Web Hosting",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0024"
+  },
+  {
+    "name": "Communications",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0025"
+  },
+  {
+    "name": "Communications Transport",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0026"
+  },
+  {
+    "name": "Protected Core Networking",
+    "spiral": "SP5",
+    "gps": [],
+    "id": "SRV-0027"
+  }
+]

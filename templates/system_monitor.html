@@ -43,9 +43,10 @@
             margin-bottom: 30px;
         }
 
-        .metrics {
-            display: flex;
-            justify-content: space-around;
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             margin-bottom: 30px;
         }
 
@@ -53,15 +54,40 @@
             background-color: var(--card-background);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 20px;
-            width: 200px;
+            padding: 15px; /* Slightly smaller padding */
             text-align: center;
+            transition: box-shadow 0.2s ease;
+        }
+        .metric-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .metric-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 0.9em; /* Smaller title */
+            font-weight: 600;
         }
 
         .metric-value {
-            font-size: 24px;
+            font-size: 1.5em; /* Smaller value */
             font-weight: bold;
             color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .metric-unit {
+            font-size: 0.8em;
+            color: #64748b; /* Secondary text color */
+        }
+        [data-theme="dark"] .metric-unit {
+            color: #94a3b8;
+        }
+
+        .charts-grid { /* New style for grid layout */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Adjust minmax as needed */
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .chart-container {
@@ -69,7 +95,8 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
-            margin-top: 20px;
+            height: 300px; /* Give charts a fixed height */
+            position: relative; /* Needed for chart responsiveness */
         }
 
         .theme-toggle {
@@ -90,145 +117,308 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>System Resource Monitor</h1>
+            <!-- Use the server_url variable passed from Flask -->
+            <h1>{{ server_url | replace('https://', '') | replace('http://', '') }} - System Health Monitor</h1>
+            <p id="lastUpdated" style="text-align: center; margin-top: -20px; margin-bottom: 20px; font-size: 0.9em; color: #64748b;">Last updated: Never</p>
+            <div id="errorMessage" style="display: none; color: #dc3545; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 4px; margin-bottom: 20px; text-align: center;"></div>
         </div>
 
-        <div class="metrics">
+        <div class="metrics-grid">
             <div class="metric-card">
-                <h3>CPU Usage</h3>
-                <div id="cpuValue" class="metric-value">0%</div>
+                <h3>CPU Host</h3>
+                <div id="cpuHostValue" class="metric-value">--</div>
+                <div class="metric-unit">%</div>
             </div>
             <div class="metric-card">
-                <h3>Memory Usage</h3>
-                <div id="memoryValue" class="metric-value">0 MB</div>
+                <h3>CPU SQL</h3>
+                <div id="cpuSqlValue" class="metric-value">--</div>
+                <div class="metric-unit">%</div>
+            </div>
+            <div class="metric-card">
+                <h3>Memory Host</h3>
+                <div id="memoryHostValue" class="metric-value">--</div>
+                <div class="metric-unit">MB</div>
+            </div>
+            <div class="metric-card">
+                <h3>Memory SQL</h3>
+                <div id="memorySqlValue" class="metric-value">--</div>
+                <div class="metric-unit">MB</div>
+            </div>
+            <div class="metric-card">
+                <h3>Disk Usage</h3>
+                <div id="diskUsageValue" class="metric-value">--</div>
+                <div class="metric-unit">%</div>
+            </div>
+            <div class="metric-card">
+                <h3>Network I/O</h3>
+                <div id="networkValue" class="metric-value">--</div>
+                <div class="metric-unit">Mbps</div>
             </div>
         </div>
 
-        <div class="chart-container">
-            <canvas id="resourceChart"></canvas>
+        <!-- Grid container for charts -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <canvas id="cpuHostChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="cpuSqlChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="memoryHostChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="memorySqlChart"></canvas>
+            </div>
+            <!-- Disk and Network charts could be added here if needed later -->
         </div>
     </div>
 
     <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
     <script>
-        // Initialize Chart.js
-        const ctx = document.getElementById('resourceChart').getContext('2d');
-        const chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'CPU Usage (%)',
-                    borderColor: '#003366',
-                    data: [],
-                    fill: false,
-                    yAxisID: 'cpu'
-                }, {
-                    label: 'Memory Usage (MB)',
-                    borderColor: '#28a745',
-                    data: [],
-                    fill: false,
-                    yAxisID: 'memory'
-                }]
+        const MAX_DATA_POINTS = 120; // Store 120 minutes (2 hours) of data
+        const POLLING_INTERVAL = 60000; // 60 seconds
+
+        // Chart Colors (inspired by MONITOR/js/config.js) - Keep Disk/Network for potential future use
+        const chartColors = {
+            light: {
+                cpuHost: '#e74c3c',
+                cpuSql: '#3498db',
+                memoryHost: '#2ecc71',
+                memorySql: '#9b59b6',
+                disk: '#f1c40f',
+                network: '#e67e22'
             },
-            options: {
-                responsive: true,
-                interaction: {
-                    mode: 'index',
-                    intersect: false,
+            dark: {
+                cpuHost: '#ff6b6b',
+                cpuSql: '#74b9ff',
+                memoryHost: '#55efc4',
+                memorySql: '#a29bfe',
+                disk: '#f39c12',
+                network: '#fd79a8'
+            }
+        };
+
+        // Get current theme
+        function getCurrentTheme() {
+            return document.documentElement.getAttribute('data-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        }
+
+        const currentTheme = getCurrentTheme();
+        const colors = chartColors[currentTheme];
+        const sharedLabels = []; // Shared array for timestamps across all charts
+
+        // Helper function to create chart configuration
+        function createChartConfig(label, borderColor, yAxisLabel, min = 0, max = undefined) {
+            return {
+                type: 'line',
+                data: {
+                    labels: sharedLabels,
+                    datasets: [{
+                        label: label,
+                        borderColor: borderColor,
+                        data: [],
+                        fill: false,
+                        tension: 0.1,
+                        pointRadius: 0 // Hide points for cleaner look with many data points
+                    }]
                 },
-                scales: {
-                    x: {
-                        display: true,
-                        title: {
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // Important for fixed height container
+                    scales: {
+                        x: {
                             display: true,
-                            text: 'Time'
+                            title: { display: false }, // No title on individual charts
+                            ticks: { autoSkip: true, maxTicksLimit: 10 }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: yAxisLabel },
+                            min: min,
+                            max: max, // Use undefined for auto-scaling max
+                            beginAtZero: true,
+                            grid: { color: currentTheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }
                         }
                     },
-                    cpu: {
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        title: {
+                    plugins: {
+                        legend: { display: false }, // Hide legend for single dataset charts
+                        title: { // Use chart title instead of legend
                             display: true,
-                            text: 'CPU Usage (%)'
+                            text: label,
+                            padding: { top: 10, bottom: 10 }
                         },
-                        min: 0,
-                        max: 100,
-                        grid: {
-                            drawOnChartArea: true
-                        }
-                    },
-                    memory: {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        title: {
-                            display: true,
-                            text: 'Memory Usage (MB)'
-                        },
-                        min: 0,
-                        max: 65536, // 64GB in MB
-                        grid: {
-                            drawOnChartArea: false
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y.toFixed(2);
+                                        // Add unit based on axis label
+                                        if (yAxisLabel.includes('%')) label += '%';
+                                        if (yAxisLabel.includes('MB')) label += ' MB';
+                                    }
+                                    return label;
+                                }
+                            }
                         }
                     }
                 }
+            };
+        }
+
+        // Initialize Charts
+        const cpuHostChart = new Chart(
+            document.getElementById('cpuHostChart').getContext('2d'),
+            createChartConfig('CPU Host (%)', colors.cpuHost, 'Usage (%)', 0, 100)
+        );
+        const cpuSqlChart = new Chart(
+            document.getElementById('cpuSqlChart').getContext('2d'),
+            createChartConfig('CPU SQL (%)', colors.cpuSql, 'Usage (%)', 0, 100)
+        );
+        const memoryHostChart = new Chart(
+            document.getElementById('memoryHostChart').getContext('2d'),
+            createChartConfig('Memory Host (MB Available)', colors.memoryHost, 'Memory (MB)') // Auto-scales max
+        );
+        const memorySqlChart = new Chart(
+            document.getElementById('memorySqlChart').getContext('2d'),
+            createChartConfig('Memory SQL (MB Used)', colors.memorySql, 'Memory (MB)') // Auto-scales max
+        );
+
+        const allCharts = [cpuHostChart, cpuSqlChart, memoryHostChart, memorySqlChart];
+
+        // Function to update metric cards (no changes needed here)
+        function updateMetricCard(id, value, unit = '', precision = 1) {
+            const element = document.getElementById(id);
+            if (element) {
+                if (value === null || value === undefined || isNaN(value)) {
+                    element.textContent = '--';
+                } else {
+                    element.textContent = typeof value === 'number' ? value.toFixed(precision) : value;
+                }
             }
-        });
+            const unitElement = element ? element.nextElementSibling : null;
+            if (unitElement && unitElement.classList.contains('metric-unit')) {
+                unitElement.textContent = (value === null || value === undefined || isNaN(value)) ? '' : unit;
+            }
+        }
 
         // Function to update metrics and chart
         async function updateMetrics() {
+            const errorDiv = document.getElementById('errorMessage');
             try {
-                const response = await fetch('/get_system_metrics');
-                const data = await response.json();
-                const cpuUsage = data.cpu;
-                const memoryUsage = data.memory;
-                const timestamp = new Date().toLocaleTimeString();
+                const response = await fetch('/api/remote_system_health'); // Use the new proxy endpoint
 
-                // Update metric cards
-                document.getElementById('cpuValue').textContent = `${cpuUsage.toFixed(1)}%`;
-                document.getElementById('memoryValue').textContent = `${memoryUsage} MB`;
-
-                // Update chart
-                chart.data.labels.push(timestamp);
-                chart.data.datasets[0].data.push(cpuUsage);
-                chart.data.datasets[1].data.push(memoryUsage);
-
-                // Keep only last 30 data points
-                if (chart.data.labels.length > 30) {
-                    chart.data.labels.shift();
-                    chart.data.datasets[0].data.shift();
-                    chart.data.datasets[1].data.shift();
+                if (!response.ok) {
+                    let errorMsg = `Error: ${response.status} ${response.statusText}`;
+                    try {
+                        const errorData = await response.json();
+                        errorMsg = errorData.error || errorMsg;
+                        if (response.status === 401) { // Unauthorized / Session expired
+                           errorMsg += " Please log in again.";
+                           // Optionally redirect to login page: window.location.href = '/login';
+                        }
+                    } catch (e) { /* Ignore if error response is not JSON */ }
+                    throw new Error(errorMsg);
                 }
 
-                chart.update();
+                const data = await response.json();
+
+                // Extract data using correct paths from sample JSON, with safety checks
+                const dbConnectionData = data?.entries?.['database-connection']?.data;
+                const serverResourcesData = data?.entries?.['server-resource-utilization']?.data;
+                const driveData = data?.entries?.['server-drives']?.data?.Summary?.[0]; // Assuming first drive is C:
+
+                const cpuHost = dbConnectionData?.host_cpu_usedPct ?? null;
+                const cpuSql = dbConnectionData?.sqlserver_cpu_usedPct ?? null;
+                // Displaying AVAILABLE host memory, not used
+                const memoryHostAvailable = serverResourcesData?.['Memory/Available Mbytes'] ?? null;
+                const memorySqlUsed = dbConnectionData?.sqlserver_memory_usedMB ?? null;
+
+                let diskUsagePercent = null;
+                if (driveData && driveData.totalMb > 0) {
+                    diskUsagePercent = ((driveData.totalMb - driveData.availableMb) / driveData.totalMb) * 100;
+                }
+
+                const network = null; // Not found in sample data
+
+                const timestamp = new Date().toLocaleTimeString(); // Use local time for label
+
+                // Update metric cards
+                updateMetricCard('cpuHostValue', cpuHost, '%', 1);
+                updateMetricCard('cpuSqlValue', cpuSql, '%', 1);
+                // Update Host Memory card to show Available Memory
+                updateMetricCard('memoryHostValue', memoryHostAvailable, 'MB Available', 0);
+                updateMetricCard('memorySqlValue', memorySqlUsed, 'MB Used', 0);
+                updateMetricCard('diskUsageValue', diskUsagePercent, '% Used (C:)', 1);
+                updateMetricCard('networkValue', network, 'Mbps', 1); // Will show '--'
+
+                // Update last updated time
+                document.getElementById('lastUpdated').textContent = `Last updated: ${new Date().toLocaleString()}`;
+                errorDiv.style.display = 'none'; // Hide error message on success
+
+                // Update chart data for all charts
+                sharedLabels.push(timestamp); // Add timestamp to shared labels array
+                cpuHostChart.data.datasets[0].data.push(cpuHost);
+                cpuSqlChart.data.datasets[0].data.push(cpuSql);
+                memoryHostChart.data.datasets[0].data.push(memoryHostAvailable);
+                memorySqlChart.data.datasets[0].data.push(memorySqlUsed);
+                // Disk/Network data could be pushed here if those charts existed
+
+                // Keep only last MAX_DATA_POINTS data points
+                if (sharedLabels.length > MAX_DATA_POINTS) {
+                    sharedLabels.shift(); // Remove oldest timestamp
+                    allCharts.forEach(chart => chart.data.datasets[0].data.shift()); // Remove oldest data point from each chart
+                }
+
+                // Update all charts
+                allCharts.forEach(chart => chart.update('none')); // Use 'none' animation for smoother updates
+
             } catch (error) {
-                console.error('Error fetching system metrics:', error);
+                console.error('Error fetching remote system health:', error);
+                errorDiv.textContent = `Failed to load system health data: ${error.message}`;
+                errorDiv.style.display = 'block';
+                // Optionally clear cards or show '--'
+                updateMetricCard('cpuHostValue', null);
+                updateMetricCard('cpuSqlValue', null);
+                updateMetricCard('memoryHostValue', null);
+                updateMetricCard('memorySqlValue', null);
+                updateMetricCard('diskUsageValue', null);
+                updateMetricCard('networkValue', null);
             }
         }
 
         // Theme toggling
         function toggleTheme() {
-            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-            
-            // Update chart colors based on theme
-            chart.data.datasets[0].borderColor = theme === 'dark' ? '#3399ff' : '#003366';
-            chart.update();
+            const newTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            const newColors = chartColors[newTheme];
+            const gridColor = newTheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+
+            // Update colors and grid for all charts
+            cpuHostChart.data.datasets[0].borderColor = newColors.cpuHost;
+            cpuSqlChart.data.datasets[0].borderColor = newColors.cpuSql;
+            memoryHostChart.data.datasets[0].borderColor = newColors.memoryHost;
+            memorySqlChart.data.datasets[0].borderColor = newColors.memorySql;
+            // Update grid colors
+            allCharts.forEach(chart => {
+                chart.options.scales.y.grid.color = gridColor;
+                chart.update();
+            });
         }
 
-        // Check system dark mode preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            chart.data.datasets[0].borderColor = '#3399ff';
-            chart.update();
-        }
+        // Set initial theme
+        document.documentElement.setAttribute('data-theme', currentTheme);
 
-        // Start updating metrics every 5 seconds
+        // Initial fetch and start polling (no changes needed)
         updateMetrics();
-        setInterval(updateMetrics, 5000);
+        setInterval(updateMetrics, POLLING_INTERVAL); // Poll every 60 seconds
     </script>
 </body>
 </html>

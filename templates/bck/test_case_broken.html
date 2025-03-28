@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Cases - IOCore2 Coverage Analysis Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --background-color: #f5f7fa;
+            --card-background: #fff;
+            --text-primary: #333;
+            --text-secondary: #6c757d;
+            --border-color: #dee2e6;
+            --table-header-bg: #f8f9fa;
+            --table-hover-bg: #f8f9fa;
+            --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --status-ready-bg: #d1e7dd;
+            --status-ready-text: #0f5132;
+            --status-approved-bg: #198754;
+            --status-approved-text: white;
+            --status-draft-bg: #fff3cd;
+            --status-draft-text: #664d03;
+            --status-deprecated-bg: #f8d7da;
+            --status-deprecated-text: #842029;
+            --badge-sp5-bg: #4472C4;
+            --badge-sp5-text: white;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3399ff;
+            --background-color: #0f172a;
+            --card-background: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border-color: #334155;
+            --table-header-bg: #334155;
+            --table-hover-bg: #283a5a;
+            --box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            --status-ready-bg: #0f5132;
+            --status-ready-text: #d1e7dd;
+            --status-approved-bg: #0d6e3f;
+            --status-approved-text: white;
+            --status-draft-bg: #664d03;
+            --status-draft-text: #fff3cd;
+            --status-deprecated-bg: #842029;
+            --status-deprecated-text: #f8d7da;
+            --badge-sp5-bg: #5583D5;
+            --badge-sp5-text: white;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            transition: background-color 0.2s ease;
+        }
+
+        .test-cases-container {
+            margin-top: 20px;
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+        }
+        
+        .test-cases-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .test-cases-header h2 {
+            margin-bottom: 0;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 1000;
+        }
+        
+        .controls-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filters-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-item {
+            min-width: 150px;
+        }
+        
+        .search-container {
+            position: relative;
+            min-width: 250px;
+        }
+        
+        .search-container i {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            color: var(--text-secondary);
+        }
+        
+        #searchInput {
+            padding-left: 35px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            background-color: var(--card-background);
+            color: var(--text-primary);
+        }
+
+        select.form-select {
+            background-color: var(--card-background);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+        
+        .test-cases-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 10px;
+            color: var(--text-primary);
+        }
+        
+        .test-cases-table th {
+            background-color: var(--table-header-bg);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            user-select: none;
+        }
+        
+        .test-cases-table th.sortable {
+            cursor: pointer;
+        }
+        
+        .test-cases-table th.sortable:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .test-cases-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+        
+        .test-cases-table tr:hover {
+            background-color: var(--table-hover-bg);
+        }
+
+        .resize-handle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            cursor: col-resize;
+            z-index: 1;
+        }
+
+        th {
+            position: relative;
+        }
+        
+        .test-cases-table-container {
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+            transition: max-height 0.3s ease;
+        }
+        
+        .large-grid {
+            max-height: 1000px;
+        }
+        
+        .key-column {
+            font-family: monospace;
+            font-weight: 500;
+        }
+        
+        .status-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .status-ready {
+            background-color: var(--status-ready-bg);
+            color: var(--status-ready-text);
+        }
+        
+        .status-approved {
+            background-color: var(--status-approved-bg);
+            color: var(--status-approved-text);
+        }
+        
+        .status-draft {
+            background-color: var(--status-draft-bg);
+            color: var(--status-draft-text);
+        }
+        
+        .status-deprecated {
+            background-color: var(--status-deprecated-bg);
+            color: var(--status-deprecated-text);
+        }
+        
+        .pagination-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .pagination-info {
+            color: var(--text-secondary);
+        }
+        
+        .pagination {
+            margin-bottom: 0;
+        }
+        
+        .page-link {
+            background-color: var(--card-background);
+            color: var(--primary-color);
+            border-color: var(--border-color);
+        }
+        
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .loading-indicator {
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        }
+        
+        .badge-sp5 {
+            background-color: var(--badge-sp5-bg);
+            color: var(--badge-sp5-text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .icon-info {
+            color: var(--primary-color);
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        
+        .version-badge {
+            background-color: var(--table-header-bg);
+            color: var(--text-primary);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .latest-version {
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .latest-version::after {
+            content: "★";
+            color: var(--primary-color);
+            margin-left: 5px;
+            font-size: 14px;
+        }
+        
+        .checkbox-column {
+            width: 40px;
+            text-align: center;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="logged-in">
+    {% include 'nav_menu.html' %}
+    
+    <div class="container-fluid px-4">
+        <div class="test-cases-container">
+            <div class="test-cases-header">
+                <h2><i class="fas fa-tasks me-2"></i>Test Cases</h2>
+            </div>
+            
+            <div class="controls-container">
+                <div class="filters-container">
+                    <div class="filter-item">
+                        <select id="stateFilter" class="form-select form-select-sm">
+                            <option value="">All States</option>
+                            <option value="Ready for Event">Ready for Event</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Draft">Draft</option>
+                            <option value="Deprecated">Deprecated</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="versionFilter" class="form-select form-select-sm">
+                            <option value="all">All Versions</option>
+                            <option value="latest" selected>Latest Version Only</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="pageSizeSelector" class="form-select form-select-sm">
+                            <option value="25">25 items per page</option>
+                            <option value="50">50 items per page</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search..." class="form-control form-control-sm">
+                </div>
+            </div>
+            
+            <div class="test-cases-table-container">
+                <table class="test-cases-table">
+                    <thead>
+                        <tr>
+                            <th class="checkbox-column"><input type="checkbox" id="selectAll"></th>
+                            <th class="sortable" data-sort="key">Key <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="name">Name <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="state">State <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="version">Version <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="createdOn">Created On <i class="fas fa-sort"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody id="testCasesTableBody">
+                        <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+                <div id="loadingIndicator" class="loading-indicator">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div id="noResults" class="no-results d-none">
+                    <p>No test cases found matching your criteria.</p>
+                </div>
+            </div>
+            
+            <div class="pagination-container">
+                <div class="pagination-info">
+                    Showing <span id="currentRangeStart">0</span> to <span id="currentRangeEnd">0</span> of <span id="totalItems">0</span> test cases
+                </div>
+                <nav aria-label="Test cases pagination">
+                    <ul class="pagination pagination-sm" id="paginationContainer">
+                        <li class="page-item disabled" id="prevPageButton">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <!-- Page numbers will be inserted here -->
+                        <li class="page-item disabled" id="nextPageButton">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Test case data management
+        let allTestCases = [];
+        let filteredTestCases = [];
+        let currentPage = 1;
+        let itemsPerPage = 25;
+        let currentSortField = 'key';
+        let sortDirection = 'asc';
+        let latestVersionsByKey = {}; // Store the latest version number for each test case key
+        
+        // Function to determine if a test case is the latest version
+        function isLatestTestCaseVersion(testCase) {
+            // If we don't have any version information, consider it the latest
+            if (!latestVersionsByKey[testCase.key]) {
+                return true;
+            }
+            
+            // Compare with stored latest version
+            return parseInt(testCase.version) === latestVersionsByKey[testCase.key];
+        }
+        
+        // Fetch test cases data
+        async function fetchTestCases() {
+            try {
+                const response = await fetch('/static/test_cases.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch test cases data');
+                }
+                
+                const data = await response.json();
+                
+                // Process the data
+                allTestCases = data.map(testCase => {
+                    // Extract the key from the JSON
+                    const key = testCase.key || '';
+                    
+                    // Extract version info
+                    let versionNumber = '0';  // Default version is 0 for cases with no version
+                    let createdOn = '';
+                    if (testCase.version && typeof testCase.version === 'object') {
+                        versionNumber = testCase.version.number || '1';
+                        createdOn = testCase.version.createdOn || '';
+                        
+                        // Format the created date if it exists
+                        if (createdOn) {
+                            try {
+                                const date = new Date(createdOn);
+                                createdOn = date.toLocaleDateString();
+                            } catch (e) {
+                                console.log('Invalid date format:', createdOn);
+                            }
+                        }
+                    }
+                    
+                    return {
+                        key: key,
+                        name: testCase.name || '',
+                        state: testCase.state || 'ReadyForEvent',
+                        version: versionNumber,
+                        createdOn: createdOn,
+                        raw: testCase // Keep the original data for reference
+                    };
+                });
+                
+                // Identify and track the latest version of each test case
+                const testCasesByKey = {};
+                allTestCases.forEach(testCase => {
+                    const key = testCase.key;
+                    if (!testCasesByKey[key]) {
+                        testCasesByKey[key] = [];
+                    }
+                    testCasesByKey[key].push(testCase);
+                });
+                
+                // Store the latest version number for each test case key
+                for (const [key, versions] of Object.entries(testCasesByKey)) {
+                    versions.sort((a, b) => parseInt(b.version) - parseInt(a.version));
+                    latestVersionsByKey[key] = parseInt(versions[0].version);
+                }
+                
+                // Apply initial filters (specifically for version, since it defaults to "latest")
+                applyFilters();
+                
+            } catch (error) {
+                console.error('Error fetching test cases:', error);
+                document.getElementById('loadingIndicator').classList.add('d-none');
+                document.getElementById('noResults').classList.remove('d-none');
+                document.getElementById('noResults').textContent = 'Error loading test cases data. Please try again later.';
+            }
+        }
+        
+        // Update table with filtered and paginated data
+        function updateTable() {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, filteredTestCases.length);
+            const tableBody = document.getElementById('testCasesTableBody');
+            
+            // Clear existing rows
+            tableBody.innerHTML = '';
+            
+            // Hide loading indicator
+            document.getElementById('loadingIndicator').classList.add('d-none');
+            
+            // Show no results message if needed
+            if (filteredTestCases.length === 0) {
+                document.getElementById('noResults').classList.remove('d-none');
+            } else {
+                document.getElementById('noResults').classList.add('d-none');
+                
+                // Add rows for current page
+                for (let i = startIndex; i < endIndex; i++) {
+                    const testCase = filteredTestCases[i];
+                    const row = document.createElement('tr');
+                    
+                    // Create checkbox column
+                    const checkboxCell = document.createElement('td');
+                    checkboxCell.className = 'checkbox-column';
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'row-checkbox';
+                    checkbox.dataset.key = testCase.key;
+                    checkboxCell.appendChild(checkbox);
+                    
+                    // Create key column
+                    const keyCell = document.createElement('td');
+                    keyCell.className = 'key-column';
+                    keyCell.textContent = testCase.key;
+                    
+                    // Create name column
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = testCase.name;
+                    
+                    // Create state column
+                    const stateCell = document.createElement('td');
+                    const stateTag = document.createElement('span');
+                    stateTag.className = 'status-tag';
+                    
+                    // Format the state for display
+                    let displayState = testCase.state;
+                    if (displayState === 'ReadyForEvent') {
+                        displayState = 'Ready for Event';
+                        stateTag.classList.add('status-ready');
+                    } else if (displayState === 'Approved') {
+                        stateTag.classList.add('status-approved');
+                    } else if (displayState === 'Draft') {
+                        stateTag.classList.add('status-draft');
+                    } else if (displayState === 'Deprecated') {
+                        stateTag.classList.add('status-deprecated');
+                    }
+                    
+                    stateTag.textContent = displayState;
+                    stateCell.appendChild(stateTag);
+                    
+                    // Create version column
+                    const versionCell = document.createElement('td');
+                    const versionBadge = document.createElement('span');
+                    
+                    // Check if this is the latest version
+                    const isLatestVersion = isLatestTestCaseVersion(testCase);
+                    
+                    versionBadge.className = isLatestVersion ? 'version-badge latest-version' : 'version-badge';
+                    versionBadge.textContent = testCase.version;
+                    versionCell.appendChild(versionBadge);
+                    
+                    // Create createdOn column
+                    const createdOnCell = document.createElement('td');
+                    createdOnCell.textContent = testCase.createdOn || '';
+                    
+                    // Add all cells to row
+                    row.appendChild(checkboxCell);
+                    row.appendChild(keyCell);
+                    row.appendChild(nameCell);
+                    row.appendChild(stateCell);
+                    row.appendChild(versionCell);
+                    row.appendChild(createdOnCell);
+                    
+                    // Add row to table
+                    tableBody.appendChild(row);
+                }
+            }
+            
+            // Update pagination info
+            document.getElementById('currentRangeStart').textContent = filteredTestCases.length > 0 ? startIndex + 1 : 0;
+            document.getElementById('currentRangeEnd').textContent = endIndex;
+            document.getElementById('totalItems').textContent = filteredTestCases.length;
+            
+            // Update pagination controls
+            updatePagination();
+        }
+        
+        // Apply filters and search
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const stateFilter = document.getElementById('stateFilter').value;
+            const versionFilter = document.getElementById('versionFilter').value;
+            
+            // Group test cases by key to identify latest versions
+            const testCasesByKey = {};
+            allTestCases.forEach(testCase => {
+                const key = testCase.key;
+                if (!testCasesByKey[key]) {
+                    testCasesByKey[key] = [];
+                }
+                testCasesByKey[key].push(testCase);
+            });
+            
+            // Create a map of latest versions for each key
+            const latestVersionByKey = {};
+            Object.entries(testCasesByKey).forEach(([key, versions]) => {
+                versions.sort((a, b) => parseInt(b.version) - parseInt(a.version));
+                latestVersionByKey[key] = versions[0];
+            });
+            
+            // Apply filters with proper AND logic
+            let tempFiltered = allTestCases.filter(testCase => {
+                // Format state for comparison
+                let displayState = testCase.state;
+                if (displayState === 'ReadyForEvent') {
+                    displayState = 'Ready for Event';
+                }
+                
+                // Apply search term
+                const matchesSearch = searchTerm === '' ||
+                    testCase.key.toLowerCase().includes(searchTerm) ||
+                    testCase.name.toLowerCase().includes(searchTerm);
+                
+                // Apply state filter
+                const matchesState = stateFilter === '' || displayState === stateFilter;
+                
+                // Apply version filter with AND logic
+                let matchesVersionFilter = true;
+                if (versionFilter === 'latest') {
+                    // Only include if this is the latest version of this key
+                    const latestVersion = latestVersionByKey[testCase.key];
+                    matchesVersionFilter = (latestVersion && latestVersion.version === testCase.version);
+                }
+                
+                // All conditions must be true (AND logic)
+                return matchesSearch && matchesState && matchesVersionFilter;
+            });
+            
+            filteredTestCases = tempFiltered;
+            
+            // Sort filtered cases
+            sortTestCases();
+            
+            // Reset to first page
+            currentPage = 1;
+            updateTable();
+        }
+        
+        // Sort test cases
+        function sortTestCases() {
+            filteredTestCases.sort((a, b) => {
+                let valA = a[currentSortField];
+                let valB = b[currentSortField];
+                
+                if (typeof valA === 'string') valA = valA.toLowerCase();
+                if (typeof valB === 'string') valB = valB.toLowerCase();
+                
+                if (valA < valB) return sortDirection === 'asc' ? -1 : 1;
+                if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
+                return 0;
+            });
+        }
+        
+        // Update pagination controls
+        function updatePagination() {
+            const maxPage = Math.ceil(filteredTestCases.length / itemsPerPage);
+            const paginationContainer = document.getElementById('paginationContainer');
+            const pageButtons = Array.from(paginationContainer.querySelectorAll('.page-number'));
+            
+            // Remove old page number buttons
+            pageButtons.forEach(button => button.remove());
+            
+            // Add page number buttons (max 5 pages showing)
+            if (maxPage > 1) {
+                let startPage = Math.max(1, currentPage - 2);
+                let endPage = Math.min(maxPage, startPage + 4);
+                
+                // Adjust if we're near the end
+                if (endPage === maxPage) {
+                    startPage = Math.max(1, endPage - 4);
+                }
+                
+                // Insert before the next button
+                const nextButton = document.getElementById('nextPageButton');
+                
+                for (let i = startPage; i <= endPage; i++) {
+                    const pageItem = document.createElement('li');
+                    pageItem.className = 'page-item page-number';
+                    if (i === currentPage) {
+                        pageItem.classList.add('active');
+                    }
+                    
+                    const pageLink = document.createElement('a');
+                    pageLink.className = 'page-link';
+                    pageLink.href = '#';
+                    pageLink.textContent = i;
+                    pageLink.dataset.page = i;
+                    
+                    pageLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        currentPage = parseInt(e.target.dataset.page);
+                        updateTable();
+                    });
+                    
+                    pageItem.appendChild(pageLink);
+                    paginationContainer.insertBefore(pageItem, nextButton);
+                }
+            }
+            
+            // Update prev/next button states
+            document.getElementById('prevPageButton').classList.toggle('disabled', currentPage === 1);
+            document.getElementById('nextPageButton').classList.toggle('disabled', currentPage >= maxPage);
+        }
+        
+        // Theme toggling
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        // Column resizing functionality
+        function setupColumnResizing() {
+            const table = document.querySelector('.test-cases-table');
+            const headers = table.querySelectorAll('th');
+            
+            headers.forEach(header => {
+                // Skip checkbox column for resizing
+                if (header.classList.contains('checkbox-column')) {
+                    return;
+                }
+                
+                // Create and append resize handle
+                const resizeHandle = document.createElement('div');
+                resizeHandle.className = 'resize-handle';
+                header.appendChild(resizeHandle);
+                
+                let startX, startWidth;
+                
+                resizeHandle.addEventListener('mousedown', function(e) {
+                    startX = e.pageX;
+                    startWidth = header.offsetWidth;
+                    
+                    // Add mousemove and mouseup event listeners
+                    document.addEventListener('mousemove', resize);
+                    document.addEventListener('mouseup', stopResize);
+                    
+                    // Prevent text selection during resize
+                    e.preventDefault();
+                });
+                
+                function resize(e) {
+                    const width = startWidth + (e.pageX - startX);
+                    
+                    // Set a minimum width to prevent columns from becoming too narrow
+                    if (width > 50) {
+                        header.style.width = `${width}px`;
+                        header.style.minWidth = `${width}px`;
+                    }
+                }
+                
+                function stopResize() {
+                    document.removeEventListener('mousemove', resize);
+                    document.removeEventListener('mouseup', stopResize);
+                }
+            });
+        }
+
+        // Check for saved theme preference
+        function loadThemePreference() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // If no saved preference, use system preference
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        // Set up event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load theme preference
+            loadThemePreference();
+            
+            // Fetch data
+            fetchTestCases();
+            
+            // Set up column resizing after table is populated
+            setTimeout(setupColumnResizing, 1000);
+            
+            // Set up search and filter handlers
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+            document.getElementById('stateFilter').addEventListener('change', applyFilters);
+            document.getElementById('versionFilter').addEventListener('change', applyFilters);
+            
+            // Set up page size selector
+            document.getElementById('pageSizeSelector').addEventListener('change', (e) => {
+                itemsPerPage = parseInt(e.target.value);
+                currentPage = 1; // Reset to first page when changing page size
+                
+                // Adjust the grid height based on selected page size
+                const tableContainer = document.querySelector('.test-cases-table-container');
+                if (itemsPerPage === 50) {
+                    tableContainer.classList.add('large-grid');
+                } else {
+                    tableContainer.classList.remove('large-grid');
+                }
+                
+                updateTable();
+            });
+            
+            // Set up pagination handlers
+            document.getElementById('prevPageButton').addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    updateTable();
+                }
+            });
+            
+            document.getElementById('nextPageButton').addEventListener('click', (e) => {
+                e.preventDefault();
+                const maxPage = Math.ceil(filteredTestCases.length / itemsPerPage);
+                if (currentPage < maxPage) {
+                    currentPage++;
+                    updateTable();
+                }
+            });
+            
+            // Set up sorting
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.addEventListener('click', () => {
+                    const field = th.dataset.sort;
+                    
+                    // Toggle direction if same field, otherwise default to asc
+                    if (field === currentSortField) {
+                        sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+                    } else {
+                        currentSortField = field;
+                        sortDirection = 'asc';
+                    }
+                    
+                    // Update sort icons
+                    document.querySelectorAll('th.sortable i').forEach(icon => {
+                        icon.className = 'fas fa-sort';
+                    });
+                    
+                    const icon = th.querySelector('i');
+                    icon.className = `fas fa-sort-${sortDirection === 'asc' ? 'up' : 'down'}`;
+                    
+                    // Apply sort
+                    sortTestCases();
+                    updateTable();
+                });
+            });
+            
+            // Select all checkbox
+            document.getElementById('selectAll').addEventListener('change', (e) => {
+                const checked = e.target.checked;
+                document.querySelectorAll('.row-checkbox').forEach(checkbox => {
+                    checkbox.checked = checked;
+                });
+            });
+        });

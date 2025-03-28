@@ -6,7 +6,7 @@ source /Users/fjmoreno72/WORK/IONIC2/.venv/bin/activate
 
 cd /Users/fjmoreno72/WORK/IONIC2
 
-nohup python app-ionic.py > app-ionic.log 2>&1 &
+nohup python app_ionic.py > app_ionic.log 2>&1 &
 
 sleep 5
 

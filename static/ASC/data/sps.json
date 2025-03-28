@@ -1,0 +1,133 @@
+[
+  {
+    "name": "NATO Interoperability Real-Time Information Services (NIRIS)",
+    "description": "NIRIS is an Enabling Service that is ensuring proper situational awareness via the provision of a set of services to enable data collection, dissemination and transformation. These services work to support tactical information in an interoperable manner based on NATO and commercial standards (e.g. Tactical Data Links (TDL), OTH-Gold, Friendly Force Tracking (FFT), NVG, Civilian Convoy and more).",
+    "versions": [
+      "4.2.1",
+      "4.3.0"
+    ],
+    "id": "SP-0001"
+  },
+  {
+    "name": "Integrated Command and Control - Client (ICC Client)",
+    "description": "ICC is an integrated Command, Control, Communications and Intelligence/Information (C3I2) system that provides information management and decision support to NATO air operations activities during peacetime, exercise and crisis.",
+    "versions": [
+      "3.5.2",
+      "3.5.3"
+    ],
+    "id": "SP-0002"
+  },
+  {
+    "name": "NATO Common Operational Picture (NCOP)",
+    "description": "NATO Common Operational Picture (NCOP)",
+    "versions": [
+      "2.0.6",
+      "2.0.7"
+    ],
+    "id": "SP-0003"
+  },
+  {
+    "name": "NATO SHIP SHORE SHIP BUFFER (SSSB)",
+    "description": "The Ship Shore Ship Buffer provides:\n- Seamless, resilient, flexible bearer services and connectivity between Operational Forces and NATO commands, supporting operations amongst static and deployed units.\n- Effective non-SATCOM wireless transmission services at Line Of Sight (LOS) and Beyond Line Of Sight (BLOS).\n- Exploitation of the full electromagnetic spectrum, in HF, UHF and VHF frequencies ranges,\n- Survivable wireless service capability.\n- Deployment of wireless capability throughout and beyond the NATO Area of Responsibility in accordance with NATO Ministerial Guidance.\n- Management and adaptation of wireless-system and service configurations to provide maximum capacity consistent with the physical and threat environment.\nThe above-mentioned capabilities are provided via the SSSB technical services.",
+    "versions": [
+      "3.0.0"
+    ],
+    "id": "SP-0004"
+  },
+  {
+    "name": "CRC System Interface (CSI)",
+    "description": "CRC System Interface is an application developed by NCIA that provides among other Data Link COI services and ensures the correct SIP for the Recognized Air Picture",
+    "versions": [
+      "18.7",
+      "18.9"
+    ],
+    "id": "SP-0005"
+  },
+  {
+    "name": "NCS JChat Client",
+    "description": "Sponsor: SHAPE SDP SDF (Air C2 POW)\nManufacturer: NCIA\nProduct name: JChat Client",
+    "versions": [
+      "2.5.0"
+    ],
+    "id": "SP-0006"
+  },
+  {
+    "name": "M-Link",
+    "description": "The M-Link User Server is Isode's core Instant Messaging and Presence server based on the XMPP (extensible Messaging and Presence Protocol) standard. Its feature set makes it ideal for deployments where security, reliability and special functionality are vital as well as for large public deployments.",
+    "versions": [
+      "17.0v24",
+      "17.0v25"
+    ],
+    "id": "SP-0007"
+  },
+  {
+    "name": "Joint Operations Center Watchkeeper's Log (JOCWatch)",
+    "description": "JOCWatch is a web based electronic Event Log. It is designed to support watch keepers and shift directors in Joint Operations Centres (JOCs) to record and disseminate incident information in a standardised and structured manner. Theatre-wide JOCWatch capability facilitates greater situational awareness for decision makers from subordinate units to headquarters (HQ) and provides event data for analysis of the battle space for future adaptations of operational tactics, techniques and procedures.\n\nJOCWatch interoperates with several NATO and national systems to exchange and display incident data, contributing to overall situational awareness and analysis in the Area of Operations (AOO).",
+    "versions": [
+      "4.1.1"
+    ],
+    "id": "SP-0008"
+  },
+  {
+    "name": "Ignite Realtime Openfire",
+    "description": "Ignite Realtime Openfire XMPP Server",
+    "versions": [
+      "4.7.5"
+    ],
+    "id": "SP-0009"
+  },
+  {
+    "name": "Microsoft Windows DNS Services",
+    "description": "DNS Services  (Windows Server)",
+    "versions": [
+      "2022"
+    ],
+    "iconPath": "./image/sp/sp_icon_microsoft_windows_dns_services.jpg",
+    "id": "SP-0010"
+  },
+  {
+    "name": "Microsoft Exchange",
+    "description": "Microsoft Exchange 2019 - A robust email server solution designed for enterprises, Microsoft Exchange  provides secure, scalable, and high-performance email, calendar, and collaboration services. It includes enhanced security, improved performance, and better integration with Microsoft 365.",
+    "versions": [
+      "2029"
+    ],
+    "iconPath": "./image/sp/sp_icon_microsoft_exchange.jpg",
+    "id": "SP-0011"
+  },
+  {
+    "name": "Microsoft Outlook",
+    "description": "Microsoft Outlook 2019 -A personal information management application that is part of Microsoft Office . It serves as an email client with advanced features such as calendar scheduling, contact management, task organization, and seamless integration with Microsoft Exchange and Office 365.",
+    "versions": [
+      "2029"
+    ],
+    "iconPath": "./image/sp/sp_icon_microsoft_outlook.jpg",
+    "id": "SP-0012"
+  },
+  {
+    "name": "Symantec Mail Security for Microsoft Exchange (SMSMSE)",
+    "description": "Symantec Mail Security for Microsoft Exchange (SMSMSE) 7.10.x - A security solution designed to protect Microsoft Exchange environments from email-borne threats such as spam, phishing, viruses, and malware. It provides advanced content filtering, policy enforcement, and real-time threat detection to secure email communications.",
+    "versions": [
+      "7.10.x"
+    ],
+    "iconPath": "./image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg",
+    "id": "SP-0013"
+  },
+  {
+    "name": "Titus Data Classification",
+    "description": "Titus Data Classification 4.7 -A data classification and security solution that enables organizations to classify, label, and protect sensitive information within Microsoft Outlook, Exchange, and other enterprise applications. It helps enforce compliance, improve data security, and support regulatory requirements.",
+    "versions": [
+      "4.7"
+    ],
+    "iconPath": "./image/sp/sp_icon_titus_data_classification.jpg",
+    "id": "SP-0014"
+  },
+  {
+    "name": "NEW PRODUCT",
+    "description": "asdfsadfasdf",
+    "versions": [
+      "1",
+      "3"
+    ],
+    "id": "SP-0015"
+  }
+]

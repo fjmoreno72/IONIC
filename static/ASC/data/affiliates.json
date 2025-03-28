@@ -1,0 +1,345 @@
+[
+  {
+    "name": "Albania",
+    "type": "C",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_albania.png",
+    "id": "AFF-0001"
+  },
+  {
+    "name": "Australia",
+    "type": "C",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_australia.png",
+    "id": "AFF-0002"
+  },
+  {
+    "name": "Austria",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_austria.png",
+    "id": "AFF-0003"
+  },
+  {
+    "name": "Belgium",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_belgium.png",
+    "id": "AFF-0004"
+  },
+  {
+    "name": "Bulgaria",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_bulgaria.png",
+    "id": "AFF-0005"
+  },
+  {
+    "name": "Canada",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_canada.png",
+    "id": "AFF-0006"
+  },
+  {
+    "name": "Switzerland",
+    "type": "C",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_switzerland.png",
+    "id": "AFF-0007"
+  },
+  {
+    "name": "Czech Republic",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_czech_republic.png",
+    "id": "AFF-0008"
+  },
+  {
+    "name": "Germany",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_germany.png",
+    "id": "AFF-0009"
+  },
+  {
+    "name": "Denmark",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_denmark.png",
+    "id": "AFF-0010"
+  },
+  {
+    "name": "Spain",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_spain.png",
+    "id": "AFF-0011"
+  },
+  {
+    "name": "Estonia",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_estonia.png",
+    "id": "AFF-0012"
+  },
+  {
+    "name": "Finland",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_finland.png",
+    "id": "AFF-0013"
+  },
+  {
+    "name": "France",
+    "type": "A",
+    "environments": [],
+    "flagPath": "./image/flags/flag_france.png",
+    "id": "AFF-0014"
+  },
+  {
+    "name": "United Kingdom",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_united_kingdom.png",
+    "id": "AFF-0015"
+  },
+  {
+    "name": "Greece",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_greece.png",
+    "id": "AFF-0016"
+  },
+  {
+    "name": "Croatia",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_croatia.png",
+    "id": "AFF-0017"
+  },
+  {
+    "name": "Hungary",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_hungary.png",
+    "id": "AFF-0018"
+  },
+  {
+    "name": "Ireland",
+    "type": "C",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_ireland.png",
+    "id": "AFF-0019"
+  },
+  {
+    "name": "Iceland",
+    "type": "C",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_iceland.png",
+    "id": "AFF-0020"
+  },
+  {
+    "name": "Italy",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_italy.png",
+    "id": "AFF-0021"
+  },
+  {
+    "name": "Lithuania",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_lithuania.png",
+    "id": "AFF-0022"
+  },
+  {
+    "name": "Luxembourg",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_luxembourg.png",
+    "id": "AFF-0023"
+  },
+  {
+    "name": "Latvia",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_latvia.png",
+    "id": "AFF-0024"
+  },
+  {
+    "name": "North Macedonia",
+    "type": "C",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_north_macedonia.png",
+    "id": "AFF-0025"
+  },
+  {
+    "name": "Montenegro",
+    "type": "C",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_montenegro.png",
+    "id": "AFF-0026"
+  },
+  {
+    "name": "NATO CS",
+    "type": "A",
+    "environments": [
+      "Static",
+      "Deployable"
+    ],
+    "flagPath": "./image/flags/flag_nato_cs.png",
+    "id": "AFF-0027"
+  },
+  {
+    "name": "Netherlands",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_netherlands.png",
+    "id": "AFF-0028"
+  },
+  {
+    "name": "Norway",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_norway.png",
+    "id": "AFF-0029"
+  },
+  {
+    "name": "New Zealand",
+    "type": "C",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_new_zealand.png",
+    "id": "AFF-0030"
+  },
+  {
+    "name": "Poland",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_poland.png",
+    "id": "AFF-0031"
+  },
+  {
+    "name": "Portugal",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_portugal.png",
+    "id": "AFF-0032"
+  },
+  {
+    "name": "Romania",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_romania.png",
+    "id": "AFF-0033"
+  },
+  {
+    "name": "Slovakia",
+    "type": "B",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_slovakia.png",
+    "id": "AFF-0034"
+  },
+  {
+    "name": "Slovenia",
+    "type": "C",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_slovenia.png",
+    "id": "AFF-0035"
+  },
+  {
+    "name": "Sweden",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_sweden.png",
+    "id": "AFF-0036"
+  },
+  {
+    "name": "T\u00fcrkiye",
+    "type": "A",
+    "environments": [
+      "Static"
+    ],
+    "flagPath": "./image/flags/flag_t\u00fcrkiye.png",
+    "id": "AFF-0037"
+  },
+  {
+    "name": "United States",
+    "type": "A",
+    "environments": [
+      "Army",
+      "Navy",
+      "Joint"
+    ],
+    "flagPath": "./image/flags/flag_united_states.png",
+    "id": "AFF-0038"
+  }
+]

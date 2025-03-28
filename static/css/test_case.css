@@ -1,0 +1,461 @@
+:root {
+    --primary-color: #0d6efd;
+    --background-color: #f5f7fa;
+    --card-background: #fff;
+    --text-primary: #333;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --table-header-bg: #f8f9fa;
+    --table-hover-bg: #f8f9fa;
+    --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    --status-ready-bg: #d1e7dd;
+    --status-ready-text: #0f5132;
+    --status-approved-bg: #198754;
+    --status-approved-text: white;
+    --status-draft-bg: #fff3cd;
+    --status-draft-text: #664d03;
+    --status-deprecated-bg: #f8d7da;
+    --status-deprecated-text: #842029;
+    --status-ready-for-review-bg: #cfe2ff; /* Added blue background */
+    --status-ready-for-review-text: #084298; /* Added blue text */
+    --badge-sp5-bg: #4472C4;
+    --badge-sp5-text: white;
+}
+
+[data-theme="dark"] {
+    --primary-color: #3399ff;
+    --background-color: #0f172a;
+    --card-background: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --border-color: #334155;
+    --table-header-bg: #334155;
+    --table-hover-bg: #283a5a;
+    --box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    --status-ready-bg: #0f5132;
+    --status-ready-text: #d1e7dd;
+    --status-approved-bg: #0d6e3f;
+    --status-approved-text: white;
+    --status-draft-bg: #664d03;
+    --status-draft-text: #fff3cd;
+    --status-deprecated-bg: #842029;
+    --status-deprecated-text: #f8d7da;
+    --status-ready-for-review-bg: #084298; /* Added dark blue background */
+    --status-ready-for-review-text: #cfe2ff; /* Added dark blue text */
+    --badge-sp5-bg: #5583D5;
+    --badge-sp5-text: white;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    transition: background-color 0.2s ease;
+}
+
+.test-cases-container {
+    margin-top: 20px;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+}
+
+.test-cases-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.test-cases-header h2 {
+    margin-bottom: 0;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 1000;
+}
+
+.controls-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filters-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-item {
+    min-width: 150px;
+}
+
+.search-container {
+    position: relative;
+    min-width: 250px;
+}
+
+.search-container i {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: var(--text-secondary);
+}
+
+#searchInput {
+    padding-left: 35px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: var(--card-background);
+    color: var(--text-primary);
+}
+
+select.form-select {
+    background-color: var(--card-background);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.test-cases-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 10px;
+    color: var(--text-primary);
+}
+
+.test-cases-table th {
+    background-color: var(--table-header-bg);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    user-select: none;
+    font-size: 0.9rem;
+}
+
+.test-cases-table th.sortable {
+    cursor: pointer;
+}
+
+.test-cases-table th.sortable:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.test-cases-table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.1;
+    vertical-align: top; /* Align content to top for multi-line cells */
+}
+
+.test-cases-table tr:hover {
+    background-color: var(--table-hover-bg);
+}
+
+.resize-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 1;
+}
+
+th {
+    position: relative;
+}
+
+.test-cases-table-container {
+    overflow-x: auto;
+    max-height: 600px;
+    overflow-y: auto;
+    transition: max-height 0.3s ease;
+}
+
+.large-grid {
+    max-height: 1000px;
+}
+
+.key-column {
+    font-family: monospace; /* Restore monospace for data cells */
+    font-weight: 500;
+    font-size: 0.9rem; /* Ensure consistent font size */
+}
+
+.status-tag {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.status-ready {
+    background-color: var(--status-ready-bg);
+    color: var(--status-ready-text);
+}
+
+.status-approved {
+    background-color: var(--status-approved-bg);
+    color: var(--status-approved-text);
+}
+
+.status-draft {
+    background-color: var(--status-draft-bg);
+    color: var(--status-draft-text);
+}
+
+.status-deprecated {
+    background-color: var(--status-deprecated-bg);
+    color: var(--status-deprecated-text);
+}
+
+.status-ready-for-review { /* Added style for the new state */
+    background-color: var(--status-ready-for-review-bg);
+    color: var(--status-ready-for-review-text);
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination-info {
+    color: var(--text-secondary);
+}
+
+.pagination {
+    margin-bottom: 0;
+}
+
+.page-link {
+    background-color: var(--card-background);
+    color: var(--primary-color);
+    border-color: var(--border-color);
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.loading-indicator {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.badge-sp5 {
+    background-color: var(--badge-sp5-bg);
+    color: var(--badge-sp5-text);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.icon-info {
+    color: var(--primary-color);
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.version-badge {
+    background-color: var(--table-header-bg);
+    color: var(--text-primary);
+    padding: 1px 5px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.latest-version {
+    font-weight: bold;
+    position: relative;
+}
+
+.latest-version::after {
+    content: "★";
+    color: var(--primary-color);
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.checkbox-column {
+    width: 40px;
+    text-align: center;
+}
+
+.no-results {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Modal Styles */
+.modal-body h5 {
+    margin-top: 0.8rem; /* Reduced */
+    margin-bottom: 0.3rem; /* Reduced */
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.2rem; /* Reduced */
+    font-size: 1rem; /* Slightly smaller heading */
+}
+/* Use div for fields that might contain lists */
+.modal-body div.detail-field-content { /* Added class for specificity */
+    white-space: pre-wrap; /* Preserve whitespace and newlines */
+    font-size: 0.9rem; /* Slightly smaller text */
+    margin-bottom: 0.8rem; /* Reduced */
+    background-color: var(--table-header-bg); /* Light background for readability */
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+/* Keep p for single-line fields */
+ .modal-body p {
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    background-color: var(--table-header-bg);
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+/* Style for lists generated by markdown */
+.modal-body ul {
+    margin-top: 0; /* Reset margin for ul inside div */
+    margin-bottom: 0; /* Reset margin for ul inside div */
+    padding-left: 1.5rem; /* Indent list */
+}
+ .modal-body li {
+    margin-bottom: 0.2rem; /* Spacing between list items */
+    list-style-type: disc;
+ }
+/* Remove background/border from div if it only contains a list */
+.modal-body div.detail-field-content:has(> ul:only-child) {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+/* Adjust padding if div contains list + other text */
+ .modal-body div.detail-field-content:has(> ul) {
+     padding-bottom: 0.5rem;
+ }
+
+
+.modal-title {
+     font-weight: 600;
+}
+
+/* Print-specific styles */
+@media print {
+    body * {
+        visibility: hidden; /* Hide everything by default */
+    }
+    #testCaseModal, #testCaseModal * {
+        visibility: visible; /* Show only the modal and its content */
+    }
+    #testCaseModal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        box-shadow: none;
+        border: none;
+    }
+    .modal-dialog {
+        max-width: 100%;
+        margin: 0;
+    }
+    .modal-content {
+        border: none;
+        box-shadow: none;
+    }
+    .modal-header, .modal-footer {
+        display: none; /* Hide modal header and footer when printing */
+    }
+    .modal-body {
+        padding: 0;
+    }
+     .modal-body h5 {
+        margin-top: 0.4rem; /* Reduced */
+        font-size: 12pt; /* Adjust font size for print */
+    }
+    .modal-body p, .modal-body div.detail-field-content, .modal-body li {
+        font-size: 10pt; /* Adjust font size for print */
+        background-color: #fff !important; /* Ensure white background for print */
+        border: 1px solid #ccc;
+        padding: 5px; /* Adjust padding for print */
+        white-space: pre-wrap; /* Ensure wrapping */
+    }
+     .modal-body div.detail-field-content, .modal-body ul {
+         border: none; /* Remove border from container div/ul */
+         padding: 0;
+     }
+     .modal-body ul {
+         padding-left: 20px; /* Indent list for print */
+     }
+     .modal-body li {
+         border: none; /* Remove border from list items */
+         padding: 2px 0;
+         list-style-type: disc !important;
+     }
+
+    /* Ensure dark theme styles don't interfere with printing */
+    [data-theme="dark"] .modal-body p,
+    [data-theme="dark"] .modal-body div.detail-field-content,
+    [data-theme="dark"] .modal-body li {
+         background-color: #fff !important;
+         color: #000;
+    }
+     [data-theme="dark"] .modal-body li {
+         border: none;
+     }
+    [data-theme="dark"] .modal-body h5 {
+         color: #000;
+         border-bottom: 1px solid #ccc;
+    }
+    /* Ensure tables print correctly */
+    .modal-body table, .modal-body th, .modal-body td {
+        border: 1px solid #ccc !important;
+        color: #000 !important;
+        background-color: #fff !important;
+        font-size: 9pt;
+    }
+     .modal-body th {
+         font-weight: bold;
+     }
+}

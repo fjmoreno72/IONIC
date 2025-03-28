@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Data Link Server",
+    "description": "Implements:JRE Functions, Security and Access Control andTime Syncronization and Coordination",
+    "iconPath": "./image/gp/gp_icon_data_link_server.jpg",
+    "id": "GP-0001"
+  },
+  {
+    "name": "Data Link Server Hub",
+    "description": "Implements: Data Link Hub Functions (JREU)",
+    "iconPath": "./image/gp/gp_icon_data_link_server_hub.jpg",
+    "id": "GP-0002"
+  },
+  {
+    "name": "Data Link Server Gateway",
+    "description": "Implements: Data Link Gateway Functions (FJUG)(JRE JU)",
+    "iconPath": "./image/gp/gp_icon_data_link_server_gateway.jpg",
+    "id": "GP-0003"
+  },
+  {
+    "name": "Data Link Server Consumer",
+    "description": "Implements: TDL Display and Visualisation",
+    "iconPath": "./image/gp/gp_icon_data_link_server_consumer.jpg",
+    "id": "GP-0004"
+  },
+  {
+    "name": "XMPP Server",
+    "description": "Generic XMPP Server - Implement all Chat Functionality from Server point of View",
+    "iconPath": "./image/gp/gp_icon_xmpp_server.jpg",
+    "id": "GP-0005"
+  },
+  {
+    "name": "XMPP Client",
+    "description": "Chat Client - Works with XMPP Server - Implement Client fucntions and Display",
+    "iconPath": "./image/gp/gp_icon_xmpp_client.jpg",
+    "id": "GP-0006"
+  },
+  {
+    "name": "DNS Root Server",
+    "description": "DNS Root Server",
+    "iconPath": "./image/gp/gp_icon_dns_root_server.jpg",
+    "id": "GP-0007"
+  },
+  {
+    "name": "DNS \ufeffZone Authoritative",
+    "description": "DNS \ufeffZone Authoritative",
+    "iconPath": "./image/gp/gp_icon_dns_\ufeffzone_authoritative.jpg",
+    "id": "GP-0008"
+  },
+  {
+    "name": "D\ufeffNS Resolvers",
+    "description": "D\ufeffNS Resolvers",
+    "iconPath": "./image/gp/gp_icon_d\ufeffns_resolvers.jpg",
+    "id": "GP-0009"
+  },
+  {
+    "name": "Email Server",
+    "description": "Email Server - A software or system that handles the sending, receiving, storing, and forwarding of emails for users. It manages email communication using protocols like SMTP, IMAP, and POP3.",
+    "iconPath": "./image/gp/gp_icon_email_server.jpg",
+    "id": "GP-0010"
+  },
+  {
+    "name": "Email Client",
+    "description": "Email Client - A software application used to access, send, receive, and manage emails. It connects to an email server to retrieve and send messages, often including additional features like calendar integration, contacts, and task management.",
+    "iconPath": "./image/gp/gp_icon_email_client.jpg",
+    "id": "GP-0011"
+  },
+  {
+    "name": "Web Server",
+    "description": "",
+    "iconPath": "./image/gp/gp_icon_web_server.jpg",
+    "id": "GP-0012"
+  }
+]

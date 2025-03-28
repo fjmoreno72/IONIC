@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve IONIC2 application
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/iocore/IONIC2
+Environment="PATH=/home/iocore/IONIC2/venv/bin"
+ExecStart=/home/iocore/IONIC2/venv/bin/gunicorn --workers 4 --timeout 600 --keep-alive 600 --bind 0.0.0.0:5005 app_ionic:app
+
+[Install]
+WantedBy=multi-user.target

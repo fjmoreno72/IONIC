@@ -101,11 +101,7 @@
         "ierNumber": "SP5-IER-412",
         "ierName": "Mission Report (MISREP)",
         "idpTinName": "IDP-1232 * -> SP5-TIN-122",
-        "tinName": "Presence Sharing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Presence Sharing"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -113,11 +109,7 @@
         "ierNumber": "SP5-IER-412",
         "ierName": "Mission Report (MISREP)",
         "idpTinName": "IDP-1232 * -> SP5-TIN-124",
-        "tinName": "Information Discovery",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Information Discovery"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -125,11 +117,7 @@
         "ierNumber": "SP5-IER-412",
         "ierName": "Mission Report (MISREP)",
         "idpTinName": "IDP-1232 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -137,11 +125,7 @@
         "ierNumber": "SP5-IER-412",
         "ierName": "Mission Report (MISREP)",
         "idpTinName": "IDP-1232 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -149,11 +133,7 @@
         "ierNumber": "SP5-IER-412",
         "ierName": "Mission Report (MISREP)",
         "idpTinName": "IDP-1232 -> SP5-TIN-369",
-        "tinName": "Instant Messaging and Presence",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging and Presence"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -281,11 +261,7 @@
         "ierNumber": "SP5-IER-415",
         "ierName": "Air Related Alerts",
         "idpTinName": "IDP-1242 -> SP5-TIN-364",
-        "tinName": "JREAP X Messages Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "JREAP X Messages Exchange"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -401,11 +377,7 @@
         "ierNumber": "SP5-IER-467",
         "ierName": "Airspace Control Plan",
         "idpTinName": "IDP-1235 -> SP5-TIN-183",
-        "tinName": "Call Routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Call Routing"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -437,11 +409,7 @@
         "ierNumber": "SP5-IER-468",
         "ierName": "Ground-to-Air Information Exchange",
         "idpTinName": "IDP-884 -> SP5-TIN-172",
-        "tinName": "Consume Link-16 messages",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Consume Link-16 messages"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -449,11 +417,7 @@
         "ierNumber": "SP5-IER-468",
         "ierName": "Ground-to-Air Information Exchange",
         "idpTinName": "IDP-885 -> SP5-TIN-174",
-        "tinName": "Consume FFI MTF messages",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Consume FFI MTF messages"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -461,11 +425,7 @@
         "ierNumber": "SP5-IER-468",
         "ierName": "Ground-to-Air Information Exchange",
         "idpTinName": "IDP-886 -> SP5-TIN-173",
-        "tinName": "Provide Link-16 messages",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Provide Link-16 messages"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -521,11 +481,7 @@
         "ierNumber": "SP5-IER-492",
         "ierName": "IFF/SIF Instructions",
         "idpTinName": "IDP-873 -> SP5-TIN-183",
-        "tinName": "Call Routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Call Routing"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -617,11 +573,7 @@
         "ierNumber": "SP5-IER-699",
         "ierName": "Recognized Air Picture",
         "idpTinName": "IDP-1236 -> SP5-TIN-173",
-        "tinName": "Provide Link-16 messages",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Provide Link-16 messages"
     },
     {
         "piNumber": "SP5-PI-AIRC2",
@@ -677,11 +629,7 @@
         "ierNumber": "SP5-IER-111",
         "ierName": "Request for Support (Civ-Mil)",
         "idpTinName": "IDP-501 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -689,11 +637,7 @@
         "ierNumber": "SP5-IER-114",
         "ierName": "CIMIC assessments",
         "idpTinName": "IDP-552 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -701,11 +645,7 @@
         "ierNumber": "SP5-IER-116",
         "ierName": "Civil Environment Picture",
         "idpTinName": "IDP-551 -> SP5-TIN-1",
-        "tinName": "Geospatial Data Dissemination",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Geospatial Data Dissemination"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -713,11 +653,7 @@
         "ierNumber": "SP5-IER-117",
         "ierName": "Mission Plan",
         "idpTinName": "IDP-502 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -725,11 +661,7 @@
         "ierNumber": "SP5-IER-119",
         "ierName": "Mission Plan (Civ to Mil)",
         "idpTinName": "IDP-503 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -737,11 +669,7 @@
         "ierNumber": "SP5-IER-159",
         "ierName": "CIMIC Reports",
         "idpTinName": "IDP-504 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -749,11 +677,7 @@
         "ierNumber": "SP5-IER-161",
         "ierName": "Geospatial Information (Mil to Civ)",
         "idpTinName": "IDP-505 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -761,11 +685,7 @@
         "ierNumber": "SP5-IER-161",
         "ierName": "Geospatial Information (Mil to Civ)",
         "idpTinName": "IDP-554 -> SP5-TIN-1",
-        "tinName": "Geospatial Data Dissemination",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Geospatial Data Dissemination"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -773,11 +693,7 @@
         "ierNumber": "SP5-IER-162",
         "ierName": "Geospatial Information (Civ to Mil)",
         "idpTinName": "IDP-506 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -785,11 +701,7 @@
         "ierNumber": "SP5-IER-162",
         "ierName": "Geospatial Information (Civ to Mil)",
         "idpTinName": "IDP-553 -> SP5-TIN-1",
-        "tinName": "Geospatial Data Dissemination",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Geospatial Data Dissemination"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -797,11 +709,7 @@
         "ierNumber": "SP5-IER-646",
         "ierName": "Request for Information (CIMIC)",
         "idpTinName": "IDP-1046 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -809,11 +717,7 @@
         "ierNumber": "SP5-IER-647",
         "ierName": "Create Specific Information Requirements (SIR)",
         "idpTinName": "IDP-1047 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -821,11 +725,7 @@
         "ierNumber": "SP5-IER-648",
         "ierName": "Create Civil Prioritized Intelligence Requirements (PIR)",
         "idpTinName": "IDP-1048 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -833,11 +733,7 @@
         "ierNumber": "SP5-IER-649",
         "ierName": "Share CIMIC Reports Internally",
         "idpTinName": "IDP-1050 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -845,11 +741,7 @@
         "ierNumber": "SP5-IER-650",
         "ierName": "Share CIMIC Collection Plan",
         "idpTinName": "IDP-1051 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -857,11 +749,7 @@
         "ierNumber": "SP5-IER-651",
         "ierName": "Share Collated Civil Environment Data",
         "idpTinName": "IDP-1052 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -869,11 +757,7 @@
         "ierNumber": "SP5-IER-652",
         "ierName": "Share CIMIC Assessment",
         "idpTinName": "IDP-1053 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -881,11 +765,7 @@
         "ierNumber": "SP5-IER-653",
         "ierName": "Exchange CIMIC Collection Plan with Collection Assets",
         "idpTinName": "IDP-1054 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -893,11 +773,7 @@
         "ierNumber": "SP5-IER-654",
         "ierName": "Exchange Civil Environment Picture",
         "idpTinName": "IDP-1092 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -905,11 +781,7 @@
         "ierNumber": "SP5-IER-654",
         "ierName": "Exchange Civil Environment Picture",
         "idpTinName": "IDP-1093 -> SP5-TIN-1",
-        "tinName": "Geospatial Data Dissemination",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Geospatial Data Dissemination"
     },
     {
         "piNumber": "SP5-PI-CIMIC",
@@ -917,11 +789,7 @@
         "ierNumber": "SP5-IER-99",
         "ierName": "Intelligence Request For Information",
         "idpTinName": "IDP-310 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -977,11 +845,7 @@
         "ierNumber": "SP5-IER-472",
         "ierName": "MSOC-annotated CIS Security Report",
         "idpTinName": "IDP-945 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -989,11 +853,7 @@
         "ierNumber": "SP5-IER-500",
         "ierName": "Escalated CIS Security incident report",
         "idpTinName": "IDP-943 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1013,11 +873,7 @@
         "ierNumber": "SP5-IER-501",
         "ierName": "Multinational CIS Security Incident Ticket",
         "idpTinName": "IDP-940 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1025,11 +881,7 @@
         "ierNumber": "SP5-IER-501",
         "ierName": "Multinational CIS Security Incident Ticket",
         "idpTinName": "IDP-940 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1049,11 +901,7 @@
         "ierNumber": "SP5-IER-503",
         "ierName": "Multinational CIS Security Incident Ticket",
         "idpTinName": "IDP-1033 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1061,11 +909,7 @@
         "ierNumber": "SP5-IER-594",
         "ierName": "SPIF Download",
         "idpTinName": "IDP-966 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1097,11 +941,7 @@
         "ierNumber": "SP5-IER-630",
         "ierName": "Consolidated threat assessment",
         "idpTinName": "IDP-1168 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1109,11 +949,7 @@
         "ierNumber": "SP5-IER-630",
         "ierName": "Consolidated threat assessment",
         "idpTinName": "IDP-1169 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1121,11 +957,7 @@
         "ierNumber": "SP5-IER-633",
         "ierName": "Security Risk Management Report",
         "idpTinName": "IDP-1170 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1133,11 +965,7 @@
         "ierNumber": "SP5-IER-634",
         "ierName": "Share endorsed CSRS",
         "idpTinName": "IDP-1166 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1145,11 +973,7 @@
         "ierNumber": "SP5-IER-634",
         "ierName": "Share endorsed CSRS",
         "idpTinName": "IDP-1167 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1157,11 +981,7 @@
         "ierNumber": "SP5-IER-636",
         "ierName": "Submit SoC",
         "idpTinName": "IDP-1020 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1169,11 +989,7 @@
         "ierNumber": "SP5-IER-637",
         "ierName": "Share residual risk",
         "idpTinName": "IDP-1021 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1181,11 +997,7 @@
         "ierNumber": "SP5-IER-638",
         "ierName": "Provide I/ATO",
         "idpTinName": "IDP-1022 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1193,11 +1005,7 @@
         "ierNumber": "SP5-IER-100",
         "ierName": "NMCD IES Volatile Information Item for Provision of Local PCSOP",
         "idpTinName": "IDP-1284 * -> SP5-TIN-117",
-        "tinName": "Consumer to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Consumer to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1205,11 +1013,7 @@
         "ierNumber": "SP5-IER-100",
         "ierName": "NMCD IES Volatile Information Item for Provision of Local PCSOP",
         "idpTinName": "IDP-1284 * -> SP5-TIN-231",
-        "tinName": "Provider to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Provider to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1217,11 +1021,7 @@
         "ierNumber": "SP5-IER-100",
         "ierName": "NMCD IES Volatile Information Item for Provision of Local PCSOP",
         "idpTinName": "IDP-1284 -> SP5-TIN-116",
-        "tinName": "PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1229,11 +1029,7 @@
         "ierNumber": "SP5-IER-101",
         "ierName": "NMCD IES Volatile Information Item for Retrieval of Peer Volatile PCSOP Information",
         "idpTinName": "IDP-179 * -> SP5-TIN-231",
-        "tinName": "Provider to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Provider to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1241,11 +1037,7 @@
         "ierNumber": "SP5-IER-101",
         "ierName": "NMCD IES Volatile Information Item for Retrieval of Peer Volatile PCSOP Information",
         "idpTinName": "IDP-179 -> SP5-TIN-116",
-        "tinName": "PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1253,11 +1045,7 @@
         "ierNumber": "SP5-IER-101",
         "ierName": "NMCD IES Volatile Information Item for Retrieval of Peer Volatile PCSOP Information",
         "idpTinName": "IDP-181 IDP-179 -> SP5-TIN-117",
-        "tinName": "Consumer to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Consumer to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1265,11 +1053,7 @@
         "ierNumber": "SP5-IER-89",
         "ierName": "NMCD IES Persistent Information Item for Provision of Local PCSOP",
         "idpTinName": "IDP-1285 * -> SP5-TIN-117",
-        "tinName": "Consumer to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Consumer to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1277,11 +1061,7 @@
         "ierNumber": "SP5-IER-89",
         "ierName": "NMCD IES Persistent Information Item for Provision of Local PCSOP",
         "idpTinName": "IDP-1285 * -> SP5-TIN-231",
-        "tinName": "Provider to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Provider to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1289,11 +1069,7 @@
         "ierNumber": "SP5-IER-89",
         "ierName": "NMCD IES Persistent Information Item for Provision of Local PCSOP",
         "idpTinName": "IDP-1285 -> SP5-TIN-116",
-        "tinName": "PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1301,11 +1077,7 @@
         "ierNumber": "SP5-IER-90",
         "ierName": "NMCD IES Persistent Information Item for Collection of Global PCSOP Information from Local",
         "idpTinName": "IDP-172 * -> SP5-TIN-231",
-        "tinName": "Provider to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Provider to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1313,11 +1085,7 @@
         "ierNumber": "SP5-IER-90",
         "ierName": "NMCD IES Persistent Information Item for Collection of Global PCSOP Information from Local",
         "idpTinName": "IDP-172 -> SP5-TIN-116",
-        "tinName": "PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1325,11 +1093,7 @@
         "ierNumber": "SP5-IER-90",
         "ierName": "NMCD IES Persistent Information Item for Collection of Global PCSOP Information from Local",
         "idpTinName": "IDP-176 IDP-172 -> SP5-TIN-117",
-        "tinName": "Consumer to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Consumer to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1337,11 +1101,7 @@
         "ierNumber": "SP5-IER-91",
         "ierName": "NMCD IES Persistent Information Item for Collection of Global PCSOP Information from Hosted CC",
         "idpTinName": "IDP-175 * -> SP5-TIN-117",
-        "tinName": "Consumer to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Consumer to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1349,11 +1109,7 @@
         "ierNumber": "SP5-IER-91",
         "ierName": "NMCD IES Persistent Information Item for Collection of Global PCSOP Information from Hosted CC",
         "idpTinName": "IDP-175 * -> SP5-TIN-231",
-        "tinName": "Provider to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Provider to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1361,11 +1117,7 @@
         "ierNumber": "SP5-IER-91",
         "ierName": "NMCD IES Persistent Information Item for Collection of Global PCSOP Information from Hosted CC",
         "idpTinName": "IDP-175 -> SP5-TIN-116",
-        "tinName": "PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1373,11 +1125,7 @@
         "ierNumber": "SP5-IER-92",
         "ierName": "NMCD IES Persistent Information Item for Collection of Global PCSOP Information from Global",
         "idpTinName": "IDP-174 * -> SP5-TIN-231",
-        "tinName": "Provider to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Provider to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1385,11 +1133,7 @@
         "ierNumber": "SP5-IER-92",
         "ierName": "NMCD IES Persistent Information Item for Collection of Global PCSOP Information from Global",
         "idpTinName": "IDP-174 -> SP5-TIN-116",
-        "tinName": "PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1397,11 +1141,7 @@
         "ierNumber": "SP5-IER-92",
         "ierName": "NMCD IES Persistent Information Item for Collection of Global PCSOP Information from Global",
         "idpTinName": "IDP-182 IDP-174 -> SP5-TIN-117",
-        "tinName": "Consumer to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Consumer to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1409,11 +1149,7 @@
         "ierNumber": "SP5-IER-93",
         "ierName": "NMCD IES Persistent Information Item for Provision of Hosted PCSC PCSOP",
         "idpTinName": "IDP-1283 * -> SP5-TIN-117",
-        "tinName": "Consumer to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Consumer to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1421,11 +1157,7 @@
         "ierNumber": "SP5-IER-93",
         "ierName": "NMCD IES Persistent Information Item for Provision of Hosted PCSC PCSOP",
         "idpTinName": "IDP-1283 * -> SP5-TIN-231",
-        "tinName": "Provider to Provider PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Provider to Provider PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-COMMS",
@@ -1433,11 +1165,7 @@
         "ierNumber": "SP5-IER-93",
         "ierName": "NMCD IES Persistent Information Item for Provision of Hosted PCSC PCSOP",
         "idpTinName": "IDP-1283 -> SP5-TIN-116",
-        "tinName": "PCSOP Information Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "PCSOP Information Exchange"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1445,11 +1173,7 @@
         "ierNumber": "SP5-IER-344",
         "ierName": "Assessed RCP Information Element update",
         "idpTinName": "IDP-1189 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1457,11 +1181,7 @@
         "ierNumber": "SP5-IER-344",
         "ierName": "Assessed RCP Information Element update",
         "idpTinName": "IDP-854 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1469,11 +1189,7 @@
         "ierNumber": "SP5-IER-350",
         "ierName": "Validated RCP Information Element",
         "idpTinName": "IDP-1188 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1481,11 +1197,7 @@
         "ierNumber": "SP5-IER-350",
         "ierName": "Validated RCP Information Element",
         "idpTinName": "IDP-565 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1493,11 +1205,7 @@
         "ierNumber": "SP5-IER-351",
         "ierName": "Updated RCP",
         "idpTinName": "IDP-1187 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1505,11 +1213,7 @@
         "ierNumber": "SP5-IER-351",
         "ierName": "Updated RCP",
         "idpTinName": "IDP-566 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1517,11 +1221,7 @@
         "ierNumber": "SP5-IER-372",
         "ierName": "Published RCP",
         "idpTinName": "IDP-1186 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1529,11 +1229,7 @@
         "ierNumber": "SP5-IER-372",
         "ierName": "Published RCP",
         "idpTinName": "IDP-586 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1565,11 +1261,7 @@
         "ierNumber": "SP5-IER-490",
         "ierName": "Feedback on Cyber Operation Results",
         "idpTinName": "IDP-1184 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1577,11 +1269,7 @@
         "ierNumber": "SP5-IER-490",
         "ierName": "Feedback on Cyber Operation Results",
         "idpTinName": "IDP-853 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1589,11 +1277,7 @@
         "ierNumber": "SP5-IER-491",
         "ierName": "RCP Information Element Update",
         "idpTinName": "IDP-1183 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1601,11 +1285,7 @@
         "ierNumber": "SP5-IER-491",
         "ierName": "RCP Information Element Update",
         "idpTinName": "IDP-859 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1613,11 +1293,7 @@
         "ierNumber": "SP5-IER-684",
         "ierName": "Issued Cyber Commander's Order",
         "idpTinName": "IDP-1191 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1625,11 +1301,7 @@
         "ierNumber": "SP5-IER-684",
         "ierName": "Issued Cyber Commander's Order",
         "idpTinName": "IDP-1192 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1637,11 +1309,7 @@
         "ierNumber": "SP5-IER-695",
         "ierName": "Issued Cyberspace Control or Task Order",
         "idpTinName": "IDP-1227 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1649,11 +1317,7 @@
         "ierNumber": "SP5-IER-695",
         "ierName": "Issued Cyberspace Control or Task Order",
         "idpTinName": "IDP-1228 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1661,11 +1325,7 @@
         "ierNumber": "SP5-IER-292",
         "ierName": "Plain text message",
         "idpTinName": "IDP-604 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1673,11 +1333,7 @@
         "ierNumber": "SP5-IER-293",
         "ierName": "Artillery Fire Unit \u2013 Deployment Command",
         "idpTinName": "IDP-620 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1685,11 +1341,7 @@
         "ierNumber": "SP5-IER-294",
         "ierName": "Support \u2013 Battlefield Geometry",
         "idpTinName": "IDP-616 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1697,11 +1349,7 @@
         "ierNumber": "SP5-IER-295",
         "ierName": "Artillery Fire Unit - Fire Unit Status",
         "idpTinName": "IDP-608 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1709,11 +1357,7 @@
         "ierNumber": "SP5-IER-296",
         "ierName": "Meteorological - Computer Message",
         "idpTinName": "IDP-624 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1721,11 +1365,7 @@
         "ierNumber": "SP5-IER-298",
         "ierName": "Artillery Target Intelligence - Artillery Target Report",
         "idpTinName": "IDP-636 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1733,11 +1373,7 @@
         "ierNumber": "SP5-IER-383",
         "ierName": "Fire Mission - Call for Fire",
         "idpTinName": "IDP-626 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1745,11 +1381,7 @@
         "ierNumber": "SP5-IER-384",
         "ierName": "Fire Mission - Message to Observer",
         "idpTinName": "IDP-628 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1757,11 +1389,7 @@
         "ierNumber": "SP5-IER-385",
         "ierName": "Fire Mission - Fire Mission Command",
         "idpTinName": "IDP-630 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1769,11 +1397,7 @@
         "ierNumber": "SP5-IER-386",
         "ierName": "Fire Mission - Subsequent Adjustment",
         "idpTinName": "IDP-632 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1781,11 +1405,7 @@
         "ierNumber": "SP5-IER-387",
         "ierName": "Fire Mission \u2013 End of Mission",
         "idpTinName": "IDP-634 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1793,11 +1413,7 @@
         "ierNumber": "SP5-IER-388",
         "ierName": "Artillery Fire Unit \u2013 Radar Deployment Order",
         "idpTinName": "IDP-622 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1805,11 +1421,7 @@
         "ierNumber": "SP5-IER-389",
         "ierName": "Support \u2013 Airspace Control Means",
         "idpTinName": "IDP-484 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1817,11 +1429,7 @@
         "ierNumber": "SP5-IER-389",
         "ierName": "Support \u2013 Airspace Control Means",
         "idpTinName": "IDP-484 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1829,11 +1437,7 @@
         "ierNumber": "SP5-IER-389",
         "ierName": "Support \u2013 Airspace Control Means",
         "idpTinName": "IDP-484 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1841,11 +1445,7 @@
         "ierNumber": "SP5-IER-389",
         "ierName": "Support \u2013 Airspace Control Means",
         "idpTinName": "IDP-618 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1853,11 +1453,7 @@
         "ierNumber": "SP5-IER-390",
         "ierName": "Artillery Fire Unit - Ammunition Status",
         "idpTinName": "IDP-610 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1865,11 +1461,7 @@
         "ierNumber": "SP5-IER-391",
         "ierName": "Artillery Fire Unit \u2013 General Unit Status",
         "idpTinName": "IDP-612 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-FIRES",
@@ -1877,11 +1469,7 @@
         "ierNumber": "SP5-IER-392",
         "ierName": "Artillery Fire Unit \u2013 Target Acquisition Unit Status",
         "idpTinName": "IDP-614 -> SP5-TIN-318",
-        "tinName": "Kinetic Indirect Fire Support",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Kinetic Indirect Fire Support"
     },
     {
         "piNumber": "SP5-PI-GEO",
@@ -1997,11 +1585,7 @@
         "ierNumber": "SP5-IER-152",
         "ierName": "Trust Anchor",
         "idpTinName": "IDP-250 * -> SP5-TIN-52",
-        "tinName": "Trust Management (Trust List)",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Trust Management (Trust List)"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2009,11 +1593,7 @@
         "ierNumber": "SP5-IER-152",
         "ierName": "Trust Anchor",
         "idpTinName": "IDP-250 * -> SP5-TIN-53",
-        "tinName": "Trust Management (Cross-certification)",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Trust Management (Cross-certification)"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2021,11 +1601,7 @@
         "ierNumber": "SP5-IER-152",
         "ierName": "Trust Anchor",
         "idpTinName": "IDP-250 -> SP5-TIN-166",
-        "tinName": "Trust Management",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Trust Management"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2033,11 +1609,7 @@
         "ierNumber": "SP5-IER-152",
         "ierName": "Trust Anchor",
         "idpTinName": "IDP-252 -> SP5-TIN-66",
-        "tinName": "Web Authentication Trust Establishment",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web Authentication Trust Establishment"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2045,11 +1617,7 @@
         "ierNumber": "SP5-IER-155",
         "ierName": "Federated Identity",
         "idpTinName": "IDP-195 -> SP5-TIN-64",
-        "tinName": "Web Authentication",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web Authentication"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2057,11 +1625,7 @@
         "ierNumber": "SP5-IER-155",
         "ierName": "Federated Identity",
         "idpTinName": "IDP-28 * -> SP5-TIN-56",
-        "tinName": "Digital Certificate Validation (CRL)",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Digital Certificate Validation (CRL)"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2069,11 +1633,7 @@
         "ierNumber": "SP5-IER-155",
         "ierName": "Federated Identity",
         "idpTinName": "IDP-28 * -> SP5-TIN-57",
-        "tinName": "Digital Certificate Validation (OCSP)",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Digital Certificate Validation (OCSP)"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2081,11 +1641,7 @@
         "ierNumber": "SP5-IER-155",
         "ierName": "Federated Identity",
         "idpTinName": "IDP-28 -> SP5-TIN-165",
-        "tinName": "Digital Certificate Validation",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Digital Certificate Validation"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2093,11 +1649,7 @@
         "ierNumber": "SP5-IER-156",
         "ierName": "Contact Information",
         "idpTinName": "IDP-1002 -> SP5-TIN-63",
-        "tinName": "Mediated Directory Replication",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Mediated Directory Replication"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2105,11 +1657,7 @@
         "ierNumber": "SP5-IER-156",
         "ierName": "Contact Information",
         "idpTinName": "IDP-254 -> SP5-TIN-62",
-        "tinName": "Directory Replication",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Directory Replication"
     },
     {
         "piNumber": "SP5-PI-IAM",
@@ -2117,11 +1665,7 @@
         "ierNumber": "SP5-IER-609",
         "ierName": "Digital Certificate",
         "idpTinName": "IDP-255 -> SP5-TIN-55",
-        "tinName": "Certificates Issuance and Life-cycle Management",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Certificates Issuance and Life-cycle Management"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2177,11 +1721,7 @@
         "ierNumber": "SP5-IER-665",
         "ierName": "ADS/TDS Configuration Data Information",
         "idpTinName": "IDP-1135 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2573,11 +2113,7 @@
         "ierNumber": "SP5-IER-120",
         "ierName": "Priority Intelligence Requirement",
         "idpTinName": "IDP-1023 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2585,11 +2121,7 @@
         "ierNumber": "SP5-IER-121",
         "ierName": "Intelligence Direction Information Products",
         "idpTinName": "IDP-1024 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2597,11 +2129,7 @@
         "ierNumber": "SP5-IER-122",
         "ierName": "Intelligence Collection Plan",
         "idpTinName": "IDP-1032 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2609,11 +2137,7 @@
         "ierNumber": "SP5-IER-123",
         "ierName": "Collection Request",
         "idpTinName": "IDP-1028 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2621,11 +2145,7 @@
         "ierNumber": "SP5-IER-124",
         "ierName": "Dynamic Collection Request",
         "idpTinName": "IDP-1029 * -> SP5-TIN-122",
-        "tinName": "Presence Sharing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Presence Sharing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2633,11 +2153,7 @@
         "ierNumber": "SP5-IER-124",
         "ierName": "Dynamic Collection Request",
         "idpTinName": "IDP-1029 * -> SP5-TIN-124",
-        "tinName": "Information Discovery",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Information Discovery"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2645,11 +2161,7 @@
         "ierNumber": "SP5-IER-124",
         "ierName": "Dynamic Collection Request",
         "idpTinName": "IDP-1029 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2657,11 +2169,7 @@
         "ierNumber": "SP5-IER-124",
         "ierName": "Dynamic Collection Request",
         "idpTinName": "IDP-1029 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2669,11 +2177,7 @@
         "ierNumber": "SP5-IER-124",
         "ierName": "Dynamic Collection Request",
         "idpTinName": "IDP-1029 -> SP5-TIN-369",
-        "tinName": "Instant Messaging and Presence",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging and Presence"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2681,11 +2185,7 @@
         "ierNumber": "SP5-IER-124",
         "ierName": "Dynamic Collection Request",
         "idpTinName": "IDP-1220 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2693,11 +2193,7 @@
         "ierNumber": "SP5-IER-125",
         "ierName": "Collection and Exploitation Plan",
         "idpTinName": "IDP-1030 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2705,11 +2201,7 @@
         "ierNumber": "SP5-IER-337",
         "ierName": "Intelligence Internal Direction",
         "idpTinName": "IDP-986 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2717,11 +2209,7 @@
         "ierNumber": "SP5-IER-338",
         "ierName": "Internal Prioritized Intelligence Requirements",
         "idpTinName": "IDP-1031 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2765,11 +2253,7 @@
         "ierNumber": "SP5-IER-597",
         "ierName": "JISR Product for Intelligence Processing",
         "idpTinName": "IDP-1025 -> SP5-TIN-307",
-        "tinName": "Exchange ISR Library data and metadata",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Exchange ISR Library data and metadata"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2777,11 +2261,7 @@
         "ierNumber": "SP5-IER-597",
         "ierName": "JISR Product for Intelligence Processing",
         "idpTinName": "IDP-1026 -> SP5-TIN-308",
-        "tinName": "ISR Streaming Services Access",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "ISR Streaming Services Access"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2789,11 +2269,7 @@
         "ierNumber": "SP5-IER-675",
         "ierName": "Intelligence Battlespace Object",
         "idpTinName": "IDP-1126 -> SP5-TIN-371",
-        "tinName": "Intelligence BsO Synchronization",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Intelligence BsO Synchronization"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2801,11 +2277,7 @@
         "ierNumber": "SP5-IER-691",
         "ierName": "JISR MOPs/MOEs",
         "idpTinName": "IDP-1221 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -3029,11 +2501,7 @@
         "ierNumber": "SP5-IER-57",
         "ierName": "Entity Criticality",
         "idpTinName": "IDP-1264 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -3101,11 +2569,7 @@
         "ierNumber": "SP5-IER-58",
         "ierName": "Intelligence Request For Information",
         "idpTinName": "IDP-1254 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -3533,11 +2997,7 @@
         "ierNumber": "SP5-IER-76",
         "ierName": "Request for Information Responses",
         "idpTinName": "IDP-1268 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -3545,11 +3005,7 @@
         "ierNumber": "SP5-IER-76",
         "ierName": "Request for Information Responses",
         "idpTinName": "IDP-1268 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -3713,11 +3169,7 @@
         "ierNumber": "SP5-IER-83",
         "ierName": "Battle Damage Assessment",
         "idpTinName": "IDP-1258 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -3917,11 +3369,7 @@
         "ierNumber": "SP5-IER-282",
         "ierName": "Land Friendly Force Track",
         "idpTinName": "IDP-747 -> SP5-TIN-169",
-        "tinName": "FFI MTF Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "FFI MTF Exchange"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -4157,11 +3605,7 @@
         "ierNumber": "SP5-IER-7",
         "ierName": "Incident Spot Report",
         "idpTinName": "IDP-8 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -4337,11 +3781,7 @@
         "ierNumber": "SP5-IER-165",
         "ierName": "Wheels up notification",
         "idpTinName": "IDP-579 * -> SP5-TIN-127",
-        "tinName": "Exchange of Data Forms",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Exchange of Data Forms"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4349,11 +3789,7 @@
         "ierNumber": "SP5-IER-165",
         "ierName": "Wheels up notification",
         "idpTinName": "IDP-579 -> SP5-TIN-141",
-        "tinName": "Publish-Subscribe",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Publish-Subscribe"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4361,11 +3797,7 @@
         "ierNumber": "SP5-IER-237",
         "ierName": "MedEvac Asset Status Report",
         "idpTinName": "IDP-578 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4373,11 +3805,7 @@
         "ierNumber": "SP5-IER-237",
         "ierName": "MedEvac Asset Status Report",
         "idpTinName": "IDP-583 -> SP5-TIN-46",
-        "tinName": "Exchange Land Generic Overlay",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Exchange Land Generic Overlay"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4385,11 +3813,7 @@
         "ierNumber": "SP5-IER-278",
         "ierName": "Notice of Estimated Time of Arrival (ETA Notice)",
         "idpTinName": "IDP-580 * -> SP5-TIN-127",
-        "tinName": "Exchange of Data Forms",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Exchange of Data Forms"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4397,11 +3821,7 @@
         "ierNumber": "SP5-IER-278",
         "ierName": "Notice of Estimated Time of Arrival (ETA Notice)",
         "idpTinName": "IDP-580 -> SP5-TIN-141",
-        "tinName": "Publish-Subscribe",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Publish-Subscribe"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4409,11 +3829,7 @@
         "ierNumber": "SP5-IER-290",
         "ierName": "Emergency Treatment Report (MIST-AT/FMC/DIVI)",
         "idpTinName": "IDP-1198 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4421,11 +3837,7 @@
         "ierNumber": "SP5-IER-291",
         "ierName": "Emergency Treatment Report (MIST-AT/FMC/DIVI)",
         "idpTinName": "IDP-1205 -> SP5-TIN-119",
-        "tinName": "Push-To-Talk Tactical Voice",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Push-To-Talk Tactical Voice"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4433,11 +3845,7 @@
         "ierNumber": "SP5-IER-347",
         "ierName": "MTF Resource/Bed Status request",
         "idpTinName": "IDP-574 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4445,11 +3853,7 @@
         "ierNumber": "SP5-IER-348",
         "ierName": "MedEvac Evacuation Request",
         "idpTinName": "IDP-849 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4457,11 +3861,7 @@
         "ierNumber": "SP5-IER-348",
         "ierName": "MedEvac Evacuation Request",
         "idpTinName": "IDP-849 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4469,11 +3869,7 @@
         "ierNumber": "SP5-IER-348",
         "ierName": "MedEvac Evacuation Request",
         "idpTinName": "IDP-849 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4481,11 +3877,7 @@
         "ierNumber": "SP5-IER-348",
         "ierName": "MedEvac Evacuation Request",
         "idpTinName": "IDP-850 -> SP5-TIN-127",
-        "tinName": "Exchange of Data Forms",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Exchange of Data Forms"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4493,11 +3885,7 @@
         "ierNumber": "SP5-IER-349",
         "ierName": "Medical Evacuation Request",
         "idpTinName": "IDP-1193 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4505,11 +3893,7 @@
         "ierNumber": "SP5-IER-352",
         "ierName": "Emergency Treatment Report (MIST-AT/FMC/DIVI)",
         "idpTinName": "IDP-1204 -> SP5-TIN-119",
-        "tinName": "Push-To-Talk Tactical Voice",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Push-To-Talk Tactical Voice"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4517,11 +3901,7 @@
         "ierNumber": "SP5-IER-353",
         "ierName": "MedEvac Asset Status  Request",
         "idpTinName": "IDP-584 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4529,11 +3909,7 @@
         "ierNumber": "SP5-IER-354",
         "ierName": "Forward MedEvac Course of Action  (MedEvac COA)",
         "idpTinName": "IDP-576 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4541,11 +3917,7 @@
         "ierNumber": "SP5-IER-355",
         "ierName": "SAAFR Request",
         "idpTinName": "IDP-249 -> SP5-TIN-181",
-        "tinName": "Call Signaling",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Call Signaling"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4553,11 +3925,7 @@
         "ierNumber": "SP5-IER-356",
         "ierName": "Forward MedEvac Transport OPORD (MedEvac OPORD)",
         "idpTinName": "IDP-575 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4565,11 +3933,7 @@
         "ierNumber": "SP5-IER-357",
         "ierName": "Forward MedEvac Escort OPORD (Escort OPORD)",
         "idpTinName": "IDP-1206 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4577,11 +3941,7 @@
         "ierNumber": "SP5-IER-357",
         "ierName": "Forward MedEvac Escort OPORD (Escort OPORD)",
         "idpTinName": "IDP-1206 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4589,11 +3949,7 @@
         "ierNumber": "SP5-IER-357",
         "ierName": "Forward MedEvac Escort OPORD (Escort OPORD)",
         "idpTinName": "IDP-1206 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4601,11 +3957,7 @@
         "ierNumber": "SP5-IER-357",
         "ierName": "Forward MedEvac Escort OPORD (Escort OPORD)",
         "idpTinName": "IDP-1207 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4613,11 +3965,7 @@
         "ierNumber": "SP5-IER-357",
         "ierName": "Forward MedEvac Escort OPORD (Escort OPORD)",
         "idpTinName": "IDP-1208 -> SP5-TIN-119",
-        "tinName": "Push-To-Talk Tactical Voice",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Push-To-Talk Tactical Voice"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4625,11 +3973,7 @@
         "ierNumber": "SP5-IER-358",
         "ierName": "MedEvac mission update",
         "idpTinName": "IDP-577 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4637,11 +3981,7 @@
         "ierNumber": "SP5-IER-359",
         "ierName": "\"out-of-bounds\" MedEvac Report",
         "idpTinName": "IDP-1200 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4649,11 +3989,7 @@
         "ierNumber": "SP5-IER-361",
         "ierName": "Blue-light matrix update",
         "idpTinName": "IDP-573 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4661,11 +3997,7 @@
         "ierNumber": "SP5-IER-551",
         "ierName": "Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1211 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4673,11 +4005,7 @@
         "ierNumber": "SP5-IER-551",
         "ierName": "Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1211 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4685,11 +4013,7 @@
         "ierNumber": "SP5-IER-551",
         "ierName": "Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1211 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4697,11 +4021,7 @@
         "ierNumber": "SP5-IER-551",
         "ierName": "Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1212 -> SP5-TIN-119",
-        "tinName": "Push-To-Talk Tactical Voice",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Push-To-Talk Tactical Voice"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4709,11 +4029,7 @@
         "ierNumber": "SP5-IER-552",
         "ierName": "MedEvac Warning Order (WNGO)",
         "idpTinName": "IDP-1213 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4721,11 +4037,7 @@
         "ierNumber": "SP5-IER-552",
         "ierName": "MedEvac Warning Order (WNGO)",
         "idpTinName": "IDP-1213 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4733,11 +4045,7 @@
         "ierNumber": "SP5-IER-552",
         "ierName": "MedEvac Warning Order (WNGO)",
         "idpTinName": "IDP-1213 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4745,11 +4053,7 @@
         "ierNumber": "SP5-IER-552",
         "ierName": "MedEvac Warning Order (WNGO)",
         "idpTinName": "IDP-1214 -> SP5-TIN-119",
-        "tinName": "Push-To-Talk Tactical Voice",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Push-To-Talk Tactical Voice"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4757,11 +4061,7 @@
         "ierNumber": "SP5-IER-553",
         "ierName": "MedEvac Warning Order (WNGO)",
         "idpTinName": "IDP-1201 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4769,11 +4069,7 @@
         "ierNumber": "SP5-IER-555",
         "ierName": "MedEvac Warning Order",
         "idpTinName": "IDP-1203 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4781,11 +4077,7 @@
         "ierNumber": "SP5-IER-557",
         "ierName": "Request for Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1202 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4793,11 +4085,7 @@
         "ierNumber": "SP5-IER-557",
         "ierName": "Request for Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1202 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4805,11 +4093,7 @@
         "ierNumber": "SP5-IER-557",
         "ierName": "Request for Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1202 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4817,11 +4101,7 @@
         "ierNumber": "SP5-IER-559",
         "ierName": "Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1209 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4829,11 +4109,7 @@
         "ierNumber": "SP5-IER-559",
         "ierName": "Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1209 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4841,11 +4117,7 @@
         "ierNumber": "SP5-IER-559",
         "ierName": "Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1209 -> SP5-TIN-138",
-        "tinName": "Instant Messaging",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Instant Messaging"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4853,11 +4125,7 @@
         "ierNumber": "SP5-IER-559",
         "ierName": "Slow Aviation Assets Flight Route",
         "idpTinName": "IDP-1210 -> SP5-TIN-119",
-        "tinName": "Push-To-Talk Tactical Voice",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Push-To-Talk Tactical Voice"
     },
     {
         "piNumber": "SP5-PI-MEDEVAC",
@@ -4865,11 +4133,7 @@
         "ierNumber": "SP5-IER-602",
         "ierName": "Evacuation Route Request",
         "idpTinName": "IDP-1215 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4877,11 +4141,7 @@
         "ierNumber": "SP5-IER-112",
         "ierName": "Operational Planning Directive",
         "idpTinName": "IDP-916 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4889,11 +4149,7 @@
         "ierNumber": "SP5-IER-112",
         "ierName": "Operational Planning Directive",
         "idpTinName": "IDP-917 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4901,11 +4157,7 @@
         "ierNumber": "SP5-IER-113",
         "ierName": "Operational Planning Guidance",
         "idpTinName": "IDP-914 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4913,11 +4165,7 @@
         "ierNumber": "SP5-IER-113",
         "ierName": "Operational Planning Guidance",
         "idpTinName": "IDP-915 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4925,11 +4173,7 @@
         "ierNumber": "SP5-IER-115",
         "ierName": "Concept of Operations",
         "idpTinName": "IDP-918 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4937,11 +4181,7 @@
         "ierNumber": "SP5-IER-115",
         "ierName": "Concept of Operations",
         "idpTinName": "IDP-919 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4949,11 +4189,7 @@
         "ierNumber": "SP5-IER-17",
         "ierName": "Joint Coordination Order (JCO)",
         "idpTinName": "IDP-874 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4961,11 +4197,7 @@
         "ierNumber": "SP5-IER-17",
         "ierName": "Joint Coordination Order (JCO)",
         "idpTinName": "IDP-879 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4973,11 +4205,7 @@
         "ierNumber": "SP5-IER-18",
         "ierName": "Operations Order - OPORD",
         "idpTinName": "IDP-900 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4985,11 +4213,7 @@
         "ierNumber": "SP5-IER-18",
         "ierName": "Operations Order - OPORD",
         "idpTinName": "IDP-901 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4997,11 +4221,7 @@
         "ierNumber": "SP5-IER-212",
         "ierName": "Warning Order",
         "idpTinName": "IDP-876 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5009,11 +4229,7 @@
         "ierNumber": "SP5-IER-212",
         "ierName": "Warning Order",
         "idpTinName": "IDP-905 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5021,11 +4237,7 @@
         "ierNumber": "SP5-IER-24",
         "ierName": "Commander's Planning Guidance",
         "idpTinName": "IDP-910 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5033,11 +4245,7 @@
         "ierNumber": "SP5-IER-24",
         "ierName": "Commander's Planning Guidance",
         "idpTinName": "IDP-911 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5129,11 +4337,7 @@
         "ierNumber": "SP5-IER-366",
         "ierName": "Assessment Report",
         "idpTinName": "IDP-912 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5141,11 +4345,7 @@
         "ierNumber": "SP5-IER-366",
         "ierName": "Assessment Report",
         "idpTinName": "IDP-913 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5153,11 +4353,7 @@
         "ierNumber": "SP5-IER-369",
         "ierName": "Rules of Engagement Request",
         "idpTinName": "IDP-899 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5165,11 +4361,7 @@
         "ierNumber": "SP5-IER-370",
         "ierName": "Component Commands VTC",
         "idpTinName": "IDP-1280 * -> SP5-TIN-181",
-        "tinName": "Call Signaling",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Call Signaling"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5177,11 +4369,7 @@
         "ierNumber": "SP5-IER-370",
         "ierName": "Component Commands VTC",
         "idpTinName": "IDP-1280 * -> SP5-TIN-182",
-        "tinName": "Media Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Media Exchange"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5189,11 +4377,7 @@
         "ierNumber": "SP5-IER-370",
         "ierName": "Component Commands VTC",
         "idpTinName": "IDP-1280 * -> SP5-TIN-183",
-        "tinName": "Call Routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Call Routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5201,11 +4385,7 @@
         "ierNumber": "SP5-IER-370",
         "ierName": "Component Commands VTC",
         "idpTinName": "IDP-1280 * -> SP5-TIN-187",
-        "tinName": "Multi-Level Precedence and Pre-emption",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Multi-Level Precedence and Pre-emption"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5213,11 +4393,7 @@
         "ierNumber": "SP5-IER-370",
         "ierName": "Component Commands VTC",
         "idpTinName": "IDP-1280 * -> SP5-TIN-198",
-        "tinName": "Media Infrastructure Security",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Media Infrastructure Security"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5225,11 +4401,7 @@
         "ierNumber": "SP5-IER-370",
         "ierName": "Component Commands VTC",
         "idpTinName": "IDP-1280 * -> SP5-TIN-375",
-        "tinName": "End-to-End Media Security",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "End-to-End Media Security"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5237,11 +4409,7 @@
         "ierNumber": "SP5-IER-370",
         "ierName": "Component Commands VTC",
         "idpTinName": "IDP-1280 -> SP5-TIN-365",
-        "tinName": "Audio/Video Media Infrastructure",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Audio/Video Media Infrastructure"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5249,11 +4417,7 @@
         "ierNumber": "SP5-IER-477",
         "ierName": "Inputs to AOD",
         "idpTinName": "IDP-866 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -5261,11 +4425,7 @@
         "ierNumber": "SP5-IER-477",
         "ierName": "Inputs to AOD",
         "idpTinName": "IDP-867 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5273,11 +4433,7 @@
         "ierNumber": "SP5-IER-418",
         "ierName": "Certificate Request",
         "idpTinName": "IDP-644 -> SP5-TIN-54",
-        "tinName": "Certificate Request",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Certificate Request"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5285,11 +4441,7 @@
         "ierNumber": "SP5-IER-419",
         "ierName": "Digital Certificate",
         "idpTinName": "IDP-645 -> SP5-TIN-55",
-        "tinName": "Certificates Issuance and Life-cycle Management",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Certificates Issuance and Life-cycle Management"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5297,11 +4449,7 @@
         "ierNumber": "SP5-IER-420",
         "ierName": "Certificate Policy (CertP) to Mission Network PKI Manager",
         "idpTinName": "IDP-646 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5309,11 +4457,7 @@
         "ierNumber": "SP5-IER-421",
         "ierName": "Certification Practice Statement (CPS) to Mission Network Security Accreditation Board",
         "idpTinName": "IDP-647 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5321,11 +4465,7 @@
         "ierNumber": "SP5-IER-422",
         "ierName": "iTIF self-assertion of Mission Network PKI Service Provider",
         "idpTinName": "IDP-648 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5333,11 +4473,7 @@
         "ierNumber": "SP5-IER-423",
         "ierName": "Certificate Trust List",
         "idpTinName": "IDP-649 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5345,11 +4481,7 @@
         "ierNumber": "SP5-IER-424",
         "ierName": "Certificate Trust List (with a new certificate)",
         "idpTinName": "IDP-650 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5357,11 +4489,7 @@
         "ierNumber": "SP5-IER-425",
         "ierName": "Certificate Trust List (without withdrawn CA certificate)",
         "idpTinName": "IDP-651 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5369,11 +4497,7 @@
         "ierNumber": "SP5-IER-655",
         "ierName": "Mission Network PKI Manager assignment",
         "idpTinName": "IDP-1094 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5381,11 +4505,7 @@
         "ierNumber": "SP5-IER-656",
         "ierName": "PKI trust architecture of the mission",
         "idpTinName": "IDP-1095 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5393,11 +4513,7 @@
         "ierNumber": "SP5-IER-657",
         "ierName": "Trust List Service Details of the Designated Mission Network Trust List Provider",
         "idpTinName": "IDP-1096 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5405,11 +4521,7 @@
         "ierNumber": "SP5-IER-658",
         "ierName": "Certificate Policy (CertP) to Mission Network Security Accreditation Board",
         "idpTinName": "IDP-1098 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-PKI",
@@ -5417,11 +4529,7 @@
         "ierNumber": "SP5-IER-659",
         "ierName": "Certification Practice Statement (CPS) to Mission Network PKI Manager",
         "idpTinName": "IDP-1099 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5453,11 +4561,7 @@
         "ierNumber": "SP5-IER-241",
         "ierName": "Recognized Air Picture",
         "idpTinName": "IDP-752 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "NVG Overlay Exchange via Web Services"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5465,11 +4569,7 @@
         "ierNumber": "SP5-IER-241",
         "ierName": "Recognized Air Picture",
         "idpTinName": "IDP-753 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5525,11 +4625,7 @@
         "ierNumber": "SP5-IER-242",
         "ierName": "Air Track",
         "idpTinName": "IDP-763 -> SP5-TIN-364",
-        "tinName": "JREAP X Messages Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "JREAP X Messages Exchange"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5753,11 +4849,7 @@
         "ierNumber": "SP5-IER-430",
         "ierName": "Maritime Surface Track",
         "idpTinName": "IDP-765 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5789,11 +4881,7 @@
         "ierNumber": "SP5-IER-430",
         "ierName": "Maritime Surface Track",
         "idpTinName": "IDP-766 -> SP5-TIN-21",
-        "tinName": "OTH-T-Gold Message Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "OTH-T-Gold Message Exchange"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5897,11 +4985,7 @@
         "ierNumber": "SP5-IER-440",
         "ierName": "Civil Environment Picture",
         "idpTinName": "IDP-707 * -> SP5-TIN-3",
-        "tinName": "Web Map Service",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web Map Service"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5909,11 +4993,7 @@
         "ierNumber": "SP5-IER-440",
         "ierName": "Civil Environment Picture",
         "idpTinName": "IDP-707 * -> SP5-TIN-4",
-        "tinName": "Web Feature Service",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web Feature Service"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5921,11 +5001,7 @@
         "ierNumber": "SP5-IER-440",
         "ierName": "Civil Environment Picture",
         "idpTinName": "IDP-707 * -> SP5-TIN-5",
-        "tinName": "Web Map Tile Service",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Web Map Tile Service"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5945,11 +5021,7 @@
         "ierNumber": "SP5-IER-440",
         "ierName": "Civil Environment Picture",
         "idpTinName": "IDP-707 -> SP5-TIN-153",
-        "tinName": "Geospatial Web Services",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Geospatial Web Services"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5993,11 +5065,7 @@
         "ierNumber": "SP5-IER-47",
         "ierName": "Recognized Maritime Picture",
         "idpTinName": "IDP-60 -> SP5-TIN-21",
-        "tinName": "OTH-T-Gold Message Exchange",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "OTH-T-Gold Message Exchange"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -6293,11 +5361,7 @@
         "ierNumber": "SP5-IER-15",
         "ierName": "Raised RfC",
         "idpTinName": "IDP-19 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6305,11 +5369,7 @@
         "ierNumber": "SP5-IER-158",
         "ierName": "Service report request",
         "idpTinName": "IDP-312 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6317,11 +5377,7 @@
         "ierNumber": "SP5-IER-16",
         "ierName": "Accepted RfC",
         "idpTinName": "IDP-21 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6329,11 +5385,7 @@
         "ierNumber": "SP5-IER-160",
         "ierName": "Service Notification",
         "idpTinName": "IDP-314 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6341,11 +5393,7 @@
         "ierNumber": "SP5-IER-163",
         "ierName": "Service Instance report request",
         "idpTinName": "IDP-315 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6353,11 +5401,7 @@
         "ierNumber": "SP5-IER-166",
         "ierName": "In progress Incident",
         "idpTinName": "IDP-367 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6365,11 +5409,7 @@
         "ierNumber": "SP5-IER-167",
         "ierName": "Incident Note",
         "idpTinName": "IDP-373 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6377,11 +5417,7 @@
         "ierNumber": "SP5-IER-169",
         "ierName": "Preliminary diagnosed Incident",
         "idpTinName": "IDP-371 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6389,11 +5425,7 @@
         "ierNumber": "SP5-IER-170",
         "ierName": "Resolved Incident",
         "idpTinName": "IDP-379 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6401,11 +5433,7 @@
         "ierNumber": "SP5-IER-172",
         "ierName": "Reopened Remote Incident",
         "idpTinName": "IDP-377 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6413,11 +5441,7 @@
         "ierNumber": "SP5-IER-173",
         "ierName": "Closed Incident",
         "idpTinName": "IDP-375 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6425,11 +5449,7 @@
         "ierNumber": "SP5-IER-174",
         "ierName": "Cancelled Incident",
         "idpTinName": "IDP-381 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6437,11 +5457,7 @@
         "ierNumber": "SP5-IER-175",
         "ierName": "Diagnosed Incident",
         "idpTinName": "IDP-384 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6449,11 +5465,7 @@
         "ierNumber": "SP5-IER-176",
         "ierName": "Incident report request",
         "idpTinName": "IDP-357 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6461,11 +5473,7 @@
         "ierNumber": "SP5-IER-177",
         "ierName": "Incident status and information request",
         "idpTinName": "IDP-355 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6473,11 +5481,7 @@
         "ierNumber": "SP5-IER-178",
         "ierName": "Incident Notification",
         "idpTinName": "IDP-383 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6485,11 +5489,7 @@
         "ierNumber": "SP5-IER-179",
         "ierName": "Acknowledged Service Request",
         "idpTinName": "IDP-214 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6497,11 +5497,7 @@
         "ierNumber": "SP5-IER-180",
         "ierName": "Completed Service Request",
         "idpTinName": "IDP-386 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6509,11 +5505,7 @@
         "ierNumber": "SP5-IER-181",
         "ierName": "Cancelled Service Request",
         "idpTinName": "IDP-387 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6521,11 +5513,7 @@
         "ierNumber": "SP5-IER-182",
         "ierName": "Raised Event",
         "idpTinName": "IDP-206 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6533,11 +5521,7 @@
         "ierNumber": "SP5-IER-183",
         "ierName": "Updated Event",
         "idpTinName": "IDP-352 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6545,11 +5529,7 @@
         "ierNumber": "SP5-IER-184",
         "ierName": "Acknowledged Event",
         "idpTinName": "IDP-353 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6557,11 +5537,7 @@
         "ierNumber": "SP5-IER-185",
         "ierName": "Suppressed Event",
         "idpTinName": "IDP-361 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6569,11 +5545,7 @@
         "ierNumber": "SP5-IER-186",
         "ierName": "Cleared Event",
         "idpTinName": "IDP-348 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6581,11 +5553,7 @@
         "ierNumber": "SP5-IER-187",
         "ierName": "Unacknowledged Event",
         "idpTinName": "IDP-354 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6593,11 +5561,7 @@
         "ierNumber": "SP5-IER-188",
         "ierName": "Event report request",
         "idpTinName": "IDP-796 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6605,11 +5569,7 @@
         "ierNumber": "SP5-IER-189",
         "ierName": "Event status and information request",
         "idpTinName": "IDP-350 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6617,11 +5577,7 @@
         "ierNumber": "SP5-IER-19",
         "ierName": "Assessed Change",
         "idpTinName": "IDP-23 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6629,11 +5585,7 @@
         "ierNumber": "SP5-IER-190",
         "ierName": "Service status and information request",
         "idpTinName": "IDP-991 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6641,11 +5593,7 @@
         "ierNumber": "SP5-IER-191",
         "ierName": "Event report",
         "idpTinName": "IDP-364 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6653,11 +5601,7 @@
         "ierNumber": "SP5-IER-192",
         "ierName": "Event Notification",
         "idpTinName": "IDP-366 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6665,11 +5609,7 @@
         "ierNumber": "SP5-IER-193",
         "ierName": "SACM report request",
         "idpTinName": "IDP-207 -> SP5-TIN-229",
-        "tinName": "Service Asset and Configuration Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Asset and Configuration Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6677,11 +5617,7 @@
         "ierNumber": "SP5-IER-195",
         "ierName": "CI status notification",
         "idpTinName": "IDP-213 -> SP5-TIN-229",
-        "tinName": "Service Asset and Configuration Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Asset and Configuration Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6689,11 +5625,7 @@
         "ierNumber": "SP5-IER-196",
         "ierName": "SACM status and information request",
         "idpTinName": "IDP-219 -> SP5-TIN-229",
-        "tinName": "Service Asset and Configuration Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Asset and Configuration Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6701,11 +5633,7 @@
         "ierNumber": "SP5-IER-197",
         "ierName": "Change Notification",
         "idpTinName": "IDP-358 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6713,11 +5641,7 @@
         "ierNumber": "SP5-IER-226",
         "ierName": "Diagnosed Major Incident",
         "idpTinName": "IDP-527 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6725,11 +5649,7 @@
         "ierNumber": "SP5-IER-227",
         "ierName": "Service Category report request",
         "idpTinName": "IDP-535 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6737,11 +5657,7 @@
         "ierNumber": "SP5-IER-228",
         "ierName": "Service Request Catalogue report request",
         "idpTinName": "IDP-537 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6749,11 +5665,7 @@
         "ierNumber": "SP5-IER-229",
         "ierName": "Service Request Catalogue status and information request",
         "idpTinName": "IDP-539 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6761,11 +5673,7 @@
         "ierNumber": "SP5-IER-230",
         "ierName": "Reopened Major Incident",
         "idpTinName": "IDP-543 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6773,11 +5681,7 @@
         "ierNumber": "SP5-IER-231",
         "ierName": "Rejected Service Request",
         "idpTinName": "IDP-545 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6785,11 +5689,7 @@
         "ierNumber": "SP5-IER-232",
         "ierName": "Service Request report request",
         "idpTinName": "IDP-531 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6797,11 +5697,7 @@
         "ierNumber": "SP5-IER-233",
         "ierName": "Service Request status and information request",
         "idpTinName": "IDP-533 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6809,11 +5705,7 @@
         "ierNumber": "SP5-IER-234",
         "ierName": "Acknowledged Incident",
         "idpTinName": "IDP-530 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6821,11 +5713,7 @@
         "ierNumber": "SP5-IER-235",
         "ierName": "Service Request Catalogue report",
         "idpTinName": "IDP-787 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6833,11 +5721,7 @@
         "ierNumber": "SP5-IER-251",
         "ierName": "Resolved Major Incident",
         "idpTinName": "IDP-547 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6845,11 +5729,7 @@
         "ierNumber": "SP5-IER-252",
         "ierName": "Major Incident",
         "idpTinName": "IDP-528 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6857,11 +5737,7 @@
         "ierNumber": "SP5-IER-302",
         "ierName": "Geographic Site report",
         "idpTinName": "IDP-950 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6869,11 +5745,7 @@
         "ierNumber": "SP5-IER-316",
         "ierName": "Acknowledged Access Request",
         "idpTinName": "IDP-485 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6881,11 +5753,7 @@
         "ierNumber": "SP5-IER-317",
         "ierName": "In progress Access Request",
         "idpTinName": "IDP-486 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6893,11 +5761,7 @@
         "ierNumber": "SP5-IER-318",
         "ierName": "Rejected Access Request",
         "idpTinName": "IDP-487 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6905,11 +5769,7 @@
         "ierNumber": "SP5-IER-319",
         "ierName": "Cancelled Remote Access Request",
         "idpTinName": "IDP-488 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6917,11 +5777,7 @@
         "ierNumber": "SP5-IER-32",
         "ierName": "Rejected Change",
         "idpTinName": "IDP-30 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6929,11 +5785,7 @@
         "ierNumber": "SP5-IER-320",
         "ierName": "Closed Access Request",
         "idpTinName": "IDP-489 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6941,11 +5793,7 @@
         "ierNumber": "SP5-IER-321",
         "ierName": "Access Request report request",
         "idpTinName": "IDP-491 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6953,11 +5801,7 @@
         "ierNumber": "SP5-IER-33",
         "ierName": "Change Note",
         "idpTinName": "IDP-34 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6965,11 +5809,7 @@
         "ierNumber": "SP5-IER-34",
         "ierName": "Built Change",
         "idpTinName": "IDP-35 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6977,11 +5817,7 @@
         "ierNumber": "SP5-IER-35",
         "ierName": "Tested Change",
         "idpTinName": "IDP-37 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -6989,11 +5825,7 @@
         "ierNumber": "SP5-IER-36",
         "ierName": "Scheduled Change",
         "idpTinName": "IDP-39 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7001,11 +5833,7 @@
         "ierNumber": "SP5-IER-37",
         "ierName": "Approved Normal Change",
         "idpTinName": "IDP-41 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7013,11 +5841,7 @@
         "ierNumber": "SP5-IER-38",
         "ierName": "Approved Standard Change",
         "idpTinName": "IDP-43 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7025,11 +5849,7 @@
         "ierNumber": "SP5-IER-39",
         "ierName": "Approved Emergency Change",
         "idpTinName": "IDP-956 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7037,11 +5857,7 @@
         "ierNumber": "SP5-IER-40",
         "ierName": "Change in implementation",
         "idpTinName": "IDP-47 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7049,11 +5865,7 @@
         "ierNumber": "SP5-IER-41",
         "ierName": "Implemented Change",
         "idpTinName": "IDP-49 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7061,11 +5873,7 @@
         "ierNumber": "SP5-IER-42",
         "ierName": "Reviewed Change",
         "idpTinName": "IDP-51 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7073,11 +5881,7 @@
         "ierNumber": "SP5-IER-43",
         "ierName": "Closed Change",
         "idpTinName": "IDP-53 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7085,11 +5889,7 @@
         "ierNumber": "SP5-IER-44",
         "ierName": "Change report request",
         "idpTinName": "IDP-55 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7097,11 +5897,7 @@
         "ierNumber": "SP5-IER-444",
         "ierName": "Incident Attachment",
         "idpTinName": "IDP-770 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7109,11 +5905,7 @@
         "ierNumber": "SP5-IER-445",
         "ierName": "Incident progress notification request",
         "idpTinName": "IDP-771 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7121,11 +5913,7 @@
         "ierNumber": "SP5-IER-446",
         "ierName": "Incident Notification suspension request",
         "idpTinName": "IDP-772 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7133,11 +5921,7 @@
         "ierNumber": "SP5-IER-447",
         "ierName": "Service Catalogue notification request",
         "idpTinName": "IDP-773 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7145,11 +5929,7 @@
         "ierNumber": "SP5-IER-448",
         "ierName": "Service Catalogue Notification suspension request",
         "idpTinName": "IDP-774 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7157,11 +5937,7 @@
         "ierNumber": "SP5-IER-449",
         "ierName": "Service Request report",
         "idpTinName": "IDP-775 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7169,11 +5945,7 @@
         "ierNumber": "SP5-IER-450",
         "ierName": "Service Request Note",
         "idpTinName": "IDP-777 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7181,11 +5953,7 @@
         "ierNumber": "SP5-IER-451",
         "ierName": "CI status notification request",
         "idpTinName": "IDP-778 -> SP5-TIN-229",
-        "tinName": "Service Asset and Configuration Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Asset and Configuration Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7193,11 +5961,7 @@
         "ierNumber": "SP5-IER-452",
         "ierName": "CI status notification suspension request",
         "idpTinName": "IDP-779 -> SP5-TIN-229",
-        "tinName": "Service Asset and Configuration Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Asset and Configuration Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7205,11 +5969,7 @@
         "ierNumber": "SP5-IER-453",
         "ierName": "Change Attachment",
         "idpTinName": "IDP-780 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7217,11 +5977,7 @@
         "ierNumber": "SP5-IER-454",
         "ierName": "Change progress notification request",
         "idpTinName": "IDP-782 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7229,11 +5985,7 @@
         "ierNumber": "SP5-IER-455",
         "ierName": "Change Notification suspension request",
         "idpTinName": "IDP-781 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7241,11 +5993,7 @@
         "ierNumber": "SP5-IER-456",
         "ierName": "Geographic Location Notification",
         "idpTinName": "IDP-785 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7253,11 +6001,7 @@
         "ierNumber": "SP5-IER-457",
         "ierName": "Geographic Location Notification suspension request",
         "idpTinName": "IDP-784 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7265,11 +6009,7 @@
         "ierNumber": "SP5-IER-458",
         "ierName": "Geographic Location notification request",
         "idpTinName": "IDP-783 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7277,11 +6017,7 @@
         "ierNumber": "SP5-IER-459",
         "ierName": "Add Note to Access Request",
         "idpTinName": "IDP-786 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7289,11 +6025,7 @@
         "ierNumber": "SP5-IER-461",
         "ierName": "Service Category status and information request",
         "idpTinName": "IDP-1004 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7301,11 +6033,7 @@
         "ierNumber": "SP5-IER-462",
         "ierName": "Service Request Catalogue notification request",
         "idpTinName": "IDP-793 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7313,11 +6041,7 @@
         "ierNumber": "SP5-IER-463",
         "ierName": "Service Request Catalogue Notification suspension request",
         "idpTinName": "IDP-794 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7325,11 +6049,7 @@
         "ierNumber": "SP5-IER-464",
         "ierName": "Service Request Catalogue Notification",
         "idpTinName": "IDP-795 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7337,11 +6057,7 @@
         "ierNumber": "SP5-IER-465",
         "ierName": "Event progress notification request",
         "idpTinName": "IDP-797 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7349,11 +6065,7 @@
         "ierNumber": "SP5-IER-466",
         "ierName": "Event Notification suspension request",
         "idpTinName": "IDP-798 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7361,11 +6073,7 @@
         "ierNumber": "SP5-IER-507",
         "ierName": "Change report",
         "idpTinName": "IDP-22 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7373,11 +6081,7 @@
         "ierNumber": "SP5-IER-508",
         "ierName": "Assessed Emergency Change",
         "idpTinName": "IDP-957 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7385,11 +6089,7 @@
         "ierNumber": "SP5-IER-509",
         "ierName": "Change status and information request",
         "idpTinName": "IDP-56 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7397,11 +6097,7 @@
         "ierNumber": "SP5-IER-512",
         "ierName": "Service Category Notification",
         "idpTinName": "IDP-24 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7409,11 +6105,7 @@
         "ierNumber": "SP5-IER-513",
         "ierName": "Emergency Change in implementation",
         "idpTinName": "IDP-40 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7421,11 +6113,7 @@
         "ierNumber": "SP5-IER-514",
         "ierName": "Unauthorized Change",
         "idpTinName": "IDP-42 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7433,11 +6121,7 @@
         "ierNumber": "SP5-IER-515",
         "ierName": "Implemented Emergency Change",
         "idpTinName": "IDP-48 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7445,11 +6129,7 @@
         "ierNumber": "SP5-IER-598",
         "ierName": "Service Instance status and information request",
         "idpTinName": "IDP-992 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7457,11 +6137,7 @@
         "ierNumber": "SP5-IER-599",
         "ierName": "Service report",
         "idpTinName": "IDP-993 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7469,11 +6145,7 @@
         "ierNumber": "SP5-IER-600",
         "ierName": "Service Instance report",
         "idpTinName": "IDP-995 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7481,11 +6153,7 @@
         "ierNumber": "SP5-IER-601",
         "ierName": "Service Instance Notification",
         "idpTinName": "IDP-997 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7493,11 +6161,7 @@
         "ierNumber": "SP5-IER-604",
         "ierName": "Orderable Service report request",
         "idpTinName": "IDP-538 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7505,11 +6169,7 @@
         "ierNumber": "SP5-IER-605",
         "ierName": "Service Category status and information request",
         "idpTinName": "IDP-540 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7517,11 +6177,7 @@
         "ierNumber": "SP5-IER-606",
         "ierName": "Service Category report",
         "idpTinName": "IDP-789 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7529,11 +6185,7 @@
         "ierNumber": "SP5-IER-607",
         "ierName": "Orderable Service report",
         "idpTinName": "IDP-791 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7541,11 +6193,7 @@
         "ierNumber": "SP5-IER-608",
         "ierName": "Orderable Service Notification",
         "idpTinName": "IDP-1005 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7553,11 +6201,7 @@
         "ierNumber": "SP5-IER-614",
         "ierName": "SACM report",
         "idpTinName": "IDP-1007 -> SP5-TIN-229",
-        "tinName": "Service Asset and Configuration Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Asset and Configuration Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7565,11 +6209,7 @@
         "ierNumber": "SP5-IER-615",
         "ierName": "In Progress Service Request",
         "idpTinName": "IDP-1008 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7577,11 +6217,7 @@
         "ierNumber": "SP5-IER-616",
         "ierName": "Access Request status and information request",
         "idpTinName": "IDP-490 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7589,11 +6225,7 @@
         "ierNumber": "SP5-IER-617",
         "ierName": "Access Request report",
         "idpTinName": "IDP-1009 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7601,11 +6233,7 @@
         "ierNumber": "SP5-IER-618",
         "ierName": "Geographic Geometry report",
         "idpTinName": "IDP-1011 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7613,11 +6241,7 @@
         "ierNumber": "SP5-IER-619",
         "ierName": "Geographic Address report",
         "idpTinName": "IDP-1013 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7625,11 +6249,7 @@
         "ierNumber": "SP5-IER-620",
         "ierName": "Geographic Location report request",
         "idpTinName": "IDP-1018 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7637,11 +6257,7 @@
         "ierNumber": "SP5-IER-621",
         "ierName": "Geographic Site report request",
         "idpTinName": "IDP-1016 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7649,11 +6265,7 @@
         "ierNumber": "SP5-IER-622",
         "ierName": "Geographic Address report request",
         "idpTinName": "IDP-948 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7661,11 +6273,7 @@
         "ierNumber": "SP5-IER-623",
         "ierName": "Geographic Geometry report request",
         "idpTinName": "IDP-476 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7673,11 +6281,7 @@
         "ierNumber": "SP5-IER-624",
         "ierName": "Geographic Location status and information request",
         "idpTinName": "IDP-1017 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7685,11 +6289,7 @@
         "ierNumber": "SP5-IER-625",
         "ierName": "Geographic Site status and information request",
         "idpTinName": "IDP-1015 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7697,11 +6297,7 @@
         "ierNumber": "SP5-IER-626",
         "ierName": "Geographic Address status and information request",
         "idpTinName": "IDP-949 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7709,11 +6305,7 @@
         "ierNumber": "SP5-IER-627",
         "ierName": "Geographic Geometry status and information request",
         "idpTinName": "IDP-475 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7721,11 +6313,7 @@
         "ierNumber": "SP5-IER-643",
         "ierName": "Notification suspension request",
         "idpTinName": "IDP-1077 -> SP5-TIN-225",
-        "tinName": "Service Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7733,11 +6321,7 @@
         "ierNumber": "SP5-IER-643",
         "ierName": "Notification suspension request",
         "idpTinName": "IDP-1078 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7745,11 +6329,7 @@
         "ierNumber": "SP5-IER-643",
         "ierName": "Notification suspension request",
         "idpTinName": "IDP-1079 -> SP5-TIN-230",
-        "tinName": "Event Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Event Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7757,11 +6337,7 @@
         "ierNumber": "SP5-IER-643",
         "ierName": "Notification suspension request",
         "idpTinName": "IDP-1080 -> SP5-TIN-229",
-        "tinName": "Service Asset and Configuration Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Asset and Configuration Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7769,11 +6345,7 @@
         "ierNumber": "SP5-IER-643",
         "ierName": "Notification suspension request",
         "idpTinName": "IDP-1081 -> SP5-TIN-227",
-        "tinName": "Change Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Change Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7781,11 +6353,7 @@
         "ierNumber": "SP5-IER-643",
         "ierName": "Notification suspension request",
         "idpTinName": "IDP-1082 -> SP5-TIN-232",
-        "tinName": "Location Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Location Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7793,11 +6361,7 @@
         "ierNumber": "SP5-IER-643",
         "ierName": "Notification suspension request",
         "idpTinName": "IDP-1083 -> SP5-TIN-325",
-        "tinName": "Service Request Catalogue Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Service Request Catalogue Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7805,11 +6369,7 @@
         "ierNumber": "SP5-IER-686",
         "ierName": "Incident report",
         "idpTinName": "IDP-1196 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7817,11 +6377,7 @@
         "ierNumber": "SP5-IER-688",
         "ierName": "New Incident",
         "idpTinName": "IDP-1218 -> SP5-TIN-226",
-        "tinName": "Incident Management API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Incident Management API"
     },
     {
         "piNumber": "SP5-PI-SMC",
@@ -7829,10 +6385,6 @@
         "ierNumber": "SP5-IER-689",
         "ierName": "New Service Request",
         "idpTinName": "IDP-1219 -> SP5-TIN-228",
-        "tinName": "Request Fulfilment API",
-        "testCaseId": null,
-        "testCaseKey": null,
-        "testCaseName": null,
-        "testCaseState": null
+        "tinName": "Request Fulfilment API"
     }
 ]

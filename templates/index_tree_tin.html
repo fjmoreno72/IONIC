@@ -30,6 +30,21 @@
             --transition-speed: 0.2s;
         }
 
+        [data-theme="dark"] {
+            --primary-color: #3399ff;
+            --secondary-color: #5caeff;
+            --accent-color: #7edfff;
+            --danger-color: #ff6b6b;
+            --success-color: #55efc4;
+            --warning-color: #ffeaa7;
+            --background-color: #0f172a;
+            --card-background: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --hover-bg: #334155;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -400,6 +415,22 @@
             white-space: nowrap;
             z-index: 10;
         }
+
+        /* Add theme toggle button style if not already present */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 1010; /* Ensure it's above other elements */
+        }
     </style>
 </head>
 <body>
@@ -550,5 +581,27 @@
 
     <!-- Include the external JavaScript file -->
     <script src="/static/js/tree_tin.js"></script>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
+    <script>
+        // Theme toggling
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            // Add any theme-specific updates needed for this page's elements here
+            // e.g., if tree colors need to change based on theme
+        }
+
+        // Check system dark mode preference and set initial theme
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+             document.documentElement.setAttribute('data-theme', 'light');
+        }
+        // Apply initial theme-specific updates if needed
+        // toggleTheme(); // Call once to apply initial styles if necessary, or handle directly
+    </script>
 </body>
 </html>

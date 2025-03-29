@@ -73,13 +73,19 @@
         .services-table th.icon-column,
         .services-table td:nth-child(4) { /* Icon Column */
             width: 10%;
-            min-width: 60px;
+            min-width: 80px;
             text-align: center;
         }
         .services-table th.gps-column,
-        .services-table td:nth-child(5) { /* GPs Column */
+        .services-table td:nth-child(4) { /* GPs Column - NEW ORDER */
             width: 35%; /* Let GPs take remaining space */
             min-width: 150px; /* Add min-width for GPs */
+        }
+        .services-table th.icon-column,
+        .services-table td:nth-child(5) { /* Icon Column - NEW ORDER */
+            width: 10%;
+            min-width: 60px;
+            text-align: center;
         }
 
         /* Styles for column resizing */
@@ -131,7 +137,7 @@
 <body class="logged-in">
     {% include 'nav_menu.html' %}
 
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4 mt-4"> {# Added mt-4 for top spacing #}
         <div class="test-cases-container"> {# Reusing class for similar layout #}
             <div class="test-cases-header"> {# Reusing class for similar layout #}
                  <h2><img src="{{ url_for('static', filename='ASC/icons/services.svg') }}" alt="Services Icon" class="header-icon">ASC Services</h2> {# Changed icon and text #}
@@ -161,8 +167,8 @@
                             <th class="sortable id-column" data-sort="id">ID <i class="fas fa-sort"></i></th>
                             <th class="sortable" data-sort="name">Name <i class="fas fa-sort"></i></th>
                             <th class="sortable spiral-column" data-sort="spiral">Spiral <i class="fas fa-sort"></i></th>
-                            <th class="icon-column">Icon</th> {# Icon column is not sortable #}
                             <th class="sortable gps-column" data-sort="gps">GPs <i class="fas fa-sort"></i></th>
+                            <th class="icon-column">Icon</th> {# Icon column is not sortable #}
                         </tr>
                     </thead>
                     <tbody id="servicesTableBody"> {# Changed ID #}

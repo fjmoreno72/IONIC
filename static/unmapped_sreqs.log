@@ -8088,3 +8088,965 @@ ionic2.core.exceptions.ApiRequestError: API request failed with status code: 503
 2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
 2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
 2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:07:58 - Accessing ASC SPs page
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "[36mGET /static/js/sps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:07:59 - 127.0.0.1 - - [29/Mar/2025 15:07:59] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - Accessing ASC GPs page
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:01 - 127.0.0.1 - - [29/Mar/2025 15:08:01] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:06 - Accessing ASC Services page
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:06 - 127.0.0.1 - - [29/Mar/2025 15:08:06] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - Accessing ASC GPs page
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:10 - 127.0.0.1 - - [29/Mar/2025 15:08:10] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:24 - Accessing ASC Services page
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:24 - 127.0.0.1 - - [29/Mar/2025 15:08:24] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - Accessing ASC GPs page
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:27 - 127.0.0.1 - - [29/Mar/2025 15:08:27] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:29 - Accessing ASC SPs page
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "[36mGET /static/js/sps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:29 - 127.0.0.1 - - [29/Mar/2025 15:08:29] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:42 - Accessing ASC Services page
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:42 - 127.0.0.1 - - [29/Mar/2025 15:08:42] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - Accessing Affiliates page
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:50 - 127.0.0.1 - - [29/Mar/2025 15:08:50] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:54 - Accessing ASC Services page
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:08:54 - 127.0.0.1 - - [29/Mar/2025 15:08:54] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - Accessing ASC GPs page
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:09:14 - 127.0.0.1 - - [29/Mar/2025 15:09:14] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:35 - Logging system configured with level INFO
+2025-03-29 15:13:35 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:13:35 - Configured Flask app logging with level INFO
+2025-03-29 15:13:35 - Configured Flask app logging with level INFO
+2025-03-29 15:13:35 - Logging system configured with level INFO
+2025-03-29 15:13:35 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:13:35 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:13:35 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:13:35 - Running in DEBUG mode
+2025-03-29 15:13:35 - Listening on 0.0.0.0:5005
+2025-03-29 15:13:35 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 15:13:35 - [33mPress CTRL+C to quit[0m
+2025-03-29 15:13:35 -  * Restarting with stat
+2025-03-29 15:13:35 - Logging system configured with level INFO
+2025-03-29 15:13:35 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:13:35 - Configured Flask app logging with level INFO
+2025-03-29 15:13:35 - Configured Flask app logging with level INFO
+2025-03-29 15:13:35 - Logging system configured with level INFO
+2025-03-29 15:13:35 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:13:35 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:13:35 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:13:35 - Running in DEBUG mode
+2025-03-29 15:13:35 - Listening on 0.0.0.0:5005
+2025-03-29 15:13:35 -  * Debugger is active!
+2025-03-29 15:13:35 -  * Debugger PIN: 288-414-191
+2025-03-29 15:13:38 - User logged out
+2025-03-29 15:13:38 - 127.0.0.1 - - [29/Mar/2025 15:13:38] "GET /logout HTTP/1.1" 200 -
+2025-03-29 15:13:38 - 127.0.0.1 - - [29/Mar/2025 15:13:38] "GET / HTTP/1.1" 200 -
+2025-03-29 15:13:38 - 127.0.0.1 - - [29/Mar/2025 15:13:38] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:13:38 - 127.0.0.1 - - [29/Mar/2025 15:13:38] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:41 - SSL verification is disabled. This is insecure.
+2025-03-29 15:13:42 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 15:13:42 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 15:13:42 - 127.0.0.1 - - [29/Mar/2025 15:13:42] "POST /login HTTP/1.1" 200 -
+2025-03-29 15:13:42 - Accessing functional tree view
+2025-03-29 15:13:42 - 127.0.0.1 - - [29/Mar/2025 15:13:42] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 15:13:42 - 127.0.0.1 - - [29/Mar/2025 15:13:42] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:42 - 127.0.0.1 - - [29/Mar/2025 15:13:42] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:13:42 - 127.0.0.1 - - [29/Mar/2025 15:13:42] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - Accessing Affiliates page
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:45 - 127.0.0.1 - - [29/Mar/2025 15:13:45] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:47 - Accessing ASC Services page
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "GET /static/js/services.js HTTP/1.1" 200 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:47 - 127.0.0.1 - - [29/Mar/2025 15:13:47] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - Accessing ASC GPs page
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "GET /static/js/gps.js HTTP/1.1" 200 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:13:59 - 127.0.0.1 - - [29/Mar/2025 15:13:59] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - Accessing Affiliates page
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:22 - 127.0.0.1 - - [29/Mar/2025 15:14:22] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - Accessing ASC GPs page
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:14:37 - 127.0.0.1 - - [29/Mar/2025 15:14:37] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:35 - Logging system configured with level INFO
+2025-03-29 15:15:35 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:15:35 - Configured Flask app logging with level INFO
+2025-03-29 15:15:35 - Configured Flask app logging with level INFO
+2025-03-29 15:15:35 - Logging system configured with level INFO
+2025-03-29 15:15:35 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:15:35 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:15:35 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:15:35 - Running in DEBUG mode
+2025-03-29 15:15:35 - Listening on 0.0.0.0:5005
+2025-03-29 15:15:35 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 15:15:35 - [33mPress CTRL+C to quit[0m
+2025-03-29 15:15:35 -  * Restarting with stat
+2025-03-29 15:15:35 - Logging system configured with level INFO
+2025-03-29 15:15:35 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:15:35 - Configured Flask app logging with level INFO
+2025-03-29 15:15:35 - Configured Flask app logging with level INFO
+2025-03-29 15:15:35 - Logging system configured with level INFO
+2025-03-29 15:15:35 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:15:35 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:15:35 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:15:35 - Running in DEBUG mode
+2025-03-29 15:15:35 - Listening on 0.0.0.0:5005
+2025-03-29 15:15:36 -  * Debugger is active!
+2025-03-29 15:15:36 -  * Debugger PIN: 288-414-191
+2025-03-29 15:15:43 - User logged out
+2025-03-29 15:15:43 - 127.0.0.1 - - [29/Mar/2025 15:15:43] "GET /logout HTTP/1.1" 200 -
+2025-03-29 15:15:43 - 127.0.0.1 - - [29/Mar/2025 15:15:43] "GET / HTTP/1.1" 200 -
+2025-03-29 15:15:43 - 127.0.0.1 - - [29/Mar/2025 15:15:43] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:15:43 - 127.0.0.1 - - [29/Mar/2025 15:15:43] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:15:46 - SSL verification is disabled. This is insecure.
+2025-03-29 15:15:47 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 15:15:47 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 15:15:47 - 127.0.0.1 - - [29/Mar/2025 15:15:47] "POST /login HTTP/1.1" 200 -
+2025-03-29 15:15:47 - Accessing functional tree view
+2025-03-29 15:15:47 - 127.0.0.1 - - [29/Mar/2025 15:15:47] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 15:15:47 - 127.0.0.1 - - [29/Mar/2025 15:15:47] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:15:47 - 127.0.0.1 - - [29/Mar/2025 15:15:47] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:15:48 - 127.0.0.1 - - [29/Mar/2025 15:15:48] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 15:15:53 - Accessing ASC Services page
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:15:53 - 127.0.0.1 - - [29/Mar/2025 15:15:53] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - Accessing ASC GPs page
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:15:55 - 127.0.0.1 - - [29/Mar/2025 15:15:55] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:29 - Accessing ASC Services page
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:29 - 127.0.0.1 - - [29/Mar/2025 15:17:29] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:17:33 - Accessing ASC Services page
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:17:33 - 127.0.0.1 - - [29/Mar/2025 15:17:33] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - Accessing ASC GPs page
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:17:35 - 127.0.0.1 - - [29/Mar/2025 15:17:35] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:20 - Accessing ASC SPs page
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "[36mGET /static/js/sps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:20 - 127.0.0.1 - - [29/Mar/2025 15:18:20] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:24 - Accessing ASC Services page
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:24 - 127.0.0.1 - - [29/Mar/2025 15:18:24] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - Accessing ASC GPs page
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:26 - 127.0.0.1 - - [29/Mar/2025 15:18:26] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:34 - User logged out
+2025-03-29 15:18:34 - 127.0.0.1 - - [29/Mar/2025 15:18:34] "GET /logout HTTP/1.1" 200 -
+2025-03-29 15:18:34 - 127.0.0.1 - - [29/Mar/2025 15:18:34] "GET / HTTP/1.1" 200 -
+2025-03-29 15:18:34 - 127.0.0.1 - - [29/Mar/2025 15:18:34] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:34 - 127.0.0.1 - - [29/Mar/2025 15:18:34] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:18:39 - Logging system configured with level INFO
+2025-03-29 15:18:39 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:18:39 - Configured Flask app logging with level INFO
+2025-03-29 15:18:39 - Configured Flask app logging with level INFO
+2025-03-29 15:18:39 - Logging system configured with level INFO
+2025-03-29 15:18:39 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:18:39 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:18:39 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:18:39 - Running in DEBUG mode
+2025-03-29 15:18:39 - Listening on 0.0.0.0:5005
+2025-03-29 15:18:39 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 15:18:39 - [33mPress CTRL+C to quit[0m
+2025-03-29 15:18:39 -  * Restarting with stat
+2025-03-29 15:18:39 - Logging system configured with level INFO
+2025-03-29 15:18:39 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:18:39 - Configured Flask app logging with level INFO
+2025-03-29 15:18:39 - Configured Flask app logging with level INFO
+2025-03-29 15:18:39 - Logging system configured with level INFO
+2025-03-29 15:18:39 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:18:39 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:18:39 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:18:39 - Running in DEBUG mode
+2025-03-29 15:18:39 - Listening on 0.0.0.0:5005
+2025-03-29 15:18:39 -  * Debugger is active!
+2025-03-29 15:18:39 -  * Debugger PIN: 288-414-191
+2025-03-29 15:18:42 - SSL verification is disabled. This is insecure.
+2025-03-29 15:18:43 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 15:18:43 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 15:18:43 - 127.0.0.1 - - [29/Mar/2025 15:18:43] "POST /login HTTP/1.1" 200 -
+2025-03-29 15:18:43 - Accessing functional tree view
+2025-03-29 15:18:43 - 127.0.0.1 - - [29/Mar/2025 15:18:43] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 15:18:43 - 127.0.0.1 - - [29/Mar/2025 15:18:43] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:18:43 - 127.0.0.1 - - [29/Mar/2025 15:18:43] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:43 - 127.0.0.1 - - [29/Mar/2025 15:18:43] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - Accessing ASC GPs page
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:47 - 127.0.0.1 - - [29/Mar/2025 15:18:47] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:50 - Accessing ASC Services page
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:50 - 127.0.0.1 - - [29/Mar/2025 15:18:50] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - Accessing ASC GPs page
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:18:56 - 127.0.0.1 - - [29/Mar/2025 15:18:56] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:04 - Accessing ASC Services page
+2025-03-29 15:19:04 - 127.0.0.1 - - [29/Mar/2025 15:19:04] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:19:05 - 127.0.0.1 - - [29/Mar/2025 15:19:05] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - Accessing ASC GPs page
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:19:25 - 127.0.0.1 - - [29/Mar/2025 15:19:25] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:16 - Logging system configured with level INFO
+2025-03-29 15:26:16 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:26:16 - Configured Flask app logging with level INFO
+2025-03-29 15:26:16 - Configured Flask app logging with level INFO
+2025-03-29 15:26:16 - Logging system configured with level INFO
+2025-03-29 15:26:16 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:26:16 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:26:16 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:26:16 - Running in DEBUG mode
+2025-03-29 15:26:16 - Listening on 0.0.0.0:5005
+2025-03-29 15:26:16 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 15:26:16 - [33mPress CTRL+C to quit[0m
+2025-03-29 15:26:16 -  * Restarting with stat
+2025-03-29 15:26:16 - Logging system configured with level INFO
+2025-03-29 15:26:16 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:26:16 - Configured Flask app logging with level INFO
+2025-03-29 15:26:16 - Configured Flask app logging with level INFO
+2025-03-29 15:26:16 - Logging system configured with level INFO
+2025-03-29 15:26:16 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:26:16 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:26:16 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:26:16 - Running in DEBUG mode
+2025-03-29 15:26:16 - Listening on 0.0.0.0:5005
+2025-03-29 15:26:16 -  * Debugger is active!
+2025-03-29 15:26:16 -  * Debugger PIN: 288-414-191
+2025-03-29 15:26:18 - User logged out
+2025-03-29 15:26:18 - 127.0.0.1 - - [29/Mar/2025 15:26:18] "GET /logout HTTP/1.1" 200 -
+2025-03-29 15:26:18 - 127.0.0.1 - - [29/Mar/2025 15:26:18] "GET / HTTP/1.1" 200 -
+2025-03-29 15:26:18 - 127.0.0.1 - - [29/Mar/2025 15:26:18] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:18 - 127.0.0.1 - - [29/Mar/2025 15:26:18] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:21 - SSL verification is disabled. This is insecure.
+2025-03-29 15:26:22 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 15:26:22 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 15:26:22 - 127.0.0.1 - - [29/Mar/2025 15:26:22] "POST /login HTTP/1.1" 200 -
+2025-03-29 15:26:22 - Accessing functional tree view
+2025-03-29 15:26:22 - 127.0.0.1 - - [29/Mar/2025 15:26:22] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 15:26:22 - 127.0.0.1 - - [29/Mar/2025 15:26:22] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:22 - 127.0.0.1 - - [29/Mar/2025 15:26:22] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:22 - 127.0.0.1 - - [29/Mar/2025 15:26:22] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - Accessing Affiliates page
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:25 - 127.0.0.1 - - [29/Mar/2025 15:26:25] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:28 - Accessing ASC Services page
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:28 - 127.0.0.1 - - [29/Mar/2025 15:26:28] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - Accessing ASC GPs page
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:30 - 127.0.0.1 - - [29/Mar/2025 15:26:30] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:34 - Accessing ASC Services page
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:34 - 127.0.0.1 - - [29/Mar/2025 15:26:34] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:37 - Accessing ASC Services page
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /static/iocore2_logo.png HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /static/ASC/icons/services.svg HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /static/js/services.js HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /static/ASC/data/services.json HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /static/ASC/image/srv/icon_data_links.png HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "GET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1" 200 -
+2025-03-29 15:26:37 - 127.0.0.1 - - [29/Mar/2025 15:26:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-29 15:26:40 - Accessing ASC Services page
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:40 - 127.0.0.1 - - [29/Mar/2025 15:26:40] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:41 - Accessing ASC GPs page
+2025-03-29 15:26:41 - 127.0.0.1 - - [29/Mar/2025 15:26:41] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:42 - 127.0.0.1 - - [29/Mar/2025 15:26:42] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:44 - Accessing ASC SPs page
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "[36mGET /static/js/sps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:26:44 - 127.0.0.1 - - [29/Mar/2025 15:26:44] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:13 - Logging system configured with level INFO
+2025-03-29 15:31:13 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:31:13 - Configured Flask app logging with level INFO
+2025-03-29 15:31:13 - Configured Flask app logging with level INFO
+2025-03-29 15:31:13 - Logging system configured with level INFO
+2025-03-29 15:31:13 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:31:13 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:31:13 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:31:13 - Running in DEBUG mode
+2025-03-29 15:31:13 - Listening on 0.0.0.0:5005
+2025-03-29 15:31:13 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 15:31:13 - [33mPress CTRL+C to quit[0m
+2025-03-29 15:31:13 -  * Restarting with stat
+2025-03-29 15:31:13 - Logging system configured with level INFO
+2025-03-29 15:31:13 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:31:13 - Configured Flask app logging with level INFO
+2025-03-29 15:31:13 - Configured Flask app logging with level INFO
+2025-03-29 15:31:13 - Logging system configured with level INFO
+2025-03-29 15:31:13 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:31:13 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:31:13 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:31:13 - Running in DEBUG mode
+2025-03-29 15:31:13 - Listening on 0.0.0.0:5005
+2025-03-29 15:31:13 -  * Debugger is active!
+2025-03-29 15:31:13 -  * Debugger PIN: 288-414-191
+2025-03-29 15:31:16 - User logged out
+2025-03-29 15:31:16 - 127.0.0.1 - - [29/Mar/2025 15:31:16] "GET /logout HTTP/1.1" 200 -
+2025-03-29 15:31:16 - 127.0.0.1 - - [29/Mar/2025 15:31:16] "GET / HTTP/1.1" 200 -
+2025-03-29 15:31:16 - 127.0.0.1 - - [29/Mar/2025 15:31:16] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:31:16 - 127.0.0.1 - - [29/Mar/2025 15:31:16] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:31:18 - SSL verification is disabled. This is insecure.
+2025-03-29 15:31:19 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 15:31:19 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 15:31:19 - 127.0.0.1 - - [29/Mar/2025 15:31:19] "POST /login HTTP/1.1" 200 -
+2025-03-29 15:31:19 - Accessing functional tree view
+2025-03-29 15:31:19 - 127.0.0.1 - - [29/Mar/2025 15:31:19] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 15:31:19 - 127.0.0.1 - - [29/Mar/2025 15:31:19] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:31:19 - 127.0.0.1 - - [29/Mar/2025 15:31:19] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:31:19 - 127.0.0.1 - - [29/Mar/2025 15:31:19] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - Accessing ASC GPs page
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:22 - 127.0.0.1 - - [29/Mar/2025 15:31:22] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:25 - Accessing ASC SPs page
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "GET /static/ASC/icons/sps.svg HTTP/1.1" 200 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "GET /static/js/sps.js HTTP/1.1" 200 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:25 - 127.0.0.1 - - [29/Mar/2025 15:31:25] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:49 - Accessing ASC Services page
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:31:49 - 127.0.0.1 - - [29/Mar/2025 15:31:49] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - Accessing Affiliates page
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:01 - 127.0.0.1 - - [29/Mar/2025 15:32:01] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - Accessing ASC GPs page
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:05 - 127.0.0.1 - - [29/Mar/2025 15:32:05] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:14 - Accessing ASC Kanban (WIP)
+2025-03-29 15:32:14 - 127.0.0.1 - - [29/Mar/2025 15:32:14] "GET /asc_kanban HTTP/1.1" 200 -
+2025-03-29 15:32:14 - 127.0.0.1 - - [29/Mar/2025 15:32:14] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:14 - 127.0.0.1 - - [29/Mar/2025 15:32:14] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:32:16 - Accessing ASC SPs page
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/js/sps.js HTTP/1.1[0m" 304 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/ASC/icons/sps.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:32:16 - 127.0.0.1 - - [29/Mar/2025 15:32:16] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -

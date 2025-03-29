@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${service.id || ''}</td>
                         <td>${service.name || ''}</td>
                         <td class="spiral-column">${service.spiral || ''}</td>
-                        <td class="icon-column text-center">${iconHtml}</td>
                         <td>${gpsList}</td>
+                        <td class="icon-column text-center">${iconHtml}</td>
                     `;
                     servicesTableBody.appendChild(row);
                 }
@@ -156,12 +156,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (loadingIndicator) loadingIndicator.style.display = 'none';
             if (noResults) {
                 noResults.classList.remove('d-none');
-                noResults.textContent = 'Error loading data.';
-            }
-             servicesTableBody.innerHTML = '<tr><td colspan="5" class="text-center text-danger">Error loading data.</td></tr>'; // Colspan 5
-        });
+                 noResults.textContent = 'Error loading data.';
+             }
+              servicesTableBody.innerHTML = '<tr><td colspan="5" class="text-center text-danger">Error loading data.</td></tr>'; // Colspan 5 (still 5 columns)
+         });
 
-    // Add event listeners
+     // Add event listeners
     searchInput.addEventListener('input', applyFiltersAndSearch);
 
     if (prevPageButton) {

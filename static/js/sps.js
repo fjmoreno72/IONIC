@@ -2,27 +2,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const spsTableBody = document.getElementById('spsTableBody');
     const searchInput = document.getElementById('searchInput');
     let allSps = []; // To store all fetched sps data
+    let filteredSps = []; // To store filtered data
+    let currentSortField = 'id'; // Default sort field
+    let sortDirection = 'asc'; // Default sort direction
 
     // Function to render the table rows
-    function renderTable(spsData) {
+    function renderTable() { // Removed spsData parameter, uses filteredSps
         spsTableBody.innerHTML = ''; // Clear existing rows
-        if (!spsData || spsData.length === 0) {
-            spsTableBody.innerHTML = '<tr><td colspan="5" class="text-center">No SPs found.</td></tr>'; // Updated colspan
+        if (!filteredSps || filteredSps.length === 0) { // Use filteredSps
+            spsTableBody.innerHTML = '<tr><td colspan="5" class="text-center">No SPs found matching your criteria.</td></tr>'; // Updated colspan and message
             return;
         }
-        spsData.forEach(sp => {
+        filteredSps.forEach(sp => { // Use filteredSps
             const row = document.createElement('tr');
             const versions = sp.versions ? sp.versions.join(', ') : ''; // Join versions array
             const iconHtml = sp.iconPath
                 ? `<img src="/static/ASC/${sp.iconPath.replace('./', '')}" alt="${sp.name || 'Icon'}" class="icon-img">`
                 : 'No Icon'; // Display 'No Icon' if path is missing
 
+            // New column order: ID, Name, Description, Versions, Icon
             row.innerHTML = `
                 <td>${sp.id || ''}</td>
                 <td>${sp.name || ''}</td>
                 <td>${sp.description || ''}</td>
-                <td class="text-center">${iconHtml}</td>
                 <td>${versions}</td>
+                <td class="text-center">${iconHtml}</td>
             `;
             spsTableBody.appendChild(row);
         });
@@ -30,17 +34,39 @@ document.addEventListener('DOMContentLoaded', function() {
         setupColumnResizing();
     }
 
-    // Function to filter data based on search input
+    // Function to sort data (similar to gps.js)
+    function sortData() {
+        filteredSps.sort((a, b) => {
+            let valA = a[currentSortField];
+            let valB = b[currentSortField];
+
+            // Handle array fields like 'versions'
+            if (Array.isArray(valA)) valA = valA.join(', ');
+            if (Array.isArray(valB)) valB = valB.join(', ');
+
+            // Ensure consistent type for comparison
+            valA = valA === null || valA === undefined ? '' : String(valA).toLowerCase();
+            valB = valB === null || valB === undefined ? '' : String(valB).toLowerCase();
+
+            if (valA < valB) return sortDirection === 'asc' ? -1 : 1;
+            if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
+            return 0;
+        });
+    }
+
+    // Function to filter data based on search input AND apply sorting
     function filterData() {
         const searchTerm = searchInput.value.toLowerCase();
-        const filteredSps = allSps.filter(sp => {
+        // Update the global filteredSps array
+        filteredSps = allSps.filter(sp => {
             const versionsString = sp.versions ? sp.versions.join(', ').toLowerCase() : '';
             return (sp.id?.toLowerCase() || '').includes(searchTerm) ||
                    (sp.name?.toLowerCase() || '').includes(searchTerm) ||
                    (sp.description?.toLowerCase() || '').includes(searchTerm) ||
                    versionsString.includes(searchTerm); // Include versions in search
         });
-        renderTable(filteredSps);
+        sortData(); // Apply current sort order
+        renderTable(); // Render the sorted and filtered data
     }
 
     // Fetch SP data from the JSON file
@@ -53,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             allSps = data; // Store the full dataset
-            renderTable(allSps); // Initial render calls renderTable which calls setupColumnResizing
+            filterData(); // Initial filter and sort
         })
         .catch(error => {
             console.error('Error fetching SP data:', error);
@@ -62,6 +88,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listener for the search input
     searchInput.addEventListener('input', filterData);
+
+    // Add sorting event listeners (similar to gps.js)
+    document.querySelectorAll('.table th.sortable').forEach(th => { // Target the correct table/headers
+        th.addEventListener('click', () => {
+            const field = th.dataset.sort;
+            if (!field) return;
+
+            if (field === currentSortField) {
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortField = field;
+                sortDirection = 'asc';
+            }
+
+            // Update sort icons
+            document.querySelectorAll('.table th.sortable i').forEach(icon => icon.className = 'fas fa-sort'); // Use correct selector
+            const icon = th.querySelector('i');
+            if (icon) icon.className = `fas fa-sort-${sortDirection === 'asc' ? 'up' : 'down'}`;
+
+            filterData(); // Re-filter and re-render with new sort
+        });
+    });
 
     // --- Dark Mode Handling ---
     const applyDarkMode = (isDark) => {

@@ -6,6 +6,7 @@
     <title>GPs - IOCore2</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> {# Added Font Awesome #}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
     <style>
         body {
@@ -101,25 +102,85 @@
         [data-bs-theme="dark"] .resize-handle {
              /* Optional: Dark mode handle indicator */
         }
+        /* Style for sortable headers */
+         .table th.sortable {
+             cursor: pointer;
+         }
+         .table th.sortable:hover {
+             background-color: rgba(0,0,0,0.05); /* Subtle hover effect */
+         }
+         [data-bs-theme="dark"] .table th.sortable:hover {
+             background-color: rgba(255,255,255,0.05); /* Subtle hover effect */
+         }
+         .table th.sortable i {
+             margin-left: 5px;
+             color: #aaa; /* Dimmed sort icon */
+         }
+         [data-bs-theme="dark"] .table th.sortable i {
+             color: #777;
+         }
+         .header-icon { /* Copied from services.html */
+             width: 24px;
+             height: auto;
+             vertical-align: middle;
+             margin-right: 0.5rem;
+         }
+         /* Copied from services.html for search icon */
+         .search-container input[type="text"] {
+            padding-left: 2rem; /* Add space for the icon */
+         }
+         .search-container .fa-search {
+            position: absolute;
+            left: 0.75rem; /* Position icon inside the padding */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d; /* Optional: Adjust icon color */
+            pointer-events: none; /* Make icon non-interactive */
+         }
+         .filter-item.search-container {
+            position: relative; /* Needed for absolute positioning of the icon */
+            max-width: 300px; /* Maintain max-width from search-add-row */
+         }
+         /* Adjust search-add-row to just handle flex layout */
+         .search-add-row {
+            /* max-width removed, handled by search-container now */
+         }
+
     </style>
 </head>
 <body>
     {% include 'nav_menu.html' %}
 
-    <div class="container-fluid mt-4">
-        <div class="search-add-row">
-            <input type="text" id="searchInput" class="form-control" placeholder="Search GPs...">
-            <button id="addGpButton" class="btn btn-primary" disabled>+ Add GP</button>
-        </div>
+    {# Removed mt-4 from container, added test-cases-container like services.html #}
+    <div class="container-fluid px-4">
+        <div class="test-cases-container"> {# Added wrapper like services.html #}
+            {# Removed mb-3 from header div #}
+            <div class="test-cases-header"> {# Reusing class for similar layout #}
+                 <h2><img src="{{ url_for('static', filename='ASC/icons/gps.svg') }}" alt="GPs Icon" class="header-icon">ASC GPs</h2>
+            </div>
+            {# Updated search input structure like services.html #}
+            <div class="search-add-row controls-container"> {# Use controls-container like services #}
+                 <div class="filters-container"> {# Added filters container #}
+                    <div class="filter-item search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search GPs..." class="form-control form-control-sm">
+                    </div>
+                 </div>
+                 <div class="actions-container"> {# Added actions container #}
+                    <button id="addGpButton" class="btn btn-primary btn-sm" disabled> {# Added btn-sm #}
+                        <i class="fas fa-plus me-1"></i> Add GP
+                    </button>
+                 </div>
+            </div>
 
         <div class="table-responsive">
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover table-sm"> {# Added table-sm #}
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Icon</th>
+                        <th scope="col" class="sortable" data-sort="id">ID <i class="fas fa-sort"></i></th>
+                        <th scope="col" class="sortable" data-sort="name">Name <i class="fas fa-sort"></i></th>
+                        <th scope="col" class="sortable" data-sort="description">Description <i class="fas fa-sort"></i></th>
+                        <th scope="col">Icon</th> {# Removed sortable class and icon #}
                     </tr>
                 </thead>
                 <tbody id="gpsTableBody">
@@ -127,6 +188,7 @@
                 </tbody>
             </table>
         </div>
+       </div> {# Added closing div for test-cases-container #}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

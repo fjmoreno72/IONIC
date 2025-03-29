@@ -2,15 +2,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const gpsTableBody = document.getElementById('gpsTableBody');
     const searchInput = document.getElementById('searchInput');
     let allGps = []; // To store all fetched gps data
+    let filteredGps = []; // To store filtered data for rendering
+    let currentSortField = 'id'; // Default sort field
+    let sortDirection = 'asc'; // Default sort direction
 
     // Function to render the table rows
-    function renderTable(gpsData) {
+    function renderTable() { // Removed gpsData parameter, will use filteredGps
         gpsTableBody.innerHTML = ''; // Clear existing rows
-        if (!gpsData || gpsData.length === 0) {
-            gpsTableBody.innerHTML = '<tr><td colspan="4" class="text-center">No GPs found.</td></tr>';
+        if (!filteredGps || filteredGps.length === 0) { // Use filteredGps
+            gpsTableBody.innerHTML = '<tr><td colspan="4" class="text-center">No GPs found matching your criteria.</td></tr>'; // Updated message
             return;
         }
-        gpsData.forEach(gp => {
+        // Loop through the filtered data
+        filteredGps.forEach(gp => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${gp.id || ''}</td>
@@ -24,15 +28,34 @@ document.addEventListener('DOMContentLoaded', function() {
         setupColumnResizing();
     }
 
-    // Function to filter data based on search input
+    // Function to sort data
+    function sortData() {
+        filteredGps.sort((a, b) => {
+            let valA = a[currentSortField];
+            let valB = b[currentSortField];
+
+            // Handle specific fields if needed (e.g., iconPath might need special handling if sorting by it)
+            // For now, treat all as strings for simplicity
+            valA = valA === null || valA === undefined ? '' : String(valA).toLowerCase();
+            valB = valB === null || valB === undefined ? '' : String(valB).toLowerCase();
+
+            if (valA < valB) return sortDirection === 'asc' ? -1 : 1;
+            if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
+            return 0;
+        });
+    }
+
+    // Function to filter data based on search input AND apply sorting
     function filterData() {
         const searchTerm = searchInput.value.toLowerCase();
-        const filteredGps = allGps.filter(gp => {
+        // Update the global filteredGps array
+        filteredGps = allGps.filter(gp => {
             return (gp.id?.toLowerCase() || '').includes(searchTerm) ||
                    (gp.name?.toLowerCase() || '').includes(searchTerm) ||
                    (gp.description?.toLowerCase() || '').includes(searchTerm);
         });
-        renderTable(filteredGps);
+        sortData(); // Apply current sort order
+        renderTable(); // Render the sorted and filtered data
     }
 
     // Fetch GP data from the JSON file
@@ -45,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             allGps = data; // Store the full dataset
-            renderTable(allGps); // Initial render calls renderTable which calls setupColumnResizing
+            filterData(); // Initial filter and sort
         })
         .catch(error => {
             console.error('Error fetching GP data:', error);
@@ -54,6 +77,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listener for the search input
     searchInput.addEventListener('input', filterData);
+
+    // Add sorting event listeners (similar to services.js)
+    document.querySelectorAll('.table th.sortable').forEach(th => { // Target the correct table/headers
+        th.addEventListener('click', () => {
+            const field = th.dataset.sort;
+            if (!field) return;
+
+            if (field === currentSortField) {
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortField = field;
+                sortDirection = 'asc';
+            }
+
+            // Update sort icons
+            document.querySelectorAll('.table th.sortable i').forEach(icon => icon.className = 'fas fa-sort'); // Use correct selector
+            const icon = th.querySelector('i');
+            if (icon) icon.className = `fas fa-sort-${sortDirection === 'asc' ? 'up' : 'down'}`;
+
+            filterData(); // Re-filter and re-render with new sort
+        });
+    });
 
     // --- Dark Mode Handling (from affiliates.js/services.js pattern) ---
     const applyDarkMode = (isDark) => {

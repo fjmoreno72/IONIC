@@ -1,74 +1,710 @@
 [
   {
     "name": "Data Link Server",
-    "description": "Implements:JRE Functions, Security and Access Control andTime Syncronization and Coordination",
+    "description": "",
     "iconPath": "./image/gp/gp_icon_data_link_server.jpg",
     "id": "GP-0001"
   },
   {
-    "name": "Data Link Server Hub",
-    "description": "Implements: Data Link Hub Functions (JREU)",
-    "iconPath": "./image/gp/gp_icon_data_link_server_hub.jpg",
-    "id": "GP-0002"
-  },
-  {
-    "name": "Data Link Server Gateway",
-    "description": "Implements: Data Link Gateway Functions (FJUG)(JRE JU)",
-    "iconPath": "./image/gp/gp_icon_data_link_server_gateway.jpg",
-    "id": "GP-0003"
-  },
-  {
-    "name": "Data Link Server Consumer",
-    "description": "Implements: TDL Display and Visualisation",
-    "iconPath": "./image/gp/gp_icon_data_link_server_consumer.jpg",
-    "id": "GP-0004"
-  },
-  {
     "name": "XMPP Server",
-    "description": "Generic XMPP Server - Implement all Chat Functionality from Server point of View",
+    "description": "",
     "iconPath": "./image/gp/gp_icon_xmpp_server.jpg",
     "id": "GP-0005"
   },
   {
     "name": "XMPP Client",
-    "description": "Chat Client - Works with XMPP Server - Implement Client fucntions and Display",
+    "description": "",
     "iconPath": "./image/gp/gp_icon_xmpp_client.jpg",
     "id": "GP-0006"
   },
   {
     "name": "DNS Root Server",
-    "description": "DNS Root Server",
+    "description": "Any DNS server that hosts the Root ('.') Zone.",
     "iconPath": "./image/gp/gp_icon_dns_root_server.jpg",
     "id": "GP-0007"
   },
   {
-    "name": "DNS \ufeffZone Authoritative",
-    "description": "DNS \ufeffZone Authoritative",
-    "iconPath": "./image/gp/gp_icon_dns_\ufeffzone_authoritative.jpg",
-    "id": "GP-0008"
-  },
-  {
-    "name": "D\ufeffNS Resolvers",
-    "description": "D\ufeffNS Resolvers",
-    "iconPath": "./image/gp/gp_icon_d\ufeffns_resolvers.jpg",
-    "id": "GP-0009"
-  },
-  {
     "name": "Email Server",
-    "description": "Email Server - A software or system that handles the sending, receiving, storing, and forwarding of emails for users. It manages email communication using protocols like SMTP, IMAP, and POP3.",
+    "description": "",
     "iconPath": "./image/gp/gp_icon_email_server.jpg",
     "id": "GP-0010"
   },
   {
     "name": "Email Client",
-    "description": "Email Client - A software application used to access, send, receive, and manage emails. It connects to an email server to retrieve and send messages, often including additional features like calendar integration, contacts, and task management.",
+    "description": "",
     "iconPath": "./image/gp/gp_icon_email_client.jpg",
     "id": "GP-0011"
   },
   {
     "name": "Web Server",
-    "description": "",
+    "description": "Portals",
     "iconPath": "./image/gp/gp_icon_web_server.jpg",
     "id": "GP-0012"
+  },
+  {
+    "name": "RAG Client",
+    "description": "",
+    "id": "GP-0013",
+    "iconPath": ""
+  },
+  {
+    "name": "Web Client",
+    "description": "Web Browsers",
+    "id": "GP-0014",
+    "iconPath": ""
+  },
+  {
+    "name": "Audio Terminal",
+    "description": "",
+    "id": "GP-0015",
+    "iconPath": ""
+  },
+  {
+    "name": "Call Manager",
+    "description": "Call Management and Endpoint Registration Server",
+    "id": "GP-0016",
+    "iconPath": ""
+  },
+  {
+    "name": "Directory Server",
+    "description": "",
+    "id": "GP-0017",
+    "iconPath": ""
+  },
+  {
+    "name": "Certificate Server",
+    "description": "",
+    "id": "GP-0018",
+    "iconPath": ""
+  },
+  {
+    "name": "Conference Server (Audio)",
+    "description": "",
+    "id": "GP-0019",
+    "iconPath": ""
+  },
+  {
+    "name": "Crypto",
+    "description": "",
+    "id": "GP-0020",
+    "iconPath": ""
+  },
+  {
+    "name": "FFT Server",
+    "description": "Generic FFT Server",
+    "id": "GP-0021",
+    "iconPath": ""
+  },
+  {
+    "name": "IEG",
+    "description": "",
+    "id": "GP-0022",
+    "iconPath": ""
+  },
+  {
+    "name": "MIP Gateway",
+    "description": "",
+    "id": "GP-0023",
+    "iconPath": ""
+  },
+  {
+    "name": "Time Reference Clock (Stratum 1)",
+    "description": "Any NTP server with a build-in, or direct connection to, a reference clock.",
+    "id": "GP-0024",
+    "iconPath": ""
+  },
+  {
+    "name": "Registrar Server (Video)",
+    "description": "",
+    "id": "GP-0025",
+    "iconPath": ""
+  },
+  {
+    "name": "SBC",
+    "description": "",
+    "id": "GP-0026",
+    "iconPath": ""
+  },
+  {
+    "name": "LDAP MetaTool",
+    "description": "",
+    "id": "GP-0027",
+    "iconPath": ""
+  },
+  {
+    "name": "Time Server",
+    "description": "Any NTP server that is Stratum 2 or higher. (For Stratum 1, use the 'Time Reference Clock' asset type.)",
+    "id": "GP-0028",
+    "iconPath": ""
+  },
+  {
+    "name": "Video Terminal",
+    "description": "",
+    "id": "GP-0029",
+    "iconPath": ""
+  },
+  {
+    "name": "Geo Server",
+    "description": "",
+    "id": "GP-0030",
+    "iconPath": ""
+  },
+  {
+    "name": "AirC2 Server",
+    "description": "Full installation in one box",
+    "id": "GP-0031",
+    "iconPath": ""
+  },
+  {
+    "name": "AirC2 Client",
+    "description": "",
+    "id": "GP-0032",
+    "iconPath": ""
+  },
+  {
+    "name": "BSE Server",
+    "description": "Full installation in one box",
+    "id": "GP-0033",
+    "iconPath": ""
+  },
+  {
+    "name": "Router",
+    "description": "NIP router",
+    "id": "GP-0034",
+    "iconPath": ""
+  },
+  {
+    "name": "Firewall",
+    "description": "Firewall",
+    "id": "GP-0035",
+    "iconPath": ""
+  },
+  {
+    "name": "Crypto",
+    "description": "Crypto Device",
+    "id": "GP-0036",
+    "iconPath": ""
+  },
+  {
+    "name": "Data Link Client",
+    "description": "Client that can display L16 Tracks",
+    "id": "GP-0037",
+    "iconPath": ""
+  },
+  {
+    "name": "Certificate Client",
+    "description": "",
+    "id": "GP-0038",
+    "iconPath": ""
+  },
+  {
+    "name": "Time Client",
+    "description": "Any device that takes time from a time server, but does not act as a time server itself.",
+    "id": "GP-0039",
+    "iconPath": ""
+  },
+  {
+    "name": "FFT Client Display",
+    "description": "",
+    "id": "GP-0040",
+    "iconPath": ""
+  },
+  {
+    "name": "Geo Client",
+    "description": "",
+    "id": "GP-0041",
+    "iconPath": ""
+  },
+  {
+    "name": "CSD",
+    "description": "CSD System",
+    "id": "GP-0042",
+    "iconPath": ""
+  },
+  {
+    "name": "Overlay Provider",
+    "description": "",
+    "id": "GP-0043",
+    "iconPath": ""
+  },
+  {
+    "name": "Overlay Consumer",
+    "description": "",
+    "id": "GP-0044",
+    "iconPath": ""
+  },
+  {
+    "name": "Maritime C2 Server",
+    "description": "",
+    "id": "GP-0045",
+    "iconPath": ""
+  },
+  {
+    "name": "Maritime C2 Client",
+    "description": "",
+    "id": "GP-0046",
+    "iconPath": ""
+  },
+  {
+    "name": "SMC Server",
+    "description": "",
+    "id": "GP-0047",
+    "iconPath": ""
+  },
+  {
+    "name": "XMPP Application",
+    "description": "",
+    "id": "GP-0048",
+    "iconPath": ""
+  },
+  {
+    "name": "Identity Server",
+    "description": "",
+    "id": "GP-0049",
+    "iconPath": ""
+  },
+  {
+    "name": "IDP Proxy",
+    "description": "",
+    "id": "GP-0050",
+    "iconPath": ""
+  },
+  {
+    "name": "CBRN Server",
+    "description": "",
+    "id": "GP-0051",
+    "iconPath": ""
+  },
+  {
+    "name": "CBRN Client",
+    "description": "",
+    "id": "GP-0052",
+    "iconPath": ""
+  },
+  {
+    "name": "MILMSG Server",
+    "description": "",
+    "id": "GP-0053",
+    "iconPath": ""
+  },
+  {
+    "name": "MILMSG Client",
+    "description": "",
+    "id": "GP-0054",
+    "iconPath": ""
+  },
+  {
+    "name": "IRM Server",
+    "description": "",
+    "id": "GP-0055",
+    "iconPath": ""
+  },
+  {
+    "name": "JISR BSO Server",
+    "description": "",
+    "id": "GP-0056",
+    "iconPath": ""
+  },
+  {
+    "name": "JISR BSO Client",
+    "description": "",
+    "id": "GP-0057",
+    "iconPath": ""
+  },
+  {
+    "name": "JTGT Server",
+    "description": "",
+    "id": "GP-0058",
+    "iconPath": ""
+  },
+  {
+    "name": "JTGT Client",
+    "description": "",
+    "id": "GP-0059",
+    "iconPath": ""
+  },
+  {
+    "name": "LC2IE Server",
+    "description": "",
+    "id": "GP-0060",
+    "iconPath": ""
+  },
+  {
+    "name": "LC2IE Client",
+    "description": "",
+    "id": "GP-0061",
+    "iconPath": ""
+  },
+  {
+    "name": "LOG Server",
+    "description": "",
+    "id": "GP-0062",
+    "iconPath": ""
+  },
+  {
+    "name": "LOG Client",
+    "description": "",
+    "id": "GP-0063",
+    "iconPath": ""
+  },
+  {
+    "name": "METEO Server",
+    "description": "",
+    "id": "GP-0064",
+    "iconPath": ""
+  },
+  {
+    "name": "METEO Client",
+    "description": "",
+    "id": "GP-0065",
+    "iconPath": ""
+  },
+  {
+    "name": "MSLDEF Server",
+    "description": "",
+    "id": "GP-0066",
+    "iconPath": ""
+  },
+  {
+    "name": "MSLDEF Client",
+    "description": "",
+    "id": "GP-0067",
+    "iconPath": ""
+  },
+  {
+    "name": "OPLAN Server",
+    "description": "",
+    "id": "GP-0068",
+    "iconPath": ""
+  },
+  {
+    "name": "OPLAN Client",
+    "description": "",
+    "id": "GP-0069",
+    "iconPath": ""
+  },
+  {
+    "name": "SEW Server",
+    "description": "",
+    "id": "GP-0070",
+    "iconPath": ""
+  },
+  {
+    "name": "SEW Client",
+    "description": "",
+    "id": "GP-0071",
+    "iconPath": ""
+  },
+  {
+    "name": "SA Server",
+    "description": "",
+    "id": "GP-0072",
+    "iconPath": ""
+  },
+  {
+    "name": "SA Client",
+    "description": "",
+    "id": "GP-0073",
+    "iconPath": ""
+  },
+  {
+    "name": "SPECTRUM Server",
+    "description": "",
+    "id": "GP-0074",
+    "iconPath": ""
+  },
+  {
+    "name": "SPECTRUM Client",
+    "description": "",
+    "id": "GP-0075",
+    "iconPath": ""
+  },
+  {
+    "name": "TST Server",
+    "description": "",
+    "id": "GP-0076",
+    "iconPath": ""
+  },
+  {
+    "name": "TST Client",
+    "description": "",
+    "id": "GP-0077",
+    "iconPath": ""
+  },
+  {
+    "name": "Workflow Server",
+    "description": "",
+    "id": "GP-0078",
+    "iconPath": ""
+  },
+  {
+    "name": "Workflow Client",
+    "description": "",
+    "id": "GP-0079",
+    "iconPath": ""
+  },
+  {
+    "name": "G2A Server",
+    "description": "Ground to Air Server",
+    "id": "GP-0080",
+    "iconPath": ""
+  },
+  {
+    "name": "CBRN Application",
+    "description": "Stand Alone Client",
+    "id": "GP-0081",
+    "iconPath": ""
+  },
+  {
+    "name": "RAG Server",
+    "description": "RAG Server",
+    "id": "GP-0082",
+    "iconPath": ""
+  },
+  {
+    "name": "DNS Client",
+    "description": "Any Client that does a DNS query against a DNS server",
+    "id": "GP-0083",
+    "iconPath": ""
+  },
+  {
+    "name": "MCU (Video Conference)",
+    "description": "",
+    "id": "GP-0084",
+    "iconPath": ""
+  },
+  {
+    "name": "Data Link Provider",
+    "description": "System that can generate Data Links",
+    "id": "GP-0085",
+    "iconPath": ""
+  },
+  {
+    "name": "HF Radio",
+    "description": "Radio for HF",
+    "id": "GP-0086",
+    "iconPath": ""
+  },
+  {
+    "name": "TACSAT Radio",
+    "description": "UHF Radio for TACSAT",
+    "id": "GP-0087",
+    "iconPath": ""
+  },
+  {
+    "name": "FFT Client Producer",
+    "description": "",
+    "id": "GP-0088",
+    "iconPath": ""
+  },
+  {
+    "name": "Email App Client",
+    "description": "Email Client Imbedded on application",
+    "id": "GP-0089",
+    "iconPath": ""
+  },
+  {
+    "name": "DNS Resolver",
+    "description": "Any DNS server that acts as a Recursive Resolver.",
+    "id": "GP-0090",
+    "iconPath": ""
+  },
+  {
+    "name": "DNS Authoritative Name Server",
+    "description": "Any DNS server that acts as an ANS.",
+    "id": "GP-0091",
+    "iconPath": ""
+  },
+  {
+    "name": "Security Asset",
+    "description": "Generic Security Asset",
+    "id": "GP-0092",
+    "iconPath": ""
+  },
+  {
+    "name": "Calendar Client",
+    "description": "Calendar Client",
+    "id": "GP-0093",
+    "iconPath": ""
+  },
+  {
+    "name": "EMS System",
+    "description": "System that implement EMS",
+    "id": "GP-0094",
+    "iconPath": ""
+  },
+  {
+    "name": "Release Server",
+    "description": "Release Server",
+    "id": "GP-0095",
+    "iconPath": ""
+  },
+  {
+    "name": "CIWS CM Provider",
+    "description": "CIWS CM Provider",
+    "id": "GP-0096",
+    "iconPath": ""
+  },
+  {
+    "name": "CIWS CM Consumer",
+    "description": "CIWS CM Consumer",
+    "id": "GP-0097",
+    "iconPath": ""
+  },
+  {
+    "name": "CIWS CM Consumer Client",
+    "description": "CIWS CM Consumer Client",
+    "id": "GP-0098",
+    "iconPath": ""
+  },
+  {
+    "name": "CIPL Consumer",
+    "description": "CIPL Consumer",
+    "id": "GP-0099",
+    "iconPath": ""
+  },
+  {
+    "name": "CIPL Provider",
+    "description": "CIPL Provider",
+    "id": "GP-0100",
+    "iconPath": ""
+  },
+  {
+    "name": "CISS Provider",
+    "description": "CISS Provider",
+    "id": "GP-0101",
+    "iconPath": ""
+  },
+  {
+    "name": "CISS Consumer",
+    "description": "CISS Consumer",
+    "id": "GP-0102",
+    "iconPath": ""
+  },
+  {
+    "name": "CIPL Consumer Client",
+    "description": "CIPL Consumer Client",
+    "id": "GP-0103",
+    "iconPath": ""
+  },
+  {
+    "name": "HMART Server",
+    "description": "HMART Server",
+    "id": "GP-0104",
+    "iconPath": ""
+  },
+  {
+    "name": "Intel Server",
+    "description": "Intel Server",
+    "id": "GP-0105",
+    "iconPath": ""
+  },
+  {
+    "name": "Link Analysis",
+    "description": "Link Analysis",
+    "id": "GP-0106",
+    "iconPath": ""
+  },
+  {
+    "name": "DNS Server",
+    "description": "A Generic DNS Server",
+    "id": "GP-0107",
+    "iconPath": ""
+  },
+  {
+    "name": "Land Tactical C2IE",
+    "description": "Land Tactical C2 Information Exchange",
+    "id": "GP-0108",
+    "iconPath": ""
+  },
+  {
+    "name": "Geo Portal",
+    "description": "",
+    "id": "GP-0109",
+    "iconPath": ""
+  },
+  {
+    "name": "Virtual Machine Provider",
+    "description": "",
+    "id": "GP-0110",
+    "iconPath": ""
+  },
+  {
+    "name": "Virtual Machine Consumer",
+    "description": "",
+    "id": "GP-0111",
+    "iconPath": ""
+  },
+  {
+    "name": "NMCD",
+    "description": "",
+    "id": "GP-0112",
+    "iconPath": ""
+  },
+  {
+    "name": "PCS",
+    "description": "",
+    "id": "GP-0113",
+    "iconPath": ""
+  },
+  {
+    "name": "E-Node",
+    "description": "",
+    "id": "GP-0114",
+    "iconPath": ""
+  },
+  {
+    "name": "Z-Node",
+    "description": "",
+    "id": "GP-0115",
+    "iconPath": ""
+  },
+  {
+    "name": "P-Func",
+    "description": "",
+    "id": "GP-0116",
+    "iconPath": ""
+  },
+  {
+    "name": "Switch",
+    "description": "",
+    "id": "GP-0117",
+    "iconPath": ""
+  },
+  {
+    "name": "AEDP-19 System",
+    "description": "",
+    "id": "GP-0118",
+    "iconPath": ""
+  },
+  {
+    "name": "ISR Streaming",
+    "description": "ISR Streaming System",
+    "id": "GP-0119",
+    "iconPath": ""
+  },
+  {
+    "name": "MIP 4 Gateway",
+    "description": "",
+    "id": "GP-0120",
+    "iconPath": ""
+  },
+  {
+    "name": "Medical Server",
+    "description": "",
+    "id": "GP-0121",
+    "iconPath": ""
+  },
+  {
+    "name": "Mail Classification Tool",
+    "description": "",
+    "id": "GP-0122",
+    "iconPath": ""
+  },
+  {
+    "name": "Chat Classification Tool",
+    "description": "",
+    "id": "GP-0123",
+    "iconPath": ""
   }
 ]

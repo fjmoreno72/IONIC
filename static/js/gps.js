@@ -1,20 +1,53 @@
 document.addEventListener('DOMContentLoaded', function() {
     const gpsTableBody = document.getElementById('gpsTableBody');
     const searchInput = document.getElementById('searchInput');
+    const itemsPerPageSelect = document.getElementById('itemsPerPageSelect');
+    const pageInfo = document.getElementById('pageInfo');
+    const prevPageButton = document.getElementById('prevPageButton');
+    const nextPageButton = document.getElementById('nextPageButton');
+
     let allGps = []; // To store all fetched gps data
     let filteredGps = []; // To store filtered data for rendering
     let currentSortField = 'id'; // Default sort field
     let sortDirection = 'asc'; // Default sort direction
+    let currentPage = 1;
+    let itemsPerPage = parseInt(itemsPerPageSelect.value, 10); // Get initial value
 
-    // Function to render the table rows
-    function renderTable() { // Removed gpsData parameter, will use filteredGps
+    // Function to update pagination controls (Copied and adapted from sps.js)
+    function updatePaginationControls() {
+        const totalItems = filteredGps.length;
+        let totalPages = Math.ceil(totalItems / itemsPerPage); // Use let
+        totalPages = totalPages === 0 ? 1 : totalPages; // Ensure at least 1 page
+
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+        prevPageButton.disabled = currentPage === 1;
+        nextPageButton.disabled = currentPage === totalPages;
+
+        // Hide controls if only one page and few items (optional)
+        const paginationControls = document.getElementById('paginationControls');
+        if (paginationControls) {
+            paginationControls.style.display = totalItems <= itemsPerPage && totalPages <= 1 ? 'none' : 'flex';
+        }
+    }
+
+    // Function to render the table rows with pagination
+    function renderTable() {
         gpsTableBody.innerHTML = ''; // Clear existing rows
-        if (!filteredGps || filteredGps.length === 0) { // Use filteredGps
-            gpsTableBody.innerHTML = '<tr><td colspan="4" class="text-center">No GPs found matching your criteria.</td></tr>'; // Updated message
+
+        if (!filteredGps || filteredGps.length === 0) {
+            gpsTableBody.innerHTML = '<tr><td colspan="4" class="text-center">No GPs found matching your criteria.</td></tr>'; // Colspan is 4
+            updatePaginationControls(); // Update controls even if no data
             return;
         }
-        // Loop through the filtered data
-        filteredGps.forEach(gp => {
+
+        // Calculate items for the current page
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const paginatedItems = filteredGps.slice(startIndex, endIndex);
+
+        // Loop through the paginated data
+        paginatedItems.forEach(gp => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${gp.id || ''}</td>
@@ -22,10 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${gp.description || ''}</td>
                 <td>${gp.iconPath ? `<img src="/static/ASC/${gp.iconPath.replace('./', '')}" alt="${gp.name || 'Icon'}" class="icon-img">` : ''}</td>
             `;
+            // Removed duplicated lines below
             gpsTableBody.appendChild(row);
         });
-        // Setup resizing after table is potentially re-rendered
-        setupColumnResizing();
+
+        updatePaginationControls(); // Update page info and button states
+        setupColumnResizing(); // Setup resizing after table is rendered
     }
 
     // Function to sort data
@@ -54,8 +89,9 @@ document.addEventListener('DOMContentLoaded', function() {
                    (gp.name?.toLowerCase() || '').includes(searchTerm) ||
                    (gp.description?.toLowerCase() || '').includes(searchTerm);
         });
+        currentPage = 1; // Reset to first page on filter change
         sortData(); // Apply current sort order
-        renderTable(); // Render the sorted and filtered data
+        renderTable(); // Render the sorted, filtered, and paginated data
     }
 
     // Fetch GP data from the JSON file
@@ -68,7 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             allGps = data; // Store the full dataset
-            filterData(); // Initial filter and sort
+            itemsPerPage = parseInt(itemsPerPageSelect.value, 10); // Ensure itemsPerPage is current
+            filterData(); // Initial filter, sort, and render
         })
         .catch(error => {
             console.error('Error fetching GP data:', error);
@@ -96,8 +133,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const icon = th.querySelector('i');
             if (icon) icon.className = `fas fa-sort-${sortDirection === 'asc' ? 'up' : 'down'}`;
 
-            filterData(); // Re-filter and re-render with new sort
+            filterData(); // Re-filter, re-sort, and re-render with new sort
         });
+    });
+
+    // Add event listeners for pagination controls (Copied from sps.js)
+    itemsPerPageSelect.addEventListener('change', () => {
+        itemsPerPage = parseInt(itemsPerPageSelect.value, 10);
+        currentPage = 1; // Reset to first page
+        renderTable(); // Re-render with new items per page
+    });
+
+    prevPageButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+        }
+    });
+
+    nextPageButton.addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredGps.length / itemsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderTable();
+        }
     });
 
     // --- Dark Mode Handling (from affiliates.js/services.js pattern) ---

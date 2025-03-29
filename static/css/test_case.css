@@ -20,6 +20,7 @@
     --status-ready-for-review-text: #084298; /* Added blue text */
     --badge-sp5-bg: #4472C4;
     --badge-sp5-text: white;
+    --navbar-height: 56px; /* Approximate navbar height */
 }
 
 [data-theme="dark"] {
@@ -46,18 +47,41 @@
     --badge-sp5-text: white;
 }
 
+html {
+    /* height: 100%; Removed */
+}
+
 body {
     background-color: var(--background-color);
     color: var(--text-primary);
     transition: background-color 0.2s ease;
+    padding-top: var(--navbar-height); /* Account for fixed navbar */
+    /* Removed height and flex properties */
+}
+
+nav {
+    position: fixed; /* Assuming a fixed top navbar */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navbar-height);
+    z-index: 1030; /* Ensure navbar stays on top */
+}
+
+/* Allow container-fluid to scroll if content overflows */
+.container-fluid {
+    padding-top: 1rem;
+    padding-bottom: 1rem; /* Add padding at the bottom */
+    /* Removed flex properties */
 }
 
 .test-cases-container {
-    margin-top: 20px;
     background-color: var(--card-background);
     border-radius: 8px;
     box-shadow: var(--box-shadow);
     padding: 20px;
+    margin-bottom: 1rem; /* Add margin below this container */
+    /* Removed flex properties */
 }
 
 .test-cases-header {
@@ -119,7 +143,7 @@ body {
     color: var(--text-secondary);
 }
 
-#searchInput {
+#searchInput { /* This ID might be specific, consider a class if used elsewhere */
     padding-left: 35px;
     border-radius: 4px;
     border: 1px solid var(--border-color);
@@ -136,14 +160,24 @@ select.form-select {
     border-color: var(--border-color);
 }
 
-.test-cases-table {
+/* Style for the table wrapper to make it scrollable */
+.table-responsive {
+    overflow-y: auto; /* Enable vertical scroll ONLY when needed */
+    overflow-x: auto; /* Keep horizontal scroll if needed */
+    max-height: 60vh; /* Limit height to ~60% of viewport height */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* Removed flex properties */
+}
+
+.test-cases-table { /* Applies to tables within .table-responsive */
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    margin-top: 10px;
     color: var(--text-primary);
 }
 
+/* Ensure sticky header works correctly within the scrollable container */
 .test-cases-table th {
     background-color: var(--table-header-bg);
     padding: 6px 10px;
@@ -151,12 +185,14 @@ select.form-select {
     font-weight: 600;
     color: var(--text-primary);
     border-bottom: 2px solid var(--border-color);
-    position: sticky;
-    top: 0;
+    position: sticky; /* Keep header sticky */
+    top: 0; /* Stick to the top of the scrolling .table-responsive container */
     z-index: 10;
     user-select: none;
     font-size: 0.9rem;
 }
+
+/* No separate dark mode rule needed for 'top' if it's 0 */
 
 .test-cases-table th.sortable {
     cursor: pointer;
@@ -173,7 +209,7 @@ select.form-select {
     color: var(--text-primary);
     font-size: 0.9rem;
     line-height: 1.1;
-    vertical-align: top; /* Align content to top for multi-line cells */
+    vertical-align: top;
 }
 
 .test-cases-table tr:hover {
@@ -194,21 +230,14 @@ th {
     position: relative;
 }
 
-.test-cases-table-container {
-    overflow-x: auto;
-    max-height: 600px;
-    overflow-y: auto;
-    transition: max-height 0.3s ease;
-}
-
 .large-grid {
-    max-height: 1000px;
+    /* This class might not be needed anymore */
 }
 
 .key-column {
-    font-family: monospace; /* Restore monospace for data cells */
+    font-family: monospace;
     font-weight: 500;
-    font-size: 0.9rem; /* Ensure consistent font size */
+    font-size: 0.9rem;
 }
 
 .status-tag {
@@ -219,243 +248,73 @@ th {
     font-weight: 500;
 }
 
-.status-ready {
-    background-color: var(--status-ready-bg);
-    color: var(--status-ready-text);
-}
+.status-ready { background-color: var(--status-ready-bg); color: var(--status-ready-text); }
+.status-approved { background-color: var(--status-approved-bg); color: var(--status-approved-text); }
+.status-draft { background-color: var(--status-draft-bg); color: var(--status-draft-text); }
+.status-deprecated { background-color: var(--status-deprecated-bg); color: var(--status-deprecated-text); }
+.status-ready-for-review { background-color: var(--status-ready-for-review-bg); color: var(--status-ready-for-review-text); }
 
-.status-approved {
-    background-color: var(--status-approved-bg);
-    color: var(--status-approved-text);
-}
-
-.status-draft {
-    background-color: var(--status-draft-bg);
-    color: var(--status-draft-text);
-}
-
-.status-deprecated {
-    background-color: var(--status-deprecated-bg);
-    color: var(--status-deprecated-text);
-}
-
-.status-ready-for-review { /* Added style for the new state */
-    background-color: var(--status-ready-for-review-bg);
-    color: var(--status-ready-for-review-text);
-}
-
-.pagination-container {
+/* Style for the new pagination controls container */
+#paginationControls {
+    /* Removed flex-shrink */
+    margin-top: 1rem; /* Space above pagination */
+    padding-top: 0.5rem; /* Optional: add padding within the controls div */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
 }
 
-.pagination-info {
-    color: var(--text-secondary);
-}
+/* Remove old pagination container styles */
+/* .pagination-container { ... } */
+.pagination-info { color: var(--text-secondary); }
+.pagination { margin-bottom: 0; }
+.page-link { background-color: var(--card-background); color: var(--primary-color); border-color: var(--border-color); }
+.page-item.active .page-link { background-color: var(--primary-color); border-color: var(--primary-color); }
 
-.pagination {
-    margin-bottom: 0;
-}
-
-.page-link {
-    background-color: var(--card-background);
-    color: var(--primary-color);
-    border-color: var(--border-color);
-}
-
-.page-item.active .page-link {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-.loading-indicator {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-}
-
-.badge-sp5 {
-    background-color: var(--badge-sp5-bg);
-    color: var(--badge-sp5-text);
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-}
-
-.icon-info {
-    color: var(--primary-color);
-    margin-left: 5px;
-    cursor: pointer;
-}
-
-.version-badge {
-    background-color: var(--table-header-bg);
-    color: var(--text-primary);
-    padding: 1px 5px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 500;
-}
-
-.latest-version {
-    font-weight: bold;
-    position: relative;
-}
-
-.latest-version::after {
-    content: "★";
-    color: var(--primary-color);
-    margin-left: 5px;
-    font-size: 14px;
-}
-
-.checkbox-column {
-    width: 40px;
-    text-align: center;
-}
-
-.no-results {
-    text-align: center;
-    padding: 30px;
-    color: var(--text-secondary);
-    font-style: italic;
-}
+.loading-indicator { display: flex; justify-content: center; padding: 30px; }
+.badge-sp5 { background-color: var(--badge-sp5-bg); color: var(--badge-sp5-text); padding: 4px 8px; border-radius: 4px; font-size: 12px; }
+.icon-info { color: var(--primary-color); margin-left: 5px; cursor: pointer; }
+.version-badge { background-color: var(--table-header-bg); color: var(--text-primary); padding: 1px 5px; border-radius: 8px; font-size: 11px; font-weight: 500; }
+.latest-version { font-weight: bold; position: relative; }
+.latest-version::after { content: "★"; color: var(--primary-color); margin-left: 5px; font-size: 14px; }
+.checkbox-column { width: 40px; text-align: center; }
+.no-results { text-align: center; padding: 30px; color: var(--text-secondary); font-style: italic; }
 
 /* Modal Styles */
-.modal-body h5 {
-    margin-top: 0.8rem; /* Reduced */
-    margin-bottom: 0.3rem; /* Reduced */
-    font-weight: 600;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.2rem; /* Reduced */
-    font-size: 1rem; /* Slightly smaller heading */
-}
-/* Use div for fields that might contain lists */
-.modal-body div.detail-field-content { /* Added class for specificity */
-    white-space: pre-wrap; /* Preserve whitespace and newlines */
-    font-size: 0.9rem; /* Slightly smaller text */
-    margin-bottom: 0.8rem; /* Reduced */
-    background-color: var(--table-header-bg); /* Light background for readability */
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
-}
-/* Keep p for single-line fields */
- .modal-body p {
-    white-space: pre-wrap;
-    font-size: 0.9rem;
-    margin-bottom: 0.8rem;
-    background-color: var(--table-header-bg);
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid var(--border-color);
-}
-/* Style for lists generated by markdown */
-.modal-body ul {
-    margin-top: 0; /* Reset margin for ul inside div */
-    margin-bottom: 0; /* Reset margin for ul inside div */
-    padding-left: 1.5rem; /* Indent list */
-}
- .modal-body li {
-    margin-bottom: 0.2rem; /* Spacing between list items */
-    list-style-type: disc;
- }
-/* Remove background/border from div if it only contains a list */
-.modal-body div.detail-field-content:has(> ul:only-child) {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-}
-/* Adjust padding if div contains list + other text */
- .modal-body div.detail-field-content:has(> ul) {
-     padding-bottom: 0.5rem;
- }
-
-
-.modal-title {
-     font-weight: 600;
-}
+.modal-body h5 { margin-top: 0.8rem; margin-bottom: 0.3rem; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; font-size: 1rem; }
+.modal-body div.detail-field-content { white-space: pre-wrap; font-size: 0.9rem; margin-bottom: 0.8rem; background-color: var(--table-header-bg); padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); }
+.modal-body p { white-space: pre-wrap; font-size: 0.9rem; margin-bottom: 0.8rem; background-color: var(--table-header-bg); padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); }
+.modal-body ul { margin-top: 0; margin-bottom: 0; padding-left: 1.5rem; }
+.modal-body li { margin-bottom: 0.2rem; list-style-type: disc; }
+.modal-body div.detail-field-content:has(> ul:only-child) { background-color: transparent; border: none; padding: 0; }
+.modal-body div.detail-field-content:has(> ul) { padding-bottom: 0.5rem; }
+.modal-title { font-weight: 600; }
 
 /* Print-specific styles */
 @media print {
-    body * {
-        visibility: hidden; /* Hide everything by default */
-    }
-    #testCaseModal, #testCaseModal * {
-        visibility: visible; /* Show only the modal and its content */
-    }
-    #testCaseModal {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: auto;
-        overflow: visible;
-        box-shadow: none;
-        border: none;
-    }
-    .modal-dialog {
-        max-width: 100%;
-        margin: 0;
-    }
-    .modal-content {
-        border: none;
-        box-shadow: none;
-    }
-    .modal-header, .modal-footer {
-        display: none; /* Hide modal header and footer when printing */
-    }
-    .modal-body {
-        padding: 0;
-    }
-     .modal-body h5 {
-        margin-top: 0.4rem; /* Reduced */
-        font-size: 12pt; /* Adjust font size for print */
-    }
-    .modal-body p, .modal-body div.detail-field-content, .modal-body li {
-        font-size: 10pt; /* Adjust font size for print */
-        background-color: #fff !important; /* Ensure white background for print */
-        border: 1px solid #ccc;
-        padding: 5px; /* Adjust padding for print */
-        white-space: pre-wrap; /* Ensure wrapping */
-    }
-     .modal-body div.detail-field-content, .modal-body ul {
-         border: none; /* Remove border from container div/ul */
-         padding: 0;
-     }
-     .modal-body ul {
-         padding-left: 20px; /* Indent list for print */
-     }
-     .modal-body li {
-         border: none; /* Remove border from list items */
-         padding: 2px 0;
-         list-style-type: disc !important;
-     }
+    body { height: auto; overflow: visible; padding-top: 0; }
+    nav { display: none; }
+    .container-fluid { overflow: visible; padding: 0; }
+    .test-cases-container { box-shadow: none; border: none; padding: 0; overflow: visible; max-height: none; } /* Adjust for print */
+    .theme-toggle { display: none; }
+    .table-responsive { overflow: visible; flex-grow: 0; max-height: none; } /* Don't grow or scroll for print */
+    #paginationControls { display: none; }
 
-    /* Ensure dark theme styles don't interfere with printing */
-    [data-theme="dark"] .modal-body p,
-    [data-theme="dark"] .modal-body div.detail-field-content,
-    [data-theme="dark"] .modal-body li {
-         background-color: #fff !important;
-         color: #000;
-    }
-     [data-theme="dark"] .modal-body li {
-         border: none;
-     }
-    [data-theme="dark"] .modal-body h5 {
-         color: #000;
-         border-bottom: 1px solid #ccc;
-    }
-    /* Ensure tables print correctly */
-    .modal-body table, .modal-body th, .modal-body td {
-        border: 1px solid #ccc !important;
-        color: #000 !important;
-        background-color: #fff !important;
-        font-size: 9pt;
-    }
-     .modal-body th {
-         font-weight: bold;
-     }
+    body * { visibility: hidden; }
+    #testCaseModal, #testCaseModal * { visibility: visible; }
+    #testCaseModal { position: absolute; left: 0; top: 0; width: 100%; height: auto; overflow: visible; box-shadow: none; border: none; }
+    .modal-dialog { max-width: 100%; margin: 0; }
+    .modal-content { border: none; box-shadow: none; }
+    .modal-header, .modal-footer { display: none; }
+    .modal-body { padding: 0; }
+    .modal-body h5 { margin-top: 0.4rem; font-size: 12pt; }
+    .modal-body p, .modal-body div.detail-field-content, .modal-body li { font-size: 10pt; background-color: #fff !important; border: 1px solid #ccc; padding: 5px; white-space: pre-wrap; }
+    .modal-body div.detail-field-content, .modal-body ul { border: none; padding: 0; }
+    .modal-body ul { padding-left: 20px; }
+    .modal-body li { border: none; padding: 2px 0; list-style-type: disc !important; }
+    [data-theme="dark"] .modal-body p, [data-theme="dark"] .modal-body div.detail-field-content, [data-theme="dark"] .modal-body li { background-color: #fff !important; color: #000; }
+    [data-theme="dark"] .modal-body li { border: none; }
+    [data-theme="dark"] .modal-body h5 { color: #000; border-bottom: 1px solid #ccc; }
+    .modal-body table, .modal-body th, .modal-body td { border: 1px solid #ccc !important; color: #000 !important; background-color: #fff !important; font-size: 9pt; }
+    .modal-body th { font-weight: bold; }
 }

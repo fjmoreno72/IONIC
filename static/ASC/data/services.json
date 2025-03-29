@@ -45,10 +45,7 @@
     "name": "Data Links",
     "spiral": "SP5",
     "gps": [
-      "GP-0001",
-      "GP-0002",
-      "GP-0003",
-      "GP-0004"
+      "GP-0001"
     ],
     "iconPath": "./image/srv/icon_data_links.png",
     "functionalDiagramPath": "./image/srv/diagram_data_links.jpg",
@@ -106,9 +103,7 @@
     "name": "Domain Naming",
     "spiral": "SP5",
     "gps": [
-      "GP-0007",
-      "GP-0008",
-      "GP-0009"
+      "GP-0007"
     ],
     "iconPath": "./image/srv/icon_domain_naming.jpg",
     "functionalDiagramPath": "./image/srv/diagram_domain_naming.jpg",

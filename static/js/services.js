@@ -1,19 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     const servicesTableBody = document.getElementById('servicesTableBody');
     const searchInput = document.getElementById('nameSearchInput'); // Assuming ID from HTML
-    const paginationContainer = document.getElementById('paginationContainer');
-    const prevPageButton = document.getElementById('prevPageButton');
-    const nextPageButton = document.getElementById('nextPageButton');
-    const currentRangeStart = document.getElementById('currentRangeStart');
-    const currentRangeEnd = document.getElementById('currentRangeEnd');
-    const totalItems = document.getElementById('totalItems');
+    // New pagination elements
+    const itemsPerPageSelect = document.getElementById('itemsPerPageSelect');
+    const pageInfo = document.getElementById('pageInfo');
+    const prevPageButton = document.getElementById('prevPageButton'); // Reusing ID
+    const nextPageButton = document.getElementById('nextPageButton'); // Reusing ID
+    // Old elements no longer needed: paginationContainer, currentRangeStart, currentRangeEnd, totalItems
     const loadingIndicator = document.getElementById('loadingIndicator');
     const noResults = document.getElementById('noResults');
 
     let allServices = [];
+    let allGps = []; // To store GP data
+    let gpIdToNameMap = {}; // To store ID -> Name mapping
     let filteredServices = [];
     let currentPage = 1;
-    let itemsPerPage = 25; // Default, assuming similar pagination setup
+    let itemsPerPage = parseInt(itemsPerPageSelect.value, 10); // Read from new select
     let currentSortField = 'id'; // Default sort field
     let sortDirection = 'asc'; // Default sort direction
 
@@ -23,20 +25,35 @@ document.addEventListener('DOMContentLoaded', function() {
         if (noResults) noResults.classList.add('d-none');
         servicesTableBody.innerHTML = '';
 
-        setTimeout(() => { // Simulate async loading if needed
-            const startIndex = (currentPage - 1) * itemsPerPage;
-            const endIndex = Math.min(startIndex + itemsPerPage, filteredServices.length);
+        // Remove setTimeout simulation
+        // const startIndex = (currentPage - 1) * itemsPerPage;
+        // const endIndex = Math.min(startIndex + itemsPerPage, filteredServices.length);
 
-            if (filteredServices.length === 0) {
-                if (noResults) noResults.classList.remove('d-none');
-            } else {
-                for (let i = startIndex; i < endIndex; i++) {
-                    const service = filteredServices[i];
-                    const row = document.createElement('tr');
-                    const iconHtml = service.iconPath
+        if (filteredServices.length === 0) {
+            if (noResults) noResults.classList.remove('d-none');
+            servicesTableBody.innerHTML = '<tr><td colspan="5" class="text-center">No services found matching your criteria.</td></tr>'; // Colspan is 5
+        } else {
+            if (noResults) noResults.classList.add('d-none');
+            // Calculate items for the current page
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedItems = filteredServices.slice(startIndex, endIndex);
+
+            paginatedItems.forEach(service => { // Use forEach on paginated items
+                const row = document.createElement('tr');
+                const iconHtml = service.iconPath
                         ? `<img src="/static/ASC/${service.iconPath.replace('./', '')}" alt="${service.name || 'Icon'}" class="icon-cell">` // Use icon-cell class if defined
                         : 'No Icon';
-                    const gpsList = service.gps ? service.gps.join(', ') : ''; // Join GPs array
+
+                    // --- GP Name Lookup ---
+                    let gpNames = [];
+                    if (service.gps && Array.isArray(service.gps)) {
+                        gpNames = service.gps
+                            .map(gpId => gpIdToNameMap[gpId]) // Get name from map
+                            .filter(name => name); // Filter out undefined/null names (IDs not found)
+                    }
+                    const gpsList = gpNames.join(', '); // Join the found names
+                    // --- End GP Name Lookup ---
 
                     row.innerHTML = `
                         <td>${service.id || ''}</td>
@@ -44,17 +61,18 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td class="spiral-column">${service.spiral || ''}</td>
                         <td>${gpsList}</td>
                         <td class="icon-column text-center">${iconHtml}</td>
-                    `;
-                    servicesTableBody.appendChild(row);
-                }
-            }
+                `; // Removed duplicated gpsList TD
+                servicesTableBody.appendChild(row);
+            });
+        }
 
-            if (loadingIndicator) loadingIndicator.style.display = 'none';
-            if (currentRangeStart) updatePaginationInfo(startIndex, endIndex, filteredServices.length);
-            if (paginationContainer) updatePaginationControls(filteredServices.length);
-             // Setup resizing after table is potentially re-rendered
-            setupColumnResizing();
-        }, 10);
+        if (loadingIndicator) loadingIndicator.style.display = 'none';
+        // Remove old pagination calls
+        // if (currentRangeStart) updatePaginationInfo(startIndex, endIndex, filteredServices.length);
+        // if (paginationContainer) updatePaginationControls(filteredServices.length);
+        updatePaginationControls(); // Call new function
+         // Setup resizing after table is potentially re-rendered
+        setupColumnResizing();
     }
 
     // Function to apply filters and search
@@ -100,90 +118,85 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Function to update pagination info text
-    function updatePaginationInfo(startIndex, endIndex, total) {
-        if (!currentRangeStart || !currentRangeEnd || !totalItems) return;
-        currentRangeStart.textContent = total > 0 ? startIndex + 1 : 0;
-        currentRangeEnd.textContent = endIndex;
-        totalItems.textContent = total;
-    }
+    // New updatePaginationControls function (from gps.js/affiliates.js)
+    function updatePaginationControls() {
+        const totalItems = filteredServices.length;
+        let totalPages = Math.ceil(totalItems / itemsPerPage);
+        totalPages = totalPages === 0 ? 1 : totalPages; // Ensure at least 1 page
 
-    // Function to update pagination controls
-    function updatePaginationControls(total) {
-        if (!paginationContainer || !prevPageButton || !nextPageButton) return;
-        const maxPage = Math.ceil(total / itemsPerPage);
-        paginationContainer.querySelectorAll('.page-number').forEach(btn => btn.remove());
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 
-        if (maxPage > 1) {
-            let startPage = Math.max(1, currentPage - 2);
-            let endPage = Math.min(maxPage, startPage + 4);
-            if (endPage === maxPage) startPage = Math.max(1, endPage - 4);
+        prevPageButton.disabled = currentPage === 1;
+        nextPageButton.disabled = currentPage === totalPages;
 
-            for (let i = startPage; i <= endPage; i++) {
-                const pageItem = document.createElement('li');
-                pageItem.className = `page-item page-number ${i === currentPage ? 'active' : ''}`;
-                const pageLink = document.createElement('a');
-                pageLink.className = 'page-link';
-                pageLink.href = '#';
-                pageLink.textContent = i;
-                pageLink.dataset.page = i;
-                pageLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    currentPage = parseInt(e.target.dataset.page);
-                    renderTable();
-                });
-                pageItem.appendChild(pageLink);
-                paginationContainer.insertBefore(pageItem, nextPageButton);
-            }
+        // Hide controls if only one page and few items (optional)
+        const paginationControls = document.getElementById('paginationControls');
+        if (paginationControls) {
+            paginationControls.style.display = totalItems <= itemsPerPage && totalPages <= 1 ? 'none' : 'flex';
         }
-
-        prevPageButton.classList.toggle('disabled', currentPage === 1);
-        nextPageButton.classList.toggle('disabled', currentPage >= maxPage);
     }
 
-    // Fetch service data
-    fetch('/static/ASC/data/services.json')
-        .then(response => {
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            return response.json();
+    // Fetch service and GP data
+    Promise.all([
+        fetch('/static/ASC/data/services.json').then(res => {
+            if (!res.ok) throw new Error(`HTTP error fetching services! status: ${res.status}`);
+            return res.json();
+        }),
+        fetch('/static/ASC/data/gps.json').then(res => {
+            if (!res.ok) throw new Error(`HTTP error fetching GPs! status: ${res.status}`);
+            return res.json();
         })
-        .then(data => {
-            allServices = data;
-            applyFiltersAndSearch(); // Initial filter, sort, and render
-        })
-        .catch(error => {
-            console.error('Error fetching service data:', error);
+    ])
+    .then(([servicesData, gpsData]) => {
+        allServices = servicesData;
+        allGps = gpsData;
+
+        // Create the GP ID to Name map
+        gpIdToNameMap = allGps.reduce((map, gp) => {
+            if (gp.id && gp.name) {
+                map[gp.id] = gp.name;
+            }
+            return map;
+        }, {});
+
+        itemsPerPage = parseInt(itemsPerPageSelect.value, 10); // Ensure itemsPerPage is current
+        applyFiltersAndSearch(); // Initial filter, sort, and render
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
             if (loadingIndicator) loadingIndicator.style.display = 'none';
             if (noResults) {
                 noResults.classList.remove('d-none');
-                 noResults.textContent = 'Error loading data.';
-             }
-              servicesTableBody.innerHTML = '<tr><td colspan="5" class="text-center text-danger">Error loading data.</td></tr>'; // Colspan 5 (still 5 columns)
-         });
+                noResults.textContent = 'Error loading data.';
+            }
+            servicesTableBody.innerHTML = '<tr><td colspan="5" class="text-center text-danger">Error loading data. Please check console.</td></tr>'; // Colspan 5
+    });
 
      // Add event listeners
     searchInput.addEventListener('input', applyFiltersAndSearch);
 
-    if (prevPageButton) {
-        prevPageButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentPage > 1) {
-                currentPage--;
-                renderTable();
-            }
-        });
-    }
+    // New event listeners for pagination controls
+    itemsPerPageSelect.addEventListener('change', () => {
+        itemsPerPage = parseInt(itemsPerPageSelect.value, 10);
+        currentPage = 1; // Reset to first page
+        renderTable(); // Re-render with new items per page
+    });
 
-    if (nextPageButton) {
-        nextPageButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            const maxPage = Math.ceil(filteredServices.length / itemsPerPage);
-            if (currentPage < maxPage) {
-                currentPage++;
-                renderTable();
-            }
-        });
-    }
+    prevPageButton.addEventListener('click', () => { // No need for e.preventDefault()
+        if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+        }
+    });
+
+    nextPageButton.addEventListener('click', () => { // No need for e.preventDefault()
+        const totalPages = Math.ceil(filteredServices.length / itemsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderTable();
+        }
+    });
+    // Remove old pagination number link listeners
 
      // Add sorting event listeners
     document.querySelectorAll('.services-table th.sortable').forEach(th => {

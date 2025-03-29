@@ -4,3 +4,5 @@ requests
 urllib3
 psutil
 beautifulsoup4
+pandas
+openpyxl

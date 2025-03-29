@@ -1,21 +1,54 @@
 document.addEventListener('DOMContentLoaded', function() {
     const spsTableBody = document.getElementById('spsTableBody');
     const searchInput = document.getElementById('searchInput');
+    const itemsPerPageSelect = document.getElementById('itemsPerPageSelect');
+    const pageInfo = document.getElementById('pageInfo');
+    const prevPageButton = document.getElementById('prevPageButton');
+    const nextPageButton = document.getElementById('nextPageButton');
+
     let allSps = []; // To store all fetched sps data
     let filteredSps = []; // To store filtered data
     let currentSortField = 'id'; // Default sort field
     let sortDirection = 'asc'; // Default sort direction
+    let currentPage = 1;
+    let itemsPerPage = parseInt(itemsPerPageSelect.value, 10); // Get initial value
 
-    // Function to render the table rows
-    function renderTable() { // Removed spsData parameter, uses filteredSps
+    // Function to update pagination controls
+    function updatePaginationControls() {
+        const totalItems = filteredSps.length;
+        let totalPages = Math.ceil(totalItems / itemsPerPage); // Changed const to let
+        totalPages = totalPages === 0 ? 1 : totalPages; // Ensure at least 1 page
+
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+        prevPageButton.disabled = currentPage === 1;
+        nextPageButton.disabled = currentPage === totalPages;
+
+        // Hide controls if only one page and few items (optional)
+        const paginationControls = document.getElementById('paginationControls');
+        if (paginationControls) {
+            paginationControls.style.display = totalItems <= itemsPerPage && totalPages <= 1 ? 'none' : 'flex';
+        }
+    }
+
+    // Function to render the table rows with pagination
+    function renderTable() {
         spsTableBody.innerHTML = ''; // Clear existing rows
-        if (!filteredSps || filteredSps.length === 0) { // Use filteredSps
-            spsTableBody.innerHTML = '<tr><td colspan="5" class="text-center">No SPs found matching your criteria.</td></tr>'; // Updated colspan and message
+
+        if (!filteredSps || filteredSps.length === 0) {
+            spsTableBody.innerHTML = '<tr><td colspan="5" class="text-center">No SPs found matching your criteria.</td></tr>';
+            updatePaginationControls(); // Update controls even if no data
             return;
         }
-        filteredSps.forEach(sp => { // Use filteredSps
+
+        // Calculate items for the current page
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const paginatedItems = filteredSps.slice(startIndex, endIndex);
+
+        paginatedItems.forEach(sp => {
             const row = document.createElement('tr');
-            const versions = sp.versions ? sp.versions.join(', ') : ''; // Join versions array
+            const versions = sp.versions ? sp.versions.join(', ') : '';
             const iconHtml = sp.iconPath
                 ? `<img src="/static/ASC/${sp.iconPath.replace('./', '')}" alt="${sp.name || 'Icon'}" class="icon-img">`
                 : 'No Icon'; // Display 'No Icon' if path is missing
@@ -28,10 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${versions}</td>
                 <td class="text-center">${iconHtml}</td>
             `;
-            spsTableBody.appendChild(row);
+            spsTableBody.appendChild(row); // Keep only one appendChild
         });
-        // Setup resizing after table is potentially re-rendered
-        setupColumnResizing();
+
+        updatePaginationControls(); // Update page info and button states
+        setupColumnResizing(); // Setup resizing after table is rendered
     }
 
     // Function to sort data (similar to gps.js)
@@ -65,8 +99,9 @@ document.addEventListener('DOMContentLoaded', function() {
                    (sp.description?.toLowerCase() || '').includes(searchTerm) ||
                    versionsString.includes(searchTerm); // Include versions in search
         });
+        currentPage = 1; // Reset to first page on filter change
         sortData(); // Apply current sort order
-        renderTable(); // Render the sorted and filtered data
+        renderTable(); // Render the sorted, filtered, and paginated data
     }
 
     // Fetch SP data from the JSON file
@@ -78,8 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
-            allSps = data; // Store the full dataset
-            filterData(); // Initial filter and sort
+            allSps = data; // Store the full dataset - Keep only one assignment
+            itemsPerPage = parseInt(itemsPerPageSelect.value, 10); // Ensure itemsPerPage is current
+            filterData(); // Initial filter, sort, and render
         })
         .catch(error => {
             console.error('Error fetching SP data:', error);
@@ -107,8 +143,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const icon = th.querySelector('i');
             if (icon) icon.className = `fas fa-sort-${sortDirection === 'asc' ? 'up' : 'down'}`;
 
-            filterData(); // Re-filter and re-render with new sort
+            filterData(); // Re-filter, re-sort, and re-render with new sort
         });
+    });
+
+    // Add event listeners for pagination controls
+    itemsPerPageSelect.addEventListener('change', () => {
+        itemsPerPage = parseInt(itemsPerPageSelect.value, 10);
+        currentPage = 1; // Reset to first page
+        renderTable(); // Re-render with new items per page
+    });
+
+    prevPageButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+        }
+    });
+
+    nextPageButton.addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredSps.length / itemsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderTable();
+        }
     });
 
     // --- Dark Mode Handling ---

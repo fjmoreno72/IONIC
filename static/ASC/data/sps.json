@@ -1,26 +1,34 @@
 [
   {
-    "name": "NATO Interoperability Real-Time Information Services (NIRIS)",
-    "description": "NIRIS is an Enabling Service that is ensuring proper situational awareness via the provision of a set of services to enable data collection, dissemination and transformation. These services work to support tactical information in an interoperable manner based on NATO and commercial standards (e.g. Tactical Data Links (TDL), OTH-Gold, Friendly Force Tracking (FFT), NVG, Civilian Convoy and more).",
-    "versions": [
-      "4.2.1",
-      "4.3.0"
-    ],
-    "id": "SP-0001"
-  },
-  {
     "name": "Integrated Command and Control - Client (ICC Client)",
-    "description": "ICC is an integrated Command, Control, Communications and Intelligence/Information (C3I2) system that provides information management and decision support to NATO air operations activities during peacetime, exercise and crisis.",
+    "description": "NATO-wide Integrated Command and Control Software for Air Operations",
     "versions": [
-      "3.5.2",
-      "3.5.3"
+      "3.1.0",
+      "3.2.0",
+      "3.3.0",
+      "3.4.0",
+      "3.4.1",
+      "3.5.1",
+      "3.5.2"
     ],
     "id": "SP-0002"
   },
   {
     "name": "NATO Common Operational Picture (NCOP)",
-    "description": "NATO Common Operational Picture (NCOP)",
+    "description": "NATO Common Operational Picture",
     "versions": [
+      "1.3.1",
+      "1.3.2",
+      "1.4.0",
+      "1.5.1",
+      "1.5.2",
+      "1.5.3",
+      "1.7.0",
+      "1.7.1",
+      "1.8.0",
+      "1.8.1",
+      "2.0.0",
+      "2.0.5",
       "2.0.6",
       "2.0.7"
     ],
@@ -28,84 +36,148 @@
   },
   {
     "name": "NATO SHIP SHORE SHIP BUFFER (SSSB)",
-    "description": "The Ship Shore Ship Buffer provides:\n- Seamless, resilient, flexible bearer services and connectivity between Operational Forces and NATO commands, supporting operations amongst static and deployed units.\n- Effective non-SATCOM wireless transmission services at Line Of Sight (LOS) and Beyond Line Of Sight (BLOS).\n- Exploitation of the full electromagnetic spectrum, in HF, UHF and VHF frequencies ranges,\n- Survivable wireless service capability.\n- Deployment of wireless capability throughout and beyond the NATO Area of Responsibility in accordance with NATO Ministerial Guidance.\n- Management and adaptation of wireless-system and service configurations to provide maximum capacity consistent with the physical and threat environment.\nThe above-mentioned capabilities are provided via the SSSB technical services.",
+    "description": "",
     "versions": [
+      "2.0.0",
       "3.0.0"
     ],
     "id": "SP-0004"
   },
   {
     "name": "CRC System Interface (CSI)",
-    "description": "CRC System Interface is an application developed by NCIA that provides among other Data Link COI services and ensures the correct SIP for the Recognized Air Picture",
+    "description": "Data Link service",
     "versions": [
+      "18.2",
+      "18.3",
+      "18.4",
+      "18.5d",
+      "18.6",
       "18.7",
+      "18.8",
       "18.9"
     ],
     "id": "SP-0005"
   },
   {
     "name": "NCS JChat Client",
-    "description": "Sponsor: SHAPE SDP SDF (Air C2 POW)\nManufacturer: NCIA\nProduct name: JChat Client",
+    "description": "Joint Tactical Chat Security Enhanced Client",
     "versions": [
-      "2.5.0"
+      "2.1.0.2",
+      "2.1.2.0",
+      "2.1.3",
+      "2.2.0.11",
+      "2.2.0.12",
+      "2.2.0.13",
+      "2.2.0.2",
+      "2.2.12",
+      "2.3.0.0",
+      "2.3.0.10",
+      "2.3.2.7",
+      "2.4.1",
+      "2.5.0",
+      "2.6.0",
+      "2.7.1",
+      "2.8.0"
     ],
     "id": "SP-0006"
   },
   {
     "name": "M-Link",
-    "description": "The M-Link User Server is Isode's core Instant Messaging and Presence server based on the XMPP (extensible Messaging and Presence Protocol) standard. Its feature set makes it ideal for deployments where security, reliability and special functionality are vital as well as for large public deployments.",
+    "description": "M-Link",
     "versions": [
+      "16.3v4-1",
+      "16.6 v5",
+      "17.0.2",
+      "17.0.v14",
+      "17.0.v18",
       "17.0v24",
-      "17.0v25"
+      "19.0.0"
     ],
     "id": "SP-0007"
   },
   {
     "name": "Joint Operations Center Watchkeeper's Log (JOCWatch)",
-    "description": "JOCWatch is a web based electronic Event Log. It is designed to support watch keepers and shift directors in Joint Operations Centres (JOCs) to record and disseminate incident information in a standardised and structured manner. Theatre-wide JOCWatch capability facilitates greater situational awareness for decision makers from subordinate units to headquarters (HQ) and provides event data for analysis of the battle space for future adaptations of operational tactics, techniques and procedures.\n\nJOCWatch interoperates with several NATO and national systems to exchange and display incident data, contributing to overall situational awareness and analysis in the Area of Operations (AOO).",
+    "description": "Joint Operations Centre  Watchkeeper's Log",
     "versions": [
-      "4.1.1"
+      "3.3.0",
+      "3.3.1",
+      "4.0",
+      "4.0.2",
+      "4.1.0",
+      "4.1.1",
+      "4.2.1",
+      "5.0",
+      "5.0.1"
     ],
     "id": "SP-0008"
   },
   {
     "name": "Ignite Realtime Openfire",
-    "description": "Ignite Realtime Openfire XMPP Server",
+    "description": "Openfire is a real time collaboration (RTC) server licensed under the Open Source Apache License. It uses the only widely adopted open protocol for instant messaging, XMPP Openfire is incredibly easy to setup and administer, but offers rock-solid security and performance.",
     "versions": [
-      "4.7.5"
+      "4.1.2",
+      "4.2.3",
+      "4.3.1",
+      "4.4.4",
+      "4.5.1",
+      "4.5.1.2",
+      "4.5.2",
+      "4.5.6",
+      "4.6.2",
+      "4.6.4",
+      "4.7",
+      "4.7.1",
+      "4.7.5",
+      "4.8",
+      "4.8.1",
+      "4.8.3",
+      "4.9"
     ],
     "id": "SP-0009"
   },
   {
     "name": "Microsoft Windows DNS Services",
-    "description": "DNS Services  (Windows Server)",
+    "description": "Microsoft Windows DNS Services",
     "versions": [
-      "2022"
+      "2012",
+      "2012 R2",
+      "2016",
+      "2019",
+      "2022",
+      "2025"
     ],
     "iconPath": "./image/sp/sp_icon_microsoft_windows_dns_services.jpg",
     "id": "SP-0010"
   },
   {
     "name": "Microsoft Exchange",
-    "description": "Microsoft Exchange 2019 - A robust email server solution designed for enterprises, Microsoft Exchange  provides secure, scalable, and high-performance email, calendar, and collaboration services. It includes enhanced security, improved performance, and better integration with Microsoft 365.",
+    "description": "Microsoft Exchange Informal Messaging",
     "versions": [
-      "2029"
+      "2013",
+      "2016",
+      "2019"
     ],
     "iconPath": "./image/sp/sp_icon_microsoft_exchange.jpg",
     "id": "SP-0011"
   },
   {
     "name": "Microsoft Outlook",
-    "description": "Microsoft Outlook 2019 -A personal information management application that is part of Microsoft Office . It serves as an email client with advanced features such as calendar scheduling, contact management, task organization, and seamless integration with Microsoft Exchange and Office 365.",
+    "description": "Informal Messaging Client",
     "versions": [
-      "2029"
+      "2010-SP2",
+      "2013",
+      "2016",
+      "2019",
+      "2021",
+      "2022",
+      "2024"
     ],
     "iconPath": "./image/sp/sp_icon_microsoft_outlook.jpg",
     "id": "SP-0012"
   },
   {
     "name": "Symantec Mail Security for Microsoft Exchange (SMSMSE)",
-    "description": "Symantec Mail Security for Microsoft Exchange (SMSMSE) 7.10.x - A security solution designed to protect Microsoft Exchange environments from email-borne threats such as spam, phishing, viruses, and malware. It provides advanced content filtering, policy enforcement, and real-time threat detection to secure email communications.",
+    "description": "Symantec Mail Security for Microsoft Exchange (SMSMSE)",
     "versions": [
       "7.10.x"
     ],
@@ -114,20 +186,4975 @@
   },
   {
     "name": "Titus Data Classification",
-    "description": "Titus Data Classification 4.7 -A data classification and security solution that enables organizations to classify, label, and protect sensitive information within Microsoft Outlook, Exchange, and other enterprise applications. It helps enforce compliance, improve data security, and support regulatory requirements.",
+    "description": "Informal Messaging",
     "versions": [
+      "2020.1",
+      "2022.0 HF1",
+      "2022.0 HF3",
       "4.7"
     ],
     "iconPath": "./image/sp/sp_icon_titus_data_classification.jpg",
     "id": "SP-0014"
   },
   {
-    "name": "NEW PRODUCT",
-    "description": "asdfsadfasdf",
+    "name": "XXX PRODUCT NOT FOUND IN CATALOGUE XXX",
+    "description": "Used for admin purposes to indicate that RFC has no product",
     "versions": [
-      "1",
-      "3"
+      "0"
     ],
     "id": "SP-0015"
+  },
+  {
+    "name": "SIMACET PASARELA MIP BIII",
+    "description": "SIMACET PASARELA MIP BIII",
+    "versions": [
+      "1.3.1.1"
+    ],
+    "id": "SP-0016"
+  },
+  {
+    "name": "GOO Service Manager Military ITSM Edition",
+    "description": "",
+    "versions": [
+      "3.0"
+    ],
+    "id": "SP-0017"
+  },
+  {
+    "name": "Land Command and Control Information Services KOLT (LC2IS Server)",
+    "description": "Estonian Land Command and Control Information Server",
+    "versions": [
+      "1.7"
+    ],
+    "id": "SP-0018"
+  },
+  {
+    "name": "TrendMicro InterScan Messaging Security Virtual Appliance",
+    "description": "CIS Operations security - Mail - Calendar",
+    "versions": [
+      "9.1",
+      "9.1 SP1"
+    ],
+    "id": "SP-0019"
+  },
+  {
+    "name": "Microsoft SharePoint",
+    "description": "Microsoft SharePoint Portal",
+    "versions": [
+      "2013",
+      "2013 SP1",
+      "2016",
+      "2019",
+      "2022",
+      "SE",
+      "SE24H1"
+    ],
+    "id": "SP-0020"
+  },
+  {
+    "name": "HUNTACCIS",
+    "description": "MIP GATEWAY",
+    "versions": [
+      "2.2",
+      "2.3",
+      "3.1",
+      "3.3"
+    ],
+    "id": "SP-0021"
+  },
+  {
+    "name": "PASARELA SIMACET MIP BIII",
+    "description": "MIP B3 Gateway",
+    "versions": [
+      "1.3.1.1"
+    ],
+    "id": "SP-0022"
+  },
+  {
+    "name": "CertSafe",
+    "description": "Certificate Management Service",
+    "versions": [
+      "2.4"
+    ],
+    "id": "SP-0023"
+  },
+  {
+    "name": "TrendMicro Apex One",
+    "description": "CIS Operations security",
+    "versions": [
+      "2019"
+    ],
+    "id": "SP-0024"
+  },
+  {
+    "name": "DirLink",
+    "description": "DDS solution",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0025"
+  },
+  {
+    "name": "Dovecot",
+    "description": "Mail Server",
+    "versions": [
+      "2.3.16"
+    ],
+    "id": "SP-0026"
+  },
+  {
+    "name": "McAfee Security for Microsoft Exchange",
+    "description": "Informal messaging",
+    "versions": [
+      "8.5"
+    ],
+    "id": "SP-0027"
+  },
+  {
+    "name": "Tecnobit Datalink Processor LINPRO",
+    "description": "Data link Server L11 A/B, L16, L22 and JRE",
+    "versions": [
+      "1.7.0 10.4.2",
+      "6.4.1.1",
+      "6.4.2.0"
+    ],
+    "id": "SP-0028"
+  },
+  {
+    "name": "Global Command & Control System (GCCS-A)",
+    "description": "Data Link Server",
+    "versions": [
+      "4.3.2 P2"
+    ],
+    "id": "SP-0029"
+  },
+  {
+    "name": "Microsoft System Center Operations Manager (SCOM)",
+    "description": "Monitoring System",
+    "versions": [
+      "10.19"
+    ],
+    "id": "SP-0030"
+  },
+  {
+    "name": "ArcMap",
+    "description": "Geo Client",
+    "versions": [
+      "10.8"
+    ],
+    "id": "SP-0031"
+  },
+  {
+    "name": "FR-CSD",
+    "description": "Coalition Shared Database",
+    "versions": [
+      "1.4.3"
+    ],
+    "id": "SP-0032"
+  },
+  {
+    "name": "SWE PCN",
+    "description": "Sweden Implementation of PCN",
+    "versions": [
+      "SP3"
+    ],
+    "id": "SP-0033"
+  },
+  {
+    "name": "One Click Spectrum",
+    "description": "One Click Spectrum",
+    "versions": [
+      "10.1.2"
+    ],
+    "id": "SP-0034"
+  },
+  {
+    "name": "Deployable Battalion Command & Control Operation Centre (N-BKKHM)",
+    "description": "C2 application that manages the air defense activities on Tactical Level",
+    "versions": [
+      "1.1",
+      "3"
+    ],
+    "id": "SP-0035"
+  },
+  {
+    "name": "POLYCOM REALPRESENCE COLLABORATION SERVER",
+    "description": "POLYCOM REALPRESENCE COLLABORATION SERVER",
+    "versions": [
+      "8.10",
+      "8.9.1",
+      "8.9.2",
+      "8.9.2.2"
+    ],
+    "id": "SP-0036"
+  },
+  {
+    "name": "Entrust Security Suite",
+    "description": "Enrollement server and security manager",
+    "versions": [
+      "8.3"
+    ],
+    "id": "SP-0037"
+  },
+  {
+    "name": "LifeSize Express",
+    "description": "Video Communications system",
+    "versions": [
+      "220"
+    ],
+    "id": "SP-0038"
+  },
+  {
+    "name": "HEOL",
+    "description": "Time Server",
+    "versions": [
+      "T108 2.9U/1.5",
+      "T108 2.BN",
+      "T108 2.BT",
+      "T108 2.C1"
+    ],
+    "id": "SP-0039"
+  },
+  {
+    "name": "SIOH DDS",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For the directory synchronization, SIOH uses multiple open source components and custom development",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0040"
+  },
+  {
+    "name": "SICF Client",
+    "description": "SICF Client",
+    "versions": [
+      "2.8"
+    ],
+    "id": "SP-0041"
+  },
+  {
+    "name": "FAST Client",
+    "description": "Functional Area Service for Dynamic Time‐Sensitive Targeting",
+    "versions": [
+      "4.1.3",
+      "4.2.0",
+      "4.2.1",
+      "4.3.0",
+      "4.3.1",
+      "5.0.2"
+    ],
+    "id": "SP-0042"
+  },
+  {
+    "name": "HMS C3IS JASMIN",
+    "description": "Part of C3IS JASMIN System Software Modules",
+    "versions": [
+      "1.8",
+      "1.8.5.945",
+      "1.8.5.948",
+      "1.8.5.952"
+    ],
+    "id": "SP-0043"
+  },
+  {
+    "name": "Cisco Aggregation Services Router (ASR)",
+    "description": "Routing Services",
+    "versions": [
+      "1001-X",
+      "1006-X",
+      "1941"
+    ],
+    "id": "SP-0044"
+  },
+  {
+    "name": "VydioRoom",
+    "description": "Video Terminal",
+    "versions": [
+      "HD2"
+    ],
+    "id": "SP-0045"
+  },
+  {
+    "name": "SIOH Web",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For the directory synchronization, SIOH uses multiple open source components and custom development",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0046"
+  },
+  {
+    "name": "Defense Advanced GPS Receiver (DAGR)",
+    "description": "Defense Advanced GPS Receiver",
+    "versions": [
+      "AN/PSN-13"
+    ],
+    "id": "SP-0047"
+  },
+  {
+    "name": "SMC Federator",
+    "description": "SMC Federator - SMC Server",
+    "versions": [
+      "1",
+      "4.0"
+    ],
+    "id": "SP-0048"
+  },
+  {
+    "name": "TACTX Suite",
+    "description": "ACTX 2 SUITE is a multi domain, multi link test tool (L11, L16, L22, JREAP, VMF) This tool can play different role C2 or NC2 platform in different kind of environment in order to create necessary stimulus for all tests cases. TACTX could create dynamic scenarios and populate them in DIS. TDL messages are exchanged into SIMPLE standard.",
+    "versions": [
+      "2"
+    ],
+    "id": "SP-0049"
+  },
+  {
+    "name": "VMWare vSphere",
+    "description": "",
+    "versions": [
+      "8.0"
+    ],
+    "id": "SP-0050"
+  },
+  {
+    "name": "ROU PCN",
+    "description": "ROU Implementation for PCN",
+    "versions": [
+      "SP3",
+      "SP4",
+      "SP4 3.0"
+    ],
+    "id": "SP-0051"
+  },
+  {
+    "name": "Neuron",
+    "description": "NEURON ensures the streamlining and automation of processes in the field of intelligence, ISR and electronic warfare management",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0052"
+  },
+  {
+    "name": "Friendly Force Tracking Systems (FTS)",
+    "description": "FFT System",
+    "versions": [
+      "2.0",
+      "2.1",
+      "2.2",
+      "2.3"
+    ],
+    "id": "SP-0053"
+  },
+  {
+    "name": "NGA Coalition Shared Data (CSD)",
+    "description": "",
+    "versions": [
+      "4.18",
+      "v.7.1.0.4"
+    ],
+    "id": "SP-0054"
+  },
+  {
+    "name": "Microsoft Edge",
+    "description": "Web Browser",
+    "versions": [
+      "100",
+      "125",
+      "1xx.xx",
+      "38.14393.0.0",
+      "81.0.416",
+      "83.0",
+      "89",
+      "99",
+      "Latest"
+    ],
+    "id": "SP-0055"
+  },
+  {
+    "name": "Kurumnet-N",
+    "description": "KurumNet-N 1.0 is a product family that aims to provide secure e-mail exchange, which is developed in accordance with international standards to meet the secure messaging needs.",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0056"
+  },
+  {
+    "name": "Chrony",
+    "description": "Distributed Time Service",
+    "versions": [
+      "3.2",
+      "3.4",
+      "4.1",
+      "4.2",
+      "4.3",
+      "4.5",
+      "4.6"
+    ],
+    "id": "SP-0057"
+  },
+  {
+    "name": "McAfee ePO",
+    "description": "Security Antivirus",
+    "versions": [
+      "5.10"
+    ],
+    "id": "SP-0058"
+  },
+  {
+    "name": "M4SC",
+    "description": "SMC Server",
+    "versions": [
+      "1.0",
+      "2.0"
+    ],
+    "id": "SP-0059"
+  },
+  {
+    "name": "Mission Command Information System (MCIS)",
+    "description": "",
+    "versions": [
+      "1.0.1.1",
+      "1.0.4.2",
+      "1.0.6.1"
+    ],
+    "id": "SP-0060"
+  },
+  {
+    "name": "Tactical Data Link Management System (TDLMS)",
+    "description": "HAVELSAN offers Tactical Data Link Management System (TDLMS) to perform the planning and management of the Tactical Data Links deployed on military platforms and command centers from a single center. TDLMS allows the formation of centers that can back-up each other and perform tasks interchangeably each other. Contain productive tools, ensures decrease overwork and provides user-friendly interface to enable the effective operation of the TDL management cycle consist of Multilink Planning (APP-11 OPTASKLINK BaseLine 15), Network Design (NETMAN T1), Planning and Design Verification Simulation, Dynamic Network Management, Post-Mission Analysis. Provides a portable TDLMS to support the off-site TDL management activities. TDLMS ensures required data in the required way, support operational success and assists minimizing the military casualties.",
+    "versions": [
+      "7.27.33"
+    ],
+    "id": "SP-0061"
+  },
+  {
+    "name": "ITA C2DNEVO",
+    "description": "C2DNEVO Commando e Controllo Digitalizzato di Navigazione EVOluto (Advanced Digital Navigation Command and Control)  Tactical C2 system implementing the ADatP-36(A)(2), the ADatP-36(B) and the VMF 6017B protocol, allows the vehicle to share the LOP with other systems exchanging positions and other graphical objects and messages. The system is also capable of battle space management and terrain analysis by using several Geo tools, instant and formatted messaging exchange.",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0062"
+  },
+  {
+    "name": "VMWare ESXi",
+    "description": "",
+    "versions": [
+      "7.0",
+      "8.0.3"
+    ],
+    "id": "SP-0063"
+  },
+  {
+    "name": "Navielektro Track Server",
+    "description": "Track Server",
+    "versions": [
+      "2.4"
+    ],
+    "id": "SP-0064"
+  },
+  {
+    "name": "Google Chrome",
+    "description": "Web Browser",
+    "versions": [
+      "80",
+      "87",
+      "89",
+      "92",
+      "95",
+      "96",
+      "97",
+      "Latest"
+    ],
+    "id": "SP-0065"
+  },
+  {
+    "name": "BMS ET",
+    "description": "BMS-ET is the Spanish Army Battle Management System, a Tactical Command and Control Information System. used for Friendly Force Tracking Service, and JDSS",
+    "versions": [
+      "1.1.3/20",
+      "2.1",
+      "2.1 FFT",
+      "2.1 LTC2",
+      "2.2"
+    ],
+    "id": "SP-0066"
+  },
+  {
+    "name": "DEU MIP X-COI",
+    "description": "MIP 4 C2 Solution",
+    "versions": [
+      "4.4.2"
+    ],
+    "id": "SP-0067"
+  },
+  {
+    "name": "ITA Imperio",
+    "description": "ITA IMPERIO is a Command and Control Information System that supports full command and control cycle, including task analysis, planning, issuing orders as well as near real-time tactical situation monitoring.  ITA IMPERIO 6.18 uses Systematic SITAWARE 6.18 as a common C4ISR application.",
+    "versions": [
+      "6.18"
+    ],
+    "id": "SP-0068"
+  },
+  {
+    "name": "Kurumnet Web Client",
+    "description": "Kurumnet Web Client  is a platform independent software component and it is used for directory access and messaging between users. It allows end users to prepare and view e-mails.",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0069"
+  },
+  {
+    "name": "KubeVirt",
+    "description": "KubeVirt is a Kubernetes extension that enables the management of virtual machines (VMs) alongside containerized workloads, providing a unified platform for hybrid infrastructure",
+    "versions": [
+      "0.59.0"
+    ],
+    "id": "SP-0070"
+  },
+  {
+    "name": "ICMT Client",
+    "description": "ISR Collection Management Tool",
+    "versions": [
+      "3.1.3",
+      "3.3.2.008",
+      "3.3.2.3",
+      "3.3.2.5",
+      "4.0",
+      "4.2",
+      "4.3.1",
+      "4.5.6"
+    ],
+    "id": "SP-0071"
+  },
+  {
+    "name": "Thales Narrow Gap Voice Guard (NVG)",
+    "description": "SBC",
+    "versions": [
+      "V1"
+    ],
+    "id": "SP-0072"
+  },
+  {
+    "name": "DOLPHIN",
+    "description": "Land C2 infromation Exchange Product",
+    "versions": [
+      "3.7",
+      "3.8"
+    ],
+    "id": "SP-0073"
+  },
+  {
+    "name": "Cisco Email Security Appliance (ESA)",
+    "description": "Security Gateway for Informal messaging",
+    "versions": [
+      "C100V",
+      "C170",
+      "C370",
+      "C380",
+      "C670",
+      "C680",
+      "X1070"
+    ],
+    "id": "SP-0074"
+  },
+  {
+    "name": "Navielektro Tactical Calendaring",
+    "description": "Navielektro Tactical Calendaring",
+    "versions": [
+      "7"
+    ],
+    "id": "SP-0075"
+  },
+  {
+    "name": "OpenBao",
+    "description": "OpenBao provides a secure solution for managing, storing, and distributing sensitive data such as secrets, certificates, and keys.",
+    "versions": [
+      "2.1"
+    ],
+    "id": "SP-0076"
+  },
+  {
+    "name": "JSDEP",
+    "description": "",
+    "versions": [
+      "7.17.03"
+    ],
+    "id": "SP-0077"
+  },
+  {
+    "name": "Guardian Combat Management System (CMS)",
+    "description": "Data Link Display Client",
+    "versions": [
+      "v 5.1"
+    ],
+    "id": "SP-0078"
+  },
+  {
+    "name": "POLYCOM REAL PRESENCE COLLABORATION SERVER (RMX)",
+    "description": "POLYCOM REAL PRESENCE COLLABORATION SERVER (RMX)",
+    "versions": [
+      "8.7",
+      "8.7.4",
+      "8.8.0",
+      "8.9.1"
+    ],
+    "id": "SP-0079"
+  },
+  {
+    "name": "Hummingbird",
+    "description": "RMP Connectivity",
+    "versions": [
+      "14"
+    ],
+    "id": "SP-0080"
+  },
+  {
+    "name": "Nutanix AHV/AOS",
+    "description": "Virtual Machine Hosting",
+    "versions": [
+      "6.0"
+    ],
+    "id": "SP-0081"
+  },
+  {
+    "name": "Cisco Meeting Server (CMS)",
+    "description": "Video Conferencing Server",
+    "versions": [
+      "1000",
+      "2.3.3-SP3",
+      "2.8",
+      "2.9.1",
+      "2.9.2",
+      "2.9.7",
+      "2000",
+      "3.0",
+      "3.1",
+      "3.10",
+      "3.6.x",
+      "3.8",
+      "3.9",
+      "X-Serie"
+    ],
+    "id": "SP-0082"
+  },
+  {
+    "name": "Proactivanet",
+    "description": "Proactivanet",
+    "versions": [
+      "10.12",
+      "10.20",
+      "10.25"
+    ],
+    "id": "SP-0083"
+  },
+  {
+    "name": "Bowman",
+    "description": "HF radio",
+    "versions": [
+      "BCIP5.6"
+    ],
+    "id": "SP-0084"
+  },
+  {
+    "name": "Kasif",
+    "description": "KASIF is a Geographic Information System that provides mapping, visualization and location-based analysis services for all defense and IT projects / products. KASIF may easily adapt to development environments.",
+    "versions": [
+      "v2.4"
+    ],
+    "id": "SP-0085"
+  },
+  {
+    "name": "Navielektro CA Front",
+    "description": "Navielektro CA Front",
+    "versions": [
+      "1.1",
+      "2.6"
+    ],
+    "id": "SP-0086"
+  },
+  {
+    "name": "Network Time Protocol daemon (NTPD)",
+    "description": "The Network Time Protocol daemon (ntpd) is an operating system program that maintains the system time in synchronization with time servers using the Network Time Protocol (NTP).",
+    "versions": [
+      "4.2.6",
+      "4.9",
+      "4.x"
+    ],
+    "id": "SP-0087"
+  },
+  {
+    "name": "iBrigde",
+    "description": "IBM I2 iBridge",
+    "versions": [
+      "2.7.0",
+      "3.1.0",
+      "8.9.1"
+    ],
+    "id": "SP-0088"
+  },
+  {
+    "name": "EBO-IEG",
+    "description": "Information Exchange Gateway e-BO Enterprise",
+    "versions": [
+      "1.0.0"
+    ],
+    "id": "SP-0089"
+  },
+  {
+    "name": "Airbus Fortion Client",
+    "description": "JISR client",
+    "versions": [
+      "2.6"
+    ],
+    "id": "SP-0090"
+  },
+  {
+    "name": "IOSB CSD Plus server",
+    "description": "IOSB CSD Plus server",
+    "versions": [
+      "4.0"
+    ],
+    "id": "SP-0091"
+  },
+  {
+    "name": "Air Command and Control Services (AirC2IS Server)",
+    "description": "Air Command and Control Information System / NATO BMD Planning Tool",
+    "versions": [
+      "4.4.0",
+      "4.5.0",
+      "4.5.1",
+      "4.6.1",
+      "4.7.0",
+      "4.7.1",
+      "4.7.2"
+    ],
+    "id": "SP-0092"
+  },
+  {
+    "name": "Asterisk",
+    "description": "Communication application",
+    "versions": [
+      "11.22.0",
+      "20.0.0",
+      "22.1"
+    ],
+    "id": "SP-0093"
+  },
+  {
+    "name": "HCL Domimo",
+    "description": "Email server",
+    "versions": [
+      "12.0.2FP5"
+    ],
+    "id": "SP-0094"
+  },
+  {
+    "name": "NGINX",
+    "description": "NGINX",
+    "versions": [
+      "1.12"
+    ],
+    "id": "SP-0095"
+  },
+  {
+    "name": "IOTA OANT",
+    "description": "Online Analyser for Networked Tactical Data",
+    "versions": [
+      "2.7.0",
+      "3.0.0"
+    ],
+    "id": "SP-0096"
+  },
+  {
+    "name": "SIOH Mail",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For the directory synchronization, SIOH uses multiple open source components and custom development",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0097"
+  },
+  {
+    "name": "Fortion SuRVIn cPED",
+    "description": "Common Processing, Exploitation, Dissemination. Focus is MTI exploitation. Provide CSD client for AEDP-17, 18 and 19. See : https://intelligence.airbus.com/industries/defence/joint-isr/real-time-joint-isr/fortion-survin-cped/",
+    "versions": [
+      "1.3"
+    ],
+    "id": "SP-0098"
+  },
+  {
+    "name": "OpenXPKI",
+    "description": "Certification Authority",
+    "versions": [
+      "3.30.9"
+    ],
+    "id": "SP-0099"
+  },
+  {
+    "name": "ELIS Classification",
+    "description": "Classification Tool",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0100"
+  },
+  {
+    "name": "Microsoft Windows (Server OS)",
+    "description": "Windows as CIS Security Device",
+    "versions": [
+      "2016"
+    ],
+    "id": "SP-0101"
+  },
+  {
+    "name": "NATO Intergration Core (Int-Core)",
+    "description": "NATO Intergration Core",
+    "versions": [
+      "4.2",
+      "5.0",
+      "5.1"
+    ],
+    "id": "SP-0102"
+  },
+  {
+    "name": "POLYCOM SoundPoint IP Phone",
+    "description": "POLYCOM SoundPoint IP Phone",
+    "versions": [
+      "331"
+    ],
+    "id": "SP-0103"
+  },
+  {
+    "name": "AIFS Intergraded Message System (AIMS)",
+    "description": "Formal messaging Client (Militairy Messaging)",
+    "versions": [
+      "4.0",
+      "4.0.2",
+      "5.0"
+    ],
+    "id": "SP-0104"
+  },
+  {
+    "name": "SIACCON Advanced",
+    "description": "SIACCON Advanced",
+    "versions": [
+      "2.2",
+      "3.0"
+    ],
+    "id": "SP-0105"
+  },
+  {
+    "name": "389 Directory Server",
+    "description": "Directory Service",
+    "versions": [
+      "1.3.9",
+      "2.2.4"
+    ],
+    "id": "SP-0106"
+  },
+  {
+    "name": "Orolia SecureSync 2402",
+    "description": "NTP Server",
+    "versions": [
+      "OS 1.11",
+      "OS 1.8"
+    ],
+    "id": "SP-0107"
+  },
+  {
+    "name": "Hashicorp Vault",
+    "description": "Hashicorp Vault centrally stores, accesses and deploys secrets across applications, systems, and infrastructure (Secrets Management). It handels data securely (Encryption Services) and uses a standardized workflow for distribution and lifecycle management of cryptographic keys in various KMS providers (Key Management)",
+    "versions": [
+      "1.13.3"
+    ],
+    "id": "SP-0108"
+  },
+  {
+    "name": "C2FN",
+    "description": "C2FN 3.1 is a modern cost effective Command and Control Information System that runs in a web browser supporting operational staffs in their planning and executing operations. Because it runs in a web browser, C2FN does not require any installation on the client computers other than a basic operating system with a supported browser.",
+    "versions": [
+      "3.1"
+    ],
+    "id": "SP-0109"
+  },
+  {
+    "name": "Cisco Switch",
+    "description": "",
+    "versions": [
+      "3650"
+    ],
+    "id": "SP-0110"
+  },
+  {
+    "name": "ITA FMN SESSION BORDER CONTROLLER",
+    "description": "ITA FMN SESSION BORDER CONTROLLER",
+    "versions": [
+      "2",
+      "3"
+    ],
+    "id": "SP-0111"
+  },
+  {
+    "name": "Nexium Defence Cloud",
+    "description": "Cloud solution",
+    "versions": [
+      "2.1"
+    ],
+    "id": "SP-0112"
+  },
+  {
+    "name": "POLYCOM REALPRESENCE COLLABORATION SERVER Virtual Edition",
+    "description": "POLYCOM REALPRESENCE COLLABORATION SERVER Virtual Edition",
+    "versions": [
+      "8.9"
+    ],
+    "id": "SP-0113"
+  },
+  {
+    "name": "NATO CSD IWS",
+    "description": "CSD IWS",
+    "versions": [
+      "1.0.4",
+      "3.5"
+    ],
+    "id": "SP-0114"
+  },
+  {
+    "name": "SIA - CdC",
+    "description": "Set of core services",
+    "versions": [
+      "4.1"
+    ],
+    "id": "SP-0115"
+  },
+  {
+    "name": "SEALION",
+    "description": "Maritime System",
+    "versions": [
+      "8.1"
+    ],
+    "id": "SP-0116"
+  },
+  {
+    "name": "Cisco Cloud Service Router (CSR)",
+    "description": "Routing Services (Virtual Router)",
+    "versions": [
+      "1000V"
+    ],
+    "id": "SP-0117"
+  },
+  {
+    "name": "Systematic SITAWARE",
+    "description": "Systematic SITAWARE",
+    "versions": [
+      "6.10",
+      "6.11",
+      "6.12",
+      "6.13",
+      "6.14",
+      "6.15",
+      "6.16",
+      "6.17",
+      "6.18",
+      "6.19",
+      "6.20",
+      "6.20 Beta",
+      "6.8"
+    ],
+    "id": "SP-0118"
+  },
+  {
+    "name": "Berkeley Internet Name Domain (BIND)",
+    "description": "Domain Naming Service",
+    "versions": [
+      "9.11",
+      "9.16",
+      "9.18.10",
+      "9.18.21",
+      "9.18.28",
+      "9.20",
+      "9.3",
+      "9.9",
+      "9.9.16.38",
+      "9.9.4"
+    ],
+    "id": "SP-0119"
+  },
+  {
+    "name": "PRT ARMY DSS-C2",
+    "description": "The Portuguese Dismouted Soldier System - Command and Control (DSS-C2) is a command and control system used for management of the battlefield for military units at the lowest echelons (Company, Platoon, Squad) contributing to the sharing of a common operating scenario and situational awareness. Its development meets the operational requirements of the lower levels, implementing features suitable to most of war-fighting functions.",
+    "versions": [
+      "4.0"
+    ],
+    "id": "SP-0120"
+  },
+  {
+    "name": "SIOH Calendar",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For the directory synchronization, SIOH uses multiple open source components and custom development",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0121"
+  },
+  {
+    "name": "Scrubber",
+    "description": "Scrubber",
+    "versions": [
+      "II"
+    ],
+    "id": "SP-0122"
+  },
+  {
+    "name": "Sapiiem",
+    "description": "JISR Suite",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0123"
+  },
+  {
+    "name": "OpNet Blue (LBS)",
+    "description": "",
+    "versions": [
+      "v2.0"
+    ],
+    "id": "SP-0124"
+  },
+  {
+    "name": "Joint Targeting System (JTS Client)",
+    "description": "Joint Targeting System",
+    "versions": [
+      "4.2",
+      "4.2.1",
+      "4.3.0",
+      "4.3.1",
+      "4.3.2",
+      "5.0.2"
+    ],
+    "id": "SP-0125"
+  },
+  {
+    "name": "Antares",
+    "description": "Land C2 Information product",
+    "versions": [
+      "4.4.0.5",
+      "4.4.1.1"
+    ],
+    "id": "SP-0126"
+  },
+  {
+    "name": "Nexus CM",
+    "description": "Nexus Certificate Manager",
+    "versions": [
+      "7.18.1"
+    ],
+    "id": "SP-0127"
+  },
+  {
+    "name": "DEU-CCAS (Coloured Cloud Communication Access Set)",
+    "description": "DEU Coloured Cloud Solution",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0128"
+  },
+  {
+    "name": "BATMAN-GIS",
+    "description": "TUR BATMAN-GIS 3.9 is a Geographic Information System product that provides mapping, visualization and location-based analysis services for all defense and IT projects/products, is high-performance, scalable and easily adaptable to development environments.",
+    "versions": [
+      "3.11.12",
+      "3.9",
+      "3.9.43"
+    ],
+    "id": "SP-0129"
+  },
+  {
+    "name": "Haraka",
+    "description": "Email Server",
+    "versions": [
+      "3.0.3"
+    ],
+    "id": "SP-0130"
+  },
+  {
+    "name": "JIMAPS",
+    "description": "CSD Server",
+    "versions": [
+      "1.0",
+      "1.1",
+      "2.3.1"
+    ],
+    "id": "SP-0131"
+  },
+  {
+    "name": "Core Geographic Information System (CoreGIS)",
+    "description": "Geographic Information System",
+    "versions": [
+      "3.0.2",
+      "3.1",
+      "3.1.1"
+    ],
+    "id": "SP-0132"
+  },
+  {
+    "name": "Tasker Tracker plus",
+    "description": "Workflow Service",
+    "versions": [
+      "1.9.7",
+      "1.9.8"
+    ],
+    "id": "SP-0133"
+  },
+  {
+    "name": "JDSS - IdZ-ES - DEU",
+    "description": "",
+    "versions": [
+      "Spiral 4"
+    ],
+    "id": "SP-0134"
+  },
+  {
+    "name": "Mozilla Thunderbird",
+    "description": "Informal Messaging Client",
+    "versions": [
+      "102.8.0",
+      "102.9.0",
+      "52.9",
+      "78.10.2"
+    ],
+    "id": "SP-0135"
+  },
+  {
+    "name": "IBM Control Desk",
+    "description": "IT Service Management Platform",
+    "versions": [
+      "7.6"
+    ],
+    "id": "SP-0136"
+  },
+  {
+    "name": "IBL NATO Meteorological Data - Web Portal (NMD)",
+    "description": "IBL NATO Meteorological Data - Web Portal (NMD)",
+    "versions": [
+      "1.1.4"
+    ],
+    "id": "SP-0137"
+  },
+  {
+    "name": "T-PKI",
+    "description": "Tactical PKI - The system allows the provision of encryption, signature and authentication software certificates to technical or physical entities, using dedicated and customizable certification offers. Hardware certificates (on smart cards) are excluded from the initial scope of the product. The life cycle of the certificates is entirely managed by the system (initial request, renewal, revocation, recovery)  The product is divided in several racks dedicated to a core function of the system, allowing it to be highly customizable to match the specifics of each field of operation. Multiple confidentiality levels can be addressed within the system, due to its modularity and the many certification authorities that can be declined from the trust chain, which key elements are stored and managed directly from the remote core sovereign PKI.  It includes a decentralized certification authority of the chosen level provided by the sovereign PKI, and allows the provision of software certificates t",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0138"
+  },
+  {
+    "name": "BatMan GeoServer 2.24.1",
+    "description": "BatMan GeoServer is providing an improvement for view map services such as Web Map Service (WMS), Web Feature Service (WFS), Web Coverage Service (WCS), Web Map Tile Service (WMTS).  BatMan GeoServer is a Java-based server that allows users to view and edit geospatial data. Using open standards set forth by the Open Geospatial Consortium (OGC), BatMan GeoServer allows for great flexibility in map creation and data sharing.",
+    "versions": [
+      "2.24.1"
+    ],
+    "id": "SP-0139"
+  },
+  {
+    "name": "MIMS ULS Software",
+    "description": "MIMS-ULS system is a command and cotrol system that can produce recognised air picture and among other data link interfaces (link 16, Link 22) it also provides JREAP-C interface.",
+    "versions": [
+      "2.0"
+    ],
+    "id": "SP-0140"
+  },
+  {
+    "name": "NATO Automated Meteorological Information System (NAMIS) X",
+    "description": "NATO Automated Meteorological Information System",
+    "versions": [
+      "4.3.5B",
+      "4.3.5D",
+      "4.3.5M",
+      "4.9.5"
+    ],
+    "id": "SP-0141"
+  },
+  {
+    "name": "Cisco VTC Terminal",
+    "description": "Video Terminal",
+    "versions": [
+      "8845",
+      "8865",
+      "9951",
+      "Dx70",
+      "DX80",
+      "EX90",
+      "SX10"
+    ],
+    "id": "SP-0142"
+  },
+  {
+    "name": "Essential Landbased Information Application And Services (ELIAS)",
+    "description": "Geo Client",
+    "versions": [
+      "1.3.1",
+      "1.6",
+      "2.0"
+    ],
+    "id": "SP-0143"
+  },
+  {
+    "name": "Common Data Link Interface Module (CDLIM)",
+    "description": "",
+    "versions": [
+      "81.02.51.00"
+    ],
+    "id": "SP-0144"
+  },
+  {
+    "name": "NVG GW",
+    "description": "NVG GW",
+    "versions": [
+      "2.7.1.60011",
+      "v4.12.0.51",
+      "v4.13.0",
+      "v4.14.0",
+      "v5.16.1.1"
+    ],
+    "id": "SP-0145"
+  },
+  {
+    "name": "Cisco Adaptive Security Virtual Appliance (ASAv)",
+    "description": "Security Appliance  (virtual)",
+    "versions": [
+      "ASAv10",
+      "ASAv100",
+      "ASAv30",
+      "ASAv5",
+      "ASAv50"
+    ],
+    "id": "SP-0146"
+  },
+  {
+    "name": "AET BlueX",
+    "description": "Certificate Management Server",
+    "versions": [
+      "1.10",
+      "1.3"
+    ],
+    "id": "SP-0147"
+  },
+  {
+    "name": "NaviLink",
+    "description": "The NaviLink service is a dedicated processor for non-proprietary military and industry specific protocols: JREAP-C, FFT, OTH-G",
+    "versions": [
+      "1.1"
+    ],
+    "id": "SP-0148"
+  },
+  {
+    "name": "AlienVault OSSIM",
+    "description": "Certificate Management system",
+    "versions": [
+      "5.6"
+    ],
+    "id": "SP-0149"
+  },
+  {
+    "name": "Axios",
+    "description": "AXIOS (Agile Command and Control Information Superiority and Operational Advantage) is the command and control system developed by Leonardo and created following recent investments made in collaboration with the Italian MoD to implement the JOC-COI IOC: Joint Operation Center Community of Interest.",
+    "versions": [
+      "2.0"
+    ],
+    "id": "SP-0150"
+  },
+  {
+    "name": "Microsemi SyncServer",
+    "description": "Network Time Server",
+    "versions": [
+      "S600",
+      "S650",
+      "S650 2.1.8"
+    ],
+    "id": "SP-0151"
+  },
+  {
+    "name": "POL CSD Client",
+    "description": "Client only JISR system",
+    "versions": [
+      "1.1"
+    ],
+    "id": "SP-0152"
+  },
+  {
+    "name": "Cisco Integrated Services Router (ISR)",
+    "description": "Cisco Integrated Services Router (ISR)",
+    "versions": [
+      "3945",
+      "4000 series IOS XE DUBLIN 17.12",
+      "4221",
+      "4300",
+      "4321",
+      "4331",
+      "4351",
+      "4431",
+      "4451",
+      "4461"
+    ],
+    "id": "SP-0153"
+  },
+  {
+    "name": "Pexip Infinity Connect",
+    "description": "Audio and Video-based Collaboration client for connecting to Pexip Infinity Conferencing Platform.",
+    "versions": [
+      "1.10",
+      "1.12",
+      "1.6"
+    ],
+    "id": "SP-0154"
+  },
+  {
+    "name": "SIOH NTP",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For the NTP component, SIOH uses multiple softwares and equipment, deployed and customized in order to address national needs and FMN specifications",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0155"
+  },
+  {
+    "name": "Cisco Telepresence MCU",
+    "description": "Video Conferencing Server",
+    "versions": [
+      "5300"
+    ],
+    "id": "SP-0156"
+  },
+  {
+    "name": "NAVIELEKTRO MAIL (NAMAS)",
+    "description": "Mail Server / Client",
+    "versions": [
+      "1.7",
+      "1.8",
+      "2.0",
+      "2.1",
+      "2.2",
+      "2.2.2"
+    ],
+    "id": "SP-0157"
+  },
+  {
+    "name": "NATO Coalition Shared Database (CSD)",
+    "description": "NATO CSD",
+    "versions": [
+      "3.0",
+      "3.2",
+      "3.3",
+      "3.4",
+      "3.5",
+      "3.5.2",
+      "3.9"
+    ],
+    "id": "SP-0158"
+  },
+  {
+    "name": "NONC2 ATA DLP (Non-Command and Control ATA Data Link Processor)",
+    "description": "NonC2 ATA DLP is a superset NonC2 capability, developed in total adherence to NATO’a ATDLP-5.16, to serve & attain the goal of providing a common tactical processing business logic within housing tactical platforms.",
+    "versions": [
+      "0.2.0-RC10",
+      "1.0"
+    ],
+    "id": "SP-0159"
+  },
+  {
+    "name": "Phoenix-FFT",
+    "description": "AUT PHOENIX FFT is an MOD in-house development based on open source products like Eclipse RCP, PostgreSQL database, Java, etc.  The system is fielded in AAF (Austrian Armed Forces) at command posts from company level up. It supports the exchange of FFT Data according to FFI-MTF (ADatP-36-(A)(2), still backward compatible with NFFI; for both, IP1 only).",
+    "versions": [
+      "3.4"
+    ],
+    "id": "SP-0160"
+  },
+  {
+    "name": "FIN PCN",
+    "description": "Finland Implementation for PCN",
+    "versions": [
+      "SP3"
+    ],
+    "id": "SP-0161"
+  },
+  {
+    "name": "Nebula CSD",
+    "description": "Nebula CSD",
+    "versions": [
+      "1.2",
+      "1.2.1",
+      "1.4"
+    ],
+    "id": "SP-0162"
+  },
+  {
+    "name": "Fortion CSD",
+    "description": "JISR Infromation Exchange product",
+    "versions": [
+      "10.10.0",
+      "10.11.3",
+      "10.12",
+      "10.13",
+      "10.9",
+      "10.9.1"
+    ],
+    "id": "SP-0163"
+  },
+  {
+    "name": "VydioDesktop",
+    "description": "Video Terminal",
+    "versions": [
+      "3.6.18"
+    ],
+    "id": "SP-0164"
+  },
+  {
+    "name": "Sabre/Dav",
+    "description": "sabre/dav is an open source WebDAV server, developed by fruux and built in PHP. It is an implementation of the WebDAV protocol, providing a native PHP server implementation which operates on Apache 2 and Nginx web servers",
+    "versions": [
+      "3.2"
+    ],
+    "id": "SP-0165"
+  },
+  {
+    "name": "SWE OpenLDAP Implementation",
+    "description": "SWE OpenLDAP Implementation that also provides support for Metatool Synchronzation and Synchronization Support. Utilizing LDAP 2019",
+    "versions": [
+      "v1.0"
+    ],
+    "id": "SP-0166"
+  },
+  {
+    "name": "Foreman_OpenSCAP",
+    "description": "Security for vulnerability assesment",
+    "versions": [
+      "2.02"
+    ],
+    "id": "SP-0167"
+  },
+  {
+    "name": "Alliance",
+    "description": "Data Link System",
+    "versions": [
+      "2.3",
+      "2.4",
+      "2.5"
+    ],
+    "id": "SP-0168"
+  },
+  {
+    "name": "OpenLDAP",
+    "description": "Community developed LDAP software",
+    "versions": [
+      "2.4",
+      "2.4.40",
+      "2.4.44",
+      "2.4.46",
+      "2.5.16",
+      "2.5.17",
+      "2.6.2",
+      "2.6.3"
+    ],
+    "id": "SP-0169"
+  },
+  {
+    "name": "Blanco Drive Eraser",
+    "description": "Disk Drive Eraser for Digital Media",
+    "versions": [
+      "6"
+    ],
+    "id": "SP-0170"
+  },
+  {
+    "name": "JCHAT Openfire",
+    "description": "JCHAT Openfire is a NATO FAS version of the Open Source Openfire XMPP Application                        Openfire is a real time collaboration (RTC) server licensed under the Open Source Apache License. It uses the only widely adopted open protocol for instant messaging, XMPP Openfire is incredibly easy to setup and administer, but offers rock-solid security and performance.",
+    "versions": [
+      "4.7.5",
+      "4.8"
+    ],
+    "id": "SP-0171"
+  },
+  {
+    "name": "SWE FMN CA",
+    "description": "Certificate Authority",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0172"
+  },
+  {
+    "name": "Versasync 1228",
+    "description": "VersaSync is a high performance GNSS master clock and network time server that delivers accurate, software configurable time and frequency signals under all circumstances, including GNSS-denied environments.",
+    "versions": [
+      "1.0",
+      "OS 1.11"
+    ],
+    "id": "SP-0173"
+  },
+  {
+    "name": "VMWare VCenter",
+    "description": "",
+    "versions": [
+      "7.0",
+      "8.0",
+      "8.0.3"
+    ],
+    "id": "SP-0174"
+  },
+  {
+    "name": "SIOH DNS",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For the directory synchronization, SIOH uses multiple open source components and custom development",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0175"
+  },
+  {
+    "name": "NAVIELEKTRO Calendar and Scheduling service",
+    "description": "NAVIELEKTRO Calendar and Scheduling service",
+    "versions": [
+      "1",
+      "2.0",
+      "2.0.4"
+    ],
+    "id": "SP-0176"
+  },
+  {
+    "name": "SIOH SSO",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For the directory synchronization, SIOH uses multiple open source components and custom development",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0177"
+  },
+  {
+    "name": "Microsoft Windows Time Service",
+    "description": "Microsoft Time synchronization",
+    "versions": [
+      "2012",
+      "2016",
+      "2019",
+      "2022",
+      "2025"
+    ],
+    "id": "SP-0178"
+  },
+  {
+    "name": "Blackbox GPS Network Time Server",
+    "description": "Network Time Server",
+    "versions": [
+      "2"
+    ],
+    "id": "SP-0179"
+  },
+  {
+    "name": "Integrated Command and Control - Server (ICC Server)",
+    "description": "NATO-wide Integrated Command and Control Software for Air Operations",
+    "versions": [
+      "3.1.0",
+      "3.2.0",
+      "3.3.0",
+      "3.4.0",
+      "3.4.1",
+      "3.5.1",
+      "3.5.2"
+    ],
+    "id": "SP-0180"
+  },
+  {
+    "name": "Klas VoyagerESR",
+    "description": "VoyagerESR is the ultimate in Cisco hardware routing and switching in a single Voyager module.",
+    "versions": [
+      "R2"
+    ],
+    "id": "SP-0181"
+  },
+  {
+    "name": "TIM IV Management",
+    "description": "Security Asset - Access Control",
+    "versions": [
+      "1.2"
+    ],
+    "id": "SP-0182"
+  },
+  {
+    "name": "Microsoft Windows Server",
+    "description": "",
+    "versions": [
+      "2012 R2",
+      "2019",
+      "2022"
+    ],
+    "id": "SP-0183"
+  },
+  {
+    "name": "GreenMod",
+    "description": "Labeling tool",
+    "versions": [
+      "2.5",
+      "2.6"
+    ],
+    "id": "SP-0184"
+  },
+  {
+    "name": "Kurumnet SMTP Server",
+    "description": "Kurumnet SMTP Server is responsible for transmitting and maintaining e-mails between users. It delivers the outgoing email from email clients and routes incoming email to the recipient's email server for delivery to their mailbox.",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0185"
+  },
+  {
+    "name": "AirBorn Warning And Control System (AWACS)",
+    "description": "Data link service",
+    "versions": [
+      "1"
+    ],
+    "id": "SP-0186"
+  },
+  {
+    "name": "Microsoft SCCM",
+    "description": "System Center Configuration Manager",
+    "versions": [
+      "2012 R2 SP1"
+    ],
+    "id": "SP-0187"
+  },
+  {
+    "name": "Netcool Operations Insight",
+    "description": "The Service Insights tab contains all the information related to a particular service",
+    "versions": [
+      "1.6"
+    ],
+    "id": "SP-0188"
+  },
+  {
+    "name": "OTRS",
+    "description": "OTRS is a modern, flexible ticket and process management system that allows service management professionals in any industry to keep pace with today’s lightning-fast, results-driven business environment.",
+    "versions": [
+      "6"
+    ],
+    "id": "SP-0189"
+  },
+  {
+    "name": "FR-DOPEC-CSD",
+    "description": "Dispositif pour l’OPtimisation de l’Emploi des Capteurs (DOPEC)",
+    "versions": [
+      "1.4"
+    ],
+    "id": "SP-0190"
+  },
+  {
+    "name": "Global Command & Control System (GCCS-M)",
+    "description": "Naval Command & Control System",
+    "versions": [
+      "4.1.2.0"
+    ],
+    "id": "SP-0191"
+  },
+  {
+    "name": "TimeTools",
+    "description": "Reference Time Server",
+    "versions": [
+      "SR9210",
+      "SR9750",
+      "T300",
+      "T3000"
+    ],
+    "id": "SP-0192"
+  },
+  {
+    "name": "PRT GEOMETOC DSDI",
+    "description": "The Deployable Portuguese Navy GEOMETOC Spatial Data Infrastructure (GEOMETOC DSDI) aims to provide critical Geospatial, Meteorological, and Oceanographic Information (data, products, and services), to support the Portuguese Armed Force's operational and tactical decision-making processes (Multi-Domain Operations planning and C2).",
+    "versions": [
+      "5.0"
+    ],
+    "id": "SP-0193"
+  },
+  {
+    "name": "TrendMicro Control Manager",
+    "description": "CIS Operations security",
+    "versions": [
+      "2016"
+    ],
+    "id": "SP-0194"
+  },
+  {
+    "name": "TACTICAL COP SERVER (TCS)",
+    "description": "",
+    "versions": [
+      "v 6.0.1.8 P8"
+    ],
+    "id": "SP-0195"
+  },
+  {
+    "name": "Logistics Functional Area System (LOGFAS Client)",
+    "description": "Logistics Functional Area System (LOGFAS Client)",
+    "versions": [
+      "10.0",
+      "6.4.0",
+      "6.5.0",
+      "7.0",
+      "7.0.1",
+      "7.2.0",
+      "7.2.1",
+      "8.0.0",
+      "8.2",
+      "9.0"
+    ],
+    "id": "SP-0196"
+  },
+  {
+    "name": "INTCORE",
+    "description": "",
+    "versions": [
+      "4.2",
+      "5.0"
+    ],
+    "id": "SP-0197"
+  },
+  {
+    "name": "MiP DEM Gateway",
+    "description": "MIP DEM Gateway",
+    "versions": [
+      "3.1",
+      "3.9"
+    ],
+    "id": "SP-0198"
+  },
+  {
+    "name": "Custom CA + YubiHSM",
+    "description": "",
+    "versions": [
+      "SWE FMN CA 20210607"
+    ],
+    "id": "SP-0199"
+  },
+  {
+    "name": "NLD PCN",
+    "description": "NLD PCN Implementation",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0200"
+  },
+  {
+    "name": "Palo Alto Firewall VM",
+    "description": "Virtualized Palo Alto Firewall",
+    "versions": [
+      "100 V10",
+      "100 V10.1",
+      "100 V11",
+      "100 V9.1"
+    ],
+    "id": "SP-0201"
+  },
+  {
+    "name": "NextCloud",
+    "description": "",
+    "versions": [
+      "28.0"
+    ],
+    "id": "SP-0202"
+  },
+  {
+    "name": "MESE",
+    "description": "DEU MESE (Miliary Expandable Software Environment) provides federated C2 for Maritime Operations capabilities according to C2 for Maritime Operations and Data Links Spiral 4 specifications.",
+    "versions": [
+      "June 23"
+    ],
+    "id": "SP-0203"
+  },
+  {
+    "name": "TACLANE-Micro",
+    "description": "Crypto Device",
+    "versions": [
+      "KG-175D"
+    ],
+    "id": "SP-0204"
+  },
+  {
+    "name": "OTK",
+    "description": "Informal messaging",
+    "versions": [
+      "1.0",
+      "1.2"
+    ],
+    "id": "SP-0205"
+  },
+  {
+    "name": "HEKTOR Platform",
+    "description": "Land C2 System",
+    "versions": [
+      "2.1.1"
+    ],
+    "id": "SP-0206"
+  },
+  {
+    "name": "Digital Situational Board",
+    "description": "The Battlespace Objects Visualization",
+    "versions": [
+      "2.0"
+    ],
+    "id": "SP-0207"
+  },
+  {
+    "name": "DOOB HQ (Defence Out Of Box Head Quarters)",
+    "description": "DOOB-HQ is a NATO compatible, Brigade and above level Joint C4I System with high interoperability capabilities to be used at Strategic & Operational Levels on static and deployable systems.",
+    "versions": [
+      "5.0.0",
+      "6.0.0"
+    ],
+    "id": "SP-0208"
+  },
+  {
+    "name": "TrendMicro Scanmail",
+    "description": "CIS Operations security",
+    "versions": [
+      "12"
+    ],
+    "id": "SP-0209"
+  },
+  {
+    "name": "Xwiki",
+    "description": "Web Hosting",
+    "versions": [
+      "11.10.4",
+      "13.10.9"
+    ],
+    "id": "SP-0210"
+  },
+  {
+    "name": "Thales TCE",
+    "description": "Security Asset",
+    "versions": [
+      "621-C"
+    ],
+    "id": "SP-0211"
+  },
+  {
+    "name": "CSDMAN",
+    "description": "CSD Management Server",
+    "versions": [
+      "2.3",
+      "2.6"
+    ],
+    "id": "SP-0212"
+  },
+  {
+    "name": "NUTAC Session Border Controller (SBC)",
+    "description": "NUTAC Session Border Controller (SBC)",
+    "versions": [
+      "1",
+      "2.0"
+    ],
+    "id": "SP-0213"
+  },
+  {
+    "name": "Microsoft Active Directory Directory Domain Services (AD DS)",
+    "description": "Active Directory",
+    "versions": [
+      "2012",
+      "2012 R2",
+      "2016",
+      "2019",
+      "2022"
+    ],
+    "id": "SP-0214"
+  },
+  {
+    "name": "Air Defense Systems Integrator (ADSI)",
+    "description": "Air Defense Systems Integrator (ADSI)",
+    "versions": [
+      "15.0.4"
+    ],
+    "id": "SP-0215"
+  },
+  {
+    "name": "XOmail Server",
+    "description": "Formal Messaging",
+    "versions": [
+      "V22.3.0"
+    ],
+    "id": "SP-0216"
+  },
+  {
+    "name": "SPECTRUM XXI",
+    "description": "SPECTRUM XXI",
+    "versions": [
+      "4.2.5",
+      "4.2.9"
+    ],
+    "id": "SP-0217"
+  },
+  {
+    "name": "Allied Information Flow System (AIFS)",
+    "description": "Formal messaging node (Militairy Messaging)",
+    "versions": [
+      "20.1"
+    ],
+    "id": "SP-0218"
+  },
+  {
+    "name": "CSD ATENEA",
+    "description": "JISR System",
+    "versions": [
+      "1.4.0.3"
+    ],
+    "id": "SP-0219"
+  },
+  {
+    "name": "ITA CSD-B1",
+    "description": "CSD Server",
+    "versions": [
+      "1.0.1",
+      "1.1.0.0"
+    ],
+    "id": "SP-0220"
+  },
+  {
+    "name": "Geoserver Cloud",
+    "description": "",
+    "versions": [
+      "1.4.1",
+      "1.5.0",
+      "1.5.2"
+    ],
+    "id": "SP-0221"
+  },
+  {
+    "name": "Avaya",
+    "description": "Video Communciation product",
+    "versions": [
+      "XT5000"
+    ],
+    "id": "SP-0222"
+  },
+  {
+    "name": "Service Now",
+    "description": "Service Now",
+    "versions": [
+      "New York"
+    ],
+    "id": "SP-0223"
+  },
+  {
+    "name": "Security Onion",
+    "description": "",
+    "versions": [
+      "v2.0"
+    ],
+    "id": "SP-0224"
+  },
+  {
+    "name": "ESYA PKI SERVICE",
+    "description": "",
+    "versions": [
+      "2.3.20"
+    ],
+    "id": "SP-0225"
+  },
+  {
+    "name": "Navielektro WIKI Service",
+    "description": "Navielektro WIKI Service",
+    "versions": [
+      "1.0",
+      "2.0",
+      "3.0",
+      "3.0.2"
+    ],
+    "id": "SP-0226"
+  },
+  {
+    "name": "DEU Interoperability Platform Services DIPS",
+    "description": "DIPS (DEU Interoperability Platform Services), Supports the following SMC Services",
+    "versions": [
+      "5.1"
+    ],
+    "id": "SP-0227"
+  },
+  {
+    "name": "Palo Alto Firewall",
+    "description": "Palo Ato Firewall",
+    "versions": [
+      "200 V10",
+      "200 V9.1.3",
+      "3020"
+    ],
+    "id": "SP-0228"
+  },
+  {
+    "name": "Battle Command and Control Application (BC2A)",
+    "description": "Friendly Force Tracking",
+    "versions": [
+      "2.4",
+      "2.4.19247.3113",
+      "2.5.19247.852",
+      "2.7",
+      "2.8"
+    ],
+    "id": "SP-0229"
+  },
+  {
+    "name": "Talend ESB",
+    "description": "SMC Server",
+    "versions": [
+      "7.2"
+    ],
+    "id": "SP-0230"
+  },
+  {
+    "name": "SWE PCN PCS SP4",
+    "description": "Swedish PCN Implementation",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0231"
+  },
+  {
+    "name": "Checkpoint Firewall",
+    "description": "Security application module",
+    "versions": [
+      "R80.30",
+      "R80.40"
+    ],
+    "id": "SP-0232"
+  },
+  {
+    "name": "NetCloud",
+    "description": "Werb hosting Service",
+    "versions": [
+      "24",
+      "31.0.0"
+    ],
+    "id": "SP-0233"
+  },
+  {
+    "name": "OpenText Exceed Turbo X",
+    "description": "SSH to MCCIS",
+    "versions": [
+      "11.5"
+    ],
+    "id": "SP-0234"
+  },
+  {
+    "name": "NaviChat",
+    "description": "The new NaviChat 2.0 service provides Chat labelling support.",
+    "versions": [
+      "2.0"
+    ],
+    "id": "SP-0235"
+  },
+  {
+    "name": "Essential Landbased Information Application And Services (ELIAS MIP)",
+    "description": "MIP Gateway",
+    "versions": [
+      "3.10",
+      "3.11",
+      "3.9"
+    ],
+    "id": "SP-0236"
+  },
+  {
+    "name": "Cisco Webex Room Kit",
+    "description": "Video Conferencing Server",
+    "versions": [
+      "Basic",
+      "Mini",
+      "Plus",
+      "Plus 10.8.2.5",
+      "Pro"
+    ],
+    "id": "SP-0237"
+  },
+  {
+    "name": "Swift XMPP Client",
+    "description": "Swift XMPP Client",
+    "versions": [
+      "4.0.2"
+    ],
+    "id": "SP-0238"
+  },
+  {
+    "name": "NEC CCIS Server",
+    "description": "Northern European Command, Command and Control Information System",
+    "versions": [
+      "17.3.0",
+      "18.3.0",
+      "18.8.0",
+      "19.2.0",
+      "19.4.0"
+    ],
+    "id": "SP-0239"
+  },
+  {
+    "name": "Teleplan Globe Time Service",
+    "description": "Time Server",
+    "versions": [
+      "5.0"
+    ],
+    "id": "SP-0240"
+  },
+  {
+    "name": "Multicastor",
+    "description": "Multicast Device",
+    "versions": [
+      "3.0"
+    ],
+    "id": "SP-0241"
+  },
+  {
+    "name": "SIOH PKI",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For its PKI component, SIOH relies on open source software, configured to fulfill national need on top of FMN specifications.",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0242"
+  },
+  {
+    "name": "CISCO Call Manager Express (Unified Communication and Delivery Pack)",
+    "description": "CISCO Call Manager Express (Unified Communication and Delivery Pack)",
+    "versions": [
+      "V12.5"
+    ],
+    "id": "SP-0243"
+  },
+  {
+    "name": "TACCIS",
+    "description": "Land C2 System",
+    "versions": [
+      "1.0.3",
+      "1.11",
+      "1.5"
+    ],
+    "id": "SP-0244"
+  },
+  {
+    "name": "inCOP",
+    "description": "Used in NVG as an ovelay provider and consumer",
+    "versions": [
+      "2.0",
+      "9.0",
+      "9.3"
+    ],
+    "id": "SP-0245"
+  },
+  {
+    "name": "Logistics Functional Area System (LOGFAS Server)",
+    "description": "Logistics Functional Area System (LOGFAS Server)",
+    "versions": [
+      "10.0",
+      "6.4.0",
+      "6.5.0",
+      "7.0",
+      "7.0.1",
+      "7.2.1",
+      "8.0.0",
+      "8.2",
+      "9.0"
+    ],
+    "id": "SP-0246"
+  },
+  {
+    "name": "Skype for business",
+    "description": "Skype for business",
+    "versions": [
+      "2015",
+      "2016"
+    ],
+    "id": "SP-0247"
+  },
+  {
+    "name": "AWACS JREAP",
+    "description": "JREAP C Processor",
+    "versions": [
+      "4.2"
+    ],
+    "id": "SP-0248"
+  },
+  {
+    "name": "Pexip Infinity",
+    "description": "Audio and Video Conference",
+    "versions": [
+      "23.1",
+      "26",
+      "27",
+      "30",
+      "31",
+      "34"
+    ],
+    "id": "SP-0249"
+  },
+  {
+    "name": "POLYCOM VSX8000 VIDEOCONFERENCING ENDPOINT",
+    "description": "POLYCOM VSX8000 VIDEOCONFERENCING ENDPOINT",
+    "versions": [
+      "8"
+    ],
+    "id": "SP-0250"
+  },
+  {
+    "name": "Microsoft Windows Server Certification Authority",
+    "description": "Microsoft Certification Authority",
+    "versions": [
+      "2012",
+      "2016",
+      "2019",
+      "2022"
+    ],
+    "id": "SP-0251"
+  },
+  {
+    "name": "I2 IBridge",
+    "description": "Intelligence Software",
+    "versions": [
+      "9.4.0"
+    ],
+    "id": "SP-0252"
+  },
+  {
+    "name": "Networked Interoperability Real-Time Information Services (NIRIS)",
+    "description": "Networked Interoperability Real-Time Information Services",
+    "versions": [
+      "3.11.0",
+      "3.8",
+      "4.0.1",
+      "4.00",
+      "4.1.0",
+      "4.1.1",
+      "4.2.0",
+      "4.2.1",
+      "4.3.0",
+      "4.3.1",
+      "4.4.0"
+    ],
+    "id": "SP-0253"
+  },
+  {
+    "name": "Cisco Router",
+    "description": "Routing Services",
+    "versions": [
+      "1921",
+      "2911",
+      "2921",
+      "29xx",
+      "3900",
+      "3925",
+      "3945",
+      "4221",
+      "4321",
+      "4431",
+      "4432",
+      "9200",
+      "C8300"
+    ],
+    "id": "SP-0254"
+  },
+  {
+    "name": "MIMS ULS Software v2.0",
+    "description": "",
+    "versions": [],
+    "id": "SP-0255"
+  },
+  {
+    "name": "Cisco Router 4000 IOS XE Bengaluru",
+    "description": "Cisco Router",
+    "versions": [
+      "17.4.X"
+    ],
+    "id": "SP-0256"
+  },
+  {
+    "name": "ArcGIS Enterprise",
+    "description": "ArcGIS Geographic Suite",
+    "versions": [
+      "10.7.1",
+      "10.9.1",
+      "11.0.0",
+      "11.1",
+      "11.3",
+      "11.4"
+    ],
+    "id": "SP-0257"
+  },
+  {
+    "name": "Ulak Maya SDWAN",
+    "description": "Software-Defined Networking (SDN) is a network architecture that separates the control plane (decisions about where to send traffic) from the data plane (actual forwarding of traffic)",
+    "versions": [
+      "3.0",
+      "3.1"
+    ],
+    "id": "SP-0258"
+  },
+  {
+    "name": "Cisco Unified Presence (CUP)",
+    "description": "",
+    "versions": [
+      "14.0"
+    ],
+    "id": "SP-0259"
+  },
+  {
+    "name": "Element Server Suite (ESS)",
+    "description": "Element Server Suite is a professional backend for Matrix based communications",
+    "versions": [
+      "23.10.25"
+    ],
+    "id": "SP-0260"
+  },
+  {
+    "name": "Cisco Jabber",
+    "description": "Terminal Unified Communications",
+    "versions": [
+      "12.5",
+      "12.6",
+      "14.0",
+      "14.0.4",
+      "14.1",
+      "14.2",
+      "14.3"
+    ],
+    "id": "SP-0261"
+  },
+  {
+    "name": "NUTAC Call Manager (CM)",
+    "description": "NUTAC Call Manager (CM)",
+    "versions": [
+      "1"
+    ],
+    "id": "SP-0262"
+  },
+  {
+    "name": "NATO Medical Prototype",
+    "description": "Suite of applications used to support Operations and Planning in a Medical context",
+    "versions": [
+      "3.0",
+      "4.0",
+      "5.0"
+    ],
+    "id": "SP-0263"
+  },
+  {
+    "name": "FMN Classificator for Outlook",
+    "description": "ITA Classification Tool for Informal Messaging",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0264"
+  },
+  {
+    "name": "Data-centric Information Services Gateway (DISG)",
+    "description": "Data-centric Information Services Gateway",
+    "versions": [
+      "4.0.0",
+      "4.2.2",
+      "4.4.0"
+    ],
+    "id": "SP-0265"
+  },
+  {
+    "name": "IBM - Tivoli Netcool OMNIbus",
+    "description": "IBM - Tivoli Netcool OMNIbus",
+    "versions": [
+      "8.1"
+    ],
+    "id": "SP-0266"
+  },
+  {
+    "name": "Advent TDL",
+    "description": "ADVENT Combat Management System has been used in the Turkish Navy",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0267"
+  },
+  {
+    "name": "VIDIS-System",
+    "description": "ISR Producer/Consumer",
+    "versions": [
+      "1.3"
+    ],
+    "id": "SP-0268"
+  },
+  {
+    "name": "AIRBUS- NLD - CSD",
+    "description": "AIRBUS- NLD - CSD",
+    "versions": [
+      "10.10",
+      "10.6",
+      "10.9"
+    ],
+    "id": "SP-0269"
+  },
+  {
+    "name": "IOTA SMACQ",
+    "description": "Service to Monitor and Assess Connectivity and Quality",
+    "versions": [
+      "2.7.0",
+      "3.1.0"
+    ],
+    "id": "SP-0270"
+  },
+  {
+    "name": "TOPFAS Client",
+    "description": "Tools for Operations Planning Functional Area Services",
+    "versions": [
+      "6.4",
+      "6.4.1",
+      "6.4.2",
+      "6.4.6",
+      "6.4.7",
+      "7.1.1",
+      "7.2",
+      "7.3.0"
+    ],
+    "id": "SP-0271"
+  },
+  {
+    "name": "Cisco Unified Communications Manager (CUCM)",
+    "description": "Unified Communications",
+    "versions": [
+      "10.5.2.15-008",
+      "11.5",
+      "11.5.1",
+      "11.5.1.12900-21",
+      "11.5.1.13902-2",
+      "11.5.1.16900-16",
+      "11.5.1.18900-97",
+      "12.0.1",
+      "12.5",
+      "12.5.1",
+      "14",
+      "15",
+      "Express"
+    ],
+    "id": "SP-0272"
+  },
+  {
+    "name": "Juniper SRX320",
+    "description": "Routing services",
+    "versions": [
+      "23.4"
+    ],
+    "id": "SP-0273"
+  },
+  {
+    "name": "AC2-N (Air Command and Control - NATO)",
+    "description": "The AC2-N System is used to produce RAP (Recognized Air Picture) and exchange it via JREAP-C connection with other partners. It will encompass C2 functionalities outlined in ATDLP-5.16",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0274"
+  },
+  {
+    "name": "SIOH Comms",
+    "description": "IOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For its networking capabilities, SIOH mainly relies on CISCO software and equipments, that are configured to fulfill both national and FMN specifications",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0275"
+  },
+  {
+    "name": "DOOB Tactical",
+    "description": "DOOB Tactical is Tactical Level Battlefield Management System (BMS) that collects the Recognized Ground Picture. It provides current oprational management and blue force tracking.",
+    "versions": [
+      "1.0.0"
+    ],
+    "id": "SP-0276"
+  },
+  {
+    "name": "Name Server Daemon (NSD)",
+    "description": "Open-source Domain Naming Service Server",
+    "versions": [
+      "4.3.1",
+      "4.3.6",
+      "4.3.9"
+    ],
+    "id": "SP-0277"
+  },
+  {
+    "name": "Grandstream",
+    "description": "",
+    "versions": [
+      "GXP 1615",
+      "GXP1628"
+    ],
+    "id": "SP-0278"
+  },
+  {
+    "name": "CAN Release Server",
+    "description": "CAN Release Server",
+    "versions": [
+      "0.10.0.10200",
+      "1.4.0",
+      "1.5.1",
+      "1.9.0",
+      "2.1.0"
+    ],
+    "id": "SP-0279"
+  },
+  {
+    "name": "Navielektro Track Management",
+    "description": "",
+    "versions": [
+      "1.25"
+    ],
+    "id": "SP-0280"
+  },
+  {
+    "name": "Mozilla Firefox Extended Support Release (ESR)",
+    "description": "Web Browser",
+    "versions": [
+      "115",
+      "78"
+    ],
+    "id": "SP-0281"
+  },
+  {
+    "name": "KeyCloak",
+    "description": "Allows Single Sign-on through Identity and Access Management",
+    "versions": [
+      "15",
+      "16.1",
+      "17",
+      "18.0",
+      "21.1.1",
+      "23.0.7",
+      "24.0.1",
+      "24.0.4",
+      "26",
+      "26.1",
+      "7.0",
+      "8.0",
+      "9.0",
+      "9.0.3",
+      "N/A"
+    ],
+    "id": "SP-0282"
+  },
+  {
+    "name": "TOPFAS Server",
+    "description": "Tools for Operations Planning Functional Area Services",
+    "versions": [
+      "6.4",
+      "6.4.1",
+      "6.4.2",
+      "6.4.6",
+      "6.4.7",
+      "7.1.1",
+      "7.2",
+      "7.3.0"
+    ],
+    "id": "SP-0283"
+  },
+  {
+    "name": "Converse.js",
+    "description": "Chat Client",
+    "versions": [
+      "10.1.7"
+    ],
+    "id": "SP-0284"
+  },
+  {
+    "name": "CrowdSec",
+    "description": "",
+    "versions": [
+      "1.4"
+    ],
+    "id": "SP-0285"
+  },
+  {
+    "name": "pfSense",
+    "description": "pfSense is a firewall/router computer software distribution based on FreeBSD.",
+    "versions": [
+      "2.4",
+      "2.6.0"
+    ],
+    "id": "SP-0286"
+  },
+  {
+    "name": "CBRN Analysis",
+    "description": "CBRN Analysis",
+    "versions": [
+      "19",
+      "21.0/A",
+      "22",
+      "22.0/A",
+      "23.0/A",
+      "24.0/A"
+    ],
+    "id": "SP-0287"
+  },
+  {
+    "name": "Symantec Mail Security for Microsoft Exchange",
+    "description": "Symantec Mail Security for Microsoft Exchange",
+    "versions": [
+      "7.5",
+      "7.9.1"
+    ],
+    "id": "SP-0288"
+  },
+  {
+    "name": "TUBITAK Directory Server (DS)",
+    "description": "TÜBİTAK Directory Server is designed to manage user accounts, groups, devices, printers, files and other network resources. It is compliant with X.500 standard. In addition, the system supports advanced synchronization and bind delegation capabilities, enabling high-level interoperability with different directory servers.",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0289"
+  },
+  {
+    "name": "Microsoft Active Directory Federation Services (ADFS)",
+    "description": "Microsoft Active Directory Federation Services (ADFS)",
+    "versions": [
+      "2.1",
+      "3.0",
+      "4.0",
+      "5.0",
+      "6.0"
+    ],
+    "id": "SP-0290"
+  },
+  {
+    "name": "MailServer",
+    "description": "New MailServer provides DDS labelling support",
+    "versions": [
+      "2.3"
+    ],
+    "id": "SP-0291"
+  },
+  {
+    "name": "SADOC 4",
+    "description": "Data Link and Maritime",
+    "versions": [
+      "3"
+    ],
+    "id": "SP-0292"
+  },
+  {
+    "name": "JDSS Validation Tool (JVT)",
+    "description": "The JDSS-Validation-Tool is a new tool and successor of the old JDSS-Test-Application. It supports testing and validation of a JDSS Gateway without any NATO Test Partner. It is a portable application wich runs from an USB Stick or on a computer (Windows/Linux) without any installation.",
+    "versions": [
+      "2025"
+    ],
+    "id": "SP-0293"
+  },
+  {
+    "name": "CAN MIP 4.4 C2 Attr Mgr",
+    "description": "CAN MIP 4",
+    "versions": [
+      "2.0"
+    ],
+    "id": "SP-0294"
+  },
+  {
+    "name": "Network Deployable Geospatial Support Suite (NDGSS)",
+    "description": "Network Deployable Geospatial Support Suite (NDGSS)",
+    "versions": [
+      "2.2",
+      "3.0"
+    ],
+    "id": "SP-0295"
+  },
+  {
+    "name": "Delta Suite",
+    "description": "Tactical C2 system",
+    "versions": [
+      "v25"
+    ],
+    "id": "SP-0296"
+  },
+  {
+    "name": "Essential Landbased Information Application And Services (ELIAS FFT)",
+    "description": "Friendly Force tracking service",
+    "versions": [
+      "1.6 /2.0",
+      "1.6 /2.1"
+    ],
+    "id": "SP-0297"
+  },
+  {
+    "name": "NATO Shared Early Warning Broadcaster (SEW B)",
+    "description": "NATO Shared Early Warning Broadcaster",
+    "versions": [
+      "3.0.0.0002",
+      "3.1.1",
+      "3.1.2",
+      "3.2.0",
+      "4.0.1"
+    ],
+    "id": "SP-0298"
+  },
+  {
+    "name": "GeoNetwork",
+    "description": "GeoNetwork is a catalog application to manage spatially referenced resources",
+    "versions": [
+      "3.12",
+      "4.2"
+    ],
+    "id": "SP-0299"
+  },
+  {
+    "name": "OPNsense",
+    "description": "OPNsense is an open-source firewall and routing platform",
+    "versions": [
+      "24.1",
+      "24.7"
+    ],
+    "id": "SP-0300"
+  },
+  {
+    "name": "IBM - Tivoli Netcool Impact",
+    "description": "IBM - Tivoli Netcool Impact",
+    "versions": [
+      "7.1"
+    ],
+    "id": "SP-0301"
+  },
+  {
+    "name": "ArcGIS Server",
+    "description": "Geographic Infromation system server",
+    "versions": [
+      "10.3.0",
+      "10.3.1",
+      "10.6.0",
+      "10.6.1",
+      "10.6.2",
+      "10.7",
+      "10.7.1",
+      "10.8",
+      "10.8.1",
+      "10.9.1",
+      "11.0.0",
+      "11.1"
+    ],
+    "id": "SP-0302"
+  },
+  {
+    "name": "XOmail Web Client",
+    "description": "Formal Messaging",
+    "versions": [
+      "V22.3.0"
+    ],
+    "id": "SP-0303"
+  },
+  {
+    "name": "AUT-PKI",
+    "description": "Used products within AUT-PKI 1.0 are:  Nexus CM 8.10 Nexus OSCP 6.2.7",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0304"
+  },
+  {
+    "name": "POLYCOM REALPRESENCE GROUP",
+    "description": "POLYCOM REALPRESENCE GROUP",
+    "versions": [
+      "310",
+      "500",
+      "500 Firmware 6.1.x",
+      "800"
+    ],
+    "id": "SP-0305"
+  },
+  {
+    "name": "POLYCOM RMX Multi Conferencing Unit (MCU)",
+    "description": "POLYCOM RMX Multi Conferencing Unit (MCU)",
+    "versions": [
+      "8.7.4"
+    ],
+    "id": "SP-0306"
+  },
+  {
+    "name": "Cisco CGR",
+    "description": "Cisco Connected Grid Router",
+    "versions": [
+      "2010"
+    ],
+    "id": "SP-0307"
+  },
+  {
+    "name": "DEU SMC",
+    "description": "DEU SMC Spiral 4 - IBM v1.1 SFN are fulllfilled with the products  DIPS 5.2 The DEU Interoperability Platform Service (DIPS) is the SMC Information Exchange Service (SMC IES). It is responsible for the communication with SMC systems of other nations and the multinational exchange of SMC data. DIPS provides standardised SMC interfaces for this purpose. Conceptionally, DIPS realises the exchange of Service Management and Control information within a federated network environment. It is responsible for the multinational communication and the federated exchange of SMC data in accordance with the Service Management and Control interface standard for the federation of CIS SMC data. In this respect, DIPS serves as a translation layer between the national SMC backend system and federated SMC peer units.  IBM Maximo Application Suite incl. Maximo IT 9.x Maximo IT is an integrated service management solution that helps you manage a comprehensive range of IT processes, services, and assets for mu",
+    "versions": [
+      "1.1"
+    ],
+    "id": "SP-0308"
+  },
+  {
+    "name": "MDLP (Multi Data Link Processor)",
+    "description": "he M-DLP (Multi Data Link Processor) system is to provide the feature to exchange real time data that mainly consist of sensors generated information, units position, weapon system status and command orders, via multiple Data Links. It provides a common, interoperable, scalable link integration solution for all platforms (air, surface, land). The M-DLP manages different Data Links protocol: Link 11; Link 16; Link 22; JREAP-C; VMF. The M-DLP includes an embedded simulation capability through a specific DIS/HLA interface. The M-DLP provides Standard Interface for Multiple Platform Link Evaluation (SIMPLE) to guarantee participation to simulated link networks.",
+    "versions": [
+      "MK-IV"
+    ],
+    "id": "SP-0309"
+  },
+  {
+    "name": "Trellix ePO",
+    "description": "Centralized security management platform",
+    "versions": [
+      "5.1.0"
+    ],
+    "id": "SP-0310"
+  },
+  {
+    "name": "Release Server",
+    "description": "Xdomain Release Server",
+    "versions": [
+      "2.0.0",
+      "2.1.0",
+      "2.2.0",
+      "3.0.0"
+    ],
+    "id": "SP-0311"
+  },
+  {
+    "name": "Essential Landbased Information Application And Services (ELIAS )",
+    "description": "Essential Landbased Information Application And Services",
+    "versions": [
+      "4.0"
+    ],
+    "id": "SP-0312"
+  },
+  {
+    "name": "PowerDNS Recursor",
+    "description": "With PowerDNS Recursor, Internet Service Providers can provide a fast and reliable DNS service, enabling a secure internet experience for subscribers and their personal devices, including laptops, tablets and mobile phones, as well as the many IoT devices that are already in use.",
+    "versions": [
+      "5.1"
+    ],
+    "id": "SP-0313"
+  },
+  {
+    "name": "SIRIS",
+    "description": "SIRIS",
+    "versions": [
+      "1.1",
+      "2.0",
+      "3.0",
+      "4.0"
+    ],
+    "id": "SP-0314"
+  },
+  {
+    "name": "Drivelock",
+    "description": "AntiVirus solution",
+    "versions": [
+      "2019"
+    ],
+    "id": "SP-0315"
+  },
+  {
+    "name": "Transverse Client",
+    "description": "Chat Client",
+    "versions": [
+      "1.8.1.1",
+      "1.9"
+    ],
+    "id": "SP-0316"
+  },
+  {
+    "name": "TDSG Evo",
+    "description": "Tavolo Digitale di Situazione Generale Evoluto (TDSG-Evo)",
+    "versions": [
+      "1.1"
+    ],
+    "id": "SP-0317"
+  },
+  {
+    "name": "Poly Studio",
+    "description": "Video Conference  All-In-One Video Bar",
+    "versions": [
+      "X30"
+    ],
+    "id": "SP-0318"
+  },
+  {
+    "name": "DirSync",
+    "description": "ROU Solution for DDS SP4 Service",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0319"
+  },
+  {
+    "name": "Zabbix",
+    "description": "SMC Zabbix",
+    "versions": [
+      "6.2.0"
+    ],
+    "id": "SP-0320"
+  },
+  {
+    "name": "MHD Server",
+    "description": "Military Messaging Service",
+    "versions": [
+      "20.10.019"
+    ],
+    "id": "SP-0321"
+  },
+  {
+    "name": "Intelligence Functional Service (Intel-FS)",
+    "description": "Intelligence Functional Services",
+    "versions": [
+      "1.4.1",
+      "1.5.1",
+      "1.5.2",
+      "1.6",
+      "1.7",
+      "1.7.2"
+    ],
+    "id": "SP-0322"
+  },
+  {
+    "name": "MikroTik RouterOS",
+    "description": "MikroTik RouterOS is the operating system of MikroTik RouterBOARD hardware.",
+    "versions": [
+      "6.49.7"
+    ],
+    "id": "SP-0323"
+  },
+  {
+    "name": "Entrust Authority Enrollment",
+    "description": "PKI enrollment server",
+    "versions": [
+      "7.0 SP1",
+      "8.0"
+    ],
+    "id": "SP-0324"
+  },
+  {
+    "name": "Polycom Clariti Manager",
+    "description": "Manager (endpoint provisioning,scheduling,user creation) for poly clariti videoconferencing solution",
+    "versions": [
+      "10.10.x"
+    ],
+    "id": "SP-0325"
+  },
+  {
+    "name": "PRT ARMY BMS",
+    "description": "The Portuguese Army Battlefield Management System (BMS) is therefore a command and control system used for management of the battlefield for military units at the lowest echelons (Company, Platoon) contributing to the sharing of a common operating scenario and situational awareness.",
+    "versions": [
+      "3.0"
+    ],
+    "id": "SP-0326"
+  },
+  {
+    "name": "FFT-GW",
+    "description": "Friendly Force Tracking",
+    "versions": [
+      "2.7.2.3",
+      "v1.13.1",
+      "v2.12.0.140",
+      "v2.7.1.60015",
+      "v2.7.1.60017"
+    ],
+    "id": "SP-0327"
+  },
+  {
+    "name": "Gajim",
+    "description": "XMPP Client for Text-Based Collaboration",
+    "versions": [
+      "1.2.2",
+      "1.3.1",
+      "1.4.7",
+      "1.9"
+    ],
+    "id": "SP-0328"
+  },
+  {
+    "name": "ISDecision UserLock MFA",
+    "description": "Multi-Factor Authentication Web Application",
+    "versions": [
+      "11"
+    ],
+    "id": "SP-0329"
+  },
+  {
+    "name": "TALOS",
+    "description": "Data Link Server",
+    "versions": [
+      "v4.5r5"
+    ],
+    "id": "SP-0330"
+  },
+  {
+    "name": "Splunk Enterprise Security",
+    "description": "Security Management (SIEM)",
+    "versions": [
+      "6.6.2",
+      "7.0.0",
+      "7.0.1",
+      "7.0.2",
+      "7.1.0",
+      "7.1.1",
+      "7.1.2",
+      "7.2.0",
+      "7.3.0"
+    ],
+    "id": "SP-0331"
+  },
+  {
+    "name": "POLYCOM HDX (video Client)",
+    "description": "POLYCOM HDX (video Client)",
+    "versions": [
+      "7000"
+    ],
+    "id": "SP-0332"
+  },
+  {
+    "name": "Alfresco Community Edition",
+    "description": "Content Management System (ECM)",
+    "versions": [
+      "5.2",
+      "5.2f"
+    ],
+    "id": "SP-0333"
+  },
+  {
+    "name": "ASTRIDE_PCN",
+    "description": "Provide PCN functionnalities to ASTRIDE",
+    "versions": [
+      "1.0",
+      "2.0"
+    ],
+    "id": "SP-0334"
+  },
+  {
+    "name": "Opera Web Browser",
+    "description": "",
+    "versions": [
+      "Latest"
+    ],
+    "id": "SP-0335"
+  },
+  {
+    "name": "Navielektro Picture/Overlay Distribution Service",
+    "description": "Picture/Overlay Distro Service",
+    "versions": [
+      "1.1"
+    ],
+    "id": "SP-0336"
+  },
+  {
+    "name": "C2I Difesa",
+    "description": "C2I Difesa",
+    "versions": [
+      "2.0"
+    ],
+    "id": "SP-0337"
+  },
+  {
+    "name": "NATO METOC Portal",
+    "description": "NATO METOC Portal",
+    "versions": [
+      "1.4.1"
+    ],
+    "id": "SP-0338"
+  },
+  {
+    "name": "GBR PCN Solution",
+    "description": "",
+    "versions": [
+      "SP3"
+    ],
+    "id": "SP-0339"
+  },
+  {
+    "name": "Znuny",
+    "description": "Znuny LTS  is the free and open source version of the help desk and IT service management fork of the ((OTRS)) Community Edition.",
+    "versions": [
+      "6.0.32"
+    ],
+    "id": "SP-0340"
+  },
+  {
+    "name": "ELIAS 2.0 JDSS Gateway",
+    "description": "",
+    "versions": [
+      "1.2",
+      "1.23"
+    ],
+    "id": "SP-0341"
+  },
+  {
+    "name": "POLYCOM REALPRESENCE DESKTOP",
+    "description": "POLYCOM REALPRESENCE DESKTOP",
+    "versions": [
+      "3.10.4",
+      "3.11",
+      "3.11.3",
+      "3.11.5"
+    ],
+    "id": "SP-0342"
+  },
+  {
+    "name": "Cisco IOS",
+    "description": "IOS software for Cisco devices",
+    "versions": [
+      "15.5",
+      "15.5.3",
+      "16.06.x",
+      "16.07.x",
+      "16.6.4",
+      "16.9",
+      "17.12",
+      "17.12.02",
+      "17.15.X",
+      "17.3.3",
+      "17.3.xx",
+      "17.4.x",
+      "17.6.3",
+      "17.9.5a",
+      "17.9.5e",
+      "XE 17.06",
+      "XE 17.10.x",
+      "XE 17.12.x",
+      "XE 17.15.1",
+      "XE 17.3.xx",
+      "XE 17.9.4"
+    ],
+    "id": "SP-0343"
+  },
+  {
+    "name": "Moving Weather",
+    "description": "Moving Weather",
+    "versions": [
+      "1.6-9",
+      "2.1.1",
+      "2.1.1a",
+      "2.7.0",
+      "3.1.0",
+      "8.9.1"
+    ],
+    "id": "SP-0344"
+  },
+  {
+    "name": "Trellix Email Security",
+    "description": "Email Gateway security solution",
+    "versions": [
+      "XXX"
+    ],
+    "id": "SP-0345"
+  },
+  {
+    "name": "FreeSWITCH",
+    "description": "Audio Video Equipment",
+    "versions": [
+      "1.10"
+    ],
+    "id": "SP-0346"
+  },
+  {
+    "name": "Bugzilla",
+    "description": "SMC Bugzilla",
+    "versions": [
+      "5.0.3"
+    ],
+    "id": "SP-0347"
+  },
+  {
+    "name": "GeoServer",
+    "description": "Geoserver allows users to share, process and edit geospatial data",
+    "versions": [
+      "1.5",
+      "2.11",
+      "2.12.1",
+      "2.12.2",
+      "2.15",
+      "2.17",
+      "2.18",
+      "2.20",
+      "2.22",
+      "2.23",
+      "2.26.x"
+    ],
+    "id": "SP-0348"
+  },
+  {
+    "name": "ArcGIS Pro (client)",
+    "description": "Profesional desktop GIS application",
+    "versions": [
+      "10.8.2",
+      "2.4",
+      "2.9",
+      "3.0",
+      "3.1"
+    ],
+    "id": "SP-0349"
+  },
+  {
+    "name": "BMC Service Desk Express",
+    "description": "Service Management",
+    "versions": [
+      "10.2"
+    ],
+    "id": "SP-0350"
+  },
+  {
+    "name": "Prometeo",
+    "description": "PROMETEO is the Information system for Command and Control posts at Brigade level and higher. It’s deployed in the Command Posts of the Divisions and Brigades, will allow the Headquarters and Staffs to obtain the information from the battlefield and exploit it to optimize the direction of the manoeuvre.",
+    "versions": [
+      "1.2",
+      "1.3",
+      "1.4"
+    ],
+    "id": "SP-0351"
+  },
+  {
+    "name": "Forward Web Proxy - Safesquid SC64 Edition Version",
+    "description": "Reverse Web Proxy",
+    "versions": [
+      "NTLM.RC.4.3.8.8"
+    ],
+    "id": "SP-0352"
+  },
+  {
+    "name": "DDS Droid",
+    "description": "LDAP Meta tool for Directory Data Sync",
+    "versions": [
+      "1.2"
+    ],
+    "id": "SP-0353"
+  },
+  {
+    "name": "Elproma NTS",
+    "description": "Network Time device",
+    "versions": [
+      "3000"
+    ],
+    "id": "SP-0354"
+  },
+  {
+    "name": "XMPP-Proxy",
+    "description": "XMPP Proxy",
+    "versions": [
+      "1.3"
+    ],
+    "id": "SP-0355"
+  },
+  {
+    "name": "FAST Server",
+    "description": "Functional Area Service for Dynamic Time‐Sensitive Targeting",
+    "versions": [
+      "4.1.3",
+      "4.2.0",
+      "4.2.1",
+      "4.3.0",
+      "4.3.1"
+    ],
+    "id": "SP-0356"
+  },
+  {
+    "name": "CSD SIERRA",
+    "description": "Coalition Shared Database",
+    "versions": [
+      "1.4"
+    ],
+    "id": "SP-0357"
+  },
+  {
+    "name": "NEC",
+    "description": "Audio Terminal",
+    "versions": [
+      "DT700",
+      "SV8300"
+    ],
+    "id": "SP-0358"
+  },
+  {
+    "name": "NORCCIS",
+    "description": "Norwegian Command and Control Information System (NORCCIS)",
+    "versions": [
+      "7.11",
+      "8.0.0"
+    ],
+    "id": "SP-0359"
+  },
+  {
+    "name": "SIOH AVS",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For its AVS (Audio Video Services) component, SIOH mainly rely on CISCO equipments integrated in a french specific environment.",
+    "versions": [
+      "2.0"
+    ],
+    "id": "SP-0360"
+  },
+  {
+    "name": "Cisco Desk Pro",
+    "description": "The CISCO Desk Pro is an all-in-one premium collaboration and productivity device featuring a 27-inch 4K display, 71-degree HD camera. It provides desktop sized VTC capabilites to end-users in a federated environment for collaboration, mission breif/de-brefing and much more.",
+    "versions": [
+      "11.5.4.6"
+    ],
+    "id": "SP-0361"
+  },
+  {
+    "name": "Battle Command and Control Application (BC2A) HQ",
+    "description": "Land C2 Infromation Exchange",
+    "versions": [
+      "2.1",
+      "2.8"
+    ],
+    "id": "SP-0362"
+  },
+  {
+    "name": "Thales Norway Tactical Voice Services",
+    "description": "Thales Tactical Voice Services (TVS) is a software-based product designed specifically to provide VoIP SIP based phone and conference services in tactical networks. TVS provides high quality VoIP services with a fully distributed and robust server infrastructure, and client applications with easy access to all services.",
+    "versions": [
+      "8.x"
+    ],
+    "id": "SP-0363"
+  },
+  {
+    "name": "Force Tracking Advanced Management System (FTAMS)",
+    "description": "Client/Server based Software Suite consisting of a Core API, a user interface client and a Windows Service (Server) that manages the channels and data and facilitates communication between the other two components",
+    "versions": [
+      "1.1.12",
+      "11.1.5"
+    ],
+    "id": "SP-0364"
+  },
+  {
+    "name": "ITA FMN PROGESI",
+    "description": "Call Manager Voice & Video",
+    "versions": [
+      "1.01"
+    ],
+    "id": "SP-0365"
+  },
+  {
+    "name": "LEBA",
+    "description": "Maritime Solution",
+    "versions": [
+      "R15.009"
+    ],
+    "id": "SP-0366"
+  },
+  {
+    "name": "OpenSSL",
+    "description": "Secure communications",
+    "versions": [
+      "3.0.X",
+      "3.2.0"
+    ],
+    "id": "SP-0367"
+  },
+  {
+    "name": "Snort",
+    "description": "Snort is the foremost Open Source Intrusion Prevention System (IPS) in the world. Snort IPS uses a series of rules that help define malicious network activity and uses those rules to find packets that match against them and generates alerts for users.",
+    "versions": [
+      "3.0"
+    ],
+    "id": "SP-0368"
+  },
+  {
+    "name": "HF RADIO",
+    "description": "Generic Implementation of HF RADIO",
+    "versions": [
+      "HF-Radio-Generic"
+    ],
+    "id": "SP-0369"
+  },
+  {
+    "name": "Kamailio",
+    "description": "SIP Server",
+    "versions": [
+      "4.4.7",
+      "5.5.4"
+    ],
+    "id": "SP-0370"
+  },
+  {
+    "name": "XOmail Client",
+    "description": "Formal Messaging",
+    "versions": [
+      "v22.3.0"
+    ],
+    "id": "SP-0371"
+  },
+  {
+    "name": "Joint Targeting System Server (JTS)",
+    "description": "Joint Targeting System",
+    "versions": [
+      "4.2",
+      "4.2.1",
+      "4.3.0",
+      "4.3.1",
+      "5.0.2"
+    ],
+    "id": "SP-0372"
+  },
+  {
+    "name": "Microsoft  Active Directory Lightweight Directory Services",
+    "description": "Microsoft  Active Directory Lightweight Directory Services",
+    "versions": [
+      "2012 R2",
+      "2016",
+      "2016 R2",
+      "2019",
+      "2022"
+    ],
+    "id": "SP-0373"
+  },
+  {
+    "name": "ICMT Server",
+    "description": "ISR Collection Management Tool",
+    "versions": [
+      "3.1.3",
+      "3.3.2.008",
+      "3.3.2.3",
+      "3.3.2.5",
+      "4.0",
+      "4.2",
+      "4.3.1",
+      "4.5.6"
+    ],
+    "id": "SP-0374"
+  },
+  {
+    "name": "Quantum GIS",
+    "description": "Geo Server",
+    "versions": [
+      "3.36.3"
+    ],
+    "id": "SP-0375"
+  },
+  {
+    "name": "APV OTS VR PozS",
+    "description": "CZE System dedicated to support command and control on the workstations within the LAN on the command posts of the task force. SC2IS contains modules and applications enabling effective data preparation, processing, sharing and distribution within the command post or among them.",
+    "versions": [
+      "3.8"
+    ],
+    "id": "SP-0376"
+  },
+  {
+    "name": "Maritime Command and Control Information System (MCCIS)",
+    "description": "Maritime Command and Control Information System",
+    "versions": [
+      "6.4.0",
+      "6.4.2",
+      "6.5.0",
+      "6.5.1",
+      "6.5.2",
+      "6.5.3"
+    ],
+    "id": "SP-0377"
+  },
+  {
+    "name": "IBM - maximo IT",
+    "description": "Maximo IT is an integrated service management solution that helps you manage a comprehensive range of IT processes, services, and assets for multiple customers. Maximo IT is an add-on to the Manage application in the Maximo Application Suite.",
+    "versions": [
+      "9.x"
+    ],
+    "id": "SP-0378"
+  },
+  {
+    "name": "Unbound",
+    "description": "DNS resolver",
+    "versions": [
+      "1.16.2",
+      "1.6.6",
+      "1.7"
+    ],
+    "id": "SP-0379"
+  },
+  {
+    "name": "McAfee EndPoint Security",
+    "description": "",
+    "versions": [
+      "10.6.1",
+      "10.7"
+    ],
+    "id": "SP-0380"
+  },
+  {
+    "name": "ICS",
+    "description": "Maritime C2 Server",
+    "versions": [
+      "7.1"
+    ],
+    "id": "SP-0381"
+  },
+  {
+    "name": "Cisco Unified Border Element (CUBE)",
+    "description": "Secure Audio & Video Connectivity",
+    "versions": [
+      "11.5.2",
+      "12.5",
+      "14",
+      "14.1",
+      "15.5",
+      "15.5(3)M",
+      "16.06.02",
+      "16.06.05",
+      "16.09.04",
+      "16.09.05",
+      "16.09.06",
+      "17.03.xx",
+      "17.12.X",
+      "17.4.X",
+      "17.9.X",
+      "XE - 16.7.1",
+      "XE 16.04.01",
+      "XE 16.6",
+      "XE 17.6.3"
+    ],
+    "id": "SP-0382"
+  },
+  {
+    "name": "Cisco 8841 VoIP Phone",
+    "description": "",
+    "versions": [
+      "IOS 14.0(1)",
+      "IOS 14.2(1)"
+    ],
+    "id": "SP-0383"
+  },
+  {
+    "name": "FIS HE",
+    "description": "FIS HE is the Information system for Command and Control posts Land at Bataillon level and higher, in some cases even down to Company. It’s deployed in the Command Posts and will allow the Headquarters and Staffs to obtain the information from the battlefield and exploit it to optimize the direction of the manoeuvre.",
+    "versions": [
+      "2.5.1"
+    ],
+    "id": "SP-0384"
+  },
+  {
+    "name": "NEC CCIS Client",
+    "description": "Northern European Command, Command and Control Information System",
+    "versions": [
+      "17.3.0",
+      "18.3.0",
+      "18.8.0",
+      "19.2.0",
+      "19.4.0"
+    ],
+    "id": "SP-0385"
+  },
+  {
+    "name": "Cisco VoIP Phone",
+    "description": "Cisco VoIP Phone",
+    "versions": [
+      "3905",
+      "6921",
+      "6941",
+      "7800",
+      "7811",
+      "7821",
+      "7841",
+      "7962",
+      "7965",
+      "7975",
+      "8811",
+      "8845",
+      "8851",
+      "8861",
+      "8865",
+      "9951",
+      "9971"
+    ],
+    "id": "SP-0386"
+  },
+  {
+    "name": "CentOS",
+    "description": "Networking Services",
+    "versions": [
+      "7"
+    ],
+    "id": "SP-0387"
+  },
+  {
+    "name": "Cisco Meeting Server 1000 (CMS)",
+    "description": "Cisco Meeting Server 1000 (CMS)",
+    "versions": [
+      "3.4"
+    ],
+    "id": "SP-0388"
+  },
+  {
+    "name": "Global Command & Control System  Joint (GCCS-J)",
+    "description": "Global Command and Control System - Joint (GCCS-J)",
+    "versions": [
+      "6.0.1.11",
+      "6.0.1.22",
+      "6.0.1.29",
+      "6.0.1.7",
+      "6.0.1.8",
+      "6.0.1.9",
+      "6.1.0.2"
+    ],
+    "id": "SP-0389"
+  },
+  {
+    "name": "Signature for Outlook",
+    "description": "Classification marking (FLOT)",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0390"
+  },
+  {
+    "name": "Galleon NTS6002",
+    "description": "Galleon is a Network Time Server",
+    "versions": [
+      "4.14.103"
+    ],
+    "id": "SP-0391"
+  },
+  {
+    "name": "DaviCal",
+    "description": "Calendar & Scheduling Service",
+    "versions": [
+      "1.1.9"
+    ],
+    "id": "SP-0392"
+  },
+  {
+    "name": "Cisco Router 4300 IOS XE Amsterdam",
+    "description": "Cisco Router",
+    "versions": [
+      "17.3.X"
+    ],
+    "id": "SP-0393"
+  },
+  {
+    "name": "Fortinet FortiGate",
+    "description": "Border Protection",
+    "versions": [
+      "201F",
+      "401E"
+    ],
+    "id": "SP-0394"
+  },
+  {
+    "name": "CSD IPL",
+    "description": "CSD IPL",
+    "versions": [
+      "2.1.5",
+      "2.2"
+    ],
+    "id": "SP-0395"
+  },
+  {
+    "name": "Cisco Telepresence",
+    "description": "Tool for audio and video collaboration",
+    "versions": [
+      "SX20"
+    ],
+    "id": "SP-0396"
+  },
+  {
+    "name": "Meinberg Lantime OS",
+    "description": "",
+    "versions": [
+      "7.06"
+    ],
+    "id": "SP-0397"
+  },
+  {
+    "name": "Mod_auth_mellon",
+    "description": "An authentication module providing authentication and authorization services via SAML",
+    "versions": [
+      "0.14"
+    ],
+    "id": "SP-0398"
+  },
+  {
+    "name": "CISCO Firepower",
+    "description": "Routing services and Firewall",
+    "versions": [
+      "1010",
+      "1120",
+      "FPR1010",
+      "FRP1120"
+    ],
+    "id": "SP-0399"
+  },
+  {
+    "name": "Harris",
+    "description": "Tactical Communications and HF Radio",
+    "versions": [
+      "117C",
+      "117F",
+      "160",
+      "AN/PRC150",
+      "AN/PRC150C",
+      "AN/PRC160",
+      "RF5080H"
+    ],
+    "id": "SP-0400"
+  },
+  {
+    "name": "SICF Server",
+    "description": "SICF Server",
+    "versions": [
+      "2.8"
+    ],
+    "id": "SP-0401"
+  },
+  {
+    "name": "MuleSoft ESB Enterprise",
+    "description": "MuleSoft ESB Enterprise",
+    "versions": [
+      "3.9.0"
+    ],
+    "id": "SP-0402"
+  },
+  {
+    "name": "Apache 2 HTTPD",
+    "description": "Web Hosting Server",
+    "versions": [
+      "2.4"
+    ],
+    "id": "SP-0403"
+  },
+  {
+    "name": "POLYCOM REALPRESENCE CLARITY",
+    "description": "POLYCOM REALPRESENCE CLARITY",
+    "versions": [
+      "10.0",
+      "10.10"
+    ],
+    "id": "SP-0404"
+  },
+  {
+    "name": "MARIS",
+    "description": "Web based application, designed to be fully interoperable at Joint level by implementing protocols: OTH-GOLD, NVG, FFI and in the near future JREAP",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0405"
+  },
+  {
+    "name": "Sierra Tools",
+    "description": "Sierra Tools",
+    "versions": [
+      "1.4"
+    ],
+    "id": "SP-0406"
+  },
+  {
+    "name": "Microsoft Active Directory Certificate Services (AD CS)",
+    "description": "",
+    "versions": [
+      "2012",
+      "2016",
+      "2019",
+      "2022",
+      "2025"
+    ],
+    "id": "SP-0407"
+  },
+  {
+    "name": "Innovaphone",
+    "description": "Audio Device",
+    "versions": [
+      "IP 101"
+    ],
+    "id": "SP-0408"
+  },
+  {
+    "name": "Essential Landbased Information Application And Services (ELIAS NVG)",
+    "description": "Essential Landbased Information Application And Services (ELIAS NVG)",
+    "versions": [
+      "1.6/4.0",
+      "3.0",
+      "4.2"
+    ],
+    "id": "SP-0409"
+  },
+  {
+    "name": "Innovaphone 111",
+    "description": "Call Manager",
+    "versions": [
+      "vIP110 12r2 sr10"
+    ],
+    "id": "SP-0410"
+  },
+  {
+    "name": "IM Sync Server",
+    "description": "XMPP Chat Server",
+    "versions": [
+      "2.0"
+    ],
+    "id": "SP-0411"
+  },
+  {
+    "name": "JOINT TACTICAL COP WORKSTATION (JTCW)",
+    "description": "",
+    "versions": [
+      "1.3.4.2",
+      "1.3.2.7"
+    ],
+    "id": "SP-0412"
+  },
+  {
+    "name": "ITA FMN GAL",
+    "description": "GAL MetaTool",
+    "versions": [
+      "1",
+      "2"
+    ],
+    "id": "SP-0413"
+  },
+  {
+    "name": "Tactical Chat Server (TCS)",
+    "description": "Chat Server",
+    "versions": [
+      "1.2.3"
+    ],
+    "id": "SP-0414"
+  },
+  {
+    "name": "CSD Plus Server",
+    "description": "CSD PLUS Server  including Webclient ISAAC.web PLUS in Version 5 (or newer) will participate at FMN AV&V Spiral 4 CSD testing at CWIX June 24.  Coalition Shared Data (CSD) with AEDP-17 IT-Services for: Data Storage and Dissemination / ISR Library Interface (STANAG 4559, AEDP-17; FMN Spiral 4) Storage and exchange of JISR results with other CSD services. Metadata based search and filter functions.  Attachments",
+    "versions": [
+      "4.0_14"
+    ],
+    "id": "SP-0415"
+  },
+  {
+    "name": "Classify for Outlook",
+    "description": "Classification Marking for email client",
+    "versions": [
+      "12.0",
+      "12.1",
+      "2010",
+      "2013",
+      "2016",
+      "2019"
+    ],
+    "id": "SP-0416"
+  },
+  {
+    "name": "Dataman",
+    "description": "Geospatial System Dataman FDG-S",
+    "versions": [
+      "10.8.1",
+      "2.1.1",
+      "2.7.0",
+      "3.1.0",
+      "8.9.1",
+      "FDG-S"
+    ],
+    "id": "SP-0417"
+  },
+  {
+    "name": "HUMINT Management And Reporting Tool (HMART OM)",
+    "description": "HUMINT Management and Reporting Tool Online Module (HMART OM)",
+    "versions": [
+      "1.2",
+      "1.3.2",
+      "3.0.0",
+      "3.0.1",
+      "3.0.2",
+      "3.0.3"
+    ],
+    "id": "SP-0418"
+  },
+  {
+    "name": "Land Command and Control Information (LC2IS Client)",
+    "description": "Land Command and Control Information Services",
+    "versions": [
+      "6.1.3",
+      "6.1.4",
+      "6.2.0",
+      "6.2.1",
+      "7.0.0",
+      "8.0"
+    ],
+    "id": "SP-0419"
+  },
+  {
+    "name": "NATO Shared Early Warning Client (SEW Client)",
+    "description": "NATO Shared Early Warning Client",
+    "versions": [
+      "3.0.0",
+      "3.1.1",
+      "3.1.2",
+      "3.2.0",
+      "4.0.1"
+    ],
+    "id": "SP-0420"
+  },
+  {
+    "name": "Hazard Prediction and Assessment Capability (HPAC)",
+    "description": "HPAC is actually a suite of models that allows for various modes of release of radiological, chemical and biological agents, generates interpolated meteorological data fields based on inputted meteorology, and transports the material using a tested transport and diffusion model",
+    "versions": [
+      "4.0.4",
+      "4.04.1",
+      "6.9.0"
+    ],
+    "id": "SP-0421"
+  },
+  {
+    "name": "DEU CSD",
+    "description": "JISR Information Exchange System",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0422"
+  },
+  {
+    "name": "Junos OS",
+    "description": "OS for Juniper Router",
+    "versions": [
+      "23.4"
+    ],
+    "id": "SP-0423"
+  },
+  {
+    "name": "LSC",
+    "description": "Directory Server and MetaTool",
+    "versions": [
+      "2.1.4",
+      "2.1.6"
+    ],
+    "id": "SP-0424"
+  },
+  {
+    "name": "Liferay Portal Community Edition",
+    "description": "Web Portal Service",
+    "versions": [
+      "7.4.3"
+    ],
+    "id": "SP-0425"
+  },
+  {
+    "name": "HMART SD",
+    "description": "HUMINT Management and Reporting Tool Source De-Confliction (HMART SD)",
+    "versions": [
+      "2.8.2",
+      "3.0.0",
+      "3.0.1",
+      "3.0.2",
+      "3.0.3"
+    ],
+    "id": "SP-0426"
+  },
+  {
+    "name": "BGX CSD Hybrid",
+    "description": "Joint ISR Service",
+    "versions": [
+      "1.4.ED4"
+    ],
+    "id": "SP-0427"
+  },
+  {
+    "name": "HCL Notes",
+    "description": "Email client",
+    "versions": [
+      "12.0.2"
+    ],
+    "id": "SP-0428"
+  },
+  {
+    "name": "IEM-MCI",
+    "description": "Land C2 System - MIP - NVG",
+    "versions": [
+      "v2.7.1.60001"
+    ],
+    "id": "SP-0429"
+  },
+  {
+    "name": "JIMS Service Stack (JSS)",
+    "description": "AEDP-19 Server",
+    "versions": [
+      "1.18"
+    ],
+    "id": "SP-0430"
+  },
+  {
+    "name": "Sitaware HQ (NCS)",
+    "description": "Systematic SITAWARE for NCS",
+    "versions": [
+      "6.19"
+    ],
+    "id": "SP-0431"
+  },
+  {
+    "name": "SIOH Chat",
+    "description": "SIOH is a project of C2IS to be used by the French Land forces from level 1 (Corps) to level 3 (Brigade). The system is using Microsoft Windows and Linux environments hosting the services for the Army.  The FRA SIOH is based on COTS and internal developped solutions along with FAS to fulfill branches needs.  For the directory synchronization, SIOH uses multiple open source components and custom development",
+    "versions": [
+      "2.0",
+      "2.1"
+    ],
+    "id": "SP-0432"
+  },
+  {
+    "name": "Security Classifier for Thunderbird",
+    "description": "Security Classifier for Thunderbird",
+    "versions": [
+      "2018"
+    ],
+    "id": "SP-0433"
+  },
+  {
+    "name": "Carmenta server",
+    "description": "Map Server",
+    "versions": [
+      "4.8"
+    ],
+    "id": "SP-0434"
+  },
+  {
+    "name": "SIA CDM",
+    "description": "SIA coeur de Metier, C2 application",
+    "versions": [
+      "7.1"
+    ],
+    "id": "SP-0435"
+  },
+  {
+    "name": "ITA CSD",
+    "description": "CSD server",
+    "versions": [
+      "1.2.0.0"
+    ],
+    "id": "SP-0436"
+  },
+  {
+    "name": "IPTables",
+    "description": "Packet Filtering",
+    "versions": [
+      "1.4.21"
+    ],
+    "id": "SP-0437"
+  },
+  {
+    "name": "Airbus Fortion Server",
+    "description": "JISR Server",
+    "versions": [
+      "2.6"
+    ],
+    "id": "SP-0438"
+  },
+  {
+    "name": "PrimeKey EJBCA",
+    "description": "Open Source Certificate Authority. EJBCA is one of the longest running CA software projects, providing time-proven robustness and reliability. EJBCA is platform independent, and can easily be scaled out to match the needs of your PKI requirements, whether you’re setting up a national eID, securing your industrial IOT platform or managing your own internal PKI.",
+    "versions": [
+      "6.10.1.2",
+      "6.15",
+      "7.3.x",
+      "7.8"
+    ],
+    "id": "SP-0439"
+  },
+  {
+    "name": "ICI SRC",
+    "description": "JISR Collection Manager Consumer",
+    "versions": [
+      "1.1.0"
+    ],
+    "id": "SP-0440"
+  },
+  {
+    "name": "PRT Army Sigop",
+    "description": "Geo Server",
+    "versions": [
+      "1.28.2"
+    ],
+    "id": "SP-0441"
+  },
+  {
+    "name": "Tactical Data Link Simulator (TDLSIM)",
+    "description": "The Tactical Data Link Simulator (TDLSIM) is a test, training and analysis tool for Data Link Systems.",
+    "versions": [
+      "3.0.12"
+    ],
+    "id": "SP-0442"
+  },
+  {
+    "name": "Navielektro LDAP Migrator",
+    "description": "Navielektro LDAP Migrator",
+    "versions": [
+      "1.7",
+      "1.8",
+      "2.1.1"
+    ],
+    "id": "SP-0443"
+  },
+  {
+    "name": "ArcGIS Pro",
+    "description": "Professional desktop GIS applications",
+    "versions": [
+      "3.1"
+    ],
+    "id": "SP-0444"
+  },
+  {
+    "name": "JREAP-C MT",
+    "description": "JREAP-C MT node is to support the exchanging of air SA information based on stanag 5516/5518. The system supports GBAD commands, status information and reports.",
+    "versions": [
+      "2.0"
+    ],
+    "id": "SP-0445"
+  },
+  {
+    "name": "Fortion Workflow ISR-Bman",
+    "description": "Fortion Workflow ISR-Bman",
+    "versions": [
+      "4.4",
+      "4.4.2"
+    ],
+    "id": "SP-0446"
+  },
+  {
+    "name": "Entrust Authority Security Manager",
+    "description": "PKI Security Service",
+    "versions": [
+      "10.0",
+      "8.1 SP1",
+      "8.3"
+    ],
+    "id": "SP-0447"
+  },
+  {
+    "name": "Cisco Video Communication Server (VCS)",
+    "description": "Video Conferencing Server",
+    "versions": [
+      "6.0.4.4"
+    ],
+    "id": "SP-0448"
+  },
+  {
+    "name": "OpenSesame",
+    "description": "OpenSesame - JISR",
+    "versions": [
+      "3.1.18.3"
+    ],
+    "id": "SP-0449"
+  },
+  {
+    "name": "PKIBw - DEU",
+    "description": "Digital Certificate service (DEU PKIBw) at national baseline provides Certificate issuing and management capabilities according to Digital Certificate Spiral 4 specifications.",
+    "versions": [
+      "SP4"
+    ],
+    "id": "SP-0450"
+  },
+  {
+    "name": "GeoSever Cloud",
+    "description": "GeoServer",
+    "versions": [
+      "1.4.2"
+    ],
+    "id": "SP-0451"
+  },
+  {
+    "name": "ITA BFT",
+    "description": "FFT Server",
+    "versions": [
+      "2.0",
+      "3.0"
+    ],
+    "id": "SP-0452"
+  },
+  {
+    "name": "Symmetron GPS",
+    "description": "The GPS Monitor has been designed to allow coordinate monitoring in Machine-To-Machine applications.",
+    "versions": [
+      "1"
+    ],
+    "id": "SP-0453"
+  },
+  {
+    "name": "US Multi TDL",
+    "description": "Multi TDL supports Tactical Data Links (TDLs) employing Link-16, Link-22, and Joint Range Extension Protocol (JREAP). Interactive environment is employed to run simulated scenarios or manually injected events. The Department of Defense (DoD) utilizes Multi TDL to test conformance with TDLs and interoperability with multinational coalitions.",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0454"
+  },
+  {
+    "name": "Battle Command and Control Application (BC2A) Suite",
+    "description": "BC2A suite is a Command & Control software solution used from dismounted soldier level up to operational level; it provides warfighting functionilities for military organisations based on a common services framework. BC2A suite is a reliable and robust solution which ensures 24/7 operations planning in a collaborative and multiechelon manner and also supports execution phases of operations in different functional area aspects. BC2A suite is composed of two main packages: •    BC2A HQ – which addresses tactical and operational headquarters and command posts; •    BC2A Platform & BC2A Leader – which addresses tactical military organisations (company and below) and also dismounted soldiers.",
+    "versions": [
+      "2024"
+    ],
+    "id": "SP-0455"
+  },
+  {
+    "name": "Smetaq",
+    "description": "A blend of a few words1. S for secure, meta (obvious), and “taq” for tagging but with a “q” for quality. The tool is owned by the Dutch MoD, and it’s regarded a customized solution. The military specifics are in the way that the tool embeds labels in the mime of the mail header or encapsulates labels a an *.XML attachment that holds the labels of the compound message (mail body and specific attachments",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0456"
+  },
+  {
+    "name": "IOSB ISAAC.web Plus client",
+    "description": "IOSB ISAAC.web Plus client",
+    "versions": [
+      "5.0",
+      "6.0"
+    ],
+    "id": "SP-0457"
+  },
+  {
+    "name": "VydioPortal",
+    "description": "Video Conference MCU",
+    "versions": [
+      "13.3.0"
+    ],
+    "id": "SP-0458"
+  },
+  {
+    "name": "Octopus",
+    "description": "OCTOPUS is an application that providing the core integration functionalities of a Command Control Information System.",
+    "versions": [
+      "6.0.0"
+    ],
+    "id": "SP-0459"
+  },
+  {
+    "name": "QGIS",
+    "description": "A Free and Open Source Geographic Information System",
+    "versions": [
+      "2.18.28",
+      "3.16",
+      "3.22",
+      "3.26"
+    ],
+    "id": "SP-0460"
+  },
+  {
+    "name": "Italian PCN Solution",
+    "description": "Italian PCN Solution",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0461"
+  },
+  {
+    "name": "CISCO Business Edition 6000",
+    "description": "premium voice, video, messaging, instant messaging and presence, conferencing, video conferencing, contact center services and mobility capabilities.",
+    "versions": [
+      "M 11.0"
+    ],
+    "id": "SP-0462"
+  },
+  {
+    "name": "Land Command and Control Information Services (LC2IS Server)",
+    "description": "Land Command and Control Information Services",
+    "versions": [
+      "6.1.3",
+      "6.1.4",
+      "6.2.0",
+      "6.2.1",
+      "7.0.0",
+      "7.1.0",
+      "8.0"
+    ],
+    "id": "SP-0463"
+  },
+  {
+    "name": "Cisco Catalyst",
+    "description": "Routing Services (Virtual router)",
+    "versions": [
+      "8000V",
+      "IE3300-8P2S-A",
+      "IR1821-K9"
+    ],
+    "id": "SP-0464"
+  },
+  {
+    "name": "Athenea",
+    "description": "Collection Management tool and CSD IPL Client",
+    "versions": [
+      "1.4",
+      "1.6.0"
+    ],
+    "id": "SP-0465"
+  },
+  {
+    "name": "SABERS",
+    "description": "Medical Services System to Automate the Benchmark Rate Structure",
+    "versions": [
+      "1.2"
+    ],
+    "id": "SP-0466"
+  },
+  {
+    "name": "Microsoft Internet Information Services (IIS)",
+    "description": "Web Server",
+    "versions": [
+      "10",
+      "6.2",
+      "8.5"
+    ],
+    "id": "SP-0467"
+  },
+  {
+    "name": "Interim Geospatial Intelligence Tool (iGEOSIT)",
+    "description": "Geo Server and C2 Display",
+    "versions": [
+      "3.2.3",
+      "3.2.4"
+    ],
+    "id": "SP-0468"
+  },
+  {
+    "name": "DEU-PCN-MobKommSysBw",
+    "description": "MobKommSysBw (Mobile Communication System) in PCN-OT Mode at national baseline provides a Protected Core Segment (PCS) within a Protected Core Network (PCN) according to Communications Spiral 3 specifications.",
+    "versions": [
+      "3.0",
+      "SP3"
+    ],
+    "id": "SP-0469"
+  },
+  {
+    "name": "MHD Client",
+    "description": "Militairy Messaging Service Client",
+    "versions": [
+      "1.0",
+      "21.05.11"
+    ],
+    "id": "SP-0470"
+  },
+  {
+    "name": "Microsoft Web Application Proxy (WAP)",
+    "description": "Windows Web Application Service",
+    "versions": [
+      "2016",
+      "2019",
+      "2022"
+    ],
+    "id": "SP-0471"
+  },
+  {
+    "name": "Cisco Meeting Management (CMM)",
+    "description": "",
+    "versions": [
+      "3.1"
+    ],
+    "id": "SP-0472"
+  },
+  {
+    "name": "NEXIUM SMC",
+    "description": "ITSM (IT Service Management) and ITAM (IT Asset Management) solution, based on standards ITIL and NATOFMN Spiral 4",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0473"
+  },
+  {
+    "name": "Smartvest JDSS Gateway",
+    "description": "",
+    "versions": [
+      "0.1"
+    ],
+    "id": "SP-0474"
+  },
+  {
+    "name": "OpenMCU",
+    "description": "Openmcu  is  a  simple  Mutli Conference Unit using the H.323 protocol",
+    "versions": [
+      "4.1.6"
+    ],
+    "id": "SP-0475"
+  },
+  {
+    "name": "Cisco Switch 9200 IOS XE Amsterdam",
+    "description": "Cisco Switch 9200 IOS XE Amsterdam",
+    "versions": [
+      "17.3.X"
+    ],
+    "id": "SP-0476"
+  },
+  {
+    "name": "Trellix DLP",
+    "description": "Data Loss Prevention",
+    "versions": [
+      "10.xx.xx",
+      "11.xx.xx"
+    ],
+    "id": "SP-0477"
+  },
+  {
+    "name": "Infoblox",
+    "description": "DNS Solution",
+    "versions": [
+      "1.0",
+      "NIOS 8.6"
+    ],
+    "id": "SP-0478"
+  },
+  {
+    "name": "CMDBuild",
+    "description": "Service Management and Control",
+    "versions": [
+      "3.2"
+    ],
+    "id": "SP-0479"
+  },
+  {
+    "name": "FENIKS C2IS",
+    "description": "MIP Gateway",
+    "versions": [
+      "1.3",
+      "1.4",
+      "1.5"
+    ],
+    "id": "SP-0480"
+  },
+  {
+    "name": "Juniper SRX345",
+    "description": "Routing Services",
+    "versions": [
+      "23.4"
+    ],
+    "id": "SP-0481"
+  },
+  {
+    "name": "Chat Server Prosody",
+    "description": "rosody is a modern XMPP communication server",
+    "versions": [
+      "0.11",
+      "0.11.10",
+      "0.11.13",
+      "0.12.3",
+      "2.0"
+    ],
+    "id": "SP-0482"
+  },
+  {
+    "name": "Navielektro CA",
+    "description": "Navielektro CA",
+    "versions": [
+      "1.5",
+      "2.3",
+      "2.4",
+      "2.6"
+    ],
+    "id": "SP-0483"
+  },
+  {
+    "name": "SIMACET BMS",
+    "description": "SIMACET BMS",
+    "versions": [
+      "4.4.1.1"
+    ],
+    "id": "SP-0484"
+  },
+  {
+    "name": "DEU JDSS PUMA BMS",
+    "description": "System DEU JDSS PUMA BMS v2025 with JDSS (STANAG 4677) Gateway enables interoperability through a standardised exchange of information between Command, Control, Communications and Computer (C4) systems according to FMN Spiral 4 specifications.",
+    "versions": [
+      "v2025"
+    ],
+    "id": "SP-0485"
+  },
+  {
+    "name": "M4Com VIDIS",
+    "description": "M4Com VIDIS Video Distribution Service",
+    "versions": [
+      "1.3"
+    ],
+    "id": "SP-0486"
+  },
+  {
+    "name": "Norwegian Dissemination Storage Archival and Retrieval (DSAR)",
+    "description": "Norwegain Data Storage and Retrieval (DSAR)",
+    "versions": [
+      "1.23",
+      "1.3",
+      "24-2",
+      "PI 24-2"
+    ],
+    "id": "SP-0487"
+  },
+  {
+    "name": "Meinberg Lantime",
+    "description": "Time Server",
+    "versions": [
+      "4.0",
+      "4.19",
+      "4.2.8",
+      "7.02",
+      "M1000",
+      "M200",
+      "M300",
+      "M300 GNS",
+      "M300 GPS",
+      "M320",
+      "M600",
+      "R100/RMS(ELX)"
+    ],
+    "id": "SP-0488"
+  },
+  {
+    "name": "Splunk Enterprise",
+    "description": "Search, analysis and visualization for actionable insights",
+    "versions": [
+      "9.1.1",
+      "9.1.2",
+      "9.1.3"
+    ],
+    "id": "SP-0489"
+  },
+  {
+    "name": "PowerDNS",
+    "description": "PowerDNS, founded in the late 1990s, is a premier supplier of open source DNS software, services and support. Deployed throughout the world with some of the most demanding users of DNS",
+    "versions": [
+      "4.0.5",
+      "4.1.11",
+      "4.1.3",
+      "4.1.x",
+      "4.5",
+      "4.8",
+      "4.9"
+    ],
+    "id": "SP-0490"
+  },
+  {
+    "name": "ADVENT MARTI",
+    "description": "TDL Server",
+    "versions": [
+      "2.1"
+    ],
+    "id": "SP-0491"
+  },
+  {
+    "name": "Stamus Network Detection and Response (NDR)",
+    "description": "Stamus NDR is a broad-spectrum and open network detection and response (NDR) system",
+    "versions": [
+      "36"
+    ],
+    "id": "SP-0492"
+  },
+  {
+    "name": "Meinberg NTP Service",
+    "description": "",
+    "versions": [
+      "4.2.8"
+    ],
+    "id": "SP-0493"
+  },
+  {
+    "name": "Microsoft Identity Manager (MIM)",
+    "description": "Directory data Syncronization",
+    "versions": [
+      "2010 R2",
+      "2016",
+      "2016 SP2",
+      "4.4.0",
+      "4.4.13",
+      "4.5",
+      "4.6.3",
+      "4.6.34",
+      "4.6.5",
+      "4.6.673"
+    ],
+    "id": "SP-0494"
+  },
+  {
+    "name": "Outlook Labelling Add-In",
+    "description": "The \"Outlook Labeling Add-In\" you mentioned is designed to facilitate compliance with NATO standards—specifically NATO STANAGs 4774 and 4778—for email classification and metadata labeling.  Here's a clear explanation of its purpose and functionality:  Purpose The Koch IT Outlook Plugin is designed to help users apply and handle security classification labels on emails according to NATO standards (STANAG 4774 and 4778). This ensures secure and standardized email communications within NATO missions and among member nations or partner nations.  NATO Standards STANAG 4774 outlines confidentiality metadata labeling, detailing how emails and attachments should be labeled to denote their confidentiality level and other pertinent metadata such as the governing security policy, classification level (e.g., UNCLASSIFIED, RESTRICTED), and dissemination constraints (e.g., \"Releasable to FIN, SWE\"). STANAG 4778 complements STANAG 4774, defining the mechanisms for verifying and enforcing these cl",
+    "versions": [
+      "1.3"
+    ],
+    "id": "SP-0495"
+  },
+  {
+    "name": "Mozilla FireFox",
+    "description": "Web Browser",
+    "versions": [
+      "78.12",
+      "91",
+      "98",
+      "Latest"
+    ],
+    "id": "SP-0496"
+  },
+  {
+    "name": "SCi-Discover",
+    "description": "SCi-Discover software is a secure store for placing your information, and gives you the ability to search, find, and share multiple types of data, and view it in a simplified way.",
+    "versions": [
+      "v20.3.0"
+    ],
+    "id": "SP-0497"
+  },
+  {
+    "name": "POLYCOM REALPRESENCE ACCESS DIRECTOR (RPAD)",
+    "description": "POLYCOM RE)ALPRESENCE ACCESS DIRECTOR (RPAD)",
+    "versions": [
+      "4.2.5"
+    ],
+    "id": "SP-0498"
+  },
+  {
+    "name": "Geode 4D Standalone",
+    "description": "Geospatial Production Service",
+    "versions": [
+      "1.0",
+      "V-SYS-3.1.2",
+      "V-SYS-3.1.4"
+    ],
+    "id": "SP-0499"
+  },
+  {
+    "name": "UnitySync",
+    "description": "Directory data Syncronization",
+    "versions": [
+      "2.8",
+      "2.9",
+      "3.0",
+      "4.1",
+      "4.5",
+      "4.6",
+      "4.7"
+    ],
+    "id": "SP-0500"
+  },
+  {
+    "name": "SICS",
+    "description": "Scorpion Combat Information System is a digital battle management system",
+    "versions": [
+      "1.2"
+    ],
+    "id": "SP-0501"
+  },
+  {
+    "name": "Cisco 7975 VoIP Phone",
+    "description": "",
+    "versions": [
+      "IOS"
+    ],
+    "id": "SP-0502"
+  },
+  {
+    "name": "Joint ISR Management System (JIMS)",
+    "description": "AEDP-19 Client",
+    "versions": [
+      "1.18"
+    ],
+    "id": "SP-0503"
+  },
+  {
+    "name": "McAfee Data Loss Prevention",
+    "description": "Protection against loss of data",
+    "versions": [
+      "11.6.300"
+    ],
+    "id": "SP-0504"
+  },
+  {
+    "name": "Microsoft Windows (Desktop OS)",
+    "description": "Microsoft Windows (Desktop OS)",
+    "versions": [
+      "10"
+    ],
+    "id": "SP-0505"
+  },
+  {
+    "name": "Cisco Adaptive Security Appliance (ASA)",
+    "description": "Security Appliance",
+    "versions": [
+      "5506",
+      "5508",
+      "5520",
+      "5525"
+    ],
+    "id": "SP-0506"
+  },
+  {
+    "name": "NaviDirectory",
+    "description": "The NaviDirectory is a new service for providing the Directory Data Synchronization service interface (LDAP). It's provides DDS labelling support.",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0507"
+  },
+  {
+    "name": "Poly Clariti Core and Poly Clariti Edge",
+    "description": "deploy and manage video conferencing systems, so customers can meet and have more engaging collaboration, whether joining from a conference room or a home office.",
+    "versions": [
+      "10.1.0",
+      "10.1.0.3"
+    ],
+    "id": "SP-0508"
+  },
+  {
+    "name": "Palo Alto Networks PAN-OS",
+    "description": "Palo Alto Networks PAN-OS",
+    "versions": [
+      "10.1",
+      "11",
+      "11.1"
+    ],
+    "id": "SP-0509"
+  },
+  {
+    "name": "Cisco DX 80",
+    "description": "",
+    "versions": [
+      "10.2(5)",
+      "CE9.7.1"
+    ],
+    "id": "SP-0510"
+  },
+  {
+    "name": "Internet Explorer",
+    "description": "Browser",
+    "versions": [
+      "11"
+    ],
+    "id": "SP-0511"
+  },
+  {
+    "name": "CAN PCN",
+    "description": "CAN PCN SP4 is a solution that will be used by the Canadian Armed forces to comply with the requirement as specified in FMN Spiral 4 for the protected core segment in a federated mission network environment. This solution encompasses products from different areas of networking and security.",
+    "versions": [
+      "2.0",
+      "SP4"
+    ],
+    "id": "SP-0512"
+  },
+  {
+    "name": "TMS NBC Evaluation and Warning System (NEWS)",
+    "description": "TMS NBC Evaluation and Warning System (NEWS)",
+    "versions": [
+      "3.6.0",
+      "5.0"
+    ],
+    "id": "SP-0513"
+  },
+  {
+    "name": "Clam AntiVirus (ClamAV)",
+    "description": "AntiVirus toolkit",
+    "versions": [
+      "0.103",
+      "0.104.0"
+    ],
+    "id": "SP-0514"
+  },
+  {
+    "name": "LMT BIMS",
+    "description": "LMT BIMS (Battlefield Information Management System) is a state-of-the-art Command and Control (C2) solution designed to ensure efficient data management, unit coordination, and situational awareness in military operations. This system offers a wide range of features tailored to both national and international defense needs, while providing exceptional interoperability with NATO and partner technologies. Key Features and Advantages of BIMS:",
+    "versions": [
+      "4.7"
+    ],
+    "id": "SP-0515"
+  },
+  {
+    "name": "UHF TACSAT RADIO",
+    "description": "Generic Implementation of  UHF TACSAT RADIO",
+    "versions": [
+      "UHF-TACSAT-Generic"
+    ],
+    "id": "SP-0516"
+  },
+  {
+    "name": "Foreman",
+    "description": "CIS Security",
+    "versions": [
+      "1.24"
+    ],
+    "id": "SP-0517"
+  },
+  {
+    "name": "Chromium Developer Build",
+    "description": "Chromium Developer Build",
+    "versions": [
+      "87"
+    ],
+    "id": "SP-0518"
+  },
+  {
+    "name": "ArcGIS Portal",
+    "description": "ArcGIS Portal",
+    "versions": [
+      "10.7.1",
+      "10.9.1",
+      "11.0.0",
+      "11.1"
+    ],
+    "id": "SP-0519"
+  },
+  {
+    "name": "Cisco Expressway",
+    "description": "Unified Communications",
+    "versions": [
+      "14.0.4",
+      "14.3.x",
+      "15.0.X",
+      "15.2",
+      "8.11.4",
+      "X12.5.9",
+      "X14.2.5",
+      "X14.2.6"
+    ],
+    "id": "SP-0520"
+  },
+  {
+    "name": "POLYCOM REALPRESENCE DISTRIBUTED MEDIA APPLICATION (DMA)",
+    "description": "POLYCOM REALPRESENCE DISTRIBUTED MEDIA APPLICATION (DMA)",
+    "versions": [
+      "10.0.0.2",
+      "10.0.0.4",
+      "10.0.0.7",
+      "10.0.0.8",
+      "10.0.0.9",
+      "10.1.0.3",
+      "6.4.1",
+      "9.0.1"
+    ],
+    "id": "SP-0521"
+  },
+  {
+    "name": "Postfix",
+    "description": "Postfix free open-source mail transfer agent that routes and delivers electronic mail",
+    "versions": [
+      "3.2.2",
+      "3.5",
+      "3.5.8",
+      "3.5.9",
+      "3.6.0",
+      "3.6.3",
+      "3.7.0",
+      "3.7.4",
+      "3.8.5"
+    ],
+    "id": "SP-0522"
+  },
+  {
+    "name": "Reverse Web Proxy - HA-Proxy version",
+    "description": "Reverse Proxy",
+    "versions": [
+      "1.5.18"
+    ],
+    "id": "SP-0523"
+  },
+  {
+    "name": "Ignite Realtime Spark IM Client",
+    "description": "Spark is an Open Source, cross-platform IM client optimized for businesses and organizations",
+    "versions": [
+      "2.9.4",
+      "3.0.2"
+    ],
+    "id": "SP-0524"
+  },
+  {
+    "name": "Powershell",
+    "description": "",
+    "versions": [
+      "3.0",
+      "4.0",
+      "5.0"
+    ],
+    "id": "SP-0525"
+  },
+  {
+    "name": "TOPAZ",
+    "description": "MIP and FFT System",
+    "versions": [
+      "8"
+    ],
+    "id": "SP-0526"
+  },
+  {
+    "name": "Analyst Notebook",
+    "description": "Analyst Notebook Intel client",
+    "versions": [
+      "9.0.0",
+      "9.0.6",
+      "9.2.0",
+      "9.4.0"
+    ],
+    "id": "SP-0527"
+  },
+  {
+    "name": "ITA Labelling Plugin for MS Exchange 2019",
+    "description": "ITA Classification Tool for Informal Messaging",
+    "versions": [],
+    "id": "SP-0528"
+  },
+  {
+    "name": "Icinga",
+    "description": "Icinga is an open-source computer system and network monitoring application.",
+    "versions": [
+      "2.8"
+    ],
+    "id": "SP-0529"
+  },
+  {
+    "name": "Kurumnet DSS Server",
+    "description": "Kurumnet Directory System Server (DSS) is a directory server that aims to keep corporate user and certificate information at different levels in a reliable and consistent hierarchical structure presenting uninterruptedly, up-to-date and secure.",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0530"
+  },
+  {
+    "name": "Vydiogateway",
+    "description": "Video SBC",
+    "versions": [
+      "3.5.0"
+    ],
+    "id": "SP-0531"
+  },
+  {
+    "name": "BMC Remedy IT Service Management Suite",
+    "description": "Service Management",
+    "versions": [
+      "18.08",
+      "19.08",
+      "20.02.02",
+      "20.02.04"
+    ],
+    "id": "SP-0532"
+  },
+  {
+    "name": "GT Solution",
+    "description": "NOR GEOMETOC SERVICES - \"GT system\"",
+    "versions": [
+      "2.5"
+    ],
+    "id": "SP-0533"
+  },
+  {
+    "name": "ROU NMCD",
+    "description": "This product is a suite that provides the funtionallity as the Network Management & Cyber Defense solution for Romania",
+    "versions": [
+      "1.0"
+    ],
+    "id": "SP-0534"
+  },
+  {
+    "name": "AlienVault Unified Security Management (USM)",
+    "description": "Centralized security threat detection and response platform for network and devices",
+    "versions": [
+      "5.8.1"
+    ],
+    "id": "SP-0535"
+  },
+  {
+    "name": "FreeIPA",
+    "description": "FreeIPA is an Identity Management System",
+    "versions": [
+      "4.6"
+    ],
+    "id": "SP-0536"
+  },
+  {
+    "name": "SITAWARE Insight",
+    "description": "AEDP-19 Application",
+    "versions": [
+      "1.2"
+    ],
+    "id": "SP-0537"
+  },
+  {
+    "name": "Proxmox",
+    "description": "Software for virtualized processing",
+    "versions": [
+      "8.x"
+    ],
+    "id": "SP-0538"
   }
 ]

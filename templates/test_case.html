@@ -41,12 +41,7 @@
                             <option value="latest" selected>Latest Version Only</option>
                         </select>
                     </div>
-                    <div class="filter-item">
-                        <select id="pageSizeSelector" class="form-select form-select-sm">
-                            <option value="25">25 items per page</option>
-                            <option value="50">50 items per page</option>
-                        </select>
-                    </div>
+                    {# Removed pageSizeSelector - now part of pagination controls #}
                 </div>
 
                 <div class="search-container">
@@ -82,22 +77,26 @@
                 </div>
             </div>
 
-            <div class="pagination-container">
-                <div class="pagination-info">
-                    Showing <span id="currentRangeStart">0</span> to <span id="currentRangeEnd">0</span> of <span id="totalItems">0</span> test cases
+            {# --- Pagination Controls (Copied from other pages) --- #}
+            <div class="d-flex justify-content-between align-items-center mt-3" id="paginationControls">
+                <div>
+                    <label for="itemsPerPageSelect" class="form-label form-label-sm me-2">Items per page:</label>
+                    <select id="itemsPerPageSelect" class="form-select form-select-sm d-inline-block" style="width: auto;">
+                        <option value="25" selected>25</option>
+                        <option value="50">50</option>
+                    </select>
                 </div>
-                <nav aria-label="Test cases pagination">
-                    <ul class="pagination pagination-sm" id="paginationContainer">
-                        <li class="page-item disabled" id="prevPageButton">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <!-- Page numbers will be inserted here -->
-                        <li class="page-item disabled" id="nextPageButton">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="d-flex align-items-center">
+                     <span id="pageInfo" class="me-3 text-muted">Page 1 of 1</span>
+                     <button id="prevPageButton" class="btn btn-outline-secondary btn-sm me-1" disabled>
+                         <i class="fas fa-chevron-left"></i> Previous
+                     </button>
+                     <button id="nextPageButton" class="btn btn-outline-secondary btn-sm" disabled>
+                         Next <i class="fas fa-chevron-right"></i>
+                     </button>
+                </div>
             </div>
+            {# --- End Pagination Controls --- #}
         </div>
     </div>
 

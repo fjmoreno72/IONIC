@@ -6924,3 +6924,1167 @@ ionic2.core.exceptions.ApiRequestError: API request failed with status code: 503
 2025-03-29 13:57:06 - 127.0.0.1 - - [29/Mar/2025 13:57:06] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
 2025-03-29 13:57:06 - 127.0.0.1 - - [29/Mar/2025 13:57:06] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
 2025-03-29 13:57:06 - 127.0.0.1 - - [29/Mar/2025 13:57:06] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:03:08 - Logging system configured with level INFO
+2025-03-29 14:03:08 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:03:08 - Configured Flask app logging with level INFO
+2025-03-29 14:03:08 - Configured Flask app logging with level INFO
+2025-03-29 14:03:08 - Logging system configured with level INFO
+2025-03-29 14:03:08 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:03:08 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:03:08 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:03:08 - Running in DEBUG mode
+2025-03-29 14:03:08 - Listening on 0.0.0.0:5005
+2025-03-29 14:03:09 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 14:03:09 - [33mPress CTRL+C to quit[0m
+2025-03-29 14:03:09 -  * Restarting with stat
+2025-03-29 14:03:09 - Logging system configured with level INFO
+2025-03-29 14:03:09 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:03:09 - Configured Flask app logging with level INFO
+2025-03-29 14:03:09 - Configured Flask app logging with level INFO
+2025-03-29 14:03:09 - Logging system configured with level INFO
+2025-03-29 14:03:09 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:03:09 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:03:09 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:03:09 - Running in DEBUG mode
+2025-03-29 14:03:09 - Listening on 0.0.0.0:5005
+2025-03-29 14:03:09 -  * Debugger is active!
+2025-03-29 14:03:09 -  * Debugger PIN: 288-414-191
+2025-03-29 14:03:12 - User logged out
+2025-03-29 14:03:12 - 127.0.0.1 - - [29/Mar/2025 14:03:12] "GET /logout HTTP/1.1" 200 -
+2025-03-29 14:03:12 - 127.0.0.1 - - [29/Mar/2025 14:03:12] "GET / HTTP/1.1" 200 -
+2025-03-29 14:03:12 - 127.0.0.1 - - [29/Mar/2025 14:03:12] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:03:12 - 127.0.0.1 - - [29/Mar/2025 14:03:12] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:03:13 - SSL verification is disabled. This is insecure.
+2025-03-29 14:03:14 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 14:03:14 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 14:03:14 - 127.0.0.1 - - [29/Mar/2025 14:03:14] "POST /login HTTP/1.1" 200 -
+2025-03-29 14:03:14 - Accessing functional tree view
+2025-03-29 14:03:14 - 127.0.0.1 - - [29/Mar/2025 14:03:14] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 14:03:15 - 127.0.0.1 - - [29/Mar/2025 14:03:15] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:03:15 - 127.0.0.1 - - [29/Mar/2025 14:03:15] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:03:15 - 127.0.0.1 - - [29/Mar/2025 14:03:15] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 14:03:18 - Accessing ASC Services page
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:03:18 - Attempting to read services data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/services.json
+2025-03-29 14:03:18 - Attempting to read GPs data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/gps.json
+2025-03-29 14:03:18 - Successfully loaded 27 services.
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "GET /api/asc_services HTTP/1.1" 200 -
+2025-03-29 14:03:18 - Successfully loaded 12 GPs.
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "GET /api/asc_gps HTTP/1.1" 200 -
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 14:03:18 - 127.0.0.1 - - [29/Mar/2025 14:03:18] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 14:03:20 - Accessing ASC GPs page
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/js/gps.js HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1" 200 -
+2025-03-29 14:03:20 - 127.0.0.1 - - [29/Mar/2025 14:03:20] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-03-29 14:20:34 - Logging system configured with level INFO
+2025-03-29 14:20:34 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:20:34 - Configured Flask app logging with level INFO
+2025-03-29 14:20:34 - Configured Flask app logging with level INFO
+2025-03-29 14:20:34 - Logging system configured with level INFO
+2025-03-29 14:20:34 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:20:34 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:20:34 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:20:34 - Running in DEBUG mode
+2025-03-29 14:20:34 - Listening on 0.0.0.0:5005
+2025-03-29 14:20:34 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 14:20:34 - [33mPress CTRL+C to quit[0m
+2025-03-29 14:20:34 -  * Restarting with stat
+2025-03-29 14:20:34 - Logging system configured with level INFO
+2025-03-29 14:20:34 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:20:34 - Configured Flask app logging with level INFO
+2025-03-29 14:20:34 - Configured Flask app logging with level INFO
+2025-03-29 14:20:34 - Logging system configured with level INFO
+2025-03-29 14:20:34 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:20:34 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:20:34 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:20:34 - Running in DEBUG mode
+2025-03-29 14:20:34 - Listening on 0.0.0.0:5005
+2025-03-29 14:20:34 -  * Debugger is active!
+2025-03-29 14:20:34 -  * Debugger PIN: 288-414-191
+2025-03-29 14:20:37 - User logged out
+2025-03-29 14:20:37 - 127.0.0.1 - - [29/Mar/2025 14:20:37] "GET /logout HTTP/1.1" 200 -
+2025-03-29 14:20:37 - 127.0.0.1 - - [29/Mar/2025 14:20:37] "GET / HTTP/1.1" 200 -
+2025-03-29 14:20:37 - 127.0.0.1 - - [29/Mar/2025 14:20:37] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:37 - 127.0.0.1 - - [29/Mar/2025 14:20:37] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:20:38 - SSL verification is disabled. This is insecure.
+2025-03-29 14:20:40 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 14:20:40 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 14:20:40 - 127.0.0.1 - - [29/Mar/2025 14:20:40] "POST /login HTTP/1.1" 200 -
+2025-03-29 14:20:40 - Accessing functional tree view
+2025-03-29 14:20:40 - 127.0.0.1 - - [29/Mar/2025 14:20:40] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 14:20:40 - 127.0.0.1 - - [29/Mar/2025 14:20:40] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:40 - 127.0.0.1 - - [29/Mar/2025 14:20:40] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:20:40 - 127.0.0.1 - - [29/Mar/2025 14:20:40] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - Accessing Affiliates page
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:20:46 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-29 14:20:46 - Successfully loaded 38 affiliates.
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:46 - 127.0.0.1 - - [29/Mar/2025 14:20:46] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:54 - Accessing ASC Services page
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 14:20:54 - Attempting to read services data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/services.json
+2025-03-29 14:20:54 - Successfully loaded 27 services.
+2025-03-29 14:20:54 - Attempting to read GPs data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/gps.json
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "GET /api/asc_services HTTP/1.1" 200 -
+2025-03-29 14:20:54 - Successfully loaded 12 GPs.
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "GET /api/asc_gps HTTP/1.1" 200 -
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 14:20:54 - 127.0.0.1 - - [29/Mar/2025 14:20:54] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - Accessing ASC GPs page
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:21:00 - 127.0.0.1 - - [29/Mar/2025 14:21:00] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:25:44 - Logging system configured with level INFO
+2025-03-29 14:25:44 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:25:44 - Configured Flask app logging with level INFO
+2025-03-29 14:25:44 - Configured Flask app logging with level INFO
+2025-03-29 14:25:44 - Logging system configured with level INFO
+2025-03-29 14:25:44 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:25:44 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:25:44 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:25:44 - Running in DEBUG mode
+2025-03-29 14:25:44 - Listening on 0.0.0.0:5005
+2025-03-29 14:25:44 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 14:25:44 - [33mPress CTRL+C to quit[0m
+2025-03-29 14:25:44 -  * Restarting with stat
+2025-03-29 14:25:44 - Logging system configured with level INFO
+2025-03-29 14:25:44 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:25:44 - Configured Flask app logging with level INFO
+2025-03-29 14:25:44 - Configured Flask app logging with level INFO
+2025-03-29 14:25:44 - Logging system configured with level INFO
+2025-03-29 14:25:45 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:25:45 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:25:45 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:25:45 - Running in DEBUG mode
+2025-03-29 14:25:45 - Listening on 0.0.0.0:5005
+2025-03-29 14:25:45 -  * Debugger is active!
+2025-03-29 14:25:45 -  * Debugger PIN: 288-414-191
+2025-03-29 14:25:53 - User logged out
+2025-03-29 14:25:53 - 127.0.0.1 - - [29/Mar/2025 14:25:53] "GET /logout HTTP/1.1" 200 -
+2025-03-29 14:25:53 - 127.0.0.1 - - [29/Mar/2025 14:25:53] "GET / HTTP/1.1" 200 -
+2025-03-29 14:25:53 - 127.0.0.1 - - [29/Mar/2025 14:25:53] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:25:53 - 127.0.0.1 - - [29/Mar/2025 14:25:53] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:25:54 - SSL verification is disabled. This is insecure.
+2025-03-29 14:25:55 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 14:25:55 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 14:25:55 - 127.0.0.1 - - [29/Mar/2025 14:25:55] "POST /login HTTP/1.1" 200 -
+2025-03-29 14:25:55 - Accessing functional tree view
+2025-03-29 14:25:55 - 127.0.0.1 - - [29/Mar/2025 14:25:55] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 14:25:55 - 127.0.0.1 - - [29/Mar/2025 14:25:55] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:25:55 - 127.0.0.1 - - [29/Mar/2025 14:25:55] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:25:55 - 127.0.0.1 - - [29/Mar/2025 14:25:55] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 14:25:57 - Accessing functional tree view
+2025-03-29 14:25:57 - 127.0.0.1 - - [29/Mar/2025 14:25:57] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 14:25:57 - 127.0.0.1 - - [29/Mar/2025 14:25:57] "GET /static/iocore2_logo.png HTTP/1.1" 200 -
+2025-03-29 14:25:57 - 127.0.0.1 - - [29/Mar/2025 14:25:57] "GET /static/js/tree_func.js HTTP/1.1" 200 -
+2025-03-29 14:25:57 - 127.0.0.1 - - [29/Mar/2025 14:25:57] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:25:57 - 127.0.0.1 - - [29/Mar/2025 14:25:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-29 14:26:00 - Accessing Affiliates page
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-29 14:26:00 - Successfully loaded 38 affiliates.
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:00 - 127.0.0.1 - - [29/Mar/2025 14:26:00] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:02 - Accessing ASC Services page
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 14:26:02 - Attempting to read services data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/services.json
+2025-03-29 14:26:02 - Attempting to read GPs data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/gps.json
+2025-03-29 14:26:02 - Successfully loaded 27 services.
+2025-03-29 14:26:02 - Successfully loaded 12 GPs.
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "GET /api/asc_services HTTP/1.1" 200 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "GET /api/asc_gps HTTP/1.1" 200 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:02 - 127.0.0.1 - - [29/Mar/2025 14:26:02] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - Accessing ASC GPs page
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:26:07 - 127.0.0.1 - - [29/Mar/2025 14:26:07] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:35:22 - Logging system configured with level INFO
+2025-03-29 14:35:22 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:35:22 - Configured Flask app logging with level INFO
+2025-03-29 14:35:22 - Configured Flask app logging with level INFO
+2025-03-29 14:35:22 - Logging system configured with level INFO
+2025-03-29 14:35:22 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:35:22 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:35:22 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:35:22 - Running in DEBUG mode
+2025-03-29 14:35:22 - Listening on 0.0.0.0:5005
+2025-03-29 14:35:22 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 14:35:22 - [33mPress CTRL+C to quit[0m
+2025-03-29 14:35:22 -  * Restarting with stat
+2025-03-29 14:35:22 - Logging system configured with level INFO
+2025-03-29 14:35:22 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:35:22 - Configured Flask app logging with level INFO
+2025-03-29 14:35:22 - Configured Flask app logging with level INFO
+2025-03-29 14:35:22 - Logging system configured with level INFO
+2025-03-29 14:35:22 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:35:22 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:35:22 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:35:22 - Running in DEBUG mode
+2025-03-29 14:35:22 - Listening on 0.0.0.0:5005
+2025-03-29 14:35:22 -  * Debugger is active!
+2025-03-29 14:35:22 -  * Debugger PIN: 288-414-191
+2025-03-29 14:35:25 - User logged out
+2025-03-29 14:35:25 - 127.0.0.1 - - [29/Mar/2025 14:35:25] "GET /logout HTTP/1.1" 200 -
+2025-03-29 14:35:25 - 127.0.0.1 - - [29/Mar/2025 14:35:25] "GET / HTTP/1.1" 200 -
+2025-03-29 14:35:25 - 127.0.0.1 - - [29/Mar/2025 14:35:25] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:35:25 - 127.0.0.1 - - [29/Mar/2025 14:35:25] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:35:26 - SSL verification is disabled. This is insecure.
+2025-03-29 14:35:27 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 14:35:27 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 14:35:27 - 127.0.0.1 - - [29/Mar/2025 14:35:27] "POST /login HTTP/1.1" 200 -
+2025-03-29 14:35:28 - Accessing functional tree view
+2025-03-29 14:35:28 - 127.0.0.1 - - [29/Mar/2025 14:35:28] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 14:35:28 - 127.0.0.1 - - [29/Mar/2025 14:35:28] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:35:28 - 127.0.0.1 - - [29/Mar/2025 14:35:28] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:35:28 - 127.0.0.1 - - [29/Mar/2025 14:35:28] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 14:35:48 - Accessing test cases
+2025-03-29 14:35:48 - 127.0.0.1 - - [29/Mar/2025 14:35:48] "GET /test_cases HTTP/1.1" 200 -
+2025-03-29 14:35:48 - 127.0.0.1 - - [29/Mar/2025 14:35:48] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:35:48 - 127.0.0.1 - - [29/Mar/2025 14:35:48] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:35:48 - 127.0.0.1 - - [29/Mar/2025 14:35:48] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-03-29 14:35:48 - 127.0.0.1 - - [29/Mar/2025 14:35:48] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:35:48 - 127.0.0.1 - - [29/Mar/2025 14:35:48] "[36mGET /static/pattern.json HTTP/1.1[0m" 304 -
+2025-03-29 14:35:48 - 127.0.0.1 - - [29/Mar/2025 14:35:48] "[36mGET /static/test_cases.json HTTP/1.1[0m" 304 -
+2025-03-29 14:35:57 - Attempting to load actors.json into memory...
+2025-03-29 14:35:57 - Successfully loaded 906 actors into map in 0.00 seconds.
+2025-03-29 14:35:57 - 127.0.0.1 - - [29/Mar/2025 14:35:57] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-29 14:35:57 - 127.0.0.1 - - [29/Mar/2025 14:35:57] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-29 14:35:57 - 127.0.0.1 - - [29/Mar/2025 14:35:57] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-29 14:35:57 - 127.0.0.1 - - [29/Mar/2025 14:35:57] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-29 14:35:57 - 127.0.0.1 - - [29/Mar/2025 14:35:57] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-29 14:35:57 - 127.0.0.1 - - [29/Mar/2025 14:35:57] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-29 14:35:57 - 127.0.0.1 - - [29/Mar/2025 14:35:57] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-29 14:35:57 - 127.0.0.1 - - [29/Mar/2025 14:35:57] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-29 14:36:19 - Accessing Affiliates page
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-29 14:36:19 - Successfully loaded 38 affiliates.
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:36:19 - 127.0.0.1 - - [29/Mar/2025 14:36:19] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - Accessing ASC GPs page
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:38:25 - 127.0.0.1 - - [29/Mar/2025 14:38:25] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:21 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/ionic2/web/routes/views.py', reloading
+2025-03-29 14:39:21 -  * Restarting with stat
+2025-03-29 14:39:21 - Logging system configured with level INFO
+2025-03-29 14:39:21 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:39:21 - Configured Flask app logging with level INFO
+2025-03-29 14:39:21 - Configured Flask app logging with level INFO
+2025-03-29 14:39:21 - Logging system configured with level INFO
+2025-03-29 14:39:21 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:39:21 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:39:21 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:39:21 - Running in DEBUG mode
+2025-03-29 14:39:21 - Listening on 0.0.0.0:5005
+2025-03-29 14:39:21 -  * Debugger is active!
+2025-03-29 14:39:21 -  * Debugger PIN: 288-414-191
+2025-03-29 14:39:43 - Accessing ASC Services page
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:39:43 - Attempting to read services data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/services.json
+2025-03-29 14:39:43 - Attempting to read GPs data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/gps.json
+2025-03-29 14:39:43 - Successfully loaded 27 services.
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "GET /api/asc_services HTTP/1.1" 200 -
+2025-03-29 14:39:43 - Successfully loaded 12 GPs.
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "GET /api/asc_gps HTTP/1.1" 200 -
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:43 - 127.0.0.1 - - [29/Mar/2025 14:39:43] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - Accessing Affiliates page
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-29 14:39:49 - Successfully loaded 38 affiliates.
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:49 - 127.0.0.1 - - [29/Mar/2025 14:39:49] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:50 - Accessing ASC Services page
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 14:39:50 - Attempting to read services data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/services.json
+2025-03-29 14:39:50 - Attempting to read GPs data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/gps.json
+2025-03-29 14:39:50 - Successfully loaded 27 services.
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "GET /api/asc_services HTTP/1.1" 200 -
+2025-03-29 14:39:50 - Successfully loaded 12 GPs.
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "GET /api/asc_gps HTTP/1.1" 200 -
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:50 - 127.0.0.1 - - [29/Mar/2025 14:39:50] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - Accessing ASC GPs page
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:52 - 127.0.0.1 - - [29/Mar/2025 14:39:52] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:56 - Accessing ASC Services page
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:39:56 - Attempting to read services data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/services.json
+2025-03-29 14:39:56 - Attempting to read GPs data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/gps.json
+2025-03-29 14:39:56 - Successfully loaded 27 services.
+2025-03-29 14:39:56 - Successfully loaded 12 GPs.
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "GET /api/asc_services HTTP/1.1" 200 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "GET /api/asc_gps HTTP/1.1" 200 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:39:56 - 127.0.0.1 - - [29/Mar/2025 14:39:56] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 14:40:03 - Accessing ASC ASCs (WIP)
+2025-03-29 14:40:03 - 127.0.0.1 - - [29/Mar/2025 14:40:03] "GET /asc_ascs HTTP/1.1" 200 -
+2025-03-29 14:40:03 - 127.0.0.1 - - [29/Mar/2025 14:40:03] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:40:03 - 127.0.0.1 - - [29/Mar/2025 14:40:03] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:40:15 - Logging system configured with level INFO
+2025-03-29 14:40:15 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:40:15 - Configured Flask app logging with level INFO
+2025-03-29 14:40:15 - Configured Flask app logging with level INFO
+2025-03-29 14:40:15 - Logging system configured with level INFO
+2025-03-29 14:40:15 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:40:15 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:40:15 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:40:15 - Running in DEBUG mode
+2025-03-29 14:40:15 - Listening on 0.0.0.0:5005
+2025-03-29 14:40:15 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 14:40:15 - [33mPress CTRL+C to quit[0m
+2025-03-29 14:40:15 -  * Restarting with stat
+2025-03-29 14:40:15 - Logging system configured with level INFO
+2025-03-29 14:40:15 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:40:15 - Configured Flask app logging with level INFO
+2025-03-29 14:40:15 - Configured Flask app logging with level INFO
+2025-03-29 14:40:15 - Logging system configured with level INFO
+2025-03-29 14:40:15 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:40:15 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:40:15 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:40:15 - Running in DEBUG mode
+2025-03-29 14:40:15 - Listening on 0.0.0.0:5005
+2025-03-29 14:40:16 -  * Debugger is active!
+2025-03-29 14:40:16 -  * Debugger PIN: 288-414-191
+2025-03-29 14:40:20 - User logged out
+2025-03-29 14:40:20 - 127.0.0.1 - - [29/Mar/2025 14:40:20] "GET /logout HTTP/1.1" 200 -
+2025-03-29 14:40:20 - 127.0.0.1 - - [29/Mar/2025 14:40:20] "GET / HTTP/1.1" 200 -
+2025-03-29 14:40:20 - 127.0.0.1 - - [29/Mar/2025 14:40:20] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:40:20 - 127.0.0.1 - - [29/Mar/2025 14:40:20] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:40:21 - SSL verification is disabled. This is insecure.
+2025-03-29 14:40:23 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 14:40:23 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 14:40:23 - 127.0.0.1 - - [29/Mar/2025 14:40:23] "POST /login HTTP/1.1" 200 -
+2025-03-29 14:40:23 - Accessing functional tree view
+2025-03-29 14:40:23 - 127.0.0.1 - - [29/Mar/2025 14:40:23] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 14:40:23 - 127.0.0.1 - - [29/Mar/2025 14:40:23] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:40:23 - 127.0.0.1 - - [29/Mar/2025 14:40:23] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:40:23 - 127.0.0.1 - - [29/Mar/2025 14:40:23] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 14:40:25 - Accessing ASC SPs page
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "GET /static/js/sps.js HTTP/1.1" 200 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "GET /static/ASC/data/sps.json HTTP/1.1" 200 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "GET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1" 200 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "GET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1" 200 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "GET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1" 200 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "GET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1" 200 -
+2025-03-29 14:40:25 - 127.0.0.1 - - [29/Mar/2025 14:40:25] "GET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1" 200 -
+2025-03-29 14:41:06 - Accessing Affiliates page
+2025-03-29 14:41:06 - 127.0.0.1 - - [29/Mar/2025 14:41:06] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:41:06 - 127.0.0.1 - - [29/Mar/2025 14:41:06] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:41:06 - 127.0.0.1 - - [29/Mar/2025 14:41:06] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:06 - 127.0.0.1 - - [29/Mar/2025 14:41:06] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:06 - 127.0.0.1 - - [29/Mar/2025 14:41:06] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:41:06 - 127.0.0.1 - - [29/Mar/2025 14:41:06] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 14:41:06 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-29 14:41:06 - Successfully loaded 38 affiliates.
+2025-03-29 14:41:06 - 127.0.0.1 - - [29/Mar/2025 14:41:06] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:07 - 127.0.0.1 - - [29/Mar/2025 14:41:07] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:10 - Accessing ASC Services page
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:41:10 - Attempting to read services data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/services.json
+2025-03-29 14:41:10 - Attempting to read GPs data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/gps.json
+2025-03-29 14:41:10 - Successfully loaded 27 services.
+2025-03-29 14:41:10 - Successfully loaded 12 GPs.
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "GET /api/asc_services HTTP/1.1" 200 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "GET /api/asc_gps HTTP/1.1" 200 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:10 - 127.0.0.1 - - [29/Mar/2025 14:41:10] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - Accessing ASC GPs page
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/js/gps.js HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:14 - 127.0.0.1 - - [29/Mar/2025 14:41:14] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:18 - Accessing ASC SPs page
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "[36mGET /static/js/sps.js HTTP/1.1[0m" 304 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:18 - 127.0.0.1 - - [29/Mar/2025 14:41:18] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - Accessing Affiliates page
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:41:20 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-29 14:41:20 - Successfully loaded 38 affiliates.
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:20 - 127.0.0.1 - - [29/Mar/2025 14:41:20] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:26 - Accessing test cases
+2025-03-29 14:41:26 - 127.0.0.1 - - [29/Mar/2025 14:41:26] "GET /test_cases HTTP/1.1" 200 -
+2025-03-29 14:41:26 - 127.0.0.1 - - [29/Mar/2025 14:41:26] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:26 - 127.0.0.1 - - [29/Mar/2025 14:41:26] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-03-29 14:41:26 - 127.0.0.1 - - [29/Mar/2025 14:41:26] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:41:26 - 127.0.0.1 - - [29/Mar/2025 14:41:26] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:41:26 - 127.0.0.1 - - [29/Mar/2025 14:41:26] "[36mGET /static/pattern.json HTTP/1.1[0m" 304 -
+2025-03-29 14:41:26 - 127.0.0.1 - - [29/Mar/2025 14:41:26] "[36mGET /static/test_cases.json HTTP/1.1[0m" 304 -
+2025-03-29 14:41:45 - Accessing system monitor
+2025-03-29 14:41:45 - 127.0.0.1 - - [29/Mar/2025 14:41:45] "GET /system_monitor HTTP/1.1" 200 -
+2025-03-29 14:41:45 - 127.0.0.1 - - [29/Mar/2025 14:41:45] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:45 - 127.0.0.1 - - [29/Mar/2025 14:41:45] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:41:45 - SSL verification is disabled. This is insecure.
+2025-03-29 14:41:45 - Getting system health data from api/system/health
+2025-03-29 14:41:45 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-03-29 14:41:47 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.74 seconds
+2025-03-29 14:41:47 - System health data fetched in 1.74s
+2025-03-29 14:41:47 - 127.0.0.1 - - [29/Mar/2025 14:41:47] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-03-29 14:41:51 - Accessing Affiliates page
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:41:51 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-29 14:41:51 - Successfully loaded 38 affiliates.
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:41:51 - 127.0.0.1 - - [29/Mar/2025 14:41:51] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:50:50 - Logging system configured with level INFO
+2025-03-29 14:50:50 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:50:50 - Configured Flask app logging with level INFO
+2025-03-29 14:50:50 - Configured Flask app logging with level INFO
+2025-03-29 14:50:50 - Logging system configured with level INFO
+2025-03-29 14:50:51 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:50:51 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:50:51 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:50:51 - Running in DEBUG mode
+2025-03-29 14:50:51 - Listening on 0.0.0.0:5005
+2025-03-29 14:50:51 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 14:50:51 - [33mPress CTRL+C to quit[0m
+2025-03-29 14:50:51 -  * Restarting with stat
+2025-03-29 14:50:51 - Logging system configured with level INFO
+2025-03-29 14:50:51 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:50:51 - Configured Flask app logging with level INFO
+2025-03-29 14:50:51 - Configured Flask app logging with level INFO
+2025-03-29 14:50:51 - Logging system configured with level INFO
+2025-03-29 14:50:51 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:50:51 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:50:51 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:50:51 - Running in DEBUG mode
+2025-03-29 14:50:51 - Listening on 0.0.0.0:5005
+2025-03-29 14:50:51 -  * Debugger is active!
+2025-03-29 14:50:51 -  * Debugger PIN: 288-414-191
+2025-03-29 14:50:54 - User logged out
+2025-03-29 14:50:54 - 127.0.0.1 - - [29/Mar/2025 14:50:54] "GET /logout HTTP/1.1" 200 -
+2025-03-29 14:50:54 - 127.0.0.1 - - [29/Mar/2025 14:50:54] "GET / HTTP/1.1" 200 -
+2025-03-29 14:50:54 - 127.0.0.1 - - [29/Mar/2025 14:50:54] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:50:54 - 127.0.0.1 - - [29/Mar/2025 14:50:54] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:50:55 - SSL verification is disabled. This is insecure.
+2025-03-29 14:50:56 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 14:50:56 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 14:50:56 - 127.0.0.1 - - [29/Mar/2025 14:50:56] "POST /login HTTP/1.1" 200 -
+2025-03-29 14:50:56 - Accessing functional tree view
+2025-03-29 14:50:56 - 127.0.0.1 - - [29/Mar/2025 14:50:56] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 14:50:56 - 127.0.0.1 - - [29/Mar/2025 14:50:56] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:50:56 - 127.0.0.1 - - [29/Mar/2025 14:50:56] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:50:56 - 127.0.0.1 - - [29/Mar/2025 14:50:56] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 14:50:58 - Accessing test cases
+2025-03-29 14:50:58 - 127.0.0.1 - - [29/Mar/2025 14:50:58] "GET /test_cases HTTP/1.1" 200 -
+2025-03-29 14:50:58 - 127.0.0.1 - - [29/Mar/2025 14:50:58] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:50:58 - 127.0.0.1 - - [29/Mar/2025 14:50:58] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:50:58 - 127.0.0.1 - - [29/Mar/2025 14:50:58] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:50:58 - 127.0.0.1 - - [29/Mar/2025 14:50:58] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-03-29 14:50:58 - 127.0.0.1 - - [29/Mar/2025 14:50:58] "[36mGET /static/pattern.json HTTP/1.1[0m" 304 -
+2025-03-29 14:50:58 - 127.0.0.1 - - [29/Mar/2025 14:50:58] "[36mGET /static/test_cases.json HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - Accessing Affiliates page
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "GET /static/js/affiliates.js HTTP/1.1" 200 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "GET /static/ASC/data/affiliates.json HTTP/1.1" 200 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:03 - 127.0.0.1 - - [29/Mar/2025 14:51:03] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:07 - 127.0.0.1 - - [29/Mar/2025 14:51:07] "[36mGET /static/ASC/image/flags/flag_new_zealand.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:07 - 127.0.0.1 - - [29/Mar/2025 14:51:07] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:07 - 127.0.0.1 - - [29/Mar/2025 14:51:07] "[36mGET /static/ASC/image/flags/flag_montenegro.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:07 - 127.0.0.1 - - [29/Mar/2025 14:51:07] "[36mGET /static/ASC/image/flags/flag_netherlands.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:09 - 127.0.0.1 - - [29/Mar/2025 14:51:09] "[36mGET /static/ASC/image/flags/flag_slovakia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:09 - 127.0.0.1 - - [29/Mar/2025 14:51:09] "[36mGET /static/ASC/image/flags/flag_slovenia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:09 - 127.0.0.1 - - [29/Mar/2025 14:51:09] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:09 - 127.0.0.1 - - [29/Mar/2025 14:51:09] "[36mGET /static/ASC/image/flags/flag_sweden.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:09 - 127.0.0.1 - - [29/Mar/2025 14:51:09] "[36mGET /static/ASC/image/flags/flag_türkiye.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:09 - 127.0.0.1 - - [29/Mar/2025 14:51:09] "[36mGET /static/ASC/image/flags/flag_romania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:09 - 127.0.0.1 - - [29/Mar/2025 14:51:09] "[36mGET /static/ASC/image/flags/flag_portugal.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:09 - 127.0.0.1 - - [29/Mar/2025 14:51:09] "[36mGET /static/ASC/image/flags/flag_norway.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:09 - 127.0.0.1 - - [29/Mar/2025 14:51:09] "[36mGET /static/ASC/image/flags/flag_poland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:25 - 127.0.0.1 - - [29/Mar/2025 14:51:25] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:25 - 127.0.0.1 - - [29/Mar/2025 14:51:25] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:29 - 127.0.0.1 - - [29/Mar/2025 14:51:29] "[36mGET /static/ASC/image/flags/flag_new_zealand.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:29 - 127.0.0.1 - - [29/Mar/2025 14:51:29] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:29 - 127.0.0.1 - - [29/Mar/2025 14:51:29] "[36mGET /static/ASC/image/flags/flag_netherlands.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:29 - 127.0.0.1 - - [29/Mar/2025 14:51:29] "[36mGET /static/ASC/image/flags/flag_montenegro.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:33 - Accessing ASC Services page
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "GET /static/js/services.js HTTP/1.1" 200 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "GET /static/ASC/data/services.json HTTP/1.1" 200 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 14:51:33 - 127.0.0.1 - - [29/Mar/2025 14:51:33] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:52:14 - Accessing ASC SPs page
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "GET /static/js/sps.js HTTP/1.1" 200 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:52:14 - 127.0.0.1 - - [29/Mar/2025 14:52:14] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - Accessing Affiliates page
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:26 - 127.0.0.1 - - [29/Mar/2025 14:52:26] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:31 - 127.0.0.1 - - [29/Mar/2025 14:52:31] "[36mGET /static/ASC/image/flags/flag_netherlands.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:31 - 127.0.0.1 - - [29/Mar/2025 14:52:31] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:31 - 127.0.0.1 - - [29/Mar/2025 14:52:31] "[36mGET /static/ASC/image/flags/flag_new_zealand.png HTTP/1.1[0m" 304 -
+2025-03-29 14:52:31 - 127.0.0.1 - - [29/Mar/2025 14:52:31] "[36mGET /static/ASC/image/flags/flag_montenegro.png HTTP/1.1[0m" 304 -
+2025-03-29 14:55:43 - Logging system configured with level INFO
+2025-03-29 14:55:43 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:55:43 - Configured Flask app logging with level INFO
+2025-03-29 14:55:43 - Configured Flask app logging with level INFO
+2025-03-29 14:55:43 - Logging system configured with level INFO
+2025-03-29 14:55:43 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:55:43 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:55:43 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:55:43 - Running in DEBUG mode
+2025-03-29 14:55:43 - Listening on 0.0.0.0:5005
+2025-03-29 14:55:43 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 14:55:43 - [33mPress CTRL+C to quit[0m
+2025-03-29 14:55:43 -  * Restarting with stat
+2025-03-29 14:55:43 - Logging system configured with level INFO
+2025-03-29 14:55:43 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 14:55:43 - Configured Flask app logging with level INFO
+2025-03-29 14:55:43 - Configured Flask app logging with level INFO
+2025-03-29 14:55:43 - Logging system configured with level INFO
+2025-03-29 14:55:43 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 14:55:43 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 14:55:43 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 14:55:43 - Running in DEBUG mode
+2025-03-29 14:55:43 - Listening on 0.0.0.0:5005
+2025-03-29 14:55:43 -  * Debugger is active!
+2025-03-29 14:55:43 -  * Debugger PIN: 288-414-191
+2025-03-29 14:55:56 - 127.0.0.1 - - [29/Mar/2025 14:55:56] "GET / HTTP/1.1" 200 -
+2025-03-29 14:55:56 - 127.0.0.1 - - [29/Mar/2025 14:55:56] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:55:56 - 127.0.0.1 - - [29/Mar/2025 14:55:56] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:55:57 - 127.0.0.1 - - [29/Mar/2025 14:55:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-29 14:56:04 - SSL verification is disabled. This is insecure.
+2025-03-29 14:56:06 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 14:56:06 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 14:56:06 - 127.0.0.1 - - [29/Mar/2025 14:56:06] "POST /login HTTP/1.1" 200 -
+2025-03-29 14:56:06 - Accessing functional tree view
+2025-03-29 14:56:06 - 127.0.0.1 - - [29/Mar/2025 14:56:06] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 14:56:06 - 127.0.0.1 - - [29/Mar/2025 14:56:06] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:06 - 127.0.0.1 - - [29/Mar/2025 14:56:06] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:56:06 - 127.0.0.1 - - [29/Mar/2025 14:56:06] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - Accessing Affiliates page
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "GET /static/js/affiliates.js HTTP/1.1" 200 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:11 - 127.0.0.1 - - [29/Mar/2025 14:56:11] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:15 - 127.0.0.1 - - [29/Mar/2025 14:56:15] "[36mGET /static/ASC/image/flags/flag_montenegro.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:15 - 127.0.0.1 - - [29/Mar/2025 14:56:15] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:15 - 127.0.0.1 - - [29/Mar/2025 14:56:15] "[36mGET /static/ASC/image/flags/flag_netherlands.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:15 - 127.0.0.1 - - [29/Mar/2025 14:56:15] "[36mGET /static/ASC/image/flags/flag_new_zealand.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:17 - Accessing ASC Services page
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "GET /static/js/services.js HTTP/1.1" 200 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 14:56:17 - 127.0.0.1 - - [29/Mar/2025 14:56:17] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:33 - Logging system configured with level INFO
+2025-03-29 15:02:33 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:02:33 - Configured Flask app logging with level INFO
+2025-03-29 15:02:33 - Configured Flask app logging with level INFO
+2025-03-29 15:02:33 - Logging system configured with level INFO
+2025-03-29 15:02:33 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:02:33 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:02:33 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:02:33 - Running in DEBUG mode
+2025-03-29 15:02:33 - Listening on 0.0.0.0:5005
+2025-03-29 15:02:33 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 15:02:33 - [33mPress CTRL+C to quit[0m
+2025-03-29 15:02:33 -  * Restarting with stat
+2025-03-29 15:02:33 - Logging system configured with level INFO
+2025-03-29 15:02:33 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 15:02:33 - Configured Flask app logging with level INFO
+2025-03-29 15:02:33 - Configured Flask app logging with level INFO
+2025-03-29 15:02:33 - Logging system configured with level INFO
+2025-03-29 15:02:33 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 15:02:33 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 15:02:33 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 15:02:33 - Running in DEBUG mode
+2025-03-29 15:02:33 - Listening on 0.0.0.0:5005
+2025-03-29 15:02:33 -  * Debugger is active!
+2025-03-29 15:02:33 -  * Debugger PIN: 288-414-191
+2025-03-29 15:02:37 - Accessing ASC Services page
+2025-03-29 15:02:37 - 127.0.0.1 - - [29/Mar/2025 15:02:37] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:02:37 - 127.0.0.1 - - [29/Mar/2025 15:02:37] "GET /static/ASC/icons/services.svg HTTP/1.1" 200 -
+2025-03-29 15:02:37 - 127.0.0.1 - - [29/Mar/2025 15:02:37] "GET /static/iocore2_logo.png HTTP/1.1" 200 -
+2025-03-29 15:02:37 - 127.0.0.1 - - [29/Mar/2025 15:02:37] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-03-29 15:02:37 - 127.0.0.1 - - [29/Mar/2025 15:02:37] "GET /static/js/services.js HTTP/1.1" 200 -
+2025-03-29 15:02:37 - 127.0.0.1 - - [29/Mar/2025 15:02:37] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:02:37 - 127.0.0.1 - - [29/Mar/2025 15:02:37] "GET /static/ASC/data/services.json HTTP/1.1" 200 -
+2025-03-29 15:02:38 - 127.0.0.1 - - [29/Mar/2025 15:02:38] "GET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1" 200 -
+2025-03-29 15:02:38 - 127.0.0.1 - - [29/Mar/2025 15:02:38] "GET /static/ASC/image/srv/icon_data_links.png HTTP/1.1" 200 -
+2025-03-29 15:02:38 - 127.0.0.1 - - [29/Mar/2025 15:02:38] "GET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1" 200 -
+2025-03-29 15:02:38 - 127.0.0.1 - - [29/Mar/2025 15:02:38] "GET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1" 200 -
+2025-03-29 15:02:38 - 127.0.0.1 - - [29/Mar/2025 15:02:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-29 15:02:41 - User logged out
+2025-03-29 15:02:41 - 127.0.0.1 - - [29/Mar/2025 15:02:41] "GET /logout HTTP/1.1" 200 -
+2025-03-29 15:02:41 - 127.0.0.1 - - [29/Mar/2025 15:02:41] "GET / HTTP/1.1" 200 -
+2025-03-29 15:02:41 - 127.0.0.1 - - [29/Mar/2025 15:02:41] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:41 - 127.0.0.1 - - [29/Mar/2025 15:02:41] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:02:48 - SSL verification is disabled. This is insecure.
+2025-03-29 15:02:49 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 15:02:49 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 15:02:49 - 127.0.0.1 - - [29/Mar/2025 15:02:49] "POST /login HTTP/1.1" 200 -
+2025-03-29 15:02:49 - Accessing functional tree view
+2025-03-29 15:02:49 - 127.0.0.1 - - [29/Mar/2025 15:02:49] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 15:02:49 - 127.0.0.1 - - [29/Mar/2025 15:02:49] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:49 - 127.0.0.1 - - [29/Mar/2025 15:02:49] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:02:49 - 127.0.0.1 - - [29/Mar/2025 15:02:49] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - Accessing Affiliates page
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "GET /static/js/affiliates.js HTTP/1.1" 200 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:52 - 127.0.0.1 - - [29/Mar/2025 15:02:52] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:55 - 127.0.0.1 - - [29/Mar/2025 15:02:55] "[36mGET /static/ASC/image/flags/flag_montenegro.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:55 - 127.0.0.1 - - [29/Mar/2025 15:02:55] "[36mGET /static/ASC/image/flags/flag_new_zealand.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:55 - 127.0.0.1 - - [29/Mar/2025 15:02:55] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-03-29 15:02:55 - 127.0.0.1 - - [29/Mar/2025 15:02:55] "[36mGET /static/ASC/image/flags/flag_netherlands.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:04 - 127.0.0.1 - - [29/Mar/2025 15:03:04] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:04 - 127.0.0.1 - - [29/Mar/2025 15:03:04] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:04 - 127.0.0.1 - - [29/Mar/2025 15:03:04] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:04 - 127.0.0.1 - - [29/Mar/2025 15:03:04] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:17 - Accessing ASC Services page
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "[36mGET /static/js/services.js HTTP/1.1[0m" 304 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:17 - 127.0.0.1 - - [29/Mar/2025 15:03:17] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:46 - Accessing ASC GPs page
+2025-03-29 15:03:46 - 127.0.0.1 - - [29/Mar/2025 15:03:46] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "GET /static/js/gps.js HTTP/1.1" 200 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:47 - 127.0.0.1 - - [29/Mar/2025 15:03:47] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:59 - Accessing ASC SPs page
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "GET /static/js/sps.js HTTP/1.1" 200 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-03-29 15:03:59 - 127.0.0.1 - - [29/Mar/2025 15:03:59] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -

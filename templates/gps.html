@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPs - IOCore2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <style>
+        body {
+            padding-top: 56px; /* Adjust based on navbar height */
+        }
+        .table-responsive {
+            margin-top: 20px;
+            /* overflow-x: auto; REMOVED - Let Bootstrap handle responsiveness */
+        }
+        .icon-img {
+            max-width: 40px;
+            max-height: 40px;
+            object-fit: contain;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .search-add-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .search-add-row .form-control {
+            max-width: 300px; /* Adjust as needed */
+        }
+        /* Dark mode styles */
+        [data-bs-theme="dark"] .table {
+            --bs-table-bg: #212529;
+            --bs-table-border-color: #495057;
+            --bs-table-striped-bg: #2c3034;
+            --bs-table-hover-bg: #323539;
+            color: #dee2e6;
+        }
+        [data-bs-theme="dark"] .form-control {
+            background-color: #343a40;
+            border-color: #495057;
+            color: #fff;
+        }
+        [data-bs-theme="dark"] .form-control::placeholder {
+            color: #adb5bd;
+        }
+        [data-bs-theme="dark"] .btn-outline-secondary {
+            color: #adb5bd;
+            border-color: #495057;
+        }
+        [data-bs-theme="dark"] .btn-outline-secondary:hover {
+            background-color: #495057;
+            color: #fff;
+        }
+        [data-bs-theme="dark"] .btn-primary {
+             color: #fff;
+             background-color: #0d6efd;
+             border-color: #0d6efd;
+        }
+        [data-bs-theme="dark"] .btn-primary.disabled, [data-bs-theme="dark"] .btn-primary:disabled {
+            color: #fff;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            opacity: 0.5; /* Make it look disabled */
+        }
+        /* Column Widths - Adjusted */
+        .table th:nth-child(1), .table td:nth-child(1) { /* ID Column */
+            width: 15%;
+            min-width: 120px;
+        }
+        .table th:nth-child(2), .table td:nth-child(2) { /* Name Column */
+            width: 30%;
+            min-width: 250px;
+        }
+        .table th:nth-child(3), .table td:nth-child(3) { /* Description Column */
+            width: 45%;
+        }
+        .table th:nth-child(4), .table td:nth-child(4) { /* Icon Column */
+            width: 10%;
+            min-width: 60px;
+            text-align: center;
+        }
+        /* Styles for column resizing */
+        .table th {
+            position: relative; /* Needed for absolute positioning of handle */
+            user-select: none; /* Prevent text selection during resize */
+        }
+        .resize-handle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px; /* Adjust handle width */
+            height: 100%;
+            cursor: col-resize;
+            z-index: 1; /* Ensure handle is clickable */
+        }
+        [data-bs-theme="dark"] .resize-handle {
+             /* Optional: Dark mode handle indicator */
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav_menu.html' %}
+
+    <div class="container-fluid mt-4">
+        <div class="search-add-row">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search GPs...">
+            <button id="addGpButton" class="btn btn-primary" disabled>+ Add GP</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Icon</th>
+                    </tr>
+                </thead>
+                <tbody id="gpsTableBody">
+                    <!-- GP data will be loaded here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/gps.js') }}"></script>
+</body>
+</html>

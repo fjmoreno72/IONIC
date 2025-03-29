@@ -14,19 +14,20 @@
             height: auto;
             vertical-align: middle;
         }
+        /* Original column widths (some might be overridden below) */
         .affiliates-table th.flag-column,
         .affiliates-table td.flag-column {
-            width: 50px; /* Adjust width for flag column */
+            /* width: 50px; */ /* Overridden below */
             text-align: center;
         }
          .affiliates-table th.type-column,
         .affiliates-table td.type-column {
-            width: 50px; /* Adjust width for type column */
+            /* width: 50px; */ /* Overridden below */
             text-align: center;
         }
          .affiliates-table th.environments-column,
         .affiliates-table td.environments-column {
-            width: 150px; /* Adjust width for Environments column */
+            /* width: 150px; */ /* Overridden below */
         }
         /* Fix for search icon overlap */
         .search-container input[type="text"] {
@@ -49,10 +50,71 @@
              vertical-align: middle;
              margin-right: 0.5rem; /* Space between icon and text */
         }
-        .affiliates-table th.environments-column,
-        .affiliates-table td.environments-column {
-            width: 150px; /* Adjust width for Environments column */
+
+        /* Explicit Column Widths for Affiliates Table */
+        .affiliates-table th.id-column,
+        .affiliates-table td:nth-child(1) { /* ID Column */
+            width: 10%;
+            min-width: 80px;
         }
+        .affiliates-table th[data-sort="name"],
+        .affiliates-table td:nth-child(2) { /* Name Column */
+            width: 45%;
+            min-width: 250px;
+        }
+        .affiliates-table th.environments-column,
+        .affiliates-table td:nth-child(3) { /* Environments Column */
+            width: 25%;
+            min-width: 150px;
+        }
+        .affiliates-table th.type-column,
+        .affiliates-table td:nth-child(4) { /* Type Column */
+            width: 10%;
+            min-width: 60px;
+            text-align: center;
+        }
+        .affiliates-table th.flag-column,
+        .affiliates-table td:nth-child(5) { /* Flag Column */
+            width: 10%;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* Styles for column resizing */
+        .affiliates-table th { /* Target specific table */
+            position: relative; /* Needed for absolute positioning of handle */
+            user-select: none; /* Prevent text selection during resize */
+        }
+        .resize-handle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px; /* Adjust handle width */
+            height: 100%;
+            cursor: col-resize;
+            z-index: 1; /* Ensure handle is clickable */
+        }
+        /* Ensure table container allows horizontal scroll */
+        .test-cases-table-container { /* Reusing class from test_case.html */
+             /* overflow-x: auto; REMOVED - Let Bootstrap handle responsiveness */
+        }
+        /* Style for sortable headers */
+         .affiliates-table th.sortable {
+             cursor: pointer;
+         }
+         .affiliates-table th.sortable:hover {
+             background-color: rgba(0,0,0,0.05); /* Subtle hover effect */
+         }
+         [data-bs-theme="dark"] .affiliates-table th.sortable:hover {
+             background-color: rgba(255,255,255,0.05); /* Subtle hover effect */
+         }
+         .affiliates-table th.sortable i {
+             margin-left: 5px;
+             color: #aaa; /* Dimmed sort icon */
+         }
+         [data-bs-theme="dark"] .affiliates-table th.sortable i {
+             color: #777;
+         }
     </style>
 </head>
 <body class="logged-in">
@@ -106,7 +168,7 @@
                 </div>
             </div>
 
-            <div class="test-cases-table-container"> {# Reusing class #}
+            <div class="test-cases-table-container table-responsive"> {# Added .table-responsive #}
                 <table class="table table-striped table-hover table-sm affiliates-table test-cases-table"> {# Added affiliates-table class #}
                     <thead>
                         <tr>
@@ -116,7 +178,7 @@
                             <th class="sortable" data-sort="name">Name <i class="fas fa-sort"></i></th>
                             <th class="sortable environments-column" data-sort="environments">Environments <i class="fas fa-sort"></i></th>
                             <th class="sortable type-column" data-sort="type">Type <i class="fas fa-sort"></i></th>
-                            <th class="flag-column">Flag</th> {# No sorting for flag #}
+                            <th class="flag-column">Flag</th> {# Flag column is not sortable #}
                         </tr>
                     </thead>
                     <tbody id="affiliatesTableBody">

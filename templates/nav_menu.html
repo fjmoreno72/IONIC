@@ -26,6 +26,10 @@
     justify-content: center;
     background: white;
     line-height: 30px;
+    white-space: nowrap; /* Prevent wrapping on larger screens */
+    overflow: hidden; /* Hide overflow on larger screens if needed */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    padding: 0 10px; /* Add some horizontal padding */
 }
 
 .nav-menu {
@@ -191,6 +195,29 @@ body {
     .nav-menu .dropdown .btn {
         justify-content: space-between;
     }
+
+    /* Responsive adjustments for the classification banner */
+    @media (max-width: 991px) { /* Adjust breakpoint as needed */
+        .classification-banner {
+            font-size: 10px; /* Smaller font size */
+            white-space: normal; /* Allow text wrapping */
+            height: auto; /* Adjust height automatically */
+            line-height: 1.4; /* Adjust line height for wrapped text */
+            padding: 5px; /* Add some padding */
+            top: 40px; /* Adjust top position slightly if needed */
+        }
+        /* Adjust body margin-top for mobile if banner height changes significantly */
+        body {
+             /* Example: Adjust if banner becomes taller */
+             /* margin-top: 150px !important; */
+        }
+    }
+     @media (max-width: 480px) { /* Even smaller screens */
+        .classification-banner {
+            font-size: 8px; /* Even smaller font */
+             padding: 3px;
+        }
+     }
 }
 </style>
 

@@ -187,16 +187,18 @@ def asc_services():
 @views_bp.route('/asc_gps')
 @login_required
 def asc_gps():
-    """Render placeholder page for ASC GPs."""
-    logging.info("Accessing ASC GPs (WIP)")
-    return render_template('work_in_progress.html')
+    """Render the ASC GPs page."""
+    logging.info("Accessing ASC GPs page")
+    # Potential future logic to pass initial data if needed
+    return render_template('gps.html', title="ASC GPs")
 
 @views_bp.route('/asc_sps')
 @login_required
 def asc_sps():
-    """Render placeholder page for ASC SPs."""
-    logging.info("Accessing ASC SPs (WIP)")
-    return render_template('work_in_progress.html')
+    """Render the ASC SPs page."""
+    logging.info("Accessing ASC SPs page")
+    # Potential future logic to pass initial data if needed
+    return render_template('sps.html', title="ASC SPs")
 
 @views_bp.route('/asc_ascs')
 @login_required

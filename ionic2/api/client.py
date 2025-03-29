@@ -33,7 +33,20 @@ class ApiClient:
         """
         self.base_url = base_url.rstrip('/')
         self.timeout = timeout or settings.REQUEST_TIMEOUT
-        self.verify_ssl = verify_ssl if verify_ssl is not None else settings.VERIFY_SSL
+        
+        # Determine SSL verification setting
+        if hasattr(settings, 'CUSTOM_CA_BUNDLE') and settings.CUSTOM_CA_BUNDLE:
+            # Use custom CA bundle if provided
+            self.verify_ssl = settings.CUSTOM_CA_BUNDLE
+            logging.info(f"Using custom CA bundle for SSL verification: {self.verify_ssl}")
+        else:
+            # Otherwise, use the VERIFY_SSL setting (True/False)
+            self.verify_ssl = verify_ssl if verify_ssl is not None else settings.VERIFY_SSL
+            if not self.verify_ssl:
+                 logging.warning("SSL verification is disabled. This is insecure.")
+            else:
+                 logging.info("Using system default CAs for SSL verification.")
+
         self.session = requests.Session()
         
         if cookies:

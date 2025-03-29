@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASC Services - IOCore2 Coverage Analysis Tool</title> {# Changed title #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <style>
+        /* Add specific styles for services if needed */
+        .icon-cell img {
+            width: 30px; /* Adjust size as needed */
+            height: auto;
+            vertical-align: middle;
+            display: block; /* Center image in cell */
+            margin: 0 auto; /* Center image in cell */
+        }
+        .services-table th.icon-column,
+        .services-table td.icon-column {
+            width: 60px; /* Adjust width for icon column */
+            text-align: center;
+        }
+         .services-table th.spiral-column,
+        .services-table td.spiral-column {
+            width: 80px; /* Adjust width for spiral column */
+            text-align: center;
+        }
+         .services-table th.gps-column,
+        .services-table td.gps-column {
+            /* Adjust width if needed */
+        }
+        /* Fix for search icon overlap */
+        .search-container input[type="text"] {
+            padding-left: 2rem; /* Add space for the icon */
+        }
+        .search-container .fa-search {
+            position: absolute;
+            left: 0.75rem; /* Position icon inside the padding */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d; /* Optional: Adjust icon color */
+            pointer-events: none; /* Make icon non-interactive */
+        }
+        .filter-item.search-container {
+            position: relative; /* Needed for absolute positioning of the icon */
+        }
+        .header-icon {
+             width: 24px; /* Adjust size as needed */
+             height: auto;
+             vertical-align: middle;
+             margin-right: 0.5rem; /* Space between icon and text */
+        }
+    </style>
+</head>
+<body class="logged-in">
+    {% include 'nav_menu.html' %}
+
+    <div class="container-fluid px-4">
+        <div class="test-cases-container"> {# Reusing class for similar layout #}
+            <div class="test-cases-header"> {# Reusing class for similar layout #}
+                 <h2><img src="{{ url_for('static', filename='ASC/icons/services.svg') }}" alt="Services Icon" class="header-icon">ASC Services</h2> {# Changed icon and text #}
+            </div>
+
+            <div class="controls-container">
+                <div class="filters-container">
+                    <div class="filter-item search-container"> {# Only search filter needed #}
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="nameSearchInput" placeholder="Search services..." class="form-control form-control-sm">
+                    </div>
+                    {# Removed type and environment filters #}
+                </div>
+
+                <div class="actions-container">
+                     <button id="addServiceButton" class="btn btn-primary btn-sm" disabled> {# Changed ID and text, kept disabled #}
+                        <i class="fas fa-plus me-1"></i> Add Service
+                    </button>
+                </div>
+            </div>
+
+            <div class="test-cases-table-container"> {# Reusing class #}
+                <table class="table table-striped table-hover table-sm services-table test-cases-table"> {# Added services-table class #}
+                    <thead>
+                        <tr>
+                            {# Updated columns based on image #}
+                            <th class="sortable id-column" data-sort="id">ID <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="name">Name <i class="fas fa-sort"></i></th>
+                            <th class="sortable spiral-column" data-sort="spiral">Spiral <i class="fas fa-sort"></i></th>
+                            <th class="icon-column">Icon</th> {# No sorting for icon #}
+                            <th class="sortable gps-column" data-sort="gps">GPs <i class="fas fa-sort"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody id="servicesTableBody"> {# Changed ID #}
+                        <!-- Data will be loaded here by JavaScript -->
+                    </tbody>
+                </table>
+                <div id="loadingIndicator" class="loading-indicator" style="display: none;"> {# Initially hidden #}
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div id="noResults" class="no-results d-none">
+                    <p>No services found matching your criteria.</p> {# Changed text #}
+                </div>
+            </div>
+
+            <div class="pagination-container">
+                 <div class="pagination-info">
+                    Showing <span id="currentRangeStart">0</span> to <span id="currentRangeEnd">0</span> of <span id="totalItems">0</span> services {# Changed text #}
+                </div>
+                <nav aria-label="Services pagination"> {# Changed label #}
+                    <ul class="pagination pagination-sm" id="paginationContainer"> {# Kept ID #}
+                        <li class="page-item disabled" id="prevPageButton">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <!-- Page numbers will be inserted here -->
+                        <li class="page-item disabled" id="nextPageButton">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
+    {# Include modal if needed later #}
+    {# {% include 'service_modal.html' %} #}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/services.js') }}"></script> {# Changed JS file reference #}
+</body>
+</html>

@@ -1,12 +1,13 @@
-// Affiliate data management
-let allAffiliates = [];
-let filteredAffiliates = [];
+// Service and GP data management
+let allServices = [];
+let allGps = {}; // Store GPs by ID for easy lookup
+let filteredServices = [];
 let currentPage = 1;
-let itemsPerPage = 25; // Default items per page
+let itemsPerPage = 25; // Default items per page (can be adjusted if needed)
 let currentSortField = 'id'; // Default sort field
 let sortDirection = 'asc'; // Default sort direction
 
-// Fetch affiliates data
+// Fetch services and GPs data
 async function fetchData() {
     const loadingIndicator = document.getElementById('loadingIndicator');
     const noResultsDiv = document.getElementById('noResults');
@@ -14,24 +15,46 @@ async function fetchData() {
     noResultsDiv.classList.add('d-none'); // Hide no results message
 
     try {
-        const response = await fetch('/api/affiliates'); // Use the new API endpoint
-        if (!response.ok) {
-            throw new Error(`Failed to fetch affiliates data: ${response.statusText}`);
+        // Fetch both services and GPs data concurrently
+        const [servicesResponse, gpsResponse] = await Promise.all([
+            fetch('/api/asc_services'), // Endpoint for services
+            fetch('/api/asc_gps')      // Endpoint for GPs
+        ]);
+
+        if (!servicesResponse.ok) {
+            throw new Error(`Failed to fetch services data: ${servicesResponse.statusText}`);
         }
-        const data = await response.json();
-        allAffiliates = data.map(affiliate => ({
-            ...affiliate,
-            // Ensure environments is always an array for consistent handling
-            environments: Array.isArray(affiliate.environments) ? affiliate.environments : []
-        })); // Store raw data
+        if (!gpsResponse.ok) {
+            throw new Error(`Failed to fetch GPs data: ${gpsResponse.statusText}`);
+        }
+
+        const servicesData = await servicesResponse.json();
+        const gpsData = await gpsResponse.json();
+
+        // Process GPs into a lookup object
+        allGps = gpsData.reduce((acc, gp) => {
+            acc[gp.id] = gp;
+            return acc;
+        }, {});
+
+        // Process services data, mapping GP names
+        allServices = servicesData.map(service => ({
+            ...service,
+            // Ensure gps is always an array
+            gps: Array.isArray(service.gps) ? service.gps : [],
+            // Map GP IDs to names for display and sorting
+            gpsNames: (Array.isArray(service.gps) ? service.gps : [])
+                        .map(gpId => allGps[gpId]?.name || gpId) // Get name or use ID if not found
+                        .join(', ') // Join names for display/sorting
+        }));
 
         applyFilters(); // Apply initial filters and display data
 
     } catch (error) {
-        console.error('Error fetching affiliates data:', error);
+        console.error('Error fetching ASC data:', error);
         loadingIndicator.style.display = 'none';
         noResultsDiv.classList.remove('d-none');
-        noResultsDiv.textContent = 'Error loading affiliates data. Please try again later.';
+        noResultsDiv.textContent = 'Error loading services data. Please try again later.';
     } finally {
          loadingIndicator.style.display = 'none'; // Ensure loading indicator is hidden
     }
@@ -40,8 +63,8 @@ async function fetchData() {
 // Update table with filtered and paginated data
 function updateTable() {
     const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage, filteredAffiliates.length);
-    const tableBody = document.getElementById('affiliatesTableBody');
+    const endIndex = Math.min(startIndex + itemsPerPage, filteredServices.length);
+    const tableBody = document.getElementById('servicesTableBody');
     const loadingIndicator = document.getElementById('loadingIndicator');
     const noResultsDiv = document.getElementById('noResults');
 
@@ -52,56 +75,56 @@ function updateTable() {
     loadingIndicator.style.display = 'none';
 
     // Show no results message if needed
-    if (filteredAffiliates.length === 0) { // Corrected variable name here
+    if (filteredServices.length === 0) {
         noResultsDiv.classList.remove('d-none');
-        noResultsDiv.textContent = 'No affiliates found matching your criteria.';
+        noResultsDiv.textContent = 'No services found matching your criteria.';
     } else {
         noResultsDiv.classList.add('d-none');
 
         // Add rows for current page
         for (let i = startIndex; i < endIndex; i++) {
-            const affiliate = filteredAffiliates[i];
+            const service = filteredServices[i];
             const row = document.createElement('tr');
 
             // ID Column
             const idCell = document.createElement('td');
             idCell.className = 'id-column';
-            idCell.textContent = affiliate.id || 'N/A';
+            idCell.textContent = service.id || 'N/A';
 
             // Name Column
             const nameCell = document.createElement('td');
-            nameCell.textContent = affiliate.name || 'N/A';
+            nameCell.textContent = service.name || 'N/A';
 
-            // Environments Column
-            const environmentsCell = document.createElement('td');
-            environmentsCell.className = 'environments-column';
-            // Join array elements, handle empty array
-            environmentsCell.textContent = affiliate.environments.length > 0 ? affiliate.environments.join(', ') : 'None';
+            // Spiral Column
+            const spiralCell = document.createElement('td');
+            spiralCell.className = 'spiral-column';
+            spiralCell.textContent = service.spiral || 'N/A';
 
-            // Type Column
-            const typeCell = document.createElement('td');
-            typeCell.className = 'type-column';
-            typeCell.textContent = affiliate.type || 'N/A';
-
-            // Flag Column
-            const flagCell = document.createElement('td');
-            flagCell.className = 'flag-column';
-            if (affiliate.flagUrl) {
-                const flagImg = document.createElement('img');
-                flagImg.src = affiliate.flagUrl;
-                flagImg.alt = `${affiliate.name} Flag`;
-                flagImg.className = 'flag-icon';
-                flagCell.appendChild(flagImg);
+            // Icon Column
+            const iconCell = document.createElement('td');
+            iconCell.className = 'icon-column icon-cell'; // Added icon-cell for styling
+            if (service.iconPath) {
+                const iconImg = document.createElement('img');
+                // Assuming icon paths are relative to the static/ASC directory
+                iconImg.src = `/static/ASC/${service.iconPath.replace('./', '')}`;
+                iconImg.alt = `${service.name} Icon`;
+                // iconImg.className = 'service-icon'; // Add class if specific styling needed
+                iconCell.appendChild(iconImg);
             } else {
-                flagCell.textContent = '-'; // Placeholder if no flag
+                iconCell.textContent = 'No Icon';
             }
+
+            // GPs Column
+            const gpsCell = document.createElement('td');
+            gpsCell.className = 'gps-column';
+            gpsCell.textContent = service.gpsNames || 'No GPs'; // Use pre-formatted names
 
             // Add cells to row
             row.appendChild(idCell);
             row.appendChild(nameCell);
-            row.appendChild(environmentsCell);
-            row.appendChild(typeCell);
-            row.appendChild(flagCell);
+            row.appendChild(spiralCell);
+            row.appendChild(iconCell);
+            row.appendChild(gpsCell);
 
             // Add row to table
             tableBody.appendChild(row);
@@ -109,9 +132,9 @@ function updateTable() {
     }
 
     // Update pagination info
-    document.getElementById('currentRangeStart').textContent = filteredAffiliates.length > 0 ? startIndex + 1 : 0;
+    document.getElementById('currentRangeStart').textContent = filteredServices.length > 0 ? startIndex + 1 : 0;
     document.getElementById('currentRangeEnd').textContent = endIndex;
-    document.getElementById('totalItems').textContent = filteredAffiliates.length;
+    document.getElementById('totalItems').textContent = filteredServices.length;
 
     // Update pagination controls
     updatePagination();
@@ -120,21 +143,16 @@ function updateTable() {
 // Apply filters and search
 function applyFilters() {
     const nameSearchTerm = document.getElementById('nameSearchInput').value.toLowerCase();
-    const typeFilterValue = document.getElementById('typeFilter').value;
-    const environmentFilterValue = document.getElementById('environmentFilter').value;
 
-    filteredAffiliates = allAffiliates.filter(affiliate => { // Corrected variable name here
+    filteredServices = allServices.filter(service => {
         const matchesName = nameSearchTerm === '' ||
-            (affiliate.name && affiliate.name.toLowerCase().includes(nameSearchTerm)) ||
-            (affiliate.id && affiliate.id.toLowerCase().includes(nameSearchTerm)); // Also search by ID
+            (service.name && service.name.toLowerCase().includes(nameSearchTerm)) ||
+            (service.id && service.id.toLowerCase().includes(nameSearchTerm)); // Also search by ID
 
-        const matchesType = typeFilterValue === '' || affiliate.type === typeFilterValue;
+        // Add other filters here if needed in the future
+        // const matchesSpiral = spiralFilterValue === '' || service.spiral === spiralFilterValue;
 
-        // Check if any of the affiliate's environments match the filter
-        const matchesEnvironment = environmentFilterValue === '' ||
-            (affiliate.environments && affiliate.environments.includes(environmentFilterValue));
-
-        return matchesName && matchesType && matchesEnvironment;
+        return matchesName; // && matchesSpiral etc.
     });
 
     // Sort filtered data
@@ -145,17 +163,20 @@ function applyFilters() {
     updateTable();
 }
 
-// Sort affiliate data
+// Sort service data
 function sortData() {
-    filteredAffiliates.sort((a, b) => { // Corrected variable name here
+    filteredServices.sort((a, b) => {
         let valA = a[currentSortField];
         let valB = b[currentSortField];
 
-        // Handle environments array for sorting - join to string
-        if (currentSortField === 'environments') {
-            valA = Array.isArray(valA) ? valA.join(', ').toLowerCase() : '';
-            valB = Array.isArray(valB) ? valB.join(', ').toLowerCase() : '';
-        } else if (typeof valA === 'string') {
+        // Use pre-formatted gpsNames for sorting GPs column
+        if (currentSortField === 'gps') {
+            valA = a.gpsNames || '';
+            valB = b.gpsNames || '';
+        }
+
+        // General string comparison
+        if (typeof valA === 'string') {
             valA = valA.toLowerCase();
         } else if (valA === null || valA === undefined) {
             valA = ''; // Treat null/undefined as empty string for sorting
@@ -167,7 +188,6 @@ function sortData() {
             valB = ''; // Treat null/undefined as empty string for sorting
         }
 
-
         // Comparison logic
         if (valA < valB) return sortDirection === 'asc' ? -1 : 1;
         if (valA > valB) return sortDirection === 'asc' ? 1 : -1;
@@ -175,14 +195,14 @@ function sortData() {
     });
 }
 
-// Update pagination controls
+// Update pagination controls (mostly unchanged from affiliates)
 function updatePagination() {
-    const maxPage = Math.ceil(filteredAffiliates.length / itemsPerPage); // Corrected variable name here
+    const maxPage = Math.ceil(filteredServices.length / itemsPerPage);
     const paginationContainer = document.getElementById('paginationContainer');
-    const pageButtons = Array.from(paginationContainer.querySelectorAll('.page-number'));
+    // Remove old page number buttons before adding new ones
+    const existingPageButtons = paginationContainer.querySelectorAll('.page-number');
+    existingPageButtons.forEach(button => button.remove());
 
-    // Remove old page number buttons
-    pageButtons.forEach(button => button.remove());
 
     // Add page number buttons (max 5 pages showing)
     if (maxPage > 1) {
@@ -199,7 +219,7 @@ function updatePagination() {
 
         for (let i = startPage; i <= endPage; i++) {
             const pageItem = document.createElement('li');
-            pageItem.className = 'page-item page-number';
+            pageItem.className = 'page-item page-number'; // Added page-number class
             if (i === currentPage) {
                 pageItem.classList.add('active');
             }
@@ -226,7 +246,7 @@ function updatePagination() {
     document.getElementById('nextPageButton').classList.toggle('disabled', currentPage >= maxPage);
 }
 
-// Theme toggling functions
+// Theme toggling functions (unchanged)
 const THEME_KEY = 'themePreference';
 
 function toggleTheme() {
@@ -244,18 +264,15 @@ function loadThemePreference() {
 
 // Set up event listeners when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Load theme preference if function exists
-    if (typeof loadThemePreference === 'function') {
-        loadThemePreference();
-    }
+    // Load theme preference
+    loadThemePreference();
 
     // Fetch initial data
     fetchData();
 
     // Set up filter handlers
     document.getElementById('nameSearchInput').addEventListener('input', applyFilters);
-    document.getElementById('typeFilter').addEventListener('change', applyFilters);
-    document.getElementById('environmentFilter').addEventListener('change', applyFilters);
+    // Removed listeners for type/environment filters
 
     // Set up page size selector if it exists (currently commented out in HTML)
     const pageSizeSelector = document.getElementById('pageSizeSelector');
@@ -265,8 +282,10 @@ document.addEventListener('DOMContentLoaded', () => {
             currentPage = 1; // Reset to first page
             updateTable();
         });
-        // Set initial value from selector
-        itemsPerPage = parseInt(pageSizeSelector.value);
+        // Set initial value from selector if needed
+        // itemsPerPage = parseInt(pageSizeSelector.value);
+    } else {
+        itemsPerPage = 25; // Default if selector not present
     }
 
 
@@ -281,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('nextPageButton').addEventListener('click', (e) => {
         e.preventDefault();
-        const maxPage = Math.ceil(filteredAffiliates.length / itemsPerPage); // Corrected variable name here
+        const maxPage = Math.ceil(filteredServices.length / itemsPerPage);
         if (currentPage < maxPage) {
             currentPage++;
             updateTable();
@@ -312,20 +331,18 @@ document.addEventListener('DOMContentLoaded', () => {
                  icon.className = `fas fa-sort-${sortDirection === 'asc' ? 'up' : 'down'}`;
             }
 
-
             // Apply sort
             sortData();
             updateTable();
         });
     });
 
-     // Add Affiliate button listener (currently disabled, but good to have structure)
-    const addAffiliateButton = document.getElementById('addAffiliateButton');
-    if (addAffiliateButton) {
-        addAffiliateButton.addEventListener('click', () => {
-            // Logic to open a modal or navigate to a create page will go here
-            console.log('Add Affiliate button clicked (currently disabled)');
-            // Example: showCreateAffiliateModal();
+     // Add Service button listener (currently disabled)
+    const addServiceButton = document.getElementById('addServiceButton');
+    if (addServiceButton) {
+        addServiceButton.addEventListener('click', () => {
+            console.log('Add Service button clicked (currently disabled)');
+            // Logic to open a modal or navigate to a create page would go here
         });
     }
 

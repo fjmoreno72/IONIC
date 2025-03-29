@@ -25,4 +25,7 @@ LOG_LEVEL = os.environ.get("IONIC2_LOG_LEVEL", "INFO")
 
 # API request settings
 REQUEST_TIMEOUT = (300, 300)  # (connect timeout, read timeout)
-VERIFY_SSL = False  # Skip SSL verification for internal services
+VERIFY_SSL = False # Disable SSL verification (necessary for internal CAs without local trust)
+# To properly verify, provide the path to the CA bundle file below
+# or install the CA certificate in the system's trust store.
+CUSTOM_CA_BUNDLE = None # Example: "/path/to/your/ca-bundle.pem"

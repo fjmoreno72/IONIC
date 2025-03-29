@@ -6196,3 +6196,331 @@ ionic2.core.exceptions.ApiRequestError: API request failed with status code: 503
 2025-03-28 19:08:29 - 127.0.0.1 - - [28/Mar/2025 19:08:29] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
 2025-03-28 19:08:29 - 127.0.0.1 - - [28/Mar/2025 19:08:29] "GET /check_auth HTTP/1.1" 200 -
 2025-03-28 19:08:29 - 127.0.0.1 - - [28/Mar/2025 19:08:29] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 13:34:57 - Logging system configured with level INFO
+2025-03-29 13:34:57 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:34:57 - Configured Flask app logging with level INFO
+2025-03-29 13:34:57 - Configured Flask app logging with level INFO
+2025-03-29 13:34:57 - Logging system configured with level INFO
+2025-03-29 13:34:57 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:34:57 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:34:57 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:34:57 - Running in DEBUG mode
+2025-03-29 13:34:57 - Listening on 0.0.0.0:5005
+2025-03-29 13:34:59 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 13:34:59 - [33mPress CTRL+C to quit[0m
+2025-03-29 13:34:59 -  * Restarting with stat
+2025-03-29 13:34:59 - Logging system configured with level INFO
+2025-03-29 13:34:59 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:34:59 - Configured Flask app logging with level INFO
+2025-03-29 13:34:59 - Configured Flask app logging with level INFO
+2025-03-29 13:34:59 - Logging system configured with level INFO
+2025-03-29 13:34:59 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:34:59 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:34:59 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:34:59 - Running in DEBUG mode
+2025-03-29 13:34:59 - Listening on 0.0.0.0:5005
+2025-03-29 13:34:59 -  * Debugger is active!
+2025-03-29 13:34:59 -  * Debugger PIN: 288-414-191
+2025-03-29 13:35:14 - 127.0.0.1 - - [29/Mar/2025 13:35:14] "GET / HTTP/1.1" 200 -
+2025-03-29 13:35:14 - 127.0.0.1 - - [29/Mar/2025 13:35:14] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:35:14 - 127.0.0.1 - - [29/Mar/2025 13:35:14] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:35:15 - 127.0.0.1 - - [29/Mar/2025 13:35:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-29 13:35:17 - 127.0.0.1 - - [29/Mar/2025 13:35:17] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:35:20 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 13:35:20 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 13:35:20 - 127.0.0.1 - - [29/Mar/2025 13:35:20] "POST /login HTTP/1.1" 200 -
+2025-03-29 13:35:20 - Accessing functional tree view
+2025-03-29 13:35:20 - 127.0.0.1 - - [29/Mar/2025 13:35:20] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 13:35:20 - 127.0.0.1 - - [29/Mar/2025 13:35:20] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:35:20 - 127.0.0.1 - - [29/Mar/2025 13:35:20] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:35:20 - 127.0.0.1 - - [29/Mar/2025 13:35:20] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 13:36:48 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/ionic2/config/settings.py', reloading
+2025-03-29 13:36:48 -  * Restarting with stat
+2025-03-29 13:36:48 - Logging system configured with level INFO
+2025-03-29 13:36:48 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:36:48 - Configured Flask app logging with level INFO
+2025-03-29 13:36:48 - Configured Flask app logging with level INFO
+2025-03-29 13:36:48 - Logging system configured with level INFO
+2025-03-29 13:36:48 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:36:48 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:36:48 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:36:48 - Running in DEBUG mode
+2025-03-29 13:36:48 - Listening on 0.0.0.0:5005
+2025-03-29 13:36:48 -  * Debugger is active!
+2025-03-29 13:36:48 -  * Debugger PIN: 288-414-191
+2025-03-29 13:37:02 - Logging system configured with level INFO
+2025-03-29 13:37:02 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:37:02 - Configured Flask app logging with level INFO
+2025-03-29 13:37:02 - Configured Flask app logging with level INFO
+2025-03-29 13:37:02 - Logging system configured with level INFO
+2025-03-29 13:37:02 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:37:02 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:37:02 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:37:02 - Running in DEBUG mode
+2025-03-29 13:37:02 - Listening on 0.0.0.0:5005
+2025-03-29 13:37:02 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 13:37:02 - [33mPress CTRL+C to quit[0m
+2025-03-29 13:37:02 -  * Restarting with stat
+2025-03-29 13:37:02 - Logging system configured with level INFO
+2025-03-29 13:37:02 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:37:02 - Configured Flask app logging with level INFO
+2025-03-29 13:37:02 - Configured Flask app logging with level INFO
+2025-03-29 13:37:02 - Logging system configured with level INFO
+2025-03-29 13:37:02 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:37:02 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:37:02 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:37:02 - Running in DEBUG mode
+2025-03-29 13:37:02 - Listening on 0.0.0.0:5005
+2025-03-29 13:37:02 -  * Debugger is active!
+2025-03-29 13:37:02 -  * Debugger PIN: 288-414-191
+2025-03-29 13:37:07 - User logged out
+2025-03-29 13:37:07 - 127.0.0.1 - - [29/Mar/2025 13:37:07] "GET /logout HTTP/1.1" 200 -
+2025-03-29 13:37:07 - 127.0.0.1 - - [29/Mar/2025 13:37:07] "GET / HTTP/1.1" 200 -
+2025-03-29 13:37:07 - 127.0.0.1 - - [29/Mar/2025 13:37:07] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:37:07 - 127.0.0.1 - - [29/Mar/2025 13:37:07] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:37:11 - Login error: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /IdentityManagement/Account/Login?ReturnUrl=%2FHome (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))
+2025-03-29 13:37:11 - Authentication error: Login failed: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /IdentityManagement/Account/Login?ReturnUrl=%2FHome (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1018)')))
+2025-03-29 13:37:11 - 127.0.0.1 - - [29/Mar/2025 13:37:11] "POST /login HTTP/1.1" 200 -
+2025-03-29 13:38:35 - Logging system configured with level INFO
+2025-03-29 13:38:35 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:38:35 - Configured Flask app logging with level INFO
+2025-03-29 13:38:35 - Configured Flask app logging with level INFO
+2025-03-29 13:38:35 - Logging system configured with level INFO
+2025-03-29 13:38:35 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:38:35 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:38:35 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:38:35 - Running in DEBUG mode
+2025-03-29 13:38:35 - Listening on 0.0.0.0:5005
+2025-03-29 13:38:36 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 13:38:36 - [33mPress CTRL+C to quit[0m
+2025-03-29 13:38:36 -  * Restarting with stat
+2025-03-29 13:38:36 - Logging system configured with level INFO
+2025-03-29 13:38:36 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:38:36 - Configured Flask app logging with level INFO
+2025-03-29 13:38:36 - Configured Flask app logging with level INFO
+2025-03-29 13:38:36 - Logging system configured with level INFO
+2025-03-29 13:38:36 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:38:36 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:38:36 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:38:36 - Running in DEBUG mode
+2025-03-29 13:38:36 - Listening on 0.0.0.0:5005
+2025-03-29 13:38:36 -  * Debugger is active!
+2025-03-29 13:38:36 -  * Debugger PIN: 288-414-191
+2025-03-29 13:38:39 - SSL verification is disabled. This is insecure.
+2025-03-29 13:38:41 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 13:38:41 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 13:38:41 - 127.0.0.1 - - [29/Mar/2025 13:38:41] "POST /login HTTP/1.1" 200 -
+2025-03-29 13:38:41 - Accessing functional tree view
+2025-03-29 13:38:41 - 127.0.0.1 - - [29/Mar/2025 13:38:41] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 13:38:41 - 127.0.0.1 - - [29/Mar/2025 13:38:41] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:41 - 127.0.0.1 - - [29/Mar/2025 13:38:41] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:38:41 - 127.0.0.1 - - [29/Mar/2025 13:38:41] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 13:38:43 - Accessing test cases
+2025-03-29 13:38:43 - 127.0.0.1 - - [29/Mar/2025 13:38:43] "GET /test_cases HTTP/1.1" 200 -
+2025-03-29 13:38:43 - 127.0.0.1 - - [29/Mar/2025 13:38:43] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:43 - 127.0.0.1 - - [29/Mar/2025 13:38:43] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 13:38:43 - 127.0.0.1 - - [29/Mar/2025 13:38:43] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:38:43 - 127.0.0.1 - - [29/Mar/2025 13:38:43] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-03-29 13:38:43 - 127.0.0.1 - - [29/Mar/2025 13:38:43] "[36mGET /static/pattern.json HTTP/1.1[0m" 304 -
+2025-03-29 13:38:43 - 127.0.0.1 - - [29/Mar/2025 13:38:43] "[36mGET /static/test_cases.json HTTP/1.1[0m" 304 -
+2025-03-29 13:38:47 - Accessing system monitor
+2025-03-29 13:38:47 - 127.0.0.1 - - [29/Mar/2025 13:38:47] "GET /system_monitor HTTP/1.1" 200 -
+2025-03-29 13:38:47 - 127.0.0.1 - - [29/Mar/2025 13:38:47] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:47 - 127.0.0.1 - - [29/Mar/2025 13:38:47] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:38:47 - SSL verification is disabled. This is insecure.
+2025-03-29 13:38:47 - Getting system health data from api/system/health
+2025-03-29 13:38:47 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-03-29 13:38:48 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.28 seconds
+2025-03-29 13:38:48 - System health data fetched in 1.28s
+2025-03-29 13:38:48 - 127.0.0.1 - - [29/Mar/2025 13:38:48] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-03-29 13:38:51 - Accessing Affiliates page
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-29 13:38:51 - Successfully loaded 38 affiliates.
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:38:51 - 127.0.0.1 - - [29/Mar/2025 13:38:51] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:44 - Logging system configured with level INFO
+2025-03-29 13:41:44 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:41:44 - Configured Flask app logging with level INFO
+2025-03-29 13:41:44 - Configured Flask app logging with level INFO
+2025-03-29 13:41:44 - Logging system configured with level INFO
+2025-03-29 13:41:44 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:41:44 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:41:44 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:41:44 - Running in DEBUG mode
+2025-03-29 13:41:44 - Listening on 0.0.0.0:5005
+2025-03-29 13:41:44 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 13:41:44 - [33mPress CTRL+C to quit[0m
+2025-03-29 13:41:44 -  * Restarting with stat
+2025-03-29 13:41:44 - Logging system configured with level INFO
+2025-03-29 13:41:44 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:41:44 - Configured Flask app logging with level INFO
+2025-03-29 13:41:44 - Configured Flask app logging with level INFO
+2025-03-29 13:41:44 - Logging system configured with level INFO
+2025-03-29 13:41:44 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:41:44 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:41:44 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:41:44 - Running in DEBUG mode
+2025-03-29 13:41:44 - Listening on 0.0.0.0:5005
+2025-03-29 13:41:44 -  * Debugger is active!
+2025-03-29 13:41:44 -  * Debugger PIN: 288-414-191
+2025-03-29 13:41:47 - User logged out
+2025-03-29 13:41:47 - 127.0.0.1 - - [29/Mar/2025 13:41:47] "GET /logout HTTP/1.1" 200 -
+2025-03-29 13:41:47 - 127.0.0.1 - - [29/Mar/2025 13:41:47] "GET / HTTP/1.1" 200 -
+2025-03-29 13:41:47 - 127.0.0.1 - - [29/Mar/2025 13:41:47] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:47 - 127.0.0.1 - - [29/Mar/2025 13:41:47] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:41:49 - SSL verification is disabled. This is insecure.
+2025-03-29 13:41:50 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 13:41:50 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 13:41:50 - 127.0.0.1 - - [29/Mar/2025 13:41:50] "POST /login HTTP/1.1" 200 -
+2025-03-29 13:41:50 - Accessing functional tree view
+2025-03-29 13:41:50 - 127.0.0.1 - - [29/Mar/2025 13:41:50] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 13:41:50 - 127.0.0.1 - - [29/Mar/2025 13:41:50] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:50 - 127.0.0.1 - - [29/Mar/2025 13:41:50] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:41:50 - 127.0.0.1 - - [29/Mar/2025 13:41:50] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - Accessing Affiliates page
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "GET /affiliates HTTP/1.1" 200 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "GET /static/js/affiliates.js HTTP/1.1" 200 -
+2025-03-29 13:41:54 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-29 13:41:54 - Successfully loaded 38 affiliates.
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:41:54 - 127.0.0.1 - - [29/Mar/2025 13:41:54] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-29 13:42:10 - Accessing ASC Services (WIP)
+2025-03-29 13:42:10 - 127.0.0.1 - - [29/Mar/2025 13:42:10] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 13:42:10 - 127.0.0.1 - - [29/Mar/2025 13:42:10] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:42:10 - 127.0.0.1 - - [29/Mar/2025 13:42:10] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:48:18 - Logging system configured with level INFO
+2025-03-29 13:48:18 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:48:18 - Configured Flask app logging with level INFO
+2025-03-29 13:48:18 - Configured Flask app logging with level INFO
+2025-03-29 13:48:18 - Logging system configured with level INFO
+2025-03-29 13:48:19 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:48:19 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:48:19 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:48:19 - Running in DEBUG mode
+2025-03-29 13:48:19 - Listening on 0.0.0.0:5005
+2025-03-29 13:48:19 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-03-29 13:48:19 - [33mPress CTRL+C to quit[0m
+2025-03-29 13:48:19 -  * Restarting with stat
+2025-03-29 13:48:19 - Logging system configured with level INFO
+2025-03-29 13:48:19 - Starting IOCore2 Coverage Analysis Tool
+2025-03-29 13:48:19 - Configured Flask app logging with level INFO
+2025-03-29 13:48:19 - Configured Flask app logging with level INFO
+2025-03-29 13:48:19 - Logging system configured with level INFO
+2025-03-29 13:48:19 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-29 13:48:19 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-29 13:48:19 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-29 13:48:19 - Running in DEBUG mode
+2025-03-29 13:48:19 - Listening on 0.0.0.0:5005
+2025-03-29 13:48:19 -  * Debugger is active!
+2025-03-29 13:48:19 -  * Debugger PIN: 288-414-191
+2025-03-29 13:48:22 - User logged out
+2025-03-29 13:48:22 - 127.0.0.1 - - [29/Mar/2025 13:48:22] "GET /logout HTTP/1.1" 200 -
+2025-03-29 13:48:22 - 127.0.0.1 - - [29/Mar/2025 13:48:22] "GET / HTTP/1.1" 200 -
+2025-03-29 13:48:22 - 127.0.0.1 - - [29/Mar/2025 13:48:22] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:48:22 - 127.0.0.1 - - [29/Mar/2025 13:48:22] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:48:23 - SSL verification is disabled. This is insecure.
+2025-03-29 13:48:26 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-29 13:48:26 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-29 13:48:26 - 127.0.0.1 - - [29/Mar/2025 13:48:26] "POST /login HTTP/1.1" 200 -
+2025-03-29 13:48:26 - Accessing functional tree view
+2025-03-29 13:48:26 - 127.0.0.1 - - [29/Mar/2025 13:48:26] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-29 13:48:26 - 127.0.0.1 - - [29/Mar/2025 13:48:26] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:48:26 - 127.0.0.1 - - [29/Mar/2025 13:48:26] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:48:26 - 127.0.0.1 - - [29/Mar/2025 13:48:26] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-29 13:48:30 - Accessing ASC Services page
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /asc_services HTTP/1.1" 200 -
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /static/ASC/icons/services.svg HTTP/1.1" 200 -
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /static/js/services.js HTTP/1.1" 200 -
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /check_auth HTTP/1.1" 200 -
+2025-03-29 13:48:30 - Attempting to read services data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/services.json
+2025-03-29 13:48:30 - Attempting to read GPs data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/gps.json
+2025-03-29 13:48:30 - Successfully loaded 12 GPs.
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /api/asc_gps HTTP/1.1" 200 -
+2025-03-29 13:48:30 - Successfully loaded 27 services.
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /api/asc_services HTTP/1.1" 200 -
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1" 200 -
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1" 200 -
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1" 200 -
+2025-03-29 13:48:30 - 127.0.0.1 - - [29/Mar/2025 13:48:30] "GET /static/ASC/image/srv/icon_data_links.png HTTP/1.1" 200 -
+2025-03-29 13:48:41 - 127.0.0.1 - - [29/Mar/2025 13:48:41] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 13:48:41 - 127.0.0.1 - - [29/Mar/2025 13:48:41] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 13:48:42 - 127.0.0.1 - - [29/Mar/2025 13:48:42] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 13:48:51 - 127.0.0.1 - - [29/Mar/2025 13:48:51] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-29 13:48:51 - 127.0.0.1 - - [29/Mar/2025 13:48:51] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-29 13:48:51 - 127.0.0.1 - - [29/Mar/2025 13:48:51] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-29 13:48:51 - 127.0.0.1 - - [29/Mar/2025 13:48:51] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -

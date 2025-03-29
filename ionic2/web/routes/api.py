@@ -788,6 +788,64 @@ def get_affiliates():
         return jsonify({"error": "An unexpected error occurred while fetching affiliates data."}), 500
 
 
+@api_bp.route('/api/asc_services', methods=['GET'])
+@login_required
+def get_asc_services():
+    """API endpoint to get the list of ASC services."""
+    try:
+        services_path = settings.STATIC_DIR / 'ASC' / 'data' / 'services.json'
+        logging.info(f"Attempting to read services data from: {services_path}")
+
+        if not services_path.exists():
+            logging.error(f"Services file not found at {services_path}")
+            return jsonify({"error": "Services data file not found."}), 404
+
+        with open(services_path, 'r', encoding='utf-8') as f:
+            services_data = json.load(f)
+
+        logging.info(f"Successfully loaded {len(services_data)} services.")
+        return jsonify(services_data)
+
+    except FileNotFoundError:
+        logging.error(f"Services file not found at {services_path}")
+        return jsonify({"error": "Services data file not found."}), 404
+    except json.JSONDecodeError:
+        logging.exception(f"Error decoding JSON from {services_path}")
+        return jsonify({"error": "Failed to parse services data file."}), 500
+    except Exception as e:
+        logging.exception("Error fetching services data:")
+        return jsonify({"error": "An unexpected error occurred while fetching services data."}), 500
+
+
+@api_bp.route('/api/asc_gps', methods=['GET'])
+@login_required
+def get_asc_gps():
+    """API endpoint to get the list of ASC GPs (Generic Patterns)."""
+    try:
+        gps_path = settings.STATIC_DIR / 'ASC' / 'data' / 'gps.json'
+        logging.info(f"Attempting to read GPs data from: {gps_path}")
+
+        if not gps_path.exists():
+            logging.error(f"GPs file not found at {gps_path}")
+            return jsonify({"error": "GPs data file not found."}), 404
+
+        with open(gps_path, 'r', encoding='utf-8') as f:
+            gps_data = json.load(f)
+
+        logging.info(f"Successfully loaded {len(gps_data)} GPs.")
+        return jsonify(gps_data)
+
+    except FileNotFoundError:
+        logging.error(f"GPs file not found at {gps_path}")
+        return jsonify({"error": "GPs data file not found."}), 404
+    except json.JSONDecodeError:
+        logging.exception(f"Error decoding JSON from {gps_path}")
+        return jsonify({"error": "Failed to parse GPs data file."}), 500
+    except Exception as e:
+        logging.exception("Error fetching GPs data:")
+        return jsonify({"error": "An unexpected error occurred while fetching GPs data."}), 500
+
+
 def process_sreq_coverage_in_background(url, cookies):
     """
     Process SREQ coverage data in a background thread.

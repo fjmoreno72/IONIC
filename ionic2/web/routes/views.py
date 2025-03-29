@@ -179,9 +179,10 @@ def asc_affiliates():
 @views_bp.route('/asc_services')
 @login_required
 def asc_services():
-    """Render placeholder page for ASC Services."""
-    logging.info("Accessing ASC Services (WIP)")
-    return render_template('work_in_progress.html')
+    """Render the ASC Services page."""
+    logging.info("Accessing ASC Services page")
+    # Potential future logic to pass initial data if needed
+    return render_template('services.html', title="ASC Services")
 
 @views_bp.route('/asc_gps')
 @login_required

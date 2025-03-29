@@ -5816,3 +5816,383 @@ ionic2.core.exceptions.ApiRequestError: API request failed with status code: 503
 2025-03-28 16:45:15 - 127.0.0.1 - - [28/Mar/2025 16:45:15] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
 2025-03-28 16:45:15 - 127.0.0.1 - - [28/Mar/2025 16:45:15] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
 2025-03-28 16:45:15 - 127.0.0.1 - - [28/Mar/2025 16:45:15] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-28 16:51:02 - Logging system configured with level INFO
+2025-03-28 16:51:02 - Starting IOCore2 Coverage Analysis Tool
+2025-03-28 16:51:02 - Configured Flask app logging with level INFO
+2025-03-28 16:51:02 - Configured Flask app logging with level INFO
+2025-03-28 16:51:02 - Logging system configured with level INFO
+2025-03-28 16:51:02 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-28 16:51:02 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-28 16:51:02 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-28 16:51:02 - Running in DEBUG mode
+2025-03-28 16:51:02 - Listening on 0.0.0.0:5005
+2025-03-28 16:51:02 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.20.10.2:5005
+2025-03-28 16:51:02 - [33mPress CTRL+C to quit[0m
+2025-03-28 16:51:02 -  * Restarting with stat
+2025-03-28 16:51:02 - Logging system configured with level INFO
+2025-03-28 16:51:02 - Starting IOCore2 Coverage Analysis Tool
+2025-03-28 16:51:02 - Configured Flask app logging with level INFO
+2025-03-28 16:51:02 - Configured Flask app logging with level INFO
+2025-03-28 16:51:02 - Logging system configured with level INFO
+2025-03-28 16:51:02 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-28 16:51:02 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-28 16:51:02 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-28 16:51:02 - Running in DEBUG mode
+2025-03-28 16:51:02 - Listening on 0.0.0.0:5005
+2025-03-28 16:51:02 -  * Debugger is active!
+2025-03-28 16:51:02 -  * Debugger PIN: 288-414-191
+2025-03-28 16:51:24 - Starting background SREQ coverage processing
+2025-03-28 16:51:24 - Getting SREQ coverage data from api/coverage/test-case-coverage/Get-Requirement-Coverage
+2025-03-28 16:51:24 - 127.0.0.1 - - [28/Mar/2025 16:51:24] "GET /get_requirement_coverage HTTP/1.1" 200 -
+2025-03-28 16:51:24 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/coverage/test-case-coverage/Get-Requirement-Coverage
+2025-03-28 16:51:29 - 127.0.0.1 - - [28/Mar/2025 16:51:29] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:51:34 - 127.0.0.1 - - [28/Mar/2025 16:51:34] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:51:39 - 127.0.0.1 - - [28/Mar/2025 16:51:39] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:51:44 - 127.0.0.1 - - [28/Mar/2025 16:51:44] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:51:49 - 127.0.0.1 - - [28/Mar/2025 16:51:49] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:51:54 - 127.0.0.1 - - [28/Mar/2025 16:51:54] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:51:59 - 127.0.0.1 - - [28/Mar/2025 16:51:59] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:04 - 127.0.0.1 - - [28/Mar/2025 16:52:04] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:09 - 127.0.0.1 - - [28/Mar/2025 16:52:09] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:14 - 127.0.0.1 - - [28/Mar/2025 16:52:14] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:14 - 127.0.0.1 - - [28/Mar/2025 16:52:14] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 16:52:19 - 127.0.0.1 - - [28/Mar/2025 16:52:19] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:24 - 127.0.0.1 - - [28/Mar/2025 16:52:24] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:29 - 127.0.0.1 - - [28/Mar/2025 16:52:29] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:34 - 127.0.0.1 - - [28/Mar/2025 16:52:34] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:39 - 127.0.0.1 - - [28/Mar/2025 16:52:39] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:44 - 127.0.0.1 - - [28/Mar/2025 16:52:44] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:49 - 127.0.0.1 - - [28/Mar/2025 16:52:49] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:54 - 127.0.0.1 - - [28/Mar/2025 16:52:54] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:52:59 - 127.0.0.1 - - [28/Mar/2025 16:52:59] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:04 - 127.0.0.1 - - [28/Mar/2025 16:53:04] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:04 - 127.0.0.1 - - [28/Mar/2025 16:53:04] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 16:53:09 - 127.0.0.1 - - [28/Mar/2025 16:53:09] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:14 - 127.0.0.1 - - [28/Mar/2025 16:53:14] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:19 - 127.0.0.1 - - [28/Mar/2025 16:53:19] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:24 - 127.0.0.1 - - [28/Mar/2025 16:53:24] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:29 - 127.0.0.1 - - [28/Mar/2025 16:53:29] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:34 - 127.0.0.1 - - [28/Mar/2025 16:53:34] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:39 - 127.0.0.1 - - [28/Mar/2025 16:53:39] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:44 - 127.0.0.1 - - [28/Mar/2025 16:53:44] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:49 - 127.0.0.1 - - [28/Mar/2025 16:53:49] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:54 - 127.0.0.1 - - [28/Mar/2025 16:53:54] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:53:54 - 127.0.0.1 - - [28/Mar/2025 16:53:54] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 16:53:59 - 127.0.0.1 - - [28/Mar/2025 16:53:59] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:54:04 - 127.0.0.1 - - [28/Mar/2025 16:54:04] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:54:09 - 127.0.0.1 - - [28/Mar/2025 16:54:09] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:54:14 - 127.0.0.1 - - [28/Mar/2025 16:54:14] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:54:19 - 127.0.0.1 - - [28/Mar/2025 16:54:19] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:54:24 - 127.0.0.1 - - [28/Mar/2025 16:54:24] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:54:29 - 127.0.0.1 - - [28/Mar/2025 16:54:29] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:54:30 - Starting to read response chunks...
+2025-03-28 16:54:30 - Initial Response: Status Code = 200
+2025-03-28 16:54:31 - Received 20 chunks (0.14 MB) in 186.86 seconds (0.00 MB/s)
+2025-03-28 16:54:31 - Received 40 chunks (0.30 MB) in 186.93 seconds (0.00 MB/s)
+2025-03-28 16:54:31 - Received 60 chunks (0.45 MB) in 186.95 seconds (0.00 MB/s)
+2025-03-28 16:54:31 - Received 80 chunks (0.61 MB) in 186.98 seconds (0.00 MB/s)
+2025-03-28 16:54:31 - Received 100 chunks (0.76 MB) in 187.00 seconds (0.00 MB/s)
+2025-03-28 16:54:31 - Received 120 chunks (0.92 MB) in 187.03 seconds (0.00 MB/s)
+2025-03-28 16:54:31 - Received 140 chunks (1.08 MB) in 187.06 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Received 160 chunks (1.23 MB) in 187.07 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Received 180 chunks (1.39 MB) in 187.09 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Received 200 chunks (1.55 MB) in 187.13 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Received 220 chunks (1.70 MB) in 187.14 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Received 240 chunks (1.86 MB) in 187.17 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Received 260 chunks (2.01 MB) in 187.19 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Received 280 chunks (2.17 MB) in 187.21 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Received 300 chunks (2.33 MB) in 187.25 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Received 320 chunks (2.48 MB) in 187.27 seconds (0.01 MB/s)
+2025-03-28 16:54:31 - Total size: 2.49 MB
+2025-03-28 16:54:31 - Total chunks: 321
+2025-03-28 16:54:31 - Average chunk size: 7.93 KB
+2025-03-28 16:54:31 - Average transfer rate: 0.01 MB/s
+2025-03-28 16:54:31 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/static/SREQ.json
+2025-03-28 16:54:31 - Successfully wrote markdown to /Users/fjmoreno72/WORK/IONIC2/static/SREQ.md
+2025-03-28 16:54:31 - Background SREQ coverage processing completed
+2025-03-28 16:54:34 - 127.0.0.1 - - [28/Mar/2025 16:54:34] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-03-28 16:54:35 - Accessing functional tree view
+2025-03-28 16:54:35 - 127.0.0.1 - - [28/Mar/2025 16:54:35] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-28 16:54:35 - 127.0.0.1 - - [28/Mar/2025 16:54:35] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 16:54:35 - 127.0.0.1 - - [28/Mar/2025 16:54:35] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 16:54:35 - 127.0.0.1 - - [28/Mar/2025 16:54:35] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-28 17:00:40 - Logging system configured with level INFO
+2025-03-28 17:00:40 - Starting IOCore2 Coverage Analysis Tool
+2025-03-28 17:00:40 - Configured Flask app logging with level INFO
+2025-03-28 17:00:40 - Configured Flask app logging with level INFO
+2025-03-28 17:00:40 - Logging system configured with level INFO
+2025-03-28 17:00:40 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-28 17:00:40 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-28 17:00:40 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-28 17:00:40 - Running in DEBUG mode
+2025-03-28 17:00:40 - Listening on 0.0.0.0:5005
+2025-03-28 17:00:40 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.20.10.2:5005
+2025-03-28 17:00:40 - [33mPress CTRL+C to quit[0m
+2025-03-28 17:00:40 -  * Restarting with stat
+2025-03-28 17:00:40 - Logging system configured with level INFO
+2025-03-28 17:00:40 - Starting IOCore2 Coverage Analysis Tool
+2025-03-28 17:00:40 - Configured Flask app logging with level INFO
+2025-03-28 17:00:40 - Configured Flask app logging with level INFO
+2025-03-28 17:00:40 - Logging system configured with level INFO
+2025-03-28 17:00:40 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-28 17:00:40 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-28 17:00:40 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-28 17:00:40 - Running in DEBUG mode
+2025-03-28 17:00:40 - Listening on 0.0.0.0:5005
+2025-03-28 17:00:40 -  * Debugger is active!
+2025-03-28 17:00:40 -  * Debugger PIN: 288-414-191
+2025-03-28 17:00:46 - Accessing functional tree view
+2025-03-28 17:00:46 - 127.0.0.1 - - [28/Mar/2025 17:00:46] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-28 17:00:46 - 127.0.0.1 - - [28/Mar/2025 17:00:46] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 17:00:46 - 127.0.0.1 - - [28/Mar/2025 17:00:46] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 17:00:46 - 127.0.0.1 - - [28/Mar/2025 17:00:46] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-28 17:12:11 - Accessing SREQ tree view
+2025-03-28 17:12:11 - 127.0.0.1 - - [28/Mar/2025 17:12:11] "GET /view_tree HTTP/1.1" 200 -
+2025-03-28 17:12:11 - 127.0.0.1 - - [28/Mar/2025 17:12:11] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 17:12:11 - 127.0.0.1 - - [28/Mar/2025 17:12:11] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 17:12:11 - 127.0.0.1 - - [28/Mar/2025 17:12:11] "[36mGET /static/js/tree_tin.js HTTP/1.1[0m" 304 -
+2025-03-28 17:12:59 - Accessing functional tree view
+2025-03-28 17:12:59 - 127.0.0.1 - - [28/Mar/2025 17:12:59] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-28 17:12:59 - 127.0.0.1 - - [28/Mar/2025 17:12:59] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 17:12:59 - 127.0.0.1 - - [28/Mar/2025 17:12:59] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 17:12:59 - 127.0.0.1 - - [28/Mar/2025 17:12:59] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-28 17:16:00 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/ionic2/data/sreq_analysis.py', reloading
+2025-03-28 17:16:00 -  * Restarting with stat
+2025-03-28 17:16:00 - Logging system configured with level INFO
+2025-03-28 17:16:00 - Starting IOCore2 Coverage Analysis Tool
+2025-03-28 17:16:00 - Configured Flask app logging with level INFO
+2025-03-28 17:16:00 - Configured Flask app logging with level INFO
+2025-03-28 17:16:00 - Logging system configured with level INFO
+2025-03-28 17:16:00 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-28 17:16:00 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-28 17:16:00 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-28 17:16:00 - Running in DEBUG mode
+2025-03-28 17:16:00 - Listening on 0.0.0.0:5005
+2025-03-28 17:16:00 -  * Debugger is active!
+2025-03-28 17:16:00 -  * Debugger PIN: 288-414-191
+2025-03-28 17:17:32 - Logging system configured with level INFO
+2025-03-28 17:17:32 - Starting IOCore2 Coverage Analysis Tool
+2025-03-28 17:17:32 - Configured Flask app logging with level INFO
+2025-03-28 17:17:32 - Configured Flask app logging with level INFO
+2025-03-28 17:17:32 - Logging system configured with level INFO
+2025-03-28 17:17:32 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-28 17:17:32 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-28 17:17:32 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-28 17:17:32 - Running in DEBUG mode
+2025-03-28 17:17:32 - Listening on 0.0.0.0:5005
+2025-03-28 17:17:32 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.20.10.2:5005
+2025-03-28 17:17:32 - [33mPress CTRL+C to quit[0m
+2025-03-28 17:17:32 -  * Restarting with stat
+2025-03-28 17:17:32 - Logging system configured with level INFO
+2025-03-28 17:17:32 - Starting IOCore2 Coverage Analysis Tool
+2025-03-28 17:17:32 - Configured Flask app logging with level INFO
+2025-03-28 17:17:32 - Configured Flask app logging with level INFO
+2025-03-28 17:17:32 - Logging system configured with level INFO
+2025-03-28 17:17:32 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-28 17:17:32 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-28 17:17:32 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-28 17:17:32 - Running in DEBUG mode
+2025-03-28 17:17:32 - Listening on 0.0.0.0:5005
+2025-03-28 17:17:32 -  * Debugger is active!
+2025-03-28 17:17:32 -  * Debugger PIN: 288-414-191
+2025-03-28 17:17:41 - User logged out
+2025-03-28 17:17:41 - 127.0.0.1 - - [28/Mar/2025 17:17:41] "GET /logout HTTP/1.1" 200 -
+2025-03-28 17:17:41 - 127.0.0.1 - - [28/Mar/2025 17:17:41] "GET / HTTP/1.1" 200 -
+2025-03-28 17:17:41 - 127.0.0.1 - - [28/Mar/2025 17:17:41] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 17:17:41 - 127.0.0.1 - - [28/Mar/2025 17:17:41] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 17:17:45 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-28 17:17:45 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-28 17:17:45 - 127.0.0.1 - - [28/Mar/2025 17:17:45] "POST /login HTTP/1.1" 200 -
+2025-03-28 17:17:45 - Accessing functional tree view
+2025-03-28 17:17:45 - 127.0.0.1 - - [28/Mar/2025 17:17:45] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-28 17:17:45 - 127.0.0.1 - - [28/Mar/2025 17:17:45] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 17:17:45 - 127.0.0.1 - - [28/Mar/2025 17:17:45] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 17:17:45 - 127.0.0.1 - - [28/Mar/2025 17:17:45] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-28 18:51:27 - Logging system configured with level INFO
+2025-03-28 18:51:27 - Starting IOCore2 Coverage Analysis Tool
+2025-03-28 18:51:27 - Configured Flask app logging with level INFO
+2025-03-28 18:51:27 - Configured Flask app logging with level INFO
+2025-03-28 18:51:27 - Logging system configured with level INFO
+2025-03-28 18:51:28 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-28 18:51:28 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-28 18:51:28 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-28 18:51:28 - Running in DEBUG mode
+2025-03-28 18:51:28 - Listening on 0.0.0.0:5005
+2025-03-28 18:51:29 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.79.8.77:5005
+2025-03-28 18:51:29 - [33mPress CTRL+C to quit[0m
+2025-03-28 18:51:29 -  * Restarting with stat
+2025-03-28 18:51:29 - Logging system configured with level INFO
+2025-03-28 18:51:29 - Starting IOCore2 Coverage Analysis Tool
+2025-03-28 18:51:29 - Configured Flask app logging with level INFO
+2025-03-28 18:51:29 - Configured Flask app logging with level INFO
+2025-03-28 18:51:29 - Logging system configured with level INFO
+2025-03-28 18:51:29 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-03-28 18:51:29 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-28 18:51:29 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-28 18:51:29 - Running in DEBUG mode
+2025-03-28 18:51:29 - Listening on 0.0.0.0:5005
+2025-03-28 18:51:29 -  * Debugger is active!
+2025-03-28 18:51:29 -  * Debugger PIN: 288-414-191
+2025-03-28 18:51:45 - 127.0.0.1 - - [28/Mar/2025 18:51:45] "GET / HTTP/1.1" 200 -
+2025-03-28 18:51:45 - 127.0.0.1 - - [28/Mar/2025 18:51:45] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 18:51:45 - 127.0.0.1 - - [28/Mar/2025 18:51:45] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 18:51:45 - 127.0.0.1 - - [28/Mar/2025 18:51:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-28 18:51:49 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-03-28 18:51:49 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-03-28 18:51:49 - 127.0.0.1 - - [28/Mar/2025 18:51:49] "POST /login HTTP/1.1" 200 -
+2025-03-28 18:51:49 - Accessing functional tree view
+2025-03-28 18:51:49 - 127.0.0.1 - - [28/Mar/2025 18:51:49] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-28 18:51:49 - 127.0.0.1 - - [28/Mar/2025 18:51:49] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 18:51:49 - 127.0.0.1 - - [28/Mar/2025 18:51:49] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 18:51:49 - 127.0.0.1 - - [28/Mar/2025 18:51:49] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-28 18:51:52 - Accessing test cases
+2025-03-28 18:51:52 - 127.0.0.1 - - [28/Mar/2025 18:51:52] "GET /test_cases HTTP/1.1" 200 -
+2025-03-28 18:51:52 - 127.0.0.1 - - [28/Mar/2025 18:51:52] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-28 18:51:52 - 127.0.0.1 - - [28/Mar/2025 18:51:52] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-03-28 18:51:52 - 127.0.0.1 - - [28/Mar/2025 18:51:52] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 18:51:52 - 127.0.0.1 - - [28/Mar/2025 18:51:52] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 18:51:52 - 127.0.0.1 - - [28/Mar/2025 18:51:52] "[36mGET /static/pattern.json HTTP/1.1[0m" 304 -
+2025-03-28 18:51:52 - 127.0.0.1 - - [28/Mar/2025 18:51:52] "[36mGET /static/test_cases.json HTTP/1.1[0m" 304 -
+2025-03-28 18:51:55 - Accessing system monitor
+2025-03-28 18:51:55 - 127.0.0.1 - - [28/Mar/2025 18:51:55] "GET /system_monitor HTTP/1.1" 200 -
+2025-03-28 18:51:55 - 127.0.0.1 - - [28/Mar/2025 18:51:55] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 18:51:55 - 127.0.0.1 - - [28/Mar/2025 18:51:55] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 18:51:55 - Getting system health data from api/system/health
+2025-03-28 18:51:55 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-03-28 18:51:56 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.11 seconds
+2025-03-28 18:51:56 - System health data fetched in 1.11s
+2025-03-28 18:51:56 - 127.0.0.1 - - [28/Mar/2025 18:51:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-03-28 18:52:55 - Getting system health data from api/system/health
+2025-03-28 18:52:55 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-03-28 18:52:56 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.12 seconds
+2025-03-28 18:52:56 - System health data fetched in 1.12s
+2025-03-28 18:52:56 - 127.0.0.1 - - [28/Mar/2025 18:52:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-03-28 18:53:13 - Accessing test cases
+2025-03-28 18:53:13 - 127.0.0.1 - - [28/Mar/2025 18:53:13] "GET /test_cases HTTP/1.1" 200 -
+2025-03-28 18:53:13 - 127.0.0.1 - - [28/Mar/2025 18:53:13] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-28 18:53:13 - 127.0.0.1 - - [28/Mar/2025 18:53:13] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-03-28 18:53:13 - 127.0.0.1 - - [28/Mar/2025 18:53:13] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 18:53:13 - 127.0.0.1 - - [28/Mar/2025 18:53:13] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 18:53:13 - 127.0.0.1 - - [28/Mar/2025 18:53:13] "[36mGET /static/pattern.json HTTP/1.1[0m" 304 -
+2025-03-28 18:53:13 - 127.0.0.1 - - [28/Mar/2025 18:53:13] "[36mGET /static/test_cases.json HTTP/1.1[0m" 304 -
+2025-03-28 18:53:14 - Attempting to load actors.json into memory...
+2025-03-28 18:53:14 - Successfully loaded 906 actors into map in 0.01 seconds.
+2025-03-28 18:53:14 - 127.0.0.1 - - [28/Mar/2025 18:53:14] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:14 - 127.0.0.1 - - [28/Mar/2025 18:53:14] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:14 - 127.0.0.1 - - [28/Mar/2025 18:53:14] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:14 - 127.0.0.1 - - [28/Mar/2025 18:53:14] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:14 - 127.0.0.1 - - [28/Mar/2025 18:53:14] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:14 - 127.0.0.1 - - [28/Mar/2025 18:53:14] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:14 - 127.0.0.1 - - [28/Mar/2025 18:53:14] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:14 - 127.0.0.1 - - [28/Mar/2025 18:53:14] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:33 - 127.0.0.1 - - [28/Mar/2025 18:53:33] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 18:53:38 - 127.0.0.1 - - [28/Mar/2025 18:53:38] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-03-28 19:05:22 - Accessing Affiliates page
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "GET /affiliates HTTP/1.1" 200 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/js/affiliates.js HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 19:05:22 - Attempting to read affiliates data from: /Users/fjmoreno72/WORK/IONIC2/static/ASC/data/affiliates.json
+2025-03-28 19:05:22 - Successfully loaded 38 affiliates.
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "GET /api/affiliates HTTP/1.1" 200 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:22 - 127.0.0.1 - - [28/Mar/2025 19:05:22] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_montenegro.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_netherlands.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_portugal.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_norway.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_new_zealand.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_poland.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_slovenia.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_türkiye.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_romania.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_sweden.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:29 - 127.0.0.1 - - [28/Mar/2025 19:05:29] "[36mGET /static/ASC/image/flags/flag_slovakia.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:35 - 127.0.0.1 - - [28/Mar/2025 19:05:35] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:35 - 127.0.0.1 - - [28/Mar/2025 19:05:35] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:35 - 127.0.0.1 - - [28/Mar/2025 19:05:35] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:38 - 127.0.0.1 - - [28/Mar/2025 19:05:38] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:39 - 127.0.0.1 - - [28/Mar/2025 19:05:39] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:41 - 127.0.0.1 - - [28/Mar/2025 19:05:41] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:44 - 127.0.0.1 - - [28/Mar/2025 19:05:44] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:46 - 127.0.0.1 - - [28/Mar/2025 19:05:46] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:52 - 127.0.0.1 - - [28/Mar/2025 19:05:52] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-28 19:05:52 - 127.0.0.1 - - [28/Mar/2025 19:05:52] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-28 19:06:01 - Accessing functional tree view
+2025-03-28 19:06:01 - 127.0.0.1 - - [28/Mar/2025 19:06:01] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-28 19:06:01 - 127.0.0.1 - - [28/Mar/2025 19:06:01] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 19:06:01 - 127.0.0.1 - - [28/Mar/2025 19:06:01] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 19:06:01 - 127.0.0.1 - - [28/Mar/2025 19:06:01] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-28 19:08:29 - Accessing functional tree view
+2025-03-28 19:08:29 - 127.0.0.1 - - [28/Mar/2025 19:08:29] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-28 19:08:29 - 127.0.0.1 - - [28/Mar/2025 19:08:29] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-28 19:08:29 - 127.0.0.1 - - [28/Mar/2025 19:08:29] "GET /check_auth HTTP/1.1" 200 -
+2025-03-28 19:08:29 - 127.0.0.1 - - [28/Mar/2025 19:08:29] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -

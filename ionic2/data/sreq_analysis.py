@@ -152,6 +152,7 @@ def organize_functional_data(sreq_data: List[Dict[str, Any]], func_data: List[Di
         actor = item.get('actor', 'N/A')
         test_case_key = item.get('testCaseKey')
         test_case_name = item.get('testCaseName')
+        test_case_version = item.get('testCaseVersion') # Extract the version
         test_case_coverage_type = item.get('coverageType')
         status = item.get('status')
 
@@ -197,8 +198,8 @@ def organize_functional_data(sreq_data: List[Dict[str, Any]], func_data: List[Di
                 if actor not in existing_test[2]:
                     existing_test[2].append(actor)
             else:
-                # Add new test case with actor
-                test_cases[test_case_key] = (test_case_key, test_case_name, [actor])
+                # Add new test case with actor and version
+                test_cases[test_case_key] = (test_case_key, test_case_name, [actor], test_case_version)
 
     # Log unmapped SREQs if any
     if unmapped_sreqs:

@@ -1,0 +1,320 @@
+/* dataTable.css - Shared data table styles */
+
+/* ====================== Common Layout Styles ====================== */
+body.logged-in {
+  padding-top: 56px; /* Adjust based on navbar height */
+}
+
+/* Table container styles */
+.test-cases-table-container {
+  height: 70vh; /* Use 70% of viewport height to maximize space */
+  position: relative;
+  overflow-y: auto; /* Enable vertical scrolling within container */
+  margin-bottom: 20px;
+}
+
+/* Sticky header styles */
+.test-cases-table thead th,
+.table thead th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10;
+  background-color: var(--table-header-bg, #f8f9fa);
+  box-shadow: 0 1px 0 0 var(--border-color, #dee2e6);
+  vertical-align: middle;
+}
+
+/* ====================== Header and Sorting ====================== */
+/* Table header styling */
+.test-cases-table th.sortable,
+.table th.sortable {
+  cursor: pointer;
+}
+
+.test-cases-table th.sortable:hover,
+.table th.sortable:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.test-cases-table th.sortable i,
+.table th.sortable i {
+  margin-left: 5px;
+  color: #aaa;
+}
+
+/* Header icon styling */
+.header-icon {
+  width: 24px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+/* ====================== Filters and Controls ====================== */
+/* Table search & controls container */
+.controls-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filters-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-item {
+  min-width: 150px;
+}
+
+/* Search input styling */
+.search-container input[type="text"] {
+  padding-left: 2rem; /* Add space for the icon */
+}
+
+.search-container .fa-search {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none;
+}
+
+.filter-item.search-container {
+  position: relative;
+  max-width: 300px;
+}
+
+/* ====================== Column Resizing ====================== */
+/* Ensure headers have proper positioning for resize handles */
+.test-cases-table th,
+.table th {
+  position: relative;
+  user-select: none;
+}
+
+/* Column resizing */
+.resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 1;
+}
+
+/* ====================== Pagination ====================== */
+/* Pagination controls */
+#paginationControls {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ====================== Table Content Styling ====================== */
+/* Icon and image styles */
+.icon-img, 
+.icon-cell {
+  max-width: 20px !important;
+  max-height: 20px !important;
+  width: auto !important;
+  height: auto !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  object-fit: contain !important;
+}
+
+.flag-icon {
+  width: 30px;
+  height: auto;
+  vertical-align: middle;
+  display: inline-block !important;
+}
+
+/* Common alignment classes */
+.text-center {
+  text-align: center;
+}
+
+/* ====================== Table-Specific Column Styles ====================== */
+/* GPs table */
+#gpsTable th:nth-child(1), #gpsTable td:nth-child(1) { /* ID Column */
+  width: 15%;
+  min-width: 120px;
+}
+#gpsTable th:nth-child(2), #gpsTable td:nth-child(2) { /* Name Column */
+  width: 30%;
+  min-width: 250px;
+}
+#gpsTable th:nth-child(3), #gpsTable td:nth-child(3) { /* Description Column */
+  width: 45%;
+}
+#gpsTable th:nth-child(4), #gpsTable td:nth-child(4) { /* Icon Column */
+  width: 10%;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* Services table */
+#servicesTable th:nth-child(1), #servicesTable td:nth-child(1) { /* ID Column */
+  width: 10%;
+  min-width: 80px;
+}
+#servicesTable th:nth-child(2), #servicesTable td:nth-child(2) { /* Name Column */
+  width: 35%;
+  min-width: 200px;
+}
+#servicesTable th:nth-child(3), #servicesTable td:nth-child(3) { /* Spiral Column */
+  width: 10%;
+  min-width: 80px;
+  text-align: center;
+}
+#servicesTable th:nth-child(4), #servicesTable td:nth-child(4) { /* GPs Column */
+  width: 35%;
+  min-width: 150px;
+}
+#servicesTable th:nth-child(5), #servicesTable td:nth-child(5) { /* Icon Column */
+  width: 10%;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* SPs table */
+#spsTable th:nth-child(1), #spsTable td:nth-child(1) { /* ID Column */
+  width: 10%;
+  min-width: 90px;
+}
+#spsTable th:nth-child(2), #spsTable td:nth-child(2) { /* Name Column */
+  width: 25%;
+  min-width: 200px;
+}
+#spsTable th:nth-child(3), #spsTable td:nth-child(3) { /* Description Column */
+  width: 35%;
+}
+#spsTable th:nth-child(4), #spsTable td:nth-child(4) { /* Versions Column */
+  width: 20%;
+  min-width: 100px;
+}
+#spsTable th:nth-child(5), #spsTable td:nth-child(5) { /* Icon Column */
+  width: 10%;
+  min-width: 70px;
+  text-align: center;
+}
+
+/* Affiliates table */
+#affiliatesTable th:nth-child(1), #affiliatesTable td:nth-child(1) { /* ID Column */
+  width: 10%;
+  min-width: 80px;
+}
+#affiliatesTable th:nth-child(2), #affiliatesTable td:nth-child(2) { /* Name Column */
+  width: 45%;
+  min-width: 250px;
+}
+#affiliatesTable th:nth-child(3), #affiliatesTable td:nth-child(3) { /* Environments Column */
+  width: 25%;
+  min-width: 150px;
+}
+#affiliatesTable th:nth-child(4), #affiliatesTable td:nth-child(4) { /* Type Column */
+  width: 10%;
+  min-width: 60px;
+  text-align: center;
+}
+#affiliatesTable th:nth-child(5), #affiliatesTable td:nth-child(5) { /* Flag Column */
+  width: 10%;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ====================== Loading and Empty States ====================== */
+/* Loading indicator */
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* No results message */
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
+/* ====================== Dark Mode Styles ====================== */
+/* Dark mode colors */
+:root {
+  --table-header-bg: #f8f9fa;
+  --border-color: #dee2e6;
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --search-icon-color: #6c757d;
+}
+
+[data-theme="dark"] {
+  --table-header-bg: #212529;
+  --border-color: #495057;
+  --text-color: #dee2e6;
+  --text-muted: #adb5bd;
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --search-icon-color: #adb5bd;
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] .test-cases-table th.sortable:hover,
+[data-theme="dark"] .table th.sortable:hover {
+  background-color: var(--hover-bg);
+}
+
+[data-theme="dark"] .test-cases-table th.sortable i,
+[data-theme="dark"] .table th.sortable i {
+  color: #777;
+}
+
+[data-theme="dark"] .table {
+  --bs-table-bg: #212529;
+  --bs-table-border-color: #495057;
+  --bs-table-striped-bg: #2c3034;
+  --bs-table-hover-bg: #323539;
+  color: #dee2e6;
+}
+
+[data-theme="dark"] .form-control {
+  background-color: #343a40;
+  border-color: #495057;
+  color: #fff;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: #adb5bd;
+}
+
+[data-theme="dark"] .btn-outline-secondary {
+  color: #adb5bd;
+  border-color: #495057;
+}
+
+[data-theme="dark"] .btn-outline-secondary:hover {
+  background-color: #495057;
+  color: #fff;
+}
+
+[data-theme="dark"] .btn-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+[data-theme="dark"] .btn-primary.disabled, 
+[data-theme="dark"] .btn-primary:disabled {
+  opacity: 0.5; 
+}

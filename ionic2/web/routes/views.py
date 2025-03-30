@@ -158,54 +158,86 @@ def test_cases():
     return render_template('test_case.html')
 
 
+# --- Updated ASC Routes ---
+
 @views_bp.route('/affiliates')
 @login_required
 def affiliates():
     """Renders the affiliates management page."""
     logging.info("Accessing Affiliates page")
-    # Potential future logic to pass initial data if needed
-    return render_template('affiliates.html', title="Affiliates")
-
-
-# --- ASC Placeholder Routes ---
-
-@views_bp.route('/asc_affiliates')
-@login_required
-def asc_affiliates():
-    """Render placeholder page for ASC Affiliates."""
-    logging.info("Accessing ASC Affiliates (WIP)")
-    return render_template('work_in_progress.html')
+    # Now uses the refactored component-based template
+    return render_template('pages/affiliates_new.html', title="Affiliates")
 
 @views_bp.route('/asc_services')
 @login_required
 def asc_services():
     """Render the ASC Services page."""
     logging.info("Accessing ASC Services page")
-    # Potential future logic to pass initial data if needed
-    return render_template('services.html', title="ASC Services")
+    # Now uses the refactored component-based template
+    return render_template('pages/services_new.html', title="ASC Services")
 
 @views_bp.route('/asc_gps')
 @login_required
 def asc_gps():
     """Render the ASC GPs page."""
     logging.info("Accessing ASC GPs page")
-    # Potential future logic to pass initial data if needed
-    return render_template('gps.html', title="ASC GPs")
+    # Now uses the refactored component-based template
+    return render_template('pages/gps_new.html', title="ASC GPs")
 
 @views_bp.route('/asc_sps')
 @login_required
 def asc_sps():
     """Render the ASC SPs page."""
     logging.info("Accessing ASC SPs page")
-    # Potential future logic to pass initial data if needed
-    return render_template('sps.html', title="ASC SPs")
+    # Now uses the refactored component-based template
+    return render_template('pages/sps_new.html', title="ASC SPs")
+
+# --- Legacy routes for backward compatibility (redirect to main routes) ---
+
+@views_bp.route('/asc_affiliates')
+@login_required
+def asc_affiliates():
+    """Redirects to main affiliates page."""
+    logging.info("Redirecting from /asc_affiliates to /affiliates")
+    return redirect(url_for('views.affiliates'))
+
+@views_bp.route('/asc_gps_new')
+@login_required
+def asc_gps_new():
+    """Redirects to main GPs page."""
+    logging.info("Redirecting from /asc_gps_new to /asc_gps")
+    return redirect(url_for('views.asc_gps'))
+
+@views_bp.route('/asc_services_new')
+@login_required
+def asc_services_new():
+    """Redirects to main Services page."""
+    logging.info("Redirecting from /asc_services_new to /asc_services")
+    return redirect(url_for('views.asc_services'))
+
+@views_bp.route('/asc_sps_new')
+@login_required
+def asc_sps_new():
+    """Redirects to main SPs page."""
+    logging.info("Redirecting from /asc_sps_new to /asc_sps")
+    return redirect(url_for('views.asc_sps'))
+
+@views_bp.route('/asc_affiliates_new')
+@login_required
+def asc_affiliates_new():
+    """Redirects to main Affiliates page."""
+    logging.info("Redirecting from /asc_affiliates_new to /affiliates")
+    return redirect(url_for('views.affiliates'))
+
+# --- Other ASC routes ---
 
 @views_bp.route('/asc_ascs')
 @login_required
 def asc_ascs():
-    """Render placeholder page for ASC ASCs."""
-    logging.info("Accessing ASC ASCs (WIP)")
-    return render_template('work_in_progress.html')
+    """Render the ASC ASCs page."""
+    logging.info("Accessing ASC ASCs page")
+    # Now uses the refactored component-based template
+    return render_template('pages/ascs_new.html', title="ASC ASCs")
 
 @views_bp.route('/asc_kanban')
 @login_required

@@ -1,0 +1,210 @@
+2025-02-27 12:19:52 - INFO - ==================================================
+2025-02-27 12:19:52 - INFO - Starting scheduled update at 2025-02-27 12:19:52
+2025-02-27 12:19:52 - INFO - Starting login process...
+2025-02-27 12:19:52 - ERROR - Login error: Invalid URL '/IdentityManagement/Account/Login?ReturnUrl=%2FHome': No scheme supplied. Perhaps you meant https:///IdentityManagement/Account/Login?ReturnUrl=%2FHome?
+2025-02-27 12:19:52 - ERROR - Exiting due to login failure
+2025-02-27 12:28:43 - INFO - ==================================================
+2025-02-27 12:28:43 - INFO - Starting scheduled update at 2025-02-27 12:28:43
+2025-02-27 12:28:43 - INFO - Starting login process...
+2025-02-27 12:28:46 - INFO - Login successful
+2025-02-27 12:28:46 - INFO - Updating IER coverage...
+2025-02-27 12:29:03 - INFO - IER.json updated successfully. Size: 653 records
+2025-02-27 12:29:03 - INFO - Updating requirement coverage...
+2025-02-27 12:29:44 - INFO - SREQ.json updated successfully. Size: 4863 records
+2025-02-27 12:29:44 - INFO - Scheduled update completed successfully
+2025-02-27 12:29:44 - INFO - ==================================================
+2025-02-27 12:34:04 - INFO - ==================================================
+2025-02-27 12:34:04 - INFO - Starting scheduled update at 2025-02-27 12:34:04
+2025-02-27 12:34:04 - INFO - Starting login process...
+2025-02-27 12:34:07 - INFO - Login successful
+2025-02-27 12:34:07 - INFO - Updating IER coverage...
+2025-02-27 12:34:22 - INFO - IER.json updated successfully. Size: 653 records
+2025-02-27 12:34:22 - INFO - Updating requirement coverage...
+2025-02-27 12:35:06 - INFO - SREQ.json updated successfully. Size: 4863 records
+2025-02-27 12:35:06 - INFO - Scheduled update completed successfully
+2025-02-27 12:35:06 - INFO - ==================================================
+2025-03-15 11:54:11 - INFO - ==================================================
+2025-03-15 11:54:11 - INFO - Starting scheduled update at 2025-03-15 11:54:11
+2025-03-15 11:54:11 - INFO - Starting login process...
+2025-03-15 11:54:12 - INFO - Login successful
+2025-03-15 11:54:12 - INFO - Updating IER coverage...
+2025-03-15 11:54:24 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-15 11:54:24 - INFO - Updating requirement coverage...
+2025-03-15 11:57:05 - INFO - SREQ.json updated successfully. Size: 3373 records
+2025-03-15 11:57:05 - INFO - Scheduled update completed successfully
+2025-03-15 11:57:05 - INFO - ==================================================
+2025-03-15 12:05:07 - INFO - ==================================================
+2025-03-15 12:05:07 - INFO - Starting scheduled update at 2025-03-15 12:05:07
+2025-03-15 12:05:07 - INFO - Starting login process...
+2025-03-15 12:05:08 - INFO - Login successful
+2025-03-15 12:05:08 - INFO - Updating IER coverage...
+2025-03-15 12:05:22 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-15 12:05:22 - INFO - Updating requirement coverage...
+2025-03-15 12:08:10 - INFO - SREQ.json updated successfully. Size: 3373 records
+2025-03-15 12:08:10 - INFO - Scheduled update completed successfully
+2025-03-15 12:08:10 - INFO - ==================================================
+2025-03-15 21:30:02 - INFO - ==================================================
+2025-03-15 21:30:02 - INFO - Starting scheduled update at 2025-03-15 21:30:02
+2025-03-15 21:30:02 - INFO - Starting login process...
+2025-03-15 21:30:20 - INFO - Login successful
+2025-03-15 21:30:20 - INFO - Updating IER coverage...
+2025-03-15 21:30:42 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-15 21:30:42 - INFO - Updating requirement coverage...
+2025-03-15 21:33:45 - ERROR - Failed to update requirement coverage. Status code: 502
+2025-03-15 21:33:45 - WARNING - Scheduled update completed with errors
+2025-03-15 21:33:45 - INFO - ==================================================
+2025-03-16 11:36:04 - INFO - ==================================================
+2025-03-16 11:36:04 - INFO - Starting scheduled update at 2025-03-16 11:36:04
+2025-03-16 11:36:04 - INFO - Starting login process...
+2025-03-16 11:36:05 - INFO - Login successful
+2025-03-16 11:36:05 - INFO - Updating IER coverage...
+2025-03-16 11:36:21 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-16 11:36:21 - INFO - Updating requirement coverage...
+2025-03-16 11:39:13 - INFO - SREQ.json updated successfully. Size: 3373 records
+2025-03-16 11:39:13 - INFO - Scheduled update completed successfully
+2025-03-16 11:39:13 - INFO - ==================================================
+2025-03-16 21:30:01 - INFO - ==================================================
+2025-03-16 21:30:01 - INFO - Starting scheduled update at 2025-03-16 21:30:01
+2025-03-16 21:30:01 - INFO - Starting login process...
+2025-03-16 21:30:03 - INFO - Login successful
+2025-03-16 21:30:03 - INFO - Updating IER coverage...
+2025-03-16 21:30:23 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-16 21:30:23 - INFO - Updating requirement coverage...
+2025-03-16 21:33:54 - INFO - SREQ.json updated successfully. Size: 3373 records
+2025-03-16 21:33:54 - INFO - Scheduled update completed successfully
+2025-03-16 21:33:54 - INFO - ==================================================
+2025-03-17 21:30:02 - INFO - ==================================================
+2025-03-17 21:30:02 - INFO - Starting scheduled update at 2025-03-17 21:30:02
+2025-03-17 21:30:02 - INFO - Starting login process...
+2025-03-17 21:30:07 - INFO - Login successful
+2025-03-17 21:30:07 - INFO - Updating IER coverage...
+2025-03-17 21:30:31 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-17 21:30:31 - INFO - Updating requirement coverage...
+2025-03-17 21:33:56 - INFO - SREQ.json updated successfully. Size: 3372 records
+2025-03-17 21:33:56 - INFO - Scheduled update completed successfully
+2025-03-17 21:33:56 - INFO - ==================================================
+2025-03-18 20:26:55 - INFO - ==================================================
+2025-03-18 20:26:55 - INFO - Starting scheduled update at 2025-03-18 20:26:55
+2025-03-18 20:26:55 - INFO - Starting login process...
+2025-03-18 20:26:57 - INFO - Login successful
+2025-03-18 20:26:57 - INFO - Updating IER coverage...
+2025-03-18 20:27:14 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-18 20:27:14 - INFO - Updating requirement coverage...
+2025-03-18 20:30:23 - INFO - SREQ.json updated successfully. Size: 3382 records
+2025-03-18 20:30:23 - INFO - Scheduled update completed successfully
+2025-03-18 20:30:23 - INFO - ==================================================
+2025-03-18 21:30:02 - INFO - ==================================================
+2025-03-18 21:30:02 - INFO - Starting scheduled update at 2025-03-18 21:30:02
+2025-03-18 21:30:02 - INFO - Starting login process...
+2025-03-18 21:30:04 - INFO - Login successful
+2025-03-18 21:30:04 - INFO - Updating IER coverage...
+2025-03-18 21:30:28 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-18 21:30:28 - INFO - Updating requirement coverage...
+2025-03-18 21:34:04 - INFO - SREQ.json updated successfully. Size: 3388 records
+2025-03-18 21:34:04 - INFO - Scheduled update completed successfully
+2025-03-18 21:34:04 - INFO - ==================================================
+2025-03-19 21:30:01 - INFO - ==================================================
+2025-03-19 21:30:01 - INFO - Starting scheduled update at 2025-03-19 21:30:01
+2025-03-19 21:30:01 - INFO - Starting login process...
+2025-03-19 21:30:27 - ERROR - Failed to retrieve verification token
+2025-03-19 21:30:27 - ERROR - Exiting due to login failure
+2025-03-20 21:30:02 - INFO - ==================================================
+2025-03-20 21:30:02 - INFO - Starting scheduled update at 2025-03-20 21:30:02
+2025-03-20 21:30:02 - INFO - Starting login process...
+2025-03-20 21:30:04 - INFO - Login successful
+2025-03-20 21:30:04 - INFO - Updating IER coverage...
+2025-03-20 21:30:32 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-20 21:30:32 - INFO - Updating requirement coverage...
+2025-03-20 21:35:08 - INFO - SREQ.json updated successfully. Size: 3882 records
+2025-03-20 21:35:08 - INFO - Scheduled update completed successfully
+2025-03-20 21:35:08 - INFO - ==================================================
+2025-03-21 21:30:01 - INFO - ==================================================
+2025-03-21 21:30:01 - INFO - Starting scheduled update at 2025-03-21 21:30:01
+2025-03-21 21:30:01 - INFO - Starting login process...
+2025-03-21 21:30:04 - INFO - Login successful
+2025-03-21 21:30:04 - INFO - Updating IER coverage...
+2025-03-21 21:30:36 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-21 21:30:36 - INFO - Updating requirement coverage...
+2025-03-21 21:34:48 - INFO - SREQ.json updated successfully. Size: 3882 records
+2025-03-21 21:34:48 - INFO - Scheduled update completed successfully
+2025-03-21 21:34:48 - INFO - ==================================================
+2025-03-22 21:30:02 - INFO - ==================================================
+2025-03-22 21:30:02 - INFO - Starting scheduled update at 2025-03-22 21:30:02
+2025-03-22 21:30:02 - INFO - Starting login process...
+2025-03-22 21:30:05 - INFO - Login successful
+2025-03-22 21:30:05 - INFO - Updating IER coverage...
+2025-03-22 21:30:33 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-22 21:30:33 - INFO - Updating requirement coverage...
+2025-03-22 21:34:25 - INFO - SREQ.json updated successfully. Size: 3882 records
+2025-03-22 21:34:25 - INFO - Scheduled update completed successfully
+2025-03-22 21:34:25 - INFO - ==================================================
+2025-03-23 21:30:02 - INFO - ==================================================
+2025-03-23 21:30:02 - INFO - Starting scheduled update at 2025-03-23 21:30:02
+2025-03-23 21:30:02 - INFO - Starting login process...
+2025-03-23 21:30:05 - INFO - Login successful
+2025-03-23 21:30:05 - INFO - Updating IER coverage...
+2025-03-23 21:30:33 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-23 21:30:33 - INFO - Updating requirement coverage...
+2025-03-23 21:34:22 - INFO - SREQ.json updated successfully. Size: 3888 records
+2025-03-23 21:34:22 - INFO - Scheduled update completed successfully
+2025-03-23 21:34:22 - INFO - ==================================================
+2025-03-24 21:30:01 - INFO - ==================================================
+2025-03-24 21:30:01 - INFO - Starting scheduled update at 2025-03-24 21:30:01
+2025-03-24 21:30:01 - INFO - Starting login process...
+2025-03-24 21:30:05 - INFO - Login successful
+2025-03-24 21:30:05 - INFO - Updating IER coverage...
+2025-03-24 21:30:26 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-24 21:30:26 - INFO - Updating requirement coverage...
+2025-03-24 21:34:35 - INFO - SREQ.json updated successfully. Size: 3888 records
+2025-03-24 21:34:35 - INFO - Scheduled update completed successfully
+2025-03-24 21:34:35 - INFO - ==================================================
+2025-03-25 14:38:43 - INFO - ==================================================
+2025-03-25 14:38:43 - INFO - Starting scheduled update at 2025-03-25 14:38:43
+2025-03-25 14:38:43 - INFO - Starting login process...
+2025-03-25 14:38:44 - INFO - Login successful
+2025-03-25 14:38:44 - INFO - Updating IER coverage...
+2025-03-25 14:39:00 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-25 14:39:00 - INFO - Updating requirement coverage...
+2025-03-25 14:41:53 - INFO - SREQ.json updated successfully. Size: 3888 records
+2025-03-25 14:41:53 - INFO - Scheduled update completed successfully
+2025-03-25 14:41:53 - INFO - ==================================================
+2025-03-25 21:30:02 - INFO - ==================================================
+2025-03-25 21:30:02 - INFO - Starting scheduled update at 2025-03-25 21:30:02
+2025-03-25 21:30:02 - INFO - Starting login process...
+2025-03-25 21:30:04 - INFO - Login successful
+2025-03-25 21:30:04 - INFO - Updating IER coverage...
+2025-03-25 21:30:31 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-25 21:30:31 - INFO - Updating requirement coverage...
+2025-03-25 21:34:52 - INFO - SREQ.json updated successfully. Size: 3856 records
+2025-03-25 21:34:52 - INFO - Scheduled update completed successfully
+2025-03-25 21:34:52 - INFO - ==================================================
+2025-03-26 21:30:01 - INFO - ==================================================
+2025-03-26 21:30:01 - INFO - Starting scheduled update at 2025-03-26 21:30:01
+2025-03-26 21:30:01 - INFO - Starting login process...
+2025-03-26 21:30:03 - INFO - Login successful
+2025-03-26 21:30:03 - INFO - Updating IER coverage...
+2025-03-26 21:30:25 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-26 21:30:25 - INFO - Updating requirement coverage...
+2025-03-26 21:34:19 - INFO - SREQ.json updated successfully. Size: 3837 records
+2025-03-26 21:34:19 - INFO - Scheduled update completed successfully
+2025-03-26 21:34:19 - INFO - ==================================================
+2025-03-27 21:30:01 - INFO - ==================================================
+2025-03-27 21:30:01 - INFO - Starting scheduled update at 2025-03-27 21:30:01
+2025-03-27 21:30:01 - INFO - Starting login process...
+2025-03-27 21:30:03 - INFO - Login successful
+2025-03-27 21:30:03 - INFO - Updating IER coverage...
+2025-03-27 21:30:30 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-27 21:30:30 - INFO - Updating requirement coverage...
+2025-03-27 21:34:13 - INFO - SREQ.json updated successfully. Size: 3837 records
+2025-03-27 21:34:13 - INFO - Scheduled update completed successfully
+2025-03-27 21:34:13 - INFO - ==================================================
+2025-03-28 21:30:02 - INFO - ==================================================
+2025-03-28 21:30:02 - INFO - Starting scheduled update at 2025-03-28 21:30:02
+2025-03-28 21:30:02 - INFO - Starting login process...
+2025-03-28 21:30:04 - INFO - Login successful
+2025-03-28 21:30:04 - INFO - Updating IER coverage...
+2025-03-28 21:30:25 - INFO - IER.json updated successfully. Size: 653 records
+2025-03-28 21:30:25 - INFO - Updating requirement coverage...
+2025-03-28 21:34:01 - INFO - SREQ.json updated successfully. Size: 3837 records
+2025-03-28 21:34:01 - INFO - Scheduled update completed successfully
+2025-03-28 21:34:01 - INFO - ==================================================

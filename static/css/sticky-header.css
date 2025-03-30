@@ -1,0 +1,35 @@
+/* Sticky Header Styles - Applied to all tables */
+.test-cases-table-container {
+  height: 70vh; /* Use 70% of viewport height to maximize space usage */
+  position: relative; /* Create a positioning context for sticky elements */
+  overflow-y: auto; /* Enable vertical scrolling within container */
+  margin-bottom: 20px; /* Add space below table */
+}
+
+/* Ensure table headers are sticky */
+.test-cases-table thead th,
+.table thead th {
+  position: sticky !important;
+  top: 0 !important; /* Stick to top of container */
+  z-index: 10;
+  background-color: var(--table-header-bg, #f8f9fa);
+  box-shadow: 0 1px 0 0 var(--border-color, #dee2e6);
+}
+
+/* Fix for Bootstrap tables */
+.table-responsive {
+  position: relative; /* Create a positioning context */
+  overflow-y: visible !important; /* Let container handle vertical scrolling */
+  height: 100%; /* Fill container height */
+}
+
+/* Ensure headers have appropriate z-index */
+thead {
+  z-index: 2;
+  position: relative;
+}
+
+tbody {
+  position: relative;
+  z-index: 1;
+}

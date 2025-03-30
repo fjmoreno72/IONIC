@@ -88,15 +88,27 @@ def update_gps_from_excel():
     # --- Reconstruct the final list ---
     final_gps_list = []
 
-    # 1. Keep existing items that were found in Excel (either updated or untouched description-wise)
-    #    Preserve original order as much as possible.
+    # 1. Process existing items: Keep all, update descriptions if found in Excel
+    #    Preserve original order.
+    processed_names = set() # Keep track of names already added to avoid duplicates if JSON had them
     for item in gps_data:
-        if 'name' in item and item['name'] in excel_names:
-             # If it was updated, use the updated reference, otherwise use the original item
-            final_gps_list.append(updated_entries.get(item['name'], item))
+        if 'name' in item:
+            name = item['name']
+            processed_names.add(name)
+            if name in updated_entries:
+                # Use the entry with the updated description
+                final_gps_list.append(updated_entries[name])
+            else:
+                # Keep the original item as is
+                final_gps_list.append(item)
+        else:
+             # Keep items without a 'name' field as well, if any
+             final_gps_list.append(item)
 
-    # 2. Add completely new entries from Excel
-    final_gps_list.extend(new_entries)
+    # 2. Add completely new entries from Excel (those not already in the original JSON)
+    for new_entry in new_entries:
+        if new_entry['name'] not in processed_names:
+             final_gps_list.append(new_entry)
 
     # --- ID Generation ---
     # Find the highest existing numeric ID to avoid collisions
@@ -123,10 +135,10 @@ def update_gps_from_excel():
     removed_names = original_gps_names - excel_names
     if removed_names:
         print("\n--- WARNING ---")
-        print("The following GPs were found in gps.json but not in AssetTypes.xlsx:")
+        print("The following GPs were found in gps.json but ARE NOT present in AssetTypes.xlsx:")
         for name in sorted(list(removed_names)):
             print(f"- {name}")
-        print("These entries have been REMOVED from the updated gps.json file.")
+        print("These entries have been KEPT in the gps.json file but were not updated.")
         print("---------------")
 
     print(f"\nWriting updated data to {JSON_PATH}...")

@@ -1,0 +1,243 @@
+/* design-system.css - Color palette and shared design tokens */
+
+/* ====================== Color System ====================== */
+:root {
+  /* Primary palette */
+  --primary-color: #4472C4;
+  --primary-light: #6889D0;
+  --primary-dark: #365EAA;
+  --primary-contrast: #FFFFFF;
+  
+  /* Secondary palette */
+  --secondary-color: #6c757d;
+  --secondary-light: #868e96;
+  --secondary-dark: #495057;
+  --secondary-contrast: #FFFFFF;
+  
+  /* Success palette */
+  --success-color: #28a745;
+  --success-light: #48c86c;
+  --success-dark: #1e7e34;
+  --success-contrast: #FFFFFF;
+  
+  /* Warning palette */
+  --warning-color: #ffc107;
+  --warning-light: #ffcd39;
+  --warning-dark: #d39e00;
+  --warning-contrast: #212529;
+  
+  /* Danger palette */
+  --danger-color: #dc3545;
+  --danger-light: #e4606d;
+  --danger-dark: #bd2130;
+  --danger-contrast: #FFFFFF;
+  
+  /* Neutral palette */
+  --neutral-50: #f8f9fa;
+  --neutral-100: #e9ecef;
+  --neutral-200: #dee2e6;
+  --neutral-300: #ced4da;
+  --neutral-400: #adb5bd;
+  --neutral-500: #6c757d;
+  --neutral-600: #495057;
+  --neutral-700: #343a40;
+  --neutral-800: #212529;
+  --neutral-900: #121416;
+  
+  /* Application colors */
+  --text-primary: var(--neutral-800);
+  --text-secondary: var(--neutral-600);
+  --text-muted: var(--neutral-500);
+  --text-disabled: var(--neutral-400);
+  
+  --background-main: #FFFFFF;
+  --background-subtle: var(--neutral-50);
+  --background-muted: var(--neutral-100);
+  --background-active: var(--neutral-200);
+  
+  --border-color: var(--neutral-200);
+  --border-color-focus: var(--primary-color);
+  
+  --table-header-bg: var(--neutral-50);
+  --table-row-hover: rgba(0, 0, 0, 0.05);
+  --table-border: var(--neutral-200);
+  
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --focus-ring: rgba(68, 114, 196, 0.25);
+  
+  /* Component colors */
+  --btn-primary-bg: var(--primary-color);
+  --btn-primary-text: var(--primary-contrast);
+  
+  --btn-secondary-bg: var(--secondary-color);
+  --btn-secondary-text: var(--secondary-contrast);
+  
+  --input-border: var(--neutral-300);
+  --input-bg: #FFFFFF;
+  --input-text: var(--text-primary);
+  --input-placeholder: var(--text-muted);
+  
+  /* Icon colors */
+  --icon-primary: var(--primary-color);
+  --icon-secondary: var(--neutral-600);
+  --icon-muted: var(--neutral-500);
+}
+
+/* Dark Theme Colors */
+[data-theme="dark"] {
+  /* Application colors - dark mode */
+  --text-primary: var(--neutral-200);
+  --text-secondary: var(--neutral-300);
+  --text-muted: var(--neutral-400);
+  --text-disabled: var(--neutral-500);
+  
+  --background-main: var(--neutral-800);
+  --background-subtle: var(--neutral-700);
+  --background-muted: var(--neutral-600);
+  --background-active: var(--neutral-600);
+  
+  --border-color: var(--neutral-600);
+  --border-color-focus: var(--primary-light);
+  
+  --table-header-bg: var(--neutral-800);
+  --table-row-hover: rgba(255, 255, 255, 0.05);
+  --table-border: var(--neutral-700);
+  
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --focus-ring: rgba(104, 137, 208, 0.5);
+  
+  /* Component colors - dark mode */
+  --btn-primary-bg: var(--primary-color);
+  --btn-primary-text: var(--primary-contrast);
+  
+  --btn-secondary-bg: var(--neutral-600);
+  --btn-secondary-text: var(--neutral-200);
+  
+  --input-border: var(--neutral-600);
+  --input-bg: var(--neutral-700);
+  --input-text: var(--neutral-200);
+  --input-placeholder: var(--neutral-500);
+  
+  /* Icon colors - dark mode */
+  --icon-primary: var(--primary-light);
+  --icon-secondary: var(--neutral-400);
+  --icon-muted: var(--neutral-500);
+}
+
+/* ====================== Typography ====================== */
+:root {
+  --font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  /* Font sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+  --line-height-loose: 1.75;
+  
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+/* ====================== Spacing System ====================== */
+:root {
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 2.5rem;    /* 40px */
+  --space-8: 3rem;      /* 48px */
+  
+  /* Component-specific spacing */
+  --content-padding: var(--space-4);
+  --table-cell-padding-y: var(--space-2);
+  --table-cell-padding-x: var(--space-3);
+  --input-padding: var(--space-2) var(--space-3);
+  --btn-padding: var(--space-2) var(--space-4);
+}
+
+/* ====================== Borders & Shadows ====================== */
+:root {
+  /* Border radiuses */
+  --border-radius-sm: 0.25rem;   /* 4px */
+  --border-radius-md: 0.375rem;  /* 6px */
+  --border-radius-lg: 0.5rem;    /* 8px */
+  --border-radius-xl: 1rem;      /* 16px */
+  --border-radius-full: 9999px;
+  
+  /* Border styles */
+  --border-width: 1px;
+  --border-style: solid;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* ====================== Transitions ====================== */
+:root {
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --transition-slow: 350ms;
+  --transition-timing-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-timing-linear: linear;
+}
+
+/* ====================== Z-index Layers ====================== */
+:root {
+  --z-negative: -1;       /* Below normal flow */
+  --z-normal: 0;          /* Default, the normal flow of the document */
+  --z-tooltip: 10;        /* For tooltips and small UI elements */
+  --z-sticky: 100;        /* For sticky elements like headers */
+  --z-drawer: 200;        /* For drawers that slide in */
+  --z-dropdown: 300;      /* For dropdowns */
+  --z-modal: 400;         /* For modals and dialogs */
+  --z-popover: 500;       /* For popovers */
+  --z-toast: 600;         /* For notifications and toasts */
+  --z-overlay: 900;       /* For full-screen overlays */
+  --z-maximum: 9999;      /* For elements that should always be on top */
+}
+
+/* ====================== Utility Classes ====================== */
+/* Useful color classes that can be applied directly to elements */
+.text-primary { color: var(--primary-color) !important; }
+.text-secondary { color: var(--secondary-color) !important; }
+.text-success { color: var(--success-color) !important; }
+.text-warning { color: var(--warning-color) !important; }
+.text-danger { color: var(--danger-color) !important; }
+.text-muted { color: var(--text-muted) !important; }
+
+.bg-primary { background-color: var(--primary-color) !important; }
+.bg-secondary { background-color: var(--secondary-color) !important; }
+.bg-success { background-color: var(--success-color) !important; }
+.bg-warning { background-color: var(--warning-color) !important; }
+.bg-danger { background-color: var(--danger-color) !important; }
+.bg-muted { background-color: var(--background-muted) !important; }
+.bg-subtle { background-color: var(--background-subtle) !important; }
+
+/* Border utilities */
+.border-primary { border-color: var(--primary-color) !important; }
+.border-secondary { border-color: var(--secondary-color) !important; }
+.border-subtle { border-color: var(--border-color) !important; }
+
+/* Shadow utilities */
+.shadow-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow-md { box-shadow: var(--shadow-md) !important; }
+.shadow-lg { box-shadow: var(--shadow-lg) !important; }
+.shadow-xl { box-shadow: var(--shadow-xl) !important; }

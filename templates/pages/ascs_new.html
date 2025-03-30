@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCs - IOCore2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dataTable.css') }}">
+    <style>
+        /* ASCs-specific styles */
+        .flag-icon {
+            width: 30px;
+            height: auto;
+            vertical-align: middle;
+            display: inline-block !important;
+        }
+        
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 0.25rem;
+            height: 0.75rem;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 0.25rem;
+            background-color: #007bff;
+            text-align: center;
+            font-size: 0.625rem;
+            line-height: 0.75rem;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        [data-theme="dark"] .progress-bar-container {
+            background-color: #343a40;
+        }
+
+        /* Status badge styling */
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            display: inline-block;
+        }
+        
+        .status-initial {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .status-in-progress {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .status-in-review {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .status-validated {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .status-deprecated {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+    <script>
+        // Apply theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedDarkMode = localStorage.getItem('theme') === 'dark';
+            if (storedDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+            }
+        });
+    </script>
+</head>
+<body>
+    {% include 'nav_menu.html' %}
+
+    <div class="container-fluid px-4 mt-4">
+        <div class="test-cases-container">
+            <div class="test-cases-header">
+                <h2><img src="{{ url_for('static', filename='ASC/icons/ASCs.svg') }}" alt="ASC Icon" class="header-icon">ASCs (Affiliate Service Configurations)</h2>
+            </div>
+            
+            <div class="controls-container">
+                <div class="filters-container">
+                    <div class="filter-item search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="ascSearchInput" placeholder="Search ASCs..." class="form-control form-control-sm">
+                    </div>
+                    <div class="filter-item">
+                        <select id="affiliateFilter" class="form-select form-select-sm">
+                            <option value="">All Affiliates</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="serviceFilter" class="form-select form-select-sm">
+                            <option value="">All Services</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="statusFilter" class="form-select form-select-sm">
+                            <option value="">All Statuses</option>
+                            <option value="Initial">Initial</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="In Review">In Review</option>
+                            <option value="Validated">Validated</option>
+                            <option value="Deprecated">Deprecated</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="environmentFilter" class="form-select form-select-sm">
+                            <option value="">All Environments</option>
+                            <option value="Static">Static</option>
+                            <option value="Deployable">Deployable</option>
+                            <option value="Army">Army</option>
+                            <option value="Navy">Navy</option>
+                            <option value="Joint">Joint</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="actions-container">
+                    <button id="addAscButton" class="btn btn-primary btn-sm" disabled>
+                        <i class="fas fa-plus me-1"></i> Add ASC
+                    </button>
+                </div>
+            </div>
+
+            {# Include the data table component #}
+            {% with 
+                table_id = "ascsTable",
+                table_body_id = "ascsTableBody",
+                items_per_page_id = "itemsPerPageSelect",
+                page_info_id = "pageInfo",
+                prev_button_id = "prevPageButton",
+                next_button_id = "nextPageButton",
+                columns = [
+                    {'label': 'ID', 'sortable': true, 'sort_key': 'id', 'width': '7%'},
+                    {'label': 'Flag', 'sortable': false, 'width': '5%'},
+                    {'label': 'Affiliate', 'sortable': true, 'sort_key': 'affiliateId', 'width': '15%'},
+                    {'label': 'Environment', 'sortable': true, 'sort_key': 'environment', 'width': '10%'},
+                    {'label': 'Service', 'sortable': true, 'sort_key': 'serviceId', 'width': '13%'},
+                    {'label': 'Spiral', 'sortable': true, 'sort_key': 'spiral', 'width': '5%'},
+                    {'label': 'Status', 'sortable': true, 'sort_key': 'status', 'width': '10%'},
+                    {'label': 'Progress', 'sortable': true, 'sort_key': 'progress', 'width': '10%'},
+                    {'label': 'GP Instances', 'sortable': false, 'width': '25%'}
+                ]
+            %}
+                {% include 'components/dataTable.html' %}
+            {% endwith %}
+            
+            <div id="noResults" class="no-results d-none">
+                <p>No ASCs found matching your criteria.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌓</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme toggling function - copied from original implementation
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Also update Bootstrap theme
+            document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        }
+    </script>
+    <script type="module" src="{{ url_for('static', filename='js/pages/ascs_new.js') }}"></script>
+</body>
+</html>

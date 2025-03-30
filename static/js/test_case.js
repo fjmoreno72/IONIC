@@ -119,7 +119,7 @@ function updatePaginationControls() {
     // Adjust currentPage if it's out of bounds
     currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
-    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages} (${totalItems} items total)`;
     prevPageButton.disabled = currentPage === 1;
     nextPageButton.disabled = currentPage === totalPages;
 

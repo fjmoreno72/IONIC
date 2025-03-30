@@ -94,30 +94,30 @@ def update_sps_from_excel():
             }
             new_entries.append(new_entry)
 
-    # Combine existing (updated and untouched) and new entries
+    # --- Reconstruct the final list ---
     final_sps_list = []
-    processed_names = set()
 
-    # Add updated entries first, preserving order as much as possible from original JSON
+    # 1. Process existing items: Keep all, update descriptions/versions if found in Excel
+    #    Preserve original order.
+    processed_names = set() # Keep track of names already added to avoid duplicates if JSON had them
     for item in sps_data:
-        if 'name' in item and item['name'] in updated_entries:
-            final_sps_list.append(updated_entries[item['name']])
-            processed_names.add(item['name'])
-        elif 'name' in item and item['name'] in original_sps_names and item['name'] not in excel_names:
-             # This item was in original JSON but not in Excel - skip it here, will be warned later
-             continue
-        elif 'name' in item and item['name'] in original_sps_names:
-             # This item was in original JSON, not updated, and IS in excel (edge case, shouldn't happen with current logic but safe)
-             # Or it's an item without a name? Keep it if it doesn't have a name we track.
+        if 'name' in item:
+            name = item['name']
+            processed_names.add(name)
+            if name in updated_entries:
+                # Use the entry with the updated description/versions
+                final_sps_list.append(updated_entries[name])
+            else:
+                # Keep the original item as is (it might be one not in Excel, or one in Excel but unchanged)
+                final_sps_list.append(item)
+        else:
+             # Keep items without a 'name' field as well, if any
              final_sps_list.append(item)
-             if 'name' in item:
-                 processed_names.add(item['name'])
-        elif 'name' not in item: # Keep items without a name field if they existed
-            final_sps_list.append(item)
 
-
-    # Add completely new entries from Excel
-    final_sps_list.extend(new_entries)
+    # 2. Add completely new entries from Excel (those not already in the original JSON)
+    for new_entry in new_entries:
+        if new_entry['name'] not in processed_names:
+             final_sps_list.append(new_entry)
 
     # --- ID Generation (Placeholder) ---
     # Find the highest existing numeric ID to avoid collisions if we add new ones
@@ -143,10 +143,10 @@ def update_sps_from_excel():
     removed_names = original_sps_names - excel_names
     if removed_names:
         print("\n--- WARNING ---")
-        print("The following product types were found in sps.json but not in ProductTypes.xlsx:")
+        print("The following product types were found in sps.json but ARE NOT present in ProductTypes.xlsx:")
         for name in sorted(list(removed_names)):
             print(f"- {name}")
-        print("These entries have been REMOVED from the updated sps.json file.")
+        print("These entries have been KEPT in the sps.json file but were not updated.")
         print("---------------")
 
 

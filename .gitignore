@@ -5,3 +5,4 @@ app-ionic.log
 app-ionic.log
 .DS_Store
 .gitignore
+static/unmapped_sreqs.log

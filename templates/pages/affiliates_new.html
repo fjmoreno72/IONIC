@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliates - IOCore2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dataTable.css') }}">
+    <style>
+        /* Affiliates-specific styles */
+        .flag-icon {
+            width: 30px;
+            height: auto;
+            vertical-align: middle;
+            display: inline-block !important;
+        }
+    </style>
+    <script>
+        // Apply theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedDarkMode = localStorage.getItem('theme') === 'dark';
+            if (storedDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+            }
+        });
+    </script>
+</head>
+<body>
+    {% include 'nav_menu.html' %}
+
+    <div class="container-fluid px-4 mt-4">
+        <div class="test-cases-container">
+            <div class="test-cases-header">
+                <h2><img src="{{ url_for('static', filename='ASC/image/flags/FMN-ASC.png') }}" alt="ASC Icon" class="header-icon">Affiliates</h2>
+            </div>
+            
+            <div class="controls-container">
+                <div class="filters-container">
+                    <div class="filter-item search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="nameSearchInput" placeholder="Filter by name..." class="form-control form-control-sm">
+                    </div>
+                    <div class="filter-item">
+                        <select id="typeFilter" class="form-select form-select-sm">
+                            <option value="">All Types</option>
+                            <option value="A">Type A</option>
+                            <option value="B">Type B</option>
+                            <option value="C">Type C</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="environmentFilter" class="form-select form-select-sm">
+                            <option value="">All Environments</option>
+                            <option value="Static">Static</option>
+                            <option value="Deployable">Deployable</option>
+                            <option value="Army">Army</option>
+                            <option value="Navy">Navy</option>
+                            <option value="Joint">Joint</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="actions-container">
+                    <button id="addAffiliateButton" class="btn btn-primary btn-sm" disabled>
+                        <i class="fas fa-plus me-1"></i> Add Affiliate
+                    </button>
+                </div>
+            </div>
+
+            {# Include the data table component #}
+            {% with 
+                table_id = "affiliatesTable",
+                table_body_id = "affiliatesTableBody",
+                items_per_page_id = "itemsPerPageSelect",
+                page_info_id = "pageInfo",
+                prev_button_id = "prevPageButton",
+                next_button_id = "nextPageButton",
+                columns = [
+                    {'label': 'ID', 'sortable': true, 'sort_key': 'id', 'width': '10%'},
+                    {'label': 'Name', 'sortable': true, 'sort_key': 'name', 'width': '45%'},
+                    {'label': 'Environments', 'sortable': true, 'sort_key': 'environments', 'width': '25%'},
+                    {'label': 'Type', 'sortable': true, 'sort_key': 'type', 'width': '10%'},
+                    {'label': 'Flag', 'sortable': false, 'width': '10%'}
+                ]
+            %}
+                {% include 'components/dataTable.html' %}
+            {% endwith %}
+            
+            <div id="noResults" class="no-results d-none">
+                <p>No affiliates found matching your criteria.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌓</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme toggling function - copied from original implementation
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Also update Bootstrap theme
+            document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        }
+    </script>
+    <script type="module" src="{{ url_for('static', filename='js/pages/affiliates_new.js') }}"></script>
+</body>
+</html>

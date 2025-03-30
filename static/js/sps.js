@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let totalPages = Math.ceil(totalItems / itemsPerPage); // Changed const to let
         totalPages = totalPages === 0 ? 1 : totalPages; // Ensure at least 1 page
 
-        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages} (${totalItems} items total)`;
 
         prevPageButton.disabled = currentPage === 1;
         nextPageButton.disabled = currentPage === totalPages;
@@ -171,14 +171,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Dark Mode Handling ---
     const applyDarkMode = (isDark) => {
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : '');
         document.documentElement.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
     };
-
-    // Apply initial dark mode state based on localStorage
-    const storedDarkMode = localStorage.getItem('darkMode');
-    applyDarkMode(storedDarkMode === 'true');
-
-    // Listen for dark mode changes from nav_menu.js
+    const storedDarkMode = localStorage.getItem('theme') === 'dark';
+    applyDarkMode(storedDarkMode);
     window.addEventListener('darkModeChanged', (event) => {
         applyDarkMode(event.detail.isDark);
     });
@@ -192,6 +189,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial call for resizing setup
     setupColumnResizing();
 });
+
+// Theme toggling function
+function toggleTheme() {
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // Also update Bootstrap theme
+    document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+}
 
 // --- Column Resizing Functionality (from test_case.js) ---
 function setupColumnResizing() {

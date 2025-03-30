@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> {# Added Font Awesome #}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sticky-header.css') }}">
     <style>
         body {
             padding-top: 56px; /* Adjust based on navbar height */
@@ -176,7 +177,7 @@
                  </div>
             </div>
 
-        <div class="table-responsive">
+        <div class="table-responsive test-cases-table-container">
             <table class="table table-striped table-hover table-sm test-cases-table"> {# Added test-cases-table class #}
                 <thead>
                     <tr> {# Reordered columns, added sortable classes/icons #}
@@ -216,6 +217,8 @@
 
        </div> {# Added closing div for test-cases-container #}
     </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     {# Ensure Font Awesome is loaded if not already included elsewhere #}

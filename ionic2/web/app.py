@@ -5,7 +5,7 @@ import logging
 import os
 from pathlib import Path
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, Response, make_response # Added Response, make_response
 
 from ionic2.config import settings
 from ionic2.utils.logging import configure_logging
@@ -46,6 +46,24 @@ def create_app():
     logging.info(f"IOCore2 Coverage Analysis Tool started - {'DEBUG' if app.debug else 'PRODUCTION'} mode")
     logging.info(f"Static files: {app.static_folder}")
     logging.info(f"Template files: {app.template_folder}")
+
+    # Add favicon route to prevent 404s
+    @app.route('/favicon.ico')
+    def favicon():
+        # Return an empty 204 No Content response
+        return make_response('', 204)
+
+    # Add security headers after each request
+    @app.after_request
+    def add_security_headers(response: Response):
+        # Disable FLoC/Interest Cohort
+        response.headers.setdefault('Permissions-Policy', 'interest-cohort=()')
+        # Add other common security headers (optional but recommended)
+        # response.headers['X-Content-Type-Options'] = 'nosniff'
+        # response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+        # response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+        # response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains' # If using HTTPS
+        return response
     
     return app
 

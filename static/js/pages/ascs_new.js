@@ -274,12 +274,12 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         
         columns: [
-          { key: 'id', label: 'ID', sortable: true },
+          { key: 'id', label: 'ID', sortable: true},
           { 
             key: 'affiliateId', 
             label: 'Flag', 
             sortable: false,
-            cellClass: 'text-center',
+            //cellClass: 'text-center',
             render: (value) => {
               const affiliate = getAffiliateById(value);
               if (affiliate && affiliate.flagPath) {
@@ -312,11 +312,12 @@ document.addEventListener('DOMContentLoaded', function() {
             key: 'status', 
             label: 'Status', 
             sortable: true,
-            cellClass: 'text-center',
+            //cellClass: 'text-center',
             render: (value) => {
               const statusClass = `status-badge status-${value.toLowerCase().replace(' ', '-')}`;
               return `<span class="${statusClass}">${value}</span>`;
             }
+            
           },
           { 
             key: 'progress', 

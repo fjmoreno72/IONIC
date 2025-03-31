@@ -2,10 +2,15 @@
 View routes for the IOCore2 Coverage Analysis Tool.
 """
 import logging
-from flask import Blueprint, render_template, redirect, url_for, request, session # Import session
+import os
+import json
+import uuid
+from pathlib import Path
+from flask import Blueprint, render_template, redirect, url_for, request, session, jsonify # Import session
 
 from ionic2.core.auth import login_required
 from ionic2.config import settings
+from werkzeug.utils import secure_filename
 
 # Create blueprint
 views_bp = Blueprint('views', __name__)
@@ -245,3 +250,189 @@ def asc_kanban():
     """Render placeholder page for ASC Kanban."""
     logging.info("Accessing ASC Kanban (WIP)")
     return render_template('work_in_progress.html')
+
+# --- API Routes for Affiliates ---
+
+@views_bp.route('/api/affiliates/upload-flag', methods=['POST'])
+@login_required
+def upload_affiliate_flag():
+    """
+    API endpoint to handle flag image uploads for affiliates.
+    
+    Returns:
+        JSON response with the saved file path or error message.
+    """
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file part in the request'}), 400
+            
+        file = request.files['file']
+        
+        if file.filename == '':
+            return jsonify({'error': 'No file selected'}), 400
+            
+        # Get affiliate name from request to name the flag
+        affiliate_name = request.form.get('affiliateName', '')
+        if not affiliate_name:
+            return jsonify({'error': 'Affiliate name is required'}), 400
+            
+        # Sanitize the name for filename (remove spaces, special chars)
+        safe_name = secure_filename(affiliate_name.lower().replace(' ', '_'))
+        filename = f"flag_{safe_name}.png"
+        
+        # Ensure the flags directory exists
+        flags_dir = Path(settings.STATIC_DIR) / "ASC" / "image" / "flags"
+        os.makedirs(flags_dir, exist_ok=True)
+        
+        # Save the file
+        file_path = flags_dir / filename
+        file.save(file_path)
+        
+        # Return the relative path for storage in the data file
+        relative_path = f"./image/flags/{filename}"
+        return jsonify({
+            'success': True,
+            'path': relative_path,
+            'message': 'Flag uploaded successfully'
+        })
+        
+    except Exception as e:
+        logging.exception(f"Error uploading flag: {str(e)}")
+        return jsonify({'error': f'Error uploading flag: {str(e)}'}), 500
+
+@views_bp.route('/api/affiliates', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@login_required
+def manage_affiliates():
+    """
+    API endpoint to manage affiliates data.
+    
+    Methods:
+        GET: Return all affiliates
+        POST: Add a new affiliate
+        PUT: Update an existing affiliate
+        DELETE: Delete an affiliate
+    
+    Returns:
+        JSON response with the result of the operation
+    """
+    affiliates_path = Path(settings.STATIC_DIR) / "ASC" / "data" / "affiliates.json"
+    
+    # Ensure the data directory exists
+    os.makedirs(os.path.dirname(affiliates_path), exist_ok=True)
+    
+    try:
+        # GET: Return all affiliates
+        if request.method == 'GET':
+            if not affiliates_path.exists():
+                return jsonify([])
+                
+            with open(affiliates_path, 'r') as f:
+                affiliates = json.load(f)
+                
+            return jsonify(affiliates)
+            
+        # POST: Add a new affiliate
+        elif request.method == 'POST':
+            # Load existing data
+            if affiliates_path.exists():
+                with open(affiliates_path, 'r') as f:
+                    affiliates = json.load(f)
+            else:
+                affiliates = []
+                
+            new_affiliate = request.json
+            
+            # Generate a new ID
+            last_id = 0
+            if affiliates:
+                # Extract the numeric part of the last ID
+                try:
+                    last_id = int(affiliates[-1]['id'].split('-')[1])
+                except (IndexError, ValueError):
+                    pass
+                    
+            new_id = f"AFF-{str(last_id + 1).zfill(4)}"
+            new_affiliate['id'] = new_id
+            
+            # Add to list
+            affiliates.append(new_affiliate)
+            
+            # Save back to file
+            with open(affiliates_path, 'w') as f:
+                json.dump(affiliates, f, indent=2)
+                
+            return jsonify({
+                'success': True,
+                'affiliate': new_affiliate,
+                'message': 'Affiliate added successfully'
+            })
+            
+        # PUT: Update an existing affiliate
+        elif request.method == 'PUT':
+            # Load existing data
+            if not affiliates_path.exists():
+                return jsonify({'error': 'Affiliates file not found'}), 404
+                
+            with open(affiliates_path, 'r') as f:
+                affiliates = json.load(f)
+                
+            updated_affiliate = request.json
+            
+            # Find and update the affiliate
+            affiliate_id = updated_affiliate.get('id')
+            if not affiliate_id:
+                return jsonify({'error': 'Affiliate ID is required'}), 400
+                
+            found = False
+            for i, affiliate in enumerate(affiliates):
+                if affiliate.get('id') == affiliate_id:
+                    affiliates[i] = updated_affiliate
+                    found = True
+                    break
+                    
+            if not found:
+                return jsonify({'error': f'Affiliate with ID {affiliate_id} not found'}), 404
+                
+            # Save back to file
+            with open(affiliates_path, 'w') as f:
+                json.dump(affiliates, f, indent=2)
+                
+            return jsonify({
+                'success': True,
+                'affiliate': updated_affiliate,
+                'message': 'Affiliate updated successfully'
+            })
+        
+        # DELETE: Delete an affiliate
+        elif request.method == 'DELETE':
+            # Load existing data
+            if not affiliates_path.exists():
+                return jsonify({'error': 'Affiliates file not found'}), 404
+                
+            with open(affiliates_path, 'r') as f:
+                affiliates = json.load(f)
+            
+            # Get the affiliate ID from query params
+            affiliate_id = request.args.get('id')
+            if not affiliate_id:
+                return jsonify({'error': 'Affiliate ID is required'}), 400
+            
+            # Find and remove the affiliate
+            initial_count = len(affiliates)
+            affiliates = [a for a in affiliates if a.get('id') != affiliate_id]
+            
+            if len(affiliates) == initial_count:
+                return jsonify({'error': f'Affiliate with ID {affiliate_id} not found'}), 404
+            
+            # Save back to file
+            with open(affiliates_path, 'w') as f:
+                json.dump(affiliates, f, indent=2)
+            
+            return jsonify({
+                'success': True,
+                'message': f'Affiliate with ID {affiliate_id} deleted successfully'
+            })
+            
+    except Exception as e:
+        logging.exception(f"Error managing affiliates: {str(e)}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500

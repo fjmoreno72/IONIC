@@ -21,7 +21,8 @@
     "name": "Austria",
     "type": "B",
     "environments": [
-      "Static"
+      "Static",
+      "National"
     ],
     "flagPath": "./image/flags/flag_austria.png",
     "id": "AFF-0003"
@@ -119,7 +120,9 @@
   {
     "name": "France",
     "type": "A",
-    "environments": [],
+    "environments": [
+      "Static"
+    ],
     "flagPath": "./image/flags/flag_france.png",
     "id": "AFF-0014"
   },

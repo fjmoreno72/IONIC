@@ -80,6 +80,11 @@ export class DataTable {
         return response.json();
       })
       .then(data => {
+        // Process data through onDataFetched callback if provided
+        if (typeof this.onDataFetched === 'function') {
+          data = this.onDataFetched(data) || data;
+        }
+        
         this.allItems = data;
         
         // Call onFetchComplete if provided

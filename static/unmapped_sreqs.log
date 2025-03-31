@@ -20212,3 +20212,344 @@ jinja2.exceptions.TemplateNotFound: test_case_modal.html
 2025-03-31 16:07:57 - Successfully loaded 906 actors into map in 0.00 seconds.
 2025-03-31 16:07:57 - 127.0.0.1 - - [31/Mar/2025 16:07:57] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
 2025-03-31 16:07:57 - 127.0.0.1 - - [31/Mar/2025 16:07:57] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-03-31 16:11:45 - Logging system configured with level INFO
+2025-03-31 16:11:45 - Starting IOCore2 Coverage Analysis Tool
+2025-03-31 16:11:45 - Configured Flask app logging with level INFO
+2025-03-31 16:11:45 - Configured Flask app logging with level INFO
+2025-03-31 16:11:45 - Logging system configured with level INFO
+2025-03-31 16:11:45 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-03-31 16:11:45 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-31 16:11:45 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-31 16:11:45 - Running in PRODUCTION mode
+2025-03-31 16:11:45 - Listening on 0.0.0.0:5005
+2025-03-31 16:11:45 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.79.8.144:5005
+2025-03-31 16:11:45 - [33mPress CTRL+C to quit[0m
+2025-03-31 16:11:49 - Accessing test cases
+2025-03-31 16:11:49 - 127.0.0.1 - - [31/Mar/2025 16:11:49] "GET /test_cases HTTP/1.1" 200 -
+2025-03-31 16:11:49 - 127.0.0.1 - - [31/Mar/2025 16:11:49] "GET /static/iocore2_logo.png HTTP/1.1" 200 -
+2025-03-31 16:11:49 - 127.0.0.1 - - [31/Mar/2025 16:11:49] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-03-31 16:11:49 - 127.0.0.1 - - [31/Mar/2025 16:11:49] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-03-31 16:11:50 - 127.0.0.1 - - [31/Mar/2025 16:11:50] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 16:11:50 - 127.0.0.1 - - [31/Mar/2025 16:11:50] "GET /static/pattern.json HTTP/1.1" 200 -
+2025-03-31 16:11:50 - 127.0.0.1 - - [31/Mar/2025 16:11:50] "GET /static/test_cases.json HTTP/1.1" 200 -
+2025-03-31 16:11:51 - 127.0.0.1 - - [31/Mar/2025 16:11:51] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 16:11:52 - Accessing ASC Configuration Items page
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "GET /asc_config_items HTTP/1.1" 200 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[36mGET /static/js/pages/CI_new.js HTTP/1.1[0m" 304 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[36mGET /static/ASC/data/configItem.json HTTP/1.1[0m" 304 -
+2025-03-31 16:11:52 - 127.0.0.1 - - [31/Mar/2025 16:11:52] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 16:44:39 - Accessing test cases
+2025-03-31 16:44:39 - 127.0.0.1 - - [31/Mar/2025 16:44:39] "GET /test_cases HTTP/1.1" 200 -
+2025-03-31 16:44:39 - 127.0.0.1 - - [31/Mar/2025 16:44:39] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-31 16:44:39 - 127.0.0.1 - - [31/Mar/2025 16:44:39] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 16:44:39 - 127.0.0.1 - - [31/Mar/2025 16:44:39] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-03-31 16:44:39 - 127.0.0.1 - - [31/Mar/2025 16:44:39] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 16:44:39 - 127.0.0.1 - - [31/Mar/2025 16:44:39] "[36mGET /static/pattern.json HTTP/1.1[0m" 304 -
+2025-03-31 16:44:40 - 127.0.0.1 - - [31/Mar/2025 16:44:40] "[36mGET /static/test_cases.json HTTP/1.1[0m" 304 -
+2025-03-31 16:44:40 - 127.0.0.1 - - [31/Mar/2025 16:44:40] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 16:44:45 - Attempting to load actors.json into memory...
+2025-03-31 16:44:45 - Successfully loaded 906 actors into map in 0.01 seconds.
+2025-03-31 16:44:45 - 127.0.0.1 - - [31/Mar/2025 16:44:45] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-31 16:44:45 - 127.0.0.1 - - [31/Mar/2025 16:44:45] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-31 16:44:45 - 127.0.0.1 - - [31/Mar/2025 16:44:45] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-31 16:44:45 - 127.0.0.1 - - [31/Mar/2025 16:44:45] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-31 16:44:45 - 127.0.0.1 - - [31/Mar/2025 16:44:45] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-31 16:44:45 - 127.0.0.1 - - [31/Mar/2025 16:44:45] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-31 16:44:45 - 127.0.0.1 - - [31/Mar/2025 16:44:45] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-03-31 16:44:45 - 127.0.0.1 - - [31/Mar/2025 16:44:45] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-03-31 16:44:54 - 127.0.0.1 - - [31/Mar/2025 16:44:54] "GET /api/actor/bad90097-f4e9-43e3-ac21-5a67fb1d423d HTTP/1.1" 200 -
+2025-03-31 16:44:54 - 127.0.0.1 - - [31/Mar/2025 16:44:54] "GET /api/actor/819c8119-3933-4ebe-8740-7c25b0b237fb HTTP/1.1" 200 -
+2025-03-31 16:44:54 - 127.0.0.1 - - [31/Mar/2025 16:44:54] "GET /api/actor/bad90097-f4e9-43e3-ac21-5a67fb1d423d HTTP/1.1" 200 -
+2025-03-31 16:44:54 - 127.0.0.1 - - [31/Mar/2025 16:44:54] "GET /api/actor/819c8119-3933-4ebe-8740-7c25b0b237fb HTTP/1.1" 200 -
+2025-03-31 16:44:54 - 127.0.0.1 - - [31/Mar/2025 16:44:54] "GET /api/actor/bad90097-f4e9-43e3-ac21-5a67fb1d423d HTTP/1.1" 200 -
+2025-03-31 16:44:54 - 127.0.0.1 - - [31/Mar/2025 16:44:54] "GET /api/actor/819c8119-3933-4ebe-8740-7c25b0b237fb HTTP/1.1" 200 -
+2025-03-31 16:44:57 - 127.0.0.1 - - [31/Mar/2025 16:44:57] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-03-31 16:44:57 - 127.0.0.1 - - [31/Mar/2025 16:44:57] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-03-31 16:44:58 - 127.0.0.1 - - [31/Mar/2025 16:44:58] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-03-31 16:44:58 - 127.0.0.1 - - [31/Mar/2025 16:44:58] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-03-31 16:45:00 - 127.0.0.1 - - [31/Mar/2025 16:45:00] "GET /api/actor/bad90097-f4e9-43e3-ac21-5a67fb1d423d HTTP/1.1" 200 -
+2025-03-31 16:45:00 - 127.0.0.1 - - [31/Mar/2025 16:45:00] "GET /api/actor/819c8119-3933-4ebe-8740-7c25b0b237fb HTTP/1.1" 200 -
+2025-03-31 16:45:00 - 127.0.0.1 - - [31/Mar/2025 16:45:00] "GET /api/actor/bad90097-f4e9-43e3-ac21-5a67fb1d423d HTTP/1.1" 200 -
+2025-03-31 16:45:00 - 127.0.0.1 - - [31/Mar/2025 16:45:00] "GET /api/actor/819c8119-3933-4ebe-8740-7c25b0b237fb HTTP/1.1" 200 -
+2025-03-31 16:45:00 - 127.0.0.1 - - [31/Mar/2025 16:45:00] "GET /api/actor/bad90097-f4e9-43e3-ac21-5a67fb1d423d HTTP/1.1" 200 -
+2025-03-31 16:45:00 - 127.0.0.1 - - [31/Mar/2025 16:45:00] "GET /api/actor/819c8119-3933-4ebe-8740-7c25b0b237fb HTTP/1.1" 200 -
+2025-03-31 17:34:54 - Logging system configured with level INFO
+2025-03-31 17:34:54 - Starting IOCore2 Coverage Analysis Tool
+2025-03-31 17:34:54 - Configured Flask app logging with level INFO
+2025-03-31 17:34:54 - Configured Flask app logging with level INFO
+2025-03-31 17:34:54 - Logging system configured with level INFO
+2025-03-31 17:34:55 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-03-31 17:34:55 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-31 17:34:55 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-31 17:34:55 - Running in PRODUCTION mode
+2025-03-31 17:34:55 - Listening on 0.0.0.0:5005
+2025-03-31 17:34:55 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.79.8.144:5005
+2025-03-31 17:34:55 - [33mPress CTRL+C to quit[0m
+2025-03-31 17:35:01 - Accessing test cases
+2025-03-31 17:35:01 - 127.0.0.1 - - [31/Mar/2025 17:35:01] "GET /test_cases HTTP/1.1" 200 -
+2025-03-31 17:35:01 - 127.0.0.1 - - [31/Mar/2025 17:35:01] "GET /static/iocore2_logo.png HTTP/1.1" 200 -
+2025-03-31 17:35:01 - 127.0.0.1 - - [31/Mar/2025 17:35:01] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-03-31 17:35:01 - 127.0.0.1 - - [31/Mar/2025 17:35:01] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-03-31 17:35:03 - 127.0.0.1 - - [31/Mar/2025 17:35:03] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:03 - 127.0.0.1 - - [31/Mar/2025 17:35:03] "GET /static/pattern.json HTTP/1.1" 200 -
+2025-03-31 17:35:03 - 127.0.0.1 - - [31/Mar/2025 17:35:03] "GET /static/test_cases.json HTTP/1.1" 200 -
+2025-03-31 17:35:03 - 127.0.0.1 - - [31/Mar/2025 17:35:03] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-03-31 17:35:03 - 127.0.0.1 - - [31/Mar/2025 17:35:03] "GET /static/favicon/site.webmanifest HTTP/1.1" 200 -
+2025-03-31 17:35:15 - Accessing SREQ tree view
+2025-03-31 17:35:15 - 127.0.0.1 - - [31/Mar/2025 17:35:15] "GET /view_tree HTTP/1.1" 200 -
+2025-03-31 17:35:16 - 127.0.0.1 - - [31/Mar/2025 17:35:16] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:16 - 127.0.0.1 - - [31/Mar/2025 17:35:16] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:16 - 127.0.0.1 - - [31/Mar/2025 17:35:16] "[36mGET /static/js/tree_tin.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:16 - 127.0.0.1 - - [31/Mar/2025 17:35:16] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 17:35:17 - Accessing IER tree view
+2025-03-31 17:35:17 - Reading TIN data from /Users/fjmoreno72/WORK/IONIC2/static/TIN2.csv...
+2025-03-31 17:35:17 - Read 165 TIN entries from /Users/fjmoreno72/WORK/IONIC2/static/TIN2.csv
+2025-03-31 17:35:17 - 127.0.0.1 - - [31/Mar/2025 17:35:17] "GET /view_ier_tree HTTP/1.1" 200 -
+2025-03-31 17:35:17 - 127.0.0.1 - - [31/Mar/2025 17:35:17] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:17 - 127.0.0.1 - - [31/Mar/2025 17:35:17] "[36mGET /static/js/tree_ier.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:17 - 127.0.0.1 - - [31/Mar/2025 17:35:17] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:17 - 127.0.0.1 - - [31/Mar/2025 17:35:17] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 17:35:21 - Accessing SREQ tree view
+2025-03-31 17:35:21 - 127.0.0.1 - - [31/Mar/2025 17:35:21] "GET /view_tree HTTP/1.1" 200 -
+2025-03-31 17:35:21 - 127.0.0.1 - - [31/Mar/2025 17:35:21] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:21 - 127.0.0.1 - - [31/Mar/2025 17:35:21] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:21 - 127.0.0.1 - - [31/Mar/2025 17:35:21] "[36mGET /static/js/tree_tin.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:22 - 127.0.0.1 - - [31/Mar/2025 17:35:22] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 17:35:24 - Accessing functional tree view
+2025-03-31 17:35:24 - 127.0.0.1 - - [31/Mar/2025 17:35:24] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-31 17:35:24 - 127.0.0.1 - - [31/Mar/2025 17:35:24] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:24 - 127.0.0.1 - - [31/Mar/2025 17:35:24] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:24 - 127.0.0.1 - - [31/Mar/2025 17:35:24] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:24 - 127.0.0.1 - - [31/Mar/2025 17:35:24] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:35:26 - Accessing SREQ tree view
+2025-03-31 17:35:26 - 127.0.0.1 - - [31/Mar/2025 17:35:26] "GET /view_tree HTTP/1.1" 200 -
+2025-03-31 17:35:26 - 127.0.0.1 - - [31/Mar/2025 17:35:26] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:26 - 127.0.0.1 - - [31/Mar/2025 17:35:26] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:26 - 127.0.0.1 - - [31/Mar/2025 17:35:26] "[36mGET /static/js/tree_tin.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:26 - 127.0.0.1 - - [31/Mar/2025 17:35:26] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 17:35:31 - Accessing IER tree view
+2025-03-31 17:35:31 - Reading TIN data from /Users/fjmoreno72/WORK/IONIC2/static/TIN2.csv...
+2025-03-31 17:35:31 - Read 165 TIN entries from /Users/fjmoreno72/WORK/IONIC2/static/TIN2.csv
+2025-03-31 17:35:31 - 127.0.0.1 - - [31/Mar/2025 17:35:31] "GET /view_ier_tree HTTP/1.1" 200 -
+2025-03-31 17:35:31 - 127.0.0.1 - - [31/Mar/2025 17:35:31] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:31 - 127.0.0.1 - - [31/Mar/2025 17:35:31] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:31 - 127.0.0.1 - - [31/Mar/2025 17:35:31] "[36mGET /static/js/tree_ier.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:31 - 127.0.0.1 - - [31/Mar/2025 17:35:31] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 17:35:33 - Accessing Affiliates page
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "GET /affiliates HTTP/1.1" 200 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/js/pages/affiliates_new.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/js/components/affiliateForm.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:33 - 127.0.0.1 - - [31/Mar/2025 17:35:33] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - Accessing ASC Services page
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "GET /asc_services HTTP/1.1" 200 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/js/pages/services_new.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:34 - 127.0.0.1 - - [31/Mar/2025 17:35:34] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - Accessing ASC GPs page
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "GET /asc_gps HTTP/1.1" 200 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/js/pages/gps_new.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/js/components/themeManager.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:36 - 127.0.0.1 - - [31/Mar/2025 17:35:36] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - Accessing ASC Configuration Items page
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "GET /asc_config_items HTTP/1.1" 200 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/js/pages/CI_new.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/ASC/data/configItem.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:38 - 127.0.0.1 - - [31/Mar/2025 17:35:38] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - Accessing ASC SPs page
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "GET /asc_sps HTTP/1.1" 200 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/ASC/icons/sps.svg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/js/pages/sps_new.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:40 - 127.0.0.1 - - [31/Mar/2025 17:35:40] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - Accessing ASC ASCs page
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "GET /asc_ascs HTTP/1.1" 200 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/data/ascs.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:42 - 127.0.0.1 - - [31/Mar/2025 17:35:42] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:44 - Accessing ASC Kanban (WIP)
+2025-03-31 17:35:44 - 127.0.0.1 - - [31/Mar/2025 17:35:44] "GET /asc_kanban HTTP/1.1" 200 -
+2025-03-31 17:35:44 - 127.0.0.1 - - [31/Mar/2025 17:35:44] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:44 - 127.0.0.1 - - [31/Mar/2025 17:35:44] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:44 - 127.0.0.1 - - [31/Mar/2025 17:35:44] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 17:35:47 - Accessing system monitor
+2025-03-31 17:35:47 - 127.0.0.1 - - [31/Mar/2025 17:35:47] "GET /system_monitor HTTP/1.1" 200 -
+2025-03-31 17:35:47 - 127.0.0.1 - - [31/Mar/2025 17:35:47] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:47 - 127.0.0.1 - - [31/Mar/2025 17:35:47] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:47 - SSL verification is disabled. This is insecure.
+2025-03-31 17:35:47 - Getting system health data from api/system/health
+2025-03-31 17:35:47 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-03-31 17:35:47 - 127.0.0.1 - - [31/Mar/2025 17:35:47] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:35:48 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.47 seconds
+2025-03-31 17:35:48 - System health data fetched in 1.47s
+2025-03-31 17:35:48 - 127.0.0.1 - - [31/Mar/2025 17:35:48] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-03-31 17:35:48 - Accessing test cases
+2025-03-31 17:35:48 - 127.0.0.1 - - [31/Mar/2025 17:35:48] "GET /test_cases HTTP/1.1" 200 -
+2025-03-31 17:35:48 - 127.0.0.1 - - [31/Mar/2025 17:35:48] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-03-31 17:35:49 - 127.0.0.1 - - [31/Mar/2025 17:35:48] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:35:49 - 127.0.0.1 - - [31/Mar/2025 17:35:49] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-03-31 17:35:49 - 127.0.0.1 - - [31/Mar/2025 17:35:49] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:35:49 - 127.0.0.1 - - [31/Mar/2025 17:35:49] "[36mGET /static/pattern.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:49 - 127.0.0.1 - - [31/Mar/2025 17:35:49] "[36mGET /static/test_cases.json HTTP/1.1[0m" 304 -
+2025-03-31 17:35:49 - 127.0.0.1 - - [31/Mar/2025 17:35:49] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:37:15 - Accessing SREQ tree view
+2025-03-31 17:37:15 - 127.0.0.1 - - [31/Mar/2025 17:37:15] "GET /view_tree HTTP/1.1" 200 -
+2025-03-31 17:37:15 - 127.0.0.1 - - [31/Mar/2025 17:37:15] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:37:15 - 127.0.0.1 - - [31/Mar/2025 17:37:15] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:37:15 - 127.0.0.1 - - [31/Mar/2025 17:37:15] "[36mGET /static/js/tree_tin.js HTTP/1.1[0m" 304 -
+2025-03-31 17:37:16 - 127.0.0.1 - - [31/Mar/2025 17:37:16] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-03-31 17:38:59 - Logging system configured with level INFO
+2025-03-31 17:38:59 - Starting IOCore2 Coverage Analysis Tool
+2025-03-31 17:38:59 - Configured Flask app logging with level INFO
+2025-03-31 17:38:59 - Configured Flask app logging with level INFO
+2025-03-31 17:38:59 - Logging system configured with level INFO
+2025-03-31 17:38:59 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-03-31 17:38:59 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-03-31 17:38:59 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-03-31 17:38:59 - Running in PRODUCTION mode
+2025-03-31 17:38:59 - Listening on 0.0.0.0:5005
+2025-03-31 17:38:59 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.79.8.144:5005
+2025-03-31 17:38:59 - [33mPress CTRL+C to quit[0m
+2025-03-31 17:39:07 - Accessing SREQ tree view
+2025-03-31 17:39:07 - 127.0.0.1 - - [31/Mar/2025 17:39:07] "GET /view_tree HTTP/1.1" 200 -
+2025-03-31 17:39:07 - 127.0.0.1 - - [31/Mar/2025 17:39:07] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:39:07 - 127.0.0.1 - - [31/Mar/2025 17:39:07] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:39:08 - 127.0.0.1 - - [31/Mar/2025 17:39:08] "[36mGET /static/js/tree_tin.js HTTP/1.1[0m" 304 -
+2025-03-31 17:39:08 - 127.0.0.1 - - [31/Mar/2025 17:39:08] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:39:10 - Accessing IER tree view
+2025-03-31 17:39:10 - Reading TIN data from /Users/fjmoreno72/WORK/IONIC2/static/TIN2.csv...
+2025-03-31 17:39:10 - Read 165 TIN entries from /Users/fjmoreno72/WORK/IONIC2/static/TIN2.csv
+2025-03-31 17:39:10 - 127.0.0.1 - - [31/Mar/2025 17:39:10] "GET /view_ier_tree HTTP/1.1" 200 -
+2025-03-31 17:39:10 - 127.0.0.1 - - [31/Mar/2025 17:39:10] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:39:10 - 127.0.0.1 - - [31/Mar/2025 17:39:10] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:39:10 - 127.0.0.1 - - [31/Mar/2025 17:39:10] "[36mGET /static/js/tree_ier.js HTTP/1.1[0m" 304 -
+2025-03-31 17:39:10 - 127.0.0.1 - - [31/Mar/2025 17:39:10] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:39:11 - Accessing functional tree view
+2025-03-31 17:39:12 - 127.0.0.1 - - [31/Mar/2025 17:39:12] "GET /view_tree_func HTTP/1.1" 200 -
+2025-03-31 17:39:12 - 127.0.0.1 - - [31/Mar/2025 17:39:12] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:39:12 - 127.0.0.1 - - [31/Mar/2025 17:39:12] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:39:12 - 127.0.0.1 - - [31/Mar/2025 17:39:12] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-03-31 17:39:12 - 127.0.0.1 - - [31/Mar/2025 17:39:12] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-03-31 17:39:16 - Accessing ASC Kanban (WIP)
+2025-03-31 17:39:16 - 127.0.0.1 - - [31/Mar/2025 17:39:16] "GET /asc_kanban HTTP/1.1" 200 -
+2025-03-31 17:39:16 - 127.0.0.1 - - [31/Mar/2025 17:39:16] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-03-31 17:39:16 - 127.0.0.1 - - [31/Mar/2025 17:39:16] "GET /check_auth HTTP/1.1" 200 -
+2025-03-31 17:39:16 - 127.0.0.1 - - [31/Mar/2025 17:39:16] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -

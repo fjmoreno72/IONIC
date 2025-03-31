@@ -189,6 +189,14 @@ def asc_gps():
     # Now uses the refactored component-based template
     return render_template('pages/gps_new.html', title="ASC GPs")
 
+@views_bp.route('/asc_config_items')
+@login_required
+def asc_config_items():
+    """Render the ASC Configuration Items page."""
+    logging.info("Accessing ASC Configuration Items page")
+    # Uses the new component-based template
+    return render_template('pages/CI_new.html', title="ASC Configuration Items")
+
 @views_bp.route('/asc_sps')
 @login_required
 def asc_sps():

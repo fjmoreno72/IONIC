@@ -1,0 +1,477 @@
+/* ASC Kanban Board CSS */
+
+/* Filter row */
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    flex: 1;
+}
+
+.filter-selects {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.filter-selects select, 
+.search-input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.search-input {
+    width: 100%;
+}
+
+/* Kanban board */
+.kanban-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.kanban-column {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+}
+
+/* Column headers */
+.column-header {
+    padding: 10px 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.column-count {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.column-cards {
+    padding: 10px;
+    overflow-y: auto;
+    height: calc(100vh - 280px);
+    min-height: 200px;
+}
+
+/* Column header colors */
+#column-initial .column-header {
+    background-color: #E0E0E0;
+    color: #333;
+}
+
+#column-inprogress .column-header {
+    background-color: #FFF9C4;
+    color: #333;
+}
+
+#column-inreview .column-header {
+    background-color: #BBDEFB;
+    color: #333;
+}
+
+#column-validated .column-header {
+    background-color: #C8E6C9;
+    color: #333;
+}
+
+#column-deprecated .column-header {
+    background-color: #FFCDD2;
+    color: #333;
+}
+
+/* ASC Cards - base styles */
+.asc-card {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    overflow: hidden;
+    cursor: grab;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    border-left: 4px solid #ccc;
+    padding: 8px 12px;
+}
+
+.asc-card:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.asc-card.dragging {
+    opacity: 0.7;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card colors based on column */
+#column-initial-cards .asc-card {
+    border-left-color: #9e9e9e;
+    background-color: #fafafa;
+}
+
+#column-inprogress-cards .asc-card {
+    border-left-color: #fbc02d;
+    background-color: #fffde7;
+}
+
+#column-inreview-cards .asc-card {
+    border-left-color: #42a5f5;
+    background-color: #e3f2fd;
+}
+
+#column-validated-cards .asc-card {
+    border-left-color: #66bb6a;
+    background-color: #e8f5e9;
+}
+
+#column-deprecated-cards .asc-card {
+    border-left-color: #ef5350;
+    background-color: #ffebee;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.asc-id {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.progress-indicator {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    min-width: 40px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Progress indicator colors */
+.progress-0 {
+    background-color: #e53935;
+}
+
+.progress-25 {
+    background-color: #fb8c00;
+}
+
+.progress-50 {
+    background-color: #fdd835;
+}
+
+.progress-75 {
+    background-color: #43a047;
+}
+
+.progress-100 {
+    background-color: #2e7d32;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.affiliate-row {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+.affiliate-flag {
+    width: 24px;
+    height: 16px;
+    margin-right: 8px;
+    border: 1px solid #ddd;
+    object-fit: cover;
+}
+
+.service-row {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #4472C4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: #3a5ca0;
+    transform: translateY(-3px);
+}
+
+.theme-toggle:active {
+    transform: translateY(0);
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .filter-row {
+    background-color: #212529;
+    border-color: #495057;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .filter-selects select,
+[data-theme="dark"] .search-input {
+    background-color: #343a40;
+    border-color: #495057;
+    color: #e9ecef;
+}
+
+[data-theme="dark"] .kanban-column {
+    background-color: #343a40;
+    border-color: #495057;
+}
+
+[data-theme="dark"] .column-header {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .column-count {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* Dark theme column colors */
+[data-theme="dark"] #column-initial .column-header {
+    background-color: #6c757d;
+    color: #f8f9fa;
+}
+
+[data-theme="dark"] #column-inprogress .column-header {
+    background-color: #856404;
+    color: #fff8e1;
+}
+
+[data-theme="dark"] #column-inreview .column-header {
+    background-color: #0c5460;
+    color: #e1f5fe;
+}
+
+[data-theme="dark"] #column-validated .column-header {
+    background-color: #155724;
+    color: #e8f5e9;
+}
+
+[data-theme="dark"] #column-deprecated .column-header {
+    background-color: #721c24;
+    color: #ffebee;
+}
+
+/* Dark theme card colors */
+[data-theme="dark"] .asc-card {
+    background-color: #2b3035;
+    border-color: #495057;
+    color: #e9ecef;
+}
+
+[data-theme="dark"] #column-initial-cards .asc-card {
+    border-left-color: #adb5bd;
+    background-color: #343a40;
+}
+
+[data-theme="dark"] #column-inprogress-cards .asc-card {
+    border-left-color: #ffc107;
+    background-color: #4d4c34;
+}
+
+[data-theme="dark"] #column-inreview-cards .asc-card {
+    border-left-color: #0d6efd;
+    background-color: #2d3e50;
+}
+
+[data-theme="dark"] #column-validated-cards .asc-card {
+    border-left-color: #198754;
+    background-color: #2d4033;
+}
+
+[data-theme="dark"] #column-deprecated-cards .asc-card {
+    border-left-color: #dc3545;
+    background-color: #4d2e34;
+}
+
+[data-theme="dark"] .asc-id {
+    color: #8ab4f8;
+}
+
+[data-theme="dark"] .service-row {
+    color: #adb5bd;
+}
+
+[data-theme="dark"] .affiliate-flag {
+    border-color: #495057;
+}
+
+[data-theme="dark"] .empty-state {
+    color: #adb5bd;
+}
+
+[data-theme="dark"] .theme-toggle {
+    background-color: #121212;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    background-color: #212121;
+}
+
+/* Error message */
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border-left: 4px solid #f5c6cb;
+    display: none;
+}
+
+[data-theme="dark"] .error-message {
+    background-color: #352425;
+    color: #f8d7da;
+    border-left-color: #842029;
+}
+
+/* Loading indicator */
+.loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s linear infinite;
+}
+
+/* Empty state */
+.empty-state {
+    color: #6c757d;
+    font-size: 13px;
+    text-align: center;
+    padding: var(--space-4);
+    font-style: italic;
+}
+
+/* Drag and drop visual feedback */
+.kanban-column.drag-over {
+    box-shadow: 0 0 0 2px #0d6efd;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Success toast notification */
+.success-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.success-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .kanban-board {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    /* Reorder columns for smaller screens */
+    #column-initial { order: 1; }
+    #column-inprogress { order: 2; }
+    #column-inreview { order: 3; }
+    #column-validated { order: 4; }
+    #column-deprecated { order: 5; }
+    
+    .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-selects {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .kanban-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .kanban-board {
+        grid-template-columns: 1fr;
+    }
+}

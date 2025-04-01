@@ -255,9 +255,37 @@ def asc_ascs():
 @views_bp.route('/asc_kanban')
 @login_required
 def asc_kanban():
-    """Render placeholder page for ASC Kanban."""
-    logging.info("Accessing ASC Kanban (WIP)")
-    return render_template('work_in_progress.html')
+    """Render the ASC Kanban board page."""
+    logging.info("Accessing ASC Kanban board")
+    return render_template('pages/asc_kanban.html', title="ASC Kanban Board")
+
+@views_bp.route('/update_ascs', methods=['POST'])
+@login_required
+def update_ascs():
+    """
+    API endpoint to update ASCs data.
+    
+    Returns:
+        JSON response with success or error message
+    """
+    try:
+        ascs_data = request.json
+        if not ascs_data:
+            return jsonify({'error': 'No data provided'}), 400
+            
+        # Save to the ASCs JSON file
+        ascs_path = Path(settings.STATIC_DIR) / "ASC" / "data" / "ascs.json"
+        
+        with open(ascs_path, 'w') as f:
+            json.dump(ascs_data, f, indent=2)
+            
+        return jsonify({
+            'success': True,
+            'message': 'ASCs updated successfully'
+        })
+    except Exception as e:
+        logging.exception(f"Error updating ASCs: {str(e)}")
+        return jsonify({'error': f'Error updating ASCs: {str(e)}'}), 500
 
 # --- API Routes for Affiliates ---
 

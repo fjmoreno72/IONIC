@@ -112,7 +112,7 @@ def process_excel_row(row, gp_name_to_id_map):
 
     config_item = {
         "Name": name,
-        "AssetTypes": asset_type_ids, # Store list of GP IDs
+        "GenericProducts": asset_type_ids, # Store list of GP IDs
         "DefaultValue": str(row.get('Default Value', '')),
         "HelpText": str(row.get('Help Text', '')),
         "ConfigurationAnswerType": str(row.get('Configuration Answer Type', '')),
@@ -135,15 +135,15 @@ def synchronize_config_items(excel_df, gps_data, existing_config_items):
         row_item = process_excel_row(row.to_dict(), gp_name_to_id_map)
         if row_item:
             item_name = row_item["Name"]
-            # Get the AssetType IDs found in this specific row
-            current_row_asset_ids = row_item["AssetTypes"]
+            # Get the GenericProduct IDs found in this specific row
+            current_row_asset_ids = row_item["GenericProducts"]
 
             if item_name in aggregated_items:
-                # Item exists, merge AssetTypes and update other fields from the current row
+                # Item exists, merge GenericProducts and update other fields from the current row
                 existing_item = aggregated_items[item_name]
-                # Combine existing AssetTypes with new ones from this row, ensuring uniqueness
-                combined_asset_ids = list(set(existing_item["AssetTypes"] + current_row_asset_ids))
-                existing_item["AssetTypes"] = combined_asset_ids
+                # Combine existing GenericProducts with new ones from this row, ensuring uniqueness
+                combined_asset_ids = list(set(existing_item["GenericProducts"] + current_row_asset_ids))
+                existing_item["GenericProducts"] = combined_asset_ids
                 # Update other fields based on the current (potentially last) row for this Name
                 existing_item["DefaultValue"] = row_item["DefaultValue"]
                 existing_item["HelpText"] = row_item["HelpText"]

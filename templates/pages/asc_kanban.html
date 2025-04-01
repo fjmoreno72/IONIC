@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASC Kanban Board - IOCore2</title>
+    {% include 'components/head_favicons.html' %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='ASC/css/kanban-board.css') }}">
+    <script>
+        // Apply theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedDarkMode = localStorage.getItem('theme') === 'dark';
+            if (storedDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+            }
+        });
+        
+        // Direct theme toggle function
+        function toggleTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const newTheme = isDark ? '' : 'dark';
+            
+            // Apply new theme
+            document.documentElement.setAttribute('data-theme', newTheme);
+            document.documentElement.setAttribute('data-bs-theme', newTheme === 'dark' ? 'dark' : 'light');
+            
+            // Save preference
+            localStorage.setItem('theme', newTheme);
+        }
+    </script>
+</head>
+<body>
+    {% include 'nav_menu.html' %}
+
+    <div class="container-fluid px-4 mt-4">
+        <div class="row mb-4">
+            <div class="col-12 d-flex align-items-center">
+                <i class="fas fa-columns me-2"></i>
+                <h2 class="mb-0">ASC Kanban Board</h2>
+            </div>
+            <div class="col-12">
+                <p class="text-muted">Drag and drop ASCs between columns to update their status</p>
+            </div>
+        </div>
+
+        <!-- Error message container -->
+        <div id="error-message" class="error-message"></div>
+
+        <!-- Filters row -->
+        <div class="filter-row mb-3">
+            <div class="search-container">
+                <input type="text" id="search-input" class="form-control search-input" placeholder="Search by ID, affiliate, or Service...">
+            </div>
+            <div class="filter-selects">
+                <select id="filter-affiliate" class="form-select">
+                    <option value="">All affiliates</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <select id="filter-service" class="form-select">
+                    <option value="">All Services</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <select id="filter-spiral" class="form-select">
+                    <option value="">All Spirals</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <button id="clear-filters" class="btn btn-outline-secondary">Clear Filters</button>
+            </div>
+        </div>
+        
+        <!-- Kanban board -->
+        <div id="kanban-board" class="kanban-board">
+            <!-- Initial column -->
+            <div class="kanban-column" id="column-initial">
+                <div class="column-header">
+                    <span>Initial</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-cards" id="column-initial-cards">
+                    <!-- Cards will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- In Progress column -->
+            <div class="kanban-column" id="column-inprogress">
+                <div class="column-header">
+                    <span>In Progress</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-cards" id="column-inprogress-cards">
+                    <!-- Cards will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- In Review column -->
+            <div class="kanban-column" id="column-inreview">
+                <div class="column-header">
+                    <span>In Review</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-cards" id="column-inreview-cards">
+                    <!-- Cards will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Validated column -->
+            <div class="kanban-column" id="column-validated">
+                <div class="column-header">
+                    <span>Validated</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-cards" id="column-validated-cards">
+                    <!-- Cards will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Deprecated column -->
+            <div class="kanban-column" id="column-deprecated">
+                <div class="column-header">
+                    <span>Deprecated</span>
+                    <span class="column-count">0</span>
+                </div>
+                <div class="column-cards" id="column-deprecated-cards">
+                    <!-- Cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loading-indicator" class="loading-indicator" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Add direct onclick handler as a backup method -->
+    <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌓</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="{{ url_for('static', filename='ASC/js/kanban-board.js') }}"></script>
+</body>
+</html>

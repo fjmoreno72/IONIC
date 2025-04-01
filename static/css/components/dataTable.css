@@ -68,7 +68,16 @@ body.logged-in {
 }
 
 .filter-item {
-  min-width: 150px;
+  min-width: 250px;
+}
+
+#gpFilterHeader {
+  min-width: 250px;
+}
+
+#gpDropdownMenu {
+  min-width: 250px !important;
+  font-size: 0.875rem;
 }
 
 /* Search input styling */

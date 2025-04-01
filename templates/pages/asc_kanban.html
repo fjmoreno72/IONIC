@@ -53,24 +53,19 @@
 
         <!-- Filters row -->
         <div class="filter-row mb-3">
-            <div class="search-container">
-                <input type="text" id="search-input" class="form-control search-input" placeholder="Search by ID, affiliate, or Service...">
-            </div>
-            <div class="filter-selects">
-                <select id="filter-affiliate" class="form-select">
-                    <option value="">All affiliates</option>
-                    <!-- Options will be populated by JavaScript -->
-                </select>
-                <select id="filter-service" class="form-select">
-                    <option value="">All Services</option>
-                    <!-- Options will be populated by JavaScript -->
-                </select>
-                <select id="filter-spiral" class="form-select">
-                    <option value="">All Spirals</option>
-                    <!-- Options will be populated by JavaScript -->
-                </select>
-                <button id="clear-filters" class="btn btn-outline-secondary">Clear Filters</button>
-            </div>
+            <input type="text" id="search-input" class="form-control search-input" placeholder="Search by ID, affiliate, or Service...">
+            <select id="filter-affiliate" class="form-select">
+                <option value="">All affiliates</option>
+            </select>
+            <select id="filter-service" class="form-select">
+                <option value="">All Services</option>
+            </select>
+            <select id="filter-spiral" class="form-select">
+                <option value="">All Spirals</option>
+            </select>
+            <button id="clear-filters" class="btn btn-outline-secondary d-flex align-items-center justify-content-center" title="Clear Filters">
+                <i class="bi bi-x-circle"></i>
+            </button>
         </div>
         
         <!-- Kanban board -->

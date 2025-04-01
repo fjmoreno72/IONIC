@@ -24,6 +24,7 @@
 
 .filter-selects select, 
 .search-input {
+    height: 38px;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 6px 12px;

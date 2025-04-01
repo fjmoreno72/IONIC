@@ -60,6 +60,11 @@ def create_app():
         # Include interest-cohort=() since it's detected by the scanner
         response.headers['Permissions-Policy'] = 'geolocation=(), camera=(), microphone=(), interest-cohort=()'
         
+        # We're using <meta> tags in head_favicons.html for CSP
+        # Remove CSP headers to prevent conflicts with meta tags
+        if 'Content-Security-Policy' in response.headers:
+            del response.headers['Content-Security-Policy']
+        
         # Add other common security headers 
         response.headers['X-Content-Type-Options'] = 'nosniff'
         response.headers['X-Frame-Options'] = 'SAMEORIGIN'

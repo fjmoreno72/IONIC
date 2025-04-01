@@ -26270,3 +26270,45 @@ jinja2.exceptions.TemplateNotFound: test_case_modal.html
 2025-04-01 22:58:26 - 127.0.0.1 - - [01/Apr/2025 22:58:26] "GET /static/ASC/image/sp/sp_icon_ajax.png HTTP/1.1" 200 -
 2025-04-01 22:58:32 - 127.0.0.1 - - [01/Apr/2025 22:58:32] "DELETE /api/sps?id=SP-0539 HTTP/1.1" 200 -
 2025-04-01 22:58:32 - 127.0.0.1 - - [01/Apr/2025 22:58:32] "GET /static/ASC/data/sps.json HTTP/1.1" 200 -
+2025-04-01 23:07:39 - Logging system configured with level INFO
+2025-04-01 23:07:39 - Starting IOCore2 Coverage Analysis Tool
+2025-04-01 23:07:39 - Configured Flask app logging with level INFO
+2025-04-01 23:07:39 - Configured Flask app logging with level INFO
+2025-04-01 23:07:39 - Logging system configured with level INFO
+2025-04-01 23:07:40 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-01 23:07:40 - Static files: /Users/fjmoreno72/WORK/IONIC2/static
+2025-04-01 23:07:40 - Template files: /Users/fjmoreno72/WORK/IONIC2/templates
+2025-04-01 23:07:40 - Running in PRODUCTION mode
+2025-04-01 23:07:40 - Listening on 0.0.0.0:5005
+2025-04-01 23:07:40 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-04-01 23:07:40 - [33mPress CTRL+C to quit[0m
+2025-04-01 23:07:44 - Accessing ASC SPs page
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "GET /asc_sps HTTP/1.1" 200 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "GET /static/js/pages/sps_new.js HTTP/1.1" 200 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/ASC/icons/sps.svg HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/js/components/spForm.js HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "GET /check_auth HTTP/1.1" 200 -
+2025-04-01 23:07:44 - 127.0.0.1 - - [01/Apr/2025 23:07:44] "[36mGET /static/ASC/data/sps.json HTTP/1.1[0m" 304 -
+2025-04-01 23:07:45 - 127.0.0.1 - - [01/Apr/2025 23:07:45] "[36mGET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1[0m" 304 -
+2025-04-01 23:07:45 - 127.0.0.1 - - [01/Apr/2025 23:07:45] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1[0m" 304 -
+2025-04-01 23:07:45 - 127.0.0.1 - - [01/Apr/2025 23:07:45] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
+2025-04-01 23:07:45 - 127.0.0.1 - - [01/Apr/2025 23:07:45] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1[0m" 304 -
+2025-04-01 23:07:45 - 127.0.0.1 - - [01/Apr/2025 23:07:45] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
+2025-04-01 23:07:45 - 127.0.0.1 - - [01/Apr/2025 23:07:45] "[36mGET /static/favicon/favicon.ico HTTP/1.1[0m" 304 -
+2025-04-01 23:07:45 - 127.0.0.1 - - [01/Apr/2025 23:07:45] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -

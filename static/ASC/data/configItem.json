@@ -1,3112 +1,3112 @@
 [
-    {
-        "Name": "AIRC2 Port",
-        "GenericProducts": [
-            "GP-0022"
-        ],
-        "DefaultValue": "TCP/10000",
-        "HelpText": "AIRC2 Replication Cross Domain",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Advertised Unicast IP Subnets",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "The Unicast subnet(s) 'owned' by this participant. Aggregate as much as possible.",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "All certificates across trust path",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "All certificates across the trust path (CA certificates from Root CA down to the Issuing CA for Trust list) or cross-certification certificates",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Anycast IP Address",
-        "GenericProducts": [
-            "GP-0107"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "IP Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Anycast address(es)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "All Anycast addresses advertised by this router",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Area of Interest (AOI) Radius",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "1000 meters",
-        "HelpText": "Operationally set relevant AOI",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Audio Codec",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "u729/u711",
-        "HelpText": "Available audio codecs",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Authentication Mode",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Either domain integrated or system internal identity management",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Autonomous System Number (ASN)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "ASN advertised by this participant ",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Azimuth",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "BGP Router ID",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "IP Address of the BGP ",
-        "ConfigurationAnswerType": "IP Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Bandwidth",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Bias",
-        "GenericProducts": [
-            "GP-0039"
-        ],
-        "DefaultValue": "\t 0",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "C2/NonC2",
-        "GenericProducts": [
-            "GP-0001"
-        ],
-        "DefaultValue": "Non C2",
-        "HelpText": "pick either:  \"C2\"  or \"Non C2\"",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "C2, Non C2"
-    },
-    {
-        "Name": "CA Cert",
-        "GenericProducts": [
-            "GP-0010"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Location of CA Cert ",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "CAC Mechanism",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "Max Connections, Max BW (Dial Peer), Interface"
-    },
-    {
-        "Name": "CM Tool Endpoint URL",
-        "GenericProducts": [
-            "GP-0096"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "COP Portal Ports",
-        "GenericProducts": [
-            "GP-0072"
-        ],
-        "DefaultValue": "80,8080",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "COP Portal URL",
-        "GenericProducts": [
-            "GP-0072"
-        ],
-        "DefaultValue": "",
-        "HelpText": "example web services: http://portal/Public/Endpoint.aspx",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "COP Sync URL",
-        "GenericProducts": [
-            "GP-0043"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "COP Synchronization Port",
-        "GenericProducts": [
-            "GP-0072"
-        ],
-        "DefaultValue": "8080",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "COP Synchronization URL",
-        "GenericProducts": [
-            "GP-0072"
-        ],
-        "DefaultValue": "",
-        "HelpText": "example URL: http://portal:8080/NCOPServerSync",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "COP Web Services URL",
-        "GenericProducts": [
-            "GP-0072"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "CORBA  Interface URL​",
-        "GenericProducts": [
-            "GP-0042"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "CRL HTTP / AIA",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "80",
-        "HelpText": "CRL HTTP /AIA",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "CRL LDAP / AIA",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "389",
-        "HelpText": "CRL LDAP / AIA",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "CRYPTO",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "CSD IWS Replication URL",
-        "GenericProducts": [
-            "GP-0096"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Calendar address",
-        "GenericProducts": [
-            "GP-0011"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL WebHosting address",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Call Sign",
-        "GenericProducts": [
-            "GP-0087",
-            "GP-0086"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Call sign",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Call signs",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Certificate Request Authority",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL for the RA",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Certificate file",
-        "GenericProducts": [
-            "GP-0042"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Channel",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Chat Room JID",
-        "GenericProducts": [
-            "GP-0048"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Name of the Chats rooms connected on the application",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Circuit - DSCP Value(s)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "56/58/60/62",
-        "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Classification Marking",
-        "GenericProducts": [
-            "GP-0006"
-        ],
-        "DefaultValue": "",
-        "HelpText": "list of classification markings used to configure server and clients",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Codec",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Available codecs",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Collaboration URL",
-        "GenericProducts": [
-            "GP-0012"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL for test library",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Conference Test Number",
-        "GenericProducts": [
-            "GP-0019",
-            "GP-0084"
-        ],
-        "DefaultValue": "",
-        "HelpText": "E164 number to use for testing",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Conference Type",
-        "GenericProducts": [
-            "GP-0019"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "AUdio, Video , Audio & Video "
-    },
-    {
-        "Name": "Crypto Type (NIP-G)",
-        "GenericProducts": [
-            "GP-0036"
-        ],
-        "DefaultValue": "TCE621",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "TCE621B,TCE621/C,CP109,SIMA,KG175"
-    },
-    {
-        "Name": "Cryptographic KSK Algorithn",
-        "GenericProducts": [
-            "GP-0107"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DB Name",
-        "GenericProducts": [
-            "GP-0105"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Not required for OS3",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DB Port",
-        "GenericProducts": [
-            "GP-0031"
-        ],
-        "DefaultValue": "TCP/1521",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DB Replication Role",
-        "GenericProducts": [
-            "GP-0062"
-        ],
-        "DefaultValue": "Slave",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "Master,Slave"
-    },
-    {
-        "Name": "DB Site Name",
-        "GenericProducts": [
-            "GP-0062"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DIT TOP Level",
-        "GenericProducts": [
-            "GP-0017"
-        ],
-        "DefaultValue": "",
-        "HelpText": "full CN patch to the TOP level (for pull)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DNS Record Catalog system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "DNS",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DNS Record Event Management system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "DNS Record",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DNS Record Incident Management system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "DNS Record",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DNS Record Location Management system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "DNS Record",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DNS Record SACM system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "DNS Record",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DNS Record service fulfillment system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "DNS Record",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DNSSEC DS Record",
-        "GenericProducts": [
-            "GP-0107"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "DSN",
-        "GenericProducts": [
-            "GP-0010"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Delivery Status Notification List of DSN messages allowed by the MNP",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Data Base Port",
-        "GenericProducts": [
-            "GP-0058"
-        ],
-        "DefaultValue": "15210",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Data Share Port",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "TCP/445",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Database Name",
-        "GenericProducts": [
-            "GP-0058",
-            "GP-0068"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Destination web service URL",
-        "GenericProducts": [
-            "GP-0022"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Destination web service URL",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Dissemination frequency",
-        "GenericProducts": [
-            "GP-0045"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Drop Track Timer",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "45 seconds",
-        "HelpText": "Drop reported tracks prior to STANAG 5516 retransmission time",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "E164",
-        "GenericProducts": [
-            "GP-0029"
-        ],
-        "DefaultValue": "",
-        "HelpText": "The E164 phone number for this asset",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "E164 Number",
-        "GenericProducts": [
-            "GP-0015"
-        ],
-        "DefaultValue": "",
-        "HelpText": "The E164 phone number for this asset",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "EVE Web URL",
-        "GenericProducts": [
-            "GP-0062"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Elevation",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Email",
-        "GenericProducts": [
-            "GP-0011"
-        ],
-        "DefaultValue": "",
-        "HelpText": "email address",
-        "ConfigurationAnswerType": "Email Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Email Address #2 for CIP Exchange",
-        "GenericProducts": [
-            "GP-0061"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Email Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Email Address for Automatic Publication",
-        "GenericProducts": [
-            "GP-0061"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Email Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Email address",
-        "GenericProducts": [
-            "GP-0013",
-            "GP-0093",
-            "GP-0011"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Email Address",
-        "ConfigurationAnswerType": "Email Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Email domains",
-        "GenericProducts": [
-            "GP-0022",
-            "GP-0010"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Accepted email domains",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "FFT Message Standards",
-        "GenericProducts": [
-            "GP-0021",
-            "GP-0040",
-            "GP-0088"
-        ],
-        "DefaultValue": "FFI XML MTF - APP-11(D)(1)",
-        "HelpText": "Enter the Message Standards used: i.e. NFFI 1.3,  FFI XML MTF - APP-11(D)(1)",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "NFFI 1.3,  FFI XML MTF - APP-11(D)(1)"
-    },
-    {
-        "Name": "FFT Protocols Supported",
-        "GenericProducts": [
-            "GP-0021",
-            "GP-0040",
-            "GP-0088"
-        ],
-        "DefaultValue": "ADatP-36 IP1",
-        "HelpText": "Enter the Protocols Supported: i.e. D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub.",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub."
-    },
-    {
-        "Name": "FSMID prefix",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Federated Service Management Record Identifier Prefix (MMM-AAA-NNN)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Forward Delegated Zones",
-        "GenericProducts": [
-            "GP-0007",
-            "GP-0107"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Forward Zones Delegated from the DNS Root Server",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Frequency",
-        "GenericProducts": [
-            "GP-0087",
-            "GP-0086"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Frequency code",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Geo Replication Folder",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Glue Records",
-        "GenericProducts": [
-            "GP-0007",
-            "GP-0107"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Glue Records for each zone delegation",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Group claims",
-        "GenericProducts": [
-            "GP-0049"
-        ],
-        "DefaultValue": "",
-        "HelpText": "If role based access, name security groups for web applications",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Guard Address",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "HTTP CRL FULL URL",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full URL as in CDP",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "HTTP CRL PRT",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "TCP/80",
-        "HelpText": "Full URL as in CDP",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "HTTP end-point IP for CRL retrieval",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "IP of the HTTP service",
-        "ConfigurationAnswerType": "IP Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "HTTP end-point URL for CRL retrieval",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Supply the port for the CRL",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "High Throughput - DSCP Value(s)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "8/10/12/14",
-        "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Home Channel Frequency code",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Hosted Forward Zone(s)",
-        "GenericProducts": [
-            "GP-0107",
-            "GP-0091"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Forward Zone(s) hosted by this ANS",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Hosted Reverse Zone(s)",
-        "GenericProducts": [
-            "GP-0107",
-            "GP-0091"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Reverse Zone(s) hosted by Authoritative DNS servers",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "ID Provider Unique Identifier",
-        "GenericProducts": [
-            "GP-0049"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Issuer value in the security token that uniquely identifies the Claims Provider",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "IP Address (Anycast)",
-        "GenericProducts": [
-            "GP-0007"
-        ],
-        "DefaultValue": "",
-        "HelpText": "The Anycast IP used by the DNS Root server",
-        "ConfigurationAnswerType": "IP Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "IP DB Server",
-        "GenericProducts": [
-            "GP-0077",
-            "GP-0076"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "IPL PORT",
-        "GenericProducts": [
-            "GP-0100"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Provide the port for the IPL Provider",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "IRM Organization",
-        "GenericProducts": [
-            "GP-0014"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Instance API KEY",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Unique instance hex key used by subordinated units as superior identifier",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Instance Name",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Instance URN",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "IntelFS SiteID",
-        "GenericProducts": [
-            "GP-0105",
-            "GP-0055",
-            "GP-0056"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Not required for OS3",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "J12.6 Environment",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "Land (Env=5)",
-        "HelpText": "Land (Env=5), Surface (Env=3), and No Statement (Env = 0) Service filter J12.6 messages from other environments",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "Land (Env=5), Surface (Env=3), and No Statement (Env = 0)"
-    },
-    {
-        "Name": "J12.6 Lockout Period",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "45 seconds",
-        "HelpText": "Prevent response to repeated/retransmitted J12.6 messages",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "J12.6 Originator JU",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "",
-        "HelpText": "List of JUs authorized to trigger service Service filter J12.6 messages from extra JUs",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "J12.6 Reporting Area",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Geographic area to respond to J12.6 Service filter J12.6 messages from outside geographic reporting area",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "J12.6 SID",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "",
-        "HelpText": "0, 9, 10 Service filter J12.6 messages with other settings",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "0, 9, 10"
-    },
-    {
-        "Name": "J3.2 Emergency Indicator",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "0 (No Statement)",
-        "HelpText": "Emergency Indicator not set unless PLI ALERT status indicates it or operationally directed",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "J3.2 Force Tell Indicator",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "1 (Force Tell Status)",
-        "HelpText": "Force Tell Indicator set unless operationally directed otherwise",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "J3.2 Passive/Active Sensor",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "0 (Passive)",
-        "HelpText": "Fixed Value",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "0 (Passive)"
-    },
-    {
-        "Name": "J3.2 Track Quality",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "9",
-        "HelpText": "If reported information does not enable computation of Track Quality",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "J3.5 Emergency Indicator",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "0 (No Statement)",
-        "HelpText": "Emergency Indicator not set unless PLI ALERT status indicates it or operationally directed",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "J3.5 Force Tell Indicator",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "1 (Force Tell Status)",
-        "HelpText": "Force Tell Indicator set unless operationally directed otherwise",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "J3.5 Passive/Active Sensor",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "0 (Passive)",
-        "HelpText": "Fixed Value",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "0 (Passive)"
-    },
-    {
-        "Name": "J3.5 Track Quality",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "9",
-        "HelpText": "If reported information does not enable computation of Track Quality",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "JRE ID",
-        "GenericProducts": [
-            "GP-0001"
-        ],
-        "DefaultValue": "",
-        "HelpText": "JRE ID assigned to you Data Link Server",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "JREAP Time Sync (Preferred)",
-        "GenericProducts": [
-            "GP-0001"
-        ],
-        "DefaultValue": "UTC",
-        "HelpText": "pick either:  \"UTC\"  or \"RTT\"",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "UTC,RTT"
-    },
-    {
-        "Name": "JREAP Time Sync (Supported)",
-        "GenericProducts": [
-            "GP-0001"
-        ],
-        "DefaultValue": "UTC",
-        "HelpText": "pick either:  \"UTC\"  or \"RTT\"",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "UTC,RTT"
-    },
-    {
-        "Name": "JTS Database Password",
-        "GenericProducts": [
-            "GP-0058"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "JTS Username",
-        "GenericProducts": [
-            "GP-0058"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "JTSLink Service URL",
-        "GenericProducts": [
-            "GP-0058"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "JU Number",
-        "GenericProducts": [
-            "GP-0001"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "KML File URL",
-        "GenericProducts": [
-            "GP-0043"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Keymat Provider (NIP-G)",
-        "GenericProducts": [
-            "GP-0036"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "LC2IS Web Services",
-        "GenericProducts": [
-            "GP-0060"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Example URL:\" http://lc2is-webservices.domain/LC2IS-Overlays/LC2ISOverlays.svc\"",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "LDAP PORT",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "TCP/389",
-        "HelpText": "LDAP CRL PORT",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": "LDAP DEFAULT CRL PORT"
-    },
-    {
-        "Name": "LDAP end-point IP for CRL retrieval",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "IP of the LDAP repository",
-        "ConfigurationAnswerType": "IP Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "LDAP end-point URL for CRL retrieval",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full URL as in CDP",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "LDAP port",
-        "GenericProducts": [
-            "GP-0017"
-        ],
-        "DefaultValue": "636",
-        "HelpText": "Which port is used for LDAP synchronization",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": "389,636"
-    },
-    {
-        "Name": "LOCID",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Location ID of this router (if applicable)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Library ID",
-        "GenericProducts": [
-            "GP-0100",
-            "GP-0103",
-            "GP-0014"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Name of the local CSD IPL library, e.g. XXN-NATO-003",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Library Identifier",
-        "GenericProducts": [
-            "GP-0042"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Local Chat Room",
-        "GenericProducts": [
-            "GP-0006"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Room name of Local Chat Server",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "LocalAgency",
-        "GenericProducts": [
-            "GP-0058",
-            "GP-0031"
-        ],
-        "DefaultValue": "",
-        "HelpText": "System",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Logistics Chat Room",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Low Delay (Stream) - DSCP Value(s)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "16/18/20/22",
-        "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Low priority - DSCP Value(s)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "0/2/4/6",
-        "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "MDN",
-        "GenericProducts": [
-            "GP-0011"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Message Disposition Notification Description of allowed MDN messages in MNP",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "MTU",
-        "GenericProducts": [
-            "GP-0026",
-            "GP-0029",
-            "GP-0084",
-            "GP-0025"
-        ],
-        "DefaultValue": "1300",
-        "HelpText": "Configured MTU Size",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "MX Records",
-        "GenericProducts": [
-            "GP-0022"
-        ],
-        "DefaultValue": "",
-        "HelpText": "MX dns Records",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Mail routing",
-        "GenericProducts": [
-            "GP-0010"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Mx dns record(s)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Max. PDU Size (MB)",
-        "GenericProducts": [
-            "GP-0023"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Maximum PDU Size in MB",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Maximum Offset",
-        "GenericProducts": [
-            "GP-0001"
-        ],
-        "DefaultValue": "0.5",
-        "HelpText": "Time in seconds",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Maximum PLI Age",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "600 seconds",
-        "HelpText": "Operationally set maximum age",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "MaximumOffset",
-        "GenericProducts": [
-            "GP-0039"
-        ],
-        "DefaultValue": "1000",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "MaximumStratum",
-        "GenericProducts": [
-            "GP-0039"
-        ],
-        "DefaultValue": "4",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Media Ports",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "UDP/20002-21001",
-        "HelpText": "UDP port range for media streams",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "MetaData URL",
-        "GenericProducts": [
-            "GP-0049"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Metadata XML URI",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Metadata Model Version",
-        "GenericProducts": [
-            "GP-0042"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Mission Name",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Mission Prefix / Theatre Code",
-        "GenericProducts": [
-            "GP-0016",
-            "GP-0025"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Multicast IP Subnets",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "The Multicast subnet(s) owned by this participant",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Multicast Rendezvous Point",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "The Multicast rendezvous point IP Adress ",
-        "ConfigurationAnswerType": "IP Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "NIP-G GRE-tunnel address",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Ip address of the GRE tunnel ",
-        "ConfigurationAnswerType": "IP Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "NIP-G Physical link address (IPv4)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Ip address of the physical address",
-        "ConfigurationAnswerType": "IP Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "NVG 1.4 Services",
-        "GenericProducts": [
-            "GP-0068",
-            "GP-0062",
-            "GP-0060"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Example URL: \"http://site-webservices/NVGOverlays/NVG14Overlays.svc\"",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "NVG 1.5 Services",
-        "GenericProducts": [
-            "GP-0060"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Example URL: http://site-webservices/NVG-Overlays15/NVG15Overlays.svc\"",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "NVG File URL",
-        "GenericProducts": [
-            "GP-0043"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "NVG RR URL",
-        "GenericProducts": [
-            "GP-0043"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "NVG-URL",
-        "GenericProducts": [
-            "GP-0031"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Web Service exposing ACO/ATO and Air Units",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "National Prefix",
-        "GenericProducts": [
-            "GP-0016",
-            "GP-0025"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Network (Sig, OAM) - DSCP Value(s)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "48/50/52/54",
-        "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Node ID",
-        "GenericProducts": [
-            "GP-0023"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Node Name",
-        "GenericProducts": [
-            "GP-0023"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Number of PLI to report",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "5",
-        "HelpText": "Operationally determine to reduce aircraft display clutter and provide most relevant data",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OCSP PORT",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "TCP/80",
-        "HelpText": "OCSP RESPONDER PORT",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": "OCSP PORT"
-    },
-    {
-        "Name": "OCSP Port",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "80",
-        "HelpText": "Port of OCSP responder",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OCSP end-point IP",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "IP of OCSP responder",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OCSP end-point URL",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full URL of OCSP in Responder as in CDP",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "ON",
-        "GenericProducts": [
-            "GP-0057",
-            "GP-0014"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Organizational Node",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OPLAN Portal URL",
-        "GenericProducts": [
-            "GP-0068"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL Address for OPLAN Planning Server",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "ORBAT UNIT",
-        "GenericProducts": [
-            "GP-0098",
-            "GP-0013"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OTH supported messages",
-        "GenericProducts": [
-            "GP-0045"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OU for Replication",
-        "GenericProducts": [
-            "GP-0017"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full Path to the OU of the OU to push objects",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OU for Replication (CENTRAL)",
-        "GenericProducts": [
-            "GP-0017"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full path to the OU to PUSH/PULL",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OU for Replication (PULL)",
-        "GenericProducts": [
-            "GP-0017"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full CN Path to the OU (for pull)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OU for Replication (PUSH)",
-        "GenericProducts": [
-            "GP-0017"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full Path to the OU to push objects",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "OU for replication",
-        "GenericProducts": [
-            "GP-0017"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full CN patch to the OU (for pull)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Operational DB Name",
-        "GenericProducts": [
-            "GP-0062"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "PKI Interoperability Framework (iTIF) Compliant",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "Yes compliant with iTIF, No not compliant with iTIF"
-    },
-    {
-        "Name": "PLA address",
-        "GenericProducts": [
-            "GP-0054"
-        ],
-        "DefaultValue": "",
-        "HelpText": "PLA / SMA",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Platform Role",
-        "GenericProducts": [
-            "GP-0001"
-        ],
-        "DefaultValue": "semi-active",
-        "HelpText": "pick either: \"active\", \"semi-active\", \"passive\".",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "active,semi-active,passive"
-    },
-    {
-        "Name": "Point of Interconnection information",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Location ID",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Port",
-        "GenericProducts": [
-            "GP-0066",
-            "GP-0076",
-            "GP-0033",
-            "GP-0045",
-            "GP-0090",
-            "GP-0026",
-            "GP-0062",
-            "GP-0095",
-            "GP-0055",
-            "GP-0100",
-            "GP-0024",
-            "GP-0056",
-            "GP-0082",
-            "GP-0010",
-            "GP-0012",
-            "GP-0053",
-            "GP-0007",
-            "GP-0091",
-            "GP-0105",
-            "GP-0023",
-            "GP-0031",
-            "GP-0028",
-            "GP-0107",
-            "GP-0070"
-        ],
-        "DefaultValue": "443",
-        "HelpText": "Port for the RAG Server",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Port C2S",
-        "GenericProducts": [
-            "GP-0060",
-            "GP-0005"
-        ],
-        "DefaultValue": "TCP/5222",
-        "HelpText": "Describes the TCP port (accepted) used for client to server connections. Usually 5222.",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Port CRL HTTP",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "80",
-        "HelpText": "Port for CRL HTTP/AIA",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Port MIP",
-        "GenericProducts": [
-            "GP-0060"
-        ],
-        "DefaultValue": "TCP/9090,TCP/7600,TCP/7602,TCP/4444,TCP/5555,TCP/5556,TCP/7602,TCP/13152",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Port NFFI",
-        "GenericProducts": [
-            "GP-0060"
-        ],
-        "DefaultValue": "TCP/3002",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Port Numbers C2S - OPLAN",
-        "GenericProducts": [
-            "GP-0068"
-        ],
-        "DefaultValue": "TCP/1433,TCP/80,TCP/443,TCP/8191-TCP/8199",
-        "HelpText": "OPLAN Server C2S and S2S Ports",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Port S2S",
-        "GenericProducts": [
-            "GP-0022",
-            "GP-0005"
-        ],
-        "DefaultValue": "TCP/5269",
-        "HelpText": "Describes the TCP port used for one chat server to federate with another server connections. Usually 5269.",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Portal URL",
-        "GenericProducts": [
-            "GP-0060"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Ports",
-        "GenericProducts": [
-            "GP-0042"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Primary/Secondary",
-        "GenericProducts": [
-            "GP-0007",
-            "GP-0107"
-        ],
-        "DefaultValue": "Secondary",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "Primary,Secondary"
-    },
-    {
-        "Name": "Provider URL",
-        "GenericProducts": [
-            "GP-0037"
-        ],
-        "DefaultValue": "",
-        "HelpText": "For example the URL of the trackstore you are accessing",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "QoS",
-        "GenericProducts": [
-            "GP-0007",
-            "GP-0090",
-            "GP-0091",
-            "GP-0107"
-        ],
-        "DefaultValue": "AF33",
-        "HelpText": "QoS DSCP value used for DNS traffic",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "QoS (Zone Transfer)",
-        "GenericProducts": [
-            "GP-0107"
-        ],
-        "DefaultValue": "AF13",
-        "HelpText": "QoS DSCP value used for DNS Transfer",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "QoS DSCP",
-        "GenericProducts": [
-            "GP-0010"
-        ],
-        "DefaultValue": "CS2",
-        "HelpText": "DSCP value assigned to email (Reference)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "QoS Media",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "",
-        "HelpText": "QoS DSCP value for Video Stream",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "QoS Signalling",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "",
-        "HelpText": "QoS DSCP Value for Signaling",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "QoS Value",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "CS3",
-        "HelpText": "QoS DSCP values as specified on JMEI",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "RMP Track Criteria",
-        "GenericProducts": [
-            "GP-0045"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "RMP Track deletion",
-        "GenericProducts": [
-            "GP-0045"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "RMP Track reporting",
-        "GenericProducts": [
-            "GP-0045"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "RSS Feed",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Releaser email",
-        "GenericProducts": [
-            "GP-0053"
-        ],
-        "DefaultValue": "rlp@shapeaifs.shape.nato.int",
-        "HelpText": "AIFS Release email address (rlp@shapeaifs.shape.nato.int)",
-        "ConfigurationAnswerType": "Email Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Relying Party Original Context",
-        "GenericProducts": [
-            "GP-0012"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Relying Party Context URL (IdP context)",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Relying Party Unique Identifier",
-        "GenericProducts": [
-            "GP-0012"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Relying Party Identifier (IdP context)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Remote App ICON",
-        "GenericProducts": [
-            "GP-0013"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Name of the ICON of the App",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Remote App URL",
-        "GenericProducts": [
-            "GP-0013"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL of the  Cloud App",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Replication Port",
-        "GenericProducts": [
-            "GP-0058"
-        ],
-        "DefaultValue": "8443",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Reverse Delegated Zones",
-        "GenericProducts": [
-            "GP-0007",
-            "GP-0107"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Reverse Zones Delegated from the DNS Root Server",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Root Hints",
-        "GenericProducts": [
-            "GP-0090"
-        ],
-        "DefaultValue": "",
-        "HelpText": "List of DNS root servers configured on the DNS resolver(s)",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Router ID",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "The BGP router ID in IP address form",
-        "ConfigurationAnswerType": "IP Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SIC",
-        "GenericProducts": [
-            "GP-0053"
-        ],
-        "DefaultValue": "",
-        "HelpText": "SIC Code (Exercise SIC) AKC and SHH as the second SIC",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SID",
-        "GenericProducts": [
-            "GP-0058",
-            "GP-0031"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Name of DA instance",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SIP SRV Record",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "",
-        "HelpText": "DNS SRV Record for your SIP Service",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SIPS SRV Record",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "",
-        "HelpText": "DNS SRV Record for your SIPS Service",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SMTP Address",
-        "GenericProducts": [
-            "GP-0081"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Email Address for Send and receive messages",
-        "ConfigurationAnswerType": "Email Address",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SOA Record Expiration",
-        "GenericProducts": [
-            "GP-0007",
-            "GP-0107",
-            "GP-0091"
-        ],
-        "DefaultValue": "8640000",
-        "HelpText": "SOA Record Expiration as defined by JMEI",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SOA Record Minimum TTL",
-        "GenericProducts": [
-            "GP-0007",
-            "GP-0107",
-            "GP-0091"
-        ],
-        "DefaultValue": "3600",
-        "HelpText": "SOA Record Minimum TTL as defined by JMEI",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SOA Record Refresh Interval",
-        "GenericProducts": [
-            "GP-0007",
-            "GP-0107",
-            "GP-0091"
-        ],
-        "DefaultValue": "3600",
-        "HelpText": "SOA Record Refresh Interval as defined by JMEI",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SOA Record Retry Interval",
-        "GenericProducts": [
-            "GP-0007",
-            "GP-0107",
-            "GP-0091"
-        ],
-        "DefaultValue": "600",
-        "HelpText": "SOA Record Retry Interval  as defined by JMEI",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SPIF File",
-        "GenericProducts": [
-            "GP-0011"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Location of  Security Policy Information File – XML file describing STANAG-4774 confidentiality labeling for the mission network instance",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SPS ++ replication URL",
-        "GenericProducts": [
-            "GP-0118"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SQL Named Instance",
-        "GenericProducts": [
-            "GP-0068"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SRV Record  _xmpp-client",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "",
-        "HelpText": "e.g. _xmpp-client._tcp Service Record",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SRV Record Broadcast",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "",
-        "HelpText": "e.g. _xmpp-server._tcp Service Broadcast",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SRV Record Conference",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "",
-        "HelpText": "e.g. _xmpp-server._tcp Service Conference",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SRV Record FDP",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "",
-        "HelpText": "e.g. _xmpp-server._tcp Service FDP",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SRV Record General",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "",
-        "HelpText": "e.g. _xmpp-server._tcp Service Conference",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SRV Record PUBSUB",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "",
-        "HelpText": "e.g. _xmpp-server._tcp Service pubsub",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SRV Record Search",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "",
-        "HelpText": "e.g. _xmpp-server._tcp Service Conference",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "SSH/TLS",
-        "GenericProducts": [
-            "GP-0010"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Accept TLS",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "Yes, No"
-    },
-    {
-        "Name": "Satellite",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Satellite ID",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Secure LDAP",
-        "GenericProducts": [
-            "GP-0017"
-        ],
-        "DefaultValue": "YES",
-        "HelpText": "Does the LDAP directory accepts LDAPS",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "YES,NO"
-    },
-    {
-        "Name": "Secure Port",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "TCP/5061,UDP/5061",
-        "HelpText": "Secured Port used for secure SIP",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Security Parameters",
-        "GenericProducts": [
-            "GP-0042"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Security Settings",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Is mandatory TLS implemented for server to server communication",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "Yes,No"
-    },
-    {
-        "Name": "Server Synch & replication URL",
-        "GenericProducts": [
-            "GP-0042"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Service Number",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Service URL",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Service URL where incidents can be entered",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Situational Awareness Chat Room",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Stratum",
-        "GenericProducts": [
-            "GP-0028"
-        ],
-        "DefaultValue": "2",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "2,3,4,5,6,7,8,9"
-    },
-    {
-        "Name": "Stream Controller WSDL URL",
-        "GenericProducts": [
-            "GP-0119"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL Including Ports",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Stream Server REplication WSDL URL",
-        "GenericProducts": [
-            "GP-0119"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL Including Ports",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Subsystem ID",
-        "GenericProducts": [
-            "GP-0021",
-            "GP-0088"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Assigned FFI SubSystem",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Superior HQ API KEY",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "API KEY of Superior HQ",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Supported Certificate Request",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Supported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Supported Certificate Requests",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": " \tSupported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Supported Object Type",
-        "GenericProducts": [
-            "GP-0017"
-        ],
-        "DefaultValue": "inetOrgPerson",
-        "HelpText": "LDAP object type that will be synchronized",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "System ID",
-        "GenericProducts": [
-            "GP-0021",
-            "GP-0088"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Assigned FFI System",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "System Name",
-        "GenericProducts": [
-            "GP-0021",
-            "GP-0088"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Specifies the system name. should be unique in the MN context",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "TCP open/close",
-        "GenericProducts": [
-            "GP-0045"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "TLS Secured",
-        "GenericProducts": [
-            "GP-0005"
-        ],
-        "DefaultValue": "Yes",
-        "HelpText": "TLS Encryption for Server to Serve",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": "Yes,No,Optional"
-    },
-    {
-        "Name": "TN Block",
-        "GenericProducts": [
-            "GP-0001"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Track number block assigned to Active Platform",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "TWO_TASK Parameters",
-        "GenericProducts": [
-            "GP-0058",
-            "GP-0031"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Terminal Base Address",
-        "GenericProducts": [
-            "GP-0087"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Test Number",
-        "GenericProducts": [
-            "GP-0016",
-            "GP-0025"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Text\tMessage (J28.2(0)) Enable",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "NO",
-        "HelpText": "NO (When ‘Text Message Enable’ is NO, do not transmit J28.2(0) to report the number of J3.x messages transmitted.)Only\ttransmit\tJ28.2(0) if operationally desired by WDA",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "NO,YES"
-    },
-    {
-        "Name": "Time Source",
-        "GenericProducts": [
-            "GP-0024"
-        ],
-        "DefaultValue": "GPS",
-        "HelpText": "Pick either: \"GPS\", \"CDMA\", \"Radio Clock\", \"Atomic Clock\",  \"Modem\",  \"Other\".",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "GPS, CDMA, Radio, Atomic, Modem, Other"
-    },
-    {
-        "Name": "TimeSourceFQDN",
-        "GenericProducts": [
-            "GP-0039"
-        ],
-        "DefaultValue": "",
-        "HelpText": "FQDN of the NTP server you are synchronizing to",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "TimeSourceIP",
-        "GenericProducts": [
-            "GP-0039"
-        ],
-        "DefaultValue": "",
-        "HelpText": "IP of the NTP server you are synchronizing to",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "TimeZone",
-        "GenericProducts": [
-            "GP-0039"
-        ],
-        "DefaultValue": "UTC",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Transaction Messaging - DSCP Value(s)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "24/26/28/30",
-        "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Transcoding",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "No",
-        "HelpText": "Does transcoding of the audio stream happen at the SBC?",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "No,Yes"
-    },
-    {
-        "Name": "Transmit Text Message (J28.2(0)) with DISTANCE (Optional capability)",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "NO",
-        "HelpText": "Only transmit J28.2(0) with DISTANCE if operationally desired by WDA",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "NO,YES"
-    },
-    {
-        "Name": "Transmit “No PLI Response” J28.2(0) (Optional capability)",
-        "GenericProducts": [
-            "GP-0080"
-        ],
-        "DefaultValue": "NO",
-        "HelpText": "Only transmit “No PLI Response” J28.2(0) if operationally desired by WDA",
-        "ConfigurationAnswerType": "Static Drop Down",
-        "AnswerContent": "NO,YES"
-    },
-    {
-        "Name": "UDP Data Streaming Port Range",
-        "GenericProducts": [
-            "GP-0119"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL",
-        "GenericProducts": [
-            "GP-0066",
-            "GP-0082",
-            "GP-0109",
-            "GP-0078",
-            "GP-0120",
-            "GP-0105",
-            "GP-0023",
-            "GP-0064",
-            "GP-0104",
-            "GP-0057",
-            "GP-0100",
-            "GP-0055",
-            "GP-0014",
-            "GP-0056"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL for the portal",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL - Expired Certificate",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full URL of Web Server with Expired Certificate",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL - Revoked Certificate",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full URL of Web Server with Revoked Certificate",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL - Valid Certificate",
-        "GenericProducts": [
-            "GP-0018"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Full URL of Web Server with Valid Certificate",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL Calendar address",
-        "GenericProducts": [
-            "GP-0012",
-            "GP-0093"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL WebDav address",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL Track Store",
-        "GenericProducts": [
-            "GP-0001",
-            "GP-0021"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL to connect to the Track Store (i.e TSS URL)",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL Web",
-        "GenericProducts": [
-            "GP-0012"
-        ],
-        "DefaultValue": "",
-        "HelpText": "\t Portal main URL",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL calendar",
-        "GenericProducts": [
-            "GP-0012"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL for WebHosting Service",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL for Catalog Management system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "URL",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL for Event Management system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL for Incident Management system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL for Request Fulfilment system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "",
-        "HelpText": "url",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "URL for SACM system",
-        "GenericProducts": [
-            "GP-0047"
-        ],
-        "DefaultValue": "URL",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Unicast IP Subnets",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Unicast subnet(s) owned by this participant",
-        "ConfigurationAnswerType": "Text Field (Multi Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Unique Identifier",
-        "GenericProducts": [
-            "GP-0049"
-        ],
-        "DefaultValue": "emailaddress",
-        "HelpText": "Unique Identifier within the claim (i.e SMTP Address, UPN)",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Username",
-        "GenericProducts": [
-            "GP-0118"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Video - DSCP Value(s)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "32/34/46/38",
-        "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Video Codec",
-        "GenericProducts": [
-            "GP-0026"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Available codecs",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Voice - DSCP Value(s)",
-        "GenericProducts": [
-            "GP-0034"
-        ],
-        "DefaultValue": "40/42/44/46",
-        "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WFS Namespace",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WFS Port",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WFS URL",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WISI Service URL",
-        "GenericProducts": [
-            "GP-0031"
-        ],
-        "DefaultValue": "",
-        "HelpText": "WISI Web Service exposing ACO/ATO and Air Units",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WMS Namespace",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WMS Port",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WMS URL",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WMTS Namespace",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WMTS Port",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "WMTS URL",
-        "GenericProducts": [
-            "GP-0030"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Web Browser​",
-        "GenericProducts": [
-            "GP-0042"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Web Service URL NVG",
-        "GenericProducts": [
-            "GP-0033",
-            "GP-0043"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Web Service URL OIR",
-        "GenericProducts": [
-            "GP-0033"
-        ],
-        "DefaultValue": "",
-        "HelpText": "Operational Incident Reporting - exposes JOCWatch published incidents containing all available details and all lookup entities associated in an incident containing all available details",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "Web Service URL PubSub",
-        "GenericProducts": [
-            "GP-0043"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "URL",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "iBridge File URL",
-        "GenericProducts": [
-            "GP-0013"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "port",
-        "GenericProducts": [
-            "GP-0010"
-        ],
-        "DefaultValue": "25",
-        "HelpText": "SMTP Port",
-        "ConfigurationAnswerType": "Port",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "uri",
-        "GenericProducts": [
-            "GP-0050"
-        ],
-        "DefaultValue": "",
-        "HelpText": "e.g identifier uri",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    },
-    {
-        "Name": "username",
-        "GenericProducts": [
-            "GP-0096"
-        ],
-        "DefaultValue": "",
-        "HelpText": "",
-        "ConfigurationAnswerType": "Text Field (Single Line)",
-        "AnswerContent": ""
-    }
+  {
+    "Name": "AIRC2 Port",
+    "GenericProducts": [
+      "GP-0022"
+    ],
+    "DefaultValue": "TCP/10000",
+    "HelpText": "AIRC2 Replication Cross Domain",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Advertised Unicast IP Subnets",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "The Unicast subnet(s) 'owned' by this participant. Aggregate as much as possible.",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "All certificates across trust path",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "All certificates across the trust path (CA certificates from Root CA down to the Issuing CA for Trust list) or cross-certification certificates",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Anycast IP Address",
+    "GenericProducts": [
+      "GP-0107"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "IP Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Anycast address(es)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "All Anycast addresses advertised by this router",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Area of Interest (AOI) Radius",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "1000 meters",
+    "HelpText": "Operationally set relevant AOI",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Audio Codec",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "u729/u711",
+    "HelpText": "Available audio codecs",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Authentication Mode",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Either domain integrated or system internal identity management",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Autonomous System Number (ASN)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "ASN advertised by this participant ",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Azimuth",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "BGP Router ID",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "IP Address of the BGP ",
+    "ConfigurationAnswerType": "IP Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Bandwidth",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Bias",
+    "GenericProducts": [
+      "GP-0039"
+    ],
+    "DefaultValue": "\t 0",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "C2/NonC2",
+    "GenericProducts": [
+      "GP-0001"
+    ],
+    "DefaultValue": "Non C2",
+    "HelpText": "pick either:  \"C2\"  or \"Non C2\"",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "C2, Non C2"
+  },
+  {
+    "Name": "CA Cert",
+    "GenericProducts": [
+      "GP-0010"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Location of CA Cert ",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "CAC Mechanism",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "Max Connections, Max BW (Dial Peer), Interface"
+  },
+  {
+    "Name": "CM Tool Endpoint URL",
+    "GenericProducts": [
+      "GP-0096"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "COP Portal Ports",
+    "GenericProducts": [
+      "GP-0072"
+    ],
+    "DefaultValue": "80,8080",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "COP Portal URL",
+    "GenericProducts": [
+      "GP-0072"
+    ],
+    "DefaultValue": "",
+    "HelpText": "example web services: http://portal/Public/Endpoint.aspx",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "COP Sync URL",
+    "GenericProducts": [
+      "GP-0043"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "COP Synchronization Port",
+    "GenericProducts": [
+      "GP-0072"
+    ],
+    "DefaultValue": "8080",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "COP Synchronization URL",
+    "GenericProducts": [
+      "GP-0072"
+    ],
+    "DefaultValue": "",
+    "HelpText": "example URL: http://portal:8080/NCOPServerSync",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "COP Web Services URL",
+    "GenericProducts": [
+      "GP-0072"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "CORBA  Interface URL\u200b",
+    "GenericProducts": [
+      "GP-0042"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "CRL HTTP / AIA",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "80",
+    "HelpText": "CRL HTTP /AIA",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "CRL LDAP / AIA",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "389",
+    "HelpText": "CRL LDAP / AIA",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "CRYPTO",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "CSD IWS Replication URL",
+    "GenericProducts": [
+      "GP-0096"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Calendar address",
+    "GenericProducts": [
+      "GP-0011"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL WebHosting address",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Call Sign",
+    "GenericProducts": [
+      "GP-0087",
+      "GP-0086"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Call sign",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Call signs",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Certificate Request Authority",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL for the RA",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Certificate file",
+    "GenericProducts": [
+      "GP-0042"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Channel",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Chat Room JID",
+    "GenericProducts": [
+      "GP-0048"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Name of the Chats rooms connected on the application",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Circuit - DSCP Value(s)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "56/58/60/62",
+    "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Classification Marking",
+    "GenericProducts": [
+      "GP-0006"
+    ],
+    "DefaultValue": "",
+    "HelpText": "list of classification markings used to configure server and clients",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Codec",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Available codecs",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Collaboration URL",
+    "GenericProducts": [
+      "GP-0012"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL for test library",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Conference Test Number",
+    "GenericProducts": [
+      "GP-0019",
+      "GP-0084"
+    ],
+    "DefaultValue": "",
+    "HelpText": "E164 number to use for testing",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Conference Type",
+    "GenericProducts": [
+      "GP-0019"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "AUdio, Video , Audio & Video "
+  },
+  {
+    "Name": "Crypto Type (NIP-G)",
+    "GenericProducts": [
+      "GP-0036"
+    ],
+    "DefaultValue": "TCE621",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "TCE621B,TCE621/C,CP109,SIMA,KG175"
+  },
+  {
+    "Name": "Cryptographic KSK Algorithn",
+    "GenericProducts": [
+      "GP-0107"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DB Name",
+    "GenericProducts": [
+      "GP-0105"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Not required for OS3",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DB Port",
+    "GenericProducts": [
+      "GP-0031"
+    ],
+    "DefaultValue": "TCP/1521",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DB Replication Role",
+    "GenericProducts": [
+      "GP-0062"
+    ],
+    "DefaultValue": "Slave",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "Master,Slave"
+  },
+  {
+    "Name": "DB Site Name",
+    "GenericProducts": [
+      "GP-0062"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DIT TOP Level",
+    "GenericProducts": [
+      "GP-0017"
+    ],
+    "DefaultValue": "",
+    "HelpText": "full CN patch to the TOP level (for pull)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DNS Record Catalog system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "DNS",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DNS Record Event Management system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "DNS Record",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DNS Record Incident Management system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "DNS Record",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DNS Record Location Management system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "DNS Record",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DNS Record SACM system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "DNS Record",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DNS Record service fulfillment system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "DNS Record",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DNSSEC DS Record",
+    "GenericProducts": [
+      "GP-0107"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "DSN",
+    "GenericProducts": [
+      "GP-0010"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Delivery Status Notification List of DSN messages allowed by the MNP",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Data Base Port",
+    "GenericProducts": [
+      "GP-0058"
+    ],
+    "DefaultValue": "15210",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Data Share Port",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "TCP/445",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Database Name",
+    "GenericProducts": [
+      "GP-0058",
+      "GP-0068"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Destination web service URL",
+    "GenericProducts": [
+      "GP-0022"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Destination web service URL",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Dissemination frequency",
+    "GenericProducts": [
+      "GP-0045"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Drop Track Timer",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "45 seconds",
+    "HelpText": "Drop reported tracks prior to STANAG 5516 retransmission time",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "E164",
+    "GenericProducts": [
+      "GP-0029"
+    ],
+    "DefaultValue": "",
+    "HelpText": "The E164 phone number for this asset",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "E164 Number",
+    "GenericProducts": [
+      "GP-0015"
+    ],
+    "DefaultValue": "",
+    "HelpText": "The E164 phone number for this asset",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "EVE Web URL",
+    "GenericProducts": [
+      "GP-0062"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Elevation",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Email",
+    "GenericProducts": [
+      "GP-0011"
+    ],
+    "DefaultValue": "",
+    "HelpText": "email address",
+    "ConfigurationAnswerType": "Email Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Email Address #2 for CIP Exchange",
+    "GenericProducts": [
+      "GP-0061"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Email Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Email Address for Automatic Publication",
+    "GenericProducts": [
+      "GP-0061"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Email Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Email address",
+    "GenericProducts": [
+      "GP-0013",
+      "GP-0093",
+      "GP-0011"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Email Address",
+    "ConfigurationAnswerType": "Email Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Email domains",
+    "GenericProducts": [
+      "GP-0022",
+      "GP-0010"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Accepted email domains",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "FFT Message Standards",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0040",
+      "GP-0088"
+    ],
+    "DefaultValue": "FFI XML MTF - APP-11(D)(1)",
+    "HelpText": "Enter the Message Standards used: i.e. NFFI 1.3,  FFI XML MTF - APP-11(D)(1)",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "NFFI 1.3,  FFI XML MTF - APP-11(D)(1)"
+  },
+  {
+    "Name": "FFT Protocols Supported",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0040",
+      "GP-0088"
+    ],
+    "DefaultValue": "ADatP-36 IP1",
+    "HelpText": "Enter the Protocols Supported: i.e. D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub.",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub."
+  },
+  {
+    "Name": "FSMID prefix",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Federated Service Management Record Identifier Prefix (MMM-AAA-NNN)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Forward Delegated Zones",
+    "GenericProducts": [
+      "GP-0007",
+      "GP-0107"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Forward Zones Delegated from the DNS Root Server",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Frequency",
+    "GenericProducts": [
+      "GP-0087",
+      "GP-0086"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Frequency code",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Geo Replication Folder",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Glue Records",
+    "GenericProducts": [
+      "GP-0007",
+      "GP-0107"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Glue Records for each zone delegation",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Group claims",
+    "GenericProducts": [
+      "GP-0049"
+    ],
+    "DefaultValue": "",
+    "HelpText": "If role based access, name security groups for web applications",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Guard Address",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "HTTP CRL FULL URL",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full URL as in CDP",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "HTTP CRL PRT",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "TCP/80",
+    "HelpText": "Full URL as in CDP",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "HTTP end-point IP for CRL retrieval",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "IP of the HTTP service",
+    "ConfigurationAnswerType": "IP Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "HTTP end-point URL for CRL retrieval",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Supply the port for the CRL",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "High Throughput - DSCP Value(s)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "8/10/12/14",
+    "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Home Channel Frequency code",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Hosted Forward Zone(s)",
+    "GenericProducts": [
+      "GP-0107",
+      "GP-0091"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Forward Zone(s) hosted by this ANS",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Hosted Reverse Zone(s)",
+    "GenericProducts": [
+      "GP-0107",
+      "GP-0091"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Reverse Zone(s) hosted by Authoritative DNS servers",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "ID Provider Unique Identifier",
+    "GenericProducts": [
+      "GP-0049"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Issuer value in the security token that uniquely identifies the Claims Provider",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "IP Address (Anycast)",
+    "GenericProducts": [
+      "GP-0007"
+    ],
+    "DefaultValue": "",
+    "HelpText": "The Anycast IP used by the DNS Root server",
+    "ConfigurationAnswerType": "IP Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "IP DB Server",
+    "GenericProducts": [
+      "GP-0077",
+      "GP-0076"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "IPL PORT",
+    "GenericProducts": [
+      "GP-0100"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Provide the port for the IPL Provider",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "IRM Organization",
+    "GenericProducts": [
+      "GP-0014"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Instance API KEY",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Unique instance hex key used by subordinated units as superior identifier",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Instance Name",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Instance URN",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "IntelFS SiteID",
+    "GenericProducts": [
+      "GP-0105",
+      "GP-0055",
+      "GP-0056"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Not required for OS3",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "J12.6 Environment",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "Land (Env=5)",
+    "HelpText": "Land (Env=5), Surface (Env=3), and No Statement (Env = 0) Service filter J12.6 messages from other environments",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "Land (Env=5), Surface (Env=3), and No Statement (Env = 0)"
+  },
+  {
+    "Name": "J12.6 Lockout Period",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "45 seconds",
+    "HelpText": "Prevent response to repeated/retransmitted J12.6 messages",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "J12.6 Originator JU",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "",
+    "HelpText": "List of JUs authorized to trigger service Service filter J12.6 messages from extra JUs",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "J12.6 Reporting Area",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Geographic area to respond to J12.6 Service filter J12.6 messages from outside geographic reporting area",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "J12.6 SID",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "",
+    "HelpText": "0, 9, 10 Service filter J12.6 messages with other settings",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "0, 9, 10"
+  },
+  {
+    "Name": "J3.2 Emergency Indicator",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "0 (No Statement)",
+    "HelpText": "Emergency Indicator not set unless PLI ALERT status indicates it or operationally directed",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "J3.2 Force Tell Indicator",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "1 (Force Tell Status)",
+    "HelpText": "Force Tell Indicator set unless operationally directed otherwise",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "J3.2 Passive/Active Sensor",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "0 (Passive)",
+    "HelpText": "Fixed Value",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "0 (Passive)"
+  },
+  {
+    "Name": "J3.2 Track Quality",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "9",
+    "HelpText": "If reported information does not enable computation of Track Quality",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "J3.5 Emergency Indicator",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "0 (No Statement)",
+    "HelpText": "Emergency Indicator not set unless PLI ALERT status indicates it or operationally directed",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "J3.5 Force Tell Indicator",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "1 (Force Tell Status)",
+    "HelpText": "Force Tell Indicator set unless operationally directed otherwise",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "J3.5 Passive/Active Sensor",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "0 (Passive)",
+    "HelpText": "Fixed Value",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "0 (Passive)"
+  },
+  {
+    "Name": "J3.5 Track Quality",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "9",
+    "HelpText": "If reported information does not enable computation of Track Quality",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "JRE ID",
+    "GenericProducts": [
+      "GP-0001"
+    ],
+    "DefaultValue": "",
+    "HelpText": "JRE ID assigned to you Data Link Server",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "JREAP Time Sync (Preferred)",
+    "GenericProducts": [
+      "GP-0001"
+    ],
+    "DefaultValue": "UTC",
+    "HelpText": "pick either:  \"UTC\"  or \"RTT\"",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "UTC,RTT"
+  },
+  {
+    "Name": "JREAP Time Sync (Supported)",
+    "GenericProducts": [
+      "GP-0001"
+    ],
+    "DefaultValue": "UTC",
+    "HelpText": "pick either:  \"UTC\"  or \"RTT\"",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "UTC,RTT"
+  },
+  {
+    "Name": "JTS Database Password",
+    "GenericProducts": [
+      "GP-0058"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "JTS Username",
+    "GenericProducts": [
+      "GP-0058"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "JTSLink Service URL",
+    "GenericProducts": [
+      "GP-0058"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "JU Number",
+    "GenericProducts": [
+      "GP-0001"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "KML File URL",
+    "GenericProducts": [
+      "GP-0043"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Keymat Provider (NIP-G)",
+    "GenericProducts": [
+      "GP-0036"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "LC2IS Web Services",
+    "GenericProducts": [
+      "GP-0060"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Example URL:\" http://lc2is-webservices.domain/LC2IS-Overlays/LC2ISOverlays.svc\"",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "LDAP PORT",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "TCP/389",
+    "HelpText": "LDAP CRL PORT",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": "LDAP DEFAULT CRL PORT"
+  },
+  {
+    "Name": "LDAP end-point IP for CRL retrieval",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "IP of the LDAP repository",
+    "ConfigurationAnswerType": "IP Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "LDAP end-point URL for CRL retrieval",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full URL as in CDP",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "LDAP port",
+    "GenericProducts": [
+      "GP-0017"
+    ],
+    "DefaultValue": "636",
+    "HelpText": "Which port is used for LDAP synchronization",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": "389,636"
+  },
+  {
+    "Name": "LOCID",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Location ID of this router (if applicable)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Library ID",
+    "GenericProducts": [
+      "GP-0100",
+      "GP-0103",
+      "GP-0014"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Name of the local CSD IPL library, e.g. XXN-NATO-003",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Library Identifier",
+    "GenericProducts": [
+      "GP-0042"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Local Chat Room",
+    "GenericProducts": [
+      "GP-0006"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Room name of Local Chat Server",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "LocalAgency",
+    "GenericProducts": [
+      "GP-0058",
+      "GP-0031"
+    ],
+    "DefaultValue": "",
+    "HelpText": "System",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Logistics Chat Room",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Low Delay (Stream) - DSCP Value(s)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "16/18/20/22",
+    "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Low priority - DSCP Value(s)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "0/2/4/6",
+    "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "MDN",
+    "GenericProducts": [
+      "GP-0011"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Message Disposition Notification Description of allowed MDN messages in MNP",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "MTU",
+    "GenericProducts": [
+      "GP-0026",
+      "GP-0029",
+      "GP-0084",
+      "GP-0025"
+    ],
+    "DefaultValue": "1300",
+    "HelpText": "Configured MTU Size",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "MX Records",
+    "GenericProducts": [
+      "GP-0022"
+    ],
+    "DefaultValue": "",
+    "HelpText": "MX dns Records",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Mail routing",
+    "GenericProducts": [
+      "GP-0010"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Mx dns record(s)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Max. PDU Size (MB)",
+    "GenericProducts": [
+      "GP-0023"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Maximum PDU Size in MB",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Maximum Offset",
+    "GenericProducts": [
+      "GP-0001"
+    ],
+    "DefaultValue": "0.5",
+    "HelpText": "Time in seconds",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Maximum PLI Age",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "600 seconds",
+    "HelpText": "Operationally set maximum age",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "MaximumOffset",
+    "GenericProducts": [
+      "GP-0039"
+    ],
+    "DefaultValue": "1000",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "MaximumStratum",
+    "GenericProducts": [
+      "GP-0039"
+    ],
+    "DefaultValue": "4",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Media Ports",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "UDP/20002-21001",
+    "HelpText": "UDP port range for media streams",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "MetaData URL",
+    "GenericProducts": [
+      "GP-0049"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Metadata XML URI",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Metadata Model Version",
+    "GenericProducts": [
+      "GP-0042"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Mission Name",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Mission Prefix / Theatre Code",
+    "GenericProducts": [
+      "GP-0016",
+      "GP-0025"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Multicast IP Subnets",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "The Multicast subnet(s) owned by this participant",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Multicast Rendezvous Point",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "The Multicast rendezvous point IP Adress ",
+    "ConfigurationAnswerType": "IP Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "NIP-G GRE-tunnel address",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Ip address of the GRE tunnel ",
+    "ConfigurationAnswerType": "IP Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "NIP-G Physical link address (IPv4)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Ip address of the physical address",
+    "ConfigurationAnswerType": "IP Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "NVG 1.4 Services",
+    "GenericProducts": [
+      "GP-0068",
+      "GP-0062",
+      "GP-0060"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Example URL: \"http://site-webservices/NVGOverlays/NVG14Overlays.svc\"",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "NVG 1.5 Services",
+    "GenericProducts": [
+      "GP-0060"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Example URL: http://site-webservices/NVG-Overlays15/NVG15Overlays.svc\"",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "NVG File URL",
+    "GenericProducts": [
+      "GP-0043"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "NVG RR URL",
+    "GenericProducts": [
+      "GP-0043"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "NVG-URL",
+    "GenericProducts": [
+      "GP-0031"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Web Service exposing ACO/ATO and Air Units",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "National Prefix",
+    "GenericProducts": [
+      "GP-0016",
+      "GP-0025"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Network (Sig, OAM) - DSCP Value(s)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "48/50/52/54",
+    "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Node ID",
+    "GenericProducts": [
+      "GP-0023"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Node Name",
+    "GenericProducts": [
+      "GP-0023"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Number of PLI to report",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "5",
+    "HelpText": "Operationally determine to reduce aircraft display clutter and provide most relevant data",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OCSP PORT",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "TCP/80",
+    "HelpText": "OCSP RESPONDER PORT",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": "OCSP PORT"
+  },
+  {
+    "Name": "OCSP Port",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "80",
+    "HelpText": "Port of OCSP responder",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OCSP end-point IP",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "IP of OCSP responder",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OCSP end-point URL",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full URL of OCSP in Responder as in CDP",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "ON",
+    "GenericProducts": [
+      "GP-0057",
+      "GP-0014"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Organizational Node",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OPLAN Portal URL",
+    "GenericProducts": [
+      "GP-0068"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL Address for OPLAN Planning Server",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "ORBAT UNIT",
+    "GenericProducts": [
+      "GP-0098",
+      "GP-0013"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OTH supported messages",
+    "GenericProducts": [
+      "GP-0045"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OU for Replication",
+    "GenericProducts": [
+      "GP-0017"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full Path to the OU of the OU to push objects",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OU for Replication (CENTRAL)",
+    "GenericProducts": [
+      "GP-0017"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full path to the OU to PUSH/PULL",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OU for Replication (PULL)",
+    "GenericProducts": [
+      "GP-0017"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full CN Path to the OU (for pull)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OU for Replication (PUSH)",
+    "GenericProducts": [
+      "GP-0017"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full Path to the OU to push objects",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "OU for replication",
+    "GenericProducts": [
+      "GP-0017"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full CN patch to the OU (for pull)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Operational DB Name",
+    "GenericProducts": [
+      "GP-0062"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "PKI Interoperability Framework (iTIF) Compliant",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "Yes compliant with iTIF, No not compliant with iTIF"
+  },
+  {
+    "Name": "PLA address",
+    "GenericProducts": [
+      "GP-0054"
+    ],
+    "DefaultValue": "",
+    "HelpText": "PLA / SMA",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Platform Role",
+    "GenericProducts": [
+      "GP-0001"
+    ],
+    "DefaultValue": "semi-active",
+    "HelpText": "pick either: \"active\", \"semi-active\", \"passive\".",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "active,semi-active,passive"
+  },
+  {
+    "Name": "Point of Interconnection information",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Location ID",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Port",
+    "GenericProducts": [
+      "GP-0066",
+      "GP-0076",
+      "GP-0033",
+      "GP-0045",
+      "GP-0090",
+      "GP-0026",
+      "GP-0062",
+      "GP-0095",
+      "GP-0055",
+      "GP-0100",
+      "GP-0024",
+      "GP-0056",
+      "GP-0082",
+      "GP-0010",
+      "GP-0012",
+      "GP-0053",
+      "GP-0007",
+      "GP-0091",
+      "GP-0105",
+      "GP-0023",
+      "GP-0031",
+      "GP-0028",
+      "GP-0107",
+      "GP-0070"
+    ],
+    "DefaultValue": "443",
+    "HelpText": "Port for the RAG Server",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Port C2S",
+    "GenericProducts": [
+      "GP-0060",
+      "GP-0005"
+    ],
+    "DefaultValue": "TCP/5222",
+    "HelpText": "Describes the TCP port (accepted) used for client to server connections. Usually 5222.",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Port CRL HTTP",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "80",
+    "HelpText": "Port for CRL HTTP/AIA",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Port MIP",
+    "GenericProducts": [
+      "GP-0060"
+    ],
+    "DefaultValue": "TCP/9090,TCP/7600,TCP/7602,TCP/4444,TCP/5555,TCP/5556,TCP/7602,TCP/13152",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Port NFFI",
+    "GenericProducts": [
+      "GP-0060"
+    ],
+    "DefaultValue": "TCP/3002",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Port Numbers C2S - OPLAN",
+    "GenericProducts": [
+      "GP-0068"
+    ],
+    "DefaultValue": "TCP/1433,TCP/80,TCP/443,TCP/8191-TCP/8199",
+    "HelpText": "OPLAN Server C2S and S2S Ports",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Port S2S",
+    "GenericProducts": [
+      "GP-0022",
+      "GP-0005"
+    ],
+    "DefaultValue": "TCP/5269",
+    "HelpText": "Describes the TCP port used for one chat server to federate with another server connections. Usually 5269.",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Portal URL",
+    "GenericProducts": [
+      "GP-0060"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Ports",
+    "GenericProducts": [
+      "GP-0042"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Primary/Secondary",
+    "GenericProducts": [
+      "GP-0007",
+      "GP-0107"
+    ],
+    "DefaultValue": "Secondary",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "Primary,Secondary"
+  },
+  {
+    "Name": "Provider URL",
+    "GenericProducts": [
+      "GP-0037"
+    ],
+    "DefaultValue": "",
+    "HelpText": "For example the URL of the trackstore you are accessing",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "QoS",
+    "GenericProducts": [
+      "GP-0007",
+      "GP-0090",
+      "GP-0091",
+      "GP-0107"
+    ],
+    "DefaultValue": "AF33",
+    "HelpText": "QoS DSCP value used for DNS traffic",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "QoS (Zone Transfer)",
+    "GenericProducts": [
+      "GP-0107"
+    ],
+    "DefaultValue": "AF13",
+    "HelpText": "QoS DSCP value used for DNS Transfer",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "QoS DSCP",
+    "GenericProducts": [
+      "GP-0010"
+    ],
+    "DefaultValue": "CS2",
+    "HelpText": "DSCP value assigned to email (Reference)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "QoS Media",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "",
+    "HelpText": "QoS DSCP value for Video Stream",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "QoS Signalling",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "",
+    "HelpText": "QoS DSCP Value for Signaling",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "QoS Value",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "CS3",
+    "HelpText": "QoS DSCP values as specified on JMEI",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "RMP Track Criteria",
+    "GenericProducts": [
+      "GP-0045"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "RMP Track deletion",
+    "GenericProducts": [
+      "GP-0045"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "RMP Track reporting",
+    "GenericProducts": [
+      "GP-0045"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "RSS Feed",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Releaser email",
+    "GenericProducts": [
+      "GP-0053"
+    ],
+    "DefaultValue": "rlp@shapeaifs.shape.nato.int",
+    "HelpText": "AIFS Release email address (rlp@shapeaifs.shape.nato.int)",
+    "ConfigurationAnswerType": "Email Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Relying Party Original Context",
+    "GenericProducts": [
+      "GP-0012"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Relying Party Context URL (IdP context)",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Relying Party Unique Identifier",
+    "GenericProducts": [
+      "GP-0012"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Relying Party Identifier (IdP context)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Remote App ICON",
+    "GenericProducts": [
+      "GP-0013"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Name of the ICON of the App",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Remote App URL",
+    "GenericProducts": [
+      "GP-0013"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL of the  Cloud App",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Replication Port",
+    "GenericProducts": [
+      "GP-0058"
+    ],
+    "DefaultValue": "8443",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Reverse Delegated Zones",
+    "GenericProducts": [
+      "GP-0007",
+      "GP-0107"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Reverse Zones Delegated from the DNS Root Server",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Root Hints",
+    "GenericProducts": [
+      "GP-0090"
+    ],
+    "DefaultValue": "",
+    "HelpText": "List of DNS root servers configured on the DNS resolver(s)",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Router ID",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "The BGP router ID in IP address form",
+    "ConfigurationAnswerType": "IP Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SIC",
+    "GenericProducts": [
+      "GP-0053"
+    ],
+    "DefaultValue": "",
+    "HelpText": "SIC Code (Exercise SIC) AKC and SHH as the second SIC",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SID",
+    "GenericProducts": [
+      "GP-0058",
+      "GP-0031"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Name of DA instance",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SIP SRV Record",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "",
+    "HelpText": "DNS SRV Record for your SIP Service",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SIPS SRV Record",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "",
+    "HelpText": "DNS SRV Record for your SIPS Service",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SMTP Address",
+    "GenericProducts": [
+      "GP-0081"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Email Address for Send and receive messages",
+    "ConfigurationAnswerType": "Email Address",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SOA Record Expiration",
+    "GenericProducts": [
+      "GP-0007",
+      "GP-0107",
+      "GP-0091"
+    ],
+    "DefaultValue": "8640000",
+    "HelpText": "SOA Record Expiration as defined by JMEI",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SOA Record Minimum TTL",
+    "GenericProducts": [
+      "GP-0007",
+      "GP-0107",
+      "GP-0091"
+    ],
+    "DefaultValue": "3600",
+    "HelpText": "SOA Record Minimum TTL as defined by JMEI",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SOA Record Refresh Interval",
+    "GenericProducts": [
+      "GP-0007",
+      "GP-0107",
+      "GP-0091"
+    ],
+    "DefaultValue": "3600",
+    "HelpText": "SOA Record Refresh Interval as defined by JMEI",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SOA Record Retry Interval",
+    "GenericProducts": [
+      "GP-0007",
+      "GP-0107",
+      "GP-0091"
+    ],
+    "DefaultValue": "600",
+    "HelpText": "SOA Record Retry Interval  as defined by JMEI",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SPIF File",
+    "GenericProducts": [
+      "GP-0011"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Location of  Security Policy Information File \u2013 XML file describing STANAG-4774 confidentiality labeling for the mission network instance",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SPS ++ replication URL",
+    "GenericProducts": [
+      "GP-0118"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SQL Named Instance",
+    "GenericProducts": [
+      "GP-0068"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SRV Record  _xmpp-client",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "",
+    "HelpText": "e.g. _xmpp-client._tcp Service Record",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SRV Record Broadcast",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "",
+    "HelpText": "e.g. _xmpp-server._tcp Service Broadcast",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SRV Record Conference",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "",
+    "HelpText": "e.g. _xmpp-server._tcp Service Conference",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SRV Record FDP",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "",
+    "HelpText": "e.g. _xmpp-server._tcp Service FDP",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SRV Record General",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "",
+    "HelpText": "e.g. _xmpp-server._tcp Service Conference",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SRV Record PUBSUB",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "",
+    "HelpText": "e.g. _xmpp-server._tcp Service pubsub",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SRV Record Search",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "",
+    "HelpText": "e.g. _xmpp-server._tcp Service Conference",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "SSH/TLS",
+    "GenericProducts": [
+      "GP-0010"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Accept TLS",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "Yes, No"
+  },
+  {
+    "Name": "Satellite",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Satellite ID",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Secure LDAP",
+    "GenericProducts": [
+      "GP-0017"
+    ],
+    "DefaultValue": "YES",
+    "HelpText": "Does the LDAP directory accepts LDAPS",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "YES,NO"
+  },
+  {
+    "Name": "Secure Port",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "TCP/5061,UDP/5061",
+    "HelpText": "Secured Port used for secure SIP",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Security Parameters",
+    "GenericProducts": [
+      "GP-0042"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Security Settings",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Is mandatory TLS implemented for server to server communication",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "Yes,No"
+  },
+  {
+    "Name": "Server Synch & replication URL",
+    "GenericProducts": [
+      "GP-0042"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Service Number",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Service URL",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Service URL where incidents can be entered",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Situational Awareness Chat Room",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Stratum",
+    "GenericProducts": [
+      "GP-0028"
+    ],
+    "DefaultValue": "2",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "2,3,4,5,6,7,8,9"
+  },
+  {
+    "Name": "Stream Controller WSDL URL",
+    "GenericProducts": [
+      "GP-0119"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL Including Ports",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Stream Server REplication WSDL URL",
+    "GenericProducts": [
+      "GP-0119"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL Including Ports",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Subsystem ID",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0088"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Assigned FFI SubSystem",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Superior HQ API KEY",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "API KEY of Superior HQ",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Supported Certificate Request",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Supported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Supported Certificate Requests",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": " \tSupported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Supported Object Type",
+    "GenericProducts": [
+      "GP-0017"
+    ],
+    "DefaultValue": "inetOrgPerson",
+    "HelpText": "LDAP object type that will be synchronized",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "System ID",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0088"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Assigned FFI System",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "System Name",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0088"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Specifies the system name. should be unique in the MN context",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "TCP open/close",
+    "GenericProducts": [
+      "GP-0045"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "TLS Secured",
+    "GenericProducts": [
+      "GP-0005"
+    ],
+    "DefaultValue": "Yes",
+    "HelpText": "TLS Encryption for Server to Serve",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": "Yes,No,Optional"
+  },
+  {
+    "Name": "TN Block",
+    "GenericProducts": [
+      "GP-0001"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Track number block assigned to Active Platform",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "TWO_TASK Parameters",
+    "GenericProducts": [
+      "GP-0058",
+      "GP-0031"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Terminal Base Address",
+    "GenericProducts": [
+      "GP-0087"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Test Number",
+    "GenericProducts": [
+      "GP-0016",
+      "GP-0025"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Text\tMessage (J28.2(0)) Enable",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "NO",
+    "HelpText": "NO (When \u2018Text Message Enable\u2019 is NO, do not transmit J28.2(0) to report the number of J3.x messages transmitted.)Only\ttransmit\tJ28.2(0) if operationally desired by WDA",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "NO,YES"
+  },
+  {
+    "Name": "Time Source",
+    "GenericProducts": [
+      "GP-0024"
+    ],
+    "DefaultValue": "GPS",
+    "HelpText": "Pick either: \"GPS\", \"CDMA\", \"Radio Clock\", \"Atomic Clock\",  \"Modem\",  \"Other\".",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "GPS, CDMA, Radio, Atomic, Modem, Other"
+  },
+  {
+    "Name": "TimeSourceFQDN",
+    "GenericProducts": [
+      "GP-0039"
+    ],
+    "DefaultValue": "",
+    "HelpText": "FQDN of the NTP server you are synchronizing to",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "TimeSourceIP",
+    "GenericProducts": [
+      "GP-0039"
+    ],
+    "DefaultValue": "",
+    "HelpText": "IP of the NTP server you are synchronizing to",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "TimeZone",
+    "GenericProducts": [
+      "GP-0039"
+    ],
+    "DefaultValue": "UTC",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Transaction Messaging - DSCP Value(s)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "24/26/28/30",
+    "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Transcoding",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "No",
+    "HelpText": "Does transcoding of the audio stream happen at the SBC?",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "No,Yes"
+  },
+  {
+    "Name": "Transmit Text Message (J28.2(0)) with DISTANCE (Optional capability)",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "NO",
+    "HelpText": "Only transmit J28.2(0) with DISTANCE if operationally desired by WDA",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "NO,YES"
+  },
+  {
+    "Name": "Transmit \u201cNo PLI Response\u201d J28.2(0) (Optional capability)",
+    "GenericProducts": [
+      "GP-0080"
+    ],
+    "DefaultValue": "NO",
+    "HelpText": "Only transmit \u201cNo PLI Response\u201d J28.2(0) if operationally desired by WDA",
+    "ConfigurationAnswerType": "Static Drop Down",
+    "AnswerContent": "NO,YES"
+  },
+  {
+    "Name": "UDP Data Streaming Port Range",
+    "GenericProducts": [
+      "GP-0119"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL",
+    "GenericProducts": [
+      "GP-0066",
+      "GP-0082",
+      "GP-0109",
+      "GP-0078",
+      "GP-0120",
+      "GP-0105",
+      "GP-0023",
+      "GP-0064",
+      "GP-0104",
+      "GP-0057",
+      "GP-0100",
+      "GP-0055",
+      "GP-0014",
+      "GP-0056"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL for the portal",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL - Expired Certificate",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full URL of Web Server with Expired Certificate",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL - Revoked Certificate",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full URL of Web Server with Revoked Certificate",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL - Valid Certificate",
+    "GenericProducts": [
+      "GP-0018"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Full URL of Web Server with Valid Certificate",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL Calendar address",
+    "GenericProducts": [
+      "GP-0012",
+      "GP-0093"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL WebDav address",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL Track Store",
+    "GenericProducts": [
+      "GP-0001",
+      "GP-0021"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL to connect to the Track Store (i.e TSS URL)",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL Web",
+    "GenericProducts": [
+      "GP-0012"
+    ],
+    "DefaultValue": "",
+    "HelpText": "\t Portal main URL",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL calendar",
+    "GenericProducts": [
+      "GP-0012"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL for WebHosting Service",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL for Catalog Management system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "URL",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL for Event Management system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL for Incident Management system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL for Request Fulfilment system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "",
+    "HelpText": "url",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "URL for SACM system",
+    "GenericProducts": [
+      "GP-0047"
+    ],
+    "DefaultValue": "URL",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Unicast IP Subnets",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Unicast subnet(s) owned by this participant",
+    "ConfigurationAnswerType": "Text Field (Multi Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Unique Identifier",
+    "GenericProducts": [
+      "GP-0049"
+    ],
+    "DefaultValue": "emailaddress",
+    "HelpText": "Unique Identifier within the claim (i.e SMTP Address, UPN)",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Username",
+    "GenericProducts": [
+      "GP-0118"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Video - DSCP Value(s)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "32/34/46/38",
+    "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Video Codec",
+    "GenericProducts": [
+      "GP-0026"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Available codecs",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Voice - DSCP Value(s)",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "DefaultValue": "40/42/44/46",
+    "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WFS Namespace",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WFS Port",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WFS URL",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WISI Service URL",
+    "GenericProducts": [
+      "GP-0031"
+    ],
+    "DefaultValue": "",
+    "HelpText": "WISI Web Service exposing ACO/ATO and Air Units",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WMS Namespace",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WMS Port",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WMS URL",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WMTS Namespace",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WMTS Port",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "WMTS URL",
+    "GenericProducts": [
+      "GP-0030"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Web Browser\u200b",
+    "GenericProducts": [
+      "GP-0042"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Web Service URL NVG",
+    "GenericProducts": [
+      "GP-0033",
+      "GP-0043"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Web Service URL OIR",
+    "GenericProducts": [
+      "GP-0033"
+    ],
+    "DefaultValue": "",
+    "HelpText": "Operational Incident Reporting - exposes JOCWatch published incidents containing all available details and all lookup entities associated in an incident containing all available details",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "Web Service URL PubSub",
+    "GenericProducts": [
+      "GP-0043"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "URL",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "iBridge File URL",
+    "GenericProducts": [
+      "GP-0013"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "port",
+    "GenericProducts": [
+      "GP-0010"
+    ],
+    "DefaultValue": "25",
+    "HelpText": "SMTP Port",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "uri",
+    "GenericProducts": [
+      "GP-0050"
+    ],
+    "DefaultValue": "",
+    "HelpText": "e.g identifier uri",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  },
+  {
+    "Name": "username",
+    "GenericProducts": [
+      "GP-0096"
+    ],
+    "DefaultValue": "",
+    "HelpText": "",
+    "ConfigurationAnswerType": "Text Field (Single Line)",
+    "AnswerContent": ""
+  }
 ]

@@ -56,13 +56,17 @@ def create_app():
     # Add security headers after each request
     @app.after_request
     def add_security_headers(response: Response):
-        # Disable FLoC/Interest Cohort
-        response.headers.setdefault('Permissions-Policy', 'interest-cohort=()')
-        # Add other common security headers (optional but recommended)
-        # response.headers['X-Content-Type-Options'] = 'nosniff'
-        # response.headers['X-Frame-Options'] = 'SAMEORIGIN'
-        # response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
-        # response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains' # If using HTTPS
+        # Set comprehensive Permissions-Policy to properly handle all privacy features
+        # Include interest-cohort=() since it's detected by the scanner
+        response.headers['Permissions-Policy'] = 'geolocation=(), camera=(), microphone=(), interest-cohort=()'
+        
+        # Add other common security headers 
+        response.headers['X-Content-Type-Options'] = 'nosniff'
+        response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+        response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+        
+        # Enable HSTS only if using HTTPS
+        # response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
         return response
     
     return app
@@ -94,7 +98,9 @@ def register_blueprints(app):
     from ionic2.web.routes.auth import auth_bp
     from ionic2.web.routes.api import api_bp
     from ionic2.web.routes.views import views_bp
+    from ionic2.web.routes.config_items import config_items_bp
     
     app.register_blueprint(auth_bp)
     app.register_blueprint(api_bp)  # Register at root for backward compatibility
     app.register_blueprint(views_bp)
+    app.register_blueprint(config_items_bp)

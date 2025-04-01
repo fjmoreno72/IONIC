@@ -567,7 +567,26 @@ For file uploads:
    - Update filters dynamically based on data changes
    - Preserve filter selections when possible
 
-6. **Code Organization**
+6. **Preventing Unwanted Form Autocomplete**
+   - Apply multiple layers of autocomplete prevention:
+     - Add `autocomplete="off"` to the form element
+     - Use randomized field names with runtime-generated suffixes
+     - Apply `autocomplete="new-password"` to all input fields
+   - Implement a random suffix generator in the form constructor:
+     ```javascript
+     // Generate a random suffix to make field names unpredictable
+     const randomSuffix = Math.random().toString(36).substring(2, 8);
+     this.randomSuffix = randomSuffix; // Store for reference
+     ```
+   - Apply the random suffix to field names:
+     ```html
+     <input type="text" class="form-control" id="fieldId" 
+            name="fieldName_${randomSuffix}" autocomplete="new-password">
+     ```
+   - Use these techniques for all form types (regular inputs, selects, file uploads)
+   - For multiselect components, ensure their internal input fields also have autocomplete disabled
+
+7. **Code Organization**
    - Follow a consistent module pattern
    - Use ES modules for better organization
    - Document component interfaces

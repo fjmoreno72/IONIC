@@ -39,25 +39,30 @@ export class AffiliateForm {
     this.element = document.createElement('div');
     this.element.className = 'affiliate-form-container';
     
+    // Generate a random suffix to make field names unpredictable for form-filling extensions
+    const randomSuffix = Math.random().toString(36).substring(2, 8);
+    this.randomSuffix = randomSuffix; // Store for later reference
+    
     // Create form element
     this.formElement = document.createElement('form');
     this.formElement.id = 'affiliateForm';
     this.formElement.className = 'needs-validation';
     this.formElement.noValidate = true;
+    this.formElement.setAttribute('autocomplete', 'off'); // Prevent browser autocomplete
     
     // Add form fields
     this.formElement.innerHTML = `
       <!-- Name field -->
       <div class="mb-3">
         <label for="affiliateName" class="form-label">Name *</label>
-        <input type="text" class="form-control" id="affiliateName" name="name" required>
+        <input type="text" class="form-control" id="affiliateName" name="name_${randomSuffix}" required autocomplete="new-password">
         <div class="invalid-feedback">Please enter a name.</div>
       </div>
       
       <!-- Type field -->
       <div class="mb-3">
         <label for="affiliateType" class="form-label">Type *</label>
-        <select class="form-select" id="affiliateType" name="type" required>
+        <select class="form-select" id="affiliateType" name="type_${randomSuffix}" required autocomplete="new-password">
           <option value="">Select type...</option>
           <option value="A">Type A</option>
           <option value="B">Type B</option>

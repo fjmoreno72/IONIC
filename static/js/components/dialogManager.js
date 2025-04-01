@@ -265,16 +265,6 @@ export class DialogManager {
           border-color: #565e64;
         }
         
-        [data-theme="dark"] .dialog {
-          background: var(--bs-body-bg, #343a40);
-          color: var(--bs-body-color, #fff);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        [data-theme="dark"] .dialog-backdrop {
-          background: rgba(0, 0, 0, 0.75);
-        }
-        
         @media (max-width: 576px) {
           .dialog {
             width: 95%;

@@ -64,6 +64,7 @@ export class MultiSelectDropdown {
     this.input.className = 'form-control dropdown-input';
     this.input.placeholder = this.selectedValues.length === 0 ? this.placeholder : '';
     this.input.setAttribute('aria-label', 'Search or add options');
+    this.input.setAttribute('autocomplete', 'off'); // Prevent browser autocomplete
     
     // Create the dropdown toggle button
     const dropdownToggle = document.createElement('button');
@@ -140,11 +141,6 @@ export class MultiSelectDropdown {
           user-select: none;
         }
         
-        [data-theme="dark"] .selected-option {
-          background-color: #495057;
-          color: #fff;
-        }
-        
         .selected-option .remove-option {
           margin-left: 0.5rem;
           cursor: pointer;
@@ -199,11 +195,6 @@ export class MultiSelectDropdown {
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
         }
         
-        [data-theme="dark"] .dropdown-menu {
-          background-color: #343a40;
-          border-color: rgba(255, 255, 255, 0.1);
-        }
-        
         .dropdown-menu.show {
           display: block;
         }
@@ -221,33 +212,15 @@ export class MultiSelectDropdown {
           text-decoration: none;
         }
         
-        [data-theme="dark"] .dropdown-item {
-          color: #fff;
-        }
-        
-        [data-theme="dark"] .dropdown-item:hover, 
-        [data-theme="dark"] .dropdown-item:focus {
-          background-color: rgba(255, 255, 255, 0.1);
-        }
-        
         .dropdown-item.selected {
           background-color: rgba(13, 110, 253, 0.2);
           font-weight: 500;
-        }
-        
-        [data-theme="dark"] .dropdown-item.selected {
-          background-color: rgba(255, 255, 255, 0.2);
         }
         
         .add-new-option {
           border-top: 1px solid #dee2e6;
           margin-top: 0.5rem;
           color: #0d6efd;
-        }
-        
-        [data-theme="dark"] .add-new-option {
-          border-top-color: rgba(255, 255, 255, 0.1);
-          color: #8bb9fe;
         }
         
         .add-new-field {
@@ -264,10 +237,6 @@ export class MultiSelectDropdown {
           padding: 0.5rem 1rem;
           color: #6c757d;
           font-style: italic;
-        }
-        
-        [data-theme="dark"] .no-results {
-          color: #adb5bd;
         }
       `;
       document.head.appendChild(style);

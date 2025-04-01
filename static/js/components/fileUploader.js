@@ -41,6 +41,9 @@ export class FileUploader {
     this.containerElement.className = 'file-uploader';
     this.containerElement.id = this.id;
     
+    // Generate a random suffix to make field names unpredictable
+    const randomSuffix = Math.random().toString(36).substring(2, 8);
+    
     // Create file input
     this.inputElement = document.createElement('input');
     this.inputElement.type = 'file';
@@ -48,6 +51,8 @@ export class FileUploader {
     this.inputElement.multiple = this.multiple;
     this.inputElement.className = 'file-input';
     this.inputElement.id = `${this.id}-input`;
+    this.inputElement.name = `file_${randomSuffix}`;
+    this.inputElement.setAttribute('autocomplete', 'off');
     this.inputElement.style.display = 'none';
     
     // Create upload button

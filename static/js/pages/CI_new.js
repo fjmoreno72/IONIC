@@ -1,6 +1,8 @@
 // CI_new.js - Configuration Items page using component architecture
 import { DataTable } from '../components/tableCore.js';
 import { ColumnResizer } from '../components/columnResizer.js';
+import { DialogManager } from '../components/dialogManager.js';
+import { ConfigItemForm } from '../components/configItemForm.js';
 
 // Initialize when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -19,6 +21,24 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize column resizer
   const columnResizer = new ColumnResizer('.test-cases-table');
+  
+  // All configuration items data (to check for name uniqueness)
+  let allConfigItems = [];
+  
+  // Initialize dialog for adding/editing configuration items
+  const configItemDialog = new DialogManager({
+    id: 'configItemDialog',
+    title: 'Add Configuration Item',
+    size: 'medium',
+    onSave: () => {
+      // Trigger form submission
+      const form = document.getElementById('configItemForm');
+      if (form) {
+        form.dispatchEvent(new Event('submit'));
+      }
+      return false; // Prevent dialog from closing automatically
+    }
+  });
   
   // First load the GP data to build the mapping and populate the filter dropdown
   fetch('/static/ASC/data/gps.json')
@@ -135,6 +155,12 @@ document.addEventListener('DOMContentLoaded', function() {
       defaultSortField: 'Name',
       noResultsMessage: 'No Configuration Items found matching your criteria.',
       
+      // Store all configuration items for name uniqueness checking
+      onDataFetched: (data) => {
+        allConfigItems = [...data];
+        return data;
+      },
+      
       // Special handling for errors
       onFetchStart: () => {
         if (noResults) noResults.classList.add('d-none');
@@ -246,10 +272,201 @@ document.addEventListener('DOMContentLoaded', function() {
       ]
     });
     
-    // Disable the Add CI button
+    // Enable the Add CI button
     const addCIButton = document.getElementById('addCIButton');
     if (addCIButton) {
-      addCIButton.disabled = true;
+      addCIButton.disabled = false;
+      addCIButton.addEventListener('click', () => {
+        openConfigItemDialog();
+      });
     }
+    
+    // Add row click handler for editing
+    const tableBody = document.getElementById('ciTableBody');
+    if (tableBody) {
+      tableBody.addEventListener('click', (e) => {
+        // Find the closest row element
+        const row = e.target.closest('tr');
+        if (!row) return;
+        
+        // Get the row index
+        const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+        
+        // Get the data for this row
+        const configItem = ciTable.filteredItems[rowIndex + (ciTable.currentPage - 1) * ciTable.itemsPerPage];
+        
+        if (configItem) {
+          // Open edit dialog with this data
+          openConfigItemDialog(configItem);
+        }
+      });
+    }
+  }
+  
+  // Function to open dialog for adding/editing configuration items
+  function openConfigItemDialog(data = null) {
+    // Update dialog title based on mode
+    configItemDialog.setTitle(data ? 'Edit Configuration Item' : 'Add Configuration Item');
+    
+    // Create form instance
+    const configItemForm = new ConfigItemForm({
+      data: data,
+      onSubmit: (formData) => {
+        // Check for name uniqueness
+        if (isNameUnique(formData)) {
+          // Handle form submission
+          saveConfigItem(formData);
+        } else {
+          showNotification('A configuration item with this name already exists.', 'danger');
+          // Focus on the name field
+          const nameInput = document.getElementById('ciName');
+          if (nameInput) {
+            nameInput.classList.add('is-invalid');
+            nameInput.focus();
+          }
+        }
+      },
+      onDelete: (name) => {
+        // Handle configuration item deletion
+        deleteConfigItem(name);
+      }
+    });
+    
+    // Set dialog content to the form
+    configItemDialog.setContent(configItemForm.element);
+    
+    // Open dialog
+    configItemDialog.open();
+  }
+  
+  // Check if a configuration item name is unique
+  function isNameUnique(formData) {
+    // If in edit mode and keeping the same name, it's OK
+    if (formData.originalName && formData.originalName === formData.Name) {
+      return true;
+    }
+    
+    // Check all existing items for name uniqueness
+    return !allConfigItems.some(item => item.Name === formData.Name);
+  }
+  
+  // Function to save configuration item
+  async function saveConfigItem(formData) {
+    try {
+      // Show loading state
+      const saveButton = document.querySelector('#configItemDialog .btn-primary');
+      if (saveButton) {
+        saveButton.disabled = true;
+        saveButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
+      }
+      
+      // Store original name for checking if this is an edit
+      const isEditing = allConfigItems.some(item => item.Name === formData.Name);
+      const method = isEditing ? 'PUT' : 'POST';
+      
+      // Send request to API
+      const response = await fetch('/api/config-items', {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Error saving configuration item');
+      }
+      
+      // Close dialog
+      configItemDialog.close();
+      
+      // Refresh table
+      ciTable.fetchData();
+      
+      // Show success message
+      showNotification('Configuration item saved successfully!', 'success');
+    } catch (error) {
+      console.error('Error saving configuration item:', error);
+      showNotification(error.message || 'Error saving configuration item', 'danger');
+    } finally {
+      // Reset button state
+      const saveButton = document.querySelector('#configItemDialog .btn-primary');
+      if (saveButton) {
+        saveButton.disabled = false;
+        saveButton.textContent = 'Save';
+      }
+    }
+  }
+  
+  // Function to delete configuration item
+  async function deleteConfigItem(name) {
+    try {
+      // Show loading state
+      const deleteButton = document.querySelector('.delete-button-container .btn-danger');
+      if (deleteButton) {
+        deleteButton.disabled = true;
+        deleteButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Deleting...';
+      }
+      
+      // Send DELETE request to API
+      const response = await fetch(`/api/config-items?name=${encodeURIComponent(name)}`, {
+        method: 'DELETE'
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Error deleting configuration item');
+      }
+      
+      // Close dialog
+      configItemDialog.close();
+      
+      // Refresh table
+      ciTable.fetchData();
+      
+      // Show success message
+      showNotification('Configuration item deleted successfully!', 'success');
+    } catch (error) {
+      console.error('Error deleting configuration item:', error);
+      showNotification(error.message || 'Error deleting configuration item', 'danger');
+    }
+  }
+  
+  // Function to show notifications
+  function showNotification(message, type = 'info') {
+    // Create notification element if it doesn't exist
+    let notification = document.getElementById('notification');
+    if (!notification) {
+      notification = document.createElement('div');
+      notification.id = 'notification';
+      notification.className = `notification alert alert-${type}`;
+      notification.style.position = 'fixed';
+      notification.style.top = '20px';
+      notification.style.right = '20px';
+      notification.style.zIndex = '9999';
+      notification.style.minWidth = '300px';
+      notification.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+      notification.style.transition = 'opacity 0.3s ease-in-out';
+      document.body.appendChild(notification);
+    } else {
+      // Update class for the type
+      notification.className = `notification alert alert-${type}`;
+    }
+    
+    // Set message
+    notification.textContent = message;
+    
+    // Show notification
+    notification.style.display = 'block';
+    notification.style.opacity = '1';
+    
+    // Auto-hide after delay
+    setTimeout(() => {
+      notification.style.opacity = '0';
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 300);
+    }, 3000);
   }
 });

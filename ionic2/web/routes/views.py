@@ -289,6 +289,53 @@ def update_ascs():
 
 # --- API Routes for Affiliates ---
 
+@views_bp.route('/api/sps/upload-icon', methods=['POST'])
+@login_required
+def upload_sp_icon():
+    """
+    API endpoint to handle icon image uploads for service providers (SPs).
+    
+    Returns:
+        JSON response with the saved file path or error message.
+    """
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file part in the request'}), 400
+            
+        file = request.files['file']
+        
+        if file.filename == '':
+            return jsonify({'error': 'No file selected'}), 400
+            
+        # Get SP name from request to name the icon
+        sp_name = request.form.get('spName', '')
+        if not sp_name:
+            return jsonify({'error': 'SP name is required'}), 400
+            
+        # Sanitize the name for filename (remove spaces, special chars)
+        safe_name = secure_filename(sp_name.lower().replace(' ', '_'))
+        filename = f"sp_icon_{safe_name}.png"
+        
+        # Ensure the sp icons directory exists
+        sp_dir = Path(settings.STATIC_DIR) / "ASC" / "image" / "sp"
+        os.makedirs(sp_dir, exist_ok=True)
+        
+        # Save the file
+        file_path = sp_dir / filename
+        file.save(file_path)
+        
+        # Return the relative path for storage in the data file
+        relative_path = f"./image/sp/{filename}"
+        return jsonify({
+            'success': True,
+            'path': relative_path,
+            'message': 'Icon uploaded successfully'
+        })
+        
+    except Exception as e:
+        logging.exception(f"Error uploading SP icon: {str(e)}")
+        return jsonify({'error': f'Error uploading SP icon: {str(e)}'}), 500
+
 @views_bp.route('/api/affiliates/upload-flag', methods=['POST'])
 @login_required
 def upload_affiliate_flag():
@@ -335,6 +382,155 @@ def upload_affiliate_flag():
     except Exception as e:
         logging.exception(f"Error uploading flag: {str(e)}")
         return jsonify({'error': f'Error uploading flag: {str(e)}'}), 500
+
+@views_bp.route('/api/sps', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@login_required
+def manage_sps():
+    """
+    API endpoint to manage Service Providers (SPs) data.
+    
+    Methods:
+        GET: Return all SPs
+        POST: Add a new SP
+        PUT: Update an existing SP
+        DELETE: Delete an SP
+    
+    Returns:
+        JSON response with the result of the operation
+    """
+    sps_path = Path(settings.STATIC_DIR) / "ASC" / "data" / "sps.json"
+    
+    # Ensure the data directory exists
+    os.makedirs(os.path.dirname(sps_path), exist_ok=True)
+    
+    try:
+        # GET: Return all SPs
+        if request.method == 'GET':
+            if not sps_path.exists():
+                return jsonify([])
+                
+            with open(sps_path, 'r') as f:
+                sps = json.load(f)
+                
+            return jsonify(sps)
+            
+        # POST: Add a new SP
+        elif request.method == 'POST':
+            # Load existing data
+            if sps_path.exists():
+                with open(sps_path, 'r') as f:
+                    sps = json.load(f)
+            else:
+                sps = []
+                
+            new_sp = request.json
+            
+            # Generate a new ID
+            last_id = 0
+            if sps:
+                # Extract the numeric part of the last ID
+                try:
+                    last_id = int(sps[-1]['id'].split('-')[1])
+                except (IndexError, ValueError):
+                    pass
+                    
+            new_id = f"SP-{str(last_id + 1).zfill(4)}"
+            new_sp['id'] = new_id
+            
+            # Add to list
+            sps.append(new_sp)
+            
+            # Save back to file
+            with open(sps_path, 'w') as f:
+                json.dump(sps, f, indent=2)
+                
+            return jsonify({
+                'success': True,
+                'sp': new_sp,
+                'message': 'Service Provider added successfully'
+            })
+            
+        # PUT: Update an existing SP
+        elif request.method == 'PUT':
+            # Load existing data
+            if not sps_path.exists():
+                return jsonify({'error': 'SPs file not found'}), 404
+                
+            with open(sps_path, 'r') as f:
+                sps = json.load(f)
+                
+            updated_sp = request.json
+            
+            # Find and update the SP
+            sp_id = updated_sp.get('id')
+            if not sp_id:
+                return jsonify({'error': 'SP ID is required'}), 400
+                
+            found = False
+            for i, sp in enumerate(sps):
+                if sp.get('id') == sp_id:
+                    sps[i] = updated_sp
+                    found = True
+                    break
+                    
+            if not found:
+                return jsonify({'error': f'SP with ID {sp_id} not found'}), 404
+                
+            # Save back to file
+            with open(sps_path, 'w') as f:
+                json.dump(sps, f, indent=2)
+                
+            return jsonify({
+                'success': True,
+                'sp': updated_sp,
+                'message': 'Service Provider updated successfully'
+            })
+        
+        # DELETE: Delete an SP
+        elif request.method == 'DELETE':
+            # Load existing data
+            if not sps_path.exists():
+                return jsonify({'error': 'SPs file not found'}), 404
+                
+            with open(sps_path, 'r') as f:
+                sps = json.load(f)
+            
+            # Get the SP ID from query params
+            sp_id = request.args.get('id')
+            if not sp_id:
+                return jsonify({'error': 'SP ID is required'}), 400
+            
+            # Find the SP to get its icon path before removal
+            sp_to_delete = next((sp for sp in sps if sp.get('id') == sp_id), None)
+            
+            # Remove SP from list
+            initial_count = len(sps)
+            sps = [sp for sp in sps if sp.get('id') != sp_id]
+            
+            if len(sps) == initial_count:
+                return jsonify({'error': f'SP with ID {sp_id} not found'}), 404
+            
+            # Save back to file
+            with open(sps_path, 'w') as f:
+                json.dump(sps, f, indent=2)
+            
+            # Try to delete the icon file if it exists
+            if sp_to_delete and sp_to_delete.get('iconPath'):
+                try:
+                    icon_path = Path(settings.STATIC_DIR) / "ASC" / sp_to_delete['iconPath'].replace('./', '')
+                    if icon_path.exists():
+                        os.remove(icon_path)
+                except Exception as e:
+                    logging.warning(f"Could not delete icon file: {str(e)}")
+            
+            return jsonify({
+                'success': True,
+                'message': f'Service Provider with ID {sp_id} deleted successfully'
+            })
+            
+    except Exception as e:
+        logging.exception(f"Error managing SPs: {str(e)}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
 
 @views_bp.route('/api/affiliates', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @login_required

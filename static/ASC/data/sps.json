@@ -434,7 +434,7 @@
   },
   {
     "name": "FAST Client",
-    "description": "Functional Area Service for Dynamic Time‐Sensitive Targeting",
+    "description": "Functional Area Service for Dynamic Time\u2010Sensitive Targeting",
     "versions": [
       "4.1.3",
       "4.2.0",
@@ -1557,7 +1557,7 @@
   },
   {
     "name": "NONC2 ATA DLP (Non-Command and Control ATA Data Link Processor)",
-    "description": "NonC2 ATA DLP is a superset NonC2 capability, developed in total adherence to NATO’a ATDLP-5.16, to serve & attain the goal of providing a common tactical processing business logic within housing tactical platforms.",
+    "description": "NonC2 ATA DLP is a superset NonC2 capability, developed in total adherence to NATO\u2019a ATDLP-5.16, to serve & attain the goal of providing a common tactical processing business logic within housing tactical platforms.",
     "versions": [
       "0.2.0-RC10",
       "1.0"
@@ -1835,7 +1835,7 @@
   },
   {
     "name": "OTRS",
-    "description": "OTRS is a modern, flexible ticket and process management system that allows service management professionals in any industry to keep pace with today’s lightning-fast, results-driven business environment.",
+    "description": "OTRS is a modern, flexible ticket and process management system that allows service management professionals in any industry to keep pace with today\u2019s lightning-fast, results-driven business environment.",
     "versions": [
       "6"
     ],
@@ -1843,7 +1843,7 @@
   },
   {
     "name": "FR-DOPEC-CSD",
-    "description": "Dispositif pour l’OPtimisation de l’Emploi des Capteurs (DOPEC)",
+    "description": "Dispositif pour l\u2019OPtimisation de l\u2019Emploi des Capteurs (DOPEC)",
     "versions": [
       "1.4"
     ],
@@ -2804,7 +2804,7 @@
   },
   {
     "name": "TUBITAK Directory Server (DS)",
-    "description": "TÜBİTAK Directory Server is designed to manage user accounts, groups, devices, printers, files and other network resources. It is compliant with X.500 standard. In addition, the system supports advanced synchronization and bind delegation capabilities, enabling high-level interoperability with different directory servers.",
+    "description": "T\u00dcB\u0130TAK Directory Server is designed to manage user accounts, groups, devices, printers, files and other network resources. It is compliant with X.500 standard. In addition, the system supports advanced synchronization and bind delegation capabilities, enabling high-level interoperability with different directory servers.",
     "versions": [
       "1.0"
     ],
@@ -3399,7 +3399,7 @@
   },
   {
     "name": "Prometeo",
-    "description": "PROMETEO is the Information system for Command and Control posts at Brigade level and higher. It’s deployed in the Command Posts of the Divisions and Brigades, will allow the Headquarters and Staffs to obtain the information from the battlefield and exploit it to optimize the direction of the manoeuvre.",
+    "description": "PROMETEO is the Information system for Command and Control posts at Brigade level and higher. It\u2019s deployed in the Command Posts of the Divisions and Brigades, will allow the Headquarters and Staffs to obtain the information from the battlefield and exploit it to optimize the direction of the manoeuvre.",
     "versions": [
       "1.2",
       "1.3",
@@ -3441,7 +3441,7 @@
   },
   {
     "name": "FAST Server",
-    "description": "Functional Area Service for Dynamic Time‐Sensitive Targeting",
+    "description": "Functional Area Service for Dynamic Time\u2010Sensitive Targeting",
     "versions": [
       "4.1.3",
       "4.2.0",
@@ -3717,7 +3717,7 @@
   },
   {
     "name": "FIS HE",
-    "description": "FIS HE is the Information system for Command and Control posts Land at Bataillon level and higher, in some cases even down to Company. It’s deployed in the Command Posts and will allow the Headquarters and Staffs to obtain the information from the battlefield and exploit it to optimize the direction of the manoeuvre.",
+    "description": "FIS HE is the Information system for Command and Control posts Land at Bataillon level and higher, in some cases even down to Company. It\u2019s deployed in the Command Posts and will allow the Headquarters and Staffs to obtain the information from the battlefield and exploit it to optimize the direction of the manoeuvre.",
     "versions": [
       "2.5.1"
     ],
@@ -4235,7 +4235,7 @@
   },
   {
     "name": "PrimeKey EJBCA",
-    "description": "Open Source Certificate Authority. EJBCA is one of the longest running CA software projects, providing time-proven robustness and reliability. EJBCA is platform independent, and can easily be scaled out to match the needs of your PKI requirements, whether you’re setting up a national eID, securing your industrial IOT platform or managing your own internal PKI.",
+    "description": "Open Source Certificate Authority. EJBCA is one of the longest running CA software projects, providing time-proven robustness and reliability. EJBCA is platform independent, and can easily be scaled out to match the needs of your PKI requirements, whether you\u2019re setting up a national eID, securing your industrial IOT platform or managing your own internal PKI.",
     "versions": [
       "6.10.1.2",
       "6.15",
@@ -4372,7 +4372,7 @@
   },
   {
     "name": "Battle Command and Control Application (BC2A) Suite",
-    "description": "BC2A suite is a Command & Control software solution used from dismounted soldier level up to operational level; it provides warfighting functionilities for military organisations based on a common services framework. BC2A suite is a reliable and robust solution which ensures 24/7 operations planning in a collaborative and multiechelon manner and also supports execution phases of operations in different functional area aspects. BC2A suite is composed of two main packages: •    BC2A HQ – which addresses tactical and operational headquarters and command posts; •    BC2A Platform & BC2A Leader – which addresses tactical military organisations (company and below) and also dismounted soldiers.",
+    "description": "BC2A suite is a Command & Control software solution used from dismounted soldier level up to operational level; it provides warfighting functionilities for military organisations based on a common services framework. BC2A suite is a reliable and robust solution which ensures 24/7 operations planning in a collaborative and multiechelon manner and also supports execution phases of operations in different functional area aspects. BC2A suite is composed of two main packages: \u2022    BC2A HQ \u2013 which addresses tactical and operational headquarters and command posts; \u2022    BC2A Platform & BC2A Leader \u2013 which addresses tactical military organisations (company and below) and also dismounted soldiers.",
     "versions": [
       "2024"
     ],
@@ -4380,7 +4380,7 @@
   },
   {
     "name": "Smetaq",
-    "description": "A blend of a few words1. S for secure, meta (obvious), and “taq” for tagging but with a “q” for quality. The tool is owned by the Dutch MoD, and it’s regarded a customized solution. The military specifics are in the way that the tool embeds labels in the mime of the mail header or encapsulates labels a an *.XML attachment that holds the labels of the compound message (mail body and specific attachments",
+    "description": "A blend of a few words1. S for secure, meta (obvious), and \u201ctaq\u201d for tagging but with a \u201cq\u201d for quality. The tool is owned by the Dutch MoD, and it\u2019s regarded a customized solution. The military specifics are in the way that the tool embeds labels in the mime of the mail header or encapsulates labels a an *.XML attachment that holds the labels of the compound message (mail body and specific attachments",
     "versions": [
       "1.0"
     ],
@@ -4754,7 +4754,7 @@
   },
   {
     "name": "Outlook Labelling Add-In",
-    "description": "The \"Outlook Labeling Add-In\" you mentioned is designed to facilitate compliance with NATO standards—specifically NATO STANAGs 4774 and 4778—for email classification and metadata labeling.  Here's a clear explanation of its purpose and functionality:  Purpose The Koch IT Outlook Plugin is designed to help users apply and handle security classification labels on emails according to NATO standards (STANAG 4774 and 4778). This ensures secure and standardized email communications within NATO missions and among member nations or partner nations.  NATO Standards STANAG 4774 outlines confidentiality metadata labeling, detailing how emails and attachments should be labeled to denote their confidentiality level and other pertinent metadata such as the governing security policy, classification level (e.g., UNCLASSIFIED, RESTRICTED), and dissemination constraints (e.g., \"Releasable to FIN, SWE\"). STANAG 4778 complements STANAG 4774, defining the mechanisms for verifying and enforcing these cl",
+    "description": "The \"Outlook Labeling Add-In\" you mentioned is designed to facilitate compliance with NATO standards\u2014specifically NATO STANAGs 4774 and 4778\u2014for email classification and metadata labeling.  Here's a clear explanation of its purpose and functionality:  Purpose The Koch IT Outlook Plugin is designed to help users apply and handle security classification labels on emails according to NATO standards (STANAG 4774 and 4778). This ensures secure and standardized email communications within NATO missions and among member nations or partner nations.  NATO Standards STANAG 4774 outlines confidentiality metadata labeling, detailing how emails and attachments should be labeled to denote their confidentiality level and other pertinent metadata such as the governing security policy, classification level (e.g., UNCLASSIFIED, RESTRICTED), and dissemination constraints (e.g., \"Releasable to FIN, SWE\"). STANAG 4778 complements STANAG 4774, defining the mechanisms for verifying and enforcing these cl",
     "versions": [
       "1.3"
     ],

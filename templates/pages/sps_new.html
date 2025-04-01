@@ -10,6 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dataTable.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/sp-styles.css') }}">
     <script>
         // Apply theme on page load
         document.addEventListener('DOMContentLoaded', function() {
@@ -27,7 +28,7 @@
     <div class="container-fluid px-4 mt-4">
         <div class="test-cases-container">
             <div class="test-cases-header">
-                <h2><img src="{{ url_for('static', filename='ASC/icons/sps.svg') }}" alt="SPs Icon" class="header-icon">ASC SPs</h2>
+                <h2><img src="{{ url_for('static', filename='ASC/icons/sps.svg') }}" alt="SPs Icon" class="header-icon">ASC Specific Products</h2>
             </div>
             
             <div class="controls-container">
@@ -39,7 +40,7 @@
                 </div>
                 <div class="actions-container">
                     <button id="addSpButton" class="btn btn-primary btn-sm" disabled>
-                        <i class="fas fa-plus me-1"></i> Add SP
+                        <i class="fas fa-plus me-1"></i> Add Specific Product
                     </button>
                 </div>
             </div>

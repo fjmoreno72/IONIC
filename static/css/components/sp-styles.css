@@ -1,0 +1,129 @@
+/* SP-specific styles */
+.icon-img {
+  max-height: 40px;
+  max-width: 40px;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Version badge styles */
+.badge.bg-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: all 0.2s ease;
+}
+
+.badge.bg-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Common styles for both functional tree and SPs page */
+:root {
+  --primary-color: #003366;
+  --secondary-color: #0066cc;
+  --accent-color: #3399ff;
+  --danger-color: #cc3333;
+  --success-color: #339966;
+  --warning-color: #ffcc00;
+  --background-color: #f8fafc;
+  --card-background: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --hover-bg: #f1f5f9;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.2s;
+}
+
+[data-theme="dark"] {
+  --primary-color: #3399ff;
+  --secondary-color: #0066cc;
+  --background-color: #0f172a;
+  --card-background: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --hover-bg: #334155;
+}
+
+/* Shared layout adjustments for consistent top margin */
+body {
+  margin-top: 140px !important; /* Space for fixed nav menu (140px) */
+}
+
+/* Consistent styling for the Add button */
+.actions-container .btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: all 0.2s ease;
+}
+
+.actions-container .btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Consistent styling for the theme toggle button */
+.theme-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-speed) ease;
+  z-index: 100;
+  border: none;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Common notification styles */
+.notification {
+  animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Dialog form styles */
+.sp-form-container .form-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.sp-form-container .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+}
+
+/* Version container style */
+#versionsContainer {
+  background-color: var(--card-background);
+  border-color: var(--border-color);
+}

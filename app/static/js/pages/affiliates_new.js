@@ -116,9 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const selectedType = typeFilter ? typeFilter.value : '';
       const selectedEnvironment = environmentFilter ? environmentFilter.value : '';
       
-      console.log('Filtering item:', item);
-      console.log('Filter values - Type:', selectedType, 'Environment:', selectedEnvironment);
-      console.log('Item type:', item.type);
       
       // Check name and ID match for the search term - ensure searchTerm is handled correctly
       let nameMatch = true;
@@ -136,11 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                Array.isArray(item.environments) && 
                                item.environments.includes(selectedEnvironment));
       
-      console.log('Match results:', {
-        nameMatch,
-        typeMatch,
-        environmentMatch
-      });
       
       // All conditions must match
       return nameMatch && typeMatch && environmentMatch;

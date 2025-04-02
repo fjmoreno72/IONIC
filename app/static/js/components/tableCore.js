@@ -17,6 +17,14 @@ export class DataTable {
     this.filterFunction = config.filterFunction || this.defaultFilterFunction;
     this.noResultsMessage = config.noResultsMessage || 'No items found matching your criteria.';
     
+    // Store callbacks passed in config
+    this.onFetchStart = config.onFetchStart;
+    this.onDataFetched = config.onDataFetched; // Store the callback
+    this.onFetchComplete = config.onFetchComplete;
+    this.onFetchError = config.onFetchError;
+    this.onRenderComplete = config.onRenderComplete;
+    this.customSort = config.customSort; // Store custom sort
+
     // Internal state
     this.allItems = [];
     this.filteredItems = [];

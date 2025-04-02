@@ -233,13 +233,6 @@ document.addEventListener('DOMContentLoaded', function() {
           const selectedStatus = statusFilter ? statusFilter.value : '';
           const selectedEnvironment = environmentFilter ? environmentFilter.value : '';
           
-          console.log('Filtering ASC item:', item);
-          console.log('ASC filter values:', { 
-            affiliate: selectedAffiliate, 
-            service: selectedService, 
-            status: selectedStatus, 
-            environment: selectedEnvironment 
-          });
           
           // Check ID, Service, or Affiliate match for the search term
           const itemAffiliate = getAffiliateById(item.affiliateId);
@@ -261,13 +254,6 @@ document.addEventListener('DOMContentLoaded', function() {
           const statusMatch = selectedStatus === '' || item.status === selectedStatus;
           const environmentMatch = selectedEnvironment === '' || item.environment === selectedEnvironment;
           
-          console.log('ASC match results:', {
-            searchMatch,
-            affiliateMatch,
-            serviceMatch,
-            statusMatch,
-            environmentMatch
-          });
           
           // All conditions must match
           return searchMatch && affiliateMatch && serviceMatch && statusMatch && environmentMatch;

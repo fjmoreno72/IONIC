@@ -78,6 +78,6 @@
             document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
         }
     </script>
-    <script type="module" src="{{ url_for('static', filename='js/pages/gps_new.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/pages/gps_new.js') }}" data-cfasync="false"></script>
 </body>
 </html>

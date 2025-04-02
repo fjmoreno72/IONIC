@@ -343,6 +343,8 @@ def upload_sp_icon():
         logging.exception(f"Error uploading SP icon: {str(e)}")
         return jsonify({'error': f'Error uploading SP icon: {str(e)}'}), 500
 
+# Removed service upload endpoints (moved to app/routes/services.py)
+
 @views_bp.route('/api/affiliates/upload-flag', methods=['POST'])
 @login_required
 def upload_affiliate_flag():

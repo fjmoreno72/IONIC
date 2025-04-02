@@ -28,6 +28,86 @@
             display: inline-block;
             vertical-align: middle;
         }
+        
+        /* Searchable dropdown styles */
+        .searchable-dropdown {
+            position: relative;
+            width: 100%;
+        }
+        
+        .dropdown-header {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding-right: 1.5rem;
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 16px 12px;
+            appearance: none;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 0.5rem;
+            margin: 0.125rem 0 0;
+            background-clip: padding-box;
+            border-radius: 0.25rem;
+        }
+        
+        .dropdown-menu.show {
+            display: block;
+        }
+        
+        .options-container {
+            max-height: 220px;
+            overflow-y: auto;
+        }
+        
+        .filter-option {
+            display: block;
+            width: 100%;
+            padding: 0.35rem 0.75rem;
+            clear: both;
+            font-weight: 400;
+            text-align: inherit;
+            white-space: nowrap;
+            border: 0;
+            cursor: pointer;
+            border-radius: 0.25rem;
+        }
+        
+        .filter-option:hover {
+            text-decoration: none;
+        }
+        
+        .filter-option.selected {
+            font-weight: 500;
+        }
+        
+        /* Bootstrap integration */
+        .filter-option:hover {
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+        
+        .filter-option.selected {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Dark mode compatibility */
+        [data-theme="dark"] .filter-option:hover {
+            background-color: rgba(255, 255, 255, 0.075);
+        }
+        
+        [data-theme="dark"] .filter-option.selected {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
     </style>
     <script>
         // Apply theme on page load
@@ -55,9 +135,30 @@
                         <i class="fas fa-search"></i>
                         <input type="text" id="nameSearchInput" placeholder="Search services..." class="form-control form-control-sm">
                     </div>
+                    <div class="filter-item">
+                        <select id="spiralFilter" class="form-select form-select-sm">
+                            <option value="">All Spirals</option>
+                            <!-- Additional options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <div class="searchable-dropdown" style="width: 190px;">
+                            <div class="dropdown-header form-select form-select-sm" id="gpFilterHeader" style="height: 31px; padding-top: 4px; padding-left: 10px; line-height: 1.2;">
+                                All Generic Products
+                            </div>
+                            <div class="dropdown-menu shadow" id="gpDropdownMenu">
+                                <div class="p-2">
+                                    <input type="text" id="gpSearchInput" class="form-control form-control-sm mb-2" placeholder="Search Generic Products...">
+                                    <div id="gpOptionsContainer" class="options-container">
+                                        <!-- GP options will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="actions-container">
-                    <button id="addServiceButton" class="btn btn-primary btn-sm" disabled>
+                    <button id="addServiceButton" class="btn btn-primary btn-sm">
                         <i class="fas fa-plus me-1"></i> Add Service
                     </button>
                 </div>
@@ -103,6 +204,6 @@
             document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
         }
     </script>
-    <script type="module" src="{{ url_for('static', filename='js/pages/services_new.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/pages/services_new.js') }}" data-cfasync="false"></script>
 </body>
 </html>

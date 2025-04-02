@@ -27378,3 +27378,549 @@ AttributeError: module 'app.config.settings' has no attribute 'STATIC_DIR'
 2025-04-02 07:36:05 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.23 seconds
 2025-04-02 07:36:05 - System health data fetched in 1.23s
 2025-04-02 07:36:05 - 127.0.0.1 - - [02/Apr/2025 07:36:05] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 07:37:04 - SSL verification is disabled. This is insecure.
+2025-04-02 07:37:04 - Getting system health data from api/system/health
+2025-04-02 07:37:04 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 07:37:05 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.17 seconds
+2025-04-02 07:37:05 - System health data fetched in 1.17s
+2025-04-02 07:37:05 - 127.0.0.1 - - [02/Apr/2025 07:37:05] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 07:38:04 - SSL verification is disabled. This is insecure.
+2025-04-02 07:38:04 - Getting system health data from api/system/health
+2025-04-02 07:38:04 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 07:38:05 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.36 seconds
+2025-04-02 07:38:05 - System health data fetched in 1.36s
+2025-04-02 07:38:05 - 127.0.0.1 - - [02/Apr/2025 07:38:05] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 07:39:04 - SSL verification is disabled. This is insecure.
+2025-04-02 07:39:04 - Getting system health data from api/system/health
+2025-04-02 07:39:04 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 07:39:05 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.19 seconds
+2025-04-02 07:39:05 - System health data fetched in 1.19s
+2025-04-02 07:39:05 - 127.0.0.1 - - [02/Apr/2025 07:39:05] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 07:40:04 - SSL verification is disabled. This is insecure.
+2025-04-02 07:40:04 - Getting system health data from api/system/health
+2025-04-02 07:40:04 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 07:40:05 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.28 seconds
+2025-04-02 07:40:05 - System health data fetched in 1.28s
+2025-04-02 07:40:05 - 127.0.0.1 - - [02/Apr/2025 07:40:05] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 07:41:05 - SSL verification is disabled. This is insecure.
+2025-04-02 07:41:05 - Getting system health data from api/system/health
+2025-04-02 07:41:05 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 07:41:06 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.21 seconds
+2025-04-02 07:41:06 - System health data fetched in 1.21s
+2025-04-02 07:41:06 - 127.0.0.1 - - [02/Apr/2025 07:41:06] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 07:43:38 - SSL verification is disabled. This is insecure.
+2025-04-02 07:43:38 - Getting system health data from api/system/health
+2025-04-02 07:43:38 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 07:43:39 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.24 seconds
+2025-04-02 07:43:39 - System health data fetched in 1.24s
+2025-04-02 07:43:39 - 127.0.0.1 - - [02/Apr/2025 07:43:39] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 07:51:52 - SSL verification is disabled. This is insecure.
+2025-04-02 07:51:52 - Getting system health data from api/system/health
+2025-04-02 07:51:52 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 07:51:53 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.24 seconds
+2025-04-02 07:51:53 - System health data fetched in 1.24s
+2025-04-02 07:51:53 - 127.0.0.1 - - [02/Apr/2025 07:51:53] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 07:53:18 - SSL verification is disabled. This is insecure.
+2025-04-02 07:53:18 - Getting system health data from api/system/health
+2025-04-02 07:53:18 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 07:53:20 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.23 seconds
+2025-04-02 07:53:20 - System health data fetched in 1.24s
+2025-04-02 07:53:20 - 127.0.0.1 - - [02/Apr/2025 07:53:20] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 08:01:52 - SSL verification is disabled. This is insecure.
+2025-04-02 08:01:52 - Getting system health data from api/system/health
+2025-04-02 08:01:52 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 08:01:53 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.33 seconds
+2025-04-02 08:01:53 - System health data fetched in 1.33s
+2025-04-02 08:01:53 - 127.0.0.1 - - [02/Apr/2025 08:01:53] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 08:05:28 - SSL verification is disabled. This is insecure.
+2025-04-02 08:05:28 - Getting system health data from api/system/health
+2025-04-02 08:05:28 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 08:05:30 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.95 seconds
+2025-04-02 08:05:30 - System health data fetched in 1.95s
+2025-04-02 08:05:30 - 127.0.0.1 - - [02/Apr/2025 08:05:30] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 08:08:25 - SSL verification is disabled. This is insecure.
+2025-04-02 08:08:25 - Getting system health data from api/system/health
+2025-04-02 08:08:25 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 08:08:26 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.17 seconds
+2025-04-02 08:08:26 - System health data fetched in 1.17s
+2025-04-02 08:08:26 - 127.0.0.1 - - [02/Apr/2025 08:08:26] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 08:35:50 - SSL verification is disabled. This is insecure.
+2025-04-02 08:35:50 - Getting system health data from api/system/health
+2025-04-02 08:35:50 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 08:35:50 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health failed: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a51190>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-04-02 08:35:50 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 0.01 seconds
+2025-04-02 08:35:50 - Unexpected error during system health fetch or processing: Request failed: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a51190>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connection.py", line 199, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connection.py", line 693, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connection.py", line 206, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x103a51190>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a51190>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/WORK/IONIC2/app/api/client.py", line 113, in get
+    response = self.session.get(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a51190>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/WORK/IONIC2/app/api/iocore2.py", line 529, in get_system_health
+    response = self.get(api_url) # Use the base class get method
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/app/api/client.py", line 154, in get
+    raise ApiRequestError(
+app.core.exceptions.ApiRequestError: Request failed: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a51190>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-04-02 08:35:50 - API request error fetching remote system health: Unexpected error processing system health response: Request failed: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a51190>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-04-02 08:35:50 - 127.0.0.1 - - [02/Apr/2025 08:35:50] "[35m[1mGET /api/remote_system_health HTTP/1.1[0m" 502 -
+2025-04-02 08:45:20 - SSL verification is disabled. This is insecure.
+2025-04-02 08:45:20 - Getting system health data from api/system/health
+2025-04-02 08:45:20 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 08:45:20 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health failed: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a8a780>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-04-02 08:45:20 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 0.00 seconds
+2025-04-02 08:45:20 - Unexpected error during system health fetch or processing: Request failed: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a8a780>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connection.py", line 199, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connection.py", line 693, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connection.py", line 206, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x103a8a780>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a8a780>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/WORK/IONIC2/app/api/client.py", line 113, in get
+    response = self.session.get(
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/miniconda3/lib/python3.12/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a8a780>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/WORK/IONIC2/app/api/iocore2.py", line 529, in get_system_health
+    response = self.get(api_url) # Use the base class get method
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/app/api/client.py", line 154, in get
+    raise ApiRequestError(
+app.core.exceptions.ApiRequestError: Request failed: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a8a780>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-04-02 08:45:20 - API request error fetching remote system health: Unexpected error processing system health response: Request failed: HTTPSConnectionPool(host='iocore2-ciav.ivv.ncia.nato.int', port=443): Max retries exceeded with url: /api/system/health (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103a8a780>: Failed to resolve 'iocore2-ciav.ivv.ncia.nato.int' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-04-02 08:45:20 - 127.0.0.1 - - [02/Apr/2025 08:45:20] "[35m[1mGET /api/remote_system_health HTTP/1.1[0m" 502 -
+2025-04-02 08:50:55 - SSL verification is disabled. This is insecure.
+2025-04-02 08:50:55 - Getting system health data from api/system/health
+2025-04-02 08:50:55 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 08:50:56 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.49 seconds
+2025-04-02 08:50:56 - System health data fetched in 1.49s
+2025-04-02 08:50:56 - 127.0.0.1 - - [02/Apr/2025 08:50:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 08:53:15 - SSL verification is disabled. This is insecure.
+2025-04-02 08:53:15 - Getting system health data from api/system/health
+2025-04-02 08:53:15 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 08:53:17 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.58 seconds
+2025-04-02 08:53:17 - System health data fetched in 1.58s
+2025-04-02 08:53:17 - 127.0.0.1 - - [02/Apr/2025 08:53:17] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 08:54:44 - SSL verification is disabled. This is insecure.
+2025-04-02 08:54:44 - Getting system health data from api/system/health
+2025-04-02 08:54:44 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 08:54:45 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.27 seconds
+2025-04-02 08:54:45 - System health data fetched in 1.27s
+2025-04-02 08:54:45 - 127.0.0.1 - - [02/Apr/2025 08:54:45] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 08:55:38 - SSL verification is disabled. This is insecure.
+2025-04-02 08:55:38 - Getting system health data from api/system/health
+2025-04-02 08:55:38 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-04-02 08:55:39 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 1.19 seconds
+2025-04-02 08:55:39 - System health data fetched in 1.19s
+2025-04-02 08:55:39 - 127.0.0.1 - - [02/Apr/2025 08:55:39] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-02 08:55:40 - Accessing Affiliates page
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "GET /affiliates HTTP/1.1" 200 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/pages/affiliates_new.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/components/affiliateForm.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "GET /check_auth HTTP/1.1" 200 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-04-02 08:55:40 - 127.0.0.1 - - [02/Apr/2025 08:55:40] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:17:27 - Logging system configured with level INFO
+2025-04-02 09:17:27 - Starting IOCore2 Coverage Analysis Tool
+2025-04-02 09:17:27 - Configured Flask app logging with level INFO
+2025-04-02 09:17:27 - Configured Flask app logging with level INFO
+2025-04-02 09:17:27 - Logging system configured with level INFO
+2025-04-02 09:17:27 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-02 09:17:27 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-02 09:17:27 - Template files: templates
+2025-04-02 09:17:27 - Running in PRODUCTION mode
+2025-04-02 09:17:27 - Listening on 0.0.0.0:5005
+2025-04-02 09:17:27 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.79.9.77:5005
+2025-04-02 09:17:27 - [33mPress CTRL+C to quit[0m
+2025-04-02 09:17:31 - User logged out
+2025-04-02 09:17:31 - 127.0.0.1 - - [02/Apr/2025 09:17:31] "GET /logout HTTP/1.1" 200 -
+2025-04-02 09:17:31 - 127.0.0.1 - - [02/Apr/2025 09:17:31] "GET / HTTP/1.1" 200 -
+2025-04-02 09:17:31 - 127.0.0.1 - - [02/Apr/2025 09:17:31] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-02 09:17:31 - 127.0.0.1 - - [02/Apr/2025 09:17:31] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:17:49 - 127.0.0.1 - - [02/Apr/2025 09:17:49] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:19:51 - SSL verification is disabled. This is insecure.
+2025-04-02 09:19:53 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-02 09:19:53 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "POST /login HTTP/1.1" 200 -
+2025-04-02 09:19:53 - Accessing functional tree view
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "GET /check_auth HTTP/1.1" 200 -
+2025-04-02 09:19:53 - 127.0.0.1 - - [02/Apr/2025 09:19:53] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - Accessing Affiliates page
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "GET /affiliates HTTP/1.1" 200 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/pages/affiliates_new.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/components/affiliateForm.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "GET /check_auth HTTP/1.1" 200 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/data/affiliates.json HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:00 - 127.0.0.1 - - [02/Apr/2025 09:20:00] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - Accessing ASC Services page
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "GET /asc_services HTTP/1.1" 200 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/js/pages/services_new.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "GET /check_auth HTTP/1.1" 200 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/ASC/data/services.json HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:02 - 127.0.0.1 - - [02/Apr/2025 09:20:02] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - Accessing ASC GPs page
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/js/pages/gps_new.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/js/components/themeManager.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "GET /check_auth HTTP/1.1" 200 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-04-02 09:20:04 - 127.0.0.1 - - [02/Apr/2025 09:20:04] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:20:08 - Accessing SREQ tree view
+2025-04-02 09:20:08 - 127.0.0.1 - - [02/Apr/2025 09:20:08] "GET /view_tree HTTP/1.1" 200 -
+2025-04-02 09:20:08 - 127.0.0.1 - - [02/Apr/2025 09:20:08] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:08 - 127.0.0.1 - - [02/Apr/2025 09:20:08] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:08 - 127.0.0.1 - - [02/Apr/2025 09:20:08] "GET /static/js/tree_tin.js HTTP/1.1" 200 -
+2025-04-02 09:20:08 - 127.0.0.1 - - [02/Apr/2025 09:20:08] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:08 - 127.0.0.1 - - [02/Apr/2025 09:20:08] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:08 - 127.0.0.1 - - [02/Apr/2025 09:20:08] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:20:08 - 127.0.0.1 - - [02/Apr/2025 09:20:08] "GET /check_auth HTTP/1.1" 200 -
+2025-04-02 09:20:08 - 127.0.0.1 - - [02/Apr/2025 09:20:08] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:20:29 - User logged out
+2025-04-02 09:20:29 - 127.0.0.1 - - [02/Apr/2025 09:20:29] "GET /logout HTTP/1.1" 200 -
+2025-04-02 09:20:29 - 127.0.0.1 - - [02/Apr/2025 09:20:29] "GET / HTTP/1.1" 200 -
+2025-04-02 09:20:29 - 127.0.0.1 - - [02/Apr/2025 09:20:29] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-02 09:20:29 - 127.0.0.1 - - [02/Apr/2025 09:20:29] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:24:35 - Logging system configured with level INFO
+2025-04-02 09:24:35 - Starting IOCore2 Coverage Analysis Tool
+2025-04-02 09:24:35 - Configured Flask app logging with level INFO
+2025-04-02 09:24:35 - Configured Flask app logging with level INFO
+2025-04-02 09:24:35 - Logging system configured with level INFO
+2025-04-02 09:24:35 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-02 09:24:35 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-02 09:24:35 - Template files: templates
+2025-04-02 09:24:35 - Running in PRODUCTION mode
+2025-04-02 09:24:35 - Listening on 0.0.0.0:5005
+2025-04-02 09:24:35 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.79.9.77:5005
+2025-04-02 09:24:35 - [33mPress CTRL+C to quit[0m
+2025-04-02 09:24:41 - 127.0.0.1 - - [02/Apr/2025 09:24:41] "GET / HTTP/1.1" 200 -
+2025-04-02 09:24:41 - 127.0.0.1 - - [02/Apr/2025 09:24:41] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:24:42 - 127.0.0.1 - - [02/Apr/2025 09:24:42] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:24:42 - 127.0.0.1 - - [02/Apr/2025 09:24:42] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:24:57 - 127.0.0.1 - - [02/Apr/2025 09:24:57] "GET / HTTP/1.1" 200 -
+2025-04-02 09:24:57 - 127.0.0.1 - - [02/Apr/2025 09:24:57] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:24:57 - 127.0.0.1 - - [02/Apr/2025 09:24:57] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:24:57 - 127.0.0.1 - - [02/Apr/2025 09:24:57] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:27:20 - 127.0.0.1 - - [02/Apr/2025 09:27:20] "GET / HTTP/1.1" 200 -
+2025-04-02 09:27:20 - 127.0.0.1 - - [02/Apr/2025 09:27:20] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:27:20 - 127.0.0.1 - - [02/Apr/2025 09:27:20] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:27:20 - 127.0.0.1 - - [02/Apr/2025 09:27:20] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:27:21 - 127.0.0.1 - - [02/Apr/2025 09:27:21] "GET / HTTP/1.1" 200 -
+2025-04-02 09:27:21 - 127.0.0.1 - - [02/Apr/2025 09:27:21] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:27:21 - 127.0.0.1 - - [02/Apr/2025 09:27:21] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:27:21 - 127.0.0.1 - - [02/Apr/2025 09:27:21] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:29:31 - 127.0.0.1 - - [02/Apr/2025 09:29:31] "GET / HTTP/1.1" 200 -
+2025-04-02 09:29:31 - 127.0.0.1 - - [02/Apr/2025 09:29:31] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:29:31 - 127.0.0.1 - - [02/Apr/2025 09:29:31] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:29:31 - 127.0.0.1 - - [02/Apr/2025 09:29:31] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:29:33 - 127.0.0.1 - - [02/Apr/2025 09:29:33] "GET / HTTP/1.1" 200 -
+2025-04-02 09:29:33 - 127.0.0.1 - - [02/Apr/2025 09:29:33] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:29:33 - 127.0.0.1 - - [02/Apr/2025 09:29:33] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:29:33 - 127.0.0.1 - - [02/Apr/2025 09:29:33] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:32:02 - 127.0.0.1 - - [02/Apr/2025 09:32:02] "GET / HTTP/1.1" 200 -
+2025-04-02 09:32:02 - 127.0.0.1 - - [02/Apr/2025 09:32:02] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:32:02 - 127.0.0.1 - - [02/Apr/2025 09:32:02] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:32:02 - 127.0.0.1 - - [02/Apr/2025 09:32:02] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:32:04 - 127.0.0.1 - - [02/Apr/2025 09:32:04] "GET / HTTP/1.1" 200 -
+2025-04-02 09:32:04 - 127.0.0.1 - - [02/Apr/2025 09:32:04] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:32:04 - 127.0.0.1 - - [02/Apr/2025 09:32:04] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:32:04 - 127.0.0.1 - - [02/Apr/2025 09:32:04] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:43:16 - 127.0.0.1 - - [02/Apr/2025 09:43:16] "GET / HTTP/1.1" 200 -
+2025-04-02 09:43:16 - 127.0.0.1 - - [02/Apr/2025 09:43:16] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:43:17 - 127.0.0.1 - - [02/Apr/2025 09:43:17] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:43:17 - 127.0.0.1 - - [02/Apr/2025 09:43:17] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:43:29 - Logging system configured with level INFO
+2025-04-02 09:43:29 - Starting IOCore2 Coverage Analysis Tool
+2025-04-02 09:43:29 - Configured Flask app logging with level INFO
+2025-04-02 09:43:29 - Configured Flask app logging with level INFO
+2025-04-02 09:43:29 - Logging system configured with level INFO
+2025-04-02 09:43:29 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-02 09:43:29 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-02 09:43:29 - Template files: templates
+2025-04-02 09:43:29 - Running in PRODUCTION mode
+2025-04-02 09:43:29 - Listening on 0.0.0.0:5005
+2025-04-02 09:43:29 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.79.9.77:5005
+2025-04-02 09:43:29 - [33mPress CTRL+C to quit[0m
+2025-04-02 09:43:34 - 127.0.0.1 - - [02/Apr/2025 09:43:34] "GET / HTTP/1.1" 200 -
+2025-04-02 09:43:34 - 127.0.0.1 - - [02/Apr/2025 09:43:34] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:43:35 - 127.0.0.1 - - [02/Apr/2025 09:43:35] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:43:35 - 127.0.0.1 - - [02/Apr/2025 09:43:35] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:48:32 - Logging system configured with level INFO
+2025-04-02 09:48:32 - Starting IOCore2 Coverage Analysis Tool
+2025-04-02 09:48:32 - Configured Flask app logging with level INFO
+2025-04-02 09:48:32 - Configured Flask app logging with level INFO
+2025-04-02 09:48:32 - Logging system configured with level INFO
+2025-04-02 09:48:32 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-02 09:48:32 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-02 09:48:32 - Template files: templates
+2025-04-02 09:48:32 - Running in PRODUCTION mode
+2025-04-02 09:48:32 - Listening on 0.0.0.0:5005
+2025-04-02 09:48:32 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.79.9.77:5005
+2025-04-02 09:48:32 - [33mPress CTRL+C to quit[0m
+2025-04-02 09:48:38 - 127.0.0.1 - - [02/Apr/2025 09:48:38] "GET / HTTP/1.1" 200 -
+2025-04-02 09:48:38 - 127.0.0.1 - - [02/Apr/2025 09:48:38] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-02 09:48:39 - 127.0.0.1 - - [02/Apr/2025 09:48:39] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-02 09:48:39 - 127.0.0.1 - - [02/Apr/2025 09:48:39] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-02 09:49:09 - SSL verification is disabled. This is insecure.
+2025-04-02 09:49:11 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-02 09:49:11 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "POST /login HTTP/1.1" 200 -
+2025-04-02 09:49:11 - Accessing functional tree view
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "GET /check_auth HTTP/1.1" 200 -
+2025-04-02 09:49:11 - 127.0.0.1 - - [02/Apr/2025 09:49:11] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -

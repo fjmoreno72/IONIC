@@ -1,0 +1,368 @@
+<!-- Navigation Menu Component -->
+<style>
+.top-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 1000;
+    height: 100px;
+}
+
+.classification-banner {
+    position: fixed;
+    top: 35px;
+    left: 0;
+    right: 0;
+    color: black;
+    text-align: center;
+    padding: 0;
+    font-size: 14px;
+    z-index: 1001;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    line-height: 30px;
+    white-space: nowrap; /* Prevent wrapping on larger screens */
+    overflow: hidden; /* Hide overflow on larger screens if needed */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    padding: 0 10px; /* Add some horizontal padding */
+}
+
+.nav-menu {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: #4472C4;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1002;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-menu .logo {
+    height: 100px;
+    margin-right: 20px;
+    margin-top: -65px;
+    margin-left: -10px;
+    position: relative;
+    z-index: 1004;
+}
+
+/* Mobile menu button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: auto;
+    position: relative;
+    z-index: 1005;
+}
+
+.nav-menu .nav-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-right: 40px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1004;
+}
+
+.nav-menu .btn {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 5px;
+}
+
+.nav-menu .btn:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+.nav-menu .btn i {
+    font-size: 16px;
+}
+
+.nav-menu .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-menu .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 8px 0;
+    min-width: 160px;
+}
+
+.nav-menu .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-menu .dropdown-content a {
+    color: #333;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: block;
+    transition: background 0.3s;
+}
+
+.nav-menu .dropdown-content a:hover {
+    background: #f5f5f5;
+}
+
+/* Add margin to body to prevent content from hiding under fixed nav */
+body {
+    margin-top: 140px !important;
+}
+
+/* Mobile styles */
+@media (max-width: 991px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu .nav-links {
+        display: none;
+        position: fixed;
+        flex-direction: column;
+        align-items: flex-start;
+        top: 135px;
+        right: 0;
+        background: #4472C4;
+        margin: 0;
+        padding: 20px;
+        width: 250px;
+        height: auto;
+        box-shadow: -2px 2px 5px rgba(0,0,0,0.2);
+        border-radius: 0 0 0 5px;
+        gap: 15px;
+    }
+    
+    .nav-menu .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-menu .btn {
+        width: 100%;
+    }
+    
+    .nav-menu .dropdown {
+        width: 100%;
+    }
+    
+    .nav-menu .dropdown-content {
+        position: relative;
+        top: 10px;
+        width: 100%;
+        box-shadow: none;
+        margin-bottom: 10px;
+    }
+    
+    .nav-menu .dropdown:hover .dropdown-content {
+        display: none;
+    }
+    
+    .nav-menu .dropdown.active .dropdown-content {
+        display: block;
+    }
+    
+    .nav-menu .dropdown .btn {
+        justify-content: space-between;
+    }
+
+    /* Responsive adjustments for the classification banner */
+    @media (max-width: 991px) { /* Adjust breakpoint as needed */
+        .classification-banner {
+            font-size: 10px; /* Smaller font size */
+            white-space: normal; /* Allow text wrapping */
+            height: auto; /* Adjust height automatically */
+            line-height: 1.4; /* Adjust line height for wrapped text */
+            padding: 5px; /* Add some padding */
+            top: 40px; /* Adjust top position slightly if needed */
+        }
+        /* Adjust body margin-top for mobile if banner height changes significantly */
+        body {
+             /* Example: Adjust if banner becomes taller */
+             /* margin-top: 150px !important; */
+        }
+    }
+     @media (max-width: 480px) { /* Even smaller screens */
+        .classification-banner {
+            font-size: 8px; /* Even smaller font */
+             padding: 3px;
+        }
+     }
+}
+</style>
+
+<div class="top-section"></div>
+<!-- Classification Banner -->
+<div class="classification-banner">
+    NATO UNCLASSIFIED releasable to AUT / AZE / CHE / COL / GEO / JOR / MOL / NZL / TUN / UKR / EEAS and EUMS
+</div>
+<nav class="nav-menu" id="navMenu">
+    <img src="{{ url_for('static', filename='img/iocore2_logo.png') }}" alt="IOCore2 Logo" class="logo">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="nav-links" id="navLinks">
+        <div class="dropdown">
+            <a href="#" class="btn dropdown-toggle">
+                <i class="fas fa-cloud-download-alt"></i> Get API
+            </a>
+            <div class="dropdown-content">
+                <a href="#" onclick="event.preventDefault(); fetchIERReport()">Get IER Cover</a>
+                <a href="#" onclick="event.preventDefault(); fetchSREQReport()">Get SREQ Cover</a>
+                <a href="#" onclick="event.preventDefault(); fetchTestCases()">Get Test Cases</a>
+                <a href="#" onclick="event.preventDefault(); fetchTestResults()">Get Test Results</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="btn dropdown-toggle">
+                <i class="fas fa-sitemap"></i> View Coverage
+            </a>
+            <div class="dropdown-content">
+                <a href="/view_tree">View SREQ Cover</a>
+                <a href="/view_ier_tree">View IER Cover</a>
+                <a href="/view_tree_func">View FUNC Cover</a>
+            </div>
+        </div>
+        <!-- New ASC Dropdown -->
+        <div class="dropdown">
+            <a href="#" class="btn dropdown-toggle">
+                <i class="fas fa-building"></i> ASC
+            </a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('views.affiliates') }}">Affiliates</a>
+                <a href="{{ url_for('views.asc_services') }}">Services</a>
+                <a href="{{ url_for('views.asc_gps') }}">GPs</a>
+                <a href="{{ url_for('views.asc_config_items') }}">CIs</a>
+                <a href="{{ url_for('views.asc_sps') }}">SPs</a>
+                <a href="{{ url_for('views.asc_ascs') }}">ASCs</a>
+                <a href="{{ url_for('views.asc_kanban') }}">ASC Kanban</a>
+            </div>
+        </div>
+        <a href="/system_monitor" class="btn">
+            <i class="fas fa-desktop"></i> System Monitor
+        </a>
+        <a href="/test_cases" class="btn">
+            <i class="fas fa-tasks"></i> See Test Cases
+        </a>
+        <a href="#" class="btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
+</nav>
+
+<!-- Loading indicator -->
+<div id="loader" class="loading hidden">
+    <div class="loading-spinner"></div>
+</div>
+
+<!-- Success messages container -->
+<div id="successMessages" class="success-messages"></div>
+
+<style>
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.success-messages {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 1001;
+}
+
+.success-message {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Timer overlay style */
+.timer-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    z-index: 2001; /* Above loader but below critical UI */
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+</style>
+
+<!-- Load modular JS -->
+<script type="module" src="/static/js/core/app.js" crossorigin="anonymous"></script>
+<script>
+// All functionality has been moved to modular JS files
+// This script remains only for backward compatibility
+</script>

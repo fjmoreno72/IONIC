@@ -706,5 +706,35 @@
     "description": "",
     "id": "GP-0123",
     "iconPath": ""
+  },
+  {
+    "name": "Data Link Server Hub",
+    "description": "Implements: Data Link Hub Functions (JREU)",
+    "iconPath": "./image/gp/gp_icon_data_link_server_hub.jpg",
+    "id": "GP-0002"
+  },
+  {
+    "name": "Data Link Server Gateway",
+    "description": "Implements: Data Link Gateway Functions (FJUG)(JRE JU)",
+    "iconPath": "./image/gp/gp_icon_data_link_server_gateway.jpg",
+    "id": "GP-0003"
+  },
+  {
+    "name": "Data Link Server Consumer",
+    "description": "Implements: TDL Display and Visualisation",
+    "iconPath": "./image/gp/gp_icon_data_link_server_consumer.jpg",
+    "id": "GP-0004"
+  },
+  {
+    "name": "DNS \ufeffZone Authoritative",
+    "description": "DNS \ufeffZone Authoritative",
+    "iconPath": "./image/gp/gp_icon_dns_\ufeffzone_authoritative.jpg",
+    "id": "GP-0008"
+  },
+  {
+    "name": "D\ufeffNS Resolvers",
+    "description": "D\ufeffNS Resolvers",
+    "iconPath": "./image/gp/gp_icon_d\ufeffns_resolvers.jpg",
+    "id": "GP-0009"
   }
 ]

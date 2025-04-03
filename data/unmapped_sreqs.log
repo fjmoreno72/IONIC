@@ -1112,3 +1112,557 @@
 2025-04-03 10:29:25 - 127.0.0.1 - - [03/Apr/2025 10:29:25] "[36mGET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1[0m" 304 -
 2025-04-03 10:29:25 - 127.0.0.1 - - [03/Apr/2025 10:29:25] "[36mGET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1[0m" 304 -
 2025-04-03 10:29:25 - 127.0.0.1 - - [03/Apr/2025 10:29:25] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - Accessing ASC GPs page
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/js/pages/gps_new.js HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/js/components/themeManager.js HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:33:27 - 127.0.0.1 - - [03/Apr/2025 10:33:27] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:37:53 - Logging system configured with level INFO
+2025-04-03 10:37:53 - Starting IOCore2 Coverage Analysis Tool
+2025-04-03 10:37:53 - Configured Flask app logging with level INFO
+2025-04-03 10:37:53 - Configured Flask app logging with level INFO
+2025-04-03 10:37:53 - Logging system configured with level INFO
+2025-04-03 10:37:54 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-03 10:37:54 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-03 10:37:54 - Template files: templates
+2025-04-03 10:37:54 - Running in PRODUCTION mode
+2025-04-03 10:37:54 - Listening on 0.0.0.0:5005
+2025-04-03 10:37:58 - Logging system configured with level INFO
+2025-04-03 10:37:58 - Starting IOCore2 Coverage Analysis Tool
+2025-04-03 10:37:58 - Configured Flask app logging with level INFO
+2025-04-03 10:37:58 - Configured Flask app logging with level INFO
+2025-04-03 10:37:58 - Logging system configured with level INFO
+2025-04-03 10:37:58 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-03 10:37:58 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-03 10:37:58 - Template files: templates
+2025-04-03 10:37:58 - Running in PRODUCTION mode
+2025-04-03 10:37:58 - Listening on 0.0.0.0:5005
+2025-04-03 10:38:07 - Logging system configured with level INFO
+2025-04-03 10:38:07 - Starting IOCore2 Coverage Analysis Tool
+2025-04-03 10:38:07 - Configured Flask app logging with level INFO
+2025-04-03 10:38:07 - Configured Flask app logging with level INFO
+2025-04-03 10:38:07 - Logging system configured with level INFO
+2025-04-03 10:38:07 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-03 10:38:07 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-03 10:38:07 - Template files: templates
+2025-04-03 10:38:07 - Running in PRODUCTION mode
+2025-04-03 10:38:07 - Listening on 0.0.0.0:5006
+2025-04-03 10:38:07 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://192.168.68.102:5006
+2025-04-03 10:38:07 - [33mPress CTRL+C to quit[0m
+2025-04-03 10:39:17 - Logging system configured with level INFO
+2025-04-03 10:39:17 - Starting IOCore2 Coverage Analysis Tool
+2025-04-03 10:39:17 - Configured Flask app logging with level INFO
+2025-04-03 10:39:17 - Configured Flask app logging with level INFO
+2025-04-03 10:39:17 - Logging system configured with level INFO
+2025-04-03 10:39:17 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-03 10:39:17 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-03 10:39:17 - Template files: templates
+2025-04-03 10:39:17 - Running in PRODUCTION mode
+2025-04-03 10:39:17 - Listening on 0.0.0.0:5005
+2025-04-03 10:39:17 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-04-03 10:39:17 - [33mPress CTRL+C to quit[0m
+2025-04-03 10:39:22 - Accessing ASC GPs page
+2025-04-03 10:39:22 - 127.0.0.1 - - [03/Apr/2025 10:39:22] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:39:22 - 127.0.0.1 - - [03/Apr/2025 10:39:22] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-03 10:39:22 - 127.0.0.1 - - [03/Apr/2025 10:39:22] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_email_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:39:23 - 127.0.0.1 - - [03/Apr/2025 10:39:23] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 10:39:54 - 127.0.0.1 - - [03/Apr/2025 10:39:54] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:39:54 - 127.0.0.1 - - [03/Apr/2025 10:39:54] "POST /api/gps HTTP/1.1" 200 -
+2025-04-03 10:39:54 - 127.0.0.1 - - [03/Apr/2025 10:39:54] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:39:54 - 127.0.0.1 - - [03/Apr/2025 10:39:54] "GET /static/ASC/image/gp/gp_icon_tete.png HTTP/1.1" 200 -
+2025-04-03 10:40:23 - 127.0.0.1 - - [03/Apr/2025 10:40:23] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:40:23 - 127.0.0.1 - - [03/Apr/2025 10:40:23] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 10:40:23 - 127.0.0.1 - - [03/Apr/2025 10:40:23] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:34 - 127.0.0.1 - - [03/Apr/2025 10:40:34] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:40:49 - 127.0.0.1 - - [03/Apr/2025 10:40:49] "DELETE /api/gps?id=GP-0010 HTTP/1.1" 200 -
+2025-04-03 10:40:49 - 127.0.0.1 - - [03/Apr/2025 10:40:49] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:41:02 - 127.0.0.1 - - [03/Apr/2025 10:41:02] "POST /api/gps HTTP/1.1" 200 -
+2025-04-03 10:41:02 - 127.0.0.1 - - [03/Apr/2025 10:41:02] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:41:12 - 127.0.0.1 - - [03/Apr/2025 10:41:12] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:41:12 - 127.0.0.1 - - [03/Apr/2025 10:41:12] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 10:41:12 - 127.0.0.1 - - [03/Apr/2025 10:41:12] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:41:18 - Accessing ASC GPs page
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_tete.png HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:41:18 - 127.0.0.1 - - [03/Apr/2025 10:41:18] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 10:41:43 - 127.0.0.1 - - [03/Apr/2025 10:41:43] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:41:43 - 127.0.0.1 - - [03/Apr/2025 10:41:43] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 10:41:43 - 127.0.0.1 - - [03/Apr/2025 10:41:43] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:41:47 - Accessing ASC GPs page
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_tete.png HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:41:47 - 127.0.0.1 - - [03/Apr/2025 10:41:47] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 10:42:01 - 127.0.0.1 - - [03/Apr/2025 10:42:01] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 10:42:01 - 127.0.0.1 - - [03/Apr/2025 10:42:01] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:42:33 - 127.0.0.1 - - [03/Apr/2025 10:42:33] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:42:33 - 127.0.0.1 - - [03/Apr/2025 10:42:33] "POST /api/gps HTTP/1.1" 200 -
+2025-04-03 10:42:33 - 127.0.0.1 - - [03/Apr/2025 10:42:33] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:42:33 - 127.0.0.1 - - [03/Apr/2025 10:42:33] "GET /static/ASC/image/gp/gp_icon_tete3.png HTTP/1.1" 200 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:43:43 - 127.0.0.1 - - [03/Apr/2025 10:43:43] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:44:38 - Logging system configured with level INFO
+2025-04-03 10:44:38 - Starting IOCore2 Coverage Analysis Tool
+2025-04-03 10:44:38 - Configured Flask app logging with level INFO
+2025-04-03 10:44:38 - Configured Flask app logging with level INFO
+2025-04-03 10:44:38 - Logging system configured with level INFO
+2025-04-03 10:44:38 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-03 10:44:38 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-03 10:44:38 - Template files: templates
+2025-04-03 10:44:38 - Running in PRODUCTION mode
+2025-04-03 10:44:38 - Listening on 0.0.0.0:5005
+2025-04-03 10:44:38 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-04-03 10:44:38 - [33mPress CTRL+C to quit[0m
+2025-04-03 10:44:42 - Accessing ASC GPs page
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_email_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_tete3.png HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/ASC/image/gp/gp_icon_tete.png HTTP/1.1" 200 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:44:42 - 127.0.0.1 - - [03/Apr/2025 10:44:42] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 10:44:52 - 127.0.0.1 - - [03/Apr/2025 10:44:52] "DELETE /api/gps?id=GP-0010 HTTP/1.1" 200 -
+2025-04-03 10:44:52 - 127.0.0.1 - - [03/Apr/2025 10:44:52] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:44:56 - 127.0.0.1 - - [03/Apr/2025 10:44:56] "DELETE /api/gps?id=GP-0011 HTTP/1.1" 200 -
+2025-04-03 10:44:56 - 127.0.0.1 - - [03/Apr/2025 10:44:56] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:45:20 - 127.0.0.1 - - [03/Apr/2025 10:45:20] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:45:20 - 127.0.0.1 - - [03/Apr/2025 10:45:20] "POST /api/gps HTTP/1.1" 200 -
+2025-04-03 10:45:20 - 127.0.0.1 - - [03/Apr/2025 10:45:20] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:45:20 - 127.0.0.1 - - [03/Apr/2025 10:45:20] "GET /static/ASC/image/gp/gp_icon_tete4.png HTTP/1.1" 200 -
+2025-04-03 10:45:32 - 127.0.0.1 - - [03/Apr/2025 10:45:32] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:45:32 - 127.0.0.1 - - [03/Apr/2025 10:45:32] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 10:45:32 - 127.0.0.1 - - [03/Apr/2025 10:45:32] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:45:41 - Accessing ASC GPs page
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:45:41 - 127.0.0.1 - - [03/Apr/2025 10:45:41] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 10:45:44 - 127.0.0.1 - - [03/Apr/2025 10:45:44] "GET /static/ASC/image/gp/gp_icon_tete4.png HTTP/1.1" 200 -
+2025-04-03 10:45:49 - 127.0.0.1 - - [03/Apr/2025 10:45:49] "DELETE /api/gps?id=GP-0124 HTTP/1.1" 200 -
+2025-04-03 10:45:49 - 127.0.0.1 - - [03/Apr/2025 10:45:49] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:47:32 - 127.0.0.1 - - [03/Apr/2025 10:47:32] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:48:35 - Accessing ASC GPs page
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:48:35 - 127.0.0.1 - - [03/Apr/2025 10:48:35] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:48:36 - 127.0.0.1 - - [03/Apr/2025 10:48:36] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:48:36 - 127.0.0.1 - - [03/Apr/2025 10:48:36] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 10:48:53 - Logging system configured with level INFO
+2025-04-03 10:48:53 - Starting IOCore2 Coverage Analysis Tool
+2025-04-03 10:48:53 - Configured Flask app logging with level INFO
+2025-04-03 10:48:53 - Configured Flask app logging with level INFO
+2025-04-03 10:48:53 - Logging system configured with level INFO
+2025-04-03 10:48:53 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-03 10:48:53 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-03 10:48:53 - Template files: templates
+2025-04-03 10:48:53 - Running in PRODUCTION mode
+2025-04-03 10:48:53 - Listening on 0.0.0.0:5005
+2025-04-03 10:48:53 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-04-03 10:48:53 - [33mPress CTRL+C to quit[0m
+2025-04-03 10:48:55 - Accessing ASC GPs page
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/pages/gps_new.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/components/gpForm.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:48:55 - 127.0.0.1 - - [03/Apr/2025 10:48:55] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 10:49:02 - 127.0.0.1 - - [03/Apr/2025 10:49:02] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-03 10:49:02 - 127.0.0.1 - - [03/Apr/2025 10:49:02] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-03 10:49:02 - 127.0.0.1 - - [03/Apr/2025 10:49:02] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:49:02 - 127.0.0.1 - - [03/Apr/2025 10:49:02] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - Accessing ASC GPs page
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/js/components/gpForm.js HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/favicon/favicon.ico HTTP/1.1[0m" 304 -
+2025-04-03 10:51:39 - 127.0.0.1 - - [03/Apr/2025 10:51:39] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:52:16 - 127.0.0.1 - - [03/Apr/2025 10:52:16] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:52:16 - 127.0.0.1 - - [03/Apr/2025 10:52:16] "POST /api/gps HTTP/1.1" 200 -
+2025-04-03 10:56:06 - Logging system configured with level INFO
+2025-04-03 10:56:06 - Starting IOCore2 Coverage Analysis Tool
+2025-04-03 10:56:06 - Configured Flask app logging with level INFO
+2025-04-03 10:56:06 - Configured Flask app logging with level INFO
+2025-04-03 10:56:06 - Logging system configured with level INFO
+2025-04-03 10:56:06 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-03 10:56:06 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-03 10:56:06 - Template files: templates
+2025-04-03 10:56:06 - Running in PRODUCTION mode
+2025-04-03 10:56:06 - Listening on 0.0.0.0:5005
+2025-04-03 10:56:06 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.68.102:5005
+2025-04-03 10:56:06 - [33mPress CTRL+C to quit[0m
+2025-04-03 10:56:12 - Accessing ASC GPs page
+2025-04-03 10:56:12 - 127.0.0.1 - - [03/Apr/2025 10:56:12] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:56:12 - 127.0.0.1 - - [03/Apr/2025 10:56:12] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-03 10:56:12 - 127.0.0.1 - - [03/Apr/2025 10:56:12] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:56:13 - 127.0.0.1 - - [03/Apr/2025 10:56:13] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 10:56:16 - 127.0.0.1 - - [03/Apr/2025 10:56:16] "GET /static/ASC/image/gp/gp_icon_tete5.png HTTP/1.1" 200 -
+2025-04-03 10:56:23 - 127.0.0.1 - - [03/Apr/2025 10:56:23] "DELETE /api/gps?id=GP-0124 HTTP/1.1" 200 -
+2025-04-03 10:56:23 - 127.0.0.1 - - [03/Apr/2025 10:56:23] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:56:38 - 127.0.0.1 - - [03/Apr/2025 10:56:38] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:56:38 - 127.0.0.1 - - [03/Apr/2025 10:56:38] "POST /api/gps HTTP/1.1" 200 -
+2025-04-03 10:56:38 - 127.0.0.1 - - [03/Apr/2025 10:56:38] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:56:38 - 127.0.0.1 - - [03/Apr/2025 10:56:38] "GET /static/ASC/image/gp/gp_icon_tete6.png?v=1743670598963 HTTP/1.1" 200 -
+2025-04-03 10:56:41 - 127.0.0.1 - - [03/Apr/2025 10:56:41] "GET /static/ASC/image/gp/gp_icon_tete6.png HTTP/1.1" 200 -
+2025-04-03 10:56:46 - 127.0.0.1 - - [03/Apr/2025 10:56:46] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 10:56:46 - 127.0.0.1 - - [03/Apr/2025 10:56:46] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:56:46 - 127.0.0.1 - - [03/Apr/2025 10:56:46] "GET /static/ASC/image/gp/gp_icon_tete6.png?v=1743670606158 HTTP/1.1" 200 -
+2025-04-03 10:56:49 - 127.0.0.1 - - [03/Apr/2025 10:56:49] "[36mGET /static/ASC/image/gp/gp_icon_tete6.png HTTP/1.1[0m" 304 -
+2025-04-03 10:56:58 - 127.0.0.1 - - [03/Apr/2025 10:56:58] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-03 10:56:58 - 127.0.0.1 - - [03/Apr/2025 10:56:58] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 10:56:58 - 127.0.0.1 - - [03/Apr/2025 10:56:58] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:56:58 - 127.0.0.1 - - [03/Apr/2025 10:56:58] "GET /static/ASC/image/gp/gp_icon_tete6.png?v=1743670618732 HTTP/1.1" 200 -
+2025-04-03 10:57:04 - 127.0.0.1 - - [03/Apr/2025 10:57:04] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 10:57:04 - 127.0.0.1 - - [03/Apr/2025 10:57:04] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:57:04 - 127.0.0.1 - - [03/Apr/2025 10:57:04] "GET /static/ASC/image/gp/gp_icon_tete6.png?v=1743670624760 HTTP/1.1" 200 -
+2025-04-03 10:57:13 - 127.0.0.1 - - [03/Apr/2025 10:57:13] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 10:57:13 - 127.0.0.1 - - [03/Apr/2025 10:57:13] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:57:13 - 127.0.0.1 - - [03/Apr/2025 10:57:13] "GET /static/ASC/image/gp/gp_icon_tete6.png?v=1743670633870 HTTP/1.1" 200 -
+2025-04-03 10:57:20 - Accessing ASC GPs page
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 10:57:20 - 127.0.0.1 - - [03/Apr/2025 10:57:20] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 10:57:23 - 127.0.0.1 - - [03/Apr/2025 10:57:23] "GET /static/ASC/image/gp/gp_icon_tete6.png HTTP/1.1" 200 -
+2025-04-03 11:01:48 - Accessing ASC GPs page
+2025-04-03 11:01:48 - 127.0.0.1 - - [03/Apr/2025 11:01:48] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /check_auth HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-03 11:01:49 - 127.0.0.1 - - [03/Apr/2025 11:01:49] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-03 11:01:52 - 127.0.0.1 - - [03/Apr/2025 11:01:52] "[36mGET /static/ASC/image/gp/gp_icon_tete6.png HTTP/1.1[0m" 304 -
+2025-04-03 11:01:57 - 127.0.0.1 - - [03/Apr/2025 11:01:57] "PUT /api/gps HTTP/1.1" 200 -
+2025-04-03 11:01:57 - 127.0.0.1 - - [03/Apr/2025 11:01:57] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -

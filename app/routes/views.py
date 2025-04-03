@@ -392,6 +392,216 @@ def upload_affiliate_flag():
         logging.exception(f"Error uploading flag: {str(e)}")
         return jsonify({'error': f'Error uploading flag: {str(e)}'}), 500
 
+@views_bp.route('/api/gps/upload-icon', methods=['POST'])
+@login_required
+def upload_gp_icon():
+    """
+    API endpoint to handle icon image uploads for generic products (GPs).
+    
+    Returns:
+        JSON response with the saved file path or error message.
+    """
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file part in the request'}), 400
+            
+        file = request.files['file']
+        
+        if file.filename == '':
+            return jsonify({'error': 'No file selected'}), 400
+            
+        # Get GP name from request to name the icon
+        gp_name = request.form.get('gpName', '')
+        if not gp_name:
+            return jsonify({'error': 'GP name is required'}), 400
+            
+        # Sanitize the name for filename (remove spaces, special chars)
+        safe_name = secure_filename(gp_name.lower().replace(' ', '_'))
+        filename = f"gp_icon_{safe_name}.png"
+        
+        # Ensure the gp icons directory exists (Using current_app.static_folder)
+        gp_dir = Path(current_app.static_folder) / "ASC" / "image" / "gp" # Corrected path
+        os.makedirs(gp_dir, exist_ok=True)
+
+        # Save the file
+        file_path = gp_dir / filename
+        file.save(file_path)
+        
+        # Return the relative path for storage in the data file
+        relative_path = f"./image/gp/{filename}"
+        return jsonify({
+            'success': True,
+            'path': relative_path,
+            'message': 'Icon uploaded successfully'
+        })
+        
+    except Exception as e:
+        logging.exception(f"Error uploading GP icon: {str(e)}")
+        return jsonify({'error': f'Error uploading GP icon: {str(e)}'}), 500
+
+@views_bp.route('/api/gps', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@login_required
+def manage_gps():
+    """
+    API endpoint to manage Generic Products (GPs) data.
+    
+    Methods:
+        GET: Return all GPs
+        POST: Add a new GP
+        PUT: Update an existing GP
+        DELETE: Delete a GP
+    
+    Returns:
+        JSON response with the result of the operation
+    """
+    # Corrected path: Use current_app.static_folder for ASC data
+    gps_path = Path(current_app.static_folder) / "ASC" / "data" / "gps.json"
+
+    # Ensure the data directory exists
+    os.makedirs(os.path.dirname(gps_path), exist_ok=True)
+    
+    try:
+        # GET: Return all GPs
+        if request.method == 'GET':
+            if not gps_path.exists():
+                return jsonify([])
+                
+            with open(gps_path, 'r') as f:
+                gps = json.load(f)
+                
+            return jsonify(gps)
+            
+        # POST: Add a new GP
+        elif request.method == 'POST':
+            # Load existing data
+            if gps_path.exists():
+                with open(gps_path, 'r') as f:
+                    gps = json.load(f)
+            else:
+                gps = []
+                
+            new_gp = request.json
+            
+            # Generate a new ID - find the highest existing ID
+            highest_id = 0
+            if gps:
+                try:
+                    # Extract all numeric parts and find the highest
+                    for gp in gps:
+                        if 'id' in gp and gp['id'].startswith('GP-'):
+                            try:
+                                current_id = int(gp['id'].split('-')[1])
+                                highest_id = max(highest_id, current_id)
+                            except (IndexError, ValueError):
+                                pass
+                except Exception:
+                    pass
+                    
+            new_id = f"GP-{str(highest_id + 1).zfill(4)}"
+            
+            # Double-check that the ID is unique
+            while any(gp.get('id') == new_id for gp in gps):
+                highest_id += 1
+                new_id = f"GP-{str(highest_id + 1).zfill(4)}"
+                
+            new_gp['id'] = new_id
+            
+            # Add to list
+            gps.append(new_gp)
+            
+            # Save back to file
+            with open(gps_path, 'w') as f:
+                json.dump(gps, f, indent=2)
+                
+            return jsonify({
+                'success': True,
+                'gp': new_gp,
+                'message': 'Generic Product added successfully'
+            })
+            
+        # PUT: Update an existing GP
+        elif request.method == 'PUT':
+            # Load existing data
+            if not gps_path.exists():
+                return jsonify({'error': 'GPs file not found'}), 404
+                
+            with open(gps_path, 'r') as f:
+                gps = json.load(f)
+                
+            updated_gp = request.json
+            
+            # Find and update the GP
+            gp_id = updated_gp.get('id')
+            if not gp_id:
+                return jsonify({'error': 'GP ID is required'}), 400
+                
+            found = False
+            for i, gp in enumerate(gps):
+                if gp.get('id') == gp_id:
+                    gps[i] = updated_gp
+                    found = True
+                    break
+                    
+            if not found:
+                return jsonify({'error': f'GP with ID {gp_id} not found'}), 404
+                
+            # Save back to file
+            with open(gps_path, 'w') as f:
+                json.dump(gps, f, indent=2)
+                
+            return jsonify({
+                'success': True,
+                'gp': updated_gp,
+                'message': 'Generic Product updated successfully'
+            })
+        
+        # DELETE: Delete a GP
+        elif request.method == 'DELETE':
+            # Load existing data
+            if not gps_path.exists():
+                return jsonify({'error': 'GPs file not found'}), 404
+                
+            with open(gps_path, 'r') as f:
+                gps = json.load(f)
+            
+            # Get the GP ID from query params
+            gp_id = request.args.get('id')
+            if not gp_id:
+                return jsonify({'error': 'GP ID is required'}), 400
+            
+            # Find the GP to get its icon path before removal
+            gp_to_delete = next((gp for gp in gps if gp.get('id') == gp_id), None)
+            
+            # Remove GP from list
+            initial_count = len(gps)
+            gps = [gp for gp in gps if gp.get('id') != gp_id]
+            
+            if len(gps) == initial_count:
+                return jsonify({'error': f'GP with ID {gp_id} not found'}), 404
+            
+            # Save back to file
+            with open(gps_path, 'w') as f:
+                json.dump(gps, f, indent=2)
+            
+            # Try to delete the icon file if it exists
+            if gp_to_delete and gp_to_delete.get('iconPath'):
+                try:
+                    # Use current_app.static_folder reference
+                    icon_path = Path(current_app.static_folder) / "ASC" / gp_to_delete['iconPath'].replace('./', '')
+                    if icon_path.exists():
+                        os.remove(icon_path)
+                except Exception as e:
+                    logging.warning(f"Could not delete icon file: {str(e)}")
+            
+            return jsonify({
+                'success': True,
+                'message': f'Generic Product with ID {gp_id} deleted successfully'
+            })
+            
+    except Exception as e:
+        logging.exception(f"Error managing GPs: {str(e)}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
+
 @views_bp.route('/api/sps', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @login_required
 def manage_sps():
@@ -435,16 +645,28 @@ def manage_sps():
                 
             new_sp = request.json
             
-            # Generate a new ID
-            last_id = 0
+            # Generate a new ID - find the highest existing ID
+            highest_id = 0
             if sps:
-                # Extract the numeric part of the last ID
                 try:
-                    last_id = int(sps[-1]['id'].split('-')[1])
-                except (IndexError, ValueError):
+                    # Extract all numeric parts and find the highest
+                    for sp in sps:
+                        if 'id' in sp and sp['id'].startswith('SP-'):
+                            try:
+                                current_id = int(sp['id'].split('-')[1])
+                                highest_id = max(highest_id, current_id)
+                            except (IndexError, ValueError):
+                                pass
+                except Exception:
                     pass
                     
-            new_id = f"SP-{str(last_id + 1).zfill(4)}"
+            new_id = f"SP-{str(highest_id + 1).zfill(4)}"
+            
+            # Double-check that the ID is unique
+            while any(sp.get('id') == new_id for sp in sps):
+                highest_id += 1
+                new_id = f"SP-{str(highest_id + 1).zfill(4)}"
+                
             new_sp['id'] = new_id
             
             # Add to list
@@ -586,16 +808,28 @@ def manage_affiliates():
                 
             new_affiliate = request.json
             
-            # Generate a new ID
-            last_id = 0
+            # Generate a new ID - find the highest existing ID
+            highest_id = 0
             if affiliates:
-                # Extract the numeric part of the last ID
                 try:
-                    last_id = int(affiliates[-1]['id'].split('-')[1])
-                except (IndexError, ValueError):
+                    # Extract all numeric parts and find the highest
+                    for affiliate in affiliates:
+                        if 'id' in affiliate and affiliate['id'].startswith('AFF-'):
+                            try:
+                                current_id = int(affiliate['id'].split('-')[1])
+                                highest_id = max(highest_id, current_id)
+                            except (IndexError, ValueError):
+                                pass
+                except Exception:
                     pass
                     
-            new_id = f"AFF-{str(last_id + 1).zfill(4)}"
+            new_id = f"AFF-{str(highest_id + 1).zfill(4)}"
+            
+            # Double-check that the ID is unique
+            while any(affiliate.get('id') == new_id for affiliate in affiliates):
+                highest_id += 1
+                new_id = f"AFF-{str(highest_id + 1).zfill(4)}"
+                
             new_affiliate['id'] = new_id
             
             # Add to list

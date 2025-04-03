@@ -24,18 +24,6 @@
     "id": "GP-0007"
   },
   {
-    "name": "Email Server",
-    "description": "",
-    "iconPath": "./image/gp/gp_icon_email_server.jpg",
-    "id": "GP-0010"
-  },
-  {
-    "name": "Email Client",
-    "description": "",
-    "iconPath": "./image/gp/gp_icon_email_client.jpg",
-    "id": "GP-0011"
-  },
-  {
     "name": "Web Server",
     "description": "Portals",
     "iconPath": "./image/gp/gp_icon_web_server.jpg",
@@ -736,5 +724,12 @@
     "description": "D\ufeffNS Resolvers",
     "iconPath": "./image/gp/gp_icon_d\ufeffns_resolvers.jpg",
     "id": "GP-0009"
+  },
+  {
+    "name": "TETE6",
+    "description": "asdfasd",
+    "originalName": "TETE6",
+    "id": "GP-0124",
+    "iconPath": ""
   }
 ]

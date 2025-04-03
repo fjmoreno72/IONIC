@@ -1,15 +1,15 @@
 /**
- * SPForm - A component for capturing and validating specific product data
+ * GPForm - A component for capturing and validating generic product data
  * 
- * This component creates a form specific to specific product data, with fields for
- * name, description, versions, and icon. It includes validation and handles both 
- * creation and editing scenarios, with special handling for versions management.
+ * This component creates a form specific to generic product data, with fields for
+ * name, description, and icon. It includes validation and handles both 
+ * creation and editing scenarios.
  */
 import { FileUploader } from './fileUploader.js';
 
-export class SPForm {
+export class GPForm {
   /**
-   * Create a new specific product form
+   * Create a new generic product form
    * @param {Object} config - Configuration options
    * @param {Object} [config.data] - Initial data for editing (null for new item)
    * @param {Function} [config.onSubmit] - Callback when form is submitted
@@ -26,7 +26,6 @@ export class SPForm {
     this.fileUploader = null;
     this.isEditMode = !!this.data;
     this.originalName = this.data?.name || null; // Store original name for uniqueness check
-    this.versions = this.data && this.data.versions ? [...this.data.versions] : []; // Copy to avoid reference issues
     
     this.createForm();
   }
@@ -38,7 +37,7 @@ export class SPForm {
   createForm() {
     // Create form container
     this.element = document.createElement('div');
-    this.element.className = 'sp-form-container';
+    this.element.className = 'gp-form-container';
     
     // Generate a random suffix to make field names unpredictable for form-filling extensions
     const randomSuffix = Math.random().toString(36).substring(2, 8);
@@ -46,7 +45,7 @@ export class SPForm {
     
     // Create form element
     this.formElement = document.createElement('form');
-    this.formElement.id = 'spForm';
+    this.formElement.id = 'gpForm';
     this.formElement.className = 'needs-validation';
     this.formElement.noValidate = true;
     this.formElement.setAttribute('autocomplete', 'off'); // Prevent browser autocomplete
@@ -55,28 +54,15 @@ export class SPForm {
     this.formElement.innerHTML = `
       <!-- Name field -->
       <div class="mb-3">
-        <label for="spName" class="form-label">Name *</label>
-        <input type="text" class="form-control" id="spName" name="spName_${randomSuffix}" required autocomplete="new-password">
+        <label for="gpName" class="form-label">Name *</label>
+        <input type="text" class="form-control" id="gpName" name="gpName_${randomSuffix}" required autocomplete="new-password">
         <div class="invalid-feedback">Please enter a name. Names must be unique.</div>
       </div>
       
       <!-- Description field -->
       <div class="mb-3">
-        <label for="spDescription" class="form-label">Description</label>
-        <textarea class="form-control" id="spDescription" name="spDescription_${randomSuffix}" rows="3" autocomplete="new-password"></textarea>
-      </div>
-      
-      <!-- Versions field -->
-      <div class="mb-3">
-        <label class="form-label">Versions</label>
-        <div class="d-flex mb-2">
-          <input type="text" class="form-control me-2" id="versionInput" name="versionInput_${randomSuffix}" placeholder="Enter version (ex: 1.0.0)" autocomplete="new-password">
-          <button type="button" class="btn btn-primary" id="addVersionBtn">Add</button>
-        </div>
-        <div id="versionsContainer" class="p-2 border rounded mb-2" style="min-height: 100px; max-height: 200px; overflow-y: auto;">
-          <!-- Versions will be added here dynamically -->
-          <div class="text-muted small fst-italic text-center" id="noVersionsMsg">No versions added yet</div>
-        </div>
+        <label for="gpDescription" class="form-label">Description</label>
+        <textarea class="form-control" id="gpDescription" name="gpDescription_${randomSuffix}" rows="3" autocomplete="new-password"></textarea>
       </div>
       
       <!-- Icon upload field -->
@@ -98,7 +84,7 @@ export class SPForm {
       const deleteButton = document.createElement('button');
       deleteButton.type = 'button';
       deleteButton.className = 'btn btn-danger';
-      deleteButton.innerHTML = '<i class="fas fa-trash me-2"></i>Delete Specific Product';
+      deleteButton.innerHTML = '<i class="fas fa-trash me-2"></i>Delete Generic Product';
       deleteButton.onclick = this.handleDelete.bind(this);
       
       deleteButtonContainer.appendChild(deleteButton);
@@ -128,7 +114,7 @@ export class SPForm {
     this.iconRemoved = false; // Track if icon was explicitly removed
     
     this.fileUploader = new FileUploader({
-      id: 'spIconUploader',
+      id: 'gpIconUploader',
       accept: 'image/png, image/jpeg',
       multiple: false,
       label: 'Choose Icon',
@@ -151,23 +137,6 @@ export class SPForm {
    * @private
    */
   setupEventListeners() {
-    // Add version button click
-    const addVersionBtn = this.formElement.querySelector('#addVersionBtn');
-    if (addVersionBtn) {
-      addVersionBtn.addEventListener('click', this.addVersion.bind(this));
-    }
-    
-    // Version input enter key
-    const versionInput = this.formElement.querySelector('#versionInput');
-    if (versionInput) {
-      versionInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault(); // Prevent form submission
-          this.addVersion();
-        }
-      });
-    }
-    
     // Form submission
     this.formElement.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -176,103 +145,15 @@ export class SPForm {
   }
   
   /**
-   * Add a version to the list
-   * @private
-   */
-  addVersion() {
-    const versionInput = this.formElement.querySelector('#versionInput');
-    const versionsContainer = this.formElement.querySelector('#versionsContainer');
-    const noVersionsMsg = this.formElement.querySelector('#noVersionsMsg');
-    
-    if (!versionInput || !versionsContainer) return;
-    
-    const version = versionInput.value.trim();
-    if (!version) return;
-    
-    // Check if version already exists
-    if (this.versions.includes(version)) {
-      // Show error message (could be enhanced with a proper notification)
-      versionInput.classList.add('is-invalid');
-      setTimeout(() => versionInput.classList.remove('is-invalid'), 2000);
-      return;
-    }
-    
-    // Add to versions array
-    this.versions.push(version);
-    
-    // Add to UI
-    this.renderVersions();
-    
-    // Clear input
-    versionInput.value = '';
-    versionInput.focus();
-  }
-  
-  /**
-   * Remove a version from the list
-   * @param {string} version - The version to remove
-   * @private
-   */
-  removeVersion(version) {
-    this.versions = this.versions.filter(v => v !== version);
-    this.renderVersions();
-  }
-  
-  /**
-   * Render the versions list in the UI
-   * @private
-   */
-  renderVersions() {
-    const versionsContainer = this.formElement.querySelector('#versionsContainer');
-    const noVersionsMsg = this.formElement.querySelector('#noVersionsMsg');
-    
-    if (!versionsContainer) return;
-    
-    // Clear container
-    versionsContainer.innerHTML = '';
-    
-    // Show message if no versions
-    if (this.versions.length === 0) {
-      versionsContainer.innerHTML = '<div class="text-muted small fst-italic text-center" id="noVersionsMsg">No versions added yet</div>';
-      return;
-    }
-    
-    // Sort versions (could be enhanced with semantic versioning)
-    const sortedVersions = [...this.versions].sort();
-    
-    // Add each version
-    sortedVersions.forEach(version => {
-      const versionBadge = document.createElement('div');
-      versionBadge.className = 'badge bg-secondary d-inline-flex align-items-center me-2 mb-2';
-      versionBadge.style.paddingRight = '0.5rem';
-      
-      const versionText = document.createElement('span');
-      versionText.textContent = version;
-      versionText.className = 'me-1';
-      
-      const removeBtn = document.createElement('button');
-      removeBtn.type = 'button';
-      removeBtn.className = 'btn-close btn-close-white ms-1';
-      removeBtn.style.fontSize = '0.5rem';
-      removeBtn.setAttribute('aria-label', 'Remove');
-      removeBtn.onclick = () => this.removeVersion(version);
-      
-      versionBadge.appendChild(versionText);
-      versionBadge.appendChild(removeBtn);
-      versionsContainer.appendChild(versionBadge);
-    });
-  }
-  
-  /**
-   * Set form values for editing an existing specific product
-   * @param {Object} data - The specific product data
+   * Set form values for editing an existing generic product
+   * @param {Object} data - The generic product data
    */
   setValues(data) {
     if (!data || !this.formElement) return;
     
     // Set basic fields
-    const nameInput = this.formElement.querySelector('#spName');
-    const descriptionInput = this.formElement.querySelector('#spDescription');
+    const nameInput = this.formElement.querySelector('#gpName');
+    const descriptionInput = this.formElement.querySelector('#gpDescription');
     
     if (nameInput && data.name !== undefined) {
       nameInput.value = data.name;
@@ -280,12 +161,6 @@ export class SPForm {
     
     if (descriptionInput && data.description !== undefined) {
       descriptionInput.value = data.description;
-    }
-    
-    // Set versions
-    if (data.versions && Array.isArray(data.versions)) {
-      this.versions = [...data.versions];
-      this.renderVersions();
     }
     
     // Set icon preview if available
@@ -320,9 +195,8 @@ export class SPForm {
     
     // Get basic form data
     const formData = {
-      name: this.formElement.querySelector('#spName')?.value || '',
-      description: this.formElement.querySelector('#spDescription')?.value || '',
-      versions: [...this.versions]
+      name: this.formElement.querySelector('#gpName')?.value || '',
+      description: this.formElement.querySelector('#gpDescription')?.value || ''
     };
     
     // Add the original name for uniqueness checking in edit mode
@@ -364,7 +238,7 @@ export class SPForm {
     this.formElement.classList.add('was-validated');
     
     // Check basic field validity
-    const nameValid = this.formElement.querySelector('#spName').checkValidity();
+    const nameValid = this.formElement.querySelector('#gpName').checkValidity();
     
     return nameValid;
   }
@@ -399,7 +273,7 @@ export class SPForm {
     if (!this.isEditMode || !this.data || !this.data.id) return;
     
     // Show confirmation dialog
-    if (window.confirm(`Are you sure you want to delete the "${this.data.name}" specific product? This action cannot be undone.`)) {
+    if (window.confirm(`Are you sure you want to delete the "${this.data.name}" generic product? This action cannot be undone.`)) {
       // Call onDelete callback if provided
       if (this.onDelete && typeof this.onDelete === 'function') {
         this.onDelete(this.data.id);
@@ -415,10 +289,6 @@ export class SPForm {
     
     // Reset form values
     this.formElement.reset();
-    
-    // Clear versions
-    this.versions = [];
-    this.renderVersions();
     
     // Clear file uploader
     if (this.fileUploader) {

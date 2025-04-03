@@ -103,6 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
       return null;
     },
     
+    // Keep track of image update timestamps to prevent caching
+    imageUpdateTimestamps: {},
+    
     columns: [
       { key: 'id', label: 'ID', sortable: true },
       { key: 'name', label: 'Name', sortable: true },
@@ -118,9 +121,16 @@ document.addEventListener('DOMContentLoaded', function() {
         label: 'Icon', 
         sortable: false,
         cellClass: 'text-center',
-        render: (value, row) => value 
-          ? `<img src="/static/ASC/${value.replace('./', '')}" alt="${row.name || 'Icon'}" class="icon-img" style="max-height: 40px; max-width: 40px;">`
-          : 'No Icon'
+        render: (value, row) => {
+          if (!value) return 'No Icon';
+          
+          // Add cache-busting timestamp parameter if available
+          const cacheBuster = (row && row.id && spsTable.imageUpdateTimestamps && spsTable.imageUpdateTimestamps[row.id]) 
+            ? `?v=${spsTable.imageUpdateTimestamps[row.id]}` 
+            : '';
+            
+          return `<img src="/static/ASC/${value.replace('./', '')}${cacheBuster}" alt="${row.name || 'Icon'}" class="icon-img" style="max-height: 40px; max-width: 40px;">`;
+        }
       }
     ]
   });
@@ -261,9 +271,24 @@ document.addEventListener('DOMContentLoaded', function() {
         body: JSON.stringify(formData)
       });
       
+      // Parse the response once
+      const responseData = await response.json();
+      
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Error saving specific product');
+        throw new Error(responseData.error || 'Error saving specific product');
+      }
+      
+      // Add timestamp to cache-bust the icon if it's a new icon or update
+      if (formData.iconPath) {
+        const spId = responseData.sp?.id || formData.id;
+        if (spId) {
+          // Ensure imageUpdateTimestamps is initialized
+          if (!spsTable.imageUpdateTimestamps) {
+            spsTable.imageUpdateTimestamps = {};
+          }
+          // Set timestamp for this SP's icon to force cache refresh
+          spsTable.imageUpdateTimestamps[spId] = Date.now();
+        }
       }
       
       // Close dialog

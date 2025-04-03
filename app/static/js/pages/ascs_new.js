@@ -153,6 +153,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const getSpById = (id) => {
     return spsData.find(sp => sp.id === id) || null;
   };
+
+  // Helper function to get progress class based on percentage (from Kanban)
+  const getProgressClass = (percentage) => {
+    if (percentage >= 100) return 'progress-100';
+    if (percentage >= 75) return 'progress-75';
+    if (percentage >= 50) return 'progress-50';
+    if (percentage >= 25) return 'progress-25';
+    return 'progress-0';
+  };
   
   // Format GP Instances for display
   const formatGpInstances = (gpInstances) => {
@@ -306,20 +315,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
           },
           { 
-            key: 'progress', 
-            label: 'Progress', 
+            key: 'ascScore', 
+            label: 'ASC Score', 
             sortable: true,
+            cellClass: 'ascScore', // Add a class to the TD element
             render: (value) => {
-              // Convert progress string to percentage number
-              const progressValue = parseInt(value, 10) || 0;
+              // Convert ascScore string to percentage number
+              const scoreValue = parseInt(value, 10) || 0;
+              const progressClass = getProgressClass(scoreValue);
               
-              return `
-                <div class="progress-bar-container">
-                  <div class="progress-bar" style="width: ${progressValue}%;">
-                    ${progressValue}%
-                  </div>
-                </div>
-              `;
+              // Return the colored indicator span
+              return `<span class="progress-indicator ${progressClass}">${scoreValue}%</span>`;
             }
           },
           { 

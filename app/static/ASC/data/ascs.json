@@ -4,7 +4,7 @@
     "serviceId": "SRV-0008",
     "spiral": "SP5",
     "status": "In Progress",
-    "progress": "50%",
+    "ascScore": "50%",
     "gpInstances": [
       {
         "gpId": "GP-0001",
@@ -93,7 +93,7 @@
     "serviceId": "SRV-0008",
     "spiral": "SP5",
     "status": "Initial",
-    "progress": "0%",
+    "ascScore": "0%",
     "gpInstances": [
       {
         "gpId": "GP-0001",
@@ -124,7 +124,7 @@
     "serviceId": "SRV-0021",
     "spiral": "SP5",
     "status": "Deprecated",
-    "progress": "0%",
+    "ascScore": "0%",
     "gpInstances": [
       {
         "gpId": "GP-0005",
@@ -150,7 +150,7 @@
     "serviceId": "SRV-0021",
     "spiral": "SP5",
     "status": "Initial",
-    "progress": "0%",
+    "ascScore": "0%",
     "gpInstances": [
       {
         "gpId": "GP-0005",
@@ -171,7 +171,7 @@
     "serviceId": "SRV-0021",
     "spiral": "SP5",
     "status": "Validated",
-    "progress": "50%",
+    "ascScore": "50%",
     "gpInstances": [
       {
         "gpId": "GP-0005",
@@ -202,7 +202,7 @@
     "serviceId": "SRV-0021",
     "spiral": "SP5",
     "status": "Validated",
-    "progress": "100%",
+    "ascScore": "100%",
     "gpInstances": [
       {
         "gpId": "GP-0005",
@@ -233,7 +233,7 @@
     "serviceId": "SRV-0017",
     "spiral": "SP5",
     "status": "In Review",
-    "progress": "75%",
+    "ascScore": "75%",
     "gpInstances": [
       {
         "gpId": "GP-0007",
@@ -274,7 +274,7 @@
     "serviceId": "SRV-0019",
     "spiral": "SP5",
     "status": "In Progress",
-    "progress": "100%",
+    "ascScore": "100%",
     "gpInstances": [
       {
         "gpId": "GP-0010",
@@ -317,7 +317,7 @@
     "serviceId": "SRV-0008",
     "spiral": "SP5",
     "status": "In Review",
-    "progress": "0%",
+    "ascScore": "0%",
     "gpInstances": [
       {
         "gpId": "GP-0001",

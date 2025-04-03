@@ -287,8 +287,8 @@ export class KanbanBoard {
     const serviceName = this.dataManager.getServiceName(asc.serviceId);
     const flagPath = this.dataManager.getFlagPath(asc.affiliateId);
     
-    // Extract progress percentage (remove any % sign and parse as int)
-    const progressStr = asc.progress ? asc.progress.toString().replace('%', '') : '0';
+    // Extract ascScore percentage (remove any % sign and parse as int)
+    const progressStr = asc.ascScore ? asc.ascScore.toString().replace('%', '') : '0';
     const progressPercentage = parseInt(progressStr);
     const progressClass = this.getProgressClass(progressPercentage);
     

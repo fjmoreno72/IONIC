@@ -18,29 +18,24 @@
             vertical-align: middle;
             display: inline-block !important;
         }
-        
-        .progress-bar-container {
-            width: 100%;
-            background-color: #e9ecef;
-            border-radius: 0.25rem;
-            height: 0.75rem;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            border-radius: 0.25rem;
-            background-color: #007bff;
+
+        /* ASC Score indicator styles (from Kanban) - Increased Specificity */
+        td.ascScore .progress-indicator { /* Target indicator within the specific table cell */
+            color: #fff;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 2px 6px;
+            border-radius: 4px;
+            min-width: 40px;
             text-align: center;
-            font-size: 0.625rem;
-            line-height: 0.75rem;
-            color: white;
-            white-space: nowrap;
-            overflow: hidden;
+            display: inline-block;
         }
-        
-        [data-theme="dark"] .progress-bar-container {
-            background-color: #343a40;
-        }
+
+        td.ascScore .progress-0 { background-color: #e53935; } /* Red */
+        td.ascScore .progress-25 { background-color: #fb8c00; } /* Orange */
+        td.ascScore .progress-50 { background-color: #fdd835; color: #333 !important; } /* Yellow - added !important for text color */
+        td.ascScore .progress-75 { background-color: #43a047; } /* Light Green */
+        td.ascScore .progress-100 { background-color: #2e7d32; } /* Dark Green */
 
         /* Status badge styling */
         .status-badge {
@@ -155,7 +150,7 @@
                     {'label': 'Service', 'sortable': true, 'sort_key': 'serviceId', 'width': '13%'},
                     {'label': 'Spiral', 'sortable': true, 'sort_key': 'spiral', 'width': '5%'},
                     {'label': 'Status', 'sortable': true, 'sort_key': 'status', 'width': '5%'},
-                    {'label': 'Progress', 'sortable': true, 'sort_key': 'progress', 'width': '5%'},
+                    {'label': 'ASC Score', 'sortable': true, 'sort_key': 'ascScore', 'width': '5%'},
                     {'label': 'GP Instances', 'sortable': false, 'width': '45%'}
                 ]
             %}

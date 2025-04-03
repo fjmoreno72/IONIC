@@ -1,0 +1,1784 @@
+[
+  {
+    "id": "LNK-0001",
+    "name": "ACP 127 / SMTP",
+    "description": "ACP 127 Military Messaging protocol over SMTP",
+    "gps_side_a": [
+      "GP-0022",
+      "GP-0053",
+      "GP-0054"
+    ],
+    "gps_side_b": [
+      "GP-0022",
+      "GP-0053"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0002",
+    "name": "ADL",
+    "description": "",
+    "gps_side_a": [
+      "GP-0013",
+      "GP-0014",
+      "GP-0063"
+    ],
+    "gps_side_b": [
+      "GP-0062"
+    ],
+    "linkCIs": [
+      {
+        "Name": "ADL File",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0003",
+    "name": "AIRC2 C2S",
+    "description": "AirC2 Client to Server",
+    "gps_side_a": [
+      "GP-0013",
+      "GP-0032",
+      "GP-0089"
+    ],
+    "gps_side_b": [
+      "GP-0031"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Database Name",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "User Name",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0004",
+    "name": "AIRC2 DB REPL",
+    "description": "AIRC2 Database Replication",
+    "gps_side_a": [
+      "GP-0031"
+    ],
+    "gps_side_b": [
+      "GP-0031"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Database Name",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/8081,TCP/1521, TCP/8443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0005",
+    "name": "AIRC2 REPL",
+    "description": "AIRC2 Replication (ICC-LINK)",
+    "gps_side_a": [
+      "GP-0031"
+    ],
+    "gps_side_b": [
+      "GP-0031"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0006",
+    "name": "AIRC2 S2DB",
+    "description": "AirC2 Server to Database",
+    "gps_side_a": [
+      "GP-0031"
+    ],
+    "gps_side_b": [
+      "GP-0031"
+    ],
+    "linkCIs": [
+      {
+        "Name": "DBRepl",
+        "Help Text": "",
+        "Default Value": "TCP/8081,TCP/1521, TCP/8443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0007",
+    "name": "AIRC2 XD to RS",
+    "description": "AIRC2 Cross Domain to Release Server",
+    "gps_side_a": [
+      "GP-0031"
+    ],
+    "gps_side_b": [
+      "GP-0022",
+      "GP-0095"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/10000",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0008",
+    "name": "ANB to INTEL-FS",
+    "description": "",
+    "gps_side_a": [
+      "GP-0013",
+      "GP-0106"
+    ],
+    "gps_side_b": [
+      "GP-0056"
+    ],
+    "linkCIs": [
+      {
+        "Name": "iBridge URI",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/1433",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0009",
+    "name": "BSO XD",
+    "description": "",
+    "gps_side_a": [
+      "GP-0056"
+    ],
+    "gps_side_b": [
+      "GP-0095"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0010",
+    "name": "CIWS Replication",
+    "description": "CIWS Replication",
+    "gps_side_a": [
+      "GP-0096"
+    ],
+    "gps_side_b": [
+      "GP-0096"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "Port",
+        "Default Value": "",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0011",
+    "name": "CMTool2IWS",
+    "description": "",
+    "gps_side_a": [
+      "GP-0097"
+    ],
+    "gps_side_b": [
+      "GP-0096"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "8087,9090",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0012",
+    "name": "Conference to Conference",
+    "description": "SIP Conference Control",
+    "gps_side_a": [
+      "GP-0016",
+      "GP-0019",
+      "GP-0026",
+      "GP-0084"
+    ],
+    "gps_side_b": [
+      "GP-0016",
+      "GP-0019",
+      "GP-0084"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0013",
+    "name": "Connection to Directory Server",
+    "description": "Connection to Directory Server (LDAP or TLS)",
+    "gps_side_a": [
+      "GP-0027"
+    ],
+    "gps_side_b": [
+      "GP-0017"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Ports",
+        "Help Text": "connectivity ports",
+        "Default Value": "389, 636",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0014",
+    "name": "COP",
+    "description": "SA COP Contribution",
+    "gps_side_a": [
+      "GP-0031",
+      "GP-0033",
+      "GP-0045",
+      "GP-0051",
+      "GP-0060",
+      "GP-0062",
+      "GP-0064",
+      "GP-0068",
+      "GP-0081"
+    ],
+    "gps_side_b": [
+      "GP-0072"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0015",
+    "name": "CSD IPL Web",
+    "description": "",
+    "gps_side_a": [
+      "GP-0014",
+      "GP-0099",
+      "GP-0103"
+    ],
+    "gps_side_b": [
+      "GP-0100"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "8270, 8151, 8150, 8275, 8220",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0016",
+    "name": "DL C2S",
+    "description": "Data Link - Client to Server",
+    "gps_side_a": [
+      "GP-0001",
+      "GP-0037"
+    ],
+    "gps_side_b": [
+      "GP-0001"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0017",
+    "name": "DL C2S (TSS)",
+    "description": "Data Link - Client to Server - TSS",
+    "gps_side_a": [
+      "GP-0001",
+      "GP-0037"
+    ],
+    "gps_side_b": [
+      "GP-0001"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "TSS Port",
+        "Default Value": "TCP/2000,TCP/2001,TCP/3996",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0018",
+    "name": "DNS Delegation",
+    "description": "Delegation from the Root DNS server",
+    "gps_side_a": [
+      "GP-0107"
+    ],
+    "gps_side_b": [
+      "GP-0107"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Glue Records",
+        "Help Text": "Format should be [ZoneName; NS name server1, NS Name Server 2, etc..]",
+        "Default Value": "",
+        "Answer Type": "Text Field (Multi Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Glue Records",
+        "Help Text": "Format should be [ZoneName; NS name server1, NS Name Server 2, etc..]",
+        "Default Value": "",
+        "Answer Type": "Text Field (Multi Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0019",
+    "name": "DNS Resolving",
+    "description": "Resolve DNS names",
+    "gps_side_a": [
+      "GP-0090"
+    ],
+    "gps_side_b": [
+      "GP-0090",
+      "GP-0107"
+    ],
+    "linkCIs": [
+      {
+        "Name": "DNS Port",
+        "Help Text": "Port used for DNS",
+        "Default Value": "UDP/53,TCP/53",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0020",
+    "name": "DNS Zone Transfer",
+    "description": "Zone transfer between Primary and Secondary Servers",
+    "gps_side_a": [
+      "GP-0107"
+    ],
+    "gps_side_b": [
+      "GP-0107"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0021",
+    "name": "FFT C2S",
+    "description": "FFT Client to Server",
+    "gps_side_a": [
+      "GP-0021",
+      "GP-0040",
+      "GP-0088"
+    ],
+    "gps_side_b": [
+      "GP-0021",
+      "GP-0088"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0022",
+    "name": "FFT-TCP-IP1",
+    "description": "TCP FFT Connection",
+    "gps_side_a": [
+      "GP-0021",
+      "GP-0088"
+    ],
+    "gps_side_b": [
+      "GP-0021",
+      "GP-0040",
+      "GP-0088"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Data Compression",
+        "Help Text": "",
+        "Default Value": "Disabled",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "Enabled,Disabled",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Data Compression",
+        "Help Text": "",
+        "Default Value": "Disabled",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "Enabled,Disabled",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "58000",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "TCP Port Behaviour",
+        "Help Text": "",
+        "Default Value": "Keep Open",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "Keep Open, Open-Close",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "TCP Port Behaviour",
+        "Help Text": "",
+        "Default Value": "Keep Open",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "Keep Open, Open-Close",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "TCP-Role",
+        "Help Text": "",
+        "Default Value": "TCP-SRV",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "TCP-SRV,TCP-CLI",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "TCP-Role",
+        "Help Text": "",
+        "Default Value": "TCP-CLI",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "TCP-SRV,TCP-CLI",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0023",
+    "name": "FFT-UDP-IP2",
+    "description": "",
+    "gps_side_a": [],
+    "gps_side_b": [],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0024",
+    "name": "Formal Messaging over SMTP",
+    "description": "MMHS over SMTP based on email delivery",
+    "gps_side_a": [],
+    "gps_side_b": [],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0025",
+    "name": "GI REPL",
+    "description": "",
+    "gps_side_a": [
+      "GP-0030"
+    ],
+    "gps_side_b": [
+      "GP-0030"
+    ],
+    "linkCIs": [
+      {
+        "Name": "port",
+        "Help Text": "",
+        "Default Value": "TCP/445",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0026",
+    "name": "HF",
+    "description": "HF Radio",
+    "gps_side_a": [
+      "GP-0086"
+    ],
+    "gps_side_b": [
+      "GP-0086"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0027",
+    "name": "HTTP",
+    "description": "HTTP OCSP/CRL",
+    "gps_side_a": [],
+    "gps_side_b": [],
+    "linkCIs": [
+      {
+        "Name": "HTTP",
+        "Help Text": "unencrypted http",
+        "Default Value": "80",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0028",
+    "name": "IDP Trust",
+    "description": "Federated Identity Provider trust",
+    "gps_side_a": [
+      "GP-0049"
+    ],
+    "gps_side_b": [
+      "GP-0049"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Read Claims",
+        "Help Text": "Claims for users to Read on partner portal",
+        "Default Value": "",
+        "Answer Type": "Text Field (Multi Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Write Claims",
+        "Help Text": "Claims for users to Write on partner portal",
+        "Default Value": "",
+        "Answer Type": "Text Field (Multi Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0029",
+    "name": "INTEL FS REP",
+    "description": "Intel-FS Replication",
+    "gps_side_a": [
+      "GP-0055",
+      "GP-0056",
+      "GP-0105"
+    ],
+    "gps_side_b": [
+      "GP-0055",
+      "GP-0056",
+      "GP-0105"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Rep Channel ID",
+        "Help Text": "Add the replication Channel ID",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0030",
+    "name": "IRM XD",
+    "description": "INTEL FS - Release Server",
+    "gps_side_a": [
+      "GP-0055"
+    ],
+    "gps_side_b": [
+      "GP-0095"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0031",
+    "name": "IWS2CMTool",
+    "description": "",
+    "gps_side_a": [
+      "GP-0096"
+    ],
+    "gps_side_b": [
+      "GP-0097"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "8300,8330,8360",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0032",
+    "name": "JISR LIB",
+    "description": "Access to JISR Libary",
+    "gps_side_a": [
+      "GP-0119"
+    ],
+    "gps_side_b": [
+      "GP-0119"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Authentication Information",
+        "Help Text": "User name to be used for this connection",
+        "Default Value": "",
+        "Answer Type": "Email Address",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0033",
+    "name": "JISR LIB XD",
+    "description": "",
+    "gps_side_a": [
+      "GP-0095",
+      "GP-0100"
+    ],
+    "gps_side_b": [
+      "GP-0095",
+      "GP-0100"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0034",
+    "name": "JISRIE C2S",
+    "description": "Joint ISR Information Exchange Client to Server",
+    "gps_side_a": [
+      "GP-0100",
+      "GP-0102"
+    ],
+    "gps_side_b": [
+      "GP-0014",
+      "GP-0099",
+      "GP-0102",
+      "GP-0103"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0035",
+    "name": "JISRIE LIBRARY",
+    "description": "",
+    "gps_side_a": [
+      "GP-0100"
+    ],
+    "gps_side_b": [
+      "GP-0100"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0036",
+    "name": "JISRIE XD",
+    "description": "",
+    "gps_side_a": [
+      "GP-0105"
+    ],
+    "gps_side_b": [
+      "GP-0095"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0037",
+    "name": "JRE Link",
+    "description": "JREAP - Link for Different JREA Processors",
+    "gps_side_a": [
+      "GP-0001"
+    ],
+    "gps_side_b": [
+      "GP-0001"
+    ],
+    "linkCIs": [
+      {
+        "Name": "LinkID",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "LinkID",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Operating Mode",
+        "Help Text": "pick either:  Transmission Only: \"Tx\", Reception Only: \"Rx\", Full Duplex: \"FDX\"",
+        "Default Value": "FDX",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "Tx,Rx,FDX",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Operating Mode",
+        "Help Text": "pick either:  Transmission Only: \"Tx\", Reception Only: \"Rx\", Full Duplex: \"FDX\"",
+        "Default Value": "FDX",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "Tx,Rx,FDX",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Port",
+        "Help Text": "your local port. If not set, type ANY",
+        "Default Value": "ANY",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Port",
+        "Help Text": "your local port. If not set, type ANY",
+        "Default Value": "ANY",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Remote JRE ID",
+        "Help Text": "JRE ID of far end connection",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Remote JRE ID",
+        "Help Text": "JRE ID of far end connection",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Transport Protocol",
+        "Help Text": "pick either: TCP Server: \"TCP-SRV\", TCP Client: \"TCP-CLT\",UDP: \"UDP\"",
+        "Default Value": "TCP-CLI",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "TCP-CLI,TCP-SRV,UDP",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Transport Protocol",
+        "Help Text": "pick either: TCP Server: \"TCP-SRV\", TCP Client: \"TCP-CLT\",UDP: \"UDP\"",
+        "Default Value": "TCP-CLI",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "TCP-CLI,TCP-SRV,UDP",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0038",
+    "name": "JTGT C2S",
+    "description": "Joint Targeting Client Connection to Server",
+    "gps_side_a": [
+      "GP-0059"
+    ],
+    "gps_side_b": [
+      "GP-0058"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/15000,TCP/15001",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0039",
+    "name": "JTGT DB REPL",
+    "description": "Joint Targeting DB Replica",
+    "gps_side_a": [
+      "GP-0058"
+    ],
+    "gps_side_b": [
+      "GP-0058"
+    ],
+    "linkCIs": [
+      {
+        "Name": "JTSLink Group",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "JTSLink ID",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "JTSLink Name",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "JTSLink Replication Interval",
+        "Help Text": "",
+        "Default Value": "5",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "JTSLink Web Service Password",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "JTSLink Web Service Username",
+        "Help Text": "",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0040",
+    "name": "LC2IE C2S",
+    "description": "LC2IE Client to Server",
+    "gps_side_a": [
+      "GP-0013",
+      "GP-0014",
+      "GP-0061"
+    ],
+    "gps_side_b": [
+      "GP-0060"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0041",
+    "name": "LC2IE REPL",
+    "description": "Replica between LC2IE Servers",
+    "gps_side_a": [
+      "GP-0060"
+    ],
+    "gps_side_b": [
+      "GP-0060"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0042",
+    "name": "LDAP",
+    "description": "LDAP CRL",
+    "gps_side_a": [],
+    "gps_side_b": [],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "389",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0043",
+    "name": "LOG C2S",
+    "description": "Logistics Client to Server Connection",
+    "gps_side_a": [
+      "GP-0013",
+      "GP-0014",
+      "GP-0063"
+    ],
+    "gps_side_b": [
+      "GP-0062"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0044",
+    "name": "LOG DB REPL",
+    "description": "Logistics Data Base Replication",
+    "gps_side_a": [
+      "GP-0062"
+    ],
+    "gps_side_b": [
+      "GP-0062"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0045",
+    "name": "MIP",
+    "description": "",
+    "gps_side_a": [
+      "GP-0023",
+      "GP-0120"
+    ],
+    "gps_side_b": [
+      "GP-0023",
+      "GP-0120"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0046",
+    "name": "MSLDEF DB REPL",
+    "description": "Missile Defense Database Replication",
+    "gps_side_a": [
+      "GP-0066"
+    ],
+    "gps_side_b": [
+      "GP-0066"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0047",
+    "name": "MSLDEF-C2S-SEW",
+    "description": "Missile Defense SEW Client to Server",
+    "gps_side_a": [
+      "GP-0014",
+      "GP-0071"
+    ],
+    "gps_side_b": [
+      "GP-0070"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0048",
+    "name": "Multicast",
+    "description": "Multicast traffic",
+    "gps_side_a": [
+      "GP-0034",
+      "GP-0035"
+    ],
+    "gps_side_b": [
+      "GP-0034",
+      "GP-0035"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0049",
+    "name": "NIP-G",
+    "description": "NIP connection over GRE tunnel",
+    "gps_side_a": [
+      "GP-0034",
+      "GP-0035"
+    ],
+    "gps_side_b": [
+      "GP-0034",
+      "GP-0035"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Tunnel IP Address",
+        "Help Text": "Tunnel interface IP address",
+        "Default Value": "",
+        "Answer Type": "IP Address",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Tunnel IP Address",
+        "Help Text": "Tunnel interface IP address",
+        "Default Value": "",
+        "Answer Type": "IP Address",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0050",
+    "name": "NIP-N",
+    "description": "NIP connection - native (direct)",
+    "gps_side_a": [
+      "GP-0034",
+      "GP-0035"
+    ],
+    "gps_side_b": [
+      "GP-0034",
+      "GP-0035"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Interface Connection Type",
+        "Help Text": "Define physical connector type: LC or Tactical(HMA)",
+        "Default Value": "LC",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "LC,HMA",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Interface Connection Type",
+        "Help Text": "Define physical connector type: LC or Tactical(HMA)",
+        "Default Value": "LC",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "LC,HMA",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Link IP address",
+        "Help Text": "IP Address of link interface",
+        "Default Value": "",
+        "Answer Type": "IP Address",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Link IP address",
+        "Help Text": "IP Address of link interface",
+        "Default Value": "",
+        "Answer Type": "IP Address",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0051",
+    "name": "NVG",
+    "description": "FMN NVG Interfaces",
+    "gps_side_a": [],
+    "gps_side_b": [],
+    "linkCIs": [
+      {
+        "Name": "NVG Method",
+        "Help Text": "",
+        "Default Value": "Request-Response",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "File,PubSub,Request-Response",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0052",
+    "name": "OPE DB REP",
+    "description": "JOCWatch to JOCWatch Link",
+    "gps_side_a": [
+      "GP-0033"
+    ],
+    "gps_side_b": [
+      "GP-0033"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0053",
+    "name": "OPLAN C2S",
+    "description": "Operational Planning Client To Server Connection",
+    "gps_side_a": [
+      "GP-0013",
+      "GP-0014",
+      "GP-0069"
+    ],
+    "gps_side_b": [
+      "GP-0068"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0054",
+    "name": "OPLAN S2S",
+    "description": "Operational Planning Server To Server DB Replication",
+    "gps_side_a": [
+      "GP-0068"
+    ],
+    "gps_side_b": [
+      "GP-0068"
+    ],
+    "linkCIs": [
+      {
+        "Name": "DB Port",
+        "Help Text": "",
+        "Default Value": "TCP/1433",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0055",
+    "name": "OPLAN to JISR BSO",
+    "description": "Link between Operational Planning Tool and Intel BSO tool",
+    "gps_side_a": [
+      "GP-0013",
+      "GP-0057"
+    ],
+    "gps_side_b": [
+      "GP-0056"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0056",
+    "name": "Overlay Exchange",
+    "description": "Overlay Exchange",
+    "gps_side_a": [
+      "GP-0044"
+    ],
+    "gps_side_b": [
+      "GP-0043",
+      "GP-0044"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Method",
+        "Help Text": "",
+        "Default Value": "File,PubSub,Request-Response",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "File,PubSub,Request-Response",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0057",
+    "name": "Phone Registration",
+    "description": "Audio",
+    "gps_side_a": [
+      "GP-0015",
+      "GP-0016",
+      "GP-0029"
+    ],
+    "gps_side_b": [
+      "GP-0015",
+      "GP-0016",
+      "GP-0019",
+      "GP-0029"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0058",
+    "name": "RMP C2S (SSH)",
+    "description": "",
+    "gps_side_a": [],
+    "gps_side_b": [],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0059",
+    "name": "RMP S2S (OTH)",
+    "description": "",
+    "gps_side_a": [
+      "GP-0045",
+      "GP-0046"
+    ],
+    "gps_side_b": [
+      "GP-0045",
+      "GP-0046"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0060",
+    "name": "RMP XD",
+    "description": "",
+    "gps_side_a": [
+      "GP-0022",
+      "GP-0045",
+      "GP-0046"
+    ],
+    "gps_side_b": [
+      "GP-0022",
+      "GP-0045",
+      "GP-0046"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0061",
+    "name": "RS XD to AIRC2",
+    "description": "Release Server Cross Domain to AIRC2",
+    "gps_side_a": [
+      "GP-0022",
+      "GP-0095"
+    ],
+    "gps_side_b": [
+      "GP-0031"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/8081",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0062",
+    "name": "SA COPDIS",
+    "description": "COP Dissemination",
+    "gps_side_a": [
+      "GP-0072"
+    ],
+    "gps_side_b": [
+      "GP-0072"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0063",
+    "name": "SA S2S",
+    "description": "SA COP Synchronization",
+    "gps_side_a": [
+      "GP-0072"
+    ],
+    "gps_side_b": [
+      "GP-0072"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0064",
+    "name": "Single Conference Endpoint",
+    "description": "Conference Endpoint (single Conference Server within the mission Network)",
+    "gps_side_a": [
+      "GP-0026"
+    ],
+    "gps_side_b": [
+      "GP-0016",
+      "GP-0019",
+      "GP-0084"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0065",
+    "name": "SIP / Media Trunk",
+    "description": "SIP and Media trunk between SBCs",
+    "gps_side_a": [
+      "GP-0026"
+    ],
+    "gps_side_b": [
+      "GP-0026"
+    ],
+    "linkCIs": [
+      {
+        "Name": "CAC",
+        "Help Text": "Call Admission Control",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "Maximum number of calls allowed on the link",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Loopback  IP Address",
+        "Help Text": "Your Local IP Address for this SIP trunk",
+        "Default Value": "",
+        "Answer Type": "IP Address",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Loopback Interface Name",
+        "Help Text": "ie: Gb0/1, Loopback0, etc\u2026",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Loopback Interface Name",
+        "Help Text": "ie: Gb0/1, Loopback0, etc\u2026",
+        "Default Value": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "Loopback IP Address",
+        "Help Text": "Your Local IP Address for this SIP trunk",
+        "Default Value": "",
+        "Answer Type": "IP Address",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      },
+      {
+        "Name": "SIP TRUNCK",
+        "Help Text": "",
+        "Default Value": "TCP/5060, 5061 , UDP/20002-21001",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0066",
+    "name": "SMB",
+    "description": "GEO SMB File Replication",
+    "gps_side_a": [
+      "GP-0030"
+    ],
+    "gps_side_b": [
+      "GP-0030",
+      "GP-0041"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0067",
+    "name": "SMTP",
+    "description": "SMTP between mail relays or X domain mail services these can be Connectors or through MX records",
+    "gps_side_a": [
+      "GP-0022",
+      "GP-0125"
+    ],
+    "gps_side_b": [
+      "GP-0022",
+      "GP-0125"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Mail connector",
+        "Help Text": "if no MX records are used",
+        "Default Value": "",
+        "Answer Type": "Static Drop Down",
+        "Answer Content": "Yes, No",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0068",
+    "name": "TACSAT",
+    "description": "TACSAT Radio",
+    "gps_side_a": [
+      "GP-0087"
+    ],
+    "gps_side_b": [
+      "GP-0087"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0069",
+    "name": "Time Peering",
+    "description": "Peering between NTP servers of Stratum 2 or higher",
+    "gps_side_a": [
+      "GP-0024",
+      "GP-0028"
+    ],
+    "gps_side_b": [
+      "GP-0024"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0070",
+    "name": "Time Reference",
+    "description": "Link between a higher and lower Stratum NTP server.",
+    "gps_side_a": [
+      "GP-0024",
+      "GP-0028"
+    ],
+    "gps_side_b": [
+      "GP-0024",
+      "GP-0028"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0071",
+    "name": "Time Synchronization",
+    "description": "Synchronize time on an end device.",
+    "gps_side_a": [
+      "GP-0001",
+      "GP-0028",
+      "GP-0039"
+    ],
+    "gps_side_b": [
+      "GP-0024",
+      "GP-0028"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0072",
+    "name": "TST C2S",
+    "description": "Time Sensitive Targeting Client to Server",
+    "gps_side_a": [
+      "GP-0077"
+    ],
+    "gps_side_b": [
+      "GP-0076"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0073",
+    "name": "TST IPL C2S",
+    "description": "Time Sensitive Targeting Client to CSD IPL Provider",
+    "gps_side_a": [
+      "GP-0077"
+    ],
+    "gps_side_b": [
+      "GP-0100"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0074",
+    "name": "Video Terminal Registration",
+    "description": "Audio Video",
+    "gps_side_a": [
+      "GP-0026"
+    ],
+    "gps_side_b": [
+      "GP-0025",
+      "GP-0029",
+      "GP-0084"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0075",
+    "name": "Web (HTTP/HTTPS)",
+    "description": "HTTP/HTTPS",
+    "gps_side_a": [
+      "GP-0013",
+      "GP-0014",
+      "GP-0057",
+      "GP-0061",
+      "GP-0067",
+      "GP-0072",
+      "GP-0073",
+      "GP-0079",
+      "GP-0093",
+      "GP-0098",
+      "GP-0126"
+    ],
+    "gps_side_b": [
+      "GP-0012",
+      "GP-0017",
+      "GP-0022",
+      "GP-0033",
+      "GP-0055",
+      "GP-0056",
+      "GP-0060",
+      "GP-0066",
+      "GP-0072",
+      "GP-0078",
+      "GP-0093",
+      "GP-0097",
+      "GP-0104",
+      "GP-0105",
+      "GP-0121",
+      "GP-0125"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "Indicate Port Number",
+        "Default Value": "TCP/80, TCP/443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0076",
+    "name": "Web Auth",
+    "description": "",
+    "gps_side_a": [
+      "GP-0049"
+    ],
+    "gps_side_b": [
+      "GP-0049"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP 443",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0077",
+    "name": "WFS",
+    "description": "Web Feature Service",
+    "gps_side_a": [
+      "GP-0030",
+      "GP-0041"
+    ],
+    "gps_side_b": [
+      "GP-0030",
+      "GP-0041"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0078",
+    "name": "WMS",
+    "description": "WMS Link",
+    "gps_side_a": [
+      "GP-0030",
+      "GP-0041"
+    ],
+    "gps_side_b": [
+      "GP-0030",
+      "GP-0041"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0079",
+    "name": "WMTS",
+    "description": "Web Map Tile Service",
+    "gps_side_a": [
+      "GP-0030",
+      "GP-0041"
+    ],
+    "gps_side_b": [
+      "GP-0030",
+      "GP-0041"
+    ],
+    "linkCIs": []
+  },
+  {
+    "id": "LNK-0080",
+    "name": "XD replication",
+    "description": "Cross domain replication",
+    "gps_side_a": [
+      "GP-0095",
+      "GP-0096"
+    ],
+    "gps_side_b": [
+      "GP-0095",
+      "GP-0096"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "Port",
+        "Default Value": "",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0081",
+    "name": "XMPP (C2S)",
+    "description": "XMPP Client to Server",
+    "gps_side_a": [
+      "GP-0006"
+    ],
+    "gps_side_b": [
+      "GP-0005"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "",
+        "Default Value": "TCP/5222",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  },
+  {
+    "id": "LNK-0082",
+    "name": "XMPP (S2S)",
+    "description": "XMPP Server to Server",
+    "gps_side_a": [
+      "GP-0005",
+      "GP-0006",
+      "GP-0022"
+    ],
+    "gps_side_b": [
+      "GP-0005",
+      "GP-0006",
+      "GP-0022"
+    ],
+    "linkCIs": [
+      {
+        "Name": "Port",
+        "Help Text": "S2S Port Default TCP 5269",
+        "Default Value": "TCP/5269",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ]
+  }
+]

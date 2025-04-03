@@ -78,30 +78,8 @@ export class DialogManager {
     const footer = document.createElement('div');
     footer.className = 'dialog-footer';
     
-    const cancelBtn = document.createElement('button');
-    cancelBtn.type = 'button';
-    cancelBtn.className = 'btn btn-secondary';
-    cancelBtn.textContent = 'Cancel';
-    cancelBtn.onclick = () => this.close();
-    
-    const saveBtn = document.createElement('button');
-    saveBtn.type = 'button';
-    saveBtn.className = 'btn btn-primary';
-    saveBtn.textContent = 'Save';
-    saveBtn.onclick = () => {
-      if (this.onSave) {
-        // If onSave returns true, close the dialog
-        const result = this.onSave();
-        if (result !== false) {
-          this.close();
-        }
-      } else {
-        this.close();
-      }
-    };
-    
-    footer.appendChild(cancelBtn);
-    footer.appendChild(saveBtn);
+    // Default buttons
+    this.createDefaultButtons(footer);
     
     // Assemble dialog
     this.dialogElement.appendChild(header);
@@ -383,6 +361,98 @@ export class DialogManager {
     if (this.onClose && typeof this.onClose === 'function') {
       this.onClose();
     }
+  }
+  
+  /**
+   * Create default buttons for the dialog footer
+   * @param {HTMLElement} footer - The footer element to add buttons to
+   * @private
+   */
+  createDefaultButtons(footer) {
+    // Clear any existing buttons
+    footer.innerHTML = '';
+    
+    // Create Cancel button
+    const cancelBtn = document.createElement('button');
+    cancelBtn.type = 'button';
+    cancelBtn.className = 'btn btn-secondary';
+    cancelBtn.textContent = 'Cancel';
+    cancelBtn.dataset.action = 'cancel';
+    cancelBtn.onclick = () => this.close();
+    
+    // Create Save button
+    const saveBtn = document.createElement('button');
+    saveBtn.type = 'button';
+    saveBtn.className = 'btn btn-primary';
+    saveBtn.textContent = 'Save';
+    saveBtn.dataset.action = 'save';
+    saveBtn.onclick = () => {
+      if (this.onSave) {
+        // If onSave returns false, prevent dialog from closing
+        const result = this.onSave();
+        if (result !== false) {
+          this.close();
+        }
+      } else {
+        this.close();
+      }
+    };
+    
+    // Add buttons to footer
+    footer.appendChild(cancelBtn);
+    footer.appendChild(saveBtn);
+  }
+  
+  /**
+   * Set custom buttons for the dialog
+   * @param {Array} buttons - Array of button configurations
+   * @param {string} buttons[].text - Button text
+   * @param {string} buttons[].class - Button CSS class
+   * @param {string} buttons[].action - Button action ('cancel', 'save', or custom)
+   */
+  setButtons(buttons) {
+    if (!this.dialogElement) return;
+    
+    const footer = this.dialogElement.querySelector('.dialog-footer');
+    if (!footer) return;
+    
+    // Clear existing buttons
+    footer.innerHTML = '';
+    
+    // If no buttons provided, restore defaults
+    if (!buttons || !Array.isArray(buttons) || buttons.length === 0) {
+      this.createDefaultButtons(footer);
+      return;
+    }
+    
+    // Add custom buttons
+    buttons.forEach(button => {
+      const btnElement = document.createElement('button');
+      btnElement.type = 'button';
+      btnElement.className = `btn ${button.class || 'btn-secondary'}`;
+      btnElement.textContent = button.text || 'Button';
+      btnElement.dataset.action = button.action || '';
+      
+      // Set click handler based on action
+      if (button.action === 'cancel') {
+        btnElement.onclick = () => this.close();
+      } else if (button.action === 'save') {
+        btnElement.onclick = () => {
+          if (this.onSave) {
+            const result = this.onSave();
+            if (result !== false) {
+              this.close();
+            }
+          } else {
+            this.close();
+          }
+        };
+      } else if (button.onClick && typeof button.onClick === 'function') {
+        btnElement.onclick = button.onClick;
+      }
+      
+      footer.appendChild(btnElement);
+    });
   }
   
   /**

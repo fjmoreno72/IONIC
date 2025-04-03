@@ -237,14 +237,35 @@ export class ConfigItemForm {
   setValues(data) {
     if (!data || !this.formElement) return;
     
-    // Set basic fields
-    const fields = ['Name', 'DefaultValue', 'HelpText', 'ConfigurationAnswerType', 'AnswerContent'];
-    fields.forEach(field => {
-      const element = this.formElement.querySelector(`#ci${field}`);
-      if (element && data[field] !== undefined) {
-        element.value = data[field];
-      }
-    });
+    // Set name field
+    const nameElement = this.formElement.querySelector('#ciName');
+    if (nameElement && data.Name !== undefined) {
+      nameElement.value = data.Name;
+    }
+    
+    // Set default value field
+    const defaultValueElement = this.formElement.querySelector('#ciDefaultValue');
+    if (defaultValueElement && data.DefaultValue !== undefined) {
+      defaultValueElement.value = data.DefaultValue;
+    }
+    
+    // Set help text field
+    const helpTextElement = this.formElement.querySelector('#ciHelpText');
+    if (helpTextElement && data.HelpText !== undefined) {
+      helpTextElement.value = data.HelpText;
+    }
+    
+    // Set answer type field (special handling due to name mismatch)
+    const answerTypeElement = this.formElement.querySelector('#ciAnswerType');
+    if (answerTypeElement && data.ConfigurationAnswerType !== undefined) {
+      answerTypeElement.value = data.ConfigurationAnswerType;
+    }
+    
+    // Set answer content field
+    const answerContentElement = this.formElement.querySelector('#ciAnswerContent');
+    if (answerContentElement && data.AnswerContent !== undefined) {
+      answerContentElement.value = data.AnswerContent;
+    }
     
     // GP values are set in initGPDropdown after the data is loaded
   }

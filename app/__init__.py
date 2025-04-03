@@ -23,6 +23,14 @@ def create_app():
     # Flask automatically finds 'static' and 'templates' folders
     # within the app package directory.
     app = Flask(__name__)
+    
+    # Apply authentication patches to enhance login robustness
+    try:
+        from app.core.auth_patch import apply_auth_patches
+        apply_auth_patches()
+        logging.info("Enhanced authentication system applied")
+    except Exception as e:
+        logging.warning(f"Failed to apply authentication patches: {str(e)}")
 
     # Configure app settings
     app.secret_key = settings.APP_SECRET_KEY

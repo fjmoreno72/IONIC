@@ -9,7 +9,8 @@
       <tr>
         {% for col in columns %}
           <th scope="col" 
-              {% if col.sortable %}class="sortable" data-sort="{{ col.sort_key }}"{% endif %}
+              class="{% if col.sortable %}sortable{% endif %} {% if col.class %}{{ col.class }}{% endif %}" 
+              {% if col.sortable %}data-sort="{{ col.sort_key }}"{% endif %}
               {% if col.width %}style="width: {{ col.width }};"{% endif %}>
             {{ col.label }} 
             {% if col.sortable %}<i class="fas fa-sort"></i>{% endif %}

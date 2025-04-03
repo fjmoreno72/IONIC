@@ -1780,5 +1780,35 @@
         "Apply A/B": "Both"
       }
     ]
+  },
+  {
+    "id": "LNK-0083",
+    "name": "KKK LINK",
+    "description": "KKK LINK",
+    "linkCIs": [
+      {
+        "Name": "KKK",
+        "Help Text": "",
+        "Default Value": "8080",
+        "Answer Type": "Port",
+        "Answer Content": "",
+        "Apply A/B": "Side B"
+      },
+      {
+        "Name": "KK3",
+        "Help Text": "3",
+        "Default Value": "3",
+        "Answer Type": "Email Address",
+        "Answer Content": "",
+        "Apply A/B": "Both"
+      }
+    ],
+    "gps_side_a": [
+      "GP-0001"
+    ],
+    "gps_side_b": [
+      "GP-0037"
+    ],
+    "originalName": "KK LINK"
   }
 ]

@@ -31,6 +31,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
+  // Load CI data for badge counts
+  let allConfigItems = [];
+  
+  async function loadConfigItemsData() {
+    try {
+      const response = await fetch('/static/ASC/data/configItem.json');
+      if (!response.ok) {
+        throw new Error('Failed to load Configuration Items data');
+      }
+      const data = await response.json();
+      allConfigItems = [...data];
+      return data;
+    } catch (error) {
+      console.error('Error loading Configuration Items data:', error);
+      return [];
+    }
+  }
+
   // Configure and initialize the data table
   const gpsTable = new DataTable({
     tableId: 'gpsTable',
@@ -47,6 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Store all GPs for name uniqueness checking
     onDataFetched: (data) => {
       allGPs = [...data];
+      // Load CI data after loading GPs
+      loadConfigItemsData().then(() => {
+        // Refresh the table to show CI badges
+        gpsTable.filterAndRender();
+      });
       return data;
     },
     
@@ -107,17 +130,28 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       {
         key: 'actions',
-        label: 'Actions',
+        label: 'CIs',
         sortable: false,
         cellClass: 'text-center',
-        width: '5%',
+        headerClass: 'text-center',
+        width: '10%',
         render: (value, row) => {
           if (!row || !row.id) return '';
           
+          // Count CIs associated with this GP
+          const ciCount = Array.isArray(allConfigItems) ? allConfigItems.filter(ci => 
+            Array.isArray(ci.GenericProducts) && ci.GenericProducts.includes(row.id)
+          ).length : 0;
+          
+          // Only show the badge if there are CIs
+          const badgeClass = ciCount > 0 ? 'badge bg-primary rounded-pill ms-1' : 'd-none';
+          
           return `<button type="button" class="btn btn-sm btn-outline-primary view-ci-btn" title="Configuration Items"
                     data-gp-id="${row.id}" 
-                    data-gp-name="${row.name || ''}">
-                    <i class="fas fa-cogs"></i>
+                    data-gp-name="${row.name || ''}"
+                    style="min-width: 60px; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                    <i class="fas fa-cog"></i>
+                    <span class="${badgeClass}">${ciCount}</span>
                   </button>`;
         }
       }
@@ -249,19 +283,19 @@ document.addEventListener('DOMContentLoaded', function() {
         table.innerHTML = `
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Default Value</th>
-              <th>Answer Type</th>
-              <th>Actions</th>
+              <th class="text-center">Name</th>
+              <th class="text-center">Default Value</th>
+              <th class="text-center">Answer Type</th>
+              <th class="text-center">Edit</th>
             </tr>
           </thead>
           <tbody id="ciModalTableBody">
             ${relatedCIs.map(ci => `
               <tr>
-                <td>${ci.Name}</td>
-                <td>${ci.DefaultValue || ''}</td>
-                <td>${ci.ConfigurationAnswerType || ''}</td>
-                <td>
+                <td class="text-center">${ci.Name}</td>
+                <td class="text-center">${ci.DefaultValue || ''}</td>
+                <td class="text-center">${ci.ConfigurationAnswerType || ''}</td>
+                <td class="text-center">
                   <button type="button" class="btn btn-sm btn-outline-primary edit-ci-btn" 
                           data-ci-name="${ci.Name}">
                     <i class="fas fa-edit"></i>

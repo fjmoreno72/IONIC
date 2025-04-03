@@ -732,5 +732,15 @@
     "originalName": "TETE6",
     "id": "GP-0124",
     "iconPath": ""
+  },
+  {
+    "name": "Email Server",
+    "description": "",
+    "id": "GP-0125"
+  },
+  {
+    "name": "Email Client",
+    "description": "",
+    "id": "GP-0126"
   }
 ]

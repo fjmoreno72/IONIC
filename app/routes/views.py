@@ -193,6 +193,13 @@ def asc_gps():
     # Now uses the refactored component-based template
     return render_template('pages/gps_new.html', title="ASC GPs")
 
+@views_bp.route('/asc_links')
+@login_required
+def asc_links():
+    """Render the ASC Links page."""
+    logging.info("Accessing ASC Links page")
+    return render_template('pages/links_new.html', title="ASC Links")
+
 @views_bp.route('/asc_config_items')
 @login_required
 def asc_config_items():
@@ -438,6 +445,164 @@ def upload_gp_icon():
     except Exception as e:
         logging.exception(f"Error uploading GP icon: {str(e)}")
         return jsonify({'error': f'Error uploading GP icon: {str(e)}'}), 500
+
+@views_bp.route('/api/links', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@login_required
+def manage_links():
+    """
+    API endpoint to manage Links data.
+    
+    Methods:
+        GET: Return all Links
+        POST: Add a new Link
+        PUT: Update an existing Link
+        DELETE: Delete a Link
+    
+    Returns:
+        JSON response with the result of the operation
+    """
+    # Use current_app.static_folder for ASC data
+    links_path = Path(current_app.static_folder) / "ASC" / "data" / "links.json"
+
+    # Ensure the data directory exists
+    os.makedirs(os.path.dirname(links_path), exist_ok=True)
+    
+    try:
+        # GET: Return all Links
+        if request.method == 'GET':
+            if not links_path.exists():
+                return jsonify([])
+                
+            with open(links_path, 'r') as f:
+                links = json.load(f)
+                
+            return jsonify(links)
+            
+        # POST: Add a new Link
+        elif request.method == 'POST':
+            # Load existing data
+            if links_path.exists():
+                with open(links_path, 'r') as f:
+                    links = json.load(f)
+            else:
+                links = []
+                
+            new_link = request.json
+            
+            # Generate a new ID - find the highest existing ID
+            highest_id = 0
+            if links:
+                try:
+                    # Extract all numeric parts and find the highest
+                    for link in links:
+                        if 'id' in link and link['id'].startswith('LNK-'):
+                            try:
+                                current_id = int(link['id'].split('-')[1])
+                                highest_id = max(highest_id, current_id)
+                            except (IndexError, ValueError):
+                                pass
+                except Exception:
+                    pass
+                    
+            new_id = f"LNK-{str(highest_id + 1).zfill(4)}"
+            
+            # Double-check that the ID is unique
+            while any(link.get('id') == new_id for link in links):
+                highest_id += 1
+                new_id = f"LNK-{str(highest_id + 1).zfill(4)}"
+                
+            new_link['id'] = new_id
+            
+            # Ensure linkCIs is initialized as empty array if not provided
+            if 'linkCIs' not in new_link:
+                new_link['linkCIs'] = []
+            
+            # Add to list
+            links.append(new_link)
+            
+            # Save back to file
+            with open(links_path, 'w') as f:
+                json.dump(links, f, indent=2)
+                
+            return jsonify({
+                'success': True,
+                'link': new_link,
+                'message': 'Link added successfully'
+            })
+            
+        # PUT: Update an existing Link
+        elif request.method == 'PUT':
+            # Load existing data
+            if not links_path.exists():
+                return jsonify({'error': 'Links file not found'}), 404
+                
+            with open(links_path, 'r') as f:
+                links = json.load(f)
+                
+            updated_link = request.json
+            
+            # Find and update the Link
+            link_id = updated_link.get('id')
+            if not link_id:
+                return jsonify({'error': 'Link ID is required'}), 400
+                
+            found = False
+            for i, link in enumerate(links):
+                if link.get('id') == link_id:
+                    # Keep linkCIs if not provided in the update
+                    if 'linkCIs' not in updated_link and 'linkCIs' in links[i]:
+                        updated_link['linkCIs'] = links[i]['linkCIs']
+                    
+                    links[i] = updated_link
+                    found = True
+                    break
+                    
+            if not found:
+                return jsonify({'error': f'Link with ID {link_id} not found'}), 404
+                
+            # Save back to file
+            with open(links_path, 'w') as f:
+                json.dump(links, f, indent=2)
+                
+            return jsonify({
+                'success': True,
+                'link': updated_link,
+                'message': 'Link updated successfully'
+            })
+        
+        # DELETE: Delete a Link
+        elif request.method == 'DELETE':
+            # Load existing data
+            if not links_path.exists():
+                return jsonify({'error': 'Links file not found'}), 404
+                
+            with open(links_path, 'r') as f:
+                links = json.load(f)
+            
+            # Get the Link ID from query params
+            link_id = request.args.get('id')
+            if not link_id:
+                return jsonify({'error': 'Link ID is required'}), 400
+            
+            # Remove Link from list
+            initial_count = len(links)
+            links = [link for link in links if link.get('id') != link_id]
+            
+            if len(links) == initial_count:
+                return jsonify({'error': f'Link with ID {link_id} not found'}), 404
+            
+            # Save back to file
+            with open(links_path, 'w') as f:
+                json.dump(links, f, indent=2)
+            
+            return jsonify({
+                'success': True,
+                'message': f'Link with ID {link_id} deleted successfully'
+            })
+            
+    except Exception as e:
+        logging.exception(f"Error managing Links: {str(e)}")
+        return jsonify({'error': f'Error: {str(e)}'}), 500
 
 @views_bp.route('/api/gps', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @login_required

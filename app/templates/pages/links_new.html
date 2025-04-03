@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links - IOCore2</title>
+    {% include 'components/head_favicons.html' %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dataTable.css') }}">
+    <style>
+        /* Searchable dropdown styles */
+        .searchable-dropdown {
+            position: relative;
+            width: 100%;
+        }
+        
+        .dropdown-header {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding-right: 1.5rem;
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 16px 12px;
+            appearance: none;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 0.5rem;
+            margin: 0.125rem 0 0;
+            background-clip: padding-box;
+            border-radius: 0.25rem;
+        }
+        
+        .dropdown-menu.show {
+            display: block;
+        }
+        
+        #gpOptionsContainer {
+            max-height: 220px;
+            overflow-y: auto;
+        }
+        
+        .gp-option {
+            display: block;
+            width: 100%;
+            padding: 0.35rem 0.75rem;
+            clear: both;
+            font-weight: 400;
+            text-align: inherit;
+            white-space: nowrap;
+            border: 0;
+            cursor: pointer;
+            border-radius: 0.25rem;
+        }
+        
+        .gp-option:hover {
+            text-decoration: none;
+        }
+        
+        .gp-option.selected {
+            font-weight: 500;
+        }
+        
+        /* Bootstrap integration */
+        .gp-option:hover {
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+        
+        .gp-option.selected {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Dark mode compatibility */
+        [data-theme="dark"] .gp-option:hover {
+            background-color: rgba(255, 255, 255, 0.075);
+        }
+        
+        [data-theme="dark"] .gp-option.selected {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <script>
+        // Apply theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedDarkMode = localStorage.getItem('theme') === 'dark';
+            if (storedDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+            }
+        });
+    </script>
+</head>
+<body>
+    {% include 'nav_menu.html' %}
+
+    <div class="container-fluid px-4 mt-4">
+        <div class="test-cases-container">
+            <div class="test-cases-header">
+                <h2><i class="fas fa-link me-2"></i>ASC Links</h2>
+            </div>
+            
+            <div class="controls-container">
+                <div class="filters-container">
+                    <div class="filter-item search-container" style="width: 190px;">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Filter by name..." class="form-control form-control-sm" style="height: 31px;">
+                    </div>
+                    <div class="filter-item">
+                        <div class="searchable-dropdown" style="width: 190px;">
+                            <div class="dropdown-header form-select form-select-sm" id="gpFilterHeader" style="height: 31px; padding-top: 4px; padding-left: 10px; line-height: 1.2;">
+                                All Generic Products
+                            </div>
+                            <div class="dropdown-menu shadow" id="gpDropdownMenu">
+                                <div class="p-2">
+                                    <input type="text" id="gpSearchInput" class="form-control form-control-sm mb-2" placeholder="Search Generic Products...">
+                                    <div id="gpOptionsContainer">
+                                        <!-- GP options will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-container">
+                    <button id="addLinkButton" class="btn btn-primary btn-sm" disabled>
+                        <i class="fas fa-plus me-1"></i> Add Link
+                    </button>
+                </div>
+            </div>
+
+            {# Include the data table component #}
+            {% with 
+                table_id = "linksTable",
+                table_body_id = "linksTableBody",
+                items_per_page_id = "itemsPerPageSelect",
+                page_info_id = "pageInfo",
+                prev_button_id = "prevPageButton",
+                next_button_id = "nextPageButton",
+                columns = [
+                    {'label': 'ID', 'sortable': true, 'sort_key': 'ID', 'width': '10%'},
+                    {'label': 'Name', 'sortable': true, 'sort_key': 'Name', 'width': '15%'},
+                    {'label': 'Description', 'sortable': true, 'sort_key': 'Description', 'width': '20%'},
+                    {'label': 'GP on Side A', 'sortable': true, 'sort_key': 'GPSideA', 'width': '20%'},
+                    {'label': 'GP on Side B', 'sortable': true, 'sort_key': 'GPSideB', 'width': '20%'},
+                    {'label': 'CIs', 'sortable': false, 'sort_key': '', 'width': '5%'}
+                ]
+            %}
+                {% include 'components/dataTable.html' %}
+            {% endwith %}
+            
+            <div id="noResults" class="no-results d-none">
+                <p>No Links found matching your criteria.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌓</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme toggling function - copied from original implementation
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Also update Bootstrap theme
+            document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        }
+    </script>
+    <script type="module" src="{{ url_for('static', filename='js/pages/links_new.js') }}" crossorigin="anonymous"></script>
+</body>
+</html>

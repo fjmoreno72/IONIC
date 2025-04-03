@@ -6,6 +6,7 @@ import os
 import sys
 import logging
 import warnings
+import argparse # Added for command-line arguments
 from pathlib import Path
 
 # Import settings first to ensure environment variables are loaded early
@@ -28,10 +29,17 @@ def main():
     # Configure logging
     logger = configure_logging()
     logger.info("Starting IOCore2 Coverage Analysis Tool")
-    
-    # Create Flask app
-    app = create_app()
-    
+
+    # --- Argument Parsing ---
+    parser = argparse.ArgumentParser(description='Run the IOCore2 Coverage Analysis Tool.')
+    parser.add_argument('--bypassAuth', action='store_true',
+                        help='Bypass authentication for development purposes.')
+    args = parser.parse_args()
+    # --- End Argument Parsing ---
+
+    # Create Flask app, passing the bypass flag
+    app = create_app(bypass_auth=args.bypassAuth)
+
     # Run the app
     debug_mode = os.environ.get("IONIC2_DEBUG", "False").lower() == "true"
     port = int(os.environ.get("IONIC2_PORT", "5005"))

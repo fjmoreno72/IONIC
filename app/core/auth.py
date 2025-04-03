@@ -5,7 +5,7 @@ import logging
 from functools import wraps
 from typing import Dict, Any, Optional, Callable
 
-from flask import session, redirect, url_for, jsonify, request
+from flask import session, redirect, url_for, jsonify, request, current_app # Added current_app
 
 from app.api.iocore2 import IOCore2ApiClient
 
@@ -21,8 +21,19 @@ def login_required(f: Callable) -> Callable:
     """
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        # --- Auth Bypass Check ---
+        # If bypass is enabled in config, skip authentication check entirely
+        if current_app.config.get('BYPASS_AUTH', False):
+            # Log that bypass is active for this request (optional, but helpful for debugging)
+            # logging.debug(f"Auth bypass active for route: {request.endpoint}")
+            return f(*args, **kwargs)
+        # --- End Auth Bypass Check ---
+
+        # Original authentication logic
         if 'cookies' not in session:
+            logging.warning(f"Authentication required for endpoint '{request.endpoint}', but no session found. Redirecting.")
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                # Handle AJAX requests: return 401 with redirect info
                 return jsonify({
                     'success': False,
                     'error': 'Authentication required',

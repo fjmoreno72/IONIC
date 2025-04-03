@@ -5,16 +5,19 @@ import logging
 import os
 from pathlib import Path
 
-from flask import Flask, jsonify, Response, make_response # Added Response, make_response
+from flask import Flask, jsonify, Response, make_response, session, current_app # Added session, current_app
 
 # Updated imports for the new structure
 from app.config import settings
 from app.utils.logging import configure_logging
 from app.core.exceptions import IOnic2Error, handle_exception
 
-def create_app():
+def create_app(bypass_auth: bool = False): # Added bypass_auth parameter
     """
     Create and configure the Flask application.
+
+    Args:
+        bypass_auth (bool): If True, bypass authentication for development.
 
     Returns:
         Flask application instance
@@ -39,6 +42,7 @@ def create_app():
     app.config['SESSION_PERMANENT'] = False
     app.config['SESSION_USE_SIGNER'] = True
     app.config['PERMANENT_SESSION_LIFETIME'] = 86400  # 24 hours
+    app.config['BYPASS_AUTH'] = bypass_auth # Store bypass flag in config
 
     # Set up logging
     configure_logging(app)
@@ -80,6 +84,23 @@ def create_app():
         # Enable HSTS only if using HTTPS
         # response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
         return response
+
+    # --- Auth Bypass Hook ---
+    if bypass_auth:
+        logging.warning("Authentication Bypass ENABLED for development.")
+        @app.before_request
+        def inject_dummy_session():
+            # Only inject if bypass is on AND no real session exists
+            if 'cookies' not in session and current_app.config.get('BYPASS_AUTH', False):
+                logging.debug("Injecting dummy session for auth bypass.")
+                # Use a simple structure for dummy cookies
+                session['cookies'] = {'dummy_session_id': 'bypass-active', 'user': 'bypass_user'}
+                # Use the configured API URL (DEFAULT_URL) or a sensible default if not set
+                session['url'] = settings.DEFAULT_URL or 'http://localhost:8080' # Corrected setting name
+                # Provide a basic dummy user structure
+                session['user'] = {'username': 'bypass_user', 'roles': ['admin', 'developer']} # Example roles
+                logging.info(f"Auth bypass: Injected dummy session for user 'bypass_user' targeting URL '{session['url']}'")
+    # --- End Auth Bypass Hook ---
 
     return app
 

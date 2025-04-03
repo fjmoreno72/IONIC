@@ -1,9 +1,10 @@
 [
   {
     "name": "Data Link Server",
-    "description": "",
-    "iconPath": "./image/gp/gp_icon_data_link_server.jpg",
-    "id": "GP-0001"
+    "description": "Generic Data Link Server",
+    "originalName": "Data Link Server",
+    "id": "GP-0001",
+    "iconPath": "./image/gp/gp_icon_data_link_server.jpg"
   },
   {
     "name": "XMPP Server",

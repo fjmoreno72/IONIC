@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Fetch required data: affiliates for flag lookup
   const fetchAffiliatesData = async () => {
     try {
-      const response = await fetch('/static/ASC/data/affiliates.json');
+      const response = await fetch('/api/affiliates'); // Changed to API endpoint
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Fetch services data for service name lookup
   const fetchServicesData = async () => {
     try {
-      const response = await fetch('/static/ASC/data/services.json');
+      const response = await fetch('/api/services'); // Changed to API endpoint
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -196,15 +196,37 @@ document.addEventListener('DOMContentLoaded', function() {
     
     return gpInstancesHtml;
   };
+
+  // Helper function to fetch ASCs data
+  const fetchAscsData = async () => {
+    try {
+      // NOTE: Still fetching static ASCs data for now. Refactor this next if needed.
+      const response = await fetch('/static/ASC/data/ascs.json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching ASCs data:', error);
+      return []; // Return empty array on error
+    }
+  };
   
-  // Initialize data loading
-  Promise.all([fetchAffiliatesData(), fetchServicesData(), fetchGpsData(), fetchSpsData()])
-    .then(([affiliates, services, gps, sps]) => {
-      // Configure and initialize the data table
+  // Initialize data loading - Fetch ALL data needed before initializing table
+  Promise.all([
+    fetchAffiliatesData(), 
+    fetchServicesData(), 
+    fetchGpsData(), 
+    fetchSpsData(),
+    fetchAscsData() // Fetch ASCs data here as well
+  ])
+    .then(([affiliates, services, gps, sps, ascs]) => { // Destructure all fetched data
+      // Configure and initialize the data table, passing ASCs data directly
       const ascsTable = new DataTable({
         tableId: 'ascsTable',
         tableBodyId: 'ascsTableBody',
-        dataUrl: '/static/ASC/data/ascs.json',
+        data: ascs, // Pass fetched data directly
+        // dataUrl: '/static/ASC/data/ascs.json', // Remove dataUrl
         searchInputId: 'ascSearchInput',
         itemsPerPageSelectId: 'itemsPerPageSelect',
         pageInfoId: 'pageInfo',

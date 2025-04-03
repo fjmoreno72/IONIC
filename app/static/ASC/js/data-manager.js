@@ -31,8 +31,8 @@ export class DataManager {
       // Load all required data in parallel
       const [ascsData, affiliatesData, servicesData] = await Promise.all([
         this.fetchData("/static/ASC/data/ascs.json"),
-        this.fetchData("/static/ASC/data/affiliates.json"),
-        this.fetchData("/static/ASC/data/services.json")
+        this.fetchData("/api/affiliates"), // Fetch affiliates via API
+        this.fetchData("/api/services") // Fetch services via API
       ]);
 
       // Process the data
@@ -215,6 +215,11 @@ export class DataManager {
    * @returns {string} Service name or fallback text
    */
   getServiceName(serviceId) {
+    // Debugging: Log the state of the services map and the requested ID
+    // console.log(`Looking up service ID: ${serviceId}. Services map size: ${Object.keys(this.services).length}`);
+    // if (!this.services[serviceId]) {
+    //   console.warn(`Service ID ${serviceId} not found in map. Available keys:`, Object.keys(this.services));
+    // }
     return this.services[serviceId]?.name || "Unknown Service";
   }
 

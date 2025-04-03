@@ -8,6 +8,7 @@ from pathlib import Path
 from flask import Blueprint, request, jsonify, current_app
 from app.config import settings
 from app.core.auth import login_required
+from app.data_access.services_repository import get_all_services, save_services # Added import
 from werkzeug.utils import secure_filename
 import logging
 
@@ -131,27 +132,17 @@ def manage_services():
     PUT: Update an existing service
     DELETE: Delete a service
     """
-    services_path = Path(current_app.static_folder) / "ASC" / "data" / "services.json"
+    # Removed direct path construction
 
     try:
         # GET: Return all services
         if request.method == 'GET':
-            if not services_path.exists():
-                return jsonify([])
-                
-            with open(services_path, 'r') as f:
-                services = json.load(f)
-                
+            services = get_all_services() # Use repository function
             return jsonify(services)
             
         # POST: Create a new service
         elif request.method == 'POST':
-            if services_path.exists():
-                with open(services_path, 'r') as f:
-                    services = json.load(f)
-            else:
-                services = []
-                
+            services = get_all_services() # Load existing data via repository
             new_service = request.json
             
             # Generate a new ID
@@ -178,9 +169,7 @@ def manage_services():
             # Add to list
             services.append(new_service)
             
-            # Save back to file
-            with open(services_path, 'w') as f:
-                json.dump(services, f, indent=2)
+            save_services(services) # Save back via repository
                 
             return jsonify({
                 'success': True,
@@ -190,12 +179,12 @@ def manage_services():
             
         # PUT: Update an existing service
         elif request.method == 'PUT':
-            if not services_path.exists():
-                return jsonify({'error': 'No services found'}), 404
-                
-            with open(services_path, 'r') as f:
-                services = json.load(f)
-                
+            services = get_all_services() # Load existing data via repository
+            
+            # Optional: Check if loading failed explicitly, though repo handles file not found
+            # if not services and services_path.exists(): # Check if repo returned empty but file existed
+            #     return jsonify({'error': 'Could not load services data'}), 500
+
             updated_service = request.json
             
             # Find and update the service by ID
@@ -209,9 +198,7 @@ def manage_services():
             if not found:
                 return jsonify({'error': 'Service not found'}), 404
                 
-            # Save back to file
-            with open(services_path, 'w') as f:
-                json.dump(services, f, indent=2)
+            save_services(services) # Save back via repository
                 
             return jsonify({
                 'success': True,
@@ -226,12 +213,8 @@ def manage_services():
             if not service_id:
                 return jsonify({'error': 'ID parameter is required'}), 400
                 
-            if not services_path.exists():
-                return jsonify({'error': 'No services found'}), 404
-                
-            with open(services_path, 'r') as f:
-                services = json.load(f)
-                
+            services = get_all_services() # Load existing data via repository
+
             # Find and remove the service by ID
             initial_count = len(services)
             services = [service for service in services if service['id'] != service_id]
@@ -239,9 +222,7 @@ def manage_services():
             if len(services) == initial_count:
                 return jsonify({'error': 'Service not found'}), 404
                 
-            # Save back to file
-            with open(services_path, 'w') as f:
-                json.dump(services, f, indent=2)
+            save_services(services) # Save back via repository
                 
             return jsonify({
                 'success': True,

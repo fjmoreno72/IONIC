@@ -9,7 +9,8 @@
     "name": "Fires Information Exchange",
     "spiral": "SP5",
     "gps": [],
-    "id": "SRV-0002"
+    "id": "SRV-0002",
+    "originalId": "SRV-0002"
   },
   {
     "name": "Intelligence Battlespace Objects Exchange",

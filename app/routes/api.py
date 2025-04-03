@@ -737,55 +737,7 @@ def get_remote_system_health():
         return jsonify({'success': False, 'error': 'An unexpected internal error occurred.'}), 500
 
 
-@api_bp.route('/api/affiliates', methods=['GET'])
-@login_required
-def get_affiliates():
-    """API endpoint to get the list of affiliates."""
-    try:
-        # Use current_app.static_folder for ASC data
-        affiliates_path = Path(current_app.static_folder) / 'ASC' / 'data' / 'affiliates.json' # Corrected path
-        logging.info(f"Attempting to read affiliates data from: {affiliates_path}")
-
-        if not affiliates_path.exists():
-            logging.error(f"Affiliates file not found at {affiliates_path}")
-            return jsonify({"error": "Affiliates data file not found."}), 404
-
-        with open(affiliates_path, 'r', encoding='utf-8') as f:
-            affiliates_data = json.load(f)
-
-        # Adjust flag path to be usable by url_for
-        # Get the base URL path for the flags directory
-        # Note: url_for needs the endpoint name ('static') and the relative path from the static folder
-        static_flags_folder_path = 'ASC/image/flags'
-
-        for affiliate in affiliates_data:
-            if 'flagPath' in affiliate and affiliate['flagPath']:
-                 # Assumes flagPath is like "./image/flags/flag_name.png" or "image/flags/flag_name.png"
-                 # Extract just the filename
-                 filename = os.path.basename(affiliate['flagPath'])
-                 # Construct URL using url_for, combining the folder path and filename
-                 try:
-                     affiliate['flagUrl'] = url_for('static', filename=f"{static_flags_folder_path}/{filename}", _external=False)
-                 except Exception as url_exc:
-                     logging.error(f"Error generating URL for flag {filename}: {url_exc}")
-                     affiliate['flagUrl'] = None # Set to None if URL generation fails
-            else:
-                 affiliate['flagUrl'] = None # Handle cases where path might be missing or empty
-
-        logging.info(f"Successfully loaded {len(affiliates_data)} affiliates.")
-        return jsonify(affiliates_data)
-
-    except FileNotFoundError:
-        # This specific exception might not be needed if affiliates_path.exists() check is done first,
-        # but kept for robustness in case of race conditions or other issues.
-        logging.error(f"Affiliates file not found at {affiliates_path}")
-        return jsonify({"error": "Affiliates data file not found."}), 404
-    except json.JSONDecodeError:
-        logging.exception(f"Error decoding JSON from {affiliates_path}")
-        return jsonify({"error": "Failed to parse affiliates data file."}), 500
-    except Exception as e:
-        logging.exception("Error fetching affiliates data:")
-        return jsonify({"error": "An unexpected error occurred while fetching affiliates data."}), 500
+# Removed conflicting /api/affiliates route (handled in views.py)
 
 
 @api_bp.route('/api/asc_services', methods=['GET'])

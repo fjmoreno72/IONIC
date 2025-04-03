@@ -37,6 +37,7 @@ export class DataTable {
     this.tableBody = null;
     this.searchInput = null;
     this.itemsPerPageSelect = null;
+    this.initialData = config.data; // Store initial data if provided
     this.pageInfo = null;
     this.prevButton = null;
     this.nextButton = null;
@@ -66,12 +67,32 @@ export class DataTable {
     if (this.itemsPerPageSelect) {
       this.itemsPerPage = parseInt(this.itemsPerPageSelect.value, 10);
     }
-    
-    // Fetch data
-    this.fetchData();
-    
-    // Set up event listeners
+
+    // Set up event listeners first
     this.setupEventListeners();
+
+    // Check if initial data was provided
+    if (this.initialData) {
+      // Use provided data directly
+      this.allItems = this.initialData;
+      // Process data through onDataFetched callback if provided
+      if (typeof this.onDataFetched === 'function') {
+        this.allItems = this.onDataFetched(this.allItems) || this.allItems;
+      }
+      // Call onFetchComplete if provided (simulate fetch completion)
+      if (typeof this.onFetchComplete === 'function') {
+        this.onFetchComplete(this.allItems);
+      }
+      this.filterAndRender();
+    } else if (this.dataUrl) {
+      // Fetch data only if dataUrl is provided and initialData is not
+      this.fetchData();
+    } else {
+      // Handle case where neither data nor dataUrl is provided
+      console.warn("DataTable: No dataUrl or initial data provided.");
+      this.allItems = [];
+      this.filterAndRender(); // Render empty state
+    }
   }
   
   fetchData() {

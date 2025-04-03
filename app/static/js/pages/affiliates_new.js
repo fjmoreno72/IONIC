@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const affiliatesTable = new DataTable({
     tableId: 'affiliatesTable',
     tableBodyId: 'affiliatesTableBody',
-    dataUrl: '/static/ASC/data/affiliates.json',
+    dataUrl: '/api/affiliates', // Changed from static file to API endpoint
     searchInputId: 'nameSearchInput',
     itemsPerPageSelectId: 'itemsPerPageSelect',
     pageInfoId: 'pageInfo',

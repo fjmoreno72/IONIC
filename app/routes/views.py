@@ -10,6 +10,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, sessio
 
 # Updated imports
 from app.core.auth import login_required
+from app.data_access.affiliates_repository import get_all_affiliates, save_affiliates # Added import
 from app.config import settings
 from werkzeug.utils import secure_filename
 
@@ -945,32 +946,17 @@ def manage_affiliates():
     Returns:
         JSON response with the result of the operation
     """
-    # Corrected path: Use current_app.static_folder for ASC data
-    affiliates_path = Path(current_app.static_folder) / "ASC" / "data" / "affiliates.json" # Corrected path
-
-    # Ensure the data directory exists
-    os.makedirs(os.path.dirname(affiliates_path), exist_ok=True)
+    # Removed direct path construction and directory creation
     
     try:
         # GET: Return all affiliates
         if request.method == 'GET':
-            if not affiliates_path.exists():
-                return jsonify([])
-                
-            with open(affiliates_path, 'r') as f:
-                affiliates = json.load(f)
-                
+            affiliates = get_all_affiliates() # Use repository function
             return jsonify(affiliates)
             
         # POST: Add a new affiliate
         elif request.method == 'POST':
-            # Load existing data
-            if affiliates_path.exists():
-                with open(affiliates_path, 'r') as f:
-                    affiliates = json.load(f)
-            else:
-                affiliates = []
-                
+            affiliates = get_all_affiliates() # Load existing data via repository
             new_affiliate = request.json
             
             # Generate a new ID - find the highest existing ID
@@ -1000,9 +986,7 @@ def manage_affiliates():
             # Add to list
             affiliates.append(new_affiliate)
             
-            # Save back to file
-            with open(affiliates_path, 'w') as f:
-                json.dump(affiliates, f, indent=2)
+            save_affiliates(affiliates) # Save back via repository
                 
             return jsonify({
                 'success': True,
@@ -1012,13 +996,14 @@ def manage_affiliates():
             
         # PUT: Update an existing affiliate
         elif request.method == 'PUT':
-            # Load existing data
-            if not affiliates_path.exists():
-                return jsonify({'error': 'Affiliates file not found'}), 404
-                
-            with open(affiliates_path, 'r') as f:
-                affiliates = json.load(f)
-                
+            affiliates = get_all_affiliates() # Load existing data via repository
+            
+            # Check if data loading failed (e.g., file not found handled by repo)
+            # Note: get_all_affiliates returns [] if file not found, so this check might not be strictly needed
+            # depending on desired behavior, but keeping it explicit for clarity.
+            # if not affiliates and affiliates_path.exists(): # Check if repo returned empty but file existed
+            #     return jsonify({'error': 'Could not load affiliates data'}), 500
+
             updated_affiliate = request.json
             
             # Find and update the affiliate
@@ -1036,9 +1021,7 @@ def manage_affiliates():
             if not found:
                 return jsonify({'error': f'Affiliate with ID {affiliate_id} not found'}), 404
                 
-            # Save back to file
-            with open(affiliates_path, 'w') as f:
-                json.dump(affiliates, f, indent=2)
+            save_affiliates(affiliates) # Save back via repository
                 
             return jsonify({
                 'success': True,
@@ -1048,13 +1031,8 @@ def manage_affiliates():
         
         # DELETE: Delete an affiliate
         elif request.method == 'DELETE':
-            # Load existing data
-            if not affiliates_path.exists():
-                return jsonify({'error': 'Affiliates file not found'}), 404
-                
-            with open(affiliates_path, 'r') as f:
-                affiliates = json.load(f)
-            
+            affiliates = get_all_affiliates() # Load existing data via repository
+
             # Get the affiliate ID from query params
             affiliate_id = request.args.get('id')
             if not affiliate_id:
@@ -1067,9 +1045,7 @@ def manage_affiliates():
             if len(affiliates) == initial_count:
                 return jsonify({'error': f'Affiliate with ID {affiliate_id} not found'}), 404
             
-            # Save back to file
-            with open(affiliates_path, 'w') as f:
-                json.dump(affiliates, f, indent=2)
+            save_affiliates(affiliates) # Save back via repository
             
             return jsonify({
                 'success': True,

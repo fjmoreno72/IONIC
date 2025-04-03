@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
     servicesTable = new DataTable({
       tableId: 'servicesTable',
       tableBodyId: 'servicesTableBody',
-      dataUrl: '/static/ASC/data/services.json', // Load directly from file to bypass auth
+      dataUrl: '/api/services', // Changed to API endpoint
       searchInputId: 'nameSearchInput',
       itemsPerPageSelectId: 'itemsPerPageSelect',
       pageInfoId: 'pageInfo',

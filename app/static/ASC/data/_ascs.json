@@ -1,389 +1,389 @@
 [
   {
     "affiliateId": "AFF-0027",
-    "serviceId": "SRV-0008",
-    "spiral": "SP5",
-    "status": "In Progress",
     "ascScore": "100%",
+    "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0001",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "NIRIS",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0253",
+            "spScore": "100%",
             "spVersion": "4.2.1"
           }
-        ],
-        "instanceLabel": "NIRIS"
+        ]
       },
       {
         "gpId": "GP-0001",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "SSSB",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0004",
+            "spScore": "100%",
             "spVersion": "3.0.0"
           }
-        ],
-        "instanceLabel": "SSSB"
+        ]
       },
       {
         "gpId": "GP-0001",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "CSI",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0005",
+            "spScore": "100%",
             "spVersion": "18.7"
           }
-        ],
-        "instanceLabel": "CSI"
+        ]
       },
       {
         "gpId": "GP-0002",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "NIRIS",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0253",
+            "spScore": "100%",
             "spVersion": "4.2.1"
           }
-        ],
-        "instanceLabel": "NIRIS"
+        ]
       },
       {
         "gpId": "GP-0003",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "CSI",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0005",
+            "spScore": "100%",
             "spVersion": "18.7"
           }
-        ],
-        "instanceLabel": "CSI"
+        ]
       },
       {
         "gpId": "GP-0004",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "ICC",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0253",
+            "spScore": "100%",
             "spVersion": "4.2.1"
           },
           {
-          	"spScore":"100%",
             "spId": "SP-0002",
+            "spScore": "100%",
             "spVersion": "3.5.2"
           }
-        ],
-        "instanceLabel": "ICC"
+        ]
       },
       {
         "gpId": "GP-0004",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "NCOP",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0253",
+            "spScore": "100%",
             "spVersion": "4.2.1"
           },
           {
-          	"spScore":"100%",
             "spId": "SP-0003",
+            "spScore": "100%",
             "spVersion": "2.0.6"
           }
-        ],
-        "instanceLabel": "NCOP"
+        ]
       }
     ],
-    "environment": "Static",
-    "id": "ASC-0001"
+    "id": "ASC-0001",
+    "serviceId": "SRV-0008",
+    "spiral": "SP5",
+    "status": "In Progress"
   },
   {
     "affiliateId": "AFF-0038",
-    "serviceId": "SRV-0008",
-    "spiral": "SP5",
-    "status": "Initial",
     "ascScore": "0%",
+    "environment": "Army",
     "gpInstances": [
       {
         "gpId": "GP-0001",
-        "gpScore":"0%",
-        "spInstances": [],
-        "instanceLabel": "NO LABEL"
+        "gpScore": "0%",
+        "instanceLabel": "NO LABEL",
+        "spInstances": []
       },
       {
         "gpId": "GP-0002",
-        "gpScore":"0%",
-        "spInstances": [],
-        "instanceLabel": ""
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": []
       },
       {
         "gpId": "GP-0003",
-        "gpScore":"0%",
-        "spInstances": [],
-        "instanceLabel": ""
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": []
       },
       {
         "gpId": "GP-0004",
-        "gpScore":"0%",
-        "spInstances": [],
-        "instanceLabel": ""
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": []
       }
     ],
-    "environment": "Army",
-    "id": "ASC-0002"
+    "id": "ASC-0002",
+    "serviceId": "SRV-0008",
+    "spiral": "SP5",
+    "status": "Initial"
   },
   {
     "affiliateId": "AFF-0027",
-    "serviceId": "SRV-0021",
-    "spiral": "SP5",
-    "status": "Deprecated",
     "ascScore": "0%",
+    "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0005",
-        "gpScore":"0%",
-        "spInstances": [],
-        "instanceLabel": "NO LABEL"
+        "gpScore": "0%",
+        "instanceLabel": "NO LABEL",
+        "spInstances": []
       },
       {
         "gpId": "GP-0005",
-        "gpScore":"0%",
-        "spInstances": [],
-        "instanceLabel": ""
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": []
       },
       {
         "gpId": "GP-0006",
-        "gpScore":"0%",
-        "spInstances": [],
-        "instanceLabel": ""
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": []
       }
     ],
-    "environment": "Static",
-    "id": "ASC-0003"
+    "id": "ASC-0003",
+    "serviceId": "SRV-0021",
+    "spiral": "SP5",
+    "status": "Deprecated"
   },
   {
     "affiliateId": "AFF-0011",
-    "serviceId": "SRV-0021",
-    "spiral": "SP5",
-    "status": "Initial",
     "ascScore": "0%",
+    "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0005",
-        "gpScore":"0%",
-        "spInstances": [],
-        "instanceLabel": ""
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": []
       },
       {
         "gpId": "GP-0006",
-        "gpScore":"0%",
-        "spInstances": [],
-        "instanceLabel": ""
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": []
       }
     ],
-    "environment": "Static",
-    "id": "ASC-0004"
+    "id": "ASC-0004",
+    "serviceId": "SRV-0021",
+    "spiral": "SP5",
+    "status": "Initial"
   },
   {
     "affiliateId": "AFF-0027",
-    "serviceId": "SRV-0021",
-    "spiral": "SP5",
-    "status": "Validated",
     "ascScore": "100%",
+    "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0005",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "M-Link",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0007",
+            "spScore": "100%",
             "spVersion": "17.0v24"
           }
-        ],
-        "instanceLabel": "M-Link"
+        ]
       },
       {
         "gpId": "GP-0006",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "JChat",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0006",
+            "spScore": "100%",
             "spVersion": "2.5.0"
           }
-        ],
-        "instanceLabel": "JChat"
+        ]
       }
     ],
-    "environment": "Static",
-    "id": "ASC-0005"
+    "id": "ASC-0005",
+    "serviceId": "SRV-0021",
+    "spiral": "SP5",
+    "status": "Validated"
   },
   {
     "affiliateId": "AFF-0027",
-    "serviceId": "SRV-0021",
-    "spiral": "SP5",
-    "status": "Validated",
     "ascScore": "100%",
+    "environment": "Deployable",
     "gpInstances": [
       {
         "gpId": "GP-0005",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "Openfire",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0009",
+            "spScore": "100%",
             "spVersion": "4.7.5"
           }
-        ],
-        "instanceLabel": "Openfire"
+        ]
       },
       {
         "gpId": "GP-0006",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "JChat",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0006",
+            "spScore": "100%",
             "spVersion": "2.5.0"
           }
-        ],
-        "instanceLabel": "JChat"
+        ]
       }
     ],
-    "environment": "Deployable",
-    "id": "ASC-0006"
+    "id": "ASC-0006",
+    "serviceId": "SRV-0021",
+    "spiral": "SP5",
+    "status": "Validated"
   },
   {
     "affiliateId": "AFF-0027",
-    "serviceId": "SRV-0017",
-    "spiral": "SP5",
-    "status": "In Review",
     "ascScore": "100%",
+    "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0007",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0010",
+            "spScore": "100%",
             "spVersion": "2022"
           }
-        ],
-        "instanceLabel": ""
+        ]
       },
       {
         "gpId": "GP-0008",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0010",
+            "spScore": "100%",
             "spVersion": "2022"
           }
-        ],
-        "instanceLabel": ""
+        ]
       },
       {
         "gpId": "GP-0009",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0010",
+            "spScore": "100%",
             "spVersion": "2022"
           }
-        ],
-        "instanceLabel": ""
+        ]
       }
     ],
-    "environment": "Static",
-    "id": "ASC-0007"
+    "id": "ASC-0007",
+    "serviceId": "SRV-0017",
+    "spiral": "SP5",
+    "status": "In Review"
   },
   {
     "affiliateId": "AFF-0027",
-    "serviceId": "SRV-0019",
-    "spiral": "SP5",
-    "status": "In Progress",
     "ascScore": "100%",
+    "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0125",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "AFFO MAIL SERVER",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0011",
+            "spScore": "100%",
             "spVersion": "2029"
           },
           {
-          	"spScore":"100%",
             "spId": "SP-0013",
+            "spScore": "100%",
             "spVersion": "7.10.x"
           },
           {
-          	"spScore":"100%",
             "spId": "SP-0014",
+            "spScore": "100%",
             "spVersion": "4.7"
           }
-        ],
-        "instanceLabel": "AFFO MAIL SERVER"
+        ]
       },
       {
         "gpId": "GP-0126",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "EMAIL CLIENT AFFO",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0012",
+            "spScore": "100%",
             "spVersion": "2029"
           },
           {
-          	"spScore":"100%",
             "spId": "SP-0014",
+            "spScore": "100%",
             "spVersion": "4.7"
           }
-        ],
-        "instanceLabel": "EMAIL CLIENT AFFO"
+        ]
       }
     ],
-    "environment": "Static",
-    "id": "ASC-0008"
+    "id": "ASC-0008",
+    "serviceId": "SRV-0019",
+    "spiral": "SP5",
+    "status": "In Progress"
   },
   {
     "affiliateId": "AFF-0001",
-    "serviceId": "SRV-0008",
-    "spiral": "SP5",
-    "status": "In Review",
     "ascScore": "100%",
+    "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0001",
-        "gpScore":"100%",
+        "gpScore": "100%",
+        "instanceLabel": "",
         "spInstances": [
           {
-          	"spScore":"100%",
             "spId": "SP-0243",
+            "spScore": "100%",
             "spVersion": "4.2.1"
           },
           {
-          	"spScore":"100%",
             "spId": "SP-0006",
+            "spScore": "100%",
             "spVersion": "2.5.0"
           }
-        ],
-        "instanceLabel": ""
+        ]
       }
     ],
-    "environment": "Static",
-    "id": "ASC-0009"
+    "id": "ASC-0009",
+    "serviceId": "SRV-0008",
+    "spiral": "SP5",
+    "status": "In Review"
   }
 ]

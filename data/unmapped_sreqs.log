@@ -9259,3 +9259,460 @@ jinja2.exceptions.TemplateSyntaxError: unexpected char '#' at 5792
 2025-04-04 14:35:43 - 127.0.0.1 - - [04/Apr/2025 14:35:43] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
 2025-04-04 14:35:43 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
 2025-04-04 14:35:43 - 127.0.0.1 - - [04/Apr/2025 14:35:43] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:23:15 - Logging system configured with level INFO
+2025-04-04 15:23:15 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 15:23:15 - Applying authentication system patches...
+2025-04-04 15:23:15 - Authentication system patches applied successfully
+2025-04-04 15:23:15 - Enhanced authentication system applied
+2025-04-04 15:23:15 - Configured Flask app logging with level INFO
+2025-04-04 15:23:15 - Configured Flask app logging with level INFO
+2025-04-04 15:23:15 - Logging system configured with level INFO
+2025-04-04 15:23:15 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-04 15:23:15 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 15:23:15 - Template files: templates
+2025-04-04 15:23:15 - Authentication Bypass ENABLED for development.
+2025-04-04 15:23:15 - Running in PRODUCTION mode
+2025-04-04 15:23:15 - Listening on 0.0.0.0:5006
+2025-04-04 15:23:15 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 15:23:15 - [33mPress CTRL+C to quit[0m
+2025-04-04 15:23:26 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:23:26 - 127.0.0.1 - - [04/Apr/2025 15:23:26] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 15:23:26 - 127.0.0.1 - - [04/Apr/2025 15:23:26] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:23:26 - 127.0.0.1 - - [04/Apr/2025 15:23:26] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 15:23:26 - 127.0.0.1 - - [04/Apr/2025 15:23:26] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 15:23:33 - Accessing ASC Links page
+2025-04-04 15:23:33 - 127.0.0.1 - - [04/Apr/2025 15:23:33] "GET /asc_links HTTP/1.1" 200 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "GET /static/js/pages/links_new.js HTTP/1.1" 200 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/components/linkCIForm.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/components/linkForm.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:23:34 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:23:34 - 127.0.0.1 - - [04/Apr/2025 15:23:34] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:23:36 - Accessing ASC Links page
+2025-04-04 15:23:36 - 127.0.0.1 - - [04/Apr/2025 15:23:36] "GET /asc_links HTTP/1.1" 200 -
+2025-04-04 15:23:36 - 127.0.0.1 - - [04/Apr/2025 15:23:36] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-04 15:23:36 - 127.0.0.1 - - [04/Apr/2025 15:23:36] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/pages/links_new.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/components/linkForm.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/components/linkCIForm.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/js/components/multiSelectDropdown.js HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:23:37 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:23:37 - 127.0.0.1 - - [04/Apr/2025 15:23:37] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 15:23:39 - 127.0.0.1 - - [04/Apr/2025 15:23:39] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:23:47 - 127.0.0.1 - - [04/Apr/2025 15:23:47] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:24:26 - 127.0.0.1 - - [04/Apr/2025 15:24:26] "[35m[1mPOST /api/links HTTP/1.1[0m" 201 -
+2025-04-04 15:24:26 - 127.0.0.1 - - [04/Apr/2025 15:24:26] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:24:37 - 127.0.0.1 - - [04/Apr/2025 15:24:37] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:24:46 - 127.0.0.1 - - [04/Apr/2025 15:24:46] "PUT /api/links HTTP/1.1" 200 -
+2025-04-04 15:24:46 - 127.0.0.1 - - [04/Apr/2025 15:24:46] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:24:48 - 127.0.0.1 - - [04/Apr/2025 15:24:48] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:24:54 - 127.0.0.1 - - [04/Apr/2025 15:24:54] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:24:57 - 127.0.0.1 - - [04/Apr/2025 15:24:57] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:25:17 - 127.0.0.1 - - [04/Apr/2025 15:25:17] "PUT /api/links HTTP/1.1" 200 -
+2025-04-04 15:25:17 - 127.0.0.1 - - [04/Apr/2025 15:25:17] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:25:18 - 127.0.0.1 - - [04/Apr/2025 15:25:18] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:25:28 - 127.0.0.1 - - [04/Apr/2025 15:25:28] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:25:32 - 127.0.0.1 - - [04/Apr/2025 15:25:32] "PUT /api/links HTTP/1.1" 200 -
+2025-04-04 15:25:32 - 127.0.0.1 - - [04/Apr/2025 15:25:32] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:25:33 - 127.0.0.1 - - [04/Apr/2025 15:25:33] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:25:35 - 127.0.0.1 - - [04/Apr/2025 15:25:35] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:25:37 - 127.0.0.1 - - [04/Apr/2025 15:25:37] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:25:40 - 127.0.0.1 - - [04/Apr/2025 15:25:40] "DELETE /api/links?id=LNK-0084 HTTP/1.1" 200 -
+2025-04-04 15:25:40 - 127.0.0.1 - - [04/Apr/2025 15:25:40] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:26:43 - Accessing ASC Links page
+2025-04-04 15:26:43 - 127.0.0.1 - - [04/Apr/2025 15:26:43] "GET /asc_links HTTP/1.1" 200 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/pages/links_new.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/components/linkForm.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/components/linkCIForm.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:26:44 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:26:44 - 127.0.0.1 - - [04/Apr/2025 15:26:44] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - Accessing ASC GPs page
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/pages/gps_new.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/components/configItemForm.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/components/gpForm.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-04 15:26:45 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:26:45 - 127.0.0.1 - - [04/Apr/2025 15:26:45] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:27:24 - Logging system configured with level INFO
+2025-04-04 15:27:24 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 15:27:24 - Applying authentication system patches...
+2025-04-04 15:27:24 - Authentication system patches applied successfully
+2025-04-04 15:27:24 - Enhanced authentication system applied
+2025-04-04 15:27:24 - Configured Flask app logging with level INFO
+2025-04-04 15:27:24 - Configured Flask app logging with level INFO
+2025-04-04 15:27:24 - Logging system configured with level INFO
+2025-04-04 15:27:24 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-04 15:27:24 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 15:27:24 - Template files: templates
+2025-04-04 15:27:24 - Authentication Bypass ENABLED for development.
+2025-04-04 15:27:24 - Running in PRODUCTION mode
+2025-04-04 15:27:24 - Listening on 0.0.0.0:5006
+2025-04-04 15:27:24 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 15:27:24 - [33mPress CTRL+C to quit[0m
+2025-04-04 15:27:30 - Accessing Affiliates page
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "GET /affiliates HTTP/1.1" 200 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/pages/affiliates_new.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/components/affiliateForm.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:27:30 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:27:30 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:30 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:27:30 - 127.0.0.1 - - [04/Apr/2025 15:27:30] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:27:32 - Accessing ASC Links page
+2025-04-04 15:27:32 - 127.0.0.1 - - [04/Apr/2025 15:27:32] "GET /asc_links HTTP/1.1" 200 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/pages/links_new.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/components/linkForm.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/components/linkCIForm.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:27:33 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:27:33 - 127.0.0.1 - - [04/Apr/2025 15:27:33] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:27:35 - Accessing ASC Links page
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /asc_links HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/pages/links_new.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/components/linkCIForm.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/components/linkForm.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/js/components/multiSelectDropdown.js HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:27:35 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 15:27:35 - 127.0.0.1 - - [04/Apr/2025 15:27:35] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:27:37 - 127.0.0.1 - - [04/Apr/2025 15:27:37] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:27:42 - 127.0.0.1 - - [04/Apr/2025 15:27:42] "PUT /api/links HTTP/1.1" 200 -
+2025-04-04 15:27:42 - 127.0.0.1 - - [04/Apr/2025 15:27:42] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:27:43 - 127.0.0.1 - - [04/Apr/2025 15:27:43] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:28:03 - 127.0.0.1 - - [04/Apr/2025 15:28:03] "PUT /api/links HTTP/1.1" 200 -
+2025-04-04 15:28:03 - 127.0.0.1 - - [04/Apr/2025 15:28:03] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:28:05 - 127.0.0.1 - - [04/Apr/2025 15:28:05] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:28:08 - 127.0.0.1 - - [04/Apr/2025 15:28:08] "PUT /api/links HTTP/1.1" 200 -
+2025-04-04 15:28:08 - 127.0.0.1 - - [04/Apr/2025 15:28:08] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:28:12 - 127.0.0.1 - - [04/Apr/2025 15:28:12] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:28:32 - 127.0.0.1 - - [04/Apr/2025 15:28:32] "[35m[1mPOST /api/links HTTP/1.1[0m" 201 -
+2025-04-04 15:28:32 - 127.0.0.1 - - [04/Apr/2025 15:28:32] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:28:40 - 127.0.0.1 - - [04/Apr/2025 15:28:40] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:28:44 - 127.0.0.1 - - [04/Apr/2025 15:28:44] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:28:57 - 127.0.0.1 - - [04/Apr/2025 15:28:57] "PUT /api/links HTTP/1.1" 200 -
+2025-04-04 15:28:57 - 127.0.0.1 - - [04/Apr/2025 15:28:57] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:28:57 - 127.0.0.1 - - [04/Apr/2025 15:28:57] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:29:02 - 127.0.0.1 - - [04/Apr/2025 15:29:02] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:29:06 - 127.0.0.1 - - [04/Apr/2025 15:29:06] "DELETE /api/links?id=LNK-0084 HTTP/1.1" 200 -
+2025-04-04 15:29:06 - 127.0.0.1 - - [04/Apr/2025 15:29:06] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:31:56 - Logging system configured with level INFO
+2025-04-04 15:31:56 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 15:31:56 - Applying authentication system patches...
+2025-04-04 15:31:56 - Authentication system patches applied successfully
+2025-04-04 15:31:56 - Enhanced authentication system applied
+2025-04-04 15:31:56 - Configured Flask app logging with level INFO
+2025-04-04 15:31:56 - Configured Flask app logging with level INFO
+2025-04-04 15:31:56 - Logging system configured with level INFO
+2025-04-04 15:31:56 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-04 15:31:56 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 15:31:56 - Template files: templates
+2025-04-04 15:31:56 - Authentication Bypass ENABLED for development.
+2025-04-04 15:31:56 - Running in PRODUCTION mode
+2025-04-04 15:31:56 - Listening on 0.0.0.0:5006
+2025-04-04 15:31:56 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 15:31:56 - [33mPress CTRL+C to quit[0m
+2025-04-04 15:32:00 - Accessing ASC Links page
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /asc_links HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/pages/links_new.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/components/linkCIForm.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/components/linkForm.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/js/components/multiSelectDropdown.js HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /static/ASC/data/gps.json HTTP/1.1" 200 -
+2025-04-04 15:32:01 - 127.0.0.1 - - [04/Apr/2025 15:32:01] "GET /api/links HTTP/1.1" 200 -
+2025-04-04 15:32:02 - 127.0.0.1 - - [04/Apr/2025 15:32:02] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 15:32:02 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:32:02 - 127.0.0.1 - - [04/Apr/2025 15:32:02] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - Accessing ASC ASCs page
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "GET /static/js/pages/ascs_new.js HTTP/1.1" 200 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:32:04 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:32:04 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:32:04 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "GET /api/sps HTTP/1.1" 200 -
+2025-04-04 15:32:04 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "GET /api/services HTTP/1.1" 200 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:04 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:32:04 - 127.0.0.1 - - [04/Apr/2025 15:32:04] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - Accessing ASC Kanban board
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "GET /asc_kanban HTTP/1.1" 200 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "[36mGET /static/ASC/css/kanban-board.css HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "[36mGET /static/ASC/js/kanban-board.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "[36mGET /static/js/components/themeManager.js HTTP/1.1[0m" 304 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "GET /static/ASC/js/data-manager.js HTTP/1.1" 200 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:32:07 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "GET /api/sps HTTP/1.1" 200 -
+2025-04-04 15:32:07 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:32:07 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-04 15:32:07 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 15:32:07 - 127.0.0.1 - - [04/Apr/2025 15:32:07] "GET /api/services HTTP/1.1" 200 -
+2025-04-04 15:32:08 - 127.0.0.1 - - [04/Apr/2025 15:32:08] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:08 - 127.0.0.1 - - [04/Apr/2025 15:32:08] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:08 - 127.0.0.1 - - [04/Apr/2025 15:32:08] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:08 - 127.0.0.1 - - [04/Apr/2025 15:32:08] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-04-04 15:32:08 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:32:08 - 127.0.0.1 - - [04/Apr/2025 15:32:08] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:32:11 - 127.0.0.1 - - [04/Apr/2025 15:32:11] "POST /update_ascs HTTP/1.1" 200 -
+2025-04-04 15:32:15 - 127.0.0.1 - - [04/Apr/2025 15:32:15] "POST /update_ascs HTTP/1.1" 200 -
+2025-04-04 15:33:50 - Logging system configured with level INFO
+2025-04-04 15:33:50 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 15:33:50 - Applying authentication system patches...
+2025-04-04 15:33:50 - Authentication system patches applied successfully
+2025-04-04 15:33:50 - Enhanced authentication system applied
+2025-04-04 15:33:50 - Configured Flask app logging with level INFO
+2025-04-04 15:33:50 - Configured Flask app logging with level INFO
+2025-04-04 15:33:50 - Logging system configured with level INFO
+2025-04-04 15:33:50 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-04 15:33:50 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 15:33:50 - Template files: templates
+2025-04-04 15:33:50 - Authentication Bypass ENABLED for development.
+2025-04-04 15:33:50 - Running in PRODUCTION mode
+2025-04-04 15:33:50 - Listening on 0.0.0.0:5006
+2025-04-04 15:33:51 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 15:33:51 - [33mPress CTRL+C to quit[0m
+2025-04-04 15:33:56 - Accessing ASC Kanban board
+2025-04-04 15:33:56 - 127.0.0.1 - - [04/Apr/2025 15:33:56] "GET /asc_kanban HTTP/1.1" 200 -
+2025-04-04 15:33:56 - 127.0.0.1 - - [04/Apr/2025 15:33:56] "GET /static/ASC/css/kanban-board.css HTTP/1.1" 200 -
+2025-04-04 15:33:56 - 127.0.0.1 - - [04/Apr/2025 15:33:56] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 15:33:56 - 127.0.0.1 - - [04/Apr/2025 15:33:56] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 15:33:56 - 127.0.0.1 - - [04/Apr/2025 15:33:56] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 15:33:56 - 127.0.0.1 - - [04/Apr/2025 15:33:56] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 15:33:56 - 127.0.0.1 - - [04/Apr/2025 15:33:56] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 15:33:56 - 127.0.0.1 - - [04/Apr/2025 15:33:56] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /static/ASC/js/kanban-board.js HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /static/js/components/themeManager.js HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /static/ASC/js/data-manager.js HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:33:57 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 15:33:57 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /api/sps HTTP/1.1" 200 -
+2025-04-04 15:33:57 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 15:33:57 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /api/services HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /static/ASC/image/flags/flag_united_states.png HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-04 15:33:57 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 15:33:57 - 127.0.0.1 - - [04/Apr/2025 15:33:57] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 15:33:59 - Accessing ASC ASCs page
+2025-04-04 15:33:59 - 127.0.0.1 - - [04/Apr/2025 15:33:59] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 15:34:00 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:34:00 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 15:34:00 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-04 15:34:00 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "GET /api/sps HTTP/1.1" 200 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "GET /api/services HTTP/1.1" 200 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/ASC/data/gps.json HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-04 15:34:00 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-04 15:34:00 - 127.0.0.1 - - [04/Apr/2025 15:34:00] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -

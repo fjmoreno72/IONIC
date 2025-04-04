@@ -12,6 +12,8 @@ from flask import Blueprint, render_template, redirect, url_for, request, sessio
 from app.core.auth import login_required
 from app.data_access.affiliates_repository import get_all_affiliates, save_affiliates # Added import
 from app.data_access.sps_repository import get_all_sps, save_sps # Added SP repository import
+from app.data_access.links_repository import get_all_links, add_link, update_link, delete_link # Added Links repository import
+from app.data_access.ascs_repository import get_all_ascs, save_ascs # Added ASCs repository import
 from app.config import settings
 from werkzeug.utils import secure_filename
 
@@ -286,22 +288,31 @@ def update_ascs():
         if not ascs_data:
             return jsonify({'error': 'No data provided'}), 400
 
-        # Save to the ASCs JSON file (Note: ASC data is still in app/static/ASC/data)
-        # This path needs careful review - should ASC data move to top-level data/?
-        # For now, keeping it relative to the app's static folder might be safer if JS accesses it directly.
-        # Let's assume it stays in static for now.
-        ascs_path = Path(current_app.static_folder) / "ASC" / "data" / "ascs.json" # Corrected path
-
-        with open(ascs_path, 'w') as f:
-            json.dump(ascs_data, f, indent=2)
+        # Save using the repository function
+        if save_ascs(ascs_data):
+            return jsonify({
+                'success': True,
+                'message': 'ASCs updated successfully'
+            })
+        else:
+            return jsonify({'error': 'Failed to save ASCs data'}), 500
             
-        return jsonify({
-            'success': True,
-            'message': 'ASCs updated successfully'
-        })
     except Exception as e:
         logging.exception(f"Error updating ASCs: {str(e)}")
-        return jsonify({'error': f'Error updating ASCs: {str(e)}'}), 500
+        return jsonify({'error': f'An unexpected error occurred: {str(e)}'}), 500
+
+@views_bp.route('/api/ascs', methods=['GET'])
+@login_required
+def api_get_ascs():
+    """
+    API endpoint to get all ASCs data.
+    """
+    try:
+        ascs_data = get_all_ascs() # Use repository function
+        return jsonify(ascs_data)
+    except Exception as e:
+        logging.exception(f"Error getting ASCs: {str(e)}")
+        return jsonify({'error': f'An unexpected error occurred: {str(e)}'}), 500
 
 # --- API Routes for Affiliates ---
 
@@ -463,39 +474,26 @@ def manage_links():
     Returns:
         JSON response with the result of the operation
     """
-    # Use current_app.static_folder for ASC data
-    links_path = Path(current_app.static_folder) / "ASC" / "data" / "links.json"
-
-    # Ensure the data directory exists
-    os.makedirs(os.path.dirname(links_path), exist_ok=True)
+    # Removed direct file path handling - now uses repository
     
     try:
         # GET: Return all Links
         if request.method == 'GET':
-            if not links_path.exists():
-                return jsonify([])
-                
-            with open(links_path, 'r') as f:
-                links = json.load(f)
-                
+            links = get_all_links() # Use repository function
             return jsonify(links)
             
         # POST: Add a new Link
         elif request.method == 'POST':
-            # Load existing data
-            if links_path.exists():
-                with open(links_path, 'r') as f:
-                    links = json.load(f)
-            else:
-                links = []
-                
-            new_link = request.json
-            
-            # Generate a new ID - find the highest existing ID
+            new_link_data = request.json
+            if not new_link_data or 'name' not in new_link_data: # Basic validation
+                 return jsonify({'error': 'Invalid link data provided'}), 400
+
+            # Generate ID and ensure linkCIs exist (handled within repository add_link if needed, or here)
+            # Let's keep ID generation here for consistency with previous logic
+            links = get_all_links()
             highest_id = 0
             if links:
                 try:
-                    # Extract all numeric parts and find the highest
                     for link in links:
                         if 'id' in link and link['id'].startswith('LNK-'):
                             try:
@@ -504,107 +502,84 @@ def manage_links():
                             except (IndexError, ValueError):
                                 pass
                 except Exception:
-                    pass
-                    
+                    pass # Ignore errors during ID finding
+            
             new_id = f"LNK-{str(highest_id + 1).zfill(4)}"
             
-            # Double-check that the ID is unique
+            # Double-check uniqueness (though repository might also do this)
             while any(link.get('id') == new_id for link in links):
                 highest_id += 1
                 new_id = f"LNK-{str(highest_id + 1).zfill(4)}"
                 
-            new_link['id'] = new_id
+            new_link_data['id'] = new_id
             
             # Ensure linkCIs is initialized as empty array if not provided
-            if 'linkCIs' not in new_link:
-                new_link['linkCIs'] = []
-            
-            # Add to list
-            links.append(new_link)
-            
-            # Save back to file
-            with open(links_path, 'w') as f:
-                json.dump(links, f, indent=2)
-                
-            return jsonify({
-                'success': True,
-                'link': new_link,
-                'message': 'Link added successfully'
-            })
+            if 'linkCIs' not in new_link_data:
+                new_link_data['linkCIs'] = []
+
+            # Add using repository function
+            if add_link(new_link_data):
+                return jsonify({
+                    'success': True,
+                    'link': new_link_data, # Return the data that was added
+                    'message': 'Link added successfully'
+                }), 201 # Use 201 Created status code
+            else:
+                return jsonify({'error': 'Failed to save link'}), 500
             
         # PUT: Update an existing Link
         elif request.method == 'PUT':
-            # Load existing data
-            if not links_path.exists():
-                return jsonify({'error': 'Links file not found'}), 404
-                
-            with open(links_path, 'r') as f:
-                links = json.load(f)
-                
-            updated_link = request.json
+            updated_link_data = request.json
+            link_id = updated_link_data.get('id')
             
-            # Find and update the Link
-            link_id = updated_link.get('id')
             if not link_id:
-                return jsonify({'error': 'Link ID is required'}), 400
-                
-            found = False
-            for i, link in enumerate(links):
-                if link.get('id') == link_id:
-                    # Keep linkCIs if not provided in the update
-                    if 'linkCIs' not in updated_link and 'linkCIs' in links[i]:
-                        updated_link['linkCIs'] = links[i]['linkCIs']
-                    
-                    links[i] = updated_link
-                    found = True
-                    break
-                    
-            if not found:
-                return jsonify({'error': f'Link with ID {link_id} not found'}), 404
-                
-            # Save back to file
-            with open(links_path, 'w') as f:
-                json.dump(links, f, indent=2)
-                
-            return jsonify({
-                'success': True,
-                'link': updated_link,
-                'message': 'Link updated successfully'
-            })
-        
+                return jsonify({'error': 'Link ID is required for update'}), 400
+            
+            # Ensure linkCIs exists if not provided (optional, repo might handle)
+            # If we want to preserve existing CIs if not sent, we'd need to load first:
+            # existing_link = find_link_by_id(link_id) # Need find_link_by_id in repo
+            # if existing_link and 'linkCIs' not in updated_link_data:
+            #     updated_link_data['linkCIs'] = existing_link.get('linkCIs', [])
+
+            # Update using repository function
+            try:
+                if update_link(updated_link_data):
+                    return jsonify({
+                        'success': True,
+                        'link': updated_link_data,
+                        'message': 'Link updated successfully'
+                    })
+                else:
+                    # This case might not be reachable if update_link raises ValueError
+                    return jsonify({'error': 'Failed to update link'}), 500
+            except ValueError as e: # Catch specific error from repository
+                 return jsonify({'error': str(e)}), 404 # Not found or other validation error
+
         # DELETE: Delete a Link
         elif request.method == 'DELETE':
-            # Load existing data
-            if not links_path.exists():
-                return jsonify({'error': 'Links file not found'}), 404
-                
-            with open(links_path, 'r') as f:
-                links = json.load(f)
-            
-            # Get the Link ID from query params
             link_id = request.args.get('id')
             if not link_id:
-                return jsonify({'error': 'Link ID is required'}), 400
+                return jsonify({'error': 'Link ID is required for deletion'}), 400
             
-            # Remove Link from list
-            initial_count = len(links)
-            links = [link for link in links if link.get('id') != link_id]
-            
-            if len(links) == initial_count:
-                return jsonify({'error': f'Link with ID {link_id} not found'}), 404
-            
-            # Save back to file
-            with open(links_path, 'w') as f:
-                json.dump(links, f, indent=2)
-            
-            return jsonify({
-                'success': True,
-                'message': f'Link with ID {link_id} deleted successfully'
-            })
-            
+            # Delete using repository function
+            try:
+                if delete_link(link_id):
+                    return jsonify({
+                        'success': True,
+                        'message': f'Link with ID {link_id} deleted successfully'
+                    })
+                else:
+                    # This case might not be reachable if delete_link raises ValueError
+                    return jsonify({'error': 'Failed to delete link'}), 500
+            except ValueError as e: # Catch specific error from repository
+                 return jsonify({'error': str(e)}), 404 # Not found
+
+    except ValueError as ve: # Catch validation errors from repository
+        logging.warning(f"Validation error managing Links: {str(ve)}")
+        return jsonify({'error': str(ve)}), 400 # Bad request
     except Exception as e:
         logging.exception(f"Error managing Links: {str(e)}")
-        return jsonify({'error': f'Error: {str(e)}'}), 500
+        return jsonify({'error': f'An unexpected error occurred: {str(e)}'}), 500
 
 @views_bp.route('/api/gps', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @login_required

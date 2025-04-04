@@ -31,7 +31,7 @@ export class DataManager {
     try {
       // Load all required data in parallel (including SPs)
       const [ascsData, affiliatesData, servicesData, spsData] = await Promise.all([
-        this.fetchData("/static/ASC/data/ascs.json"), // TODO: Refactor ASCs next?
+        this.fetchData("/api/ascs"), // Changed to fetch ASCs via API
         this.fetchData("/api/affiliates"), // Fetch affiliates via API
         this.fetchData("/api/services"), // Fetch services via API
         this.fetchData("/api/sps") // Fetch SPs via API

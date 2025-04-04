@@ -17,7 +17,17 @@
   {
     "id": "LNK-0002",
     "name": "ADL",
-    "description": "",
+    "description": "ADL Link",
+    "linkCIs": [
+      {
+        "Answer Content": "",
+        "Answer Type": "Text Field (Single Line)",
+        "Apply A/B": "Both",
+        "Default Value": "",
+        "Help Text": "",
+        "Name": "ADL File"
+      }
+    ],
     "gps_side_a": [
       "GP-0013",
       "GP-0014",
@@ -26,16 +36,7 @@
     "gps_side_b": [
       "GP-0062"
     ],
-    "linkCIs": [
-      {
-        "Name": "ADL File",
-        "Help Text": "",
-        "Default Value": "",
-        "Answer Type": "Text Field (Single Line)",
-        "Answer Content": "",
-        "Apply A/B": "Both"
-      }
-    ]
+    "originalName": "ADL"
   },
   {
     "id": "LNK-0003",
@@ -1443,7 +1444,7 @@
       },
       {
         "Name": "Loopback Interface Name",
-        "Help Text": "ie: Gb0/1, Loopback0, etc\u2026",
+        "Help Text": "ie: Gb0/1, Loopback0, etc…",
         "Default Value": "",
         "Answer Type": "Text Field (Single Line)",
         "Answer Content": "",
@@ -1451,7 +1452,7 @@
       },
       {
         "Name": "Loopback Interface Name",
-        "Help Text": "ie: Gb0/1, Loopback0, etc\u2026",
+        "Help Text": "ie: Gb0/1, Loopback0, etc…",
         "Default Value": "",
         "Answer Type": "Text Field (Single Line)",
         "Answer Content": "",

@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     linksTable = new DataTable({
       tableId: 'linksTable',
       tableBodyId: 'linksTableBody',
-      dataUrl: '/static/ASC/data/links.json',
+      dataUrl: '/api/links', // Changed to API endpoint
       searchInputId: 'searchInput',
       itemsPerPageSelectId: 'itemsPerPageSelect',
       pageInfoId: 'pageInfo',
@@ -441,11 +441,11 @@ document.addEventListener('DOMContentLoaded', function() {
       ciDialog.setContent(loadingContent);
       ciDialog.open();
       
-      // Need to fetch the links data directly from the source to ensure we have it
-      fetch('/static/ASC/data/links.json')
+      // Fetch links data from the API endpoint
+      fetch('/api/links') // Changed to API endpoint
         .then(response => {
           if (!response.ok) {
-            throw new Error('Failed to load links data');
+            throw new Error('Failed to load links data from API');
           }
           return response.json();
         })

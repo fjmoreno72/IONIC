@@ -202,8 +202,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Helper function to fetch ASCs data
   const fetchAscsData = async () => {
     try {
-      // NOTE: Still fetching static ASCs data for now. Refactor this next if needed.
-      const response = await fetch('/static/ASC/data/ascs.json');
+      // Fetch from the new API endpoint
+      const response = await fetch('/api/ascs'); 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }

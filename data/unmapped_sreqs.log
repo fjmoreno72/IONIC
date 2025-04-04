@@ -12601,3 +12601,891 @@ jinja2.exceptions.TemplateSyntaxError: unexpected char '#' at 5792
 2025-04-04 17:13:21 - 127.0.0.1 - - [04/Apr/2025 17:13:21] "GET /api/test_cases_data HTTP/1.1" 200 -
 2025-04-04 17:13:21 - 127.0.0.1 - - [04/Apr/2025 17:13:21] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
 2025-04-04 17:13:21 - 127.0.0.1 - - [04/Apr/2025 17:13:21] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 17:16:19 - Attempting to load actors.json into memory...
+2025-04-04 17:16:19 - Successfully loaded 1047 actors into map in 0.01 seconds.
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:16:19 - 127.0.0.1 - - [04/Apr/2025 17:16:19] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:24:42 - Logging system configured with level INFO
+2025-04-04 17:24:42 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:24:43 - Applying authentication system patches...
+2025-04-04 17:24:43 - Authentication system patches applied successfully
+2025-04-04 17:24:43 - Enhanced authentication system applied
+2025-04-04 17:24:43 - Configured Flask app logging with level INFO
+2025-04-04 17:24:43 - Configured Flask app logging with level INFO
+2025-04-04 17:24:43 - Logging system configured with level INFO
+2025-04-04 17:24:43 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:24:43 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:24:43 - Template files: templates
+2025-04-04 17:24:43 - Running in DEBUG mode
+2025-04-04 17:24:43 - Listening on 0.0.0.0:5006
+2025-04-04 17:24:43 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 17:24:43 - [33mPress CTRL+C to quit[0m
+2025-04-04 17:24:43 -  * Restarting with stat
+2025-04-04 17:24:43 - Logging system configured with level INFO
+2025-04-04 17:24:43 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:24:43 - Applying authentication system patches...
+2025-04-04 17:24:43 - Authentication system patches applied successfully
+2025-04-04 17:24:43 - Enhanced authentication system applied
+2025-04-04 17:24:43 - Configured Flask app logging with level INFO
+2025-04-04 17:24:43 - Configured Flask app logging with level INFO
+2025-04-04 17:24:43 - Logging system configured with level INFO
+2025-04-04 17:24:43 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:24:43 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:24:43 - Template files: templates
+2025-04-04 17:24:43 - Running in DEBUG mode
+2025-04-04 17:24:43 - Listening on 0.0.0.0:5006
+2025-04-04 17:24:43 -  * Debugger is active!
+2025-04-04 17:24:43 -  * Debugger PIN: 288-963-664
+2025-04-04 17:25:07 - Accessing test cases
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:25:07 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:25:07 - Successfully loaded patterns data file.
+2025-04-04 17:25:07 - 127.0.0.1 - - [04/Apr/2025 17:25:07] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 17:25:07 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:25:07 - Successfully loaded test cases data file.
+2025-04-04 17:25:08 - 127.0.0.1 - - [04/Apr/2025 17:25:08] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 17:25:08 - 127.0.0.1 - - [04/Apr/2025 17:25:08] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:25:08 - 127.0.0.1 - - [04/Apr/2025 17:25:08] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 17:25:12 - Attempting to load actors.json into memory...
+2025-04-04 17:25:12 - Successfully loaded 1047 actors into map in 0.01 seconds.
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:25:12 - 127.0.0.1 - - [04/Apr/2025 17:25:12] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:17 - Logging system configured with level INFO
+2025-04-04 17:28:17 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:28:18 - Applying authentication system patches...
+2025-04-04 17:28:18 - Authentication system patches applied successfully
+2025-04-04 17:28:18 - Enhanced authentication system applied
+2025-04-04 17:28:18 - Configured Flask app logging with level INFO
+2025-04-04 17:28:18 - Configured Flask app logging with level INFO
+2025-04-04 17:28:18 - Logging system configured with level INFO
+2025-04-04 17:28:18 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:28:18 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:28:18 - Template files: templates
+2025-04-04 17:28:18 - Running in DEBUG mode
+2025-04-04 17:28:18 - Listening on 0.0.0.0:5006
+2025-04-04 17:28:18 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 17:28:18 - [33mPress CTRL+C to quit[0m
+2025-04-04 17:28:18 -  * Restarting with stat
+2025-04-04 17:28:18 - Logging system configured with level INFO
+2025-04-04 17:28:18 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:28:18 - Applying authentication system patches...
+2025-04-04 17:28:18 - Authentication system patches applied successfully
+2025-04-04 17:28:18 - Enhanced authentication system applied
+2025-04-04 17:28:18 - Configured Flask app logging with level INFO
+2025-04-04 17:28:18 - Configured Flask app logging with level INFO
+2025-04-04 17:28:18 - Logging system configured with level INFO
+2025-04-04 17:28:18 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:28:18 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:28:18 - Template files: templates
+2025-04-04 17:28:18 - Running in DEBUG mode
+2025-04-04 17:28:18 - Listening on 0.0.0.0:5006
+2025-04-04 17:28:18 -  * Debugger is active!
+2025-04-04 17:28:18 -  * Debugger PIN: 288-963-664
+2025-04-04 17:28:27 - Accessing test cases
+2025-04-04 17:28:27 - 127.0.0.1 - - [04/Apr/2025 17:28:27] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 17:28:27 - 127.0.0.1 - - [04/Apr/2025 17:28:27] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 17:28:27 - 127.0.0.1 - - [04/Apr/2025 17:28:27] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 17:28:27 - 127.0.0.1 - - [04/Apr/2025 17:28:27] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-04 17:28:27 - 127.0.0.1 - - [04/Apr/2025 17:28:27] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 17:28:27 - 127.0.0.1 - - [04/Apr/2025 17:28:27] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 17:28:27 - 127.0.0.1 - - [04/Apr/2025 17:28:27] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 17:28:27 - 127.0.0.1 - - [04/Apr/2025 17:28:27] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 17:28:27 - 127.0.0.1 - - [04/Apr/2025 17:28:27] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-04-04 17:28:28 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:28:28 - 127.0.0.1 - - [04/Apr/2025 17:28:28] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:28:28 - Successfully loaded patterns data file.
+2025-04-04 17:28:28 - 127.0.0.1 - - [04/Apr/2025 17:28:28] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 17:28:28 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:28:28 - Successfully loaded test cases data file.
+2025-04-04 17:28:28 - 127.0.0.1 - - [04/Apr/2025 17:28:28] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 17:28:28 - 127.0.0.1 - - [04/Apr/2025 17:28:28] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:28:28 - 127.0.0.1 - - [04/Apr/2025 17:28:28] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 17:28:31 - Attempting to load actors.json into memory...
+2025-04-04 17:28:31 - Successfully loaded 1047 actors into map in 0.01 seconds.
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:31 - 127.0.0.1 - - [04/Apr/2025 17:28:31] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:40 - Accessing test cases
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-04-04 17:28:40 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:28:40 - Successfully loaded patterns data file.
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 17:28:40 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 17:28:40 - Successfully loaded test cases data file.
+2025-04-04 17:28:40 - 127.0.0.1 - - [04/Apr/2025 17:28:40] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:28:44 - 127.0.0.1 - - [04/Apr/2025 17:28:44] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:36:29 - Logging system configured with level INFO
+2025-04-04 17:36:29 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:36:29 - Applying authentication system patches...
+2025-04-04 17:36:29 - Authentication system patches applied successfully
+2025-04-04 17:36:29 - Enhanced authentication system applied
+2025-04-04 17:36:29 - Configured Flask app logging with level INFO
+2025-04-04 17:36:29 - Configured Flask app logging with level INFO
+2025-04-04 17:36:29 - Logging system configured with level INFO
+2025-04-04 17:36:29 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:36:29 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:36:29 - Template files: templates
+2025-04-04 17:36:29 - Running in DEBUG mode
+2025-04-04 17:36:29 - Listening on 0.0.0.0:5006
+2025-04-04 17:36:29 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 17:36:29 - [33mPress CTRL+C to quit[0m
+2025-04-04 17:36:29 -  * Restarting with stat
+2025-04-04 17:36:29 - Logging system configured with level INFO
+2025-04-04 17:36:29 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:36:29 - Applying authentication system patches...
+2025-04-04 17:36:29 - Authentication system patches applied successfully
+2025-04-04 17:36:29 - Enhanced authentication system applied
+2025-04-04 17:36:29 - Configured Flask app logging with level INFO
+2025-04-04 17:36:29 - Configured Flask app logging with level INFO
+2025-04-04 17:36:29 - Logging system configured with level INFO
+2025-04-04 17:36:29 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:36:29 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:36:29 - Template files: templates
+2025-04-04 17:36:29 - Running in DEBUG mode
+2025-04-04 17:36:29 - Listening on 0.0.0.0:5006
+2025-04-04 17:36:29 -  * Debugger is active!
+2025-04-04 17:36:29 -  * Debugger PIN: 288-963-664
+2025-04-04 17:36:32 - User logged out
+2025-04-04 17:36:32 - 127.0.0.1 - - [04/Apr/2025 17:36:32] "GET /logout HTTP/1.1" 200 -
+2025-04-04 17:36:32 - 127.0.0.1 - - [04/Apr/2025 17:36:32] "GET / HTTP/1.1" 200 -
+2025-04-04 17:36:32 - 127.0.0.1 - - [04/Apr/2025 17:36:32] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:36:32 - 127.0.0.1 - - [04/Apr/2025 17:36:32] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:36:32 - 127.0.0.1 - - [04/Apr/2025 17:36:32] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:36:32 - 127.0.0.1 - - [04/Apr/2025 17:36:32] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:36:35 - SSL verification is disabled. This is insecure.
+2025-04-04 17:36:35 - Found verification token using method: BeautifulSoup input tag
+2025-04-04 17:36:35 - Found additional field: RememberMe
+2025-04-04 17:36:37 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-04 17:36:37 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-04 17:36:37 - User francisco.moreno@ncia.nato.int logged in successfully to cwix environment
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "POST /login HTTP/1.1" 200 -
+2025-04-04 17:36:37 - Accessing functional tree view
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:36:37 - 127.0.0.1 - - [04/Apr/2025 17:36:37] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:36:39 - SSL verification is disabled. This is insecure.
+2025-04-04 17:36:39 - Getting test cases data from api/test-cases
+2025-04-04 17:36:39 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases
+2025-04-04 17:36:41 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases completed in 1.92 seconds
+2025-04-04 17:36:42 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:36:42 - 127.0.0.1 - - [04/Apr/2025 17:36:42] "GET /get_test_cases HTTP/1.1" 200 -
+2025-04-04 17:36:42 - Handling GET request to /get_actors
+2025-04-04 17:36:42 - SSL verification is disabled. This is insecure.
+2025-04-04 17:36:42 - Attempting to fetch actors data from API
+2025-04-04 17:36:42 - Handling GET request to /get_patterns
+2025-04-04 17:36:42 - Attempting to get test case actors data from api/test-cases/actors
+2025-04-04 17:36:42 - SSL verification is disabled. This is insecure.
+2025-04-04 17:36:42 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/actors
+2025-04-04 17:36:42 - Attempting to fetch patterns data from API
+2025-04-04 17:36:42 - Attempting to get test case patterns data from api/test-cases/patterns
+2025-04-04 17:36:42 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/patterns
+2025-04-04 17:36:42 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/patterns completed in 0.14 seconds
+2025-04-04 17:36:42 - Got response from patterns endpoint with status: 200
+2025-04-04 17:36:42 - Successfully parsed response JSON from patterns endpoint
+2025-04-04 17:36:42 - Saving patterns data to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:36:42 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:36:42 - Patterns data successfully saved to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:36:42 - Patterns operation completed in 0.14s, count: 20
+2025-04-04 17:36:42 - Successfully fetched patterns. Count: 20
+2025-04-04 17:36:42 - 127.0.0.1 - - [04/Apr/2025 17:36:42] "GET /get_patterns HTTP/1.1" 200 -
+2025-04-04 17:36:42 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/actors completed in 0.19 seconds
+2025-04-04 17:36:42 - Got response from actors endpoint with status: 200
+2025-04-04 17:36:42 - Successfully parsed response JSON from actors endpoint
+2025-04-04 17:36:42 - Saving actors data to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 17:36:42 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 17:36:42 - Actors data successfully saved to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 17:36:42 - Actors operation completed in 0.21s, count: 1047
+2025-04-04 17:36:42 - Successfully fetched actors. Count: 1047
+2025-04-04 17:36:42 - 127.0.0.1 - - [04/Apr/2025 17:36:42] "GET /get_actors HTTP/1.1" 200 -
+2025-04-04 17:36:47 - Accessing test cases
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-04-04 17:36:47 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:36:47 - Successfully loaded patterns data file.
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 17:36:47 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:36:47 - Successfully loaded test cases data file.
+2025-04-04 17:36:47 - 127.0.0.1 - - [04/Apr/2025 17:36:47] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 17:37:07 - Attempting to load actors.json into memory...
+2025-04-04 17:37:07 - Successfully loaded 1047 actors into map in 0.01 seconds.
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:37:07 - 127.0.0.1 - - [04/Apr/2025 17:37:07] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:37:08 - 127.0.0.1 - - [04/Apr/2025 17:37:08] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:37:36 - 127.0.0.1 - - [04/Apr/2025 17:37:36] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-04 17:37:36 - 127.0.0.1 - - [04/Apr/2025 17:37:36] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-04 17:37:40 - 127.0.0.1 - - [04/Apr/2025 17:37:40] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-04 17:37:40 - 127.0.0.1 - - [04/Apr/2025 17:37:40] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-04 17:37:40 - 127.0.0.1 - - [04/Apr/2025 17:37:40] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/2cf5802e-206c-422a-9162-ac34f7c69a61 HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-04-04 17:37:45 - 127.0.0.1 - - [04/Apr/2025 17:37:45] "GET /api/actor/0d0fb984-51c1-4a46-9dac-137945ddb6bf HTTP/1.1" 200 -
+2025-04-04 17:38:11 - Logging system configured with level INFO
+2025-04-04 17:38:11 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:38:11 - Applying authentication system patches...
+2025-04-04 17:38:11 - Authentication system patches applied successfully
+2025-04-04 17:38:11 - Enhanced authentication system applied
+2025-04-04 17:38:11 - Configured Flask app logging with level INFO
+2025-04-04 17:38:11 - Configured Flask app logging with level INFO
+2025-04-04 17:38:11 - Logging system configured with level INFO
+2025-04-04 17:38:11 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:38:11 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:38:11 - Template files: templates
+2025-04-04 17:38:11 - Running in DEBUG mode
+2025-04-04 17:38:11 - Listening on 0.0.0.0:5006
+2025-04-04 17:38:11 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 17:38:11 - [33mPress CTRL+C to quit[0m
+2025-04-04 17:38:11 -  * Restarting with stat
+2025-04-04 17:38:11 - Logging system configured with level INFO
+2025-04-04 17:38:11 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:38:11 - Applying authentication system patches...
+2025-04-04 17:38:11 - Authentication system patches applied successfully
+2025-04-04 17:38:11 - Enhanced authentication system applied
+2025-04-04 17:38:11 - Configured Flask app logging with level INFO
+2025-04-04 17:38:11 - Configured Flask app logging with level INFO
+2025-04-04 17:38:11 - Logging system configured with level INFO
+2025-04-04 17:38:11 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:38:11 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:38:11 - Template files: templates
+2025-04-04 17:38:11 - Running in DEBUG mode
+2025-04-04 17:38:11 - Listening on 0.0.0.0:5006
+2025-04-04 17:38:11 -  * Debugger is active!
+2025-04-04 17:38:11 -  * Debugger PIN: 288-963-664
+2025-04-04 17:38:33 - Attempting to load actors.json into memory...
+2025-04-04 17:38:33 - Successfully loaded 1047 actors into map in 0.01 seconds.
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/731f90e9-0cdb-4072-8e9d-7f0359806169 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/731f90e9-0cdb-4072-8e9d-7f0359806169 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:38:33 - 127.0.0.1 - - [04/Apr/2025 17:38:33] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:53:25 - Logging system configured with level INFO
+2025-04-04 17:53:25 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:53:25 - Applying authentication system patches...
+2025-04-04 17:53:25 - Authentication system patches applied successfully
+2025-04-04 17:53:25 - Enhanced authentication system applied
+2025-04-04 17:53:25 - Configured Flask app logging with level INFO
+2025-04-04 17:53:25 - Configured Flask app logging with level INFO
+2025-04-04 17:53:25 - Logging system configured with level INFO
+2025-04-04 17:53:25 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:53:25 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:53:25 - Template files: templates
+2025-04-04 17:53:25 - Running in DEBUG mode
+2025-04-04 17:53:25 - Listening on 0.0.0.0:5006
+2025-04-04 17:53:25 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 17:53:25 - [33mPress CTRL+C to quit[0m
+2025-04-04 17:53:25 -  * Restarting with stat
+2025-04-04 17:53:25 - Logging system configured with level INFO
+2025-04-04 17:53:25 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:53:25 - Applying authentication system patches...
+2025-04-04 17:53:25 - Authentication system patches applied successfully
+2025-04-04 17:53:25 - Enhanced authentication system applied
+2025-04-04 17:53:25 - Configured Flask app logging with level INFO
+2025-04-04 17:53:25 - Configured Flask app logging with level INFO
+2025-04-04 17:53:25 - Logging system configured with level INFO
+2025-04-04 17:53:25 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:53:25 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:53:25 - Template files: templates
+2025-04-04 17:53:25 - Running in DEBUG mode
+2025-04-04 17:53:25 - Listening on 0.0.0.0:5006
+2025-04-04 17:53:25 -  * Debugger is active!
+2025-04-04 17:53:25 -  * Debugger PIN: 288-963-664
+2025-04-04 17:53:34 - SSL verification is disabled. This is insecure.
+2025-04-04 17:53:34 - Getting test cases data from api/test-cases
+2025-04-04 17:53:34 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases
+2025-04-04 17:53:36 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases completed in 2.00 seconds
+2025-04-04 17:53:36 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:53:36 - 127.0.0.1 - - [04/Apr/2025 17:53:36] "GET /get_test_cases HTTP/1.1" 200 -
+2025-04-04 17:53:36 - Handling GET request to /get_actors
+2025-04-04 17:53:36 - Handling GET request to /get_patterns
+2025-04-04 17:53:36 - SSL verification is disabled. This is insecure.
+2025-04-04 17:53:36 - SSL verification is disabled. This is insecure.
+2025-04-04 17:53:36 - Attempting to fetch actors data from API
+2025-04-04 17:53:36 - Attempting to fetch patterns data from API
+2025-04-04 17:53:36 - Attempting to get test case actors data from api/test-cases/actors
+2025-04-04 17:53:36 - Attempting to get test case patterns data from api/test-cases/patterns
+2025-04-04 17:53:36 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/actors
+2025-04-04 17:53:36 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/patterns
+2025-04-04 17:53:36 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/patterns completed in 0.13 seconds
+2025-04-04 17:53:36 - Got response from patterns endpoint with status: 200
+2025-04-04 17:53:36 - Successfully parsed response JSON from patterns endpoint
+2025-04-04 17:53:36 - Saving patterns data to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:53:36 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:53:36 - Patterns data successfully saved to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:53:36 - Patterns operation completed in 0.14s, count: 20
+2025-04-04 17:53:36 - Successfully fetched patterns. Count: 20
+2025-04-04 17:53:36 - 127.0.0.1 - - [04/Apr/2025 17:53:36] "GET /get_patterns HTTP/1.1" 200 -
+2025-04-04 17:53:36 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/actors completed in 0.19 seconds
+2025-04-04 17:53:36 - Got response from actors endpoint with status: 200
+2025-04-04 17:53:36 - Successfully parsed response JSON from actors endpoint
+2025-04-04 17:53:36 - Saving actors data to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 17:53:36 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 17:53:36 - Actors data successfully saved to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 17:53:36 - Actors operation completed in 0.20s, count: 1047
+2025-04-04 17:53:36 - Successfully fetched actors. Count: 1047
+2025-04-04 17:53:36 - 127.0.0.1 - - [04/Apr/2025 17:53:36] "GET /get_actors HTTP/1.1" 200 -
+2025-04-04 17:54:01 - Attempting to load actors.json into memory...
+2025-04-04 17:54:01 - Successfully loaded 1047 actors into map in 0.01 seconds.
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/731f90e9-0cdb-4072-8e9d-7f0359806169 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/731f90e9-0cdb-4072-8e9d-7f0359806169 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 17:54:01 - 127.0.0.1 - - [04/Apr/2025 17:54:01] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:13:21 - Logging system configured with level INFO
+2025-04-04 18:13:21 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 18:13:21 - Applying authentication system patches...
+2025-04-04 18:13:21 - Authentication system patches applied successfully
+2025-04-04 18:13:21 - Enhanced authentication system applied
+2025-04-04 18:13:21 - Configured Flask app logging with level INFO
+2025-04-04 18:13:21 - Configured Flask app logging with level INFO
+2025-04-04 18:13:21 - Logging system configured with level INFO
+2025-04-04 18:13:21 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 18:13:21 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 18:13:21 - Template files: templates
+2025-04-04 18:13:21 - Running in DEBUG mode
+2025-04-04 18:13:21 - Listening on 0.0.0.0:5006
+2025-04-04 18:13:21 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 18:13:21 - [33mPress CTRL+C to quit[0m
+2025-04-04 18:13:21 -  * Restarting with stat
+2025-04-04 18:13:21 - Logging system configured with level INFO
+2025-04-04 18:13:21 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 18:13:22 - Applying authentication system patches...
+2025-04-04 18:13:22 - Authentication system patches applied successfully
+2025-04-04 18:13:22 - Enhanced authentication system applied
+2025-04-04 18:13:22 - Configured Flask app logging with level INFO
+2025-04-04 18:13:22 - Configured Flask app logging with level INFO
+2025-04-04 18:13:22 - Logging system configured with level INFO
+2025-04-04 18:13:22 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 18:13:22 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 18:13:22 - Template files: templates
+2025-04-04 18:13:22 - Running in DEBUG mode
+2025-04-04 18:13:22 - Listening on 0.0.0.0:5006
+2025-04-04 18:13:22 -  * Debugger is active!
+2025-04-04 18:13:22 -  * Debugger PIN: 288-963-664
+2025-04-04 18:14:06 - Accessing test cases
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /static/img/CWIX_LOGO.png HTTP/1.1" 200 -
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-04-04 18:14:06 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 18:14:06 - Successfully loaded patterns data file.
+2025-04-04 18:14:06 - 127.0.0.1 - - [04/Apr/2025 18:14:06] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 18:14:06 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 18:14:07 - Successfully loaded test cases data file.
+2025-04-04 18:14:07 - 127.0.0.1 - - [04/Apr/2025 18:14:07] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 18:14:07 - 127.0.0.1 - - [04/Apr/2025 18:14:07] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 18:14:07 - 127.0.0.1 - - [04/Apr/2025 18:14:07] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 18:14:12 - SSL verification is disabled. This is insecure.
+2025-04-04 18:14:12 - Getting test cases data from api/test-cases
+2025-04-04 18:14:12 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases
+2025-04-04 18:14:14 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases completed in 1.79 seconds
+2025-04-04 18:14:14 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 18:14:14 - 127.0.0.1 - - [04/Apr/2025 18:14:14] "GET /get_test_cases HTTP/1.1" 200 -
+2025-04-04 18:14:14 - Handling GET request to /get_actors
+2025-04-04 18:14:14 - SSL verification is disabled. This is insecure.
+2025-04-04 18:14:14 - Attempting to fetch actors data from API
+2025-04-04 18:14:14 - Attempting to get test case actors data from api/test-cases/actors
+2025-04-04 18:14:14 - Handling GET request to /get_patterns
+2025-04-04 18:14:14 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/actors
+2025-04-04 18:14:14 - SSL verification is disabled. This is insecure.
+2025-04-04 18:14:14 - Attempting to fetch patterns data from API
+2025-04-04 18:14:14 - Attempting to get test case patterns data from api/test-cases/patterns
+2025-04-04 18:14:14 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/patterns
+2025-04-04 18:14:15 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/patterns completed in 0.15 seconds
+2025-04-04 18:14:15 - Got response from patterns endpoint with status: 200
+2025-04-04 18:14:15 - Successfully parsed response JSON from patterns endpoint
+2025-04-04 18:14:15 - Saving patterns data to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 18:14:15 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 18:14:15 - Patterns data successfully saved to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 18:14:15 - Patterns operation completed in 0.16s, count: 20
+2025-04-04 18:14:15 - Successfully fetched patterns. Count: 20
+2025-04-04 18:14:15 - 127.0.0.1 - - [04/Apr/2025 18:14:15] "GET /get_patterns HTTP/1.1" 200 -
+2025-04-04 18:14:15 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/actors completed in 0.18 seconds
+2025-04-04 18:14:15 - Got response from actors endpoint with status: 200
+2025-04-04 18:14:15 - Successfully parsed response JSON from actors endpoint
+2025-04-04 18:14:15 - Saving actors data to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 18:14:15 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 18:14:15 - Actors data successfully saved to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 18:14:15 - Actors operation completed in 0.19s, count: 1047
+2025-04-04 18:14:15 - Successfully fetched actors. Count: 1047
+2025-04-04 18:14:15 - 127.0.0.1 - - [04/Apr/2025 18:14:15] "GET /get_actors HTTP/1.1" 200 -
+2025-04-04 18:14:16 - SSL verification is disabled. This is insecure.
+2025-04-04 18:14:16 - Getting test results data from api/public/test-results
+2025-04-04 18:14:16 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/public/test-results
+2025-04-04 18:14:21 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/public/test-results completed in 4.35 seconds
+2025-04-04 18:14:21 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/test_results.json
+2025-04-04 18:14:21 - 127.0.0.1 - - [04/Apr/2025 18:14:21] "GET /get_test_results HTTP/1.1" 200 -
+2025-04-04 18:14:23 - Accessing test cases
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 18:14:23 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 18:14:23 - Successfully loaded patterns data file.
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 18:14:23 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 18:14:23 - Successfully loaded test cases data file.
+2025-04-04 18:14:23 - 127.0.0.1 - - [04/Apr/2025 18:14:23] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 18:14:28 - Attempting to load actors.json into memory...
+2025-04-04 18:14:28 - Successfully loaded 1047 actors into map in 0.01 seconds.
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/f58f67e8-f236-4087-b804-5b12a6ba670b HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/731f90e9-0cdb-4072-8e9d-7f0359806169 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/f58f67e8-f236-4087-b804-5b12a6ba670b HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/fdd3f049-e552-4212-9bc5-2fdfb739734f HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:28 - 127.0.0.1 - - [04/Apr/2025 18:14:28] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/f449ed1a-009b-4aa7-8f9d-3b126af79e14 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/eba60644-6729-4d00-9065-1c4d2dfe9637 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/f449ed1a-009b-4aa7-8f9d-3b126af79e14 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/eba60644-6729-4d00-9065-1c4d2dfe9637 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/f449ed1a-009b-4aa7-8f9d-3b126af79e14 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/eba60644-6729-4d00-9065-1c4d2dfe9637 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/f449ed1a-009b-4aa7-8f9d-3b126af79e14 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/eba60644-6729-4d00-9065-1c4d2dfe9637 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/f449ed1a-009b-4aa7-8f9d-3b126af79e14 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/eba60644-6729-4d00-9065-1c4d2dfe9637 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/f449ed1a-009b-4aa7-8f9d-3b126af79e14 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:14:57 - 127.0.0.1 - - [04/Apr/2025 18:14:57] "GET /api/actor/dd1222bf-8628-47bc-a85d-55e6a92b4639 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/327fc81e-4016-4f24-b89c-e381496d5310 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/0bc0791b-d1c6-4afe-a791-4d3efaa4ec25 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/327fc81e-4016-4f24-b89c-e381496d5310 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/0bc0791b-d1c6-4afe-a791-4d3efaa4ec25 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/327fc81e-4016-4f24-b89c-e381496d5310 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/0bc0791b-d1c6-4afe-a791-4d3efaa4ec25 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/327fc81e-4016-4f24-b89c-e381496d5310 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/0bc0791b-d1c6-4afe-a791-4d3efaa4ec25 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/327fc81e-4016-4f24-b89c-e381496d5310 HTTP/1.1" 200 -
+2025-04-04 18:15:04 - 127.0.0.1 - - [04/Apr/2025 18:15:04] "GET /api/actor/0bc0791b-d1c6-4afe-a791-4d3efaa4ec25 HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:09 - 127.0.0.1 - - [04/Apr/2025 18:15:09] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:15:16 - 127.0.0.1 - - [04/Apr/2025 18:15:16] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/5f065006-81d4-4f0a-99b1-3915ba0e4b2c HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/733cce4e-503e-429c-a5e4-80d572465a19 HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/5f065006-81d4-4f0a-99b1-3915ba0e4b2c HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/733cce4e-503e-429c-a5e4-80d572465a19 HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/5f065006-81d4-4f0a-99b1-3915ba0e4b2c HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/733cce4e-503e-429c-a5e4-80d572465a19 HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/5f065006-81d4-4f0a-99b1-3915ba0e4b2c HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/733cce4e-503e-429c-a5e4-80d572465a19 HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/5f065006-81d4-4f0a-99b1-3915ba0e4b2c HTTP/1.1" 200 -
+2025-04-04 18:15:22 - 127.0.0.1 - - [04/Apr/2025 18:15:22] "GET /api/actor/733cce4e-503e-429c-a5e4-80d572465a19 HTTP/1.1" 200 -
+2025-04-04 18:16:10 - 127.0.0.1 - - [04/Apr/2025 18:16:10] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:16:10 - 127.0.0.1 - - [04/Apr/2025 18:16:10] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:16:10 - 127.0.0.1 - - [04/Apr/2025 18:16:10] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:16:10 - 127.0.0.1 - - [04/Apr/2025 18:16:10] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:16:10 - 127.0.0.1 - - [04/Apr/2025 18:16:10] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:16:10 - 127.0.0.1 - - [04/Apr/2025 18:16:10] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:22:47 - Logging system configured with level INFO
+2025-04-04 18:22:47 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 18:22:47 - Applying authentication system patches...
+2025-04-04 18:22:47 - Authentication system patches applied successfully
+2025-04-04 18:22:47 - Enhanced authentication system applied
+2025-04-04 18:22:47 - Configured Flask app logging with level INFO
+2025-04-04 18:22:47 - Configured Flask app logging with level INFO
+2025-04-04 18:22:47 - Logging system configured with level INFO
+2025-04-04 18:22:47 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 18:22:47 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 18:22:47 - Template files: templates
+2025-04-04 18:22:47 - Running in DEBUG mode
+2025-04-04 18:22:47 - Listening on 0.0.0.0:5006
+2025-04-04 18:22:47 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 18:22:47 - [33mPress CTRL+C to quit[0m
+2025-04-04 18:22:47 -  * Restarting with stat
+2025-04-04 18:22:47 - Logging system configured with level INFO
+2025-04-04 18:22:47 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 18:22:47 - Applying authentication system patches...
+2025-04-04 18:22:47 - Authentication system patches applied successfully
+2025-04-04 18:22:47 - Enhanced authentication system applied
+2025-04-04 18:22:47 - Configured Flask app logging with level INFO
+2025-04-04 18:22:47 - Configured Flask app logging with level INFO
+2025-04-04 18:22:47 - Logging system configured with level INFO
+2025-04-04 18:22:47 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 18:22:47 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 18:22:47 - Template files: templates
+2025-04-04 18:22:47 - Running in DEBUG mode
+2025-04-04 18:22:47 - Listening on 0.0.0.0:5006
+2025-04-04 18:22:47 -  * Debugger is active!
+2025-04-04 18:22:47 -  * Debugger PIN: 288-963-664
+2025-04-04 18:22:59 - Accessing test cases
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /static/img/CWIX_LOGO.png HTTP/1.1" 200 -
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-04-04 18:22:59 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 18:22:59 - Successfully loaded patterns data file.
+2025-04-04 18:22:59 - 127.0.0.1 - - [04/Apr/2025 18:22:59] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 18:22:59 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 18:22:59 - Successfully loaded test cases data file.
+2025-04-04 18:23:00 - 127.0.0.1 - - [04/Apr/2025 18:23:00] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 18:23:00 - 127.0.0.1 - - [04/Apr/2025 18:23:00] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 18:23:00 - 127.0.0.1 - - [04/Apr/2025 18:23:00] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-04 18:23:03 - Attempting to load actors.json into memory...
+2025-04-04 18:23:03 - Successfully loaded 1047 actors into map in 0.01 seconds.
+2025-04-04 18:23:03 - 127.0.0.1 - - [04/Apr/2025 18:23:03] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:23:03 - 127.0.0.1 - - [04/Apr/2025 18:23:03] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:23:03 - 127.0.0.1 - - [04/Apr/2025 18:23:03] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:23:03 - 127.0.0.1 - - [04/Apr/2025 18:23:03] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:23:03 - 127.0.0.1 - - [04/Apr/2025 18:23:03] "GET /api/actor/e53a427d-cde0-4725-95aa-2864919c4849 HTTP/1.1" 200 -
+2025-04-04 18:23:03 - 127.0.0.1 - - [04/Apr/2025 18:23:03] "GET /api/actor/2d88e72a-59e6-4a16-8d14-25a45912700d HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/b245f197-4888-4837-afd9-bfd0c20f7e9f HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/7116ed24-1dd9-4af0-88dd-5f935ff1f64e HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/a1ab00b7-3b05-44b3-923d-daf627082af5 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/d1d3d318-d295-4172-93de-ffd73b5910c4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -

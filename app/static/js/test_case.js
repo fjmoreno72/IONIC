@@ -418,31 +418,82 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Simple markdown to HTML converter (remains the same)
+// Simple markdown to HTML converter
 function simpleMarkdownToHtml(text) {
     if (!text) return 'N/A';
-    let html = text;
+
+    // *** USE PLACEHOLDERS FOR HYPHEN LINES - FINAL ATTEMPT ***
+    const hyphenPlaceholders = {};
+    let placeholderIndex = 0;
+    // Regex to catch optional *, then sequences of optional \ or | followed by -, then optional *
+    const patternRegex = /\*?([\\|]?\-)+\*?/g;
+    let html = text.replace(patternRegex, (match) => {
+        // Check if the match is just a hyphen within a word (simple check)
+        const precedingCharIndex = text.indexOf(match) - 1;
+        const followingCharIndex = text.indexOf(match) + match.length;
+        const precedingChar = precedingCharIndex >= 0 ? text[precedingCharIndex] : null;
+        const followingChar = followingCharIndex < text.length ? text[followingCharIndex] : null;
+
+        // Only replace if it's likely a separator (not surrounded by word characters)
+        if ((!precedingChar || !precedingChar.match(/\w/)) && (!followingChar || !followingChar.match(/\w/))) {
+            const placeholder = `__HYPHEN_LINE_${placeholderIndex++}__`;
+            hyphenPlaceholders[placeholder] = '<hr>'; // Replace with <hr>
+            return placeholder;
+        }
+        return match; // Keep hyphens within words
+    });
+    // *** END PLACEHOLDER CREATION ***
+
+    // Process standard markdown on the text with placeholders
     const boldItalicMap = {}; let biIndex = 0;
     html = html.replace(/\*\*_([\s\S]*?)_\*\*/g, (match, p1) => { const placeholder = `__BOLDITALIC_${biIndex++}__`; boldItalicMap[placeholder] = `<b><i>${p1}</i></b>`; return placeholder; });
     const boldMap = {}; let boldIndex = 0;
     html = html.replace(/\*\*(.*?)\*\*/g, (match, p1) => { if (p1.startsWith('__') && p1.endsWith('__')) return match; const placeholder = `__BOLD_${boldIndex++}__`; boldMap[placeholder] = `<b>${p1}</b>`; return placeholder; });
+
     const lines = html.split('\n'); let inList = false; let processedHtml = '';
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i]; const trimmedLine = line.trimStart();
+
+        // Check if the line IS a hyphen placeholder before list processing
+        if (/^__HYPHEN_LINE_\d+__$/.test(trimmedLine)) {
+             if (inList) { processedHtml += '</ul>'; inList = false; }
+             processedHtml += trimmedLine + '\n'; // Add the placeholder directly
+             continue; // Skip list processing for this line
+        }
+
         const isListItem = trimmedLine.startsWith('- '); const isEscapedListItem = trimmedLine.startsWith('\\- ');
-        if (isListItem || isEscapedListItem) {
+        // Ensure list items don't accidentally match the standalone hyphen pattern check
+        if ((isListItem || isEscapedListItem)) {
             let itemContent = isEscapedListItem ? line.substring(line.indexOf('\\- ') + 3) : line.substring(line.indexOf('- ') + 2);
             if (!inList) { processedHtml += '<ul>'; inList = true; }
             processedHtml += `<li>${itemContent}</li>`;
         } else {
             if (inList) { processedHtml += '</ul>'; inList = false; }
-            if (line.trim().length > 0 || (i > 0 && lines[i-1].trim().length > 0 && !inList)) { processedHtml += line + '\n'; }
+            // Original logic for adding lines back + newline
+            if (line.trim().length > 0) {
+                 processedHtml += line + '\n';
+            } else if (i > 0 && lines[i-1].trim().length > 0 && !inList) {
+                 processedHtml += line + '\n';
+            }
         }
     }
     if (inList) { processedHtml += '</ul>'; }
+
+    // Restore bold/italic placeholders
     for (const placeholder in boldItalicMap) { processedHtml = processedHtml.replaceAll(placeholder, boldItalicMap[placeholder]); }
     for (const placeholder in boldMap) { processedHtml = processedHtml.replaceAll(placeholder, boldMap[placeholder]); }
-    return processedHtml.trim();
+
+    // *** NOW, restore hyphen placeholders using <hr> ***
+    for (const placeholder in hyphenPlaceholders) {
+         // Use a while loop for robust replacement
+         while (processedHtml.includes(placeholder)) {
+              processedHtml = processedHtml.replace(placeholder, hyphenPlaceholders[placeholder]); // which is '<hr>'
+         }
+    }
+    // *** END HYPHEN PLACEHOLDER RESTORATION ***
+
+    // Return processedHtml WITHOUT trimming
+    return processedHtml;
 }
 
 // Function to show test case details in a modal (remains the same)
@@ -512,7 +563,11 @@ async function populateTestStepsTable(testCaseData) {
         await Promise.all(actorFetchPromises);
         sortedSteps.forEach(step => {
             const initiatorName = fetchedActorNames[step.initiatorActorId] || 'N/A'; const partnerName = fetchedActorNames[step.partnerActorId] || 'N/A';
-            const actionHtml = simpleMarkdownToHtml(step.action); const outcomeHtml = simpleMarkdownToHtml(step.expectedOutcome);
+            const actionHtml = simpleMarkdownToHtml(step.action);
+            const outcomeHtml = simpleMarkdownToHtml(step.expectedOutcome); // Process normally first
+
+            // Removed the explicit fallback replacement here, relying on simpleMarkdownToHtml
+
             const evidence = step.evidenceRequired ? 'Yes' : 'No'; const responsible = step.responsibleForResult || '';
             const row = tableBody.insertRow(); row.insertCell().textContent = step.stepNumber || '-';
             const initiatorCell = row.insertCell(); initiatorCell.innerHTML = responsible === 'initiator' ? `<b>${initiatorName}</b>` : initiatorName;

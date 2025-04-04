@@ -40,9 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // First load the GP data to build the mapping and populate the filter dropdown
-  fetch('/static/ASC/data/gps.json')
-    .then(response => response.json())
+  // First load the GP data from the API to build the mapping and populate the filter dropdown
+  fetch('/api/gps') // Use the API endpoint
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error fetching GPs! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(gpData => {
       // Create a mapping of GP IDs to names
       gpData.forEach(gp => {

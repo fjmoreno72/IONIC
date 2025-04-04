@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const gpsTable = new DataTable({
     tableId: 'gpsTable',
     tableBodyId: 'gpsTableBody',
-    dataUrl: '/static/ASC/data/gps.json', // Keep fetching static GP data for now
+    dataUrl: '/api/gps', // Use the API endpoint
     searchInputId: 'searchInput',
     itemsPerPageSelectId: 'itemsPerPageSelect',
     pageInfoId: 'pageInfo',
@@ -668,32 +668,46 @@ document.addEventListener('DOMContentLoaded', function() {
     return !allGPs.some(item => item.name === formData.name);
   }
   
-  // Function to upload a generic product icon
+  // Function to upload a generic product icon (assuming API endpoint exists)
   async function uploadGpIcon(file, gpName) {
+    // This function remains largely the same, assuming the backend
+    // endpoint /api/gps/upload-icon exists and handles the upload.
+    // Ensure the backend saves the file appropriately (e.g., static/ASC/image/gp/)
+    // and returns the relative path (e.g., './image/gp/new_icon.png').
     try {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('gpName', gpName);
-      
-      const response = await fetch('/api/gps/upload-icon', {
+      formData.append('gpName', gpName); // Backend might use this for naming/folder
+
+      const response = await fetch('/api/gps/upload-icon', { // Ensure this endpoint is implemented
         method: 'POST',
         body: formData
       });
-      
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Error uploading icon');
+         let errorMsg = 'Error uploading icon';
+         try {
+            const errorData = await response.json();
+            errorMsg = errorData.error || errorMsg;
+         } catch (parseError) {
+             console.warn('Could not parse error response body for icon upload:', parseError);
+         }
+         throw new Error(errorMsg);
       }
-      
+
       const data = await response.json();
-      return data.path;
+      if (!data.success || !data.path) {
+          throw new Error(data.error || 'Icon upload API call succeeded but returned invalid data.');
+      }
+      return data.path; // Return the relative path provided by the backend
     } catch (error) {
       console.error('Error uploading icon:', error);
-      throw error;
+      // Re-throw the error so the calling function (saveGP) can handle it
+      throw new Error(`Icon upload failed: ${error.message}`);
     }
   }
   
-  // Function to save generic product
+  // Function to save generic product (using API)
   async function saveGP(formData) {
     try {
       // Show loading state
@@ -702,50 +716,72 @@ document.addEventListener('DOMContentLoaded', function() {
         saveButton.disabled = true;
         saveButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
       }
-      
-      // Determine if this is an edit or create
-      const isEditing = !!formData.id;
+
+      // Determine if this is an edit or add
+      const isEditing = formData.id !== undefined && formData.id !== '';
       const method = isEditing ? 'PUT' : 'POST';
-      
+      const url = isEditing ? `/api/gps/${encodeURIComponent(formData.id)}` : '/api/gps';
+
+      // Handle icon file upload if present (assuming uploadGpIcon is updated)
+      let iconPath = formData.iconPath; // Keep existing path if no new file
+      const originalIconPath = isEditing ? (allGPs.find(gp => gp.id === formData.id)?.iconPath) : undefined;
+
+      if (formData.iconFile) {
+         try {
+            // Call the updated upload function
+            iconPath = await uploadGpIcon(formData.iconFile, formData.name);
+         } catch (uploadError) {
+             console.warn('Icon upload failed, proceeding without new icon:', uploadError);
+             showNotification(`Icon upload failed: ${uploadError.message}. Saving GP data without new icon.`, 'warning');
+             iconPath = originalIconPath; // Revert to original path on upload failure
+         }
+         // Remove the file object before sending JSON data
+         delete formData.iconFile;
+      }
+      // Update formData with the final iconPath (could be existing or new)
+      formData.iconPath = iconPath;
+
+
       // Send request to API
-      const response = await fetch('/api/gps', {
+      // Remove originalName if it exists, API handles uniqueness based on ID for PUT
+      const payload = { ...formData };
+      delete payload.originalName; // Ensure originalName is not sent
+
+      const response = await fetch(url, {
         method: method,
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload)
       });
-      
-      // Parse the response once
-      const responseData = await response.json();
-      
+
+      const responseData = await response.json(); // Read response body once
+
       if (!response.ok) {
-        throw new Error(responseData.error || 'Error saving generic product');
+        throw new Error(responseData.error || `Error ${method === 'PUT' ? 'updating' : 'adding'} Generic Product`);
       }
-      
-      // Add timestamp to cache-bust the icon if it's a new icon or update
-      if (formData.iconPath) {
-        const gpId = responseData.gp?.id || formData.id;
-        if (gpId) {
-          // Ensure imageUpdateTimestamps is initialized
-          if (!gpsTable.imageUpdateTimestamps) {
-            gpsTable.imageUpdateTimestamps = {};
-          }
-          // Set timestamp for this GP's icon to force cache refresh
-          gpsTable.imageUpdateTimestamps[gpId] = Date.now();
-        }
+
+      // Add timestamp to cache-bust the icon if it was updated
+      if (iconPath && iconPath !== originalIconPath) {
+         const gpId = responseData.id || formData.id; // Use ID from response if available (POST)
+         if (gpId) {
+            if (!gpsTable.imageUpdateTimestamps) {
+               gpsTable.imageUpdateTimestamps = {};
+            }
+            gpsTable.imageUpdateTimestamps[gpId] = Date.now();
+         }
       }
-      
+
       // Close dialog
       gpDialog.close();
-      
+
       // Refresh table
-      gpsTable.fetchData();
-      
+      await gpsTable.fetchData(); // Use await for fetch
+
       // Show success message
-      showNotification('Generic product saved successfully!', 'success');
+      showNotification(`Generic product ${isEditing ? 'updated' : 'added'} successfully!`, 'success');
     } catch (error) {
-      console.error('Error saving generic product:', error);
+      console.error(`Error saving generic product:`, error);
       showNotification(error.message || 'Error saving generic product', 'danger');
     } finally {
       // Reset button state
@@ -757,38 +793,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Function to delete generic product
+  // Function to delete generic product (using API)
   async function deleteGP(id) {
     try {
-      // Show loading state
-      const deleteButton = document.querySelector('.delete-button-container .btn-danger');
+      // Show loading state (assuming delete button is within the form/dialog)
+      const deleteButton = document.querySelector('#gpDialog .btn-danger'); // More specific selector
       if (deleteButton) {
         deleteButton.disabled = true;
         deleteButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Deleting...';
       }
-      
+
       // Send DELETE request to API
-      const response = await fetch(`/api/gps?id=${encodeURIComponent(id)}`, {
+      const response = await fetch(`/api/gps/${encodeURIComponent(id)}`, { // Use path parameter for ID
         method: 'DELETE'
       });
-      
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Error deleting generic product');
+         // Attempt to parse error message, default if parsing fails or no message
+         let errorMsg = 'Error deleting generic product';
+         try {
+            const errorData = await response.json();
+            errorMsg = errorData.error || errorMsg;
+         } catch (parseError) {
+            console.warn('Could not parse error response body:', parseError);
+         }
+         throw new Error(errorMsg);
       }
-      
+
       // Close dialog
       gpDialog.close();
-      
+
       // Refresh table
-      gpsTable.fetchData();
-      
+      await gpsTable.fetchData(); // Use await
+
       // Show success message
       showNotification('Generic product deleted successfully!', 'success');
     } catch (error) {
       console.error('Error deleting generic product:', error);
       showNotification(error.message || 'Error deleting generic product', 'danger');
     }
+    // Note: Button state reset might happen automatically if the dialog closes
   }
   
   // Function to show notifications

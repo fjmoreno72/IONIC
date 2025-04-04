@@ -715,15 +715,15 @@
     "id": "GP-0004"
   },
   {
-    "name": "DNS \ufeffZone Authoritative",
-    "description": "DNS \ufeffZone Authoritative",
-    "iconPath": "./image/gp/gp_icon_dns_\ufeffzone_authoritative.jpg",
+    "name": "DNS ﻿Zone Authoritative",
+    "description": "DNS ﻿Zone Authoritative",
+    "iconPath": "./image/gp/gp_icon_dns_﻿zone_authoritative.jpg",
     "id": "GP-0008"
   },
   {
-    "name": "D\ufeffNS Resolvers",
-    "description": "D\ufeffNS Resolvers",
-    "iconPath": "./image/gp/gp_icon_d\ufeffns_resolvers.jpg",
+    "name": "D﻿NS Resolvers",
+    "description": "D﻿NS Resolvers",
+    "iconPath": "./image/gp/gp_icon_d﻿ns_resolvers.jpg",
     "id": "GP-0009"
   },
   {

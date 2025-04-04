@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load GPs data for reference
   async function loadGPsData() {
     try {
-      const response = await fetch('/static/ASC/data/gps.json');
+      const response = await fetch('/api/gps'); // Use the API endpoint
       if (!response.ok) {
         throw new Error('Failed to load GPs data');
       }

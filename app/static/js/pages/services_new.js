@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // First fetch the GPs data to build the ID to name mapping
-  fetch('/static/ASC/data/gps.json')
+  // First fetch the GPs data from the API to build the ID to name mapping
+  fetch('/api/gps') // Use the API endpoint
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error fetching GPs! status: ${response.status}`);

@@ -111,7 +111,7 @@ export class LinkForm {
    */
   async loadGPs() {
     try {
-      const response = await fetch('/static/ASC/data/gps.json');
+      const response = await fetch('/api/gps'); // Use the API endpoint
       if (!response.ok) {
         throw new Error('Failed to load Generic Products data');
       }

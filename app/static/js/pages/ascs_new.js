@@ -58,17 +58,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
   
-  // Fetch GPs data for GP name lookup
+  // Fetch GPs data for GP name lookup from the API
   const fetchGpsData = async () => {
     try {
-      const response = await fetch('/static/ASC/data/gps.json');
+      const response = await fetch('/api/gps'); // Use the API endpoint
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       gpsData = await response.json();
+      console.log('Successfully fetched GPs data:', gpsData.length, 'items'); // Log success
       return gpsData;
     } catch (error) {
-      console.error('Error fetching GPs data:', error);
+      console.error('!!! Critical Error fetching GPs data:', error.message, error.stack); // Log detailed error
+      // Display error to user potentially?
+      // For now, return empty array but log prominently
+      gpsData = []; // Ensure gpsData is empty on error
       return [];
     }
   };

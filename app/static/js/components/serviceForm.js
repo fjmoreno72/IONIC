@@ -188,9 +188,14 @@ export class ServiceForm {
     const container = this.formElement.querySelector('#gpContainer');
     if (!container) return;
     
-    // First, fetch the GP data to get the options
-    fetch('/static/ASC/data/gps.json')
-      .then(response => response.json())
+    // First, fetch the GP data from the API to get the options
+    fetch('/api/gps') // Use the API endpoint
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(gpData => {
         // Clear the loading spinner
         container.innerHTML = '';

@@ -2,8 +2,12 @@
   {
     "name": "Air C2 Information Exchange",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0001"
+    "gps": [
+      "GP-0031",
+      "GP-0032"
+    ],
+    "id": "SRV-0001",
+    "originalId": "SRV-0001"
   },
   {
     "name": "Fires Information Exchange",
@@ -46,11 +50,15 @@
     "name": "Data Links",
     "spiral": "SP5",
     "gps": [
-      "GP-0001"
+      "GP-0001",
+      "GP-0003",
+      "GP-0002",
+      "GP-0037"
     ],
+    "id": "SRV-0008",
     "iconPath": "./image/srv/icon_data_links.png",
     "functionalDiagramPath": "./image/srv/diagram_data_links.jpg",
-    "id": "SRV-0008"
+    "originalId": "SRV-0008"
   },
   {
     "name": "Friendly Force Tracking",

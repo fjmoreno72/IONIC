@@ -65,4 +65,35 @@ The process for each JSON file (`<entity>.json`, e.g., `affiliates.json`) involv
   * Modified `app/static/js/components/tableCore.js` to correctly handle data passed via the `data` option, fixing an issue where it still tried to fetch using `dataUrl` when `data` was provided.
 * **Isolation:** File renamed to `_services.json`, repository updated.
 
+### 3. Specific Products (`sps.json`)
+
+* **Repository:** `app/data_access/sps_repository.py` created.
+* **Backend:** `/api/sps` route in `app/routes/views.py` updated to use the repository.
+* **Frontend:**
+  * `app/static/js/pages/sps_new.js`: `DataTable` `dataUrl` changed to `/api/sps`.
+  * `app/static/js/pages/ascs_new.js`: Fetch changed from static file (`/static/ASC/data/sps.json`) to API endpoint (`/api/sps`) for lookups.
+  * `app/static/ASC/js/data-manager.js`: Added fetch for `/api/sps` during initialization to make SP data available for potential lookups (e.g., Kanban board).
+* **Fixes Applied:**
+  * **Repository Context:** Modified `app/data_access/sps_repository.py` to define the `JSON_FILE_PATH` *inside* the `get_all_sps` and `save_sps` functions. Defining it at the module level caused a `RuntimeError: Working outside of application context` because `current_app` was accessed during import time.
+  * **Frontend Fetch Verification:** Corrected the fetch URL in `app/static/js/pages/ascs_new.js` after initial testing showed SP IDs instead of names. This highlighted the need to double-check that *all* identified frontend fetches are correctly updated to the new API endpoint.
+* **Isolation:** File renamed to `_sps.json`, repository updated.
+
+### 4. Configuration Items (`configItem.json`)
+
+* **Initial Approach & Problem:** Initially attempted refactoring while using the `Name` field as the primary identifier for CIs. This led to bugs during testing, specifically when renaming items (updates were treated as creations) and when trying to revert a name change (incorrect uniqueness validation).
+* **Revised Strategy:** Switched to using a unique, auto-generated `id` field (`CI-xxxx`) as the primary identifier for each configuration item. This required a more extensive refactoring but provided a robust solution.
+* **Data Update:** Added a unique `id` field to each existing object in `app/static/ASC/data/configItem.json`.
+* **Repository:** `app/data_access/config_items_repository.py` created.
+* **Backend:** `/api/config-items` route in `app/routes/config_items.py` updated:
+    * POST handler now generates and assigns a new unique `id`.
+    * PUT and DELETE handlers now identify items by `id`.
+    * Name uniqueness check for PUT requests correctly excludes the item being edited (identified by `id`).
+* **Frontend:**
+    * `app/static/js/components/configItemForm.js`: Updated to store and submit the `id` during edits and pass the `id` for delete operations. Removed reliance on `originalName`.
+    * `app/static/js/pages/CI_new.js`: Updated `saveConfigItem`, `deleteConfigItem`, and `isNameUnique` functions to use `id` instead of `Name`. Added `id` column to the `DataTable`. Fixed HTML template (`app/templates/pages/CI_new.html`) to include the `<th>ID</th>` header.
+    * `app/static/js/pages/gps_new.js`: Updated `loadConfigItemsData` to fetch from `/api/config-items`. Updated `showCiModal` and related functions (`showEditCiForm`) to use `id` for identifying CIs when editing/deleting from the GP page modal. Added logic to refresh CI data and re-render the GP table after CI modifications in the modal to update the count badge. Fixed a minor UI bug where help text was duplicated.
+* **Lesson Learned (Identifiers):** Using mutable fields like `Name` as primary identifiers is error-prone, especially for updates/renames. Employing unique, immutable IDs (like auto-generated `CI-xxxx`) is crucial for reliable CRUD operations.
+* **Lesson Learned (UI Updates):** When data used for display (like the CI count badge on the GP page) is modified indirectly (e.g., through a modal), ensure the underlying data source is refreshed and the relevant component is re-rendered to reflect the changes immediately.
+* **Isolation:** File renamed to `_configItem.json`, repository updated.
+
 By following this strategy and learning from the encountered issues, refactoring the remaining JSON files should be a smoother process.

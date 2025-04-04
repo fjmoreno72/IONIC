@@ -316,7 +316,7 @@
     "ascScore": "100%",
     "gpInstances": [
       {
-        "gpId": "GP-0010",
+        "gpId": "GP-0125",
         "gpScore":"100%",
         "spInstances": [
           {
@@ -338,7 +338,7 @@
         "instanceLabel": "AFFO MAIL SERVER"
       },
       {
-        "gpId": "GP-0011",
+        "gpId": "GP-0126",
         "gpScore":"100%",
         "spInstances": [
           {

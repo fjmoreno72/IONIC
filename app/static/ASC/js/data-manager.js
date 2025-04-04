@@ -12,6 +12,7 @@ export class DataManager {
     this.ascs = [];
     this.affiliates = {};
     this.services = {};
+    this.sps = {}; // Added for SP lookup
     this.loaded = false;
     this.error = null;
     this.filters = {
@@ -28,16 +29,18 @@ export class DataManager {
    */
   async init() {
     try {
-      // Load all required data in parallel
-      const [ascsData, affiliatesData, servicesData] = await Promise.all([
-        this.fetchData("/static/ASC/data/ascs.json"),
+      // Load all required data in parallel (including SPs)
+      const [ascsData, affiliatesData, servicesData, spsData] = await Promise.all([
+        this.fetchData("/static/ASC/data/ascs.json"), // TODO: Refactor ASCs next?
         this.fetchData("/api/affiliates"), // Fetch affiliates via API
-        this.fetchData("/api/services") // Fetch services via API
+        this.fetchData("/api/services"), // Fetch services via API
+        this.fetchData("/api/sps") // Fetch SPs via API
       ]);
 
       // Process the data
       this.processAffiliates(affiliatesData);
       this.processServices(servicesData);
+      this.processSps(spsData); // Process SPs
       this.ascs = ascsData;
       
       this.loaded = true;
@@ -100,6 +103,19 @@ export class DataManager {
     
     // Sort by service name
     this.servicesOptions.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  
+  /**
+   * Process SPs data into a lookup object
+   * @param {Array} sps - Raw SPs data
+   */
+  processSps(sps) {
+    this.sps = {};
+    // Note: No options needed for SPs in data-manager currently
+    
+    sps.forEach(sp => {
+      this.sps[sp.id] = sp;
+    });
   }
 
   /**
@@ -221,6 +237,15 @@ export class DataManager {
     //   console.warn(`Service ID ${serviceId} not found in map. Available keys:`, Object.keys(this.services));
     // }
     return this.services[serviceId]?.name || "Unknown Service";
+  }
+  
+  /**
+   * Get SP name from ID
+   * @param {string} spId - SP ID
+   * @returns {string} SP name or fallback text
+   */
+  getSpName(spId) {
+    return this.sps[spId]?.name || "Unknown SP";
   }
 
   /**

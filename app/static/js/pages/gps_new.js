@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   async function loadConfigItemsData() {
     try {
-      const response = await fetch('/static/ASC/data/configItem.json');
+      const response = await fetch('/api/config-items'); // Changed from static file to API endpoint
       if (!response.ok) {
         throw new Error('Failed to load Configuration Items data');
       }
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const gpsTable = new DataTable({
     tableId: 'gpsTable',
     tableBodyId: 'gpsTableBody',
-    dataUrl: '/static/ASC/data/gps.json',
+    dataUrl: '/static/ASC/data/gps.json', // Keep fetching static GP data for now
     searchInputId: 'searchInput',
     itemsPerPageSelectId: 'itemsPerPageSelect',
     pageInfoId: 'pageInfo',
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
       ciDialog.open();
       
       // Fetch the configuration items data
-      const response = await fetch('/static/ASC/data/configItem.json');
+      const response = await fetch('/api/config-items'); // Changed from static file to API endpoint
       const ciData = await response.json();
       
       // Filter for items associated with the selected GP
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td class="text-center">${ci.ConfigurationAnswerType || ''}</td>
                 <td class="text-center">
                   <button type="button" class="btn btn-sm btn-outline-primary edit-ci-btn" 
-                          data-ci-name="${ci.Name}">
+                          data-ci-id="${ci.id}"> <!-- Use data-ci-id -->
                     <i class="fas fa-edit"></i>
                   </button>
                 </td>
@@ -320,15 +320,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
       
-      // Add event listeners for edit buttons
+      // Add event listeners for edit buttons (now using ID)
       const editButtons = document.querySelectorAll('.edit-ci-btn');
       editButtons.forEach(button => {
         button.addEventListener('click', () => {
-          const ciName = button.dataset.ciName;
-          const ci = ciData.find(item => item.Name === ciName);
+          const ciId = button.dataset.ciId; // Get ID from data attribute
+          const ci = ciData.find(item => item.id === ciId); // Find by ID
           if (ci) {
             // Open the edit CI form
-            showEditCiForm(ci, gpId, gpName);
+            showEditCiForm(ci, gpId, gpName); // Pass the found CI object
           }
         });
       });
@@ -406,7 +406,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show success notification
             showNotification('Configuration item added successfully!', 'success');
             
-            // Get updated data and reopen the CI list view
+            // Reload CI data, re-render GP table, then show updated modal
+            await loadConfigItemsData(); 
+            gpsTable.renderTable(); 
             showCiModal(gpId, gpName);
           } catch (error) {
             console.error('Error saving configuration item:', error);
@@ -455,13 +457,13 @@ document.addEventListener('DOMContentLoaded', function() {
               if (gpNames.length > 0) {
                 form.gpDropdown.setValues(gpNames);
                 
-                // Make the selected GP read-only in the form's context
-                const gpContainer = form.element.querySelector('#gpContainer');
-                if (gpContainer) {
-                  const note = document.createElement('div');
-                  note.className = 'text-muted small mt-1';
-                  note.textContent = 'This Configuration Item is being created specifically for ' + gpName;
-                  gpContainer.appendChild(note);
+                // Update the help text below the dropdown for context
+                // Use general sibling combinator (~) for robustness and check flag
+                const helpTextElement = form.element.querySelector('#gpContainer ~ small.text-muted'); 
+                if (helpTextElement && !helpTextElement.dataset.gpContextSet) {
+                  helpTextElement.textContent = 'This Configuration Item is being created specifically for ' + gpName + '. Add more GPs if needed.';
+                  helpTextElement.style.fontWeight = 'bold'; // Make it stand out slightly
+                  helpTextElement.dataset.gpContextSet = 'true'; // Mark as set
                 }
               }
             }
@@ -541,7 +543,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show success notification
             showNotification('Configuration item updated successfully!', 'success');
             
-            // Get updated data and reopen the CI list view
+            // Reload CI data, re-render GP table, then show updated modal
+            await loadConfigItemsData();
+            gpsTable.renderTable();
             showCiModal(gpId, gpName);
           } catch (error) {
             console.error('Error updating configuration item:', error);
@@ -565,7 +569,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         }
       },
-      onDelete: async (name) => {
+      onDelete: async (id) => { // Changed parameter from name to id
         try {
           // Show loading state
           const deleteButton = document.querySelector('.delete-button-container .btn-danger');
@@ -574,8 +578,8 @@ document.addEventListener('DOMContentLoaded', function() {
             deleteButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Deleting...';
           }
           
-          // Send DELETE request to API
-          const response = await fetch(`/api/config-items?name=${encodeURIComponent(name)}`, {
+          // Send DELETE request to API using ID
+          const response = await fetch(`/api/config-items?id=${encodeURIComponent(id)}`, { // Use id parameter
             method: 'DELETE'
           });
           
@@ -588,7 +592,13 @@ document.addEventListener('DOMContentLoaded', function() {
           showCiModal(gpId, gpName);
           
           // Show success notification
-          showNotification('Configuration item deleted successfully!', 'success');
+            // Reload CI data, re-render GP table, then show updated modal
+            await loadConfigItemsData();
+            gpsTable.renderTable();
+            showCiModal(gpId, gpName);
+            
+            // Show success notification
+            showNotification('Configuration item deleted successfully!', 'success');
         } catch (error) {
           console.error('Error deleting configuration item:', error);
           showNotification(error.message || 'Error deleting configuration item', 'danger');

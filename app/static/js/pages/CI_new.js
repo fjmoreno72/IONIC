@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ciTable = new DataTable({
       tableId: 'ciTable',
       tableBodyId: 'ciTableBody',
-      dataUrl: '/static/ASC/data/configItem.json',
+      dataUrl: '/api/config-items', // Changed from static file to API endpoint
       searchInputId: 'searchInput',
       itemsPerPageSelectId: 'itemsPerPageSelect',
       pageInfoId: 'pageInfo',
@@ -248,6 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       
       columns: [
+        { key: 'id', label: 'ID', sortable: true, width: '10%' }, // Add ID column
         { key: 'Name', label: 'Name', sortable: true },
         { 
           key: 'GenericProducts', 
@@ -292,12 +293,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Get the row index
         const rowIndex = Array.from(row.parentNode.children).indexOf(row);
         
-        // Get the data for this row
+        // Get the data for this row (which now includes the ID)
         const configItem = ciTable.filteredItems[rowIndex + (ciTable.currentPage - 1) * ciTable.itemsPerPage];
         
         if (configItem) {
           // Open edit dialog with this data
-          openConfigItemDialog(configItem);
+          openConfigItemDialog(configItem); // Pass the full item including ID
         }
       });
     }
@@ -326,9 +327,9 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         }
       },
-      onDelete: (name) => {
+      onDelete: (id) => { // Changed parameter from name to id
         // Handle configuration item deletion
-        deleteConfigItem(name);
+        deleteConfigItem(id); // Pass ID
       }
     });
     
@@ -341,13 +342,14 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Check if a configuration item name is unique
   function isNameUnique(formData) {
-    // If in edit mode and keeping the same name, it's OK
-    if (formData.originalName && formData.originalName === formData.Name) {
-      return true;
-    }
-    
-    // Check all existing items for name uniqueness
-    return !allConfigItems.some(item => item.Name === formData.Name);
+    const newName = formData.Name;
+    const currentId = formData.id; // ID is present if editing
+
+    // Check if the new name exists in *other* items (excluding the item being edited, identified by ID).
+    return !allConfigItems.some(item => 
+      item.Name === newName && // Check if any item's name matches the new name
+      item.id !== currentId    // Exclude the item currently being edited
+    );
   }
   
   // Function to save configuration item
@@ -360,17 +362,22 @@ document.addEventListener('DOMContentLoaded', function() {
         saveButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
       }
       
-      // Store original name for checking if this is an edit
-      const isEditing = allConfigItems.some(item => item.Name === formData.Name);
+      // Determine if this is an edit based on the presence of the ID
+      const isEditing = !!formData.id; 
       const method = isEditing ? 'PUT' : 'POST';
       
+      // Prepare payload (already includes ID if editing)
+      const payload = { ...formData }; 
+      // Remove originalName if it exists (no longer needed)
+      delete payload.originalName; 
+
       // Send request to API
       const response = await fetch('/api/config-items', {
         method: method,
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload) // Send the prepared payload
       });
       
       if (!response.ok) {
@@ -399,8 +406,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Function to delete configuration item
-  async function deleteConfigItem(name) {
+  // Function to delete configuration item by ID
+  async function deleteConfigItem(id) { // Changed parameter from name to id
     try {
       // Show loading state
       const deleteButton = document.querySelector('.delete-button-container .btn-danger');
@@ -409,8 +416,8 @@ document.addEventListener('DOMContentLoaded', function() {
         deleteButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Deleting...';
       }
       
-      // Send DELETE request to API
-      const response = await fetch(`/api/config-items?name=${encodeURIComponent(name)}`, {
+      // Send DELETE request to API using ID
+      const response = await fetch(`/api/config-items?id=${encodeURIComponent(id)}`, { // Use id parameter
         method: 'DELETE'
       });
       

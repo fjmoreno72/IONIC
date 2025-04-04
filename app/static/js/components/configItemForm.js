@@ -25,7 +25,8 @@ export class ConfigItemForm {
     this.formElement = null;
     this.gpDropdown = null;
     this.isEditMode = !!this.data;
-    this.originalName = this.data?.Name || null; // Store original name for uniqueness check
+    this.itemId = this.data?.id || null; // Store item ID for editing
+    // Removed originalName property
     this.gpMap = new Map(); // Maps GP names to IDs
     this.gpNameMap = new Map(); // Maps GP IDs to names
     
@@ -287,10 +288,11 @@ export class ConfigItemForm {
       GenericProducts: this.getSelectedGPIds()
     };
     
-    // Add the original name for uniqueness checking in edit mode
-    if (this.isEditMode && this.originalName) {
-      formData.originalName = this.originalName;
+    // Add the item ID if in edit mode
+    if (this.isEditMode && this.itemId) {
+      formData.id = this.itemId;
     }
+    // Removed originalName logic
     
     return formData;
   }
@@ -362,9 +364,15 @@ export class ConfigItemForm {
     
     // Show confirmation dialog
     if (window.confirm(`Are you sure you want to delete the "${this.data.Name}" configuration item? This action cannot be undone.`)) {
-      // Call onDelete callback if provided
+      // Call onDelete callback if provided, passing the ID
       if (this.onDelete && typeof this.onDelete === 'function') {
-        this.onDelete(this.data.Name);
+        // Ensure we pass the ID, which is stored in this.itemId or this.data.id
+        const idToDelete = this.data?.id || this.itemId; 
+        if (idToDelete) {
+          this.onDelete(idToDelete); 
+        } else {
+          console.error("Cannot delete: Item ID not found.");
+        }
       }
     }
   }

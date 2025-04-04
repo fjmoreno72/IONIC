@@ -11,6 +11,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, sessio
 # Updated imports
 from app.core.auth import login_required
 from app.data_access.affiliates_repository import get_all_affiliates, save_affiliates # Added import
+from app.data_access.sps_repository import get_all_sps, save_sps # Added SP repository import
 from app.config import settings
 from werkzeug.utils import secure_filename
 
@@ -783,32 +784,17 @@ def manage_sps():
     Returns:
         JSON response with the result of the operation
     """
-    # Corrected path: Use current_app.static_folder for ASC data
-    sps_path = Path(current_app.static_folder) / "ASC" / "data" / "sps.json" # Corrected path
-
-    # Ensure the data directory exists
-    os.makedirs(os.path.dirname(sps_path), exist_ok=True)
+    # Removed direct path construction and directory creation (handled by repository)
     
     try:
         # GET: Return all SPs
         if request.method == 'GET':
-            if not sps_path.exists():
-                return jsonify([])
-                
-            with open(sps_path, 'r') as f:
-                sps = json.load(f)
-                
+            sps = get_all_sps() # Use repository function
             return jsonify(sps)
             
         # POST: Add a new SP
         elif request.method == 'POST':
-            # Load existing data
-            if sps_path.exists():
-                with open(sps_path, 'r') as f:
-                    sps = json.load(f)
-            else:
-                sps = []
-                
+            sps = get_all_sps() # Load existing data via repository
             new_sp = request.json
             
             # Generate a new ID - find the highest existing ID
@@ -838,9 +824,7 @@ def manage_sps():
             # Add to list
             sps.append(new_sp)
             
-            # Save back to file
-            with open(sps_path, 'w') as f:
-                json.dump(sps, f, indent=2)
+            save_sps(sps) # Save back via repository
                 
             return jsonify({
                 'success': True,
@@ -850,13 +834,7 @@ def manage_sps():
             
         # PUT: Update an existing SP
         elif request.method == 'PUT':
-            # Load existing data
-            if not sps_path.exists():
-                return jsonify({'error': 'SPs file not found'}), 404
-                
-            with open(sps_path, 'r') as f:
-                sps = json.load(f)
-                
+            sps = get_all_sps() # Load existing data via repository
             updated_sp = request.json
             
             # Find and update the SP
@@ -874,9 +852,7 @@ def manage_sps():
             if not found:
                 return jsonify({'error': f'SP with ID {sp_id} not found'}), 404
                 
-            # Save back to file
-            with open(sps_path, 'w') as f:
-                json.dump(sps, f, indent=2)
+            save_sps(sps) # Save back via repository
                 
             return jsonify({
                 'success': True,
@@ -886,12 +862,7 @@ def manage_sps():
         
         # DELETE: Delete an SP
         elif request.method == 'DELETE':
-            # Load existing data
-            if not sps_path.exists():
-                return jsonify({'error': 'SPs file not found'}), 404
-                
-            with open(sps_path, 'r') as f:
-                sps = json.load(f)
+            sps = get_all_sps() # Load existing data via repository
             
             # Get the SP ID from query params
             sp_id = request.args.get('id')
@@ -908,9 +879,7 @@ def manage_sps():
             if len(sps) == initial_count:
                 return jsonify({'error': f'SP with ID {sp_id} not found'}), 404
             
-            # Save back to file
-            with open(sps_path, 'w') as f:
-                json.dump(sps, f, indent=2)
+            save_sps(sps) # Save back via repository
             
             # Try to delete the icon file if it exists
             if sp_to_delete and sp_to_delete.get('iconPath'):

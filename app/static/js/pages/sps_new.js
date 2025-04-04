@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const spsTable = new DataTable({
     tableId: 'spsTable',
     tableBodyId: 'spsTableBody',
-    dataUrl: '/static/ASC/data/sps.json',
+    dataUrl: '/api/sps', // Changed from static file to API endpoint
     searchInputId: 'searchInput',
     itemsPerPageSelectId: 'itemsPerPageSelect',
     pageInfoId: 'pageInfo',

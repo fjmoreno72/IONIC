@@ -7,17 +7,19 @@
     "DefaultValue": "TCP/10000",
     "HelpText": "AIRC2 Replication Cross Domain",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0001"
   },
   {
     "Name": "Advertised Unicast IP Subnets",
-    "GenericProducts": [
-      "GP-0034"
-    ],
     "DefaultValue": "",
     "HelpText": "The Unicast subnet(s) 'owned' by this participant. Aggregate as much as possible.",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0034"
+    ],
+    "id": "CI-0002"
   },
   {
     "Name": "All certificates across trust path",
@@ -27,7 +29,8 @@
     "DefaultValue": "",
     "HelpText": "All certificates across the trust path (CA certificates from Root CA down to the Issuing CA for Trust list) or cross-certification certificates",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0003"
   },
   {
     "Name": "Anycast IP Address",
@@ -37,7 +40,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "IP Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0004"
   },
   {
     "Name": "Anycast address(es)",
@@ -47,7 +51,8 @@
     "DefaultValue": "",
     "HelpText": "All Anycast addresses advertised by this router",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0005"
   },
   {
     "Name": "Area of Interest (AOI) Radius",
@@ -57,7 +62,8 @@
     "DefaultValue": "1000 meters",
     "HelpText": "Operationally set relevant AOI",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0006"
   },
   {
     "Name": "Audio Codec",
@@ -67,7 +73,8 @@
     "DefaultValue": "u729/u711",
     "HelpText": "Available audio codecs",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0007"
   },
   {
     "Name": "Authentication Mode",
@@ -77,7 +84,8 @@
     "DefaultValue": "",
     "HelpText": "Either domain integrated or system internal identity management",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0008"
   },
   {
     "Name": "Autonomous System Number (ASN)",
@@ -87,7 +95,8 @@
     "DefaultValue": "",
     "HelpText": "ASN advertised by this participant ",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0009"
   },
   {
     "Name": "Azimuth",
@@ -97,7 +106,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0010"
   },
   {
     "Name": "BGP Router ID",
@@ -107,7 +117,8 @@
     "DefaultValue": "",
     "HelpText": "IP Address of the BGP ",
     "ConfigurationAnswerType": "IP Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0011"
   },
   {
     "Name": "Bandwidth",
@@ -117,7 +128,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0012"
   },
   {
     "Name": "Bias",
@@ -127,7 +139,8 @@
     "DefaultValue": "\t 0",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0013"
   },
   {
     "Name": "C2/NonC2",
@@ -137,7 +150,8 @@
     "DefaultValue": "Non C2",
     "HelpText": "pick either:  \"C2\"  or \"Non C2\"",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "C2, Non C2"
+    "AnswerContent": "C2, Non C2",
+    "id": "CI-0014"
   },
   {
     "Name": "CA Cert",
@@ -147,7 +161,8 @@
     "DefaultValue": "",
     "HelpText": "Location of CA Cert ",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0015"
   },
   {
     "Name": "CAC Mechanism",
@@ -157,7 +172,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "Max Connections, Max BW (Dial Peer), Interface"
+    "AnswerContent": "Max Connections, Max BW (Dial Peer), Interface",
+    "id": "CI-0016"
   },
   {
     "Name": "CM Tool Endpoint URL",
@@ -167,7 +183,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0017"
   },
   {
     "Name": "COP Portal Ports",
@@ -177,7 +194,8 @@
     "DefaultValue": "80,8080",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0018"
   },
   {
     "Name": "COP Portal URL",
@@ -187,7 +205,8 @@
     "DefaultValue": "",
     "HelpText": "example web services: http://portal/Public/Endpoint.aspx",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0019"
   },
   {
     "Name": "COP Sync URL",
@@ -197,7 +216,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0020"
   },
   {
     "Name": "COP Synchronization Port",
@@ -207,7 +227,8 @@
     "DefaultValue": "8080",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0021"
   },
   {
     "Name": "COP Synchronization URL",
@@ -217,7 +238,8 @@
     "DefaultValue": "",
     "HelpText": "example URL: http://portal:8080/NCOPServerSync",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0022"
   },
   {
     "Name": "COP Web Services URL",
@@ -227,7 +249,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0023"
   },
   {
     "Name": "CORBA  Interface URL\u200b",
@@ -237,7 +260,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0024"
   },
   {
     "Name": "CRL HTTP / AIA",
@@ -247,7 +271,8 @@
     "DefaultValue": "80",
     "HelpText": "CRL HTTP /AIA",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0025"
   },
   {
     "Name": "CRL LDAP / AIA",
@@ -257,7 +282,8 @@
     "DefaultValue": "389",
     "HelpText": "CRL LDAP / AIA",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0026"
   },
   {
     "Name": "CRYPTO",
@@ -267,7 +293,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0027"
   },
   {
     "Name": "CSD IWS Replication URL",
@@ -277,7 +304,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0028"
   },
   {
     "Name": "Calendar address",
@@ -287,7 +315,8 @@
     "DefaultValue": "",
     "HelpText": "URL WebHosting address",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0029"
   },
   {
     "Name": "Call Sign",
@@ -298,7 +327,8 @@
     "DefaultValue": "",
     "HelpText": "Call sign",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0030"
   },
   {
     "Name": "Call signs",
@@ -308,7 +338,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0031"
   },
   {
     "Name": "Certificate Request Authority",
@@ -318,7 +349,8 @@
     "DefaultValue": "",
     "HelpText": "URL for the RA",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0032"
   },
   {
     "Name": "Certificate file",
@@ -328,7 +360,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0033"
   },
   {
     "Name": "Channel",
@@ -338,7 +371,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0034"
   },
   {
     "Name": "Chat Room JID",
@@ -348,7 +382,8 @@
     "DefaultValue": "",
     "HelpText": "Name of the Chats rooms connected on the application",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0035"
   },
   {
     "Name": "Circuit - DSCP Value(s)",
@@ -358,7 +393,8 @@
     "DefaultValue": "56/58/60/62",
     "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0036"
   },
   {
     "Name": "Classification Marking",
@@ -368,7 +404,8 @@
     "DefaultValue": "",
     "HelpText": "list of classification markings used to configure server and clients",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0037"
   },
   {
     "Name": "Codec",
@@ -378,7 +415,8 @@
     "DefaultValue": "",
     "HelpText": "Available codecs",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0038"
   },
   {
     "Name": "Collaboration URL",
@@ -388,7 +426,8 @@
     "DefaultValue": "",
     "HelpText": "URL for test library",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0039"
   },
   {
     "Name": "Conference Test Number",
@@ -399,7 +438,8 @@
     "DefaultValue": "",
     "HelpText": "E164 number to use for testing",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0040"
   },
   {
     "Name": "Conference Type",
@@ -409,7 +449,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "AUdio, Video , Audio & Video "
+    "AnswerContent": "AUdio, Video , Audio & Video ",
+    "id": "CI-0041"
   },
   {
     "Name": "Crypto Type (NIP-G)",
@@ -419,7 +460,8 @@
     "DefaultValue": "TCE621",
     "HelpText": "",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "TCE621B,TCE621/C,CP109,SIMA,KG175"
+    "AnswerContent": "TCE621B,TCE621/C,CP109,SIMA,KG175",
+    "id": "CI-0042"
   },
   {
     "Name": "Cryptographic KSK Algorithn",
@@ -429,7 +471,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0043"
   },
   {
     "Name": "DB Name",
@@ -439,7 +482,8 @@
     "DefaultValue": "",
     "HelpText": "Not required for OS3",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0044"
   },
   {
     "Name": "DB Port",
@@ -449,7 +493,8 @@
     "DefaultValue": "TCP/1521",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0045"
   },
   {
     "Name": "DB Replication Role",
@@ -459,7 +504,8 @@
     "DefaultValue": "Slave",
     "HelpText": "",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "Master,Slave"
+    "AnswerContent": "Master,Slave",
+    "id": "CI-0046"
   },
   {
     "Name": "DB Site Name",
@@ -469,7 +515,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0047"
   },
   {
     "Name": "DIT TOP Level",
@@ -479,7 +526,8 @@
     "DefaultValue": "",
     "HelpText": "full CN patch to the TOP level (for pull)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0048"
   },
   {
     "Name": "DNS Record Catalog system",
@@ -489,7 +537,8 @@
     "DefaultValue": "",
     "HelpText": "DNS",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0049"
   },
   {
     "Name": "DNS Record Event Management system",
@@ -499,7 +548,8 @@
     "DefaultValue": "",
     "HelpText": "DNS Record",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0050"
   },
   {
     "Name": "DNS Record Incident Management system",
@@ -509,7 +559,8 @@
     "DefaultValue": "",
     "HelpText": "DNS Record",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0051"
   },
   {
     "Name": "DNS Record Location Management system",
@@ -519,7 +570,8 @@
     "DefaultValue": "",
     "HelpText": "DNS Record",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0052"
   },
   {
     "Name": "DNS Record SACM system",
@@ -529,7 +581,8 @@
     "DefaultValue": "DNS Record",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0053"
   },
   {
     "Name": "DNS Record service fulfillment system",
@@ -539,7 +592,8 @@
     "DefaultValue": "",
     "HelpText": "DNS Record",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0054"
   },
   {
     "Name": "DNSSEC DS Record",
@@ -549,7 +603,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0055"
   },
   {
     "Name": "DSN",
@@ -559,7 +614,8 @@
     "DefaultValue": "",
     "HelpText": "Delivery Status Notification List of DSN messages allowed by the MNP",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0056"
   },
   {
     "Name": "Data Base Port",
@@ -569,7 +625,8 @@
     "DefaultValue": "15210",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0057"
   },
   {
     "Name": "Data Share Port",
@@ -579,7 +636,8 @@
     "DefaultValue": "TCP/445",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0058"
   },
   {
     "Name": "Database Name",
@@ -590,7 +648,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0059"
   },
   {
     "Name": "Destination web service URL",
@@ -600,7 +659,8 @@
     "DefaultValue": "",
     "HelpText": "Destination web service URL",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0060"
   },
   {
     "Name": "Dissemination frequency",
@@ -610,7 +670,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0061"
   },
   {
     "Name": "Drop Track Timer",
@@ -620,7 +681,8 @@
     "DefaultValue": "45 seconds",
     "HelpText": "Drop reported tracks prior to STANAG 5516 retransmission time",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0062"
   },
   {
     "Name": "E164",
@@ -630,7 +692,8 @@
     "DefaultValue": "",
     "HelpText": "The E164 phone number for this asset",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0063"
   },
   {
     "Name": "E164 Number",
@@ -640,7 +703,8 @@
     "DefaultValue": "",
     "HelpText": "The E164 phone number for this asset",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0064"
   },
   {
     "Name": "EVE Web URL",
@@ -650,7 +714,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0065"
   },
   {
     "Name": "Elevation",
@@ -660,7 +725,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0066"
   },
   {
     "Name": "Email",
@@ -670,7 +736,8 @@
     "DefaultValue": "",
     "HelpText": "email address",
     "ConfigurationAnswerType": "Email Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0067"
   },
   {
     "Name": "Email Address #2 for CIP Exchange",
@@ -680,7 +747,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Email Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0068"
   },
   {
     "Name": "Email Address for Automatic Publication",
@@ -690,7 +758,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Email Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0069"
   },
   {
     "Name": "Email address",
@@ -702,7 +771,8 @@
     "DefaultValue": "",
     "HelpText": "Email Address",
     "ConfigurationAnswerType": "Email Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0070"
   },
   {
     "Name": "Email domains",
@@ -713,7 +783,8 @@
     "DefaultValue": "",
     "HelpText": "Accepted email domains",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0071"
   },
   {
     "Name": "FFT Message Standards",
@@ -725,7 +796,8 @@
     "DefaultValue": "FFI XML MTF - APP-11(D)(1)",
     "HelpText": "Enter the Message Standards used: i.e. NFFI 1.3,  FFI XML MTF - APP-11(D)(1)",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "NFFI 1.3,  FFI XML MTF - APP-11(D)(1)"
+    "AnswerContent": "NFFI 1.3,  FFI XML MTF - APP-11(D)(1)",
+    "id": "CI-0072"
   },
   {
     "Name": "FFT Protocols Supported",
@@ -737,7 +809,8 @@
     "DefaultValue": "ADatP-36 IP1",
     "HelpText": "Enter the Protocols Supported: i.e. D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub.",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub."
+    "AnswerContent": "D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub.",
+    "id": "CI-0073"
   },
   {
     "Name": "FSMID prefix",
@@ -747,7 +820,8 @@
     "DefaultValue": "",
     "HelpText": "Federated Service Management Record Identifier Prefix (MMM-AAA-NNN)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0074"
   },
   {
     "Name": "Forward Delegated Zones",
@@ -758,7 +832,8 @@
     "DefaultValue": "",
     "HelpText": "Forward Zones Delegated from the DNS Root Server",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0075"
   },
   {
     "Name": "Frequency",
@@ -769,7 +844,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0076"
   },
   {
     "Name": "Frequency code",
@@ -779,7 +855,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0077"
   },
   {
     "Name": "Geo Replication Folder",
@@ -789,7 +866,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0078"
   },
   {
     "Name": "Glue Records",
@@ -800,7 +878,8 @@
     "DefaultValue": "",
     "HelpText": "Glue Records for each zone delegation",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0079"
   },
   {
     "Name": "Group claims",
@@ -810,7 +889,8 @@
     "DefaultValue": "",
     "HelpText": "If role based access, name security groups for web applications",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0080"
   },
   {
     "Name": "Guard Address",
@@ -820,7 +900,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0081"
   },
   {
     "Name": "HTTP CRL FULL URL",
@@ -830,7 +911,8 @@
     "DefaultValue": "",
     "HelpText": "Full URL as in CDP",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0082"
   },
   {
     "Name": "HTTP CRL PRT",
@@ -840,7 +922,8 @@
     "DefaultValue": "TCP/80",
     "HelpText": "Full URL as in CDP",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0083"
   },
   {
     "Name": "HTTP end-point IP for CRL retrieval",
@@ -850,7 +933,8 @@
     "DefaultValue": "",
     "HelpText": "IP of the HTTP service",
     "ConfigurationAnswerType": "IP Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0084"
   },
   {
     "Name": "HTTP end-point URL for CRL retrieval",
@@ -860,7 +944,8 @@
     "DefaultValue": "",
     "HelpText": "Supply the port for the CRL",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0085"
   },
   {
     "Name": "High Throughput - DSCP Value(s)",
@@ -870,7 +955,8 @@
     "DefaultValue": "8/10/12/14",
     "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0086"
   },
   {
     "Name": "Home Channel Frequency code",
@@ -880,7 +966,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0087"
   },
   {
     "Name": "Hosted Forward Zone(s)",
@@ -891,7 +978,8 @@
     "DefaultValue": "",
     "HelpText": "Forward Zone(s) hosted by this ANS",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0088"
   },
   {
     "Name": "Hosted Reverse Zone(s)",
@@ -902,7 +990,8 @@
     "DefaultValue": "",
     "HelpText": "Reverse Zone(s) hosted by Authoritative DNS servers",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0089"
   },
   {
     "Name": "ID Provider Unique Identifier",
@@ -912,7 +1001,8 @@
     "DefaultValue": "",
     "HelpText": "Issuer value in the security token that uniquely identifies the Claims Provider",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0090"
   },
   {
     "Name": "IP Address (Anycast)",
@@ -922,7 +1012,8 @@
     "DefaultValue": "",
     "HelpText": "The Anycast IP used by the DNS Root server",
     "ConfigurationAnswerType": "IP Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0091"
   },
   {
     "Name": "IP DB Server",
@@ -933,7 +1024,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0092"
   },
   {
     "Name": "IPL PORT",
@@ -943,7 +1035,8 @@
     "DefaultValue": "",
     "HelpText": "Provide the port for the IPL Provider",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0093"
   },
   {
     "Name": "IRM Organization",
@@ -953,7 +1046,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0094"
   },
   {
     "Name": "Instance API KEY",
@@ -963,7 +1057,8 @@
     "DefaultValue": "",
     "HelpText": "Unique instance hex key used by subordinated units as superior identifier",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0095"
   },
   {
     "Name": "Instance Name",
@@ -973,7 +1068,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0096"
   },
   {
     "Name": "Instance URN",
@@ -983,7 +1079,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0097"
   },
   {
     "Name": "IntelFS SiteID",
@@ -995,7 +1092,8 @@
     "DefaultValue": "",
     "HelpText": "Not required for OS3",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0098"
   },
   {
     "Name": "J12.6 Environment",
@@ -1005,7 +1103,8 @@
     "DefaultValue": "Land (Env=5)",
     "HelpText": "Land (Env=5), Surface (Env=3), and No Statement (Env = 0) Service filter J12.6 messages from other environments",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "Land (Env=5), Surface (Env=3), and No Statement (Env = 0)"
+    "AnswerContent": "Land (Env=5), Surface (Env=3), and No Statement (Env = 0)",
+    "id": "CI-0099"
   },
   {
     "Name": "J12.6 Lockout Period",
@@ -1015,7 +1114,8 @@
     "DefaultValue": "45 seconds",
     "HelpText": "Prevent response to repeated/retransmitted J12.6 messages",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0100"
   },
   {
     "Name": "J12.6 Originator JU",
@@ -1025,7 +1125,8 @@
     "DefaultValue": "",
     "HelpText": "List of JUs authorized to trigger service Service filter J12.6 messages from extra JUs",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0101"
   },
   {
     "Name": "J12.6 Reporting Area",
@@ -1035,7 +1136,8 @@
     "DefaultValue": "",
     "HelpText": "Geographic area to respond to J12.6 Service filter J12.6 messages from outside geographic reporting area",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0102"
   },
   {
     "Name": "J12.6 SID",
@@ -1045,7 +1147,8 @@
     "DefaultValue": "",
     "HelpText": "0, 9, 10 Service filter J12.6 messages with other settings",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "0, 9, 10"
+    "AnswerContent": "0, 9, 10",
+    "id": "CI-0103"
   },
   {
     "Name": "J3.2 Emergency Indicator",
@@ -1055,7 +1158,8 @@
     "DefaultValue": "0 (No Statement)",
     "HelpText": "Emergency Indicator not set unless PLI ALERT status indicates it or operationally directed",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0104"
   },
   {
     "Name": "J3.2 Force Tell Indicator",
@@ -1065,7 +1169,8 @@
     "DefaultValue": "1 (Force Tell Status)",
     "HelpText": "Force Tell Indicator set unless operationally directed otherwise",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0105"
   },
   {
     "Name": "J3.2 Passive/Active Sensor",
@@ -1075,7 +1180,8 @@
     "DefaultValue": "0 (Passive)",
     "HelpText": "Fixed Value",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "0 (Passive)"
+    "AnswerContent": "0 (Passive)",
+    "id": "CI-0106"
   },
   {
     "Name": "J3.2 Track Quality",
@@ -1085,7 +1191,8 @@
     "DefaultValue": "9",
     "HelpText": "If reported information does not enable computation of Track Quality",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0107"
   },
   {
     "Name": "J3.5 Emergency Indicator",
@@ -1095,7 +1202,8 @@
     "DefaultValue": "0 (No Statement)",
     "HelpText": "Emergency Indicator not set unless PLI ALERT status indicates it or operationally directed",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0108"
   },
   {
     "Name": "J3.5 Force Tell Indicator",
@@ -1105,7 +1213,8 @@
     "DefaultValue": "1 (Force Tell Status)",
     "HelpText": "Force Tell Indicator set unless operationally directed otherwise",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0109"
   },
   {
     "Name": "J3.5 Passive/Active Sensor",
@@ -1115,7 +1224,8 @@
     "DefaultValue": "0 (Passive)",
     "HelpText": "Fixed Value",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "0 (Passive)"
+    "AnswerContent": "0 (Passive)",
+    "id": "CI-0110"
   },
   {
     "Name": "J3.5 Track Quality",
@@ -1125,7 +1235,8 @@
     "DefaultValue": "9",
     "HelpText": "If reported information does not enable computation of Track Quality",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0111"
   },
   {
     "Name": "JRE ID",
@@ -1135,7 +1246,8 @@
     "DefaultValue": "",
     "HelpText": "JRE ID assigned to you Data Link Server",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0112"
   },
   {
     "Name": "JREAP Time Sync (Preferred)",
@@ -1145,7 +1257,8 @@
     "DefaultValue": "UTC",
     "HelpText": "pick either:  \"UTC\"  or \"RTT\"",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "UTC,RTT"
+    "AnswerContent": "UTC,RTT",
+    "id": "CI-0113"
   },
   {
     "Name": "JREAP Time Sync (Supported)",
@@ -1155,7 +1268,8 @@
     "DefaultValue": "UTC",
     "HelpText": "pick either:  \"UTC\"  or \"RTT\"",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "UTC,RTT"
+    "AnswerContent": "UTC,RTT",
+    "id": "CI-0114"
   },
   {
     "Name": "JTS Database Password",
@@ -1165,7 +1279,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0115"
   },
   {
     "Name": "JTS Username",
@@ -1175,7 +1290,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0116"
   },
   {
     "Name": "JTSLink Service URL",
@@ -1185,7 +1301,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0117"
   },
   {
     "Name": "JU Number",
@@ -1195,7 +1312,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0118"
   },
   {
     "Name": "KML File URL",
@@ -1205,7 +1323,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0119"
   },
   {
     "Name": "Keymat Provider (NIP-G)",
@@ -1215,7 +1334,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0120"
   },
   {
     "Name": "LC2IS Web Services",
@@ -1225,7 +1345,8 @@
     "DefaultValue": "",
     "HelpText": "Example URL:\" http://lc2is-webservices.domain/LC2IS-Overlays/LC2ISOverlays.svc\"",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0121"
   },
   {
     "Name": "LDAP PORT",
@@ -1235,7 +1356,8 @@
     "DefaultValue": "TCP/389",
     "HelpText": "LDAP CRL PORT",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": "LDAP DEFAULT CRL PORT"
+    "AnswerContent": "LDAP DEFAULT CRL PORT",
+    "id": "CI-0122"
   },
   {
     "Name": "LDAP end-point IP for CRL retrieval",
@@ -1245,7 +1367,8 @@
     "DefaultValue": "",
     "HelpText": "IP of the LDAP repository",
     "ConfigurationAnswerType": "IP Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0123"
   },
   {
     "Name": "LDAP end-point URL for CRL retrieval",
@@ -1255,7 +1378,8 @@
     "DefaultValue": "",
     "HelpText": "Full URL as in CDP",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0124"
   },
   {
     "Name": "LDAP port",
@@ -1265,7 +1389,8 @@
     "DefaultValue": "636",
     "HelpText": "Which port is used for LDAP synchronization",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": "389,636"
+    "AnswerContent": "389,636",
+    "id": "CI-0125"
   },
   {
     "Name": "LOCID",
@@ -1275,7 +1400,8 @@
     "DefaultValue": "",
     "HelpText": "Location ID of this router (if applicable)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0126"
   },
   {
     "Name": "Library ID",
@@ -1287,7 +1413,8 @@
     "DefaultValue": "",
     "HelpText": "Name of the local CSD IPL library, e.g. XXN-NATO-003",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0127"
   },
   {
     "Name": "Library Identifier",
@@ -1297,7 +1424,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0128"
   },
   {
     "Name": "Local Chat Room",
@@ -1307,7 +1435,8 @@
     "DefaultValue": "",
     "HelpText": "Room name of Local Chat Server",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0129"
   },
   {
     "Name": "LocalAgency",
@@ -1318,7 +1447,8 @@
     "DefaultValue": "",
     "HelpText": "System",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0130"
   },
   {
     "Name": "Logistics Chat Room",
@@ -1328,7 +1458,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0131"
   },
   {
     "Name": "Low Delay (Stream) - DSCP Value(s)",
@@ -1338,7 +1469,8 @@
     "DefaultValue": "16/18/20/22",
     "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0132"
   },
   {
     "Name": "Low priority - DSCP Value(s)",
@@ -1348,7 +1480,8 @@
     "DefaultValue": "0/2/4/6",
     "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0133"
   },
   {
     "Name": "MDN",
@@ -1358,7 +1491,8 @@
     "DefaultValue": "",
     "HelpText": "Message Disposition Notification Description of allowed MDN messages in MNP",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0134"
   },
   {
     "Name": "MTU",
@@ -1371,7 +1505,8 @@
     "DefaultValue": "1300",
     "HelpText": "Configured MTU Size",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0135"
   },
   {
     "Name": "MX Records",
@@ -1381,7 +1516,8 @@
     "DefaultValue": "",
     "HelpText": "MX dns Records",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0136"
   },
   {
     "Name": "Mail routing",
@@ -1391,7 +1527,8 @@
     "DefaultValue": "",
     "HelpText": "Mx dns record(s)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0137"
   },
   {
     "Name": "Max. PDU Size (MB)",
@@ -1401,7 +1538,8 @@
     "DefaultValue": "",
     "HelpText": "Maximum PDU Size in MB",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0138"
   },
   {
     "Name": "Maximum Offset",
@@ -1411,7 +1549,8 @@
     "DefaultValue": "0.5",
     "HelpText": "Time in seconds",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0139"
   },
   {
     "Name": "Maximum PLI Age",
@@ -1421,7 +1560,8 @@
     "DefaultValue": "600 seconds",
     "HelpText": "Operationally set maximum age",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0140"
   },
   {
     "Name": "MaximumOffset",
@@ -1431,7 +1571,8 @@
     "DefaultValue": "1000",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0141"
   },
   {
     "Name": "MaximumStratum",
@@ -1441,7 +1582,8 @@
     "DefaultValue": "4",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0142"
   },
   {
     "Name": "Media Ports",
@@ -1451,7 +1593,8 @@
     "DefaultValue": "UDP/20002-21001",
     "HelpText": "UDP port range for media streams",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0143"
   },
   {
     "Name": "MetaData URL",
@@ -1461,7 +1604,8 @@
     "DefaultValue": "",
     "HelpText": "Metadata XML URI",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0144"
   },
   {
     "Name": "Metadata Model Version",
@@ -1471,7 +1615,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0145"
   },
   {
     "Name": "Mission Name",
@@ -1481,7 +1626,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0146"
   },
   {
     "Name": "Mission Prefix / Theatre Code",
@@ -1492,7 +1638,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0147"
   },
   {
     "Name": "Multicast IP Subnets",
@@ -1502,7 +1649,8 @@
     "DefaultValue": "",
     "HelpText": "The Multicast subnet(s) owned by this participant",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0148"
   },
   {
     "Name": "Multicast Rendezvous Point",
@@ -1512,7 +1660,8 @@
     "DefaultValue": "",
     "HelpText": "The Multicast rendezvous point IP Adress ",
     "ConfigurationAnswerType": "IP Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0149"
   },
   {
     "Name": "NIP-G GRE-tunnel address",
@@ -1522,7 +1671,8 @@
     "DefaultValue": "",
     "HelpText": "Ip address of the GRE tunnel ",
     "ConfigurationAnswerType": "IP Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0150"
   },
   {
     "Name": "NIP-G Physical link address (IPv4)",
@@ -1532,7 +1682,8 @@
     "DefaultValue": "",
     "HelpText": "Ip address of the physical address",
     "ConfigurationAnswerType": "IP Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0151"
   },
   {
     "Name": "NVG 1.4 Services",
@@ -1544,7 +1695,8 @@
     "DefaultValue": "",
     "HelpText": "Example URL: \"http://site-webservices/NVGOverlays/NVG14Overlays.svc\"",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0152"
   },
   {
     "Name": "NVG 1.5 Services",
@@ -1554,7 +1706,8 @@
     "DefaultValue": "",
     "HelpText": "Example URL: http://site-webservices/NVG-Overlays15/NVG15Overlays.svc\"",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0153"
   },
   {
     "Name": "NVG File URL",
@@ -1564,7 +1717,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0154"
   },
   {
     "Name": "NVG RR URL",
@@ -1574,7 +1728,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0155"
   },
   {
     "Name": "NVG-URL",
@@ -1584,7 +1739,8 @@
     "DefaultValue": "",
     "HelpText": "Web Service exposing ACO/ATO and Air Units",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0156"
   },
   {
     "Name": "National Prefix",
@@ -1595,7 +1751,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0157"
   },
   {
     "Name": "Network (Sig, OAM) - DSCP Value(s)",
@@ -1605,7 +1762,8 @@
     "DefaultValue": "48/50/52/54",
     "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0158"
   },
   {
     "Name": "Node ID",
@@ -1615,7 +1773,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0159"
   },
   {
     "Name": "Node Name",
@@ -1625,7 +1784,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0160"
   },
   {
     "Name": "Number of PLI to report",
@@ -1635,7 +1795,8 @@
     "DefaultValue": "5",
     "HelpText": "Operationally determine to reduce aircraft display clutter and provide most relevant data",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0161"
   },
   {
     "Name": "OCSP PORT",
@@ -1645,7 +1806,8 @@
     "DefaultValue": "TCP/80",
     "HelpText": "OCSP RESPONDER PORT",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": "OCSP PORT"
+    "AnswerContent": "OCSP PORT",
+    "id": "CI-0162"
   },
   {
     "Name": "OCSP Port",
@@ -1655,7 +1817,8 @@
     "DefaultValue": "80",
     "HelpText": "Port of OCSP responder",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0163"
   },
   {
     "Name": "OCSP end-point IP",
@@ -1665,7 +1828,8 @@
     "DefaultValue": "",
     "HelpText": "IP of OCSP responder",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0164"
   },
   {
     "Name": "OCSP end-point URL",
@@ -1675,7 +1839,8 @@
     "DefaultValue": "",
     "HelpText": "Full URL of OCSP in Responder as in CDP",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0165"
   },
   {
     "Name": "ON",
@@ -1686,7 +1851,8 @@
     "DefaultValue": "",
     "HelpText": "Organizational Node",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0166"
   },
   {
     "Name": "OPLAN Portal URL",
@@ -1696,7 +1862,8 @@
     "DefaultValue": "",
     "HelpText": "URL Address for OPLAN Planning Server",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0167"
   },
   {
     "Name": "ORBAT UNIT",
@@ -1707,7 +1874,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0168"
   },
   {
     "Name": "OTH supported messages",
@@ -1717,7 +1885,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0169"
   },
   {
     "Name": "OU for Replication",
@@ -1727,7 +1896,8 @@
     "DefaultValue": "",
     "HelpText": "Full Path to the OU of the OU to push objects",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0170"
   },
   {
     "Name": "OU for Replication (CENTRAL)",
@@ -1737,7 +1907,8 @@
     "DefaultValue": "",
     "HelpText": "Full path to the OU to PUSH/PULL",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0171"
   },
   {
     "Name": "OU for Replication (PULL)",
@@ -1747,7 +1918,8 @@
     "DefaultValue": "",
     "HelpText": "Full CN Path to the OU (for pull)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0172"
   },
   {
     "Name": "OU for Replication (PUSH)",
@@ -1757,7 +1929,8 @@
     "DefaultValue": "",
     "HelpText": "Full Path to the OU to push objects",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0173"
   },
   {
     "Name": "OU for replication",
@@ -1767,7 +1940,8 @@
     "DefaultValue": "",
     "HelpText": "Full CN patch to the OU (for pull)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0174"
   },
   {
     "Name": "Operational DB Name",
@@ -1777,7 +1951,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0175"
   },
   {
     "Name": "PKI Interoperability Framework (iTIF) Compliant",
@@ -1787,7 +1962,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "Yes compliant with iTIF, No not compliant with iTIF"
+    "AnswerContent": "Yes compliant with iTIF, No not compliant with iTIF",
+    "id": "CI-0176"
   },
   {
     "Name": "PLA address",
@@ -1797,7 +1973,8 @@
     "DefaultValue": "",
     "HelpText": "PLA / SMA",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0177"
   },
   {
     "Name": "Platform Role",
@@ -1807,7 +1984,8 @@
     "DefaultValue": "semi-active",
     "HelpText": "pick either: \"active\", \"semi-active\", \"passive\".",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "active,semi-active,passive"
+    "AnswerContent": "active,semi-active,passive",
+    "id": "CI-0178"
   },
   {
     "Name": "Point of Interconnection information",
@@ -1817,7 +1995,8 @@
     "DefaultValue": "",
     "HelpText": "Location ID",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0179"
   },
   {
     "Name": "Port",
@@ -1850,18 +2029,20 @@
     "DefaultValue": "443",
     "HelpText": "Port for the RAG Server",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0180"
   },
   {
     "Name": "Port C2S",
+    "DefaultValue": "TCP/5222",
+    "HelpText": "Describes the TCP port (accepted) used for client to server connections. Usually 5222.",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": "",
     "GenericProducts": [
       "GP-0060",
       "GP-0005"
     ],
-    "DefaultValue": "TCP/5222",
-    "HelpText": "Describes the TCP port (accepted) used for client to server connections. Usually 5222.",
-    "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "id": "CI-0181"
   },
   {
     "Name": "Port CRL HTTP",
@@ -1871,7 +2052,8 @@
     "DefaultValue": "80",
     "HelpText": "Port for CRL HTTP/AIA",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0182"
   },
   {
     "Name": "Port MIP",
@@ -1881,7 +2063,8 @@
     "DefaultValue": "TCP/9090,TCP/7600,TCP/7602,TCP/4444,TCP/5555,TCP/5556,TCP/7602,TCP/13152",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0183"
   },
   {
     "Name": "Port NFFI",
@@ -1891,7 +2074,8 @@
     "DefaultValue": "TCP/3002",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0184"
   },
   {
     "Name": "Port Numbers C2S - OPLAN",
@@ -1901,7 +2085,8 @@
     "DefaultValue": "TCP/1433,TCP/80,TCP/443,TCP/8191-TCP/8199",
     "HelpText": "OPLAN Server C2S and S2S Ports",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0185"
   },
   {
     "Name": "Port S2S",
@@ -1912,7 +2097,8 @@
     "DefaultValue": "TCP/5269",
     "HelpText": "Describes the TCP port used for one chat server to federate with another server connections. Usually 5269.",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0186"
   },
   {
     "Name": "Portal URL",
@@ -1922,7 +2108,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0187"
   },
   {
     "Name": "Ports",
@@ -1932,7 +2119,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0188"
   },
   {
     "Name": "Primary/Secondary",
@@ -1943,7 +2131,8 @@
     "DefaultValue": "Secondary",
     "HelpText": "",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "Primary,Secondary"
+    "AnswerContent": "Primary,Secondary",
+    "id": "CI-0189"
   },
   {
     "Name": "Provider URL",
@@ -1953,7 +2142,8 @@
     "DefaultValue": "",
     "HelpText": "For example the URL of the trackstore you are accessing",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0190"
   },
   {
     "Name": "QoS",
@@ -1966,7 +2156,8 @@
     "DefaultValue": "AF33",
     "HelpText": "QoS DSCP value used for DNS traffic",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0191"
   },
   {
     "Name": "QoS (Zone Transfer)",
@@ -1976,7 +2167,8 @@
     "DefaultValue": "AF13",
     "HelpText": "QoS DSCP value used for DNS Transfer",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0192"
   },
   {
     "Name": "QoS DSCP",
@@ -1986,7 +2178,8 @@
     "DefaultValue": "CS2",
     "HelpText": "DSCP value assigned to email (Reference)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0193"
   },
   {
     "Name": "QoS Media",
@@ -1996,7 +2189,8 @@
     "DefaultValue": "",
     "HelpText": "QoS DSCP value for Video Stream",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0194"
   },
   {
     "Name": "QoS Signalling",
@@ -2006,7 +2200,8 @@
     "DefaultValue": "",
     "HelpText": "QoS DSCP Value for Signaling",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0195"
   },
   {
     "Name": "QoS Value",
@@ -2016,7 +2211,8 @@
     "DefaultValue": "CS3",
     "HelpText": "QoS DSCP values as specified on JMEI",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0196"
   },
   {
     "Name": "RMP Track Criteria",
@@ -2026,7 +2222,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0197"
   },
   {
     "Name": "RMP Track deletion",
@@ -2036,7 +2233,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0198"
   },
   {
     "Name": "RMP Track reporting",
@@ -2046,7 +2244,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0199"
   },
   {
     "Name": "RSS Feed",
@@ -2056,7 +2255,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0200"
   },
   {
     "Name": "Releaser email",
@@ -2066,7 +2266,8 @@
     "DefaultValue": "rlp@shapeaifs.shape.nato.int",
     "HelpText": "AIFS Release email address (rlp@shapeaifs.shape.nato.int)",
     "ConfigurationAnswerType": "Email Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0201"
   },
   {
     "Name": "Relying Party Original Context",
@@ -2076,7 +2277,8 @@
     "DefaultValue": "",
     "HelpText": "Relying Party Context URL (IdP context)",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0202"
   },
   {
     "Name": "Relying Party Unique Identifier",
@@ -2086,7 +2288,8 @@
     "DefaultValue": "",
     "HelpText": "Relying Party Identifier (IdP context)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0203"
   },
   {
     "Name": "Remote App ICON",
@@ -2096,7 +2299,8 @@
     "DefaultValue": "",
     "HelpText": "Name of the ICON of the App",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0204"
   },
   {
     "Name": "Remote App URL",
@@ -2106,7 +2310,8 @@
     "DefaultValue": "",
     "HelpText": "URL of the  Cloud App",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0205"
   },
   {
     "Name": "Replication Port",
@@ -2116,7 +2321,8 @@
     "DefaultValue": "8443",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0206"
   },
   {
     "Name": "Reverse Delegated Zones",
@@ -2127,7 +2333,8 @@
     "DefaultValue": "",
     "HelpText": "Reverse Zones Delegated from the DNS Root Server",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0207"
   },
   {
     "Name": "Root Hints",
@@ -2137,7 +2344,8 @@
     "DefaultValue": "",
     "HelpText": "List of DNS root servers configured on the DNS resolver(s)",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0208"
   },
   {
     "Name": "Router ID",
@@ -2147,7 +2355,8 @@
     "DefaultValue": "",
     "HelpText": "The BGP router ID in IP address form",
     "ConfigurationAnswerType": "IP Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0209"
   },
   {
     "Name": "SIC",
@@ -2157,7 +2366,8 @@
     "DefaultValue": "",
     "HelpText": "SIC Code (Exercise SIC) AKC and SHH as the second SIC",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0210"
   },
   {
     "Name": "SID",
@@ -2168,7 +2378,8 @@
     "DefaultValue": "",
     "HelpText": "Name of DA instance",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0211"
   },
   {
     "Name": "SIP SRV Record",
@@ -2178,7 +2389,8 @@
     "DefaultValue": "",
     "HelpText": "DNS SRV Record for your SIP Service",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0212"
   },
   {
     "Name": "SIPS SRV Record",
@@ -2188,7 +2400,8 @@
     "DefaultValue": "",
     "HelpText": "DNS SRV Record for your SIPS Service",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0213"
   },
   {
     "Name": "SMTP Address",
@@ -2198,7 +2411,8 @@
     "DefaultValue": "",
     "HelpText": "Email Address for Send and receive messages",
     "ConfigurationAnswerType": "Email Address",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0214"
   },
   {
     "Name": "SOA Record Expiration",
@@ -2210,7 +2424,8 @@
     "DefaultValue": "8640000",
     "HelpText": "SOA Record Expiration as defined by JMEI",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0215"
   },
   {
     "Name": "SOA Record Minimum TTL",
@@ -2222,7 +2437,8 @@
     "DefaultValue": "3600",
     "HelpText": "SOA Record Minimum TTL as defined by JMEI",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0216"
   },
   {
     "Name": "SOA Record Refresh Interval",
@@ -2234,7 +2450,8 @@
     "DefaultValue": "3600",
     "HelpText": "SOA Record Refresh Interval as defined by JMEI",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0217"
   },
   {
     "Name": "SOA Record Retry Interval",
@@ -2246,7 +2463,8 @@
     "DefaultValue": "600",
     "HelpText": "SOA Record Retry Interval  as defined by JMEI",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0218"
   },
   {
     "Name": "SPIF File",
@@ -2256,7 +2474,8 @@
     "DefaultValue": "",
     "HelpText": "Location of  Security Policy Information File \u2013 XML file describing STANAG-4774 confidentiality labeling for the mission network instance",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0219"
   },
   {
     "Name": "SPS ++ replication URL",
@@ -2266,7 +2485,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0220"
   },
   {
     "Name": "SQL Named Instance",
@@ -2276,7 +2496,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0221"
   },
   {
     "Name": "SRV Record  _xmpp-client",
@@ -2286,7 +2507,8 @@
     "DefaultValue": "",
     "HelpText": "e.g. _xmpp-client._tcp Service Record",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0222"
   },
   {
     "Name": "SRV Record Broadcast",
@@ -2296,7 +2518,8 @@
     "DefaultValue": "",
     "HelpText": "e.g. _xmpp-server._tcp Service Broadcast",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0223"
   },
   {
     "Name": "SRV Record Conference",
@@ -2306,7 +2529,8 @@
     "DefaultValue": "",
     "HelpText": "e.g. _xmpp-server._tcp Service Conference",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0224"
   },
   {
     "Name": "SRV Record FDP",
@@ -2316,7 +2540,8 @@
     "DefaultValue": "",
     "HelpText": "e.g. _xmpp-server._tcp Service FDP",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0225"
   },
   {
     "Name": "SRV Record General",
@@ -2326,7 +2551,8 @@
     "DefaultValue": "",
     "HelpText": "e.g. _xmpp-server._tcp Service Conference",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0226"
   },
   {
     "Name": "SRV Record PUBSUB",
@@ -2336,7 +2562,8 @@
     "DefaultValue": "",
     "HelpText": "e.g. _xmpp-server._tcp Service pubsub",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0227"
   },
   {
     "Name": "SRV Record Search",
@@ -2346,7 +2573,8 @@
     "DefaultValue": "",
     "HelpText": "e.g. _xmpp-server._tcp Service Conference",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0228"
   },
   {
     "Name": "SSH/TLS",
@@ -2356,7 +2584,8 @@
     "DefaultValue": "",
     "HelpText": "Accept TLS",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "Yes, No"
+    "AnswerContent": "Yes, No",
+    "id": "CI-0229"
   },
   {
     "Name": "Satellite",
@@ -2366,7 +2595,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0230"
   },
   {
     "Name": "Satellite ID",
@@ -2376,7 +2606,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0231"
   },
   {
     "Name": "Secure LDAP",
@@ -2386,7 +2617,8 @@
     "DefaultValue": "YES",
     "HelpText": "Does the LDAP directory accepts LDAPS",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "YES,NO"
+    "AnswerContent": "YES,NO",
+    "id": "CI-0232"
   },
   {
     "Name": "Secure Port",
@@ -2396,7 +2628,8 @@
     "DefaultValue": "TCP/5061,UDP/5061",
     "HelpText": "Secured Port used for secure SIP",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0233"
   },
   {
     "Name": "Security Parameters",
@@ -2406,7 +2639,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0234"
   },
   {
     "Name": "Security Settings",
@@ -2416,7 +2650,8 @@
     "DefaultValue": "",
     "HelpText": "Is mandatory TLS implemented for server to server communication",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "Yes,No"
+    "AnswerContent": "Yes,No",
+    "id": "CI-0235"
   },
   {
     "Name": "Server Synch & replication URL",
@@ -2426,7 +2661,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0236"
   },
   {
     "Name": "Service Number",
@@ -2436,7 +2672,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0237"
   },
   {
     "Name": "Service URL",
@@ -2446,7 +2683,8 @@
     "DefaultValue": "",
     "HelpText": "Service URL where incidents can be entered",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0238"
   },
   {
     "Name": "Situational Awareness Chat Room",
@@ -2456,7 +2694,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0239"
   },
   {
     "Name": "Stratum",
@@ -2466,7 +2705,8 @@
     "DefaultValue": "2",
     "HelpText": "",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "2,3,4,5,6,7,8,9"
+    "AnswerContent": "2,3,4,5,6,7,8,9",
+    "id": "CI-0240"
   },
   {
     "Name": "Stream Controller WSDL URL",
@@ -2476,7 +2716,8 @@
     "DefaultValue": "",
     "HelpText": "URL Including Ports",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0241"
   },
   {
     "Name": "Stream Server REplication WSDL URL",
@@ -2486,7 +2727,8 @@
     "DefaultValue": "",
     "HelpText": "URL Including Ports",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0242"
   },
   {
     "Name": "Subsystem ID",
@@ -2497,7 +2739,8 @@
     "DefaultValue": "",
     "HelpText": "Assigned FFI SubSystem",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0243"
   },
   {
     "Name": "Superior HQ API KEY",
@@ -2507,7 +2750,8 @@
     "DefaultValue": "",
     "HelpText": "API KEY of Superior HQ",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0244"
   },
   {
     "Name": "Supported Certificate Request",
@@ -2517,7 +2761,8 @@
     "DefaultValue": "",
     "HelpText": "Supported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0245"
   },
   {
     "Name": "Supported Certificate Requests",
@@ -2527,7 +2772,8 @@
     "DefaultValue": "",
     "HelpText": " \tSupported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0246"
   },
   {
     "Name": "Supported Object Type",
@@ -2537,7 +2783,8 @@
     "DefaultValue": "inetOrgPerson",
     "HelpText": "LDAP object type that will be synchronized",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0247"
   },
   {
     "Name": "System ID",
@@ -2548,7 +2795,8 @@
     "DefaultValue": "",
     "HelpText": "Assigned FFI System",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0248"
   },
   {
     "Name": "System Name",
@@ -2559,7 +2807,8 @@
     "DefaultValue": "",
     "HelpText": "Specifies the system name. should be unique in the MN context",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0249"
   },
   {
     "Name": "TCP open/close",
@@ -2569,7 +2818,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0250"
   },
   {
     "Name": "TLS Secured",
@@ -2579,7 +2829,8 @@
     "DefaultValue": "Yes",
     "HelpText": "TLS Encryption for Server to Serve",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": "Yes,No,Optional"
+    "AnswerContent": "Yes,No,Optional",
+    "id": "CI-0251"
   },
   {
     "Name": "TN Block",
@@ -2589,7 +2840,8 @@
     "DefaultValue": "",
     "HelpText": "Track number block assigned to Active Platform",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0252"
   },
   {
     "Name": "TWO_TASK Parameters",
@@ -2600,7 +2852,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0253"
   },
   {
     "Name": "Terminal Base Address",
@@ -2610,7 +2863,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0254"
   },
   {
     "Name": "Test Number",
@@ -2621,7 +2875,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0255"
   },
   {
     "Name": "Text\tMessage (J28.2(0)) Enable",
@@ -2631,7 +2886,8 @@
     "DefaultValue": "NO",
     "HelpText": "NO (When \u2018Text Message Enable\u2019 is NO, do not transmit J28.2(0) to report the number of J3.x messages transmitted.)Only\ttransmit\tJ28.2(0) if operationally desired by WDA",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "NO,YES"
+    "AnswerContent": "NO,YES",
+    "id": "CI-0256"
   },
   {
     "Name": "Time Source",
@@ -2641,7 +2897,8 @@
     "DefaultValue": "GPS",
     "HelpText": "Pick either: \"GPS\", \"CDMA\", \"Radio Clock\", \"Atomic Clock\",  \"Modem\",  \"Other\".",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "GPS, CDMA, Radio, Atomic, Modem, Other"
+    "AnswerContent": "GPS, CDMA, Radio, Atomic, Modem, Other",
+    "id": "CI-0257"
   },
   {
     "Name": "TimeSourceFQDN",
@@ -2651,7 +2908,8 @@
     "DefaultValue": "",
     "HelpText": "FQDN of the NTP server you are synchronizing to",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0258"
   },
   {
     "Name": "TimeSourceIP",
@@ -2661,7 +2919,8 @@
     "DefaultValue": "",
     "HelpText": "IP of the NTP server you are synchronizing to",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0259"
   },
   {
     "Name": "TimeZone",
@@ -2671,7 +2930,8 @@
     "DefaultValue": "UTC",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0260"
   },
   {
     "Name": "Transaction Messaging - DSCP Value(s)",
@@ -2681,7 +2941,8 @@
     "DefaultValue": "24/26/28/30",
     "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0261"
   },
   {
     "Name": "Transcoding",
@@ -2691,7 +2952,8 @@
     "DefaultValue": "No",
     "HelpText": "Does transcoding of the audio stream happen at the SBC?",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "No,Yes"
+    "AnswerContent": "No,Yes",
+    "id": "CI-0262"
   },
   {
     "Name": "Transmit Text Message (J28.2(0)) with DISTANCE (Optional capability)",
@@ -2701,7 +2963,8 @@
     "DefaultValue": "NO",
     "HelpText": "Only transmit J28.2(0) with DISTANCE if operationally desired by WDA",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "NO,YES"
+    "AnswerContent": "NO,YES",
+    "id": "CI-0263"
   },
   {
     "Name": "Transmit \u201cNo PLI Response\u201d J28.2(0) (Optional capability)",
@@ -2711,7 +2974,8 @@
     "DefaultValue": "NO",
     "HelpText": "Only transmit \u201cNo PLI Response\u201d J28.2(0) if operationally desired by WDA",
     "ConfigurationAnswerType": "Static Drop Down",
-    "AnswerContent": "NO,YES"
+    "AnswerContent": "NO,YES",
+    "id": "CI-0264"
   },
   {
     "Name": "UDP Data Streaming Port Range",
@@ -2721,7 +2985,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0265"
   },
   {
     "Name": "URL",
@@ -2744,7 +3009,8 @@
     "DefaultValue": "",
     "HelpText": "URL for the portal",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0266"
   },
   {
     "Name": "URL - Expired Certificate",
@@ -2754,7 +3020,8 @@
     "DefaultValue": "",
     "HelpText": "Full URL of Web Server with Expired Certificate",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0267"
   },
   {
     "Name": "URL - Revoked Certificate",
@@ -2764,7 +3031,8 @@
     "DefaultValue": "",
     "HelpText": "Full URL of Web Server with Revoked Certificate",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0268"
   },
   {
     "Name": "URL - Valid Certificate",
@@ -2774,7 +3042,8 @@
     "DefaultValue": "",
     "HelpText": "Full URL of Web Server with Valid Certificate",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0269"
   },
   {
     "Name": "URL Calendar address",
@@ -2785,7 +3054,8 @@
     "DefaultValue": "",
     "HelpText": "URL WebDav address",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0270"
   },
   {
     "Name": "URL Track Store",
@@ -2796,7 +3066,8 @@
     "DefaultValue": "",
     "HelpText": "URL to connect to the Track Store (i.e TSS URL)",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0271"
   },
   {
     "Name": "URL Web",
@@ -2806,7 +3077,8 @@
     "DefaultValue": "",
     "HelpText": "\t Portal main URL",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0272"
   },
   {
     "Name": "URL calendar",
@@ -2816,7 +3088,8 @@
     "DefaultValue": "",
     "HelpText": "URL for WebHosting Service",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0273"
   },
   {
     "Name": "URL for Catalog Management system",
@@ -2826,7 +3099,8 @@
     "DefaultValue": "",
     "HelpText": "URL",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0274"
   },
   {
     "Name": "URL for Event Management system",
@@ -2836,7 +3110,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0275"
   },
   {
     "Name": "URL for Incident Management system",
@@ -2846,7 +3121,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0276"
   },
   {
     "Name": "URL for Request Fulfilment system",
@@ -2856,7 +3132,8 @@
     "DefaultValue": "",
     "HelpText": "url",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0277"
   },
   {
     "Name": "URL for SACM system",
@@ -2866,7 +3143,8 @@
     "DefaultValue": "URL",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0278"
   },
   {
     "Name": "Unicast IP Subnets",
@@ -2876,7 +3154,8 @@
     "DefaultValue": "",
     "HelpText": "Unicast subnet(s) owned by this participant",
     "ConfigurationAnswerType": "Text Field (Multi Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0279"
   },
   {
     "Name": "Unique Identifier",
@@ -2886,7 +3165,8 @@
     "DefaultValue": "emailaddress",
     "HelpText": "Unique Identifier within the claim (i.e SMTP Address, UPN)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0280"
   },
   {
     "Name": "Username",
@@ -2896,7 +3176,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0281"
   },
   {
     "Name": "Video - DSCP Value(s)",
@@ -2906,7 +3187,8 @@
     "DefaultValue": "32/34/46/38",
     "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0282"
   },
   {
     "Name": "Video Codec",
@@ -2916,7 +3198,8 @@
     "DefaultValue": "",
     "HelpText": "Available codecs",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0283"
   },
   {
     "Name": "Voice - DSCP Value(s)",
@@ -2926,7 +3209,8 @@
     "DefaultValue": "40/42/44/46",
     "HelpText": "The DSCP values recognized for this Traffic Class on this router.",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0284"
   },
   {
     "Name": "WFS Namespace",
@@ -2936,7 +3220,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0285"
   },
   {
     "Name": "WFS Port",
@@ -2946,7 +3231,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0286"
   },
   {
     "Name": "WFS URL",
@@ -2956,7 +3242,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0287"
   },
   {
     "Name": "WISI Service URL",
@@ -2966,7 +3253,8 @@
     "DefaultValue": "",
     "HelpText": "WISI Web Service exposing ACO/ATO and Air Units",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0288"
   },
   {
     "Name": "WMS Namespace",
@@ -2976,7 +3264,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0289"
   },
   {
     "Name": "WMS Port",
@@ -2986,7 +3275,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0290"
   },
   {
     "Name": "WMS URL",
@@ -2996,7 +3286,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0291"
   },
   {
     "Name": "WMTS Namespace",
@@ -3006,7 +3297,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0292"
   },
   {
     "Name": "WMTS Port",
@@ -3016,7 +3308,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0293"
   },
   {
     "Name": "WMTS URL",
@@ -3026,7 +3319,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0294"
   },
   {
     "Name": "Web Browser\u200b",
@@ -3036,7 +3330,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0295"
   },
   {
     "Name": "Web Service URL NVG",
@@ -3047,7 +3342,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0296"
   },
   {
     "Name": "Web Service URL OIR",
@@ -3057,7 +3353,8 @@
     "DefaultValue": "",
     "HelpText": "Operational Incident Reporting - exposes JOCWatch published incidents containing all available details and all lookup entities associated in an incident containing all available details",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0297"
   },
   {
     "Name": "Web Service URL PubSub",
@@ -3067,7 +3364,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "URL",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0298"
   },
   {
     "Name": "iBridge File URL",
@@ -3077,7 +3375,8 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0299"
   },
   {
     "Name": "port",
@@ -3087,7 +3386,8 @@
     "DefaultValue": "25",
     "HelpText": "SMTP Port",
     "ConfigurationAnswerType": "Port",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0300"
   },
   {
     "Name": "uri",
@@ -3097,7 +3397,8 @@
     "DefaultValue": "",
     "HelpText": "e.g identifier uri",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0301"
   },
   {
     "Name": "username",
@@ -3107,6 +3408,18 @@
     "DefaultValue": "",
     "HelpText": "",
     "ConfigurationAnswerType": "Text Field (Single Line)",
-    "AnswerContent": ""
+    "AnswerContent": "",
+    "id": "CI-0302"
+  },
+  {
+    "Name": "KK",
+    "DefaultValue": "1",
+    "HelpText": "1",
+    "ConfigurationAnswerType": "Port",
+    "AnswerContent": "1",
+    "GenericProducts": [
+      "GP-0032"
+    ],
+    "id": "CI-0303"
   }
 ]

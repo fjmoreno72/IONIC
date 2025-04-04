@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Fetch SPs data for SP name lookup
   const fetchSpsData = async () => {
     try {
-      const response = await fetch('/static/ASC/data/sps.json');
+      const response = await fetch('/api/sps'); // Corrected: Use API endpoint
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -151,7 +151,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Helper function to get SP data by ID
   const getSpById = (id) => {
-    return spsData.find(sp => sp.id === id) || null;
+    // Removed diagnostic logging
+    const found = spsData.find(sp => sp.id === id);
+    return found || null;
   };
 
   // Helper function to get progress class based on percentage (from Kanban)
@@ -221,6 +223,13 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchAscsData() // Fetch ASCs data here as well
   ])
     .then(([affiliates, services, gps, sps, ascs]) => { // Destructure all fetched data
+      // Assign to outer scope variables *inside* the .then()
+      affiliatesData = affiliates;
+      servicesData = services;
+      gpsData = gps;
+      spsData = sps; 
+      // Removed diagnostic logging
+
       // Configure and initialize the data table, passing ASCs data directly
       const ascsTable = new DataTable({
         tableId: 'ascsTable',

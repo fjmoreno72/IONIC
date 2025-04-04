@@ -112,9 +112,11 @@
     margin-bottom: 10px;
     overflow: hidden;
     cursor: grab;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    transition: box-shadow 0.2s ease, transform 0.2s ease, opacity 0.3s ease;
     border-left: 4px solid #ccc;
     padding: 8px 12px;
+    position: relative;
+    z-index: 1;
 }
 
 .asc-card:hover {
@@ -123,8 +125,26 @@
 }
 
 .asc-card.dragging {
-    opacity: 0.7;
+    opacity: 0.85;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+    z-index: 100;
+}
+
+/* Animation for card movement */
+.asc-card.moving {
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Ghost card for drag preview */
+.drag-ghost {
+    position: absolute;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 90;
+    transition: all 0.2s ease-out;
 }
 
 /* Card colors based on column */
@@ -414,6 +434,24 @@
 /* Drag and drop visual feedback */
 .kanban-column.drag-over {
     box-shadow: 0 0 0 2px #0d6efd;
+    transition: box-shadow 0.2s ease;
+}
+
+/* Column highlight animation */
+.kanban-column.drag-over .column-cards {
+    background-color: rgba(13, 110, 253, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+/* Card placeholder during drag */
+.card-placeholder {
+    border: 2px dashed #0d6efd;
+    border-radius: 4px;
+    background-color: rgba(13, 110, 253, 0.05);
+    margin-bottom: 10px;
+    height: 80px;
+    opacity: 0.6;
+    transition: all 0.2s ease;
 }
 
 @keyframes spin {

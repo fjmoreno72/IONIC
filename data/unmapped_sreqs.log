@@ -13489,3 +13489,68 @@ jinja2.exceptions.TemplateSyntaxError: unexpected char '#' at 5792
 2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
 2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
 2025-04-04 18:23:13 - 127.0.0.1 - - [04/Apr/2025 18:23:13] "GET /api/actor/82fbca4d-7a61-4566-9ac0-1a903adfb3a4 HTTP/1.1" 200 -
+2025-04-04 18:29:33 - Logging system configured with level INFO
+2025-04-04 18:29:33 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 18:29:33 - Applying authentication system patches...
+2025-04-04 18:29:33 - Authentication system patches applied successfully
+2025-04-04 18:29:33 - Enhanced authentication system applied
+2025-04-04 18:29:33 - Configured Flask app logging with level INFO
+2025-04-04 18:29:33 - Configured Flask app logging with level INFO
+2025-04-04 18:29:33 - Logging system configured with level INFO
+2025-04-04 18:29:33 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-04 18:29:33 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 18:29:33 - Template files: templates
+2025-04-04 18:29:33 - Running in PRODUCTION mode
+2025-04-04 18:29:33 - Listening on 0.0.0.0:5005
+2025-04-04 18:29:33 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.79.9.210:5005
+2025-04-04 18:29:33 - [33mPress CTRL+C to quit[0m
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-04 18:29:48 - Accessing functional tree view
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "GET /static/img/CWIX_LOGO.png HTTP/1.1" 200 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 18:29:48 - 127.0.0.1 - - [04/Apr/2025 18:29:48] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - Accessing ASC Kanban board
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "GET /asc_kanban HTTP/1.1" 200 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "GET /static/ASC/css/kanban-board.css HTTP/1.1" 200 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "GET /static/ASC/js/kanban-board.js HTTP/1.1" 200 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/js/components/themeManager.js HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "GET /static/ASC/js/data-manager.js HTTP/1.1" 200 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 18:29:54 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 18:29:54 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-04 18:29:54 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 18:29:54 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "GET /api/sps HTTP/1.1" 200 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "GET /api/services HTTP/1.1" 200 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-04-04 18:29:54 - 127.0.0.1 - - [04/Apr/2025 18:29:54] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 18:29:58 - 127.0.0.1 - - [04/Apr/2025 18:29:58] "POST /update_ascs HTTP/1.1" 200 -
+2025-04-04 18:30:00 - 127.0.0.1 - - [04/Apr/2025 18:30:00] "POST /update_ascs HTTP/1.1" 200 -
+2025-04-04 18:30:04 - 127.0.0.1 - - [04/Apr/2025 18:30:04] "POST /update_ascs HTTP/1.1" 200 -
+2025-04-04 18:30:07 - 127.0.0.1 - - [04/Apr/2025 18:30:07] "POST /update_ascs HTTP/1.1" 200 -
+2025-04-04 18:30:10 - 127.0.0.1 - - [04/Apr/2025 18:30:10] "POST /update_ascs HTTP/1.1" 200 -
+2025-04-04 18:30:11 - 127.0.0.1 - - [04/Apr/2025 18:30:11] "POST /update_ascs HTTP/1.1" 200 -
+2025-04-04 18:30:13 - 127.0.0.1 - - [04/Apr/2025 18:30:13] "POST /update_ascs HTTP/1.1" 200 -

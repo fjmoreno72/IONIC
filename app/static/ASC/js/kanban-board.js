@@ -329,6 +329,9 @@ export class KanbanBoard {
    */
   handleDragStart(e) {
     const card = e.target;
+    // Store the source column ID for animation
+    card.dataset.sourceColumn = card.closest('.column-cards').id;
+    
     // Set data transfer for drop
     e.dataTransfer.setData('text/plain', card.dataset.id);
     e.dataTransfer.effectAllowed = 'move';
@@ -336,13 +339,28 @@ export class KanbanBoard {
     // Add dragging class for visual feedback
     card.classList.add('dragging');
     
-    // Use the ASC ID as a custom drag ghost
-    const ghost = document.createElement('div');
-    ghost.textContent = card.dataset.id;
-    ghost.style.position = 'absolute';
+    // Create a better visual drag ghost
+    const rect = card.getBoundingClientRect();
+    const ghost = card.cloneNode(true);
+    ghost.id = 'drag-ghost';
+    ghost.classList.add('drag-ghost');
+    ghost.style.width = `${rect.width}px`;
+    ghost.style.height = `${rect.height}px`;
+    ghost.style.position = 'fixed';
     ghost.style.top = '-1000px';
+    ghost.style.left = '-1000px';
+    ghost.style.opacity = '0.6';
+    ghost.style.pointerEvents = 'none';
     document.body.appendChild(ghost);
-    e.dataTransfer.setDragImage(ghost, 0, 0);
+    
+    // Use the cloned node as the drag image
+    e.dataTransfer.setDragImage(ghost, rect.width / 2, rect.height / 2);
+    
+    // Create a placeholder in the source column
+    const placeholder = document.createElement('div');
+    placeholder.className = 'card-placeholder';
+    placeholder.dataset.for = card.dataset.id;
+    card.after(placeholder);
     
     // Clean up ghost element after drag starts
     setTimeout(() => {
@@ -410,25 +428,82 @@ export class KanbanBoard {
     
     if (!newStatus) return;
     
-    // Show loading
-    this.showLoading(true);
+    // Find the card element
+    const card = document.querySelector(`.asc-card[data-id="${ascId}"]`);
+    if (!card) return;
     
-    // Update the ASC status
-    const success = await this.dataManager.updateAscStatus(ascId, newStatus);
+    // Find source and target containers
+    const sourceContainer = document.getElementById(card.dataset.sourceColumn);
+    const targetContainer = document.getElementById(`${columnId}-cards`);
     
-    // Hide loading
-    this.showLoading(false);
+    if (!sourceContainer || !targetContainer) return;
     
-    if (success) {
-      // Re-render the board to reflect the change
-      this.renderBoard();
-      
-      // Show success message
-      this.showSuccessMessage(`Updated ${ascId} to ${newStatus}`);
-    } else {
-      // Show error
-      this.showError('Failed to update ASC status');
+    // If dropped in the same column, just remove placeholder and return
+    if (sourceContainer.id === targetContainer.id) {
+      const placeholder = document.querySelector(`.card-placeholder[data-for="${ascId}"]`);
+      if (placeholder) placeholder.remove();
+      card.classList.remove('dragging');
+      return;
     }
+    
+    // Remove all placeholders
+    document.querySelectorAll('.card-placeholder').forEach(el => el.remove());
+    
+    // Prepare for animation
+    const sourceRect = card.getBoundingClientRect();
+    
+    // Move card to target container
+    targetContainer.appendChild(card);
+    
+    // Apply animation
+    requestAnimationFrame(() => {
+      const targetRect = card.getBoundingClientRect();
+      
+      // Calculate the transform to animate from source to target position
+      const deltaX = sourceRect.left - targetRect.left;
+      const deltaY = sourceRect.top - targetRect.top;
+      
+      // Apply initial transform to position at source
+      card.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      card.classList.add('moving');
+      
+      // Remove dragging class
+      card.classList.remove('dragging');
+      
+      // Animate to final position
+      requestAnimationFrame(() => {
+        card.style.transform = '';
+        
+        // When animation completes, update the backend
+        card.addEventListener('transitionend', async () => {
+          // Show loading indicator for backend update
+          this.showLoading(true);
+          
+          // Update the ASC status in backend
+          const success = await this.dataManager.updateAscStatus(ascId, newStatus);
+          
+          // Hide loading
+          this.showLoading(false);
+          
+          if (success) {
+            // Show success message
+            this.showSuccessMessage(`Updated ${ascId} to ${newStatus}`);
+            
+            // Clean up animation classes
+            card.classList.remove('moving');
+            
+            // Update data in the UI
+            card.dataset.status = newStatus;
+          } else {
+            // Show error
+            this.showError('Failed to update ASC status');
+            
+            // Revert the move by re-rendering
+            this.renderBoard();
+          }
+        }, { once: true });
+      });
+    });
   }
 
   /**
@@ -439,6 +514,14 @@ export class KanbanBoard {
     // Remove dragging class
     const card = e.target;
     card.classList.remove('dragging');
+    
+    // Remove any leftover placeholders
+    const placeholder = document.querySelector(`.card-placeholder[data-for="${card.dataset.id}"]`);
+    if (placeholder) placeholder.remove();
+    
+    // Clean up any ghost elements
+    const ghost = document.getElementById('drag-ghost');
+    if (ghost) ghost.remove();
     
     // Remove drag-over class from all columns
     Object.values(this.elements.columns).forEach(column => {

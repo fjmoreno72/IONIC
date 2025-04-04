@@ -12153,3 +12153,451 @@ jinja2.exceptions.TemplateSyntaxError: unexpected char '#' at 5792
 2025-04-04 16:38:48 - 127.0.0.1 - - [04/Apr/2025 16:38:48] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
 2025-04-04 16:38:48 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
 2025-04-04 16:38:48 - 127.0.0.1 - - [04/Apr/2025 16:38:48] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 16:59:04 - Logging system configured with level INFO
+2025-04-04 16:59:04 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 16:59:05 - Applying authentication system patches...
+2025-04-04 16:59:05 - Authentication system patches applied successfully
+2025-04-04 16:59:05 - Enhanced authentication system applied
+2025-04-04 16:59:05 - Configured Flask app logging with level INFO
+2025-04-04 16:59:05 - Configured Flask app logging with level INFO
+2025-04-04 16:59:05 - Logging system configured with level INFO
+2025-04-04 16:59:05 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 16:59:05 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 16:59:05 - Template files: templates
+2025-04-04 16:59:05 - Running in DEBUG mode
+2025-04-04 16:59:05 - Listening on 0.0.0.0:5006
+2025-04-04 16:59:05 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 16:59:05 - [33mPress CTRL+C to quit[0m
+2025-04-04 16:59:05 -  * Restarting with stat
+2025-04-04 16:59:05 - Logging system configured with level INFO
+2025-04-04 16:59:05 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 16:59:05 - Applying authentication system patches...
+2025-04-04 16:59:05 - Authentication system patches applied successfully
+2025-04-04 16:59:05 - Enhanced authentication system applied
+2025-04-04 16:59:05 - Configured Flask app logging with level INFO
+2025-04-04 16:59:05 - Configured Flask app logging with level INFO
+2025-04-04 16:59:05 - Logging system configured with level INFO
+2025-04-04 16:59:05 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 16:59:05 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 16:59:05 - Template files: templates
+2025-04-04 16:59:05 - Running in DEBUG mode
+2025-04-04 16:59:05 - Listening on 0.0.0.0:5006
+2025-04-04 16:59:05 -  * Debugger is active!
+2025-04-04 16:59:05 -  * Debugger PIN: 288-963-664
+2025-04-04 16:59:12 - User logged out
+2025-04-04 16:59:12 - 127.0.0.1 - - [04/Apr/2025 16:59:12] "GET /logout HTTP/1.1" 200 -
+2025-04-04 16:59:12 - 127.0.0.1 - - [04/Apr/2025 16:59:12] "GET / HTTP/1.1" 200 -
+2025-04-04 16:59:12 - 127.0.0.1 - - [04/Apr/2025 16:59:12] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 16:59:12 - 127.0.0.1 - - [04/Apr/2025 16:59:12] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:02:22 - SSL verification is disabled. This is insecure.
+2025-04-04 17:02:22 - Found verification token using method: BeautifulSoup input tag
+2025-04-04 17:02:22 - Found additional field: RememberMe
+2025-04-04 17:02:23 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-04 17:02:23 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-04 17:02:23 - User francisco.moreno@ncia.nato.int logged in successfully
+2025-04-04 17:02:23 - 127.0.0.1 - - [04/Apr/2025 17:02:23] "POST /login HTTP/1.1" 200 -
+2025-04-04 17:02:23 - Accessing functional tree view
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:02:24 - 127.0.0.1 - - [04/Apr/2025 17:02:24] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:05:55 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/app/routes/auth.py', reloading
+2025-04-04 17:05:55 -  * Restarting with stat
+2025-04-04 17:05:55 - Logging system configured with level INFO
+2025-04-04 17:05:55 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:05:55 - Applying authentication system patches...
+2025-04-04 17:05:55 - Authentication system patches applied successfully
+2025-04-04 17:05:55 - Enhanced authentication system applied
+2025-04-04 17:05:55 - Configured Flask app logging with level INFO
+2025-04-04 17:05:55 - Configured Flask app logging with level INFO
+2025-04-04 17:05:55 - Logging system configured with level INFO
+2025-04-04 17:05:55 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:05:55 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:05:55 - Template files: templates
+2025-04-04 17:05:55 - Running in DEBUG mode
+2025-04-04 17:05:55 - Listening on 0.0.0.0:5006
+2025-04-04 17:05:55 -  * Debugger is active!
+2025-04-04 17:05:55 -  * Debugger PIN: 288-963-664
+2025-04-04 17:07:47 - Logging system configured with level INFO
+2025-04-04 17:07:47 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:07:47 - Applying authentication system patches...
+2025-04-04 17:07:47 - Authentication system patches applied successfully
+2025-04-04 17:07:47 - Enhanced authentication system applied
+2025-04-04 17:07:47 - Configured Flask app logging with level INFO
+2025-04-04 17:07:47 - Configured Flask app logging with level INFO
+2025-04-04 17:07:47 - Logging system configured with level INFO
+2025-04-04 17:07:47 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:07:47 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:07:47 - Template files: templates
+2025-04-04 17:07:47 - Running in DEBUG mode
+2025-04-04 17:07:47 - Listening on 0.0.0.0:5006
+2025-04-04 17:07:47 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 17:07:47 - [33mPress CTRL+C to quit[0m
+2025-04-04 17:07:47 -  * Restarting with stat
+2025-04-04 17:07:47 - Logging system configured with level INFO
+2025-04-04 17:07:47 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:07:47 - Applying authentication system patches...
+2025-04-04 17:07:47 - Authentication system patches applied successfully
+2025-04-04 17:07:47 - Enhanced authentication system applied
+2025-04-04 17:07:47 - Configured Flask app logging with level INFO
+2025-04-04 17:07:47 - Configured Flask app logging with level INFO
+2025-04-04 17:07:47 - Logging system configured with level INFO
+2025-04-04 17:07:47 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:07:47 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:07:47 - Template files: templates
+2025-04-04 17:07:47 - Running in DEBUG mode
+2025-04-04 17:07:47 - Listening on 0.0.0.0:5006
+2025-04-04 17:07:47 -  * Debugger is active!
+2025-04-04 17:07:47 -  * Debugger PIN: 288-963-664
+2025-04-04 17:07:52 - User logged out
+2025-04-04 17:07:52 - 127.0.0.1 - - [04/Apr/2025 17:07:52] "GET /logout HTTP/1.1" 200 -
+2025-04-04 17:07:52 - 127.0.0.1 - - [04/Apr/2025 17:07:52] "GET / HTTP/1.1" 200 -
+2025-04-04 17:07:52 - 127.0.0.1 - - [04/Apr/2025 17:07:52] "GET /static/img/CWIX_LOGO.png HTTP/1.1" 200 -
+2025-04-04 17:07:52 - 127.0.0.1 - - [04/Apr/2025 17:07:52] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:07:52 - 127.0.0.1 - - [04/Apr/2025 17:07:52] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-04 17:07:52 - 127.0.0.1 - - [04/Apr/2025 17:07:52] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:07:57 - SSL verification is disabled. This is insecure.
+2025-04-04 17:07:57 - Found verification token using method: BeautifulSoup input tag
+2025-04-04 17:07:57 - Found additional field: RememberMe
+2025-04-04 17:07:58 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-04 17:07:58 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-04 17:07:58 - User francisco.moreno@ncia.nato.int logged in successfully to ciav environment
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "POST /login HTTP/1.1" 200 -
+2025-04-04 17:07:58 - Accessing functional tree view
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:07:58 - 127.0.0.1 - - [04/Apr/2025 17:07:58] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:08:05 - User logged out
+2025-04-04 17:08:05 - 127.0.0.1 - - [04/Apr/2025 17:08:05] "GET /logout HTTP/1.1" 200 -
+2025-04-04 17:08:05 - 127.0.0.1 - - [04/Apr/2025 17:08:05] "GET / HTTP/1.1" 200 -
+2025-04-04 17:08:05 - 127.0.0.1 - - [04/Apr/2025 17:08:05] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:08:05 - 127.0.0.1 - - [04/Apr/2025 17:08:05] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:08:05 - 127.0.0.1 - - [04/Apr/2025 17:08:05] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:08:05 - 127.0.0.1 - - [04/Apr/2025 17:08:05] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:08:12 - SSL verification is disabled. This is insecure.
+2025-04-04 17:08:12 - Found verification token using method: BeautifulSoup input tag
+2025-04-04 17:08:12 - Found additional field: RememberMe
+2025-04-04 17:08:14 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-04 17:08:14 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-04 17:08:14 - User francisco.moreno@ncia.nato.int logged in successfully to cwix environment
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "POST /login HTTP/1.1" 200 -
+2025-04-04 17:08:14 - Accessing functional tree view
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:08:14 - 127.0.0.1 - - [04/Apr/2025 17:08:14] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:08:44 - SSL verification is disabled. This is insecure.
+2025-04-04 17:08:44 - Getting IER coverage data from api/coverage/test-case-coverage/Get-Ier-Coverage
+2025-04-04 17:08:44 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/coverage/test-case-coverage/Get-Ier-Coverage
+2025-04-04 17:08:50 - Starting to read response chunks...
+2025-04-04 17:08:50 - Initial Response: Status Code = 200
+2025-04-04 17:08:51 - Received 20 chunks (0.14 MB) in 6.44 seconds (0.02 MB/s)
+2025-04-04 17:08:51 - Total size: 0.14 MB
+2025-04-04 17:08:51 - Total chunks: 20
+2025-04-04 17:08:51 - Average chunk size: 7.32 KB
+2025-04-04 17:08:51 - Average transfer rate: 0.02 MB/s
+2025-04-04 17:08:51 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/IER.json
+2025-04-04 17:08:51 - Successfully wrote markdown to /Users/fjmoreno72/WORK/IONIC2/data/IER.md
+2025-04-04 17:08:51 - Reading TIN data from /Users/fjmoreno72/WORK/IONIC2/data/TIN2.csv...
+2025-04-04 17:08:51 - Read 165 TIN entries from /Users/fjmoreno72/WORK/IONIC2/data/TIN2.csv
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "GET /get_ier_coverage HTTP/1.1" 200 -
+2025-04-04 17:08:51 - Accessing IER tree view
+2025-04-04 17:08:51 - Reading TIN data from /Users/fjmoreno72/WORK/IONIC2/data/TIN2.csv...
+2025-04-04 17:08:51 - Read 165 TIN entries from /Users/fjmoreno72/WORK/IONIC2/data/TIN2.csv
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "GET /view_ier_tree HTTP/1.1" 200 -
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "GET /static/js/tree_ier.js HTTP/1.1" 200 -
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:08:51 - 127.0.0.1 - - [04/Apr/2025 17:08:51] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:09:01 - SSL verification is disabled. This is insecure.
+2025-04-04 17:09:01 - Getting test cases data from api/test-cases
+2025-04-04 17:09:01 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases
+2025-04-04 17:09:03 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases completed in 1.83 seconds
+2025-04-04 17:09:03 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:09:03 - 127.0.0.1 - - [04/Apr/2025 17:09:03] "GET /get_test_cases HTTP/1.1" 200 -
+2025-04-04 17:09:03 - Handling GET request to /get_actors
+2025-04-04 17:09:03 - Handling GET request to /get_patterns
+2025-04-04 17:09:03 - SSL verification is disabled. This is insecure.
+2025-04-04 17:09:03 - SSL verification is disabled. This is insecure.
+2025-04-04 17:09:03 - Attempting to fetch actors data from API
+2025-04-04 17:09:03 - Attempting to fetch patterns data from API
+2025-04-04 17:09:03 - Attempting to get test case actors data from api/test-cases/actors
+2025-04-04 17:09:03 - Attempting to get test case patterns data from api/test-cases/patterns
+2025-04-04 17:09:03 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/actors
+2025-04-04 17:09:03 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/patterns
+2025-04-04 17:09:04 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/patterns completed in 0.16 seconds
+2025-04-04 17:09:04 - Got response from patterns endpoint with status: 200
+2025-04-04 17:09:04 - Successfully parsed response JSON from patterns endpoint
+2025-04-04 17:09:04 - Saving patterns data to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:09:04 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:09:04 - Patterns data successfully saved to /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:09:04 - Patterns operation completed in 0.17s, count: 20
+2025-04-04 17:09:04 - Successfully fetched patterns. Count: 20
+2025-04-04 17:09:04 - 127.0.0.1 - - [04/Apr/2025 17:09:04] "GET /get_patterns HTTP/1.1" 200 -
+2025-04-04 17:09:04 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/test-cases/actors completed in 0.20 seconds
+2025-04-04 17:09:04 - Got response from actors endpoint with status: 200
+2025-04-04 17:09:04 - Successfully parsed response JSON from actors endpoint
+2025-04-04 17:09:04 - Saving actors data to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 17:09:04 - Successfully wrote data to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 17:09:04 - Actors data successfully saved to /Users/fjmoreno72/WORK/IONIC2/data/actors.json
+2025-04-04 17:09:04 - Actors operation completed in 0.21s, count: 1047
+2025-04-04 17:09:04 - Successfully fetched actors. Count: 1047
+2025-04-04 17:09:04 - 127.0.0.1 - - [04/Apr/2025 17:09:04] "GET /get_actors HTTP/1.1" 200 -
+2025-04-04 17:09:09 - Accessing test cases
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:09:09 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:09:09 - Successfully loaded patterns data file.
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 17:09:09 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:09:09 - Successfully loaded test cases data file.
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 17:09:09 - 127.0.0.1 - - [04/Apr/2025 17:09:09] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:09:19 - Attempting to load actors.json into memory...
+2025-04-04 17:09:19 - Successfully loaded 1047 actors into map in 0.01 seconds.
+2025-04-04 17:09:19 - 127.0.0.1 - - [04/Apr/2025 17:09:19] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-04-04 17:09:19 - 127.0.0.1 - - [04/Apr/2025 17:09:19] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-04 17:09:19 - 127.0.0.1 - - [04/Apr/2025 17:09:19] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-04-04 17:09:19 - 127.0.0.1 - - [04/Apr/2025 17:09:19] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-04 17:09:19 - 127.0.0.1 - - [04/Apr/2025 17:09:19] "GET /api/actor/279a9bfa-0566-4cb7-8e17-a097b9f52e31 HTTP/1.1" 200 -
+2025-04-04 17:09:19 - 127.0.0.1 - - [04/Apr/2025 17:09:19] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-04 17:11:20 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/app/routes/auth.py', reloading
+2025-04-04 17:11:20 -  * Restarting with stat
+2025-04-04 17:11:21 - Logging system configured with level INFO
+2025-04-04 17:11:21 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:11:21 - Applying authentication system patches...
+2025-04-04 17:11:21 - Authentication system patches applied successfully
+2025-04-04 17:11:21 - Enhanced authentication system applied
+2025-04-04 17:11:21 - Configured Flask app logging with level INFO
+2025-04-04 17:11:21 - Configured Flask app logging with level INFO
+2025-04-04 17:11:21 - Logging system configured with level INFO
+2025-04-04 17:11:21 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:11:21 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:11:21 - Template files: templates
+2025-04-04 17:11:21 - Running in DEBUG mode
+2025-04-04 17:11:21 - Listening on 0.0.0.0:5006
+2025-04-04 17:11:21 -  * Debugger is active!
+2025-04-04 17:11:21 -  * Debugger PIN: 288-963-664
+2025-04-04 17:12:06 - Logging system configured with level INFO
+2025-04-04 17:12:06 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:12:06 - Applying authentication system patches...
+2025-04-04 17:12:06 - Authentication system patches applied successfully
+2025-04-04 17:12:06 - Enhanced authentication system applied
+2025-04-04 17:12:06 - Configured Flask app logging with level INFO
+2025-04-04 17:12:06 - Configured Flask app logging with level INFO
+2025-04-04 17:12:06 - Logging system configured with level INFO
+2025-04-04 17:12:06 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:12:06 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:12:06 - Template files: templates
+2025-04-04 17:12:06 - Running in DEBUG mode
+2025-04-04 17:12:06 - Listening on 0.0.0.0:5006
+2025-04-04 17:12:07 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.9.210:5006
+2025-04-04 17:12:07 - [33mPress CTRL+C to quit[0m
+2025-04-04 17:12:07 -  * Restarting with stat
+2025-04-04 17:12:07 - Logging system configured with level INFO
+2025-04-04 17:12:07 - Starting IOCore2 Coverage Analysis Tool
+2025-04-04 17:12:07 - Applying authentication system patches...
+2025-04-04 17:12:07 - Authentication system patches applied successfully
+2025-04-04 17:12:07 - Enhanced authentication system applied
+2025-04-04 17:12:07 - Configured Flask app logging with level INFO
+2025-04-04 17:12:07 - Configured Flask app logging with level INFO
+2025-04-04 17:12:07 - Logging system configured with level INFO
+2025-04-04 17:12:07 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-04 17:12:07 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-04 17:12:07 - Template files: templates
+2025-04-04 17:12:07 - Running in DEBUG mode
+2025-04-04 17:12:07 - Listening on 0.0.0.0:5006
+2025-04-04 17:12:07 -  * Debugger is active!
+2025-04-04 17:12:07 -  * Debugger PIN: 288-963-664
+2025-04-04 17:12:11 - User logged out
+2025-04-04 17:12:11 - 127.0.0.1 - - [04/Apr/2025 17:12:11] "GET /logout HTTP/1.1" 200 -
+2025-04-04 17:12:11 - 127.0.0.1 - - [04/Apr/2025 17:12:11] "GET / HTTP/1.1" 200 -
+2025-04-04 17:12:11 - 127.0.0.1 - - [04/Apr/2025 17:12:11] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:11 - 127.0.0.1 - - [04/Apr/2025 17:12:11] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:11 - 127.0.0.1 - - [04/Apr/2025 17:12:11] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:11 - 127.0.0.1 - - [04/Apr/2025 17:12:11] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:12:15 - SSL verification is disabled. This is insecure.
+2025-04-04 17:12:15 - Found verification token using method: BeautifulSoup input tag
+2025-04-04 17:12:15 - Found additional field: RememberMe
+2025-04-04 17:12:16 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-04 17:12:16 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-04 17:12:16 - User francisco.moreno@ncia.nato.int logged in successfully to ciav environment
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "POST /login HTTP/1.1" 200 -
+2025-04-04 17:12:16 - Accessing functional tree view
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:12:16 - 127.0.0.1 - - [04/Apr/2025 17:12:16] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - Accessing Affiliates page
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "GET /affiliates HTTP/1.1" 200 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/pages/affiliates_new.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/components/affiliateForm.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:12:35 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 17:12:35 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:35 - 127.0.0.1 - - [04/Apr/2025 17:12:35] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - Accessing ASC Services page
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "GET /asc_services HTTP/1.1" 200 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/pages/services_new.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/components/serviceForm.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:12:36 - API Route: /api/gps GET endpoint called.
+2025-04-04 17:12:36 - API Route: /api/gps GET endpoint called.
+2025-04-04 17:12:36 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-04 17:12:36 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-04 17:12:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-04 17:12:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-04 17:12:36 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-04 17:12:36 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-04 17:12:36 - API Route: Retrieved 124 GPs from repository.
+2025-04-04 17:12:36 - API Route: Retrieved 124 GPs from repository.
+2025-04-04 17:12:36 - API Route: Returning GP data successfully.
+2025-04-04 17:12:36 - API Route: Returning GP data successfully.
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "GET /api/gps HTTP/1.1" 200 -
+2025-04-04 17:12:36 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 17:12:36 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "GET /api/services HTTP/1.1" 200 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-04 17:12:36 - 127.0.0.1 - - [04/Apr/2025 17:12:36] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - Accessing test cases
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "[36mGET /static/js/test_case.js HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:12:37 - Successfully loaded patterns data file.
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 17:12:37 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:12:37 - Successfully loaded test cases data file.
+2025-04-04 17:12:37 - 127.0.0.1 - - [04/Apr/2025 17:12:37] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 17:13:20 - Accessing test cases
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /test_cases HTTP/1.1" 200 -
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /check_auth HTTP/1.1" 200 -
+2025-04-04 17:13:20 - Attempting to read patterns data from: /Users/fjmoreno72/WORK/IONIC2/data/pattern.json
+2025-04-04 17:13:20 - Successfully loaded patterns data file.
+2025-04-04 17:13:20 - 127.0.0.1 - - [04/Apr/2025 17:13:20] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-04 17:13:20 - Attempting to read test cases data from: /Users/fjmoreno72/WORK/IONIC2/data/test_cases.json
+2025-04-04 17:13:20 - Successfully loaded test cases data file.
+2025-04-04 17:13:21 - 127.0.0.1 - - [04/Apr/2025 17:13:21] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-04 17:13:21 - 127.0.0.1 - - [04/Apr/2025 17:13:21] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-04 17:13:21 - 127.0.0.1 - - [04/Apr/2025 17:13:21] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -

@@ -232,6 +232,14 @@ body {
         <i class="fas fa-bars"></i>
     </button>
     <div class="nav-links" id="navLinks">
+        <!-- Environment Logo -->
+        {% if session['environment'] %}
+            {% set logo_path = 'img/CIAV_LOGO.png' if session['environment'] == 'ciav' else 'img/CWIX_LOGO.png' %}
+            {% set logo_alt = 'CIAV Environment' if session['environment'] == 'ciav' else 'CWIX Environment' %}
+            <div style="margin-right: 15px; display: flex; align-items: center;"> {# Wrapper div for spacing and alignment #}
+                <img src="{{ url_for('static', filename=logo_path) }}" alt="{{ logo_alt }}" title="{{ logo_alt }}" style="height: 40px; vertical-align: middle;"> {# Increased height to 40px #}
+            </div>
+        {% endif %}
         <div class="dropdown">
             <a href="#" class="btn dropdown-toggle">
                 <i class="fas fa-cloud-download-alt"></i> Get API

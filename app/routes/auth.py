@@ -24,27 +24,46 @@ def login():
         return jsonify({
             'success': False,
             'error': 'Missing request data'
-        })
+        }), 400 # Add 400 status code
     
-    url = data.get('url')
+    environment = data.get('environment')
     username = data.get('username')
     password = data.get('password')
     
     # Validate required fields
-    if not url or not username or not password:
+    if not environment or not username or not password:
         return jsonify({
             'success': False,
-            'error': 'Missing required fields (url, username, password)'
-        })
+            'error': 'Missing required fields (environment, username, password)'
+        }), 400 # Add 400 status code for bad request
+        
+    # Determine API URL based on environment
+    api_url = None
+    if environment == 'ciav':
+        api_url = 'https://iocore2-ciav.ivv.ncia.nato.int'
+    elif environment == 'cwix':
+        api_url = 'https://iocore2-cwix.ivv.ncia.nato.int'
+    else:
+        return jsonify({
+            'success': False,
+            'error': 'Invalid environment selected'
+        }), 400 # Add 400 status code
+
+    if not api_url: # Should be caught by else, but double-check
+         return jsonify({
+            'success': False,
+            'error': 'Could not determine API URL for the selected environment'
+        }), 500 # Internal server error if logic fails
     
     # Authenticate user
-    result = authenticate_user(url, username, password)
+    result = authenticate_user(api_url, username, password)
     
     if result['success']:
         # Store session data
         session['cookies'] = result['cookies']
-        session['url'] = result['url']
-        logging.info(f"User {username} logged in successfully")
+        session['url'] = api_url # Store the actual URL used
+        session['environment'] = environment # Store the selected environment identifier
+        logging.info(f"User {username} logged in successfully to {environment} environment")
         
     return jsonify(result)
 

@@ -582,18 +582,6 @@
         "ierName": "Theatre Missile Defence (TMD) Alert",
         "idpTinName": "IDP-1239 -> SP5-TIN-183",
         "tinName": "Call Routing",
-        "testCaseId": "bc019dfd-5cc8-468c-b0bc-0702ec82e705",
-        "testCaseKey": "TCA-CIAV-017335",
-        "testCaseName": "IER-700 Theater Missile Defense (TMD) Alert (Call Routing) ",
-        "testCaseState": "Draft"
-    },
-    {
-        "piNumber": "SP5-PI-AIRC2",
-        "piName": "C2 of Air Operations",
-        "ierNumber": "SP5-IER-700",
-        "ierName": "Theatre Missile Defence (TMD) Alert",
-        "idpTinName": "IDP-1239 -> SP5-TIN-183",
-        "tinName": "Call Routing",
         "testCaseId": "4c44432c-1a08-4638-8fbb-de14c2c4ed89",
         "testCaseKey": "TCA-CIAV-017335",
         "testCaseName": "IER-700 Theater Missile Defense (TMD) Alert (Call Routing) ",
@@ -797,11 +785,7 @@
         "ierNumber": "SP5-IER-469",
         "ierName": "Initial MNP CIS Security Incident Report",
         "idpTinName": "IDP-941 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "e9ba0f65-1e46-4b4f-a794-9324ae364a35",
-        "testCaseKey": "TCA-CIAV-017006",
-        "testCaseName": "Initial MNP CIS Security Incident Report (e-mail)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -809,23 +793,7 @@
         "ierNumber": "SP5-IER-470",
         "ierName": "Initial MNP CIS Security Report",
         "idpTinName": "IDP-942 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "6df68fa1-790d-41be-9c55-6a3dd1ebc216",
-        "testCaseKey": "TCA-CIAV-016858",
-        "testCaseName": "Initial MNP CIS Security Report (Email)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-CISSEC",
-        "piName": "CIS Security",
-        "ierNumber": "SP5-IER-470",
-        "ierName": "Initial MNP CIS Security Report",
-        "idpTinName": "IDP-942 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "1f93b697-12a3-4436-88c2-f2fb1ed0378c",
-        "testCaseKey": "TCA-CIAV-017066",
-        "testCaseName": "MSOC-annotated CIS Security Report (e-mail)",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -833,11 +801,7 @@
         "ierNumber": "SP5-IER-471",
         "ierName": "Escalation MSOC-annotated CIS Security Report",
         "idpTinName": "IDP-944 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "b7859c36-e8cd-47ee-b16d-174c7dbd0782",
-        "testCaseKey": "TCA-CIAV-017007",
-        "testCaseName": "Escalation MSOC-annotated CIS Security Report (e-mail)",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -853,7 +817,47 @@
         "ierNumber": "SP5-IER-500",
         "ierName": "Escalated CIS Security incident report",
         "idpTinName": "IDP-943 -> SP5-TIN-11",
-        "tinName": "Email routing"
+        "tinName": "Email routing",
+        "testCaseId": "7244347c-51df-40c7-a76b-1daefc309254",
+        "testCaseKey": "TCA-CWIX-013372",
+        "testCaseName": "Cyber Threat Hunt",
+        "testCaseState": "ReadyForEvent"
+    },
+    {
+        "piNumber": "SP5-PI-CISSEC",
+        "piName": "CIS Security",
+        "ierNumber": "SP5-IER-500",
+        "ierName": "Escalated CIS Security incident report",
+        "idpTinName": "IDP-943 -> SP5-TIN-11",
+        "tinName": "Email routing",
+        "testCaseId": "67926dbc-a23b-4cac-a6f1-4c9abba147b5",
+        "testCaseKey": "TCA-CWIX-013597",
+        "testCaseName": "Cyber Threat Hunt -v2",
+        "testCaseState": "ReadyForReview"
+    },
+    {
+        "piNumber": "SP5-PI-CISSEC",
+        "piName": "CIS Security",
+        "ierNumber": "SP5-IER-500",
+        "ierName": "Escalated CIS Security incident report",
+        "idpTinName": "IDP-943 -> SP5-TIN-11",
+        "tinName": "Email routing",
+        "testCaseId": "68633d78-e89e-45a9-9d22-c1c20e277f1b",
+        "testCaseKey": "TCA-CWIX-013316",
+        "testCaseName": "Cyber Incident Response (Hardware-Focussed)",
+        "testCaseState": "ReadyForEvent"
+    },
+    {
+        "piNumber": "SP5-PI-CISSEC",
+        "piName": "CIS Security",
+        "ierNumber": "SP5-IER-500",
+        "ierName": "Escalated CIS Security incident report",
+        "idpTinName": "IDP-943 -> SP5-TIN-11",
+        "tinName": "Email routing",
+        "testCaseId": "eaf4ee8f-eea4-45a3-b79b-ca39660feeb9",
+        "testCaseKey": "TCA-CWIX-013608",
+        "testCaseName": "Cyber Incident Response (Hardware-Focussed) v2",
+        "testCaseState": "ReadyForReview"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -861,11 +865,7 @@
         "ierNumber": "SP5-IER-501",
         "ierName": "Multinational CIS Security Incident Ticket",
         "idpTinName": "IDP-940 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": "9ab004b9-8b20-4df7-a35b-25f669795ecb",
-        "testCaseKey": "TCA-CIAV-017009",
-        "testCaseName": "Multinational CIS Security Incident Ticket (Chat)",
-        "testCaseState": "Draft"
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -889,11 +889,7 @@
         "ierNumber": "SP5-IER-501",
         "ierName": "Multinational CIS Security Incident Ticket",
         "idpTinName": "IDP-946 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "8adf2044-b13f-4875-8479-3c70f6885de4",
-        "testCaseKey": "TCA-CIAV-017008",
-        "testCaseName": "Multinational CIS Security Incident Ticket (e-mail)",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -901,7 +897,11 @@
         "ierNumber": "SP5-IER-503",
         "ierName": "Multinational CIS Security Incident Ticket",
         "idpTinName": "IDP-1033 -> SP5-TIN-11",
-        "tinName": "Email routing"
+        "tinName": "Email routing",
+        "testCaseId": "c8cee983-9e3f-4392-b7e7-be6da2bf908b",
+        "testCaseKey": "TCA-CWIX-013309",
+        "testCaseName": "Cyber Incident Management and Response (Tasking)",
+        "testCaseState": "ReadyForEvent"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -917,11 +917,7 @@
         "ierNumber": "SP5-IER-628",
         "ierName": "Initial CSRS",
         "idpTinName": "IDP-1172 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "f637d6da-b98e-49c3-b96e-e5f1079e3ab7",
-        "testCaseKey": "TCA-CIAV-017510",
-        "testCaseName": "Share initial CSRS with MNPs (e-mail)",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -929,11 +925,7 @@
         "ierNumber": "SP5-IER-629",
         "ierName": "MNP specific threat assessment",
         "idpTinName": "IDP-1171 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "6ddb49af-a5a2-47c9-9aef-1d45289beac2",
-        "testCaseKey": "TCA-CIAV-017514",
-        "testCaseName": "Provide the MNP specific threat assessment (e-mail)",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CISSEC",
@@ -1237,11 +1229,7 @@
         "ierNumber": "SP5-IER-373",
         "ierName": "Distributed RCP",
         "idpTinName": "IDP-1185 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "9d60857d-5ab6-4512-b75a-596ac29b8915",
-        "testCaseKey": "TCA-CIAV-016675",
-        "testCaseName": "Distributed Recognized Cyberspace Picture (RCP)(Informal Messaging)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1249,11 +1237,7 @@
         "ierNumber": "SP5-IER-373",
         "ierName": "Distributed RCP",
         "idpTinName": "IDP-585 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "1c51324c-572e-411a-9264-79cfb88d698d",
-        "testCaseKey": "TCA-CIAV-016674",
-        "testCaseName": "Distributed Recognized Cyberspace Picture (RCP)(Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-CYOPS",
@@ -1673,11 +1657,7 @@
         "ierNumber": "SP5-IER-493",
         "ierName": "Security Policy Information File",
         "idpTinName": "IDP-1128 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "b9a4c1d2-4695-4a55-904b-c4af20261d70",
-        "testCaseKey": "TCA-CIAV-016919",
-        "testCaseName": "Security Policy Information File (SPIF) - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1685,11 +1665,7 @@
         "ierNumber": "SP5-IER-493",
         "ierName": "Security Policy Information File",
         "idpTinName": "IDP-1132 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "b47154cb-d05b-4b19-a653-1e3e032f08b6",
-        "testCaseKey": "TCA-CIAV-016920",
-        "testCaseName": "Security Policy Information File (SPIF) - Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1697,11 +1673,7 @@
         "ierNumber": "SP5-IER-663",
         "ierName": "Information Management Plan",
         "idpTinName": "IDP-1133 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "b78144a4-1073-498c-a3fb-b103705ba94f",
-        "testCaseKey": "TCA-CIAV-016996",
-        "testCaseName": "Information Management Plan \u2013 Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1709,11 +1681,7 @@
         "ierNumber": "SP5-IER-663",
         "ierName": "Information Management Plan",
         "idpTinName": "IDP-1134 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "e8dfa3a1-e28d-431b-b001-f9c581d54137",
-        "testCaseKey": "TCA-CIAV-016997",
-        "testCaseName": "Information Management Plan \u2013 Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1729,11 +1697,7 @@
         "ierNumber": "SP5-IER-665",
         "ierName": "ADS/TDS Configuration Data Information",
         "idpTinName": "IDP-1136 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "804b3cd5-de55-491e-95a1-da0e707fdc23",
-        "testCaseKey": "TCA-CIAV-016958",
-        "testCaseName": "ADS/TDS Configuration Data Information \u2013 Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1741,11 +1705,7 @@
         "ierNumber": "SP5-IER-666",
         "ierName": "ADS/TDS Catalogue",
         "idpTinName": "IDP-1137 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "075515f8-260a-4585-83be-ce4f3f402c86",
-        "testCaseKey": "TCA-CIAV-016955",
-        "testCaseName": "ADS/TDS Catalogue \u2013 Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1753,11 +1713,7 @@
         "ierNumber": "SP5-IER-666",
         "ierName": "ADS/TDS Catalogue",
         "idpTinName": "IDP-1138 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "3442498c-ce2c-43e9-9dd4-caf6cc9f4747",
-        "testCaseKey": "TCA-CIAV-016956",
-        "testCaseName": "ADS/TDS Catalogue \u2013 Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1765,11 +1721,7 @@
         "ierNumber": "SP5-IER-667",
         "ierName": "Information Retention and Disposition Plan",
         "idpTinName": "IDP-1139 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "98f9de5f-3dbb-42c7-aafb-8c6d7ba87351",
-        "testCaseKey": "TCA-CIAV-016953",
-        "testCaseName": "Information Retention and Disposition Plan - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1777,11 +1729,7 @@
         "ierNumber": "SP5-IER-667",
         "ierName": "Information Retention and Disposition Plan",
         "idpTinName": "IDP-1140 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "d2d67a6b-2589-4632-b9ce-f56ee1d77c94",
-        "testCaseKey": "TCA-CIAV-016954",
-        "testCaseName": "Information Retention and Disposition Plan \u2013 Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1789,11 +1737,7 @@
         "ierNumber": "SP5-IER-668",
         "ierName": "Archive Information of Permanant Value",
         "idpTinName": "IDP-1141 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "9a8211d1-5cd3-4c81-8630-efe2b3d50b43",
-        "testCaseKey": "TCA-CIAV-016951",
-        "testCaseName": "Archive Information of Permanent Value \u2013 Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1801,11 +1745,7 @@
         "ierNumber": "SP5-IER-668",
         "ierName": "Archive Information of Permanant Value",
         "idpTinName": "IDP-1142 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "8851955c-ac4e-457a-a146-76c6c5b74df1",
-        "testCaseKey": "TCA-CIAV-016952",
-        "testCaseName": "Archive Information of Permanent Value \u2013 Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1813,11 +1753,7 @@
         "ierNumber": "SP5-IER-669",
         "ierName": "Metadata Standards",
         "idpTinName": "IDP-1143 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "3ef4dee8-1057-47b9-8c13-b5add2c9c62e",
-        "testCaseKey": "TCA-CIAV-016949",
-        "testCaseName": "Metadata Standards \u2013 Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1825,11 +1761,7 @@
         "ierNumber": "SP5-IER-669",
         "ierName": "Metadata Standards",
         "idpTinName": "IDP-1144 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "5a9444a1-2cc3-45c9-80f5-5312d8ee5ad1",
-        "testCaseKey": "TCA-CIAV-016950",
-        "testCaseName": "Metadata Standards \u2013 Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1837,11 +1769,7 @@
         "ierNumber": "SP5-IER-670",
         "ierName": "ADS/TDS Configuration Data Information",
         "idpTinName": "IDP-1145 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "9e8498a2-3f3e-446f-b3bc-2d8198cec0a8",
-        "testCaseKey": "TCA-CIAV-016925",
-        "testCaseName": "ADS/TDS Configuration Data Information - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1849,11 +1777,7 @@
         "ierNumber": "SP5-IER-670",
         "ierName": "ADS/TDS Configuration Data Information",
         "idpTinName": "IDP-1146 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "8ea2520d-b58d-4fa2-a620-ff50862d29e4",
-        "testCaseKey": "TCA-CIAV-016926",
-        "testCaseName": "ADS/TDS Configuration Data Information - Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1861,11 +1785,7 @@
         "ierNumber": "SP5-IER-671",
         "ierName": "Information Import Process Documentation",
         "idpTinName": "IDP-1147 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "d9446816-f4d9-4dfb-b633-85a7e9248a98",
-        "testCaseKey": "TCA-CIAV-016923",
-        "testCaseName": "Information Import Process Documentation \u2013 Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1873,11 +1793,7 @@
         "ierNumber": "SP5-IER-671",
         "ierName": "Information Import Process Documentation",
         "idpTinName": "IDP-1148 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "4f712baf-35d1-4c04-ad07-551a3ad20963",
-        "testCaseKey": "TCA-CIAV-016924",
-        "testCaseName": "Information Import Process Documentation \u2013 Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1885,11 +1801,7 @@
         "ierNumber": "SP5-IER-672",
         "ierName": "Data Ownership Transfer Notification",
         "idpTinName": "IDP-1149 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "727cd5b7-4e9c-4888-9a00-f13592218292",
-        "testCaseKey": "TCA-CIAV-016921",
-        "testCaseName": "Data Ownership Transfer Notification \u2013 Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1897,11 +1809,7 @@
         "ierNumber": "SP5-IER-672",
         "ierName": "Data Ownership Transfer Notification",
         "idpTinName": "IDP-1150 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "62ac8b12-305c-4d8a-ad95-664830ae8cb8",
-        "testCaseKey": "TCA-CIAV-016922",
-        "testCaseName": "Data Ownership Transfer Notification \u2013 Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1909,11 +1817,7 @@
         "ierNumber": "SP5-IER-676",
         "ierName": "Standard Operating Procedure (SOP) for ADS Creation",
         "idpTinName": "IDP-1153 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "29c1f5ba-80fe-4399-ac19-deb78c748246",
-        "testCaseKey": "TCA-CIAV-016902",
-        "testCaseName": "Standard Operating Procedure (SOP) for ADS Creation - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1921,11 +1825,7 @@
         "ierNumber": "SP5-IER-676",
         "ierName": "Standard Operating Procedure (SOP) for ADS Creation",
         "idpTinName": "IDP-1154 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "a6aa12af-025b-4b37-963b-3442caef8cf2",
-        "testCaseKey": "TCA-CIAV-016903",
-        "testCaseName": "Standard Operating Procedure (SOP) for ADS Creation - Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1933,11 +1833,7 @@
         "ierNumber": "SP5-IER-677",
         "ierName": "ADS Metadata",
         "idpTinName": "IDP-1155 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "921cd4ce-6325-4a38-b041-1c1b13d3e8df",
-        "testCaseKey": "TCA-CIAV-016917",
-        "testCaseName": "Authoritative Data Source (ADS) Metadata - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1945,11 +1841,7 @@
         "ierNumber": "SP5-IER-677",
         "ierName": "ADS Metadata",
         "idpTinName": "IDP-1156 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "13588668-ee43-47b6-b7ed-34cd7d01a45d",
-        "testCaseKey": "TCA-CIAV-016918",
-        "testCaseName": "Authoritative Data Source (ADS) Metadata - Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1957,11 +1849,7 @@
         "ierNumber": "SP5-IER-678",
         "ierName": "TDS Metadata",
         "idpTinName": "IDP-1157 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "ed0d62fe-530d-4845-adb7-ddce2d43c92c",
-        "testCaseKey": "TCA-CIAV-016915",
-        "testCaseName": "Trusted Data Source (TDS) Metadata - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1969,11 +1857,7 @@
         "ierNumber": "SP5-IER-678",
         "ierName": "TDS Metadata",
         "idpTinName": "IDP-1158 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "2c0793d0-e777-4246-a36d-104f0ea72dd9",
-        "testCaseKey": "TCA-CIAV-016916",
-        "testCaseName": "Trusted Data Source (TDS) Metadata \u2013 Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1981,11 +1865,7 @@
         "ierNumber": "SP5-IER-679",
         "ierName": "Security Policy Mapping Matrix",
         "idpTinName": "IDP-1159 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "693a1d7a-fe71-4b00-9b29-38550ab68214",
-        "testCaseKey": "TCA-CIAV-016913",
-        "testCaseName": "Security Policy Mapping Matrix - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -1993,11 +1873,7 @@
         "ierNumber": "SP5-IER-679",
         "ierName": "Security Policy Mapping Matrix",
         "idpTinName": "IDP-1160 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "8086ecf6-eed3-481c-88be-68200e7c5e34",
-        "testCaseKey": "TCA-CIAV-016914",
-        "testCaseName": "Security Policy Mapping Matrix - Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2005,11 +1881,7 @@
         "ierNumber": "SP5-IER-680",
         "ierName": "File Format Profile",
         "idpTinName": "IDP-1161 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "8309ba01-969b-40a2-9f56-99b82c6c0f67",
-        "testCaseKey": "TCA-CIAV-016911",
-        "testCaseName": "File Format Profile - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2017,11 +1889,7 @@
         "ierNumber": "SP5-IER-680",
         "ierName": "File Format Profile",
         "idpTinName": "IDP-1162 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "ebef2a5c-9ff7-44cc-b56a-9874abb7a35c",
-        "testCaseKey": "TCA-CIAV-016912",
-        "testCaseName": "File Format Profile - Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2029,11 +1897,7 @@
         "ierNumber": "SP5-IER-683",
         "ierName": "Strategic Command provides Records Retention Schedule to JTF",
         "idpTinName": "IDP-1165 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "1cafe1c1-1929-441c-af42-01918ce6b043",
-        "testCaseKey": "TCA-CIAV-016910",
-        "testCaseName": "Strategic Command provides Records Retention Schedule to JTF - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2041,11 +1905,7 @@
         "ierNumber": "SP5-IER-685",
         "ierName": "Share IM Plan",
         "idpTinName": "IDP-1225 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "76914625-6170-4fca-bec8-57ced45aa2f1",
-        "testCaseKey": "TCA-CIAV-016908",
-        "testCaseName": "Share Information Management (IM) Plan - Web Content Hosting",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Content Hosting"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2053,11 +1913,7 @@
         "ierNumber": "SP5-IER-685",
         "ierName": "Share IM Plan",
         "idpTinName": "IDP-1226 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "59e58542-0025-451f-a5b9-a3773e101a17",
-        "testCaseKey": "TCA-CIAV-016909",
-        "testCaseName": "Share Information Management (IM) Plan - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2065,11 +1921,7 @@
         "ierNumber": "SP5-IER-692",
         "ierName": "Transfer inactive records",
         "idpTinName": "IDP-1222 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "150377a5-8a1d-4032-81c5-ab657c9fb3b8",
-        "testCaseKey": "TCA-CIAV-016907",
-        "testCaseName": "Transfer inactive records - Web-based Collaboration",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2077,11 +1929,7 @@
         "ierNumber": "SP5-IER-693",
         "ierName": "Import Standardized Terminology",
         "idpTinName": "IDP-1223 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "e745abf9-9015-4fe6-9991-15c6a06c81cc",
-        "testCaseKey": "TCA-CIAV-016906",
-        "testCaseName": "Import Standardized Terminology - Web-based Collaboration",
-        "testCaseState": "Draft"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2089,11 +1937,7 @@
         "ierNumber": "SP5-IER-694",
         "ierName": "Publish Mission Terminology Catalogue",
         "idpTinName": "IDP-1224 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "4b139b97-d1cf-4aff-b765-27336b0e6c6c",
-        "testCaseKey": "TCA-CIAV-016905",
-        "testCaseName": "Publish Mission Terminology Catalogue - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-IM",
@@ -2101,11 +1945,7 @@
         "ierNumber": "SP5-IER-696",
         "ierName": "Digital Preservation Profile",
         "idpTinName": "IDP-1229 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "d5b46813-a714-48b1-896a-f0263f4af66c",
-        "testCaseKey": "TCA-CIAV-016904",
-        "testCaseName": "Digital Preservation Profile - Email",
-        "testCaseState": "Draft"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-JISR",
@@ -2314,30 +2154,6 @@
         "testCaseKey": "TCA-CIAV-017264",
         "testCaseName": "Joint Prioritised Target List (IER-279) - Email",
         "testCaseState": "ReadyForEvent"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-279",
-        "ierName": "Joint Prioritised Target List",
-        "idpTinName": "IDP-685 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "ed1db0a4-74d0-48f2-89ad-9ff0416be5f4",
-        "testCaseKey": "TCA-CIAV-016693",
-        "testCaseName": "Joint Prioritised Target List (JPTL)(Informal Messaging - Email)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-279",
-        "ierName": "Joint Prioritised Target List",
-        "idpTinName": "IDP-731 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "0dcb5865-a36a-4d17-95e7-824ad30097db",
-        "testCaseKey": "TCA-CIAV-016692",
-        "testCaseName": "Joint Prioritised Target List (JPTL)(Web Hosting)",
-        "testCaseState": "ReadyForReview"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -2612,23 +2428,11 @@
         "piName": "Joint Targeting",
         "ierNumber": "SP5-IER-60",
         "ierName": "Target List",
-        "idpTinName": "IDP-110 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "a404c058-8d04-4d04-95c4-7b155f36777c",
-        "testCaseKey": "TCA-CIAV-016896",
-        "testCaseName": "Webbased Exchange Target List",
-        "testCaseState": "Draft"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-60",
-        "ierName": "Target List",
         "idpTinName": "IDP-1261 -> SP5-TIN-11",
         "tinName": "Email routing",
-        "testCaseId": "76f88394-4a46-48ec-97a4-92f6dfe2caa4",
-        "testCaseKey": "TCA-CIAV-016897",
-        "testCaseName": "email Exchange Target List",
+        "testCaseId": "b009c03b-43ad-4901-953f-1c9ec02278d7",
+        "testCaseKey": "TCA-CWIX-013295",
+        "testCaseName": "email Exchange",
         "testCaseState": "Draft"
     },
     {
@@ -2758,18 +2562,6 @@
         "ierName": "No Strike List",
         "idpTinName": "IDP-1163 -> SP5-TIN-11",
         "tinName": "Email routing",
-        "testCaseId": "8ca5aea6-5a28-4084-ba5d-10b4ba186414",
-        "testCaseKey": "TCA-CIAV-017225",
-        "testCaseName": "No Strike List (NSL)- Email (IER-681) ",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-681",
-        "ierName": "No Strike List",
-        "idpTinName": "IDP-1163 -> SP5-TIN-11",
-        "tinName": "Email routing",
         "testCaseId": "8a31d933-4c6b-4b84-b02b-c5235a2c2b6d",
         "testCaseKey": "TCA-CIAV-017225",
         "testCaseName": "No Strike List (NSL)- Email (IER-681) ",
@@ -2794,18 +2586,6 @@
         "ierName": "Electronic Target Folder (ETF)",
         "idpTinName": "IDP-870 -> SP5-TIN-11",
         "tinName": "Email routing",
-        "testCaseId": "5e375773-646a-4c2a-925b-41be8ba82ae9",
-        "testCaseKey": "TCA-CIAV-016885",
-        "testCaseName": "test case Target folder 02",
-        "testCaseState": "Draft"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-72",
-        "ierName": "Electronic Target Folder (ETF)",
-        "idpTinName": "IDP-870 -> SP5-TIN-11",
-        "tinName": "Email routing",
         "testCaseId": "37c8796c-e94b-4547-b9f9-5ee369bb17c6",
         "testCaseKey": "TCA-CIAV-017294",
         "testCaseName": "Entity Criticality - Email (IER-478)",
@@ -2818,46 +2598,10 @@
         "ierName": "Electronic Target Folder (ETF)",
         "idpTinName": "IDP-870 -> SP5-TIN-11",
         "tinName": "Email routing",
-        "testCaseId": "a922a834-66aa-411d-a59c-92fcac20ef91",
-        "testCaseKey": "TCA-CIAV-016895",
-        "testCaseName": "Exchange Intermediate Electronic Target Folder",
-        "testCaseState": "Draft"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-72",
-        "ierName": "Electronic Target Folder (ETF)",
-        "idpTinName": "IDP-870 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "337fc9a0-81c8-40c0-84c9-bafa1d80b915",
-        "testCaseKey": "TCA-CIAV-016862",
-        "testCaseName": "test case Target folder 01",
-        "testCaseState": "Draft"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-72",
-        "ierName": "Electronic Target Folder (ETF)",
-        "idpTinName": "IDP-870 -> SP5-TIN-11",
-        "tinName": "Email routing",
         "testCaseId": "a67b01bd-0451-44a6-b291-d6e89c9dd3ba",
         "testCaseKey": "TCA-CIAV-017019",
         "testCaseName": "Electronic Target Folder (ETF) - Email (IER-72)",
         "testCaseState": "ReadyForEvent"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-72",
-        "ierName": "Electronic Target Folder (ETF)",
-        "idpTinName": "IDP-871 -> SP5-TIN-7",
-        "tinName": "Web-based Content Hosting",
-        "testCaseId": "536c3867-548a-42b2-963a-55f640c94212",
-        "testCaseKey": "TCA-CIAV-016898",
-        "testCaseName": "Webbased Exchange Intermediate Electronic Target Folder ETF",
-        "testCaseState": "Draft"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -2918,18 +2662,6 @@
         "testCaseKey": "TCA-CIAV-017037",
         "testCaseName": "Target List - Web-based Content Hosting - (IER-74)",
         "testCaseState": "ReadyForEvent"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-74",
-        "ierName": "Target List",
-        "idpTinName": "IDP-138 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "61ba4107-4aae-4bcd-8992-94cf8d52b466",
-        "testCaseKey": "TCA-CIAV-017270",
-        "testCaseName": "No Strike List - Web-based Content Hosting - (IER-681) ",
-        "testCaseState": "Deprecated"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -3026,18 +2758,6 @@
         "ierName": "Fire Plan",
         "idpTinName": "IDP-141 -> SP5-TIN-9",
         "tinName": "Web-based Collaboration",
-        "testCaseId": "4fe5f75e-f43b-476e-98b5-646b5f405933",
-        "testCaseKey": "TCA-CIAV-016668",
-        "testCaseName": "Fire Plan (Web Hosting)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-77",
-        "ierName": "Fire Plan",
-        "idpTinName": "IDP-141 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
         "testCaseId": "9d81a579-ee53-49f9-b042-dbb1684550b4",
         "testCaseKey": "TCA-CIAV-017248",
         "testCaseName": "Fire Plan - Web-based Content Hosting (IER-77)",
@@ -3078,18 +2798,6 @@
         "testCaseKey": "TCA-CIAV-017287",
         "testCaseName": "IER-79 Fire Plan Schedule  - Web-based Content Hosting",
         "testCaseState": "ReadyForEvent"
-    },
-    {
-        "piNumber": "SP5-PI-JTGT",
-        "piName": "Joint Targeting",
-        "ierNumber": "SP5-IER-79",
-        "ierName": "Fire Plan Schedule",
-        "idpTinName": "IDP-143 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "f1eb7e8e-ed2c-44fc-b71f-ff8c598747de",
-        "testCaseKey": "TCA-CIAV-016669",
-        "testCaseName": "Fire Plan Schedule (Web Hosting)",
-        "testCaseState": "ReadyForReview"
     },
     {
         "piNumber": "SP5-PI-JTGT",
@@ -3201,11 +2909,7 @@
         "ierNumber": "SP5-IER-1",
         "ierName": "Land Tactical Battlespace Objects (BSO)",
         "idpTinName": "IDP-427 -> SP5-TIN-196",
-        "tinName": "JDSS Message Exchange",
-        "testCaseId": "0dbd1227-9a15-4311-941b-08a58f2c37c7",
-        "testCaseKey": "TCA-CIAV-017065",
-        "testCaseName": "Battlespace Geometry Dissemination - JDSS",
-        "testCaseState": "ReadyForReview"
+        "tinName": "JDSS Message Exchange"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3213,11 +2917,7 @@
         "ierNumber": "SP5-IER-239",
         "ierName": "Exchange Operations Order - OPORD",
         "idpTinName": "IDP-1038 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "ad9b3e30-8d0c-4ff1-8c67-493ae23878e0",
-        "testCaseKey": "TCA-CIAV-017234",
-        "testCaseName": "Written Directives Operational Orders (OPORD/WARNORD) Dissemination PDF Document - Email",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3225,11 +2925,7 @@
         "ierNumber": "SP5-IER-239",
         "ierName": "Exchange Operations Order - OPORD",
         "idpTinName": "IDP-431 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "9cdcb5d3-69bb-4f70-9c55-d8046e6c0316",
-        "testCaseKey": "TCA-CIAV-017253",
-        "testCaseName": "Written Directives Orders (OPORDER/WARNORD) Dissemination PDF Document - Web Portal",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3261,11 +2957,7 @@
         "ierNumber": "SP5-IER-254",
         "ierName": "Exchange Task Organization",
         "idpTinName": "IDP-448 -> SP5-TIN-45",
-        "tinName": "Exchange Friendly Land ORBAT and TaskOrg",
-        "testCaseId": "cfbe6cce-465c-4310-9981-e39eb86eed9f",
-        "testCaseKey": "TCA-CIAV-017275",
-        "testCaseName": "TASK ORG information Exchange - MIP",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Exchange Friendly Land ORBAT and TaskOrg"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3273,11 +2965,7 @@
         "ierNumber": "SP5-IER-264",
         "ierName": "Land Battlespace Object",
         "idpTinName": "IDP-1059 -> SP5-TIN-357",
-        "tinName": "Forward received MIP 4 data objects",
-        "testCaseId": "9d34aa5a-8279-4557-a324-8c054db4be4c",
-        "testCaseKey": "TCA-CIAV-017289",
-        "testCaseName": "Forwarding Land Battlespace Object exchange - MIP",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Forward received MIP 4 data objects"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3285,11 +2973,7 @@
         "ierNumber": "SP5-IER-264",
         "ierName": "Land Battlespace Object",
         "idpTinName": "IDP-458 -> SP5-TIN-73",
-        "tinName": "Exchange Recognized Ground Picture",
-        "testCaseId": "bb9fc16c-5418-4bc8-9bf7-b953e4bebde7",
-        "testCaseKey": "TCA-CIAV-017277",
-        "testCaseName": "Land Battlespace Object exchange - MIP",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Exchange Recognized Ground Picture"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3297,23 +2981,7 @@
         "ierNumber": "SP5-IER-282",
         "ierName": "Land Friendly Force Track",
         "idpTinName": "IDP-747 * -> SP5-TIN-75",
-        "tinName": "FFT Gateway",
-        "testCaseId": "eb6080ff-f602-496f-acaa-1f7cd37d2f56",
-        "testCaseKey": "TCA-CIAV-016703",
-        "testCaseName": "Land Friendly Force Track (FFI MTF)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-282",
-        "ierName": "Land Friendly Force Track",
-        "idpTinName": "IDP-747 * -> SP5-TIN-75",
-        "tinName": "FFT Gateway",
-        "testCaseId": "e9ca72aa-a0e9-474f-94fb-5baeb89b5be1",
-        "testCaseKey": "TCA-CIAV-017040",
-        "testCaseName": "Land Friendly Force Track (FFT) - FFI MTF",
-        "testCaseState": "ReadyForReview"
+        "tinName": "FFT Gateway"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3321,23 +2989,7 @@
         "ierNumber": "SP5-IER-282",
         "ierName": "Land Friendly Force Track",
         "idpTinName": "IDP-747 * -> SP5-TIN-78",
-        "tinName": "FFT Hub",
-        "testCaseId": "eb6080ff-f602-496f-acaa-1f7cd37d2f56",
-        "testCaseKey": "TCA-CIAV-016703",
-        "testCaseName": "Land Friendly Force Track (FFI MTF)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-282",
-        "ierName": "Land Friendly Force Track",
-        "idpTinName": "IDP-747 * -> SP5-TIN-78",
-        "tinName": "FFT Hub",
-        "testCaseId": "e9ca72aa-a0e9-474f-94fb-5baeb89b5be1",
-        "testCaseKey": "TCA-CIAV-017040",
-        "testCaseName": "Land Friendly Force Track (FFT) - FFI MTF",
-        "testCaseState": "ReadyForReview"
+        "tinName": "FFT Hub"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3345,23 +2997,7 @@
         "ierNumber": "SP5-IER-282",
         "ierName": "Land Friendly Force Track",
         "idpTinName": "IDP-747 * -> SP5-TIN-79",
-        "tinName": "FFT Augmentation",
-        "testCaseId": "eb6080ff-f602-496f-acaa-1f7cd37d2f56",
-        "testCaseKey": "TCA-CIAV-016703",
-        "testCaseName": "Land Friendly Force Track (FFI MTF)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-282",
-        "ierName": "Land Friendly Force Track",
-        "idpTinName": "IDP-747 * -> SP5-TIN-79",
-        "tinName": "FFT Augmentation",
-        "testCaseId": "e9ca72aa-a0e9-474f-94fb-5baeb89b5be1",
-        "testCaseKey": "TCA-CIAV-017040",
-        "testCaseName": "Land Friendly Force Track (FFT) - FFI MTF",
-        "testCaseState": "ReadyForReview"
+        "tinName": "FFT Augmentation"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3377,47 +3013,7 @@
         "ierNumber": "SP5-IER-282",
         "ierName": "Land Friendly Force Track",
         "idpTinName": "IDP-815 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "830c8832-1485-475e-8a14-707a870c934c",
-        "testCaseKey": "TCA-CIAV-017045",
-        "testCaseName": "Land Friendly Force Track - NVG files - Chat (Text-based Collaboration)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-282",
-        "ierName": "Land Friendly Force Track",
-        "idpTinName": "IDP-815 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "7679533e-48bd-4522-abfe-93f36b925950",
-        "testCaseKey": "TCA-CIAV-016704",
-        "testCaseName": "Land Friendly Force Track (Overlay Distribution - NVG Files)",
-        "testCaseState": "Deprecated"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-282",
-        "ierName": "Land Friendly Force Track",
-        "idpTinName": "IDP-815 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "6221c3f1-455c-4896-88dc-a3dbf06f7608",
-        "testCaseKey": "TCA-CIAV-017044",
-        "testCaseName": "Land Friendly Force Track - NVG files - Web-based Collaboration (Portal)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-282",
-        "ierName": "Land Friendly Force Track",
-        "idpTinName": "IDP-815 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "cd733e9f-d937-4fae-8f1f-e9285aa6189e",
-        "testCaseKey": "TCA-CIAV-017043",
-        "testCaseName": "Land Friendly Force Track - NVG files - Email",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3425,11 +3021,7 @@
         "ierNumber": "SP5-IER-473",
         "ierName": "Exchange Recognized Ground Picture",
         "idpTinName": "IDP-1104 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "a9af2b29-e697-46d3-908b-019ead8c4cc9",
-        "testCaseKey": "TCA-CIAV-016677",
-        "testCaseName": "Exchange Recognized Ground Picture (RGP)(NVG Files)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3437,11 +3029,7 @@
         "ierNumber": "SP5-IER-473",
         "ierName": "Exchange Recognized Ground Picture",
         "idpTinName": "IDP-1177 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "5b01a0d5-7391-4484-a371-072921187344",
-        "testCaseKey": "TCA-CIAV-016678",
-        "testCaseName": "Exchange Recognized Ground Picture (RGP)(NVG Web Services)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Web Services"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3449,11 +3037,7 @@
         "ierNumber": "SP5-IER-473",
         "ierName": "Exchange Recognized Ground Picture",
         "idpTinName": "IDP-1181 -> SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "testCaseId": "24b106c2-ccab-47ed-ab07-a2612055e119",
-        "testCaseKey": "TCA-CIAV-016679",
-        "testCaseName": "Exchange Recognized Ground Picture (RGP)(KML Files)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "KML Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3461,11 +3045,7 @@
         "ierNumber": "SP5-IER-473",
         "ierName": "Exchange Recognized Ground Picture",
         "idpTinName": "IDP-801 -> SP5-TIN-73",
-        "tinName": "Exchange Recognized Ground Picture",
-        "testCaseId": "48ab8b5b-a8f5-450f-91f2-af1679ad9f4f",
-        "testCaseKey": "TCA-CIAV-016676",
-        "testCaseName": "Exchange Recognized Ground Picture (Land C2 - MIP)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Exchange Recognized Ground Picture"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3473,23 +3053,7 @@
         "ierNumber": "SP5-IER-482",
         "ierName": "Exchange Land Significant Event Alert",
         "idpTinName": "IDP-922 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "f73834e9-0c68-4029-a3d9-320b8734d610",
-        "testCaseKey": "TCA-CIAV-016663",
-        "testCaseName": "Exchange Land Significant Event Alert (Overlay Distribution)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-482",
-        "ierName": "Exchange Land Significant Event Alert",
-        "idpTinName": "IDP-922 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "889dbb26-22b9-4a6d-b846-df568d79e3d5",
-        "testCaseKey": "TCA-CIAV-016664",
-        "testCaseName": "Exchange Land Significant Event Alert (Chat)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Web Services"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3497,11 +3061,7 @@
         "ierNumber": "SP5-IER-482",
         "ierName": "Exchange Land Significant Event Alert",
         "idpTinName": "IDP-923 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "166931ea-c109-4c5d-ae1e-292eb47f4ecf",
-        "testCaseKey": "TCA-CIAV-016662",
-        "testCaseName": "Exchange Land Significant Event Alert (Informal Messaging)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3509,11 +3069,7 @@
         "ierNumber": "SP5-IER-664",
         "ierName": "Exchange Situational Awareness Overlays",
         "idpTinName": "IDP-1110 -> SP5-TIN-46",
-        "tinName": "Exchange Land Generic Overlay",
-        "testCaseId": "bdeab30f-9edd-46c0-aea2-5bd6fbe40343",
-        "testCaseKey": "TCA-CIAV-017491",
-        "testCaseName": "Situation Awareness Overlay exchange - MIP",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Exchange Land Generic Overlay"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3521,23 +3077,7 @@
         "ierNumber": "SP5-IER-664",
         "ierName": "Exchange Situational Awareness Overlays",
         "idpTinName": "IDP-1178 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "47f2415e-dd11-4120-9caa-773dacff34c4",
-        "testCaseKey": "TCA-CIAV-017493",
-        "testCaseName": "Situation Awareness Overlay exchange - NVG files - Informal messaging ",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-664",
-        "ierName": "Exchange Situational Awareness Overlays",
-        "idpTinName": "IDP-1178 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "4fa7b64e-4039-40d8-819d-9f466bc9fc6f",
-        "testCaseKey": "TCA-CIAV-017494",
-        "testCaseName": "Situation Awareness Overlay exchange - NVG files - Web Portal",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3545,11 +3085,7 @@
         "ierNumber": "SP5-IER-664",
         "ierName": "Exchange Situational Awareness Overlays",
         "idpTinName": "IDP-1179 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "f45828a8-a4cd-45c3-b4c6-f6a3b334014f",
-        "testCaseKey": "TCA-CIAV-017495",
-        "testCaseName": "Situation Awareness Overlay exchange - NVG - Web services",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Web Services"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3557,11 +3093,7 @@
         "ierNumber": "SP5-IER-682",
         "ierName": "FFT Track Augmentation File",
         "idpTinName": "IDP-1182 -> SP5-TIN-79",
-        "tinName": "FFT Augmentation",
-        "testCaseId": "a97b9678-1aae-4f5d-99f8-e5c4ffbfb2dc",
-        "testCaseKey": "TCA-CIAV-017297",
-        "testCaseName": "FFT Track Augmentation Exchange - email",
-        "testCaseState": "ReadyForReview"
+        "tinName": "FFT Augmentation"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3569,11 +3101,7 @@
         "ierNumber": "SP5-IER-7",
         "ierName": "Incident Spot Report",
         "idpTinName": "IDP-8 * -> SP5-TIN-244",
-        "tinName": "Group Messaging",
-        "testCaseId": "8fbbfdf4-8f14-47c9-91c7-1ea387db94f7",
-        "testCaseKey": "TCA-CIAV-017096",
-        "testCaseName": "Event Recording and Dissemination Process - Chat",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Group Messaging"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3581,23 +3109,7 @@
         "ierNumber": "SP5-IER-7",
         "ierName": "Incident Spot Report",
         "idpTinName": "IDP-8 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": "8fbbfdf4-8f14-47c9-91c7-1ea387db94f7",
-        "testCaseKey": "TCA-CIAV-017096",
-        "testCaseName": "Event Recording and Dissemination Process - Chat",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-7",
-        "ierName": "Incident Spot Report",
-        "idpTinName": "IDP-8 * -> SP5-TIN-250",
-        "tinName": "One-to-one Messaging",
-        "testCaseId": "f18b1ff5-705a-4252-993b-bb56c34c75ac",
-        "testCaseKey": "TCA-CIAV-016666",
-        "testCaseName": "Incident Spot Report (Chat)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "One-to-one Messaging"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3613,23 +3125,7 @@
         "ierNumber": "SP5-IER-7",
         "ierName": "Incident Spot Report",
         "idpTinName": "IDP-848 -> SP5-TIN-127",
-        "tinName": "Exchange of Data Forms",
-        "testCaseId": "5413eea1-7192-4f9c-ac57-a7fa6f2e77fe",
-        "testCaseKey": "TCA-CIAV-016667",
-        "testCaseName": "Incident Spot Report (Exchange Data Form)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-7",
-        "ierName": "Incident Spot Report",
-        "idpTinName": "IDP-848 -> SP5-TIN-127",
-        "tinName": "Exchange of Data Forms",
-        "testCaseId": "40e46090-92b8-41fe-87d8-e2d8ba0a7b74",
-        "testCaseKey": "TCA-CIAV-017097",
-        "testCaseName": "Event Recording and Dissemination Process - Chat Collaboration Pub/Sub",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Exchange of Data Forms"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3637,11 +3133,7 @@
         "ierNumber": "SP5-IER-701",
         "ierName": "Land Tactical Chat Message",
         "idpTinName": "IDP-1286 -> SP5-TIN-196",
-        "tinName": "JDSS Message Exchange",
-        "testCaseId": "87b33413-7e84-4d72-aef8-0b26805ca6a0",
-        "testCaseKey": "TCA-CIAV-017302",
-        "testCaseName": "Land Tactical Chat Message",
-        "testCaseState": "ReadyForReview"
+        "tinName": "JDSS Message Exchange"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3649,11 +3141,7 @@
         "ierNumber": "SP5-IER-9",
         "ierName": "Exchange Event Battlespace Object",
         "idpTinName": "IDP-1175 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "eea646bc-bd4f-4a10-a839-86d20aa1141c",
-        "testCaseKey": "TCA-CIAV-017095",
-        "testCaseName": "Event Battlespace Geometry - NVG Web Services",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Web Services"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3661,35 +3149,7 @@
         "ierNumber": "SP5-IER-9",
         "ierName": "Exchange Event Battlespace Object",
         "idpTinName": "IDP-1176 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "0863478a-8c75-43c4-9383-22f781ed4bc3",
-        "testCaseKey": "TCA-CIAV-017083",
-        "testCaseName": "Event Battlespace Geometry - NVG files - Informal messaging",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-9",
-        "ierName": "Exchange Event Battlespace Object",
-        "idpTinName": "IDP-1176 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "d7634137-d84a-47c2-a588-3ae8ee2c24bb",
-        "testCaseKey": "TCA-CIAV-017090",
-        "testCaseName": "Event Battlespace Geometry - NVG files - Web-based Collaboration (Portal)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-9",
-        "ierName": "Exchange Event Battlespace Object",
-        "idpTinName": "IDP-1176 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "5d4ce93f-306a-4179-8860-adc6294d1c43",
-        "testCaseKey": "TCA-CIAV-017087",
-        "testCaseName": "Event Battlespace Geometry - NVG files - Chat (Text-based Collaboration)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3697,35 +3157,7 @@
         "ierNumber": "SP5-IER-9",
         "ierName": "Exchange Event Battlespace Object",
         "idpTinName": "IDP-1180 -> SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "testCaseId": "8aedd49f-2bc5-466e-a123-0893cbf5b73c",
-        "testCaseKey": "TCA-CIAV-017093",
-        "testCaseName": "Event Battlespace Geometry - KML files - Chat (Text-based Collaboration)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-9",
-        "ierName": "Exchange Event Battlespace Object",
-        "idpTinName": "IDP-1180 -> SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "testCaseId": "927c5662-d45d-45d8-8893-8785d2aa017b",
-        "testCaseKey": "TCA-CIAV-017094",
-        "testCaseName": "Event Battlespace Geometry - KML files - Web-based Collaboration (Portal)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-LANDOPS",
-        "piName": "C2 of Land Operations",
-        "ierNumber": "SP5-IER-9",
-        "ierName": "Exchange Event Battlespace Object",
-        "idpTinName": "IDP-1180 -> SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "testCaseId": "f51b0da7-aff0-4059-8c78-b7e72b6e8366",
-        "testCaseKey": "TCA-CIAV-017091",
-        "testCaseName": "Event Battlespace Geometry - KML files - Informal Messaging",
-        "testCaseState": "ReadyForReview"
+        "tinName": "KML Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-LANDOPS",
@@ -3733,11 +3165,7 @@
         "ierNumber": "SP5-IER-9",
         "ierName": "Exchange Event Battlespace Object",
         "idpTinName": "IDP-318 -> SP5-TIN-73",
-        "tinName": "Exchange Recognized Ground Picture",
-        "testCaseId": "9da4f9d0-cde3-4618-b3ad-7cb5efd05e8a",
-        "testCaseKey": "TCA-CIAV-017067",
-        "testCaseName": "Event Battlespace Geometry - MIP",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Exchange Recognized Ground Picture"
     },
     {
         "piNumber": "SP5-PI-MAROPS",
@@ -4253,11 +3681,7 @@
         "ierNumber": "SP5-IER-277",
         "ierName": "Synchronization Matrix",
         "idpTinName": "IDP-721 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "969adc4a-af35-4fa2-98e7-940a834c0afd",
-        "testCaseKey": "TCA-CIAV-016691",
-        "testCaseName": "Synchronization Matrix (Web Services)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4265,11 +3689,7 @@
         "ierNumber": "SP5-IER-285",
         "ierName": "TASKORG",
         "idpTinName": "IDP-755 -> SP5-TIN-45",
-        "tinName": "Exchange Friendly Land ORBAT and TaskOrg",
-        "testCaseId": "0d3a8c6d-9931-414f-a0b3-f170ca463767",
-        "testCaseKey": "TCA-CIAV-016706",
-        "testCaseName": "Task Organization (TASKORG)(Land C2 - MIP)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Exchange Friendly Land ORBAT and TaskOrg"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4277,11 +3697,7 @@
         "ierNumber": "SP5-IER-285",
         "ierName": "TASKORG",
         "idpTinName": "IDP-819 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "09652182-5b1c-48f0-b460-f47f45334396",
-        "testCaseKey": "TCA-CIAV-016707",
-        "testCaseName": "Task Organization (TASKORG)(Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4289,11 +3705,7 @@
         "ierNumber": "SP5-IER-362",
         "ierName": "Fragmentary Order",
         "idpTinName": "IDP-897 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "252dd4d8-b135-411a-bd68-19604ab1e034",
-        "testCaseKey": "TCA-CIAV-016685",
-        "testCaseName": "Fragmentary Order (FRAGO)(Informal Messaging - Email)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4301,11 +3713,7 @@
         "ierNumber": "SP5-IER-362",
         "ierName": "Fragmentary Order",
         "idpTinName": "IDP-898 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "79e496a1-9720-42d5-a45b-c7b156206582",
-        "testCaseKey": "TCA-CIAV-016684",
-        "testCaseName": "Fragmentary Order (FRAGO)(Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4313,11 +3721,7 @@
         "ierNumber": "SP5-IER-363",
         "ierName": "Operational Plan",
         "idpTinName": "IDP-895 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "87bb675b-5e60-4044-b234-61537030b9f5",
-        "testCaseKey": "TCA-CIAV-016670",
-        "testCaseName": "Operational Plan (Informal Messaging)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4325,11 +3729,7 @@
         "ierNumber": "SP5-IER-363",
         "ierName": "Operational Plan",
         "idpTinName": "IDP-896 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "7c27525b-bc1e-45d3-8d6e-2efc58fa7c61",
-        "testCaseKey": "TCA-CIAV-016671",
-        "testCaseName": "Operational Plan (Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-OSC2",
@@ -4537,11 +3937,7 @@
         "ierNumber": "SP5-IER-164",
         "ierName": "Situational Awareness Joint Task",
         "idpTinName": "IDP-1194 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "b4fd4c4d-1567-4fe7-b776-64377f6cdedc",
-        "testCaseKey": "TCA-CIAV-016709",
-        "testCaseName": "Situational Awareness Joint Task (JTASK SA)(Informal Messaging - Email)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4549,11 +3945,7 @@
         "ierNumber": "SP5-IER-164",
         "ierName": "Situational Awareness Joint Task",
         "idpTinName": "IDP-732 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "beca71cf-7a38-4dee-af29-9b3dec81328f",
-        "testCaseKey": "TCA-CIAV-016708",
-        "testCaseName": "Situational Awareness Joint Task (JTASK SA)(Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4633,35 +4025,7 @@
         "ierNumber": "SP5-IER-273",
         "ierName": "Area of Responsibility",
         "idpTinName": "IDP-729 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "72cc5d5d-bd8a-451b-9f89-057afeaa5256",
-        "testCaseKey": "TCA-CIAV-016688",
-        "testCaseName": "Area of Responsibility (Overlay Distribution - NVG File via Web Services)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-273",
-        "ierName": "Area of Responsibility",
-        "idpTinName": "IDP-729 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "84511079-eabf-4ca6-8f31-4f277237b699",
-        "testCaseKey": "TCA-CIAV-016690",
-        "testCaseName": "Area of Responsibility (Overlay Distribution - NVG File via Chat)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-273",
-        "ierName": "Area of Responsibility",
-        "idpTinName": "IDP-729 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "323a0c93-8b60-4735-99be-e77794566eed",
-        "testCaseKey": "TCA-CIAV-016689",
-        "testCaseName": "Area of Responsibility (Overlay Distribution - NVG File via Email)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4669,35 +4033,7 @@
         "ierNumber": "SP5-IER-280",
         "ierName": "Decision Support Overlay",
         "idpTinName": "IDP-658 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "940ef1a2-00b9-479b-b17a-9c616d97451b",
-        "testCaseKey": "TCA-CIAV-016696",
-        "testCaseName": "Decision Support Overlay (Overlay Distribution - NVG File via Email)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-280",
-        "ierName": "Decision Support Overlay",
-        "idpTinName": "IDP-658 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "9eb97a50-acc2-482c-a564-a7bee91dd1e5",
-        "testCaseKey": "TCA-CIAV-016694",
-        "testCaseName": "Decision Support Overlay (Overlay Distribution - NVG File via Web Services)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-280",
-        "ierName": "Decision Support Overlay",
-        "idpTinName": "IDP-658 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "52dae3c6-ad30-4d65-a528-fa8d313edd22",
-        "testCaseKey": "TCA-CIAV-016697",
-        "testCaseName": "Decision Support Overlay (Overlay Distribution - NVG File via Chat)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4705,11 +4041,7 @@
         "ierNumber": "SP5-IER-280",
         "ierName": "Decision Support Overlay",
         "idpTinName": "IDP-749 -> SP5-TIN-46",
-        "tinName": "Exchange Land Generic Overlay",
-        "testCaseId": "05db032b-5361-4531-a484-e4c7e95b6405",
-        "testCaseKey": "TCA-CIAV-016698",
-        "testCaseName": "Decision Support Overlay (Land C2 Info Exchange - MIP)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Exchange Land Generic Overlay"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4717,11 +4049,7 @@
         "ierNumber": "SP5-IER-281",
         "ierName": "Situational Awareness Overlays",
         "idpTinName": "IDP-1230 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "ef9a0501-b0bb-45b5-bd52-bb78eb308166",
-        "testCaseKey": "TCA-CIAV-016701",
-        "testCaseName": "Situational Awareness Overlays (Overlay Distribution - NVG Overlay Exchange via Web Services)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Web Services"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4729,11 +4057,7 @@
         "ierNumber": "SP5-IER-281",
         "ierName": "Situational Awareness Overlays",
         "idpTinName": "IDP-757 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "5ad0d3c7-882a-46fd-af64-df52ffeb8cd2",
-        "testCaseKey": "TCA-CIAV-016699",
-        "testCaseName": "Situational Awareness Overlays (Overlay Distribution - NVG Overlay Files)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4741,11 +4065,7 @@
         "ierNumber": "SP5-IER-281",
         "ierName": "Situational Awareness Overlays",
         "idpTinName": "IDP-929 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "041cd65d-e2a0-45d3-a10c-ff9480762dd0",
-        "testCaseKey": "TCA-CIAV-016700",
-        "testCaseName": "Situational Awareness Overlays (Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4753,11 +4073,7 @@
         "ierNumber": "SP5-IER-281",
         "ierName": "Situational Awareness Overlays",
         "idpTinName": "IDP-930 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "0b072495-6f73-49b7-a6fc-ede54d1c2500",
-        "testCaseKey": "TCA-CIAV-016702",
-        "testCaseName": "Situational Awareness Overlays (Informal Messaging - NVG Overlay Files via Email)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4765,11 +4081,7 @@
         "ierNumber": "SP5-IER-284",
         "ierName": "Land ORBAT Update",
         "idpTinName": "IDP-655 -> SP5-TIN-45",
-        "tinName": "Exchange Friendly Land ORBAT and TaskOrg",
-        "testCaseId": "33d1d745-0866-4d25-8d8d-33474b951626",
-        "testCaseKey": "TCA-CIAV-016705",
-        "testCaseName": "Land Order of Battle (ORBAT) Update (Land C2 - MIP)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Exchange Friendly Land ORBAT and TaskOrg"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4777,11 +4089,7 @@
         "ierNumber": "SP5-IER-365",
         "ierName": "Situational Awareness Briefing",
         "idpTinName": "IDP-1106 -> SP5-TIN-182",
-        "tinName": "Media Exchange",
-        "testCaseId": "23dc71f9-d16f-4997-96c4-2fd2a64d3678",
-        "testCaseKey": "TCA-CIAV-016640",
-        "testCaseName": "Situational Awareness Briefing (Audio/Video)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Media Exchange"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4789,11 +4097,7 @@
         "ierNumber": "SP5-IER-414",
         "ierName": "Air Situation Report",
         "idpTinName": "IDP-810 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "4db1fa06-d8ae-4721-bd31-53b197d18c59",
-        "testCaseKey": "TCA-CIAV-016665",
-        "testCaseName": "Air Situation Report (Informal Messaging)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4801,35 +4105,7 @@
         "ierNumber": "SP5-IER-427",
         "ierName": "Common Operational Picture",
         "idpTinName": "IDP-667 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "0a08947f-7ae5-4ffa-92eb-2d36d5d476e6",
-        "testCaseKey": "TCA-CIAV-016712",
-        "testCaseName": "Common Operational Picture (COP)(Overlay Distribution - NVG Overlay File - Chat)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-427",
-        "ierName": "Common Operational Picture",
-        "idpTinName": "IDP-667 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "8f2bb55b-62e0-48cb-8231-367fd7665858",
-        "testCaseKey": "TCA-CIAV-016711",
-        "testCaseName": "Common Operational Picture (COP)(Overlay Distribution - NVG Overlay File - Email)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-427",
-        "ierName": "Common Operational Picture",
-        "idpTinName": "IDP-667 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "cd34b1d5-ae94-4e34-a38b-e122652c1391",
-        "testCaseKey": "TCA-CIAV-016713",
-        "testCaseName": "Common Operational Picture (COP)(Overlay Distribution - NVG Overlay File - Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4838,10 +4114,10 @@
         "ierName": "Common Operational Picture",
         "idpTinName": "IDP-679 -> SP5-TIN-19",
         "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "01f7289e-402e-450c-812b-a619c9409414",
-        "testCaseKey": "TCA-CIAV-016710",
-        "testCaseName": "Common Operational Picture (COP)(Overlay Distribution - NVG Overlay Exchange - Web Services)",
-        "testCaseState": "ReadyForReview"
+        "testCaseId": "352cc3b6-3d8d-4d16-a19f-e519da4389fa",
+        "testCaseKey": "TCA-CWIX-013589",
+        "testCaseName": "Common Operational Picture (COP)(Overlay Distribution - NVG Overlay Exchange - Web Services) - Copy",
+        "testCaseState": "Draft"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4857,11 +4133,7 @@
         "ierNumber": "SP5-IER-430",
         "ierName": "Maritime Surface Track",
         "idpTinName": "IDP-766 * -> SP5-TIN-376",
-        "tinName": "OTH-T-Gold Message Exchange via TCP/IP",
-        "testCaseId": "7d2c254b-f731-4068-befc-011e8f117946",
-        "testCaseKey": "TCA-CIAV-016714",
-        "testCaseName": "Maritime Surface Track (Maritime C2 - OTH-T Gold)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "OTH-T-Gold Message Exchange via TCP/IP"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4869,11 +4141,7 @@
         "ierNumber": "SP5-IER-430",
         "ierName": "Maritime Surface Track",
         "idpTinName": "IDP-766 * -> SP5-TIN-377",
-        "tinName": "OTH-T-Gold Message Exchange via email",
-        "testCaseId": "2f8370b5-15c6-41b5-baee-5f28d370b3fb",
-        "testCaseKey": "TCA-CIAV-016715",
-        "testCaseName": "Maritime Surface Tracks (OTH-T Gold - Email)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "OTH-T-Gold Message Exchange via email"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4889,35 +4157,7 @@
         "ierNumber": "SP5-IER-437",
         "ierName": "Recognized Chemical, Biological, Radiological and Nuclear Picture",
         "idpTinName": "IDP-704 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "4552fb89-53ed-48b9-8536-d6b0568e404b",
-        "testCaseKey": "TCA-CIAV-016716",
-        "testCaseName": "Recognized Chemical, Biological, Radiological and Nuclear Picture (RCBRNP)(Overlay Distribution - NVG File - Web Services)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-437",
-        "ierName": "Recognized Chemical, Biological, Radiological and Nuclear Picture",
-        "idpTinName": "IDP-704 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "ce84c9ca-28ad-4dc8-810e-d846d4bb7c0e",
-        "testCaseKey": "TCA-CIAV-016718",
-        "testCaseName": "Recognized Chemical, Biological, Radiological and Nuclear Picture (RCBRNP)(Overlay Distribution - NVG Overlay File - Chat)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-437",
-        "ierName": "Recognized Chemical, Biological, Radiological and Nuclear Picture",
-        "idpTinName": "IDP-704 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "60230a24-bb7a-4d55-ae1d-e3fecc4191c4",
-        "testCaseKey": "TCA-CIAV-016717",
-        "testCaseName": "Recognized Chemical, Biological, Radiological and Nuclear Picture (RCBRNP)(Overlay Distribution - NVG Overlay File - Email)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4925,11 +4165,7 @@
         "ierNumber": "SP5-IER-438",
         "ierName": "Electronic Order of Battle",
         "idpTinName": "IDP-844 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "17691bf0-1ea2-44f6-bc11-9441b5ea2e85",
-        "testCaseKey": "TCA-CIAV-016719",
-        "testCaseName": "Electronic Order of Battle (EOB)(Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4937,11 +4173,7 @@
         "ierNumber": "SP5-IER-439",
         "ierName": "Recognized Military Engineering Picture",
         "idpTinName": "IDP-706 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "b4ada6b8-3217-489e-ad49-9a753618b569",
-        "testCaseKey": "TCA-CIAV-016720",
-        "testCaseName": "Recognized Military Engineering Picture (RMILENGP)(Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4949,11 +4181,7 @@
         "ierNumber": "SP5-IER-439",
         "ierName": "Recognized Military Engineering Picture",
         "idpTinName": "IDP-967 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "47ff22f4-df25-4f57-b59c-64c47bc8790a",
-        "testCaseKey": "TCA-CIAV-016721",
-        "testCaseName": "Recognized Military Engineering Picture (RMILENGP)(Overlay Distribution - NVG Overlay Files)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4961,11 +4189,7 @@
         "ierNumber": "SP5-IER-440",
         "ierName": "Civil Environment Picture",
         "idpTinName": "IDP-1040 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "f7d09058-60c1-4884-b3bd-4058b8af6bab",
-        "testCaseKey": "TCA-CIAV-016723",
-        "testCaseName": "Civil Environment Picture (Overlay Distribution - NVG Overlay Files)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -4973,11 +4197,7 @@
         "ierNumber": "SP5-IER-440",
         "ierName": "Civil Environment Picture",
         "idpTinName": "IDP-1107 -> SP5-TIN-18",
-        "tinName": "KML Overlay Exchange via Files",
-        "testCaseId": "ec3416b9-3f8f-42cc-857b-cf5c5836118a",
-        "testCaseKey": "TCA-CIAV-016724",
-        "testCaseName": "Civil Environment Picture (Overlay Distribution - KML Overlay File)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "KML Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5009,11 +4229,7 @@
         "ierNumber": "SP5-IER-440",
         "ierName": "Civil Environment Picture",
         "idpTinName": "IDP-707 * -> SP5-TIN-6",
-        "tinName": "Geospatial Web Feeds",
-        "testCaseId": "e48a2f86-b9a5-45b1-9beb-546b15b16a77",
-        "testCaseKey": "TCA-CIAV-016722",
-        "testCaseName": "Civil Environment Picture (Geospatial Web Services)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Geospatial Web Feeds"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5085,11 +4301,7 @@
         "ierNumber": "SP5-IER-475",
         "ierName": "Significant Event Alert",
         "idpTinName": "IDP-823 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "47b052ea-4ad7-4386-88db-8424f9b05e7e",
-        "testCaseKey": "TCA-CIAV-016725",
-        "testCaseName": "Significant Event Alert (Overlay Distribution - NVG Overlay Exchange - Web Services)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Web Services"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5097,11 +4309,7 @@
         "ierNumber": "SP5-IER-475",
         "ierName": "Significant Event Alert",
         "idpTinName": "IDP-925 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "40b25c09-0cd6-4c60-aadc-d223c3a92866",
-        "testCaseKey": "TCA-CIAV-016726",
-        "testCaseName": "Significant Event Alert (Informal Messaging - Email)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5109,11 +4317,7 @@
         "ierNumber": "SP5-IER-476",
         "ierName": "Significant Event Report",
         "idpTinName": "IDP-931 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "75262eda-ff8b-4aaa-bc4a-b4ad6c63fe5e",
-        "testCaseKey": "TCA-CIAV-016727",
-        "testCaseName": "Significant Event Report (Overlay Distribution - NVG Overlay - Web Services)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Web Services"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5121,11 +4325,7 @@
         "ierNumber": "SP5-IER-476",
         "ierName": "Significant Event Report",
         "idpTinName": "IDP-932 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "8335fdaf-dc4e-438e-b494-24aabb01b7d0",
-        "testCaseKey": "TCA-CIAV-016728",
-        "testCaseName": "Significant Event Report (Informal Messaging - Email)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5133,35 +4333,7 @@
         "ierNumber": "SP5-IER-480",
         "ierName": "Effects Overlay",
         "idpTinName": "IDP-836 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "6b033101-fe40-4ab5-a4e1-3aa2ab656b1c",
-        "testCaseKey": "TCA-CIAV-016729",
-        "testCaseName": "Effects Overlay (Overlay Distribution - NVG Overlay File via Web Services)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-480",
-        "ierName": "Effects Overlay",
-        "idpTinName": "IDP-836 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "74042832-6c2f-4586-9346-9c100be709a1",
-        "testCaseKey": "TCA-CIAV-016730",
-        "testCaseName": "Effects Overlay (Overlay Distribution - NVG Overlay File via Email)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-480",
-        "ierName": "Effects Overlay",
-        "idpTinName": "IDP-836 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "eb691fdb-e4b9-446f-85da-fe5be4a29fb5",
-        "testCaseKey": "TCA-CIAV-016731",
-        "testCaseName": "Effects Overlay (Overlay Distribution - NVG Overlay File via Chat)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5169,11 +4341,7 @@
         "ierNumber": "SP5-IER-486",
         "ierName": "Air Significant Event Alert",
         "idpTinName": "IDP-920 -> SP5-TIN-19",
-        "tinName": "NVG Overlay Exchange via Web Services",
-        "testCaseId": "9a9ca0fd-c127-4279-a91a-9752095fe2f8",
-        "testCaseKey": "TCA-CIAV-016646",
-        "testCaseName": "Air Significant Event Alert (Overlay Distribution)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Web Services"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5181,23 +4349,7 @@
         "ierNumber": "SP5-IER-486",
         "ierName": "Air Significant Event Alert",
         "idpTinName": "IDP-921 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "f0ff03ec-bbe7-443b-b6cb-03e864332a05",
-        "testCaseKey": "TCA-CIAV-016647",
-        "testCaseName": "Air Significant Event Alert (Informal Messaging - Email)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-486",
-        "ierName": "Air Significant Event Alert",
-        "idpTinName": "IDP-921 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "6a197b06-53ad-49bc-b364-e1183b00f9b6",
-        "testCaseKey": "TCA-CIAV-016648",
-        "testCaseName": "Air Significant Event Alert (Chat)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5205,23 +4357,7 @@
         "ierNumber": "SP5-IER-488",
         "ierName": "Enemy Courses of Action",
         "idpTinName": "IDP-838 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "430b44b5-7e26-4fba-8d84-3ed9e0381dc7",
-        "testCaseKey": "TCA-CIAV-016650",
-        "testCaseName": "Enemy Courses of Action (Overlay Distribution via email)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-488",
-        "ierName": "Enemy Courses of Action",
-        "idpTinName": "IDP-838 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "7c99e77f-7cf2-44bc-882a-e093103f4ac2",
-        "testCaseKey": "TCA-CIAV-016649",
-        "testCaseName": "Enemy Courses of Action (Overlay Distribution via web services)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5229,11 +4365,7 @@
         "ierNumber": "SP5-IER-489",
         "ierName": "CBRN Situation Report",
         "idpTinName": "IDP-840 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "8e9a930d-620d-445a-b48e-204674aea7ea",
-        "testCaseKey": "TCA-CIAV-016652",
-        "testCaseName": "CBRN Situation Report (Email)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Email routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5241,11 +4373,7 @@
         "ierNumber": "SP5-IER-489",
         "ierName": "CBRN Situation Report",
         "idpTinName": "IDP-841 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "7ee69520-ec17-43b0-a30f-7842d62044b4",
-        "testCaseKey": "TCA-CIAV-016651",
-        "testCaseName": "CBRN Situation Report (Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5253,11 +4381,7 @@
         "ierNumber": "SP5-IER-499",
         "ierName": "Event Exploitation Report",
         "idpTinName": "IDP-938 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "6a62c754-e42b-4923-9b33-48854df62923",
-        "testCaseKey": "TCA-CIAV-016653",
-        "testCaseName": "Event Exploitation Report (Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5265,11 +4389,7 @@
         "ierNumber": "SP5-IER-499",
         "ierName": "Event Exploitation Report",
         "idpTinName": "IDP-939 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "97fe0cf3-7f2b-44d6-bbf5-357a7dd0a711",
-        "testCaseKey": "TCA-CIAV-016654",
-        "testCaseName": "Event Exploitation Report (Overlay Distribution - NVG)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5277,11 +4397,7 @@
         "ierNumber": "SP5-IER-510",
         "ierName": "Friendly Courses of Action",
         "idpTinName": "IDP-960 -> SP5-TIN-17",
-        "tinName": "NVG Overlay Exchange via Files",
-        "testCaseId": "d4985d65-9c84-4931-ac60-0c08e1ee7bf7",
-        "testCaseKey": "TCA-CIAV-016657",
-        "testCaseName": "Friendly Courses of Action (Overlay Distribution File Share)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "NVG Overlay Exchange via Files"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5289,23 +4405,7 @@
         "ierNumber": "SP5-IER-550",
         "ierName": "Air Status Report",
         "idpTinName": "IDP-1116 -> SP5-TIN-183",
-        "tinName": "Call Routing",
-        "testCaseId": "af6849ae-6958-44b4-b166-3818516a5ca3",
-        "testCaseKey": "TCA-CIAV-016673",
-        "testCaseName": "Air Status Report (Audio - Video Collaboration)",
-        "testCaseState": "ReadyForReview"
-    },
-    {
-        "piNumber": "SP5-PI-SA",
-        "piName": "Situational Awareness",
-        "ierNumber": "SP5-IER-550",
-        "ierName": "Air Status Report",
-        "idpTinName": "IDP-965 -> SP5-TIN-11",
-        "tinName": "Email routing",
-        "testCaseId": "6c36151f-602e-4f90-9e8c-25ccb36fa350",
-        "testCaseKey": "TCA-CIAV-016672",
-        "testCaseName": "Air Status Report (Informal Messaging)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Call Routing"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5325,11 +4425,7 @@
         "ierNumber": "SP5-IER-611",
         "ierName": "Meaconing, Intrusion, Jamming and Interference Warning Report",
         "idpTinName": "IDP-1043 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "810813c4-bac1-41b4-a44f-d92656411a40",
-        "testCaseKey": "TCA-CIAV-016659",
-        "testCaseName": "Meaconing, Intrusion, Jamming and Interference (MIJI) Warning Report (Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5337,11 +4433,7 @@
         "ierNumber": "SP5-IER-612",
         "ierName": "Electromagnetic Warfare SPOTREP",
         "idpTinName": "IDP-1042 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "2fc613e8-284a-4ac4-a913-60175aa37064",
-        "testCaseKey": "TCA-CIAV-016660",
-        "testCaseName": "Electromagnetic Warfare SPOTREP (Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-SA",
@@ -5349,11 +4441,7 @@
         "ierNumber": "SP5-IER-613",
         "ierName": "MIJI Incident Report",
         "idpTinName": "IDP-1041 -> SP5-TIN-9",
-        "tinName": "Web-based Collaboration",
-        "testCaseId": "dd271388-c23c-42ba-9c3b-11ca9cbb1bb7",
-        "testCaseKey": "TCA-CIAV-016661",
-        "testCaseName": "Meaconing, Intrusion, Jamming and Interference Report (MIJIREP)(Web Hosting)",
-        "testCaseState": "ReadyForReview"
+        "tinName": "Web-based Collaboration"
     },
     {
         "piNumber": "SP5-PI-SMC",

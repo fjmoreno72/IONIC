@@ -912,7 +912,7 @@
         "name": "Double Hub",
         "version": {
             "number": 1,
-            "createdOn": "2024-09-13T15:33:40.7878599+02:00"
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
         }
     },
     {
@@ -1306,7 +1306,7 @@
                 },
                 "patternRoleGraphData": {
                     "x": 5,
-                    "y": 5.946875000000006
+                    "y": 5.94687500000001
                 },
                 "order": 0
             },
@@ -1324,7 +1324,7 @@
                     "name": ""
                 },
                 "patternRoleGraphData": {
-                    "x": 317.36328125,
+                    "x": 322.36328125,
                     "y": 5
                 },
                 "order": 1
@@ -1360,7 +1360,7 @@
         "name": "Federation",
         "version": {
             "number": 1,
-            "createdOn": "2024-09-13T15:33:40.7878599+02:00"
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
         }
     },
     {
@@ -1517,7 +1517,7 @@
         "name": "Initiator-Target",
         "version": {
             "number": 1,
-            "createdOn": "2024-09-13T15:33:40.7878599+02:00"
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
         }
     },
     {
@@ -1610,7 +1610,7 @@
         "name": "Mediation",
         "version": {
             "number": 1,
-            "createdOn": "2024-09-13T15:33:40.7878599+02:00"
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
         }
     },
     {
@@ -1629,7 +1629,7 @@
                     "name": ""
                 },
                 "patternRoleGraphData": {
-                    "x": 291.77972425591025,
+                    "x": 291.77972425591,
                     "y": 5
                 },
                 "order": 1
@@ -1649,7 +1649,7 @@
                 },
                 "patternRoleGraphData": {
                     "x": 5,
-                    "y": 6.103507972207183
+                    "y": 6.10350797220718
                 },
                 "order": 0
             }
@@ -1673,51 +1673,13 @@
         "name": "Provider-Consumer",
         "version": {
             "number": 1,
-            "createdOn": "2024-09-13T15:33:40.7878599+02:00"
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
         }
     },
     {
         "patternRoles": [
             {
-                "id": "5d9dcae7-31f3-47b6-8390-0016a7657c3c",
-                "name": "[Observers]",
-                "shortName": "Obs",
-                "isDefaultCoordinatingRole": false,
-                "patternDto": {
-                    "patternRoles": [],
-                    "patternRoleRelations": [],
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "itemId": "00000000-0000-0000-0000-000000000000",
-                    "key": "",
-                    "name": ""
-                },
-                "patternRoleGraphData": {
-                    "x": 144.81640625,
-                    "y": 5
-                },
-                "order": 2
-            },
-            {
-                "id": "b2e0256a-08f1-40a1-b1ce-74666f562137",
-                "name": "Consumer",
-                "shortName": "Con",
-                "isDefaultCoordinatingRole": false,
-                "patternDto": {
-                    "patternRoles": [],
-                    "patternRoleRelations": [],
-                    "id": "00000000-0000-0000-0000-000000000000",
-                    "itemId": "00000000-0000-0000-0000-000000000000",
-                    "key": "",
-                    "name": ""
-                },
-                "patternRoleGraphData": {
-                    "x": 285.33984375,
-                    "y": 101.12109375
-                },
-                "order": 1
-            },
-            {
-                "id": "c7dcffe3-3753-4525-9538-fb41e029fe58",
+                "id": "921085e3-377a-4c29-bda1-44fedd1f0942",
                 "name": "Provider",
                 "shortName": "Pro",
                 "isDefaultCoordinatingRole": true,
@@ -1734,13 +1696,51 @@
                     "y": 101.328125
                 },
                 "order": 0
+            },
+            {
+                "id": "604b5c86-4bda-46fd-9d05-d3866b354de1",
+                "name": "[Observers]",
+                "shortName": "[Obs]",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 144.81640625,
+                    "y": 5
+                },
+                "order": 2
+            },
+            {
+                "id": "9e96de17-a946-43fd-afc8-e59b69a2c4a8",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 285.33984375,
+                    "y": 101.12109375
+                },
+                "order": 1
             }
         ],
         "patternRoleRelations": [
             {
-                "id": "3abcffec-8228-4afc-b45a-62ebe029caad",
-                "sourceId": "c7dcffe3-3753-4525-9538-fb41e029fe58",
-                "targetId": "b2e0256a-08f1-40a1-b1ce-74666f562137",
+                "id": "5b89085d-fed6-4428-8ccd-a52fada39263",
+                "sourceId": "921085e3-377a-4c29-bda1-44fedd1f0942",
+                "targetId": "9e96de17-a946-43fd-afc8-e59b69a2c4a8",
                 "graphData": {
                     "sourcePortId": "TopRight",
                     "targetPortId": "Left"
@@ -1749,36 +1749,36 @@
                 "targetProvidesResult": true
             },
             {
-                "id": "2bd0a9ab-48f7-4443-ad04-ba8b08144c7a",
-                "sourceId": "b2e0256a-08f1-40a1-b1ce-74666f562137",
-                "targetId": "5d9dcae7-31f3-47b6-8390-0016a7657c3c",
-                "graphData": {
-                    "sourcePortId": "TopLeft",
-                    "targetPortId": "BottomRight"
-                },
-                "sourceProvidesResult": false,
-                "targetProvidesResult": true
-            },
-            {
-                "id": "0355d6a4-8ab1-4887-8bed-cb61f9eb370a",
-                "sourceId": "c7dcffe3-3753-4525-9538-fb41e029fe58",
-                "targetId": "5d9dcae7-31f3-47b6-8390-0016a7657c3c",
+                "id": "0a871150-1116-48d7-8f97-b68f844acf38",
+                "sourceId": "921085e3-377a-4c29-bda1-44fedd1f0942",
+                "targetId": "604b5c86-4bda-46fd-9d05-d3866b354de1",
                 "graphData": {
                     "sourcePortId": "Top",
                     "targetPortId": "Bottom"
                 },
                 "sourceProvidesResult": false,
                 "targetProvidesResult": true
+            },
+            {
+                "id": "4087ed5e-f00b-4d90-a1d1-f3f0fad006b5",
+                "sourceId": "9e96de17-a946-43fd-afc8-e59b69a2c4a8",
+                "targetId": "604b5c86-4bda-46fd-9d05-d3866b354de1",
+                "graphData": {
+                    "sourcePortId": "TopLeft",
+                    "targetPortId": "BottomRight"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
             }
         ],
-        "id": "f40b0f41-c442-43b3-8e55-681a4e9051cc",
+        "id": "65e08338-7bfa-4e89-bf7c-f792e4907ed3",
         "itemId": "066217eb-cda5-4bfd-bff7-f5ea0868dafc",
-        "predecessor": "837e17a1-f01a-42ac-b0cb-c8df5c4da467",
+        "predecessor": "f40b0f41-c442-43b3-8e55-681a4e9051cc",
         "key": "PAT-CIAV-000002",
         "name": "Provider-Consumer (Observer)",
         "version": {
-            "number": 3,
-            "createdOn": "2024-10-04T16:28:12.4154805+02:00"
+            "number": 4,
+            "createdOn": "2024-10-04T16:56:56.3590258+02:00"
         }
     },
     {
@@ -1882,7 +1882,7 @@
         "name": "Provider-Consumer-Subscriber",
         "version": {
             "number": 1,
-            "createdOn": "2024-09-13T15:33:40.7878599+02:00"
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
         }
     },
     {
@@ -2106,7 +2106,7 @@
         "name": "Single",
         "version": {
             "number": 1,
-            "createdOn": "2024-09-13T15:33:40.7878599+02:00"
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
         }
     },
     {

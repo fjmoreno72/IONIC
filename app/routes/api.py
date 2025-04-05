@@ -15,6 +15,7 @@ from werkzeug.exceptions import BadRequest, NotFound # Added NotFound
 from app.core.auth import login_required, get_api_client
 from app.core.exceptions import ApiRequestError, InvalidSession, DataFormatError # Import DataFormatError
 from app.config import settings
+from app.utils.file_operations import get_dynamic_data_path # Added import for dynamic paths
 
 # Create blueprint
 api_bp = Blueprint('api', __name__)
@@ -28,10 +29,14 @@ def _load_actor_map():
     global _actor_map
     start_time = time.time()
     logging.info("Attempting to load actors.json into memory...")
-    actors_path = settings.DATA_DIR / "actors.json" # Updated path
+    # Use dynamic path based on session environment
+    # Note: This runs at startup or first request, might not have session context yet.
+    # Consider loading lazily within a request context if session is strictly needed here.
+    # For now, assuming default 'ciav' is acceptable if no session.
+    actors_path = get_dynamic_data_path("actors.json")
 
     if not actors_path.exists():
-        logging.error("actors.json not found.")
+        logging.error(f"actors.json not found at {actors_path}.")
         _actor_map = {} # Set to empty dict to avoid reload attempts
         return
 
@@ -78,7 +83,9 @@ def get_actor_name(actor_id):
 
     if actor_name is None:
          # Check if the map is empty because loading failed
-        if not _actor_map and (settings.DATA_DIR / "actors.json").exists(): # Updated path
+         # Use dynamic path based on session environment
+        actors_path_check = get_dynamic_data_path("actors.json")
+        if not _actor_map and actors_path_check.exists():
              return jsonify({'success': False, 'error': 'Actor map failed to load, cannot lookup ID.'}), 500
         # Otherwise, the ID genuinely wasn't found
         # Use raise NotFound for Flask to handle the 404 response
@@ -100,9 +107,11 @@ def get_data():
     from app.utils.file_operations import read_json_file
 
     try:
-        sreq_path = settings.DATA_DIR / "SREQ.json" # Updated path
+        # Use dynamic path based on session environment
+        sreq_path = get_dynamic_data_path("SREQ.json")
 
         if not sreq_path.exists():
+            logging.warning(f"SREQ file not found at {sreq_path}")
             return jsonify({
                 'success': False,
                 'error': 'SREQ data not found. Please fetch SREQ coverage first.'
@@ -132,10 +141,12 @@ def get_ier_data():
     from app.utils.file_operations import read_json_file
 
     try:
-        ier_path = settings.DATA_DIR / "IER.json" # Updated path
-        tin_csv_file = settings.DATA_DIR / "TIN2.csv" # Updated path
+        # Use dynamic paths based on session environment
+        ier_path = get_dynamic_data_path("IER.json")
+        tin_csv_file = get_dynamic_data_path("TIN2.csv")
 
         if not ier_path.exists():
+            logging.warning(f"IER file not found at {ier_path}")
             return jsonify({
                 'success': False,
                 'error': 'IER data not found. Please fetch IER coverage first.'
@@ -175,20 +186,25 @@ def get_ier_coverage():
             })
 
         # Get IER coverage data
-        result = client.get_ier_coverage(output_path=str(settings.DATA_DIR)) # Updated path
+        # Pass environment explicitly
+        environment = session.get('environment', 'ciav')
+        result = client.get_ier_coverage(environment=environment) # Pass environment
 
         # Generate markdown content
         from app.data_models.ier_analysis import analyze_ier_data, generate_ier_markdown_output, read_tin_data # Corrected import path
         from app.utils.file_operations import read_json_file
 
-        # Read TIN data to map TINs to services
-        tin_csv_file = settings.DATA_DIR / "TIN2.csv" # Updated path
-        logging.info(f"Reading TIN data from {tin_csv_file}...")
-        tin_to_service = read_tin_data(tin_csv_file)
+        # Define dynamic paths
+        ier_path = get_dynamic_data_path("IER.json", environment=environment) # Pass environment
+        tin_csv_file = get_dynamic_data_path("TIN2.csv", environment=environment) # Pass environment
 
-        # Process IER data
-        ier_json_path = settings.DATA_DIR / 'IER.json' # Updated path
-        data = read_json_file(ier_json_path)
+        # Read TIN data to map TINs to services
+        logging.info(f"Reading TIN data from {tin_csv_file}...")
+        tin_to_service = read_tin_data(tin_csv_file) # Use dynamic path
+
+        # Process IER data using dynamic path
+        logging.info(f"Reading IER data from {ier_path}...")
+        data = read_json_file(ier_path) # Use the correctly defined dynamic path
         hierarchy = analyze_ier_data(data, tin_to_service)
         markdown_content = generate_ier_markdown_output(hierarchy)
 
@@ -223,6 +239,8 @@ def get_requirement_coverage():
         # Get the necessary data from the session before starting the background thread
         url = session.get('url')
         cookies = session.get('cookies')
+        # Get environment from session *before* starting thread
+        environment = session.get('environment', 'ciav') # Default to 'ciav'
 
         if not url or not cookies:
             return jsonify({
@@ -237,7 +255,7 @@ def get_requirement_coverage():
         # Use threading to run the operation in the background
         thread = threading.Thread(
             target=process_sreq_coverage_in_background,
-            args=(url, cookies)
+            args=(url, cookies, environment) # Pass environment to background task
         )
         thread.daemon = True  # Make sure thread doesn't block app shutdown
         thread.start()
@@ -264,10 +282,12 @@ def check_sreq_status():
         JSON response with process status
     """
     # Check if SREQ files exist and when they were last modified
-    sreq_json_path = settings.DATA_DIR / 'SREQ.json' # Updated path
+    # Use dynamic path based on session environment
+    sreq_json_path = get_dynamic_data_path("SREQ.json")
 
     try:
         if not sreq_json_path.exists():
+            logging.warning(f"SREQ file not found at {sreq_json_path} for status check.")
             return jsonify({
                 'status': 'not_started',
                 'message': 'SREQ coverage has not been generated yet'
@@ -335,7 +355,9 @@ def get_test_cases():
             })
 
         # Get test cases data
-        result = client.get_test_cases(output_path=str(settings.DATA_DIR)) # Updated path
+        # Pass environment explicitly
+        environment = session.get('environment', 'ciav')
+        result = client.get_test_cases(environment=environment) # Pass environment
 
         return jsonify({
             'success': True,
@@ -373,7 +395,9 @@ def get_test_results():
             })
 
         # Get test results data
-        result = client.get_test_results(output_path=str(settings.DATA_DIR)) # Updated path
+        # Pass environment explicitly
+        environment = session.get('environment', 'ciav')
+        result = client.get_test_results(environment=environment) # Pass environment
 
         return jsonify({
             'success': True,
@@ -417,7 +441,9 @@ def get_patterns():
         logging.info("Attempting to fetch patterns data from API")
 
         # Get patterns data
-        result = client.get_patterns(output_path=str(settings.DATA_DIR)) # Updated path
+        # Pass environment explicitly
+        environment = session.get('environment', 'ciav')
+        result = client.get_patterns(environment=environment) # Pass environment
 
         logging.info(f"Successfully fetched patterns. Count: {result.get('count', 0)}")
 
@@ -470,7 +496,9 @@ def get_actors():
         logging.info("Attempting to fetch actors data from API")
 
         # Get actors data
-        result = client.get_actors(output_path=str(settings.DATA_DIR)) # Updated path
+        # Pass environment explicitly
+        environment = session.get('environment', 'ciav')
+        result = client.get_actors(environment=environment) # Pass environment
 
         logging.info(f"Successfully fetched actors. Count: {result.get('count', 0)}")
 
@@ -509,11 +537,12 @@ def get_test_case_actors():
         JSON response with actor data or error
     """
     try:
-        # Define file path
-        actors_path = settings.DATA_DIR / "actors.json" # Updated path
+        # Define file path using dynamic path
+        actors_path = get_dynamic_data_path("actors.json")
 
         # Check if file exists
         if not actors_path.exists():
+            logging.warning(f"Actors file not found at {actors_path}")
             return jsonify({
                 'success': False,
                 'error': 'Actors data not found. Please save actors first.'
@@ -551,11 +580,12 @@ def get_test_case_patterns():
         JSON response with pattern data or error
     """
     try:
-        # Define file path
-        pattern_path = settings.DATA_DIR / "pattern.json" # Updated path
+        # Define file path using dynamic path
+        pattern_path = get_dynamic_data_path("pattern.json")
 
         # Check if file exists
         if not pattern_path.exists():
+            logging.warning(f"Pattern file not found at {pattern_path}")
             return jsonify({
                 'success': False,
                 'error': 'Pattern data not found. Please save patterns first.'
@@ -602,10 +632,12 @@ def save_test_case_patterns():
             # Use 400 Bad Request for missing data
             return jsonify({'success': False, 'error': 'No data provided in request body'}), 400
 
-        # Define output path
-        output_path = settings.DATA_DIR / "pattern.json" # Updated path
+        # Define output path using dynamic path
+        output_path = get_dynamic_data_path("pattern.json")
 
         # Write data to JSON file
+        # Import write_json_file if not already imported at top level
+        from app.utils.file_operations import write_json_file
         try:
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=4, ensure_ascii=False)
@@ -804,7 +836,8 @@ def get_asc_gps():
 def get_patterns_data_file():
     """API endpoint to get the content of the patterns data file."""
     try:
-        patterns_path = settings.DATA_DIR / 'pattern.json'
+        # Use dynamic path
+        patterns_path = get_dynamic_data_path('pattern.json')
         logging.info(f"Attempting to read patterns data from: {patterns_path}")
 
         if not patterns_path.exists():
@@ -832,7 +865,8 @@ def get_patterns_data_file():
 def get_test_cases_data_file():
     """API endpoint to get the content of the test cases data file."""
     try:
-        test_cases_path = settings.DATA_DIR / 'test_cases.json'
+        # Use dynamic path
+        test_cases_path = get_dynamic_data_path('test_cases.json')
         logging.info(f"Attempting to read test cases data from: {test_cases_path}")
 
         if not test_cases_path.exists():
@@ -856,26 +890,27 @@ def get_test_cases_data_file():
         return jsonify({"error": "An unexpected error occurred while fetching test cases data file."}), 500
 
 
-def process_sreq_coverage_in_background(url, cookies):
+def process_sreq_coverage_in_background(url, cookies, environment):
     """
     Process SREQ coverage data in a background thread.
 
     Args:
         url: Base URL for the IOCore2 API
         cookies: Session cookies for authentication
+        environment: The environment ('ciav' or 'cwix') to use for saving data.
     """
     from app.api.iocore2 import IOCore2ApiClient
 
     try:
-        logging.info(f"Starting background SREQ coverage processing")
+        logging.info(f"Starting background SREQ coverage processing for environment: {environment}")
 
         # Create API client
         client = IOCore2ApiClient(base_url=url, cookies=cookies)
 
-        # Get SREQ coverage data
-        client.get_requirement_coverage(output_path=str(settings.DATA_DIR)) # Updated path
+        # Get SREQ coverage data, passing the environment
+        client.get_requirement_coverage(environment=environment) # Pass environment
 
-        logging.info(f"Background SREQ coverage processing completed")
+        logging.info(f"Background SREQ coverage processing completed for environment: {environment}")
 
     except Exception as e:
         logging.exception(f"Error in background SREQ processing: {str(e)}")

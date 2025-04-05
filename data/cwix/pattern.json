@@ -1,0 +1,2329 @@
+[
+    {
+        "patternRoles": [
+            {
+                "id": "e597c388-64b2-4b3f-9e96-29664b3ffdf7",
+                "name": "Role C",
+                "shortName": "C",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 643.23828125,
+                    "y": 60.3828125
+                },
+                "order": 3
+            },
+            {
+                "id": "155bd541-8a7b-4fc0-b5e1-2c17c3665a65",
+                "name": "Role D",
+                "shortName": "D",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 648.66015625,
+                    "y": 179.2265625
+                },
+                "order": 4
+            },
+            {
+                "id": "7ce1a9ee-5a70-4f8a-a6a7-e18828e11dde",
+                "name": "Lead",
+                "shortName": "L",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 320.078125,
+                    "y": 5
+                },
+                "order": 0
+            },
+            {
+                "id": "5ae0e952-8ce4-4923-ac31-e49da81b287f",
+                "name": "Role B",
+                "shortName": "B",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 6.125,
+                    "y": 175.62109375
+                },
+                "order": 2
+            },
+            {
+                "id": "77d24f5d-daf0-4482-b4ec-fabd7b3fc14c",
+                "name": "Role A",
+                "shortName": "A",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 58.26953125
+                },
+                "order": 1
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "4f790c90-9f12-431b-aa7d-2fc05c881bee",
+                "sourceId": "77d24f5d-daf0-4482-b4ec-fabd7b3fc14c",
+                "targetId": "7ce1a9ee-5a70-4f8a-a6a7-e18828e11dde",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "127b2077-c842-4463-8709-3cf987618990",
+                "sourceId": "e597c388-64b2-4b3f-9e96-29664b3ffdf7",
+                "targetId": "7ce1a9ee-5a70-4f8a-a6a7-e18828e11dde",
+                "graphData": {
+                    "sourcePortId": "Left",
+                    "targetPortId": "TopRight"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "3409b5bb-7fd1-453f-b7ac-5da2bef8fece",
+                "sourceId": "155bd541-8a7b-4fc0-b5e1-2c17c3665a65",
+                "targetId": "7ce1a9ee-5a70-4f8a-a6a7-e18828e11dde",
+                "graphData": {
+                    "sourcePortId": "Left",
+                    "targetPortId": "Right"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "e8890806-78a6-43f6-87c6-fe203010ebb4",
+                "sourceId": "5ae0e952-8ce4-4923-ac31-e49da81b287f",
+                "targetId": "7ce1a9ee-5a70-4f8a-a6a7-e18828e11dde",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "BottomLeft"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            }
+        ],
+        "id": "976a952e-52f2-428d-a7ed-9e23558ad163",
+        "itemId": "775cbd7f-729f-4530-b4e5-7d8b24525b71",
+        "key": "PAT-CWIX-000012",
+        "name": "5-Scenario-Multi-Role",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-11-21T13:23:38.7744932+01:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "3969154c-f337-4706-b8e5-3bf0edcffda9",
+                "name": "Role D",
+                "shortName": "D",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 549.4673461914062,
+                    "y": 111.75787353515625
+                },
+                "order": 4
+            },
+            {
+                "id": "eb0ee76c-4bf0-4317-aeb7-46f4d48ade29",
+                "name": "Role C",
+                "shortName": "C",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 7.07037353515625
+                },
+                "order": 3
+            },
+            {
+                "id": "78d59653-9451-4d53-8dd8-9186632756b3",
+                "name": "Role E",
+                "shortName": "E",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 548.611572265625,
+                    "y": 5
+                },
+                "order": 5
+            },
+            {
+                "id": "98d137fe-c474-4756-a766-a5837d9a9d32",
+                "name": "Role A",
+                "shortName": "A",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 74.38922119140625,
+                    "y": 134.53842163085938
+                },
+                "order": 1
+            },
+            {
+                "id": "8c7add6a-36d0-4e6e-917f-ac328a0d90a1",
+                "name": "Lead",
+                "shortName": "SMA",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 274.30755615234375,
+                    "y": 6.711700439453125
+                },
+                "order": 0
+            },
+            {
+                "id": "5fe75edd-0c76-4dcb-9c44-ad48b547bbfb",
+                "name": "Role B",
+                "shortName": "B",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 421.843017578125,
+                    "y": 204.77273559570312
+                },
+                "order": 2
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "b8ea6202-8b3d-4c66-b503-6e129c9a043e",
+                "sourceId": "eb0ee76c-4bf0-4317-aeb7-46f4d48ade29",
+                "targetId": "8c7add6a-36d0-4e6e-917f-ac328a0d90a1",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "27fe5fde-97a9-44b1-8fdf-7b60bbd2eb07",
+                "sourceId": "3969154c-f337-4706-b8e5-3bf0edcffda9",
+                "targetId": "8c7add6a-36d0-4e6e-917f-ac328a0d90a1",
+                "graphData": {
+                    "sourcePortId": "Left",
+                    "targetPortId": "Right"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "87d72a41-39ab-4750-bee8-b0798c4e7beb",
+                "sourceId": "98d137fe-c474-4756-a766-a5837d9a9d32",
+                "targetId": "8c7add6a-36d0-4e6e-917f-ac328a0d90a1",
+                "graphData": {
+                    "sourcePortId": "Top",
+                    "targetPortId": "Bottom"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "0f31f79a-ea90-4846-afd0-b724f9df07eb",
+                "sourceId": "5fe75edd-0c76-4dcb-9c44-ad48b547bbfb",
+                "targetId": "8c7add6a-36d0-4e6e-917f-ac328a0d90a1",
+                "graphData": {
+                    "sourcePortId": "TopLeft",
+                    "targetPortId": "BottomRight"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "5bedb187-48d5-4223-9267-c6eafbbe55d6",
+                "sourceId": "78d59653-9451-4d53-8dd8-9186632756b3",
+                "targetId": "8c7add6a-36d0-4e6e-917f-ac328a0d90a1",
+                "graphData": {
+                    "sourcePortId": "Left",
+                    "targetPortId": "TopRight"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            }
+        ],
+        "id": "fb9ea56d-41ab-45c4-bf9c-e4d73cd53847",
+        "itemId": "68c4cde3-82f9-4e90-b978-3e10e82e6d87",
+        "predecessor": "8283f13e-6689-4f9a-911a-508784bf35a6",
+        "key": "PAT-CWIX-000011",
+        "name": "6-Scenario-Multi-Role",
+        "version": {
+            "number": 2,
+            "createdOn": "2024-11-21T14:44:56.4865441+01:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "c941e699-c36f-4543-9de2-068342b8de30",
+                "name": "Role F",
+                "shortName": "F",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 121.30078125,
+                    "y": 241.2734375
+                },
+                "order": 6
+            },
+            {
+                "id": "6b9b308f-acc6-4f5f-9fc1-075c3b25b207",
+                "name": "Lead",
+                "shortName": "SMA",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 274.30755615234375,
+                    "y": 6.711700439453125
+                },
+                "order": 0
+            },
+            {
+                "id": "80d8b2a4-33ed-4ccf-9bef-a0df6d347b05",
+                "name": "Role E",
+                "shortName": "E",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 548.611572265625,
+                    "y": 5
+                },
+                "order": 5
+            },
+            {
+                "id": "a1e4f490-8a3e-4313-83a9-a672559dff0b",
+                "name": "Role D",
+                "shortName": "D",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 522.0845336914062,
+                    "y": 139.17974853515625
+                },
+                "order": 4
+            },
+            {
+                "id": "e65f3b01-f82c-4d25-ad1a-c15928a9bd7c",
+                "name": "Role B",
+                "shortName": "B",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 417.870361328125,
+                    "y": 245.96804809570312
+                },
+                "order": 2
+            },
+            {
+                "id": "071e45c2-8240-43d6-9b7b-ce53bcb3e499",
+                "name": "Role C",
+                "shortName": "C",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 7.07037353515625
+                },
+                "order": 3
+            },
+            {
+                "id": "2689e77f-9fb4-4a97-a9cf-eedf710149e7",
+                "name": "Role A",
+                "shortName": "A",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 55.28765869140625,
+                    "y": 132.87045288085938
+                },
+                "order": 1
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "14e4b7bb-0aef-4768-804d-025c304b57d6",
+                "sourceId": "2689e77f-9fb4-4a97-a9cf-eedf710149e7",
+                "targetId": "6b9b308f-acc6-4f5f-9fc1-075c3b25b207",
+                "graphData": {
+                    "sourcePortId": "Top",
+                    "targetPortId": "Bottom"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "6a3d33bd-c0fd-4232-be31-058074edf689",
+                "sourceId": "a1e4f490-8a3e-4313-83a9-a672559dff0b",
+                "targetId": "6b9b308f-acc6-4f5f-9fc1-075c3b25b207",
+                "graphData": {
+                    "sourcePortId": "Left",
+                    "targetPortId": "Right"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "d23c8275-445e-4e36-8f57-27c91b34db7a",
+                "sourceId": "c941e699-c36f-4543-9de2-068342b8de30",
+                "targetId": "6b9b308f-acc6-4f5f-9fc1-075c3b25b207",
+                "graphData": {
+                    "sourcePortId": "Top",
+                    "targetPortId": "Bottom"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "3ef6ccad-4dff-480f-bff7-78563cf2caa8",
+                "sourceId": "e65f3b01-f82c-4d25-ad1a-c15928a9bd7c",
+                "targetId": "6b9b308f-acc6-4f5f-9fc1-075c3b25b207",
+                "graphData": {
+                    "sourcePortId": "TopLeft",
+                    "targetPortId": "BottomRight"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "d2ab06ec-b70a-4795-a70a-998688331d12",
+                "sourceId": "80d8b2a4-33ed-4ccf-9bef-a0df6d347b05",
+                "targetId": "6b9b308f-acc6-4f5f-9fc1-075c3b25b207",
+                "graphData": {
+                    "sourcePortId": "Left",
+                    "targetPortId": "TopRight"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "17632824-7a18-41db-96bc-bd56feac39e3",
+                "sourceId": "071e45c2-8240-43d6-9b7b-ce53bcb3e499",
+                "targetId": "6b9b308f-acc6-4f5f-9fc1-075c3b25b207",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            }
+        ],
+        "id": "4187b8f4-a5a2-463d-aff3-f52cac1d002a",
+        "itemId": "7ebfd0e8-e02b-41ed-9d4e-0e6ea747e777",
+        "key": "PAT-CWIX-000013",
+        "name": "7-Scenario-Multi-Role",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-11-22T16:36:59.6109698+01:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "f09e4607-89bf-4930-afc7-05455ee9dd7d",
+                "name": "Role A",
+                "shortName": "A",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 19.57672119140625,
+                    "y": 104.48367309570312
+                },
+                "order": 1
+            },
+            {
+                "id": "18762f91-ed63-43be-92af-20ef875fd279",
+                "name": "Role F",
+                "shortName": "F",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 23.2421875,
+                    "y": 209.85150146484375
+                },
+                "order": 6
+            },
+            {
+                "id": "0eedbf22-8730-4e7d-b416-4d5163498061",
+                "name": "Lead",
+                "shortName": "SMA",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 281.17083740234375,
+                    "y": 62.750701904296875
+                },
+                "order": 0
+            },
+            {
+                "id": "a090ee1b-89a4-4f71-bdee-54fadd784d37",
+                "name": "Role B",
+                "shortName": "B",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 536.264892578125,
+                    "y": 196.50314331054688
+                },
+                "order": 2
+            },
+            {
+                "id": "3957dd2a-426f-45b5-b776-8535808b021a",
+                "name": "Role D",
+                "shortName": "D",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 557.1196899414062,
+                    "y": 92.984375
+                },
+                "order": 4
+            },
+            {
+                "id": "f5a4ab09-6599-4c45-802d-9d553477623c",
+                "name": "Role G",
+                "shortName": "G",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 282.125,
+                    "y": 274.17962646484375
+                },
+                "order": 7
+            },
+            {
+                "id": "df1af637-0f00-43c6-b463-c2bfc4502f49",
+                "name": "Role E",
+                "shortName": "E",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 542.088134765625,
+                    "y": 10.96087646484375
+                },
+                "order": 5
+            },
+            {
+                "id": "adfe1fb5-8b14-440b-98b2-dfdd86510af9",
+                "name": "Role C",
+                "shortName": "C",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 5
+                },
+                "order": 3
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "3595a16d-1722-4016-9dbe-33e37cd4ffd2",
+                "sourceId": "f09e4607-89bf-4930-afc7-05455ee9dd7d",
+                "targetId": "0eedbf22-8730-4e7d-b416-4d5163498061",
+                "graphData": {
+                    "sourcePortId": "Top",
+                    "targetPortId": "Bottom"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "eb42da51-c2a8-4a20-a93e-533bb4cc1b56",
+                "sourceId": "a090ee1b-89a4-4f71-bdee-54fadd784d37",
+                "targetId": "0eedbf22-8730-4e7d-b416-4d5163498061",
+                "graphData": {
+                    "sourcePortId": "TopLeft",
+                    "targetPortId": "BottomRight"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "34af070d-80ea-4810-9553-676334759722",
+                "sourceId": "18762f91-ed63-43be-92af-20ef875fd279",
+                "targetId": "0eedbf22-8730-4e7d-b416-4d5163498061",
+                "graphData": {
+                    "sourcePortId": "Top",
+                    "targetPortId": "Bottom"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "eacbff62-3405-4ac6-9d85-8ae1617cc114",
+                "sourceId": "df1af637-0f00-43c6-b463-c2bfc4502f49",
+                "targetId": "0eedbf22-8730-4e7d-b416-4d5163498061",
+                "graphData": {
+                    "sourcePortId": "Left",
+                    "targetPortId": "TopRight"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "535d6167-144d-4f87-ad4d-bf8e00f46031",
+                "sourceId": "3957dd2a-426f-45b5-b776-8535808b021a",
+                "targetId": "0eedbf22-8730-4e7d-b416-4d5163498061",
+                "graphData": {
+                    "sourcePortId": "Left",
+                    "targetPortId": "Right"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "644a8f20-9000-451b-b289-d5f10ff757a6",
+                "sourceId": "adfe1fb5-8b14-440b-98b2-dfdd86510af9",
+                "targetId": "0eedbf22-8730-4e7d-b416-4d5163498061",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "660ac1c3-fe44-40ca-bdff-f62decb721db",
+                "sourceId": "f5a4ab09-6599-4c45-802d-9d553477623c",
+                "targetId": "0eedbf22-8730-4e7d-b416-4d5163498061",
+                "graphData": {
+                    "sourcePortId": "TopLeft",
+                    "targetPortId": "Bottom"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            }
+        ],
+        "id": "50c89f8b-4303-4421-bcdf-91146d72b668",
+        "itemId": "802d647b-b331-4a78-b776-29541e4c0449",
+        "key": "PAT-CWIX-000014",
+        "name": "8-Scenario-Multi-Role",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-11-22T16:48:22.1848661+01:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "2d4ce24c-6f47-4f47-a0cb-648938a6eaa6",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 5.89453125
+                },
+                "order": 0
+            },
+            {
+                "id": "99e7a726-9748-4e89-99cd-66eb433544f9",
+                "name": "Hub",
+                "shortName": "Hub",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 573.83984375,
+                    "y": 5.21484375
+                },
+                "order": 2
+            },
+            {
+                "id": "f4723047-9831-4e2a-8ddc-908af8acf5be",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 852.89453125,
+                    "y": 5
+                },
+                "order": 3
+            },
+            {
+                "id": "07295beb-633e-453b-a7ca-c6a1a646030d",
+                "name": "Gateway",
+                "shortName": "Gat",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 286.5234375,
+                    "y": 5.45703125
+                },
+                "order": 1
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "170ef2cd-ec29-402f-8361-176ca57e8581",
+                "sourceId": "99e7a726-9748-4e89-99cd-66eb433544f9",
+                "targetId": "f4723047-9831-4e2a-8ddc-908af8acf5be",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "db3ef250-c343-4618-af37-685a8bfb1d99",
+                "sourceId": "2d4ce24c-6f47-4f47-a0cb-648938a6eaa6",
+                "targetId": "07295beb-633e-453b-a7ca-c6a1a646030d",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "ce90fc41-41c9-4a62-990e-a1f5c11954d6",
+                "sourceId": "07295beb-633e-453b-a7ca-c6a1a646030d",
+                "targetId": "99e7a726-9748-4e89-99cd-66eb433544f9",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "d40771eb-6356-4511-bab9-afb113802038",
+        "itemId": "d40771eb-6356-4511-bab9-afb113802038",
+        "key": "PAT-CIAV-000001",
+        "name": "Double Hub",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "d953940d-486f-49d2-956d-0f005c45d4cd",
+                "name": "Mediator 1",
+                "shortName": "Med1",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 265.4296875,
+                    "y": 111.87890625
+                },
+                "order": 1
+            },
+            {
+                "id": "0fd7dccf-52af-48a4-bb8f-35090d3428be",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 514.2578125,
+                    "y": 48.484375
+                },
+                "order": 3
+            },
+            {
+                "id": "e9332d19-eb19-432c-be0b-5f49a603e7ed",
+                "name": "Mediator 2",
+                "shortName": "Med2",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 262.63671875,
+                    "y": 5
+                },
+                "order": 2
+            },
+            {
+                "id": "7fb0cbea-0efb-490f-b548-ae537a96fadb",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 52.83984375
+                },
+                "order": 0
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "3615a155-1931-4b8b-9aaf-1a98192efb45",
+                "sourceId": "d953940d-486f-49d2-956d-0f005c45d4cd",
+                "targetId": "0fd7dccf-52af-48a4-bb8f-35090d3428be",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "BottomLeft"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "25b3a1d4-180c-4c12-9e6f-21e144ba9740",
+                "sourceId": "7fb0cbea-0efb-490f-b548-ae537a96fadb",
+                "targetId": "e9332d19-eb19-432c-be0b-5f49a603e7ed",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "cdbfec05-2f72-48d0-8874-4493abb4eaf8",
+                "sourceId": "e9332d19-eb19-432c-be0b-5f49a603e7ed",
+                "targetId": "0fd7dccf-52af-48a4-bb8f-35090d3428be",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "6052c9aa-a1cf-4b33-90c9-4a503ca2f7db",
+                "sourceId": "7fb0cbea-0efb-490f-b548-ae537a96fadb",
+                "targetId": "d953940d-486f-49d2-956d-0f005c45d4cd",
+                "graphData": {
+                    "sourcePortId": "Right",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "af4fb22f-7707-4053-a9c1-c4aa8e5ae1cc",
+        "itemId": "b54af0a3-a09d-4183-a86d-1004b0affa3a",
+        "predecessor": "941e711a-f934-4bb6-a150-5ad9df053f78",
+        "key": "PAT-CWIX-000005",
+        "name": "Double Mediator",
+        "version": {
+            "number": 6,
+            "createdOn": "2024-10-22T13:55:50.9865794+00:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "440b6077-2914-4448-a917-6403c43945cb",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 585.04296875,
+                    "y": 125.6171875
+                },
+                "order": 3
+            },
+            {
+                "id": "823fd6bf-56f4-408d-bbca-7a3b0fc94aaf",
+                "name": "Mediator 1",
+                "shortName": "Med 1",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 294.421875,
+                    "y": 6.16015625
+                },
+                "order": 1
+            },
+            {
+                "id": "da403443-6fd3-4842-8095-8a80f88b7428",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 5.859375
+                },
+                "order": 0
+            },
+            {
+                "id": "04a310f4-6e0a-4280-b260-c0b2db2c483c",
+                "name": "Mediator 2",
+                "shortName": "Med 2",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 584.7421875,
+                    "y": 5
+                },
+                "order": 2
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "4b833dd7-4643-46fc-851b-1776e92676ad",
+                "sourceId": "da403443-6fd3-4842-8095-8a80f88b7428",
+                "targetId": "440b6077-2914-4448-a917-6403c43945cb",
+                "graphData": {
+                    "sourcePortId": "Right",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "9f089acc-413c-4da0-86bb-76b10a5e88c6",
+                "sourceId": "da403443-6fd3-4842-8095-8a80f88b7428",
+                "targetId": "823fd6bf-56f4-408d-bbca-7a3b0fc94aaf",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "acf383e0-3447-4c9a-87b4-c1071f25aee1",
+                "sourceId": "04a310f4-6e0a-4280-b260-c0b2db2c483c",
+                "targetId": "440b6077-2914-4448-a917-6403c43945cb",
+                "graphData": {
+                    "sourcePortId": "BottomRight",
+                    "targetPortId": "Top"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "40371272-7df4-491e-8583-cbbb7ca15834",
+                "sourceId": "823fd6bf-56f4-408d-bbca-7a3b0fc94aaf",
+                "targetId": "04a310f4-6e0a-4280-b260-c0b2db2c483c",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "e0ed7b0a-858d-4763-835c-5bef30d2659f",
+        "itemId": "9c55cdf2-1d17-4f82-8036-a6942b75e2b3",
+        "predecessor": "f2e4a0d2-8591-4cb9-b431-c5b5667f3a5c",
+        "key": "PAT-CWIX-000007",
+        "name": "Double Mediator - Provider Consumer",
+        "version": {
+            "number": 2,
+            "createdOn": "2024-11-22T17:00:46.4083419+01:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "36cf7f2a-d7b6-4cd7-a328-b80b83995900",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 5.078125
+                },
+                "order": 0
+            },
+            {
+                "id": "8dc6c90e-50ac-4c8f-bd74-cb873874aa61",
+                "name": "Alt Provider",
+                "shortName": "Alt",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 6.296875,
+                    "y": 111.53125
+                },
+                "order": 1
+            },
+            {
+                "id": "959bb686-56f9-41b4-87f5-cdd1c4915e4a",
+                "name": "Consumer",
+                "shortName": "Cons",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 335.140625,
+                    "y": 5
+                },
+                "order": 2
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "291ed038-1221-4795-a74c-0855d6ab121c",
+                "sourceId": "8dc6c90e-50ac-4c8f-bd74-cb873874aa61",
+                "targetId": "959bb686-56f9-41b4-87f5-cdd1c4915e4a",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "BottomLeft"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "2d5a170a-d718-4162-89bb-864d57da3d7e",
+                "sourceId": "36cf7f2a-d7b6-4cd7-a328-b80b83995900",
+                "targetId": "8dc6c90e-50ac-4c8f-bd74-cb873874aa61",
+                "graphData": {
+                    "sourcePortId": "BottomRight",
+                    "targetPortId": "Top"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "008e1f38-b46f-4c7c-a692-b2ef27e6846e",
+                "sourceId": "36cf7f2a-d7b6-4cd7-a328-b80b83995900",
+                "targetId": "959bb686-56f9-41b4-87f5-cdd1c4915e4a",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "570059d9-8877-4eb5-ae30-44cd91b6e626",
+        "itemId": "c8fa48fc-c791-4468-b49c-adf55bfdf40f",
+        "key": "PAT-CWIX-000009",
+        "name": "Double Provider",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-10-23T10:58:13.0245953+00:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "6ff8ce0d-4890-4561-9aef-a0d5876a5b7a",
+                "name": "Participant A",
+                "shortName": "Par A",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 5.94687500000001
+                },
+                "order": 0
+            },
+            {
+                "id": "e8cdcc68-6e2d-4359-a832-cbaef0813ba6",
+                "name": "Participant B",
+                "shortName": "Par B",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 322.36328125,
+                    "y": 5
+                },
+                "order": 1
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "103364f3-e8fe-460a-ae74-0084febc11cb",
+                "sourceId": "e8cdcc68-6e2d-4359-a832-cbaef0813ba6",
+                "targetId": "6ff8ce0d-4890-4561-9aef-a0d5876a5b7a",
+                "graphData": {
+                    "sourcePortId": "BottomLeft",
+                    "targetPortId": "Right"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "9ea283d5-f22d-4d2d-aaaa-7767c349fd42",
+                "sourceId": "6ff8ce0d-4890-4561-9aef-a0d5876a5b7a",
+                "targetId": "e8cdcc68-6e2d-4359-a832-cbaef0813ba6",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "0418ce7d-0c22-4b6f-8ca9-af07618f002c",
+        "itemId": "0418ce7d-0c22-4b6f-8ca9-af07618f002c",
+        "key": "PAT-CIAV-000004",
+        "name": "Federation",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "710833ff-fb56-45ac-906a-2d049b9b083b",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 372.8466796875,
+                    "y": 5
+                },
+                "order": 1
+            },
+            {
+                "id": "f64a852e-1f6d-41ac-9e69-8db28eb41ace",
+                "name": "Initiator",
+                "shortName": "Ini",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 5.76947021484375
+                },
+                "order": 0
+            },
+            {
+                "id": "f92282d5-c97e-40e7-a498-be5afd14cac1",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 766.51953125,
+                    "y": 5.05328369140625
+                },
+                "order": 2
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "1e807401-6856-43f9-a239-56cdfbbe50dd",
+                "sourceId": "f64a852e-1f6d-41ac-9e69-8db28eb41ace",
+                "targetId": "710833ff-fb56-45ac-906a-2d049b9b083b",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "b227bcca-272f-426c-adbc-6a9ce182eb36",
+                "sourceId": "710833ff-fb56-45ac-906a-2d049b9b083b",
+                "targetId": "f92282d5-c97e-40e7-a498-be5afd14cac1",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "91eb9d96-bbf1-4347-be6b-4c6d6fe1a98b",
+        "itemId": "4f4f2083-952a-4dd0-ac11-80a105df740d",
+        "predecessor": "4f4f2083-952a-4dd0-ac11-80a105df740d",
+        "key": "PAT-CWIX-000003",
+        "name": "Initiator-Provider-Consumer",
+        "version": {
+            "number": 2,
+            "createdOn": "2024-10-10T06:30:36.9620623+00:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "78132c81-1470-48e2-8a7e-e07e3376b8fb",
+                "name": "Initiator",
+                "shortName": "Ini",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 5
+                },
+                "order": 0
+            },
+            {
+                "id": "486e2e31-fa28-43ad-9666-e20a239cf0c2",
+                "name": "Target",
+                "shortName": "Tar",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 323.18105240885416,
+                    "y": 5.225958333333331
+                },
+                "order": 1
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "347ddaed-4cd3-4f33-9d99-717dacfa51ac",
+                "sourceId": "78132c81-1470-48e2-8a7e-e07e3376b8fb",
+                "targetId": "486e2e31-fa28-43ad-9666-e20a239cf0c2",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            }
+        ],
+        "id": "9df612d0-6136-4950-ab11-2a0b78ecf1ab",
+        "itemId": "9df612d0-6136-4950-ab11-2a0b78ecf1ab",
+        "key": "PAT-CIAV-000005",
+        "name": "Initiator-Target",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "88819ef8-c5ed-414b-a272-3f0477812f72",
+                "name": "Mediator",
+                "shortName": "Med",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 225.51953125,
+                    "y": 5
+                },
+                "order": 1
+            },
+            {
+                "id": "2993ad79-fdd4-4901-94c7-497eb50fe869",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 84.96484375
+                },
+                "order": 0
+            },
+            {
+                "id": "bebd693e-1893-40d6-9e33-7baf5dcaa381",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 467.09765625,
+                    "y": 88.6953125
+                },
+                "order": 2
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "cdcf79e4-1eb0-45fe-957d-27654d1f1f65",
+                "sourceId": "2993ad79-fdd4-4901-94c7-497eb50fe869",
+                "targetId": "88819ef8-c5ed-414b-a272-3f0477812f72",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "092b0c9b-52fc-494c-9f0e-825621052679",
+                "sourceId": "88819ef8-c5ed-414b-a272-3f0477812f72",
+                "targetId": "bebd693e-1893-40d6-9e33-7baf5dcaa381",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "00cd2000-c3ad-418c-8146-9f4b6a8afead",
+        "itemId": "00cd2000-c3ad-418c-8146-9f4b6a8afead",
+        "key": "PAT-CIAV-000003",
+        "name": "Mediation",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "cf693904-a5f2-416d-a3a2-80eb2aaf9056",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 291.77972425591,
+                    "y": 5
+                },
+                "order": 1
+            },
+            {
+                "id": "c91d4534-51bf-42f1-9df1-999bf5f8070d",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 6.10350797220718
+                },
+                "order": 0
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "6a08fe1d-41ba-4296-9072-f3b7edabeb5a",
+                "sourceId": "c91d4534-51bf-42f1-9df1-999bf5f8070d",
+                "targetId": "cf693904-a5f2-416d-a3a2-80eb2aaf9056",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "64f8085b-d769-4995-ada1-6a2644a7a143",
+        "itemId": "64f8085b-d769-4995-ada1-6a2644a7a143",
+        "key": "PAT-CIAV-000007",
+        "name": "Provider-Consumer",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "921085e3-377a-4c29-bda1-44fedd1f0942",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 101.328125
+                },
+                "order": 0
+            },
+            {
+                "id": "604b5c86-4bda-46fd-9d05-d3866b354de1",
+                "name": "[Observers]",
+                "shortName": "[Obs]",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 144.81640625,
+                    "y": 5
+                },
+                "order": 2
+            },
+            {
+                "id": "9e96de17-a946-43fd-afc8-e59b69a2c4a8",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 285.33984375,
+                    "y": 101.12109375
+                },
+                "order": 1
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "5b89085d-fed6-4428-8ccd-a52fada39263",
+                "sourceId": "921085e3-377a-4c29-bda1-44fedd1f0942",
+                "targetId": "9e96de17-a946-43fd-afc8-e59b69a2c4a8",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "0a871150-1116-48d7-8f97-b68f844acf38",
+                "sourceId": "921085e3-377a-4c29-bda1-44fedd1f0942",
+                "targetId": "604b5c86-4bda-46fd-9d05-d3866b354de1",
+                "graphData": {
+                    "sourcePortId": "Top",
+                    "targetPortId": "Bottom"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "4087ed5e-f00b-4d90-a1d1-f3f0fad006b5",
+                "sourceId": "9e96de17-a946-43fd-afc8-e59b69a2c4a8",
+                "targetId": "604b5c86-4bda-46fd-9d05-d3866b354de1",
+                "graphData": {
+                    "sourcePortId": "TopLeft",
+                    "targetPortId": "BottomRight"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "65e08338-7bfa-4e89-bf7c-f792e4907ed3",
+        "itemId": "066217eb-cda5-4bfd-bff7-f5ea0868dafc",
+        "predecessor": "f40b0f41-c442-43b3-8e55-681a4e9051cc",
+        "key": "PAT-CIAV-000002",
+        "name": "Provider-Consumer (Observer)",
+        "version": {
+            "number": 4,
+            "createdOn": "2024-10-04T16:56:56.3590258+02:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "c9a2196b-2ba3-4aae-b512-0a436d2c5f0d",
+                "name": "Consumer",
+                "shortName": "Cons",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 105.72265625
+                },
+                "order": 0
+            },
+            {
+                "id": "53668d52-6abd-4a61-95f5-1712a301254a",
+                "name": "Subscriber",
+                "shortName": "Subs",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 205.05078125,
+                    "y": 5
+                },
+                "order": 1
+            },
+            {
+                "id": "11ac41ec-69f6-4414-9db5-af4a9b70d08a",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 417.23828125,
+                    "y": 104.74609375
+                },
+                "order": 2
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "551f2c4c-def1-493f-a8ac-082380b695a2",
+                "sourceId": "11ac41ec-69f6-4414-9db5-af4a9b70d08a",
+                "targetId": "53668d52-6abd-4a61-95f5-1712a301254a",
+                "graphData": {
+                    "sourcePortId": "TopLeft",
+                    "targetPortId": "Right"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "3ebf6b43-8b07-40d3-9d0c-632aa267becf",
+                "sourceId": "11ac41ec-69f6-4414-9db5-af4a9b70d08a",
+                "targetId": "c9a2196b-2ba3-4aae-b512-0a436d2c5f0d",
+                "graphData": {
+                    "sourcePortId": "BottomLeft",
+                    "targetPortId": "Right"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "899dc110-b3ea-43c5-bf30-de9d5c92727c",
+                "sourceId": "c9a2196b-2ba3-4aae-b512-0a436d2c5f0d",
+                "targetId": "11ac41ec-69f6-4414-9db5-af4a9b70d08a",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "e63c9bd1-b1f6-4ea9-8e62-84744d9c1434",
+        "itemId": "e63c9bd1-b1f6-4ea9-8e62-84744d9c1434",
+        "key": "PAT-CWIX-000001",
+        "name": "Provider-Consumer-Subscriber",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "6e69508b-866e-4b2e-b3b7-051b0ad80df6",
+                "name": "Consumer2",
+                "shortName": "Cons2",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 315.19921875,
+                    "y": 122.3359375
+                },
+                "order": 2
+            },
+            {
+                "id": "fafa781b-5bcf-4ffb-9682-0b1de2d7ab58",
+                "name": "Consumer1",
+                "shortName": "Cons1",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 313.9375,
+                    "y": 5
+                },
+                "order": 1
+            },
+            {
+                "id": "b6c49a16-1412-4c6f-8a04-2271b98e1bb2",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 58.58203125
+                },
+                "order": 0
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "8c9c1d9d-32a3-46ae-b402-64fb104ef79f",
+                "sourceId": "b6c49a16-1412-4c6f-8a04-2271b98e1bb2",
+                "targetId": "6e69508b-866e-4b2e-b3b7-051b0ad80df6",
+                "graphData": {
+                    "sourcePortId": "Right",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "3252ad34-e1a3-43e8-b247-cad202d3c049",
+                "sourceId": "b6c49a16-1412-4c6f-8a04-2271b98e1bb2",
+                "targetId": "fafa781b-5bcf-4ffb-9682-0b1de2d7ab58",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "99059587-c932-4f3c-ba09-e06571ba0572",
+                "sourceId": "fafa781b-5bcf-4ffb-9682-0b1de2d7ab58",
+                "targetId": "6e69508b-866e-4b2e-b3b7-051b0ad80df6",
+                "graphData": {
+                    "sourcePortId": "BottomRight",
+                    "targetPortId": "Top"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "b9bf25ff-ac96-4cf4-a6e1-ea464cb826e5",
+        "itemId": "62c31dce-85c8-4616-b974-59845914c29a",
+        "predecessor": "0e740bff-c088-4bfa-8fff-19bf8f7fef47",
+        "key": "PAT-CWIX-000008",
+        "name": "Provider-Double-Consumer",
+        "version": {
+            "number": 2,
+            "createdOn": "2024-10-22T14:28:40.9909871+00:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "d381f867-98a6-4a45-998d-27f7b39f6b08",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 125.9453125
+                },
+                "order": 0
+            },
+            {
+                "id": "95e03886-9387-4dd7-9b7c-8756bb553d0c",
+                "name": "Subscriber",
+                "shortName": "Subs",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 257.45703125,
+                    "y": 5
+                },
+                "order": 1
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "8949120d-6158-49ad-9b75-267d638f7f32",
+                "sourceId": "95e03886-9387-4dd7-9b7c-8756bb553d0c",
+                "targetId": "d381f867-98a6-4a45-998d-27f7b39f6b08",
+                "graphData": {
+                    "sourcePortId": "Bottom",
+                    "targetPortId": "TopRight"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "13217a84-c0be-402b-8cab-cfdc7e3ef23c",
+                "sourceId": "d381f867-98a6-4a45-998d-27f7b39f6b08",
+                "targetId": "95e03886-9387-4dd7-9b7c-8756bb553d0c",
+                "graphData": {
+                    "sourcePortId": "Top",
+                    "targetPortId": "BottomLeft"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "2b832225-0542-496b-9e8f-cacc8f108434",
+        "itemId": "70294b8f-d0a1-4d39-a82c-2a024bd85f2c",
+        "predecessor": "70294b8f-d0a1-4d39-a82c-2a024bd85f2c",
+        "key": "PAT-CWIX-000002",
+        "name": "Provider-Subscriber",
+        "version": {
+            "number": 2,
+            "createdOn": "2024-10-11T12:37:32.5503948+00:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "13e359e8-92dc-4fef-8092-029b3e0918d2",
+                "name": "Participant",
+                "shortName": "Par",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 5
+                },
+                "order": 0
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "5df9c639-4229-4bf9-9d56-51b7b5a5f103",
+                "sourceId": "13e359e8-92dc-4fef-8092-029b3e0918d2",
+                "targetId": "13e359e8-92dc-4fef-8092-029b3e0918d2",
+                "graphData": {
+                    "sourcePortId": "",
+                    "targetPortId": ""
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": false
+            }
+        ],
+        "id": "a645a58e-9d5a-490d-89a0-d55558c1d692",
+        "itemId": "a645a58e-9d5a-490d-89a0-d55558c1d692",
+        "key": "PAT-CIAV-000006",
+        "name": "Single",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "1c861ca0-58a6-4547-9e88-4502bf519926",
+                "name": "Top Hub",
+                "shortName": "Top",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 226.36328125,
+                    "y": 5
+                },
+                "order": 2
+            },
+            {
+                "id": "aa527612-0fb4-462e-bbd8-5bb8f7d2283b",
+                "name": "Provider",
+                "shortName": "Pro",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 144.13671875
+                },
+                "order": 0
+            },
+            {
+                "id": "b5febf16-5e85-4518-b4ab-8e805af8cf65",
+                "name": "Mediator",
+                "shortName": "Med",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 227.3828125,
+                    "y": 98.5859375
+                },
+                "order": 1
+            },
+            {
+                "id": "7e6fff5d-1b71-472f-a5e4-f4a8de4a3a2a",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 452.21875,
+                    "y": 139.02734375
+                },
+                "order": 3
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "1edf9186-7a6d-4fd8-b235-417ce0e187ac",
+                "sourceId": "aa527612-0fb4-462e-bbd8-5bb8f7d2283b",
+                "targetId": "b5febf16-5e85-4518-b4ab-8e805af8cf65",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "f878312c-97ec-425b-8cc0-4935329f45d5",
+                "sourceId": "b5febf16-5e85-4518-b4ab-8e805af8cf65",
+                "targetId": "7e6fff5d-1b71-472f-a5e4-f4a8de4a3a2a",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": false
+            },
+            {
+                "id": "70fbccc9-84b8-4aca-946a-584b11907158",
+                "sourceId": "b5febf16-5e85-4518-b4ab-8e805af8cf65",
+                "targetId": "1c861ca0-58a6-4547-9e88-4502bf519926",
+                "graphData": {
+                    "sourcePortId": "TopLeft",
+                    "targetPortId": "Bottom"
+                },
+                "sourceProvidesResult": false,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "2a39a204-ae51-486f-b5c6-ecc394511fbc",
+        "itemId": "b85acd34-1036-4301-be8e-314962c345d2",
+        "predecessor": "6aad6cdd-f38b-49e0-bfc0-f869b96f3066",
+        "key": "PAT-CWIX-000006",
+        "name": "Top Hub",
+        "version": {
+            "number": 6,
+            "createdOn": "2024-10-21T07:54:50.0337199+00:00"
+        }
+    },
+    {
+        "patternRoles": [
+            {
+                "id": "bfd54ee1-3fc5-4419-8bff-3531f454cc9a",
+                "name": "Provider 1",
+                "shortName": "Pro1",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 5,
+                    "y": 5
+                },
+                "order": 0
+            },
+            {
+                "id": "97c8e992-df0b-40ff-badd-83af024453f9",
+                "name": "Provider 2",
+                "shortName": "Pro2",
+                "isDefaultCoordinatingRole": false,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 8.2109375,
+                    "y": 118.44921875
+                },
+                "order": 1
+            },
+            {
+                "id": "95f84af4-d7a1-4c6e-af3d-aeb53279c28b",
+                "name": "Consumer",
+                "shortName": "Con",
+                "isDefaultCoordinatingRole": true,
+                "patternDto": {
+                    "patternRoles": [],
+                    "patternRoleRelations": [],
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "itemId": "00000000-0000-0000-0000-000000000000",
+                    "key": "",
+                    "name": ""
+                },
+                "patternRoleGraphData": {
+                    "x": 320.33203125,
+                    "y": 59.91015625
+                },
+                "order": 2
+            }
+        ],
+        "patternRoleRelations": [
+            {
+                "id": "94360d3b-4bd8-4e50-9df3-0e57fc118144",
+                "sourceId": "bfd54ee1-3fc5-4419-8bff-3531f454cc9a",
+                "targetId": "95f84af4-d7a1-4c6e-af3d-aeb53279c28b",
+                "graphData": {
+                    "sourcePortId": "Right",
+                    "targetPortId": "Left"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            },
+            {
+                "id": "664e88a2-e31c-42b3-8533-db3916498fd1",
+                "sourceId": "97c8e992-df0b-40ff-badd-83af024453f9",
+                "targetId": "95f84af4-d7a1-4c6e-af3d-aeb53279c28b",
+                "graphData": {
+                    "sourcePortId": "TopRight",
+                    "targetPortId": "BottomLeft"
+                },
+                "sourceProvidesResult": true,
+                "targetProvidesResult": true
+            }
+        ],
+        "id": "defea2ea-4020-46b6-8e42-2a0875b7dfe2",
+        "itemId": "00012f1b-3112-4dac-859a-4d4e976992d9",
+        "key": "PAT-CWIX-000010",
+        "name": "Two Providers - One Consumer",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-10-29T10:57:50.3228464+00:00"
+        }
+    }
+]

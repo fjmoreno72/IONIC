@@ -10,6 +10,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, sessio
 
 # Updated imports
 from app.core.auth import login_required
+from app.utils.file_operations import get_dynamic_data_path # Added import for dynamic paths
 from app.data_access.affiliates_repository import get_all_affiliates, save_affiliates # Added import
 from app.data_access.sps_repository import get_all_sps, save_sps # Added SP repository import
 from app.data_access.links_repository import get_all_links, add_link, update_link, delete_link # Added Links repository import
@@ -52,9 +53,11 @@ def view_tree():
     logging.info("Accessing SREQ tree view")
 
     try:
-        sreq_path = settings.DATA_DIR / "SREQ.json" # Updated path
+        # Use dynamic path based on session environment
+        sreq_path = get_dynamic_data_path("SREQ.json")
 
         if not sreq_path.exists():
+            logging.warning(f"SREQ file not found at {sreq_path}")
             return render_template("index_tree_tin.html")
         
         data = read_json_file(sreq_path)
@@ -81,10 +84,12 @@ def view_tree_func():
     logging.info("Accessing functional tree view")
 
     try:
-        sreq_path = settings.DATA_DIR / "SREQ.json" # Updated path
-        func_path = settings.DATA_DIR / "SP5-Functional.json" # Updated path
+        # Use dynamic paths based on session environment
+        sreq_path = get_dynamic_data_path("SREQ.json")
+        func_path = get_dynamic_data_path("SP5-Functional.json")
 
         if not sreq_path.exists() or not func_path.exists():
+            logging.warning(f"Required file(s) not found: SREQ at {sreq_path}, Functional at {func_path}")
             return render_template("index_tree_func.html", default_url=settings.DEFAULT_URL)
         
         sreq_data = read_json_file(sreq_path)
@@ -114,10 +119,12 @@ def view_ier_tree():
     logging.info("Accessing IER tree view")
 
     try:
-        ier_path = settings.DATA_DIR / "IER.json" # Updated path
-        tin_csv_file = settings.DATA_DIR / "TIN2.csv" # Updated path
+        # Use dynamic paths based on session environment
+        ier_path = get_dynamic_data_path("IER.json")
+        tin_csv_file = get_dynamic_data_path("TIN2.csv")
 
         if not ier_path.exists():
+            logging.warning(f"IER file not found at {ier_path}")
             return render_template("index_ier_tree.html", data={})
         
         # Read TIN data to map TINs to services

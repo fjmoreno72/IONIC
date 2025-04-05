@@ -1,0 +1,227 @@
+# System Actors Map
+
+- Audio and Video-based Collaboration
+  - Audio Terminal Initiator
+  - Audio Terminal Target 1
+  - Call Manager
+  - Conference Server
+  - MCU
+  - Registrar Server
+  - SBC Initiator
+  - SBC Target
+  - Video Terminal Initiator
+  - Video Terminal Target
+- Calendaring and Scheduling
+  - Calendar Client Organizer
+  - Calendar Client Reader
+  - Calendar Provider
+  - Event attendee
+- Communications
+  - Audio Terminal Initiator
+  - Call Manager
+  - Consumer
+  - DNS Resolver
+  - Geo Server
+  - Identity Provider B
+  - Initator
+  - Initiator
+  - MIP GW Initiator
+  - MIP GW Target
+  - MNP
+  - NIP Router
+  - Provider
+  - Router
+  - Router A
+  - Router B
+  - System Administrator
+- Communications Transport
+  - Consumer
+  - E-Node
+  - MNP
+  - Provider
+- Data Links
+  - Data Link Server
+  - Data Link Server Consumer
+  - Data Link Server Gateway
+  - Data Link Server Hub
+  - Data Link Server Initiator
+  - Data Link Server Provider
+  - Data Link Server Target
+  - Ground-to-Air Service
+  - JRE Node
+- Digital Certificates
+  - Certificate Client*
+  - Certificate Consumer
+  - Certificate Server
+  - Chat Server
+  - Geo Portal
+  - OCSP Provider
+- Directory Data Synchronization
+  - Border DIT Provider
+  - Central DIT Provider
+  - MetaTool Owner
+  - MetaTool Provider
+- Distributed Time
+  - Data Link Server
+  - Data Link Server Initiator
+  - Data Link Server Target
+  - MIP GW
+  - Overlay Service Provider
+  - SBC Peer A
+  - Time Client
+  - Time Server
+  - Time Server Peer
+  - Time Server Stratum 2
+  - Video Terminal Initiator
+- Domain Naming
+  - Certificate Consumer
+  - DNS Resolver
+  - DNS Root Primary
+  - DNS Root Provider
+  - DNS Root Secondary
+  - DNS Zone Provider
+  - Data Link Server Target
+  - Web Client
+- Friendly Force Tracking
+  - FFT Consumer
+  - FFT Forwarder
+  - FFT Gateway
+  - FFT Provider
+  - FFT Proxy
+  - FFT Server
+  - FFT Service
+  - FFT System
+  - FFT Terminal
+  - Ground-to-Air Service
+  - Joint Task Force
+  - Land Tactical Command provider
+  - TrAD Authority
+  - TrAD Consumer
+  - TrAD Implementer
+  - TrAD Provider
+- Geospatial Information
+  - Geo Client
+  - Geo Portal
+  - Geo Server
+  - Joint Task Force
+  - Joint Task Force - A
+  - Joint Task Force - B
+  - Subordinate Entity
+  - Web Client
+- Ground-to-Air Information Exchange
+  - Ground-to-Air Service
+  - Weapon Delivery Asset (WDA)
+- Informal Messaging
+  - Email Provider
+  - Email Server
+  - Email recipient
+  - Email sender
+  - Joint Task Force
+  - Joint Task Force - A
+  - Joint Task Force - B
+  - National Targeting Expert
+  - Strategic Targeting Coordinator
+  - Subordinate Commands
+  - Subordinate Entity
+  - Tactical Command
+- Intelligence Battlespace Objects Exchange
+  - Intelligence BsO system
+  - Remote Intelligence BsO system
+- Joint ISR Information Exchange
+  - CSD
+  - CSD Administrator
+  - CSD Consumer
+  - CSD Consumer Peer
+  - CSD Provider
+  - ISR Streaming
+  - ISR Streaming Consumer
+  - ISR Streaming Provider
+- Land C2 Information Exchange
+  - Joint Task Force
+  - Land Component Command
+  - MIP GW
+  - MIP GW Initiator
+  - MIP GW Target
+  - MIP4 Consumer
+  - MIP4 Forwarder
+  - MIP4 Provider
+- Land Tactical C2 Information Exchange
+  - Land Formation Command
+  - Land Tactical Command
+  - Land Tactical Command Consumer
+  - Land Tactical Command provider
+  - Land Tactical Initiator
+  - Land Tactical Target
+- Maritime C2 Information Exchange
+  - Global RMP Manager
+  - Local RMP Manager
+  - MCC Commander
+  - RMP MNP
+  - RMP Manager
+  - RMP Operator
+  - RMP SMA
+  - RMP Sysadmin
+- Overlay Distribution
+  - Joint Task Force
+  - KML Consumer
+  - KML Provider
+  - Land Component Command
+  - Overlay Consumer
+  - Overlay Provider
+  - Overlay Service Consumer
+  - Overlay Service Forwarder
+  - Overlay Service Provider
+- Protected Core Networking
+  - E-Node
+  - Initiator
+  - Initiator E-Node
+  - Initiator E-Node/P-Function
+  - NMCD
+  - P-function
+  - PCN-2
+  - PCN-interface
+  - Protected Core Segment
+  - SMA
+  - Target
+  - Target E-Node
+  - Target E-Node/P-Function
+  - Target P-Function
+- Service Management and Control
+  - SMC CSE
+  - SMC Consumer
+  - Service Consumer
+  - Service Provider
+  - Subscriber
+- Text-based Collaboration
+  - Chat Client
+  - Chat Client Partner
+  - Chat Server
+  - Chat Server Partner
+  - Joint Task Force
+  - Joint Task Force - A
+  - Joint Task Force - B
+  - Land Component Command
+- Virtualized Processing
+  - Virtual Machine Service Consumer ( ROLE - 26 )
+  - Virtual Machine Service Provider ( ROLE - 27 )
+- Web Authentication
+  - Identity Consumer
+  - Identity Hub
+  - Identity Manager
+  - Identity Provider A
+  - Identity Provider B
+- Web Hosting
+  - Geo Portal
+  - J3 Operations
+  - Joint Fire Support Element
+  - Joint Task Force
+  - Joint Task Force - A
+  - Joint Task Force - B
+  - Joint Task Force HQ
+  - Land Component Command
+  - National Targeting Expert
+  - Strategic Targeting Coordinator
+  - Subordinate Commands
+  - Tactical Command
+  - Web Client
+  - Web Server

@@ -1,0 +1,3608 @@
+[
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-97",
+        "sreqName": "Secure log-on shall be enforced for user authentication."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-98",
+        "sreqName": "RMP services shall log specified events"
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "Standards Conformance",
+        "sreqNumber": "SP5-SREQ-99",
+        "sreqName": "All OTH-T-Gold messages shall conform to standardization detail."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "Standards Conformance",
+        "sreqNumber": "SP5-SREQ-128",
+        "sreqName": "RMP - Data Exchange - MNPs shall be able to exchange APP-11 messages (built from the rules contained in ADatP-3)."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Management",
+        "sreqNumber": "SP5-SREQ-197",
+        "sreqName": "RMP - The Regional Recognized Maritime Picture Manager shall maintain RMP information for assigned area."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Management",
+        "sreqNumber": "SP5-SREQ-198",
+        "sreqName": "RMP - The Recognized Maritime Picture Manager, both Regional and at the Operational level, shall be able to filter received information which contributes to the RMP."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Management",
+        "sreqNumber": "SP5-SREQ-199",
+        "sreqName": "RMP - The Recognized Maritime Picture Manager, both Regional and at the Operational level, shall perform validation of received information which contributes to the RMP."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Management",
+        "sreqNumber": "SP5-SREQ-200",
+        "sreqName": "The Recognized Maritime Picture Manager, both Regional and at the Operational level, shall perform fusion (merging, correlation, etc.) of information which contributes to the RMP."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Management",
+        "sreqNumber": "SP5-SREQ-201",
+        "sreqName": "The Recognized Maritime Picture Manager, both Regional and at the Operational level, shall perform evaluation of received information against existing RMP information."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Management",
+        "sreqNumber": "SP5-SREQ-202",
+        "sreqName": "The Recognized Maritime Picture Manager, both Regional and at the Operational level, shall support resolution of detected ambiguities within RMP information."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Management",
+        "sreqNumber": "SP5-SREQ-204",
+        "sreqName": "The Recognized Maritime Picture Services shall be able to filter the transmitted RMP information."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Management",
+        "sreqNumber": "SP5-SREQ-228",
+        "sreqName": "RMP - Both RMP Managers and MNPs shall ensure they depart the network correctly."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Contribution",
+        "sreqNumber": "SP5-SREQ-125",
+        "sreqName": "RMP - Contribution - Participants at the lowest level shall contribute to building the Regional RMP by providing maritime information comprising the Military Picture and White Picture (ie merchant shipping)."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Contribution",
+        "sreqNumber": "SP5-SREQ-126",
+        "sreqName": "RMP - Contribution - MNPs shall be able to provide AIS information to the RMP Manager."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Contribution",
+        "sreqNumber": "SP5-SREQ-94",
+        "sreqName": "RMP - The Recognized Maritime Picture Manager, both Regional and at the Operational level, shall be able to receive contribution in the form of White Shipping data."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Dissemination",
+        "sreqNumber": "SP5-SREQ-120",
+        "sreqName": "RMP- Dissemination - The RMP Manager, both Regional and at the Operational level, shall disseminate the RMP by the use of GOLD Messages - TCP"
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Dissemination",
+        "sreqNumber": "SP5-SREQ-121",
+        "sreqName": "RMP - Dissemination - All MNPs shall use local remarks (Expanded GOLD message)"
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Dissemination",
+        "sreqNumber": "SP5-SREQ-122",
+        "sreqName": "RMP- Dissemination - Users unable to process GOLD Messages automatically with a C2 system, but have a Message Handling System, shall use ACP-127 headers."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "RMP Dissemination",
+        "sreqNumber": "SP5-SREQ-123",
+        "sreqName": "RMP- Dissemination - MNPs unable to process GOLD Messages automatically by C2 system or Message Handling System shall use Email. This REQ is not applicable for dissemenation from the Operational level (eg.HQ MARCOM)."
+    },
+    {
+        "siName": "Maritime C2 Information Exchange",
+        "funName": "Maritime Optional Messages",
+        "sreqNumber": "SP5-SREQ-127",
+        "sreqName": "RMP - Message Reception - Optional Messages shall be considered when required."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-23",
+        "sreqName": "C2 Information exchanged between mobile land tactical units (TACCIS) via coalition waveforms shall not require protection that is more stringent than what would be required for N*** R********D information."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Battlespace Object Management",
+        "sreqNumber": "SP5-SREQ-332",
+        "sreqName": "The Service shall enable the exchange of a selection of Control Feature Battlespace Objects (including the specification of attributes)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Battlespace Object Management",
+        "sreqNumber": "SP5-SREQ-333",
+        "sreqName": "The Service shall enable the exchange of Vehicles and Weapons Battlespace Objects (including the specification of attributes)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Battlespace Object Management",
+        "sreqNumber": "SP5-SREQ-334",
+        "sreqName": "The Service shall enable the exchange of Improvised Explosive Device (IED) Battlespace Objects and Unexploded Ordnance Battlespace Objects (including the specification of attributes)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Battlespace Object Management",
+        "sreqNumber": "SP5-SREQ-335",
+        "sreqName": "The Service shall enable the exchange of a selection of Task Battlespace Objects (including the specification of attributes)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Battlespace Object Management",
+        "sreqNumber": "SP5-SREQ-336",
+        "sreqName": "The Service shall enable the exchange of a selection of Event Battlespace Objects (including the specification of attributes)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Battlespace Object Management",
+        "sreqNumber": "SP5-SREQ-337",
+        "sreqName": "The Service shall enable the exchange of Person Battlespace Objects (including the specification of attributes)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Battlespace Object Management",
+        "sreqNumber": "SP5-SREQ-338",
+        "sreqName": "The Service shall enable the exchange of a selection of Facility Battlespace Objects and Geographic Feature Battlespace Objects (including the specification of attributes)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Battlespace Object Management",
+        "sreqNumber": "SP5-SREQ-339",
+        "sreqName": "The Service shall enable the exchange of Organization/Unit Battlespace Objects (including the specification of attributes)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Battlespace Object Management",
+        "sreqNumber": "SP5-SREQ-341",
+        "sreqName": "The Service shall enable the exchange of new Battlespace Objects, the update to existing Battlespace Objects and the deletion of Battlespace Objects."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Operational Information Exchange",
+        "sreqNumber": "SP5-SREQ-340",
+        "sreqName": "The Service shall enable the exchange of Task Organization information."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Operational Information Exchange",
+        "sreqNumber": "SP5-SREQ-342",
+        "sreqName": "The Service shall enable the exchange of Operational Comments on Battlespace Objects."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Operational Information Exchange",
+        "sreqNumber": "SP5-SREQ-347",
+        "sreqName": "The Service shall enable the exchange of Contact Sighting to report observed enemies."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Operational Information Exchange",
+        "sreqNumber": "SP5-SREQ-348",
+        "sreqName": "The Service shall enable the exchange of Generic Text messages not linked to any Battlespace Object."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Operational Information Exchange",
+        "sreqNumber": "SP5-SREQ-349",
+        "sreqName": "The Service shall enable the exchange of Casual Information Request messages (MedEvac in free text format)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Situational Awareness",
+        "sreqNumber": "SP5-SREQ-343",
+        "sreqName": "The Service shall enable the exchange of Sketches consisting of generic objects with point, line and area geometry."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Situational Awareness",
+        "sreqNumber": "SP5-SREQ-344",
+        "sreqName": "The Service shall enable the exchange of Overlays (groupings of Battlespace Objects) in support of Situational Awareness."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Situational Awareness",
+        "sreqNumber": "SP5-SREQ-345",
+        "sreqName": "The Service shall enable the exchange of Presence and Identification Information (Blue Force Tracking)."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Situational Awareness",
+        "sreqNumber": "SP5-SREQ-346",
+        "sreqName": "The Service shall have the ability to configure the exchange interval of BFT information to tailor the update frequency to the available bandwidth."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Service Synchronization and Recovery",
+        "sreqNumber": "SP5-SREQ-353",
+        "sreqName": "The Service shall enable the initial synchronization of the Consumer with the Provider's existing information."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Service Synchronization and Recovery",
+        "sreqNumber": "SP5-SREQ-354",
+        "sreqName": "The Service shall support the re-synchronization of a Consumer with the Provider's existing information after a period of disconnection."
+    },
+    {
+        "siName": "Land Tactical C2 Information Exchange",
+        "funName": "Service Synchronization and Recovery",
+        "sreqNumber": "SP5-SREQ-355",
+        "sreqName": "The Service shall support the unilateral recovery of the service after a reset; both in its role as Provider and as Consumer; after the reset the service shall be able to resume providing and receiving data and be synchronized with its C2 System without resulting in duplicate information."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-395",
+        "sreqName": "The LC2IE Service shall support the graceful handling of information exchange errors."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-88",
+        "sreqName": "The LC2IE Services must log all events, registering at least IP addresses and DNS records (sender, receiver); date and time; user connection attempts; and records of successful and unsuccessful data exchange attempts."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Core LC2IE Service Capabilities",
+        "sreqNumber": "SP5-SREQ-1153",
+        "sreqName": "MIP4 Providers and MIP4 Consumers shall be able to exchange data objects at the lowest version of MIP4-IES supported by both, with a minimum of 4.4"
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Core LC2IE Service Capabilities",
+        "sreqNumber": "SP5-SREQ-1154",
+        "sreqName": "MIP4 Providers shall support forwarding of received data-objects to MIP4 Consumers without altering the contents."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Core LC2IE Service Capabilities",
+        "sreqNumber": "SP5-SREQ-481",
+        "sreqName": "The LC2IE Service shall support periods of continuous operation."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Core LC2IE Service Capabilities",
+        "sreqNumber": "SP5-SREQ-575",
+        "sreqName": "The LC2IE Service shall support the exchange of frequent transactions."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Core LC2IE Service Capabilities",
+        "sreqNumber": "SP5-SREQ-476",
+        "sreqName": "The LC2IE Service shall support the exchange of large volumes of data during (initial) synchronization."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "System Initialization and Recovery",
+        "sreqNumber": "SP5-SREQ-264",
+        "sreqName": "The LC2IE Service shall support the unilateral recovery of the service after a restart/re-initialisation/re-deployment; both in its role as Provider and as Consumer; afterwards the service shall be able to resume providing and receiving data and be synchronized with its C2 System."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "System Initialization and Recovery",
+        "sreqNumber": "SP5-SREQ-472",
+        "sreqName": "The LC2IE Service shall support the initialisation of a system upon joining the Mission Network."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "System Initialization and Recovery",
+        "sreqNumber": "SP5-SREQ-351",
+        "sreqName": "The LC2IE Service shall enable the initial synchronization of a Consumer with the Provider's existing information."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "System Initialization and Recovery",
+        "sreqNumber": "SP5-SREQ-576",
+        "sreqName": "The LC2IE Service shall support the re-establishment of information exchange after a period of disconnection."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-483",
+        "sreqName": "The LC2IE Service shall enable the exchange of a new BattleSpace Object (i.e. not previously exchanged via this service)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-352",
+        "sreqName": "The LC2IE Service shall enable the exchange of updated information about an existing BattleSpace Object."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-555",
+        "sreqName": "The LC2IE Service shall enable the Provider to communicate the deletion of a previously exchanged BattleSpace Object."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-484",
+        "sreqName": "The LC2IE Service shall enable the exchange of Operational Comments on an exchanged BattleSpace Object."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-8",
+        "sreqName": "The LC2IE Service shall explicitly link (via common URI) to the BattleSpace Object created by the original Provider when an alternate perspective from a different source has to be expressed."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-470",
+        "sreqName": "The LC2IE Service shall enable the exchange of Organisation/Unit BattleSpace Objects (including specification of detailed attributes such as hostility)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-558",
+        "sreqName": "The LC2IE Service shall enable the exchange of Control Feature BattleSpace Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-559",
+        "sreqName": "The LC2IE Service shall enable the exchange of Facility BattleSpace Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-560",
+        "sreqName": "The LC2IE Service shall enable the exchange of Equipment BattleSpace Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-561",
+        "sreqName": "The LC2IE Service shall enable the exchange of Unexploded Ordnance BattleSpace Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-562",
+        "sreqName": "The LC2IE Service shall enable the exchange of Task BattleSpace Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-563",
+        "sreqName": "The LC2IE Service shall enable the exchange of Event BattleSpace Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-564",
+        "sreqName": "The LC2IE Service shall enable the exchange of Person BattleSpace Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-565",
+        "sreqName": "The LC2IE Service shall enable the exchange of Geographic Feature BattleSpace Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "BattleSpace Object Management",
+        "sreqNumber": "SP5-SREQ-566",
+        "sreqName": "The LC2IE Service shall enable the exchange of Meteorological Feature BattleSpace Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Information Organization and Exchange",
+        "sreqNumber": "SP5-SREQ-259",
+        "sreqName": "The LC2IE Service shall enable the exchange of Consumable Objects (including specification of detailed attributes)."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Information Organization and Exchange",
+        "sreqNumber": "SP5-SREQ-477",
+        "sreqName": "The LC2IE Service shall enable the exchange of information grouped by Topic."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Information Organization and Exchange",
+        "sreqNumber": "SP5-SREQ-480",
+        "sreqName": "The LC2IE Service shall enable the exchange of Overlays (groupings of BattleSpace Objects) in support of Situational Awareness."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Information Organization and Exchange",
+        "sreqNumber": "SP5-SREQ-570",
+        "sreqName": "The LC2IE Service shall enable the exchange of Planned Overlays."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Information Organization and Exchange",
+        "sreqNumber": "SP5-SREQ-7",
+        "sreqName": "The LC2IE Service shall support the use of Managed Lists to specify details related to e.g., Affiliation."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Military Organization Information Exchange",
+        "sreqNumber": "SP5-SREQ-317",
+        "sreqName": "The LC2IE Service shall enable the exchange of Non-Friendly Order-of-Battle (ORBAT) information."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Military Organization Information Exchange",
+        "sreqNumber": "SP5-SREQ-571",
+        "sreqName": "The LC2IE Service shall enable the exchange of Friendly Order-of-Battle (ORBAT) information."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Military Organization Information Exchange",
+        "sreqNumber": "SP5-SREQ-573",
+        "sreqName": "The LC2IE Service shall enable the exchange of Task Organisation information."
+    },
+    {
+        "siName": "Land C2 Information Exchange",
+        "funName": "Offline Mode",
+        "sreqNumber": "SP5-SREQ-557",
+        "sreqName": "The LC2IE Service shall enable the offline exchange of Information between Provider and Consumer systems."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1238",
+        "sreqName": "NSILs shall mutually authenticate using certificates and using system account credentials at the application level."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1240",
+        "sreqName": "All synchronization between NSILs shall be secured in transit (https)."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1241",
+        "sreqName": "All user access to NSILs shall be secured in transit (https)."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-304",
+        "sreqName": "Access to the functionality provided by the service interfaces described in this document shall be controlled using the \"Username Token Profile 1.1\" [OASIS WS-Security UsernameToken 1.1, 2006] that has been agreed to be mandatory for all SOAP operations in all interfaces. A service shall throw an \"Access Denied\" exception if it does not receive sufficient credentials."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-305",
+        "sreqName": "ISR Service provider shall implement their own authentication mechanisms to allow access only to trusted clients."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-512",
+        "sreqName": "Servers shall mutually authenticate using certificates."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-1239",
+        "sreqName": "All NSILs shall log all security events, including as a minimum all exceptional events."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Standard Conformance",
+        "sreqNumber": "SP5-SREQ-1243",
+        "sreqName": "Strict data and metadata format validations, compliant with STANAG 4559, shall be conducted on all data prior to ingest. Non-compliant information shall be dropped."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Standard Conformance",
+        "sreqNumber": "SP5-SREQ-1236",
+        "sreqName": "All data objects held within, and exchanged between, NATO Standard ISR Libraries (NSILs) shall carry confidentiality labels compliant with STANAG 4774."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Data Management and Validation",
+        "sreqNumber": "SP5-SREQ-1237",
+        "sreqName": "Need-to-know for Intelligence and ISR products as well as for associated metadata cards shall be managed based on their respective releasability to the specific MNP NSILs."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Data Management and Validation",
+        "sreqNumber": "SP5-SREQ-1242",
+        "sreqName": "Agreements between MNPs captured at MOU level, and in JMEIs, for intelligence information sharing, shall be enforced."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "Data Management and Validation",
+        "sreqNumber": "SP5-SREQ-303",
+        "sreqName": "An appropriate set of procedures for information labelling shall be developed and implemented in accordance with the information classification scheme adopted for the Mission Network."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Data and Metadata Consumer",
+        "sreqNumber": "SP5-SREQ-291",
+        "sreqName": "AEDP-17 server users must be able to query (one time as well as standing queries) the network of AEDP-17 servers to identify locally and remotely available ISR products as per the list specified in the Spiral 4 Procedural Instructions for Intelligence and JISR."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Data and Metadata Consumer",
+        "sreqNumber": "SP5-SREQ-328",
+        "sreqName": "The ISR Library consumer must be able to discover intelligence products."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Data and Metadata Consumer",
+        "sreqNumber": "SP5-SREQ-329",
+        "sreqName": "The ISR Library consumer must be able to download/retrieve an intelligence product on an AEDP-17 Server."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Data and Metadata Consumer",
+        "sreqNumber": "SP5-SREQ-330",
+        "sreqName": "The AEDP-17 server consumer must be able to publish an intelligence product on a AEDP-17 Server."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Data and Metadata Consumer",
+        "sreqNumber": "SP5-SREQ-331",
+        "sreqName": "The AEDP-17 server consumer must be able to update/change the metadata of an intelligence product on a CSD-Server."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Services Consumer",
+        "sreqNumber": "SP5-SREQ-323",
+        "sreqName": "CSD-Stream server consumer must be able relay, replay and download streams via a Stream Controller Service Interface."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Services Consumer",
+        "sreqNumber": "SP5-SREQ-324",
+        "sreqName": "CSD-Stream server consumer must be able to request notification on the availability of streamed data using the Workflow Services Business Rules regarding topic, dialect and namespace."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Services Consumer",
+        "sreqNumber": "SP5-SREQ-325",
+        "sreqName": "ISR Streaming consumer must be able to discover live and recorded ISR Stream."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Services Consumer",
+        "sreqNumber": "SP5-SREQ-326",
+        "sreqName": "ISR streaming consumer must be able to record and relay a live ISR stream and replay recorded ones."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Services Consumer",
+        "sreqNumber": "SP5-SREQ-327",
+        "sreqName": "ISR Streaming consumer must be able to update the metadata of a live or recorded ISR stream."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Server Administration",
+        "sreqNumber": "SP5-SREQ-265",
+        "sreqName": "Local AEDP-17 Server Administrator must be able to configure local AEDP-17 Server Settings, using the JMEI provided."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Server Administration",
+        "sreqNumber": "SP5-SREQ-266",
+        "sreqName": "Local AEDP-17 Server Administrator must be able to create/establish local AEDP-17 Server accounts."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Server Administration",
+        "sreqNumber": "SP5-SREQ-267",
+        "sreqName": "AEDP-17 Server Administrator must be able to ensure the NATO Standard ISR Library Interface is operational."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Server Administration",
+        "sreqNumber": "SP5-SREQ-268",
+        "sreqName": "AEDP-17 Server Administrator must be able to ensure HTTP/HTTPS Web Services Interface is operational."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Server Administration",
+        "sreqNumber": "SP5-SREQ-269",
+        "sreqName": "Local AEDP-17 Server Administrator must be able to create/establish AEDP-17 Server Synchronization Account for each federated AEDP-17 Server as stated in the JMEI."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Server Administration",
+        "sreqNumber": "SP5-SREQ-270",
+        "sreqName": "AEDP-17 Server Administrator must be able to configure synchronization parameters of federated AEDP-17 Server(s) as stated in the JMEI."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Server Administration",
+        "sreqNumber": "SP5-SREQ-271",
+        "sreqName": "AEDP-17 Server Administrator must be able to initiate and verify synchronization between local and federated AEDP-17 server(s)."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Library Server Administration",
+        "sreqNumber": "SP5-SREQ-601",
+        "sreqName": "AEDP-17 servers SHALL be located and resolvable via the Domain Naming Service."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Server Administration",
+        "sreqNumber": "SP5-SREQ-272",
+        "sreqName": "AEDP-18 ISR Streaming Server Administrator must be able to create/establish AEDP-18 ISR Streaming Server replication account for each federated AEDP-18 ISR Streaming Server as stated in the JMEI."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Server Administration",
+        "sreqNumber": "SP5-SREQ-273",
+        "sreqName": "AEDP-18 ISR Streaming Server Administrator must be able to ensure that data streaming endpoints are configured as stated in the JMEI."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Server Administration",
+        "sreqNumber": "SP5-SREQ-274",
+        "sreqName": "The AEDP-18 ISR Streaming Server administrator must be able to ensure ISR Stream Publishing service is operational."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Server Administration",
+        "sreqNumber": "SP5-SREQ-275",
+        "sreqName": "The AEDP-18 ISR Streaming Server administrator must be able to ensure ISR Stream Querying service is operational."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Server Administration",
+        "sreqNumber": "SP5-SREQ-276",
+        "sreqName": "The AEDP-18 ISR Streaming Server administrator must be able to ensure ISR Stream Control service is operational."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Server Administration",
+        "sreqNumber": "SP5-SREQ-277",
+        "sreqName": "The AEDP-18 ISR Streaming Server administrator must be able to ensure ISR Stream Notification service is operational."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Server Administration",
+        "sreqNumber": "SP5-SREQ-278",
+        "sreqName": "The AEDP-18 ISR Streaming Server administrator must be able to ensure ISR Stream Replication service is operational."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Server Administration",
+        "sreqNumber": "SP5-SREQ-279",
+        "sreqName": "The AEDP-18 ISR Streaming Server administrator must be able to verify that the end user is able to successfully consume streaming data of the types specified in the JMEI (Link 16, FMV, GMTI)."
+    },
+    {
+        "siName": "Joint ISR Information Exchange",
+        "funName": "ISR Streaming Server Administration",
+        "sreqNumber": "SP5-SREQ-280",
+        "sreqName": "The AEDP-18 ISR Streaming Server Administrator must be able to ensure SPS++ Web Service interface is operational."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1244",
+        "sreqName": "Intelligence BsO Service provider shall implement their own authentication mechanisms to allow access only to trusted clients."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1257",
+        "sreqName": "Intelligence BsO providers shall implement their own authentication mechanisms to allow access only to trusted clients."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1259",
+        "sreqName": "All synchronization between Intelligence BsO Databases shall be secured in transit (https)."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1256",
+        "sreqName": "Intelligence BsO databases shall mutually authenticate using certificates and using system account credentials at the application level."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-1258",
+        "sreqName": "All intelligence BsO databases shall log all security events, including as a minimum all exceptional events."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-1254",
+        "sreqName": "All battlespace objects held within, and exchanged between, intelligence structured databases shall carry confidentiality labels compliant with STANAG 4774."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-1255",
+        "sreqName": "Need-to-know for Intelligence BsOs shall be managed based on their respective releasability label."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Server Administration",
+        "sreqNumber": "SP5-SREQ-1246",
+        "sreqName": "Local Intelligence BsO Server Administrator must be able to configure the Server Settings in accordance with the JMEI provided."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Server Administration",
+        "sreqNumber": "SP5-SREQ-1247",
+        "sreqName": "Local Intelligence BsO Server Administrator must be able to create/establish local Server accounts."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Server Administration",
+        "sreqNumber": "SP5-SREQ-1248",
+        "sreqName": "Local Intelligence BsO Server Administrator must be able to ensure HTTP/HTTPS Web Services Interface is operational."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Server Administration",
+        "sreqNumber": "SP5-SREQ-1245",
+        "sreqName": "Intelligence BsO servers SHALL be located and resolvable via the Domain Naming Service."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Synchronization Management",
+        "sreqNumber": "SP5-SREQ-1249",
+        "sreqName": "Local Intelligence BsO Server Administrator must be able to create/establish Server Synchronization Account for each federated Server as stated in the JMEI."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Synchronization Management",
+        "sreqNumber": "SP5-SREQ-1250",
+        "sreqName": "Local Intelligence BsO Server Administrator must be able to configure synchronization parameters of federated Server(s) as stated in the JMEI."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Synchronization Management",
+        "sreqNumber": "SP5-SREQ-1251",
+        "sreqName": "Local Intelligence BsO Server Administrator must be able to initiate and verify synchronization between local and federated server(s)."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Data Management and Operations",
+        "sreqNumber": "SP5-SREQ-1252",
+        "sreqName": "The Intelligence BsO consumer shall be able to filter intelligence BsO based on status and associated attributes."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Data Management and Operations",
+        "sreqNumber": "SP5-SREQ-1253",
+        "sreqName": "The intelligence BsO consumer must be able to update/change the metadata of an intelligence BsO."
+    },
+    {
+        "siName": "Intelligence Battlespace Objects Exchange",
+        "funName": "Data Management and Operations",
+        "sreqNumber": "SP5-SREQ-1260",
+        "sreqName": "Strict data and metadata format validations, compliant with STANAG 2433, shall be conducted on all data prior to ingest. Non-compliant information shall be dropped."
+    },
+    {
+        "siName": "Air C2 Information Exchange",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-1296",
+        "sreqName": "Need-to-know for ATO and ACO MTF messages shall be managed based on their respective releasability label."
+    },
+    {
+        "siName": "Air C2 Information Exchange",
+        "funName": "Standard Conformance",
+        "sreqNumber": "SP5-SREQ-1140",
+        "sreqName": "Air Tasking and Control - Data Exchange - MNPs shall be able to exchange Formatted Text Messages (built from the rules contained in ADatP-3)."
+    },
+    {
+        "siName": "Fires Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1147",
+        "sreqName": "ASCA Gateways shall filter ASCA/CTIDP messages and only permit ASCA/CTIDP interactions by known/configured IP adresses and NATO Aliases."
+    },
+    {
+        "siName": "Fires Information Exchange",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-1150",
+        "sreqName": "ASCA Gateways must log security events."
+    },
+    {
+        "siName": "Fires Information Exchange",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-1146",
+        "sreqName": "ASCA/CTIDP message shall be labelled with classification."
+    },
+    {
+        "siName": "Fires Information Exchange",
+        "funName": "Network Configuration",
+        "sreqNumber": "SP5-SREQ-1091",
+        "sreqName": "Indirect Fire Support Service port range shall be 6411-6417. Default value is 6413."
+    },
+    {
+        "siName": "Fires Information Exchange",
+        "funName": "Network Configuration",
+        "sreqNumber": "SP5-SREQ-1151",
+        "sreqName": "Network Interconnection Points (NIPs) shall be locally provided to enable interconnections between ASCA Gateways on different national extensions, for each federated Joint Fire Support Elements (f-JFSE) or multinational Artillery Command Posts over the Coalition Deployment."
+    },
+    {
+        "siName": "Fires Information Exchange",
+        "funName": "Gateway Operations",
+        "sreqNumber": "SP5-SREQ-1152",
+        "sreqName": "ASCA Gateways shall perform technical coherency checks on ASCA/CTIDP messages."
+    },
+    {
+        "siName": "Fires Information Exchange",
+        "funName": "Gateway Operations",
+        "sreqNumber": "SP5-SREQ-1268",
+        "sreqName": "ASCA Gateways interconnected through ''Kinetic Indirect Fire Support'' technical interaction (TIN-318) shall be simultaneously connected to their national Fire Control chain in order to provide an end-to-end digital sensor-to-shooter kill chain."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-232",
+        "sreqName": "Only privileged users shall have access to generate and transfer files."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-306",
+        "sreqName": "Servers shall mutually authenticate using certificates."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-91",
+        "sreqName": "TLS Security - between Servers shall be by mutual authentication."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-82",
+        "sreqName": "HTTPS shall be used as the transport protocol."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-92",
+        "sreqName": "Overlay Information shall be logged in the system Event Logs."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-89",
+        "sreqName": "NVG files shall be labelled using STANAG 4774/4778-compliant labels."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Standards Conformance",
+        "sreqNumber": "SP5-SREQ-87",
+        "sreqName": "MNP shall encode military symbols using the APP-6(D)(1) symbology standard when using NVG."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Standards Conformance",
+        "sreqNumber": "SP5-SREQ-90",
+        "sreqName": "Services receiving NVG messages must validate received messages to ensure they conform to the NVG schema."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "File Management - Overlay NVG/KML",
+        "sreqNumber": "SP5-SREQ-300",
+        "sreqName": "MNP shall be able to load an NVG file and display the content in its C2 system."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "File Management - Overlay NVG/KML",
+        "sreqNumber": "SP5-SREQ-301",
+        "sreqName": "MNP shall be able to save the data from its C2 system as a NVG file."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "File Management - Overlay NVG/KML",
+        "sreqNumber": "SP5-SREQ-258",
+        "sreqName": "MNP shall be able to load a KML file and display the content in its C2 system."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "File Management - Overlay NVG/KML",
+        "sreqNumber": "SP5-SREQ-299",
+        "sreqName": "MNP shall be able to save data from its C2 system as a KML file."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "File Management - Overlay NVG/KML",
+        "sreqNumber": "SP5-SREQ-231",
+        "sreqName": "Exchange and control of KML files shall be controlled."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Overlay Exchange and Sharing",
+        "sreqNumber": "SP5-SREQ-509",
+        "sreqName": "Mission Participants shall be able to provide standardized, representative, battlespace objects."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Overlay Exchange and Sharing",
+        "sreqNumber": "SP5-SREQ-511",
+        "sreqName": "The Service shall enable the sharing of information across communities of interest."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Overlay Exchange and Sharing",
+        "sreqNumber": "SP5-SREQ-590",
+        "sreqName": "Mission Participants shall be able to provide standardized, representative, Overlays."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Overlay Exchange and Sharing",
+        "sreqNumber": "SP5-SREQ-302",
+        "sreqName": "MNP shall be able to provide standardized, representative, KML Overlays."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Overlay Exchange and Sharing",
+        "sreqNumber": "SP5-SREQ-591",
+        "sreqName": "Mission Participant shall be able to support multiple different Overlay Exchange patterns."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Link-back Information",
+        "sreqNumber": "SP5-SREQ-256",
+        "sreqName": "MNP shall be able to obtain the additional information for a symbol by following the given link-back (URL) of the provider."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Link-back Information",
+        "sreqNumber": "SP5-SREQ-257",
+        "sreqName": "MNP shall provide additional information for a symbol via the provided link-back (URL) when the consumer follows the link-back reference."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Link-back Information",
+        "sreqNumber": "SP5-SREQ-592",
+        "sreqName": "MNP shall provide a Link-back (URL) for a symbol for which it can and will make additional information available."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Web Services - NVG Request Response",
+        "sreqNumber": "SP5-SREQ-254",
+        "sreqName": "MNP shall be able to connect to a Request-Response NVG Service, request an NVG overlay and display it on the C2 system."
+    },
+    {
+        "siName": "Overlay Distribution",
+        "funName": "Web Services - NVG Request Response",
+        "sreqNumber": "SP5-SREQ-255",
+        "sreqName": "MNP shall be capable to host a Request-Response NVG Service to share NVG overlays."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-441",
+        "sreqName": "The service shall limit connections from and to G2A SA systems only to known recognized good IP addresses."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-442",
+        "sreqName": "Friendly PLI is assumed to be at a lower or the same security level as the communication network used to forward the PLI to the G2A SA service and shall be releasable to the tactical data link domain of the weapon delivery assets."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-438",
+        "sreqName": "Events shall be logged on all G2A SA Systems."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-543",
+        "sreqName": "All timestamps shall be based on the Coordinated Universal Time (UTC)."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-93",
+        "sreqName": "All ADatP-36 messages shall be labelled with the classification and the releasability."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "JREAP Connectivity and Configuration",
+        "sreqNumber": "SP5-SREQ-152",
+        "sreqName": "The Ground-to-Air Service shall be connected to the Link 16 network via Joint Range Extension (JRE) using JRE Applications Protocol (JREAP) connection to receive and transmit Link 16 (J-series) messages."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "JREAP Connectivity and Configuration",
+        "sreqNumber": "SP5-SREQ-544",
+        "sreqName": "The Ground-to-Air Service shall be assigned its own JU number."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "JREAP Connectivity and Configuration",
+        "sreqNumber": "SP5-SREQ-547",
+        "sreqName": "The Ground-to-Air Service shall be capable of manual input of its location for inclusion in the transmitted J2.x message self-report."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "JREAP Connectivity and Configuration",
+        "sreqNumber": "SP5-SREQ-551",
+        "sreqName": "The Ground-to-Air Service shall be assigned a geographic reporting area for which it is responsible to respond."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Target Sorting Message Processing and Filtering",
+        "sreqNumber": "SP5-SREQ-153",
+        "sreqName": "The Ground-to-Air Service shall monitor the Link 16 network for appropriate J12.6 Target Sorting messages to identify triggers for the service."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Target Sorting Message Processing and Filtering",
+        "sreqNumber": "SP5-SREQ-537",
+        "sreqName": "The Ground-to-Air Service shall filter the incoming J12.6 Target according to JU, geographic area, environment, pointer bit and status information discrete (SID)."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Target Sorting Message Processing and Filtering",
+        "sreqNumber": "SP5-SREQ-539",
+        "sreqName": "The Ground-to-Air Service shall ignore retransmitted J12.6 messages with the same index number within J12.6 lockout period."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Target Sorting Message Processing and Filtering",
+        "sreqNumber": "SP5-SREQ-156",
+        "sreqName": "When triggered by an appropriate J12.6 message, the Ground-to-Air Service shall identify friendly/neutral ground tracks in the vicinity of the point of interest."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Target Sorting Message Processing and Filtering",
+        "sreqNumber": "SP5-SREQ-540",
+        "sreqName": "The Ground-to-Air Service shall incorporate a J12.6 lockout period (0 to 511 seconds) either globally and by JU/JUs."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Target Sorting Message Processing and Filtering",
+        "sreqNumber": "SP5-SREQ-541",
+        "sreqName": "The Ground-to-Air Service shall only respond to J12.6 Target Sorting messages that are received from inside of Reporting Area."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Target Sorting Message Processing and Filtering",
+        "sreqNumber": "SP5-SREQ-578",
+        "sreqName": "The Ground-to-Air Service shall respond to each J12.6 Target Sorting message within 5 seconds of receipt."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Target Sorting Message Processing and Filtering",
+        "sreqNumber": "SP5-SREQ-577",
+        "sreqName": "The Ground-to-Air Services that are assigned the same reporting area or overlapping reporting areas shall only respond to J12.6 Target Sorting messages at specific reporting times."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Ground Track Management",
+        "sreqNumber": "SP5-SREQ-129",
+        "sreqName": "The Ground-to-Air Service shall receive ground tracks from the mission network."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Ground Track Management",
+        "sreqNumber": "SP5-SREQ-151",
+        "sreqName": "The Ground-to-Air Service shall store received ground tracks and maintain track records."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Ground Track Management",
+        "sreqNumber": "SP5-SREQ-552",
+        "sreqName": "The Ground-to-Air Service shall search its database for friendly and neutral positions around point of interest (POI)."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "Ground Track Management",
+        "sreqNumber": "SP5-SREQ-550",
+        "sreqName": "The Ground-to-Air Service shall be included in the FFT network as FFT consumer without any need for modifications to existing FFT network."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "L16 Message Generation and Transmission",
+        "sreqNumber": "SP5-SREQ-154",
+        "sreqName": "The Ground-to-Air Service shall transmit J2.0 Indirect Interface PPLI message to remain active on the Link 16 network."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "L16 Message Generation and Transmission",
+        "sreqNumber": "SP5-SREQ-159",
+        "sreqName": "The Ground-to-Air Service shall generate and transmit J3.5 Land Track messages for closest friendly/neutral ground tracks from most recent stored data."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "L16 Message Generation and Transmission",
+        "sreqNumber": "SP5-SREQ-553",
+        "sreqName": "The Ground-to-Air Service shall map FFI MTF data elements to Link 16 J3.2 Air Track message fields correctly according to ADatP-37."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "L16 Message Generation and Transmission",
+        "sreqNumber": "SP5-SREQ-554",
+        "sreqName": "The Ground-to-Air Service shall map FFI MTF data elements to Link 16 J3.5 Land Track message fields correctly according to ADatP-37."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "L16 Message Generation and Transmission",
+        "sreqNumber": "SP5-SREQ-172",
+        "sreqName": "The Ground-to-Air Service shall generate and transmit J3.2 Air Track messages for closest air tracks from the most recent stored data."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "L16 Message Generation and Transmission",
+        "sreqNumber": "SP5-SREQ-173",
+        "sreqName": "The Ground-to-Air Service shall transmit a J7.0 Drop Track message to drop transmitted J3.5 Land Track and J3.2 Air Track messages after a pre-set time."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "L16 Message Generation and Transmission",
+        "sreqNumber": "SP5-SREQ-192",
+        "sreqName": "The Ground-to-Air Service shall be able to report the number of transmitted Land Track messages via a J28.2(0) Text message."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "L16 Message Generation and Transmission",
+        "sreqNumber": "SP5-SREQ-545",
+        "sreqName": "The Ground-to-Air Service shall incorporate a capability to transmit a J28.2(0) No PLI Response text message to notify that no friendly or neutral positions were found in the area."
+    },
+    {
+        "siName": "Ground-to-Air Information Exchange",
+        "funName": "L16 Message Generation and Transmission",
+        "sreqNumber": "SP5-SREQ-549",
+        "sreqName": "The Ground-to-Air Service shall perform C2 functions as a C2 IU with reporting responsibilities in reporting friendly and neutral positional information."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1121",
+        "sreqName": "Traffic flow confidentiality protected PCN interfaces shall be authenticated with IPSec IKEv2 exchange of x509v3 Digital Certificates."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1120",
+        "sreqName": "Traffic flow confidentiality protected PCN interfaces shall be protected with IPSec ESP in Transport Mode."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1100",
+        "sreqName": "BGP sessions must be authenticated using MD5 hash."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1101",
+        "sreqName": "Route filtering of valid mission network prefixes shall be implemented in BGP."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1106",
+        "sreqName": "Generalized TTL Security Mechanism shall be implement for BGP sessions."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1124",
+        "sreqName": "NMCD IES must authenticate with x509v3 certificates in TLS."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Interface Configuration and Management",
+        "sreqNumber": "SP5-SREQ-1261",
+        "sreqName": "Non-collocated PCN-2 must be operated as GRE-tunnel over IPSec transport mode service with IPv4 protocol in GRE passenger, and either IPv4 or IPv6 in carrier."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Interface Configuration and Management",
+        "sreqNumber": "SP5-SREQ-1262",
+        "sreqName": "Collocated PCN-2 shall be operated with or without GRE-tunnel over IPSec transport mode service with IPv4 protocol in GRE passenger, and either IPv4 or IPv6 in carrier."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Interface Configuration and Management",
+        "sreqNumber": "SP5-SREQ-1131",
+        "sreqName": "Non-collocated PCN-1 must be operated as GRE-tunnel over IPSec transport mode service with IPv4 protocol in GRE passenger, and either IPv4 or IPv6 in carrier."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Interface Configuration and Management",
+        "sreqNumber": "SP5-SREQ-1132",
+        "sreqName": "Collocated PCN-1 shall be operated with or without GRE-tunnel over IPSec transport mode service with IPv4 protocol in GRE passenger, and either IPv4 or IPv6 in carrier."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Interface Configuration and Management",
+        "sreqNumber": "SP5-SREQ-1263",
+        "sreqName": "PCN-1 and PCN-2 auto configuration shall support RIPv2 for rapid discovery of peering entities over Ethernet LAN."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Interface Configuration and Management",
+        "sreqNumber": "SP5-SREQ-1264",
+        "sreqName": "PCN-1 and PCN-2 auto configuration shall support RIPng for service discovery of peering entities."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Traffic Management and QoS",
+        "sreqNumber": "SP5-SREQ-316",
+        "sreqName": "Service providers shall police, shape and schedule traffic according to mission QoS policy for interface SLA they have for the connection."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Traffic Management and QoS",
+        "sreqNumber": "SP5-SREQ-1206",
+        "sreqName": "P-functionality shall forward Protected Core Service Consumer (PCSC) communications service traffic transparently."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Traffic Management and QoS",
+        "sreqNumber": "SP5-SREQ-1207",
+        "sreqName": "PCore Service Consumer (PCSC) shall not transit unicast traffic for other entities than local users within PCSC."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Routing and BGP Configuration",
+        "sreqNumber": "SP5-SREQ-1102",
+        "sreqName": "Route import filtering for BGP must be implemented to prevent direct propagation of Service Provider internal routing protocol routes to the MN routing."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Routing and BGP Configuration",
+        "sreqNumber": "SP5-SREQ-1105",
+        "sreqName": "Bidirectional Forwarding Detection shall be used for BGP liveness detection."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Routing and BGP Configuration",
+        "sreqNumber": "SP5-SREQ-1128",
+        "sreqName": "BGP route filtering must be implement to allow only administratevily allowed communities over the BGP peering."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Routing and BGP Configuration",
+        "sreqNumber": "SP5-SREQ-188",
+        "sreqName": "Communications Services Providers must provide transparent routing infrastructure based on BGP routing protocol."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Routing and BGP Configuration",
+        "sreqNumber": "SP5-SREQ-315",
+        "sreqName": "Protected Core Segment Provider must announce hosted PCSC IP address prefix(es) to the rest of the Protected Core in BGP routing."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Network Management and Information Exchange",
+        "sreqNumber": "SP5-SREQ-1126",
+        "sreqName": "An NMCD IES server must offer a well-known URI where clients can discover the location of the NMCD IES API end-point (i.e. a resource path prefix)."
+    },
+    {
+        "siName": "Protected Core Networking",
+        "funName": "Network Management and Information Exchange",
+        "sreqNumber": "SP5-SREQ-1127",
+        "sreqName": "NMCD information exchange shall happen between peering entities and in global sense hop-by-hop."
+    },
+    {
+        "siName": "Communications Transport",
+        "funName": "Public Network Transport",
+        "sreqNumber": "SP5-SREQ-1141",
+        "sreqName": "Bearer security function must be used when PCN interface uses public network public communications service as a bearer between PCN elements"
+    },
+    {
+        "siName": "Communications Transport",
+        "funName": "Public Network Transport",
+        "sreqNumber": "SP5-SREQ-1142",
+        "sreqName": "Bearer security function must separate PCN element and public network"
+    },
+    {
+        "siName": "Communications Transport",
+        "funName": "Public Network Transport",
+        "sreqNumber": "SP5-SREQ-1143",
+        "sreqName": "Bearer security function must filter traffic to contain only valid protocol (IKEv2, ESP, NAT-T and Echo-request/reply) between predefined endpoints (IP-addresses)"
+    },
+    {
+        "siName": "Communications Transport",
+        "funName": "Local Network Transport",
+        "sreqNumber": "SP5-SREQ-1139",
+        "sreqName": "Network interface bearer service shall support the use of direct cable connections between interconnected systems within a common secure shelter."
+    },
+    {
+        "siName": "Communications Transport",
+        "funName": "Local Network Transport",
+        "sreqNumber": "SP5-SREQ-1144",
+        "sreqName": "Interconnection over the Local Area Network must use traffic flow confidentiality protection"
+    },
+    {
+        "siName": "Communications Transport",
+        "funName": "Local Network Transport",
+        "sreqNumber": "SP5-SREQ-1145",
+        "sreqName": "Network interface bearers and LAN extensions shall support the use of Local Area Network technology within areas that are physically secured to the highest level of information confidentiality"
+    },
+    {
+        "siName": "Communications Transport",
+        "funName": "Military Radio Transport",
+        "sreqNumber": "SP5-SREQ-179",
+        "sreqName": "Mission Network Participants shall provide Network Access using bearers that allow the creation of a unified IP packet routing architecture throughout the Mission Network."
+    },
+    {
+        "siName": "Communications Transport",
+        "funName": "Military Radio Transport",
+        "sreqNumber": "SP5-SREQ-23",
+        "sreqName": "C2 Information exchanged between mobile land tactical units (TACCIS) via coalition waveforms shall not require protection that is more stringent than what would be required for N*** R*** information."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1109",
+        "sreqName": "MSDP sessions shall be authenticated using MD5 hash"
+    },
+    {
+        "siName": "Communications",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1100",
+        "sreqName": "BGP sessions must be authenticated using MD5 hash"
+    },
+    {
+        "siName": "Communications",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1110",
+        "sreqName": "NIP-G interface must be protected with IPSec ESP in Transport Mode."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1111",
+        "sreqName": "Information Domain classification above RESTRICTED, shall be confidentiality protected with cryptographic solution based on either NINE ISPEC or other NAMILCOM approved crypto."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1106",
+        "sreqName": "Generalized TTL Security Mechanism shall be implement for BGP sessions"
+    },
+    {
+        "siName": "Communications",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1101",
+        "sreqName": "Route filtering of valid mission network prefixes shall be implemented in BGP."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1112",
+        "sreqName": "Information Domain classification below or maximum RESTRICTED, shall be confidentiality protected with cryptographic solution based on either NINE ISPEC or Commercial security solution."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-23",
+        "sreqName": "C2 Information exchanged between mobile land tactical units (TACCIS) via coalition waveforms shall not require protection that is more stringent than what would be required for N** RES*** information."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1113",
+        "sreqName": "NIP-G interface must be authenticated with IPSec IKEv2 exchange of x509v3 Digital Certificates."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Core Routing",
+        "sreqNumber": "SP5-SREQ-1201",
+        "sreqName": "Consumer to Provider routing shall be operated either using static routing or BGP"
+    },
+    {
+        "siName": "Communications",
+        "funName": "Core Routing",
+        "sreqNumber": "SP5-SREQ-188",
+        "sreqName": "Communications Services Providers must provide transparent routing infrastructure based on BGP routing protocol."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Core Routing",
+        "sreqNumber": "SP5-SREQ-1102",
+        "sreqName": "Route import filtering for BGP must be implemented to prevent direct propagation of Service Provider internal routing protocol routes to the MN routing."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Core Routing",
+        "sreqNumber": "SP5-SREQ-1103",
+        "sreqName": "Originating routing information with the BGP shall be done with largest possible prefixes to minimize routing table size. More specific routing updates are only allowed for traffic engineering purposes under guidance of MNSMA as well as indication of certain service endpoints, like MN testing endpoint."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Core Routing",
+        "sreqNumber": "SP5-SREQ-1105",
+        "sreqName": "Bidirectional Forwarding Detection shall be used for BGP liveness detection."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Core Routing",
+        "sreqNumber": "SP5-SREQ-1104",
+        "sreqName": "Control method for valid service instance must be implemented in conjunction with originating of anycast routing entry for particular service."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Core Routing",
+        "sreqNumber": "SP5-SREQ-184",
+        "sreqName": "MN Communications Services Provider shall transit unicast traffic on behalf of all MN participants."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Multicast Management",
+        "sreqNumber": "SP5-SREQ-1202",
+        "sreqName": "Federated Communications Services Consumer shall not transit any multicast traffic."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Multicast Management",
+        "sreqNumber": "SP5-SREQ-1118",
+        "sreqName": "PIM multicast group signalling shall be filtered based on mission network allowed multicast groups."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Multicast Management",
+        "sreqNumber": "SP5-SREQ-189",
+        "sreqName": "Multicast service shall be based on any source multicast model."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Multicast Management",
+        "sreqNumber": "SP5-SREQ-1203",
+        "sreqName": "All MN Participants shall only forward multicast traffic that has been requested by local user or from other MN participant(s) via PIM signalling."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Multicast Management",
+        "sreqNumber": "SP5-SREQ-1107",
+        "sreqName": "MSDP source active announcements shall be filtered based on mission network allowed multicast groups."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Multicast Management",
+        "sreqNumber": "SP5-SREQ-1108",
+        "sreqName": "Multicast Source Active signalling over the NIP interfaces shall be based on MSDP signalling."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Multicast Management",
+        "sreqNumber": "SP5-SREQ-185",
+        "sreqName": "Federated Communications Services Provider shall transit multicast traffic on behalf of all MN participants."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Network Interface Profiles",
+        "sreqNumber": "SP5-SREQ-178",
+        "sreqName": "All Mission Network interconnections shall adhere to NIP profiles."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Network Interface Profiles",
+        "sreqNumber": "SP5-SREQ-1114",
+        "sreqName": "NIP-G must be operated as GRE-tunnel over IPSec Transport mode service with IPv4 protocol both in carrier and GRE passenger"
+    },
+    {
+        "siName": "Communications",
+        "funName": "Network Interface Profiles",
+        "sreqNumber": "SP5-SREQ-1117",
+        "sreqName": "NIP-N must be operated with IPv4 protocol"
+    },
+    {
+        "siName": "Communications",
+        "funName": "Network Interface Profiles",
+        "sreqNumber": "SP5-SREQ-1115",
+        "sreqName": "NIP-CC for the information domain services must be operated as GRE-tunnel over confidentiality protection with IPv4 protocol in GRE passenger, and either IPv4 in carrier."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Network Interface Profiles",
+        "sreqNumber": "SP5-SREQ-1116",
+        "sreqName": "NIP-CC for the NMCD must be operated as GRE-tunnel over confidentiality protection with IPv4 protocol in GRE passenger, and IPv4 in carrier."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Network Interface Profiles",
+        "sreqNumber": "SP5-SREQ-1200",
+        "sreqName": "NIP-ROb for the information domain services must be operated as GRE-tunnel over confidentiality protection with IPv4 protocol in GRE passenger, and either IPv6 or IPv4 in carrier."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Quality of Service",
+        "sreqNumber": "SP5-SREQ-316",
+        "sreqName": "Service providers shall police, shape and schedule traffic according to mission QoS policy for interface SLA they have for the connection."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Quality of Service",
+        "sreqNumber": "SP5-SREQ-1274",
+        "sreqName": "Data services using this TIN must be conservative in their use of bandwidth and congestion control approaches (e.g. use UDP rather than TCP)."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Traffic Management",
+        "sreqNumber": "SP5-SREQ-1204",
+        "sreqName": "Mission Network Communications Consumer shall not transit any unicast traffic."
+    },
+    {
+        "siName": "Communications",
+        "funName": "Traffic Management",
+        "sreqNumber": "SP5-SREQ-1205",
+        "sreqName": "Service provider shall forward consumer communications service traffic transparently"
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-32",
+        "sreqName": "Web hosting services shall have the ability to control access to information based on the identity of the user in accordance with the access control policy."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-79",
+        "sreqName": "User-facing applications hosted by the web hosting services shall be able to authenticate users in accordance with the SI for Web Authentication."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-421",
+        "sreqName": "The service operator shall be notified when the verification of digital certificates fails."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-83",
+        "sreqName": "Clients shall validate the web hosting service certificates and block the connection for invalid certificates."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-81",
+        "sreqName": "Web Hosting Services shall log at least: user identifier; system activities; dates, times and details of key events; source and target IP addresses and protocol; user access attempts; and records of successful and rejected data and other resource access attempts."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-1270",
+        "sreqName": "Information Management Roles shall apply STANAG 4774/4778 for security labelling/binding of information"
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-1273",
+        "sreqName": "Security markings shall be applied to all documents provided to users via Web Hosting Services."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-413",
+        "sreqName": "Security markings shall be applied to all web content."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-311",
+        "sreqName": "If web content or documents carry security labels, the labels shall be displayed to the user."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Standards Conformance",
+        "sreqNumber": "SP5-SREQ-1269",
+        "sreqName": "Information Management Roles shall apply minimum metadata profile based on STANAG 5636"
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Content Management and Sharing",
+        "sreqNumber": "SP5-SREQ-401",
+        "sreqName": "The Web Hosting Services shall support sharing of web content (web pages, code, stylesheets)."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Content Management and Sharing",
+        "sreqNumber": "SP5-SREQ-405",
+        "sreqName": "The Web Hosting Services shall support sharing of files"
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Content Management and Sharing",
+        "sreqNumber": "SP5-SREQ-406",
+        "sreqName": "Web Browsers shall be able to consume provided files."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Content Management and Sharing",
+        "sreqNumber": "SP5-SREQ-402",
+        "sreqName": "Web Browsers shall be able to consume and present formatted web content to the user."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Content Management and Sharing",
+        "sreqNumber": "SP5-SREQ-1034",
+        "sreqName": "Web applications shall not require any proprietary browser plug-ins on the client side."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Content Syndication",
+        "sreqNumber": "SP5-SREQ-407",
+        "sreqName": "The Web Hosting Services shall support exposing of web feeds"
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Content Syndication",
+        "sreqNumber": "SP5-SREQ-408",
+        "sreqName": "The Web Hosting Services clients shall be able to consume provided web feeds."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Collaboration Features",
+        "sreqNumber": "SP5-SREQ-30",
+        "sreqName": "The Web-based Collaboration shall allow users to manage repositories of information."
+    },
+    {
+        "siName": "Web Hosting",
+        "funName": "Collaboration Features",
+        "sreqNumber": "SP5-SREQ-31",
+        "sreqName": "The Web-based Collaboration shall allow users to collaboratively work on the content of the information repositories."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-74",
+        "sreqName": "Communications between Service Consumer and Web Application/Relying Party; or Service Consumer and Identity Provider, shall be done via HTTPS."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-177",
+        "sreqName": "The Identity Provider and Relying Party shall use HTTP redirection to redirect the client's browser."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-307",
+        "sreqName": "The Relying Party shall validate digitally signed security tokens."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Audit and Logging",
+        "sreqNumber": "SP5-SREQ-71",
+        "sreqName": "Events shall be logged by the MNP domain identity management solution and by the service."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Audit and Logging",
+        "sreqNumber": "SP5-SREQ-73",
+        "sreqName": "Event logs must include, as a minimum: user authentication attempts; and records of issued tokens, such as identification of the Relying Party (url), of Service Consumer (IP address) and the user identifier provided in the token (account attempting to use the service)."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Audit and Logging",
+        "sreqNumber": "SP5-SREQ-308",
+        "sreqName": "Event logs shall include, as a minimum records of successful and rejected authentication attempts."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Token Management",
+        "sreqNumber": "SP5-SREQ-168",
+        "sreqName": "The Identity Provider shall issue security tokens based on the Security Assertion Markup Language (SAML) 2.0."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Token Management",
+        "sreqNumber": "SP5-SREQ-169",
+        "sreqName": "The Identity Provider shall provide security tokens to the Relying Party."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Token Management",
+        "sreqNumber": "SP5-SREQ-171",
+        "sreqName": "The Identity Provider shall include attributes from its local attribute store in the security token."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Token Management",
+        "sreqNumber": "SP5-SREQ-174",
+        "sreqName": "All Tokens shall include an AudienceRestriction element to prevent wide-spread reuse of a single token"
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Token Management",
+        "sreqNumber": "SP5-SREQ-175",
+        "sreqName": "The Identity Provider shall digitally sign the security tokens."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Token Management",
+        "sreqNumber": "SP5-SREQ-176",
+        "sreqName": "The Relying Party shall be able to handle encrypted tokens."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Token Management",
+        "sreqNumber": "SP5-SREQ-606",
+        "sreqName": "The Relying Party shall be able to consume Security Assertion Markup Language (SAML) 2.0 security tokens."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Token Management",
+        "sreqNumber": "SP5-SREQ-75",
+        "sreqName": "Sensitive data passed in SAML tokens shall be encrypted."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Trust Management",
+        "sreqNumber": "SP5-SREQ-1161",
+        "sreqName": "A SAML2.0 entity must set up trust relationships towards other SAML2.0 entities in the federation. The number of required trusts depends on the used topology."
+    },
+    {
+        "siName": "Web Authentication",
+        "funName": "Identity Broker",
+        "sreqNumber": "SP5-SREQ-1218",
+        "sreqName": "The Identity Broker shall fulfill the roles of a Relying Party and an Identity Provider and broker security tokens between federation Identity Providers and Relying Parties."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-798",
+        "sreqName": "The Service Consumer shall ensure compliance of provided VMs with security requirements mutually agreed with Service Provider."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-72",
+        "sreqName": "Virtualized network provided to the Service Consumer shall be protected to the same levels as per FMN network security as captured in the SI for Communications and the SI for CIS Security."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "Audit and Logging",
+        "sreqNumber": "SP5-SREQ-69",
+        "sreqName": "Events shall be logged at the hypervisor level by the Service Provider."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "Audit and Logging",
+        "sreqNumber": "SP5-SREQ-70",
+        "sreqName": "Event logs must include, when relevant: events details such as: powering and deployment of VMs, and alarms, including name and description, alarm type, triggers, tolerance thresholds and actions."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "Audit and Logging",
+        "sreqNumber": "SP5-SREQ-312",
+        "sreqName": "Event logs must include, when relevant: user access to the administrative interface; VM power on/off; and configuration changes to the VM."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "VM Image Management",
+        "sreqNumber": "SP5-SREQ-1284",
+        "sreqName": "The service consumer shall be able to provide virtual machine images in accordance with the virtual appliance interchange profile to the service provider."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "VM Image Management",
+        "sreqNumber": "SP5-SREQ-787",
+        "sreqName": "The Service Consumer shall calculate the checksum of the VM to be imported."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "VM Image Management",
+        "sreqNumber": "SP5-SREQ-797",
+        "sreqName": "The Service Provider shall validate the checksum before importing the VM."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "VM Image Management",
+        "sreqNumber": "SP5-SREQ-799",
+        "sreqName": "The Service Provider shall be able to import virtual machine images in accordance with the virtual appliance interchange profile"
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "VM Operations Management",
+        "sreqNumber": "SP5-SREQ-1283",
+        "sreqName": "The service consumer shall be able to monitor and manage their own VMs using the VM managament interface provided by the service provider"
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "VM Operations Management",
+        "sreqNumber": "SP5-SREQ-802",
+        "sreqName": "The Service Provider shall allow Service Consumer to monitor resources allocated to the Service Consumer."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "VM Operations Management",
+        "sreqNumber": "SP5-SREQ-803",
+        "sreqName": "The Service provider shall provide the Service Consumer with remote access to the virtual console (e.g. keyboard, mouse, screen) of the imported VM."
+    },
+    {
+        "siName": "Virtualized Processing",
+        "funName": "VM Operations Management",
+        "sreqNumber": "SP5-SREQ-68",
+        "sreqName": "Access to VM Management shall be limited to the service consumer administrator."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1295",
+        "sreqName": "TLS shall be used by Federated SCM APIs"
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Catalogue Management",
+        "sreqNumber": "SP5-SREQ-1086",
+        "sreqName": "The SMC service shall enable the federated exchange of MN Services via standardized interfaces."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Catalogue Management",
+        "sreqNumber": "SP5-SREQ-1087",
+        "sreqName": "The Service Catalogue Management service shall enable MNPs to query a single or multiple MN Services from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Catalogue Management",
+        "sreqNumber": "SP5-SREQ-1088",
+        "sreqName": "The Service Catalogue Management service shall enable MNPs to subscribe to Service notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Catalogue Management",
+        "sreqNumber": "SP5-SREQ-1089",
+        "sreqName": "The Service Catalogue Management service shall enable MNPs to unsubscribe to Service notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Catalogue Management",
+        "sreqNumber": "SP5-SREQ-1090",
+        "sreqName": "The Service Catalogue Management service shall enable Service Providers to send life-cycle information about MN Services to interested MNPs."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Catalogue Management",
+        "sreqNumber": "SP5-SREQ-1162",
+        "sreqName": "The Service Catalogue Management service shall enable MNPs to query a single or multiple Service Instances from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Incident Management",
+        "sreqNumber": "SP5-SREQ-1077",
+        "sreqName": "The SMC service shall enable the federated exchange of Incidents via standardized interfaces."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Incident Management",
+        "sreqNumber": "SP5-SREQ-1078",
+        "sreqName": "The Incident Management service shall enable Service Consumers to report Incidents to Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Incident Management",
+        "sreqNumber": "SP5-SREQ-1079",
+        "sreqName": "The Incident Management service shall enable the exchange of Incident updates between Service Consumers and Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Incident Management",
+        "sreqNumber": "SP5-SREQ-1080",
+        "sreqName": "The Incident Management service shall enable MNPs to query the current status of a single or multiple Incidents from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Incident Management",
+        "sreqNumber": "SP5-SREQ-1081",
+        "sreqName": "The Incident Management Service shall enable Service Consumers and Service Providers to exchange additional information or knowledge that assists in the analysis and resolution of an Incident."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Incident Management",
+        "sreqNumber": "SP5-SREQ-1082",
+        "sreqName": "The Incident Management service shall enable the exchange of supporting documents for an existing Incident between Service Providers and Service Consumers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Incident Management",
+        "sreqNumber": "SP5-SREQ-1083",
+        "sreqName": "The Incident Management service shall enable MNPs to subscribe to Incident lifecycle notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Incident Management",
+        "sreqNumber": "SP5-SREQ-1084",
+        "sreqName": "The Incident Management service shall enable MNPs to unsubscribe to Incident lifecycle notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Incident Management",
+        "sreqNumber": "SP5-SREQ-1085",
+        "sreqName": "The Incident Management service shall enable Service Providers to inform interested MNPs about the current status of incidents."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Request Fulfillment",
+        "sreqNumber": "SP5-SREQ-1072",
+        "sreqName": "The SMC service shall enable the federated exchange of Service Requests and Access Requests via standardized interfaces."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Request Fulfillment",
+        "sreqNumber": "SP5-SREQ-1073",
+        "sreqName": "The Request Fulfilment service shall enable MNPs to raise a Request for a specific Service at the Service Provider."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Request Fulfillment",
+        "sreqNumber": "SP5-SREQ-1074",
+        "sreqName": "The Request Fulfilment service shall enable the exchange of Service Request and Access Request updates between Service Consumers and Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Request Fulfillment",
+        "sreqNumber": "SP5-SREQ-1075",
+        "sreqName": "The Request Fulfilment service shall enable MNPs to query the current status of a single or multiple Service Requests or Access Requests from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Request Fulfillment",
+        "sreqNumber": "SP5-SREQ-1076",
+        "sreqName": "The Request Fulfilment service shall enable Service Consumers and Service Providers to exchange additional information or knowledge that assists in the analysis and fulfilment of a Service Request or Access Request."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-1065",
+        "sreqName": "The SMC service shall enable the federated exchange of Events via standardized interfaces."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-1066",
+        "sreqName": "The Event Management service shall enable Service Customers to report Events to Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-1067",
+        "sreqName": "The Event Management service shall enable the exchange of Event updates between Service Consumers and Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-1068",
+        "sreqName": "The Event Management service shall enable MNPs to query the current status of a single or multiple Events from Service Providers"
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-1069",
+        "sreqName": "The Event Management service shall enable MNPs to subscribe to Event lifecycle notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-1070",
+        "sreqName": "The Event Management service shall enable MNPs to unsubscribe to Event lifecycle notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-1071",
+        "sreqName": "The Event Management service shall enable Service Providers to inform interested MNPs about the current status of Events."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Asset and Configuration Management",
+        "sreqNumber": "SP5-SREQ-1060",
+        "sreqName": "The SMC service shall enable the federated exchange of Federated Configuration Items via standardized interfaces."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Asset and Configuration Management",
+        "sreqNumber": "SP5-SREQ-1061",
+        "sreqName": "The Service Asset and Configuration Management service shall enable MNPs to query a single or multiple Federated CIs from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Asset and Configuration Management",
+        "sreqNumber": "SP5-SREQ-1062",
+        "sreqName": "The Service Asset and Configuration Management service shall enable Service Consumers to subscribe to Federated CI notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Asset and Configuration Management",
+        "sreqNumber": "SP5-SREQ-1063",
+        "sreqName": "The Service Asset and Configuration Management service shall enable MNPs to unsubscribe to Federated CI notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Asset and Configuration Management",
+        "sreqNumber": "SP5-SREQ-1064",
+        "sreqName": "The Service Asset and Configuration Management service shall enable Service Providers to send life-cycle information about Federated CIs to interested MNPs."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Change Management",
+        "sreqNumber": "SP5-SREQ-1051",
+        "sreqName": "The SMC service shall enable the federated exchange of Changes via standardized interfaces."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Change Management",
+        "sreqNumber": "SP5-SREQ-1052",
+        "sreqName": "The Change Management service shall enable Service Providers to notify the CSE of Request for Change and vice versa."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Change Management",
+        "sreqNumber": "SP5-SREQ-1053",
+        "sreqName": "The Change Management service shall enable the exchange of Change updates between Service Providers and the CSE."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Change Management",
+        "sreqNumber": "SP5-SREQ-1054",
+        "sreqName": "The Change Management service shall enable MNPs to query the current status of a single or multiple RfCs or Changes from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Change Management",
+        "sreqNumber": "SP5-SREQ-1055",
+        "sreqName": "The Change Management Service shall enable the CSE and Service Providers to exchange additional information or knowledge that assists in the analysis and execution of a Change."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Change Management",
+        "sreqNumber": "SP5-SREQ-1056",
+        "sreqName": "The Change Management service shall enable the exchange of supporting documents for an existing Change between Service Providers and the CSE."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Change Management",
+        "sreqNumber": "SP5-SREQ-1057",
+        "sreqName": "The Change Management service shall enable MNPs to subscribe to Change lifecycle notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Change Management",
+        "sreqNumber": "SP5-SREQ-1058",
+        "sreqName": "The Change Management service shall enable MNPs to unsubscribe to Change lifecycle notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Change Management",
+        "sreqNumber": "SP5-SREQ-1059",
+        "sreqName": "The Change Management service shall enable Service Providers to inform interested MNPs about the current status of Changes."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Location Management",
+        "sreqNumber": "SP5-SREQ-1046",
+        "sreqName": "The SMC service shall enable the federated exchange of Geographic Locations via standardized interfaces."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Location Management",
+        "sreqNumber": "SP5-SREQ-1047",
+        "sreqName": "The Geographic Location Management service shall enable MNPs to query a single or multiple geographic elements such as Addresses, Sites or Locations from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Location Management",
+        "sreqNumber": "SP5-SREQ-1048",
+        "sreqName": "The Geographic Location Management service shall enable Service Consumers to subscribe to Geographic Location notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Location Management",
+        "sreqNumber": "SP5-SREQ-1049",
+        "sreqName": "The Geographic Location Management service shall enable MNPs to unsubscribe to Geographic Location notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Location Management",
+        "sreqNumber": "SP5-SREQ-1050",
+        "sreqName": "The Geographic Location Management service shall enable Service Providers to send life-cycle information about elements of the Geographic Location Management to interested MNPs."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Request Catalogue",
+        "sreqNumber": "SP5-SREQ-1036",
+        "sreqName": "The SRCM service shall enable MNPs to query a single or multiple elements of a Service Request Catalogue from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Request Catalogue",
+        "sreqNumber": "SP5-SREQ-1037",
+        "sreqName": "The SRCM service shall enable MNPs to query a single or multiple elements of a Service Request Catalogue from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Request Catalogue",
+        "sreqNumber": "SP5-SREQ-1038",
+        "sreqName": "The SRCM service shall enable Service Consumers to subscribe to Service Request Catalogue notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Request Catalogue",
+        "sreqNumber": "SP5-SREQ-1039",
+        "sreqName": "The SRCM service shall enable MNPs to unsubscribe to Service Request Catalogue notifications from Service Providers."
+    },
+    {
+        "siName": "Service Management and Control",
+        "funName": "Service Request Catalogue",
+        "sreqNumber": "SP5-SREQ-1040",
+        "sreqName": "The SRCM service shall enable Service Providers to send life-cycle information about elements of the Service Request Catalogue to interested MNPs."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-421",
+        "sreqName": "The service operator shall be notified when the verification of digital certificates fails."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Geo Data Management and Dissemination",
+        "sreqNumber": "SP5-SREQ-1216",
+        "sreqName": "Geospatial information shall be disseminated together with the corresponding geospatial metadata."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Geo Data Management and Dissemination",
+        "sreqNumber": "SP5-SREQ-318",
+        "sreqName": "Geospatial information shall be disseminated using standardized file formats."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Geo Data Management and Dissemination",
+        "sreqNumber": "SP5-SREQ-319",
+        "sreqName": "Mixed geospatial information packages shall be disseminated using standardized geo-database file formats."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Portal access and Metadata",
+        "sreqNumber": "SP5-SREQ-1217",
+        "sreqName": "Portal users shall be able to automatically import metadata in a standard format."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Portal access and Metadata",
+        "sreqNumber": "SP5-SREQ-320",
+        "sreqName": "Portal users shall be able to manually register geospatial products and services metadata."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Portal access and Metadata",
+        "sreqNumber": "SP5-SREQ-321",
+        "sreqName": "Portal users shall be able to manually download geospatial information from the portal"
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Portal access and Metadata",
+        "sreqNumber": "SP5-SREQ-322",
+        "sreqName": "Portal users shall be able to search for geospatial products and services metadata."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Web Map Services",
+        "sreqNumber": "SP5-SREQ-486",
+        "sreqName": "The Web Map Service Consumer shall be able to request over a network and display selected map images."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Web Map Services",
+        "sreqNumber": "SP5-SREQ-487",
+        "sreqName": "The Web Map Service Provider shall respond to requests for selected map images over a network."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Web Feature Services",
+        "sreqNumber": "SP5-SREQ-488",
+        "sreqName": "The Web Feature Service Consumer shall be able to retrieve, display, create and modify spatial features over a network."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Web Feature Services",
+        "sreqNumber": "SP5-SREQ-489",
+        "sreqName": "The Web Feature Service Provider shall respond to requests to retrieve, create and modify spatial features over a network."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Web Map Tile Services",
+        "sreqNumber": "SP5-SREQ-490",
+        "sreqName": "The Web Map Tile Service Consumer shall be able to request and display pre-rendered georeferenced map tiles over a network."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Web Map Tile Services",
+        "sreqNumber": "SP5-SREQ-491",
+        "sreqName": "The Web Map Tile Service Provider shall respond to requests for pre-rendered georeferenced map tiles over a network."
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Geospatial Web Feeds",
+        "sreqNumber": "SP5-SREQ-409",
+        "sreqName": "The Web Hosting Services shall support exposing of geospatial content (encoding of location and geospatial feeds)"
+    },
+    {
+        "siName": "Geospatial Information",
+        "funName": "Geospatial Web Feeds",
+        "sreqNumber": "SP5-SREQ-410",
+        "sreqName": "The Web Hosting Services clients shall be able to consume provided geospatial content (encoding of location and geospatial feeds)."
+    },
+    {
+        "siName": "Distributed Time",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-38",
+        "sreqName": "All exchanges between NTP servers shall be authenticated with symmetric key authentication based on MD5 hash algorithm."
+    },
+    {
+        "siName": "Distributed Time",
+        "funName": "Audit and Logging",
+        "sreqNumber": "SP5-SREQ-51",
+        "sreqName": "Events shall be logged for all servers in the NTP hierarchy. Where relevant and available, event logs must include at least: rogue time is provided by legitimate source; and when time source is not correctly authenticated."
+    },
+    {
+        "siName": "Distributed Time",
+        "funName": "Time Synchronization",
+        "sreqNumber": "SP5-SREQ-1000",
+        "sreqName": "The time difference between any synchronized device and the UTC shall never be higher than 0.5s."
+    },
+    {
+        "siName": "Distributed Time",
+        "funName": "Time Synchronization",
+        "sreqNumber": "SP5-SREQ-1001",
+        "sreqName": "Distributed Time Services shall use the Coordinated Universal Time (UTC) Standard."
+    },
+    {
+        "siName": "Distributed Time",
+        "funName": "Time Synchronization",
+        "sreqNumber": "SP5-SREQ-166",
+        "sreqName": "All Service Providers shall synchronize time by either connecting their internal time server(s) to a time server identified by the MN Service Management Authority or by providing their own reference clock."
+    },
+    {
+        "siName": "Distributed Time",
+        "funName": "Time Synchronization",
+        "sreqNumber": "SP5-SREQ-1160",
+        "sreqName": "Synchronizing timeservers shall operate on the same stratum and shall have synchronization path leading to the same reference clock."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-41",
+        "sreqName": "Access to the Directory Information Tree (DIT) shall be protected with name and password."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-42",
+        "sreqName": "Access to the centralized Directory (Centralized Directory Service Providers) shall only be permitted to the Directory Data Synchronization Services (Directory Synchronization Service Providers)."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-47",
+        "sreqName": "All connections between Directories and Directory Data Synchronization Services shall be protected by TLS with mutual authentication."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-421",
+        "sreqName": "The service operator shall be notified when the verification of digital certificates fails."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-43",
+        "sreqName": "Credentials for authentication to the central DIT shall be randomly generated strings of high entropy - e.g. 22 literals from the set of upper-case characters, lower-case chararacters and numeric digits, chosen at random by a cryptograpically secure pseudorandom number generator (CSPRNG)."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Audit and Logging",
+        "sreqNumber": "SP5-SREQ-45",
+        "sreqName": "MNP Directories shall log events relevant to any accounts which are shared with the federation, registering (for a given update) at least: IP address of and credential name used to access the Directory Services; dates and times; Distinguished Names (DNs) of records; and operation type (e.g. modify, add, delete)."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Audit and Logging",
+        "sreqNumber": "SP5-SREQ-46",
+        "sreqName": "The centralized Directory (Centralized Directory Service Provider) must log all events, registering (for a given update) at least: IP address of and credential name used by Directory Data Synchronization Services (Directory Synchronization Service Providers); dates and times; Distinguished Names (DNs) of records; and operation type (e.g. modify, add, delete)."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Replication Services",
+        "sreqNumber": "SP5-SREQ-191",
+        "sreqName": "The Directory Data Synchronization Services shall support data exchange mechanisms required in the Hub and Spoke topology i.e. push own MNP Directory data to and pull other participants directory data from the shared, Centralized Directory."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Replication Services",
+        "sreqNumber": "SP5-SREQ-194",
+        "sreqName": "The Directory Data Synchronization Services shall replicate agreed set of common attributes."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Replication Services",
+        "sreqNumber": "SP5-SREQ-195",
+        "sreqName": "The Directory Data Synchronization Services shall be able to filter the LDAP data that is available for replication."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Replication Services",
+        "sreqNumber": "SP5-SREQ-196",
+        "sreqName": "The Directory Data Synchronization Services, to avoid overuse of network and service resources, shall perform replication in accordance with agreed schedule."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Replication Services",
+        "sreqNumber": "SP5-SREQ-246",
+        "sreqName": "The Directory Data Synchronization Services shall be able to replicate, update and delete LDAP data within the designated subtree of the DIT in the centralized Directory."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Mediated Replication Services",
+        "sreqNumber": "SP5-SREQ-193",
+        "sreqName": "The Synchronization Support Service Providers shall be able to replicate, update, and delete Directory data within the centralized Directory on behalf of Directory Service Providers which are not capable to perform replication themselves."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Mediated Replication Services",
+        "sreqNumber": "SP5-SREQ-443",
+        "sreqName": "The Synchronization Service Providers shall be able to update Directory data within the centralized Directory on behalf of Directory Service Providers which are not capable to perform replication themselves."
+    },
+    {
+        "siName": "Directory Data Synchronization",
+        "funName": "Mediated Replication Services",
+        "sreqNumber": "SP5-SREQ-444",
+        "sreqName": "The Directory Data Synchronization Service shall be able to delete Directory data within the centralized Directory on behalf of MNP Directories which are not capable to perform replication themselves."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-292",
+        "sreqName": "Access to CA and RA shall be limited to privileged users."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-293",
+        "sreqName": "Authentication shall be done in accordance with the Inter-entity Trust Interoperability Framework (ITIF)."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-294",
+        "sreqName": "Secure log-on procedures shall be implemented as per the ITIF."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-296",
+        "sreqName": "Private keys transmitted across the network shall be encrypted."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-297",
+        "sreqName": "CRLs and Certificates shall be signed by a trusted CA"
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-295",
+        "sreqName": "Events shall be logged as documented in the ITIF."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Lifecycle Management",
+        "sreqNumber": "SP5-SREQ-1156",
+        "sreqName": "The Digital Certificate Services shall provide (potentially multiple) CRL location(s) in issued digital certificates through the cRLDistributionPoints extension."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Lifecycle Management",
+        "sreqNumber": "SP5-SREQ-1157",
+        "sreqName": "The Digital Certificate Services shall provide the location of OCSP responders in issued digital certificates through the AIA extension."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Lifecycle Management",
+        "sreqNumber": "SP5-SREQ-1158",
+        "sreqName": "Wildcard certificates shall not be issued."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Lifecycle Management",
+        "sreqNumber": "SP5-SREQ-233",
+        "sreqName": "The Digital Certificate Services shall allow to re-key digital certificates which expired during the mission."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Lifecycle Management",
+        "sreqNumber": "SP5-SREQ-546",
+        "sreqName": "The Digital Certificate Services shall make the root and issuing CA's certificates available through HTTP and provide this URL in issued digital certificates through the AIA extension."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Validation Services",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Validation Services",
+        "sreqNumber": "SP5-SREQ-421",
+        "sreqName": "The service operator shall be notified when the verification of digital certificates fails."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Validation Services",
+        "sreqNumber": "SP5-SREQ-548",
+        "sreqName": "The Digital Certificate Services shall make the revocation status of digital certificates available through an HTTP endpoint accessible from the Mission Network."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Validation Services",
+        "sreqNumber": "SP5-SREQ-679",
+        "sreqName": "Certificate revocation information shall be made available in a high availability mode to avoid single point of failure"
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "OCSP Services",
+        "sreqNumber": "SP5-SREQ-1032",
+        "sreqName": "OCSP responders shall accept requests with nonces."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "OCSP Services",
+        "sreqNumber": "SP5-SREQ-1033",
+        "sreqName": "OCSP responders shall accept requests without nonces."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "OCSP Services",
+        "sreqNumber": "SP5-SREQ-229",
+        "sreqName": "The Digital Certificate Services shall make revocation status of digital certificates available through OCSP endpoints."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Trust Management",
+        "sreqNumber": "SP5-SREQ-1294",
+        "sreqName": "All mission network participants shall be able to support the creation, maintenance and distribution of Certificate Trust List."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Trust Management",
+        "sreqNumber": "SP5-SREQ-36",
+        "sreqName": "All mission network participant shall be able to establish a trust with other federation participants using Trust List"
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Trust Management",
+        "sreqNumber": "SP5-SREQ-37",
+        "sreqName": "Mission network participants shall be able to establish a trust with other federation participants using a cross-certification trust model."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Request and Generation",
+        "sreqNumber": "SP5-SREQ-35",
+        "sreqName": "The Digital Certificate Services shall be able to generate certificate request"
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Request and Generation",
+        "sreqNumber": "SP5-SREQ-1293",
+        "sreqName": "The Digital Certificate Services shall be able to issue certificate based on the certificate request"
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Request and Generation",
+        "sreqNumber": "SP5-SREQ-226",
+        "sreqName": "The Digital Certificate Services shall be able to issue digital certificates based on the requests from other federation partners."
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Request and Generation",
+        "sreqNumber": "SP5-SREQ-227",
+        "sreqName": "The Digital Certificate Services shall be able to issue certificates based on VPN or TLS certificate profile defined in iTIF Certificate Profiles specification"
+    },
+    {
+        "siName": "Digital Certificates",
+        "funName": "Certificate Request and Generation",
+        "sreqNumber": "SP5-SREQ-298",
+        "sreqName": "The RA shall validate certificate requests to ensure correct data entry (at least procedurally)"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1300",
+        "sreqName": "SIP signaling between SBCs shall be secured with TLS"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1301",
+        "sreqName": "SIP signaling and RTP media between SBCs shall be secured with IPsec tunnel"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1302",
+        "sreqName": "RTP media between SBCs shall be secured with SRTP"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1303",
+        "sreqName": "Signaling and media between audio/video end-points shall be secured with SCIP"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1304",
+        "sreqName": "SCIP shall signal call on underlying media infrastructure with one of the codecs listed in the mission network JMEI"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-207",
+        "sreqName": "Session Initiation Protocol (SIP) signalling shall only flow between SBCs."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Infrastructure and Core Services",
+        "sreqNumber": "SP5-SREQ-216",
+        "sreqName": "Service providers shall provide at least one Session Border Controller."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Infrastructure and Core Services",
+        "sreqNumber": "SP5-SREQ-219",
+        "sreqName": "Service providers shall provide at least one audio conference server."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Infrastructure and Core Services",
+        "sreqNumber": "SP5-SREQ-430",
+        "sreqName": "Service Providers shall provide at least one video conference server."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Infrastructure and Core Services",
+        "sreqNumber": "SP5-SREQ-1230",
+        "sreqName": "A/V conference servers shall be reachable by STANAG 4705 numbers."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Infrastructure and Core Services",
+        "sreqNumber": "SP5-SREQ-208",
+        "sreqName": "The establishment media streams across the NIP shall be performed in hop-by-hop or edge-to-edge mode, depending on the specific requirements of the mission."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Call Routing and Addressing",
+        "sreqNumber": "SP5-SREQ-209",
+        "sreqName": "By default, call routing shall be configured to use statically configured prefixes."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Call Routing and Addressing",
+        "sreqNumber": "SP5-SREQ-218",
+        "sreqName": "Service providers shall configure call routing on Session Border Controllers."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Call Routing and Addressing",
+        "sreqNumber": "SP5-SREQ-1297",
+        "sreqName": "Media prefixes shall be coded in to the IPv6 routes with IP next-hop indicating call routing next hop and Route Target community indicating originator SBC information"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Call Routing and Addressing",
+        "sreqNumber": "SP5-SREQ-1298",
+        "sreqName": "SBCs supporting dynamic voice routing shall implement BGP routing for exchange ST4705 media prefixes."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Call Routing and Addressing",
+        "sreqNumber": "SP5-SREQ-1308",
+        "sreqName": "SBCs shall support call routing based on the variable length prefix"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Call Routing and Addressing",
+        "sreqNumber": "SP5-SREQ-1309",
+        "sreqName": "SBC shall support STANAG4705 prefix structure."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Call Routing and Addressing",
+        "sreqNumber": "SP5-SREQ-1310",
+        "sreqName": "SBCs shall support National Address Space and Theatre Address Space in routing of calls."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Quality of Service and Resource Management",
+        "sreqNumber": "SP5-SREQ-210",
+        "sreqName": "Media services on the mission network must implement Call Admission Control (CAC) to constrain the number of media streams that can be supported."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Quality of Service and Resource Management",
+        "sreqNumber": "SP5-SREQ-211",
+        "sreqName": "Service providers must implement a mechanism that ensures the availability of adequate resources for high priority media streams (MLPP)."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Quality of Service and Resource Management",
+        "sreqNumber": "SP5-SREQ-1306",
+        "sreqName": "SBCs shall not transcode media within RTP streams"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Push-To-Talk (PTT) Voice Services",
+        "sreqNumber": "SP5-SREQ-1192",
+        "sreqName": "MELPe 2400bps must be used as codec for the IP voice stream and they must be included in the RTP payload according to RFC 8130"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Push-To-Talk (PTT) Voice Services",
+        "sreqNumber": "SP5-SREQ-1193",
+        "sreqName": "The IOP-HD shall use VARC-based half-duplex PTT control"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Push-To-Talk (PTT) Voice Services",
+        "sreqNumber": "SP5-SREQ-1195",
+        "sreqName": "The destination address of the voice packets must be IPv4"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Push-To-Talk (PTT) Voice Services",
+        "sreqNumber": "SP5-SREQ-1196",
+        "sreqName": "The identified voice stream must be mapped to the internal PTT voice service of the radio"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Push-To-Talk (PTT) Voice Services",
+        "sreqNumber": "SP5-SREQ-1197",
+        "sreqName": "Each voice group must be backed by a specific voice channel of the radio"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Push-To-Talk (PTT) Voice Services",
+        "sreqNumber": "SP5-SREQ-1198",
+        "sreqName": "Destination addresses for the received voice stream for each voice group within the radio must be configured statically according to national considerations as part of the voice group configuration."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Push-To-Talk (PTT) Voice Services",
+        "sreqNumber": "SP5-SREQ-1199",
+        "sreqName": "Pre-emption of voice streams must be based on the source IP-address and/or the QoS marking of the IP-packets containing the respective voice stream."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Radio Network Configuration",
+        "sreqNumber": "SP5-SREQ-1219",
+        "sreqName": "Each voice group within the radios must be addressed via a combination of IP address, UDP port."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Radio Network Configuration",
+        "sreqNumber": "SP5-SREQ-1220",
+        "sreqName": "A radio as well as a client / intercom must accept any number of MELPe frames in a single RTP packet. The size of an RTP packet must never exceed the MTU of an IP packet."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Radio Network Configuration",
+        "sreqNumber": "SP5-SREQ-1221",
+        "sreqName": "The Radio IP Access function must either be embedded on the same radio device or via an external adapter."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Radio Network Configuration",
+        "sreqNumber": "SP5-SREQ-1222",
+        "sreqName": "Each platform must not have more than one active radio channel/line per radio network."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Radio Network Configuration",
+        "sreqNumber": "SP5-SREQ-1223",
+        "sreqName": "Every radio of the relay platform taking part in the relay functionality must be be configured with the same IPv4 multicast address and port of the Tactical Voice Service"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Radio Network Configuration",
+        "sreqNumber": "SP5-SREQ-1224",
+        "sreqName": "Relaying must not be performed between more than two radio networks"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Radio Network Configuration",
+        "sreqNumber": "SP5-SREQ-1225",
+        "sreqName": "There must not be more than one platform acting as relay between two particular radio networks"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Radio Network Configuration",
+        "sreqNumber": "SP5-SREQ-1265",
+        "sreqName": "When a PTT button at a radio is pressed, the radio must also send the the voice stream onto the platform network (to the local client / intercom and the other radio)."
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Call Setup and Media Negotiation",
+        "sreqNumber": "SP5-SREQ-1299",
+        "sreqName": "Call establishment with initial SIP INVITE shall contain SDP element describing the codec information"
+    },
+    {
+        "siName": "Audio and Video-based Collaboration",
+        "funName": "Call Setup and Media Negotiation",
+        "sreqNumber": "SP5-SREQ-1305",
+        "sreqName": "SDP content shall be limited to the codecs that are listed in JMEI"
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-230 Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least",
+        "sreqName": "full certificate path validation, certificate validity period and certificate revocation status."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-421",
+        "sreqName": "The service operator shall be notified when the verification of digital certificates fails."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-454",
+        "sreqName": "A Service Provider shall allow a calendar user to create an event."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-455",
+        "sreqName": "A Service Provider shall allow a calendar user to update the event."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-456",
+        "sreqName": "A Service Provider shall allow a calendar user to cancel the event."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Event Management",
+        "sreqNumber": "SP5-SREQ-485",
+        "sreqName": "An Event shall always specify the time zone as part of the event information."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Calendar Distribution",
+        "sreqNumber": "SP5-SREQ-462",
+        "sreqName": "A Service Provider shall allow a calendar user's calendar to be published via Web Hosting Services."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Calendar Distribution",
+        "sreqNumber": "SP5-SREQ-463",
+        "sreqName": "A Service Consumer shall allow a calendar user's calendar to be retrieved."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Calendar Distribution",
+        "sreqNumber": "SP5-SREQ-1232",
+        "sreqName": "A Service Provider shall allow a calendar user's calendar to be disseminated via Informal Messaging services."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Event Participation",
+        "sreqNumber": "SP5-SREQ-457",
+        "sreqName": "A Service Provider shall allow a calendar user to invite attendees to the event."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Event Participation",
+        "sreqNumber": "SP5-SREQ-458",
+        "sreqName": "A Service Provider shall allow a calendar user to send an event to other users."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Event Participation",
+        "sreqNumber": "SP5-SREQ-459",
+        "sreqName": "A Service Consumer shall allow a calendar user to receive events from other calendar users."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Event Participation",
+        "sreqNumber": "SP5-SREQ-460",
+        "sreqName": "A Service Consumer shall allow a calendar user to display events."
+    },
+    {
+        "siName": "Calendaring and Scheduling",
+        "funName": "Event Participation",
+        "sreqNumber": "SP5-SREQ-461",
+        "sreqName": "A Service Consumer shall allow a calendar user to respond to the event invitation."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-106",
+        "sreqName": "Communication between servers shall be secured via Transport Layer Security (TLS) with mutual authentication."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1189",
+        "sreqName": "Communication between servers is secured via Transport Layer Security (TLS). Involved systems shall be able to exchange their X.509 public certificate."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-104",
+        "sreqName": "Recommended to limit connections from and to FFT Systems only to known recognized, good IP addresses shall be considered."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-101",
+        "sreqName": "FFT systems must log all events, registering at least: IP address and port number of all communications between FFT gateways; and user acmes and other resource attempts."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-93",
+        "sreqName": "All ADatP-36 messages shall be labelled with the classification and the releasability."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Standards Conformance",
+        "sreqNumber": "SP5-SREQ-158",
+        "sreqName": "The system shall support the IP1 protocol and conditionally IP2 and WSMP protocols as described in ADatP-36."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Standards Conformance",
+        "sreqNumber": "SP5-SREQ-119",
+        "sreqName": "The system shall support ADatP-36 Message Formats."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Standards Conformance",
+        "sreqNumber": "SP5-SREQ-118",
+        "sreqName": "The system shall support symbol standard required from the adopted version of the ADatP-36 standard."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Standards Conformance",
+        "sreqNumber": "SP5-SREQ-1190",
+        "sreqName": "In a FFT network where all systems do not support the same version of the ADatP-36 Message Format, a FFT Proxy system shall be available to transform from one version to another."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Track Management",
+        "sreqNumber": "SP5-SREQ-249",
+        "sreqName": "The system shall provide valid (well formed) FFT tracks."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Track Management",
+        "sreqNumber": "SP5-SREQ-526",
+        "sreqName": "The system shall consume valid (well formed) FFT tracks."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Track Management",
+        "sreqNumber": "SP5-SREQ-533",
+        "sreqName": "The system shall control the assignment and distribution of unique terminal identifications (IDs) across a network."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Track Management",
+        "sreqNumber": "SP5-SREQ-534",
+        "sreqName": "The system shall define periods for track aging which will be applied by all systems."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Track Management",
+        "sreqNumber": "SP5-SREQ-162",
+        "sreqName": "FFT Gateways shall only inject tracks into the FFT network that are compliant with the mission network security policy."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "System Configuration and Capability Management",
+        "sreqNumber": "SP5-SREQ-1187",
+        "sreqName": "A system supporting ADatP-36(B) shall support the use of the FFTSC message to configure its system automatically."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "System Configuration and Capability Management",
+        "sreqNumber": "SP5-SREQ-1188",
+        "sreqName": "A system supporting ADatP-36(B) shall be capable of supplying its System Capability information as a FFTSPC message."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "System Configuration and Capability Management",
+        "sreqNumber": "SP5-SREQ-161",
+        "sreqName": "The FFT Service Management Authority shall verify that end-to-end connectivity among all elements can be effectively established."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "System Configuration and Capability Management",
+        "sreqNumber": "SP5-SREQ-103",
+        "sreqName": "The FFT Gateways, Hubs and Proxies shall be provided as a highly available solution, e.g. load balanced/hot standby."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Track Augmentation and Sanitization",
+        "sreqNumber": "SP5-SREQ-111",
+        "sreqName": "An FFT System shall provide an augmentation/sanitization Table to the TrAD Authority."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Track Augmentation and Sanitization",
+        "sreqNumber": "SP5-SREQ-116",
+        "sreqName": "FFT Hubs, FFT Proxies and FFT Gateways shall perform track augmentation/sanitization using table when receiving only blue dots."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Track Augmentation and Sanitization",
+        "sreqNumber": "SP5-SREQ-248",
+        "sreqName": "FFT Gateways, Hubs and Proxies shall merge and maintain an augmentation/sanitization table."
+    },
+    {
+        "siName": "Friendly Force Tracking",
+        "funName": "Forward from TACCIS to OPCIS ",
+        "sreqNumber": "SP5-SREQ-587",
+        "sreqName": "The system shall be able to automatically send select ground tracks from TACCIS networks to OPCIS network."
+    },
+    {
+        "siName": "Data Links",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-108",
+        "sreqName": "Connectivity to the JREAP hub shall be limited by JREAP node IDs included on the OPTASKLINK"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-110",
+        "sreqName": "Communication between JREAP nodes shall be secured via accredited crypto devices and keys to the same level as the Link 16 network"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-109",
+        "sreqName": "JREAP nodes must log all events, registering at least: originating node ID; IP address; errors; and user access"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "JRE Core Functions",
+        "sreqNumber": "SP5-SREQ-671",
+        "sreqName": "MNP JRE Process PPLI - Each JRE Capable MNP shall be able to process and extrapolate PPLI messages (J2.0 in X1)"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "JRE Core Functions",
+        "sreqNumber": "SP5-SREQ-682",
+        "sreqName": "JRE platforms must comply with ATDLP-5-18(B) extrapolation rules"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "JRE Core Functions",
+        "sreqNumber": "SP5-SREQ-685",
+        "sreqName": "MNP JRE Processors that are configured in active or semi-active mode are required to generate their own PPLI message using a J2.0 message in X1 and transmitted over the JREAP-C IP network"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "JRE Core Functions",
+        "sreqNumber": "SP5-SREQ-673",
+        "sreqName": "MNP JRE Terminate Link - All platforms shall be able to terminate a JREAP link"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "JRE Core Functions",
+        "sreqNumber": "SP5-SREQ-678",
+        "sreqName": "MNP JRE Perform JRE Role - Each JRE capable MNP shall be able to perform at least one of the following JRE roles: FJUG, JRE JU, JREU"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "Time Synchronization and Coordination",
+        "sreqNumber": "SP5-SREQ-675",
+        "sreqName": "MNP NTP - Federated MNPs DL services shall be synchronized with a difference less than the one indicated by the DL SMA"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "Time Synchronization and Coordination",
+        "sreqNumber": "SP5-SREQ-1271",
+        "sreqName": "A Common Time Reference (CTR) negotiation process must be present to coordinate a common time reference among JREAP nodes. The preferred mechanism will be Coordinated Universal Time (UTC), but Round Trip Time (RTT) will be also supported"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "Data Link Hub Functions (JREU)",
+        "sreqNumber": "SP5-SREQ-253",
+        "sreqName": "MNP JRE Hub Role - JRE Hub Platforms shall be able to forward X1 messages from different JRE Platforms"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "Data Link Gateway Functions (FJUG)(JRE JU)",
+        "sreqNumber": "SP5-SREQ-624",
+        "sreqName": "MNP JRE FJUG - Each FJUG Capable MNP shall be able to forward PPLI messages as Indirect PPLI between Link-16 and the MN"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "Data Link Gateway Functions (FJUG)(JRE JU)",
+        "sreqNumber": "SP5-SREQ-672",
+        "sreqName": "MNP JRE Active platforms - shall be able to transform all J2.x messages into J2.0 and send it to Link-16 capable MNPs, on the MN (as a X1 Message)"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "Data Link Gateway Functions (FJUG)(JRE JU)",
+        "sreqNumber": "SP5-SREQ-399",
+        "sreqName": "The gateways between TDL and IP based networks shall exchange the relevant TDL messages between the TDL network and a common IP based (mission) network"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "TDL Display and Visualisation",
+        "sreqNumber": "SP5-SREQ-252",
+        "sreqName": "MNP L16 Display - Each JRE Capable MNP shall be able to receive and display a Link 16 picture"
+    },
+    {
+        "siName": "Data Links",
+        "funName": "TDL Display and Visualisation",
+        "sreqNumber": "SP5-SREQ-622",
+        "sreqName": "Each JRE Capable MNP shall be able to receive and display J3.x and J7.0 J-Series Messages (In X1 messages), from Link-16 capable MNPs, to the MN"
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-66",
+        "sreqName": "Communication between chat servers shall be secured via TLS with mutual authentication."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-61",
+        "sreqName": "User access to chat shall be authenticated."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-63",
+        "sreqName": "If user authentication is not integrated with local MNP domain identity and access management solution, secure logon shall be enforced for user authentication."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-421",
+        "sreqName": "The service operator shall be notified when the verification of digital certificates fails."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-67",
+        "sreqName": "All file transfers shall be blocked."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-131",
+        "sreqName": "Within the Mission Network, all server to server connections must support the dialback protocol."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-64",
+        "sreqName": "Events shall be logged by all chat servers."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-65",
+        "sreqName": "Event logs must include, where relevant: user IDs; dates, times and details of key events; and administrator actions."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-52",
+        "sreqName": "Message content shall be preserved."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-85",
+        "sreqName": "Complete instant messaging dialogs with time-stamps shall be preserved."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-150",
+        "sreqName": "The service shall warn the user that the chat conversations are logged."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-383",
+        "sreqName": "Complete multi-user chat rooms with time-stamps shall be preserved."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-313",
+        "sreqName": "Event logs must include full accounting of chat rooms, including: room title; all messages including timestamps and classifications; user access; and administrator actions."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-59",
+        "sreqName": "All (item-structured) IQ and message stanzas shall be labelled with the classification of the message content."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-377",
+        "sreqName": "If a stanza carries a label, the labels shall be made visible to the user."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-60",
+        "sreqName": "All room subjects shall be marked with the maximum classification of discussions therein."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-1234",
+        "sreqName": "XMPP stanzas shall be labeled with security policies and confidentiality metadata following ADatP-4774."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-1235",
+        "sreqName": "XMPP stanzas shall be bound to confidentiality information labels following ADatP-4778."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-133",
+        "sreqName": "Chat room management functionality shall support the creation and management of various room types (public vs. hidden, persistent, etc.)."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-134",
+        "sreqName": "Chat room management functionality shall be available which allows users to request membership in a room."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-135",
+        "sreqName": "Chat room management functionality shall be available which allows occupants to view an occupant's full JID in a non-anonymous room."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-136",
+        "sreqName": "Chat room management functionality shall be available which allows moderators to view an occupant's full JID in a semi-anonymous room."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-137",
+        "sreqName": "Chat room management functionality shall be available which allows only moderators to change the room subject."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-138",
+        "sreqName": "Chat room management functionality shall be available which allows moderators to remove participants and visitors from the room."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-139",
+        "sreqName": "Chat room management functionality shall be available which allows moderators to grant and revoke voice."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-140",
+        "sreqName": "Chat room management functionality shall be available which allows admins to grant and revoke moderator status."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-141",
+        "sreqName": "Chat room management functionality shall be available which allows admins to ban users from the room."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-142",
+        "sreqName": "Chat room management functionality shall be available which allows admins to grant and revoke membership privileges."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-144",
+        "sreqName": "Chat room management functionality shall be available which allows owners to specify other owners."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-145",
+        "sreqName": "Chat room management functionality shall be available which allows owners to grant and revoke admin status."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-146",
+        "sreqName": "Chat room management functionality shall be available which allows owners to destroy the room."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Room Management",
+        "sreqNumber": "SP5-SREQ-605",
+        "sreqName": "Chat room management functionality shall be available which allows users to view the room subject."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Service Discovery",
+        "sreqNumber": "SP5-SREQ-1267",
+        "sreqName": "Users shall be able to list available chat rooms hosted on federated chat services."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Service Discovery",
+        "sreqNumber": "SP5-SREQ-260",
+        "sreqName": "The Form Exchange functionality shall provide the exchange of structured data via data forms."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "Service Discovery",
+        "sreqNumber": "SP5-SREQ-261",
+        "sreqName": "Data Forms shall be discoverable"
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "User Management",
+        "sreqNumber": "SP5-SREQ-130",
+        "sreqName": "All Mission Network contributing participants shall provide the following capabilities to their users: Instant Messaging, Presence Indicator and Contact Lists."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "User Management",
+        "sreqNumber": "SP5-SREQ-604",
+        "sreqName": "Each user of a Text-based Collaboration service shall be identifiable using a full JID in the form of \"username@domainpart/resource\"."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "User Management",
+        "sreqNumber": "SP5-SREQ-1233",
+        "sreqName": "If enabled, the presence function shall use allowed values \"away\", \"chat\" (default), \"dnd\" or \"xa\"."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "User Management",
+        "sreqNumber": "SP5-SREQ-1266",
+        "sreqName": "Users shall be able to send private messages to other users."
+    },
+    {
+        "siName": "Text-based Collaboration",
+        "funName": "User Management",
+        "sreqNumber": "SP5-SREQ-62",
+        "sreqName": "Access to chat rooms shall be managed on a need to know basis by chat room moderators."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-230",
+        "sreqName": "Federated services consuming digital certificates (relying parties) shall perform certificate validation. Certificate validation shall include checking at least: full certificate path validation, certificate validity period and certificate revocation status."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-33",
+        "sreqName": "Email servers shall use certificates compliant with VPN or TLS Server Certificate Profile defined in iTIF."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-34",
+        "sreqName": "Connections between email servers shall be protected by TLS with mutual authentication."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-421",
+        "sreqName": "The service operator shall be notified when the verification of digital certificates fails."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-56",
+        "sreqName": "All email messages and system traffic between mail servers shall be logged."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Auditory and Logging",
+        "sreqNumber": "SP5-SREQ-57",
+        "sreqName": "Event logs must include, when possible and available: date and time; IP address and name of the server or client; IP address of the destination server; message ID; SMTP Sender and Recipient address(es); email headers; size; and subject."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-29",
+        "sreqName": "The user shall be made aware of the message classification with accordance with the label."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Security Labelling",
+        "sreqNumber": "SP5-SREQ-55",
+        "sreqName": "All email messages, and all documents attached to these emails, shall be labelled with classification and releasability compliant with the Confidentiality Metadata Label Syntax in ADatP-4774."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Attachment and Content Management",
+        "sreqNumber": "SP5-SREQ-244",
+        "sreqName": "Each mission network shall allow the maximum size including attachments to be configured at instantiation for both send and receiving of informal messages."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Attachment and Content Management",
+        "sreqNumber": "SP5-SREQ-247",
+        "sreqName": "The informal messaging service shall be able to transfer attachments in all the file formats included in the corresponding profile for: still image coding, word processing documents, spreadsheets and presentations as well as document exchange, storage and long-term preservation."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Domain and Naming Configuration",
+        "sreqNumber": "SP5-SREQ-243",
+        "sreqName": "The naming scheme and conventions for the informal messaging domain space shall be independent from the naming scheme and domain space used for hostnames, (windows) domain names, or user accounts."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Message Handling and Notifications",
+        "sreqNumber": "SP5-SREQ-432",
+        "sreqName": "The Informal Messaging Services shall be able to generate message disposition notifications (MDN)."
+    },
+    {
+        "siName": "Informal Messaging",
+        "funName": "Message Handling and Notifications",
+        "sreqNumber": "SP5-SREQ-433",
+        "sreqName": "The Informal Messaging Services shall be able to generate delivery status notifications (DSN)."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-525",
+        "sreqName": "The root zone shall be signed."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-529",
+        "sreqName": "Authoritative Name Services shall secure DNS Zone Transfers with Secret Key Transaction Authentication for DNS (TSIG)."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-382",
+        "sreqName": "The Domain Name Service shall be able to serve signed zones."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Security and Access Control",
+        "sreqNumber": "SP5-SREQ-1272",
+        "sreqName": "The root zone shall be signed with one of the following algorithms: RSASHA256, RSASHA512, ECDSAP256SHA256, and ECDSAP384SHA384."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-1320",
+        "sreqName": "Validation of the zone must be possible using the DS record set that has been provided for listing in the parent zone."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-1319",
+        "sreqName": "At the time of the listing request there must be a DNSKEY present in the child zone that matches each DS record."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-1318",
+        "sreqName": "Trust anchors must be provided as complete DS records, including the key tag, the key algorithm, the digest hash type, and the digest hash."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-234",
+        "sreqName": "The Domain Name Service shall support mission top level domains."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-235",
+        "sreqName": "The Domain Name Service shall support country code top level domains."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-238",
+        "sreqName": "The Domain Name Service must support, at a minimum, the SOA-record, NS-record and A-record matching to the NS-records."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-239",
+        "sreqName": "The Domain Name Service must support the reverse zone containing the matching PTR-records."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-378",
+        "sreqName": "A distinct zone file shall be created for each signed zone."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-1313",
+        "sreqName": "The data served by the authoritative name servers for the designated zone must be consistent."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-1315",
+        "sreqName": "All authoritative name servers must serve the same SOA record for the designated domain."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "DNS Zone Management",
+        "sreqNumber": "SP5-SREQ-1314",
+        "sreqName": "All authoritative name servers must serve the same NS record set for the designated domain."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Network Configuration",
+        "sreqNumber": "SP5-SREQ-609",
+        "sreqName": "The Domain Name Service shall support anycast with a configurable address."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Network Configuration",
+        "sreqNumber": "SP5-SREQ-610",
+        "sreqName": "The Domain Name Service shall respond the anycast queries using the same anycast address that it is listening on."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Network Configuration",
+        "sreqNumber": "SP5-SREQ-611",
+        "sreqName": "The Domain Name Service shall use a configured unicast IP-address when queries are made to other servers."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Network Configuration",
+        "sreqNumber": "SP5-SREQ-1317",
+        "sreqName": "For any zones that are not anycasted, responses from the authoritative name servers must contain the same source IP address as the destination IP address of the initial query."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Network Configuration",
+        "sreqNumber": "SP5-SREQ-1316",
+        "sreqName": "DNS response payload must not exceed 512 octets, where the delegation information in the referral is a complete set of NS records and one A record."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Zone Delegation and Transfer",
+        "sreqNumber": "SP5-SREQ-241",
+        "sreqName": "The Domain Name Service must support zone updates via zone transfers."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Zone Delegation and Transfer",
+        "sreqNumber": "SP5-SREQ-379",
+        "sreqName": "The Authoritative Name Services shall be able to delegate unsigned zones."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Zone Delegation and Transfer",
+        "sreqNumber": "SP5-SREQ-380",
+        "sreqName": "The Domain Name Service shall be able to delegate the signing of subdomains."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Zone Delegation and Transfer",
+        "sreqNumber": "SP5-SREQ-613",
+        "sreqName": "The Authoritative Name Services shall support the provision of two independent name servers for each delegated zone."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Zone Delegation and Transfer",
+        "sreqNumber": "SP5-SREQ-614",
+        "sreqName": "The Authoritative Name Services shall allow delegation of reverse lookup zones of IPv4 prefixes that align on full 8 bits."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Zone Delegation and Transfer",
+        "sreqNumber": "SP5-SREQ-1311",
+        "sreqName": "For name servers that have IP addresses listed as glue, the IP addresses must match the authoritative A records for that host."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Zone Delegation and Transfer",
+        "sreqNumber": "SP5-SREQ-1312",
+        "sreqName": "The set of NS records served by the authoritative name servers must match those proposed for the delegation in the parent zone."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Root Zone Services",
+        "sreqNumber": "SP5-SREQ-242",
+        "sreqName": "The Authoritative Name Services must support the ability to provide the root zone."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Root Zone Services",
+        "sreqNumber": "SP5-SREQ-612",
+        "sreqName": "The Authoritative Name Services shall support being hidden (not accessible for normal DNS queries) when operating as a root server."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Root Zone Services",
+        "sreqNumber": "SP5-SREQ-616",
+        "sreqName": "The Authoritative Name Services shall not support Recursive DNS Queries."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Root Zone Services",
+        "sreqNumber": "SP5-SREQ-617",
+        "sreqName": "The Authoritative Name Services shall support the serving of the root zone by each MNP to its own resolvers."
+    },
+    {
+        "siName": "Domain Naming",
+        "funName": "Root Zone Services",
+        "sreqNumber": "SP5-SREQ-615",
+        "sreqName": "The Domain Name Service shall operate without using forwarders for zones hosted by other MNPs."
+    }
+]

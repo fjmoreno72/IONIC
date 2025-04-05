@@ -3,6 +3,7 @@ Base API client for external API calls.
 """
 import logging
 import time
+import json # Added for cookie persistence
 from datetime import datetime
 from typing import Dict, Any, Optional, Tuple, Union, List
 
@@ -54,10 +55,22 @@ class ApiClient:
             
         # Configure session for long-running requests
         self.session.headers.update({
+            # Browser-like headers added
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br', # Added br encoding
+            'Upgrade-Insecure-Requests': '1',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'Cache-Control': 'max-age=0',
+            # Existing headers
             'Connection': 'keep-alive',
             'Keep-Alive': 'timeout=600, max=1000'
         })
-    
+
     def set_cookies(self, cookies: Dict[str, str]) -> None:
         """
         Set session cookies.
@@ -81,7 +94,9 @@ class ApiClient:
         endpoint: str,
         params: Optional[Dict[str, Any]] = None,
         headers: Optional[Dict[str, str]] = None,
-        stream: bool = False
+        stream: bool = False,
+        referer: Optional[str] = None, # Added
+        origin: Optional[str] = None   # Added
     ) -> requests.Response:
         """
         Make a GET request to the API.
@@ -100,12 +115,23 @@ class ApiClient:
             InvalidSession: If the session is invalid
         """
         url = f"{self.base_url}/{endpoint.lstrip('/')}"
-        
-        # Add common headers
-        request_headers = {'Accept-Encoding': 'gzip, deflate'}
+
+        # Prepare headers, starting with session defaults and then updating
+        request_headers = self.session.headers.copy() # Start with session defaults
+        # Note: Accept-Encoding is often handled automatically by requests based on session headers
+        # but we ensure it includes 'br' if desired, potentially overriding session default for this specific request.
+        # If you want to *always* include 'br', ensure it's in the __init__ update.
+        # request_headers['Accept-Encoding'] = 'gzip, deflate, br' 
+
         if headers:
-            request_headers.update(headers)
-            
+            request_headers.update(headers) # Apply specific headers passed to the method
+
+        # Add referer and origin if provided
+        if referer:
+            request_headers['Referer'] = referer
+        if origin:
+            request_headers['Origin'] = origin
+
         start_time = datetime.now()
         logging.info(f"Making GET request to {url}")
         
@@ -253,7 +279,9 @@ class ApiClient:
         data: Optional[Dict[str, Any]] = None,
         json: Optional[Dict[str, Any]] = None,
         params: Optional[Dict[str, Any]] = None,
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, str]] = None,
+        referer: Optional[str] = None, # Added
+        origin: Optional[str] = None   # Added
     ) -> requests.Response:
         """
         Make a POST request to the API.
@@ -273,12 +301,20 @@ class ApiClient:
             InvalidSession: If the session is invalid
         """
         url = f"{self.base_url}/{endpoint.lstrip('/')}"
-        
-        # Add common headers
-        request_headers = {'Accept-Encoding': 'gzip, deflate'}
+
+        # Prepare headers, starting with session defaults and then updating
+        request_headers = self.session.headers.copy() # Start with session defaults
+        # request_headers['Accept-Encoding'] = 'gzip, deflate, br' # Ensure this is set per request if needed
+
         if headers:
-            request_headers.update(headers)
-            
+            request_headers.update(headers) # Apply specific headers passed to the method
+
+        # Add referer and origin if provided
+        if referer:
+            request_headers['Referer'] = referer
+        if origin:
+            request_headers['Origin'] = origin
+
         start_time = datetime.now()
         logging.info(f"Making POST request to {url}")
         
@@ -324,3 +360,38 @@ class ApiClient:
         finally:
             duration = (datetime.now() - start_time).total_seconds()
             logging.info(f"Request to {url} completed in {duration:.2f} seconds")
+
+    # --- Added Cookie Persistence Methods ---
+
+    def save_cookies(self, filename: str) -> None:
+        """
+        Save current session cookies to a JSON file.
+
+        Args:
+            filename: Path to the file where cookies will be saved.
+        """
+        try:
+            with open(filename, 'w') as f:
+                json.dump(requests.utils.dict_from_cookiejar(self.session.cookies), f)
+            logging.info(f"Session cookies saved to {filename}")
+        except IOError as e:
+            logging.error(f"Failed to save cookies to {filename}: {e}")
+            # Optionally re-raise or handle differently
+
+    def load_cookies(self, filename: str) -> None:
+        """
+        Load session cookies from a JSON file.
+
+        Args:
+            filename: Path to the file containing cookies.
+        """
+        try:
+            with open(filename, 'r') as f:
+                cookies = json.load(f)
+                self.session.cookies = requests.utils.cookiejar_from_dict(cookies)
+            logging.info(f"Session cookies loaded from {filename}")
+        except FileNotFoundError:
+            logging.warning(f"Cookie file not found: {filename}. Starting with no pre-loaded cookies.")
+        except (IOError, json.JSONDecodeError) as e:
+            logging.error(f"Failed to load cookies from {filename}: {e}")
+            # Optionally clear cookies or handle differently

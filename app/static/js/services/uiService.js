@@ -10,7 +10,51 @@ export class UiService {
       loader.classList.remove('hidden');
     }
   }
-  
+
+  /**
+   * Displays a dynamic notification message (Bootstrap alert style).
+   * @param {string} message - The message to display.
+   * @param {string} type - The type of alert ('success', 'danger', 'warning', 'info'). Defaults to 'info'.
+   * @param {number} duration - How long the message should stay (in ms). 0 means it stays until closed. Defaults to 5000ms.
+   */
+  static showNotification(message, type = 'info', duration = 5000) {
+    const notificationContainer = document.getElementById('notificationContainer');
+    if (!notificationContainer) {
+      console.error('Notification container (#notificationContainer) not found in the DOM.');
+      // Fallback to simple alert if container is missing
+      alert(`${type.toUpperCase()}: ${message}`);
+      return;
+    }
+
+    // Map type to Bootstrap alert class
+    const alertClass = `alert-${type}`; // e.g., alert-success, alert-danger
+
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert ${alertClass} alert-dismissible fade show`;
+    alertDiv.setAttribute('role', 'alert');
+
+    alertDiv.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    notificationContainer.appendChild(alertDiv);
+
+    // Auto-dismiss after duration (if duration > 0)
+    if (duration > 0) {
+      setTimeout(() => {
+        // Use Bootstrap's API to dismiss if available, otherwise just remove
+        const bsAlert = bootstrap.Alert.getInstance(alertDiv);
+        if (bsAlert) {
+          bsAlert.close();
+        } else {
+          alertDiv.remove();
+        }
+      }, duration);
+    }
+  }
+
+
   /**
    * Hides the loading spinner
    */
@@ -95,3 +139,21 @@ export class UiService {
   
   // Theme-related functionality removed to avoid inconsistencies
 }
+
+// Ensure a container exists in the DOM for notifications
+// This could be added to a base template (e.g., nav_menu.html or a base layout)
+// <div id="notificationContainer" style="position: fixed; top: 80px; right: 20px; z-index: 1050; min-width: 300px;"></div>
+// We'll add a check on DOM load to create it if missing, as a fallback.
+document.addEventListener('DOMContentLoaded', () => {
+  if (!document.getElementById('notificationContainer')) {
+    console.warn('Notification container not found, creating dynamically.');
+    const container = document.createElement('div');
+    container.id = 'notificationContainer';
+    container.style.position = 'fixed';
+    container.style.top = '80px'; // Adjust as needed based on nav height
+    container.style.right = '20px';
+    container.style.zIndex = '1060'; // Increased z-index to be above dialogs (1055)
+    container.style.minWidth = '300px';
+    document.body.appendChild(container);
+  }
+});

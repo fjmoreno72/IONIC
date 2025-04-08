@@ -186,7 +186,11 @@ export class DataTable {
     // Render each item
     paginatedItems.forEach(item => {
       const row = document.createElement('tr');
-      
+      // Add data-id attribute if item has an 'id' property
+      if (item.id) {
+        row.dataset.id = item.id;
+      }
+
       this.columns.forEach(column => {
         const cell = document.createElement('td');
         

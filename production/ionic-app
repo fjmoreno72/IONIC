@@ -1,13 +1,12 @@
 server {
     listen 80 default_server;
     server_name _;  # Wildcard to match any hostname
-    server_tokens off;
 
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-XSS-Protection "1; mode=block" always;
-    add_header Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; frame-ancestors 'self'; form-action 'self';" always;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://cdn.sheetjs.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://cdn.jsdelivr.net https://cdn.jsdelivr.net/npm/bootstrap-icons/font/fonts/ https://cdnjs.cloudflare.com https://fonts.gstatic.com; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'self'; form-action 'self';" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()" always;	
 
@@ -23,9 +22,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_hide_header Server;
-        proxy_hide_header X-Powered-By;
-	proxy_request_buffering off;  # Disable request buffering
+        proxy_request_buffering off;  # Disable request buffering
         proxy_http_version 1.1;  # Use HTTP 1.1 
         proxy_set_header Connection "";  # Enable keepalive    
     }
@@ -33,14 +30,13 @@ server {
 
 server {
     server_name ionic-help.cloud; # managed by Certbot
-    server_tokens off;
 
-    # Updated Content-Security-Policy header with Google Fonts
+    # Updated Content-Security-Policy header with proper directives
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-XSS-Protection "1; mode=block" always;
-    add_header Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; frame-ancestors 'self'; form-action 'self';" always;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://cdn.sheetjs.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://cdn.jsdelivr.net https://cdn.jsdelivr.net/npm/bootstrap-icons/font/fonts/ https://cdnjs.cloudflare.com https://fonts.gstatic.com; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'self'; form-action 'self';" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()" always;
 
@@ -56,11 +52,9 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_hide_header Server;
-        proxy_hide_header X-Powered-By;
-	proxy_request_buffering off;  # Disable request buffering
-	proxy_http_version 1.1;  # Use HTTP 1.1
-	proxy_set_header Connection "";  # Enable keepalive		 
+        proxy_request_buffering off;  # Disable request buffering
+        proxy_http_version 1.1;  # Use HTTP 1.1
+        proxy_set_header Connection "";  # Enable keepalive		 
     }
 
     listen 443 ssl; # managed by Certbot

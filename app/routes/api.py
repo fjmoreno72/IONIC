@@ -832,6 +832,305 @@ def get_asc_gps():
         logging.exception("Error fetching GPs data:")
         return jsonify({"error": "An unexpected error occurred while fetching GPs data."}), 500
 
+
+@api_bp.route('/api/asc_form_data', methods=['GET'])
+@login_required
+def get_asc_form_data():
+    """API endpoint to get data needed for the ASC creation/edit form."""
+    try:
+        # Define paths relative to the static folder
+        static_asc_data_path = Path(current_app.static_folder) / 'ASC' / 'data'
+        affiliates_path = static_asc_data_path / '_affiliates.json'
+        services_path = static_asc_data_path / '_services.json'
+        sps_path = static_asc_data_path / '_sps.json' # Path for SPs
+        gps_path = static_asc_data_path / '_gps.json'   # Path for GPs
+
+        logging.info(f"Attempting to read ASC form data from: {static_asc_data_path}")
+
+        # Read Affiliates data
+        if not affiliates_path.exists():
+            logging.error(f"Affiliates file not found at {affiliates_path}")
+            return jsonify({"error": "Affiliates data file not found."}), 404
+        with open(affiliates_path, 'r', encoding='utf-8') as f:
+            affiliates_data = json.load(f)
+        logging.info(f"Successfully loaded {len(affiliates_data)} affiliates.")
+
+        # Read Services data
+        if not services_path.exists():
+            logging.error(f"Services file not found at {services_path}")
+            return jsonify({"error": "Services data file not found."}), 404
+        with open(services_path, 'r', encoding='utf-8') as f:
+            services_data = json.load(f)
+        logging.info(f"Successfully loaded {len(services_data)} services.")
+
+        # Read SPs data
+        if not sps_path.exists():
+            logging.error(f"SPs file not found at {sps_path}")
+            return jsonify({"error": "SPs data file not found."}), 404
+        with open(sps_path, 'r', encoding='utf-8') as f:
+            sps_data = json.load(f)
+        logging.info(f"Successfully loaded {len(sps_data)} SPs.")
+
+        # Read GPs data
+        if not gps_path.exists():
+            logging.error(f"GPs file not found at {gps_path}")
+            return jsonify({"error": "GPs data file not found."}), 404
+        with open(gps_path, 'r', encoding='utf-8') as f:
+            gps_data = json.load(f)
+        logging.info(f"Successfully loaded {len(gps_data)} GPs.")
+
+        # Return combined data
+        return jsonify({
+            'affiliates': affiliates_data,
+            'services': services_data,
+            'sps': sps_data,
+            'gps': gps_data # Include GPs in the response
+        })
+
+    except FileNotFoundError as e:
+        # This might be redundant if the exists() checks work, but good practice
+        logging.error(f"Data file not found during ASC form data fetch: {e}")
+        return jsonify({"error": f"Required data file not found: {e.filename}"}), 404
+    except json.JSONDecodeError as e:
+        logging.exception(f"Error decoding JSON during ASC form data fetch: {e}")
+        return jsonify({"error": f"Failed to parse data file: {e.msg}"}), 500
+    except Exception as e:
+        logging.exception("Error fetching ASC form data:")
+        return jsonify({"error": "An unexpected error occurred while fetching ASC form data."}), 500
+
+
+@api_bp.route('/api/ascs', methods=['POST'])
+@login_required
+def add_asc():
+    """API endpoint to add a new ASC."""
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+
+        required_fields = ['affiliateId', 'environment', 'serviceId', 'spiral']
+        if not all(field in data for field in required_fields):
+            return jsonify({"error": "Missing required fields"}), 400
+
+        affiliate_id = data['affiliateId']
+        environment = data['environment']
+        service_id = data['serviceId']
+        spiral = data['spiral']
+
+        # Define paths
+        static_asc_data_path = Path(current_app.static_folder) / 'ASC' / 'data'
+        ascs_path = static_asc_data_path / '_ascs.json'
+        services_path = static_asc_data_path / '_services.json'
+
+        # --- Read existing data ---
+        # Read Services to find associated GPs
+        if not services_path.exists():
+            logging.error(f"Services file not found at {services_path}")
+            return jsonify({"error": "Services data file not found."}), 500 # Internal error if services missing
+        with open(services_path, 'r', encoding='utf-8') as f:
+            services_data = json.load(f)
+
+        # Find the selected service and its GPs
+        selected_service = next((s for s in services_data if s.get('id') == service_id), None)
+        if not selected_service:
+            logging.error(f"Service with ID {service_id} not found.")
+            return jsonify({"error": f"Service with ID {service_id} not found."}), 404
+        gp_ids_for_service = selected_service.get('gps', [])
+
+        # Read existing ASCs
+        if ascs_path.exists():
+            with open(ascs_path, 'r', encoding='utf-8') as f:
+                ascs_list = json.load(f)
+        else:
+            ascs_list = []
+
+        # --- Generate new ASC ID ---
+        last_id_num = 0
+        if ascs_list:
+            for asc in reversed(ascs_list): # More robust than just checking the last one
+                try:
+                    if asc.get('id', '').startswith('ASC-'):
+                        last_id_num = max(last_id_num, int(asc['id'].split('-')[1]))
+                except (IndexError, ValueError, TypeError):
+                    continue # Ignore malformed IDs
+        new_id_num = last_id_num + 1
+        new_asc_id = f"ASC-{str(new_id_num).zfill(4)}"
+
+        # --- Construct new ASC object ---
+        new_asc = {
+            "id": new_asc_id,
+            "affiliateId": affiliate_id,
+            "environment": environment,
+            "serviceId": service_id,
+            "spiral": spiral,
+            "ascScore": "0%",
+            "status": "Initial", # Default status
+            "gpInstances": []
+        }
+
+        # Populate gpInstances based on the service's GPs
+        for gp_id in gp_ids_for_service:
+            new_asc["gpInstances"].append({
+                "gpId": gp_id,
+                "gpScore": "0%",
+                "instanceLabel": "", # Default empty label
+                "spInstances": []  # Default empty SP instances
+            })
+
+        # --- Add and save ---
+        ascs_list.append(new_asc)
+
+        # Save back to file
+        with open(ascs_path, 'w', encoding='utf-8') as f:
+            json.dump(ascs_list, f, indent=2)
+
+        logging.info(f"Successfully added new ASC with ID: {new_asc_id}")
+        return jsonify({
+            'success': True,
+            'message': 'ASC added successfully',
+            'asc': new_asc # Return the newly created ASC object
+        }), 201 # 201 Created status code
+
+    except json.JSONDecodeError as e:
+        logging.exception(f"Error decoding JSON during ASC add: {e}")
+        return jsonify({"error": f"Failed to parse data file: {e.msg}"}), 500
+    except FileNotFoundError as e:
+        logging.error(f"Data file not found during ASC add: {e}")
+        return jsonify({"error": f"Required data file not found: {e.filename}"}), 500
+    except Exception as e:
+        logging.exception("Error adding new ASC:")
+        return jsonify({"error": "An unexpected error occurred while adding the ASC."}), 500
+
+
+@api_bp.route('/api/ascs', methods=['PUT'])
+@login_required
+def update_asc():
+    """API endpoint to update an existing ASC."""
+    try:
+        asc_id = request.args.get('id') # Get ID from query parameter
+        if not asc_id:
+             return jsonify({"error": "Missing ASC ID in query parameters"}), 400
+
+        updated_data = request.get_json()
+        if not updated_data:
+            return jsonify({"error": "No data provided"}), 400
+
+        # Ensure the ID in the body matches the query param if present, or use query param
+        if 'id' in updated_data and updated_data['id'] != asc_id:
+             return jsonify({"error": "ID mismatch between query parameter and request body"}), 400
+        updated_data['id'] = asc_id # Ensure the ID is set correctly
+
+        # Define path
+        static_asc_data_path = Path(current_app.static_folder) / 'ASC' / 'data'
+        ascs_path = static_asc_data_path / '_ascs.json'
+
+        # --- Read existing data ---
+        if not ascs_path.exists():
+             logging.error(f"ASC file not found at {ascs_path} for update.")
+             return jsonify({"error": "ASC data file not found."}), 500
+
+        with open(ascs_path, 'r', encoding='utf-8') as f:
+            ascs_list = json.load(f)
+
+        # --- Find and update ---
+        asc_found_index = -1
+        for i, asc in enumerate(ascs_list):
+            if asc.get('id') == asc_id:
+                asc_found_index = i
+                break
+
+        if asc_found_index == -1:
+            logging.warning(f"ASC with ID {asc_id} not found for update.")
+            return jsonify({"error": f"ASC with ID {asc_id} not found."}), 404
+
+        # Basic validation: Ensure essential keys are present in updated_data
+        # More robust validation could be added here (e.g., check types, structure)
+        # Note: We don't re-validate serviceId/affiliateId existence here, assuming they haven't changed
+        # or that the frontend prevents invalid changes.
+        required_keys = ['affiliateId', 'environment', 'serviceId', 'spiral', 'status', 'gpInstances', 'ascScore']
+        if not all(k in updated_data for k in required_keys):
+             logging.warning(f"Update data for ASC {asc_id} is missing required keys.")
+             # Allow partial updates? For now, require all main keys.
+             # Consider adding more granular PUT/PATCH later if needed.
+             return jsonify({"error": "Update data is missing required keys."}), 400
+
+        # Replace the existing item with the updated data
+        ascs_list[asc_found_index] = updated_data
+
+        # --- Save back to file ---
+        with open(ascs_path, 'w', encoding='utf-8') as f:
+            json.dump(ascs_list, f, indent=2)
+
+        logging.info(f"Successfully updated ASC with ID: {asc_id}")
+        return jsonify({
+            'success': True,
+            'message': 'ASC updated successfully',
+            'asc': updated_data # Return the updated ASC object
+        })
+
+    except json.JSONDecodeError as e:
+        logging.exception(f"Error decoding JSON during ASC update: {e}")
+        return jsonify({"error": f"Failed to parse data file: {e.msg}"}), 500
+    except FileNotFoundError as e:
+        logging.error(f"Data file not found during ASC update: {e}")
+        return jsonify({"error": f"Required data file not found: {e.filename}"}), 500
+    except Exception as e:
+        logging.exception(f"Error updating ASC {asc_id}:")
+        return jsonify({"error": "An unexpected error occurred while updating the ASC."}), 500
+
+
+@api_bp.route('/api/ascs', methods=['DELETE'])
+@login_required
+def delete_asc():
+    """API endpoint to delete an ASC."""
+    try:
+        asc_id = request.args.get('id') # Get ID from query parameter
+        if not asc_id:
+             return jsonify({"error": "Missing ASC ID in query parameters"}), 400
+
+        # Define path
+        static_asc_data_path = Path(current_app.static_folder) / 'ASC' / 'data'
+        ascs_path = static_asc_data_path / '_ascs.json'
+
+        # --- Read existing data ---
+        if not ascs_path.exists():
+             logging.error(f"ASC file not found at {ascs_path} for delete.")
+             # If the file doesn't exist, the item is already effectively deleted.
+             return jsonify({'success': True, 'message': 'ASC not found (already deleted or file missing).'}), 200
+
+        with open(ascs_path, 'r', encoding='utf-8') as f:
+            ascs_list = json.load(f)
+
+        # --- Find and remove ---
+        original_length = len(ascs_list)
+        ascs_list_filtered = [asc for asc in ascs_list if asc.get('id') != asc_id]
+
+        if len(ascs_list_filtered) == original_length:
+            logging.warning(f"ASC with ID {asc_id} not found for deletion.")
+            return jsonify({"error": f"ASC with ID {asc_id} not found."}), 404
+
+        # --- Save back to file ---
+        with open(ascs_path, 'w', encoding='utf-8') as f:
+            json.dump(ascs_list_filtered, f, indent=2)
+
+        logging.info(f"Successfully deleted ASC with ID: {asc_id}")
+        return jsonify({
+            'success': True,
+            'message': 'ASC deleted successfully'
+        }), 200 # OK status for successful deletion
+
+    except json.JSONDecodeError as e:
+        logging.exception(f"Error decoding JSON during ASC delete: {e}")
+        return jsonify({"error": f"Failed to parse data file: {e.msg}"}), 500
+    except FileNotFoundError as e:
+         # Should be caught by exists() check, but handle just in case
+        logging.error(f"Data file not found during ASC delete: {e}")
+        return jsonify({"error": f"Required data file not found: {e.filename}"}), 500
+    except Exception as e:
+        logging.exception(f"Error deleting ASC {asc_id}:")
+        return jsonify({"error": "An unexpected error occurred while deleting the ASC."}), 500
+
+
 @api_bp.route('/api/patterns_data', methods=['GET'])
 @login_required
 def get_patterns_data_file():

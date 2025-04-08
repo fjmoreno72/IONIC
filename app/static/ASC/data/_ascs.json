@@ -170,14 +170,22 @@
   },
   {
     "affiliateId": "AFF-0011",
-    "ascScore": "0%",
     "environment": "Static",
+    "serviceId": "SRV-0021",
+    "spiral": "SP5",
+    "id": "ASC-0004",
     "gpInstances": [
       {
         "gpId": "GP-0005",
         "gpScore": "0%",
         "instanceLabel": "",
-        "spInstances": []
+        "spInstances": [
+          {
+            "spId": "SP-0007",
+            "spScore": "0%",
+            "spVersion": "17.0.v14"
+          }
+        ]
       },
       {
         "gpId": "GP-0006",
@@ -186,10 +194,8 @@
         "spInstances": []
       }
     ],
-    "id": "ASC-0004",
-    "serviceId": "SRV-0021",
-    "spiral": "SP5",
-    "status": "Initial"
+    "status": "Initial",
+    "ascScore": "0%"
   },
   {
     "affiliateId": "AFF-0027",
@@ -385,5 +391,64 @@
     "serviceId": "SRV-0008",
     "spiral": "SP5",
     "status": "In Review"
+  },
+  {
+    "affiliateId": "AFF-0017",
+    "environment": "Static",
+    "serviceId": "SRV-0008",
+    "spiral": "SP5",
+    "id": "ASC-0010",
+    "gpInstances": [
+      {
+        "gpId": "GP-0001",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [
+          {
+            "spId": "SP-0253",
+            "spScore": "0%",
+            "spVersion": "4.0.1"
+          }
+        ]
+      },
+      {
+        "gpId": "GP-0003",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [
+          {
+            "spId": "SP-0267",
+            "spScore": "0%",
+            "spVersion": "2.0"
+          }
+        ]
+      },
+      {
+        "gpId": "GP-0002",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [
+          {
+            "spId": "SP-0274",
+            "spScore": "0%",
+            "spVersion": "1.0"
+          }
+        ]
+      },
+      {
+        "gpId": "GP-0037",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [
+          {
+            "spId": "SP-0002",
+            "spScore": "0%",
+            "spVersion": "3.3.0"
+          }
+        ]
+      }
+    ],
+    "status": "Initial",
+    "ascScore": "0%"
   }
 ]

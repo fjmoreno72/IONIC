@@ -3251,6 +3251,17 @@
     },
     {
         "actorType": "functional",
+        "id": "89ed19f1-6b56-4c0b-964c-474c9321eb7d",
+        "key": "ACT-CWIX-000359",
+        "name": "Entity authorizied to request revocation",
+        "itemId": "48b0a6b3-7188-4fdb-856e-7e172ac68148",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-06T18:27:48.2324573+02:00"
+        }
+    },
+    {
+        "actorType": "functional",
         "id": "d8465c5c-ce78-407b-a064-387e0527e777",
         "key": "ACT-CWIX-000251",
         "name": "Eurofighter F2000",
@@ -6223,6 +6234,17 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "organizational",
+        "id": "8b1ac88d-8839-49a7-9712-8b66bba59f9f",
+        "key": "ACT-CWIX-000360",
+        "name": "Leaving Mission Network PKI Service Provider",
+        "itemId": "ef13613f-4009-494a-8243-6c88aac1fc7e",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-06T19:56:58.8722283+02:00"
         }
     },
     {

@@ -10,7 +10,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, sessio
 
 # Updated imports
 from app.core.auth import login_required
-from app.utils.file_operations import get_dynamic_data_path # Added import for dynamic paths
+from app.utils.file_operations import get_dynamic_data_path, read_json_file # Added import for dynamic paths and read_json_file
 from app.data_access.affiliates_repository import get_all_affiliates, save_affiliates # Added import
 from app.data_access.sps_repository import get_all_sps, save_sps # Added SP repository import
 from app.data_access.links_repository import get_all_links, add_link, update_link, delete_link # Added Links repository import
@@ -200,6 +200,179 @@ def test_results():
     """
     logging.info("Accessing test results")
     return render_template('test_results.html')
+
+@views_bp.route('/participants')
+@login_required
+def participants_view():
+    """
+    Render the participants page, loading and processing data.
+
+    Returns:
+        Rendered participants template with processed data.
+    """
+    logging.info("Accessing Participants page")
+    processed_participants = []
+    test_results_data = [] # Initialize to avoid errors if file loading fails
+
+    try:
+        participants_path = get_dynamic_data_path("participants.json")
+        test_results_path = get_dynamic_data_path("test_results.json")
+
+        if not participants_path.exists():
+            logging.warning(f"Participants file not found at {participants_path}")
+            # Optionally render with an error message or empty list
+            return render_template('participants.html', participants=[], error="Participants data file not found.")
+
+        participants_data = read_json_file(participants_path)
+
+        # Load test results, but don't fail the whole page if it's missing
+        if test_results_path.exists():
+            try:
+                test_results_data = read_json_file(test_results_path)
+            except Exception as e:
+                logging.error(f"Error reading test results file {test_results_path}: {e}")
+                # Continue without test counts or show an error? For now, continue.
+        else:
+            logging.warning(f"Test results file not found at {test_results_path}. Test counts will be 0.")
+            test_results_data = None # Ensure it's None if file doesn't exist
+
+        # --- Pre-process Test Results Data ONCE ---
+        actual_test_list = []
+        if test_results_data: # Only process if data was loaded
+            # Check if test_results_data was loaded and is a dictionary
+            if isinstance(test_results_data, dict):
+                if 'TestPlans' in test_results_data:
+                    test_plans_list = test_results_data['TestPlans']
+                    if isinstance(test_plans_list, list):
+                        # Iterate through each TestPlan to extract its Tests
+                        for test_plan in test_plans_list:
+                            if isinstance(test_plan, dict):
+                                if 'Tests' in test_plan:
+                                     tests_list = test_plan['Tests']
+                                     if isinstance(tests_list, list):
+                                         actual_test_list.extend(tests_list) # Add tests from this plan to the main list
+                                     else:
+                                         logging.warning(f"Found 'Tests' key in test_plan, but its value is not a list (type: {type(tests_list)}). Skipping tests in this plan.")
+                                # else: # Removed log for missing 'Tests' key as it's expected
+                                #      logging.warning("Found test_plan dictionary, but it's missing the 'Tests' key. Skipping tests in this plan.")
+                            else:
+                                logging.warning(f"Item in 'TestPlans' list is not a dictionary (type: {type(test_plan)}). Skipping tests in this plan.")
+                        # Removed log for empty actual_test_list after processing TestPlans
+                        # if not actual_test_list:
+                        #      logging.warning("Successfully processed 'TestPlans' list, but it contained no actual 'Tests' lists within its items.")
+                    else:
+                        logging.error(f"'TestPlans' key found in test_results_data, but its value is not a list (type: {type(test_plans_list)}). Cannot extract tests.")
+                else:
+                    logging.error("'TestPlans' key not found in the test_results_data dictionary. Cannot extract tests.")
+            elif isinstance(test_results_data, list):
+                 # Fallback if the structure is just a flat list (less likely based on API)
+                 actual_test_list = test_results_data
+                 logging.warning("Test results data is a list. Processing as a flat list of tests.")
+            else:
+                 # This covers cases where test_results_data is None or other types
+                 logging.error(f"Test results data loaded but is not a dictionary with 'TestPlans' or a list (type: {type(test_results_data)}). Cannot calculate test counts accurately.")
+        else:
+            # This case handles when the file didn't exist or read_json_file returned None/empty
+             logging.warning("Test results data is empty or was not loaded. Test counts will be 0.")
+
+        logging.info(f"Compiled list of {len(actual_test_list)} tests for participant matching.") # Log the final length
+        if not actual_test_list and test_results_path.exists(): # Add check if file existed but list is empty
+             logging.error("Failed to compile actual_test_list from test_results_data, even though the file exists. Check file structure and processing logic.") # Add specific error log
+
+        # --- End Pre-processing Test Results ---
+
+        for participant in participants_data:
+            participant_id = participant.get('id')
+            name = participant.get('name', 'N/A')
+            description = participant.get('description', '')
+            nation = 'N/A'
+            status = 'N/A'
+
+            # Extract Nation and Status from propertyBag
+            properties = participant.get('propertyBag', {}).get('properties', [])
+            for prop in properties:
+                prop_name = prop.get('name')
+                prop_values = prop.get('values')
+                if prop_values: # Check if values list exists and is not empty
+                    if prop_name == 'Nation':
+                        nation = prop_values[0]
+                    elif prop_name == 'Status':
+                        status = prop_values[0]
+
+            # Calculate test count using the pre-compiled actual_test_list
+            test_count = 0
+
+            # Get the participant name from participants.json to use for matching
+            participant_name_from_source = participant.get('name')
+            # Normalize the name (lowercase, strip whitespace) for robust comparison
+            participant_name_normalized = participant_name_from_source.strip().lower() if participant_name_from_source else None
+
+            logging.debug(f"Processing participant: '{participant_name_normalized}' (Source: '{participant_name_from_source}')")
+
+            # Proceed with counting only if we have a normalized participant name and a valid list of tests
+            if participant_name_normalized and actual_test_list:
+                 for test_index, test in enumerate(actual_test_list): # Iterate through each test
+                    if not isinstance(test, dict):
+                        continue
+
+                    found_in_this_test = False # Flag to track if participant found in this specific test
+
+                    # Check coordinator
+                    coordinator_data = test.get('Coordinator', {})
+                    coordinator_participant_raw = coordinator_data.get('Participant') if isinstance(coordinator_data, dict) else None
+                    coordinator_participant_normalized = coordinator_participant_raw.strip().lower() if coordinator_participant_raw else None
+
+                    if coordinator_participant_normalized and coordinator_participant_normalized == participant_name_normalized:
+                        found_in_this_test = True
+                        logging.debug(f"    MATCH found in Coordinator for '{participant_name_normalized}' in test {test_index}")
+
+                    # If not found as coordinator, check partners
+                    if not found_in_this_test:
+                        partners_data = test.get('Partners', [])
+                        if isinstance(partners_data, list):
+                            for partner_entry in partners_data:
+                                partner_participant_raw = partner_entry.get('Participant') if isinstance(partner_entry, dict) else None
+                                partner_participant_normalized = partner_participant_raw.strip().lower() if partner_participant_raw else None
+                                if partner_participant_normalized and partner_participant_normalized == participant_name_normalized:
+                                    found_in_this_test = True
+                                    logging.debug(f"      MATCH found in Partners for '{participant_name_normalized}' in test {test_index}")
+                                    break # Found as partner, no need to check other partners for this test
+
+                    # If found in either role for this test, increment count
+                    if found_in_this_test:
+                        test_count += 1
+                        # The outer loop will naturally proceed to the next test
+
+            else:
+                 if not participant_name_normalized:
+                     logging.warning(f"Participant name is missing or invalid: '{participant_name_from_source}'")
+                 if not actual_test_list:
+                     logging.warning("actual_test_list is empty, cannot count tests.")
+
+            # logging.debug(f"Final test_count for '{participant_name_normalized}': {test_count}") # Optional: Log final count
+
+            processed_participants.append({
+                'id': participant_id, # Keep the original ID
+                'name': name,
+                'description': description,
+                'nation': nation,
+                'status': status,
+                'test_count': test_count
+            })
+
+        return render_template('participants.html', participants=processed_participants)
+
+    except FileNotFoundError as e:
+         logging.error(f"Data file not found: {e}")
+         # Render with error or empty list
+         return render_template('participants.html', participants=[], error=f"Required data file not found: {e.filename}")
+    except json.JSONDecodeError as e:
+        logging.error(f"Error decoding JSON file: {e}")
+        return render_template('participants.html', participants=[], error="Error reading data file format.")
+    except Exception as e:
+        logging.exception("Error processing participants data:")
+        # Generic error for unexpected issues
+        return render_template('participants.html', participants=[], error="An unexpected error occurred while processing participant data.")
 
 
 # --- Updated ASC Routes ---

@@ -160,7 +160,7 @@
     "name": "Router",
     "description": "NIP router",
     "id": "GP-0034",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_router.png"
   },
   {
     "name": "Firewall",
@@ -512,9 +512,9 @@
   },
   {
     "name": "Calendar Client",
-    "description": "Calendar Client",
+    "description": "A generic calendar client is an application that interacts with calendar services to view, create, update, and manage calendar events.",
     "id": "GP-0093",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_calendar_client.png"
   },
   {
     "name": "EMS System",
@@ -742,5 +742,41 @@
     "name": "Email Client",
     "description": "",
     "id": "GP-0126"
+  },
+  {
+    "id": "GP-0127",
+    "name": "Calendar Provider",
+    "description": "A generic calendar provider app is an application or service designed to manage, store, and synchronize calendar events and schedules, allowing integration and compatibility across various calendar clients and platforms. It provides standardized interfaces (APIs) for creating, retrieving, updating, and deleting calendar data, enabling seamless collaboration and interoperability.",
+    "iconPath": "./image/gp/gp_icon_calendar_provider.png"
+  },
+  {
+    "id": "GP-0128",
+    "name": "FFT GW Provider",
+    "description": "",
+    "iconPath": ""
+  },
+  {
+    "id": "GP-0129",
+    "name": "FFT GW Consumer",
+    "description": "",
+    "iconPath": ""
+  },
+  {
+    "id": "GP-0130",
+    "name": "FFT Forwarder",
+    "description": "",
+    "iconPath": ""
+  },
+  {
+    "id": "GP-0132",
+    "name": "FFT Terminal",
+    "description": "",
+    "iconPath": ""
+  },
+  {
+    "id": "GP-0133",
+    "name": "FFT Proxy",
+    "description": "",
+    "iconPath": ""
   }
 ]

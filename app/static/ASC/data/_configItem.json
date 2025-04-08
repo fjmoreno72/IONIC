@@ -788,28 +788,35 @@
   },
   {
     "Name": "FFT Message Standards",
-    "GenericProducts": [
-      "GP-0021",
-      "GP-0040",
-      "GP-0088"
-    ],
     "DefaultValue": "FFI XML MTF - APP-11(D)(1)",
     "HelpText": "Enter the Message Standards used: i.e. NFFI 1.3,  FFI XML MTF - APP-11(D)(1)",
     "ConfigurationAnswerType": "Static Drop Down",
     "AnswerContent": "NFFI 1.3,  FFI XML MTF - APP-11(D)(1)",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0040",
+      "GP-0088",
+      "GP-0130",
+      "GP-0129",
+      "GP-0128",
+      "GP-0133"
+    ],
     "id": "CI-0072"
   },
   {
     "Name": "FFT Protocols Supported",
-    "GenericProducts": [
-      "GP-0021",
-      "GP-0040",
-      "GP-0088"
-    ],
     "DefaultValue": "ADatP-36 IP1",
     "HelpText": "Enter the Protocols Supported: i.e. D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub.",
     "ConfigurationAnswerType": "Static Drop Down",
     "AnswerContent": "D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub.",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0040",
+      "GP-0088",
+      "GP-0130",
+      "GP-0129",
+      "GP-0128"
+    ],
     "id": "CI-0073"
   },
   {
@@ -2732,14 +2739,17 @@
   },
   {
     "Name": "Subsystem ID",
-    "GenericProducts": [
-      "GP-0021",
-      "GP-0088"
-    ],
     "DefaultValue": "",
     "HelpText": "Assigned FFI SubSystem",
     "ConfigurationAnswerType": "Text Field (Single Line)",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0088",
+      "GP-0130",
+      "GP-0128",
+      "GP-0133"
+    ],
     "id": "CI-0243"
   },
   {
@@ -2788,26 +2798,32 @@
   },
   {
     "Name": "System ID",
-    "GenericProducts": [
-      "GP-0021",
-      "GP-0088"
-    ],
     "DefaultValue": "",
     "HelpText": "Assigned FFI System",
     "ConfigurationAnswerType": "Text Field (Single Line)",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0088",
+      "GP-0130",
+      "GP-0133",
+      "GP-0128"
+    ],
     "id": "CI-0248"
   },
   {
     "Name": "System Name",
-    "GenericProducts": [
-      "GP-0021",
-      "GP-0088"
-    ],
     "DefaultValue": "",
     "HelpText": "Specifies the system name. should be unique in the MN context",
     "ConfigurationAnswerType": "Text Field (Single Line)",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0021",
+      "GP-0088",
+      "GP-0128",
+      "GP-0130",
+      "GP-0133"
+    ],
     "id": "CI-0249"
   },
   {
@@ -3059,14 +3075,15 @@
   },
   {
     "Name": "URL Track Store",
-    "GenericProducts": [
-      "GP-0001",
-      "GP-0021"
-    ],
     "DefaultValue": "",
     "HelpText": "URL to connect to the Track Store (i.e TSS URL)",
     "ConfigurationAnswerType": "URL",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0001",
+      "GP-0021",
+      "GP-0129"
+    ],
     "id": "CI-0271"
   },
   {

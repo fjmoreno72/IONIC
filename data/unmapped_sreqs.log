@@ -747,3 +747,1145 @@ information about how to avoid this problem.
 2025-04-05 14:29:50 - 127.0.0.1 - - [05/Apr/2025 14:29:50] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
 2025-04-05 14:29:50 - 127.0.0.1 - - [05/Apr/2025 14:29:50] "GET /check_auth HTTP/1.1" 200 -
 2025-04-05 14:29:50 - 127.0.0.1 - - [05/Apr/2025 14:29:50] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - Accessing ASC Services page
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "GET /asc_services HTTP/1.1" 200 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/pages/services_new.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/components/serviceForm.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "GET /check_auth HTTP/1.1" 200 -
+2025-04-05 16:01:41 - API Route: /api/gps GET endpoint called.
+2025-04-05 16:01:41 - API Route: /api/gps GET endpoint called.
+2025-04-05 16:01:41 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-05 16:01:41 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-05 16:01:41 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-05 16:01:41 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-05 16:01:41 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-05 16:01:41 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-05 16:01:41 - API Route: Retrieved 124 GPs from repository.
+2025-04-05 16:01:41 - API Route: Retrieved 124 GPs from repository.
+2025-04-05 16:01:41 - API Route: Returning GP data successfully.
+2025-04-05 16:01:41 - API Route: Returning GP data successfully.
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "GET /api/gps HTTP/1.1" 200 -
+2025-04-05 16:01:41 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-05 16:01:41 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "GET /api/services HTTP/1.1" 200 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-05 16:01:41 - 127.0.0.1 - - [05/Apr/2025 16:01:41] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-05 16:01:47 - Accessing functional tree view
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "GET /check_auth HTTP/1.1" 200 -
+2025-04-05 16:01:47 - 127.0.0.1 - - [05/Apr/2025 16:01:47] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-06 12:56:14 - 127.0.0.1 - - [06/Apr/2025 12:56:14] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-06 12:56:14 - 127.0.0.1 - - [06/Apr/2025 12:56:14] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-06 12:56:14 - 127.0.0.1 - - [06/Apr/2025 12:56:14] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-06 12:56:14 - 127.0.0.1 - - [06/Apr/2025 12:56:14] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-06 12:56:14 - 127.0.0.1 - - [06/Apr/2025 12:56:14] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:05 - 127.0.0.1 - - [07/Apr/2025 09:33:05] "GET / HTTP/1.1" 200 -
+2025-04-07 09:33:05 - 127.0.0.1 - - [07/Apr/2025 09:33:05] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:05 - 127.0.0.1 - - [07/Apr/2025 09:33:05] "GET /static/img/CWIX_LOGO.png HTTP/1.1" 200 -
+2025-04-07 09:33:05 - 127.0.0.1 - - [07/Apr/2025 09:33:05] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-07 09:33:06 - 127.0.0.1 - - [07/Apr/2025 09:33:06] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:33:22 - SSL verification is disabled. This is insecure.
+2025-04-07 09:33:22 - Found verification token using method: BeautifulSoup input tag
+2025-04-07 09:33:22 - Found additional field: RememberMe
+2025-04-07 09:33:25 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-07 09:33:25 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-07 09:33:25 - User francisco.moreno@ncia.nato.int logged in successfully to ciav environment
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "POST /login HTTP/1.1" 200 -
+2025-04-07 09:33:25 - Accessing functional tree view
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:25 - 127.0.0.1 - - [07/Apr/2025 09:33:25] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:26 - 127.0.0.1 - - [07/Apr/2025 09:33:26] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 09:33:26 - 127.0.0.1 - - [07/Apr/2025 09:33:26] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - Accessing ASC ASCs page
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 09:33:35 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-07 09:33:35 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_affiliates.json.
+2025-04-07 09:33:35 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-07 09:33:35 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:33:35 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "GET /api/sps HTTP/1.1" 200 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-07 09:33:35 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:35 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:33:35 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 09:33:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:35 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:33:35 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:33:35 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:33:35 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:33:35 - API Route: Returning GP data successfully.
+2025-04-07 09:33:35 - API Route: Returning GP data successfully.
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:35 - 127.0.0.1 - - [07/Apr/2025 09:33:35] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - Accessing ASC Services page
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "GET /asc_services HTTP/1.1" 200 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/js/pages/services_new.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:37 - 127.0.0.1 - - [07/Apr/2025 09:33:37] "[36mGET /static/js/components/serviceForm.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 09:33:38 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:33:38 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:33:38 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:38 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:38 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:38 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:38 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:33:38 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:33:38 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:33:38 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:33:38 - API Route: Returning GP data successfully.
+2025-04-07 09:33:38 - API Route: Returning GP data successfully.
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:33:38 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:33:38 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:33:38 - 127.0.0.1 - - [07/Apr/2025 09:33:38] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-07 09:33:40 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:33:40 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:33:40 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:40 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:40 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:40 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:33:40 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:33:40 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:33:40 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:33:40 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:33:40 - API Route: Returning GP data successfully.
+2025-04-07 09:33:40 - API Route: Returning GP data successfully.
+2025-04-07 09:33:40 - 127.0.0.1 - - [07/Apr/2025 09:33:40] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:34:02 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:34:02 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:34:02 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:34:02 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:34:02 - 127.0.0.1 - - [07/Apr/2025 09:34:02] "PUT /api/services HTTP/1.1" 200 -
+2025-04-07 09:34:02 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:34:02 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:34:02 - 127.0.0.1 - - [07/Apr/2025 09:34:02] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 09:34:36 - Accessing ASC Services page
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "GET /asc_services HTTP/1.1" 200 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/pages/services_new.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/components/serviceForm.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 09:34:36 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:34:36 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:34:36 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:34:36 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:34:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:34:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:34:36 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:34:36 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:34:36 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:34:36 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:34:36 - API Route: Returning GP data successfully.
+2025-04-07 09:34:36 - API Route: Returning GP data successfully.
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:34:36 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:34:36 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-07 09:34:36 - 127.0.0.1 - - [07/Apr/2025 09:34:36] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:34:43 - Accessing functional tree view
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 09:34:43 - 127.0.0.1 - - [07/Apr/2025 09:34:43] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - Accessing ASC GPs page
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/pages/gps_new.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/components/gpForm.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/components/configItemForm.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 09:36:03 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:36:03 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:36:03 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:36:03 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:36:03 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:36:03 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:36:03 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:36:03 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:36:03 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:36:03 - API Route: Retrieved 124 GPs from repository.
+2025-04-07 09:36:03 - API Route: Returning GP data successfully.
+2025-04-07 09:36:03 - API Route: Returning GP data successfully.
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:03 - 127.0.0.1 - - [07/Apr/2025 09:36:03] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:36:10 - 127.0.0.1 - - [07/Apr/2025 09:36:10] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:10 - 127.0.0.1 - - [07/Apr/2025 09:36:10] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:10 - 127.0.0.1 - - [07/Apr/2025 09:36:10] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:10 - 127.0.0.1 - - [07/Apr/2025 09:36:10] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:36:10 - 127.0.0.1 - - [07/Apr/2025 09:36:10] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:45:15 - 127.0.0.1 - - [07/Apr/2025 09:45:15] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-07 09:45:15 - API Route: /api/gps POST endpoint called.
+2025-04-07 09:45:15 - API Route: /api/gps POST endpoint called.
+2025-04-07 09:45:15 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:45:15 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:45:15 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:45:15 - Repository: JSON loaded successfully. Found 124 items.
+2025-04-07 09:45:15 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - API Route: Successfully added GP GP-0127
+2025-04-07 09:45:15 - API Route: Successfully added GP GP-0127
+2025-04-07 09:45:15 - 127.0.0.1 - - [07/Apr/2025 09:45:15] "[35m[1mPOST /api/gps HTTP/1.1[0m" 201 -
+2025-04-07 09:45:15 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:45:15 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:45:15 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:45:15 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:45:15 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:45:15 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:45:15 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:45:15 - API Route: Returning GP data successfully.
+2025-04-07 09:45:15 - API Route: Returning GP data successfully.
+2025-04-07 09:45:15 - 127.0.0.1 - - [07/Apr/2025 09:45:15] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:45:15 - 127.0.0.1 - - [07/Apr/2025 09:45:15] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 09:45:21 - 127.0.0.1 - - [07/Apr/2025 09:45:21] "GET /static/ASC/image/gp/gp_icon_calendar_provider.png?v=1744011915599 HTTP/1.1" 200 -
+2025-04-07 09:46:10 - 127.0.0.1 - - [07/Apr/2025 09:46:10] "GET /static/ASC/image/gp/gp_icon_calendar_provider.png HTTP/1.1" 200 -
+2025-04-07 09:46:27 - 127.0.0.1 - - [07/Apr/2025 09:46:27] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-07 09:46:27 - API Route: /api/gps PUT endpoint called for ID: GP-0127
+2025-04-07 09:46:27 - API Route: /api/gps PUT endpoint called for ID: GP-0127
+2025-04-07 09:46:27 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:46:27 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:46:27 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - API Route: Successfully updated GP GP-0127
+2025-04-07 09:46:27 - API Route: Successfully updated GP GP-0127
+2025-04-07 09:46:27 - 127.0.0.1 - - [07/Apr/2025 09:46:27] "PUT /api/gps/GP-0127 HTTP/1.1" 200 -
+2025-04-07 09:46:27 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:46:27 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:46:27 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:46:27 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:46:27 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:46:27 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:46:27 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:46:27 - API Route: Returning GP data successfully.
+2025-04-07 09:46:27 - API Route: Returning GP data successfully.
+2025-04-07 09:46:27 - 127.0.0.1 - - [07/Apr/2025 09:46:27] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:46:27 - 127.0.0.1 - - [07/Apr/2025 09:46:27] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 09:47:34 - 127.0.0.1 - - [07/Apr/2025 09:47:34] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-07 09:47:34 - API Route: /api/gps PUT endpoint called for ID: GP-0093
+2025-04-07 09:47:34 - API Route: /api/gps PUT endpoint called for ID: GP-0093
+2025-04-07 09:47:34 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:47:34 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:47:34 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - API Route: Successfully updated GP GP-0093
+2025-04-07 09:47:34 - API Route: Successfully updated GP GP-0093
+2025-04-07 09:47:34 - 127.0.0.1 - - [07/Apr/2025 09:47:34] "PUT /api/gps/GP-0093 HTTP/1.1" 200 -
+2025-04-07 09:47:34 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:47:34 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:47:34 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:34 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:47:34 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:47:34 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:47:34 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:47:34 - API Route: Returning GP data successfully.
+2025-04-07 09:47:34 - API Route: Returning GP data successfully.
+2025-04-07 09:47:34 - 127.0.0.1 - - [07/Apr/2025 09:47:34] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:47:34 - 127.0.0.1 - - [07/Apr/2025 09:47:34] "GET /static/ASC/image/gp/gp_icon_calendar_client.png?v=1744012054631 HTTP/1.1" 200 -
+2025-04-07 09:47:34 - 127.0.0.1 - - [07/Apr/2025 09:47:34] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 09:47:38 - Accessing ASC GPs page
+2025-04-07 09:47:38 - 127.0.0.1 - - [07/Apr/2025 09:47:38] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-07 09:47:38 - 127.0.0.1 - - [07/Apr/2025 09:47:38] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-07 09:47:38 - 127.0.0.1 - - [07/Apr/2025 09:47:38] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/components/configItemForm.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/js/components/multiSelectDropdown.js HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 09:47:39 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:47:39 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:47:39 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:39 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:39 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:39 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:47:39 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:47:39 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:47:39 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:47:39 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:47:39 - API Route: Returning GP data successfully.
+2025-04-07 09:47:39 - API Route: Returning GP data successfully.
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:47:39 - 127.0.0.1 - - [07/Apr/2025 09:47:39] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-07 09:47:42 - 127.0.0.1 - - [07/Apr/2025 09:47:42] "GET /static/ASC/image/gp/gp_icon_calendar_client.png HTTP/1.1" 200 -
+2025-04-07 09:47:42 - 127.0.0.1 - - [07/Apr/2025 09:47:42] "GET /static/ASC/image/gp/gp_icon_calendar_provider.png HTTP/1.1" 200 -
+2025-04-07 09:48:21 - API Route: /api/gps PUT endpoint called for ID: GP-0093
+2025-04-07 09:48:21 - API Route: /api/gps PUT endpoint called for ID: GP-0093
+2025-04-07 09:48:21 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:21 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:21 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - API Route: Successfully updated GP GP-0093
+2025-04-07 09:48:21 - API Route: Successfully updated GP GP-0093
+2025-04-07 09:48:21 - 127.0.0.1 - - [07/Apr/2025 09:48:21] "PUT /api/gps/GP-0093 HTTP/1.1" 200 -
+2025-04-07 09:48:21 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:48:21 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:48:21 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:21 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:21 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:21 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:48:21 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:48:21 - API Route: Returning GP data successfully.
+2025-04-07 09:48:21 - API Route: Returning GP data successfully.
+2025-04-07 09:48:21 - 127.0.0.1 - - [07/Apr/2025 09:48:21] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:48:21 - 127.0.0.1 - - [07/Apr/2025 09:48:21] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:27 - 127.0.0.1 - - [07/Apr/2025 09:48:27] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - Accessing ASC GPs page
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/ASC/icons/gps.svg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:39 - 127.0.0.1 - - [07/Apr/2025 09:48:39] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/js/pages/gps_new.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/js/components/configItemForm.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/js/components/gpForm.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 09:48:40 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:48:40 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:48:40 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:40 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:40 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:40 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:40 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:40 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:40 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:48:40 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:48:40 - API Route: Returning GP data successfully.
+2025-04-07 09:48:40 - API Route: Returning GP data successfully.
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:40 - 127.0.0.1 - - [07/Apr/2025 09:48:40] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - Accessing ASC Services page
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "GET /asc_services HTTP/1.1" 200 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/pages/services_new.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/components/serviceForm.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 09:48:42 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:48:42 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:48:42 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:42 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:42 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:42 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:42 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:42 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:42 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:48:42 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:48:42 - API Route: Returning GP data successfully.
+2025-04-07 09:48:42 - API Route: Returning GP data successfully.
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:48:42 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:48:42 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-07 09:48:42 - 127.0.0.1 - - [07/Apr/2025 09:48:42] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-07 09:48:48 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:48:48 - API Route: /api/gps GET endpoint called.
+2025-04-07 09:48:48 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:48 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:48 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:48 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 09:48:48 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:48 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 09:48:48 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:48:48 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 09:48:48 - API Route: Returning GP data successfully.
+2025-04-07 09:48:48 - API Route: Returning GP data successfully.
+2025-04-07 09:48:48 - 127.0.0.1 - - [07/Apr/2025 09:48:48] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 09:49:04 - 127.0.0.1 - - [07/Apr/2025 09:49:04] "POST /api/services/upload-icon HTTP/1.1" 200 -
+2025-04-07 09:49:04 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:49:04 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:49:04 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:49:04 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:49:04 - 127.0.0.1 - - [07/Apr/2025 09:49:04] "PUT /api/services HTTP/1.1" 200 -
+2025-04-07 09:49:04 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:49:04 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 09:49:04 - 127.0.0.1 - - [07/Apr/2025 09:49:04] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 09:49:04 - 127.0.0.1 - - [07/Apr/2025 09:49:04] "GET /static/ASC/image/srv/icon_calendaring_and_scheduling.png HTTP/1.1" 200 -
+2025-04-07 09:49:31 - 127.0.0.1 - - [07/Apr/2025 09:49:31] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-07 09:49:31 - 127.0.0.1 - - [07/Apr/2025 09:49:31] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:49:33 - 127.0.0.1 - - [07/Apr/2025 09:49:33] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-07 09:49:33 - 127.0.0.1 - - [07/Apr/2025 09:49:33] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-07 10:19:35 - 127.0.0.1 - - [07/Apr/2025 10:19:35] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-07 10:19:35 - 127.0.0.1 - - [07/Apr/2025 10:19:35] "[36mGET /static/ASC/image/srv/icon_calendaring_and_scheduling.png HTTP/1.1[0m" 304 -
+2025-04-07 10:19:35 - 127.0.0.1 - - [07/Apr/2025 10:19:35] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:19:37 - API Route: /api/gps GET endpoint called.
+2025-04-07 10:19:37 - API Route: /api/gps GET endpoint called.
+2025-04-07 10:19:37 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:19:37 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:19:37 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:19:37 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:19:37 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 10:19:37 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 10:19:37 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 10:19:37 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 10:19:37 - API Route: Returning GP data successfully.
+2025-04-07 10:19:37 - API Route: Returning GP data successfully.
+2025-04-07 10:19:37 - 127.0.0.1 - - [07/Apr/2025 10:19:37] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 10:22:03 - 127.0.0.1 - - [07/Apr/2025 10:22:03] "POST /api/services/upload-icon HTTP/1.1" 200 -
+2025-04-07 10:22:03 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 10:22:03 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 10:22:03 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 10:22:03 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 10:22:03 - 127.0.0.1 - - [07/Apr/2025 10:22:03] "PUT /api/services HTTP/1.1" 200 -
+2025-04-07 10:22:03 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 10:22:03 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 10:22:03 - 127.0.0.1 - - [07/Apr/2025 10:22:03] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 10:22:03 - 127.0.0.1 - - [07/Apr/2025 10:22:03] "GET /static/ASC/image/srv/icon_communications.png HTTP/1.1" 200 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:08 - 127.0.0.1 - - [07/Apr/2025 10:22:08] "[36mGET /static/ASC/image/gp/gp_icon_calendar_provider.png HTTP/1.1[0m" 304 -
+2025-04-07 10:22:19 - 127.0.0.1 - - [07/Apr/2025 10:22:19] "POST /api/gps/upload-icon HTTP/1.1" 200 -
+2025-04-07 10:22:19 - API Route: /api/gps PUT endpoint called for ID: GP-0034
+2025-04-07 10:22:19 - API Route: /api/gps PUT endpoint called for ID: GP-0034
+2025-04-07 10:22:19 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 10:22:19 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 10:22:19 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - Repository: Successfully saved 125 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - API Route: Successfully updated GP GP-0034
+2025-04-07 10:22:19 - API Route: Successfully updated GP GP-0034
+2025-04-07 10:22:19 - 127.0.0.1 - - [07/Apr/2025 10:22:19] "PUT /api/gps/GP-0034 HTTP/1.1" 200 -
+2025-04-07 10:22:19 - API Route: /api/gps GET endpoint called.
+2025-04-07 10:22:19 - API Route: /api/gps GET endpoint called.
+2025-04-07 10:22:19 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 10:22:19 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 10:22:19 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 10:22:19 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 10:22:19 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 10:22:19 - API Route: Returning GP data successfully.
+2025-04-07 10:22:19 - API Route: Returning GP data successfully.
+2025-04-07 10:22:19 - 127.0.0.1 - - [07/Apr/2025 10:22:19] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 10:22:19 - 127.0.0.1 - - [07/Apr/2025 10:22:19] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 10:22:19 - 127.0.0.1 - - [07/Apr/2025 10:22:19] "GET /static/ASC/image/gp/gp_icon_router.png?v=1744014139644 HTTP/1.1" 200 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:25 - 127.0.0.1 - - [07/Apr/2025 10:22:25] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 10:22:31 - 127.0.0.1 - - [07/Apr/2025 10:22:31] "[36mGET /static/ASC/image/srv/icon_calendaring_and_scheduling.png HTTP/1.1[0m" 304 -
+2025-04-07 10:22:31 - 127.0.0.1 - - [07/Apr/2025 10:22:31] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-07 10:22:31 - 127.0.0.1 - - [07/Apr/2025 10:22:31] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-07 10:22:31 - 127.0.0.1 - - [07/Apr/2025 10:22:31] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:46 - 127.0.0.1 - - [07/Apr/2025 11:50:46] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:46 - 127.0.0.1 - - [07/Apr/2025 11:50:46] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:46 - 127.0.0.1 - - [07/Apr/2025 11:50:46] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:46 - 127.0.0.1 - - [07/Apr/2025 11:50:46] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:46 - 127.0.0.1 - - [07/Apr/2025 11:50:46] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:47 - 127.0.0.1 - - [07/Apr/2025 11:50:47] "[36mGET /static/ASC/image/gp/gp_icon_calendar_provider.png HTTP/1.1[0m" 304 -
+2025-04-07 11:50:49 - 127.0.0.1 - - [07/Apr/2025 11:50:49] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:49 - 127.0.0.1 - - [07/Apr/2025 11:50:49] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:49 - 127.0.0.1 - - [07/Apr/2025 11:50:49] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:50 - 127.0.0.1 - - [07/Apr/2025 11:50:50] "[36mGET /static/ASC/image/gp/gp_icon_calendar_provider.png HTTP/1.1[0m" 304 -
+2025-04-07 11:50:52 - 127.0.0.1 - - [07/Apr/2025 11:50:52] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:52 - 127.0.0.1 - - [07/Apr/2025 11:50:52] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:52 - 127.0.0.1 - - [07/Apr/2025 11:50:52] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:50:54 - 127.0.0.1 - - [07/Apr/2025 11:50:54] "[36mGET /static/ASC/image/gp/gp_icon_calendar_provider.png HTTP/1.1[0m" 304 -
+2025-04-07 11:51:10 - 127.0.0.1 - - [07/Apr/2025 11:51:10] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:51:10 - 127.0.0.1 - - [07/Apr/2025 11:51:10] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-07 11:51:10 - 127.0.0.1 - - [07/Apr/2025 11:51:10] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 12:00:45 - API Route: /api/gps GET endpoint called.
+2025-04-07 12:00:45 - API Route: /api/gps GET endpoint called.
+2025-04-07 12:00:45 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 12:00:45 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 12:00:45 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 12:00:45 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 12:00:45 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 12:00:45 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 12:00:45 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 12:00:45 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 12:00:45 - API Route: Returning GP data successfully.
+2025-04-07 12:00:45 - API Route: Returning GP data successfully.
+2025-04-07 12:00:45 - 127.0.0.1 - - [07/Apr/2025 12:00:45] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 12:01:01 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 12:01:01 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 12:01:01 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 12:01:01 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 12:01:01 - 127.0.0.1 - - [07/Apr/2025 12:01:01] "PUT /api/services HTTP/1.1" 200 -
+2025-04-07 12:01:01 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 12:01:01 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 12:01:01 - 127.0.0.1 - - [07/Apr/2025 12:01:01] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 14:27:35 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:27:35 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:27:35 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:27:35 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:27:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:27:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:27:35 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 14:27:35 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 14:27:35 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 14:27:35 - API Route: Retrieved 125 GPs from repository.
+2025-04-07 14:27:35 - API Route: Returning GP data successfully.
+2025-04-07 14:27:35 - API Route: Returning GP data successfully.
+2025-04-07 14:27:35 - 127.0.0.1 - - [07/Apr/2025 14:27:35] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:36:06 - Accessing functional tree view
+2025-04-07 14:36:07 - 127.0.0.1 - - [07/Apr/2025 14:36:07] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-07 14:36:07 - 127.0.0.1 - - [07/Apr/2025 14:36:07] "GET /static/css/components/sp-styles.css HTTP/1.1" 200 -
+2025-04-07 14:36:07 - 127.0.0.1 - - [07/Apr/2025 14:36:07] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-07 14:36:07 - 127.0.0.1 - - [07/Apr/2025 14:36:07] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-07 14:36:07 - 127.0.0.1 - - [07/Apr/2025 14:36:07] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-07 14:36:07 - 127.0.0.1 - - [07/Apr/2025 14:36:07] "GET /static/js/tree_func.js HTTP/1.1" 200 -
+2025-04-07 14:36:07 - 127.0.0.1 - - [07/Apr/2025 14:36:07] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-07 14:36:07 - 127.0.0.1 - - [07/Apr/2025 14:36:07] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-07 14:36:07 - 127.0.0.1 - - [07/Apr/2025 14:36:07] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-07 14:36:08 - 127.0.0.1 - - [07/Apr/2025 14:36:08] "GET /check_auth HTTP/1.1" 200 -
+2025-04-07 14:36:08 - 127.0.0.1 - - [07/Apr/2025 14:36:08] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-07 14:36:08 - 127.0.0.1 - - [07/Apr/2025 14:36:08] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-07 14:38:55 - 127.0.0.1 - - [07/Apr/2025 14:38:55] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:38:55 - 127.0.0.1 - - [07/Apr/2025 14:38:55] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:39:27 - 127.0.0.1 - - [07/Apr/2025 14:39:27] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:39:27 - 127.0.0.1 - - [07/Apr/2025 14:39:27] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:39:27 - 127.0.0.1 - - [07/Apr/2025 14:39:27] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:39:27 - 127.0.0.1 - - [07/Apr/2025 14:39:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:39:27 - 127.0.0.1 - - [07/Apr/2025 14:39:27] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:39:27 - 127.0.0.1 - - [07/Apr/2025 14:39:27] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:39:27 - 127.0.0.1 - - [07/Apr/2025 14:39:27] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:39:27 - 127.0.0.1 - - [07/Apr/2025 14:39:27] "[36mGET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:39:43 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:39:43 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:39:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 14:39:43 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 14:39:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 14:39:43 - Repository: JSON loaded successfully. Found 125 items.
+2025-04-07 14:39:43 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: Successfully saved 126 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: Successfully saved 126 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - API Route: Successfully added GP GP-0128
+2025-04-07 14:39:43 - API Route: Successfully added GP GP-0128
+2025-04-07 14:39:43 - 127.0.0.1 - - [07/Apr/2025 14:39:43] "[35m[1mPOST /api/gps HTTP/1.1[0m" 201 -
+2025-04-07 14:39:43 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:39:43 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:39:43 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:43 - Repository: JSON loaded successfully. Found 126 items.
+2025-04-07 14:39:43 - Repository: JSON loaded successfully. Found 126 items.
+2025-04-07 14:39:43 - API Route: Retrieved 126 GPs from repository.
+2025-04-07 14:39:43 - API Route: Retrieved 126 GPs from repository.
+2025-04-07 14:39:43 - API Route: Returning GP data successfully.
+2025-04-07 14:39:43 - API Route: Returning GP data successfully.
+2025-04-07 14:39:43 - 127.0.0.1 - - [07/Apr/2025 14:39:43] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:39:43 - 127.0.0.1 - - [07/Apr/2025 14:39:43] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:39:51 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:39:51 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:39:51 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: JSON loaded successfully. Found 126 items.
+2025-04-07 14:39:51 - Repository: JSON loaded successfully. Found 126 items.
+2025-04-07 14:39:51 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: JSON loaded successfully. Found 126 items.
+2025-04-07 14:39:51 - Repository: JSON loaded successfully. Found 126 items.
+2025-04-07 14:39:51 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: Successfully saved 127 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: Successfully saved 127 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - API Route: Successfully added GP GP-0129
+2025-04-07 14:39:51 - API Route: Successfully added GP GP-0129
+2025-04-07 14:39:51 - 127.0.0.1 - - [07/Apr/2025 14:39:51] "[35m[1mPOST /api/gps HTTP/1.1[0m" 201 -
+2025-04-07 14:39:51 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:39:51 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:39:51 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:39:51 - Repository: JSON loaded successfully. Found 127 items.
+2025-04-07 14:39:51 - Repository: JSON loaded successfully. Found 127 items.
+2025-04-07 14:39:51 - API Route: Retrieved 127 GPs from repository.
+2025-04-07 14:39:51 - API Route: Retrieved 127 GPs from repository.
+2025-04-07 14:39:51 - API Route: Returning GP data successfully.
+2025-04-07 14:39:51 - API Route: Returning GP data successfully.
+2025-04-07 14:39:51 - 127.0.0.1 - - [07/Apr/2025 14:39:51] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:39:51 - 127.0.0.1 - - [07/Apr/2025 14:39:51] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:40:07 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:40:07 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:40:07 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: JSON loaded successfully. Found 127 items.
+2025-04-07 14:40:07 - Repository: JSON loaded successfully. Found 127 items.
+2025-04-07 14:40:07 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: JSON loaded successfully. Found 127 items.
+2025-04-07 14:40:07 - Repository: JSON loaded successfully. Found 127 items.
+2025-04-07 14:40:07 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: Successfully saved 128 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: Successfully saved 128 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - API Route: Successfully added GP GP-0130
+2025-04-07 14:40:07 - API Route: Successfully added GP GP-0130
+2025-04-07 14:40:07 - 127.0.0.1 - - [07/Apr/2025 14:40:07] "[35m[1mPOST /api/gps HTTP/1.1[0m" 201 -
+2025-04-07 14:40:07 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:40:07 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:40:07 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:07 - Repository: JSON loaded successfully. Found 128 items.
+2025-04-07 14:40:07 - Repository: JSON loaded successfully. Found 128 items.
+2025-04-07 14:40:07 - API Route: Retrieved 128 GPs from repository.
+2025-04-07 14:40:07 - API Route: Retrieved 128 GPs from repository.
+2025-04-07 14:40:07 - API Route: Returning GP data successfully.
+2025-04-07 14:40:07 - API Route: Returning GP data successfully.
+2025-04-07 14:40:07 - 127.0.0.1 - - [07/Apr/2025 14:40:07] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:40:07 - 127.0.0.1 - - [07/Apr/2025 14:40:07] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:40:20 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:40:20 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:40:20 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:20 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:20 - Repository: JSON loaded successfully. Found 128 items.
+2025-04-07 14:40:20 - Repository: JSON loaded successfully. Found 128 items.
+2025-04-07 14:40:20 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:20 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:21 - Repository: JSON loaded successfully. Found 128 items.
+2025-04-07 14:40:21 - Repository: JSON loaded successfully. Found 128 items.
+2025-04-07 14:40:21 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:21 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:21 - Repository: Successfully saved 129 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:21 - Repository: Successfully saved 129 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:21 - API Route: Successfully added GP GP-0131
+2025-04-07 14:40:21 - API Route: Successfully added GP GP-0131
+2025-04-07 14:40:21 - 127.0.0.1 - - [07/Apr/2025 14:40:21] "[35m[1mPOST /api/gps HTTP/1.1[0m" 201 -
+2025-04-07 14:40:21 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:40:21 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:40:21 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:21 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:21 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:21 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:21 - Repository: JSON loaded successfully. Found 129 items.
+2025-04-07 14:40:21 - Repository: JSON loaded successfully. Found 129 items.
+2025-04-07 14:40:21 - API Route: Retrieved 129 GPs from repository.
+2025-04-07 14:40:21 - API Route: Retrieved 129 GPs from repository.
+2025-04-07 14:40:21 - API Route: Returning GP data successfully.
+2025-04-07 14:40:21 - API Route: Returning GP data successfully.
+2025-04-07 14:40:21 - 127.0.0.1 - - [07/Apr/2025 14:40:21] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:40:21 - 127.0.0.1 - - [07/Apr/2025 14:40:21] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:40:35 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:40:35 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:40:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: JSON loaded successfully. Found 129 items.
+2025-04-07 14:40:35 - Repository: JSON loaded successfully. Found 129 items.
+2025-04-07 14:40:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: JSON loaded successfully. Found 129 items.
+2025-04-07 14:40:35 - Repository: JSON loaded successfully. Found 129 items.
+2025-04-07 14:40:35 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: Successfully saved 130 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: Successfully saved 130 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - API Route: Successfully added GP GP-0132
+2025-04-07 14:40:35 - API Route: Successfully added GP GP-0132
+2025-04-07 14:40:35 - 127.0.0.1 - - [07/Apr/2025 14:40:35] "[35m[1mPOST /api/gps HTTP/1.1[0m" 201 -
+2025-04-07 14:40:35 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:40:35 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:40:35 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:35 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:40:35 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:40:35 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:40:35 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:40:35 - API Route: Returning GP data successfully.
+2025-04-07 14:40:35 - API Route: Returning GP data successfully.
+2025-04-07 14:40:35 - 127.0.0.1 - - [07/Apr/2025 14:40:35] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:40:35 - 127.0.0.1 - - [07/Apr/2025 14:40:35] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:40:48 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:40:48 - API Route: /api/gps POST endpoint called.
+2025-04-07 14:40:48 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:40:48 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:40:48 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:40:48 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:40:48 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: Successfully saved 131 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: Successfully saved 131 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - API Route: Successfully added GP GP-0133
+2025-04-07 14:40:48 - API Route: Successfully added GP GP-0133
+2025-04-07 14:40:48 - 127.0.0.1 - - [07/Apr/2025 14:40:48] "[35m[1mPOST /api/gps HTTP/1.1[0m" 201 -
+2025-04-07 14:40:48 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:40:48 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:40:48 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:40:48 - Repository: JSON loaded successfully. Found 131 items.
+2025-04-07 14:40:48 - Repository: JSON loaded successfully. Found 131 items.
+2025-04-07 14:40:48 - API Route: Retrieved 131 GPs from repository.
+2025-04-07 14:40:48 - API Route: Retrieved 131 GPs from repository.
+2025-04-07 14:40:48 - API Route: Returning GP data successfully.
+2025-04-07 14:40:48 - API Route: Returning GP data successfully.
+2025-04-07 14:40:48 - 127.0.0.1 - - [07/Apr/2025 14:40:48] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:40:48 - 127.0.0.1 - - [07/Apr/2025 14:40:48] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:42:10 - API Route: /api/gps DELETE endpoint called for ID: GP-0131
+2025-04-07 14:42:10 - API Route: /api/gps DELETE endpoint called for ID: GP-0131
+2025-04-07 14:42:10 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - Repository: JSON loaded successfully. Found 131 items.
+2025-04-07 14:42:10 - Repository: JSON loaded successfully. Found 131 items.
+2025-04-07 14:42:10 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - Repository: Attempting to save GP data to: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - Repository: Successfully saved 130 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - Repository: Successfully saved 130 items to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - API Route: Successfully deleted GP GP-0131
+2025-04-07 14:42:10 - API Route: Successfully deleted GP GP-0131
+2025-04-07 14:42:10 - 127.0.0.1 - - [07/Apr/2025 14:42:10] "DELETE /api/gps/GP-0131 HTTP/1.1" 200 -
+2025-04-07 14:42:10 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:42:10 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:42:10 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:10 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:42:10 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:42:10 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:42:10 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:42:10 - API Route: Returning GP data successfully.
+2025-04-07 14:42:10 - API Route: Returning GP data successfully.
+2025-04-07 14:42:10 - 127.0.0.1 - - [07/Apr/2025 14:42:10] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:42:10 - 127.0.0.1 - - [07/Apr/2025 14:42:10] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:42:14 - 127.0.0.1 - - [07/Apr/2025 14:42:14] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:42:18 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:42:18 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:42:18 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:18 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:18 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:18 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:18 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:42:18 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:42:18 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:42:18 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:42:18 - API Route: Returning GP data successfully.
+2025-04-07 14:42:18 - API Route: Returning GP data successfully.
+2025-04-07 14:42:18 - 127.0.0.1 - - [07/Apr/2025 14:42:18] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:42:37 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:42:37 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:42:37 - 127.0.0.1 - - [07/Apr/2025 14:42:37] "PUT /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:42:37 - 127.0.0.1 - - [07/Apr/2025 14:42:37] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:42:37 - 127.0.0.1 - - [07/Apr/2025 14:42:37] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:42:41 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:42:41 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:42:41 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:41 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:41 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:41 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:41 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:42:41 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:42:41 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:42:41 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:42:41 - API Route: Returning GP data successfully.
+2025-04-07 14:42:41 - API Route: Returning GP data successfully.
+2025-04-07 14:42:41 - 127.0.0.1 - - [07/Apr/2025 14:42:41] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:42:56 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:42:56 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:42:56 - 127.0.0.1 - - [07/Apr/2025 14:42:56] "PUT /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:42:56 - 127.0.0.1 - - [07/Apr/2025 14:42:56] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:42:56 - 127.0.0.1 - - [07/Apr/2025 14:42:56] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:42:58 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:42:58 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:42:58 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:58 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:58 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:58 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:42:58 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:42:58 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:42:58 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:42:58 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:42:58 - API Route: Returning GP data successfully.
+2025-04-07 14:42:58 - API Route: Returning GP data successfully.
+2025-04-07 14:42:58 - 127.0.0.1 - - [07/Apr/2025 14:42:58] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:43:13 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:43:13 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:43:13 - 127.0.0.1 - - [07/Apr/2025 14:43:13] "PUT /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:43:13 - 127.0.0.1 - - [07/Apr/2025 14:43:13] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:43:14 - 127.0.0.1 - - [07/Apr/2025 14:43:14] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:43:20 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:43:20 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:43:20 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:43:20 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:43:20 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:43:20 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:43:20 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:43:20 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:43:20 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:43:20 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:43:20 - API Route: Returning GP data successfully.
+2025-04-07 14:43:20 - API Route: Returning GP data successfully.
+2025-04-07 14:43:20 - 127.0.0.1 - - [07/Apr/2025 14:43:20] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:43:34 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:43:34 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:43:34 - 127.0.0.1 - - [07/Apr/2025 14:43:34] "PUT /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:43:34 - 127.0.0.1 - - [07/Apr/2025 14:43:34] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:43:34 - 127.0.0.1 - - [07/Apr/2025 14:43:34] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:43:36 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:43:36 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:43:36 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:43:36 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:43:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:43:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:43:36 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:43:36 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:43:36 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:43:36 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:43:36 - API Route: Returning GP data successfully.
+2025-04-07 14:43:36 - API Route: Returning GP data successfully.
+2025-04-07 14:43:36 - 127.0.0.1 - - [07/Apr/2025 14:43:36] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:43:51 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:43:51 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:43:51 - 127.0.0.1 - - [07/Apr/2025 14:43:51] "PUT /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:43:52 - 127.0.0.1 - - [07/Apr/2025 14:43:52] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:43:52 - 127.0.0.1 - - [07/Apr/2025 14:43:52] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:44:00 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:44:00 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:44:00 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:44:00 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:44:00 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:44:00 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:44:00 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:44:00 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:44:00 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:44:00 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:44:00 - API Route: Returning GP data successfully.
+2025-04-07 14:44:00 - API Route: Returning GP data successfully.
+2025-04-07 14:44:00 - 127.0.0.1 - - [07/Apr/2025 14:44:00] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:44:14 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:44:14 - Successfully saved Config Item data to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_configItem.json
+2025-04-07 14:44:14 - 127.0.0.1 - - [07/Apr/2025 14:44:14] "PUT /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:44:14 - 127.0.0.1 - - [07/Apr/2025 14:44:14] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:44:14 - 127.0.0.1 - - [07/Apr/2025 14:44:14] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:44:31 - 127.0.0.1 - - [07/Apr/2025 14:44:31] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-07 14:45:02 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:45:02 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:45:02 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:45:02 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:45:02 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:45:02 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:45:02 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:45:02 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:45:02 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:45:02 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:45:02 - API Route: Returning GP data successfully.
+2025-04-07 14:45:02 - API Route: Returning GP data successfully.
+2025-04-07 14:45:02 - 127.0.0.1 - - [07/Apr/2025 14:45:02] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:45:47 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:45:47 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:45:47 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:45:47 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:45:47 - 127.0.0.1 - - [07/Apr/2025 14:45:47] "PUT /api/services HTTP/1.1" 200 -
+2025-04-07 14:45:47 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:45:47 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:45:47 - 127.0.0.1 - - [07/Apr/2025 14:45:47] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 14:48:53 - 127.0.0.1 - - [07/Apr/2025 14:48:53] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:48:53 - 127.0.0.1 - - [07/Apr/2025 14:48:53] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:48:53 - 127.0.0.1 - - [07/Apr/2025 14:48:53] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:48:53 - 127.0.0.1 - - [07/Apr/2025 14:48:53] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:48:53 - 127.0.0.1 - - [07/Apr/2025 14:48:53] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:48:53 - 127.0.0.1 - - [07/Apr/2025 14:48:53] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:48:53 - 127.0.0.1 - - [07/Apr/2025 14:48:53] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-07 14:49:36 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:49:36 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:49:36 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:49:36 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:49:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:49:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:49:36 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:49:36 - 127.0.0.1 - - [07/Apr/2025 14:49:36] "GET /static/ASC/image/srv/diagram_domain_naming.jpg HTTP/1.1" 200 -
+2025-04-07 14:49:36 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:49:36 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:49:36 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:49:36 - API Route: Returning GP data successfully.
+2025-04-07 14:49:36 - API Route: Returning GP data successfully.
+2025-04-07 14:49:36 - 127.0.0.1 - - [07/Apr/2025 14:49:36] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:50:22 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:22 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:22 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:22 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:22 - 127.0.0.1 - - [07/Apr/2025 14:50:22] "PUT /api/services HTTP/1.1" 200 -
+2025-04-07 14:50:22 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:22 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:22 - 127.0.0.1 - - [07/Apr/2025 14:50:22] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 14:50:24 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:50:24 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:50:24 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:50:24 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:50:24 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:50:24 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:50:24 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:50:24 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:50:24 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:50:24 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:50:24 - API Route: Returning GP data successfully.
+2025-04-07 14:50:24 - API Route: Returning GP data successfully.
+2025-04-07 14:50:24 - 127.0.0.1 - - [07/Apr/2025 14:50:24] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:50:33 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:33 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:33 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:33 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:33 - 127.0.0.1 - - [07/Apr/2025 14:50:33] "PUT /api/services HTTP/1.1" 200 -
+2025-04-07 14:50:33 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:33 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-07 14:50:33 - 127.0.0.1 - - [07/Apr/2025 14:50:33] "GET /api/services HTTP/1.1" 200 -
+2025-04-07 14:50:54 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:50:54 - API Route: /api/gps GET endpoint called.
+2025-04-07 14:50:54 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:50:54 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:50:54 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:50:54 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-07 14:50:54 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:50:54 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-07 14:50:54 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:50:54 - API Route: Retrieved 130 GPs from repository.
+2025-04-07 14:50:54 - API Route: Returning GP data successfully.
+2025-04-07 14:50:54 - API Route: Returning GP data successfully.
+2025-04-07 14:50:54 - 127.0.0.1 - - [07/Apr/2025 14:50:54] "GET /api/gps HTTP/1.1" 200 -
+2025-04-07 14:50:54 - 127.0.0.1 - - [07/Apr/2025 14:50:54] "GET /static/ASC/image/srv/diagram_informal_messaging.jpg HTTP/1.1" 200 -

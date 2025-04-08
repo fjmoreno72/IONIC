@@ -3,8 +3,8 @@
     "name": "Air C2 Information Exchange",
     "spiral": "SP5",
     "gps": [
-      "GP-0031",
-      "GP-0032"
+      "GP-0126",
+      "GP-0125"
     ],
     "id": "SRV-0001",
     "originalId": "SRV-0001"
@@ -63,8 +63,15 @@
   {
     "name": "Friendly Force Tracking",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0009"
+    "gps": [
+      "GP-0130",
+      "GP-0129",
+      "GP-0128",
+      "GP-0133",
+      "GP-0132"
+    ],
+    "id": "SRV-0009",
+    "originalId": "SRV-0009"
   },
   {
     "name": "Ground-to-Air Information Exchange",
@@ -87,8 +94,13 @@
   {
     "name": "Calendaring and Scheduling",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0013"
+    "gps": [
+      "GP-0093",
+      "GP-0127"
+    ],
+    "id": "SRV-0013",
+    "originalId": "SRV-0013",
+    "iconPath": "./image/srv/icon_calendaring_and_scheduling.png"
   },
   {
     "name": "Digital Certificates",
@@ -99,8 +111,12 @@
   {
     "name": "Directory Data Synchronization",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0015"
+    "gps": [
+      "GP-0027",
+      "GP-0017"
+    ],
+    "id": "SRV-0015",
+    "originalId": "SRV-0015"
   },
   {
     "name": "Distributed Time",
@@ -112,11 +128,14 @@
     "name": "Domain Naming",
     "spiral": "SP5",
     "gps": [
-      "GP-0007"
+      "GP-0007",
+      "GP-0090",
+      "GP-0008"
     ],
+    "id": "SRV-0017",
     "iconPath": "./image/srv/icon_domain_naming.jpg",
     "functionalDiagramPath": "./image/srv/diagram_domain_naming.jpg",
-    "id": "SRV-0017"
+    "originalId": "SRV-0017"
   },
   {
     "name": "Geospatial Information",
@@ -173,8 +192,12 @@
   {
     "name": "Communications",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0025"
+    "gps": [
+      "GP-0034"
+    ],
+    "id": "SRV-0025",
+    "originalId": "SRV-0025",
+    "iconPath": "./image/srv/icon_communications.png"
   },
   {
     "name": "Communications Transport",

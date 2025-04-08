@@ -303,23 +303,154 @@ class IOCore2ApiClient(ApiClient):
             json_file_path = get_dynamic_data_path("test_results.json", environment=environment)
             write_json_file(data, json_file_path)
 
-            # Return success response
+            # After successfully getting test results, get objectives and participants
+            try:
+                logging.info(f"Attempting to fetch objectives after test results for environment: {environment}")
+                self.get_objectives(environment=environment)
+                
+                # After getting objectives, get participants
+                logging.info(f"Attempting to fetch participants after objectives for environment: {environment}")
+                self.get_participants(environment=environment)
+            except Exception as obj_err:
+                # Log the error but don't fail the overall operation for test results
+                logging.error(f"Failed to get objectives or participants after getting test results: {str(obj_err)}")
+
+            # Return success response for test results
             end_time = datetime.now()
             total_duration = (end_time - start_time).total_seconds()
-
+            
             return {
                 'success': True,
                 'count': len(data) if isinstance(data, list) else 0,
                 'duration': total_duration,
                 'data': data
             }
-
+            
         except ValueError as e:
             logging.error(f"Error parsing test results response: {str(e)}")
             raise DataFormatError(
                 message=f"Invalid JSON response: {str(e)}",
                 details={"url": api_url}
             )
+
+
+    def get_participants(self, environment: str) -> Dict[str, Any]:
+        """
+        Get participants data from IOCore2.
+
+        Args:
+            environment: The environment ('ciav' or 'cwix') to use for saving data.
+
+        Returns:
+            Dictionary with success status and data
+
+        Raises:
+            ApiRequestError: If API request fails
+            InvalidSession: If session is expired
+            DataFormatError: If response is not valid JSON
+        """
+        api_url = "api/participants"
+
+        logging.info(f"Getting participants data from {api_url} for environment {environment}")
+        start_time = datetime.now()
+
+        # Make request
+        response = self.get(api_url)
+
+        try:
+            # Parse response
+            data = response.json()
+
+            # Save to file using dynamic path based on the provided environment
+            json_file_path = get_dynamic_data_path("participants.json", environment=environment)
+            write_json_file(data, json_file_path)
+
+            # Return success response
+            end_time = datetime.now()
+            total_duration = (end_time - start_time).total_seconds()
+            count = len(data) if isinstance(data, list) else 0
+            logging.info(f"Participants data fetched and saved successfully in {total_duration:.2f}s, count: {count}")
+
+            return {
+                'success': True,
+                'count': count,
+                'duration': total_duration,
+                'data': data
+            }
+
+        except ValueError as e: # Catches JSONDecodeError
+            logging.error(f"Error parsing participants response: {str(e)}")
+            raise DataFormatError(
+                message=f"Invalid JSON response from participants API: {str(e)}",
+                details={"url": api_url}
+            )
+        # ApiRequestError (like InvalidSession) raised by self.get() will be caught by the caller (Flask route)
+        except Exception as e:
+             logging.exception(f"Unexpected error during participants fetch or processing: {str(e)}")
+             # Wrap other unexpected errors for consistent handling in the route
+             raise ApiRequestError(
+                 message=f"Unexpected error processing participants response: {str(e)}",
+                 details={"url": api_url}
+             )
+             
+    def get_objectives(self, environment: str) -> Dict[str, Any]:
+        """
+        Get objectives data from IOCore2.
+
+        Args:
+            environment: The environment ('ciav' or 'cwix') to use for saving data.
+
+        Returns:
+            Dictionary with success status and data
+
+        Raises:
+            ApiRequestError: If API request fails
+            InvalidSession: If session is expired
+            DataFormatError: If response is not valid JSON
+        """
+        api_url = "api/objectives"
+
+        logging.info(f"Getting objectives data from {api_url} for environment {environment}")
+        start_time = datetime.now()
+
+        # Make request
+        response = self.get(api_url)
+
+        try:
+            # Parse response
+            data = response.json()
+
+            # Save to file using dynamic path based on the provided environment
+            json_file_path = get_dynamic_data_path("objectives.json", environment=environment)
+            write_json_file(data, json_file_path)
+
+            # Return success response
+            end_time = datetime.now()
+            total_duration = (end_time - start_time).total_seconds()
+            count = len(data) if isinstance(data, list) else 0
+            logging.info(f"Objectives data fetched and saved successfully in {total_duration:.2f}s, count: {count}")
+
+            return {
+                'success': True,
+                'count': count,
+                'duration': total_duration,
+                'data': data
+            }
+
+        except ValueError as e: # Catches JSONDecodeError
+            logging.error(f"Error parsing objectives response: {str(e)}")
+            raise DataFormatError(
+                message=f"Invalid JSON response from objectives API: {str(e)}",
+                details={"url": api_url}
+            )
+        # ApiRequestError (like InvalidSession) raised by self.get() will be caught by the caller (Flask route)
+        except Exception as e:
+             logging.exception(f"Unexpected error during objectives fetch or processing: {str(e)}")
+             # Wrap other unexpected errors for consistent handling in the route
+             raise ApiRequestError(
+                 message=f"Unexpected error processing objectives response: {str(e)}",
+                 details={"url": api_url}
+             )
 
     def get_patterns(self, environment: str) -> Dict[str, Any]:
         """

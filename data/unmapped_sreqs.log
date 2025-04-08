@@ -2210,3 +2210,245 @@ werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'views.
 2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
 2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "GET /check_auth HTTP/1.1" 200 -
 2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 10:06:29 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/app/api/iocore2.py', reloading
+2025-04-08 10:06:29 -  * Restarting with stat
+2025-04-08 10:06:29 - Logging system configured with level INFO
+2025-04-08 10:06:29 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 10:06:30 - Applying authentication system patches...
+2025-04-08 10:06:30 - Authentication system patches applied successfully
+2025-04-08 10:06:30 - Enhanced authentication system applied
+2025-04-08 10:06:30 - Configured Flask app logging with level INFO
+2025-04-08 10:06:30 - Configured Flask app logging with level INFO
+2025-04-08 10:06:30 - Logging system configured with level INFO
+2025-04-08 10:06:30 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 10:06:30 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 10:06:30 - Template files: templates
+2025-04-08 10:06:30 - Running in DEBUG mode
+2025-04-08 10:06:30 - Listening on 0.0.0.0:5006
+2025-04-08 10:06:30 -  * Debugger is active!
+2025-04-08 10:06:30 -  * Debugger PIN: 288-963-664
+2025-04-08 10:06:48 - Logging system configured with level INFO
+2025-04-08 10:06:48 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 10:06:48 - Applying authentication system patches...
+2025-04-08 10:06:48 - Authentication system patches applied successfully
+2025-04-08 10:06:48 - Enhanced authentication system applied
+2025-04-08 10:06:48 - Configured Flask app logging with level INFO
+2025-04-08 10:06:48 - Configured Flask app logging with level INFO
+2025-04-08 10:06:48 - Logging system configured with level INFO
+2025-04-08 10:06:48 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 10:06:48 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 10:06:48 - Template files: templates
+2025-04-08 10:06:48 - Running in DEBUG mode
+2025-04-08 10:06:48 - Listening on 0.0.0.0:5006
+2025-04-08 10:06:48 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.10.40:5006
+2025-04-08 10:06:48 - [33mPress CTRL+C to quit[0m
+2025-04-08 10:06:48 -  * Restarting with stat
+2025-04-08 10:06:48 - Logging system configured with level INFO
+2025-04-08 10:06:48 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 10:06:49 - Applying authentication system patches...
+2025-04-08 10:06:49 - Authentication system patches applied successfully
+2025-04-08 10:06:49 - Enhanced authentication system applied
+2025-04-08 10:06:49 - Configured Flask app logging with level INFO
+2025-04-08 10:06:49 - Configured Flask app logging with level INFO
+2025-04-08 10:06:49 - Logging system configured with level INFO
+2025-04-08 10:06:49 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 10:06:49 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 10:06:49 - Template files: templates
+2025-04-08 10:06:49 - Running in DEBUG mode
+2025-04-08 10:06:49 - Listening on 0.0.0.0:5006
+2025-04-08 10:06:49 -  * Debugger is active!
+2025-04-08 10:06:49 -  * Debugger PIN: 288-963-664
+2025-04-08 10:06:56 - User logged out
+2025-04-08 10:06:56 - 127.0.0.1 - - [08/Apr/2025 10:06:56] "GET /logout HTTP/1.1" 200 -
+2025-04-08 10:06:56 - 127.0.0.1 - - [08/Apr/2025 10:06:56] "GET / HTTP/1.1" 200 -
+2025-04-08 10:06:56 - 127.0.0.1 - - [08/Apr/2025 10:06:56] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 10:06:56 - 127.0.0.1 - - [08/Apr/2025 10:06:56] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 10:06:56 - 127.0.0.1 - - [08/Apr/2025 10:06:56] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 10:06:57 - 127.0.0.1 - - [08/Apr/2025 10:06:57] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 10:07:06 - 127.0.0.1 - - [08/Apr/2025 10:07:06] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 10:07:15 - SSL verification is disabled. This is insecure.
+2025-04-08 10:07:15 - Found verification token using method: BeautifulSoup input tag
+2025-04-08 10:07:15 - Found additional field: RememberMe
+2025-04-08 10:07:16 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-08 10:07:16 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-08 10:07:16 - User francisco.moreno@ncia.nato.int logged in successfully to cwix environment
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "POST /login HTTP/1.1" 200 -
+2025-04-08 10:07:16 - Accessing functional tree view
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 10:07:16 - 127.0.0.1 - - [08/Apr/2025 10:07:16] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 10:07:17 - 127.0.0.1 - - [08/Apr/2025 10:07:17] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 10:07:27 - SSL verification is disabled. This is insecure.
+2025-04-08 10:07:27 - Getting test results data from api/public/test-results
+2025-04-08 10:07:27 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/public/test-results
+2025-04-08 10:07:33 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/public/test-results completed in 5.85 seconds
+2025-04-08 10:07:33 - Successfully wrote data to data/cwix/test_results.json
+2025-04-08 10:07:33 - 127.0.0.1 - - [08/Apr/2025 10:07:33] "GET /get_test_results HTTP/1.1" 200 -
+2025-04-08 10:16:58 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/app/api/iocore2.py', reloading
+2025-04-08 10:16:58 -  * Restarting with stat
+2025-04-08 10:16:58 - Logging system configured with level INFO
+2025-04-08 10:16:58 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 10:16:58 - Failed to apply authentication patches: expected 'except' or 'finally' block (iocore2.py, line 307)
+2025-04-08 10:16:58 - Configured Flask app logging with level INFO
+2025-04-08 10:16:58 - Configured Flask app logging with level INFO
+2025-04-08 10:16:58 - Logging system configured with level INFO
+2025-04-08 10:17:52 - Logging system configured with level INFO
+2025-04-08 10:17:52 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 10:17:52 - Applying authentication system patches...
+2025-04-08 10:17:52 - Authentication system patches applied successfully
+2025-04-08 10:17:52 - Enhanced authentication system applied
+2025-04-08 10:17:52 - Configured Flask app logging with level INFO
+2025-04-08 10:17:52 - Configured Flask app logging with level INFO
+2025-04-08 10:17:52 - Logging system configured with level INFO
+2025-04-08 10:17:52 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 10:17:52 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 10:17:52 - Template files: templates
+2025-04-08 10:17:52 - Running in DEBUG mode
+2025-04-08 10:17:52 - Listening on 0.0.0.0:5006
+2025-04-08 10:17:52 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.10.40:5006
+2025-04-08 10:17:52 - [33mPress CTRL+C to quit[0m
+2025-04-08 10:17:52 -  * Restarting with stat
+2025-04-08 10:17:52 - Logging system configured with level INFO
+2025-04-08 10:17:52 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 10:17:52 - Applying authentication system patches...
+2025-04-08 10:17:52 - Authentication system patches applied successfully
+2025-04-08 10:17:52 - Enhanced authentication system applied
+2025-04-08 10:17:52 - Configured Flask app logging with level INFO
+2025-04-08 10:17:52 - Configured Flask app logging with level INFO
+2025-04-08 10:17:52 - Logging system configured with level INFO
+2025-04-08 10:17:52 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 10:17:52 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 10:17:52 - Template files: templates
+2025-04-08 10:17:52 - Running in DEBUG mode
+2025-04-08 10:17:52 - Listening on 0.0.0.0:5006
+2025-04-08 10:17:52 -  * Debugger is active!
+2025-04-08 10:17:52 -  * Debugger PIN: 288-963-664
+2025-04-08 10:17:56 - User logged out
+2025-04-08 10:17:56 - 127.0.0.1 - - [08/Apr/2025 10:17:56] "GET /logout HTTP/1.1" 200 -
+2025-04-08 10:17:56 - 127.0.0.1 - - [08/Apr/2025 10:17:56] "GET / HTTP/1.1" 200 -
+2025-04-08 10:17:56 - 127.0.0.1 - - [08/Apr/2025 10:17:56] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 10:17:56 - 127.0.0.1 - - [08/Apr/2025 10:17:56] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 10:17:56 - 127.0.0.1 - - [08/Apr/2025 10:17:56] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 10:17:56 - 127.0.0.1 - - [08/Apr/2025 10:17:56] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 10:17:59 - SSL verification is disabled. This is insecure.
+2025-04-08 10:18:00 - Found verification token using method: BeautifulSoup input tag
+2025-04-08 10:18:00 - Found additional field: RememberMe
+2025-04-08 10:18:01 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-08 10:18:01 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-08 10:18:01 - User francisco.moreno@ncia.nato.int logged in successfully to cwix environment
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "POST /login HTTP/1.1" 200 -
+2025-04-08 10:18:01 - Accessing functional tree view
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 10:18:01 - 127.0.0.1 - - [08/Apr/2025 10:18:01] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 10:18:08 - SSL verification is disabled. This is insecure.
+2025-04-08 10:18:08 - Getting test results data from api/public/test-results
+2025-04-08 10:18:08 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/public/test-results
+2025-04-08 10:18:16 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/public/test-results completed in 7.54 seconds
+2025-04-08 10:18:16 - Successfully wrote data to data/cwix/test_results.json
+2025-04-08 10:18:16 - Attempting to fetch objectives after test results for environment: cwix
+2025-04-08 10:18:16 - Getting objectives data from api/objectives for environment cwix
+2025-04-08 10:18:16 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/objectives
+2025-04-08 10:18:16 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/objectives completed in 0.10 seconds
+2025-04-08 10:18:16 - Successfully wrote data to data/cwix/objectives.json
+2025-04-08 10:18:16 - Objectives data fetched and saved successfully in 0.12s, count: 280
+2025-04-08 10:18:16 - 127.0.0.1 - - [08/Apr/2025 10:18:16] "GET /get_test_results HTTP/1.1" 200 -
+2025-04-08 10:23:48 - Logging system configured with level INFO
+2025-04-08 10:23:48 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 10:23:49 - Applying authentication system patches...
+2025-04-08 10:23:49 - Authentication system patches applied successfully
+2025-04-08 10:23:49 - Enhanced authentication system applied
+2025-04-08 10:23:49 - Configured Flask app logging with level INFO
+2025-04-08 10:23:49 - Configured Flask app logging with level INFO
+2025-04-08 10:23:49 - Logging system configured with level INFO
+2025-04-08 10:23:49 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 10:23:49 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 10:23:49 - Template files: templates
+2025-04-08 10:23:49 - Running in DEBUG mode
+2025-04-08 10:23:49 - Listening on 0.0.0.0:5006
+2025-04-08 10:23:49 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.10.40:5006
+2025-04-08 10:23:49 - [33mPress CTRL+C to quit[0m
+2025-04-08 10:23:49 -  * Restarting with stat
+2025-04-08 10:23:49 - Logging system configured with level INFO
+2025-04-08 10:23:49 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 10:23:49 - Applying authentication system patches...
+2025-04-08 10:23:49 - Authentication system patches applied successfully
+2025-04-08 10:23:49 - Enhanced authentication system applied
+2025-04-08 10:23:49 - Configured Flask app logging with level INFO
+2025-04-08 10:23:49 - Configured Flask app logging with level INFO
+2025-04-08 10:23:49 - Logging system configured with level INFO
+2025-04-08 10:23:49 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 10:23:49 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 10:23:49 - Template files: templates
+2025-04-08 10:23:49 - Running in DEBUG mode
+2025-04-08 10:23:49 - Listening on 0.0.0.0:5006
+2025-04-08 10:23:49 -  * Debugger is active!
+2025-04-08 10:23:49 -  * Debugger PIN: 288-963-664
+2025-04-08 10:23:55 - User logged out
+2025-04-08 10:23:55 - 127.0.0.1 - - [08/Apr/2025 10:23:55] "GET /logout HTTP/1.1" 200 -
+2025-04-08 10:23:55 - 127.0.0.1 - - [08/Apr/2025 10:23:55] "GET / HTTP/1.1" 200 -
+2025-04-08 10:23:55 - 127.0.0.1 - - [08/Apr/2025 10:23:55] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 10:23:55 - 127.0.0.1 - - [08/Apr/2025 10:23:55] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 10:23:55 - 127.0.0.1 - - [08/Apr/2025 10:23:55] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 10:23:55 - 127.0.0.1 - - [08/Apr/2025 10:23:55] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 10:23:59 - SSL verification is disabled. This is insecure.
+2025-04-08 10:23:59 - Found verification token using method: BeautifulSoup input tag
+2025-04-08 10:23:59 - Found additional field: RememberMe
+2025-04-08 10:24:00 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-08 10:24:00 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-08 10:24:00 - User francisco.moreno@ncia.nato.int logged in successfully to cwix environment
+2025-04-08 10:24:00 - 127.0.0.1 - - [08/Apr/2025 10:24:00] "POST /login HTTP/1.1" 200 -
+2025-04-08 10:24:00 - Accessing functional tree view
+2025-04-08 10:24:00 - 127.0.0.1 - - [08/Apr/2025 10:24:00] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-08 10:24:00 - 127.0.0.1 - - [08/Apr/2025 10:24:00] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 10:24:00 - 127.0.0.1 - - [08/Apr/2025 10:24:00] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 10:24:00 - 127.0.0.1 - - [08/Apr/2025 10:24:00] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-08 10:24:00 - 127.0.0.1 - - [08/Apr/2025 10:24:00] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 10:24:00 - 127.0.0.1 - - [08/Apr/2025 10:24:00] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-08 10:24:01 - 127.0.0.1 - - [08/Apr/2025 10:24:01] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 10:24:01 - 127.0.0.1 - - [08/Apr/2025 10:24:01] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 10:24:01 - 127.0.0.1 - - [08/Apr/2025 10:24:01] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 10:24:01 - 127.0.0.1 - - [08/Apr/2025 10:24:01] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 10:24:01 - 127.0.0.1 - - [08/Apr/2025 10:24:01] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 10:24:04 - SSL verification is disabled. This is insecure.
+2025-04-08 10:24:04 - Getting test results data from api/public/test-results
+2025-04-08 10:24:04 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/public/test-results
+2025-04-08 10:24:09 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/public/test-results completed in 4.72 seconds
+2025-04-08 10:24:09 - Successfully wrote data to data/cwix/test_results.json
+2025-04-08 10:24:09 - Attempting to fetch objectives after test results for environment: cwix
+2025-04-08 10:24:09 - Getting objectives data from api/objectives for environment cwix
+2025-04-08 10:24:09 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/objectives
+2025-04-08 10:24:09 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/objectives completed in 0.09 seconds
+2025-04-08 10:24:09 - Successfully wrote data to data/cwix/objectives.json
+2025-04-08 10:24:09 - Objectives data fetched and saved successfully in 0.11s, count: 280
+2025-04-08 10:24:09 - Attempting to fetch participants after objectives for environment: cwix
+2025-04-08 10:24:09 - Getting participants data from api/participants for environment cwix
+2025-04-08 10:24:09 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/participants
+2025-04-08 10:24:10 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/participants completed in 0.10 seconds
+2025-04-08 10:24:10 - Successfully wrote data to data/cwix/participants.json
+2025-04-08 10:24:10 - Participants data fetched and saved successfully in 0.14s, count: 644
+2025-04-08 10:24:10 - 127.0.0.1 - - [08/Apr/2025 10:24:10] "GET /get_test_results HTTP/1.1" 200 -

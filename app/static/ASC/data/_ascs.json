@@ -1,18 +1,20 @@
 [
   {
     "affiliateId": "AFF-0027",
-    "ascScore": "100%",
     "environment": "Static",
+    "serviceId": "SRV-0008",
+    "spiral": "SP5",
+    "id": "ASC-0001",
     "gpInstances": [
       {
         "gpId": "GP-0001",
-        "gpScore": "100%",
+        "gpScore": "95%",
         "instanceLabel": "NIRIS",
         "spInstances": [
           {
             "spId": "SP-0253",
-            "spScore": "100%",
-            "spVersion": "4.2.1"
+            "spVersion": "4.2.1",
+            "spScore": "95%"
           }
         ]
       },
@@ -99,10 +101,8 @@
         ]
       }
     ],
-    "id": "ASC-0001",
-    "serviceId": "SRV-0008",
-    "spiral": "SP5",
-    "status": "In Progress"
+    "status": "In Progress",
+    "ascScore": "99%"
   },
   {
     "affiliateId": "AFF-0038",

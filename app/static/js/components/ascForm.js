@@ -324,12 +324,20 @@ export class AscForm {
             this.populateEnvironmentDropdown(this.data.affiliateId); // Populate environments based on loaded data
         }
 
-        // Set Environment (needs a slight delay or check if options are populated)
-        this.waitForElement(this.environmentSelect, sel => sel.options.length > 1 && !sel.disabled).then(() => {
-             if (this.environmentSelect) {
-                this.environmentSelect.value = this.data.environment || '';
-             }
-        }).catch(err => console.error("Error setting environment value:", err)); // Add catch
+        // Set Environment: Only attempt to set the value if the dropdown is enabled after population.
+        if (this.environmentSelect && !this.environmentSelect.disabled) {
+            // We still use waitForElement because even if synchronous, DOM updates might lag slightly.
+            // The condition now only needs to ensure options are present, as we already know it's not disabled.
+            this.waitForElement(this.environmentSelect, sel => sel.options.length > 1)
+                .then(() => {
+                    if (this.environmentSelect) { // Double-check element exists
+                       this.environmentSelect.value = this.data.environment || '';
+                    }
+                })
+                .catch(err => console.error("Error setting environment value (was enabled):", err));
+        } else if (this.environmentSelect && this.environmentSelect.disabled) {
+             console.log("Environment dropdown is disabled, likely no environments for this affiliate. Skipping setting value.");
+        }
 
 
         // Set Service and trigger spiral update

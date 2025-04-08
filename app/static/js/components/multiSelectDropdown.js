@@ -16,6 +16,7 @@ export class MultiSelectDropdown {
    * @param {string} [config.placeholder] - Placeholder text for the input
    * @param {Function} [config.onChange] - Callback when selected values change
    * @param {string} [config.addNewText] - Text for the "Add new" option
+   * @param {boolean} [config.allowAddNew=true] - Whether to allow adding new options
    */
   constructor(config = {}) {
     this.id = config.id || `multiselect-${Date.now()}`;
@@ -24,7 +25,8 @@ export class MultiSelectDropdown {
     this.placeholder = config.placeholder || 'Select or add options...';
     this.onChange = config.onChange || null;
     this.addNewText = config.addNewText || 'Add new option';
-    
+    this.allowAddNew = config.allowAddNew !== false; // Default to true unless explicitly false
+
     // Main element container
     this.element = null;
     
@@ -86,13 +88,17 @@ export class MultiSelectDropdown {
     
     // Populate with predefined options
     this.populateOptions();
-    
-    // Add "Add new" option
-    this.addNewOption = document.createElement('div');
-    this.addNewOption.className = 'dropdown-item add-new-option';
-    this.addNewOption.innerHTML = `<i class="fas fa-plus me-2"></i><span class="add-text">${this.addNewText}</span>`;
-    this.dropdownMenu.appendChild(this.addNewOption);
-    
+
+    // Add "Add new" option only if allowed
+    if (this.allowAddNew) {
+      this.addNewOption = document.createElement('div');
+      this.addNewOption.className = 'dropdown-item add-new-option';
+      this.addNewOption.innerHTML = `<i class="fas fa-plus me-2"></i><span class="add-text">${this.addNewText}</span>`;
+      this.dropdownMenu.appendChild(this.addNewOption);
+    } else {
+      this.addNewOption = null; // Ensure it's null if not allowed
+    }
+
     // Assemble the component
     inputContainer.appendChild(inputWrapper);
     inputContainer.appendChild(this.dropdownMenu);
@@ -290,34 +296,23 @@ export class MultiSelectDropdown {
         }
       });
     }
-    
-    // Handle the "Add New" option
-    if (this.addNewOption) {
+
+    // Handle the "Add New" option only if allowed
+    if (this.allowAddNew && this.addNewOption) {
       // If we're filtering and no predefined options match, update text to add current input
-      if (filterText && !filteredOptions.some(opt => opt.toLowerCase() === filterText.toLowerCase())) {
+      if (filterText && !filteredOptions.some(opt => opt.toLowerCase() === filterText.toLowerCase()) && !this.selectedValues.includes(filterText)) {
         this.addNewOption.innerHTML = `<i class="fas fa-plus me-2"></i>Add "${filterText}"`;
       } else {
         this.addNewOption.innerHTML = `<i class="fas fa-plus me-2"></i>${this.addNewText}`;
       }
-      
+
       // Make sure it's visible
       this.addNewOption.style.display = 'block';
-    } else {
-      // If addNewOption doesn't exist yet, create it
-      this.addNewOption = document.createElement('div');
-      this.addNewOption.className = 'dropdown-item add-new-option';
-      this.addNewOption.innerHTML = `<i class="fas fa-plus me-2"></i>${this.addNewText}`;
-      this.addNewOption.addEventListener('click', () => {
-        const value = this.input.value.trim();
-        if (value) {
-          this.addValueFromInput();
-        } else {
-          this.startAddingNew();
-        }
-      });
-      this.dropdownMenu.appendChild(this.addNewOption);
+    } else if (this.addNewOption) {
+      // Hide it if adding is not allowed or not applicable
+      this.addNewOption.style.display = 'none';
     }
-    
+
     // If no options are showing, display a message
     if (!hasVisibleOptions && !this.isAddingNew) {
       const noResults = document.createElement('div');
@@ -403,10 +398,15 @@ export class MultiSelectDropdown {
         
         const value = this.input.value.trim();
         if (value) {
-          // If we're in the "adding new" state, add the current input value
+          // Check if the value exists in predefined options
+          const exists = this.predefinedOptions.some(opt => opt.toLowerCase() === value.toLowerCase());
+
+          // If we're in the "adding new" state (only possible if allowAddNew is true)
           if (this.isAddingNew) {
             this.finishAddingNew();
-          } else {
+          }
+          // Only add from input if allowed OR if the value already exists
+          else if (this.allowAddNew || exists) {
             this.addValueFromInput();
           }
         }
@@ -417,19 +417,21 @@ export class MultiSelectDropdown {
         this.closeDropdown();
       }
     });
-    
-    // Add new option click (with null check)
-    if (this.addNewOption) {
+    // Add new option click (only if allowed and element exists)
+    if (this.allowAddNew && this.addNewOption) {
       this.addNewOption.addEventListener('click', () => {
         const value = this.input.value.trim();
-        if (value) {
+        // Check if the value exists in predefined options
+        const exists = this.predefinedOptions.some(opt => opt.toLowerCase() === value.toLowerCase());
+
+        if (value && (this.allowAddNew || exists)) { // Add if allowed OR exists
           this.addValueFromInput();
-        } else {
+        } else if (this.allowAddNew) { // Only start adding new if allowed
           this.startAddingNew();
         }
       });
     }
-    
+
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
       if (this.element && !this.element.contains(e.target) && this.isDropdownOpen) {
@@ -569,16 +571,25 @@ export class MultiSelectDropdown {
    * @public
    */
   addValue(value) {
-    if (!value || this.selectedValues.includes(value)) return;
-    
+    // Prevent adding if not allowed and value doesn't exist
+    const exists = this.predefinedOptions.some(opt => opt.toLowerCase() === value.toLowerCase());
+    if (!value || this.selectedValues.includes(value) || (!this.allowAddNew && !exists)) {
+      // If not allowed and doesn't exist, clear input and close dropdown
+      if (!this.allowAddNew && !exists) {
+        this.input.value = '';
+        this.closeDropdown();
+      }
+      return;
+    }
+
     this.selectedValues.push(value);
     this.renderSelectedOptions();
-    
-    // If this is a new option, add it to predefined options for future use
-    if (!this.predefinedOptions.includes(value)) {
+
+    // If this is a new option AND adding is allowed, add it to predefined options
+    if (this.allowAddNew && !exists) {
       this.predefinedOptions.push(value);
     }
-    
+
     // Clear input and repopulate options
     this.input.value = '';
     this.populateOptions();

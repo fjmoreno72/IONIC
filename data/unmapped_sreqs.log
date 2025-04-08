@@ -9541,3 +9541,727 @@ AttributeError: 'str' object has no attribute 'get'
 2025-04-08 17:52:33 - 127.0.0.1 - - [08/Apr/2025 17:52:33] "GET /check_auth HTTP/1.1" 200 -
 2025-04-08 17:52:34 - 127.0.0.1 - - [08/Apr/2025 17:52:34] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
 2025-04-08 17:52:34 - 127.0.0.1 - - [08/Apr/2025 17:52:34] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-08 18:25:26 - Accessing Objectives page
+2025-04-08 18:25:26 - Processing 702 TestPlans from data/cwix/test_results.json.
+2025-04-08 18:25:26 -   Skipping TestPlan 78: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 108: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 109: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 216: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 321: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 399: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 430: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 450: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 453: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 524: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 578: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 -   Skipping TestPlan 653: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:25:26 - Final calculated objective_test_counts dictionary: {'OBJ-CWIX25-038': 42, 'OBJ-CWIX25-065': 2, 'OBJ-CWIX25-004': 1, 'OBJ-CWIX25-117': 237, 'OBJ-CWIX25-208': 0, 'OBJ-CWIX25-098': 0, 'OBJ-CWIX25-284': 6, 'OBJ-CWIX25-116': 85, 'OBJ-CWIX25-092': 283, 'OBJ-CWIX25-154': 140, 'OBJ-CWIX25-232': 5, 'OBJ-CWIX25-011': 35, 'OBJ-CWIX25-106': 10, 'OBJ-CWIX25-256': 17, 'OBJ-CWIX25-014': 10, 'OBJ-CWIX25-254': 3, 'OBJ-CWIX25-155': 201, 'OBJ-CWIX25-093': 477, 'OBJ-CWIX25-072': 11, 'OBJ-CWIX25-265': 12, 'OBJ-CWIX25-194': 12, 'OBJ-CWIX25-121': 8, 'OBJ-CWIX25-096': 244, 'OBJ-CWIX25-190': 0, 'OBJ-CWIX25-237': 1, 'OBJ-CWIX25-104': 40, 'OBJ-CWIX25-134': 1, 'OBJ-CWIX25-097': 103, 'OBJ-CWIX25-006': 65, 'OBJ-CWIX25-020': 22, 'OBJ-CWIX25-185': 98, 'OBJ-CWIX25-235': 30, 'OBJ-CWIX25-311': 21, 'OBJ-CWIX25-066': 0, 'OBJ-CWIX25-040': 0, 'OBJ-CWIX25-266': 183, 'OBJ-CWIX25-259': 28, 'OBJ-CWIX25-123': 15, 'OBJ-CWIX25-257': 5, 'OBJ-CWIX25-283': 12, 'OBJ-CWIX25-229': 5, 'OBJ-CWIX25-107': 0, 'OBJ-CWIX25-248': 23, 'OBJ-CWIX25-255': 45, 'OBJ-CWIX25-108': 6, 'OBJ-CWIX25-245': 0, 'OBJ-CWIX25-043': 7, 'OBJ-CWIX25-083': 0, 'OBJ-CWIX25-193': 51, 'OBJ-CWIX25-018': 56, 'OBJ-CWIX25-292': 5, 'OBJ-CWIX25-034': 9, 'OBJ-CWIX25-069': 0, 'OBJ-CWIX25-005': 895, 'OBJ-CWIX25-053': 4, 'OBJ-CWIX25-269': 9, 'OBJ-CWIX25-016': 72, 'OBJ-CWIX25-026': 0, 'OBJ-CWIX25-105': 53, 'OBJ-CWIX25-049': 32, 'OBJ-CWIX25-276': 3, 'OBJ-CWIX25-310': 10, 'OBJ-CWIX25-142': 0, 'OBJ-CWIX25-282': 8, 'OBJ-CWIX25-151': 13, 'OBJ-CWIX25-143': 4, 'OBJ-CWIX25-009': 4, 'OBJ-CWIX25-115': 4, 'OBJ-CWIX25-156': 6, 'OBJ-CWIX25-153': 44, 'OBJ-CWIX25-090': 1, 'OBJ-CWIX25-114': 10, 'OBJ-CWIX25-244': 25, 'OBJ-CWIX25-060': 24, 'OBJ-CWIX25-182': 20, 'OBJ-CWIX25-088': 1, 'OBJ-CWIX25-002': 29, 'OBJ-CWIX25-226': 6, 'OBJ-CWIX25-183': 0, 'OBJ-CWIX25-025': 5, 'OBJ-CWIX25-131': 0, 'OBJ-CWIX25-288': 2, 'OBJ-CWIX25-205': 14, 'OBJ-CWIX25-275': 8, 'OBJ-CWIX25-120': 6, 'OBJ-CWIX25-111': 1, 'OBJ-CWIX25-056': 7, 'OBJ-CWIX25-101': 10, 'OBJ-CWIX25-293': 1, 'OBJ-CWIX25-094': 4, 'OBJ-CWIX25-138': 0, 'OBJ-CWIX25-222': 4, 'OBJ-CWIX25-159': 49, 'OBJ-CWIX25-191': 50, 'OBJ-CWIX25-231': 0, 'OBJ-CWIX25-291': 6, 'OBJ-CWIX25-001': 15, 'OBJ-CWIX25-051': 29, 'OBJ-CWIX25-019': 0, 'OBJ-CWIX25-279': 3, 'OBJ-CWIX25-084': 1, 'OBJ-CWIX25-267': 0, 'OBJ-CWIX25-219': 0, 'OBJ-CWIX25-003': 76, 'OBJ-CWIX25-080': 1, 'OBJ-CWIX25-022': 0, 'OBJ-CWIX25-260': 0, 'OBJ-CWIX25-281': 162, 'OBJ-CWIX25-252': 0, 'OBJ-CWIX25-290': 1, 'OBJ-CWIX25-109': 1, 'OBJ-CWIX25-089': 8, 'OBJ-CWIX25-227': 1, 'OBJ-CWIX25-021': 9, 'OBJ-CWIX25-095': 0, 'OBJ-CWIX25-189': 196, 'OBJ-CWIX25-076': 0, 'OBJ-CWIX25-061': 20, 'OBJ-CWIX25-238': 0, 'OBJ-CWIX25-228': 0, 'OBJ-CWIX25-198': 11, 'OBJ-CWIX25-048': 1, 'OBJ-CWIX25-253': 1, 'OBJ-CWIX25-059': 28, 'OBJ-CWIX25-280': 1, 'OBJ-CWIX25-118': 8, 'OBJ-CWIX25-209': 0, 'OBJ-CWIX25-075': 16, 'OBJ-CWIX25-263': 1, 'OBJ-CWIX25-295': 120, 'OBJ-CWIX25-300': 4, 'OBJ-CWIX25-184': 0, 'OBJ-CWIX25-187': 0, 'OBJ-CWIX25-074': 4, 'OBJ-CWIX25-042': 4, 'OBJ-CWIX25-277': 2, 'OBJ-CWIX25-196': 0, 'OBJ-CWIX25-030': 4, 'OBJ-CWIX25-052': 0, 'OBJ-CWIX25-157': 84, 'OBJ-CWIX25-233': 1, 'OBJ-CWIX25-188': 0, 'OBJ-CWIX25-261': 0}
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "GET /objectives HTTP/1.1" 200 -
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "[36mGET /static/js/objectives.js HTTP/1.1[0m" 304 -
+2025-04-08 18:25:26 - 127.0.0.1 - - [08/Apr/2025 18:25:26] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:25:27 - 127.0.0.1 - - [08/Apr/2025 18:25:27] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:25:27 - 127.0.0.1 - - [08/Apr/2025 18:25:27] "[36mGET /static/favicon/favicon.ico HTTP/1.1[0m" 304 -
+2025-04-08 18:25:29 - Accessing system monitor
+2025-04-08 18:25:29 - 127.0.0.1 - - [08/Apr/2025 18:25:29] "GET /system_monitor HTTP/1.1" 200 -
+2025-04-08 18:25:30 - 127.0.0.1 - - [08/Apr/2025 18:25:30] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:25:30 - 127.0.0.1 - - [08/Apr/2025 18:25:30] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:25:30 - 127.0.0.1 - - [08/Apr/2025 18:25:30] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:25:30 - SSL verification is disabled. This is insecure.
+2025-04-08 18:25:30 - Getting system health data from api/system/health
+2025-04-08 18:25:30 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-04-08 18:25:30 - 127.0.0.1 - - [08/Apr/2025 18:25:30] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:25:30 - 127.0.0.1 - - [08/Apr/2025 18:25:30] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:25:30 - 127.0.0.1 - - [08/Apr/2025 18:25:30] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:25:30 - 127.0.0.1 - - [08/Apr/2025 18:25:30] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:25:30 - 127.0.0.1 - - [08/Apr/2025 18:25:30] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:25:35 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.08 seconds
+2025-04-08 18:25:35 - System health data fetched in 5.08s
+2025-04-08 18:25:35 - 127.0.0.1 - - [08/Apr/2025 18:25:35] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-04-08 18:26:01 - Accessing ASC GPs page
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /asc_gps HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/icons/gps.svg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/js/pages/gps_new.js HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/js/components/gpForm.js HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/js/components/configItemForm.js HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/js/components/multiSelectDropdown.js HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:26:01 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:26:01 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:26:01 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:01 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:01 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:01 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:01 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:26:01 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:26:01 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:26:01 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:26:01 - API Route: Returning GP data successfully.
+2025-04-08 18:26:01 - API Route: Returning GP data successfully.
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_data_link_server_consumer.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_web_server.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "GET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:01 - 127.0.0.1 - - [08/Apr/2025 18:26:01] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - Accessing ASC Services page
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /asc_services HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /static/ASC/icons/services.svg HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /static/js/pages/services_new.js HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /static/js/components/serviceForm.js HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:26:05 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:26:05 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:26:05 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:05 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:05 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:05 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:05 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:26:05 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:26:05 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:26:05 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:26:05 - API Route: Returning GP data successfully.
+2025-04-08 18:26:05 - API Route: Returning GP data successfully.
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:26:05 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:26:05 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /api/services HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /static/ASC/image/srv/icon_data_links.png HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /static/ASC/image/srv/icon_calendaring_and_scheduling.png HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1" 200 -
+2025-04-08 18:26:05 - 127.0.0.1 - - [08/Apr/2025 18:26:05] "GET /static/ASC/image/srv/icon_communications.png HTTP/1.1" 200 -
+2025-04-08 18:26:14 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:26:14 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:26:14 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:14 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:14 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:14 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:26:14 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:26:14 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:26:14 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:26:14 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:26:14 - API Route: Returning GP data successfully.
+2025-04-08 18:26:14 - API Route: Returning GP data successfully.
+2025-04-08 18:26:14 - 127.0.0.1 - - [08/Apr/2025 18:26:14] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 18:26:25 - Accessing functional tree view
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:25 - 127.0.0.1 - - [08/Apr/2025 18:26:25] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:26:26 - 127.0.0.1 - - [08/Apr/2025 18:26:26] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:26:26 - 127.0.0.1 - - [08/Apr/2025 18:26:26] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:29:30 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:29:30 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:29:30 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:29:30 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:29:30 - 127.0.0.1 - - [08/Apr/2025 18:29:30] "PUT /api/services HTTP/1.1" 200 -
+2025-04-08 18:29:30 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:29:30 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:29:30 - 127.0.0.1 - - [08/Apr/2025 18:29:30] "GET /api/services HTTP/1.1" 200 -
+2025-04-08 18:29:39 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:29:39 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:29:39 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:29:39 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:29:39 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:29:39 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:29:39 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:29:39 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:29:39 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:29:39 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:29:39 - API Route: Returning GP data successfully.
+2025-04-08 18:29:39 - API Route: Returning GP data successfully.
+2025-04-08 18:29:39 - 127.0.0.1 - - [08/Apr/2025 18:29:39] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:35:04 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/app/data_models/sreq_analysis.py', reloading
+2025-04-08 18:35:04 -  * Restarting with stat
+2025-04-08 18:35:04 - Logging system configured with level INFO
+2025-04-08 18:35:04 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 18:35:04 - Applying authentication system patches...
+2025-04-08 18:35:04 - Authentication system patches applied successfully
+2025-04-08 18:35:04 - Enhanced authentication system applied
+2025-04-08 18:35:04 - Configured Flask app logging with level INFO
+2025-04-08 18:35:04 - Configured Flask app logging with level INFO
+2025-04-08 18:35:04 - Logging system configured with level INFO
+2025-04-08 18:35:04 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 18:35:04 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 18:35:04 - Template files: templates
+2025-04-08 18:35:04 - Running in DEBUG mode
+2025-04-08 18:35:04 - Listening on 0.0.0.0:5007
+2025-04-08 18:35:04 -  * Debugger is active!
+2025-04-08 18:35:04 -  * Debugger PIN: 288-963-664
+2025-04-08 18:35:46 - Logging system configured with level INFO
+2025-04-08 18:35:46 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 18:35:46 - Applying authentication system patches...
+2025-04-08 18:35:46 - Authentication system patches applied successfully
+2025-04-08 18:35:46 - Enhanced authentication system applied
+2025-04-08 18:35:46 - Configured Flask app logging with level INFO
+2025-04-08 18:35:46 - Configured Flask app logging with level INFO
+2025-04-08 18:35:46 - Logging system configured with level INFO
+2025-04-08 18:35:46 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 18:35:46 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 18:35:46 - Template files: templates
+2025-04-08 18:35:46 - Running in DEBUG mode
+2025-04-08 18:35:46 - Listening on 0.0.0.0:5007
+2025-04-08 18:35:46 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://10.79.10.40:5007
+2025-04-08 18:35:46 - [33mPress CTRL+C to quit[0m
+2025-04-08 18:35:46 -  * Restarting with stat
+2025-04-08 18:35:46 - Logging system configured with level INFO
+2025-04-08 18:35:46 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 18:35:46 - Applying authentication system patches...
+2025-04-08 18:35:46 - Authentication system patches applied successfully
+2025-04-08 18:35:46 - Enhanced authentication system applied
+2025-04-08 18:35:46 - Configured Flask app logging with level INFO
+2025-04-08 18:35:46 - Configured Flask app logging with level INFO
+2025-04-08 18:35:46 - Logging system configured with level INFO
+2025-04-08 18:35:46 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 18:35:46 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 18:35:46 - Template files: templates
+2025-04-08 18:35:46 - Running in DEBUG mode
+2025-04-08 18:35:46 - Listening on 0.0.0.0:5007
+2025-04-08 18:35:46 -  * Debugger is active!
+2025-04-08 18:35:46 -  * Debugger PIN: 288-963-664
+2025-04-08 18:35:50 - User logged out
+2025-04-08 18:35:50 - 127.0.0.1 - - [08/Apr/2025 18:35:50] "GET /logout HTTP/1.1" 200 -
+2025-04-08 18:35:50 - 127.0.0.1 - - [08/Apr/2025 18:35:50] "GET / HTTP/1.1" 200 -
+2025-04-08 18:35:50 - 127.0.0.1 - - [08/Apr/2025 18:35:50] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:35:50 - 127.0.0.1 - - [08/Apr/2025 18:35:50] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:35:50 - 127.0.0.1 - - [08/Apr/2025 18:35:50] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-08 18:35:50 - 127.0.0.1 - - [08/Apr/2025 18:35:50] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:35:53 - SSL verification is disabled. This is insecure.
+2025-04-08 18:35:54 - Found verification token using method: BeautifulSoup input tag
+2025-04-08 18:35:54 - Found additional field: RememberMe
+2025-04-08 18:35:56 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-08 18:35:56 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-08 18:35:56 - User francisco.moreno@ncia.nato.int logged in successfully to ciav environment
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "POST /login HTTP/1.1" 200 -
+2025-04-08 18:35:56 - Accessing functional tree view
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:35:56 - 127.0.0.1 - - [08/Apr/2025 18:35:56] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:36:02 - Starting background SREQ coverage processing for environment: ciav
+2025-04-08 18:36:02 - SSL verification is disabled. This is insecure.
+2025-04-08 18:36:02 - 127.0.0.1 - - [08/Apr/2025 18:36:02] "GET /get_requirement_coverage HTTP/1.1" 200 -
+2025-04-08 18:36:02 - Getting SREQ coverage data from api/coverage/test-case-coverage/Get-Requirement-Coverage
+2025-04-08 18:36:02 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/coverage/test-case-coverage/Get-Requirement-Coverage
+2025-04-08 18:36:07 - 127.0.0.1 - - [08/Apr/2025 18:36:07] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:12 - 127.0.0.1 - - [08/Apr/2025 18:36:12] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:17 - 127.0.0.1 - - [08/Apr/2025 18:36:17] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:22 - 127.0.0.1 - - [08/Apr/2025 18:36:22] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:27 - 127.0.0.1 - - [08/Apr/2025 18:36:27] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:32 - 127.0.0.1 - - [08/Apr/2025 18:36:32] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:37 - 127.0.0.1 - - [08/Apr/2025 18:36:37] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:42 - 127.0.0.1 - - [08/Apr/2025 18:36:42] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:47 - 127.0.0.1 - - [08/Apr/2025 18:36:47] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:52 - 127.0.0.1 - - [08/Apr/2025 18:36:52] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:36:52 - 127.0.0.1 - - [08/Apr/2025 18:36:52] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:36:57 - 127.0.0.1 - - [08/Apr/2025 18:36:57] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:02 - 127.0.0.1 - - [08/Apr/2025 18:37:02] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:07 - 127.0.0.1 - - [08/Apr/2025 18:37:07] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:12 - 127.0.0.1 - - [08/Apr/2025 18:37:12] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:17 - 127.0.0.1 - - [08/Apr/2025 18:37:17] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:22 - 127.0.0.1 - - [08/Apr/2025 18:37:22] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:27 - 127.0.0.1 - - [08/Apr/2025 18:37:27] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:32 - 127.0.0.1 - - [08/Apr/2025 18:37:32] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:37 - 127.0.0.1 - - [08/Apr/2025 18:37:37] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:42 - 127.0.0.1 - - [08/Apr/2025 18:37:42] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:42 - 127.0.0.1 - - [08/Apr/2025 18:37:42] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:37:47 - 127.0.0.1 - - [08/Apr/2025 18:37:47] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:52 - 127.0.0.1 - - [08/Apr/2025 18:37:52] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:37:57 - 127.0.0.1 - - [08/Apr/2025 18:37:57] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:02 - 127.0.0.1 - - [08/Apr/2025 18:38:02] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:07 - 127.0.0.1 - - [08/Apr/2025 18:38:07] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:12 - 127.0.0.1 - - [08/Apr/2025 18:38:12] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:17 - 127.0.0.1 - - [08/Apr/2025 18:38:17] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:22 - 127.0.0.1 - - [08/Apr/2025 18:38:22] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:27 - 127.0.0.1 - - [08/Apr/2025 18:38:27] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:32 - 127.0.0.1 - - [08/Apr/2025 18:38:32] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:32 - 127.0.0.1 - - [08/Apr/2025 18:38:32] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:38:37 - 127.0.0.1 - - [08/Apr/2025 18:38:37] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:42 - 127.0.0.1 - - [08/Apr/2025 18:38:42] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:47 - 127.0.0.1 - - [08/Apr/2025 18:38:47] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:52 - 127.0.0.1 - - [08/Apr/2025 18:38:52] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:38:57 - 127.0.0.1 - - [08/Apr/2025 18:38:57] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:39:02 - 127.0.0.1 - - [08/Apr/2025 18:39:02] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:39:07 - 127.0.0.1 - - [08/Apr/2025 18:39:07] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:39:12 - 127.0.0.1 - - [08/Apr/2025 18:39:12] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:39:17 - 127.0.0.1 - - [08/Apr/2025 18:39:17] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:39:20 - Starting to read response chunks...
+2025-04-08 18:39:20 - Initial Response: Status Code = 200
+2025-04-08 18:39:20 - Received 20 chunks (0.15 MB) in 197.89 seconds (0.00 MB/s)
+2025-04-08 18:39:20 - Received 40 chunks (0.31 MB) in 197.90 seconds (0.00 MB/s)
+2025-04-08 18:39:20 - Received 60 chunks (0.46 MB) in 197.91 seconds (0.00 MB/s)
+2025-04-08 18:39:20 - Received 80 chunks (0.62 MB) in 197.92 seconds (0.00 MB/s)
+2025-04-08 18:39:20 - Received 100 chunks (0.78 MB) in 197.92 seconds (0.00 MB/s)
+2025-04-08 18:39:20 - Received 120 chunks (0.93 MB) in 197.94 seconds (0.00 MB/s)
+2025-04-08 18:39:20 - Received 140 chunks (1.09 MB) in 197.94 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Received 160 chunks (1.24 MB) in 197.95 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Received 180 chunks (1.40 MB) in 197.95 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Received 200 chunks (1.56 MB) in 197.96 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Received 220 chunks (1.71 MB) in 197.97 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Received 240 chunks (1.87 MB) in 197.97 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Received 260 chunks (2.03 MB) in 197.98 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Received 280 chunks (2.17 MB) in 197.99 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Received 300 chunks (2.33 MB) in 197.99 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Received 320 chunks (2.49 MB) in 198.00 seconds (0.01 MB/s)
+2025-04-08 18:39:20 - Total size: 2.49 MB
+2025-04-08 18:39:20 - Total chunks: 320
+2025-04-08 18:39:20 - Average chunk size: 7.96 KB
+2025-04-08 18:39:20 - Average transfer rate: 0.01 MB/s
+2025-04-08 18:39:20 - Successfully wrote data to data/ciav/SREQ.json
+2025-04-08 18:39:20 - Successfully wrote markdown to data/ciav/SREQ.md
+2025-04-08 18:39:20 - Background SREQ coverage processing completed for environment: ciav
+2025-04-08 18:39:22 - 127.0.0.1 - - [08/Apr/2025 18:39:22] "GET /check_sreq_status HTTP/1.1" 200 -
+2025-04-08 18:39:22 - 127.0.0.1 - - [08/Apr/2025 18:39:22] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:39:23 - Accessing functional tree view
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:39:23 - 127.0.0.1 - - [08/Apr/2025 18:39:23] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - Accessing ASC Services page
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "GET /asc_services HTTP/1.1" 200 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/pages/services_new.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/components/serviceForm.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:40:55 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:40:55 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:40:55 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:40:55 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:40:55 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:40:55 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:40:55 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:40:55 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:40:55 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:40:55 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:40:55 - API Route: Returning GP data successfully.
+2025-04-08 18:40:55 - API Route: Returning GP data successfully.
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:40:55 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:40:55 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "GET /api/services HTTP/1.1" 200 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/favicon/favicon.ico HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/ASC/image/srv/icon_calendaring_and_scheduling.png HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-08 18:40:55 - 127.0.0.1 - - [08/Apr/2025 18:40:55] "[36mGET /static/ASC/image/srv/icon_communications.png HTTP/1.1[0m" 304 -
+2025-04-08 18:40:58 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:40:58 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:40:58 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:40:58 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:40:58 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:40:58 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:40:58 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:40:58 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:40:58 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:40:58 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:40:58 - API Route: Returning GP data successfully.
+2025-04-08 18:40:58 - API Route: Returning GP data successfully.
+2025-04-08 18:40:58 - 127.0.0.1 - - [08/Apr/2025 18:40:58] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:41:14 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:41:14 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:41:14 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:41:14 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:41:14 - 127.0.0.1 - - [08/Apr/2025 18:41:14] "PUT /api/services HTTP/1.1" 200 -
+2025-04-08 18:41:14 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:41:14 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:41:14 - 127.0.0.1 - - [08/Apr/2025 18:41:14] "GET /api/services HTTP/1.1" 200 -
+2025-04-08 18:42:20 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:42:20 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:42:20 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:42:20 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:42:20 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:42:20 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:42:20 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:42:20 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:42:20 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:42:20 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:42:20 - API Route: Returning GP data successfully.
+2025-04-08 18:42:20 - API Route: Returning GP data successfully.
+2025-04-08 18:42:20 - 127.0.0.1 - - [08/Apr/2025 18:42:20] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:42:44 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:42:44 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:42:44 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:42:44 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:42:44 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:42:44 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:42:44 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:42:44 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:42:44 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:42:44 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:42:44 - API Route: Returning GP data successfully.
+2025-04-08 18:42:44 - API Route: Returning GP data successfully.
+2025-04-08 18:42:44 - 127.0.0.1 - - [08/Apr/2025 18:42:44] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:43:25 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:43:25 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:43:25 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:43:25 - Successfully saved 27 services to /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:43:25 - 127.0.0.1 - - [08/Apr/2025 18:43:25] "PUT /api/services HTTP/1.1" 200 -
+2025-04-08 18:43:25 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:43:25 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:43:25 - 127.0.0.1 - - [08/Apr/2025 18:43:25] "GET /api/services HTTP/1.1" 200 -
+2025-04-08 18:43:30 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:43:30 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:43:30 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:43:30 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:43:30 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:43:30 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:43:30 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:43:30 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:43:30 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:43:30 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:43:30 - API Route: Returning GP data successfully.
+2025-04-08 18:43:30 - API Route: Returning GP data successfully.
+2025-04-08 18:43:30 - 127.0.0.1 - - [08/Apr/2025 18:43:30] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:43:34 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:43:34 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:43:34 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:43:34 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:43:34 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:43:34 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:43:34 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:43:34 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:43:34 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:43:34 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:43:34 - API Route: Returning GP data successfully.
+2025-04-08 18:43:34 - API Route: Returning GP data successfully.
+2025-04-08 18:43:34 - 127.0.0.1 - - [08/Apr/2025 18:43:34] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:47:39 - Logging system configured with level INFO
+2025-04-08 18:47:39 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 18:47:39 - Applying authentication system patches...
+2025-04-08 18:47:39 - Authentication system patches applied successfully
+2025-04-08 18:47:39 - Enhanced authentication system applied
+2025-04-08 18:47:39 - Configured Flask app logging with level INFO
+2025-04-08 18:47:39 - Configured Flask app logging with level INFO
+2025-04-08 18:47:39 - Logging system configured with level INFO
+2025-04-08 18:47:39 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 18:47:39 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 18:47:39 - Template files: templates
+2025-04-08 18:47:39 - Running in DEBUG mode
+2025-04-08 18:47:39 - Listening on 0.0.0.0:5007
+2025-04-08 18:47:39 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://10.79.10.40:5007
+2025-04-08 18:47:39 - [33mPress CTRL+C to quit[0m
+2025-04-08 18:47:39 -  * Restarting with stat
+2025-04-08 18:47:39 - Logging system configured with level INFO
+2025-04-08 18:47:39 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 18:47:39 - Applying authentication system patches...
+2025-04-08 18:47:39 - Authentication system patches applied successfully
+2025-04-08 18:47:39 - Enhanced authentication system applied
+2025-04-08 18:47:39 - Configured Flask app logging with level INFO
+2025-04-08 18:47:39 - Configured Flask app logging with level INFO
+2025-04-08 18:47:39 - Logging system configured with level INFO
+2025-04-08 18:47:39 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 18:47:39 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 18:47:39 - Template files: templates
+2025-04-08 18:47:39 - Running in DEBUG mode
+2025-04-08 18:47:39 - Listening on 0.0.0.0:5007
+2025-04-08 18:47:39 -  * Debugger is active!
+2025-04-08 18:47:39 -  * Debugger PIN: 288-963-664
+2025-04-08 18:47:44 - Accessing ASC Services page
+2025-04-08 18:47:44 - 127.0.0.1 - - [08/Apr/2025 18:47:44] "GET /asc_services HTTP/1.1" 200 -
+2025-04-08 18:47:44 - 127.0.0.1 - - [08/Apr/2025 18:47:44] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-08 18:47:44 - 127.0.0.1 - - [08/Apr/2025 18:47:44] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/ASC/icons/services.svg HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/pages/services_new.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/components/serviceForm.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/js/components/multiSelectDropdown.js HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:47:45 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:47:45 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:47:45 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:47:45 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:47:45 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:47:45 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:47:45 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:47:45 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:47:45 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:47:45 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:47:45 - API Route: Returning GP data successfully.
+2025-04-08 18:47:45 - API Route: Returning GP data successfully.
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:47:45 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:47:45 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /api/services HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/ASC/image/srv/icon_data_links.png HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/ASC/image/srv/icon_communications.png HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/ASC/image/srv/icon_calendaring_and_scheduling.png HTTP/1.1" 200 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:47:45 - 127.0.0.1 - - [08/Apr/2025 18:47:45] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-08 18:47:49 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:47:49 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:47:49 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:47:49 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:47:49 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:47:49 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:47:49 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:47:49 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:47:49 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:47:49 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:47:49 - API Route: Returning GP data successfully.
+2025-04-08 18:47:49 - API Route: Returning GP data successfully.
+2025-04-08 18:47:49 - 127.0.0.1 - - [08/Apr/2025 18:47:49] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:48:10 - Accessing ASC Services page
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "GET /asc_services HTTP/1.1" 200 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/ASC/icons/services.svg HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/pages/services_new.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/components/serviceForm.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:48:10 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:48:10 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:48:10 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:10 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:10 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:10 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:10 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:48:10 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:48:10 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:48:10 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:48:10 - API Route: Returning GP data successfully.
+2025-04-08 18:48:10 - API Route: Returning GP data successfully.
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:48:10 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:48:10 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_services.json.
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "GET /api/services HTTP/1.1" 200 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/ASC/image/srv/icon_data_links.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/ASC/image/srv/icon_domain_naming.jpg HTTP/1.1[0m" 304 -
+2025-04-08 18:48:10 - 127.0.0.1 - - [08/Apr/2025 18:48:10] "[36mGET /static/ASC/image/srv/icon_calendaring_and_scheduling.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:11 - 127.0.0.1 - - [08/Apr/2025 18:48:11] "[36mGET /static/ASC/image/srv/icon_informal_messaging.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:11 - 127.0.0.1 - - [08/Apr/2025 18:48:11] "[36mGET /static/ASC/image/srv/icon_text-based_collaboration.jpg HTTP/1.1[0m" 304 -
+2025-04-08 18:48:11 - 127.0.0.1 - - [08/Apr/2025 18:48:11] "[36mGET /static/ASC/image/srv/icon_communications.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - Accessing ASC SPs page
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /asc_sps HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /static/ASC/icons/sps.svg HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /static/js/pages/sps_new.js HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /static/js/components/spForm.js HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /api/sps HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /static/ASC/image/sp/sp_icon_symantec_mail_security_for_microsoft_exchange_(smsmse).jpg HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /static/ASC/image/sp/sp_icon_microsoft_outlook.jpg HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /static/ASC/image/sp/sp_icon_microsoft_exchange.jpg HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /static/ASC/image/sp/sp_icon_microsoft_windows_dns_services.jpg HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "GET /static/ASC/image/sp/sp_icon_titus_data_classification.jpg HTTP/1.1" 200 -
+2025-04-08 18:48:23 - 127.0.0.1 - - [08/Apr/2025 18:48:23] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - Accessing ASC Configuration Items page
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "GET /asc_config_items HTTP/1.1" 200 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "GET /static/js/pages/CI_new.js HTTP/1.1" 200 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/js/components/configItemForm.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:48:33 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:48:33 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:48:33 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:33 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:33 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:33 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:33 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:48:33 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:48:33 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:48:33 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:48:33 - API Route: Returning GP data successfully.
+2025-04-08 18:48:33 - API Route: Returning GP data successfully.
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "GET /api/config-items HTTP/1.1" 200 -
+2025-04-08 18:48:33 - 127.0.0.1 - - [08/Apr/2025 18:48:33] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:48:35 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:48:35 - API Route: /api/gps GET endpoint called.
+2025-04-08 18:48:35 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:35 - API Route: Using JSON path: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:35 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC2/app/static/ASC/data/_gps.json
+2025-04-08 18:48:35 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:48:35 - Repository: JSON loaded successfully. Found 130 items.
+2025-04-08 18:48:35 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:48:35 - API Route: Retrieved 130 GPs from repository.
+2025-04-08 18:48:35 - API Route: Returning GP data successfully.
+2025-04-08 18:48:35 - API Route: Returning GP data successfully.
+2025-04-08 18:48:35 - 127.0.0.1 - - [08/Apr/2025 18:48:35] "GET /api/gps HTTP/1.1" 200 -
+2025-04-08 18:48:47 - Accessing Participants page
+2025-04-08 18:48:47 - Compiled list of 347 tests for participant matching.
+2025-04-08 18:48:47 - 127.0.0.1 - - [08/Apr/2025 18:48:47] "GET /participants HTTP/1.1" 200 -
+2025-04-08 18:48:47 - 127.0.0.1 - - [08/Apr/2025 18:48:47] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:47 - 127.0.0.1 - - [08/Apr/2025 18:48:47] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:47 - 127.0.0.1 - - [08/Apr/2025 18:48:47] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:47 - 127.0.0.1 - - [08/Apr/2025 18:48:47] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:47 - 127.0.0.1 - - [08/Apr/2025 18:48:47] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:47 - 127.0.0.1 - - [08/Apr/2025 18:48:47] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:47 - 127.0.0.1 - - [08/Apr/2025 18:48:47] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:48 - 127.0.0.1 - - [08/Apr/2025 18:48:48] "[36mGET /static/js/participants.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:48 - 127.0.0.1 - - [08/Apr/2025 18:48:48] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:48:48 - 127.0.0.1 - - [08/Apr/2025 18:48:48] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:48:51 - Accessing Objectives page
+2025-04-08 18:48:51 - Processing 22 TestPlans from data/ciav/test_results.json.
+2025-04-08 18:48:51 -   Skipping TestPlan 3: Invalid structure. Key='None' (Type: <class 'NoneType'>), Tests Type: <class 'list'>
+2025-04-08 18:48:51 - Final calculated objective_test_counts dictionary: {'OBJ-CIAV-000073': 10, 'OBJ-CIAV-000057': 30, 'OBJ-CIAV-000048': 10, 'OBJ-CIAV-000053': 131, 'OBJ-CIAV-000058': 0, 'OBJ-CIAV-000059': 20, 'OBJ-CIAV-000038': 3, 'OBJ-CIAV-000046': 9, 'OBJ-CIAV-000061': 59, 'OBJ-CIAV-000041': 35, 'OBJ-CIAV-000056': 40}
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "GET /objectives HTTP/1.1" 200 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "[36mGET /static/js/objectives.js HTTP/1.1[0m" 304 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:48:51 - 127.0.0.1 - - [08/Apr/2025 18:48:51] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:49:01 - Accessing test cases
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "GET /test_cases HTTP/1.1" 200 -
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "GET /static/js/test_case.js HTTP/1.1" 200 -
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 18:49:01 - Attempting to read patterns data from: data/ciav/pattern.json
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 18:49:01 - Successfully loaded patterns data file.
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "GET /api/patterns_data HTTP/1.1" 200 -
+2025-04-08 18:49:01 - Attempting to read test cases data from: data/ciav/test_cases.json
+2025-04-08 18:49:01 - Successfully loaded test cases data file.
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "GET /api/test_cases_data HTTP/1.1" 200 -
+2025-04-08 18:49:01 - 127.0.0.1 - - [08/Apr/2025 18:49:01] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 18:49:07 - Attempting to load actors.json into memory...
+2025-04-08 18:49:07 - Successfully loaded 906 actors into map in 0.00 seconds.
+2025-04-08 18:49:07 - 127.0.0.1 - - [08/Apr/2025 18:49:07] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-08 18:49:07 - 127.0.0.1 - - [08/Apr/2025 18:49:07] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -

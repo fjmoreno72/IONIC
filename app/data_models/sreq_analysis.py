@@ -159,7 +159,7 @@ def organize_functional_data(sreq_data: List[Dict[str, Any]], func_data: List[Di
         if status == 'Deprecated' or status == 'Draft':
             continue
 
-        if test_case_coverage_type == 'tdp':
+        if test_case_coverage_type == 'idp':
             continue
 
         # Check if SREQ has a function mapping

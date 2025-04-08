@@ -76,8 +76,12 @@
   {
     "name": "Ground-to-Air Information Exchange",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0010"
+    "gps": [
+      "GP-0080",
+      "PEPITO"
+    ],
+    "id": "SRV-0010",
+    "originalId": "SRV-0010"
   },
   {
     "name": "Overlay Distribution",
@@ -121,8 +125,13 @@
   {
     "name": "Distributed Time",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0016"
+    "gps": [
+      "GP-0039",
+      "GP-0024",
+      "GP-0028"
+    ],
+    "id": "SRV-0016",
+    "originalId": "SRV-0016"
   },
   {
     "name": "Domain Naming",
@@ -140,8 +149,14 @@
   {
     "name": "Geospatial Information",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0018"
+    "gps": [
+      "GP-0041",
+      "GP-0109",
+      "GP-0030",
+      "GP-0014"
+    ],
+    "id": "SRV-0018",
+    "originalId": "SRV-0018"
   },
   {
     "name": "Informal Messaging",

@@ -213,9 +213,10 @@ export class ServiceForm {
           id: 'gpMultiselect',
           placeholder: 'Search and select Generic Products...',
           options: gpOptions,
-          initialValues: this.getInitialGPNames()
+          initialValues: this.getInitialGPNames(),
+          allowAddNew: false // Disable adding new GPs from this form
         });
-        
+
         // Add to form
         container.appendChild(this.gpDropdown.element);
         

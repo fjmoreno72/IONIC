@@ -375,6 +375,151 @@ def participants_view():
         return render_template('participants.html', participants=[], error="An unexpected error occurred while processing participant data.")
 
 
+@views_bp.route('/objectives')
+@login_required
+def objectives_view():
+    """
+    Render the objectives page, loading and processing data.
+
+    Returns:
+        Rendered objectives template with processed data.
+    """
+    logging.info("Accessing Objectives page")
+    processed_objectives = []
+    objective_test_counts = {}
+    test_results_data = None # Initialize
+
+    # Filter sets
+    statuses = set()
+    external_statuses = set()
+    networks = set()
+    focus_areas = set()
+
+    try:
+        objectives_path = get_dynamic_data_path("objectives.json")
+        test_results_path = get_dynamic_data_path("test_results.json")
+
+        # Load objectives data
+        if not objectives_path.exists():
+            logging.warning(f"Objectives file not found at {objectives_path}")
+            return render_template('objectives.html', objectives=[], error="Objectives data file not found.")
+        objectives_data = read_json_file(objectives_path)
+        if not objectives_data: # Handle case where file exists but is empty/invalid JSON
+             logging.error(f"Objectives file at {objectives_path} is empty or invalid.")
+             return render_template('objectives.html', objectives=[], error="Objectives data file is empty or invalid.")
+
+
+        # Load test results data and calculate counts
+        if test_results_path.exists():
+            try:
+                test_results_data = read_json_file(test_results_path)
+                # Ensure test_results_data is a dictionary and contains 'TestPlans' which is a list
+                if isinstance(test_results_data, dict) and 'TestPlans' in test_results_data and isinstance(test_results_data['TestPlans'], list):
+                    test_plans_list = test_results_data['TestPlans']
+                    logging.info(f"Processing {len(test_plans_list)} TestPlans from {test_results_path}.")
+                    for i, test_plan in enumerate(test_plans_list):
+                        if isinstance(test_plan, dict):
+                            # Correctly extract the Objective Key from the nested structure
+                            objective_data = test_plan.get('Objective', {}) # Get the Objective dict safely
+                            objective_key = objective_data.get('Key') if isinstance(objective_data, dict) else None # Get the key safely (Use 'Key' with uppercase K)
+
+                            tests_list = test_plan.get('Tests', []) # Default to empty list if 'Tests' key is missing
+
+                            # Ensure the objective key exists (and starts with OBJ-) and Tests is actually a list
+                            if objective_key and objective_key.startswith('OBJ-') and isinstance(tests_list, list):
+                                test_count = len(tests_list)
+                                # Use .get to safely handle the first time a key is encountered
+                                objective_test_counts[objective_key] = objective_test_counts.get(objective_key, 0) + test_count
+                                logging.debug(f"  TestPlan {i}: Key='{objective_key}', Found {test_count} tests. Cumulative count for key: {objective_test_counts[objective_key]}")
+                            else:
+                                logging.warning(f"  Skipping TestPlan {i}: Invalid structure. Key='{objective_key}' (Type: {type(objective_key)}), Tests Type: {type(tests_list)}")
+                        else:
+                            logging.warning(f"  Skipping TestPlan {i}: Item is not a dictionary (Type: {type(test_plan)}).")
+                else:
+                    logging.warning(f"Test results file {test_results_path} loaded but structure is invalid. Expected dict with 'TestPlans' list. Found type: {type(test_results_data)}")
+
+            except json.JSONDecodeError as e:
+                logging.error(f"Error decoding test results JSON file {test_results_path}: {e}")
+                # Reset counts if file is invalid
+                objective_test_counts = {}
+            except Exception as e:
+                logging.error(f"Unexpected error reading/processing test results file {test_results_path}: {e}")
+                # Reset counts on other errors
+                objective_test_counts = {}
+        else:
+            logging.warning(f"Test results file not found at {test_results_path}. Test counts will be 0.")
+
+        # Log the final calculated counts before processing objectives
+        logging.info(f"Final calculated objective_test_counts dictionary: {objective_test_counts}")
+
+        # Process objectives data
+        for objective in objectives_data:
+            key = objective.get('key', 'N/A')
+            name = objective.get('name', 'N/A')
+            status = objective.get('status', 'N/A')
+            if status and status != 'N/A': statuses.add(status)
+
+            # Extract from propertyBag
+            main_focus = 'N/A'
+            focus_list = []
+            ext_status = 'N/A'
+            net_list = []
+            properties = objective.get('propertyBag', {}).get('properties', [])
+            for prop in properties:
+                prop_name = prop.get('name')
+                prop_values = prop.get('values')
+                if prop_values: # Check if values list exists and is not empty
+                    first_value = prop_values[0] if prop_values else 'N/A'
+                    if prop_name == 'MainFocusArea':
+                        main_focus = first_value
+                        if main_focus and main_focus != 'N/A': focus_areas.add(main_focus)
+                    elif prop_name == 'FocusAreas':
+                        focus_list = [val for val in prop_values if val] # Filter out empty strings
+                        for fa in focus_list:
+                            if fa and fa != 'N/A': focus_areas.add(fa)
+                    elif prop_name == 'ExternalStatus':
+                        ext_status = first_value
+                        if ext_status and ext_status != 'N/A': external_statuses.add(ext_status)
+                    elif prop_name == 'Networks':
+                        net_list = [val for val in prop_values if val] # Filter out empty strings
+                        for net in net_list:
+                            if net and net != 'N/A': networks.add(net)
+
+            # Get test count
+            test_count = objective_test_counts.get(key, 0)
+
+            processed_objectives.append({
+                'key': key,
+                'name': name,
+                'status': status,
+                'main_focus_area': main_focus,
+                'focus_areas': focus_list,
+                'external_status': ext_status,
+                'networks': net_list,
+                'test_count': test_count
+            })
+
+        # Prepare filter lists for template
+        filter_data = {
+            'statuses': sorted(list(statuses)),
+            'external_statuses': sorted(list(external_statuses)),
+            'networks': sorted(list(networks)),
+            'focus_areas': sorted(list(focus_areas))
+        }
+
+        return render_template('objectives.html', objectives=processed_objectives, filters=filter_data)
+
+    except FileNotFoundError as e:
+         logging.error(f"Data file not found: {e}")
+         return render_template('objectives.html', objectives=[], error=f"Required data file not found: {e.filename}")
+    except json.JSONDecodeError as e:
+        logging.error(f"Error decoding objectives JSON file: {e}")
+        return render_template('objectives.html', objectives=[], error="Error reading objectives data file format.")
+    except Exception as e:
+        logging.exception("Error processing objectives data:")
+        return render_template('objectives.html', objectives=[], error="An unexpected error occurred while processing objectives data.")
+
+
 # --- Updated ASC Routes ---
 
 @views_bp.route('/affiliates')

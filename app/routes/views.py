@@ -177,6 +177,18 @@ def test_cases():
     logging.info("Accessing test cases")
     return render_template('test_case.html')
 
+@views_bp.route('/work_in_progress')
+@login_required
+def work_in_progress():
+    """
+    Render the work in progress page.
+
+    Returns:
+        Rendered work in progress template
+    """
+    logging.info("Accessing work in progress page")
+    return render_template('work_in_progress.html')
+
 
 # --- Updated ASC Routes ---
 

@@ -1889,3 +1889,324 @@ information about how to avoid this problem.
 2025-04-07 14:50:54 - API Route: Returning GP data successfully.
 2025-04-07 14:50:54 - 127.0.0.1 - - [07/Apr/2025 14:50:54] "GET /api/gps HTTP/1.1" 200 -
 2025-04-07 14:50:54 - 127.0.0.1 - - [07/Apr/2025 14:50:54] "GET /static/ASC/image/srv/diagram_informal_messaging.jpg HTTP/1.1" 200 -
+2025-04-08 09:29:10 - SSL verification is disabled. This is insecure.
+2025-04-08 09:29:10 - Getting test cases data from api/test-cases
+2025-04-08 09:29:10 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/test-cases
+2025-04-08 09:29:10 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/test-cases completed in 0.32 seconds
+2025-04-08 09:29:10 - Error getting test cases
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/WORK/IONIC2/app/routes/api.py", line 360, in get_test_cases
+    result = client.get_test_cases(environment=environment) # Pass environment
+  File "/Users/fjmoreno72/WORK/IONIC2/app/api/iocore2.py", line 248, in get_test_cases
+    response = self.get(api_url)
+  File "/Users/fjmoreno72/WORK/IONIC2/app/api/client.py", line 155, in get
+    raise ApiRequestError(
+    ...<3 lines>...
+    )
+app.core.exceptions.ApiRequestError: API request failed with status code: 401
+2025-04-08 09:29:10 - 127.0.0.1 - - [08/Apr/2025 09:29:10] "GET /get_test_cases HTTP/1.1" 200 -
+2025-04-08 09:29:15 - User logged out
+2025-04-08 09:29:15 - 127.0.0.1 - - [08/Apr/2025 09:29:15] "GET /logout HTTP/1.1" 200 -
+2025-04-08 09:29:15 - 127.0.0.1 - - [08/Apr/2025 09:29:15] "GET / HTTP/1.1" 200 -
+2025-04-08 09:29:15 - 127.0.0.1 - - [08/Apr/2025 09:29:15] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 09:29:15 - 127.0.0.1 - - [08/Apr/2025 09:29:15] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 09:29:15 - 127.0.0.1 - - [08/Apr/2025 09:29:15] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 09:29:16 - 127.0.0.1 - - [08/Apr/2025 09:29:16] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 09:29:22 - SSL verification is disabled. This is insecure.
+2025-04-08 09:29:23 - Found verification token using method: BeautifulSoup input tag
+2025-04-08 09:29:23 - Found additional field: RememberMe
+2025-04-08 09:29:24 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-04-08 09:29:24 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-04-08 09:29:24 - User francisco.moreno@ncia.nato.int logged in successfully to ciav environment
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "POST /login HTTP/1.1" 200 -
+2025-04-08 09:29:24 - Accessing functional tree view
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 09:29:24 - 127.0.0.1 - - [08/Apr/2025 09:29:24] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 09:29:28 - SSL verification is disabled. This is insecure.
+2025-04-08 09:29:28 - Getting test cases data from api/test-cases
+2025-04-08 09:29:28 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/test-cases
+2025-04-08 09:29:30 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/test-cases completed in 1.83 seconds
+2025-04-08 09:29:30 - Successfully wrote data to data/ciav/test_cases.json
+2025-04-08 09:29:30 - 127.0.0.1 - - [08/Apr/2025 09:29:30] "GET /get_test_cases HTTP/1.1" 200 -
+2025-04-08 09:29:30 - Handling GET request to /get_actors
+2025-04-08 09:29:30 - SSL verification is disabled. This is insecure.
+2025-04-08 09:29:30 - Handling GET request to /get_patterns
+2025-04-08 09:29:30 - Attempting to fetch actors data from API
+2025-04-08 09:29:30 - SSL verification is disabled. This is insecure.
+2025-04-08 09:29:30 - Attempting to get test case actors data from api/test-cases/actors
+2025-04-08 09:29:30 - Attempting to fetch patterns data from API
+2025-04-08 09:29:30 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/test-cases/actors
+2025-04-08 09:29:30 - Attempting to get test case patterns data from api/test-cases/patterns
+2025-04-08 09:29:30 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/test-cases/patterns
+2025-04-08 09:29:31 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/test-cases/actors completed in 0.24 seconds
+2025-04-08 09:29:31 - Got response from actors endpoint with status: 200
+2025-04-08 09:29:31 - Successfully parsed response JSON from actors endpoint
+2025-04-08 09:29:31 - Saving actors data to data/ciav/actors.json
+2025-04-08 09:29:31 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/test-cases/patterns completed in 0.25 seconds
+2025-04-08 09:29:31 - Got response from patterns endpoint with status: 200
+2025-04-08 09:29:31 - Successfully parsed response JSON from patterns endpoint
+2025-04-08 09:29:31 - Saving patterns data to data/ciav/pattern.json
+2025-04-08 09:29:31 - Successfully wrote data to data/ciav/actors.json
+2025-04-08 09:29:31 - Actors data successfully saved to data/ciav/actors.json
+2025-04-08 09:29:31 - Actors operation completed in 0.27s, count: 906
+2025-04-08 09:29:31 - Successfully fetched actors. Count: 906
+2025-04-08 09:29:31 - Successfully wrote data to data/ciav/pattern.json
+2025-04-08 09:29:31 - 127.0.0.1 - - [08/Apr/2025 09:29:31] "GET /get_actors HTTP/1.1" 200 -
+2025-04-08 09:29:31 - Patterns data successfully saved to data/ciav/pattern.json
+2025-04-08 09:29:31 - Patterns operation completed in 0.27s, count: 20
+2025-04-08 09:29:31 - Successfully fetched patterns. Count: 20
+2025-04-08 09:29:31 - 127.0.0.1 - - [08/Apr/2025 09:29:31] "GET /get_patterns HTTP/1.1" 200 -
+2025-04-08 09:46:24 - Logging system configured with level INFO
+2025-04-08 09:46:24 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 09:46:24 - Applying authentication system patches...
+2025-04-08 09:46:24 - Authentication system patches applied successfully
+2025-04-08 09:46:24 - Enhanced authentication system applied
+2025-04-08 09:46:24 - Configured Flask app logging with level INFO
+2025-04-08 09:46:24 - Configured Flask app logging with level INFO
+2025-04-08 09:46:24 - Logging system configured with level INFO
+2025-04-08 09:46:24 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 09:46:24 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 09:46:24 - Template files: templates
+2025-04-08 09:46:24 - Running in DEBUG mode
+2025-04-08 09:46:24 - Listening on 0.0.0.0:5006
+2025-04-08 09:46:24 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.10.40:5006
+2025-04-08 09:46:24 - [33mPress CTRL+C to quit[0m
+2025-04-08 09:46:24 -  * Restarting with stat
+2025-04-08 09:46:24 - Logging system configured with level INFO
+2025-04-08 09:46:24 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 09:46:24 - Applying authentication system patches...
+2025-04-08 09:46:24 - Authentication system patches applied successfully
+2025-04-08 09:46:24 - Enhanced authentication system applied
+2025-04-08 09:46:24 - Configured Flask app logging with level INFO
+2025-04-08 09:46:24 - Configured Flask app logging with level INFO
+2025-04-08 09:46:24 - Logging system configured with level INFO
+2025-04-08 09:46:24 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 09:46:24 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 09:46:24 - Template files: templates
+2025-04-08 09:46:24 - Running in DEBUG mode
+2025-04-08 09:46:24 - Listening on 0.0.0.0:5006
+2025-04-08 09:46:24 -  * Debugger is active!
+2025-04-08 09:46:24 -  * Debugger PIN: 288-963-664
+2025-04-08 09:46:27 - Accessing functional tree view
+2025-04-08 09:46:27 - Error organizing functional data:
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/WORK/IONIC2/app/routes/views.py", line 101, in view_tree_func
+    return render_template("index_tree_func.html", data=organized_data, default_url=settings.DEFAULT_URL)
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/fjmoreno72/WORK/IONIC2/app/templates/index_tree_func.html", line 522, in top-level template code
+    {% include 'nav_menu.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/app/templates/nav_menu.html", line 286, in top-level template code
+    <a href="{{ url_for('views.work_in_progress') }}">Test Results</a>
+    ^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'views.work_in_progress'. Did you mean 'views.view_ier_tree' instead?
+2025-04-08 09:46:27 - Unexpected exception:
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/WORK/IONIC2/app/routes/views.py", line 101, in view_tree_func
+    return render_template("index_tree_func.html", data=organized_data, default_url=settings.DEFAULT_URL)
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/fjmoreno72/WORK/IONIC2/app/templates/index_tree_func.html", line 522, in top-level template code
+    {% include 'nav_menu.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/app/templates/nav_menu.html", line 286, in top-level template code
+    <a href="{{ url_for('views.work_in_progress') }}">Test Results</a>
+    ^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'views.work_in_progress'. Did you mean 'views.view_ier_tree' instead?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/app/core/auth.py", line 43, in decorated_function
+    return f(*args, **kwargs)
+  File "/Users/fjmoreno72/WORK/IONIC2/app/routes/views.py", line 104, in view_tree_func
+    return render_template("index_tree_func.html", default_url=settings.DEFAULT_URL)
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/fjmoreno72/WORK/IONIC2/app/templates/index_tree_func.html", line 522, in top-level template code
+    {% include 'nav_menu.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/app/templates/nav_menu.html", line 286, in top-level template code
+    <a href="{{ url_for('views.work_in_progress') }}">Test Results</a>
+    ^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/Users/fjmoreno72/WORK/IONIC2/.venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'views.work_in_progress'. Did you mean 'views.view_ier_tree' instead?
+2025-04-08 09:46:27 - 127.0.0.1 - - [08/Apr/2025 09:46:27] "[35m[1mGET /view_tree_func HTTP/1.1[0m" 500 -
+2025-04-08 09:46:28 - 127.0.0.1 - - [08/Apr/2025 09:46:28] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-04-08 09:47:51 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/app/routes/views.py', reloading
+2025-04-08 09:47:51 -  * Restarting with stat
+2025-04-08 09:47:51 - Logging system configured with level INFO
+2025-04-08 09:47:51 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 09:47:51 - Applying authentication system patches...
+2025-04-08 09:47:51 - Authentication system patches applied successfully
+2025-04-08 09:47:51 - Enhanced authentication system applied
+2025-04-08 09:47:51 - Configured Flask app logging with level INFO
+2025-04-08 09:47:51 - Configured Flask app logging with level INFO
+2025-04-08 09:47:51 - Logging system configured with level INFO
+2025-04-08 09:47:51 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 09:47:51 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 09:47:51 - Template files: templates
+2025-04-08 09:47:51 - Running in DEBUG mode
+2025-04-08 09:47:51 - Listening on 0.0.0.0:5006
+2025-04-08 09:47:51 -  * Debugger is active!
+2025-04-08 09:47:51 -  * Debugger PIN: 288-963-664
+2025-04-08 09:48:02 - Logging system configured with level INFO
+2025-04-08 09:48:02 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 09:48:02 - Applying authentication system patches...
+2025-04-08 09:48:02 - Authentication system patches applied successfully
+2025-04-08 09:48:02 - Enhanced authentication system applied
+2025-04-08 09:48:02 - Configured Flask app logging with level INFO
+2025-04-08 09:48:02 - Configured Flask app logging with level INFO
+2025-04-08 09:48:02 - Logging system configured with level INFO
+2025-04-08 09:48:02 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 09:48:02 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 09:48:02 - Template files: templates
+2025-04-08 09:48:02 - Running in DEBUG mode
+2025-04-08 09:48:02 - Listening on 0.0.0.0:5006
+2025-04-08 09:48:02 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://10.79.10.40:5006
+2025-04-08 09:48:02 - [33mPress CTRL+C to quit[0m
+2025-04-08 09:48:02 -  * Restarting with stat
+2025-04-08 09:48:02 - Logging system configured with level INFO
+2025-04-08 09:48:02 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 09:48:02 - Applying authentication system patches...
+2025-04-08 09:48:02 - Authentication system patches applied successfully
+2025-04-08 09:48:02 - Enhanced authentication system applied
+2025-04-08 09:48:02 - Configured Flask app logging with level INFO
+2025-04-08 09:48:02 - Configured Flask app logging with level INFO
+2025-04-08 09:48:02 - Logging system configured with level INFO
+2025-04-08 09:48:02 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 09:48:02 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 09:48:02 - Template files: templates
+2025-04-08 09:48:02 - Running in DEBUG mode
+2025-04-08 09:48:02 - Listening on 0.0.0.0:5006
+2025-04-08 09:48:02 -  * Debugger is active!
+2025-04-08 09:48:02 -  * Debugger PIN: 288-963-664
+2025-04-08 09:48:06 - 127.0.0.1 - - [08/Apr/2025 09:48:06] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-08 09:48:06 - 127.0.0.1 - - [08/Apr/2025 09:48:06] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 204 -
+2025-04-08 09:48:08 - Accessing functional tree view
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/favicon/favicon.ico HTTP/1.1[0m" 304 -
+2025-04-08 09:48:08 - 127.0.0.1 - - [08/Apr/2025 09:48:08] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 09:48:13 - Accessing work in progress page
+2025-04-08 09:48:13 - 127.0.0.1 - - [08/Apr/2025 09:48:13] "GET /work_in_progress HTTP/1.1" 200 -
+2025-04-08 09:48:13 - 127.0.0.1 - - [08/Apr/2025 09:48:13] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:13 - 127.0.0.1 - - [08/Apr/2025 09:48:13] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:13 - 127.0.0.1 - - [08/Apr/2025 09:48:13] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:13 - 127.0.0.1 - - [08/Apr/2025 09:48:13] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:13 - 127.0.0.1 - - [08/Apr/2025 09:48:13] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:13 - 127.0.0.1 - - [08/Apr/2025 09:48:13] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:13 - 127.0.0.1 - - [08/Apr/2025 09:48:13] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 09:48:13 - 127.0.0.1 - - [08/Apr/2025 09:48:13] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 09:48:16 - Accessing work in progress page
+2025-04-08 09:48:16 - 127.0.0.1 - - [08/Apr/2025 09:48:16] "GET /work_in_progress HTTP/1.1" 200 -
+2025-04-08 09:48:16 - 127.0.0.1 - - [08/Apr/2025 09:48:16] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:16 - 127.0.0.1 - - [08/Apr/2025 09:48:16] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:16 - 127.0.0.1 - - [08/Apr/2025 09:48:16] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:16 - 127.0.0.1 - - [08/Apr/2025 09:48:16] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:16 - 127.0.0.1 - - [08/Apr/2025 09:48:16] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:16 - 127.0.0.1 - - [08/Apr/2025 09:48:16] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:16 - 127.0.0.1 - - [08/Apr/2025 09:48:16] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 09:48:16 - 127.0.0.1 - - [08/Apr/2025 09:48:16] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 09:48:17 - Accessing work in progress page
+2025-04-08 09:48:17 - 127.0.0.1 - - [08/Apr/2025 09:48:17] "GET /work_in_progress HTTP/1.1" 200 -
+2025-04-08 09:48:17 - 127.0.0.1 - - [08/Apr/2025 09:48:17] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:17 - 127.0.0.1 - - [08/Apr/2025 09:48:17] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:17 - 127.0.0.1 - - [08/Apr/2025 09:48:17] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:17 - 127.0.0.1 - - [08/Apr/2025 09:48:17] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:17 - 127.0.0.1 - - [08/Apr/2025 09:48:17] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:17 - 127.0.0.1 - - [08/Apr/2025 09:48:17] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:17 - 127.0.0.1 - - [08/Apr/2025 09:48:17] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 09:48:17 - 127.0.0.1 - - [08/Apr/2025 09:48:17] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-08 09:48:18 - Accessing work in progress page
+2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "GET /work_in_progress HTTP/1.1" 200 -
+2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "GET /check_auth HTTP/1.1" 200 -
+2025-04-08 09:48:18 - 127.0.0.1 - - [08/Apr/2025 09:48:18] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -

@@ -277,6 +277,18 @@ body {
                 <a href="{{ url_for('views.asc_kanban') }}">ASC Kanban</a>
             </div>
         </div>
+        <!-- New Execution Dropdown -->
+        <div class="dropdown">
+            <a href="#" class="btn dropdown-toggle">
+                <i class="fas fa-clipboard-list"></i> Execution
+            </a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('views.work_in_progress') }}">Test Results</a>
+                <a href="{{ url_for('views.work_in_progress') }}">Objectives</a>
+                <a href="{{ url_for('views.work_in_progress') }}">Participants</a>
+                <a href="{{ url_for('views.work_in_progress') }}">Statistics</a>
+            </div>
+        </div>
         <a href="/system_monitor" class="btn">
             <i class="fas fa-desktop"></i> System Monitor
         </a>

@@ -10265,3 +10265,20 @@ AttributeError: 'str' object has no attribute 'get'
 2025-04-08 18:49:07 - Successfully loaded 906 actors into map in 0.00 seconds.
 2025-04-08 18:49:07 - 127.0.0.1 - - [08/Apr/2025 18:49:07] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
 2025-04-08 18:49:07 - 127.0.0.1 - - [08/Apr/2025 18:49:07] "GET /api/actor/a6d646c3-8f51-45f7-8975-60c1828e8aa7 HTTP/1.1" 200 -
+2025-04-08 18:53:55 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC2/app/data_models/sreq_analysis.py', reloading
+2025-04-08 18:53:55 -  * Restarting with stat
+2025-04-08 18:53:55 - Logging system configured with level INFO
+2025-04-08 18:53:55 - Starting IOCore2 Coverage Analysis Tool
+2025-04-08 18:53:55 - Applying authentication system patches...
+2025-04-08 18:53:55 - Authentication system patches applied successfully
+2025-04-08 18:53:55 - Enhanced authentication system applied
+2025-04-08 18:53:55 - Configured Flask app logging with level INFO
+2025-04-08 18:53:55 - Configured Flask app logging with level INFO
+2025-04-08 18:53:55 - Logging system configured with level INFO
+2025-04-08 18:53:55 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-08 18:53:55 - Static files: /Users/fjmoreno72/WORK/IONIC2/app/static
+2025-04-08 18:53:55 - Template files: templates
+2025-04-08 18:53:55 - Running in DEBUG mode
+2025-04-08 18:53:55 - Listening on 0.0.0.0:5007
+2025-04-08 18:53:55 -  * Debugger is active!
+2025-04-08 18:53:55 -  * Debugger PIN: 288-963-664

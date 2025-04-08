@@ -236,7 +236,7 @@ def organize_tin_data(sreq_data: List[Dict[str, Any]]) -> Dict[Tuple[str, str], 
             continue 
 
         # If the requirement is covered in a dependency
-        if test_case_coverage_type == 'tdp':
+        if test_case_coverage_type == 'idp':
             continue
 
         # Initialize nested structure

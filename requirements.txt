@@ -3,6 +3,7 @@ markdown
 requests
 urllib3
 psutil
+ijson
 beautifulsoup4
 pandas
 openpyxl

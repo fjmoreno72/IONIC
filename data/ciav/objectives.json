@@ -1,0 +1,626 @@
+[
+    {
+        "id": "19157c74-f7c0-4107-9209-cab219e9fcab",
+        "resourceId": {
+            "value": "urn:event:objective:19157c74-f7c0-4107-9209-cab219e9fcab"
+        },
+        "key": "OBJ-CIAV-000034",
+        "name": "TT-SI-Air C2 Information Exchange",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "3b5be1b9-2965-4f5e-ae1b-dcccf1504a41",
+        "resourceId": {
+            "value": "urn:event:objective:3b5be1b9-2965-4f5e-ae1b-dcccf1504a41"
+        },
+        "key": "OBJ-CIAV-000035",
+        "name": "TT-SI-Fires Information Exchange",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "5d3842ef-4505-4568-9e8f-6971fee3481a",
+        "resourceId": {
+            "value": "urn:event:objective:5d3842ef-4505-4568-9e8f-6971fee3481a"
+        },
+        "key": "OBJ-CIAV-000036",
+        "name": "TT-SI-Intelligence Battlespace Objects Exchange",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "3d426e9d-e1c5-461b-82b1-30cb862977ba",
+        "resourceId": {
+            "value": "urn:event:objective:3d426e9d-e1c5-461b-82b1-30cb862977ba"
+        },
+        "key": "OBJ-CIAV-000037",
+        "name": "TT-SI-Joint ISR Information Exchange",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "1a6545be-660e-4308-a4b6-07c02f316e8e",
+        "resourceId": {
+            "value": "urn:event:objective:1a6545be-660e-4308-a4b6-07c02f316e8e"
+        },
+        "key": "OBJ-CIAV-000038",
+        "name": "TT-SI-Land C2 Information Exchange",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "f7b1d93e-c420-4bdc-b6e7-7135c986e503",
+        "resourceId": {
+            "value": "urn:event:objective:f7b1d93e-c420-4bdc-b6e7-7135c986e503"
+        },
+        "key": "OBJ-CIAV-000039",
+        "name": "TT-SI-Land Tactical C2 Information Exchange",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "53f2a403-d2ff-40b8-8d86-d98aa53ca919",
+        "resourceId": {
+            "value": "urn:event:objective:53f2a403-d2ff-40b8-8d86-d98aa53ca919"
+        },
+        "key": "OBJ-CIAV-000040",
+        "name": "TT-SI-Maritime C2 Information Exchange",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "552a4679-ab41-4d22-97c6-e39d30b7dc2b",
+        "resourceId": {
+            "value": "urn:event:objective:552a4679-ab41-4d22-97c6-e39d30b7dc2b"
+        },
+        "key": "OBJ-CIAV-000041",
+        "name": "TT-SI-Data Links",
+        "description": "The Objective is to evaluate the readiness of the SP5 Test Cases for Data Links",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "76d6d7e1-c816-442c-8cf7-53bc5c6b2ec5",
+        "resourceId": {
+            "value": "urn:event:objective:76d6d7e1-c816-442c-8cf7-53bc5c6b2ec5"
+        },
+        "key": "OBJ-CIAV-000042",
+        "name": "TT-SI-Friendly Force Tracking",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "dff87065-8865-4cc3-992a-9de5c49fdd05",
+        "resourceId": {
+            "value": "urn:event:objective:dff87065-8865-4cc3-992a-9de5c49fdd05"
+        },
+        "key": "OBJ-CIAV-000043",
+        "name": "TT-SI-Ground-to-Air Information Exchange",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "8ed77eee-0eb7-473a-bd04-4cb4557fab70",
+        "resourceId": {
+            "value": "urn:event:objective:8ed77eee-0eb7-473a-bd04-4cb4557fab70"
+        },
+        "key": "OBJ-CIAV-000044",
+        "name": "TT-SI-Overlay Distribution",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "c2f8f81a-f6ff-4620-a33f-e21249858cd7",
+        "resourceId": {
+            "value": "urn:event:objective:c2f8f81a-f6ff-4620-a33f-e21249858cd7"
+        },
+        "key": "OBJ-CIAV-000045",
+        "name": "TT-SI-Audio and Video-based Collaboration",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "eb999779-f672-43af-8a3a-037fef062c9a",
+        "resourceId": {
+            "value": "urn:event:objective:eb999779-f672-43af-8a3a-037fef062c9a"
+        },
+        "key": "OBJ-CIAV-000046",
+        "name": "TT-SS-Calendaring and Scheduling",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "c415af0f-a3b9-46fb-84cb-deedf7b4caa6",
+        "resourceId": {
+            "value": "urn:event:objective:c415af0f-a3b9-46fb-84cb-deedf7b4caa6"
+        },
+        "key": "OBJ-CIAV-000047",
+        "name": "TT-SI-Digital Certificates",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "bcb3b2da-94d1-4c4a-80f8-5b9aed8bb7e9",
+        "resourceId": {
+            "value": "urn:event:objective:bcb3b2da-94d1-4c4a-80f8-5b9aed8bb7e9"
+        },
+        "key": "OBJ-CIAV-000048",
+        "name": "TT-SI-Directory Data Synchronization",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "Active",
+        "state": "Active",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "f7afeabd-6263-4052-907b-a0048242f7d8",
+        "resourceId": {
+            "value": "urn:event:objective:f7afeabd-6263-4052-907b-a0048242f7d8"
+        },
+        "key": "OBJ-CIAV-000049",
+        "name": "TT-SI-Distributed Time",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "2cbc1fe2-15f5-4fc6-b7d4-736b3058f647",
+        "resourceId": {
+            "value": "urn:event:objective:2cbc1fe2-15f5-4fc6-b7d4-736b3058f647"
+        },
+        "key": "OBJ-CIAV-000050",
+        "name": "TT-SI-Domain Naming",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "7749b60d-a009-47a8-823d-10d389897ddf",
+        "resourceId": {
+            "value": "urn:event:objective:7749b60d-a009-47a8-823d-10d389897ddf"
+        },
+        "key": "OBJ-CIAV-000051",
+        "name": "TT-SI-Geospatial Information",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "873660f6-7eaf-4f4d-b0a6-af7e54824697",
+        "resourceId": {
+            "value": "urn:event:objective:873660f6-7eaf-4f4d-b0a6-af7e54824697"
+        },
+        "key": "OBJ-CIAV-000052",
+        "name": "TT-SI-Informal Messaging",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "59d08a3c-20f7-4924-8b42-1f85c79aa83e",
+        "resourceId": {
+            "value": "urn:event:objective:59d08a3c-20f7-4924-8b42-1f85c79aa83e"
+        },
+        "key": "OBJ-CIAV-000053",
+        "name": "TT-SI-Service Management and Control",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "4b4097c9-868e-4e0d-9d02-e01dcb116663",
+        "resourceId": {
+            "value": "urn:event:objective:4b4097c9-868e-4e0d-9d02-e01dcb116663"
+        },
+        "key": "OBJ-CIAV-000054",
+        "name": "TT-SI-Text-based Collaboration",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "86358055-b50a-4daa-a519-f04315df0e19",
+        "resourceId": {
+            "value": "urn:event:objective:86358055-b50a-4daa-a519-f04315df0e19"
+        },
+        "key": "OBJ-CIAV-000055",
+        "name": "TT-SI-Virtualized Processing",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "fd00f3b9-c349-4c26-942f-a9902d8d95b2",
+        "resourceId": {
+            "value": "urn:event:objective:fd00f3b9-c349-4c26-942f-a9902d8d95b2"
+        },
+        "key": "OBJ-CIAV-000056",
+        "name": "TT-SI-Web Authentication",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "734b50b7-a2f3-45f1-906c-5ef446185d18",
+        "resourceId": {
+            "value": "urn:event:objective:734b50b7-a2f3-45f1-906c-5ef446185d18"
+        },
+        "key": "OBJ-CIAV-000057",
+        "name": "TT-SI-Web Hosting",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "e547e2b3-6fe0-4290-8c6d-9054abf75d25",
+        "resourceId": {
+            "value": "urn:event:objective:e547e2b3-6fe0-4290-8c6d-9054abf75d25"
+        },
+        "key": "OBJ-CIAV-000058",
+        "name": "TT-SI-Communications",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "bff2da25-ffa3-497e-9df8-2846c57b4267",
+        "resourceId": {
+            "value": "urn:event:objective:bff2da25-ffa3-497e-9df8-2846c57b4267"
+        },
+        "key": "OBJ-CIAV-000059",
+        "name": "TT-SI-Communications Transport",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "a9ae7cfd-659d-43f5-a081-38e73144f13c",
+        "resourceId": {
+            "value": "urn:event:objective:a9ae7cfd-659d-43f5-a081-38e73144f13c"
+        },
+        "key": "OBJ-CIAV-000060",
+        "name": "TT-SI-Protected Core Networking",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "b38ed1e0-b982-44f3-bef6-c4365388f57b",
+        "resourceId": {
+            "value": "urn:event:objective:b38ed1e0-b982-44f3-bef6-c4365388f57b"
+        },
+        "key": "OBJ-CIAV-000061",
+        "name": "TT-PI-C2 of Air Operations",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "d0b46348-7032-4ba6-ab43-07da6df7ea6e",
+        "resourceId": {
+            "value": "urn:event:objective:d0b46348-7032-4ba6-ab43-07da6df7ea6e"
+        },
+        "key": "OBJ-CIAV-000062",
+        "name": "TT-PI-C2 of Cyberspace Operations",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "f835fc8f-fc2f-4204-9f32-e95b6b709f00",
+        "resourceId": {
+            "value": "urn:event:objective:f835fc8f-fc2f-4204-9f32-e95b6b709f00"
+        },
+        "key": "OBJ-CIAV-000063",
+        "name": "TT-PI-C2 of Land Operations",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "6a2888cf-9238-418d-8b86-0b319993009e",
+        "resourceId": {
+            "value": "urn:event:objective:6a2888cf-9238-418d-8b86-0b319993009e"
+        },
+        "key": "OBJ-CIAV-000064",
+        "name": "TT-PI-C2 of Maritime Operations",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "a914868e-f27a-4b53-9061-8169c00019fc",
+        "resourceId": {
+            "value": "urn:event:objective:a914868e-f27a-4b53-9061-8169c00019fc"
+        },
+        "key": "OBJ-CIAV-000065",
+        "name": "TT-PI-C2 of MedEvac Missions",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "7aad29a9-d4fd-49d8-8c11-88fbe7f402d8",
+        "resourceId": {
+            "value": "urn:event:objective:7aad29a9-d4fd-49d8-8c11-88fbe7f402d8"
+        },
+        "key": "OBJ-CIAV-000066",
+        "name": "TT-PI-CIMIC",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "67c0aba5-ca4a-4823-a598-d541da111880",
+        "resourceId": {
+            "value": "urn:event:objective:67c0aba5-ca4a-4823-a598-d541da111880"
+        },
+        "key": "OBJ-CIAV-000067",
+        "name": "TT-PI-Fires",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "9169bb82-1526-4ff1-b08c-a736179c1cff",
+        "resourceId": {
+            "value": "urn:event:objective:9169bb82-1526-4ff1-b08c-a736179c1cff"
+        },
+        "key": "OBJ-CIAV-000068",
+        "name": "TT-PI-Intelligence and JISR",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "fa098a0e-159e-4f45-be69-2a7cdbc897f1",
+        "resourceId": {
+            "value": "urn:event:objective:fa098a0e-159e-4f45-be69-2a7cdbc897f1"
+        },
+        "key": "OBJ-CIAV-000069",
+        "name": "TT-PI-Joint Targeting",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "40e362d2-6035-46ae-a82d-7a44dfdc7416",
+        "resourceId": {
+            "value": "urn:event:objective:40e362d2-6035-46ae-a82d-7a44dfdc7416"
+        },
+        "key": "OBJ-CIAV-000070",
+        "name": "TT-PI-Operational Level C2",
+        "description": "",
+        "objectiveType": "free",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "fc764a92-0dc1-4af8-bc6c-6e1705bc60d9",
+        "resourceId": {
+            "value": "urn:event:objective:fc764a92-0dc1-4af8-bc6c-6e1705bc60d9"
+        },
+        "key": "OBJ-CIAV-000071",
+        "name": "TT-PI-Situational Awareness",
+        "description": "",
+        "objectiveType": "sP5",
+        "status": "",
+        "state": "",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    },
+    {
+        "id": "eb588f92-be08-4995-8e08-41232e47c150",
+        "resourceId": {
+            "value": "urn:event:objective:eb588f92-be08-4995-8e08-41232e47c150"
+        },
+        "key": "OBJ-CIAV-000073",
+        "name": "JREAP-C",
+        "description": "",
+        "objectiveType": "free",
+        "status": "Active",
+        "state": "Active",
+        "propertyBag": {
+            "properties": []
+        },
+        "scopeType": "objective"
+    }
+]

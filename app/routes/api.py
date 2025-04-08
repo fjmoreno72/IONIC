@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import json
 import time # Added for timing load
+import ijson # Import ijson
 
 from flask import Blueprint, jsonify, session, request, current_app, url_for # Added url_for
 from werkzeug.exceptions import BadRequest, NotFound # Added NotFound
@@ -888,6 +889,99 @@ def get_test_cases_data_file():
     except Exception as e:
         logging.exception("Error fetching test cases data file:")
         return jsonify({"error": "An unexpected error occurred while fetching test cases data file."}), 500
+
+@api_bp.route('/api/test_results_data', methods=['GET'])
+@login_required
+def get_test_results_data_file():
+    """
+    API endpoint to stream and process the large test results data file.
+
+    Returns:
+        JSON response with processed test results and filter options.
+    """
+    try:
+        # Use dynamic path
+        test_results_path = get_dynamic_data_path('test_results.json')
+        logging.info(f"Attempting to stream test results data from: {test_results_path}")
+
+        if not test_results_path.exists():
+            logging.error(f"Test results file not found at {test_results_path}")
+            # Return empty data and filters if file not found
+            return jsonify({
+                "data": [],
+                "filters": {
+                    "objectives": [],
+                    "statuses": [],
+                    "overallResults": [],
+                    "participants": []
+                },
+                "error": "Test results data file not found."
+            }), 404
+
+        results_data = []
+        objectives = set()
+        statuses = set()
+        overall_results = set()
+        participants = set()
+
+        with open(test_results_path, 'rb') as f: # Open in binary mode for ijson
+            # Stream the 'TestPlans' array
+            test_plans = ijson.items(f, 'TestPlans.item')
+            for test_plan in test_plans:
+                objective_key = test_plan.get('Objective', {}).get('Key')
+                test_plan_key = test_plan.get('Key')
+                if objective_key:
+                    objectives.add(objective_key)
+
+                # Iterate through tests within the current test plan
+                tests = test_plan.get('Tests', [])
+                if tests: # Ensure 'Tests' exists and is a list
+                    for test in tests:
+                        coordinator = test.get('Coordinator', {}).get('Participant')
+                        partners_list = [p.get('Participant') for p in test.get('Partners', []) if p.get('Participant')]
+                        status = test.get('Status')
+                        overall_result = test.get('AnalysisResult', {}).get('OverallResult', {}).get('Result')
+
+                        if status:
+                            statuses.add(status)
+                        if overall_result:
+                            overall_results.add(overall_result)
+                        if coordinator:
+                            participants.add(coordinator)
+                        for partner in partners_list:
+                            participants.add(partner)
+
+                        results_data.append({
+                            "objectiveKey": objective_key,
+                            "testPlanKey": test_plan_key,
+                            "testName": test.get('Name'),
+                            "status": status,
+                            "coordinator": coordinator,
+                            "partners": partners_list,
+                            "overallResult": overall_result
+                        })
+
+        logging.info(f"Successfully processed {len(results_data)} test results from stream.")
+
+        return jsonify({
+            "data": results_data,
+            "filters": {
+                "objectives": sorted(list(objectives)),
+                "statuses": sorted(list(statuses)),
+                "overallResults": sorted(list(overall_results)),
+                "participants": sorted(list(participants))
+            }
+        })
+
+    except ijson.JSONError as e:
+        logging.exception(f"Error parsing JSON from {test_results_path}: {e}")
+        return jsonify({"error": f"Failed to parse test results data file: {e}"}), 500
+    except FileNotFoundError:
+        logging.error(f"Test results file not found during processing at {test_results_path}")
+        return jsonify({"error": "Test results data file not found."}), 404
+    except Exception as e:
+        logging.exception("Error processing test results data file:")
+        return jsonify({"error": "An unexpected error occurred while processing test results data file."}), 500
 
 
 def process_sreq_coverage_in_background(url, cookies, environment):

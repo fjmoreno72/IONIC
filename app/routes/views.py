@@ -189,6 +189,18 @@ def work_in_progress():
     logging.info("Accessing work in progress page")
     return render_template('work_in_progress.html')
 
+@views_bp.route('/test_results')
+@login_required
+def test_results():
+    """
+    Render the test results page.
+
+    Returns:
+        Rendered test results template
+    """
+    logging.info("Accessing test results")
+    return render_template('test_results.html')
+
 
 # --- Updated ASC Routes ---
 

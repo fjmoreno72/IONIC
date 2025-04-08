@@ -10086,3 +10086,4 @@ data/unmapped_sreqs.log
 app/static/ASC/data/~$LinkTypeConfigurationQuestionsOverview.xlsx
 .gitignore
 .gitignore
+.DS_Store

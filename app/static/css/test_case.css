@@ -226,6 +226,47 @@ select.form-select {
     z-index: 1;
 }
 
+/* Choices.js z-index fix */
+.choices__list--dropdown.is-active {
+    z-index: 11; /* Ensure dropdown is above table header (z-index: 10) */
+}
+
+/* Choices.js Custom Styling */
+.choices__inner {
+    /* Allow items to wrap vertically */
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 2px; /* Add a little space at the bottom for wrapped items */
+    min-height: 38px; /* Ensure minimum height matches Bootstrap default */
+}
+
+.choices__list--multiple .choices__item {
+    /* Style selected items like nav buttons */
+    background-color: #4472C4; /* Match nav menu background */
+    border: none;
+    color: white; /* White text for contrast */
+    border-radius: 4px; /* Match button border-radius */
+    margin-bottom: 4px; /* Add space between wrapped items */
+    margin-right: 4px;
+}
+
+/* Style the remove button on selected items */
+.choices__list--multiple .choices__item .choices__button {
+    background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M8.485 1.515l-7 7L.07 7.071l7-7L8.485 1.515z"/><path fill="white" d="M1.515 1.515l7 7L9.93 8.485l-7-7L1.515 1.515z"/></svg>'); /* White cross */
+    border-left: 1px solid rgba(255, 255, 255, 0.5); /* Slightly visible border */
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+
+.choices__list--multiple .choices__item .choices__button:hover,
+.choices__list--multiple .choices__item .choices__button:focus {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1); /* Slight darken on hover */
+}
+
+
 th {
     position: relative;
 }

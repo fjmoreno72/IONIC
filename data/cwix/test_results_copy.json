@@ -1,0 +1,468 @@
+{
+    "TestPlans": [
+        {
+            "Name": "Dedicated provision of geospatial data",
+            "Id": "B77BC3B7-5072-4DDA-890E-3439FA93FACC",
+            "Key": "TPA-CWIX-000559",
+            "Objective": {
+                "Name": "eXperiment, eXamine and eXercise GeoMetOc Services provision",
+                "Id": "BF9D58A0-F9DD-46D2-80F0-1AEBDCCFAFA3",
+                "Key": "OBJ-CWIX25-038"
+            }
+        },
+        {
+            "Name": "Exchange OPORD MC LCC to Corps",
+            "Id": "01353671-19E4-40E3-8A42-382999BA0B43",
+            "Key": "TPA-CWIX-000429",
+            "Tests": [
+                {
+                    "Id": "E20ACEE3-6E5C-4EC1-BC88-0DD520352B58",
+                    "Name": "TT-01302 Exchanging TASKORG/ORBAT in an operational structure, based on scenario.",
+                    "Status": "Draft",
+                    "Coordinator": {
+                        "Participant": "2025-NCS-CC-023",
+                        "Role": "Provider",
+                        "Actor": "MIP3 Provider"
+                    },
+                    "Partners": [
+                        {
+                            "Participant": "2025-ROU-CC-347",
+                            "Role": "Consumer",
+                            "Actor": "MIP3 Consumer"
+                        }
+                    ],
+                    "TestCase": {
+                        "Name": "TT-01302 Exchanging TASKORG/ORBAT in an operational structure, based on scenario.",
+                        "Id": "28D02C34-1B55-4647-B429-C1D8B24E46D7",
+                        "Key": "TCA-CWIX-012794"
+                    },
+                    "TestSteps": [
+                        {
+                            "StepNumber": 1,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-NCS-CC-023",
+                            "PartnerParticipant": "",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The Provider creates a TASKORG/ORBAT using FRDNEU OIG, IAW scenario, give it the name the 'XXX Taskorg/Orbat (YYY)', location IAW the scenario and save it.\n\n*   XXX has to be replaced by the abbreviation of your Nation.\n*   YYY is a unique number of your CC.\n\n<br>",
+                            "ExpectedOutcome": "The Taskorg/Orbat is created in the C2 System at the Provider side."
+                        },
+                        {
+                            "StepNumber": 2,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-ROU-CC-347",
+                            "PartnerParticipant": "",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The provider and the consumer check the information exchanged.",
+                            "ExpectedOutcome": "The TASKORG/ORBAT is the same (the same three, the same symbols, the same attributes)"
+                        }
+                    ],
+                    "ParticipantInteractionResults": [
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-NCS-CC-023",
+                            "TargetParticipant": "2025-ROU-CC-347",
+                            "ResponsibleForResultAssignedParticipant": "2025-ROU-CC-347"
+                        },
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-NCS-CC-023",
+                            "TargetParticipant": "2025-ROU-CC-347",
+                            "ResponsibleForResultAssignedParticipant": "2025-NCS-CC-023"
+                        }
+                    ],
+                    "AnalysisResult": {
+                        "InteractionResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "SourceParticipantId": "50F7AD17-62AE-4F8A-9687-AD4E3AA37726",
+                                "TargetParticipantId": "288F76A6-BDD5-487C-A662-65BF2E575EB6"
+                            }
+                        ],
+                        "ParticipantResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-NCS-CC-023"
+                            },
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-ROU-CC-347"
+                            }
+                        ],
+                        "OverallResult": {
+                            "Result": "NotSet",
+                            "Comment": ""
+                        }
+                    }
+                },
+                {
+                    "Id": "BE05DE40-44E7-48C0-9FF9-EFEAE35605CF",
+                    "Name": "TT-01441 Exchanging Updated SoM, based on scenario.",
+                    "Status": "Draft",
+                    "Coordinator": {
+                        "Participant": "2025-NCS-CC-023",
+                        "Role": "Provider",
+                        "Actor": "MIP3 Provider"
+                    },
+                    "Partners": [
+                        {
+                            "Participant": "2025-FIN-CC-373",
+                            "Role": "Consumer",
+                            "Actor": "MIP3 Consumer"
+                        }
+                    ],
+                    "TestCase": {
+                        "Name": "TT-01441 Exchanging Updated SoM, based on scenario.",
+                        "Id": "173892DC-48B5-456B-ADFC-1212B4888C05",
+                        "Key": "TCA-CWIX-012844"
+                    },
+                    "TestSteps": [
+                        {
+                            "StepNumber": 1,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-NCS-CC-023",
+                            "PartnerParticipant": "",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The data provider creates an overlay using the OIG FRDNEU IAW the following remarks:\n\nMS-LCC: Receives the appropriate control measures from the subordinate corps.\n\nCorps: Create / receive the RIP, Occupy, breach, passage point(s), obstacle lane, block minefield, Withdraw/Withdraw Under Pressure and send them to the higher echelon / subordinate Div. / Bde. / Bn.\n\nDiv. / Bde/BCT: Create the Withdraw Under Pressure. and send them to the higher echelon / subordinate corps.\n\n<br>\n\nNOTES:\n\nFor each control feature symbol must be motioned following RIs:\n\n\\-Name\n\n\\-Position (with geometry type and location)\n\n\\-Hostility\n\n<br>\n\nFor each control measures symbol must be mentioned following RIs:\n\n\\-Name\n\n\\-Hostility\n\n\\-Position (geometry type)\n\n\\-Echelon\n\n<br>\n\nFor facility (military obstacles) symbol must be mentioned following RI's:\n\n\\-Name\n\n\\-Hostility\n\n\\-Position\n\n\\-Status",
+                            "ExpectedOutcome": "The information on the consumer and on the provider systems are the same/equivalent with no significant loss of information."
+                        },
+                        {
+                            "StepNumber": 2,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-FIN-CC-373",
+                            "PartnerParticipant": "",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The provider and the consumer check each symbol, attribute by attribute.",
+                            "ExpectedOutcome": "For each symbol the attributes are the same"
+                        }
+                    ],
+                    "ParticipantInteractionResults": [
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-NCS-CC-023",
+                            "TargetParticipant": "2025-FIN-CC-373",
+                            "ResponsibleForResultAssignedParticipant": "2025-NCS-CC-023"
+                        },
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-NCS-CC-023",
+                            "TargetParticipant": "2025-FIN-CC-373",
+                            "ResponsibleForResultAssignedParticipant": "2025-FIN-CC-373"
+                        }
+                    ],
+                    "AnalysisResult": {
+                        "InteractionResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "SourceParticipantId": "50F7AD17-62AE-4F8A-9687-AD4E3AA37726",
+                                "TargetParticipantId": "1BD0E788-7EB1-4A03-BB05-8D01CDC2A1ED"
+                            }
+                        ],
+                        "ParticipantResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-NCS-CC-023"
+                            },
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-FIN-CC-373"
+                            }
+                        ],
+                        "OverallResult": {
+                            "Result": "NotSet",
+                            "Comment": ""
+                        }
+                    }
+                },
+                {
+                    "Id": "B0F024B9-2447-455C-A865-F4729BF50F84",
+                    "Name": "TT-01316 Exchanging AoR and AoO data, based on scenario.",
+                    "Status": "Draft",
+                    "Coordinator": {
+                        "Participant": "2025-NCS-CC-023",
+                        "Role": "Provider",
+                        "Actor": "MIP3 Provider"
+                    },
+                    "Partners": [
+                        {
+                            "Participant": "2025-ESP-CC-214",
+                            "Role": "Consumer",
+                            "Actor": "MIP3 Consumer"
+                        }
+                    ],
+                    "TestCase": {
+                        "Name": "TT-01316 Exchanging AoR and AoO data, based on scenario.",
+                        "Id": "7AB7B24E-7620-469C-9CFD-DAA69F6FDF6F",
+                        "Key": "TCA-CWIX-012796"
+                    },
+                    "TestSteps": [
+                        {
+                            "StepNumber": 1,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-NCS-CC-023",
+                            "PartnerParticipant": "",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The data provider creates an overlay and using the OIG FRDNEU with AoR and AoOs Control Measures:\n\nThe naming covention is as follows: 'AoR/AoO XXX\n\n*   XXX according to the scenario.\n\nFor AoR / each AoOs symbol must be motioned following RIs: -Name\n\n\\-Position (geometry type)\n\n\\-Hostility\n\n\\-Echelon (who establish it?)",
+                            "ExpectedOutcome": "The information on the consumer and on the provider systems are the same/equivalent with no significant loss of information."
+                        },
+                        {
+                            "StepNumber": 2,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-ESP-CC-214",
+                            "PartnerParticipant": "",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The provider and the consumer check each symbol, attribute by attribute.",
+                            "ExpectedOutcome": "For each symbol the attributes are the same"
+                        }
+                    ],
+                    "ParticipantInteractionResults": [
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-NCS-CC-023",
+                            "TargetParticipant": "2025-ESP-CC-214",
+                            "ResponsibleForResultAssignedParticipant": "2025-NCS-CC-023"
+                        },
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-NCS-CC-023",
+                            "TargetParticipant": "2025-ESP-CC-214",
+                            "ResponsibleForResultAssignedParticipant": "2025-ESP-CC-214"
+                        }
+                    ],
+                    "AnalysisResult": {
+                        "InteractionResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "SourceParticipantId": "50F7AD17-62AE-4F8A-9687-AD4E3AA37726",
+                                "TargetParticipantId": "A2928B24-961E-4975-9A54-2B7257BAB238"
+                            }
+                        ],
+                        "ParticipantResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-NCS-CC-023"
+                            },
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-ESP-CC-214"
+                            }
+                        ],
+                        "OverallResult": {
+                            "Result": "NotSet",
+                            "Comment": ""
+                        }
+                    }
+                }
+            ],
+            "Objective": {
+                "Name": "Aggregate RGP between NATO and National LAND Capabilities (eXamine & eXercise)",
+                "Id": "E15B3C9E-6C97-4CAC-8ECD-5C6DFB20B9D6",
+                "Key": "OBJ-CWIX25-092"
+            }
+        },
+        {
+            "Name": "GEO-327-SIM-VBS4 - XRF ESP VR HLA",
+            "Id": "2416DD21-86E6-4908-B90C-52E399C830F1",
+            "Key": "TPA-CWIX-000628",
+            "Tests": [
+                {
+                    "Id": "B3C16027-75F6-4C68-BABD-1852BC359F68",
+                    "Name": "HLA Federation between National Simulators with Disruptive Technologies",
+                    "Status": "Draft",
+                    "Coordinator": {
+                        "Participant": "2025-ESP-CC-200",
+                        "Role": "Provider",
+                        "Actor": "Simulator Provider"
+                    },
+                    "Partners": [
+                        {
+                            "Participant": "2025-GEO-CC-327",
+                            "Role": "Consumer",
+                            "Actor": "Simulator Consumer"
+                        }
+                    ],
+                    "TestCase": {
+                        "Name": "HLA Federation between National Simulators with Disruptive Technologies",
+                        "Id": "3CD8A872-E445-4F5B-8DF3-41D1EA6BC897",
+                        "Key": "TCA-CWIX-013441"
+                    },
+                    "TestSteps": [
+                        {
+                            "StepNumber": 1,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-ESP-CC-200",
+                            "PartnerParticipant": "2025-GEO-CC-327",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The establishment of a HLA federation between Provider and Consumer",
+                            "ExpectedOutcome": "The simulated entities of the Provider are to be visible to the Consumer. The units of Consumer are to be visible to the Provider."
+                        },
+                        {
+                            "StepNumber": 2,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-ESP-CC-200",
+                            "PartnerParticipant": "2025-GEO-CC-327",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The federated moved blue force entities (Land - Air - Maritime) to be visible between the systems",
+                            "ExpectedOutcome": "The above blue force entities will be moved with the exact coordinates between the systems."
+                        }
+                    ],
+                    "ParticipantInteractionResults": [
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-ESP-CC-200",
+                            "TargetParticipant": "2025-GEO-CC-327",
+                            "ResponsibleForResultAssignedParticipant": "2025-GEO-CC-327"
+                        },
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-ESP-CC-200",
+                            "TargetParticipant": "2025-GEO-CC-327",
+                            "ResponsibleForResultAssignedParticipant": "2025-ESP-CC-200"
+                        }
+                    ],
+                    "AnalysisResult": {
+                        "InteractionResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "SourceParticipantId": "97BF7B28-A040-472F-9B8B-76AA15DE686B",
+                                "TargetParticipantId": "5891D560-1875-48FD-AD1A-EF164C5FEFD6"
+                            }
+                        ],
+                        "ParticipantResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-GEO-CC-327"
+                            },
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-ESP-CC-200"
+                            }
+                        ],
+                        "OverallResult": {
+                            "Result": "NotSet",
+                            "Comment": ""
+                        }
+                    }
+                },
+                {
+                    "Id": "F9C573A1-5769-4C3E-98BF-5EDEFCB5CAE5",
+                    "Name": "HLA Federation between National Simulators with Disruptive Technologies",
+                    "Status": "Draft",
+                    "Coordinator": {
+                        "Participant": "2025-GEO-CC-327",
+                        "Role": "Provider",
+                        "Actor": "Simulator Provider"
+                    },
+                    "Partners": [
+                        {
+                            "Participant": "2025-ESP-CC-200",
+                            "Role": "Consumer",
+                            "Actor": "Simulator Consumer"
+                        }
+                    ],
+                    "TestCase": {
+                        "Name": "HLA Federation between National Simulators with Disruptive Technologies",
+                        "Id": "3CD8A872-E445-4F5B-8DF3-41D1EA6BC897",
+                        "Key": "TCA-CWIX-013441"
+                    },
+                    "TestSteps": [
+                        {
+                            "StepNumber": 1,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-GEO-CC-327",
+                            "PartnerParticipant": "2025-ESP-CC-200",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The establishment of a HLA federation between Provider and Consumer",
+                            "ExpectedOutcome": "The simulated entities of the Provider are to be visible to the Consumer. The units of Consumer are to be visible to the Provider."
+                        },
+                        {
+                            "StepNumber": 2,
+                            "StepSubNumber": 1,
+                            "InitiatorParticipant": "2025-GEO-CC-327",
+                            "PartnerParticipant": "2025-ESP-CC-200",
+                            "ActualResult": "",
+                            "Result": "NotSet",
+                            "StepAction": "The federated moved blue force entities (Land - Air - Maritime) to be visible between the systems",
+                            "ExpectedOutcome": "The above blue force entities will be moved with the exact coordinates between the systems."
+                        }
+                    ],
+                    "ParticipantInteractionResults": [
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-GEO-CC-327",
+                            "TargetParticipant": "2025-ESP-CC-200",
+                            "ResponsibleForResultAssignedParticipant": "2025-GEO-CC-327"
+                        },
+                        {
+                            "Result": "NotSet",
+                            "Comment": "",
+                            "SourceParticipant": "2025-GEO-CC-327",
+                            "TargetParticipant": "2025-ESP-CC-200",
+                            "ResponsibleForResultAssignedParticipant": "2025-ESP-CC-200"
+                        }
+                    ],
+                    "AnalysisResult": {
+                        "InteractionResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "SourceParticipantId": "5891D560-1875-48FD-AD1A-EF164C5FEFD6",
+                                "TargetParticipantId": "97BF7B28-A040-472F-9B8B-76AA15DE686B"
+                            }
+                        ],
+                        "ParticipantResults": [
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-GEO-CC-327"
+                            },
+                            {
+                                "Result": "NotSet",
+                                "Comment": "",
+                                "AssignedParticipant": "2025-ESP-CC-200"
+                            }
+                        ],
+                        "OverallResult": {
+                            "Result": "NotSet",
+                            "Comment": ""
+                        }
+                    }
+                }
+            ],
+            "Objective": {
+                "Name": "eXplore and test M&S Emerging and Disruptive Technologies (EDTs)",
+                "Id": "64E02CD6-F7E6-41C1-AE1A-0010D4181EB8",
+                "Key": "OBJ-CWIX25-108"
+            }
+        }
+    ]
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results - IOCore2 Coverage Analysis Tool</title> {# Changed Title #}
+    {% include 'components/head_favicons.html' %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    {# Choices.js CSS #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
+    {# Link to the same CSS as test_case for consistency, or create a new one if needed #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+</head>
+<body class="logged-in">
+    {% include 'nav_menu.html' %}
+
+    <div class="container-fluid px-4">
+        <div class="test-cases-container"> {# Keep class name for styling consistency? Or rename? Keeping for now. #}
+            <div class="test-cases-header">
+                <h2><i class="fas fa-vial me-2"></i>Test Results</h2> {# Changed Header and Icon #}
+            </div>
+
+            <div class="controls-container">
+                <div class="filters-container">
+                    {# New Filters - Use wider container for multi-select #}
+                    <div class="filter-item" style="min-width: 200px;">
+                        <label for="objectiveFilter" class="form-label form-label-sm visually-hidden">Objectives</label> {# Added label for accessibility #}
+                        <select id="objectiveFilter" class="form-select form-select-sm" multiple>
+                            {# Options added dynamically, placeholder handled by Choices.js #}
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="statusFilter" class="form-select form-select-sm">
+                            <option value="">All Statuses</option>
+                            <!-- Status options will be added dynamically -->
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="overallResultFilter" class="form-select form-select-sm">
+                            <option value="">All Overall Results</option>
+                            <!-- Overall Result options will be added dynamically -->
+                        </select>
+                    </div>
+                    <div class="filter-item" style="min-width: 200px;">
+                         <label for="participantFilter" class="form-label form-label-sm visually-hidden">Participants</label> {# Added label for accessibility #}
+                        <select id="participantFilter" class="form-select form-select-sm" multiple>
+                             {# Options added dynamically, placeholder handled by Choices.js #}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search..." class="form-control form-control-sm">
+                </div>
+            </div>
+
+            <div class="test-cases-table-container table-responsive">
+                <table class="test-cases-table">
+                    <thead>
+                        <tr>
+                            {# New Columns #}
+                            <th class="sortable" data-sort="objectiveKey">Objective Key <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="testPlanKey">Test Plan Key <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="testName">Test Name <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="status">Status <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="coordinator">Coordinator <i class="fas fa-sort"></i></th>
+                            <th>Partners</th> {# Not making partners sortable for now #}
+                            <th class="sortable" data-sort="overallResult">Overall Result <i class="fas fa-sort"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody id="testResultsTableBody"> {# Changed ID #}
+                        <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+                <div id="loadingIndicator" class="loading-indicator">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div id="noResults" class="no-results d-none">
+                    <p>No test results found matching your criteria.</p>
+                </div>
+            </div>
+
+            {# --- Pagination Controls (Keep as is) --- #}
+            <div class="d-flex justify-content-between align-items-center mt-3" id="paginationControls">
+                <div>
+                    <label for="itemsPerPageSelect" class="form-label form-label-sm me-2">Items per page:</label>
+                    <select id="itemsPerPageSelect" class="form-select form-select-sm d-inline-block" style="width: auto;">
+                        <option value="25" selected>25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option> {# Added 100 option #}
+                    </select>
+                </div>
+                <div class="d-flex align-items-center">
+                     <span id="pageInfo" class="me-3 text-muted">Page 1 of 1</span>
+                     <button id="prevPageButton" class="btn btn-outline-secondary btn-sm me-1" disabled>
+                         <i class="fas fa-chevron-left"></i> Previous
+                     </button>
+                     <button id="nextPageButton" class="btn btn-outline-secondary btn-sm" disabled>
+                         Next <i class="fas fa-chevron-right"></i>
+                     </button>
+                </div>
+            </div>
+            {# --- End Pagination Controls --- #}
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
+    {# Removed modal include {% include 'test_case_modal.html' %} #}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    {# Choices.js JS #}
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="{{ url_for('static', filename='js/test_results.js') }}"></script> {# Changed JS file #}
+</body>
+</html>

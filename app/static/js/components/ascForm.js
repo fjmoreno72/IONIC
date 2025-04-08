@@ -411,11 +411,12 @@ export class AscForm {
 
             listItem.innerHTML = `
                 <div style="flex-grow: 1; min-width: 0; margin-right: 0.5rem;"> <!-- Allow shrinking, prevent overflow push, add right margin -->
-                     <div> <!-- GP Name/Score Line -->
-                        <strong>${gpName}</strong> ${gpInstance.instanceLabel ? `- ${gpInstance.instanceLabel}` : ''}
-                        <span class="badge bg-secondary ms-2">${gpScore}</span> <!-- Display GP Score -->
+                     <div class="d-flex align-items-center mb-1"> <!-- GP Name/Score/Label Line -->
+                        <strong class="me-2">${gpName}</strong>
+                        <input type="text" class="form-control form-control-sm gp-instance-label me-2" style="width: 150px;" placeholder="Optional Label" value="${gpInstance.instanceLabel || ''}">
+                        <span class="badge bg-secondary">${gpScore}</span> <!-- Display GP Score -->
                      </div>
-                    <small class="d-block text-muted">${spDetails}</small> <!-- Display SP details, remove truncate -->
+                    <small class="d-block text-muted">${spDetails}</small> <!-- Display SP details -->
                 </div>
                 <div class="ms-auto flex-shrink-0"> <!-- Push buttons right, prevent shrinking -->
                     <button type="button" class="btn btn-sm btn-outline-primary me-1 edit-gp-btn" title="Edit SPs"> <!-- Use title attribute for tooltip -->
@@ -433,6 +434,13 @@ export class AscForm {
             });
             listItem.querySelector('.remove-gp-btn').addEventListener('click', (e) => {
                 this.handleRemoveGpInstance(index);
+            });
+            // Add listener for the label input
+            listItem.querySelector('.gp-instance-label').addEventListener('change', (e) => {
+                 if (this.data && this.data.gpInstances[index]) {
+                     this.data.gpInstances[index].instanceLabel = e.target.value.trim();
+                     console.log(`Label for GP index ${index} updated to: ${this.data.gpInstances[index].instanceLabel}`);
+                 }
             });
 
 

@@ -141,14 +141,22 @@
   },
   {
     "affiliateId": "AFF-0027",
-    "ascScore": "0%",
-    "environment": "Static",
+    "environment": "",
+    "serviceId": "SRV-0021",
+    "spiral": "SP5",
+    "id": "ASC-0003",
     "gpInstances": [
       {
         "gpId": "GP-0005",
         "gpScore": "0%",
-        "instanceLabel": "NO LABEL",
-        "spInstances": []
+        "instanceLabel": "M-Link",
+        "spInstances": [
+          {
+            "spId": "SP-0007",
+            "spVersion": null,
+            "spScore": "0%"
+          }
+        ]
       },
       {
         "gpId": "GP-0005",
@@ -163,10 +171,8 @@
         "spInstances": []
       }
     ],
-    "id": "ASC-0003",
-    "serviceId": "SRV-0021",
-    "spiral": "SP5",
-    "status": "Deprecated"
+    "status": "Deprecated",
+    "ascScore": "0%"
   },
   {
     "affiliateId": "AFF-0011",

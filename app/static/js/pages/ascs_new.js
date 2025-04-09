@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let servicesData = [];
   let gpsData = [];
   let spsData = [];
+  let modelsData = [];
   let ascsTable = null; // Make table instance accessible globally in this scope
 
   // --- Dialog Manager Setup ---
@@ -258,6 +259,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
+  // Fetch Models data for model name lookup
+  const fetchModelsData = async () => {
+    try {
+      const response = await fetch('/api/models');
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      modelsData = await response.json();
+      return modelsData;
+    } catch (error) {
+      console.error('Error fetching Models data:', error);
+      return [];
+    }
+  };
+
   // Function to populate the affiliate filter dropdown
   const populateAffiliateFilter = (affiliates) => {
     if (!affiliateFilter) return;
@@ -325,6 +341,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const found = spsData.find(sp => sp.id === id);
     return found || null;
   };
+
+  // Helper function to get Model data by ID
+  const getModelById = (id) => {
+    if (!id || !modelsData) return null;
+    return modelsData.find(model => model.id === id);
+  };
   const getProgressClass = (percentage) => {
     if (percentage >= 100) return 'progress-100';
     if (percentage >= 75) return 'progress-75';
@@ -375,7 +397,9 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      return await response.json();
+      const data = await response.json();
+      console.log('ASCs data from API:', data);
+      return data;
     } catch (error) {
       console.error('Error fetching ASCs data:', error);
       return []; // Return empty array on error
@@ -387,15 +411,17 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchAffiliatesData(),
     fetchServicesData(),
     fetchGpsData(),
-    fetchSpsData()
+    fetchSpsData(),
+    fetchModelsData()
     // Removed fetchAscsData() - DataTable will fetch it
   ])
-    .then(([affiliates, services, gps, sps]) => { // Only destructure needed data
+    .then(([affiliates, services, gps, sps, models]) => { // Destructure all data including models
       // Assign to outer scope variables *inside* the .then()
       affiliatesData = affiliates;
       servicesData = services;
       gpsData = gps;
       spsData = sps;
+      modelsData = models;
 
       // Configure and initialize the data table, passing ASCs data directly
       // Assign to the outer scope variable
@@ -501,7 +527,12 @@ document.addEventListener('DOMContentLoaded', function() {
               return service ? service.name : value;
             }
           },
-          { key: 'spiral', label: 'Spiral', sortable: true },
+          { key: 'model', label: 'Model', sortable: true, 
+            render: function(value) {
+              const model = getModelById(value);
+              return model ? model.name : (value || 'N/A');
+            }
+          },
           {
             key: 'status',
             label: 'Status',

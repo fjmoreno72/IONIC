@@ -22,7 +22,7 @@ export class AscForm {
         this.affiliateSelect = null;
         this.environmentSelect = null;
         this.serviceSelect = null;
-        this.spiralDisplay = null; // Element to show the spiral
+        this.modelDisplay = null; // Element to show the model
         this.gpInstancesContainer = null; // Container for GP instances list
         this.ascScoreDisplay = null; // Element to display ASC score
         this.addGpSelect = null; // Dropdown to select which GP to add
@@ -124,8 +124,11 @@ export class AscForm {
                     </div>
                     
                     <div class="mb-3">
-                        <label for="ascSpiral" class="form-label">Spiral</label>
-                        <input type="text" class="form-control" id="ascSpiral" readonly disabled placeholder="Select a service first">
+                        <label for="ascModel" class="form-label">Model</label>
+                        <select class="form-select" id="ascModel" required ${this.isEditMode ? 'disabled' : ''}>
+                            <option value="" selected disabled>Select a service first</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a model.</div>
                     </div>
                 </div>
             </div>
@@ -163,7 +166,7 @@ export class AscForm {
         this.affiliateSelect = this.formElement.querySelector('#ascAffiliate');
         this.environmentSelect = this.formElement.querySelector('#ascEnvironment');
         this.serviceSelect = this.formElement.querySelector('#ascService');
-        this.spiralDisplay = this.formElement.querySelector('#ascSpiral');
+        this.modelDisplay = this.formElement.querySelector('#ascModel');
         this.gpInstancesContainer = this.formElement.querySelector('#gpInstancesContainer');
         this.ascScoreDisplay = this.formElement.querySelector('#ascOverallScore');
         this.addGpSelect = this.formElement.querySelector('#addGpSelect'); // Get Add GP dropdown
@@ -238,23 +241,89 @@ export class AscForm {
         });
     }
 
-    updateSpiralDisplay(selectedServiceId) {
-        if (!this.spiralDisplay || !selectedServiceId) {
-            this.spiralDisplay.value = '';
-            this.spiralDisplay.placeholder = 'Select a service first';
+    updateModelSelect(selectedServiceId) {
+        const modelSelect = document.getElementById('ascModel');
+        
+        // If in edit mode, just display the current model name and disable the select
+        if (this.isEditMode && this.data?.model) {
+            // Find the model name from the model ID
+            const modelName = this.formData.models?.find(m => m.id === this.data.model)?.name || this.data.model;
+            
+            // Create a single option with the current model
+            modelSelect.innerHTML = `<option value="${this.data.model}" selected>${modelName}</option>`;
+            modelSelect.disabled = true;
+            return;
+        }
+        
+        // For create mode
+        if (!modelSelect || !selectedServiceId) {
+            // Clear and disable the model select
+            modelSelect.innerHTML = '<option value="" selected disabled>Select a service first</option>';
+            modelSelect.disabled = true;
             return;
         }
 
+        // Get the selected service
         const selectedService = this.formData.services.find(srv => srv.id === selectedServiceId);
-        const spiral = selectedService ? selectedService.spiral || 'N/A' : 'N/A';
+        if (!selectedService) {
+            modelSelect.innerHTML = '<option value="" selected disabled>Service not found</option>';
+            modelSelect.disabled = true;
+            return;
+        }
 
-        this.spiralDisplay.value = spiral;
+        // Check if models data is loaded
+        if (!this.formData.models || !Array.isArray(this.formData.models)) {
+            console.log("Models data not loaded yet, attempting to load...");
+            modelSelect.innerHTML = '<option value="" selected disabled>Loading models...</option>';
+            modelSelect.disabled = true;
+            
+            // Load models data then update the dropdown
+            this.loadModelsData().then(() => {
+                // After models are loaded, call this method again with the same service ID
+                if (this.formData.models && Array.isArray(this.formData.models)) {
+                    this.updateModelSelect(selectedServiceId);
+                }
+            });
+            return;
+        }
 
-        // Preselection logic (if needed - currently seems only SP5 exists)
-        // const allSpirals = new Set(this.formData.services.map(s => s.spiral).filter(Boolean));
-        // if (allSpirals.size === 1) {
-        //     // Potentially auto-submit this value or just display it
-        // }
+        // Get all models associated with this service
+        let serviceModels = [];
+        if (Array.isArray(selectedService.models) && selectedService.models.length > 0) {
+            serviceModels = selectedService.models;
+        } else if (selectedService.model) {
+            serviceModels = [selectedService.model];
+        }
+        
+        // Enable the select and populate options
+        modelSelect.disabled = false;
+        modelSelect.innerHTML = '<option value="" selected disabled>Select a model...</option>';
+        
+        let hasValidModels = false;
+        
+        serviceModels.forEach(modelId => {
+            if (!modelId) return;
+            const model = this.formData.models.find(m => m.id === modelId);
+            if (model) {
+                hasValidModels = true;
+                const option = document.createElement('option');
+                option.value = model.id;
+                option.textContent = model.name;
+                modelSelect.appendChild(option);
+            }
+        });
+
+        // If no valid models found, show an error message
+        if (!hasValidModels) {
+            modelSelect.innerHTML = '<option value="" selected disabled>No models available</option>';
+            modelSelect.disabled = true;
+            return;
+        }
+
+        // If there's only one model, select it automatically
+        if (serviceModels.length === 1) {
+            modelSelect.value = serviceModels[0];
+        }
     }
 
     populateAddGpDropdown() {
@@ -315,13 +384,13 @@ export class AscForm {
         this.affiliateSelect.addEventListener('change', (e) => {
             const selectedAffiliateId = e.target.value;
             this.populateEnvironmentDropdown(selectedAffiliateId);
-            // Reset service/spiral if affiliate changes? Maybe not necessary.
+            // Reset service/model if affiliate changes? Maybe not necessary.
         });
 
-        // Update Spiral display when Service changes
+        // Update model display when Service changes
         this.serviceSelect.addEventListener('change', (e) => {
             const selectedServiceId = e.target.value;
-            this.updateSpiralDisplay(selectedServiceId);
+            this.updateModelSelect(selectedServiceId);
             // In edit mode, changing service is disabled, but if it were enabled,
             // we'd need to repopulate the Add GP dropdown here.
             // if (this.isEditMode) this.populateAddGpDropdown();
@@ -365,10 +434,32 @@ export class AscForm {
         }
 
 
-        // Set Service and trigger spiral update
+        // Set Service and trigger model update
         if (this.serviceSelect) {
             this.serviceSelect.value = this.data.serviceId || '';
-            this.updateSpiralDisplay(this.data.serviceId);
+        }
+        
+        // Set Model value directly for edit mode
+        const modelSelect = document.getElementById('ascModel');
+        if (modelSelect && this.isEditMode && this.data?.model) {
+            // Get the model name and display it
+            const modelName = this.getModelName(this.data.model);
+            modelSelect.innerHTML = `<option value="${this.data.model}" selected>${modelName}</option>`;
+            modelSelect.disabled = true;
+        } else if (modelSelect && this.data?.serviceId) {
+            // For create mode or if we need to populate the dropdown
+            if (this.formData.models && this.formData.models.length > 0) {
+                this.updateModelSelect(this.data.serviceId);
+            } else {
+                console.log("Models data not loaded yet, will check again shortly");
+                setTimeout(() => {
+                    if (this.formData.models && this.formData.models.length > 0) {
+                        this.updateModelSelect(this.data.serviceId);
+                    } else {
+                        console.error("Models data still not available after delay");
+                    }
+                }, 500);
+            }
         }
 
         // Disable fields that shouldn't be changed in edit mode
@@ -376,7 +467,7 @@ export class AscForm {
             if (this.affiliateSelect) this.affiliateSelect.disabled = true;
             if (this.environmentSelect) this.environmentSelect.disabled = true; // Also disable environment as it depends on affiliate
             if (this.serviceSelect) this.serviceSelect.disabled = true;
-            // Spiral is already disabled
+            // model is already disabled
 
             // Set ASC Score (already added to innerHTML, just ensure value is correct if data changes later)
              this.updateAscScoreDisplay(); // Update display initially
@@ -643,6 +734,44 @@ export class AscForm {
         if (percentage >= 25) return '#fb8c00';  // Orange
         return '#e53935';                        // Red
     }
+    
+    // Helper function to get model name from model ID
+    getModelName(modelId) {
+        if (!modelId) return 'N/A';
+        if (!this.formData.models) {
+            console.warn('Models data not available, attempting to load from static file');
+            // Return the ID for now, but trigger an async load of models
+            this.loadModelsData(modelId);
+            return modelId;
+        }
+        
+        const model = this.formData.models.find(m => m.id === modelId);
+        return model ? model.name : modelId;
+    }
+    
+    // Helper method to load models data asynchronously if needed
+    async loadModelsData(modelIdToUpdate = null) {
+        try {
+            const modelsResponse = await fetch('/static/ASC/data/_models.json');
+            if (modelsResponse.ok) {
+                const modelsData = await modelsResponse.json();
+                this.formData.models = modelsData;
+                
+                // If we were asked to update a specific model display, do it now
+                if (modelIdToUpdate) {
+                    const modelSelect = document.getElementById('ascModel');
+                    if (modelSelect) {
+                        const modelName = this.getModelName(modelIdToUpdate);
+                        if (modelName !== modelIdToUpdate) { // Only update if we got an actual name
+                            modelSelect.innerHTML = `<option value="${modelIdToUpdate}" selected>${modelName}</option>`;
+                        }
+                    }
+                }
+            }
+        } catch (error) {
+            console.error("Error loading models data:", error);
+        }
+    }
 
     // Keep the original method for backward compatibility
     getProgressClass(percentage) {
@@ -686,7 +815,7 @@ export class AscForm {
             affiliateId: this.affiliateSelect.value,
             environment: this.environmentSelect.value,
             serviceId: this.serviceSelect.value,
-            spiral: this.spiralDisplay.value, // This is read-only but still collect it
+            model: this.modelDisplay.value, // This is read-only but still collect it
             
             // GP Instances list (from our managed state)
             gpInstances: this.isEditMode ? this.data.gpInstances : [],

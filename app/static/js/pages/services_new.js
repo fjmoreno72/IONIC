@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const noResults = document.getElementById('noResults');
   
   // Dropdown filter elements
-  const spiralFilter = document.getElementById('spiralFilter');
+  const modelFilter = document.getElementById('modelFilter');
   
   const gpFilterHeader = document.getElementById('gpFilterHeader');
   const gpDropdownMenu = document.getElementById('gpDropdownMenu');
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       console.log('Model ID to Name Map:', modelIdToNameMap);
       
-      // Setup model filter (replacing spiral filter)
+      // Setup model filter (replacing model filter)
       setupModelFilter(modelsData);
       
       // Now initialize the services table
@@ -103,27 +103,27 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-  // Set up model filter dropdown UI and event handlers (replacing spiral filter)
+  // Set up model filter dropdown UI and event handlers (replacing model filter)
   function setupModelFilter(models) {
-    if (!spiralFilter) {
-      console.error("Missing spiralFilter element");
+    if (!modelFilter) {
+      console.error("Missing modelFilter element");
       return;
     }
     
     // Rename the filter label
-    const spiralFilterLabel = spiralFilter.previousElementSibling;
-    if (spiralFilterLabel) {
-      spiralFilterLabel.textContent = "Model:";
+    const modelFilterLabel = modelFilter.previousElementSibling;
+    if (modelFilterLabel) {
+      modelFilterLabel.textContent = "Model:";
     }
     
     // Store current selection to restore it after updating options
-    const currentSelection = spiralFilter.value;
+    const currentSelection = modelFilter.value;
     
     // Clear existing options (except the "All Models" option)
-    while (spiralFilter.options.length > 1) {
-      spiralFilter.remove(1);
+    while (modelFilter.options.length > 1) {
+      modelFilter.remove(1);
     }
-    spiralFilter.options[0].textContent = "All Models";
+    modelFilter.options[0].textContent = "All Models";
     
     // Add model options sorted alphabetically
     if (models && models.length > 0) {
@@ -131,17 +131,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const option = document.createElement('option');
         option.value = model.id;
         option.textContent = model.name;
-        spiralFilter.appendChild(option);
+        modelFilter.appendChild(option);
       });
     }
     
     // Add event listener for when model filter changes
-    if (!spiralFilter.hasEventListener) {
-      spiralFilter.addEventListener('change', () => {
-        selectedModel = spiralFilter.value;
+    if (!modelFilter.hasEventListener) {
+      modelFilter.addEventListener('change', () => {
+        selectedModel = modelFilter.value;
         servicesTable.filterAndRender();
       });
-      spiralFilter.hasEventListener = true;
+      modelFilter.hasEventListener = true;
     }
   }
   

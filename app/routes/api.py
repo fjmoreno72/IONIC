@@ -841,7 +841,7 @@ def get_asc_form_data():
         # Define paths relative to the static folder
         static_asc_data_path = Path(current_app.static_folder) / 'ASC' / 'data'
         affiliates_path = static_asc_data_path / '_affiliates.json'
-        services_path = static_asc_data_path / '_services.json'
+        services_path = static_asc_data_path / '_servicesm.json'
         sps_path = static_asc_data_path / '_sps.json' # Path for SPs
         gps_path = static_asc_data_path / '_gps.json'   # Path for GPs
 
@@ -908,19 +908,19 @@ def add_asc():
         if not data:
             return jsonify({"error": "No data provided"}), 400
 
-        required_fields = ['affiliateId', 'environment', 'serviceId', 'spiral']
+        required_fields = ['affiliateId', 'environment', 'serviceId', 'model']
         if not all(field in data for field in required_fields):
             return jsonify({"error": "Missing required fields"}), 400
 
         affiliate_id = data['affiliateId']
         environment = data['environment']
         service_id = data['serviceId']
-        spiral = data['spiral']
+        model = data['model']
 
         # Define paths
         static_asc_data_path = Path(current_app.static_folder) / 'ASC' / 'data'
         ascs_path = static_asc_data_path / '_ascs.json'
-        services_path = static_asc_data_path / '_services.json'
+        services_path = static_asc_data_path / '_servicesm.json'
 
         # --- Read existing data ---
         # Read Services to find associated GPs
@@ -962,7 +962,7 @@ def add_asc():
             "affiliateId": affiliate_id,
             "environment": environment,
             "serviceId": service_id,
-            "spiral": spiral,
+            "model": model,
             "ascScore": "0%",
             "status": "Initial", # Default status
             "gpInstances": []
@@ -1047,7 +1047,7 @@ def update_asc():
         # More robust validation could be added here (e.g., check types, structure)
         # Note: We don't re-validate serviceId/affiliateId existence here, assuming they haven't changed
         # or that the frontend prevents invalid changes.
-        required_keys = ['affiliateId', 'environment', 'serviceId', 'spiral', 'status', 'gpInstances', 'ascScore']
+        required_keys = ['affiliateId', 'environment', 'serviceId', 'model', 'status', 'gpInstances', 'ascScore']
         if not all(k in updated_data for k in required_keys):
              logging.warning(f"Update data for ASC {asc_id} is missing required keys.")
              # Allow partial updates? For now, require all main keys.

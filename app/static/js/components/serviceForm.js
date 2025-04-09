@@ -2,7 +2,7 @@
  * ServiceForm - A component for capturing and validating service data
  * 
  * This component creates a form specific to service data, with fields for
- * name, spiral, GPs, icon path, etc. It includes validation and handles 
+ * name, model, GPs, icon path, etc. It includes validation and handles 
  * both creation and editing scenarios.
  */
 import { MultiSelectDropdown } from './multiSelectDropdown.js';

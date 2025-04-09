@@ -181,7 +181,7 @@ body.logged-in {
   width: 35%;
   min-width: 200px;
 }
-#servicesTable th:nth-child(3), #servicesTable td:nth-child(3) { /* Spiral Column */
+#servicesTable th:nth-child(3), #servicesTable td:nth-child(3) { /* Model Column */
   width: 10%;
   min-width: 80px;
   text-align: center;

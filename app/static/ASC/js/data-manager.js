@@ -18,7 +18,7 @@ export class DataManager {
     this.filters = {
       affiliate: "",
       service: "",
-      spiral: "",
+      model: "",
       search: ""
     };
   }
@@ -123,18 +123,18 @@ export class DataManager {
    * @returns {Object} Object with all filter options
    */
   getFilterOptions() {
-    // Extract unique spirals from ASCs
-    const spiralsSet = new Set();
+    // Extract unique models from ASCs
+    const modelsSet = new Set();
     this.ascs.forEach(asc => {
-      if (asc.spiral) spiralsSet.add(asc.spiral);
+      if (asc.model) modelsSet.add(asc.model);
     });
     
-    const spirals = Array.from(spiralsSet).sort();
+    const models = Array.from(modelsSet).sort();
     
     return {
       affiliates: this.affiliatesOptions,
       services: this.servicesOptions,
-      spirals: spirals.map(spiral => ({ id: spiral, name: spiral }))
+      models: models.map(model => ({ id: model, name: model }))
     };
   }
 
@@ -165,8 +165,8 @@ export class DataManager {
         return false;
       }
       
-      // Check spiral filter
-      if (this.filters.spiral && asc.spiral !== this.filters.spiral) {
+      // Check model filter
+      if (this.filters.model && asc.models !== this.filters.model) {
         return false;
       }
       
@@ -182,7 +182,7 @@ export class DataManager {
           affiliateName,
           serviceName,
           asc.environment,
-          asc.spiral,
+          asc.models,
         ].filter(Boolean); // Remove falsy values
         
         // Check if any field contains the search term

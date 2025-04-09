@@ -38,7 +38,7 @@ export class KanbanBoard {
       cardContainers: {},
       filterAffiliate: document.getElementById('filter-affiliate'),
       filterService: document.getElementById('filter-service'),
-      filterSpiral: document.getElementById('filter-spiral'),
+      filterModel: document.getElementById('filter-model'),
       searchInput: document.getElementById('search-input'),
       clearFiltersBtn: document.getElementById('clear-filters'),
       loadingIndicator: document.getElementById('loading-indicator'),
@@ -126,7 +126,7 @@ export class KanbanBoard {
     // Clear existing options
     this.elements.filterAffiliate.innerHTML = '<option value="">All Affiliates</option>';
     this.elements.filterService.innerHTML = '<option value="">All Services</option>';
-    this.elements.filterSpiral.innerHTML = '<option value="">All Spirals</option>';
+    this.elements.filterModel.innerHTML = '<option value="">All Models</option>';
     
     // Add affiliate options
     filterOptions.affiliates.forEach(affiliate => {
@@ -144,12 +144,12 @@ export class KanbanBoard {
       this.elements.filterService.appendChild(option);
     });
     
-    // Add spiral options
-    filterOptions.spirals.forEach(spiral => {
+    // Add model options
+    filterOptions.models.forEach(model => {
       const option = document.createElement('option');
-      option.value = spiral.id;
-      option.textContent = spiral.name;
-      this.elements.filterSpiral.appendChild(option);
+      option.value = model.id;
+      option.textContent = model.name;
+      this.elements.filterModel.appendChild(option);
     });
   }
 
@@ -160,7 +160,7 @@ export class KanbanBoard {
     // Filter change events
     this.elements.filterAffiliate.addEventListener('change', this.handleFilterChange);
     this.elements.filterService.addEventListener('change', this.handleFilterChange);
-    this.elements.filterSpiral.addEventListener('change', this.handleFilterChange);
+    this.elements.filterModel.addEventListener('change', this.handleFilterChange);
     
     // Debounced search input
     let searchTimeout;
@@ -175,7 +175,7 @@ export class KanbanBoard {
     this.elements.clearFiltersBtn.addEventListener('click', () => {
       this.elements.filterAffiliate.value = '';
       this.elements.filterService.value = '';
-      this.elements.filterSpiral.value = '';
+      this.elements.filterModel.value = '';
       this.elements.searchInput.value = '';
       this.handleFilterChange();
     });
@@ -188,7 +188,7 @@ export class KanbanBoard {
     const filters = {
       affiliate: this.elements.filterAffiliate.value,
       service: this.elements.filterService.value,
-      spiral: this.elements.filterSpiral.value,
+      model: this.elements.filterModel.value,
       search: this.elements.searchInput.value
     };
     

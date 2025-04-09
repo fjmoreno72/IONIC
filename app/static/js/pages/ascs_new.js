@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to open the Add/Edit ASC Dialog
   function openAscDialog(data = null) {
-    ascDialog.setTitle(data ? 'Edit ASC' : 'Add ASC');
+    ascDialog.setTitle(data ? `Edit ASC-${data.id}` : 'Add ASC');
 
     // Create the form instance, passing the save function as the onSubmit callback
     const ascFormInstance = new AscForm({

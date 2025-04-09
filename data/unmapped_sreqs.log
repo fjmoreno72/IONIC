@@ -15802,3 +15802,992 @@ AttributeError: 'str' object has no attribute 'get'
 2025-04-09 12:10:57 - 127.0.0.1 - - [09/Apr/2025 12:10:57] "GET /static/ASC/image/flags/flag_slovakia.png HTTP/1.1" 200 -
 2025-04-09 12:10:57 - 127.0.0.1 - - [09/Apr/2025 12:10:57] "GET /static/ASC/image/flags/flag_türkiye.png HTTP/1.1" 200 -
 2025-04-09 12:10:57 - 127.0.0.1 - - [09/Apr/2025 12:10:57] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-04-09 14:02:45 - Logging system configured with level INFO
+2025-04-09 14:02:45 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 14:02:45 - Applying authentication system patches...
+2025-04-09 14:02:45 - Authentication system patches applied successfully
+2025-04-09 14:02:45 - Enhanced authentication system applied
+2025-04-09 14:02:45 - Configured Flask app logging with level INFO
+2025-04-09 14:02:45 - Configured Flask app logging with level INFO
+2025-04-09 14:02:45 - Logging system configured with level INFO
+2025-04-09 15:33:15 - Logging system configured with level INFO
+2025-04-09 15:33:15 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:33:15 - Applying authentication system patches...
+2025-04-09 15:33:15 - Authentication system patches applied successfully
+2025-04-09 15:33:15 - Enhanced authentication system applied
+2025-04-09 15:33:15 - Configured Flask app logging with level INFO
+2025-04-09 15:33:15 - Configured Flask app logging with level INFO
+2025-04-09 15:33:15 - Logging system configured with level INFO
+2025-04-09 15:34:00 - Logging system configured with level INFO
+2025-04-09 15:34:00 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:34:00 - Applying authentication system patches...
+2025-04-09 15:34:00 - Authentication system patches applied successfully
+2025-04-09 15:34:00 - Enhanced authentication system applied
+2025-04-09 15:34:00 - Configured Flask app logging with level INFO
+2025-04-09 15:34:00 - Configured Flask app logging with level INFO
+2025-04-09 15:34:00 - Logging system configured with level INFO
+2025-04-09 15:36:26 - Logging system configured with level INFO
+2025-04-09 15:36:26 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:36:26 - Applying authentication system patches...
+2025-04-09 15:36:26 - Authentication system patches applied successfully
+2025-04-09 15:36:26 - Enhanced authentication system applied
+2025-04-09 15:36:26 - Configured Flask app logging with level INFO
+2025-04-09 15:36:26 - Configured Flask app logging with level INFO
+2025-04-09 15:36:26 - Logging system configured with level INFO
+2025-04-09 15:36:27 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 15:36:27 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:36:27 - Template files: templates
+2025-04-09 15:36:27 - Running in DEBUG mode
+2025-04-09 15:36:27 - Listening on 0.0.0.0:5006
+2025-04-09 15:36:27 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://172.20.10.2:5006
+2025-04-09 15:36:27 - [33mPress CTRL+C to quit[0m
+2025-04-09 15:36:27 -  * Restarting with stat
+2025-04-09 15:36:27 - Logging system configured with level INFO
+2025-04-09 15:36:27 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:36:27 - Applying authentication system patches...
+2025-04-09 15:36:27 - Authentication system patches applied successfully
+2025-04-09 15:36:27 - Enhanced authentication system applied
+2025-04-09 15:36:27 - Configured Flask app logging with level INFO
+2025-04-09 15:36:27 - Configured Flask app logging with level INFO
+2025-04-09 15:36:27 - Logging system configured with level INFO
+2025-04-09 15:36:27 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 15:36:27 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:36:27 - Template files: templates
+2025-04-09 15:36:27 - Running in DEBUG mode
+2025-04-09 15:36:27 - Listening on 0.0.0.0:5006
+2025-04-09 15:36:27 -  * Debugger is active!
+2025-04-09 15:36:27 -  * Debugger PIN: 116-526-826
+2025-04-09 15:38:51 - Logging system configured with level INFO
+2025-04-09 15:38:51 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:38:51 - Applying authentication system patches...
+2025-04-09 15:38:51 - Authentication system patches applied successfully
+2025-04-09 15:38:51 - Enhanced authentication system applied
+2025-04-09 15:38:51 - Configured Flask app logging with level INFO
+2025-04-09 15:38:51 - Configured Flask app logging with level INFO
+2025-04-09 15:38:51 - Logging system configured with level INFO
+2025-04-09 15:38:51 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 15:38:51 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:38:51 - Template files: templates
+2025-04-09 15:38:51 - Running in DEBUG mode
+2025-04-09 15:38:51 - Listening on 0.0.0.0:5006
+2025-04-09 15:39:01 - Logging system configured with level INFO
+2025-04-09 15:39:01 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:39:01 - Applying authentication system patches...
+2025-04-09 15:39:01 - Authentication system patches applied successfully
+2025-04-09 15:39:01 - Enhanced authentication system applied
+2025-04-09 15:39:01 - Configured Flask app logging with level INFO
+2025-04-09 15:39:01 - Configured Flask app logging with level INFO
+2025-04-09 15:39:01 - Logging system configured with level INFO
+2025-04-09 15:39:01 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 15:39:01 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:39:01 - Template files: templates
+2025-04-09 15:39:01 - Running in DEBUG mode
+2025-04-09 15:39:01 - Listening on 0.0.0.0:5007
+2025-04-09 15:39:01 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.2:5007
+2025-04-09 15:39:01 - [33mPress CTRL+C to quit[0m
+2025-04-09 15:39:01 -  * Restarting with stat
+2025-04-09 15:39:01 - Logging system configured with level INFO
+2025-04-09 15:39:01 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:39:01 - Applying authentication system patches...
+2025-04-09 15:39:01 - Authentication system patches applied successfully
+2025-04-09 15:39:01 - Enhanced authentication system applied
+2025-04-09 15:39:01 - Configured Flask app logging with level INFO
+2025-04-09 15:39:01 - Configured Flask app logging with level INFO
+2025-04-09 15:39:01 - Logging system configured with level INFO
+2025-04-09 15:39:01 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 15:39:01 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:39:01 - Template files: templates
+2025-04-09 15:39:01 - Running in DEBUG mode
+2025-04-09 15:39:01 - Listening on 0.0.0.0:5007
+2025-04-09 15:39:01 -  * Debugger is active!
+2025-04-09 15:39:01 -  * Debugger PIN: 116-526-826
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-09 15:39:34 - Accessing functional tree view
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/js/tree_func.js HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/css/components/sp-styles.css HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-09 15:39:34 - 127.0.0.1 - - [09/Apr/2025 15:39:34] "GET /static/favicon/site.webmanifest HTTP/1.1" 200 -
+2025-04-09 15:44:35 - Accessing Affiliates page
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /affiliates HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/js/pages/affiliates_new.js HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/js/components/affiliateForm.js HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/js/components/multiSelectDropdown.js HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 15:44:35 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 15:44:35 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_australia.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_austria.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_belgium.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_denmark.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_estonia.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_finland.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_france.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_latvia.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_ireland.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_italy.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_greece.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_hungary.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "GET /static/ASC/image/flags/flag_croatia.png HTTP/1.1" 200 -
+2025-04-09 15:44:35 - 127.0.0.1 - - [09/Apr/2025 15:44:35] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 15:51:50 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC3/app/routes/views.py', reloading
+2025-04-09 15:51:50 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC3/app/routes/views.py', reloading
+2025-04-09 15:51:50 -  * Restarting with stat
+2025-04-09 15:51:50 - Logging system configured with level INFO
+2025-04-09 15:51:50 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:51:50 - Applying authentication system patches...
+2025-04-09 15:51:50 - Authentication system patches applied successfully
+2025-04-09 15:51:50 - Enhanced authentication system applied
+2025-04-09 15:51:50 - Configured Flask app logging with level INFO
+2025-04-09 15:51:50 - Configured Flask app logging with level INFO
+2025-04-09 15:51:50 - Logging system configured with level INFO
+2025-04-09 15:51:50 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 15:51:50 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:51:50 - Template files: templates
+2025-04-09 15:51:50 - Running in DEBUG mode
+2025-04-09 15:51:50 - Listening on 0.0.0.0:5007
+2025-04-09 15:51:50 -  * Debugger is active!
+2025-04-09 15:51:50 -  * Debugger PIN: 116-526-826
+2025-04-09 15:52:40 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC3/app/routes/views.py', reloading
+2025-04-09 15:52:40 -  * Restarting with stat
+2025-04-09 15:52:40 - Logging system configured with level INFO
+2025-04-09 15:52:40 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:52:40 - Applying authentication system patches...
+2025-04-09 15:52:40 - Authentication system patches applied successfully
+2025-04-09 15:52:40 - Enhanced authentication system applied
+2025-04-09 15:52:40 - Configured Flask app logging with level INFO
+2025-04-09 15:52:40 - Configured Flask app logging with level INFO
+2025-04-09 15:52:40 - Logging system configured with level INFO
+2025-04-09 15:52:40 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 15:52:40 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:52:40 - Template files: templates
+2025-04-09 15:52:40 - Running in DEBUG mode
+2025-04-09 15:52:40 - Listening on 0.0.0.0:5007
+2025-04-09 15:52:40 -  * Debugger is active!
+2025-04-09 15:52:40 -  * Debugger PIN: 116-526-826
+2025-04-09 15:55:45 - Logging system configured with level INFO
+2025-04-09 15:55:45 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:55:45 - Applying authentication system patches...
+2025-04-09 15:55:45 - Authentication system patches applied successfully
+2025-04-09 15:55:45 - Enhanced authentication system applied
+2025-04-09 15:55:45 - Configured Flask app logging with level INFO
+2025-04-09 15:55:45 - Configured Flask app logging with level INFO
+2025-04-09 15:55:45 - Logging system configured with level INFO
+2025-04-09 15:55:45 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-04-09 15:55:45 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:55:45 - Template files: templates
+2025-04-09 15:55:45 - Running in PRODUCTION mode
+2025-04-09 15:55:45 - Listening on 0.0.0.0:5005
+2025-04-09 15:55:45 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.20.10.2:5005
+2025-04-09 15:55:45 - [33mPress CTRL+C to quit[0m
+2025-04-09 15:56:15 - Logging system configured with level INFO
+2025-04-09 15:56:15 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:56:15 - Applying authentication system patches...
+2025-04-09 15:56:15 - Authentication system patches applied successfully
+2025-04-09 15:56:15 - Enhanced authentication system applied
+2025-04-09 15:56:15 - Configured Flask app logging with level INFO
+2025-04-09 15:56:15 - Configured Flask app logging with level INFO
+2025-04-09 15:56:15 - Logging system configured with level INFO
+2025-04-09 15:56:15 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 15:56:15 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:56:15 - Template files: templates
+2025-04-09 15:56:15 - Running in DEBUG mode
+2025-04-09 15:56:15 - Listening on 0.0.0.0:5007
+2025-04-09 15:56:15 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.2:5007
+2025-04-09 15:56:15 - [33mPress CTRL+C to quit[0m
+2025-04-09 15:56:15 -  * Restarting with stat
+2025-04-09 15:56:16 - Logging system configured with level INFO
+2025-04-09 15:56:16 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 15:56:16 - Applying authentication system patches...
+2025-04-09 15:56:16 - Authentication system patches applied successfully
+2025-04-09 15:56:16 - Enhanced authentication system applied
+2025-04-09 15:56:16 - Configured Flask app logging with level INFO
+2025-04-09 15:56:16 - Configured Flask app logging with level INFO
+2025-04-09 15:56:16 - Logging system configured with level INFO
+2025-04-09 15:56:16 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 15:56:16 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 15:56:16 - Template files: templates
+2025-04-09 15:56:16 - Running in DEBUG mode
+2025-04-09 15:56:16 - Listening on 0.0.0.0:5007
+2025-04-09 15:56:16 -  * Debugger is active!
+2025-04-09 15:56:16 -  * Debugger PIN: 116-526-826
+2025-04-09 15:56:21 - Accessing Affiliates page
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /affiliates HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/pages/affiliates_new.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/components/affiliateForm.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/js/components/multiSelectDropdown.js HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 15:56:21 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 15:56:21 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_australia.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_austria.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_belgium.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_france.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_hungary.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_finland.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_croatia.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_estonia.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_denmark.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_ireland.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_greece.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_latvia.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/ASC/image/flags/flag_italy.png HTTP/1.1" 200 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 15:56:21 - 127.0.0.1 - - [09/Apr/2025 15:56:21] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-09 15:56:25 - Accessing ASC Models page
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "GET /static/js/pages/models_new.js HTTP/1.1" 200 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 15:56:25 - 127.0.0.1 - - [09/Apr/2025 15:56:25] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - Accessing Affiliates page
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "GET /affiliates HTTP/1.1" 200 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/js/pages/affiliates_new.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/js/components/affiliateForm.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:47 - 127.0.0.1 - - [09/Apr/2025 15:56:47] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 15:56:48 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 15:56:48 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:48 - 127.0.0.1 - - [09/Apr/2025 15:56:48] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 15:56:49 - Accessing ASC Models page
+2025-04-09 15:56:49 - 127.0.0.1 - - [09/Apr/2025 15:56:49] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/js/pages/models_new.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 15:56:50 - 127.0.0.1 - - [09/Apr/2025 15:56:50] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:01:21 - Logging system configured with level INFO
+2025-04-09 16:01:21 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:01:21 - Applying authentication system patches...
+2025-04-09 16:01:21 - Authentication system patches applied successfully
+2025-04-09 16:01:21 - Enhanced authentication system applied
+2025-04-09 16:01:21 - Configured Flask app logging with level INFO
+2025-04-09 16:01:21 - Configured Flask app logging with level INFO
+2025-04-09 16:01:21 - Logging system configured with level INFO
+2025-04-09 16:01:21 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:01:21 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:01:21 - Template files: templates
+2025-04-09 16:01:21 - Running in DEBUG mode
+2025-04-09 16:01:21 - Listening on 0.0.0.0:5007
+2025-04-09 16:01:21 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.2:5007
+2025-04-09 16:01:21 - [33mPress CTRL+C to quit[0m
+2025-04-09 16:01:21 -  * Restarting with stat
+2025-04-09 16:01:21 - Logging system configured with level INFO
+2025-04-09 16:01:21 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:01:21 - Applying authentication system patches...
+2025-04-09 16:01:21 - Authentication system patches applied successfully
+2025-04-09 16:01:21 - Enhanced authentication system applied
+2025-04-09 16:01:21 - Configured Flask app logging with level INFO
+2025-04-09 16:01:21 - Configured Flask app logging with level INFO
+2025-04-09 16:01:21 - Logging system configured with level INFO
+2025-04-09 16:01:21 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:01:21 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:01:21 - Template files: templates
+2025-04-09 16:01:21 - Running in DEBUG mode
+2025-04-09 16:01:21 - Listening on 0.0.0.0:5007
+2025-04-09 16:01:21 -  * Debugger is active!
+2025-04-09 16:01:21 -  * Debugger PIN: 116-526-826
+2025-04-09 16:01:29 - Accessing ASC Models page
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/img/models.png HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/js/pages/models_new.js HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:01:29 - 127.0.0.1 - - [09/Apr/2025 16:01:29] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-09 16:01:42 - 127.0.0.1 - - [09/Apr/2025 16:01:42] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 16:01:42 - 127.0.0.1 - - [09/Apr/2025 16:01:42] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 16:01:42 - 127.0.0.1 - - [09/Apr/2025 16:01:42] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 16:01:42 - 127.0.0.1 - - [09/Apr/2025 16:01:42] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:01:57 - Accessing ASC Models page
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/img/models.png HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/js/pages/models_new.js HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:01:57 - 127.0.0.1 - - [09/Apr/2025 16:01:57] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-09 16:05:20 - Logging system configured with level INFO
+2025-04-09 16:05:20 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:05:20 - Applying authentication system patches...
+2025-04-09 16:05:20 - Authentication system patches applied successfully
+2025-04-09 16:05:20 - Enhanced authentication system applied
+2025-04-09 16:05:20 - Configured Flask app logging with level INFO
+2025-04-09 16:05:20 - Configured Flask app logging with level INFO
+2025-04-09 16:05:20 - Logging system configured with level INFO
+2025-04-09 16:05:20 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:05:20 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:05:20 - Template files: templates
+2025-04-09 16:05:20 - Running in DEBUG mode
+2025-04-09 16:05:20 - Listening on 0.0.0.0:5007
+2025-04-09 16:05:20 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.2:5007
+2025-04-09 16:05:20 - [33mPress CTRL+C to quit[0m
+2025-04-09 16:05:20 -  * Restarting with stat
+2025-04-09 16:05:20 - Logging system configured with level INFO
+2025-04-09 16:05:20 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:05:20 - Applying authentication system patches...
+2025-04-09 16:05:20 - Authentication system patches applied successfully
+2025-04-09 16:05:20 - Enhanced authentication system applied
+2025-04-09 16:05:20 - Configured Flask app logging with level INFO
+2025-04-09 16:05:20 - Configured Flask app logging with level INFO
+2025-04-09 16:05:20 - Logging system configured with level INFO
+2025-04-09 16:05:20 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:05:20 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:05:20 - Template files: templates
+2025-04-09 16:05:20 - Running in DEBUG mode
+2025-04-09 16:05:20 - Listening on 0.0.0.0:5007
+2025-04-09 16:05:20 -  * Debugger is active!
+2025-04-09 16:05:21 -  * Debugger PIN: 116-526-826
+2025-04-09 16:05:24 - Accessing Affiliates page
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "GET /affiliates HTTP/1.1" 200 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/pages/affiliates_new.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/components/affiliateForm.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:05:25 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 16:05:25 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:25 - 127.0.0.1 - - [09/Apr/2025 16:05:25] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - Accessing ASC Models page
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/img/models.png HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "GET /static/js/pages/models_new.js HTTP/1.1" 200 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:05:26 - 127.0.0.1 - - [09/Apr/2025 16:05:26] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:05:40 - 127.0.0.1 - - [09/Apr/2025 16:05:40] "POST /api/models HTTP/1.1" 200 -
+2025-04-09 16:06:09 - Accessing ASC Models page
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/img/models.png HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/js/pages/models_new.js HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-09 16:06:09 - 127.0.0.1 - - [09/Apr/2025 16:06:09] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:08:47 - Logging system configured with level INFO
+2025-04-09 16:08:47 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:08:47 - Applying authentication system patches...
+2025-04-09 16:08:47 - Authentication system patches applied successfully
+2025-04-09 16:08:47 - Enhanced authentication system applied
+2025-04-09 16:08:47 - Configured Flask app logging with level INFO
+2025-04-09 16:08:47 - Configured Flask app logging with level INFO
+2025-04-09 16:08:47 - Logging system configured with level INFO
+2025-04-09 16:08:47 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:08:47 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:08:47 - Template files: templates
+2025-04-09 16:08:47 - Running in DEBUG mode
+2025-04-09 16:08:47 - Listening on 0.0.0.0:5007
+2025-04-09 16:08:47 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.2:5007
+2025-04-09 16:08:47 - [33mPress CTRL+C to quit[0m
+2025-04-09 16:08:47 -  * Restarting with stat
+2025-04-09 16:08:47 - Logging system configured with level INFO
+2025-04-09 16:08:47 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:08:47 - Applying authentication system patches...
+2025-04-09 16:08:47 - Authentication system patches applied successfully
+2025-04-09 16:08:47 - Enhanced authentication system applied
+2025-04-09 16:08:47 - Configured Flask app logging with level INFO
+2025-04-09 16:08:47 - Configured Flask app logging with level INFO
+2025-04-09 16:08:47 - Logging system configured with level INFO
+2025-04-09 16:08:47 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:08:47 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:08:47 - Template files: templates
+2025-04-09 16:08:47 - Running in DEBUG mode
+2025-04-09 16:08:47 - Listening on 0.0.0.0:5007
+2025-04-09 16:08:48 -  * Debugger is active!
+2025-04-09 16:08:48 -  * Debugger PIN: 116-526-826
+2025-04-09 16:09:00 - Accessing ASC Models page
+2025-04-09 16:09:00 - 127.0.0.1 - - [09/Apr/2025 16:09:00] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 16:09:00 - 127.0.0.1 - - [09/Apr/2025 16:09:00] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-09 16:09:00 - 127.0.0.1 - - [09/Apr/2025 16:09:00] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/img/models.png HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/js/pages/models_new.js HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-09 16:09:01 - 127.0.0.1 - - [09/Apr/2025 16:09:01] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:09:07 - 127.0.0.1 - - [09/Apr/2025 16:09:07] "POST /api/models HTTP/1.1" 200 -
+2025-04-09 16:09:07 - 127.0.0.1 - - [09/Apr/2025 16:09:07] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:09:18 - Accessing ASC Models page
+2025-04-09 16:09:18 - 127.0.0.1 - - [09/Apr/2025 16:09:18] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 16:09:18 - 127.0.0.1 - - [09/Apr/2025 16:09:18] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 16:09:18 - 127.0.0.1 - - [09/Apr/2025 16:09:18] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/img/models.png HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/js/pages/models_new.js HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/favicon/favicon.ico HTTP/1.1[0m" 304 -
+2025-04-09 16:09:19 - 127.0.0.1 - - [09/Apr/2025 16:09:19] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:09:22 - Accessing ASC Models page
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/img/models.png HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/js/pages/models_new.js HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:09:22 - 127.0.0.1 - - [09/Apr/2025 16:09:22] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-09 16:22:13 - Logging system configured with level INFO
+2025-04-09 16:22:13 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:22:13 - Applying authentication system patches...
+2025-04-09 16:22:13 - Authentication system patches applied successfully
+2025-04-09 16:22:13 - Enhanced authentication system applied
+2025-04-09 16:22:13 - Configured Flask app logging with level INFO
+2025-04-09 16:22:13 - Configured Flask app logging with level INFO
+2025-04-09 16:22:13 - Logging system configured with level INFO
+2025-04-09 16:22:13 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:22:13 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:22:13 - Template files: templates
+2025-04-09 16:22:13 - Running in DEBUG mode
+2025-04-09 16:22:13 - Listening on 0.0.0.0:5007
+2025-04-09 16:22:13 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.2:5007
+2025-04-09 16:22:13 - [33mPress CTRL+C to quit[0m
+2025-04-09 16:22:13 -  * Restarting with stat
+2025-04-09 16:22:13 - Logging system configured with level INFO
+2025-04-09 16:22:13 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:22:13 - Applying authentication system patches...
+2025-04-09 16:22:13 - Authentication system patches applied successfully
+2025-04-09 16:22:13 - Enhanced authentication system applied
+2025-04-09 16:22:13 - Configured Flask app logging with level INFO
+2025-04-09 16:22:13 - Configured Flask app logging with level INFO
+2025-04-09 16:22:13 - Logging system configured with level INFO
+2025-04-09 16:22:13 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:22:13 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:22:13 - Template files: templates
+2025-04-09 16:22:13 - Running in DEBUG mode
+2025-04-09 16:22:13 - Listening on 0.0.0.0:5007
+2025-04-09 16:22:13 -  * Debugger is active!
+2025-04-09 16:22:14 -  * Debugger PIN: 116-526-826
+2025-04-09 16:22:26 - Logging system configured with level INFO
+2025-04-09 16:22:26 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:22:26 - Applying authentication system patches...
+2025-04-09 16:22:26 - Authentication system patches applied successfully
+2025-04-09 16:22:26 - Enhanced authentication system applied
+2025-04-09 16:22:26 - Configured Flask app logging with level INFO
+2025-04-09 16:22:26 - Configured Flask app logging with level INFO
+2025-04-09 16:22:26 - Logging system configured with level INFO
+2025-04-09 16:22:26 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:22:26 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:22:26 - Template files: templates
+2025-04-09 16:22:26 - Running in DEBUG mode
+2025-04-09 16:22:26 - Listening on 0.0.0.0:5007
+2025-04-09 16:22:26 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.2:5007
+2025-04-09 16:22:26 - [33mPress CTRL+C to quit[0m
+2025-04-09 16:22:26 -  * Restarting with stat
+2025-04-09 16:22:26 - Logging system configured with level INFO
+2025-04-09 16:22:26 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:22:26 - Applying authentication system patches...
+2025-04-09 16:22:26 - Authentication system patches applied successfully
+2025-04-09 16:22:26 - Enhanced authentication system applied
+2025-04-09 16:22:26 - Configured Flask app logging with level INFO
+2025-04-09 16:22:26 - Configured Flask app logging with level INFO
+2025-04-09 16:22:26 - Logging system configured with level INFO
+2025-04-09 16:22:26 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:22:26 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:22:26 - Template files: templates
+2025-04-09 16:22:26 - Running in DEBUG mode
+2025-04-09 16:22:26 - Listening on 0.0.0.0:5007
+2025-04-09 16:22:26 -  * Debugger is active!
+2025-04-09 16:22:26 -  * Debugger PIN: 116-526-826
+2025-04-09 16:22:31 - Accessing Affiliates page
+2025-04-09 16:22:31 - 127.0.0.1 - - [09/Apr/2025 16:22:31] "GET /affiliates HTTP/1.1" 200 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/pages/affiliates_new.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/components/affiliateForm.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:22:32 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 16:22:32 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:32 - 127.0.0.1 - - [09/Apr/2025 16:22:32] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:22:33 - Accessing Affiliates page
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /affiliates HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-09 16:22:33 - 127.0.0.1 - - [09/Apr/2025 16:22:33] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/js/pages/affiliates_new.js HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/js/components/affiliateForm.js HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/js/components/fileUploader.js HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/js/components/multiSelectDropdown.js HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:22:34 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 16:22:34 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_austria.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_australia.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_croatia.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_belgium.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_finland.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_latvia.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_greece.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_hungary.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_france.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_denmark.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_ireland.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_italy.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_estonia.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:22:34 - 127.0.0.1 - - [09/Apr/2025 16:22:34] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-09 16:22:35 - Accessing ASC Models page
+2025-04-09 16:22:35 - 127.0.0.1 - - [09/Apr/2025 16:22:35] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/img/models.png HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "GET /static/js/pages/models_new.js HTTP/1.1" 200 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:22:36 - 127.0.0.1 - - [09/Apr/2025 16:22:36] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:22:52 - 127.0.0.1 - - [09/Apr/2025 16:22:52] "DELETE /api/models?id=MOD-0005 HTTP/1.1" 200 -
+2025-04-09 16:22:52 - 127.0.0.1 - - [09/Apr/2025 16:22:52] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:23:00 - 127.0.0.1 - - [09/Apr/2025 16:23:00] "DELETE /api/models?id=MOD-0004 HTTP/1.1" 200 -
+2025-04-09 16:23:00 - 127.0.0.1 - - [09/Apr/2025 16:23:00] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:23:10 - 127.0.0.1 - - [09/Apr/2025 16:23:10] "POST /api/models HTTP/1.1" 200 -
+2025-04-09 16:23:10 - 127.0.0.1 - - [09/Apr/2025 16:23:10] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:23:15 - 127.0.0.1 - - [09/Apr/2025 16:23:15] "PUT /api/models HTTP/1.1" 200 -
+2025-04-09 16:23:15 - 127.0.0.1 - - [09/Apr/2025 16:23:15] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:28:33 - Logging system configured with level INFO
+2025-04-09 16:28:33 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:28:34 - Applying authentication system patches...
+2025-04-09 16:28:34 - Authentication system patches applied successfully
+2025-04-09 16:28:34 - Enhanced authentication system applied
+2025-04-09 16:28:34 - Configured Flask app logging with level INFO
+2025-04-09 16:28:34 - Configured Flask app logging with level INFO
+2025-04-09 16:28:34 - Logging system configured with level INFO
+2025-04-09 16:28:34 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:28:34 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:28:34 - Template files: templates
+2025-04-09 16:28:34 - Running in DEBUG mode
+2025-04-09 16:28:34 - Listening on 0.0.0.0:5007
+2025-04-09 16:28:34 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.2:5007
+2025-04-09 16:28:34 - [33mPress CTRL+C to quit[0m
+2025-04-09 16:28:34 -  * Restarting with stat
+2025-04-09 16:28:34 - Logging system configured with level INFO
+2025-04-09 16:28:34 - Starting IOCore2 Coverage Analysis Tool
+2025-04-09 16:28:34 - Applying authentication system patches...
+2025-04-09 16:28:34 - Authentication system patches applied successfully
+2025-04-09 16:28:34 - Enhanced authentication system applied
+2025-04-09 16:28:34 - Configured Flask app logging with level INFO
+2025-04-09 16:28:34 - Configured Flask app logging with level INFO
+2025-04-09 16:28:34 - Logging system configured with level INFO
+2025-04-09 16:28:34 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-09 16:28:34 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-09 16:28:34 - Template files: templates
+2025-04-09 16:28:34 - Running in DEBUG mode
+2025-04-09 16:28:34 - Listening on 0.0.0.0:5007
+2025-04-09 16:28:34 -  * Debugger is active!
+2025-04-09 16:28:34 -  * Debugger PIN: 116-526-826
+2025-04-09 16:28:39 - Accessing Affiliates page
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "GET /affiliates HTTP/1.1" 200 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/pages/affiliates_new.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/components/affiliateForm.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/components/fileUploader.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:39 - 127.0.0.1 - - [09/Apr/2025 16:28:39] "[36mGET /static/js/components/multiSelectDropdown.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:28:40 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 16:28:40 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_australia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_austria.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_bulgaria.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_belgium.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_estonia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_lithuania.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_czech_republic.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_hungary.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_denmark.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_italy.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_ireland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_france.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_finland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_switzerland.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_latvia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_north_macedonia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_croatia.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_luxembourg.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_greece.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/ASC/image/flags/flag_united_kingdom.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:40 - 127.0.0.1 - - [09/Apr/2025 16:28:40] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - Accessing ASC Models page
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "GET /asc_models HTTP/1.1" 200 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/img/models.png HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "GET /static/js/pages/models_new.js HTTP/1.1" 200 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "GET /check_auth HTTP/1.1" 200 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:28:41 - 127.0.0.1 - - [09/Apr/2025 16:28:41] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-09 16:28:46 - 127.0.0.1 - - [09/Apr/2025 16:28:46] "DELETE /api/models?id=MOD-0004 HTTP/1.1" 200 -
+2025-04-09 16:28:46 - 127.0.0.1 - - [09/Apr/2025 16:28:46] "GET /api/models HTTP/1.1" 200 -
+2025-04-09 16:28:55 - 127.0.0.1 - - [09/Apr/2025 16:28:55] "POST /api/models HTTP/1.1" 200 -
+2025-04-09 16:28:55 - 127.0.0.1 - - [09/Apr/2025 16:28:55] "GET /api/models HTTP/1.1" 200 -

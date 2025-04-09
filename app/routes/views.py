@@ -530,6 +530,14 @@ def affiliates():
     # Now uses the refactored component-based template
     return render_template('pages/affiliates_new.html', title="Affiliates")
 
+@views_bp.route('/asc_models')
+@login_required
+def asc_models():
+    """Render the ASC Models page."""
+    logging.info("Accessing ASC Models page")
+    # Uses the component-based template
+    return render_template('pages/models_new.html', title="ASC Models")
+
 @views_bp.route('/asc_services')
 @login_required
 def asc_services():
@@ -1186,3 +1194,130 @@ def manage_affiliates():
             
     except Exception as e:
         logging.exception(f"Error managing affiliates: {str(e)}")
+        return jsonify({'success': False, 'message': f'Error: {str(e)}'}), 500
+
+@views_bp.route('/api/models', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@login_required
+def manage_models():
+    """
+    API endpoint to manage models data.
+    
+    Methods:
+        GET: Return all models
+        POST: Add a new model
+        PUT: Update an existing model
+        DELETE: Delete a model
+    
+    Returns:
+        JSON response with the result of the operation
+    """
+    try:
+        # Path to the models JSON file
+        models_file = Path(current_app.root_path) / 'static' / 'ASC' / 'data' / '_models.json'
+        
+        # GET: Return all models
+        if request.method == 'GET':
+            if models_file.exists():
+                with open(models_file, 'r') as f:
+                    models_data = json.load(f)
+                return jsonify(models_data)
+            return jsonify([])
+        
+        # POST: Add a new model
+        elif request.method == 'POST':
+            data = request.json
+            
+            # Load existing models
+            models_data = []
+            if models_file.exists():
+                with open(models_file, 'r') as f:
+                    models_data = json.load(f)
+            
+            # Generate a new ID if not provided
+            if 'id' not in data or not data['id']:
+                # Find the highest existing ID and increment
+                max_id = 0
+                for model in models_data:
+                    if 'id' in model and model['id'].startswith('MOD-'):
+                        try:
+                            id_num = int(model['id'].split('-')[1])
+                            max_id = max(max_id, id_num)
+                        except ValueError:
+                            pass
+                
+                # Format the new ID
+                data['id'] = f'MOD-{max_id + 1:04d}'
+            
+            # Add the new model
+            models_data.append(data)
+            
+            # Save the updated data
+            with open(models_file, 'w') as f:
+                json.dump(models_data, f, indent=2)
+            
+            return jsonify({'success': True, 'message': 'Model added successfully', 'model': data})
+        
+        # PUT: Update an existing model
+        elif request.method == 'PUT':
+            data = request.json
+            model_id = data.get('id')
+            
+            if not model_id:
+                return jsonify({'success': False, 'message': 'Model ID is required'}), 400
+            
+            # Load existing models
+            if not models_file.exists():
+                return jsonify({'success': False, 'message': 'Models file not found'}), 404
+            
+            with open(models_file, 'r') as f:
+                models_data = json.load(f)
+            
+            # Find and update the model
+            found = False
+            for i, model in enumerate(models_data):
+                if model.get('id') == model_id:
+                    # Update model data, preserving the ID
+                    data['id'] = model_id  # Ensure ID doesn't change
+                    models_data[i] = data
+                    found = True
+                    break
+            
+            if not found:
+                return jsonify({'success': False, 'message': f'Model with ID {model_id} not found'}), 404
+            
+            # Save the updated data
+            with open(models_file, 'w') as f:
+                json.dump(models_data, f, indent=2)
+            
+            return jsonify({'success': True, 'message': 'Model updated successfully', 'model': data})
+        
+        # DELETE: Delete a model
+        elif request.method == 'DELETE':
+            model_id = request.args.get('id')
+            
+            if not model_id:
+                return jsonify({'success': False, 'message': 'Model ID is required'}), 400
+            
+            # Load existing models
+            if not models_file.exists():
+                return jsonify({'success': False, 'message': 'Models file not found'}), 404
+            
+            with open(models_file, 'r') as f:
+                models_data = json.load(f)
+            
+            # Find and remove the model
+            initial_length = len(models_data)
+            models_data = [model for model in models_data if model.get('id') != model_id]
+            
+            if len(models_data) == initial_length:
+                return jsonify({'success': False, 'message': f'Model with ID {model_id} not found'}), 404
+            
+            # Save the updated data
+            with open(models_file, 'w') as f:
+                json.dump(models_data, f, indent=2)
+            
+            return jsonify({'success': True, 'message': 'Model deleted successfully'})
+        
+    except Exception as e:
+        logging.exception(f"Error managing models: {str(e)}")
+        return jsonify({'success': False, 'message': f'Error: {str(e)}'}), 500

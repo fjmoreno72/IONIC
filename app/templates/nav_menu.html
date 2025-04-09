@@ -207,10 +207,11 @@ body {
             top: 40px; /* Adjust top position slightly if needed */
         }
         /* Adjust body margin-top for mobile if banner height changes significantly */
+        /* Commented out empty ruleset to fix lint error
         body {
-             /* Example: Adjust if banner becomes taller */
-             /* margin-top: 150px !important; */
+             margin-top: 150px !important;
         }
+        */
     }
      @media (max-width: 480px) { /* Even smaller screens */
         .classification-banner {
@@ -268,6 +269,7 @@ body {
             </a>
             <div class="dropdown-content">
                 <a href="{{ url_for('views.affiliates') }}">Affiliates</a>
+                <a href="{{ url_for('views.asc_models') }}">Models</a>
                 <a href="{{ url_for('views.asc_services') }}">Services</a>
                 <a href="{{ url_for('views.asc_gps') }}">GPs</a>
                 <a href="{{ url_for('views.asc_links') }}">Links</a>

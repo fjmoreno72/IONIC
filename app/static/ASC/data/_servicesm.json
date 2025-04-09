@@ -1,0 +1,395 @@
+[
+  {
+    "name": "Air C2 Information Exchange",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0126",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0125",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0001",
+    "originalId": "SRV-0001",
+    "iconPath": "./image/srv/icon_air_c2_information_exchange.png"
+  },
+  {
+    "name": "Fires Information Exchange",
+    "models": ["MOD-0001"],
+    "gps": [],
+    "id": "SRV-0002",
+    "originalId": "SRV-0002"
+  },
+  {
+    "name": "Intelligence Battlespace Objects Exchange",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0135",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0003",
+    "iconPath": "./image/srv/icon_intelligence_battlespace_objects_exchange.png",
+    "originalId": "SRV-0003"
+  },
+  {
+    "name": "Joint ISR Information Exchange",
+    "models": ["MOD-0001"],
+    "gps": [],
+    "id": "SRV-0004"
+  },
+  {
+    "name": "Land C2 Information Exchange",
+    "models": ["MOD-0001"],
+    "gps": [],
+    "id": "SRV-0005"
+  },
+  {
+    "name": "Land Tactical C2 Information Exchange",
+    "models": ["MOD-0001"],
+    "gps": [],
+    "id": "SRV-0006"
+  },
+  {
+    "name": "Maritime C2 Information Exchange",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0046",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0045",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0007",
+    "originalId": "SRV-0007",
+    "iconPath": "./image/srv/icon_maritime_c2_information_exchange.png"
+  },
+  {
+    "name": "Data Links",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0001",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0003",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0002",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0037",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0008",
+    "functionalDiagramPath": "./image/srv/diagram_data_links.jpg",
+    "originalId": "SRV-0008",
+    "iconPath": "./image/srv/icon_data_links.png"
+  },
+  {
+    "name": "Friendly Force Tracking",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0130",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0129",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0128",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0133",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0132",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0009",
+    "originalId": "SRV-0009",
+    "iconPath": "./image/srv/icon_friendly_force_tracking.png"
+  },
+  {
+    "name": "Ground-to-Air Information Exchange",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0080",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0010",
+    "originalId": "SRV-0010",
+    "iconPath": "./image/srv/icon_ground-to-air_information_exchange.png"
+  },
+  {
+    "name": "Overlay Distribution",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0044",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0043",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0011",
+    "originalId": "SRV-0011",
+    "iconPath": "./image/srv/icon_overlay_distribution.png"
+  },
+  {
+    "name": "Audio and Video-based Collaboration",
+    "models": ["MOD-0001"],
+    "gps": [],
+    "id": "SRV-0012"
+  },
+  {
+    "name": "Calendaring and Scheduling",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0093",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0127",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0013",
+    "originalId": "SRV-0013",
+    "iconPath": "./image/srv/icon_calendaring_and_scheduling.png"
+  },
+  {
+    "name": "Digital Certificates",
+    "models": ["MOD-0001"],
+    "gps": [],
+    "id": "SRV-0014"
+  },
+  {
+    "name": "Directory Data Synchronization",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0027",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0017",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0134",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0015",
+    "originalId": "SRV-0015",
+    "iconPath": "./image/srv/icon_directory_data_synchronization.png"
+  },
+  {
+    "name": "Distributed Time",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0039",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0024",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0028",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0016",
+    "originalId": "SRV-0016",
+    "iconPath": "./image/srv/icon_distributed_time.png"
+  },
+  {
+    "name": "Domain Naming",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0007",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0090",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0008",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0017",
+    "iconPath": "./image/srv/icon_domain_naming.jpg",
+    "functionalDiagramPath": "./image/srv/diagram_domain_naming.jpg",
+    "originalId": "SRV-0017"
+  },
+  {
+    "name": "Geospatial Information",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0041",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0109",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0030",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0014",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0018",
+    "originalId": "SRV-0018",
+    "iconPath": "./image/srv/icon_geospatial_information.png"
+  },
+  {
+    "name": "Informal Messaging",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0126",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0125",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0019",
+    "iconPath": "./image/srv/icon_informal_messaging.png",
+    "functionalDiagramPath": "./image/srv/diagram_informal_messaging.jpg",
+    "originalId": "SRV-0019"
+  },
+  {
+    "name": "Service Management and Control",
+    "models": ["MOD-0001"],
+    "gps": [],
+    "id": "SRV-0020"
+  },
+  {
+    "name": "Text-based Collaboration",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0005",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0006",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0021",
+    "functionalDiagramPath": "./image/srv/diagram_text-based_collaboration.jpg",
+    "originalId": "SRV-0021",
+    "iconPath": "./image/srv/icon_text-based_collaboration.png"
+  },
+  {
+    "name": "Virtualized Processing",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0111",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0110",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0022",
+    "originalId": "SRV-0022",
+    "iconPath": "./image/srv/icon_virtualized_processing.png"
+  },
+  {
+    "name": "Web Authentication",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0049",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0136",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0023",
+    "originalId": "SRV-0023",
+    "iconPath": "./image/srv/icon_web_authentication.png"
+  },
+  {
+    "name": "Web Hosting",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0014",
+        "models": ["MOD-0001"]
+      },
+      {
+        "id": "GP-0012",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0024",
+    "originalId": "SRV-0024",
+    "iconPath": "./image/srv/icon_web_hosting.png"
+  },
+  {
+    "name": "Communications",
+    "models": ["MOD-0001"],
+    "gps": [
+      {
+        "id": "GP-0034",
+        "models": ["MOD-0001"]
+      }
+    ],
+    "id": "SRV-0025",
+    "originalId": "SRV-0025",
+    "iconPath": "./image/srv/icon_communications.png"
+  },
+  {
+    "name": "Communications Transport",
+    "models": ["MOD-0001"],
+    "gps": [],
+    "id": "SRV-0026"
+  },
+  {
+    "name": "Protected Core Networking",
+    "models": ["MOD-0001"],
+    "gps": [],
+    "id": "SRV-0027"
+  }
+]

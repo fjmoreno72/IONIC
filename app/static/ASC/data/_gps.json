@@ -27,7 +27,7 @@
   {
     "name": "Web Server",
     "description": "Portals",
-    "iconPath": "./image/gp/gp_icon_web_server.jpg",
+    "iconPath": "./image/gp/gp_icon_web_server.png",
     "id": "GP-0012"
   },
   {
@@ -40,7 +40,7 @@
     "name": "Web Client",
     "description": "Web Browsers",
     "id": "GP-0014",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_web_client.png"
   },
   {
     "name": "Audio Terminal",
@@ -55,10 +55,10 @@
     "iconPath": ""
   },
   {
-    "name": "Directory Server",
+    "name": "Directory Server (Central)",
     "description": "",
     "id": "GP-0017",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_directory_server_central.png"
   },
   {
     "name": "Certificate Server",
@@ -118,7 +118,7 @@
     "name": "LDAP MetaTool",
     "description": "",
     "id": "GP-0027",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_ldap_metatool.png"
   },
   {
     "name": "Time Server",
@@ -136,7 +136,7 @@
     "name": "Geo Server",
     "description": "",
     "id": "GP-0030",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_geo_server.png"
   },
   {
     "name": "AirC2 Server",
@@ -202,7 +202,7 @@
     "name": "Geo Client",
     "description": "",
     "id": "GP-0041",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_geo_client.png"
   },
   {
     "name": "CSD",
@@ -214,13 +214,13 @@
     "name": "Overlay Provider",
     "description": "",
     "id": "GP-0043",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_overlay_provider.png"
   },
   {
     "name": "Overlay Consumer",
     "description": "",
     "id": "GP-0044",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_overlay_consumer.png"
   },
   {
     "name": "Maritime C2 Server",
@@ -247,10 +247,10 @@
     "iconPath": ""
   },
   {
-    "name": "Identity Server",
+    "name": "Identity Provider",
     "description": "",
     "id": "GP-0049",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_identity_provider.png"
   },
   {
     "name": "IDP Proxy",
@@ -610,19 +610,19 @@
     "name": "Geo Portal",
     "description": "",
     "id": "GP-0109",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_geo_portal.png"
   },
   {
     "name": "Virtual Machine Provider",
     "description": "",
     "id": "GP-0110",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_virtual_machine_provider.png"
   },
   {
     "name": "Virtual Machine Consumer",
     "description": "",
     "id": "GP-0111",
-    "iconPath": ""
+    "iconPath": "./image/gp/gp_icon_virtual_machine_consumer.png"
   },
   {
     "name": "NMCD",
@@ -778,5 +778,23 @@
     "name": "FFT Proxy",
     "description": "",
     "iconPath": ""
+  },
+  {
+    "id": "GP-0134",
+    "name": "Directory Server (Border)",
+    "description": "",
+    "iconPath": "./image/gp/gp_icon_directory_server_border.png"
+  },
+  {
+    "id": "GP-0135",
+    "name": "Intelligence BsO System",
+    "description": "",
+    "iconPath": "./image/gp/gp_icon_intelligence_bso_system.png"
+  },
+  {
+    "id": "GP-0136",
+    "name": "Identity Provider Hub",
+    "description": "",
+    "iconPath": "./image/gp/gp_icon_identity_provider_hub.png"
   }
 ]

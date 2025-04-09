@@ -520,13 +520,14 @@
   },
   {
     "Name": "DIT TOP Level",
-    "GenericProducts": [
-      "GP-0017"
-    ],
     "DefaultValue": "",
     "HelpText": "full CN patch to the TOP level (for pull)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0017",
+      "GP-0134"
+    ],
     "id": "CI-0048"
   },
   {
@@ -1390,13 +1391,14 @@
   },
   {
     "Name": "LDAP port",
-    "GenericProducts": [
-      "GP-0017"
-    ],
     "DefaultValue": "636",
     "HelpText": "Which port is used for LDAP synchronization",
     "ConfigurationAnswerType": "Port",
     "AnswerContent": "389,636",
+    "GenericProducts": [
+      "GP-0017",
+      "GP-0134"
+    ],
     "id": "CI-0125"
   },
   {
@@ -1897,13 +1899,14 @@
   },
   {
     "Name": "OU for Replication",
-    "GenericProducts": [
-      "GP-0017"
-    ],
     "DefaultValue": "",
     "HelpText": "Full Path to the OU of the OU to push objects",
     "ConfigurationAnswerType": "Text Field (Single Line)",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0017",
+      "GP-0134"
+    ],
     "id": "CI-0170"
   },
   {
@@ -1919,35 +1922,38 @@
   },
   {
     "Name": "OU for Replication (PULL)",
-    "GenericProducts": [
-      "GP-0017"
-    ],
     "DefaultValue": "",
     "HelpText": "Full CN Path to the OU (for pull)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0017",
+      "GP-0134"
+    ],
     "id": "CI-0172"
   },
   {
     "Name": "OU for Replication (PUSH)",
-    "GenericProducts": [
-      "GP-0017"
-    ],
     "DefaultValue": "",
     "HelpText": "Full Path to the OU to push objects",
     "ConfigurationAnswerType": "Text Field (Single Line)",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0017",
+      "GP-0134"
+    ],
     "id": "CI-0173"
   },
   {
     "Name": "OU for replication",
-    "GenericProducts": [
-      "GP-0017"
-    ],
     "DefaultValue": "",
     "HelpText": "Full CN patch to the OU (for pull)",
     "ConfigurationAnswerType": "Text Field (Single Line)",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0017",
+      "GP-0134"
+    ],
     "id": "CI-0174"
   },
   {
@@ -2618,13 +2624,14 @@
   },
   {
     "Name": "Secure LDAP",
-    "GenericProducts": [
-      "GP-0017"
-    ],
     "DefaultValue": "YES",
     "HelpText": "Does the LDAP directory accepts LDAPS",
     "ConfigurationAnswerType": "Static Drop Down",
     "AnswerContent": "YES,NO",
+    "GenericProducts": [
+      "GP-0017",
+      "GP-0134"
+    ],
     "id": "CI-0232"
   },
   {
@@ -2787,13 +2794,14 @@
   },
   {
     "Name": "Supported Object Type",
-    "GenericProducts": [
-      "GP-0017"
-    ],
     "DefaultValue": "inetOrgPerson",
     "HelpText": "LDAP object type that will be synchronized",
     "ConfigurationAnswerType": "Text Field (Single Line)",
     "AnswerContent": "",
+    "GenericProducts": [
+      "GP-0017",
+      "GP-0134"
+    ],
     "id": "CI-0247"
   },
   {

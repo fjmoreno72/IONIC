@@ -7,7 +7,8 @@
       "GP-0125"
     ],
     "id": "SRV-0001",
-    "originalId": "SRV-0001"
+    "originalId": "SRV-0001",
+    "iconPath": "./image/srv/icon_air_c2_information_exchange.png"
   },
   {
     "name": "Fires Information Exchange",
@@ -19,8 +20,12 @@
   {
     "name": "Intelligence Battlespace Objects Exchange",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0003"
+    "gps": [
+      "GP-0135"
+    ],
+    "id": "SRV-0003",
+    "iconPath": "./image/srv/icon_intelligence_battlespace_objects_exchange.png",
+    "originalId": "SRV-0003"
   },
   {
     "name": "Joint ISR Information Exchange",
@@ -43,8 +48,13 @@
   {
     "name": "Maritime C2 Information Exchange",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0007"
+    "gps": [
+      "GP-0046",
+      "GP-0045"
+    ],
+    "id": "SRV-0007",
+    "originalId": "SRV-0007",
+    "iconPath": "./image/srv/icon_maritime_c2_information_exchange.png"
   },
   {
     "name": "Data Links",
@@ -56,9 +66,9 @@
       "GP-0037"
     ],
     "id": "SRV-0008",
-    "iconPath": "./image/srv/icon_data_links.png",
     "functionalDiagramPath": "./image/srv/diagram_data_links.jpg",
-    "originalId": "SRV-0008"
+    "originalId": "SRV-0008",
+    "iconPath": "./image/srv/icon_data_links.png"
   },
   {
     "name": "Friendly Force Tracking",
@@ -71,23 +81,29 @@
       "GP-0132"
     ],
     "id": "SRV-0009",
-    "originalId": "SRV-0009"
+    "originalId": "SRV-0009",
+    "iconPath": "./image/srv/icon_friendly_force_tracking.png"
   },
   {
     "name": "Ground-to-Air Information Exchange",
     "spiral": "SP5",
     "gps": [
-      "GP-0080",
-      "PEPITO"
+      "GP-0080"
     ],
     "id": "SRV-0010",
-    "originalId": "SRV-0010"
+    "originalId": "SRV-0010",
+    "iconPath": "./image/srv/icon_ground-to-air_information_exchange.png"
   },
   {
     "name": "Overlay Distribution",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0011"
+    "gps": [
+      "GP-0044",
+      "GP-0043"
+    ],
+    "id": "SRV-0011",
+    "originalId": "SRV-0011",
+    "iconPath": "./image/srv/icon_overlay_distribution.png"
   },
   {
     "name": "Audio and Video-based Collaboration",
@@ -117,10 +133,12 @@
     "spiral": "SP5",
     "gps": [
       "GP-0027",
-      "GP-0017"
+      "GP-0017",
+      "GP-0134"
     ],
     "id": "SRV-0015",
-    "originalId": "SRV-0015"
+    "originalId": "SRV-0015",
+    "iconPath": "./image/srv/icon_directory_data_synchronization.png"
   },
   {
     "name": "Distributed Time",
@@ -131,7 +149,8 @@
       "GP-0028"
     ],
     "id": "SRV-0016",
-    "originalId": "SRV-0016"
+    "originalId": "SRV-0016",
+    "iconPath": "./image/srv/icon_distributed_time.png"
   },
   {
     "name": "Domain Naming",
@@ -156,18 +175,20 @@
       "GP-0014"
     ],
     "id": "SRV-0018",
-    "originalId": "SRV-0018"
+    "originalId": "SRV-0018",
+    "iconPath": "./image/srv/icon_geospatial_information.png"
   },
   {
     "name": "Informal Messaging",
     "spiral": "SP5",
     "gps": [
-      "GP-0010",
-      "GP-0011"
+      "GP-0126",
+      "GP-0125"
     ],
+    "id": "SRV-0019",
     "iconPath": "./image/srv/icon_informal_messaging.png",
     "functionalDiagramPath": "./image/srv/diagram_informal_messaging.jpg",
-    "id": "SRV-0019"
+    "originalId": "SRV-0019"
   },
   {
     "name": "Service Management and Control",
@@ -182,27 +203,43 @@
       "GP-0005",
       "GP-0006"
     ],
-    "iconPath": "./image/srv/icon_text-based_collaboration.jpg",
+    "id": "SRV-0021",
     "functionalDiagramPath": "./image/srv/diagram_text-based_collaboration.jpg",
-    "id": "SRV-0021"
+    "originalId": "SRV-0021",
+    "iconPath": "./image/srv/icon_text-based_collaboration.png"
   },
   {
     "name": "Virtualized Processing",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0022"
+    "gps": [
+      "GP-0111",
+      "GP-0110"
+    ],
+    "id": "SRV-0022",
+    "originalId": "SRV-0022",
+    "iconPath": "./image/srv/icon_virtualized_processing.png"
   },
   {
     "name": "Web Authentication",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0023"
+    "gps": [
+      "GP-0049",
+      "GP-0136"
+    ],
+    "id": "SRV-0023",
+    "originalId": "SRV-0023",
+    "iconPath": "./image/srv/icon_web_authentication.png"
   },
   {
     "name": "Web Hosting",
     "spiral": "SP5",
-    "gps": [],
-    "id": "SRV-0024"
+    "gps": [
+      "GP-0014",
+      "GP-0012"
+    ],
+    "id": "SRV-0024",
+    "originalId": "SRV-0024",
+    "iconPath": "./image/srv/icon_web_hosting.png"
   },
   {
     "name": "Communications",

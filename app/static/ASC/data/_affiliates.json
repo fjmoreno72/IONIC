@@ -21,8 +21,7 @@
     "name": "Austria",
     "type": "B",
     "environments": [
-      "Static",
-      "National"
+      "Static"
     ],
     "flagPath": "./image/flags/flag_austria.png",
     "id": "AFF-0003"

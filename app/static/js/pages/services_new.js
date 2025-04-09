@@ -27,8 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Create a mapping from GP IDs to names
   let gpIdToNameMap = {};
   
+  // Create a mapping from Model IDs to names
+  let modelIdToNameMap = {};
+  
   // Current selected filter
   let selectedGp = '';
+  let selectedModel = '';
   
   // Initialize dialog for adding/editing services
   const serviceDialog = new DialogManager({
@@ -46,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // First fetch the GPs data from the API to build the ID to name mapping
-  fetch('/api/gps') // Use the API endpoint
+  fetch('/api/gps')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error fetching GPs! status: ${response.status}`);
@@ -65,6 +69,29 @@ document.addEventListener('DOMContentLoaded', function() {
       // Setup GP filter dropdown
       setupGpFilter(gpsData);
       
+      // Now fetch models data from the JSON file
+      return fetch('/static/ASC/data/_models.json');
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error fetching models! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(modelsData => {
+      // Create the model ID to name map
+      modelIdToNameMap = modelsData.reduce((map, model) => {
+        if (model.id && model.name) {
+          map[model.id] = model.name;
+        }
+        return map;
+      }, {});
+      
+      console.log('Model ID to Name Map:', modelIdToNameMap);
+      
+      // Setup model filter (replacing spiral filter)
+      setupModelFilter(modelsData);
+      
       // Now initialize the services table
       initServicesTable();
     })
@@ -76,55 +103,42 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-  // Set up spiral filter dropdown UI and event handlers
-  function setupSpiralFilter(spirals) {
-    // console.log("Setting up spiral filter with values:", Array.from(spirals)); // Removed log
-    
+  // Set up model filter dropdown UI and event handlers (replacing spiral filter)
+  function setupModelFilter(models) {
     if (!spiralFilter) {
       console.error("Missing spiralFilter element");
       return;
     }
     
+    // Rename the filter label
+    const spiralFilterLabel = spiralFilter.previousElementSibling;
+    if (spiralFilterLabel) {
+      spiralFilterLabel.textContent = "Model:";
+    }
+    
     // Store current selection to restore it after updating options
     const currentSelection = spiralFilter.value;
     
-    // Clear existing options (except the "All Spirals" option)
+    // Clear existing options (except the "All Models" option)
     while (spiralFilter.options.length > 1) {
       spiralFilter.remove(1);
     }
+    spiralFilter.options[0].textContent = "All Models";
     
-    // Add spiral options sorted alphabetically
-    if (spirals.size > 0) {
-      Array.from(spirals).sort().forEach(spiral => {
-        // console.log("Adding spiral option:", spiral); // Removed log
+    // Add model options sorted alphabetically
+    if (models && models.length > 0) {
+      models.sort((a, b) => a.name.localeCompare(b.name)).forEach(model => {
         const option = document.createElement('option');
-        option.value = spiral;
-        option.textContent = spiral;
+        option.value = model.id;
+        option.textContent = model.name;
         spiralFilter.appendChild(option);
       });
-    } else {
-      // If no spirals are found, add SP5 as a default
-      console.log("No spirals found, adding default SP5 option");
-      const option = document.createElement('option');
-      option.value = 'SP5';
-      option.textContent = 'SP5';
-      spiralFilter.appendChild(option);
     }
     
-    // Restore previous selection if it still exists
-    if (currentSelection) {
-      // Check if the option still exists before setting it
-      for (let i = 0; i < spiralFilter.options.length; i++) {
-        if (spiralFilter.options[i].value === currentSelection) {
-          spiralFilter.value = currentSelection;
-          break;
-        }
-      }
-    }
-    
-    // Add event listener for when spiral filter changes
+    // Add event listener for when model filter changes
     if (!spiralFilter.hasEventListener) {
       spiralFilter.addEventListener('change', () => {
+        selectedModel = spiralFilter.value;
         servicesTable.filterAndRender();
       });
       spiralFilter.hasEventListener = true;
@@ -229,30 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Extract spiral values from data for the filter
-  function extractSpirals(services) {
-    if (!Array.isArray(services)) {
-      console.error("Services data is not an array:", services);
-      return;
-    }
-    
-    // console.log("Extracting spirals from services:", services); // Removed log
-    
-    // Create a set of unique spirals
-    const spirals = new Set();
-    
-    services.forEach(service => {
-      if (service.spiral) {
-        spirals.add(service.spiral);
-        // console.log(`Added spiral: ${service.spiral}`); // Removed log
-      }
-    });
-    
-    // console.log("Extracted spirals:", Array.from(spirals)); // Removed log
-    
-    // Setup the spiral filter with the extracted values
-    setupSpiralFilter(spirals);
-  }
+
   
   // Define servicesTable at a higher scope so it can be accessed from event handlers
   let servicesTable;
@@ -271,11 +262,9 @@ document.addEventListener('DOMContentLoaded', function() {
       defaultSortField: 'id',
       noResultsMessage: 'No services found matching your criteria.',
       
-      // Store all services for ID uniqueness checking and extract filters
+      // Store all services for ID uniqueness checking
       onDataFetched: (data) => {
         allServices = [...data];
-        // console.log("Fetched services:", data); // Removed log
-        extractSpirals(data);
         return data;
       },
       
@@ -307,17 +296,30 @@ document.addEventListener('DOMContentLoaded', function() {
       
   // Custom filter function
   filterFunction: (item, searchTerm) => {
-    // First check if the spiral filter is active
-    if (spiralFilter.value && String(item.spiral || '').toLowerCase() !== String(spiralFilter.value).toLowerCase()) {
-      return false;
+    // First check if the model filter is active
+    if (selectedModel) {
+      // Check if the item has this model in its models array
+      if (!item.models || !Array.isArray(item.models) || !item.models.includes(selectedModel)) {
+        return false;
+      }
     }
         
         // Then check if the GP filter is active
         if (selectedGp) {
-          // Check if the item has this GP ID in its gps array
-          if (!item.gps || !Array.isArray(item.gps) || !item.gps.includes(selectedGp)) {
-            return false;
+          // Check if the service has this GP ID linked to any of its models
+          let gpFound = false;
+          if (Array.isArray(item.gps)) {
+            gpFound = item.gps.some(gp => {
+              // Handle both string format (old data) and object format (new data)
+              if (typeof gp === 'string') {
+                return gp === selectedGp;
+              } else if (gp && gp.id) {
+                return gp.id === selectedGp;
+              }
+              return false;
+            });
           }
+          if (!gpFound) return false;
         }
         
         if (!searchTerm) return true;
@@ -328,16 +330,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const nameMatch = (item.name?.toLowerCase() || '').includes(searchTerm) || 
                          (item.id?.toLowerCase() || '').includes(searchTerm);
         
-        // Spiral matching
-        const spiralMatch = (String(item.spiral || '').toLowerCase()).includes(searchTerm);
+        // Models matching
+        let modelsMatch = false;
+        if (item.models && Array.isArray(item.models)) {
+          // Get the names of models this service uses
+          const modelNames = item.models
+            .map(modelId => modelIdToNameMap[modelId])
+            .filter(name => name); // Filter out undefined/null names
+          
+          // Check if any model name contains the search term
+          modelsMatch = modelNames.some(name => 
+            name.toLowerCase().includes(searchTerm)
+          );
+        }
         
         // GPs matching - need to convert IDs to names for search
         let gpsMatch = false;
         if (item.gps && Array.isArray(item.gps)) {
-          // Get the names of GPs this service uses
-          const gpNames = item.gps
-            .map(gpId => gpIdToNameMap[gpId])
-            .filter(name => name); // Filter out undefined/null names
+          // Extract GP names
+          const gpNames = item.gps.map(gp => {
+            // Handle both string format (old data) and object format (new data)
+            if (typeof gp === 'string') {
+              return gpIdToNameMap[gp];
+            } else if (gp && gp.id) {
+              return gpIdToNameMap[gp.id];
+            }
+            return null;
+          }).filter(name => name); // Filter out undefined/null names
           
           // Check if any GP name contains the search term
           gpsMatch = gpNames.some(name => 
@@ -345,45 +364,48 @@ document.addEventListener('DOMContentLoaded', function() {
           );
         }
         
-        return nameMatch || spiralMatch || gpsMatch;
+        return nameMatch || modelsMatch || gpsMatch;
       },
       
-      // Custom sort for 'spiral' field
+      // Custom sort for 'models' field and 'gps' field
       customSort: (field, a, b, direction) => {
-        if (field === 'spiral') {
-          // Convert to numbers for numeric sorting if they are numeric
-          const spiralA = a.spiral || '';
-          const spiralB = b.spiral || '';
+        if (field === 'models') {
+          // Convert model IDs to names for sorting
+          const namesA = (a.models || [])
+            .map(modelId => modelIdToNameMap[modelId])
+            .filter(name => name)
+            .join(', ');
           
-          // Extract numeric parts if present
-          const numA = spiralA.match(/\d+/);
-          const numB = spiralB.match(/\d+/);
+          const namesB = (b.models || [])
+            .map(modelId => modelIdToNameMap[modelId])
+            .filter(name => name)
+            .join(', ');
           
-          if (numA && numB) {
-            const numValueA = parseInt(numA[0], 10);
-            const numValueB = parseInt(numB[0], 10);
-            
-            if (numValueA < numValueB) return direction === 'asc' ? -1 : 1;
-            if (numValueA > numValueB) return direction === 'asc' ? 1 : -1;
-          }
-          
-          // Default to string comparison
-          if (spiralA < spiralB) return direction === 'asc' ? -1 : 1;
-          if (spiralA > spiralB) return direction === 'asc' ? 1 : -1;
+          if (namesA < namesB) return direction === 'asc' ? -1 : 1;
+          if (namesA > namesB) return direction === 'asc' ? 1 : -1;
           return 0;
         }
+        
         // For 'gps' array field
         if (field === 'gps') {
           // Convert GP IDs to names for sorting
-          const namesA = (a.gps || [])
-            .map(gpId => gpIdToNameMap[gpId])
-            .filter(name => name)
-            .join(', ');
+          const namesA = (a.gps || []).map(gp => {
+            if (typeof gp === 'string') {
+              return gpIdToNameMap[gp];
+            } else if (gp && gp.id) {
+              return gpIdToNameMap[gp.id];
+            }
+            return null;
+          }).filter(name => name).join(', ');
           
-          const namesB = (b.gps || [])
-            .map(gpId => gpIdToNameMap[gpId])
-            .filter(name => name)
-            .join(', ');
+          const namesB = (b.gps || []).map(gp => {
+            if (typeof gp === 'string') {
+              return gpIdToNameMap[gp];
+            } else if (gp && gp.id) {
+              return gpIdToNameMap[gp.id];
+            }
+            return null;
+          }).filter(name => name).join(', ');
           
           if (namesA < namesB) return direction === 'asc' ? -1 : 1;
           if (namesA > namesB) return direction === 'asc' ? 1 : -1;
@@ -397,11 +419,23 @@ document.addEventListener('DOMContentLoaded', function() {
         { key: 'id', label: 'ID', sortable: true },
         { key: 'name', label: 'Name', sortable: true },
         { 
-          key: 'spiral', 
-          label: 'Spiral', 
+          key: 'models', 
+          label: 'Models', 
           sortable: true,
-          cellClass: 'spiral-column',
-          render: (value) => value || ''
+          cellClass: 'models-column',
+          render: (value) => {
+            if (!value || !Array.isArray(value) || value.length === 0) return '';
+            
+            // Convert model IDs to names
+            const modelNames = value
+              .map(modelId => {
+                console.log('Model ID:', modelId, 'Map:', modelIdToNameMap);
+                return modelIdToNameMap[modelId] || modelId;
+              })
+              .filter(name => name); // Filter out undefined/null names
+            
+            return modelNames.join(', ');
+          }
         },
         { 
           key: 'gps', 
@@ -410,10 +444,15 @@ document.addEventListener('DOMContentLoaded', function() {
           render: (value) => {
             if (!value || !Array.isArray(value) || value.length === 0) return '';
             
-            // Convert GP IDs to names
-            const gpNames = value
-              .map(gpId => gpIdToNameMap[gpId])
-              .filter(name => name); // Filter out undefined/null names
+            // Convert GP IDs to names, handling both string format and object format
+            const gpNames = value.map(gp => {
+              if (typeof gp === 'string') {
+                return gpIdToNameMap[gp];
+              } else if (gp && gp.id) {
+                return gpIdToNameMap[gp.id];
+              }
+              return null;
+            }).filter(name => name); // Filter out undefined/null names
             
             return gpNames.join(', ');
           }

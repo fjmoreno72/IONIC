@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 def _get_services_path() -> Path:
     """Constructs the path to the services JSON file."""
     # Use current_app.static_folder which points to the 'static' directory
-    # Then navigate to ASC/data/_services.json (renamed file)
-    return Path(current_app.static_folder) / "ASC" / "data" / "_services.json"
+    # Then navigate to ASC/data/_servicesm.json (migrated file with models)
+    return Path(current_app.static_folder) / "ASC" / "data" / "_servicesm.json"
 
 def get_all_services() -> list:
     """

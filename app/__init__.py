@@ -135,6 +135,7 @@ def register_blueprints(app):
     from app.routes.config_items import config_items_bp
     from app.routes.services import services_bp
     from app.routes.gps import gps_bp # Import the new GP blueprint
+    from app.routes.models import models_bp # Import the new models blueprint
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(api_bp)  # Register at root for backward compatibility
@@ -142,3 +143,4 @@ def register_blueprints(app):
     app.register_blueprint(config_items_bp)
     app.register_blueprint(services_bp)
     app.register_blueprint(gps_bp) # Register the new GP blueprint
+    app.register_blueprint(models_bp) # Register the new models blueprint

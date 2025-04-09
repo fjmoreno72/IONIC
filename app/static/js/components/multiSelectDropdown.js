@@ -269,12 +269,27 @@ export class MultiSelectDropdown {
     let hasVisibleOptions = false;
     
     // Filter predefined options
-    const filteredOptions = filterText ? 
-      this.predefinedOptions.filter(option => 
-        option.toLowerCase().includes(filterText) && 
-        !this.selectedValues.includes(option)
-      ) :
-      this.predefinedOptions.filter(option => !this.selectedValues.includes(option));
+    const filteredOptions = this.predefinedOptions.filter(option => {
+      // Get the display text for the option
+      const optionText = typeof option === 'object' && option !== null && 'text' in option 
+        ? option.text 
+        : String(option);
+      
+      // Check if the option matches the filter text
+      const matchesFilter = !filterText || optionText.toLowerCase().includes(filterText);
+      
+      // Check if the option is already selected
+      const isSelected = this.selectedValues.some(selectedValue => {
+        if (typeof selectedValue === 'object' && selectedValue !== null && 'value' in selectedValue) {
+          return typeof option === 'object' && option !== null && 'value' in option 
+            ? selectedValue.value === option.value
+            : false;
+        }
+        return selectedValue === option;
+      });
+      
+      return matchesFilter && !isSelected;
+    });
     
     // Add filtered options to dropdown
     if (filteredOptions.length > 0) {
@@ -286,7 +301,12 @@ export class MultiSelectDropdown {
       filteredOptions.forEach(option => {
         const optionElement = document.createElement('div');
         optionElement.className = 'dropdown-item';
-        optionElement.textContent = option;
+        
+        // Get the display text for the option
+        optionElement.textContent = typeof option === 'object' && option !== null && 'text' in option 
+          ? option.text 
+          : String(option);
+        
         optionElement.addEventListener('click', () => this.addValue(option));
         
         if (referenceNode) {
@@ -299,8 +319,20 @@ export class MultiSelectDropdown {
 
     // Handle the "Add New" option only if allowed
     if (this.allowAddNew && this.addNewOption) {
+      // Check if the current filter text matches any existing option text
+      const matchesExistingOption = this.predefinedOptions.some(opt => {
+        const optText = typeof opt === 'object' && opt !== null && 'text' in opt ? opt.text : String(opt);
+        return optText.toLowerCase() === filterText.toLowerCase();
+      });
+      
+      // Check if the current filter text is already selected
+      const isAlreadySelected = this.selectedValues.some(val => {
+        const valText = typeof val === 'object' && val !== null && 'text' in val ? val.text : String(val);
+        return valText.toLowerCase() === filterText.toLowerCase();
+      });
+      
       // If we're filtering and no predefined options match, update text to add current input
-      if (filterText && !filteredOptions.some(opt => opt.toLowerCase() === filterText.toLowerCase()) && !this.selectedValues.includes(filterText)) {
+      if (filterText && !matchesExistingOption && !isAlreadySelected) {
         this.addNewOption.innerHTML = `<i class="fas fa-plus me-2"></i>Add "${filterText}"`;
       } else {
         this.addNewOption.innerHTML = `<i class="fas fa-plus me-2"></i>${this.addNewText}`;
@@ -344,7 +376,13 @@ export class MultiSelectDropdown {
       
       const text = document.createElement('span');
       text.className = 'option-text';
-      text.textContent = value;
+      
+      // Handle both string values and object values with text property
+      if (typeof value === 'object' && value !== null && 'text' in value) {
+        text.textContent = value.text;
+      } else {
+        text.textContent = value;
+      }
       
       const removeBtn = document.createElement('span');
       removeBtn.className = 'remove-option';
@@ -399,7 +437,12 @@ export class MultiSelectDropdown {
         const value = this.input.value.trim();
         if (value) {
           // Check if the value exists in predefined options
-          const exists = this.predefinedOptions.some(opt => opt.toLowerCase() === value.toLowerCase());
+          const exists = this.predefinedOptions.some(opt => {
+            const optText = typeof opt === 'object' && opt !== null && 'text' in opt 
+              ? opt.text 
+              : String(opt);
+            return optText.toLowerCase() === value.toLowerCase();
+          });
 
           // If we're in the "adding new" state (only possible if allowAddNew is true)
           if (this.isAddingNew) {
@@ -422,7 +465,12 @@ export class MultiSelectDropdown {
       this.addNewOption.addEventListener('click', () => {
         const value = this.input.value.trim();
         // Check if the value exists in predefined options
-        const exists = this.predefinedOptions.some(opt => opt.toLowerCase() === value.toLowerCase());
+        const exists = this.predefinedOptions.some(opt => {
+          const optText = typeof opt === 'object' && opt !== null && 'text' in opt 
+            ? opt.text 
+            : String(opt);
+          return optText.toLowerCase() === value.toLowerCase();
+        });
 
         if (value && (this.allowAddNew || exists)) { // Add if allowed OR exists
           this.addValueFromInput();
@@ -567,13 +615,33 @@ export class MultiSelectDropdown {
   
   /**
    * Add a value to the selected values
-   * @param {string} value - Value to add
+   * @param {string|Object} value - Value to add (string or object with text/value properties)
    * @public
    */
   addValue(value) {
-    // Prevent adding if not allowed and value doesn't exist
-    const exists = this.predefinedOptions.some(opt => opt.toLowerCase() === value.toLowerCase());
-    if (!value || this.selectedValues.includes(value) || (!this.allowAddNew && !exists)) {
+    // Get the text representation of the value for comparison
+    const valueText = typeof value === 'object' && value !== null && 'text' in value 
+      ? value.text 
+      : String(value);
+    
+    // Check if the value already exists in predefined options
+    const exists = this.predefinedOptions.some(opt => {
+      const optText = typeof opt === 'object' && opt !== null && 'text' in opt 
+        ? opt.text 
+        : String(opt);
+      return optText.toLowerCase() === valueText.toLowerCase();
+    });
+    
+    // Check if the value is already selected
+    const isAlreadySelected = this.selectedValues.some(val => {
+      const valText = typeof val === 'object' && val !== null && 'text' in val 
+        ? val.text 
+        : String(val);
+      return valText.toLowerCase() === valueText.toLowerCase();
+    });
+    
+    // Prevent adding if not allowed and value doesn't exist, or if already selected
+    if (!value || isAlreadySelected || (!this.allowAddNew && !exists)) {
       // If not allowed and doesn't exist, clear input and close dropdown
       if (!this.allowAddNew && !exists) {
         this.input.value = '';
@@ -603,11 +671,34 @@ export class MultiSelectDropdown {
   
   /**
    * Remove a value from the selected values
-   * @param {string} value - Value to remove
+   * @param {string|Object} value - Value to remove
    * @public
    */
   removeValue(value) {
-    const index = this.selectedValues.indexOf(value);
+    // First try direct indexOf (for exact object reference)
+    let index = this.selectedValues.indexOf(value);
+    
+    // If not found and value is an object with text/value, try to find by value
+    if (index === -1 && typeof value === 'object' && value !== null) {
+      if ('value' in value) {
+        index = this.selectedValues.findIndex(val => 
+          typeof val === 'object' && val !== null && 'value' in val && val.value === value.value
+        );
+      } else if ('text' in value) {
+        index = this.selectedValues.findIndex(val => 
+          typeof val === 'object' && val !== null && 'text' in val && val.text === value.text
+        );
+      }
+    }
+    
+    // If still not found and value is a string, try to find by text
+    if (index === -1 && typeof value === 'string') {
+      index = this.selectedValues.findIndex(val => 
+        (typeof val === 'object' && val !== null && 'text' in val && val.text === value) || 
+        val === value
+      );
+    }
+    
     if (index !== -1) {
       this.selectedValues.splice(index, 1);
       this.renderSelectedOptions();

@@ -1,15 +1,21 @@
 [
   {
     "name": "Air C2 Information Exchange",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0126",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0125",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0001",
@@ -18,18 +24,24 @@
   },
   {
     "name": "Fires Information Exchange",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [],
     "id": "SRV-0002",
     "originalId": "SRV-0002"
   },
   {
     "name": "Intelligence Battlespace Objects Exchange",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0135",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0003",
@@ -38,33 +50,45 @@
   },
   {
     "name": "Joint ISR Information Exchange",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [],
     "id": "SRV-0004"
   },
   {
     "name": "Land C2 Information Exchange",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [],
     "id": "SRV-0005"
   },
   {
     "name": "Land Tactical C2 Information Exchange",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [],
     "id": "SRV-0006"
   },
   {
     "name": "Maritime C2 Information Exchange",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0046",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0045",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0007",
@@ -73,53 +97,91 @@
   },
   {
     "name": "Data Links",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001",
+      "MOD-0002",
+      "MOD-0003"
+    ],
     "gps": [
       {
         "id": "GP-0001",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001",
+          "MOD-0002",
+          "MOD-0003"
+        ]
       },
       {
         "id": "GP-0003",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001",
+          "MOD-0002",
+          "MOD-0003"
+        ]
       },
       {
         "id": "GP-0002",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001",
+          "MOD-0002",
+          "MOD-0003"
+        ]
       },
       {
         "id": "GP-0037",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001",
+          "MOD-0002",
+          "MOD-0003"
+        ]
+      },
+      {
+        "id": "GP-0085",
+        "models": [
+          "MOD-0003"
+        ]
       }
     ],
     "id": "SRV-0008",
+    "iconPath": "./image/srv/icon_data_links.png",
     "functionalDiagramPath": "./image/srv/diagram_data_links.jpg",
-    "originalId": "SRV-0008",
-    "iconPath": "./image/srv/icon_data_links.png"
+    "originalId": "SRV-0008"
   },
   {
     "name": "Friendly Force Tracking",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0130",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0129",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0128",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0133",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0132",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0009",
@@ -128,11 +190,15 @@
   },
   {
     "name": "Ground-to-Air Information Exchange",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0080",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0010",
@@ -141,15 +207,21 @@
   },
   {
     "name": "Overlay Distribution",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0044",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0043",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0011",
@@ -158,21 +230,29 @@
   },
   {
     "name": "Audio and Video-based Collaboration",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [],
     "id": "SRV-0012"
   },
   {
     "name": "Calendaring and Scheduling",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0093",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0127",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0013",
@@ -181,25 +261,35 @@
   },
   {
     "name": "Digital Certificates",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [],
     "id": "SRV-0014"
   },
   {
     "name": "Directory Data Synchronization",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0027",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0017",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0134",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0015",
@@ -208,19 +298,27 @@
   },
   {
     "name": "Distributed Time",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0039",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0024",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0028",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0016",
@@ -229,19 +327,27 @@
   },
   {
     "name": "Domain Naming",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0007",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0090",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0008",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0017",
@@ -251,23 +357,33 @@
   },
   {
     "name": "Geospatial Information",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0041",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0109",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0030",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0014",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0018",
@@ -276,15 +392,21 @@
   },
   {
     "name": "Informal Messaging",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0126",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0125",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0019",
@@ -294,21 +416,29 @@
   },
   {
     "name": "Service Management and Control",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [],
     "id": "SRV-0020"
   },
   {
     "name": "Text-based Collaboration",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0005",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0006",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0021",
@@ -318,15 +448,21 @@
   },
   {
     "name": "Virtualized Processing",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0111",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0110",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0022",
@@ -335,15 +471,21 @@
   },
   {
     "name": "Web Authentication",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0049",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0136",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0023",
@@ -352,15 +494,21 @@
   },
   {
     "name": "Web Hosting",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0014",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       },
       {
         "id": "GP-0012",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0024",
@@ -369,11 +517,15 @@
   },
   {
     "name": "Communications",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [
       {
         "id": "GP-0034",
-        "models": ["MOD-0001"]
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0025",
@@ -382,13 +534,17 @@
   },
   {
     "name": "Communications Transport",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [],
     "id": "SRV-0026"
   },
   {
     "name": "Protected Core Networking",
-    "models": ["MOD-0001"],
+    "models": [
+      "MOD-0001"
+    ],
     "gps": [],
     "id": "SRV-0027"
   }

@@ -175,9 +175,13 @@
     "status": "Deprecated"
   },
   {
+    "id": "ASC-0004",
     "affiliateId": "AFF-0011",
-    "ascScore": "0%",
     "environment": "Static",
+    "serviceId": "SRV-0021",
+    "model": "MOD-0001",
+    "ascScore": "0%",
+    "status": "Initial",
     "gpInstances": [
       {
         "gpId": "GP-0005",
@@ -197,11 +201,7 @@
         "instanceLabel": "",
         "spInstances": []
       }
-    ],
-    "id": "ASC-0004",
-    "model": "MOD-0001",
-    "serviceId": "SRV-0021",
-    "status": "Initial"
+    ]
   },
   {
     "affiliateId": "AFF-0027",
@@ -545,5 +545,34 @@
     "ascScore": "0%",
     "status": "Initial",
     "gpInstances": []
+  },
+  {
+    "id": "ASC-0015",
+    "affiliateId": "AFF-0009",
+    "environment": "Static",
+    "serviceId": "SRV-0019",
+    "model": "MOD-0001",
+    "ascScore": "0%",
+    "status": "Initial",
+    "gpInstances": [
+      {
+        "gpId": "GP-0126",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [],
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "gpId": "GP-0125",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [],
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ]
   }
 ]

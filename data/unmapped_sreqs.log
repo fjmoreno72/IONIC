@@ -29411,3 +29411,1234 @@ NameError: name 'logging' is not defined. Did you forget to import 'logging'
 2025-04-10 11:52:47 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
 2025-04-10 11:52:47 - 127.0.0.1 - - [10/Apr/2025 11:52:47] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
 2025-04-10 11:52:47 - 127.0.0.1 - - [10/Apr/2025 11:52:47] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-10 11:57:38 - Accessing ASC ASCs page
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/components/ascForm.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/components/gpSpEditForm.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 11:57:38 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 11:57:38 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 11:57:38 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 11:57:38 - API Route: /api/gps GET endpoint called.
+2025-04-10 11:57:38 - API Route: /api/gps GET endpoint called.
+2025-04-10 11:57:38 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 11:57:38 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 11:57:38 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 11:57:38 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 11:57:38 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 11:57:38 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "GET /api/sps HTTP/1.1" 200 -
+2025-04-10 11:57:38 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 11:57:38 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 11:57:38 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 11:57:38 - API Route: Returning GP data successfully.
+2025-04-10 11:57:38 - API Route: Returning GP data successfully.
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "GET /api/gps HTTP/1.1" 200 -
+2025-04-10 11:57:38 - [2025-04-10T11:57:38.263585] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 11:57:38 - ASCs file stats - Last modified: 2025-04-10T11:50:57.185808, Size: 11463 bytes
+2025-04-10 11:57:38 - Successfully loaded 13 ASCs from file
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/ASC/image/flags/flag_norway.png HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-10 11:57:38 - 127.0.0.1 - - [10/Apr/2025 11:57:38] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 11:57:42 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 11:57:42 - Successfully loaded 38 affiliates.
+2025-04-10 11:57:42 - Successfully loaded 27 services.
+2025-04-10 11:57:42 - Successfully loaded 537 SPs.
+2025-04-10 11:57:42 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 11:57:42 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 11:57:42 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 11:57:42 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 11:57:42 - Successfully loaded 133 GPs using repository.
+2025-04-10 11:57:42 - 127.0.0.1 - - [10/Apr/2025 11:57:42] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 11:57:42 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 11:57:42 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 11:57:42 - 127.0.0.1 - - [10/Apr/2025 11:57:42] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 11:57:42 - 127.0.0.1 - - [10/Apr/2025 11:57:42] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 11:57:42 - 127.0.0.1 - - [10/Apr/2025 11:57:42] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:05:08 - Logging system configured with level INFO
+2025-04-10 12:05:08 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:05:08 - Applying authentication system patches...
+2025-04-10 12:05:08 - Authentication system patches applied successfully
+2025-04-10 12:05:08 - Enhanced authentication system applied
+2025-04-10 12:05:08 - Configured Flask app logging with level INFO
+2025-04-10 12:05:08 - Configured Flask app logging with level INFO
+2025-04-10 12:05:08 - Logging system configured with level INFO
+2025-04-10 12:05:08 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:05:08 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:05:08 - Template files: templates
+2025-04-10 12:05:08 - Authentication Bypass ENABLED for development.
+2025-04-10 12:05:08 - Running in DEBUG mode
+2025-04-10 12:05:08 - Listening on 0.0.0.0:5007
+2025-04-10 12:05:08 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.107:5007
+2025-04-10 12:05:08 - [33mPress CTRL+C to quit[0m
+2025-04-10 12:05:08 -  * Restarting with stat
+2025-04-10 12:05:08 - Logging system configured with level INFO
+2025-04-10 12:05:08 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:05:08 - Applying authentication system patches...
+2025-04-10 12:05:08 - Authentication system patches applied successfully
+2025-04-10 12:05:08 - Enhanced authentication system applied
+2025-04-10 12:05:08 - Configured Flask app logging with level INFO
+2025-04-10 12:05:08 - Configured Flask app logging with level INFO
+2025-04-10 12:05:08 - Logging system configured with level INFO
+2025-04-10 12:05:08 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:05:08 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:05:08 - Template files: templates
+2025-04-10 12:05:08 - Authentication Bypass ENABLED for development.
+2025-04-10 12:05:08 - Running in DEBUG mode
+2025-04-10 12:05:08 - Listening on 0.0.0.0:5007
+2025-04-10 12:05:08 -  * Debugger is active!
+2025-04-10 12:05:08 -  * Debugger PIN: 807-861-954
+2025-04-10 12:05:25 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:05:25 - Successfully loaded 38 affiliates.
+2025-04-10 12:05:25 - Successfully loaded 27 services.
+2025-04-10 12:05:25 - Successfully loaded 537 SPs.
+2025-04-10 12:05:25 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:05:25 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:05:25 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:05:25 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:05:25 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:05:25 - 127.0.0.1 - - [10/Apr/2025 12:05:25] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:05:25 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:05:25 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:05:25 - 127.0.0.1 - - [10/Apr/2025 12:05:25] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:06:08 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:06:08 - Successfully loaded 38 affiliates.
+2025-04-10 12:06:08 - Successfully loaded 27 services.
+2025-04-10 12:06:08 - Successfully loaded 537 SPs.
+2025-04-10 12:06:08 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:06:08 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:06:08 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:06:08 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:06:08 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:06:08 - 127.0.0.1 - - [10/Apr/2025 12:06:08] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:06:09 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:06:09 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:06:09 - 127.0.0.1 - - [10/Apr/2025 12:06:09] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:06:09 - 127.0.0.1 - - [10/Apr/2025 12:06:09] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:06:09 - 127.0.0.1 - - [10/Apr/2025 12:06:09] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:06:09 - 127.0.0.1 - - [10/Apr/2025 12:06:09] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:06:16 - Accessing ASC ASCs page
+2025-04-10 12:06:16 - 127.0.0.1 - - [10/Apr/2025 12:06:16] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-10 12:06:16 - 127.0.0.1 - - [10/Apr/2025 12:06:16] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-10 12:06:16 - 127.0.0.1 - - [10/Apr/2025 12:06:16] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/ASC/icons/ASCs.svg HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/pages/ascs_new.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/js/components/gpSpEditForm.js HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:06:17 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:06:17 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:06:17 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:06:17 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:06:17 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /api/sps HTTP/1.1" 200 -
+2025-04-10 12:06:17 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:06:17 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:06:17 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:06:17 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:06:17 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:06:17 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:06:17 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:06:17 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:06:17 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:06:17 - API Route: Returning GP data successfully.
+2025-04-10 12:06:17 - API Route: Returning GP data successfully.
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /api/gps HTTP/1.1" 200 -
+2025-04-10 12:06:17 - [2025-04-10T12:06:17.185272] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:06:17 - ASCs file stats - Last modified: 2025-04-10T11:50:57.185808, Size: 11463 bytes
+2025-04-10 12:06:17 - Successfully loaded 13 ASCs from file
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/ASC/image/flags/flag_united_states.png HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/ASC/image/flags/flag_norway.png HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-10 12:06:17 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-10 12:06:17 - 127.0.0.1 - - [10/Apr/2025 12:06:17] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:06:23 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:06:23 - Successfully loaded 38 affiliates.
+2025-04-10 12:06:23 - 127.0.0.1 - - [10/Apr/2025 12:06:23] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:06:23 - Successfully loaded 27 services.
+2025-04-10 12:06:23 - Successfully loaded 537 SPs.
+2025-04-10 12:06:23 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:06:23 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:06:23 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:06:23 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:06:23 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:06:23 - 127.0.0.1 - - [10/Apr/2025 12:06:23] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:06:23 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:06:23 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:06:23 - 127.0.0.1 - - [10/Apr/2025 12:06:23] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:06:23 - 127.0.0.1 - - [10/Apr/2025 12:06:23] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:06:23 - 127.0.0.1 - - [10/Apr/2025 12:06:23] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:06:56 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:06:56 - 127.0.0.1 - - [10/Apr/2025 12:06:56] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:06:56 - Successfully loaded 38 affiliates.
+2025-04-10 12:06:56 - Successfully loaded 27 services.
+2025-04-10 12:06:56 - Successfully loaded 537 SPs.
+2025-04-10 12:06:56 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:06:56 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:06:56 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:06:56 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:06:56 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:06:56 - 127.0.0.1 - - [10/Apr/2025 12:06:56] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:06:56 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:06:56 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:06:56 - 127.0.0.1 - - [10/Apr/2025 12:06:56] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:07:05 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:07:05 - Successfully loaded 38 affiliates.
+2025-04-10 12:07:05 - Successfully loaded 27 services.
+2025-04-10 12:07:05 - Successfully loaded 537 SPs.
+2025-04-10 12:07:05 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:05 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:05 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:05 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:05 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:07:05 - 127.0.0.1 - - [10/Apr/2025 12:07:05] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:07:05 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:07:05 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:07:05 - 127.0.0.1 - - [10/Apr/2025 12:07:05] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:07:11 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:07:11 - Successfully loaded 38 affiliates.
+2025-04-10 12:07:11 - Successfully loaded 27 services.
+2025-04-10 12:07:11 - Successfully loaded 537 SPs.
+2025-04-10 12:07:11 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:11 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:11 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:11 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:11 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:07:11 - 127.0.0.1 - - [10/Apr/2025 12:07:11] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:07:23 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:07:23 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:07:23 - 127.0.0.1 - - [10/Apr/2025 12:07:23] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:07:24 - Using client-filtered GP instances: 2 GPs provided
+2025-04-10 12:07:24 - Successfully added new ASC with ID: ASC-0015
+2025-04-10 12:07:24 - 127.0.0.1 - - [10/Apr/2025 12:07:24] "[35m[1mPOST /api/ascs HTTP/1.1[0m" 201 -
+2025-04-10 12:07:24 - [2025-04-10T12:07:24.713917] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:07:24 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:07:24 - Successfully loaded 14 ASCs from file
+2025-04-10 12:07:24 - 127.0.0.1 - - [10/Apr/2025 12:07:24] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:07:24 - 127.0.0.1 - - [10/Apr/2025 12:07:24] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-10 12:07:36 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:07:36 - Successfully loaded 38 affiliates.
+2025-04-10 12:07:36 - 127.0.0.1 - - [10/Apr/2025 12:07:36] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:07:36 - Successfully loaded 27 services.
+2025-04-10 12:07:36 - Successfully loaded 537 SPs.
+2025-04-10 12:07:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:36 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:36 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:36 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:07:36 - 127.0.0.1 - - [10/Apr/2025 12:07:36] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:07:36 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:07:36 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:07:36 - 127.0.0.1 - - [10/Apr/2025 12:07:36] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:07:43 - Accessing ASC ASCs page
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/ASC/icons/ASCs.svg HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/pages/ascs_new.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/js/components/gpSpEditForm.js HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:07:43 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:07:43 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:07:43 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:07:43 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:07:43 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:07:43 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:07:43 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:07:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /api/sps HTTP/1.1" 200 -
+2025-04-10 12:07:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:43 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:07:43 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:43 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:43 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:07:43 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:07:43 - API Route: Returning GP data successfully.
+2025-04-10 12:07:43 - API Route: Returning GP data successfully.
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /api/gps HTTP/1.1" 200 -
+2025-04-10 12:07:43 - [2025-04-10T12:07:43.713287] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:07:43 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:07:43 - Successfully loaded 14 ASCs from file
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/ASC/image/flags/flag_united_states.png HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/ASC/image/flags/flag_norway.png HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-10 12:07:43 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:07:43 - 127.0.0.1 - - [10/Apr/2025 12:07:43] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-10 12:07:47 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:07:47 - Successfully loaded 38 affiliates.
+2025-04-10 12:07:47 - Successfully loaded 27 services.
+2025-04-10 12:07:47 - 127.0.0.1 - - [10/Apr/2025 12:07:47] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:07:47 - Successfully loaded 537 SPs.
+2025-04-10 12:07:47 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:47 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:07:47 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:47 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:07:47 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:07:47 - 127.0.0.1 - - [10/Apr/2025 12:07:47] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:07:48 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:07:48 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:07:48 - 127.0.0.1 - - [10/Apr/2025 12:07:48] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:07:48 - 127.0.0.1 - - [10/Apr/2025 12:07:48] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:07:48 - 127.0.0.1 - - [10/Apr/2025 12:07:48] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:09:10 - Logging system configured with level INFO
+2025-04-10 12:09:10 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:09:10 - Applying authentication system patches...
+2025-04-10 12:09:10 - Authentication system patches applied successfully
+2025-04-10 12:09:10 - Enhanced authentication system applied
+2025-04-10 12:09:10 - Configured Flask app logging with level INFO
+2025-04-10 12:09:10 - Configured Flask app logging with level INFO
+2025-04-10 12:09:10 - Logging system configured with level INFO
+2025-04-10 12:09:10 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:09:10 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:09:10 - Template files: templates
+2025-04-10 12:09:10 - Authentication Bypass ENABLED for development.
+2025-04-10 12:09:10 - Running in DEBUG mode
+2025-04-10 12:09:10 - Listening on 0.0.0.0:5007
+2025-04-10 12:09:10 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.107:5007
+2025-04-10 12:09:10 - [33mPress CTRL+C to quit[0m
+2025-04-10 12:09:10 -  * Restarting with stat
+2025-04-10 12:09:10 - Logging system configured with level INFO
+2025-04-10 12:09:10 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:09:10 - Applying authentication system patches...
+2025-04-10 12:09:10 - Authentication system patches applied successfully
+2025-04-10 12:09:10 - Enhanced authentication system applied
+2025-04-10 12:09:10 - Configured Flask app logging with level INFO
+2025-04-10 12:09:10 - Configured Flask app logging with level INFO
+2025-04-10 12:09:10 - Logging system configured with level INFO
+2025-04-10 12:09:10 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:09:10 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:09:10 - Template files: templates
+2025-04-10 12:09:10 - Authentication Bypass ENABLED for development.
+2025-04-10 12:09:10 - Running in DEBUG mode
+2025-04-10 12:09:10 - Listening on 0.0.0.0:5007
+2025-04-10 12:09:10 -  * Debugger is active!
+2025-04-10 12:09:10 -  * Debugger PIN: 807-861-954
+2025-04-10 12:09:17 - Accessing ASC ASCs page
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/ASC/icons/ASCs.svg HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/pages/ascs_new.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/js/components/gpSpEditForm.js HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:09:18 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:09:18 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:09:18 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:09:18 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:09:18 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /api/sps HTTP/1.1" 200 -
+2025-04-10 12:09:18 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:09:18 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:09:18 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:09:18 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:09:18 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:09:18 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:09:18 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:09:18 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:09:18 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:09:18 - API Route: Returning GP data successfully.
+2025-04-10 12:09:18 - API Route: Returning GP data successfully.
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /api/gps HTTP/1.1" 200 -
+2025-04-10 12:09:18 - [2025-04-10T12:09:18.287754] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:09:18 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:09:18 - Successfully loaded 14 ASCs from file
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/ASC/image/flags/flag_united_states.png HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/ASC/image/flags/flag_norway.png HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-10 12:09:18 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-10 12:09:18 - 127.0.0.1 - - [10/Apr/2025 12:09:18] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:09:21 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:09:21 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:09:21 - Successfully loaded 38 affiliates.
+2025-04-10 12:09:21 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:09:21 - 127.0.0.1 - - [10/Apr/2025 12:09:21] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:09:21 - 127.0.0.1 - - [10/Apr/2025 12:09:21] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:09:21 - Successfully loaded 27 services.
+2025-04-10 12:09:21 - Successfully loaded 537 SPs.
+2025-04-10 12:09:21 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:09:21 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:09:21 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:09:21 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:09:21 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:09:21 - 127.0.0.1 - - [10/Apr/2025 12:09:21] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:09:21 - 127.0.0.1 - - [10/Apr/2025 12:09:21] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:09:21 - 127.0.0.1 - - [10/Apr/2025 12:09:21] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:09:51 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:09:51 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:09:51 - Successfully loaded 38 affiliates.
+2025-04-10 12:09:51 - 127.0.0.1 - - [10/Apr/2025 12:09:51] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:09:51 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:09:51 - Successfully loaded 27 services.
+2025-04-10 12:09:51 - 127.0.0.1 - - [10/Apr/2025 12:09:51] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:09:51 - Successfully loaded 537 SPs.
+2025-04-10 12:09:51 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:09:51 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:09:51 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:09:51 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:09:51 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:09:51 - 127.0.0.1 - - [10/Apr/2025 12:09:51] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:13:54 - Logging system configured with level INFO
+2025-04-10 12:13:54 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:13:54 - Applying authentication system patches...
+2025-04-10 12:13:54 - Authentication system patches applied successfully
+2025-04-10 12:13:54 - Enhanced authentication system applied
+2025-04-10 12:13:54 - Configured Flask app logging with level INFO
+2025-04-10 12:13:54 - Configured Flask app logging with level INFO
+2025-04-10 12:13:54 - Logging system configured with level INFO
+2025-04-10 12:13:54 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:13:54 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:13:54 - Template files: templates
+2025-04-10 12:13:54 - Authentication Bypass ENABLED for development.
+2025-04-10 12:13:54 - Running in DEBUG mode
+2025-04-10 12:13:54 - Listening on 0.0.0.0:5007
+2025-04-10 12:13:54 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.107:5007
+2025-04-10 12:13:54 - [33mPress CTRL+C to quit[0m
+2025-04-10 12:13:54 -  * Restarting with stat
+2025-04-10 12:13:54 - Logging system configured with level INFO
+2025-04-10 12:13:54 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:13:54 - Applying authentication system patches...
+2025-04-10 12:13:54 - Authentication system patches applied successfully
+2025-04-10 12:13:54 - Enhanced authentication system applied
+2025-04-10 12:13:54 - Configured Flask app logging with level INFO
+2025-04-10 12:13:54 - Configured Flask app logging with level INFO
+2025-04-10 12:13:54 - Logging system configured with level INFO
+2025-04-10 12:13:54 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:13:54 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:13:54 - Template files: templates
+2025-04-10 12:13:54 - Authentication Bypass ENABLED for development.
+2025-04-10 12:13:54 - Running in DEBUG mode
+2025-04-10 12:13:54 - Listening on 0.0.0.0:5007
+2025-04-10 12:13:54 -  * Debugger is active!
+2025-04-10 12:13:54 -  * Debugger PIN: 807-861-954
+2025-04-10 12:14:02 - Accessing ASC ASCs page
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /static/ASC/icons/ASCs.svg HTTP/1.1" 200 -
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-10 12:14:02 - 127.0.0.1 - - [10/Apr/2025 12:14:02] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/js/pages/ascs_new.js HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/js/components/gpSpEditForm.js HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:14:03 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:14:03 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:14:03 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:14:03 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:14:03 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /api/sps HTTP/1.1" 200 -
+2025-04-10 12:14:03 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:14:03 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:14:03 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:14:03 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:14:03 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:14:03 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:14:03 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:14:03 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:14:03 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:14:03 - API Route: Returning GP data successfully.
+2025-04-10 12:14:03 - API Route: Returning GP data successfully.
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /api/gps HTTP/1.1" 200 -
+2025-04-10 12:14:03 - [2025-04-10T12:14:03.069859] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:14:03 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:14:03 - Successfully loaded 14 ASCs from file
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/ASC/image/flags/flag_united_states.png HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/ASC/image/flags/flag_norway.png HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-10 12:14:03 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-10 12:14:03 - 127.0.0.1 - - [10/Apr/2025 12:14:03] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:14:05 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:14:05 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:14:05 - Successfully loaded 38 affiliates.
+2025-04-10 12:14:05 - 127.0.0.1 - - [10/Apr/2025 12:14:05] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:14:05 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:14:05 - Successfully loaded 27 services.
+2025-04-10 12:14:05 - 127.0.0.1 - - [10/Apr/2025 12:14:05] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:14:05 - Successfully loaded 537 SPs.
+2025-04-10 12:14:05 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:14:05 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:14:05 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:14:05 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:14:05 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:14:05 - 127.0.0.1 - - [10/Apr/2025 12:14:05] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:14:05 - 127.0.0.1 - - [10/Apr/2025 12:14:05] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:14:05 - 127.0.0.1 - - [10/Apr/2025 12:14:05] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:14:05 - 127.0.0.1 - - [10/Apr/2025 12:14:05] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:14:18 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:14:18 - Successfully loaded 38 affiliates.
+2025-04-10 12:14:18 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:14:18 - Successfully loaded 27 services.
+2025-04-10 12:14:18 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:14:18 - 127.0.0.1 - - [10/Apr/2025 12:14:18] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:14:18 - 127.0.0.1 - - [10/Apr/2025 12:14:18] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:14:18 - Successfully loaded 537 SPs.
+2025-04-10 12:14:18 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:14:18 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:14:18 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:14:18 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:14:18 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:14:18 - 127.0.0.1 - - [10/Apr/2025 12:14:18] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:15:02 - Accessing ASC Kanban board
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "GET /asc_kanban HTTP/1.1" 200 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/css/kanban-board.css HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/js/kanban-board.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/js/data-manager.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/js/components/themeManager.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/js/components/ascForm.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/js/components/gpSpEditForm.js HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:15:02 - [2025-04-10T12:15:02.308334] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:15:02 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:15:02 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:15:02 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:15:02 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:15:02 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:15:02 - Successfully loaded 14 ASCs from file
+2025-04-10 12:15:02 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:15:02 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/image/flags/flag_norway.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:02 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:15:02 - 127.0.0.1 - - [10/Apr/2025 12:15:02] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:15:42 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:15:42 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:15:42 - Successfully loaded 38 affiliates.
+2025-04-10 12:15:42 - 127.0.0.1 - - [10/Apr/2025 12:15:42] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:15:42 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:15:42 - 127.0.0.1 - - [10/Apr/2025 12:15:42] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:15:42 - Successfully loaded 27 services.
+2025-04-10 12:15:42 - Successfully loaded 537 SPs.
+2025-04-10 12:15:42 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:15:42 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:15:42 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:15:42 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:15:42 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:15:42 - 127.0.0.1 - - [10/Apr/2025 12:15:42] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:15:42 - 127.0.0.1 - - [10/Apr/2025 12:15:42] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:22:19 - Logging system configured with level INFO
+2025-04-10 12:22:19 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:22:19 - Applying authentication system patches...
+2025-04-10 12:22:19 - Authentication system patches applied successfully
+2025-04-10 12:22:19 - Enhanced authentication system applied
+2025-04-10 12:22:19 - Configured Flask app logging with level INFO
+2025-04-10 12:22:19 - Configured Flask app logging with level INFO
+2025-04-10 12:22:19 - Logging system configured with level INFO
+2025-04-10 12:22:19 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:22:19 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:22:19 - Template files: templates
+2025-04-10 12:22:19 - Authentication Bypass ENABLED for development.
+2025-04-10 12:22:19 - Running in DEBUG mode
+2025-04-10 12:22:19 - Listening on 0.0.0.0:5007
+2025-04-10 12:22:19 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.107:5007
+2025-04-10 12:22:19 - [33mPress CTRL+C to quit[0m
+2025-04-10 12:22:19 -  * Restarting with stat
+2025-04-10 12:22:19 - Logging system configured with level INFO
+2025-04-10 12:22:19 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:22:19 - Applying authentication system patches...
+2025-04-10 12:22:19 - Authentication system patches applied successfully
+2025-04-10 12:22:19 - Enhanced authentication system applied
+2025-04-10 12:22:19 - Configured Flask app logging with level INFO
+2025-04-10 12:22:19 - Configured Flask app logging with level INFO
+2025-04-10 12:22:19 - Logging system configured with level INFO
+2025-04-10 12:22:19 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:22:19 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:22:19 - Template files: templates
+2025-04-10 12:22:19 - Authentication Bypass ENABLED for development.
+2025-04-10 12:22:19 - Running in DEBUG mode
+2025-04-10 12:22:19 - Listening on 0.0.0.0:5007
+2025-04-10 12:22:19 -  * Debugger is active!
+2025-04-10 12:22:19 -  * Debugger PIN: 807-861-954
+2025-04-10 12:22:27 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:22:27 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:22:27 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:22:27 - Successfully loaded 38 affiliates.
+2025-04-10 12:22:27 - 127.0.0.1 - - [10/Apr/2025 12:22:27] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:22:27 - Successfully loaded 27 services.
+2025-04-10 12:22:27 - Successfully loaded 537 SPs.
+2025-04-10 12:22:27 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:27 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:27 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:27 - 127.0.0.1 - - [10/Apr/2025 12:22:27] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:22:27 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:27 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:22:27 - 127.0.0.1 - - [10/Apr/2025 12:22:27] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:22:33 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:22:33 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:22:33 - Successfully loaded 38 affiliates.
+2025-04-10 12:22:33 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:22:33 - 127.0.0.1 - - [10/Apr/2025 12:22:33] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:22:33 - Successfully loaded 27 services.
+2025-04-10 12:22:33 - Successfully loaded 537 SPs.
+2025-04-10 12:22:33 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:33 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:33 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:33 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:33 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:22:33 - 127.0.0.1 - - [10/Apr/2025 12:22:33] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:22:33 - 127.0.0.1 - - [10/Apr/2025 12:22:33] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_gateway.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:22:33 - 127.0.0.1 - - [10/Apr/2025 12:22:33] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server_hub.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:22:36 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:22:36 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:22:36 - Successfully loaded 38 affiliates.
+2025-04-10 12:22:36 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:22:36 - 127.0.0.1 - - [10/Apr/2025 12:22:36] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:22:36 - Successfully loaded 27 services.
+2025-04-10 12:22:36 - Successfully loaded 537 SPs.
+2025-04-10 12:22:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:36 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:36 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:36 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:36 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:22:36 - 127.0.0.1 - - [10/Apr/2025 12:22:36] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:22:39 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:22:39 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:22:39 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:22:39 - 127.0.0.1 - - [10/Apr/2025 12:22:39] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:22:39 - Successfully loaded 38 affiliates.
+2025-04-10 12:22:39 - Successfully loaded 27 services.
+2025-04-10 12:22:39 - Successfully loaded 537 SPs.
+2025-04-10 12:22:39 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:39 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:39 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:39 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:39 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:22:39 - 127.0.0.1 - - [10/Apr/2025 12:22:39] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:22:43 - Accessing ASC Kanban board
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /asc_kanban HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/css/kanban-board.css HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/js/kanban-board.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/js/components/themeManager.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/js/data-manager.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/js/components/gpSpEditForm.js HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:22:43 - [2025-04-10T12:22:43.752273] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:22:43 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:22:43 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:22:43 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:22:43 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:22:43 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:22:43 - Successfully loaded 14 ASCs from file
+2025-04-10 12:22:43 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:22:43 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/image/flags/flag_united_states.png HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/image/flags/flag_norway.png HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-10 12:22:43 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-10 12:22:43 - 127.0.0.1 - - [10/Apr/2025 12:22:43] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:22:45 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:22:45 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:22:45 - 127.0.0.1 - - [10/Apr/2025 12:22:45] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:22:45 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:22:45 - Successfully loaded 38 affiliates.
+2025-04-10 12:22:45 - 127.0.0.1 - - [10/Apr/2025 12:22:45] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:22:45 - Successfully loaded 27 services.
+2025-04-10 12:22:45 - Successfully loaded 537 SPs.
+2025-04-10 12:22:45 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:45 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:22:45 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:45 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:22:45 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:22:45 - 127.0.0.1 - - [10/Apr/2025 12:22:45] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:22:45 - 127.0.0.1 - - [10/Apr/2025 12:22:45] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:23:19 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:23:19 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:23:19 - Successfully loaded 38 affiliates.
+2025-04-10 12:23:19 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:23:19 - 127.0.0.1 - - [10/Apr/2025 12:23:19] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:23:19 - Successfully loaded 27 services.
+2025-04-10 12:23:19 - Successfully loaded 537 SPs.
+2025-04-10 12:23:19 - 127.0.0.1 - - [10/Apr/2025 12:23:19] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:23:19 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:23:19 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:23:19 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:23:19 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:23:19 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:23:19 - 127.0.0.1 - - [10/Apr/2025 12:23:19] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:33:51 - Logging system configured with level INFO
+2025-04-10 12:33:51 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:33:51 - Applying authentication system patches...
+2025-04-10 12:33:51 - Authentication system patches applied successfully
+2025-04-10 12:33:51 - Enhanced authentication system applied
+2025-04-10 12:33:51 - Configured Flask app logging with level INFO
+2025-04-10 12:33:51 - Configured Flask app logging with level INFO
+2025-04-10 12:33:51 - Logging system configured with level INFO
+2025-04-10 12:33:51 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:33:51 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:33:51 - Template files: templates
+2025-04-10 12:33:51 - Authentication Bypass ENABLED for development.
+2025-04-10 12:33:51 - Running in DEBUG mode
+2025-04-10 12:33:51 - Listening on 0.0.0.0:5007
+2025-04-10 12:33:51 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.107:5007
+2025-04-10 12:33:51 - [33mPress CTRL+C to quit[0m
+2025-04-10 12:33:51 -  * Restarting with stat
+2025-04-10 12:33:51 - Logging system configured with level INFO
+2025-04-10 12:33:51 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:33:51 - Applying authentication system patches...
+2025-04-10 12:33:51 - Authentication system patches applied successfully
+2025-04-10 12:33:51 - Enhanced authentication system applied
+2025-04-10 12:33:51 - Configured Flask app logging with level INFO
+2025-04-10 12:33:51 - Configured Flask app logging with level INFO
+2025-04-10 12:33:51 - Logging system configured with level INFO
+2025-04-10 12:33:51 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:33:51 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:33:51 - Template files: templates
+2025-04-10 12:33:51 - Authentication Bypass ENABLED for development.
+2025-04-10 12:33:51 - Running in DEBUG mode
+2025-04-10 12:33:51 - Listening on 0.0.0.0:5007
+2025-04-10 12:33:51 -  * Debugger is active!
+2025-04-10 12:33:51 -  * Debugger PIN: 807-861-954
+2025-04-10 12:33:56 - Accessing ASC Kanban board
+2025-04-10 12:33:56 - 127.0.0.1 - - [10/Apr/2025 12:33:56] "GET /asc_kanban HTTP/1.1" 200 -
+2025-04-10 12:33:56 - 127.0.0.1 - - [10/Apr/2025 12:33:56] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-10 12:33:56 - 127.0.0.1 - - [10/Apr/2025 12:33:56] "GET /static/ASC/css/kanban-board.css HTTP/1.1" 200 -
+2025-04-10 12:33:56 - 127.0.0.1 - - [10/Apr/2025 12:33:56] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-10 12:33:56 - 127.0.0.1 - - [10/Apr/2025 12:33:56] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-10 12:33:56 - 127.0.0.1 - - [10/Apr/2025 12:33:56] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-10 12:33:56 - 127.0.0.1 - - [10/Apr/2025 12:33:56] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-10 12:33:56 - 127.0.0.1 - - [10/Apr/2025 12:33:56] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/js/kanban-board.js HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/js/data-manager.js HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/js/components/themeManager.js HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/js/components/gpSpEditForm.js HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:33:57 - [2025-04-10T12:33:57.033545] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:33:57 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:33:57 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:33:57 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:33:57 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:33:57 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:33:57 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:33:57 - Successfully loaded 14 ASCs from file
+2025-04-10 12:33:57 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/image/flags/flag_united_states.png HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/image/flags/flag_norway.png HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-10 12:33:57 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-10 12:33:57 - 127.0.0.1 - - [10/Apr/2025 12:33:57] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:33:58 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:33:58 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:33:58 - Successfully loaded 38 affiliates.
+2025-04-10 12:33:58 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:33:58 - 127.0.0.1 - - [10/Apr/2025 12:33:58] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:33:58 - 127.0.0.1 - - [10/Apr/2025 12:33:58] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:33:58 - Successfully loaded 27 services.
+2025-04-10 12:33:58 - Successfully loaded 537 SPs.
+2025-04-10 12:33:58 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:33:58 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:33:58 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:33:58 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:33:58 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:33:58 - 127.0.0.1 - - [10/Apr/2025 12:33:58] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:33:58 - 127.0.0.1 - - [10/Apr/2025 12:33:58] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:34:06 - Accessing ASC Kanban board
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /asc_kanban HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/css/kanban-board.css HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/js/kanban-board.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/js/data-manager.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/js/components/themeManager.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/js/components/gpSpEditForm.js HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:34:06 - [2025-04-10T12:34:06.443195] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:34:06 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:34:06 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:34:06 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:34:06 - Successfully loaded 14 ASCs from file
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:34:06 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:34:06 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:34:06 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:34:06 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/image/flags/flag_united_states.png HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/image/flags/flag_norway.png HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-10 12:34:06 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:34:06 - 127.0.0.1 - - [10/Apr/2025 12:34:06] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-10 12:34:08 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:34:08 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:34:08 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:34:08 - 127.0.0.1 - - [10/Apr/2025 12:34:08] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:34:08 - Successfully loaded 38 affiliates.
+2025-04-10 12:34:08 - 127.0.0.1 - - [10/Apr/2025 12:34:08] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:34:08 - Successfully loaded 27 services.
+2025-04-10 12:34:08 - Successfully loaded 537 SPs.
+2025-04-10 12:34:08 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:34:08 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:34:08 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:34:08 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:34:08 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:34:08 - 127.0.0.1 - - [10/Apr/2025 12:34:08] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:34:09 - 127.0.0.1 - - [10/Apr/2025 12:34:09] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:34:09 - 127.0.0.1 - - [10/Apr/2025 12:34:09] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:34:24 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:34:24 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:34:24 - Successfully loaded 38 affiliates.
+2025-04-10 12:34:24 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:34:24 - 127.0.0.1 - - [10/Apr/2025 12:34:24] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:34:24 - 127.0.0.1 - - [10/Apr/2025 12:34:24] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:34:24 - Successfully loaded 27 services.
+2025-04-10 12:34:24 - Successfully loaded 537 SPs.
+2025-04-10 12:34:24 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:34:24 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:34:24 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:34:24 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:34:24 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:34:24 - 127.0.0.1 - - [10/Apr/2025 12:34:24] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:34:24 - 127.0.0.1 - - [10/Apr/2025 12:34:24] "[36mGET /static/ASC/image/gp/gp_icon_data_link_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:37:21 - Logging system configured with level INFO
+2025-04-10 12:37:21 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:37:21 - Applying authentication system patches...
+2025-04-10 12:37:21 - Authentication system patches applied successfully
+2025-04-10 12:37:21 - Enhanced authentication system applied
+2025-04-10 12:37:21 - Configured Flask app logging with level INFO
+2025-04-10 12:37:21 - Configured Flask app logging with level INFO
+2025-04-10 12:37:21 - Logging system configured with level INFO
+2025-04-10 12:37:21 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:37:21 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:37:21 - Template files: templates
+2025-04-10 12:37:21 - Authentication Bypass ENABLED for development.
+2025-04-10 12:37:21 - Running in DEBUG mode
+2025-04-10 12:37:21 - Listening on 0.0.0.0:5007
+2025-04-10 12:37:22 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.107:5007
+2025-04-10 12:37:22 - [33mPress CTRL+C to quit[0m
+2025-04-10 12:37:22 -  * Restarting with stat
+2025-04-10 12:37:22 - Logging system configured with level INFO
+2025-04-10 12:37:22 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:37:22 - Applying authentication system patches...
+2025-04-10 12:37:22 - Authentication system patches applied successfully
+2025-04-10 12:37:22 - Enhanced authentication system applied
+2025-04-10 12:37:22 - Configured Flask app logging with level INFO
+2025-04-10 12:37:22 - Configured Flask app logging with level INFO
+2025-04-10 12:37:22 - Logging system configured with level INFO
+2025-04-10 12:37:22 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:37:22 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:37:22 - Template files: templates
+2025-04-10 12:37:22 - Authentication Bypass ENABLED for development.
+2025-04-10 12:37:22 - Running in DEBUG mode
+2025-04-10 12:37:22 - Listening on 0.0.0.0:5007
+2025-04-10 12:37:22 -  * Debugger is active!
+2025-04-10 12:37:22 -  * Debugger PIN: 807-861-954
+2025-04-10 12:37:28 - Accessing ASC ASCs page
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /static/js/pages/ascs_new.js HTTP/1.1" 200 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/js/components/gpSpEditForm.js HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:37:28 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:37:28 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:37:28 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:37:28 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:37:28 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:37:28 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:37:28 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /api/sps HTTP/1.1" 200 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:37:28 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:37:28 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:37:28 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:37:28 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:37:28 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:37:28 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:37:28 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:37:28 - API Route: Returning GP data successfully.
+2025-04-10 12:37:28 - API Route: Returning GP data successfully.
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /api/gps HTTP/1.1" 200 -
+2025-04-10 12:37:28 - [2025-04-10T12:37:28.266812] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:37:28 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:37:28 - Successfully loaded 14 ASCs from file
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:37:28 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/ASC/image/flags/flag_albania.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/ASC/image/flags/flag_united_states.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/ASC/image/flags/flag_spain.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/ASC/image/flags/flag_norway.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/ASC/image/flags/flag_iceland.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/ASC/image/flags/flag_canada.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:28 - 127.0.0.1 - - [10/Apr/2025 12:37:28] "[36mGET /static/ASC/image/flags/flag_germany.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:31 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:37:31 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:37:31 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:37:31 - 127.0.0.1 - - [10/Apr/2025 12:37:31] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:37:31 - Successfully loaded 38 affiliates.
+2025-04-10 12:37:31 - 127.0.0.1 - - [10/Apr/2025 12:37:31] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:37:31 - Successfully loaded 27 services.
+2025-04-10 12:37:31 - Successfully loaded 537 SPs.
+2025-04-10 12:37:31 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:37:31 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:37:31 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:37:31 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:37:31 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:37:31 - 127.0.0.1 - - [10/Apr/2025 12:37:31] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:37:31 - 127.0.0.1 - - [10/Apr/2025 12:37:31] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:37:31 - 127.0.0.1 - - [10/Apr/2025 12:37:31] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:37:39 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:37:39 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:37:39 - Successfully loaded 38 affiliates.
+2025-04-10 12:37:39 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:37:39 - 127.0.0.1 - - [10/Apr/2025 12:37:39] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:37:39 - Successfully loaded 27 services.
+2025-04-10 12:37:39 - Successfully loaded 537 SPs.
+2025-04-10 12:37:39 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:37:39 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:37:39 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:37:39 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:37:39 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:37:40 - 127.0.0.1 - - [10/Apr/2025 12:37:40] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:37:40 - 127.0.0.1 - - [10/Apr/2025 12:37:40] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:37:40 - 127.0.0.1 - - [10/Apr/2025 12:37:40] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:38:47 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:38:47 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:38:47 - Successfully loaded 38 affiliates.
+2025-04-10 12:38:47 - 127.0.0.1 - - [10/Apr/2025 12:38:47] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:38:47 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:38:47 - 127.0.0.1 - - [10/Apr/2025 12:38:47] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:38:47 - Successfully loaded 27 services.
+2025-04-10 12:38:47 - Successfully loaded 537 SPs.
+2025-04-10 12:38:47 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:38:47 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:38:47 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:38:47 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:38:47 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:38:47 - 127.0.0.1 - - [10/Apr/2025 12:38:47] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:40:37 - Logging system configured with level INFO
+2025-04-10 12:40:37 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:40:37 - Applying authentication system patches...
+2025-04-10 12:40:37 - Authentication system patches applied successfully
+2025-04-10 12:40:37 - Enhanced authentication system applied
+2025-04-10 12:40:37 - Configured Flask app logging with level INFO
+2025-04-10 12:40:37 - Configured Flask app logging with level INFO
+2025-04-10 12:40:37 - Logging system configured with level INFO
+2025-04-10 12:40:37 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:40:37 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:40:37 - Template files: templates
+2025-04-10 12:40:37 - Authentication Bypass ENABLED for development.
+2025-04-10 12:40:37 - Running in DEBUG mode
+2025-04-10 12:40:37 - Listening on 0.0.0.0:5007
+2025-04-10 12:40:37 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.107:5007
+2025-04-10 12:40:37 - [33mPress CTRL+C to quit[0m
+2025-04-10 12:40:37 -  * Restarting with stat
+2025-04-10 12:40:37 - Logging system configured with level INFO
+2025-04-10 12:40:37 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 12:40:38 - Applying authentication system patches...
+2025-04-10 12:40:38 - Authentication system patches applied successfully
+2025-04-10 12:40:38 - Enhanced authentication system applied
+2025-04-10 12:40:38 - Configured Flask app logging with level INFO
+2025-04-10 12:40:38 - Configured Flask app logging with level INFO
+2025-04-10 12:40:38 - Logging system configured with level INFO
+2025-04-10 12:40:38 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 12:40:38 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 12:40:38 - Template files: templates
+2025-04-10 12:40:38 - Authentication Bypass ENABLED for development.
+2025-04-10 12:40:38 - Running in DEBUG mode
+2025-04-10 12:40:38 - Listening on 0.0.0.0:5007
+2025-04-10 12:40:38 -  * Debugger is active!
+2025-04-10 12:40:38 -  * Debugger PIN: 807-861-954
+2025-04-10 12:40:41 - Accessing ASC ASCs page
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /asc_ascs HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/css/test_case.css HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/css/components/dataTable.css HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/css/components/design-system.css HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/ASC/icons/ASCs.svg HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/pages/ascs_new.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/components/tableCore.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/components/columnResizer.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/components/dialogManager.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/js/components/gpSpEditForm.js HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 12:40:41 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:40:41 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:40:41 - Successfully read 27 services from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_servicesm.json.
+2025-04-10 12:40:41 - API Route: /api/gps GET endpoint called.
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /api/services HTTP/1.1" 200 -
+2025-04-10 12:40:41 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /api/sps HTTP/1.1" 200 -
+2025-04-10 12:40:41 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:40:41 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:40:41 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:40:41 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_affiliates.json.
+2025-04-10 12:40:41 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /api/affiliates HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:40:41 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:40:41 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:40:41 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:40:41 - API Route: Retrieved 133 GPs from repository.
+2025-04-10 12:40:41 - API Route: Returning GP data successfully.
+2025-04-10 12:40:41 - API Route: Returning GP data successfully.
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /api/gps HTTP/1.1" 200 -
+2025-04-10 12:40:41 - [2025-04-10T12:40:41.951237] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:40:41 - ASCs file stats - Last modified: 2025-04-10T12:07:24.703577, Size: 12033 bytes
+2025-04-10 12:40:41 - Successfully loaded 14 ASCs from file
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/ASC/image/flags/flag_spain.png HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/ASC/image/flags/flag_united_states.png HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/ASC/image/flags/flag_albania.png HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/ASC/image/flags/flag_norway.png HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/ASC/image/flags/flag_germany.png HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/ASC/image/flags/flag_canada.png HTTP/1.1" 200 -
+2025-04-10 12:40:41 - 127.0.0.1 - - [10/Apr/2025 12:40:41] "GET /static/ASC/image/flags/flag_iceland.png HTTP/1.1" 200 -
+2025-04-10 12:40:42 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 12:40:42 - 127.0.0.1 - - [10/Apr/2025 12:40:42] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 12:40:42 - 127.0.0.1 - - [10/Apr/2025 12:40:42] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-04-10 12:40:44 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:40:44 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:40:44 - 127.0.0.1 - - [10/Apr/2025 12:40:44] "[36mGET /static/ASC/image/flags/FMN-ASC.png HTTP/1.1[0m" 304 -
+2025-04-10 12:40:44 - Successfully loaded 38 affiliates.
+2025-04-10 12:40:44 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:40:44 - 127.0.0.1 - - [10/Apr/2025 12:40:44] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:40:44 - Successfully loaded 27 services.
+2025-04-10 12:40:44 - Successfully loaded 537 SPs.
+2025-04-10 12:40:44 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:40:44 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:40:44 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:40:44 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:40:44 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:40:44 - 127.0.0.1 - - [10/Apr/2025 12:40:44] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:40:44 - 127.0.0.1 - - [10/Apr/2025 12:40:44] "[36mGET /static/ASC/image/gp/gp_icon_dns_root_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:40:44 - 127.0.0.1 - - [10/Apr/2025 12:40:44] "[36mGET /static/ASC/image/gp/gp_icon_d﻿ns_resolvers.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:40:44 - 127.0.0.1 - - [10/Apr/2025 12:40:44] "[36mGET /static/ASC/image/gp/gp_icon_dns_﻿zone_authoritative.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:40:49 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:40:49 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:40:49 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:40:49 - Successfully loaded 38 affiliates.
+2025-04-10 12:40:49 - 127.0.0.1 - - [10/Apr/2025 12:40:49] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:40:49 - Successfully loaded 27 services.
+2025-04-10 12:40:49 - Successfully loaded 537 SPs.
+2025-04-10 12:40:49 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:40:49 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:40:49 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:40:49 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:40:49 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:40:49 - 127.0.0.1 - - [10/Apr/2025 12:40:49] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:40:49 - 127.0.0.1 - - [10/Apr/2025 12:40:49] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_server.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:40:49 - 127.0.0.1 - - [10/Apr/2025 12:40:49] "[36mGET /static/ASC/image/gp/gp_icon_xmpp_client.jpg HTTP/1.1[0m" 304 -
+2025-04-10 12:40:56 - Successfully updated ASC with ID: ASC-0004
+2025-04-10 12:40:56 - 127.0.0.1 - - [10/Apr/2025 12:40:56] "PUT /api/ascs?id=ASC-0004 HTTP/1.1" 200 -
+2025-04-10 12:40:56 - [2025-04-10T12:40:56.093185] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:40:56 - ASCs file stats - Last modified: 2025-04-10T12:40:56.080197, Size: 12209 bytes
+2025-04-10 12:40:56 - Successfully loaded 14 ASCs from file
+2025-04-10 12:40:56 - 127.0.0.1 - - [10/Apr/2025 12:40:56] "GET /api/ascs HTTP/1.1" 200 -
+2025-04-10 12:40:59 - Attempting to read ASC form data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data
+2025-04-10 12:40:59 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 12:40:59 - Successfully loaded 38 affiliates.
+2025-04-10 12:40:59 - Repository: JSON loaded successfully. Found 5 items.
+2025-04-10 12:40:59 - Successfully loaded 27 services.
+2025-04-10 12:40:59 - 127.0.0.1 - - [10/Apr/2025 12:40:59] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 12:40:59 - Successfully loaded 537 SPs.
+2025-04-10 12:40:59 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:40:59 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_gps.json
+2025-04-10 12:40:59 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:40:59 - Repository: JSON loaded successfully. Found 133 items.
+2025-04-10 12:40:59 - Successfully loaded 133 GPs using repository.
+2025-04-10 12:40:59 - 127.0.0.1 - - [10/Apr/2025 12:40:59] "GET /api/asc_form_data HTTP/1.1" 200 -
+2025-04-10 12:41:07 - Successfully updated ASC with ID: ASC-0004
+2025-04-10 12:41:07 - 127.0.0.1 - - [10/Apr/2025 12:41:07] "PUT /api/ascs?id=ASC-0004 HTTP/1.1" 200 -
+2025-04-10 12:41:07 - [2025-04-10T12:41:07.723282] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_ascs.json
+2025-04-10 12:41:07 - ASCs file stats - Last modified: 2025-04-10T12:41:07.718534, Size: 12033 bytes
+2025-04-10 12:41:07 - Successfully loaded 14 ASCs from file
+2025-04-10 12:41:07 - 127.0.0.1 - - [10/Apr/2025 12:41:07] "GET /api/ascs HTTP/1.1" 200 -

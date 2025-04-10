@@ -51,7 +51,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to open the Add/Edit ASC Dialog
   function openAscDialog(data = null) {
-    ascDialog.setTitle(data ? `Edit ASC-${data.id}` : 'Add ASC');
+    // Determine if ASC is editable based on status
+    const isEditable = !data || !data.status || ['Draft', 'Initial', 'In Progress'].includes(data.status);
+    
+    // Set dialog title with lock icon for non-editable ASCs
+    if (data) {
+      const lockIcon = !isEditable ? '<i class="fas fa-lock me-2"></i>' : '';
+      ascDialog.setTitle(`${lockIcon}Edit ASC-${data.id}`);
+      
+      // Set Save button state based on ASC editability
+      setTimeout(() => {
+        const saveButton = ascDialog.dialogElement?.querySelector('button[data-action="save"]');
+        if (saveButton) {
+          if (!isEditable) {
+            // Disable for non-editable ASCs
+            saveButton.disabled = true;
+            saveButton.title = 'ASC must be in Draft or In Progress status to save';
+          } else {
+            // Ensure button is enabled for editable ASCs
+            saveButton.disabled = false;
+            saveButton.title = 'Save changes';
+          }
+        }
+      }, 100); // Small timeout to ensure dialog is rendered
+    } else {
+      ascDialog.setTitle('Add ASC');
+    }
 
     // Create the form instance, passing the save function as the onSubmit callback
     const ascFormInstance = new AscForm({

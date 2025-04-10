@@ -11,6 +11,11 @@ export class AscForm {
         this.element = null;
         this.formElement = null;
         this.isEditMode = !!this.data;
+        
+        // Determine if the ASC is editable based on its status
+        // Only Draft and In Progress ASCs can be edited
+        this.isEditable = !this.isEditMode || !this.data.status || 
+                         ['Draft', 'Initial', 'In Progress'].includes(this.data.status);
 
         // Data fetched from API
         this.formData = {
@@ -43,15 +48,27 @@ export class AscForm {
 
     async fetchFormData() {
         try {
-            const response = await fetch('/api/asc_form_data');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            // Fetch form data and models data in parallel
+            const [formResponse, modelsResponse] = await Promise.all([
+                fetch('/api/asc_form_data'),
+                fetch('/api/models')
+            ]);
+            
+            if (!formResponse.ok) {
+                throw new Error(`HTTP error! status: ${formResponse.status}`);
             }
-            const fetchedData = await response.json();
+            
+            const fetchedData = await formResponse.json();
             this.formData = fetchedData; // Keep original structure for dropdowns
             this.allServices = fetchedData.services || [];
             this.allSps = fetchedData.sps || [];
             this.allGps = fetchedData.gps || []; // Store GPs
+            
+            // Process models data if available
+            if (modelsResponse.ok) {
+                const modelsData = await modelsResponse.json();
+                this.formData.models = modelsData; // Add models to formData
+            }
 
             console.log("ASC Form Data fetched:", this.formData); // Debugging
 
@@ -67,6 +84,7 @@ export class AscForm {
                 this.renderGpInstances(); // Render GP instances in edit mode
                 this.updateAscScoreDisplay(); // Initial ASC score calculation and display
                 this.populateAddGpDropdown(); // Populate the Add GP dropdown
+                this.updateNationFlag(); // Update the nation flag
             }
         } catch (error) {
             console.error("Error fetching ASC form data:", error);
@@ -84,11 +102,26 @@ export class AscForm {
         // Basic structure - with more compact layout using Bootstrap grid
         this.formElement.innerHTML = `
             ${this.isEditMode ? `
-            <!-- ASC Score displayed prominently at the top in edit mode -->
-            <div class="mb-3 d-flex align-items-center">
-                <h5 class="mb-0 me-2">ASC Score:</h5>
-                <span class="badge p-2 fs-6" style="background-color: ${this.getScoreColor(this.data?.ascScore || '0')}; color: white;" id="ascOverallScore">${this.data?.ascScore || '0%'}</span>
+            <!-- ASC Score and Status displayed prominently at the top in edit mode -->
+            <div class="mb-3 d-flex align-items-center gap-4">
+                <div class="d-flex align-items-center">
+                    <h5 class="mb-0 me-2">ASC Score:</h5>
+                    <span class="badge p-2 fs-6" style="background-color: ${this.getScoreColor(this.data?.ascScore || '0')}; color: white;" id="ascOverallScore">${this.data?.ascScore || '0%'}</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <h5 class="mb-0 me-2">Status:</h5>
+                    <span class="badge p-2 fs-6" style="background-color: ${this.getStatusColor(this.data?.status || 'Initial')}; color: white;" id="ascStatus">${this.data?.status || 'Initial'}</span>
+                </div>
             </div>
+            ${!this.isEditable ? `
+            <!-- Read-only warning message -->
+            <div class="alert alert-warning d-flex align-items-center mb-3" role="alert">
+                <i class="fas fa-lock me-2"></i>
+                <div>
+                    This ASC can only be edited in "Draft" or "In Progress" status. Move it to one of these statuses in the ASC board to enable editing.
+                </div>
+            </div>
+            ` : ''}
             <hr class="mt-2 mb-3">
             ` : ''}
             
@@ -99,15 +132,18 @@ export class AscForm {
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="ascAffiliate" class="form-label">Affiliate (Nation)</label>
-                        <select class="form-select" id="ascAffiliate" required ${this.isEditMode ? 'disabled' : ''}>
-                            <option value="" selected disabled>Loading affiliates...</option>
-                        </select>
+                        <div class="input-group">
+                            ${this.isEditMode ? `<span class="input-group-text p-0 border-0 bg-transparent"><img src="${this.getNationFlagPath()}" alt="Nation Flag" width="24" height="auto" class="me-2" id="nationFlag"></span>` : ''}
+                            <select class="form-select" id="ascAffiliate" required ${this.isEditMode || !this.isEditable ? 'disabled' : ''}>
+                                <option value="" selected disabled>Loading affiliates...</option>
+                            </select>
+                        </div>
                         <div class="invalid-feedback">Please select an affiliate.</div>
                     </div>
                     
                     <div class="mb-3">
                         <label for="ascService" class="form-label">Service</label>
-                        <select class="form-select" id="ascService" required ${this.isEditMode ? 'disabled' : ''}>
+                        <select class="form-select" id="ascService" required ${this.isEditMode || !this.isEditable ? 'disabled' : ''}>
                             <option value="" selected disabled>Loading services...</option>
                         </select>
                         <div class="invalid-feedback">Please select a service.</div>
@@ -118,7 +154,7 @@ export class AscForm {
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="ascEnvironment" class="form-label">Environment</label>
-                        <select class="form-select" id="ascEnvironment" required ${this.isEditMode ? 'disabled' : ''}>
+                        <select class="form-select" id="ascEnvironment" required ${this.isEditMode || !this.isEditable ? 'disabled' : ''}>
                             <option value="" selected disabled>Select an affiliate first</option>
                         </select>
                         <div class="invalid-feedback">Please select an environment.</div>
@@ -126,7 +162,7 @@ export class AscForm {
                     
                     <div class="mb-3">
                         <label for="ascModel" class="form-label">Model</label>
-                        <select class="form-select" id="ascModel" required ${this.isEditMode ? 'disabled' : ''}>
+                        <select class="form-select" id="ascModel" required ${this.isEditMode || !this.isEditable ? 'disabled' : ''}>
                             <option value="" selected disabled>Select a service first</option>
                         </select>
                         <div class="invalid-feedback">Please select a model.</div>
@@ -146,14 +182,14 @@ export class AscForm {
              <div class="row g-2 mb-3"> <!-- Add GP Controls -->
                  <div class="col-sm-8">
                     <label for="addGpSelect" class="visually-hidden">Select GP to Add</label>
-                    <select id="addGpSelect" class="form-select form-select-sm">
-                        <option value="" selected disabled>Select GP type to add...</option>
+                    <select id="addGpSelect" class="form-select form-select-sm ${!this.isEditable ? 'bg-light text-muted' : ''}" ${!this.isEditable ? 'disabled' : ''}>
+                        <option value="" selected disabled>${!this.isEditable ? 'ASC is read-only' : 'Select GP type to add...'}</option>
                         <!-- Options populated dynamically -->
                     </select>
                  </div>
                  <div class="col-sm-4">
-                    <button type="button" id="addGpInstanceButton" class="btn btn-outline-success btn-sm w-100">
-                        <i class="fas fa-plus me-1"></i> Add Selected GP
+                    <button type="button" id="addGpInstanceButton" class="btn ${this.isEditable ? 'btn-outline-success' : 'btn-light text-muted'} btn-sm w-100" ${!this.isEditable ? 'disabled' : ''} style="${!this.isEditable ? 'pointer-events: none; opacity: 0.65;' : ''}">
+                        <i class="fas fa-${this.isEditable ? 'plus' : 'lock'} me-1"></i> ${this.isEditable ? 'Add Selected GP' : 'Not Available'}
                     </button>
                  </div>
              </div>
@@ -592,19 +628,28 @@ export class AscForm {
             listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
             listItem.dataset.gpIndex = index; // Store index for editing
 
-            let spDetails = 'No SPs';
+            let spDetails = '<div class="text-muted fst-italic">No SPs configured</div>';
             if (gpInstance.spInstances && gpInstance.spInstances.length > 0) {
-                 // Look up SP names and format each on a new line with colored score indicators
-                spDetails = gpInstance.spInstances.map(spInst => {
+                // Create a proper bullet list with better styling
+                spDetails = '<ul class="list-unstyled mb-0">';
+                gpInstance.spInstances.forEach(spInst => {
                     const spInfo = this.allSps.find(s => s.id === spInst.spId);
                     const spName = spInfo ? spInfo.name : spInst.spId; // Fallback to ID if name not found
                     const spScore = spInst.spScore || '0%';
-                    // Extract numeric score value for proper class name
-                    const spScoreValue = parseInt(spScore, 10) || 0;
                     
-                    // Return each SP detail with a colored score indicator using the correct class name pattern
-                    return `<span>${spName} (v${spInst.spVersion || 'N/A'}, <span class="badge" style="background-color: ${this.getScoreColor(spScore)}; color: white; font-size: 0.75rem;">${spScore}</span>)</span>`;
-                }).join('<br>'); // Join with line breaks
+                    // Create a badge with the score color
+                    const scoreBadge = `<span class="badge" style="background-color: ${this.getScoreColor(spScore)}; color: white; font-size: 0.75rem;">${spScore}</span>`;
+                    
+                    // Add a bullet point entry with better spacing and alignment
+                    spDetails += `
+                        <li class="d-flex align-items-center mb-1">
+                            <i class="fas fa-angle-right text-secondary me-2"></i>
+                            <span class="me-1">${spName}</span>
+                            <span class="text-muted small">(v${spInst.spVersion || 'N/A'})</span>
+                            <span class="ms-auto">${scoreBadge}</span>
+                        </li>`;
+                });
+                spDetails += '</ul>';
             }
 
             // Include GP Score with colored indicator using the correct class naming pattern 
@@ -613,20 +658,24 @@ export class AscForm {
 
             listItem.innerHTML = `
                 <div style="flex-grow: 1; min-width: 0; margin-right: 0.5rem;"> <!-- Allow shrinking, prevent overflow push, add right margin -->
-                     <div class="d-flex align-items-center mb-1"> <!-- GP Name/Score/Label Line -->
-                        ${gpIcon ? `<img src="${gpIcon}" alt="${gpName}" class="me-2" style="width: 20px; height: 20px; object-fit: contain;">` : ''}
+                     <div class="d-flex align-items-center mb-2"> <!-- GP Name/Score/Label Line -->
+                        ${gpIcon ? `<img src="${gpIcon}" alt="${gpName}" class="me-2" style="width: 24px; height: 24px; object-fit: contain;">` : ''}
                         <strong class="me-2">${gpName}</strong>
-                        <input type="text" class="form-control form-control-sm gp-instance-label me-2" style="width: 150px;" placeholder="Optional Label" value="${gpInstance.instanceLabel || ''}">
+                        <input type="text" class="form-control form-control-sm gp-instance-label me-2" style="width: 150px;" placeholder="Optional Label" value="${gpInstance.instanceLabel || ''}" ${!this.isEditable ? 'disabled' : ''}>
                         <span class="badge" style="background-color: ${this.getScoreColor(gpScore)}; color: white;">${gpScore}</span> <!-- Display GP Score with color -->
                      </div>
-                    <small class="d-block text-muted">${spDetails}</small> <!-- Display SP details -->
+                     
+                     <!-- SP details in a card-like container -->
+                     <div class="ps-3 border-start border-light">
+                         ${spDetails}
+                     </div>
                 </div>
                 <div class="ms-auto flex-shrink-0"> <!-- Push buttons right, prevent shrinking -->
-                    <button type="button" class="btn btn-sm btn-outline-primary me-1 edit-gp-btn" title="Edit SPs"> <!-- Use title attribute for tooltip -->
-                        <i class="fas fa-edit"></i>
+                    <button type="button" class="btn btn-sm ${this.isEditable ? 'btn-outline-primary' : 'btn-light text-muted'} me-1 edit-gp-btn" title="${this.isEditable ? 'Edit SPs' : 'View SPs (read-only)'}" ${!this.isEditable ? 'disabled' : ''} style="${!this.isEditable ? 'pointer-events: none; opacity: 0.65;' : ''}"> <!-- Use title attribute for tooltip -->
+                        <i class="fas fa-${this.isEditable ? 'edit' : 'lock'}"></i>
                     </button>
-                    <button type="button" class="btn btn-sm btn-outline-danger remove-gp-btn" title="Remove GP Instance">
-                        <i class="fas fa-trash"></i>
+                    <button type="button" class="btn btn-sm ${this.isEditable ? 'btn-outline-danger' : 'btn-light text-muted'} remove-gp-btn" title="${this.isEditable ? 'Remove GP Instance' : 'Cannot remove (read-only)'}" ${!this.isEditable ? 'disabled' : ''} style="${!this.isEditable ? 'pointer-events: none; opacity: 0.65;' : ''}">
+                        <i class="fas fa-${this.isEditable ? 'trash' : 'lock'}"></i>
                     </button>
                 </div>
             `;
@@ -721,6 +770,12 @@ export class AscForm {
     }
 
     handleAddGpInstance() {
+        // Check if ASC is editable first
+        if (!this.isEditable) {
+            UiService.showNotification('This ASC cannot be modified. Change its status to Draft or In Progress first.', 'warning');
+            return;
+        }
+        
         if (!this.addGpSelect || !this.data || !this.data.gpInstances) return;
 
         const selectedGpId = this.addGpSelect.value;
@@ -773,10 +828,16 @@ export class AscForm {
 
 
     handleRemoveGpInstance(index) {
-         if (!this.data || !this.data.gpInstances) return;
+        // Check if ASC is editable first
+        if (!this.isEditable) {
+            UiService.showNotification('This ASC cannot be modified. Change its status to Draft or In Progress first.', 'warning');
+            return;
+        }
+        
+        if (!this.data || !this.data.gpInstances) return;
 
-         const gpToRemove = this.data.gpInstances[index];
-         const gpIdToRemove = gpToRemove.gpId;
+        const gpToRemove = this.data.gpInstances[index];
+        const gpIdToRemove = gpToRemove.gpId;
 
          // Count how many instances of this specific GP ID exist
          const countOfThisGp = this.data.gpInstances.filter(gp => gp.gpId === gpIdToRemove).length;
@@ -826,6 +887,42 @@ export class AscForm {
         if (percentage >= 50) return '#fdd835';  // Yellow
         if (percentage >= 25) return '#fb8c00';  // Orange
         return '#e53935';                        // Red
+    }
+    
+    // Helper function to get background color based on ASC status
+    getStatusColor(status) {
+        // Return color based on status
+        switch(status) {
+            case 'Initial': return '#6c757d'; // Gray - Secondary
+            case 'In Progress': return '#0d6efd'; // Blue - Primary
+            case 'In Review': return '#ffc107'; // Yellow - Warning
+            case 'Validated': return '#198754'; // Green - Success
+            case 'Deprecated': return '#dc3545'; // Red - Danger
+            default: return '#6c757d'; // Gray - Secondary
+        }
+    }
+    
+    // Helper function to get nation flag path for an affiliate
+    getNationFlagPath() {
+        if (!this.data || !this.data.affiliateId) return '/static/ASC/image/flags/FMN-ASC.png';
+        
+        // Find the affiliate in the formData
+        const affiliate = this.formData.affiliates.find(a => a.id === this.data.affiliateId);
+        if (!affiliate || !affiliate.flagPath) return '/static/ASC/image/flags/FMN-ASC.png';
+        
+        // Extract the filename from flagPath and reconstruct with correct path
+        const filename = affiliate.flagPath.split('/').pop();
+        return `/static/ASC/image/flags/${filename}`;
+    }
+    
+    // Update the nation flag image when editing an ASC
+    updateNationFlag() {
+        if (!this.isEditMode) return;
+        
+        const flagImage = document.getElementById('nationFlag');
+        if (flagImage) {
+            flagImage.src = this.getNationFlagPath();
+        }
     }
     
     // Helper function to get model name from model ID
@@ -889,6 +986,13 @@ export class AscForm {
             
             // Update the style with direct color
             this.ascScoreDisplay.className = 'badge p-2 fs-6';
+            
+            // Also update the ASC status display if it exists
+            const statusDisplay = document.getElementById('ascStatus');
+            if (statusDisplay) {
+                statusDisplay.style.backgroundColor = this.getStatusColor(this.data?.status || 'Initial');
+                statusDisplay.textContent = this.data?.status || 'Initial';
+            }
             this.ascScoreDisplay.style.backgroundColor = this.getScoreColor(newScore);
             this.ascScoreDisplay.style.color = 'white';
             
@@ -1051,6 +1155,12 @@ export class AscForm {
     }
     
     handleSubmit() {
+        // Check if the ASC is editable
+        if (!this.isEditable) {
+            UiService.showNotification('This ASC cannot be edited. Change its status to Draft or In Progress first.', 'warning');
+            return false;
+        }
+        
         // Validate form data first
         if (!this.validate()) {
             return false; // Don't proceed if validation fails
@@ -1089,6 +1199,14 @@ export class AscForm {
         deleteButton.id = 'deleteAscButton';
         deleteButton.innerHTML = '<i class="fas fa-trash me-1"></i> Delete ASC';
         
+        // Disable the delete button if the ASC is not editable
+        if (!this.isEditable) {
+            deleteButton.disabled = true;
+            deleteButton.title = 'ASC must be in Draft or In Progress status to delete';
+            // Add a small lock icon to indicate it's locked
+            deleteButton.innerHTML = '<i class="fas fa-lock me-1"></i> Delete ASC';
+        }
+        
         // Add the button to the container
         deleteButtonContainer.appendChild(deleteButton);
         
@@ -1098,6 +1216,12 @@ export class AscForm {
         // Add event listener to the delete button
         if (this.onDelete) {
             deleteButton.addEventListener('click', () => {
+                // Check if editable first
+                if (!this.isEditable) {
+                    UiService.showNotification('This ASC cannot be deleted. Change its status to Draft or In Progress first.', 'warning');
+                    return;
+                }
+                
                 // Confirm deletion with a browser dialog
                 if (confirm(`Are you sure you want to delete ASC ${this.data.id}? This action cannot be undone.`)) {
                     // Call the onDelete callback with the ASC ID

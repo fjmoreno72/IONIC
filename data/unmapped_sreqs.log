@@ -31301,3 +31301,79 @@ NameError: name 'logging' is not defined. Did you forget to import 'logging'
 2025-04-10 15:03:54 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
 2025-04-10 15:03:54 - Repository: JSON loaded successfully. Found 4 items.
 2025-04-10 15:03:54 - 127.0.0.1 - - [10/Apr/2025 15:03:54] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 15:20:35 - Logging system configured with level INFO
+2025-04-10 15:20:35 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 15:20:35 - Applying authentication system patches...
+2025-04-10 15:20:35 - Authentication system patches applied successfully
+2025-04-10 15:20:35 - Enhanced authentication system applied
+2025-04-10 15:20:35 - Configured Flask app logging with level INFO
+2025-04-10 15:20:35 - Configured Flask app logging with level INFO
+2025-04-10 15:20:35 - Logging system configured with level INFO
+2025-04-10 15:20:35 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 15:20:35 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 15:20:35 - Template files: templates
+2025-04-10 15:20:35 - Authentication Bypass ENABLED for development.
+2025-04-10 15:20:35 - Running in DEBUG mode
+2025-04-10 15:20:35 - Listening on 0.0.0.0:5007
+2025-04-10 15:20:35 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.107:5007
+2025-04-10 15:20:35 - [33mPress CTRL+C to quit[0m
+2025-04-10 15:20:35 -  * Restarting with stat
+2025-04-10 15:20:35 - Logging system configured with level INFO
+2025-04-10 15:20:35 - Starting IOCore2 Coverage Analysis Tool
+2025-04-10 15:20:35 - Applying authentication system patches...
+2025-04-10 15:20:35 - Authentication system patches applied successfully
+2025-04-10 15:20:35 - Enhanced authentication system applied
+2025-04-10 15:20:35 - Configured Flask app logging with level INFO
+2025-04-10 15:20:35 - Configured Flask app logging with level INFO
+2025-04-10 15:20:35 - Logging system configured with level INFO
+2025-04-10 15:20:35 - IOCore2 Coverage Analysis Tool started - DEBUG mode
+2025-04-10 15:20:35 - Static files: /Users/fjmoreno72/WORK/IONIC3/app/static
+2025-04-10 15:20:35 - Template files: templates
+2025-04-10 15:20:35 - Authentication Bypass ENABLED for development.
+2025-04-10 15:20:35 - Running in DEBUG mode
+2025-04-10 15:20:35 - Listening on 0.0.0.0:5007
+2025-04-10 15:20:35 -  * Debugger is active!
+2025-04-10 15:20:35 -  * Debugger PIN: 807-861-954
+2025-04-10 15:20:49 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "[32mGET / HTTP/1.1[0m" 302 -
+2025-04-10 15:20:49 - Accessing functional tree view
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "GET /view_tree_func HTTP/1.1" 200 -
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "[36mGET /static/css/components/sp-styles.css HTTP/1.1[0m" 304 -
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "[36mGET /static/js/tree_func.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 15:20:49 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 15:20:49 - 127.0.0.1 - - [10/Apr/2025 15:20:49] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - Accessing ASC Models page
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "GET /asc_models HTTP/1.1" 200 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/img/models.png HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/js/pages/models_new.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-04-10 15:20:52 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC3/app/static/ASC/data/_models.json
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "GET /check_auth HTTP/1.1" 200 -
+2025-04-10 15:20:52 - Repository: JSON loaded successfully. Found 4 items.
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "GET /api/models HTTP/1.1" 200 -
+2025-04-10 15:20:52 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 15:20:52 - 127.0.0.1 - - [10/Apr/2025 15:20:52] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-04-10 15:21:04 - 127.0.0.1 - - [10/Apr/2025 15:21:04] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-04-10 15:21:04 - 127.0.0.1 - - [10/Apr/2025 15:21:04] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-04-10 15:21:04 - 127.0.0.1 - - [10/Apr/2025 15:21:04] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-04-10 15:21:04 - Auth bypass: Injected dummy session for user 'bypass_user' targeting URL 'https://iocore2-ciav.ivv.ncia.nato.int'
+2025-04-10 15:21:04 - 127.0.0.1 - - [10/Apr/2025 15:21:04] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -

@@ -752,7 +752,8 @@ export class AscForm {
     // Helper method to load models data asynchronously if needed
     async loadModelsData(modelIdToUpdate = null) {
         try {
-            const modelsResponse = await fetch('/static/ASC/data/_models.json');
+            // Update to use API endpoint instead of direct file access
+            const modelsResponse = await fetch('/api/models');
             if (modelsResponse.ok) {
                 const modelsData = await modelsResponse.json();
                 this.formData.models = modelsData;
@@ -769,7 +770,7 @@ export class AscForm {
                 }
             }
         } catch (error) {
-            console.error("Error loading models data:", error);
+            console.error("Error loading models data from API:", error);
         }
     }
 

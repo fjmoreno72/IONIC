@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Setup GP filter dropdown
       setupGpFilter(gpsData);
       
-      // Now fetch models data from the JSON file
-      return fetch('/static/ASC/data/_models.json');
+      // Now fetch models data from the API endpoint
+      return fetch('/api/models');
     })
     .then(response => {
       if (!response.ok) {

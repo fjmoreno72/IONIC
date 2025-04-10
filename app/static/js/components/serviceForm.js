@@ -219,8 +219,8 @@ export class ServiceForm {
     dropdownContainer.className = 'form-control p-0 border-0';
     container.appendChild(dropdownContainer);
     
-    console.log('Fetching model data from JSON file');
-    fetch('/static/ASC/data/_models.json')
+    console.log('Fetching model data from API');
+    fetch('/api/models')
       .then(response => {
         if (!response.ok) {
           console.error('Failed to load Model data, status:', response.status);

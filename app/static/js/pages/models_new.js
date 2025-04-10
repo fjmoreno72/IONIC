@@ -115,14 +115,92 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add the dialog to the document
     document.body.insertAdjacentHTML('beforeend', dialogHTML);
     
-    // Initialize the Bootstrap modal
+    // Custom modal implementation that doesn't rely on Bootstrap JS
     const modalElement = document.getElementById('modelDialog');
-    const modal = new bootstrap.Modal(modalElement);
+    // Last active element before modal was opened, to restore focus to
+    let lastActiveElement;
+    
+    const modal = {
+      show: function() {
+        // Store the currently focused element to restore focus later
+        lastActiveElement = document.activeElement;
+        
+        // Show modal
+        modalElement.style.display = 'block';
+        modalElement.classList.add('show');
+        document.body.classList.add('modal-open');
+        
+        // Remove aria-hidden to make modal visible to screen readers
+        modalElement.setAttribute('aria-modal', 'true');
+        modalElement.removeAttribute('aria-hidden');
+        
+        // Create backdrop
+        const backdrop = document.createElement('div');
+        backdrop.className = 'modal-backdrop fade show';
+        document.body.appendChild(backdrop);
+        
+        // Set focus to the first form element or the modal itself
+        const firstInput = modalElement.querySelector('input, button:not(.btn-close)');
+        if (firstInput) {
+          firstInput.focus();
+        } else {
+          modalElement.focus();
+        }
+      },
+      hide: function() {
+        // Hide modal
+        modalElement.style.display = 'none';
+        modalElement.classList.remove('show');
+        document.body.classList.remove('modal-open');
+        
+        // Set aria-hidden to make modal invisible to screen readers
+        modalElement.setAttribute('aria-hidden', 'true');
+        modalElement.removeAttribute('aria-modal');
+        
+        // Remove backdrop
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) document.body.removeChild(backdrop);
+        
+        // Restore focus to the element that was focused before the modal was opened
+        if (lastActiveElement) {
+          lastActiveElement.focus();
+        }
+      }
+    };
+    
+    // Add click event to close modal when clicking outside or on close buttons
+    modalElement.addEventListener('click', function(event) {
+      if (event.target === modalElement || event.target.classList.contains('btn-close') || 
+          event.target.classList.contains('btn-secondary')) {
+        modal.hide();
+      }
+    });
+    
+    // Add event listener for the cancel button
+    const cancelButton = modalElement.querySelector('.btn-secondary');
+    if (cancelButton) {
+      cancelButton.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default action
+        // Immediately remove focus from the button before hiding modal
+        cancelButton.blur();
+        // Hide the modal
+        modal.hide();
+      });
+    }
     
     // Add event listener for the save button
-    document.getElementById('saveModelButton').addEventListener('click', () => {
+    document.getElementById('saveModelButton').addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default action
       const formData = getModelFormData();
+      
       if (validateModelForm()) {
+        // Immediately remove focus from the button before hiding modal
+        document.getElementById('saveModelButton').blur();
+        
+        // First close the modal
+        modal.hide();
+        
+        // Then save the model
         saveModel(formData);
       }
     });
@@ -130,13 +208,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listener for the delete button
     const deleteButton = document.getElementById('deleteModelButton');
     if (deleteButton) {
-      deleteButton.addEventListener('click', () => {
+      deleteButton.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default action
         const modelId = currentModelId;
+        
         if (modelId && confirm('Are you sure you want to delete this model?')) {
+          // Immediately remove focus from the button before hiding modal
+          deleteButton.blur();
+          
           // Close the modal first
           modal.hide();
+          
           // Then delete the model
           deleteModel(modelId);
+        } else {
+          // Still remove focus if user cancels the deletion
+          deleteButton.blur();
         }
       });
     }
@@ -289,14 +376,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(data => {
       if (data.success) {
-        // Close the modal using Bootstrap's API
-        const modalElement = document.getElementById('modelDialog');
-        if (modalElement) {
-          const bsModal = bootstrap.Modal.getInstance(modalElement);
-          if (bsModal) {
-            bsModal.hide();
-          }
-        }
+        // Modal should already be closed before saving
+        // No need to close it again here
         
         showNotification(`Model ${isEditMode ? 'updated' : 'added'} successfully`, 'success');
         
@@ -330,11 +411,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Make sure Bootstrap is available
-  if (typeof bootstrap === 'undefined') {
-    console.error('Bootstrap JavaScript is not loaded. The modal functionality will not work.');
-    showNotification('Error: Bootstrap JavaScript is not loaded. Please refresh the page.', 'error');
-  }
+  // Custom modal implementation is used - no Bootstrap JS dependency
+  // Bootstrap check removed as it's no longer needed
   
   // Add row actions using event delegation instead of context menu
   document.getElementById('modelsTableBody').addEventListener('click', (event) => {

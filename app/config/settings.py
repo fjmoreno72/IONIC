@@ -21,7 +21,7 @@ DEBUG = os.environ.get("IONIC2_DEBUG", "False").lower() == "true"
 LOG_FILE = DATA_DIR / "unmapped_sreqs.log" # Updated path
 LOG_FORMAT = '%(asctime)s - %(message)s'
 LOG_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
-LOG_LEVEL = os.environ.get("IONIC2_LOG_LEVEL", "INFO")
+LOG_LEVEL = os.environ.get("IONIC2_LOG_LEVEL", "ERROR")
 
 # API request settings
 REQUEST_TIMEOUT = (300, 300)  # (connect timeout, read timeout)

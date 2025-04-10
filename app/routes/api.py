@@ -17,6 +17,7 @@ from app.core.auth import login_required, get_api_client
 from app.core.exceptions import ApiRequestError, InvalidSession, DataFormatError # Import DataFormatError
 from app.config import settings
 from app.utils.file_operations import get_dynamic_data_path # Added import for dynamic paths
+from app.data_access import gps_repository
 
 # Create blueprint
 api_bp = Blueprint('api', __name__)
@@ -843,8 +844,7 @@ def get_asc_form_data():
         affiliates_path = static_asc_data_path / '_affiliates.json'
         services_path = static_asc_data_path / '_servicesm.json'
         sps_path = static_asc_data_path / '_sps.json' # Path for SPs
-        gps_path = static_asc_data_path / '_gps.json'   # Path for GPs
-
+        
         logging.info(f"Attempting to read ASC form data from: {static_asc_data_path}")
 
         # Read Affiliates data
@@ -871,13 +871,13 @@ def get_asc_form_data():
             sps_data = json.load(f)
         logging.info(f"Successfully loaded {len(sps_data)} SPs.")
 
-        # Read GPs data
-        if not gps_path.exists():
-            logging.error(f"GPs file not found at {gps_path}")
-            return jsonify({"error": "GPs data file not found."}), 404
-        with open(gps_path, 'r', encoding='utf-8') as f:
-            gps_data = json.load(f)
-        logging.info(f"Successfully loaded {len(gps_data)} GPs.")
+        # Read GPs data using repository
+        try:
+            gps_data = gps_repository.get_all_gps()
+            logging.info(f"Successfully loaded {len(gps_data)} GPs using repository.")
+        except Exception as e:
+            logging.error(f"Error loading GPs data: {str(e)}")
+            return jsonify({"error": "GPs data could not be loaded."}), 500
 
         # Return combined data
         return jsonify({

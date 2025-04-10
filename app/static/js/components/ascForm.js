@@ -92,6 +92,7 @@ export class AscForm {
             <hr class="mt-2 mb-3">
             ` : ''}
             
+            
             <!-- Two-column layout for form fields -->
             <div class="row">
                 <!-- First column -->
@@ -176,10 +177,10 @@ export class AscForm {
         // Add event listeners
         this.setupEventListeners();
 
-        // Add delete button if in edit mode - MOVED TO DIALOG FOOTER via ascs_new.js
-         // if (this.isEditMode && this.data?.id) {
-         //     this.addDeleteButton();
-         // }
+        // Add delete button at the bottom of form if in edit mode
+        if (this.isEditMode && this.data?.id) {
+            this.addDeleteButton();
+        }
     }
 
     populateAffiliateDropdown() {
@@ -287,10 +288,16 @@ export class AscForm {
             return;
         }
 
-        // Get all models associated with this service
+        // Get all models associated with this service - support new structure
         let serviceModels = [];
+        
+        // New service model structure includes a 'models' array
         if (Array.isArray(selectedService.models) && selectedService.models.length > 0) {
             serviceModels = selectedService.models;
+        } 
+        // Legacy structure might have 'spiral' or 'model' property
+        else if (selectedService.spiral) {
+            serviceModels = [selectedService.spiral];
         } else if (selectedService.model) {
             serviceModels = [selectedService.model];
         }
@@ -323,21 +330,42 @@ export class AscForm {
         // If there's only one model, select it automatically
         if (serviceModels.length === 1) {
             modelSelect.value = serviceModels[0];
+            // Dispatch change event to trigger any dependent UI updates
+            modelSelect.dispatchEvent(new Event('change'));
         }
     }
 
     populateAddGpDropdown() {
-        if (!this.isEditMode || !this.addGpSelect || !this.data?.serviceId) return;
+        if (!this.isEditMode || !this.addGpSelect || !this.data?.serviceId || !this.data?.model) return;
 
         const serviceInfo = this.allServices.find(s => s.id === this.data.serviceId);
-        const allowedGpIds = serviceInfo?.gps || [];
+        if (!serviceInfo) {
+            console.error('Service not found:', this.data.serviceId);
+            return;
+        }
+
+        // Handle the new service structure where gps is an array of objects with id and models properties
+        let allowedGpIds = [];
+        
+        // Check if gps is an array of objects (new structure) or simple array of strings (old structure)
+        if (serviceInfo.gps && Array.isArray(serviceInfo.gps)) {
+            if (serviceInfo.gps.length > 0 && typeof serviceInfo.gps[0] === 'object') {
+                // New structure: filter GPs that support the selected model
+                allowedGpIds = serviceInfo.gps
+                    .filter(gp => gp.models && gp.models.includes(this.data.model))
+                    .map(gp => gp.id);
+            } else {
+                // Old structure (array of strings)
+                allowedGpIds = serviceInfo.gps;
+            }
+        }
 
         this.addGpSelect.innerHTML = '<option value="" selected disabled>Select GP type to add...</option>';
 
         if (allowedGpIds.length === 0) {
             this.addGpSelect.disabled = true;
             if (this.addGpButton) this.addGpButton.disabled = true;
-            this.addGpSelect.innerHTML = '<option value="" selected disabled>No GPs defined for this service</option>';
+            this.addGpSelect.innerHTML = '<option value="" selected disabled>No GPs defined for this service/model</option>';
             return;
         }
 
@@ -395,12 +423,38 @@ export class AscForm {
             // we'd need to repopulate the Add GP dropdown here.
             // if (this.isEditMode) this.populateAddGpDropdown();
         });
+        
+        // Setup listener for model selection changes (to auto-populate GPs in new mode)
+        const modelSelect = document.getElementById('ascModel');
+        if (modelSelect) {
+            modelSelect.addEventListener('change', (e) => {
+                const selectedModelId = e.target.value;
+                if (selectedModelId && !this.isEditMode) {
+                    // Auto-populate GP instances for new ASCs based on model
+                    this.setupInitialGpInstances(selectedModelId);
+                }
+            });
+        }
 
         // Add GP button listener (only exists in edit mode)
         if (this.isEditMode && this.addGpButton) {
             this.addGpButton.addEventListener('click', () => {
                 this.handleAddGpInstance();
             });
+        }
+        
+        // Delete ASC button (only in edit mode)
+        if (this.isEditMode) {
+            const deleteButton = this.formElement.querySelector('#deleteAscButton');
+            if (deleteButton && this.onDelete) {
+                deleteButton.addEventListener('click', () => {
+                    // Confirm deletion with a browser dialog
+                    if (confirm(`Are you sure you want to delete ASC ${this.data.id}? This action cannot be undone.`)) {
+                        // Call the onDelete callback with the ASC ID
+                        this.onDelete(this.data.id);
+                    }
+                });
+            }
         }
     }
 
@@ -511,9 +565,27 @@ export class AscForm {
         listGroup.className = 'list-group list-group-flush'; // Use flush for tighter spacing
 
         this.data.gpInstances.forEach((gpInstance, index) => {
+            // Handle case where gpId might be an object instead of a string
+            let gpId = gpInstance.gpId;
+            
+            // If gpId is an object (from the new structure), extract the id property
+            if (typeof gpId === 'object' && gpId !== null) {
+                console.log('GP ID is an object:', gpId);
+                // If it has an id property, use that
+                if (gpId.id) {
+                    gpId = gpId.id;
+                } else {
+                    // Otherwise stringify it for display but log a warning
+                    console.warn('GP ID object without id property:', gpId);
+                    gpId = JSON.stringify(gpId);
+                }
+                // Update the instance for future reference
+                gpInstance.gpId = gpId;
+            }
+            
             // Find GP name and icon using the stored allGps data
-            const gpInfo = this.allGps.find(gp => gp.id === gpInstance.gpId);
-            const gpName = gpInfo ? gpInfo.name : gpInstance.gpId; // Fallback to ID if not found
+            const gpInfo = this.allGps.find(gp => gp.id === gpId);
+            const gpName = gpInfo ? gpInfo.name : gpId; // Fallback to ID if not found
             const gpIcon = gpInfo && gpInfo.iconPath ? `/static/ASC/${gpInfo.iconPath.replace('./', '')}` : ''; // Get icon path if exists
 
             const listItem = document.createElement('li');
@@ -656,13 +728,34 @@ export class AscForm {
             UiService.showNotification("Please select a GP type to add.", "warning");
             return;
         }
+        
+        // Find GP info for better user feedback
+        const gpInfo = this.allGps.find(gp => gp.id === selectedGpId);
+        const gpName = gpInfo ? gpInfo.name : selectedGpId;
+
+        // Get the selected service to check for models associated with this GP
+        const serviceInfo = this.allServices.find(s => s.id === this.data.serviceId);
+        let defaultModels = [];
+        
+        // Check if this GP has model-specific configuration in the service
+        if (serviceInfo?.gps && Array.isArray(serviceInfo.gps)) {
+            // Check if new structure (objects with models)
+            if (serviceInfo.gps.length > 0 && typeof serviceInfo.gps[0] === 'object') {
+                const gpConfig = serviceInfo.gps.find(gp => gp.id === selectedGpId);
+                if (gpConfig && gpConfig.models && Array.isArray(gpConfig.models)) {
+                    defaultModels = gpConfig.models;
+                }
+            }
+        }
 
         // Create a new GP instance object
         const newGpInstance = {
             gpId: selectedGpId,
             gpScore: "0%", // Default score
             instanceLabel: "", // Default label
-            spInstances: [] // Default empty SPs
+            spInstances: [], // Default empty SPs
+            // Store the allowed models for this GP if available from new service structure
+            models: defaultModels.length > 0 ? defaultModels : [this.data.model] 
         };
 
         // Add to the data array
@@ -675,7 +768,7 @@ export class AscForm {
         // Reset the dropdown
         this.addGpSelect.value = "";
 
-        UiService.showNotification(`GP ${selectedGpId} added. Remember to save the ASC.`, 'success');
+        UiService.showNotification(`GP "${gpName}" added. Remember to save the ASC.`, 'success');
     }
 
 
@@ -818,9 +911,6 @@ export class AscForm {
             serviceId: this.serviceSelect.value,
             model: this.modelDisplay.value, // This is read-only but still collect it
             
-            // GP Instances list (from our managed state)
-            gpInstances: this.isEditMode ? this.data.gpInstances : [],
-            
             // ASC Score
             ascScore: this.isEditMode ? this.data.ascScore : '0%',
             
@@ -828,7 +918,136 @@ export class AscForm {
             status: this.isEditMode && this.data?.status ? this.data.status : 'Planned'
         };
         
+        // Handle GP instances differently for new vs edit mode
+        if (this.isEditMode && this.data?.gpInstances) {
+            // In edit mode, use the existing GP instances
+            formData.gpInstances = this.data.gpInstances;
+        } else {
+            // In create mode, ensure we only add GPs compatible with the selected model
+            formData.gpInstances = [];
+            
+            // Get service info for the selected service
+            const selectedServiceId = this.serviceSelect.value;
+            const selectedModelId = this.modelDisplay.value;
+            
+            if (selectedServiceId && selectedModelId) {
+                const serviceInfo = this.allServices.find(s => s.id === selectedServiceId);
+                
+                if (serviceInfo?.gps && Array.isArray(serviceInfo.gps)) {
+                    // Check if using new structure (objects with models)
+                    if (serviceInfo.gps.length > 0 && typeof serviceInfo.gps[0] === 'object') {
+                        console.log(`Filtering GPs for model ${selectedModelId} in service ${serviceInfo.name}`);
+                        
+                        // Filter GPs that support the selected model
+                        const compatibleGps = serviceInfo.gps.filter(gp => 
+                            gp.models && Array.isArray(gp.models) && gp.models.includes(selectedModelId)
+                        );
+                        
+                        console.log(`Found ${compatibleGps.length} compatible GPs:`, compatibleGps.map(gp => gp.id));
+                        console.log(`Service has ${serviceInfo.gps.length} total GPs:`, serviceInfo.gps.map(gp => gp.id));
+                        
+                        // Log the full service info for debugging
+                        console.log('Service info:', JSON.stringify(serviceInfo, null, 2));
+                        
+                        // Add each compatible GP
+                        compatibleGps.forEach(gpConfig => {
+                            console.log(`Adding GP ${gpConfig.id} which supports models:`, gpConfig.models);
+                            // Create a new GP instance with the proper ID
+                            formData.gpInstances.push({
+                                gpId: gpConfig.id,
+                                gpScore: "0%", // Default score
+                                instanceLabel: "", // Default label
+                                spInstances: [], // Default empty SPs
+                                models: gpConfig.models // Keep the model info
+                            });
+                        });
+                        
+                        // Log the final count
+                        console.log(`Final GP instances added: ${formData.gpInstances.length}`, formData.gpInstances.map(gp => gp.gpId));
+                    } else {
+                        // Old structure - default to empty
+                        console.warn('Using old GP structure - cannot filter by model');
+                    }
+                }
+            }
+        }
+        
         return formData;
+    }
+    
+    // Setup initial GP instances based on selected model (for new ASCs)
+    // DISABLED - We now handle this in getValues at form submission time
+    setupInitialGpInstances(selectedModelId) {
+        console.log('setupInitialGpInstances is now disabled as filtering is done at form submission');
+        /* DISABLED - this method was causing conflicts with form submission logic
+        // Skip if in edit mode or no model selected
+        if (this.isEditMode || !selectedModelId) return;
+        
+        // Initialize data structure if needed
+        if (!this.data) this.data = {};
+        if (!this.data.gpInstances) this.data.gpInstances = [];
+        
+        // Clear any existing GP instances first
+        this.data.gpInstances = [];
+        
+        // Get the currently selected service ID
+        const selectedServiceId = this.serviceSelect.value;
+        if (!selectedServiceId) {
+            console.warn('No service selected, cannot auto-populate GPs');
+            return;
+        }
+        
+        // Get service info
+        const serviceInfo = this.allServices.find(s => s.id === selectedServiceId);
+        if (!serviceInfo) {
+            console.error('Service not found:', selectedServiceId);
+            return;
+        }
+        
+        console.log('Setting up initial GP instances for model:', selectedModelId, 'in service:', serviceInfo.name);
+        
+        // Check if gps is an array of objects (new structure) or simple array of strings (old structure)
+        if (serviceInfo.gps && Array.isArray(serviceInfo.gps)) {
+            if (serviceInfo.gps.length > 0 && typeof serviceInfo.gps[0] === 'object') {
+                // New structure: filter GPs that support the selected model
+                const compatibleGps = serviceInfo.gps.filter(gp => 
+                    gp.models && Array.isArray(gp.models) && gp.models.includes(selectedModelId)
+                );
+                
+                console.log('Found compatible GPs:', compatibleGps.length);
+                
+                // Add each compatible GP
+                compatibleGps.forEach(gpConfig => {
+                    const gpId = gpConfig.id;
+                    if (!gpId) return; // Skip if no ID
+                    
+                    // Get GP info for better display
+                    const gpInfo = this.allGps.find(gp => gp.id === gpId);
+                    const gpName = gpInfo ? gpInfo.name : gpId;
+                    
+                    // Create a new GP instance object
+                    const newGpInstance = {
+                        gpId: gpId,
+                        gpScore: "0%", // Default score
+                        instanceLabel: "", // Default label
+                        spInstances: [], // Default empty SPs
+                        models: gpConfig.models // Keep the allowed models for this GP
+                    };
+                    
+                    // Add to the data array
+                    this.data.gpInstances.push(newGpInstance);
+                    console.log(`Added GP instance: ${gpName} (${gpId})`);
+                });
+                
+                // Update the display
+                this.renderGpInstances();
+                this.updateAscScoreDisplay();
+            } else {
+                // Old structure - we don't have model-specific info, show warning
+                console.warn('Using old GP structure - cannot filter by model');
+            }
+        }
+        */
     }
     
     handleSubmit() {
@@ -855,6 +1074,37 @@ export class AscForm {
         }
         
         return true; // Indicate successful submission (primarily for testing)
+    }
+    
+    // Add a delete button at the bottom of the form
+    addDeleteButton() {
+        // Create a container for the delete button
+        const deleteButtonContainer = document.createElement('div');
+        deleteButtonContainer.className = 'mt-4 mb-2 delete-button-container text-center';
+        
+        // Create the delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.className = 'btn btn-danger';
+        deleteButton.id = 'deleteAscButton';
+        deleteButton.innerHTML = '<i class="fas fa-trash me-1"></i> Delete ASC';
+        
+        // Add the button to the container
+        deleteButtonContainer.appendChild(deleteButton);
+        
+        // Add the container to the bottom of the form
+        this.formElement.appendChild(deleteButtonContainer);
+        
+        // Add event listener to the delete button
+        if (this.onDelete) {
+            deleteButton.addEventListener('click', () => {
+                // Confirm deletion with a browser dialog
+                if (confirm(`Are you sure you want to delete ASC ${this.data.id}? This action cannot be undone.`)) {
+                    // Call the onDelete callback with the ASC ID
+                    this.onDelete(this.data.id);
+                }
+            });
+        }
     }
     
     validate() {

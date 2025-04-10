@@ -935,7 +935,9 @@ def add_asc():
         if not selected_service:
             logging.error(f"Service with ID {service_id} not found.")
             return jsonify({"error": f"Service with ID {service_id} not found."}), 404
-        gp_ids_for_service = selected_service.get('gps', [])
+        
+        # Get the GPs for the service - handle both old and new model structures
+        gp_configs_for_service = selected_service.get('gps', [])
 
         # Read existing ASCs
         if ascs_path.exists():
@@ -968,14 +970,45 @@ def add_asc():
             "gpInstances": []
         }
 
-        # Populate gpInstances based on the service's GPs
-        for gp_id in gp_ids_for_service:
-            new_asc["gpInstances"].append({
-                "gpId": gp_id,
-                "gpScore": "0%",
-                "instanceLabel": "", # Default empty label
-                "spInstances": []  # Default empty SP instances
-            })
+        # Check if client provided gpInstances (client-side filtering)
+        if 'gpInstances' in data and isinstance(data['gpInstances'], list):
+            # Use client-provided GP instances
+            logging.info(f"Using client-filtered GP instances: {len(data['gpInstances'])} GPs provided")
+            new_asc["gpInstances"] = data['gpInstances']
+        else:
+            # Perform server-side filtering based on model compatibility
+            logging.info(f"Performing server-side GP filtering for model: {model}")
+            filtered_gp_ids = []
+            
+            # Check if we have the new structure with model compatibility info
+            for gp_config in gp_configs_for_service:
+                # Handle both string GP IDs and object structures
+                if isinstance(gp_config, str):
+                    # Legacy format - just a GP ID string with no model info
+                    # In this case, we assume it's compatible with all models
+                    gp_id = gp_config
+                    filtered_gp_ids.append(gp_id)
+                elif isinstance(gp_config, dict) and 'id' in gp_config:
+                    # New format with model compatibility info
+                    gp_id = gp_config['id']
+                    supported_models = gp_config.get('supportedModels', [])
+                    
+                    # If supportedModels is empty or contains the selected model, include this GP
+                    if not supported_models or model in supported_models:
+                        filtered_gp_ids.append(gp_id)
+                        logging.debug(f"Including GP {gp_id} - compatible with model {model}")
+                    else:
+                        logging.debug(f"Excluding GP {gp_id} - not compatible with model {model}")
+            
+            # Populate gpInstances based on filtered GPs
+            logging.info(f"Filtered {len(filtered_gp_ids)} compatible GPs out of {len(gp_configs_for_service)} total")
+            for gp_id in filtered_gp_ids:
+                new_asc["gpInstances"].append({
+                    "gpId": gp_id,
+                    "gpScore": "0%",
+                    "instanceLabel": "", # Default empty label
+                    "spInstances": []  # Default empty SP instances
+                })
 
         # --- Add and save ---
         ascs_list.append(new_asc)

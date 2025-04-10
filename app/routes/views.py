@@ -641,18 +641,49 @@ def update_ascs():
         JSON response with success or error message
     """
     try:
+        import datetime
+        timestamp = datetime.datetime.now().isoformat()
+        save_timestamp = request.headers.get('X-Save-Timestamp', 'none')
+        
+        logging.info(f"[{timestamp}] Received ASCs update request (client timestamp: {save_timestamp})")
+        
         ascs_data = request.json
         if not ascs_data:
+            logging.warning("No ASCs data provided in request")
             return jsonify({'error': 'No data provided'}), 400
+        
+        # Log details about the data being saved
+        asc_count = len(ascs_data)
+        logging.info(f"Attempting to save {asc_count} ASCs")
+        
+        if asc_count > 0:
+            # Log sample of ASC IDs for tracing
+            sample_ids = [asc.get('id') for asc in ascs_data[:5]]
+            logging.info(f"Sample ASC IDs: {sample_ids}")
+            
+            # Log a few full ASC objects for debugging
+            logging.debug(f"First ASC contents: {json.dumps(ascs_data[0], indent=2)}")
 
-        # Save using the repository function
-        if save_ascs(ascs_data):
+        # Save using the repository function - with timing for performance monitoring
+        start_time = datetime.datetime.now()
+        success = save_ascs(ascs_data)
+        end_time = datetime.datetime.now()
+        save_duration = (end_time - start_time).total_seconds()
+        
+        if success:
+            logging.info(f"Successfully saved {asc_count} ASCs in {save_duration:.2f} seconds")
             return jsonify({
                 'success': True,
-                'message': 'ASCs updated successfully'
+                'message': f'ASCs updated successfully ({asc_count} ASCs)',
+                'count': asc_count,
+                'timestamp': timestamp
             })
         else:
-            return jsonify({'error': 'Failed to save ASCs data'}), 500
+            logging.error(f"Repository save_ascs function returned failure after {save_duration:.2f} seconds")
+            return jsonify({
+                'error': 'Failed to save ASCs data', 
+                'count': asc_count
+            }), 500
             
     except Exception as e:
         logging.exception(f"Error updating ASCs: {str(e)}")

@@ -362,10 +362,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const gpInstancesHtml = gpInstances.map(instance => {
+      // Handle case where gpId might be an object instead of a string
+      let gpId = instance.gpId;
+      
+      // If gpId is an object (from the new structure), extract the id property
+      if (typeof gpId === 'object' && gpId !== null) {
+        console.log('Table view: GP ID is an object:', gpId);
+        // If it has an id property, use that
+        if (gpId.id) {
+          gpId = gpId.id;
+        } else {
+          // Otherwise stringify it for display but log a warning
+          console.warn('Table view: GP ID object without id property:', gpId);
+          gpId = JSON.stringify(gpId);
+        }
+      }
+      
       // Get GP name from ID or keep the ID if not found
-      const gpInfo = getGpById(instance.gpId);
-      const gpName = gpInfo ? gpInfo.name : instance.gpId;
-      const gpId = instance.gpId || 'Unknown';
+      const gpInfo = getGpById(gpId);
+      const gpName = gpInfo ? gpInfo.name : gpId;
       const label = instance.instanceLabel || '';
 
       let spInfo = '';

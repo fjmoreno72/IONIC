@@ -527,23 +527,50 @@
     "status": "In Progress"
   },
   {
-    "id": "ASC-0013",
-    "affiliateId": "AFF-0006",
+    "id": "ASC-0012",
+    "affiliateId": "AFF-0015",
     "environment": "Static",
-    "serviceId": "SRV-0026",
+    "serviceId": "SRV-0016",
     "model": "MOD-0001",
     "ascScore": "0%",
-    "status": "Initial",
-    "gpInstances": []
-  },
-  {
-    "id": "ASC-0014",
-    "affiliateId": "AFF-0029",
-    "environment": "Static",
-    "serviceId": "SRV-0014",
-    "model": "MOD-0001",
-    "ascScore": "0%",
-    "status": "Initial",
-    "gpInstances": []
+    "status": "In Review",
+    "gpInstances": [
+      {
+        "gpId": "GP-0039",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0024",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0028",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0024",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [],
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ]
   }
 ]

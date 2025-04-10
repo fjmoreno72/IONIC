@@ -2,6 +2,8 @@
 
 import { DataManager } from './data-manager.js';
 import { ThemeManager } from '../../js/components/themeManager.js';
+import { DialogManager } from '../../js/components/dialogManager.js';
+import { AscForm } from '../../js/components/ascForm.js';
 
 /**
  * KanbanBoard class manages the ASC Kanban board UI
@@ -287,6 +289,10 @@ export class KanbanBoard {
     const serviceName = this.dataManager.getServiceName(asc.serviceId);
     const flagPath = this.dataManager.getFlagPath(asc.affiliateId);
     
+    // Get the model name if a model exists for this ASC
+    const modelName = asc.model ? this.dataManager.getModelName(asc.model) : null;
+    const serviceDisplay = modelName ? `${serviceName} - ${modelName}` : serviceName;
+    
     // Extract ascScore percentage (remove any % sign and parse as int)
     const progressStr = asc.ascScore ? asc.ascScore.toString().replace('%', '') : '0';
     const progressPercentage = parseInt(progressStr);
@@ -303,6 +309,9 @@ export class KanbanBoard {
     card.addEventListener('dragstart', this.handleDragStart);
     card.addEventListener('dragend', this.handleDragEnd);
     
+    // Add click event listener to open edit form
+    card.addEventListener('click', (e) => this.handleCardClick(e, asc));
+    
     // Card HTML structure
     card.innerHTML = `
       <div class="card-header">
@@ -315,7 +324,7 @@ export class KanbanBoard {
           ${affiliateName} - ${asc.environment}
         </div>
         <div class="service-row">
-          ${serviceName}
+          ${serviceDisplay}
         </div>
       </div>
     `;
@@ -556,6 +565,213 @@ export class KanbanBoard {
         }, 300);
       }, 3000);
     }, 10);
+  }
+  
+  /**
+   * Handle card click to open edit form
+   * @param {MouseEvent} e - Click event
+   * @param {Object} asc - ASC data object
+   */
+  handleCardClick(e, asc) {
+    // Prevent click from interfering with drag operations
+    if (e.target.closest('.card-header') || this.isDragging) {
+      return; // Don't open edit form when clicking on header or during drag
+    }
+    
+    // Open the ASC edit dialog
+    this.openAscEditForm(asc);
+  }
+  
+  /**
+   * Open the ASC edit form
+   * @param {Object} asc - ASC data object
+   */
+  openAscEditForm(asc) {
+    // Deep clone the ASC object to prevent direct mutations
+    const ascCopy = JSON.parse(JSON.stringify(asc));
+    
+    // Create a dialog for the ASC form without buttons - we'll add them later
+    const ascDialog = new DialogManager({
+      title: `Edit ASC-${ascCopy.id}`,
+      size: 'xl',
+      backdrop: 'static',
+      keyboard: false
+    });
+    
+    // Create a local reference to this for use in callbacks
+    const kanbanBoard = this;
+    
+    // Define the save function
+    const saveAsc = async function(formData) {
+      try {
+        // Log what we're sending to help with debugging
+        console.log('Saving ASC with data:', formData);
+        
+        // Disable the save button and show loading state
+        const saveButton = ascDialog.dialogElement?.querySelector('button[data-action="save"]');
+        if (saveButton) {
+          saveButton.disabled = true;
+          saveButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...';
+        }
+        
+        // Find the ASC in the data manager's array and update it
+        // This approach mirrors what happens in the drag-and-drop functionality
+        const ascIndex = kanbanBoard.dataManager.ascs.findIndex(a => a.id.toString() === formData.id.toString());
+        if (ascIndex === -1) {
+          throw new Error(`ASC with ID ${formData.id} not found in data manager`);
+        }
+        
+        // Update the ASC in memory
+        console.log(`Updating ASC at index ${ascIndex}`);
+        kanbanBoard.dataManager.ascs[ascIndex] = formData;
+        
+        // Save all ASCs using the same method as drag-and-drop
+        const success = await kanbanBoard.dataManager.saveAscs();
+        
+        if (!success) {
+          throw new Error('Failed to save ASCs');
+        }
+        
+        // Close dialog
+        ascDialog.close();
+        
+        // Force a complete data refresh by clearing cache and reloading
+        console.log('Reloading ASC data...');
+        kanbanBoard.dataManager.ascs = [];
+        kanbanBoard.dataManager.loaded = false;
+        
+        // Reload the ASC data completely and ensure we wait for it
+        await kanbanBoard.dataManager.init();
+        console.log('Data reloaded, ASCs count:', kanbanBoard.dataManager.ascs.length);
+        
+        // Re-render the board with fresh data
+        kanbanBoard.renderBoard();
+        
+        // Show success toast
+        kanbanBoard.showToast('ASC updated successfully!', 'success');
+      } catch (error) {
+        console.error('Error updating ASC:', error);
+        kanbanBoard.showToast(`Error: ${error.message}`, 'error');
+        
+        // Re-enable the save button
+        const saveButton = ascDialog.dialogElement?.querySelector('button[data-action="save"]');
+        if (saveButton) {
+          saveButton.disabled = false;
+          saveButton.textContent = 'Save ASC';
+        }
+      }
+    };
+    
+    // Define the delete function
+    const deleteAsc = async function(id) {
+      try {
+        // Log what we're deleting
+        console.log('Deleting ASC with ID:', id);
+        
+        // Show loading state
+        const deleteButton = ascDialog.dialogElement?.querySelector('button.btn-danger');
+        if (deleteButton) {
+          deleteButton.disabled = true;
+          deleteButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Deleting...';
+        }
+        
+        // Convert to string if needed
+        const ascId = id.toString();
+        
+        // Remove the ASC from the data manager's array
+        // This approach mirrors what would happen in updateAscStatus
+        const ascIndex = kanbanBoard.dataManager.ascs.findIndex(a => a.id.toString() === ascId);
+        if (ascIndex === -1) {
+          throw new Error(`ASC with ID ${ascId} not found in data manager`);
+        }
+        
+        // Remove the ASC from the array
+        console.log(`Removing ASC at index ${ascIndex}`);
+        kanbanBoard.dataManager.ascs.splice(ascIndex, 1);
+        
+        // Save all ASCs using the same method as drag-and-drop
+        const success = await kanbanBoard.dataManager.saveAscs();
+        
+        if (!success) {
+          throw new Error('Failed to save ASCs after deletion');
+        }
+        
+        // Close dialog
+        ascDialog.close();
+        
+        // Force a complete data refresh by clearing cache
+        console.log('Reloading ASC data after deletion...');
+        kanbanBoard.dataManager.ascs = [];
+        kanbanBoard.dataManager.loaded = false;
+        
+        // Reload the ASC data completely
+        await kanbanBoard.dataManager.init();
+        console.log('Data reloaded after deletion, ASCs count:', kanbanBoard.dataManager.ascs.length);
+        
+        // Re-render the board with fresh data
+        kanbanBoard.renderBoard();
+        
+        // Show success toast
+        kanbanBoard.showToast('ASC deleted successfully!', 'success');
+      } catch (error) {
+        console.error('Error deleting ASC:', error);
+        kanbanBoard.showToast(`Error: ${error.message}`, 'error');
+        
+        // Re-enable the delete button
+        const deleteButton = ascDialog.dialogElement?.querySelector('button.btn-danger');
+        if (deleteButton) {
+          deleteButton.disabled = false;
+          deleteButton.textContent = 'Delete';
+        }
+      }
+    };
+    
+    // Create the form instance
+    const ascFormInstance = new AscForm({
+      data: ascCopy,  // Pass existing data for editing with our cloned copy
+      onSubmit: saveAsc,
+      onDelete: deleteAsc
+    });
+    
+    // Set form as dialog content
+    ascDialog.setContent(ascFormInstance.element);
+    
+    // Add custom footer buttons programmatically to properly connect to form submission
+    const footer = ascDialog.dialogElement.querySelector('.dialog-footer');
+    if (footer) {
+      // Clear any existing buttons
+      footer.innerHTML = '';
+      
+      // Add Cancel button
+      const cancelButton = document.createElement('button');
+      cancelButton.type = 'button';
+      cancelButton.className = 'btn btn-secondary';
+      cancelButton.textContent = 'Cancel';
+      cancelButton.onclick = () => ascDialog.close();
+      footer.appendChild(cancelButton);
+      
+      // Add Save button with direct link to form's handleSubmit method
+      const saveButton = document.createElement('button');
+      saveButton.type = 'button';
+      saveButton.className = 'btn btn-primary';
+      saveButton.textContent = 'Save ASC';
+      saveButton.dataset.action = 'save';
+      saveButton.onclick = () => {
+        console.log('Save button clicked - triggering form submission');
+        // This is critical - directly call the form's handleSubmit method
+        ascFormInstance.handleSubmit();
+      };
+      footer.appendChild(saveButton);
+      
+      // We don't need to add a Delete button here because the AscForm component already adds one
+    }
+    
+    // Now open the dialog
+    ascDialog.open();
+    
+    // For debugging, log when the dialog is opened
+    console.log(`Opened ASC edit dialog for ASC-${ascCopy.id}`);
+    console.log('Form instance:', ascFormInstance);
   }
 }
 

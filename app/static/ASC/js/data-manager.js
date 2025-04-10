@@ -12,7 +12,7 @@ export class DataManager {
     this.ascs = [];
     this.affiliates = {};
     this.services = {};
-    this.sps = {}; // Added for SP lookup
+    this.models = {}; // For model lookup
     this.loaded = false;
     this.error = null;
     this.filters = {
@@ -29,18 +29,18 @@ export class DataManager {
    */
   async init() {
     try {
-      // Load all required data in parallel (including SPs)
-      const [ascsData, affiliatesData, servicesData, spsData] = await Promise.all([
+      // Load all required data in parallel (including models)
+      const [ascsData, affiliatesData, servicesData, modelsData] = await Promise.all([
         this.fetchData("/api/ascs"), // Changed to fetch ASCs via API
         this.fetchData("/api/affiliates"), // Fetch affiliates via API
         this.fetchData("/api/services"), // Fetch services via API
-        this.fetchData("/api/sps") // Fetch SPs via API
+        this.fetchData("/api/models") // Fetch models via API
       ]);
 
       // Process the data
       this.processAffiliates(affiliatesData);
       this.processServices(servicesData);
-      this.processSps(spsData); // Process SPs
+      this.processModels(modelsData); // Process models instead of SPs
       this.ascs = ascsData;
       
       this.loaded = true;
@@ -106,16 +106,23 @@ export class DataManager {
   }
   
   /**
-   * Process SPs data into a lookup object
-   * @param {Array} sps - Raw SPs data
+   * Process models data into a lookup object
+   * @param {Array} models - Raw models data
    */
-  processSps(sps) {
-    this.sps = {};
-    // Note: No options needed for SPs in data-manager currently
+  processModels(models) {
+    this.models = {};
+    this.modelsOptions = [];
     
-    sps.forEach(sp => {
-      this.sps[sp.id] = sp;
+    models.forEach(model => {
+      this.models[model.id] = model;
+      this.modelsOptions.push({
+        id: model.id,
+        name: model.name
+      });
     });
+    
+    // Sort by model name
+    this.modelsOptions.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   /**
@@ -129,12 +136,19 @@ export class DataManager {
       if (asc.model) modelsSet.add(asc.model);
     });
     
-    const models = Array.from(modelsSet).sort();
+    const modelIds = Array.from(modelsSet).sort();
+    
+    // Create model options by mapping model IDs to their names
+    const modelOptions = modelIds.map(modelId => {
+      // Find the model by ID in the data that was loaded
+      const modelName = this.getModelName(modelId);
+      return { id: modelId, name: modelName };
+    });
     
     return {
       affiliates: this.affiliatesOptions,
       services: this.servicesOptions,
-      models: models.map(model => ({ id: model, name: model }))
+      models: modelOptions
     };
   }
 
@@ -166,7 +180,7 @@ export class DataManager {
       }
       
       // Check model filter
-      if (this.filters.model && asc.models !== this.filters.model) {
+      if (this.filters.model && asc.model !== this.filters.model) {
         return false;
       }
       
@@ -182,7 +196,7 @@ export class DataManager {
           affiliateName,
           serviceName,
           asc.environment,
-          asc.models,
+          asc.model,
         ].filter(Boolean); // Remove falsy values
         
         // Check if any field contains the search term
@@ -240,12 +254,12 @@ export class DataManager {
   }
   
   /**
-   * Get SP name from ID
-   * @param {string} spId - SP ID
-   * @returns {string} SP name or fallback text
+   * Get model name from ID
+   * @param {string} modelId - Model ID
+   * @returns {string} Model name or fallback text
    */
-  getSpName(spId) {
-    return this.sps[spId]?.name || "Unknown SP";
+  getModelName(modelId) {
+    return this.models[modelId]?.name || "Unknown Model";
   }
 
   /**
@@ -298,32 +312,57 @@ export class DataManager {
    */
   async saveAscs() {
     try {
+      console.group('Saving ASCs to backend');
+      console.log(`Saving ${this.ascs.length} ASCs to backend`);
+      
+      // Add unique timestamp to verify we're sending fresh data
+      const timestamp = new Date().toISOString();
+      console.log(`Save operation timestamp: ${timestamp}`);
+      
+      // Log first few ASCs being saved
+      if (this.ascs.length > 0) {
+        console.log('First few ASC IDs being saved:', this.ascs.slice(0, 5).map(asc => asc.id));
+      }
+      
       // For now, using direct fetch to update the JSON file
       // In future, this could be replaced with an API call
       const response = await fetch('/update_ascs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-Save-Timestamp': timestamp // Add timestamp to headers for tracking
         },
         body: JSON.stringify(this.ascs),
       });
+      
+      // Log response details
+      console.log(`Response status: ${response.status}`);
+      const responseText = await response.text();
+      console.log('Response text:', responseText);
+      
+      // Parse response JSON if possible
+      let responseData;
+      try {
+        responseData = JSON.parse(responseText);
+        console.log('Response data:', responseData);
+      } catch (e) {
+        console.warn('Could not parse response as JSON:', e);
+      }
       
       if (!response.ok) {
         throw new Error(`Failed to save ASCs: ${response.statusText}`);
       }
       
+      console.log('ASCs saved successfully!');
+      console.groupEnd();
       return true;
     } catch (error) {
       console.error("Error saving ASCs:", error);
-      // Fallback method for development/demo if API endpoint isn't available
-      console.log("Using fallback save method (simulated)");
-      return new Promise(resolve => {
-        // Simulate a delay for demonstration purposes
-        setTimeout(() => {
-          console.log("ASCs data would be saved to:", JSON.stringify(this.ascs));
-          resolve(true);
-        }, 500);
-      });
+      console.groupEnd();
+      
+      // We no longer want to use the fallback method - it's misleading
+      // Let's fail clearly so the user knows something went wrong
+      return false;
     }
   }
 }

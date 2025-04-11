@@ -583,20 +583,170 @@ export class KanbanBoard {
   }
   
   /**
-   * Open the ASC edit form
+   * Open the ASC edit form with completely preloaded data
    * @param {Object} asc - ASC data object
    */
-  openAscEditForm(asc) {
-    // Deep clone the ASC object to prevent direct mutations
-    const ascCopy = JSON.parse(JSON.stringify(asc));
+  async openAscEditForm(asc) {
+    // Show loading indicator while preparing form data
+    this.showLoading(true);
+    
+    console.log('STARTING ASC edit dialog preparation for ASC-' + asc.id);
+    
+    // Create a new enhanced ASC object with all preloaded data
+    // This avoids any asynchronous loading issues in the form
+    const enhancedAsc = {
+      ...JSON.parse(JSON.stringify(asc)), // Deep clone original ASC data
+      _preloadedData: true, // Flag indicating this ASC has preloaded data
+      _preloadTimestamp: new Date().toISOString()
+    };
+    
+    // STEP 1: PRE-LOAD AFFILIATE DATA
+    try {
+      // Use the affiliateId to get data directly from the affiliates object
+      if (enhancedAsc.affiliateId && this.dataManager.affiliates[enhancedAsc.affiliateId]) {
+        const affiliate = this.dataManager.affiliates[enhancedAsc.affiliateId];
+        
+        // Store complete affiliate data
+        enhancedAsc._affiliate = affiliate;
+        enhancedAsc.affiliateName = affiliate.name;
+        
+        // Use the existing DataManager method to get the flag path
+        enhancedAsc.affiliateFlag = this.dataManager.getFlagPath(enhancedAsc.affiliateId);
+        
+        console.log('Pre-loaded affiliate data:', {
+          id: enhancedAsc.affiliateId,
+          name: enhancedAsc.affiliateName,
+          flag: enhancedAsc.affiliateFlag
+        });
+        
+        // Pre-cache the flag image
+        await new Promise((resolve) => {
+          const preloadImg = new Image();
+          preloadImg.onload = () => {
+            console.log('Flag image pre-loaded successfully');
+            resolve();
+          };
+          preloadImg.onerror = () => {
+            console.warn('Failed to pre-load flag, will use default');
+            resolve();
+          };
+          preloadImg.src = enhancedAsc.affiliateFlag;
+          setTimeout(resolve, 500);
+        });
+      } else {
+        console.warn(`Affiliate with ID ${enhancedAsc.affiliateId} not found`);
+        enhancedAsc.affiliateName = this.dataManager.getAffiliateName(enhancedAsc.affiliateId) || `Unknown (ID: ${enhancedAsc.affiliateId})`;
+        enhancedAsc.affiliateFlag = '/static/ASC/image/flags/FMN-ASC.png';
+      }
+    } catch (error) {
+      console.error('Error pre-loading affiliate data:', error);
+      enhancedAsc.affiliateFlag = '/static/ASC/image/flags/FMN-ASC.png';
+    }
+    
+    // STEP 2: PRE-LOAD SERVICE DATA
+    try {
+      // Access service data directly from the services object
+      if (enhancedAsc.serviceId && this.dataManager.services[enhancedAsc.serviceId]) {
+        const service = this.dataManager.services[enhancedAsc.serviceId];
+        
+        // Store complete service data
+        enhancedAsc._service = service;
+        enhancedAsc.serviceName = service.name;
+        
+        console.log('Pre-loaded service data:', {
+          id: enhancedAsc.serviceId,
+          name: enhancedAsc.serviceName
+        });
+      } else {
+        console.warn(`Service with ID ${enhancedAsc.serviceId} not found`);
+        enhancedAsc.serviceName = this.dataManager.getServiceName(enhancedAsc.serviceId) || `Unknown (ID: ${enhancedAsc.serviceId})`;
+      }
+    } catch (error) {
+      console.error('Error pre-loading service data:', error);
+    }
+    
+    // STEP 3: PRE-LOAD MODEL DATA - Most important for fixing the issue
+    try {
+      if (enhancedAsc.model) {
+        // Get the model directly if it exists
+        if (this.dataManager.models[enhancedAsc.model]) {
+          const selectedModel = this.dataManager.models[enhancedAsc.model];
+          
+          // Store complete model data in multiple formats for maximum compatibility
+          enhancedAsc._model = selectedModel;
+          enhancedAsc.modelName = selectedModel.name;
+          enhancedAsc.modelId = selectedModel.id;
+          
+          // Create a special property with all model data organized
+          enhancedAsc._modelData = {
+            id: enhancedAsc.model,
+            name: selectedModel.name,
+            serviceId: enhancedAsc.serviceId,
+            object: selectedModel
+          };
+          
+          console.log('Pre-loaded model data:', {
+            id: enhancedAsc.model,
+            name: enhancedAsc.modelName
+          });
+        } else {
+          // Fall back to using the DataManager helper method
+          const modelName = this.dataManager.getModelName(enhancedAsc.model);
+          console.warn(`Model with ID ${enhancedAsc.model} not found directly, using helper method`);
+          enhancedAsc.modelName = modelName || `Unknown (ID: ${enhancedAsc.model})`;
+          
+          // Create minimal model data
+          enhancedAsc._modelData = {
+            id: enhancedAsc.model,
+            name: enhancedAsc.modelName,
+            serviceId: enhancedAsc.serviceId
+          };
+        }
+      } else {
+        console.log('ASC has no model assigned');
+      }
+    } catch (error) {
+      console.error('Error pre-loading model data:', error);
+    }
     
     // Create a dialog for the ASC form without buttons - we'll add them later
     const ascDialog = new DialogManager({
-      title: `Edit ASC-${ascCopy.id}`,
+      title: `Edit ASC-${enhancedAsc.id}`,
       size: 'xl',
       backdrop: 'static',
-      keyboard: false
+      keyboard: false,
+      // Store the enhanced ASC data directly in the dialog for easy access
+      data: enhancedAsc
     });
+    
+    // For tracking purposes, also store the ID in a data attribute once the dialog is created
+    if (ascDialog.dialogElement) {
+      ascDialog.dialogElement.dataset.ascId = enhancedAsc.id;
+    }
+    
+    // Hide loading indicator
+    this.showLoading(false);
+    
+    // Log that all data is preloaded and ready
+    console.log('ASC data fully pre-loaded and ready for form creation');
+    enhancedAsc._readyForForm = true;
+    
+    // CRITICAL FIX: Force-initialize model to ensure it's always available immediately
+    if (enhancedAsc.model) {
+      // Create a simplified HTML structure for the model select
+      // This will be used as a direct content reference by the form
+      enhancedAsc._modelHtml = `<option value="${enhancedAsc.model}" selected>${enhancedAsc.modelName || enhancedAsc.model}</option>`;
+      
+      // Create direct model data that can't be missed
+      enhancedAsc._directModel = {
+        id: enhancedAsc.model,
+        name: enhancedAsc.modelName || 'Unknown Model',
+        html: enhancedAsc._modelHtml,
+        timestamp: new Date().toISOString()
+      };
+      
+      console.log('Pre-created model HTML content:', enhancedAsc._modelHtml);
+    }
     
     // Create a local reference to this for use in callbacks
     const kanbanBoard = this;
@@ -726,15 +876,24 @@ export class KanbanBoard {
       }
     };
     
-    // Create the form instance
+    // Create the form instance with our completely pre-loaded enhanced data
     const ascFormInstance = new AscForm({
-      data: ascCopy,  // Pass existing data for editing with our cloned copy
+      data: enhancedAsc,  // Pass our fully pre-loaded data with all required fields
       onSubmit: saveAsc,
-      onDelete: deleteAsc
+      onDelete: deleteAsc,
+      // Pass additional flags to ensure reliable initialization
+      preloadedData: true,
+      directInitialization: true,
+      skipDataFetching: true  // Skip fetching data since we already have everything
     });
+    
+    console.log('Form instance created with pre-loaded data');
     
     // Set form as dialog content
     ascDialog.setContent(ascFormInstance.element);
+    
+    // Give the browser a moment to render
+    await new Promise(resolve => setTimeout(resolve, 50));
     
     // Add custom footer buttons programmatically to properly connect to form submission
     const footer = ascDialog.dialogElement.querySelector('.dialog-footer');
@@ -770,7 +929,7 @@ export class KanbanBoard {
     ascDialog.open();
     
     // For debugging, log when the dialog is opened
-    console.log(`Opened ASC edit dialog for ASC-${ascCopy.id}`);
+    console.log(`Opened ASC edit dialog for ASC-${enhancedAsc.id}`);
     console.log('Form instance:', ascFormInstance);
   }
 }

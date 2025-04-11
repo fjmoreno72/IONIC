@@ -140,48 +140,9 @@
     "status": "Initial"
   },
   {
-    "affiliateId": "AFF-0027",
-    "ascScore": "0%",
-    "environment": "",
-    "gpInstances": [
-      {
-        "gpId": "GP-0005",
-        "gpScore": "0%",
-        "instanceLabel": "M-Link",
-        "spInstances": [
-          {
-            "spId": "SP-0007",
-            "spScore": "0%",
-            "spVersion": null
-          }
-        ]
-      },
-      {
-        "gpId": "GP-0005",
-        "gpScore": "0%",
-        "instanceLabel": "",
-        "spInstances": []
-      },
-      {
-        "gpId": "GP-0006",
-        "gpScore": "0%",
-        "instanceLabel": "",
-        "spInstances": []
-      }
-    ],
-    "id": "ASC-0003",
-    "model": "MOD-0001",
-    "serviceId": "SRV-0021",
-    "status": "Deprecated"
-  },
-  {
-    "id": "ASC-0004",
     "affiliateId": "AFF-0011",
-    "environment": "Static",
-    "serviceId": "SRV-0021",
-    "model": "MOD-0001",
     "ascScore": "0%",
-    "status": "Initial",
+    "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0005",
@@ -201,7 +162,11 @@
         "instanceLabel": "",
         "spInstances": []
       }
-    ]
+    ],
+    "id": "ASC-0004",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0021",
+    "status": "Initial"
   },
   {
     "affiliateId": "AFF-0027",
@@ -527,45 +492,75 @@
     "status": "In Progress"
   },
   {
-    "id": "ASC-0013",
     "affiliateId": "AFF-0006",
+    "ascScore": "0%",
     "environment": "Static",
+    "gpInstances": [],
+    "id": "ASC-0013",
+    "model": "MOD-0001",
     "serviceId": "SRV-0026",
-    "model": "MOD-0001",
-    "ascScore": "0%",
-    "status": "Initial",
-    "gpInstances": []
+    "status": "Initial"
   },
   {
-    "id": "ASC-0014",
     "affiliateId": "AFF-0029",
-    "environment": "Static",
-    "serviceId": "SRV-0014",
-    "model": "MOD-0001",
     "ascScore": "0%",
-    "status": "Initial",
-    "gpInstances": []
+    "environment": "Static",
+    "gpInstances": [],
+    "id": "ASC-0014",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0014",
+    "status": "Initial"
   },
   {
-    "id": "ASC-0015",
     "affiliateId": "AFF-0009",
-    "environment": "Static",
-    "serviceId": "SRV-0019",
-    "model": "MOD-0001",
     "ascScore": "0%",
-    "status": "Initial",
+    "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0126",
         "gpScore": "0%",
         "instanceLabel": "",
-        "spInstances": [],
         "models": [
           "MOD-0001"
-        ]
+        ],
+        "spInstances": []
       },
       {
         "gpId": "GP-0125",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0015",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0019",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0017",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [],
+    "id": "ASC-0016",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0014",
+    "status": "Deprecated"
+  },
+  {
+    "id": "ASC-0017",
+    "affiliateId": "AFF-0018",
+    "environment": "Static",
+    "serviceId": "SRV-0025",
+    "model": "MOD-0001",
+    "ascScore": "0%",
+    "status": "Initial",
+    "gpInstances": [
+      {
+        "gpId": "GP-0034",
         "gpScore": "0%",
         "instanceLabel": "",
         "spInstances": [],

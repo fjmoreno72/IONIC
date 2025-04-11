@@ -12,6 +12,10 @@ export class AscForm {
         this.formElement = null;
         this.isEditMode = !!this.data;
         
+        // Check for direct initialization mode
+        this.preloadedData = config.preloadedData || false;
+        this.directInitialization = config.directInitialization || false;
+        
         // Determine if the ASC is editable based on its status
         // Only Draft and In Progress ASCs can be edited
         this.isEditable = !this.isEditMode || !this.data.status || 
@@ -27,12 +31,12 @@ export class AscForm {
         this.affiliateSelect = null;
         this.environmentSelect = null;
         this.serviceSelect = null;
-        this.modelDisplay = null; // Element to show the model
+        this.modelSelect = null; // Store the model select element
         this.gpInstancesContainer = null; // Container for GP instances list
         this.ascScoreDisplay = null; // Element to display ASC score
         this.addGpSelect = null; // Dropdown to select which GP to add
         this.addGpButton = null; // Button to trigger adding the selected GP
-
+        this.nationFlag = null; // Reference to the nation flag element
 
         // Store fetched data for lookups
         this.allServices = [];
@@ -42,49 +46,124 @@ export class AscForm {
         // Dialog manager for the GP/SP editing sub-dialog
         this.gpSpEditDialog = null; // Keep track, but create new instance each time
 
+        // Flag to track form initialization
+        this.initialized = false;
+        
+        console.log(`Creating ASC form with preloadedData=${this.preloadedData}, directInitialization=${this.directInitialization}`);
+
         this.createForm();
         this.fetchFormData(); // Fetch data after creating the basic form structure
     }
 
     async fetchFormData() {
         try {
-            // Fetch form data and models data in parallel
-            const [formResponse, modelsResponse] = await Promise.all([
-                fetch('/api/asc_form_data'),
-                fetch('/api/models')
-            ]);
-            
-            if (!formResponse.ok) {
-                throw new Error(`HTTP error! status: ${formResponse.status}`);
+            // ENHANCED: Check if we have pre-loaded data from Kanban Board
+            if (this.isEditMode && this.data && this.data._preloadedData) {
+                console.log('Using pre-loaded data from Kanban board for ASC-' + this.data.id);
+                
+                // We'll still fetch the full form data for completeness, but prioritize pre-loaded data
+                // for critical elements like affiliate, service, and model
+                const [formResponse, modelsResponse] = await Promise.all([
+                    fetch('/api/asc_form_data'),
+                    fetch('/api/models')
+                ]);
+                
+                if (!formResponse.ok) {
+                    throw new Error(`HTTP error! status: ${formResponse.status}`);
+                }
+                
+                const fetchedData = await formResponse.json();
+                this.formData = fetchedData; // Base structure from API
+                this.allServices = fetchedData.services || [];
+                this.allSps = fetchedData.sps || [];
+                this.allGps = fetchedData.gps || []; // Store GPs
+                
+                // Process models data if available
+                if (modelsResponse.ok) {
+                    const modelsData = await modelsResponse.json();
+                    this.formData.models = modelsData; // Add models to formData
+                }
+                
+                // Override with pre-loaded data where available
+                if (this.data._modelData) {
+                    // Ensure the correct model is in our models array
+                    const modelExists = this.formData.models.some(m => m.id === this.data.model);
+                    if (!modelExists && this.data._model) {
+                        // Add the pre-loaded model to our models array
+                        this.formData.models.push(this.data._model);
+                        console.log('Added pre-loaded model to models array:', this.data._model);
+                    }
+                }
+                
+                console.log("ASC Form Data loaded with pre-loaded enhancements");
+            } else {
+                // Standard data loading for non-preloaded cases
+                console.log('Fetching ASC form data from API...');
+                const [formResponse, modelsResponse] = await Promise.all([
+                    fetch('/api/asc_form_data'),
+                    fetch('/api/models')
+                ]);
+                
+                if (!formResponse.ok) {
+                    throw new Error(`HTTP error! status: ${formResponse.status}`);
+                }
+                
+                const fetchedData = await formResponse.json();
+                this.formData = fetchedData; // Keep original structure for dropdowns
+                this.allServices = fetchedData.services || [];
+                this.allSps = fetchedData.sps || [];
+                this.allGps = fetchedData.gps || []; // Store GPs
+                
+                // Process models data if available
+                if (modelsResponse.ok) {
+                    const modelsData = await modelsResponse.json();
+                    this.formData.models = modelsData; // Add models to formData
+                }
+                
+                console.log("ASC Form Data fetched from API", this.formData); // Debugging
             }
-            
-            const fetchedData = await formResponse.json();
-            this.formData = fetchedData; // Keep original structure for dropdowns
-            this.allServices = fetchedData.services || [];
-            this.allSps = fetchedData.sps || [];
-            this.allGps = fetchedData.gps || []; // Store GPs
-            
-            // Process models data if available
-            if (modelsResponse.ok) {
-                const modelsData = await modelsResponse.json();
-                this.formData.models = modelsData; // Add models to formData
-            }
-
-            console.log("ASC Form Data fetched:", this.formData); // Debugging
 
             this.populateAffiliateDropdown();
             this.populateServiceDropdown();
 
             // If in edit mode, set values *after* dropdowns are populated
             if (this.isEditMode && this.data) {
-                 // Ensure dropdowns are ready before setting values
+                // Ensure dropdowns are ready before setting values
                 await this.waitForElement(this.affiliateSelect, opt => opt.length > 1);
                 await this.waitForElement(this.serviceSelect, opt => opt.length > 1);
+                
+                // Fix flag display immediately after data load
+                this.nationFlag = document.getElementById('nationFlag');
+                if (this.nationFlag && this.data.affiliateId) {
+                    const affiliate = this.formData.affiliates.find(a => a.id === this.data.affiliateId);
+                    if (affiliate && affiliate.flagPath) {
+                        // Extract the filename from flagPath and reconstruct with correct path
+                        const filename = affiliate.flagPath.split('/').pop();
+                        const flagPath = `/static/ASC/image/flags/${filename}`;
+                        console.log(`Direct DOM update: Setting flag src to ${flagPath}`);
+                        
+                        // IMPORTANT: We directly set the src attribute in the DOM
+                        this.nationFlag.src = flagPath;
+                        this.nationFlag.setAttribute('data-original-src', flagPath);
+                    }
+                }
+                
+                // Now continue with regular initialization
                 this.setValues(this.data);
                 this.renderGpInstances(); // Render GP instances in edit mode
                 this.updateAscScoreDisplay(); // Initial ASC score calculation and display
                 this.populateAddGpDropdown(); // Populate the Add GP dropdown
-                this.updateNationFlag(); // Update the nation flag
+                
+                // Force another flag update as a backup
+                try {
+                    await this.updateNationFlag(); 
+                } catch (flagError) {
+                    console.warn('Flag update warning:', flagError);
+                }
+                
+                // Mark the form as fully initialized
+                this.initialized = true;
+                console.log('ASC form fully initialized');
             }
         } catch (error) {
             console.error("Error fetching ASC form data:", error);
@@ -98,6 +177,24 @@ export class AscForm {
         this.formElement = document.createElement('form');
         this.formElement.noValidate = true;
         this.formElement.id = 'ascForm'; // Add an ID for potential targeting
+        
+        // Determine the initial flag path to use if in edit mode
+        let initialFlagPath = '/static/ASC/image/flags/FMN-ASC.png';
+        if (this.isEditMode && this.data && this.data.affiliateId) {
+            console.log('Preparing flag path for affiliate:', this.data.affiliateId);
+            // Using this direct approach eliminates the timing issues with async loading
+            if (this.data.affiliateFlag) {
+                initialFlagPath = this.data.affiliateFlag;
+                console.log('Using provided flag path:', initialFlagPath);
+            } else {
+                // Extract filename as a fallback if we have the ID
+                const flagFilename = `flag_${this.data.affiliateId.toLowerCase().replace('aff-', '')}.png`;
+                // Try the most likely location
+                const potentialPath = `/static/ASC/image/flags/${flagFilename}`;
+                console.log('Using derived flag path:', potentialPath);
+                initialFlagPath = potentialPath;
+            }
+        }
 
         // Basic structure - with more compact layout using Bootstrap grid
         this.formElement.innerHTML = `
@@ -133,7 +230,7 @@ export class AscForm {
                     <div class="mb-3">
                         <label for="ascAffiliate" class="form-label">Affiliate (Nation)</label>
                         <div class="input-group">
-                            ${this.isEditMode ? `<span class="input-group-text p-0 border-0 bg-transparent"><img src="${this.getNationFlagPath()}" alt="Nation Flag" width="24" height="auto" class="me-2" id="nationFlag"></span>` : ''}
+                            ${this.isEditMode ? `<span class="input-group-text p-0 border-0 bg-transparent"><img src="${initialFlagPath}" alt="Nation Flag" width="24" height="auto" class="me-2" id="nationFlag"></span>` : ''}
                             <select class="form-select" id="ascAffiliate" required ${this.isEditMode || !this.isEditable ? 'disabled' : ''}>
                                 <option value="" selected disabled>Loading affiliates...</option>
                             </select>
@@ -163,9 +260,16 @@ export class AscForm {
                     <div class="mb-3">
                         <label for="ascModel" class="form-label">Model</label>
                         <select class="form-select" id="ascModel" required ${this.isEditMode || !this.isEditable ? 'disabled' : ''}>
-                            <option value="" selected disabled>Select a service first</option>
+                            ${this.isEditMode && this.data?.model ? 
+                                `<option value="${this.data.model}" selected>${this.data._modelData?.name || this.data.modelName || this.data.model}</option>` : 
+                                `<option value="" selected disabled>Select a service first</option>`
+                            }
                         </select>
                         <div class="invalid-feedback">Please select a model.</div>
+                        ${this.isEditMode && this.data?.model ? 
+                            `<span class="text-muted mt-1" style="display: block;">Model ID: ${this.data.model}</span>` : 
+                            ''
+                        }
                     </div>
                 </div>
             </div>
@@ -283,12 +387,52 @@ export class AscForm {
         
         // If in edit mode, just display the current model name and disable the select
         if (this.isEditMode && this.data?.model) {
-            // Find the model name from the model ID
-            const modelName = this.formData.models?.find(m => m.id === this.data.model)?.name || this.data.model;
+            // SIMPLIFIED MODEL APPROACH: Use preloaded model data immediately
+            let modelName;
+            let modelId = this.data.model;
             
-            // Create a single option with the current model
-            modelSelect.innerHTML = `<option value="${this.data.model}" selected>${modelName}</option>`;
+            // Prioritize using the preloaded model data from kanban-board.js
+            if (this.data._preloadedData) {
+                if (this.data._modelData) {
+                    // Use preloaded model data structure
+                    modelName = this.data._modelData.name;
+                    console.log('DIRECT MODEL: Using fully preloaded model name:', modelName);
+                } else if (this.data.modelName) {
+                    // Use model name directly attached to ASC data
+                    modelName = this.data.modelName;
+                    console.log('DIRECT MODEL: Using attached model name:', modelName);
+                } else {
+                    // Fallback lookup in formData if needed
+                    modelName = this.formData.models?.find(m => m.id === modelId)?.name || `Model ID: ${modelId}`;
+                    console.log('DIRECT MODEL: Using looked-up model name (fallback):', modelName);
+                }
+            } else {
+                // Standard lookup for non-preloaded data
+                modelName = this.formData.models?.find(m => m.id === modelId)?.name || `Model ID: ${modelId}`;
+                console.log('Using standard model name lookup:', modelName);
+            }
+            
+            // Create a single option with the current model (explicitly setting both value and text)
+            console.log(`Setting model select to ID=${modelId}, Name=${modelName}`);
+            
+            // Clear any existing options
+            modelSelect.innerHTML = '';
+            
+            // Create and add the new option
+            const option = document.createElement('option');
+            option.value = modelId;
+            option.textContent = modelName;
+            option.selected = true;
+            modelSelect.appendChild(option);
+            
+            // Disable the select since it's in edit mode
             modelSelect.disabled = true;
+            
+            // Force a DOM update to ensure immediate display
+            modelSelect.setAttribute('data-model-id', modelId);
+            modelSelect.setAttribute('data-model-name', modelName);
+            modelSelect.setAttribute('data-update-time', new Date().toISOString());
+            
             return;
         }
         
@@ -915,13 +1059,100 @@ export class AscForm {
         return `/static/ASC/image/flags/${filename}`;
     }
     
-    // Update the nation flag image when editing an ASC
-    updateNationFlag() {
+    // Update the nation flag image when editing an ASC - enhanced version with DOM updates
+    async updateNationFlag() {
         if (!this.isEditMode) return;
         
-        const flagImage = document.getElementById('nationFlag');
-        if (flagImage) {
-            flagImage.src = this.getNationFlagPath();
+        // First try to get the flag element if we don't already have it
+        if (!this.nationFlag) {
+            this.nationFlag = document.getElementById('nationFlag');
+        }
+        
+        const flagImage = this.nationFlag || document.getElementById('nationFlag');
+        if (!flagImage) {
+            console.warn('Flag image element not found');
+            return;
+        }
+        
+        // Only update if we have affiliates data loaded
+        if (this.formData.affiliates && this.formData.affiliates.length > 0 && this.data && this.data.affiliateId) {
+            // Find the affiliate in our loaded data
+            const affiliate = this.formData.affiliates.find(a => a.id === this.data.affiliateId);
+            console.log('Updating flag for affiliate:', this.data.affiliateId, 'Found:', affiliate);
+            
+            if (affiliate && affiliate.flagPath) {
+                // Extract the filename from flagPath and reconstruct with correct path
+                const filename = affiliate.flagPath.split('/').pop();
+                const flagPath = `/static/ASC/image/flags/${filename}`;
+                console.log('FORCE-SETTING flag path to:', flagPath);
+                
+                // Store current src for debugging
+                const currentSrc = flagImage.getAttribute('src') || flagImage.src || 'unknown';
+                console.log('Current flag src before update:', currentSrc);
+                
+                // CRITICAL FIX: We need to use multiple approaches to ensure the image updates
+                // 1. Use the src property
+                flagImage.src = flagPath;
+                
+                // 2. Use setAttribute for maximum compatibility
+                flagImage.setAttribute('src', flagPath);
+                
+                // 3. Force a browser reflow to ensure the change takes effect
+                void flagImage.offsetWidth;
+                
+                // 4. Make the flag element visible again if it was hidden
+                flagImage.style.visibility = 'visible';
+                flagImage.style.display = '';
+                
+                // Store update metadata for debugging
+                flagImage.setAttribute('data-updated', new Date().toISOString());
+                flagImage.setAttribute('data-affiliate', this.data.affiliateId);
+                
+                // Verify the update took effect
+                console.log('Flag src after update:', flagImage.getAttribute('src'));
+                
+                // Return a promise that resolves when the image loads or errors
+                return new Promise((resolve) => {
+                    // Define one-time event handlers
+                    const handleLoad = () => {
+                        console.log('Flag image loaded successfully');
+                        flagImage.removeEventListener('load', handleLoad);
+                        flagImage.removeEventListener('error', handleError);
+                        resolve();
+                    };
+                    
+                    const handleError = () => {
+                        console.warn('Flag image failed to load, using default');
+                        flagImage.removeEventListener('load', handleLoad);
+                        flagImage.removeEventListener('error', handleError);
+                        
+                        // Try default flag as fallback
+                        flagImage.src = '/static/ASC/image/flags/FMN-ASC.png';
+                        flagImage.setAttribute('src', '/static/ASC/image/flags/FMN-ASC.png');
+                        resolve();
+                    };
+                    
+                    // Add event listeners
+                    flagImage.addEventListener('load', handleLoad, {once: true});
+                    flagImage.addEventListener('error', handleError, {once: true});
+                    
+                    // Set a timeout in case the events don't fire
+                    setTimeout(() => {
+                        flagImage.removeEventListener('load', handleLoad);
+                        flagImage.removeEventListener('error', handleError);
+                        console.log('Flag update timeout reached - resolving promise anyway');
+                        resolve();
+                    }, 1000);
+                });
+            } else {
+                console.warn('Affiliate not found or has no flag path, using default flag');
+                flagImage.src = '/static/ASC/image/flags/FMN-ASC.png';
+                flagImage.setAttribute('src', '/static/ASC/image/flags/FMN-ASC.png');
+            }
+        } else {
+            console.warn('Affiliates data not loaded yet, using default flag');
+            flagImage.src = '/static/ASC/image/flags/FMN-ASC.png';
+            flagImage.setAttribute('src', '/static/ASC/image/flags/FMN-ASC.png');
         }
     }
     
@@ -942,25 +1173,49 @@ export class AscForm {
     // Helper method to load models data asynchronously if needed
     async loadModelsData(modelIdToUpdate = null) {
         try {
+            console.log('Loading models data asynchronously...');
             // Update to use API endpoint instead of direct file access
             const modelsResponse = await fetch('/api/models');
             if (modelsResponse.ok) {
                 const modelsData = await modelsResponse.json();
                 this.formData.models = modelsData;
+                console.log('Models data loaded:', modelsData.length, 'models');
                 
                 // If we were asked to update a specific model display, do it now
                 if (modelIdToUpdate) {
+                    console.log('Updating model display for ID:', modelIdToUpdate);
                     const modelSelect = document.getElementById('ascModel');
                     if (modelSelect) {
                         const modelName = this.getModelName(modelIdToUpdate);
+                        console.log('Model name retrieved:', modelName);
+                        
                         if (modelName !== modelIdToUpdate) { // Only update if we got an actual name
-                            modelSelect.innerHTML = `<option value="${modelIdToUpdate}" selected>${modelName}</option>`;
+                            // Check if the option already exists and update it
+                            const existingOption = Array.from(modelSelect.options).find(opt => opt.value === modelIdToUpdate);
+                            if (existingOption) {
+                                console.log('Updating existing option text to:', modelName);
+                                existingOption.text = modelName;
+                            } else {
+                                console.log('Creating new option with text:', modelName);
+                                modelSelect.innerHTML = `<option value="${modelIdToUpdate}" selected>${modelName}</option>`;
+                            }
                         }
+                        
+                        // Ensure the value is still set correctly
+                        modelSelect.value = modelIdToUpdate;
+                    } else {
+                        console.warn('Model select element not found');
                     }
                 }
+                
+                return true;
+            } else {
+                console.error('Models API response not OK:', modelsResponse.status);
+                return false;
             }
         } catch (error) {
             console.error("Error loading models data from API:", error);
+            return false;
         }
     }
 

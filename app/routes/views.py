@@ -33,9 +33,11 @@ def index():
     
     # Redirect to tree view if already logged in
     if 'cookies' in session:
-        return redirect(url_for('views.view_tree_func'))
+        #return redirect(url_for('views.view_tree_func'))
+        return render_template("pages/ascs_new.html", default_url=settings.DEFAULT_URL)
         
-    return render_template('index_ionic.html', default_url=settings.DEFAULT_URL)
+    #return render_template('index_ionic.html', default_url=settings.DEFAULT_URL)
+    return render_template("index_ionic.html", default_url=settings.DEFAULT_URL)
 
 @views_bp.route('/view_tree')
 @login_required

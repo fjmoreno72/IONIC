@@ -1,226 +1,226 @@
 {
   "SP5-SI-AIRC2_Air C2 Information Exchange": [
-    "Email recipient",
-    "Web Client",
     "Email sender",
-    "Web Server"
+    "Web Server",
+    "Web Client",
+    "Email recipient"
   ],
   "SP5-SI-AV_Audio and Video-based Collaboration": [
-    "Audio Terminal Target 1",
-    "Call Manager",
-    "Audio Terminal Initiator",
-    "Video Terminal Target",
-    "SBC Target",
-    "Video Terminal Initiator",
     "MCU",
-    "Conference Server",
-    "SBC Initiator"
+    "SBC Target",
+    "Audio Terminal Target 1",
+    "Video Terminal Target",
+    "Audio Terminal Initiator",
+    "Call Manager",
+    "Video Terminal Initiator",
+    "SBC Initiator",
+    "Conference Server"
   ],
   "SP5-SI-CALENDAR_Calendaring and Scheduling": [
-    "Calendar Provider",
     "Event attendee",
-    "Calendar Client Reader",
-    "Calendar Client Organizer"
+    "Calendar Client Organizer",
+    "Calendar Provider",
+    "Calendar Client Reader"
   ],
   "SP5-SI-CHAT_Text-based Collaboration": [
-    "Chat Client Partner",
+    "Chat Client",
     "Chat Server",
-    "Chat Client User",
+    "Chat Client Partner",
     "Chat Server Partner",
-    "Chat Client"
+    "Chat Client User"
   ],
   "SP5-SI-COMMS_Communications": [
-    "System Administrator",
+    "Router",
+    "Provider",
+    "Initator",
     "Router A",
+    "Router B",
+    "MNP",
     "NIP Router",
     "DNS Root Provider",
+    "Identity Provider B",
     "Client Initiator",
+    "System Administrator",
     "Consumer",
-    "Initiator",
-    "MNP",
     "Client Target",
-    "Router B",
-    "Router",
-    "Initator",
-    "Provider",
-    "Identity Provider B"
+    "Initiator"
   ],
   "SP5-SI-COMMSTPT_Communications Transport": [
     "Provider",
     "MNP",
-    "E-Node",
-    "Consumer"
+    "Consumer",
+    "E-Node"
   ],
   "SP5-SI-DDS_Directory Data Synchronization": [
-    "Border DIT Provider",
-    "MetaTool Provider",
     "Central DIT Provider",
-    "MetaTool Owner"
+    "MetaTool Owner",
+    "Border DIT Provider",
+    "MetaTool Provider"
   ],
   "SP5-SI-DNS_Domain Naming": [
-    "DNS Root Provider",
-    "DNS Zone Provider",
+    "DNS Resolver",
     "DNS Root Secondary",
     "DNS Root Primary",
-    "DNS Resolver"
+    "DNS Zone Provider",
+    "DNS Root Provider"
   ],
   "SP5-SI-EMAIL_Informal Messaging": [
-    "Strategic Targeting Coordinator",
-    "Email Server",
-    "Tactical Command",
-    "Joint Task Force",
-    "Email sender",
-    "Joint Task Force - B",
-    "Email recipient",
-    "Subordinate Entity",
-    "Joint Task Force - A",
-    "National Targeting Expert",
     "Subordinate Commands",
-    "Email Provider"
+    "Email Server",
+    "Joint Task Force",
+    "National Targeting Expert",
+    "Email Provider",
+    "Strategic Targeting Coordinator",
+    "Joint Task Force - A",
+    "Tactical Command",
+    "Email sender",
+    "Subordinate Entity",
+    "Joint Task Force - B",
+    "Email recipient"
   ],
   "SP5-SI-FFT_Friendly Force Tracking": [
-    "FFT Consumer",
-    "TrAD Authority",
-    "FFT Gateway",
-    "FFT Terminal",
-    "TrAD Provider",
-    "FFT Forwarder",
-    "FFT Proxy",
-    "FFT Provider",
-    "TrAD Implementer",
     "FFT Server",
+    "FFT Gateway",
+    "FFT Provider",
     "FFT System",
-    "TrAD Consumer"
+    "TrAD Implementer",
+    "FFT Terminal",
+    "TrAD Consumer",
+    "FFT Forwarder",
+    "TrAD Provider",
+    "FFT Consumer",
+    "FFT Proxy",
+    "TrAD Authority"
   ],
   "SP5-SI-G2A_Ground-to-Air Information Exchange": [
     "Weapon Delivery Asset (WDA)",
     "Ground-to-Air Service"
   ],
   "SP5-SI-GEO_Geospatial Information": [
-    "Geo Client",
-    "Joint Task Force",
-    "Web Client",
-    "Geo Server",
-    "Joint Task Force - B",
     "Geo Portal",
+    "Joint Task Force",
+    "Geo Client",
+    "Geo Server",
+    "Joint Task Force - A",
+    "Web Client",
     "Subordinate Entity",
-    "Joint Task Force - A"
+    "Joint Task Force - B"
   ],
   "SP5-SI-IBOX_Intelligence Battlespace Objects Exchange": [
-    "Intelligence BsO system",
-    "Remote Intelligence BsO system"
+    "Remote Intelligence BsO system",
+    "Intelligence BsO system"
   ],
   "SP5-SI-INFOEX_Fires Information Exchange": [],
   "SP5-SI-JISRIE_Joint ISR Information Exchange": [
     "CSD Consumer Peer",
+    "ISR Streaming Consumer",
     "ISR Streaming",
+    "CSD Consumer",
+    "CSD",
     "CSD Provider",
     "CSD Administrator",
-    "ISR Streaming Consumer",
-    "ISR Streaming Provider",
-    "CSD Consumer",
-    "CSD"
+    "ISR Streaming Provider"
   ],
   "SP5-SI-JREAP_Data Links": [
+    "Data Link Server",
+    "Data Link Server Consumer",
+    "Data Link Server Provider",
     "Data Link Server Hub",
     "Data Link Server Initiator",
-    "Data Link Server Provider",
-    "Data Link Server Target",
-    "Data Link Server",
-    "Data Link Server Consumer"
+    "Data Link Server Target"
   ],
   "SP5-SI-LANDC2T_Land Tactical C2 Information Exchange": [
     "Land Tactical Initiator",
     "Land Tactical Target"
   ],
   "SP5-SI-LC2IE_Land C2 Information Exchange": [
-    "MIP4 Forwarder",
-    "MIP GW Target",
     "MIP4 Consumer",
-    "MIP4 Provider",
+    "MIP4 Forwarder",
     "MIP GW",
-    "MIP GW Initiator"
+    "MIP GW Initiator",
+    "MIP GW Target",
+    "MIP4 Provider"
   ],
   "SP5-SI-MAR2C_Maritime C2 Information Exchange": [
-    "MCC Commander",
     "RMP Manager",
+    "RMP Sysadmin",
+    "RMP MNP",
+    "RMP SMA",
     "Global RMP Manager",
     "RMP Operator",
-    "RMP Sysadmin",
-    "Local RMP Manager",
-    "RMP SMA",
-    "RMP MNP"
+    "MCC Commander",
+    "Local RMP Manager"
   ],
   "SP5-SI-NTP_Distributed Time": [
-    "Time Server Peer",
     "SBC Peer A",
-    "Time Server Stratum 2",
-    "Video Terminal Initiator",
     "Time Server",
     "MIP GW",
+    "Time Server Stratum 2",
+    "Video Terminal Initiator",
+    "Time Server Peer",
     "Time Client"
   ],
   "SP5-SI-OVLYD_Overlay Distribution": [
-    "KML Consumer",
-    "Overlay Service Provider",
-    "KML Provider",
-    "Overlay Provider",
-    "Overlay Service Forwarder",
     "Overlay Service Consumer",
-    "Overlay Consumer"
+    "KML Consumer",
+    "Overlay Consumer",
+    "Overlay Service Forwarder",
+    "Overlay Service Provider",
+    "Overlay Provider",
+    "KML Provider"
   ],
   "SP5-SI-PCN_Protected Core Networking": [
-    "Initiator E-Node",
+    "PCN-interface",
     "Initiator E-Node/P-Function",
-    "NMCD",
-    "Protected Core Segment",
-    "Initiator",
-    "SMA",
-    "E-Node",
-    "Target E-Node",
-    "Target",
-    "Target E-Node/P-Function",
-    "P-function",
     "PCN-2",
+    "Target E-Node",
+    "Protected Core Segment",
     "Target P-Function",
-    "PCN-interface"
+    "Target E-Node/P-Function",
+    "E-Node",
+    "Target",
+    "SMA",
+    "P-function",
+    "NMCD",
+    "Initiator E-Node",
+    "Initiator"
   ],
   "SP5-SI-PKI_Digital Certificates": [
-    "OCSP Provider",
     "Certificate Server",
-    "Certificate Client*",
     "Geo Portal",
+    "OCSP Provider",
+    "Certificate Client*",
     "Certificate Consumer"
   ],
   "SP5-SI-SMC_Service Management and Control": [
     "SMC Consumer",
-    "Service Consumer",
     "SMC CSE",
     "Service Provider",
-    "Subscriber"
+    "Subscriber",
+    "Service Consumer"
   ],
   "SP5-SI-VP_Virtualized Processing": [
-    "Virtual Machine Service Provider ( ROLE - 27 )",
-    "Virtual Machine Service Consumer ( ROLE - 26 )"
+    "Virtual Machine Service Consumer ( ROLE - 26 )",
+    "Virtual Machine Service Provider ( ROLE - 27 )"
   ],
   "SP5-SI-WEBAUTH_Web Authentication": [
-    "Identity Provider A",
     "Identity Provider B",
-    "Identity Hub"
+    "Identity Hub",
+    "Identity Provider A"
   ],
   "SP5-SI-WEBHOST_Web Hosting": [
-    "Strategic Targeting Coordinator",
-    "Tactical Command",
-    "J3 Operations",
-    "Joint Fire Support Element",
-    "Web Client",
+    "Subordinate Commands",
+    "Joint Task Force HQ",
     "Joint Task Force",
     "National Targeting Expert",
-    "Joint Task Force - B",
-    "Web Server",
+    "J3 Operations",
+    "Strategic Targeting Coordinator",
     "Land Component Command",
-    "Joint Task Force HQ",
-    "Subordinate Commands",
-    "Joint Task Force - A"
+    "Joint Task Force - A",
+    "Web Client",
+    "Tactical Command",
+    "Joint Task Force - B",
+    "Joint Fire Support Element",
+    "Web Server"
   ]
 }

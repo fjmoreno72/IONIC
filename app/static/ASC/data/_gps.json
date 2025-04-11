@@ -796,5 +796,34 @@
     "name": "Identity Provider Hub",
     "description": "",
     "iconPath": "./image/gp/gp_icon_identity_provider_hub.png"
+  },
+  {
+    "name": "OCSP Provider",
+    "description": "An OCSP (Online Certificate Status Protocol) Provider responds to queries about the revocation status of digital certificates in real time, enabling clients to verify a certificate's validity without downloading the entire Certificate Revocation List (CRL).",
+    "iconPath": "./image/gp/gp_icon_ocsp_provider.png",
+    "id": "GP-0137"
+  },
+  {
+    "name": "PCN-1",
+    "description": "PCN-1 interface is an inter-provider communications\nservice interface that is provided to connect Protected Core Segments (PCSs) within a Point of Interconnection or between\nPoint of Interconnections.",
+    "id": "GP-0138"
+  },
+  {
+    "name": "PCN-2",
+    "description": "",
+    "iconPath": "",
+    "id": "GP-0139"
+  },
+  {
+    "name": "Fires Information Exchange System",
+    "description": "",
+    "iconPath": "",
+    "id": "GP-0140"
+  },
+  {
+    "name": "WDA",
+    "description": "Weapon Delivery Asset",
+    "iconPath": "",
+    "id": "GP-0141"
   }
 ]

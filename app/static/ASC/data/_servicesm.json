@@ -16,18 +16,40 @@
         "models": [
           "MOD-0001"
         ]
+      },
+      {
+        "id": "GP-0014",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0012",
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0001",
-    "iconPath": "./image/srv/icon_air_c2_information_exchange.png"
+    "iconPath": "./image/srv/icon_air_c2_information_exchange.png",
+    "originalId": "SRV-0001"
   },
   {
     "name": "Fires Information Exchange",
     "models": [
       "MOD-0001"
     ],
-    "gps": [],
-    "id": "SRV-0002"
+    "gps": [
+      {
+        "id": "GP-0140",
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ],
+    "id": "SRV-0002",
+    "originalId": "SRV-0002",
+    "iconPath": "./image/srv/icon_fires_information_exchange.png"
   },
   {
     "name": "Intelligence Battlespace Objects Exchange",
@@ -50,24 +72,57 @@
     "models": [
       "MOD-0001"
     ],
-    "gps": [],
-    "id": "SRV-0004"
+    "gps": [
+      {
+        "id": "GP-0042",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0119",
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ],
+    "id": "SRV-0004",
+    "originalId": "SRV-0004",
+    "iconPath": "./image/srv/icon_joint_isr_information_exchange.png"
   },
   {
     "name": "Land C2 Information Exchange",
     "models": [
       "MOD-0001"
     ],
-    "gps": [],
-    "id": "SRV-0005"
+    "gps": [
+      {
+        "id": "GP-0120",
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ],
+    "id": "SRV-0005",
+    "originalId": "SRV-0005",
+    "iconPath": "./image/srv/icon_land_c2_information_exchange.png"
   },
   {
     "name": "Land Tactical C2 Information Exchange",
     "models": [
       "MOD-0001"
     ],
-    "gps": [],
-    "id": "SRV-0006"
+    "gps": [
+      {
+        "id": "GP-0108",
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ],
+    "id": "SRV-0006",
+    "originalId": "SRV-0006",
+    "iconPath": "./image/srv/icon_land_tactical_c2_information_exchange.png"
   },
   {
     "name": "Maritime C2 Information Exchange",
@@ -193,10 +248,17 @@
         "models": [
           "MOD-0001"
         ]
+      },
+      {
+        "id": "GP-0141",
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0010",
-    "iconPath": "./image/srv/icon_ground-to-air_information_exchange.png"
+    "iconPath": "./image/srv/icon_ground-to-air_information_exchange.png",
+    "originalId": "SRV-0010"
   },
   {
     "name": "Overlay Distribution",
@@ -225,8 +287,47 @@
     "models": [
       "MOD-0001"
     ],
-    "gps": [],
-    "id": "SRV-0012"
+    "gps": [
+      {
+        "id": "GP-0026",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0029",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0015",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0016",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0084",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0019",
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ],
+    "id": "SRV-0012",
+    "originalId": "SRV-0012",
+    "iconPath": "./image/srv/icon_audio_and_video-based_collaboration.png"
   },
   {
     "name": "Calendaring and Scheduling",
@@ -255,8 +356,29 @@
     "models": [
       "MOD-0001"
     ],
-    "gps": [],
-    "id": "SRV-0014"
+    "gps": [
+      {
+        "id": "GP-0018",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0038",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0137",
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ],
+    "id": "SRV-0014",
+    "originalId": "SRV-0014",
+    "iconPath": "./image/srv/icon_digital_certificates.png"
   },
   {
     "name": "Directory Data Synchronization",
@@ -340,8 +462,9 @@
       }
     ],
     "id": "SRV-0017",
-    "iconPath": "./image/srv/icon_domain_naming.jpg",
-    "functionalDiagramPath": "./image/srv/diagram_domain_naming.jpg"
+    "functionalDiagramPath": "./image/srv/diagram_domain_naming.jpg",
+    "originalId": "SRV-0017",
+    "iconPath": "./image/srv/icon_domain_naming.png"
   },
   {
     "name": "Geospatial Information",
@@ -405,8 +528,17 @@
     "models": [
       "MOD-0001"
     ],
-    "gps": [],
-    "id": "SRV-0020"
+    "gps": [
+      {
+        "id": "GP-0047",
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ],
+    "id": "SRV-0020",
+    "originalId": "SRV-0020",
+    "iconPath": "./image/srv/icon_service_management_and_control.png"
   },
   {
     "name": "Text-based Collaboration",
@@ -511,6 +643,7 @@
       }
     ],
     "id": "SRV-0025",
+    "originalId": "SRV-0025",
     "iconPath": "./image/srv/icon_communications.png"
   },
   {
@@ -518,15 +651,51 @@
     "models": [
       "MOD-0001"
     ],
-    "gps": [],
-    "id": "SRV-0026"
+    "gps": [
+      {
+        "id": "GP-0114",
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ],
+    "id": "SRV-0026",
+    "originalId": "SRV-0026",
+    "iconPath": "./image/srv/icon_communications_transport.png"
   },
   {
     "name": "Protected Core Networking",
     "models": [
       "MOD-0001"
     ],
-    "gps": [],
-    "id": "SRV-0027"
+    "gps": [
+      {
+        "id": "GP-0114",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0116",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0139",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0138",
+        "models": [
+          "MOD-0001"
+        ]
+      }
+    ],
+    "id": "SRV-0027",
+    "iconPath": "./image/srv/icon_protected_core_networking.png",
+    "originalId": "SRV-0027"
   }
 ]

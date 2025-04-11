@@ -438,19 +438,25 @@
   },
   {
     "affiliateId": "AFF-0020",
-    "ascScore": "0%",
+    "ascScore": "19%",
     "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0001",
-        "gpScore": "0%",
+        "gpScore": "75%",
         "instanceLabel": "",
         "models": [
           "MOD-0001",
           "MOD-0002",
           "MOD-0003"
         ],
-        "spInstances": []
+        "spInstances": [
+          {
+            "spId": "SP-0253",
+            "spScore": "75%",
+            "spVersion": "4.00"
+          }
+        ]
       },
       {
         "gpId": "GP-0003",
@@ -556,16 +562,22 @@
     "environment": "Static",
     "serviceId": "SRV-0025",
     "model": "MOD-0001",
-    "ascScore": "0%",
-    "status": "Initial",
+    "ascScore": "75%",
+    "status": "In Progress",
     "gpInstances": [
       {
         "gpId": "GP-0034",
-        "gpScore": "0%",
-        "instanceLabel": "",
-        "spInstances": [],
+        "gpScore": "75%",
+        "instanceLabel": "BEST ROUTER EVER",
         "models": [
           "MOD-0001"
+        ],
+        "spInstances": [
+          {
+            "spId": "SP-0044",
+            "spVersion": "1941",
+            "spScore": "75%"
+          }
         ]
       }
     ]

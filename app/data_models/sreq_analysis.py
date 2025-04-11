@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Set, Any, Optional, Tuple
 
-from app.utils.file_operations import read_json_file, write_markdown_file
+from app.utils.file_operations import read_json_file, write_markdown_file, get_dynamic_data_path
 
 @dataclass
 class SREQEntry:
@@ -119,6 +119,76 @@ def organize_hierarchical_data(entries: List[Dict[str, Any]]) -> Dict[str, SIEnt
 
     return hierarchy
 
+
+def create_service_actor_map(si_groups: Dict):
+           """
+           Creates a service to actor mapping from si_groups data.
+           Updates or creates service_actors.json with the mapping.
+           
+           Args:
+               si_groups: Dictionary output from organize_functional_data containing 
+                         SI, SREQ, and actor information.
+           
+           Returns:
+               Dictionary with SI keys as keys and lists of unique actors as values
+           """
+           import json
+           
+           # Initialize the mapping dictionary
+           service_actor_map = {}
+           
+           # Output file path
+           service_actors_path = get_dynamic_data_path("service_actors.json")
+           
+           # Process si_groups to extract service-actor mappings
+           for si_key, functions_data in si_groups.items():
+               si_name = si_key[1]  # Extract SI name
+               si_number = si_key[0]  # Extract SI number
+               
+               # Create a key for this SI in the mapping
+               if si_key not in service_actor_map:
+                   service_actor_map[si_key] = []
+               
+               # Track all unique actors for this SI
+               actors_for_si = set()
+               
+               # Iterate through functions in this SI
+               for function_name, sreqs_data in functions_data.items():
+                   # Iterate through SREQs in this function
+                   for sreq_number, sreq_info in sreqs_data.items():
+                       # Get test cases from SREQ info
+                       test_cases = sreq_info.get('test_cases', {})
+                       
+                       # Iterate through test cases to extract actors
+                       for test_case_key, test_case_data in test_cases.items():
+                           # test_case_data format is (key, name, [actors], version)
+                           if len(test_case_data) >= 3:
+                               actors_list = test_case_data[2]
+                               # Add each actor to the set of unique actors for this SI
+                               for actor in actors_list:
+                                   if actor != 'N/A':
+                                       actors_for_si.add(actor)
+               
+               # Convert set to list for JSON serialization
+               service_actor_map[si_key] = list(actors_for_si)
+           
+           # Prepare a simplified version for JSON serialization
+           # JSON cannot have tuples as keys, so convert to string format
+           json_compatible_map = {
+               f"{si_key[0]}_{si_key[1]}": actors
+               for si_key, actors in service_actor_map.items()
+           }
+           
+           # Write the updated mapping to the file
+           try:
+               with open(service_actors_path, 'w') as f:
+                   json.dump(json_compatible_map, f, indent=2)
+               logging.info(f"Service-actor mapping saved to {service_actors_path}")
+           except Exception as e:
+               logging.error(f"Error writing service_actors.json: {e}")
+           
+           return service_actor_map
+
 def organize_functional_data(sreq_data: List[Dict[str, Any]], func_data: List[Dict[str, Any]]) -> Dict[Tuple[str, str], Dict[str, Dict[str, Dict[str, Any]]]]:
     """
     Organize SREQ data by functional area.
@@ -159,7 +229,8 @@ def organize_functional_data(sreq_data: List[Dict[str, Any]], func_data: List[Di
         if status == 'Deprecated' or status == 'Draft':
             continue
 
-        if test_case_coverage_type == 'idp':
+        # If the requirement is covered in a dependency
+        if test_case_coverage_type == 'tdp':
             continue
 
         # Check if SREQ has a function mapping
@@ -190,6 +261,7 @@ def organize_functional_data(sreq_data: List[Dict[str, Any]], func_data: List[Di
 
         # Add test case if available
         if test_case_key is not None and test_case_name is not None:
+            # If test case already exists, append actor to its list
             test_cases = si_groups[si_key][function_name][sreq_info[0]]['test_cases']
             
             # If test case already exists, append actor to its list
@@ -206,6 +278,9 @@ def organize_functional_data(sreq_data: List[Dict[str, Any]], func_data: List[Di
         logging.warning(f"Found {len(unmapped_sreqs)} SREQs without function mappings.")
         for sreq in unmapped_sreqs:
             logging.info(f"Unmapped SREQ: {sreq.get('sreqNumber', '')} - {sreq.get('sreqName', '')}")
+
+    create_service_actor_map(si_groups)
+
 
     return si_groups
 
@@ -236,7 +311,7 @@ def organize_tin_data(sreq_data: List[Dict[str, Any]]) -> Dict[Tuple[str, str], 
             continue 
 
         # If the requirement is covered in a dependency
-        if test_case_coverage_type == 'idp':
+        if test_case_coverage_type == 'tdp':
             continue
 
         # Initialize nested structure

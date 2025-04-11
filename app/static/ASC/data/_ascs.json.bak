@@ -437,20 +437,30 @@
     "status": "Initial"
   },
   {
+    "id": "ASC-0011",
     "affiliateId": "AFF-0020",
-    "ascScore": "0%",
     "environment": "Static",
+    "serviceId": "SRV-0008",
+    "model": "MOD-0002",
+    "ascScore": "19%",
+    "status": "In Progress",
     "gpInstances": [
       {
         "gpId": "GP-0001",
-        "gpScore": "0%",
+        "gpScore": "75%",
         "instanceLabel": "",
         "models": [
           "MOD-0001",
           "MOD-0002",
           "MOD-0003"
         ],
-        "spInstances": []
+        "spInstances": [
+          {
+            "spId": "SP-0253",
+            "spVersion": "4.00",
+            "spScore": "75%"
+          }
+        ]
       },
       {
         "gpId": "GP-0003",
@@ -485,11 +495,7 @@
         ],
         "spInstances": []
       }
-    ],
-    "id": "ASC-0011",
-    "model": "MOD-0002",
-    "serviceId": "SRV-0008",
-    "status": "In Progress"
+    ]
   },
   {
     "affiliateId": "AFF-0006",
@@ -548,6 +554,32 @@
     "id": "ASC-0016",
     "model": "MOD-0001",
     "serviceId": "SRV-0014",
-    "status": "In Review"
+    "status": "Deprecated"
+  },
+  {
+    "affiliateId": "AFF-0018",
+    "ascScore": "50%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0034",
+        "gpScore": "50%",
+        "instanceLabel": "BEST ROUTER EVER",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": [
+          {
+            "spId": "SP-0044",
+            "spScore": "50%",
+            "spVersion": "1941"
+          }
+        ]
+      }
+    ],
+    "id": "ASC-0017",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0025",
+    "status": "In Progress"
   }
 ]

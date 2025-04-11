@@ -18,6 +18,9 @@ export class KanbanBoard {
     this.dataManager = new DataManager();
     this.themeManager = new ThemeManager();
     
+    // Import UiService for notifications
+    this.uiService = window.UiService || { showNotification: (message) => console.log('Notification:', message) };
+    
     // Connect theme toggle button directly
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
     if (themeToggleBtn) {
@@ -798,10 +801,19 @@ export class KanbanBoard {
         kanbanBoard.renderBoard();
         
         // Show success toast
-        kanbanBoard.showToast('ASC updated successfully!', 'success');
+        // Use window.UiService if available, otherwise log to console
+        if (window.UiService) {
+          window.UiService.showNotification('ASC updated successfully!', 'success');
+        } else {
+          console.log('SUCCESS: ASC updated successfully!');
+        }
       } catch (error) {
         console.error('Error updating ASC:', error);
-        kanbanBoard.showToast(`Error: ${error.message}`, 'error');
+        if (window.UiService) {
+          window.UiService.showNotification(`Error: ${error.message}`, 'error');
+        } else {
+          console.error(`Error: ${error.message}`);
+        }
         
         // Re-enable the save button
         const saveButton = ascDialog.dialogElement?.querySelector('button[data-action="save"]');
@@ -862,10 +874,18 @@ export class KanbanBoard {
         kanbanBoard.renderBoard();
         
         // Show success toast
-        kanbanBoard.showToast('ASC deleted successfully!', 'success');
+        if (window.UiService) {
+          window.UiService.showNotification('ASC deleted successfully!', 'success');
+        } else {
+          console.log('SUCCESS: ASC deleted successfully!');
+        }
       } catch (error) {
         console.error('Error deleting ASC:', error);
-        kanbanBoard.showToast(`Error: ${error.message}`, 'error');
+        if (window.UiService) {
+          window.UiService.showNotification(`Error: ${error.message}`, 'error');
+        } else {
+          console.error(`Error: ${error.message}`);
+        }
         
         // Re-enable the delete button
         const deleteButton = ascDialog.dialogElement?.querySelector('button.btn-danger');

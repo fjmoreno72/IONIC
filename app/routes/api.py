@@ -22,13 +22,14 @@ from app.data_access import gps_repository
 # Create blueprint
 api_bp = Blueprint('api', __name__)
 
-# --- Actor ID to Name Mapping ---
-_actor_map = None
+# --- Actor Mappings ---
+_actor_map = None  # Maps actor key to name
+_actor_id_map = None  # Maps actor ID to name
 _actor_map_load_lock = threading.Lock() # Prevent race conditions on load
 
 def _load_actor_map():
-    """Loads the actor ID to name mapping from actors.json."""
-    global _actor_map
+    """Loads the actor mappings from actors.json."""
+    global _actor_map, _actor_id_map
     start_time = time.time()
     logging.info("Attempting to load actors.json into memory...")
     # Use dynamic path based on session environment
@@ -40,28 +41,72 @@ def _load_actor_map():
     if not actors_path.exists():
         logging.error(f"actors.json not found at {actors_path}.")
         _actor_map = {} # Set to empty dict to avoid reload attempts
+        _actor_id_map = {} # Set to empty dict to avoid reload attempts
         return
 
     try:
         with open(actors_path, 'r', encoding='utf-8') as f:
             actors_data = json.load(f)
 
-        # Create the map {id: name}
-        temp_map = {actor['id']: actor.get('name', 'Unknown Actor') for actor in actors_data if 'id' in actor}
-        _actor_map = temp_map
+        # Create the key-to-name map, strip whitespace from names
+        key_map = {actor.get('key', actor['id']): actor.get('name', 'Unknown Actor').strip() 
+                  for actor in actors_data if 'id' in actor}
+        _actor_map = key_map
+        
+        # Create the id-to-name map, strip whitespace from names
+        id_map = {actor['id']: actor.get('name', 'Unknown Actor').strip() 
+                 for actor in actors_data if 'id' in actor}
+        _actor_id_map = id_map
 
         load_time = time.time() - start_time
-        logging.info(f"Successfully loaded {len(_actor_map)} actors into map in {load_time:.2f} seconds.")
+        logging.info(f"Successfully loaded {len(_actor_map)} actors into maps in {load_time:.2f} seconds.")
 
     except json.JSONDecodeError as e:
         logging.error(f"Error decoding actors.json: {e}")
         _actor_map = {} # Set to empty dict on error
+        _actor_id_map = {} # Set to empty dict on error
     except MemoryError:
         logging.error("MemoryError: actors.json is too large to load into memory.")
         _actor_map = {} # Set to empty dict on error
+        _actor_id_map = {} # Set to empty dict on error
     except Exception as e:
         logging.exception(f"Unexpected error loading actors.json: {e}")
         _actor_map = {} # Set to empty dict on error
+        _actor_id_map = {} # Set to empty dict on error
+
+def get_actor_key_from_name(actor_name):
+    """
+    Get the actor key for a given actor name.
+    
+    Args:
+        actor_name (str): The name of the actor to look up
+        
+    Returns:
+        str: The actor key if found, or an empty string if not found
+    """
+    global _actor_map, _actor_id_map
+    
+    # Load maps if not already loaded (thread-safe)
+    if _actor_map is None or _actor_id_map is None:
+        with _actor_map_load_lock:
+            # Double-check inside lock
+            if _actor_map is None or _actor_id_map is None:
+                _load_actor_map()
+                # If loading failed, maps will be {}
+                if not _actor_map or not _actor_id_map:
+                    logging.error("Actor maps could not be loaded.")
+                    return ""
+    
+    # Create a reverse mapping of name to key, strip whitespace and convert to lowercase
+    name_to_actor_key = {name.strip().lower(): actor_key for actor_key, name in _actor_map.items()}
+    
+    # Look up the actor key (case-insensitive and strip whitespace)
+    actor_key = name_to_actor_key.get(actor_name.strip().lower(), "")
+    
+    if not actor_key:
+        logging.warning(f"Actor with name '{actor_name}' not found.")
+    
+    return actor_key
 
 # --- API Routes ---
 
@@ -69,19 +114,24 @@ def _load_actor_map():
 @login_required
 def get_actor_name(actor_id):
     """Get the name of an actor by its ID."""
-    global _actor_map
+    global _actor_map, _actor_id_map
 
-    # Load map if not already loaded (thread-safe)
-    if _actor_map is None:
+    # Load maps if not already loaded (thread-safe)
+    if _actor_map is None or _actor_id_map is None:
         with _actor_map_load_lock:
             # Double-check inside lock
-            if _actor_map is None:
+            if _actor_map is None or _actor_id_map is None:
                 _load_actor_map()
-                # If loading failed, _actor_map will be {}
-                if _actor_map is None: # Should not happen if _load_actor_map sets it to {} on error
-                     return jsonify({'success': False, 'error': 'Actor map could not be loaded.'}), 500
+                # If loading failed, maps will be {}
+                if _actor_map is None or _actor_id_map is None: # Should not happen if _load_actor_map sets them to {} on error
+                     return jsonify({'success': False, 'error': 'Actor maps could not be loaded.'}), 500
 
+    # First try to find the actor by key (if the ID is actually a key)
     actor_name = _actor_map.get(actor_id)
+    
+    # If not found by key, try to find by ID
+    if actor_name is None:
+        actor_name = _actor_id_map.get(actor_id)
 
     if actor_name is None:
          # Check if the map is empty because loading failed
@@ -94,6 +144,23 @@ def get_actor_name(actor_id):
         raise NotFound(f"Actor with ID '{actor_id}' not found.")
 
     return jsonify({'success': True, 'name': actor_name})
+
+
+@api_bp.route('/api/actor/by-name/<string:actor_name>')
+@login_required
+def get_actor_id(actor_name):
+    """Get the ID of an actor by its name."""
+    actor_id = get_actor_key_from_name(actor_name)
+    
+    if not actor_id:
+        # Check if the map is empty because loading failed
+        actors_path_check = get_dynamic_data_path("actors.json")
+        if not _actor_map and actors_path_check.exists():
+            return jsonify({'success': False, 'error': 'Actor map failed to load, cannot lookup name.'}), 500
+        # Otherwise, the name genuinely wasn't found
+        raise NotFound(f"Actor with name '{actor_name}' not found.")
+    
+    return jsonify({'success': True, 'id': actor_id})
 
 
 @api_bp.route('/data')

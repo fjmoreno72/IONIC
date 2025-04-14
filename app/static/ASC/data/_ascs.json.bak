@@ -1,99 +1,99 @@
 [
   {
     "affiliateId": "AFF-0027",
-    "ascScore": "99%",
+    "ascScore": "50%",
     "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0001",
-        "gpScore": "95%",
+        "gpScore": "50%",
         "instanceLabel": "NIRIS",
         "spInstances": [
           {
             "spId": "SP-0253",
-            "spScore": "95%",
+            "spScore": "50%",
             "spVersion": "4.2.1"
           }
         ]
       },
       {
         "gpId": "GP-0001",
-        "gpScore": "100%",
+        "gpScore": "50%",
         "instanceLabel": "SSSB",
         "spInstances": [
           {
             "spId": "SP-0004",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "3.0.0"
           }
         ]
       },
       {
         "gpId": "GP-0001",
-        "gpScore": "100%",
+        "gpScore": "50%",
         "instanceLabel": "CSI",
         "spInstances": [
           {
             "spId": "SP-0005",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "18.7"
           }
         ]
       },
       {
         "gpId": "GP-0002",
-        "gpScore": "100%",
+        "gpScore": "50%",
         "instanceLabel": "NIRIS",
         "spInstances": [
           {
             "spId": "SP-0253",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "4.2.1"
           }
         ]
       },
       {
         "gpId": "GP-0003",
-        "gpScore": "100%",
+        "gpScore": "50%",
         "instanceLabel": "CSI",
         "spInstances": [
           {
             "spId": "SP-0005",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "18.7"
           }
         ]
       },
       {
         "gpId": "GP-0004",
-        "gpScore": "100%",
+        "gpScore": "50%",
         "instanceLabel": "ICC",
         "spInstances": [
           {
             "spId": "SP-0253",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "4.2.1"
           },
           {
             "spId": "SP-0002",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "3.5.2"
           }
         ]
       },
       {
         "gpId": "GP-0004",
-        "gpScore": "100%",
+        "gpScore": "50%",
         "instanceLabel": "NCOP",
         "spInstances": [
           {
             "spId": "SP-0253",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "4.2.1"
           },
           {
             "spId": "SP-0003",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "2.0.6"
           }
         ]
@@ -172,45 +172,45 @@
     "id": "ASC-0006",
     "model": "MOD-0001",
     "serviceId": "SRV-0021",
-    "status": "Validated"
+    "status": "In Review"
   },
   {
     "affiliateId": "AFF-0027",
-    "ascScore": "75%",
+    "ascScore": "38%",
     "environment": "Static",
     "gpInstances": [
       {
         "gpId": "GP-0007",
-        "gpScore": "100%",
+        "gpScore": "50%",
         "instanceLabel": "",
         "spInstances": [
           {
             "spId": "SP-0010",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "2022"
           }
         ]
       },
       {
         "gpId": "GP-0008",
-        "gpScore": "100%",
+        "gpScore": "50%",
         "instanceLabel": "",
         "spInstances": [
           {
             "spId": "SP-0010",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "2022"
           }
         ]
       },
       {
         "gpId": "GP-0009",
-        "gpScore": "100%",
+        "gpScore": "50%",
         "instanceLabel": "",
         "spInstances": [
           {
             "spId": "SP-0010",
-            "spScore": "100%",
+            "spScore": "50%",
             "spVersion": "2022"
           }
         ]
@@ -997,6 +997,905 @@
     "id": "ASC-0030",
     "model": "MOD-0001",
     "serviceId": "SRV-0007",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0126",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0125",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0014",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0012",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0031",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0001",
+    "status": "In Progress"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0026",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0029",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0015",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0016",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0084",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0019",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0032",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0012",
+    "status": "In Progress"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0093",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0127",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0033",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0013",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0034",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0034",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0025",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0114",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0035",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0026",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0001",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001",
+          "MOD-0002",
+          "MOD-0003"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0003",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001",
+          "MOD-0002",
+          "MOD-0003"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0002",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001",
+          "MOD-0002",
+          "MOD-0003"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0037",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001",
+          "MOD-0002",
+          "MOD-0003"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0036",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0008",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0018",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0038",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0137",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0037",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0014",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0027",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0017",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0134",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0038",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0015",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0039",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0024",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0028",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0039",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0016",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0007",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0090",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0008",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0040",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0017",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0140",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0041",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0002",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0130",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0129",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0128",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0133",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0132",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0042",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0009",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0041",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0109",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0030",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0014",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0043",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0018",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0080",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0141",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0044",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0010",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0126",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0125",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0045",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0019",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0135",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0046",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0003",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0042",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0119",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0047",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0004",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0120",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0048",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0005",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0108",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0049",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0006",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0046",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0045",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0050",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0007",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0044",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0043",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0051",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0011",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0114",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0116",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0139",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0138",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0052",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0027",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0047",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0053",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0020",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0005",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0006",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0054",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0021",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0111",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0110",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0055",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0022",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0049",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0136",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0056",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0023",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0014",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0014",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0012",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "id": "ASC-0057",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0024",
     "status": "Initial"
   }
 ]

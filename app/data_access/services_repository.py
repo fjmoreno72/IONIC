@@ -73,3 +73,41 @@ def save_services(services_data: list):
     except Exception as e:
         logger.exception(f"An unexpected error occurred while saving services to {services_path}: {e}")
         raise IOError(f"An unexpected error occurred while saving services: {e}") from e
+
+def get_service_id_by_name(service_name: str) -> str:
+    """
+    Get the service ID by its name.
+    
+    Args:
+        service_name (str): The name of the service to look up
+        
+    Returns:
+        str: The service ID if found, or an empty string if not found
+    """
+    services = get_all_services()
+    
+    for service in services:
+        if service.get('name') == service_name:
+            return service.get('id', '')
+    
+    logger.warning(f"No service found with name: {service_name}")
+    return ''
+
+def get_service_name_by_id(service_id: str) -> str:
+    """
+    Get the service name by its ID.
+    
+    Args:
+        service_id (str): The ID of the service to look up
+        
+    Returns:
+        str: The service name if found, or an empty string if not found
+    """
+    services = get_all_services()
+    
+    for service in services:
+        if service.get('id') == service_id:
+            return service.get('name', '')
+    
+    logger.warning(f"No service found with ID: {service_id}")
+    return ''

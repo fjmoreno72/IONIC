@@ -178,34 +178,37 @@ def delete_gp(gp_id):
     Returns:
         bool: True if deleted successfully, False otherwise
     """
+
+
+def get_gp_name_by_id(gp_id):
+    """Get the name of a GP by its ID.
+    
+    Args:
+        gp_id (str): ID of the GP to find
+        
+    Returns:
+        str: Name of the GP if found, None otherwise
+    """
     gps_path = _get_gps_path()
     
-    # Log the attempt to delete
-    logger.info(f"Repository: Attempting to delete GP {gp_id} at: {gps_path}")
+    # Log the attempt to find the GP
+    logger.info(f"Repository: Attempting to find GP name for ID {gp_id} from: {gps_path}")
     
     try:
         # Load existing GPs
         gps = get_all_gps()
         
-        # Find and remove the GP
-        initial_length = len(gps)
-        gps = [gp for gp in gps if gp.get('id') != gp_id]
+        # Find the GP with the matching ID
+        for gp in gps:
+            if gp.get('id') == gp_id:
+                gp_name = gp.get('name')
+                logger.info(f"Repository: Found GP name '{gp_name}' for ID {gp_id}")
+                return gp_name
         
-        if len(gps) == initial_length:
-            logger.warning(f"Repository: GP with ID {gp_id} not found for deletion")
-            return False
-        
-        # Save the updated GPs
-        success = save_gps(gps)
-        
-        if success:
-            # Log successful deletion
-            logger.info(f"Repository: GP {gp_id} deleted successfully")
-            return True
-        else:
-            logger.error(f"Repository: Failed to save GP data after deleting GP {gp_id}")
-            return False
+        # If we get here, the GP was not found
+        logger.warning(f"Repository: GP with ID {gp_id} not found")
+        return None
         
     except Exception as e:
-        logger.error(f"Repository: Error deleting GP: {str(e)}")
-        return False
+        logger.error(f"Repository: Error finding GP name for ID {gp_id}: {str(e)}")
+        return None

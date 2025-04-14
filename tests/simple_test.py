@@ -19,8 +19,9 @@ app.static_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'
 app.secret_key = 'test_secret_key'
 
 # Import the modules to test
-from app.data_access.actors_to_gp import get_actor_to_gp_path, get_all_actor_gp, update_actor_to_gp, regenerate_actor_to_gp_file, delete_gp_from_actor, clean_old_actors
-from app.data_access.services_repository import get_service_id_by_name, get_service_name_by_id
+from app.data_access.actors_to_gp import get_actor_to_gp_path, get_all_actor_gp, update_actor_to_gp, regenerate_actor_to_gp_file, delete_gp_from_actor, clean_old_actors, get_possible_gps_for_actor
+from app.data_access.services_repository import get_service_id_by_name, get_service_name_by_id, get_service_gps
+from app.data_access.gps_repository import get_gp_name_by_id
 from app.routes.api import get_actor_key_from_name
 
 def test_get_actor_to_gp_path():
@@ -337,6 +338,36 @@ def test_clean_old_actors():
             
             return clean_result
 
+
+def test_get_service_gps():
+    """Test the get_service_gps and get_possible_gps_for_actor functions."""
+    with app.app_context():
+        print("Testing get_possible_gps_for_actor function...")
+        
+        # Test with SRV-0008 and MOD-0001
+        service_id = "SRV-0008"
+        model_id = "MOD-0001"
+        print(f"\nGetting GPs for service {service_id} and model {model_id}:")
+        gps_with_names = get_possible_gps_for_actor(service_id, model_id)
+        print(f"Found {len(gps_with_names)} GPs:")
+        
+        # Display GP IDs and names
+        for gp in gps_with_names:
+            print(f"  - {gp['id']}: {gp['name']}")
+        
+        # Test with SRV-0008 and MOD-0003
+        service_id = "SRV-0008"
+        model_id = "MOD-0003"
+        print(f"\nGetting GPs for service {service_id} and model {model_id}:")
+        gps_with_names = get_possible_gps_for_actor(service_id, model_id)
+        print(f"Found {len(gps_with_names)} GPs:")
+        
+        # Display GP IDs and names
+        for gp in gps_with_names:
+            print(f"  - {gp['id']}: {gp['name']}")
+        
+        return True
+
 if __name__ == "__main__":
     print("Testing get_actor_to_gp_path()...")
     path = test_get_actor_to_gp_path()
@@ -402,6 +433,10 @@ if __name__ == "__main__":
 
     print("Testing update_actor_to_gp()...")
     #result = test_update_actor_to_gp()
+    print("\n" + "-" * 50 + "\n")
+
+    print("Testing get_service_gps()...")
+    result = test_get_service_gps()
     print("\n" + "-" * 50 + "\n")
 
     print("All tests completed.")

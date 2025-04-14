@@ -2,6 +2,7 @@ import json
 import logging
 import os
 from pathlib import Path
+from typing import List, Optional
 from flask import current_app
 
 # Get the logger instance
@@ -12,6 +13,54 @@ def _get_services_path() -> Path:
     # Use current_app.static_folder which points to the 'static' directory
     # Then navigate to ASC/data/_servicesm.json (migrated file with models)
     return Path(current_app.static_folder) / "ASC" / "data" / "_servicesm.json"
+
+
+def get_service_gps(service_id: str, model_id: str) -> List[str]:
+    """
+    Get a list of GP IDs that are in a specific service and support a specific model.
+    
+    Args:
+        service_id (str): The ID of the service to search for
+        model_id (str): The ID of the model to filter GPs by
+        
+    Returns:
+        List[str]: A list of GP IDs that match the criteria
+    """
+    try:
+        # Get the path to the services JSON file
+        services_path = _get_services_path()
+        
+        # Check if the file exists
+        if not services_path.exists():
+            logger.error(f"Services file not found at {services_path}")
+            return []
+        
+        # Load the services data
+        with open(services_path, 'r', encoding='utf-8') as f:
+            services_data = json.load(f)
+        
+        # Find the service with the matching ID
+        service = next((s for s in services_data if s.get('id') == service_id), None)
+        if not service:
+            logger.warning(f"Service with ID {service_id} not found")
+            return []
+        
+        # Check if the service supports the specified model
+        if model_id not in service.get('models', []):
+            logger.warning(f"Service {service_id} does not support model {model_id}")
+            return []
+        
+        # Get all GPs in the service that support the specified model
+        gp_ids = []
+        for gp in service.get('gps', []):
+            if model_id in gp.get('models', []):
+                gp_ids.append(gp.get('id'))
+        
+        return gp_ids
+    
+    except Exception as e:
+        logger.error(f"Error getting GPs for service {service_id} and model {model_id}: {str(e)}")
+        return []
 
 def get_all_services() -> list:
     """

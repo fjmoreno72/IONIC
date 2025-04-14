@@ -6,9 +6,11 @@ import json
 import logging
 from pathlib import Path
 from datetime import datetime, timedelta
+from typing import List, Dict, Any
 from flask import current_app
 from app.utils.file_operations import get_dynamic_data_path
-from app.data_access.services_repository import get_service_id_by_name
+from app.data_access.services_repository import get_service_id_by_name, get_service_gps
+from app.data_access.gps_repository import get_gp_name_by_id
 from app.routes.api import get_actor_key_from_name
 
 def get_actor_to_gp_path():
@@ -430,3 +432,34 @@ def clean_old_actors(minutes=60):
     except Exception as e:
         logging.error(f"Error cleaning up old actors: {str(e)}")
         return False, 0
+
+
+def get_possible_gps_for_actor(service_id: str, model_id: str) -> List[Dict[str, str]]:
+    """
+    Get a list of all possible GPs for an actor in a specific service and model.
+    
+    Args:
+        service_id (str): ID of the service
+        model_id (str): ID of the model
+        
+    Returns:
+        List[Dict[str, str]]: A list of dictionaries containing GP information (id and name)
+    """
+    try:
+        # Get all GPs for the service and model
+        gp_ids = get_service_gps(service_id, model_id)
+        
+        # Get the name for each GP
+        gps_with_names = []
+        for gp_id in gp_ids:
+            gp_name = get_gp_name_by_id(gp_id)
+            gps_with_names.append({
+                "id": gp_id,
+                "name": gp_name if gp_name else "Name not found"
+            })
+        
+        return gps_with_names
+    
+    except Exception as e:
+        logging.error(f"Error getting possible GPs for service {service_id} and model {model_id}: {str(e)}")
+        return []

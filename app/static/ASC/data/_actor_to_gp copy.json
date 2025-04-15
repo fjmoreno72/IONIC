@@ -1,0 +1,1025 @@
+{
+  "services": [
+    {
+      "service_id": "SRV-0001",
+      "service_name": "Air C2 Information Exchange",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000165",
+          "actor_name": "Email sender",
+          "actor_last_update": "2025-04-15T08:33:54.376813",
+          "gps": [
+            {
+              "id": "GP-0126",
+              "name": "Email Client"
+            }
+          ]
+        },
+        {
+          "actor_key": "ACT-CIAV-000700",
+          "actor_name": "Web Server",
+          "actor_last_update": "2025-04-15T08:33:54.376898",
+          "gps": [
+            {
+              "id": "GP-0012",
+              "name": "Web Server"
+            }
+          ]
+        },
+        {
+          "actor_key": "ACT-CIAV-000764",
+          "actor_name": "Web Client",
+          "actor_last_update": "2025-04-15T08:33:54.377076",
+          "gps": [
+            {
+              "id": "GP-0014",
+              "name": "Web Client"
+            }
+          ]
+        },
+        {
+          "actor_key": "ACT-CIAV-000164",
+          "actor_name": "Email recipient",
+          "actor_last_update": "2025-04-15T08:33:54.376988",
+          "gps": [
+            {
+              "id": "GP-0126",
+              "name": "Email Client"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0012",
+      "service_name": "Audio and Video-based Collaboration",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000740",
+          "actor_name": "MCU",
+          "actor_last_update": "2025-04-15T08:33:54.377678"
+        },
+        {
+          "actor_key": "ACT-CIAV-000742",
+          "actor_name": "SBC Target",
+          "actor_last_update": "2025-04-15T08:33:54.377609"
+        },
+        {
+          "actor_key": "ACT-CIAV-000745",
+          "actor_name": "Audio Terminal Target 1",
+          "actor_last_update": "2025-04-15T08:33:54.377818",
+          "gps": [
+            {
+              "id": "GP-0015",
+              "name": "Audio Terminal"
+            }
+          ]
+        },
+        {
+          "actor_key": "ACT-CIAV-000746",
+          "actor_name": "Video Terminal Target",
+          "actor_last_update": "2025-04-15T08:33:54.377749"
+        },
+        {
+          "actor_key": "ACT-CIAV-000749",
+          "actor_name": "Audio Terminal Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.377467"
+        },
+        {
+          "actor_key": "ACT-CIAV-000744",
+          "actor_name": "Call Manager",
+          "actor_last_update": "2025-04-15T08:33:54.377388"
+        },
+        {
+          "actor_key": "ACT-CIAV-000747",
+          "actor_name": "Video Terminal Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.377315"
+        },
+        {
+          "actor_key": "ACT-CIAV-000743",
+          "actor_name": "SBC Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.377538"
+        },
+        {
+          "actor_key": "ACT-CIAV-000741",
+          "actor_name": "Conference Server",
+          "actor_last_update": "2025-04-15T08:33:54.377241"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0013",
+      "service_name": "Calendaring and Scheduling",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000173",
+          "actor_name": "Event attendee",
+          "actor_last_update": "2025-04-15T08:33:54.378095"
+        },
+        {
+          "actor_key": "ACT-CIAV-000729",
+          "actor_name": "Calendar Client Organizer",
+          "actor_last_update": "2025-04-15T08:33:54.378166"
+        },
+        {
+          "actor_key": "ACT-CIAV-000733",
+          "actor_name": "Calendar Provider",
+          "actor_last_update": "2025-04-15T08:33:54.377955"
+        },
+        {
+          "actor_key": "ACT-CIAV-000731",
+          "actor_name": "Calendar Client Reader",
+          "actor_last_update": "2025-04-15T08:33:54.378026"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0021",
+      "service_name": "Text-based Collaboration",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000705",
+          "actor_name": "Chat Client",
+          "actor_last_update": "2025-04-15T08:33:54.378369"
+        },
+        {
+          "actor_key": "ACT-CIAV-000707",
+          "actor_name": "Chat Server",
+          "actor_last_update": "2025-04-15T08:33:54.378515"
+        },
+        {
+          "actor_key": "ACT-CIAV-000704",
+          "actor_name": "Chat Client Partner",
+          "actor_last_update": "2025-04-15T08:33:54.378445"
+        },
+        {
+          "actor_key": "ACT-CIAV-000706",
+          "actor_name": "Chat Server Partner",
+          "actor_last_update": "2025-04-15T08:33:54.378585"
+        },
+        {
+          "actor_key": "ACT-CIAV-000220",
+          "actor_name": "Chat Client User",
+          "actor_last_update": "2025-04-15T08:33:54.378299"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0025",
+      "service_name": "Communications",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000756",
+          "actor_name": "Router",
+          "actor_last_update": "2025-04-15T08:33:54.379444"
+        },
+        {
+          "actor_key": "ACT-CIAV-000736",
+          "actor_name": "Provider",
+          "actor_last_update": "2025-04-15T08:33:54.378881"
+        },
+        {
+          "actor_key": "ACT-CIAV-000277",
+          "actor_name": "Initator",
+          "actor_last_update": "2025-04-15T08:33:54.379305"
+        },
+        {
+          "actor_key": "ACT-CIAV-000755",
+          "actor_name": "Router A",
+          "actor_last_update": "2025-04-15T08:33:54.378805"
+        },
+        {
+          "actor_key": "ACT-CIAV-000754",
+          "actor_name": "Router B",
+          "actor_last_update": "2025-04-15T08:33:54.379236"
+        },
+        {
+          "actor_key": "ACT-CIAV-000013",
+          "actor_name": "MNP",
+          "actor_last_update": "2025-04-15T08:33:54.379583"
+        },
+        {
+          "actor_key": "ACT-CIAV-001578",
+          "actor_name": "NIP Router",
+          "actor_last_update": "2025-04-15T08:33:54.378723"
+        },
+        {
+          "actor_key": "ACT-CIAV-000713",
+          "actor_name": "DNS Root Provider",
+          "actor_last_update": "2025-04-15T08:33:54.378957"
+        },
+        {
+          "actor_key": "ACT-CIAV-000703",
+          "actor_name": "Identity Provider B",
+          "actor_last_update": "2025-04-15T08:33:54.379658"
+        },
+        {
+          "actor_key": "ACT-CIAV-000580",
+          "actor_name": "Client Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.379375"
+        },
+        {
+          "actor_key": "ACT-CIAV-000510",
+          "actor_name": "System Administrator",
+          "actor_last_update": "2025-04-15T08:33:54.379167"
+        },
+        {
+          "actor_key": "ACT-CIAV-000735",
+          "actor_name": "Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.379027"
+        },
+        {
+          "actor_key": "ACT-CIAV-000579",
+          "actor_name": "Client Target",
+          "actor_last_update": "2025-04-15T08:33:54.379097"
+        },
+        {
+          "actor_key": "ACT-CIAV-000738",
+          "actor_name": "Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.379514"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0026",
+      "service_name": "Communications Transport",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000736",
+          "actor_name": "Provider",
+          "actor_last_update": "2025-04-15T08:33:54.379997"
+        },
+        {
+          "actor_key": "ACT-CIAV-000013",
+          "actor_name": "MNP",
+          "actor_last_update": "2025-04-15T08:33:54.379807"
+        },
+        {
+          "actor_key": "ACT-CIAV-000735",
+          "actor_name": "Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.380115"
+        },
+        {
+          "actor_key": "ACT-CIAV-000150",
+          "actor_name": "E-Node",
+          "actor_last_update": "2025-04-15T08:33:54.379904"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0015",
+      "service_name": "Directory Data Synchronization",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000722",
+          "actor_name": "Central DIT Provider",
+          "actor_last_update": "2025-04-15T08:33:54.380320"
+        },
+        {
+          "actor_key": "ACT-CIAV-000724",
+          "actor_name": "MetaTool Owner",
+          "actor_last_update": "2025-04-15T08:33:54.380459"
+        },
+        {
+          "actor_key": "ACT-CIAV-000721",
+          "actor_name": "Border DIT Provider",
+          "actor_last_update": "2025-04-15T08:33:54.380552"
+        },
+        {
+          "actor_key": "ACT-CIAV-000723",
+          "actor_name": "MetaTool Provider",
+          "actor_last_update": "2025-04-15T08:33:54.380637"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0017",
+      "service_name": "Domain Naming",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000716",
+          "actor_name": "DNS Resolver",
+          "actor_last_update": "2025-04-15T08:33:54.380823"
+        },
+        {
+          "actor_key": "ACT-CIAV-000714",
+          "actor_name": "DNS Root Secondary",
+          "actor_last_update": "2025-04-15T08:33:54.380905"
+        },
+        {
+          "actor_key": "ACT-CIAV-000715",
+          "actor_name": "DNS Root Primary",
+          "actor_last_update": "2025-04-15T08:33:54.381063"
+        },
+        {
+          "actor_key": "ACT-CIAV-000712",
+          "actor_name": "DNS Zone Provider",
+          "actor_last_update": "2025-04-15T08:33:54.381140"
+        },
+        {
+          "actor_key": "ACT-CIAV-000713",
+          "actor_name": "DNS Root Provider",
+          "actor_last_update": "2025-04-15T08:33:54.380985"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0019",
+      "service_name": "Informal Messaging",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000759",
+          "actor_name": "Email Server",
+          "actor_last_update": "2025-04-15T08:33:54.381456"
+        },
+        {
+          "actor_key": "ACT-CIAV-000762",
+          "actor_name": "Email Provider",
+          "actor_last_update": "2025-04-15T08:33:54.381534"
+        },
+        {
+          "actor_key": "ACT-CIAV-000165",
+          "actor_name": "Email sender",
+          "actor_last_update": "2025-04-15T08:33:54.381299"
+        },
+        {
+          "actor_key": "ACT-CIAV-000164",
+          "actor_name": "Email recipient",
+          "actor_last_update": "2025-04-15T08:33:54.381378"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0009",
+      "service_name": "Friendly Force Tracking",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000699",
+          "actor_name": "FFT Server",
+          "actor_last_update": "2025-04-15T08:33:54.383006"
+        },
+        {
+          "actor_key": "ACT-CIAV-000041",
+          "actor_name": "FFT Gateway",
+          "actor_last_update": "2025-04-15T08:33:54.382692"
+        },
+        {
+          "actor_key": "ACT-CIAV-000698",
+          "actor_name": "FFT Provider",
+          "actor_last_update": "2025-04-15T08:33:54.382929"
+        },
+        {
+          "actor_key": "ACT-CIAV-000021",
+          "actor_name": "FFT System",
+          "actor_last_update": "2025-04-15T08:33:54.382228"
+        },
+        {
+          "actor_key": "ACT-CIAV-000692",
+          "actor_name": "TrAD Implementer",
+          "actor_last_update": "2025-04-15T08:33:54.383288"
+        },
+        {
+          "actor_key": "ACT-CIAV-000240",
+          "actor_name": "FFT Terminal",
+          "actor_last_update": "2025-04-15T08:33:54.382772"
+        },
+        {
+          "actor_key": "ACT-CIAV-000693",
+          "actor_name": "TrAD Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.382518"
+        },
+        {
+          "actor_key": "ACT-CIAV-000696",
+          "actor_name": "FFT Forwarder",
+          "actor_last_update": "2025-04-15T08:33:54.381940"
+        },
+        {
+          "actor_key": "ACT-CIAV-000694",
+          "actor_name": "TrAD Provider",
+          "actor_last_update": "2025-04-15T08:33:54.383159"
+        },
+        {
+          "actor_key": "ACT-CIAV-000697",
+          "actor_name": "FFT Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.382610"
+        },
+        {
+          "actor_key": "ACT-CIAV-002810",
+          "actor_name": "FFT Proxy",
+          "actor_last_update": "2025-04-15T08:33:54.382852"
+        },
+        {
+          "actor_key": "ACT-CIAV-000695",
+          "actor_name": "TrAD Authority",
+          "actor_last_update": "2025-04-15T08:33:54.383384"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0010",
+      "service_name": "Ground-to-Air Information Exchange",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000689",
+          "actor_name": "Weapon Delivery Asset (WDA)",
+          "actor_last_update": "2025-04-15T08:33:54.383687"
+        },
+        {
+          "actor_key": "ACT-CIAV-000691",
+          "actor_name": "Ground-to-Air Service",
+          "actor_last_update": "2025-04-15T08:33:54.383601"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0018",
+      "service_name": "Geospatial Information",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000765",
+          "actor_name": "Geo Portal",
+          "actor_last_update": "2025-04-15T08:33:54.383934"
+        },
+        {
+          "actor_key": "ACT-CIAV-000766",
+          "actor_name": "Geo Client",
+          "actor_last_update": "2025-04-15T08:33:54.384110"
+        },
+        {
+          "actor_key": "ACT-CIAV-000767",
+          "actor_name": "Geo Server",
+          "actor_last_update": "2025-04-15T08:33:54.384424"
+        },
+        {
+          "actor_key": "ACT-CIAV-000764",
+          "actor_name": "Web Client",
+          "actor_last_update": "2025-04-15T08:33:54.383852"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0003",
+      "service_name": "Intelligence Battlespace Objects Exchange",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-001066",
+          "actor_name": "Remote Intelligence BsO system",
+          "actor_last_update": "2025-04-15T08:33:54.384610"
+        },
+        {
+          "actor_key": "ACT-CIAV-001065",
+          "actor_name": "Intelligence BsO system",
+          "actor_last_update": "2025-04-15T08:33:54.384688"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0002",
+      "service_name": "Fires Information Exchange",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": []
+    },
+    {
+      "service_id": "SRV-0004",
+      "service_name": "Joint ISR Information Exchange",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000685",
+          "actor_name": "CSD Consumer Peer",
+          "actor_last_update": "2025-04-15T08:33:54.384930"
+        },
+        {
+          "actor_key": "ACT-CIAV-000682",
+          "actor_name": "ISR Streaming Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.385331"
+        },
+        {
+          "actor_key": "ACT-CIAV-000684",
+          "actor_name": "ISR Streaming",
+          "actor_last_update": "2025-04-15T08:33:54.385255"
+        },
+        {
+          "actor_key": "ACT-CIAV-000686",
+          "actor_name": "CSD Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.385178"
+        },
+        {
+          "actor_key": "ACT-CIAV-000688",
+          "actor_name": "CSD",
+          "actor_last_update": "2025-04-15T08:33:54.385407"
+        },
+        {
+          "actor_key": "ACT-CIAV-000687",
+          "actor_name": "CSD Provider",
+          "actor_last_update": "2025-04-15T08:33:54.385084"
+        },
+        {
+          "actor_key": "ACT-CIAV-001461",
+          "actor_name": "CSD Administrator",
+          "actor_last_update": "2025-04-15T08:33:54.385007"
+        },
+        {
+          "actor_key": "ACT-CIAV-000683",
+          "actor_name": "ISR Streaming Provider",
+          "actor_last_update": "2025-04-15T08:33:54.385480"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0008",
+      "service_name": "Data Links",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000774",
+          "actor_name": "Data Link Server",
+          "actor_last_update": "2025-04-15T08:33:54.385621",
+          "gps": [
+            {
+              "id": "GP-0001",
+              "name": "Data Link Server"
+            }
+          ]
+        },
+        {
+          "actor_key": "ACT-CIAV-000773",
+          "actor_name": "Data Link Server Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.385694",
+          "gps": [
+            {
+              "id": "GP-0037",
+              "name": "Data Link Client"
+            }
+          ]
+        },
+        {
+          "actor_key": "ACT-CIAV-000771",
+          "actor_name": "Data Link Server Provider",
+          "actor_last_update": "2025-04-15T08:33:54.385841",
+          "gps": [
+            {
+              "id": "GP-0003",
+              "name": "Data Link Server Gateway"
+            }
+          ]
+        },
+        {
+          "actor_key": "ACT-CIAV-000769",
+          "actor_name": "Data Link Server Hub",
+          "actor_last_update": "2025-04-15T08:33:54.385917",
+          "gps": [
+            {
+              "id": "GP-0002",
+              "name": "Data Link Server Hub"
+            }
+          ]
+        },
+        {
+          "actor_key": "ACT-CIAV-000772",
+          "actor_name": "Data Link Server Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.385768",
+          "gps": [
+            {
+              "id": "GP-0001",
+              "name": "Data Link Server"
+            }
+          ]
+        },
+        {
+          "actor_key": "ACT-CIAV-000770",
+          "actor_name": "Data Link Server Target",
+          "actor_last_update": "2025-04-15T08:33:54.385994",
+          "gps": [
+            {
+              "id": "GP-0001",
+              "name": "Data Link Server"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0006",
+      "service_name": "Land Tactical C2 Information Exchange",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000674",
+          "actor_name": "Land Tactical Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.386211"
+        },
+        {
+          "actor_key": "ACT-CIAV-000673",
+          "actor_name": "Land Tactical Target",
+          "actor_last_update": "2025-04-15T08:33:54.386137"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0005",
+      "service_name": "Land C2 Information Exchange",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000213",
+          "actor_name": "MIP4 Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.386348"
+        },
+        {
+          "actor_key": "ACT-CIAV-002809",
+          "actor_name": "MIP4 Forwarder",
+          "actor_last_update": "2025-04-15T08:33:54.386750"
+        },
+        {
+          "actor_key": "ACT-CIAV-000681",
+          "actor_name": "MIP GW",
+          "actor_last_update": "2025-04-15T08:33:54.386512"
+        },
+        {
+          "actor_key": "ACT-CIAV-000680",
+          "actor_name": "MIP GW Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.386421"
+        },
+        {
+          "actor_key": "ACT-CIAV-000679",
+          "actor_name": "MIP GW Target",
+          "actor_last_update": "2025-04-15T08:33:54.386646"
+        },
+        {
+          "actor_key": "ACT-CIAV-000214",
+          "actor_name": "MIP4 Provider",
+          "actor_last_update": "2025-04-15T08:33:54.386870"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0007",
+      "service_name": "Maritime C2 Information Exchange",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000672",
+          "actor_name": "RMP Manager",
+          "actor_last_update": "2025-04-15T08:33:54.387152"
+        },
+        {
+          "actor_key": "ACT-CIAV-000667",
+          "actor_name": "RMP Sysadmin",
+          "actor_last_update": "2025-04-15T08:33:54.387383"
+        },
+        {
+          "actor_key": "ACT-CIAV-000135",
+          "actor_name": "RMP MNP",
+          "actor_last_update": "2025-04-15T08:33:54.387231"
+        },
+        {
+          "actor_key": "ACT-CIAV-000136",
+          "actor_name": "RMP SMA",
+          "actor_last_update": "2025-04-15T08:33:54.387533"
+        },
+        {
+          "actor_key": "ACT-CIAV-001486",
+          "actor_name": "Global RMP Manager",
+          "actor_last_update": "2025-04-15T08:33:54.387607"
+        },
+        {
+          "actor_key": "ACT-CIAV-000669",
+          "actor_name": "RMP Operator",
+          "actor_last_update": "2025-04-15T08:33:54.387069"
+        },
+        {
+          "actor_key": "ACT-CIAV-000014",
+          "actor_name": "MCC Commander",
+          "actor_last_update": "2025-04-15T08:33:54.387308"
+        },
+        {
+          "actor_key": "ACT-CIAV-001487",
+          "actor_name": "Local RMP Manager",
+          "actor_last_update": "2025-04-15T08:33:54.387458"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0016",
+      "service_name": "Distributed Time",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-001056",
+          "actor_name": "SBC Peer A",
+          "actor_last_update": "2025-04-15T08:33:54.387762"
+        },
+        {
+          "actor_key": "ACT-CIAV-000720",
+          "actor_name": "Time Server",
+          "actor_last_update": "2025-04-15T08:33:54.388048"
+        },
+        {
+          "actor_key": "ACT-CIAV-000681",
+          "actor_name": "MIP GW",
+          "actor_last_update": "2025-04-15T08:33:54.387977"
+        },
+        {
+          "actor_key": "ACT-CIAV-000261",
+          "actor_name": "Time Server Stratum 2",
+          "actor_last_update": "2025-04-15T08:33:54.388204"
+        },
+        {
+          "actor_key": "ACT-CIAV-000747",
+          "actor_name": "Video Terminal Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.387837"
+        },
+        {
+          "actor_key": "ACT-CIAV-000719",
+          "actor_name": "Time Server Peer",
+          "actor_last_update": "2025-04-15T08:33:54.388118"
+        },
+        {
+          "actor_key": "ACT-CIAV-000717",
+          "actor_name": "Time Client",
+          "actor_last_update": "2025-04-15T08:33:54.387907"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0011",
+      "service_name": "Overlay Distribution",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000533",
+          "actor_name": "Overlay Service Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.388709"
+        },
+        {
+          "actor_key": "ACT-CIAV-000757",
+          "actor_name": "KML Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.388499"
+        },
+        {
+          "actor_key": "ACT-CIAV-000665",
+          "actor_name": "Overlay Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.388779"
+        },
+        {
+          "actor_key": "ACT-CIAV-002503",
+          "actor_name": "Overlay Service Forwarder",
+          "actor_last_update": "2025-04-15T08:33:54.388639"
+        },
+        {
+          "actor_key": "ACT-CIAV-000535",
+          "actor_name": "Overlay Service Provider",
+          "actor_last_update": "2025-04-15T08:33:54.388355"
+        },
+        {
+          "actor_key": "ACT-CIAV-000666",
+          "actor_name": "Overlay Provider",
+          "actor_last_update": "2025-04-15T08:33:54.388569"
+        },
+        {
+          "actor_key": "ACT-CIAV-000758",
+          "actor_name": "KML Provider",
+          "actor_last_update": "2025-04-15T08:33:54.388429"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0027",
+      "service_name": "Protected Core Networking",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000280",
+          "actor_name": "PCN-interface",
+          "actor_last_update": "2025-04-15T08:33:54.389196"
+        },
+        {
+          "actor_key": "ACT-CIAV-000230",
+          "actor_name": "Initiator E-Node/P-Function",
+          "actor_last_update": "2025-04-15T08:33:54.389619"
+        },
+        {
+          "actor_key": "ACT-CIAV-000266",
+          "actor_name": "PCN-2",
+          "actor_last_update": "2025-04-15T08:33:54.389547"
+        },
+        {
+          "actor_key": "ACT-CIAV-000155",
+          "actor_name": "Target E-Node",
+          "actor_last_update": "2025-04-15T08:33:54.389056"
+        },
+        {
+          "actor_key": "ACT-CIAV-000121",
+          "actor_name": "Protected Core Segment",
+          "actor_last_update": "2025-04-15T08:33:54.389126"
+        },
+        {
+          "actor_key": "ACT-CIAV-000217",
+          "actor_name": "Target P-Function",
+          "actor_last_update": "2025-04-15T08:33:54.389478"
+        },
+        {
+          "actor_key": "ACT-CIAV-000231",
+          "actor_name": "Target E-Node/P-Function",
+          "actor_last_update": "2025-04-15T08:33:54.388914"
+        },
+        {
+          "actor_key": "ACT-CIAV-000150",
+          "actor_name": "E-Node",
+          "actor_last_update": "2025-04-15T08:33:54.389692"
+        },
+        {
+          "actor_key": "ACT-CIAV-000737",
+          "actor_name": "Target",
+          "actor_last_update": "2025-04-15T08:33:54.389833"
+        },
+        {
+          "actor_key": "ACT-CIAV-000751",
+          "actor_name": "SMA",
+          "actor_last_update": "2025-04-15T08:33:54.389337"
+        },
+        {
+          "actor_key": "ACT-CIAV-002519",
+          "actor_name": "P-function",
+          "actor_last_update": "2025-04-15T08:33:54.388985"
+        },
+        {
+          "actor_key": "ACT-CIAV-000137",
+          "actor_name": "NMCD",
+          "actor_last_update": "2025-04-15T08:33:54.389762"
+        },
+        {
+          "actor_key": "ACT-CIAV-000154",
+          "actor_name": "Initiator E-Node",
+          "actor_last_update": "2025-04-15T08:33:54.389407"
+        },
+        {
+          "actor_key": "ACT-CIAV-000738",
+          "actor_name": "Initiator",
+          "actor_last_update": "2025-04-15T08:33:54.389266"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0014",
+      "service_name": "Digital Certificates",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000728",
+          "actor_name": "Certificate Server",
+          "actor_last_update": "2025-04-15T08:33:54.390107"
+        },
+        {
+          "actor_key": "ACT-CIAV-000765",
+          "actor_name": "Geo Portal",
+          "actor_last_update": "2025-04-15T08:33:54.389967"
+        },
+        {
+          "actor_key": "ACT-CIAV-000726",
+          "actor_name": "OCSP Provider",
+          "actor_last_update": "2025-04-15T08:33:54.390177"
+        },
+        {
+          "actor_key": "ACT-CIAV-000180",
+          "actor_name": "Certificate Client*",
+          "actor_last_update": "2025-04-15T08:33:54.390037"
+        },
+        {
+          "actor_key": "ACT-CIAV-000725",
+          "actor_name": "Certificate Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.390247"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0020",
+      "service_name": "Service Management and Control",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000710",
+          "actor_name": "SMC Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.390383"
+        },
+        {
+          "actor_key": "ACT-CWIX-000003",
+          "actor_name": "SMC CSE",
+          "actor_last_update": "2025-04-15T08:33:54.390524"
+        },
+        {
+          "actor_key": "ACT-CIAV-000701",
+          "actor_name": "Service Provider",
+          "actor_last_update": "2025-04-15T08:33:54.390594"
+        },
+        {
+          "actor_key": "ACT-CIAV-001064",
+          "actor_name": "Subscriber",
+          "actor_last_update": "2025-04-15T08:33:54.390454"
+        },
+        {
+          "actor_key": "ACT-CWIX-000005",
+          "actor_name": "Service Consumer",
+          "actor_last_update": "2025-04-15T08:33:54.390664"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0022",
+      "service_name": "Virtualized Processing",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-002517",
+          "actor_name": "Virtual Machine Service Consumer ( ROLE - 26 )",
+          "actor_last_update": "2025-04-15T08:33:54.390872"
+        },
+        {
+          "actor_key": "ACT-CIAV-002518",
+          "actor_name": "Virtual Machine Service Provider ( ROLE - 27 )",
+          "actor_last_update": "2025-04-15T08:33:54.390801"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0023",
+      "service_name": "Web Authentication",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000703",
+          "actor_name": "Identity Provider B",
+          "actor_last_update": "2025-04-15T08:33:54.391160"
+        },
+        {
+          "actor_key": "ACT-CIAV-002823",
+          "actor_name": "Identity Hub",
+          "actor_last_update": "2025-04-15T08:33:54.391017"
+        },
+        {
+          "actor_key": "ACT-CIAV-000539",
+          "actor_name": "Identity Provider A",
+          "actor_last_update": "2025-04-15T08:33:54.391087"
+        }
+      ]
+    },
+    {
+      "service_id": "SRV-0024",
+      "service_name": "Web Hosting",
+      "model_id": "MOD-0001",
+      "model_name": "SP5",
+      "actors": [
+        {
+          "actor_key": "ACT-CIAV-000764",
+          "actor_name": "Web Client",
+          "actor_last_update": "2025-04-15T08:33:54.391292"
+        },
+        {
+          "actor_key": "ACT-CIAV-000700",
+          "actor_name": "Web Server",
+          "actor_last_update": "2025-04-15T08:33:54.391364"
+        }
+      ]
+    }
+  ]
+}

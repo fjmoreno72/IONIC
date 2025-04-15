@@ -457,7 +457,7 @@ def get_possible_gps_for_actor(service_id: str, model_id: str) -> List[Dict[str,
                 "id": gp_id,
                 "name": gp_name if gp_name else "Name not found"
             })
-        
+        print(gps_with_names)
         return gps_with_names
     
     except Exception as e:

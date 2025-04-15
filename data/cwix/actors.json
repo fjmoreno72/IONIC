@@ -1278,6 +1278,17 @@
     },
     {
         "actorType": "technical",
+        "id": "e8095f66-af09-4474-b28a-f4314e4e0811",
+        "key": "ACT-CWIX-000361",
+        "name": "CC405",
+        "itemId": "e9ee98cd-e0c2-4b94-bb7a-72b14b32796c",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-09T17:58:12.9578125+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "5ae855f4-70a3-4e68-ac56-2c60fb780c57",
         "key": "ACT-CWIX-000276",
         "name": "CC-435 GBR GEO",
@@ -4243,6 +4254,17 @@
     },
     {
         "actorType": "technical",
+        "id": "ce21b0d0-1f6b-4038-8bed-3ef3d92c7544",
+        "key": "ACT-CWIX-000362",
+        "name": "HLA CBRN CONSUMER",
+        "itemId": "d4620616-5dec-4498-ae65-84bda3a0f95b",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-09T18:00:36.8769898+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "cafc9c85-b6f2-4a24-8b6b-fc190f365c2d",
         "key": "ACT-CWIX-000345",
         "name": "Host A",
@@ -4879,6 +4901,18 @@
         "version": {
             "number": 1,
             "createdOn": "2024-11-27T17:28:08.569676+01:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "9e0a4dff-73b6-44e2-8b45-a9d5a8c18bf8",
+        "key": "ACT-CWIX-000363",
+        "name": "iperf client",
+        "itemId": "b2c40a82-2628-43bb-aaef-3d124ebf38fc",
+        "predecessor": "ae98012d-f960-4138-8a84-a652d1ca5ba3",
+        "version": {
+            "number": 2,
+            "createdOn": "2025-04-14T18:32:27.2170431+02:00"
         }
     },
     {

@@ -323,6 +323,16 @@ export class DataTable {
     this.setupSortingListeners();
   }
   
+  /**
+   * Get the items on the current page
+   * @return {Array} Array of items on the current page
+   */
+  getPageItems() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredItems.slice(startIndex, endIndex);
+  }
+  
   setupSortingListeners() {
     const table = document.getElementById(this.tableId);
     if (!table) return;

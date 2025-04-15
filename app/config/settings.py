@@ -24,7 +24,7 @@ LOG_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 LOG_LEVEL = os.environ.get("IONIC2_LOG_LEVEL", "ERROR")
 
 # API request settings
-REQUEST_TIMEOUT = (300, 300)  # (connect timeout, read timeout)
+REQUEST_TIMEOUT = (400, 400)  # (connect timeout, read timeout)
 VERIFY_SSL = False # Disable SSL verification (necessary for internal CAs without local trust)
 # To properly verify, provide the path to the CA bundle file below
 # or install the CA certificate in the system's trust store.

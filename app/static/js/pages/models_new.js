@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
-    console.log('Row clicked, data:', rowData);
+    // console.log('Row clicked, data:', rowData);
     
     // Handle row click to open edit dialog
     openModelDialog(rowData);

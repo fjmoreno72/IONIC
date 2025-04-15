@@ -9,28 +9,46 @@
         {
           "actor_key": "ACT-CIAV-000165",
           "actor_name": "Email sender",
+          "actor_last_update": "2025-04-15T12:37:31.576861",
           "gps": [
             {
-              "gp_id": "GP-TEST-001",
-              "gp_name": "Email Sender*"
+              "id": "GP-0126",
+              "name": "Email Client"
             }
-          ],
-          "actor_last_update": "2025-04-14T17:48:58.326211"
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000700",
           "actor_name": "Web Server",
-          "actor_last_update": "2025-04-14T17:48:58.326292"
+          "actor_last_update": "2025-04-15T12:37:31.577082",
+          "gps": [
+            {
+              "id": "GP-0012",
+              "name": "Web Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000764",
           "actor_name": "Web Client",
-          "actor_last_update": "2025-04-14T17:48:58.326436"
+          "actor_last_update": "2025-04-15T12:37:31.577500",
+          "gps": [
+            {
+              "id": "GP-0014",
+              "name": "Web Client"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000164",
           "actor_name": "Email recipient",
-          "actor_last_update": "2025-04-14T17:48:58.326367"
+          "actor_last_update": "2025-04-15T12:37:31.577265",
+          "gps": [
+            {
+              "id": "GP-0126",
+              "name": "Email Client"
+            }
+          ]
         }
       ]
     },
@@ -43,47 +61,101 @@
         {
           "actor_key": "ACT-CIAV-000740",
           "actor_name": "MCU",
-          "actor_last_update": "2025-04-14T17:48:58.326994"
+          "actor_last_update": "2025-04-15T12:37:31.579276",
+          "gps": [
+            {
+              "id": "GP-0084",
+              "name": "MCU (Video Conference)"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000742",
           "actor_name": "SBC Target",
-          "actor_last_update": "2025-04-14T17:48:58.326926"
+          "actor_last_update": "2025-04-15T12:37:31.579090",
+          "gps": [
+            {
+              "id": "GP-0026",
+              "name": "SBC"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000745",
           "actor_name": "Audio Terminal Target 1",
-          "actor_last_update": "2025-04-14T17:48:58.327137"
+          "actor_last_update": "2025-04-15T12:37:31.579651",
+          "gps": [
+            {
+              "id": "GP-0015",
+              "name": "Audio Terminal"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000746",
           "actor_name": "Video Terminal Target",
-          "actor_last_update": "2025-04-14T17:48:58.327069"
+          "actor_last_update": "2025-04-15T12:37:31.579456",
+          "gps": [
+            {
+              "id": "GP-0029",
+              "name": "Video Terminal"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000749",
           "actor_name": "Audio Terminal Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.326791"
+          "actor_last_update": "2025-04-15T12:37:31.578661",
+          "gps": [
+            {
+              "id": "GP-0015",
+              "name": "Audio Terminal"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000744",
           "actor_name": "Call Manager",
-          "actor_last_update": "2025-04-14T17:48:58.326723"
+          "actor_last_update": "2025-04-15T12:37:31.578451",
+          "gps": [
+            {
+              "id": "GP-0016",
+              "name": "Call Manager"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000747",
           "actor_name": "Video Terminal Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.326654"
+          "actor_last_update": "2025-04-15T12:37:31.578242",
+          "gps": [
+            {
+              "id": "GP-0029",
+              "name": "Video Terminal"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000743",
           "actor_name": "SBC Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.326858"
+          "actor_last_update": "2025-04-15T12:37:31.578850",
+          "gps": [
+            {
+              "id": "GP-0026",
+              "name": "SBC"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000741",
           "actor_name": "Conference Server",
-          "actor_last_update": "2025-04-14T17:48:58.326584"
+          "actor_last_update": "2025-04-15T12:37:31.578037",
+          "gps": [
+            {
+              "id": "GP-0019",
+              "name": "Conference Server (Audio)"
+            }
+          ]
         }
       ]
     },
@@ -96,22 +168,46 @@
         {
           "actor_key": "ACT-CIAV-000173",
           "actor_name": "Event attendee",
-          "actor_last_update": "2025-04-14T17:48:58.327409"
+          "actor_last_update": "2025-04-15T12:37:31.580752",
+          "gps": [
+            {
+              "id": "GP-0093",
+              "name": "Calendar Client"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000729",
           "actor_name": "Calendar Client Organizer",
-          "actor_last_update": "2025-04-14T17:48:58.327476"
+          "actor_last_update": "2025-04-15T12:37:31.581370",
+          "gps": [
+            {
+              "id": "GP-0093",
+              "name": "Calendar Client"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000733",
           "actor_name": "Calendar Provider",
-          "actor_last_update": "2025-04-14T17:48:58.327273"
+          "actor_last_update": "2025-04-15T12:37:31.580248",
+          "gps": [
+            {
+              "id": "GP-0127",
+              "name": "Calendar Provider"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000731",
           "actor_name": "Calendar Client Reader",
-          "actor_last_update": "2025-04-14T17:48:58.327341"
+          "actor_last_update": "2025-04-15T12:37:31.580495",
+          "gps": [
+            {
+              "id": "GP-0093",
+              "name": "Calendar Client"
+            }
+          ]
         }
       ]
     },
@@ -124,27 +220,27 @@
         {
           "actor_key": "ACT-CIAV-000705",
           "actor_name": "Chat Client",
-          "actor_last_update": "2025-04-14T17:48:58.327674"
+          "actor_last_update": "2025-04-15T12:37:31.583229"
         },
         {
           "actor_key": "ACT-CIAV-000707",
           "actor_name": "Chat Server",
-          "actor_last_update": "2025-04-14T17:48:58.327809"
+          "actor_last_update": "2025-04-15T12:37:31.583971"
         },
         {
           "actor_key": "ACT-CIAV-000704",
           "actor_name": "Chat Client Partner",
-          "actor_last_update": "2025-04-14T17:48:58.327741"
+          "actor_last_update": "2025-04-15T12:37:31.583534"
         },
         {
           "actor_key": "ACT-CIAV-000706",
           "actor_name": "Chat Server Partner",
-          "actor_last_update": "2025-04-14T17:48:58.327884"
+          "actor_last_update": "2025-04-15T12:37:31.584302"
         },
         {
           "actor_key": "ACT-CIAV-000220",
           "actor_name": "Chat Client User",
-          "actor_last_update": "2025-04-14T17:48:58.327606"
+          "actor_last_update": "2025-04-15T12:37:31.583035"
         }
       ]
     },
@@ -157,72 +253,138 @@
         {
           "actor_key": "ACT-CIAV-000756",
           "actor_name": "Router",
-          "actor_last_update": "2025-04-14T17:48:58.328866"
+          "actor_last_update": "2025-04-15T12:37:31.588235",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000736",
           "actor_name": "Provider",
-          "actor_last_update": "2025-04-14T17:48:58.328238"
+          "actor_last_update": "2025-04-15T12:37:31.586304",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000277",
           "actor_name": "Initator",
-          "actor_last_update": "2025-04-14T17:48:58.328713"
+          "actor_last_update": "2025-04-15T12:37:31.587788",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000755",
           "actor_name": "Router A",
-          "actor_last_update": "2025-04-14T17:48:58.328144"
+          "actor_last_update": "2025-04-15T12:37:31.586105",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000754",
           "actor_name": "Router B",
-          "actor_last_update": "2025-04-14T17:48:58.328637"
+          "actor_last_update": "2025-04-15T12:37:31.587594",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000013",
           "actor_name": "MNP",
-          "actor_last_update": "2025-04-14T17:48:58.329016"
+          "actor_last_update": "2025-04-15T12:37:31.588608",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-001578",
           "actor_name": "NIP Router",
-          "actor_last_update": "2025-04-14T17:48:58.328038"
+          "actor_last_update": "2025-04-15T12:37:31.585898",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000713",
           "actor_name": "DNS Root Provider",
-          "actor_last_update": "2025-04-14T17:48:58.328324"
+          "actor_last_update": "2025-04-15T12:37:31.586497"
         },
         {
           "actor_key": "ACT-CIAV-000703",
           "actor_name": "Identity Provider B",
-          "actor_last_update": "2025-04-14T17:48:58.329148"
+          "actor_last_update": "2025-04-15T12:37:31.588783"
         },
         {
           "actor_key": "ACT-CIAV-000580",
           "actor_name": "Client Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.328790"
+          "actor_last_update": "2025-04-15T12:37:31.588037",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000510",
           "actor_name": "System Administrator",
-          "actor_last_update": "2025-04-14T17:48:58.328560"
+          "actor_last_update": "2025-04-15T12:37:31.587406"
         },
         {
           "actor_key": "ACT-CIAV-000735",
           "actor_name": "Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.328404"
+          "actor_last_update": "2025-04-15T12:37:31.586814",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000579",
           "actor_name": "Client Target",
-          "actor_last_update": "2025-04-14T17:48:58.328483"
+          "actor_last_update": "2025-04-15T12:37:31.587137",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000738",
           "actor_name": "Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.328941"
+          "actor_last_update": "2025-04-15T12:37:31.588430",
+          "gps": [
+            {
+              "id": "GP-0034",
+              "name": "Router"
+            }
+          ]
         }
       ]
     },
@@ -235,22 +397,46 @@
         {
           "actor_key": "ACT-CIAV-000736",
           "actor_name": "Provider",
-          "actor_last_update": "2025-04-14T17:48:58.329465"
+          "actor_last_update": "2025-04-15T12:37:31.589696",
+          "gps": [
+            {
+              "id": "GP-0114",
+              "name": "E-Node"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000013",
           "actor_name": "MNP",
-          "actor_last_update": "2025-04-14T17:48:58.329311"
+          "actor_last_update": "2025-04-15T12:37:31.589347",
+          "gps": [
+            {
+              "id": "GP-0114",
+              "name": "E-Node"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000735",
           "actor_name": "Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.329717"
+          "actor_last_update": "2025-04-15T12:37:31.589892",
+          "gps": [
+            {
+              "id": "GP-0114",
+              "name": "E-Node"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000150",
           "actor_name": "E-Node",
-          "actor_last_update": "2025-04-14T17:48:58.329387"
+          "actor_last_update": "2025-04-15T12:37:31.589524",
+          "gps": [
+            {
+              "id": "GP-0114",
+              "name": "E-Node"
+            }
+          ]
         }
       ]
     },
@@ -263,22 +449,46 @@
         {
           "actor_key": "ACT-CIAV-000722",
           "actor_name": "Central DIT Provider",
-          "actor_last_update": "2025-04-14T17:48:58.330127"
+          "actor_last_update": "2025-04-15T12:37:31.590337",
+          "gps": [
+            {
+              "id": "GP-0017",
+              "name": "Directory Server (Central)"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000724",
           "actor_name": "MetaTool Owner",
-          "actor_last_update": "2025-04-14T17:48:58.330216"
+          "actor_last_update": "2025-04-15T12:37:31.590549",
+          "gps": [
+            {
+              "id": "GP-0027",
+              "name": "LDAP MetaTool"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000721",
           "actor_name": "Border DIT Provider",
-          "actor_last_update": "2025-04-14T17:48:58.330300"
+          "actor_last_update": "2025-04-15T12:37:31.590763",
+          "gps": [
+            {
+              "id": "GP-0134",
+              "name": "Directory Server (Border)"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000723",
           "actor_name": "MetaTool Provider",
-          "actor_last_update": "2025-04-14T17:48:58.330378"
+          "actor_last_update": "2025-04-15T12:37:31.590970",
+          "gps": [
+            {
+              "id": "GP-0027",
+              "name": "LDAP MetaTool"
+            }
+          ]
         }
       ]
     },
@@ -291,27 +501,57 @@
         {
           "actor_key": "ACT-CIAV-000716",
           "actor_name": "DNS Resolver",
-          "actor_last_update": "2025-04-14T17:48:58.330544"
+          "actor_last_update": "2025-04-15T12:37:31.591397",
+          "gps": [
+            {
+              "id": "GP-0090",
+              "name": "DNS Resolver"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000714",
           "actor_name": "DNS Root Secondary",
-          "actor_last_update": "2025-04-14T17:48:58.330621"
+          "actor_last_update": "2025-04-15T12:37:31.591600",
+          "gps": [
+            {
+              "id": "GP-0007",
+              "name": "DNS Root Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000715",
           "actor_name": "DNS Root Primary",
-          "actor_last_update": "2025-04-14T17:48:58.330768"
+          "actor_last_update": "2025-04-15T12:37:31.592005",
+          "gps": [
+            {
+              "id": "GP-0007",
+              "name": "DNS Root Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000712",
           "actor_name": "DNS Zone Provider",
-          "actor_last_update": "2025-04-14T17:48:58.330839"
+          "actor_last_update": "2025-04-15T12:37:31.592206",
+          "gps": [
+            {
+              "id": "GP-0008",
+              "name": "DNS \ufeffZone Authoritative"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000713",
           "actor_name": "DNS Root Provider",
-          "actor_last_update": "2025-04-14T17:48:58.330696"
+          "actor_last_update": "2025-04-15T12:37:31.591803",
+          "gps": [
+            {
+              "id": "GP-0007",
+              "name": "DNS Root Server"
+            }
+          ]
         }
       ]
     },
@@ -324,22 +564,46 @@
         {
           "actor_key": "ACT-CIAV-000759",
           "actor_name": "Email Server",
-          "actor_last_update": "2025-04-14T17:48:58.331130"
+          "actor_last_update": "2025-04-15T12:37:31.592993",
+          "gps": [
+            {
+              "id": "GP-0125",
+              "name": "Email Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000762",
           "actor_name": "Email Provider",
-          "actor_last_update": "2025-04-14T17:48:58.331201"
+          "actor_last_update": "2025-04-15T12:37:31.593159",
+          "gps": [
+            {
+              "id": "GP-0126",
+              "name": "Email Client"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000165",
           "actor_name": "Email sender",
-          "actor_last_update": "2025-04-14T17:48:58.330985"
+          "actor_last_update": "2025-04-15T12:37:31.592604",
+          "gps": [
+            {
+              "id": "GP-0126",
+              "name": "Email Client"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000164",
           "actor_name": "Email recipient",
-          "actor_last_update": "2025-04-14T17:48:58.331058"
+          "actor_last_update": "2025-04-15T12:37:31.592815",
+          "gps": [
+            {
+              "id": "GP-0126",
+              "name": "Email Client"
+            }
+          ]
         }
       ]
     },
@@ -352,62 +616,62 @@
         {
           "actor_key": "ACT-CIAV-000699",
           "actor_name": "FFT Server",
-          "actor_last_update": "2025-04-14T17:48:58.331914"
+          "actor_last_update": "2025-04-15T12:37:31.595500"
         },
         {
           "actor_key": "ACT-CIAV-000041",
           "actor_name": "FFT Gateway",
-          "actor_last_update": "2025-04-14T17:48:58.331628"
+          "actor_last_update": "2025-04-15T12:37:31.594150"
         },
         {
           "actor_key": "ACT-CIAV-000698",
           "actor_name": "FFT Provider",
-          "actor_last_update": "2025-04-14T17:48:58.331842"
+          "actor_last_update": "2025-04-15T12:37:31.595248"
         },
         {
           "actor_key": "ACT-CIAV-000021",
           "actor_name": "FFT System",
-          "actor_last_update": "2025-04-14T17:48:58.331412"
+          "actor_last_update": "2025-04-15T12:37:31.593647"
         },
         {
           "actor_key": "ACT-CIAV-000692",
           "actor_name": "TrAD Implementer",
-          "actor_last_update": "2025-04-14T17:48:58.332057"
+          "actor_last_update": "2025-04-15T12:37:31.595924"
         },
         {
           "actor_key": "ACT-CIAV-000240",
           "actor_name": "FFT Terminal",
-          "actor_last_update": "2025-04-14T17:48:58.331700"
+          "actor_last_update": "2025-04-15T12:37:31.594669"
         },
         {
           "actor_key": "ACT-CIAV-000693",
           "actor_name": "TrAD Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.331485"
+          "actor_last_update": "2025-04-15T12:37:31.593813"
         },
         {
           "actor_key": "ACT-CIAV-000696",
           "actor_name": "FFT Forwarder",
-          "actor_last_update": "2025-04-14T17:48:58.331341"
+          "actor_last_update": "2025-04-15T12:37:31.593480"
         },
         {
           "actor_key": "ACT-CIAV-000694",
           "actor_name": "TrAD Provider",
-          "actor_last_update": "2025-04-14T17:48:58.331985"
+          "actor_last_update": "2025-04-15T12:37:31.595678"
         },
         {
           "actor_key": "ACT-CIAV-000697",
           "actor_name": "FFT Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.331557"
+          "actor_last_update": "2025-04-15T12:37:31.593982"
         },
         {
           "actor_key": "ACT-CIAV-002810",
           "actor_name": "FFT Proxy",
-          "actor_last_update": "2025-04-14T17:48:58.331771"
+          "actor_last_update": "2025-04-15T12:37:31.595047"
         },
         {
           "actor_key": "ACT-CIAV-000695",
           "actor_name": "TrAD Authority",
-          "actor_last_update": "2025-04-14T17:48:58.332129"
+          "actor_last_update": "2025-04-15T12:37:31.596193"
         }
       ]
     },
@@ -420,12 +684,24 @@
         {
           "actor_key": "ACT-CIAV-000689",
           "actor_name": "Weapon Delivery Asset (WDA)",
-          "actor_last_update": "2025-04-14T17:48:58.332338"
+          "actor_last_update": "2025-04-15T12:37:31.596889",
+          "gps": [
+            {
+              "id": "GP-0141",
+              "name": "WDA"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000691",
           "actor_name": "Ground-to-Air Service",
-          "actor_last_update": "2025-04-14T17:48:58.332266"
+          "actor_last_update": "2025-04-15T12:37:31.596719",
+          "gps": [
+            {
+              "id": "GP-0080",
+              "name": "G2A Server"
+            }
+          ]
         }
       ]
     },
@@ -438,22 +714,46 @@
         {
           "actor_key": "ACT-CIAV-000765",
           "actor_name": "Geo Portal",
-          "actor_last_update": "2025-04-14T17:48:58.332548"
+          "actor_last_update": "2025-04-15T12:37:31.597427",
+          "gps": [
+            {
+              "id": "GP-0109",
+              "name": "Geo Portal"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000766",
           "actor_name": "Geo Client",
-          "actor_last_update": "2025-04-14T17:48:58.332619"
+          "actor_last_update": "2025-04-15T12:37:31.597607",
+          "gps": [
+            {
+              "id": "GP-0041",
+              "name": "Geo Client"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000767",
           "actor_name": "Geo Server",
-          "actor_last_update": "2025-04-14T17:48:58.332690"
+          "actor_last_update": "2025-04-15T12:37:31.597778",
+          "gps": [
+            {
+              "id": "GP-0030",
+              "name": "Geo Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000764",
           "actor_name": "Web Client",
-          "actor_last_update": "2025-04-14T17:48:58.332475"
+          "actor_last_update": "2025-04-15T12:37:31.597258",
+          "gps": [
+            {
+              "id": "GP-0014",
+              "name": "Web Client"
+            }
+          ]
         }
       ]
     },
@@ -466,12 +766,24 @@
         {
           "actor_key": "ACT-CIAV-001066",
           "actor_name": "Remote Intelligence BsO system",
-          "actor_last_update": "2025-04-14T17:48:58.332825"
+          "actor_last_update": "2025-04-15T12:37:31.598112",
+          "gps": [
+            {
+              "id": "GP-0135",
+              "name": "Intelligence BsO System"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-001065",
           "actor_name": "Intelligence BsO system",
-          "actor_last_update": "2025-04-14T17:48:58.332898"
+          "actor_last_update": "2025-04-15T12:37:31.598280",
+          "gps": [
+            {
+              "id": "GP-0135",
+              "name": "Intelligence BsO System"
+            }
+          ]
         }
       ]
     },
@@ -491,42 +803,90 @@
         {
           "actor_key": "ACT-CIAV-000685",
           "actor_name": "CSD Consumer Peer",
-          "actor_last_update": "2025-04-14T17:48:58.333094"
+          "actor_last_update": "2025-04-15T12:37:31.598743",
+          "gps": [
+            {
+              "id": "GP-0042",
+              "name": "CSD"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000682",
           "actor_name": "ISR Streaming Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.333455"
+          "actor_last_update": "2025-04-15T12:37:31.599577",
+          "gps": [
+            {
+              "id": "GP-0119",
+              "name": "ISR Streaming"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000684",
           "actor_name": "ISR Streaming",
-          "actor_last_update": "2025-04-14T17:48:58.333384"
+          "actor_last_update": "2025-04-15T12:37:31.599411",
+          "gps": [
+            {
+              "id": "GP-0119",
+              "name": "ISR Streaming"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000686",
           "actor_name": "CSD Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.333312"
+          "actor_last_update": "2025-04-15T12:37:31.599244",
+          "gps": [
+            {
+              "id": "GP-0042",
+              "name": "CSD"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000688",
           "actor_name": "CSD",
-          "actor_last_update": "2025-04-14T17:48:58.333527"
+          "actor_last_update": "2025-04-15T12:37:31.599742",
+          "gps": [
+            {
+              "id": "GP-0042",
+              "name": "CSD"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000687",
           "actor_name": "CSD Provider",
-          "actor_last_update": "2025-04-14T17:48:58.333241"
+          "actor_last_update": "2025-04-15T12:37:31.599078",
+          "gps": [
+            {
+              "id": "GP-0042",
+              "name": "CSD"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-001461",
           "actor_name": "CSD Administrator",
-          "actor_last_update": "2025-04-14T17:48:58.333169"
+          "actor_last_update": "2025-04-15T12:37:31.598912",
+          "gps": [
+            {
+              "id": "GP-0042",
+              "name": "CSD"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000683",
           "actor_name": "ISR Streaming Provider",
-          "actor_last_update": "2025-04-14T17:48:58.333607"
+          "actor_last_update": "2025-04-15T12:37:31.599913",
+          "gps": [
+            {
+              "id": "GP-0119",
+              "name": "ISR Streaming"
+            }
+          ]
         }
       ]
     },
@@ -539,32 +899,76 @@
         {
           "actor_key": "ACT-CIAV-000774",
           "actor_name": "Data Link Server",
-          "actor_last_update": "2025-04-14T17:48:58.333746"
+          "actor_last_update": "2025-04-15T12:37:31.600225",
+          "gps": [
+            {
+              "id": "GP-0001",
+              "name": "Data Link Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000773",
           "actor_name": "Data Link Server Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.333820"
+          "actor_last_update": "2025-04-15T12:37:31.600390",
+          "gps": [
+            {
+              "id": "GP-0037",
+              "name": "Data Link Client"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000771",
           "actor_name": "Data Link Server Provider",
-          "actor_last_update": "2025-04-14T17:48:58.333968"
+          "actor_last_update": "2025-04-15T12:37:31.600702",
+          "gps": [
+            {
+              "id": "GP-0001",
+              "name": "Data Link Server"
+            },
+            {
+              "id": "GP-0003",
+              "name": "Data Link Server Gateway"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000769",
           "actor_name": "Data Link Server Hub",
-          "actor_last_update": "2025-04-14T17:48:58.334040"
+          "actor_last_update": "2025-04-15T12:37:31.600842",
+          "gps": [
+            {
+              "id": "GP-0001",
+              "name": "Data Link Server"
+            },
+            {
+              "id": "GP-0002",
+              "name": "Data Link Server Hub"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000772",
           "actor_name": "Data Link Server Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.333894"
+          "actor_last_update": "2025-04-15T12:37:31.600555",
+          "gps": [
+            {
+              "id": "GP-0001",
+              "name": "Data Link Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000770",
           "actor_name": "Data Link Server Target",
-          "actor_last_update": "2025-04-14T17:48:58.334112"
+          "actor_last_update": "2025-04-15T12:37:31.600983",
+          "gps": [
+            {
+              "id": "GP-0001",
+              "name": "Data Link Server"
+            }
+          ]
         }
       ]
     },
@@ -577,12 +981,24 @@
         {
           "actor_key": "ACT-CIAV-000674",
           "actor_name": "Land Tactical Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.334318"
+          "actor_last_update": "2025-04-15T12:37:31.601386",
+          "gps": [
+            {
+              "id": "GP-0108",
+              "name": "Land Tactical C2IE"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000673",
           "actor_name": "Land Tactical Target",
-          "actor_last_update": "2025-04-14T17:48:58.334245"
+          "actor_last_update": "2025-04-15T12:37:31.601245",
+          "gps": [
+            {
+              "id": "GP-0108",
+              "name": "Land Tactical C2IE"
+            }
+          ]
         }
       ]
     },
@@ -595,32 +1011,68 @@
         {
           "actor_key": "ACT-CIAV-000213",
           "actor_name": "MIP4 Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.334451"
+          "actor_last_update": "2025-04-15T12:37:31.601648",
+          "gps": [
+            {
+              "id": "GP-0120",
+              "name": "MIP 4 Gateway"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-002809",
           "actor_name": "MIP4 Forwarder",
-          "actor_last_update": "2025-04-14T17:48:58.334739"
+          "actor_last_update": "2025-04-15T12:37:31.602216",
+          "gps": [
+            {
+              "id": "GP-0120",
+              "name": "MIP 4 Gateway"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000681",
           "actor_name": "MIP GW",
-          "actor_last_update": "2025-04-14T17:48:58.334595"
+          "actor_last_update": "2025-04-15T12:37:31.601930",
+          "gps": [
+            {
+              "id": "GP-0120",
+              "name": "MIP 4 Gateway"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000680",
           "actor_name": "MIP GW Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.334523"
+          "actor_last_update": "2025-04-15T12:37:31.601790",
+          "gps": [
+            {
+              "id": "GP-0120",
+              "name": "MIP 4 Gateway"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000679",
           "actor_name": "MIP GW Target",
-          "actor_last_update": "2025-04-14T17:48:58.334667"
+          "actor_last_update": "2025-04-15T12:37:31.602075",
+          "gps": [
+            {
+              "id": "GP-0120",
+              "name": "MIP 4 Gateway"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000214",
           "actor_name": "MIP4 Provider",
-          "actor_last_update": "2025-04-14T17:48:58.334810"
+          "actor_last_update": "2025-04-15T12:37:31.602358",
+          "gps": [
+            {
+              "id": "GP-0120",
+              "name": "MIP 4 Gateway"
+            }
+          ]
         }
       ]
     },
@@ -633,42 +1085,42 @@
         {
           "actor_key": "ACT-CIAV-000672",
           "actor_name": "RMP Manager",
-          "actor_last_update": "2025-04-14T17:48:58.335015"
+          "actor_last_update": "2025-04-15T12:37:31.602763"
         },
         {
           "actor_key": "ACT-CIAV-000667",
           "actor_name": "RMP Sysadmin",
-          "actor_last_update": "2025-04-14T17:48:58.335234"
+          "actor_last_update": "2025-04-15T12:37:31.603188"
         },
         {
           "actor_key": "ACT-CIAV-000135",
           "actor_name": "RMP MNP",
-          "actor_last_update": "2025-04-14T17:48:58.335087"
+          "actor_last_update": "2025-04-15T12:37:31.602905"
         },
         {
           "actor_key": "ACT-CIAV-000136",
           "actor_name": "RMP SMA",
-          "actor_last_update": "2025-04-14T17:48:58.335377"
+          "actor_last_update": "2025-04-15T12:37:31.603471"
         },
         {
           "actor_key": "ACT-CIAV-001486",
           "actor_name": "Global RMP Manager",
-          "actor_last_update": "2025-04-14T17:48:58.335448"
+          "actor_last_update": "2025-04-15T12:37:31.603612"
         },
         {
           "actor_key": "ACT-CIAV-000669",
           "actor_name": "RMP Operator",
-          "actor_last_update": "2025-04-14T17:48:58.334943"
+          "actor_last_update": "2025-04-15T12:37:31.602621"
         },
         {
           "actor_key": "ACT-CIAV-000014",
           "actor_name": "MCC Commander",
-          "actor_last_update": "2025-04-14T17:48:58.335162"
+          "actor_last_update": "2025-04-15T12:37:31.603047"
         },
         {
           "actor_key": "ACT-CIAV-001487",
           "actor_name": "Local RMP Manager",
-          "actor_last_update": "2025-04-14T17:48:58.335305"
+          "actor_last_update": "2025-04-15T12:37:31.603330"
         }
       ]
     },
@@ -681,37 +1133,61 @@
         {
           "actor_key": "ACT-CIAV-001056",
           "actor_name": "SBC Peer A",
-          "actor_last_update": "2025-04-14T17:48:58.335582"
+          "actor_last_update": "2025-04-15T12:37:31.603876"
         },
         {
           "actor_key": "ACT-CIAV-000720",
           "actor_name": "Time Server",
-          "actor_last_update": "2025-04-14T17:48:58.335868"
+          "actor_last_update": "2025-04-15T12:37:31.604444",
+          "gps": [
+            {
+              "id": "GP-0028",
+              "name": "Time Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000681",
           "actor_name": "MIP GW",
-          "actor_last_update": "2025-04-14T17:48:58.335797"
+          "actor_last_update": "2025-04-15T12:37:31.604303"
         },
         {
           "actor_key": "ACT-CIAV-000261",
           "actor_name": "Time Server Stratum 2",
-          "actor_last_update": "2025-04-14T17:48:58.336011"
+          "actor_last_update": "2025-04-15T12:37:31.604728",
+          "gps": [
+            {
+              "id": "GP-0028",
+              "name": "Time Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000747",
           "actor_name": "Video Terminal Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.335654"
+          "actor_last_update": "2025-04-15T12:37:31.604018"
         },
         {
           "actor_key": "ACT-CIAV-000719",
           "actor_name": "Time Server Peer",
-          "actor_last_update": "2025-04-14T17:48:58.335940"
+          "actor_last_update": "2025-04-15T12:37:31.604586",
+          "gps": [
+            {
+              "id": "GP-0028",
+              "name": "Time Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000717",
           "actor_name": "Time Client",
-          "actor_last_update": "2025-04-14T17:48:58.335726"
+          "actor_last_update": "2025-04-15T12:37:31.604161",
+          "gps": [
+            {
+              "id": "GP-0039",
+              "name": "Time Client"
+            }
+          ]
         }
       ]
     },
@@ -724,37 +1200,37 @@
         {
           "actor_key": "ACT-CIAV-000533",
           "actor_name": "Overlay Service Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.336503"
+          "actor_last_update": "2025-04-15T12:37:31.605717"
         },
         {
           "actor_key": "ACT-CIAV-000757",
           "actor_name": "KML Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.336288"
+          "actor_last_update": "2025-04-15T12:37:31.605277"
         },
         {
           "actor_key": "ACT-CIAV-000665",
           "actor_name": "Overlay Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.336575"
+          "actor_last_update": "2025-04-15T12:37:31.605864"
         },
         {
           "actor_key": "ACT-CIAV-002503",
           "actor_name": "Overlay Service Forwarder",
-          "actor_last_update": "2025-04-14T17:48:58.336431"
+          "actor_last_update": "2025-04-15T12:37:31.605560"
         },
         {
           "actor_key": "ACT-CIAV-000535",
           "actor_name": "Overlay Service Provider",
-          "actor_last_update": "2025-04-14T17:48:58.336145"
+          "actor_last_update": "2025-04-15T12:37:31.604993"
         },
         {
           "actor_key": "ACT-CIAV-000666",
           "actor_name": "Overlay Provider",
-          "actor_last_update": "2025-04-14T17:48:58.336360"
+          "actor_last_update": "2025-04-15T12:37:31.605418"
         },
         {
           "actor_key": "ACT-CIAV-000758",
           "actor_name": "KML Provider",
-          "actor_last_update": "2025-04-14T17:48:58.336217"
+          "actor_last_update": "2025-04-15T12:37:31.605136"
         }
       ]
     },
@@ -767,72 +1243,72 @@
         {
           "actor_key": "ACT-CIAV-000280",
           "actor_name": "PCN-interface",
-          "actor_last_update": "2025-04-14T17:48:58.336996"
+          "actor_last_update": "2025-04-15T12:37:31.606735"
         },
         {
           "actor_key": "ACT-CIAV-000230",
           "actor_name": "Initiator E-Node/P-Function",
-          "actor_last_update": "2025-04-14T17:48:58.337446"
+          "actor_last_update": "2025-04-15T12:37:31.607587"
         },
         {
           "actor_key": "ACT-CIAV-000266",
           "actor_name": "PCN-2",
-          "actor_last_update": "2025-04-14T17:48:58.337373"
+          "actor_last_update": "2025-04-15T12:37:31.607446"
         },
         {
           "actor_key": "ACT-CIAV-000155",
           "actor_name": "Target E-Node",
-          "actor_last_update": "2025-04-14T17:48:58.336853"
+          "actor_last_update": "2025-04-15T12:37:31.606451"
         },
         {
           "actor_key": "ACT-CIAV-000121",
           "actor_name": "Protected Core Segment",
-          "actor_last_update": "2025-04-14T17:48:58.336925"
+          "actor_last_update": "2025-04-15T12:37:31.606593"
         },
         {
           "actor_key": "ACT-CIAV-000217",
           "actor_name": "Target P-Function",
-          "actor_last_update": "2025-04-14T17:48:58.337298"
+          "actor_last_update": "2025-04-15T12:37:31.607305"
         },
         {
           "actor_key": "ACT-CIAV-000231",
           "actor_name": "Target E-Node/P-Function",
-          "actor_last_update": "2025-04-14T17:48:58.336709"
+          "actor_last_update": "2025-04-15T12:37:31.606165"
         },
         {
           "actor_key": "ACT-CIAV-000150",
           "actor_name": "E-Node",
-          "actor_last_update": "2025-04-14T17:48:58.337518"
+          "actor_last_update": "2025-04-15T12:37:31.607728"
         },
         {
           "actor_key": "ACT-CIAV-000737",
           "actor_name": "Target",
-          "actor_last_update": "2025-04-14T17:48:58.337661"
+          "actor_last_update": "2025-04-15T12:37:31.608009"
         },
         {
           "actor_key": "ACT-CIAV-000751",
           "actor_name": "SMA",
-          "actor_last_update": "2025-04-14T17:48:58.337150"
+          "actor_last_update": "2025-04-15T12:37:31.607019"
         },
         {
           "actor_key": "ACT-CIAV-002519",
           "actor_name": "P-function",
-          "actor_last_update": "2025-04-14T17:48:58.336781"
+          "actor_last_update": "2025-04-15T12:37:31.606308"
         },
         {
           "actor_key": "ACT-CIAV-000137",
           "actor_name": "NMCD",
-          "actor_last_update": "2025-04-14T17:48:58.337589"
+          "actor_last_update": "2025-04-15T12:37:31.607869"
         },
         {
           "actor_key": "ACT-CIAV-000154",
           "actor_name": "Initiator E-Node",
-          "actor_last_update": "2025-04-14T17:48:58.337224"
+          "actor_last_update": "2025-04-15T12:37:31.607161"
         },
         {
           "actor_key": "ACT-CIAV-000738",
           "actor_name": "Initiator",
-          "actor_last_update": "2025-04-14T17:48:58.337075"
+          "actor_last_update": "2025-04-15T12:37:31.606877"
         }
       ]
     },
@@ -845,27 +1321,51 @@
         {
           "actor_key": "ACT-CIAV-000728",
           "actor_name": "Certificate Server",
-          "actor_last_update": "2025-04-14T17:48:58.337938"
+          "actor_last_update": "2025-04-15T12:37:31.608559",
+          "gps": [
+            {
+              "id": "GP-0018",
+              "name": "Certificate Server"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000765",
           "actor_name": "Geo Portal",
-          "actor_last_update": "2025-04-14T17:48:58.337794"
+          "actor_last_update": "2025-04-15T12:37:31.608291"
         },
         {
           "actor_key": "ACT-CIAV-000726",
           "actor_name": "OCSP Provider",
-          "actor_last_update": "2025-04-14T17:48:58.338010"
+          "actor_last_update": "2025-04-15T12:37:31.608680",
+          "gps": [
+            {
+              "id": "GP-0137",
+              "name": "OCSP Provider"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000180",
           "actor_name": "Certificate Client*",
-          "actor_last_update": "2025-04-14T17:48:58.337867"
+          "actor_last_update": "2025-04-15T12:37:31.608431",
+          "gps": [
+            {
+              "id": "GP-0038",
+              "name": "Certificate Client"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000725",
           "actor_name": "Certificate Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.338082"
+          "actor_last_update": "2025-04-15T12:37:31.608802",
+          "gps": [
+            {
+              "id": "GP-0038",
+              "name": "Certificate Client"
+            }
+          ]
         }
       ]
     },
@@ -878,27 +1378,27 @@
         {
           "actor_key": "ACT-CIAV-000710",
           "actor_name": "SMC Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.338216"
+          "actor_last_update": "2025-04-15T12:37:31.609134"
         },
         {
           "actor_key": "ACT-CWIX-000003",
           "actor_name": "SMC CSE",
-          "actor_last_update": "2025-04-14T17:48:58.338361"
+          "actor_last_update": "2025-04-15T12:37:31.609378"
         },
         {
           "actor_key": "ACT-CIAV-000701",
           "actor_name": "Service Provider",
-          "actor_last_update": "2025-04-14T17:48:58.338433"
+          "actor_last_update": "2025-04-15T12:37:31.609498"
         },
         {
           "actor_key": "ACT-CIAV-001064",
           "actor_name": "Subscriber",
-          "actor_last_update": "2025-04-14T17:48:58.338290"
+          "actor_last_update": "2025-04-15T12:37:31.609256"
         },
         {
           "actor_key": "ACT-CWIX-000005",
           "actor_name": "Service Consumer",
-          "actor_last_update": "2025-04-14T17:48:58.338504"
+          "actor_last_update": "2025-04-15T12:37:31.609626"
         }
       ]
     },
@@ -911,12 +1411,24 @@
         {
           "actor_key": "ACT-CIAV-002517",
           "actor_name": "Virtual Machine Service Consumer ( ROLE - 26 )",
-          "actor_last_update": "2025-04-14T17:48:58.338712"
+          "actor_last_update": "2025-04-15T12:37:31.609986",
+          "gps": [
+            {
+              "id": "GP-0111",
+              "name": "Virtual Machine Consumer"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-002518",
           "actor_name": "Virtual Machine Service Provider ( ROLE - 27 )",
-          "actor_last_update": "2025-04-14T17:48:58.338637"
+          "actor_last_update": "2025-04-15T12:37:31.609864",
+          "gps": [
+            {
+              "id": "GP-0110",
+              "name": "Virtual Machine Provider"
+            }
+          ]
         }
       ]
     },
@@ -929,17 +1441,35 @@
         {
           "actor_key": "ACT-CIAV-000703",
           "actor_name": "Identity Provider B",
-          "actor_last_update": "2025-04-14T17:48:58.338989"
+          "actor_last_update": "2025-04-15T12:37:31.610560",
+          "gps": [
+            {
+              "id": "GP-0049",
+              "name": "Identity Provider"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-002823",
           "actor_name": "Identity Hub",
-          "actor_last_update": "2025-04-14T17:48:58.338846"
+          "actor_last_update": "2025-04-15T12:37:31.610225",
+          "gps": [
+            {
+              "id": "GP-0136",
+              "name": "Identity Provider Hub"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000539",
           "actor_name": "Identity Provider A",
-          "actor_last_update": "2025-04-14T17:48:58.338918"
+          "actor_last_update": "2025-04-15T12:37:31.610366",
+          "gps": [
+            {
+              "id": "GP-0049",
+              "name": "Identity Provider"
+            }
+          ]
         }
       ]
     },
@@ -952,12 +1482,24 @@
         {
           "actor_key": "ACT-CIAV-000764",
           "actor_name": "Web Client",
-          "actor_last_update": "2025-04-14T17:48:58.339124"
+          "actor_last_update": "2025-04-15T12:37:31.610933",
+          "gps": [
+            {
+              "id": "GP-0014",
+              "name": "Web Client"
+            }
+          ]
         },
         {
           "actor_key": "ACT-CIAV-000700",
           "actor_name": "Web Server",
-          "actor_last_update": "2025-04-14T17:48:58.339195"
+          "actor_last_update": "2025-04-15T12:37:31.611069",
+          "gps": [
+            {
+              "id": "GP-0012",
+              "name": "Web Server"
+            }
+          ]
         }
       ]
     }

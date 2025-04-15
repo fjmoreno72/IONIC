@@ -134,7 +134,7 @@ export class AffiliateForm {
       label: 'Select Flag Image',
       maxSize: 2 * 1024 * 1024, // 2MB
       onSelect: (file) => {
-        console.log('Flag file selected:', file.name);
+        // console.log('Flag file selected:', file.name);
       }
     });
     
@@ -157,7 +157,7 @@ export class AffiliateForm {
       initialValues: this.data?.environments || [],
       addNewText: 'Add new environment',
       onChange: (values) => {
-        console.log('Selected environments:', values);
+        // console.log('Selected environments:', values);
       }
     });
     

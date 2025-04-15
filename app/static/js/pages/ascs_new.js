@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       gpsData = await response.json();
-      console.log('Successfully fetched GPs data:', gpsData.length, 'items'); // Log success
+      // console.log('Successfully fetched GPs data:', gpsData.length, 'items'); // Log success
       return gpsData;
     } catch (error) {
       console.error('!!! Critical Error fetching GPs data:', error.message, error.stack); // Log detailed error
@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // If gpId is an object (from the new structure), extract the id property
       if (typeof gpId === 'object' && gpId !== null) {
-        console.log('Table view: GP ID is an object:', gpId);
+        // console.log('Table view: GP ID is an object:', gpId);
         // If it has an id property, use that
         if (gpId.id) {
           gpId = gpId.id;
@@ -438,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      console.log('ASCs data from API:', data);
+      // console.log('ASCs data from API:', data);
       return data;
     } catch (error) {
       console.error('Error fetching ASCs data:', error);
@@ -662,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const ascData = ascsTable.allItems?.find(item => item.id === ascId);
 
             if (ascData) {
-              console.log("Editing ASC:", ascData);
+              // console.log("Editing ASC:", ascData);
               // Pass a deep copy to prevent accidental modification of the table's data
               openAscDialog(JSON.parse(JSON.stringify(ascData)));
             } else {

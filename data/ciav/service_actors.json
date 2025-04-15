@@ -1,98 +1,98 @@
 {
   "SP5-SI-AIRC2_Air C2 Information Exchange": [
-    "Email sender",
-    "Web Server",
+    "Web Client",
     "Email recipient",
-    "Web Client"
+    "Web Server",
+    "Email sender"
   ],
   "SP5-SI-AV_Audio and Video-based Collaboration": [
-    "Conference Server",
-    "Video Terminal Initiator",
-    "Call Manager",
-    "Audio Terminal Initiator",
-    "SBC Initiator",
-    "SBC Target",
     "MCU",
+    "Audio Terminal Target 1",
+    "Audio Terminal Initiator",
+    "Call Manager",
+    "SBC Target",
+    "Conference Server",
     "Video Terminal Target",
-    "Audio Terminal Target 1"
+    "Video Terminal Initiator",
+    "SBC Initiator"
   ],
   "SP5-SI-CALENDAR_Calendaring and Scheduling": [
     "Calendar Provider",
-    "Calendar Client Reader",
+    "Calendar Client Organizer",
     "Event attendee",
-    "Calendar Client Organizer"
+    "Calendar Client Reader"
   ],
   "SP5-SI-CHAT_Text-based Collaboration": [
-    "Chat Client User",
-    "Chat Client",
     "Chat Client Partner",
     "Chat Server",
-    "Chat Server Partner"
+    "Chat Server Partner",
+    "Chat Client",
+    "Chat Client User"
   ],
   "SP5-SI-COMMS_Communications": [
+    "Router B",
+    "Identity Provider B",
+    "DNS Root Provider",
+    "Client Initiator",
+    "Initiator",
+    "Provider",
+    "System Administrator",
+    "Router",
+    "Client Target",
+    "Initator",
+    "MNP",
     "NIP Router",
     "Router A",
-    "Provider",
-    "DNS Root Provider",
-    "Consumer",
-    "Client Target",
-    "System Administrator",
-    "Router B",
-    "Initator",
-    "Client Initiator",
-    "Router",
-    "Initiator",
-    "MNP",
-    "Identity Provider B"
+    "Consumer"
   ],
   "SP5-SI-COMMSTPT_Communications Transport": [
-    "MNP",
-    "E-Node",
     "Provider",
-    "Consumer"
+    "E-Node",
+    "Consumer",
+    "MNP"
   ],
   "SP5-SI-DDS_Directory Data Synchronization": [
     "Central DIT Provider",
+    "MetaTool Provider",
     "MetaTool Owner",
-    "Border DIT Provider",
-    "MetaTool Provider"
+    "Border DIT Provider"
   ],
   "SP5-SI-DNS_Domain Naming": [
     "DNS Resolver",
-    "DNS Root Secondary",
     "DNS Root Provider",
-    "DNS Root Primary",
-    "DNS Zone Provider"
+    "DNS Root Secondary",
+    "DNS Zone Provider",
+    "DNS Root Primary"
   ],
   "SP5-SI-EMAIL_Informal Messaging": [
-    "Email sender",
     "Email recipient",
+    "Email sender",
     "Email Server",
     "Email Provider"
   ],
   "SP5-SI-FFT_Friendly Force Tracking": [
     "FFT Forwarder",
-    "FFT System",
-    "TrAD Consumer",
-    "FFT Consumer",
-    "FFT Gateway",
-    "FFT Terminal",
-    "FFT Proxy",
     "FFT Provider",
     "FFT Server",
+    "FFT System",
+    "TrAD Consumer",
+    "TrAD Authority",
+    "FFT Proxy",
     "TrAD Provider",
+    "FFT Gateway",
+    "FFT Terminal",
     "TrAD Implementer",
-    "TrAD Authority"
+    "FFT Consumer"
   ],
   "SP5-SI-G2A_Ground-to-Air Information Exchange": [
     "Ground-to-Air Service",
     "Weapon Delivery Asset (WDA)"
   ],
   "SP5-SI-GEO_Geospatial Information": [
+    "Geo Server",
     "Web Client",
-    "Geo Portal",
     "Geo Client",
-    "Geo Server"
+    "Geo Portal"
   ],
   "SP5-SI-IBOX_Intelligence Battlespace Objects Exchange": [
     "Remote Intelligence BsO system",
@@ -100,101 +100,101 @@
   ],
   "SP5-SI-INFOEX_Fires Information Exchange": [],
   "SP5-SI-JISRIE_Joint ISR Information Exchange": [
-    "CSD Consumer Peer",
     "CSD Administrator",
-    "CSD Provider",
-    "CSD Consumer",
-    "ISR Streaming",
-    "ISR Streaming Consumer",
     "CSD",
+    "ISR Streaming",
+    "CSD Consumer",
+    "ISR Streaming Consumer",
+    "CSD Provider",
+    "CSD Consumer Peer",
     "ISR Streaming Provider"
   ],
   "SP5-SI-JREAP_Data Links": [
-    "Data Link Server",
     "Data Link Server Consumer",
-    "Data Link Server Initiator",
-    "Data Link Server Provider",
     "Data Link Server Hub",
-    "Data Link Server Target"
+    "Data Link Server",
+    "Data Link Server Target",
+    "Data Link Server Initiator",
+    "Data Link Server Provider"
   ],
   "SP5-SI-LANDC2T_Land Tactical C2 Information Exchange": [
-    "Land Tactical Target",
-    "Land Tactical Initiator"
+    "Land Tactical Initiator",
+    "Land Tactical Target"
   ],
   "SP5-SI-LC2IE_Land C2 Information Exchange": [
-    "MIP4 Consumer",
-    "MIP GW Initiator",
-    "MIP GW",
     "MIP GW Target",
     "MIP4 Forwarder",
-    "MIP4 Provider"
+    "MIP GW Initiator",
+    "MIP4 Provider",
+    "MIP4 Consumer",
+    "MIP GW"
   ],
   "SP5-SI-MAR2C_Maritime C2 Information Exchange": [
-    "RMP Operator",
-    "RMP Manager",
     "RMP MNP",
-    "MCC Commander",
+    "RMP SMA",
     "RMP Sysadmin",
     "Local RMP Manager",
-    "RMP SMA",
-    "Global RMP Manager"
+    "RMP Operator",
+    "Global RMP Manager",
+    "RMP Manager",
+    "MCC Commander"
   ],
   "SP5-SI-NTP_Distributed Time": [
     "SBC Peer A",
-    "Video Terminal Initiator",
-    "Time Client",
-    "MIP GW",
     "Time Server",
+    "Time Server Stratum 2",
     "Time Server Peer",
-    "Time Server Stratum 2"
+    "Video Terminal Initiator",
+    "MIP GW",
+    "Time Client"
   ],
   "SP5-SI-OVLYD_Overlay Distribution": [
     "Overlay Service Provider",
-    "KML Provider",
-    "KML Consumer",
-    "Overlay Provider",
+    "Overlay Consumer",
     "Overlay Service Forwarder",
     "Overlay Service Consumer",
-    "Overlay Consumer"
+    "KML Provider",
+    "Overlay Provider",
+    "KML Consumer"
   ],
   "SP5-SI-PCN_Protected Core Networking": [
-    "Target E-Node/P-Function",
     "P-function",
-    "Target E-Node",
-    "Protected Core Segment",
-    "PCN-interface",
-    "Initiator",
-    "SMA",
-    "Initiator E-Node",
-    "Target P-Function",
-    "PCN-2",
-    "Initiator E-Node/P-Function",
-    "E-Node",
     "NMCD",
-    "Target"
+    "Protected Core Segment",
+    "E-Node",
+    "Initiator",
+    "Target E-Node/P-Function",
+    "PCN-2",
+    "PCN-interface",
+    "Target P-Function",
+    "Initiator E-Node/P-Function",
+    "Initiator E-Node",
+    "SMA",
+    "Target",
+    "Target E-Node"
   ],
   "SP5-SI-PKI_Digital Certificates": [
     "Geo Portal",
-    "Certificate Client*",
+    "Certificate Consumer",
     "Certificate Server",
-    "OCSP Provider",
-    "Certificate Consumer"
+    "Certificate Client*",
+    "OCSP Provider"
   ],
   "SP5-SI-SMC_Service Management and Control": [
-    "SMC Consumer",
-    "Subscriber",
     "SMC CSE",
-    "Service Provider",
-    "Service Consumer"
+    "SMC Consumer",
+    "Service Consumer",
+    "Subscriber",
+    "Service Provider"
   ],
   "SP5-SI-VP_Virtualized Processing": [
     "Virtual Machine Service Provider ( ROLE - 27 )",
     "Virtual Machine Service Consumer ( ROLE - 26 )"
   ],
   "SP5-SI-WEBAUTH_Web Authentication": [
+    "Identity Provider B",
     "Identity Hub",
-    "Identity Provider A",
-    "Identity Provider B"
+    "Identity Provider A"
   ],
   "SP5-SI-WEBHOST_Web Hosting": [
     "Web Client",

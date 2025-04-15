@@ -556,6 +556,13 @@ def asc_gps():
     # Now uses the refactored component-based template
     return render_template('pages/gps_new.html', title="ASC GPs")
 
+@views_bp.route('/asc_actors2gp')
+@login_required
+def asc_actors2gp():
+    """Render the ASC Actors2GPs table page."""
+    logging.info("Accessing ASC Actors2GPs table page")
+    return render_template('pages/actors2gp.html', title="Actors to GPs")
+
 @views_bp.route('/asc_links')
 @login_required
 def asc_links():

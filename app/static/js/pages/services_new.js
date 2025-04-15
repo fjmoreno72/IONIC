@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return map;
       }, {});
       
-      console.log('Model ID to Name Map:', modelIdToNameMap);
+      // console.log('Model ID to Name Map:', modelIdToNameMap);
       
       // Setup model filter (replacing model filter)
       setupModelFilter(modelsData);
@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Convert model IDs to names
             const modelNames = value
               .map(modelId => {
-                console.log('Model ID:', modelId, 'Map:', modelIdToNameMap);
+                // console.log('Model ID:', modelId, 'Map:', modelIdToNameMap);
                 return modelIdToNameMap[modelId] || modelId;
               })
               .filter(name => name); // Filter out undefined/null names

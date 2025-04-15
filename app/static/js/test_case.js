@@ -346,8 +346,45 @@ function loadThemePreference() {
     }
 }
 
+// Initialize modal accessibility fixes immediately for the test case modal
+function initializeTestCaseModalAccessibility() {
+    const modal = document.getElementById('testCaseModal');
+    if (!modal) return;
+    
+    // Remove aria-hidden attribute entirely from the HTML
+    modal.removeAttribute('aria-hidden');
+    
+    // Create a MutationObserver to prevent aria-hidden from ever being added
+    const observer = new MutationObserver(() => {
+        // Simpler approach: just check if modal is visible and remove aria-hidden if needed
+        if (modal.hasAttribute('aria-hidden') && 
+            (modal.style.display === 'block' || 
+             modal.classList.contains('show') || 
+             window.getComputedStyle(modal).display !== 'none')) {
+            // Use a zero-delay timeout to ensure this runs after any other scripts
+            setTimeout(() => {
+                modal.removeAttribute('aria-hidden');
+                
+                // Also check if body has modal-open class when modal is visible
+                if (!document.body.classList.contains('modal-open')) {
+                    document.body.classList.add('modal-open');
+                }
+            }, 0);
+        }
+    });
+    
+    // Start observing the modal for attribute changes
+    observer.observe(modal, { attributes: true });
+    
+    // Store the observer on window to make sure it's not garbage collected
+    window._testCaseModalObserver = observer;
+}
+
 // Set up event listeners
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize modal accessibility fixes before anything else
+    initializeTestCaseModalAccessibility();
+    
     loadThemePreference();
     fetchData(); // Initial data load and render
 
@@ -496,7 +533,7 @@ function simpleMarkdownToHtml(text) {
     return processedHtml;
 }
 
-// Function to show test case details in a modal (remains the same)
+// Function to show test case details in a modal
 function showTestCaseModal(testCaseData) {
     const modalTitle = document.getElementById('testCaseModalLabel');
     const modalBody = document.getElementById('testCaseModalBody');
@@ -517,8 +554,84 @@ function showTestCaseModal(testCaseData) {
     modalBody.innerHTML = modalHtml;
     populateActorRolesTable(testCaseData);
     populateTestStepsTable(testCaseData);
-    const testCaseModalEl = document.getElementById('testCaseModal');
-    if (testCaseModalEl) { const testCaseModal = new bootstrap.Modal(testCaseModalEl); testCaseModal.show(); }
+    
+    // Show modal with proper accessibility
+    const modal = document.getElementById('testCaseModal');
+    if (!modal) return;
+    
+    // 1. Create backdrop if it doesn't exist
+    let backdrop = document.querySelector('.modal-backdrop');
+    if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'modal-backdrop fade';
+        document.body.appendChild(backdrop);
+        // Briefly delay adding the show class to allow transition
+        setTimeout(() => backdrop.classList.add('show'), 10);
+    }
+    
+    // 2. Properly set up the modal
+    modal.style.display = 'block';
+    modal.removeAttribute('aria-hidden'); // Explicitly remove the aria-hidden attribute
+    
+    // Create a MutationObserver to prevent aria-hidden from being added back while modal is visible
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && 
+                mutation.attributeName === 'aria-hidden' && 
+                modal.style.display === 'block') {
+                modal.removeAttribute('aria-hidden');
+            }
+        });
+    });
+    
+    // Start observing the modal for attribute changes
+    observer.observe(modal, { attributes: true });
+    
+    // Store the observer in a property of the modal to clean it up later
+    modal._ariaObserver = observer;
+    
+    document.body.classList.add('modal-open'); // Prevent background scrolling
+    
+    // 3. Add show class after a brief delay for transition
+    setTimeout(() => modal.classList.add('show'), 10);
+    
+    // 4. Set focus on the first focusable element in the modal
+    setTimeout(() => {
+        const focusable = modal.querySelector('button, [tabindex]:not([tabindex="-1"])');
+        if (focusable) focusable.focus();
+    }, 50);
+}
+
+// Function to hide the modal
+window.hideTestCaseModal = function() {
+    const modal = document.getElementById('testCaseModal');
+    if (!modal) return;
+    
+    // Disconnect the MutationObserver if it exists
+    if (modal._ariaObserver) {
+        modal._ariaObserver.disconnect();
+        delete modal._ariaObserver;
+    }
+    
+    // 1. Remove show class to start the transition
+    modal.classList.remove('show');
+    
+    // 2. Remove the backdrop
+    const backdrop = document.querySelector('.modal-backdrop');
+    if (backdrop) {
+        backdrop.classList.remove('show');
+        // Give time for the fade out animation
+        setTimeout(() => backdrop.remove(), 150);
+    }
+    
+    // 3. Set proper accessibility attributes
+    modal.setAttribute('aria-hidden', 'true'); // Set explicitly to true
+    document.body.classList.remove('modal-open'); // Re-enable background scrolling
+    
+    // 4. Wait for transition before hiding
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 150);
 }
 
 // Function to fetch actor names and populate the table in the modal (remains the same)

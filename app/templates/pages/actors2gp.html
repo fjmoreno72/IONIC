@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actors to GPs - IOCore2</title>
+    {% include 'components/head_favicons.html' %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/dataTable.css') }}">
+</head>
+<body>
+    {% include 'nav_menu.html' %}
+    <div class="container-fluid px-4 mt-4">
+        <div class="test-cases-container">
+            <div class="test-cases-header d-flex justify-content-between align-items-center">
+                <h2><i class="fas fa-server me-2"></i>Actors to GPs</h2>
+                <button id="regenerateButton" class="btn btn-outline-primary" title="Regenerate and clean actors to GP mappings">
+                    <i class="fas fa-sync-alt me-1"></i>Regenerate
+                </button>
+            </div>
+            <div class="controls-container">
+                <div class="filters-container">
+                    <div class="filter-item search-container" style="width: 190px;">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Filter..." class="form-control form-control-sm" style="height: 31px;">
+                    </div>
+                    <div class="filter-item">
+                        <select id="serviceFilter" class="form-select form-select-sm" style="width: 190px; height: 31px;">
+                            <option value="">All Services</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select id="modelFilter" class="form-select form-select-sm" style="width: 190px; height: 31px;">
+                            <option value="">All Models</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            {% with 
+                table_id = "actors2gpTable",
+                table_body_id = "actors2gpTableBody",
+                items_per_page_id = "itemsPerPageSelect",
+                page_info_id = "pageInfo",
+                prev_button_id = "prevPageButton",
+                next_button_id = "nextPageButton",
+                columns = [
+                    {'label': 'Service Name', 'sortable': true, 'sort_key': 'service_name', 'width': '22%'},
+                    {'label': 'Model Name', 'sortable': true, 'sort_key': 'model_name', 'width': '22%'},
+                    {'label': 'Actor Name', 'sortable': true, 'sort_key': 'actor_name', 'width': '28%'},
+                    {'label': 'GP Name(s)', 'sortable': true, 'sort_key': 'gp_name', 'width': '28%'}
+                ]
+            %}
+                {% include 'components/dataTable.html' %}
+            {% endwith %}
+            <div id="noResults" class="no-results d-none">
+                <p>No Actor to GP mappings found matching your criteria.</p>
+            </div>
+        </div>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌓</button>
+    <script type="module" src="{{ url_for('static', filename='js/pages/actors2gp.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.documentElement.setAttribute('data-bs-theme', theme === 'dark' ? 'dark' : 'light');
+        }
+    </script>
+</body>
+</html>

@@ -174,7 +174,7 @@ export class ServiceForm {
         label: 'Select Icon Image',
         maxSize: 2 * 1024 * 1024, // 2MB
         onSelect: (file) => {
-          console.log('Icon file selected:', file.name);
+          // console.log('Icon file selected:', file.name);
         }
       });
       
@@ -190,7 +190,7 @@ export class ServiceForm {
         label: 'Select Diagram Image',
         maxSize: 5 * 1024 * 1024, // 5MB
         onSelect: (file) => {
-          console.log('Diagram file selected:', file.name);
+          // console.log('Diagram file selected:', file.name);
         }
       });
       
@@ -209,7 +209,7 @@ export class ServiceForm {
       return;
     }
     
-    console.log('Initializing model selector with MultiSelectDropdown');
+    // console.log('Initializing model selector with MultiSelectDropdown');
     
     // Clear the container
     container.innerHTML = '';
@@ -219,7 +219,7 @@ export class ServiceForm {
     dropdownContainer.className = 'form-control p-0 border-0';
     container.appendChild(dropdownContainer);
     
-    console.log('Fetching model data from API');
+    // console.log('Fetching model data from API');
     fetch('/api/models')
       .then(response => {
         if (!response.ok) {
@@ -229,7 +229,7 @@ export class ServiceForm {
         return response.json();
       })
       .then(modelData => {
-        console.log('Model data loaded:', modelData.length, 'models');
+        // console.log('Model data loaded:', modelData.length, 'models');
         
         // Store model mappings
         modelData.forEach(model => {
@@ -264,13 +264,13 @@ export class ServiceForm {
         
         // If we have pending values to set, set them now
         if (this.pendingModelValues && this.pendingModelValues.length > 0) {
-          console.log('Setting pending model values:', this.pendingModelValues);
+          // console.log('Setting pending model values:', this.pendingModelValues);
           this.setModelValues(this.pendingModelValues);
           this.pendingModelValues = null; // Clear pending values after setting
         }
         // Or set initial values if in edit mode
         else if (this.isEditMode && this.data && this.data.models && Array.isArray(this.data.models) && this.selectedModels.length === 0) {
-          console.log('Setting initial models from data:', this.data.models);
+          // console.log('Setting initial models from data:', this.data.models);
           this.setModelValues(this.data.models);
         }
       })
@@ -306,7 +306,7 @@ export class ServiceForm {
       return;
     }
     
-    console.log('Setting model values from IDs:', modelIds);
+    // console.log('Setting model values from IDs:', modelIds);
     
     if (!this.modelDropdown) {
       console.log('Model dropdown not initialized yet, storing pending values');
@@ -322,7 +322,7 @@ export class ServiceForm {
         text: this.modelNameMap.get(id)
       }));
     
-    console.log('Setting model dropdown values:', values);
+    // console.log('Setting model dropdown values:', values);
     this.modelDropdown.setValues(values);
   }
 
@@ -564,13 +564,13 @@ export class ServiceForm {
     
     // Set models if they exist
     if (data.models && Array.isArray(data.models)) {
-      console.log('Models found in data:', data.models);
+      // console.log('Models found in data:', data.models);
       // We're now using a tag-based approach instead of a dropdown
       // Just store the models to be set when the model selector is initialized
       this.pendingModelValues = data.models;
-      console.log('Stored pending model values for later initialization');
+      // console.log('Stored pending model values for later initialization');
     } else {
-      console.log('No models found in data or not an array:', data.models);
+      // console.log('No models found in data or not an array:', data.models);
     }
     
     // Set icon preview if exists
@@ -742,7 +742,7 @@ export class ServiceForm {
       if (modelsContainer) {
         modelsContainer.classList.add('is-invalid');
       }
-      console.log('Validation failed: No models selected');
+      // console.log('Validation failed: No models selected');
     } else {
       if (modelsContainer) {
         modelsContainer.classList.remove('is-invalid');

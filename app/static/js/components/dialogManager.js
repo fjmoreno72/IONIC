@@ -271,7 +271,7 @@ export class DialogManager {
     this.title = title;
     const titleEl = this.dialogElement.querySelector('.dialog-title');
     if (titleEl) {
-      titleEl.textContent = title;
+      titleEl.innerHTML = title;
     }
   }
   

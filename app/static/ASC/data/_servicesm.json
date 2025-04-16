@@ -697,5 +697,26 @@
     "id": "SRV-0027",
     "iconPath": "./image/srv/icon_protected_core_networking.png",
     "originalId": "SRV-0027"
+  },
+  {
+    "name": "Logistics",
+    "models": [
+      "MOD-0003"
+    ],
+    "gps": [
+      {
+        "id": "GP-0063",
+        "models": [
+          "MOD-0003"
+        ]
+      },
+      {
+        "id": "GP-0062",
+        "models": [
+          "MOD-0003"
+        ]
+      }
+    ],
+    "id": "SRV-0028"
   }
 ]

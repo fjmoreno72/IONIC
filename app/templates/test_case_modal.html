@@ -4,16 +4,38 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="testCaseModalLabel">Test Case Details</h5>
-        <button type="button" class="btn-close" onclick="hideTestCaseModal()" aria-label="Close"></button>
+        <button type="button" class="btn-close" onclick="if(typeof hideTestCaseModal === 'function') { hideTestCaseModal(); } else { this.closest('.modal').style.display='none'; }" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="testCaseModalBody">
         <!-- Content will be loaded here by JavaScript -->
         <p>Loading details...</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" onclick="hideTestCaseModal()">Close</button>
+        <button type="button" class="btn btn-secondary" onclick="if(typeof hideTestCaseModal === 'function') { hideTestCaseModal(); } else { document.getElementById('testCaseModal').style.display='none'; }">Close</button>
         <button type="button" class="btn btn-primary" onclick="printModalContent()"><i class="fas fa-print me-1"></i> Print</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Fallback script for modal handling -->
+<script>
+  // Define a fallback hideTestCaseModal function if it doesn't exist
+  if (typeof window.hideTestCaseModal !== 'function') {
+    window.hideTestCaseModal = function() {
+      const modal = document.getElementById('testCaseModal');
+      if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('show');
+        
+        // Remove backdrop if it exists
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) backdrop.remove();
+        
+        // Re-enable scrolling
+        document.body.classList.remove('modal-open');
+      }
+    };
+  }
+</script>

@@ -126,11 +126,13 @@ def register_error_handlers(app):
         response = handle_exception(error)
         return jsonify(response), response.get('status_code', 500)
 
-def register_blueprints(app):
+def register_blueprints(flask_app):
     """Register Flask blueprints with the application."""
     # Updated imports for blueprints
     from app.routes.auth import auth_bp
     from app.routes.api import api_bp
+    # Ensure ASC routes are registered under api_bp
+    import app.routes.ascs
     from app.routes.views import views_bp
     from app.routes.config_items import config_items_bp
     from app.routes.services import services_bp
@@ -138,11 +140,11 @@ def register_blueprints(app):
     from app.routes.models import models_bp # Import the new models blueprint
     from app.routes.actors2gp import actors2gp_bp # Import the new actors to GP blueprint
 
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(api_bp)  # Register at root for backward compatibility
-    app.register_blueprint(views_bp)
-    app.register_blueprint(config_items_bp)
-    app.register_blueprint(services_bp)
-    app.register_blueprint(gps_bp) # Register the new GP blueprint
-    app.register_blueprint(models_bp) # Register the new models blueprint
-    app.register_blueprint(actors2gp_bp) # Register the new actors to GP blueprint
+    flask_app.register_blueprint(auth_bp)
+    flask_app.register_blueprint(api_bp)  # Register at root for backward compatibility
+    flask_app.register_blueprint(views_bp)
+    flask_app.register_blueprint(config_items_bp)
+    flask_app.register_blueprint(services_bp)
+    flask_app.register_blueprint(gps_bp) # Register the new GP blueprint
+    flask_app.register_blueprint(models_bp) # Register the new models blueprint
+    flask_app.register_blueprint(actors2gp_bp) # Register the new actors to GP blueprint

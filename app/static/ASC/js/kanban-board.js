@@ -176,6 +176,64 @@ export class KanbanBoard {
       }, 300);
     });
     
+    // Add ASC button (Kanban)
+    const addAscButtonKanban = document.getElementById('addAscButtonKanban');
+    if (addAscButtonKanban) {
+      addAscButtonKanban.addEventListener('click', () => {
+        // Open ASC dialog in add mode (no data)
+        const ascDialog = new DialogManager({
+          id: 'ascDialogKanban',
+          title: 'Add ASC',
+          size: 'large',
+          onSave: () => {
+            const form = document.getElementById('ascForm');
+            if (form) {
+              if (typeof form.requestSubmit === 'function') {
+                form.requestSubmit();
+              } else {
+                form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+              }
+            }
+            return false;
+          }
+        });
+        const ascFormInstance = new AscForm({
+          data: null,
+          onSubmit: async (formData) => {
+            // Save logic (mirrors ascs_new.js)
+            const method = 'POST';
+            const url = '/api/ascs';
+            const saveButton = ascDialog.dialogElement?.querySelector('button[data-action="save"]');
+            if (saveButton) {
+              saveButton.disabled = true;
+              saveButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...';
+            }
+            try {
+              const response = await fetch(url, {
+                method: method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+              });
+              const result = await response.json();
+              if (!response.ok) {
+                throw new Error(result.error || `HTTP error! Status: ${response.status}`);
+              }
+              ascDialog.close();
+              // Optionally, trigger a Kanban board refresh here
+              if (typeof this.init === 'function') this.init();
+            } catch (error) {
+              this.uiService.showNotification(error.message || 'Failed to save ASC', 'error');
+              if (saveButton) {
+                saveButton.disabled = false;
+                saveButton.innerHTML = 'Save ASC';
+              }
+            }
+          }
+        });
+        ascDialog.setContent(ascFormInstance.element);
+        ascDialog.open();
+      });
+    }
     // Clear filters button
     this.elements.clearFiltersBtn.addEventListener('click', () => {
       this.elements.filterAffiliate.value = '';

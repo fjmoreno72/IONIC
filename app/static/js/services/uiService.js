@@ -85,6 +85,85 @@ export class UiService {
   }
   
   /**
+   * Shows a non-blocking confirmation dialog
+   * @param {string} message - The confirmation message to display
+   * @param {Function} onConfirm - Callback function to execute if user confirms
+   * @param {Function} onCancel - Optional callback function to execute if user cancels
+   * @param {string} confirmText - Optional text for the confirmation button (default: Delete)
+   */
+  static showConfirmDialog(message, onConfirm, onCancel = null, confirmText = 'Delete') {
+    // Create container if not exists
+    let confirmContainer = document.getElementById('confirmDialogContainer');
+    if (!confirmContainer) {
+      confirmContainer = document.createElement('div');
+      confirmContainer.id = 'confirmDialogContainer';
+      confirmContainer.style.position = 'fixed';
+      confirmContainer.style.top = '0';
+      confirmContainer.style.left = '0';
+      confirmContainer.style.width = '100%';
+      confirmContainer.style.height = '100%';
+      confirmContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+      confirmContainer.style.zIndex = '2000';
+      confirmContainer.style.display = 'flex';
+      confirmContainer.style.alignItems = 'center';
+      confirmContainer.style.justifyContent = 'center';
+      document.body.appendChild(confirmContainer);
+    } else {
+      confirmContainer.innerHTML = ''; // Clear any existing dialogs
+      confirmContainer.style.display = 'flex';
+    }
+    
+    // Create dialog
+    const dialog = document.createElement('div');
+    dialog.style.backgroundColor = 'white';
+    dialog.style.padding = '20px';
+    dialog.style.borderRadius = '5px';
+    dialog.style.maxWidth = '400px';
+    dialog.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+    
+    // Add message
+    const messageEl = document.createElement('p');
+    messageEl.textContent = message;
+    dialog.appendChild(messageEl);
+    
+    // Add buttons container
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.justifyContent = 'flex-end';
+    buttonContainer.style.marginTop = '15px';
+    buttonContainer.style.gap = '10px';
+    
+    // Create cancel button
+    const cancelButton = document.createElement('button');
+    cancelButton.className = 'btn btn-secondary';
+    cancelButton.textContent = 'Cancel';
+    cancelButton.onclick = () => {
+      confirmContainer.style.display = 'none';
+      if (onCancel) onCancel();
+    };
+    
+    // Create confirm button
+    const confirmButton = document.createElement('button');
+    confirmButton.className = 'btn btn-danger';
+    confirmButton.textContent = confirmText;
+    confirmButton.onclick = () => {
+      confirmContainer.style.display = 'none';
+      onConfirm();
+    };
+    
+    // Add buttons to container
+    buttonContainer.appendChild(cancelButton);
+    buttonContainer.appendChild(confirmButton);
+    dialog.appendChild(buttonContainer);
+    
+    // Add dialog to container
+    confirmContainer.appendChild(dialog);
+    
+    // Focus confirm button for keyboard navigation
+    setTimeout(() => confirmButton.focus(), 0);
+  }
+
+  /**
    * Creates a timer overlay with customizable appearance
    * @param {Object} options - Customization options
    * @returns {HTMLElement} The created timer overlay

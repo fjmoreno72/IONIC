@@ -1,6 +1,10 @@
 import { UiService } from '../services/uiService.js'; // Correct import path
 import { DialogManager } from './dialogManager.js'; // Import DialogManager for sub-dialog
 import { GpSpEditForm } from './gpSpEditForm.js'; // Import the new form
+import { ApiService } from '../services/apiService.js';
+
+// Disable debug console.log messages; keep errors/warnings
+console.log = function() {};
 
 export class AscForm {
     constructor(config = {}) {
@@ -137,9 +141,8 @@ export class AscForm {
                 if (this.nationFlag && this.data.affiliateId) {
                     const affiliate = this.formData.affiliates.find(a => a.id === this.data.affiliateId);
                     if (affiliate && affiliate.flagPath) {
-                        // Extract the filename from flagPath and reconstruct with correct path
-                        const filename = affiliate.flagPath.split('/').pop();
-                        const flagPath = `/static/ASC/image/flags/${filename}`;
+                        // Convert './image/flags/...' to '/static/ASC/image/flags/...'
+                        const flagPath = `/static/ASC/${affiliate.flagPath.replace('./', '')}`;
                         console.log(`Direct DOM update: Setting flag src to ${flagPath}`);
                         
                         // IMPORTANT: We directly set the src attribute in the DOM
@@ -187,12 +190,15 @@ export class AscForm {
                 initialFlagPath = this.data.affiliateFlag;
                 console.log('Using provided flag path:', initialFlagPath);
             } else {
-                // Extract filename as a fallback if we have the ID
-                const flagFilename = `flag_${this.data.affiliateId.toLowerCase().replace('aff-', '')}.png`;
-                // Try the most likely location
-                const potentialPath = `/static/ASC/image/flags/${flagFilename}`;
-                console.log('Using derived flag path:', potentialPath);
-                initialFlagPath = potentialPath;
+                // Lookup affiliate flag path from loaded formData
+                const affiliate = this.formData.affiliates.find(a => a.id === this.data.affiliateId);
+                if (affiliate && affiliate.flagPath) {
+                    // Convert './image/flags/...' to '/static/ASC/image/flags/...'
+                    initialFlagPath = `/static/ASC/${affiliate.flagPath.replace('./', '')}`;
+                    console.log('Using affiliate flagPath from data:', initialFlagPath);
+                } else {
+                    // Fallback to default initialFlagPath silently
+                }
             }
         }
 
@@ -461,8 +467,10 @@ export class AscForm {
             // Load models data then update the dropdown
             this.loadModelsData().then(() => {
                 // After models are loaded, call this method again with the same service ID
-                if (this.formData.models && Array.isArray(this.formData.models)) {
+                if (this.formData.models && this.formData.models.length > 0) {
                     this.updateModelSelect(selectedServiceId);
+                } else {
+                    console.error("Models data still not available after delay");
                 }
             });
             return;
@@ -621,20 +629,6 @@ export class AscForm {
             this.addGpButton.addEventListener('click', () => {
                 this.handleAddGpInstance();
             });
-        }
-        
-        // Delete ASC button (only in edit mode)
-        if (this.isEditMode) {
-            const deleteButton = this.formElement.querySelector('#deleteAscButton');
-            if (deleteButton && this.onDelete) {
-                deleteButton.addEventListener('click', () => {
-                    // Confirm deletion with a browser dialog
-                    if (confirm(`Are you sure you want to delete ASC ${this.data.id}? This action cannot be undone.`)) {
-                        // Call the onDelete callback with the ASC ID
-                        this.onDelete(this.data.id);
-                    }
-                });
-            }
         }
     }
 
@@ -829,6 +823,7 @@ export class AscForm {
                 this.handleEditGpInstance(index);
             });
             listItem.querySelector('.remove-gp-btn').addEventListener('click', (e) => {
+                // Call handleRemoveGpInstance to perform all validations first
                 this.handleRemoveGpInstance(index);
             });
             // Add listener for the label input
@@ -844,6 +839,39 @@ export class AscForm {
         });
 
         this.gpInstancesContainer.appendChild(listGroup);
+    }
+
+    async handleAddGpInstance() {
+        if (!this.isEditable) {
+            UiService.showNotification('This ASC cannot be modified. Change its status to Draft or In Progress first.', 'warning');
+            return;
+        }
+        const gpId = this.addGpSelect?.value;
+        if (!gpId) {
+            UiService.showNotification('Please select a GP type to add.', 'warning');
+            return;
+        }
+        const gpName = this.allGps.find(gp => gp.id === gpId)?.name || gpId;
+        try {
+            const response = await fetch(`/api/ascs/${this.data.id}/gpInstances`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({gpId})
+            });
+            const newGp = await response.json();
+            if (!response.ok) {
+                UiService.showNotification(`Error adding GP: ${newGp.error || response.statusText}`, 'danger');
+                return;
+            }
+            this.data.gpInstances.push(newGp);
+            this.renderGpInstances();
+            this.updateAscScoreDisplay();
+            this.addGpSelect.value = '';
+            UiService.showNotification(`GP "${gpName}" added. Remember to save the ASC.`, 'success');
+        } catch (error) {
+            console.error(error);
+            UiService.showNotification('Unexpected error adding GP instance.', 'danger');
+        }
     }
 
     handleEditGpInstance(index) {
@@ -886,6 +914,7 @@ export class AscForm {
 
         // Create the GpSpEditForm instance
         const gpSpForm = new GpSpEditForm({
+            ascId: this.data.id,
             gpInstance: gpInstanceToEdit,
             allSps: this.allSps,
             allGps: this.allGps, // Pass GP data for name lookup within GpSpEditForm if needed
@@ -913,102 +942,49 @@ export class AscForm {
         this.gpSpEditDialog.open();
     }
 
-    handleAddGpInstance() {
-        // Check if ASC is editable first
+    async handleRemoveGpInstance(index) {
         if (!this.isEditable) {
             UiService.showNotification('This ASC cannot be modified. Change its status to Draft or In Progress first.', 'warning');
             return;
         }
-        
-        if (!this.addGpSelect || !this.data || !this.data.gpInstances) return;
-
-        const selectedGpId = this.addGpSelect.value;
-        if (!selectedGpId) {
-            UiService.showNotification("Please select a GP type to add.", "warning");
+        const instances = this.data?.gpInstances;
+        if (!instances || !instances[index]) return;
+        const gpToRemove = instances[index];
+        const gpId = gpToRemove.gpId;
+        const countOfType = instances.filter(g => g.gpId === gpId).length;
+        if (countOfType <= 1) {
+            const info = this.allGps.find(g => g.id === gpId);
+            const nm = info ? info.name : gpId;
+            UiService.showNotification(`Cannot remove the last instance of GP "${nm}".`, 'danger');
             return;
         }
+        const info = this.allGps.find(g => g.id === gpId);
+        const name = info ? info.name : gpId;
         
-        // Find GP info for better user feedback
-        const gpInfo = this.allGps.find(gp => gp.id === selectedGpId);
-        const gpName = gpInfo ? gpInfo.name : selectedGpId;
-
-        // Get the selected service to check for models associated with this GP
-        const serviceInfo = this.allServices.find(s => s.id === this.data.serviceId);
-        let defaultModels = [];
-        
-        // Check if this GP has model-specific configuration in the service
-        if (serviceInfo?.gps && Array.isArray(serviceInfo.gps)) {
-            // Check if new structure (objects with models)
-            if (serviceInfo.gps.length > 0 && typeof serviceInfo.gps[0] === 'object') {
-                const gpConfig = serviceInfo.gps.find(gp => gp.id === selectedGpId);
-                if (gpConfig && gpConfig.models && Array.isArray(gpConfig.models)) {
-                    defaultModels = gpConfig.models;
+        // Use non-blocking confirmation dialog
+        UiService.showConfirmDialog(
+            `Remove GP instance "${name}"?`,
+            () => {
+                // This runs when user confirms, without blocking UI
+                const task = () => {
+                    window.requestAnimationFrame(() => {
+                        instances.splice(index, 1);
+                        const li = this.gpInstancesContainer.querySelector(`li[data-gp-index="${index}"]`);
+                        if (li) li.remove();
+                        this.gpInstancesContainer.querySelectorAll('li').forEach((el, i) => el.dataset.gpIndex = i);
+                        this.updateAscScoreDisplay();
+                        UiService.showNotification(`GP Instance ${name} removed.`, 'warning');
+                    });
+                };
+                if ('requestIdleCallback' in window) {
+                    window.requestIdleCallback(task);
+                } else {
+                    setTimeout(task, 0);
                 }
-            }
-        }
-
-        // Create a new GP instance object
-        const newGpInstance = {
-            gpId: selectedGpId,
-            gpScore: "0%", // Default score
-            instanceLabel: "", // Default label
-            spInstances: [], // Default empty SPs
-            // Store the allowed models for this GP if available from new service structure
-            models: defaultModels.length > 0 ? defaultModels : [this.data.model] 
-        };
-
-        // Add to the data array
-        this.data.gpInstances.push(newGpInstance);
-
-        // Re-render the list and update scores
-        this.renderGpInstances();
-        this.updateAscScoreDisplay();
-
-        // Reset the dropdown
-        this.addGpSelect.value = "";
-
-        UiService.showNotification(`GP "${gpName}" added. Remember to save the ASC.`, 'success');
-    }
-
-
-    handleRemoveGpInstance(index) {
-        // Check if ASC is editable first
-        if (!this.isEditable) {
-            UiService.showNotification('This ASC cannot be modified. Change its status to Draft or In Progress first.', 'warning');
-            return;
-        }
-        
-        if (!this.data || !this.data.gpInstances) return;
-
-        const gpToRemove = this.data.gpInstances[index];
-        const gpIdToRemove = gpToRemove.gpId;
-
-         // Count how many instances of this specific GP ID exist
-         const countOfThisGp = this.data.gpInstances.filter(gp => gp.gpId === gpIdToRemove).length;
-
-         // Check if this is the last instance of this type
-         if (countOfThisGp <= 1) {
-             // Check if this GP type is required by the service definition
-             const serviceInfo = this.allServices.find(s => s.id === this.data.serviceId);
-             const requiredGpIds = serviceInfo?.gps || [];
-             // Look up GP name for the message
-             const gpInfo = this.allGps.find(gp => gp.id === gpIdToRemove);
-             const gpNameToDisplay = gpInfo ? gpInfo.name : gpIdToRemove;
-             if (requiredGpIds.includes(gpIdToRemove)) {
-                 UiService.showNotification(`Cannot remove the last instance of required GP "${gpNameToDisplay}".`, "danger");
-                 return; // Prevent deletion
-             }
-         }
-
-         // Proceed with deletion confirmation
-         const gpInfo = this.allGps.find(gp => gp.id === gpIdToRemove);
-         const gpName = gpInfo ? gpInfo.name : gpIdToRemove;
-         if (confirm(`Are you sure you want to remove the GP instance "${gpName}"?`)) {
-             this.data.gpInstances.splice(index, 1);
-             this.renderGpInstances(); // Re-render the list
-             this.updateAscScoreDisplay(); // Recalculate ASC score
-             UiService.showNotification(`GP Instance ${gpName} removed. Remember to save the ASC.`, 'warning');
-         }
+            },
+            null,  // No cancel handler needed
+            'Remove'  // Button text
+        )
     }
 
     calculateAscScore() {
@@ -1054,9 +1030,9 @@ export class AscForm {
         const affiliate = this.formData.affiliates.find(a => a.id === this.data.affiliateId);
         if (!affiliate || !affiliate.flagPath) return '/static/ASC/image/flags/FMN-ASC.png';
         
-        // Extract the filename from flagPath and reconstruct with correct path
-        const filename = affiliate.flagPath.split('/').pop();
-        return `/static/ASC/image/flags/${filename}`;
+        // Convert './image/flags/...' to '/static/ASC/image/flags/...'
+        const flagPath = `/static/ASC/${affiliate.flagPath.replace('./', '')}`;
+        return flagPath;
     }
     
     // Update the nation flag image when editing an ASC - enhanced version with DOM updates
@@ -1081,9 +1057,8 @@ export class AscForm {
             console.log('Updating flag for affiliate:', this.data.affiliateId, 'Found:', affiliate);
             
             if (affiliate && affiliate.flagPath) {
-                // Extract the filename from flagPath and reconstruct with correct path
-                const filename = affiliate.flagPath.split('/').pop();
-                const flagPath = `/static/ASC/image/flags/${filename}`;
+                // Convert './image/flags/...' to '/static/ASC/image/flags/...'
+                const flagPath = `/static/ASC/${affiliate.flagPath.replace('./', '')}`;
                 console.log('FORCE-SETTING flag path to:', flagPath);
                 
                 // Store current src for debugging
@@ -1145,7 +1120,7 @@ export class AscForm {
                     }, 1000);
                 });
             } else {
-                console.warn('Affiliate not found or has no flag path, using default flag');
+                // Fallback to default flag silently
                 flagImage.src = '/static/ASC/image/flags/FMN-ASC.png';
                 flagImage.setAttribute('src', '/static/ASC/image/flags/FMN-ASC.png');
             }
@@ -1377,16 +1352,10 @@ export class AscForm {
                 
                 // Add each compatible GP
                 compatibleGps.forEach(gpConfig => {
-                    const gpId = gpConfig.id;
-                    if (!gpId) return; // Skip if no ID
-                    
-                    // Get GP info for better display
-                    const gpInfo = this.allGps.find(gp => gp.id === gpId);
-                    const gpName = gpInfo ? gpInfo.name : gpId;
-                    
-                    // Create a new GP instance object
+                    console.log(`Adding GP ${gpConfig.id} which supports models:`, gpConfig.models);
+                    // Create a new GP instance with the proper ID
                     const newGpInstance = {
-                        gpId: gpId,
+                        gpId: gpConfig.id,
                         gpScore: "0%", // Default score
                         instanceLabel: "", // Default label
                         spInstances: [], // Default empty SPs
@@ -1395,7 +1364,7 @@ export class AscForm {
                     
                     // Add to the data array
                     this.data.gpInstances.push(newGpInstance);
-                    console.log(`Added GP instance: ${gpName} (${gpId})`);
+                    console.log(`Added GP instance: ${gpConfig.id}`);
                 });
                 
                 // Update the display
@@ -1409,6 +1378,8 @@ export class AscForm {
         */
     }
     
+    // Setup initial GP instances based on selected model (for new ASCs)
+    // DISABLED - We now handle this in getValues at form submission time
     handleSubmit() {
         // Check if the ASC is editable
         if (!this.isEditable) {
@@ -1471,17 +1442,26 @@ export class AscForm {
         // Add event listener to the delete button
         if (this.onDelete) {
             deleteButton.addEventListener('click', () => {
-                // Check if editable first
                 if (!this.isEditable) {
                     UiService.showNotification('This ASC cannot be deleted. Change its status to Draft or In Progress first.', 'warning');
                     return;
                 }
                 
-                // Confirm deletion with a browser dialog
-                if (confirm(`Are you sure you want to delete ASC ${this.data.id}? This action cannot be undone.`)) {
-                    // Call the onDelete callback with the ASC ID
-                    this.onDelete(this.data.id);
-                }
+                // Use non-blocking confirmation dialog
+                UiService.showConfirmDialog(
+                    `Are you sure you want to delete ASC ${this.data.id}? This action cannot be undone.`,
+                    () => {
+                        // This runs when user confirms, without blocking UI
+                        const task = () => this.onDelete(this.data.id);
+                        if ('requestIdleCallback' in window) {
+                            window.requestIdleCallback(task);
+                        } else {
+                            setTimeout(task, 0);
+                        }
+                    },
+                    null,  // No cancel handler needed
+                    'Delete'  // Button text
+                )
             });
         }
     }
@@ -1504,4 +1484,31 @@ export class AscForm {
         
         return isValid;
     }
+}
+
+// Pre-create notification container to avoid dynamic creation warning
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!document.getElementById('notificationContainer')) {
+      const container = document.createElement('div');
+      container.id = 'notificationContainer';
+      container.style.position = 'fixed';
+      container.style.top = '80px';
+      container.style.right = '20px';
+      container.style.zIndex = '1060';
+      container.style.minWidth = '300px';
+      document.body.appendChild(container);
+    }
+  });
+} else {
+  if (!document.getElementById('notificationContainer')) {
+    const container = document.createElement('div');
+    container.id = 'notificationContainer';
+    container.style.position = 'fixed';
+    container.style.top = '80px';
+    container.style.right = '20px';
+    container.style.zIndex = '1060';
+    container.style.minWidth = '300px';
+    document.body.appendChild(container);
+  }
 }

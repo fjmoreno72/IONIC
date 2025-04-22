@@ -12,17 +12,19 @@ export class GpSpEditForm {
      * @param {Array} config.allGps - Array of all available GPs (from _gps.json). Needed for name lookup.
      * @param {Function} config.onSave - Callback function to save the updated gpInstance data. receives the updated gpInstance as argument.
      * @param {Function} [config.onCancel] - Optional callback for cancellation.
+     * @param {string} config.ascId - Parent ASC ID for backend calls.
      */
     constructor(config = {}) {
         // Add check for allGps
-        if (!config.gpInstance || !config.allSps || !config.allGps || !config.onSave) {
-            throw new Error("GpSpEditForm requires gpInstance, allSps, allGps, and onSave configuration.");
+        if (!config.gpInstance || !config.allSps || !config.allGps || !config.onSave || !config.ascId) {
+            throw new Error("GpSpEditForm requires gpInstance, allSps, allGps, onSave, and ascId configuration.");
         }
         this.gpInstance = JSON.parse(JSON.stringify(config.gpInstance)); // Deep copy
         this.allSps = config.allSps;
         this.allGps = config.allGps; // Store allGps
         this.onSaveCallback = config.onSave;
         this.onCancel = config.onCancel; // Currently unused, handled by DialogManager
+        this.ascId = config.ascId; // Parent ASC ID for backend calls
 
         this.element = null;
         this.spListContainer = null;
@@ -276,7 +278,7 @@ export class GpSpEditForm {
     }
 
 
-    handleSaveSpInstance() { // Renamed from handleAddSpInstance
+    async handleSaveSpInstance() { // Save SP via backend
         const spId = this.spSelect.value;
         const version = this.versionSelect.value; // Will be "" if "(No Version)" is selected
         let scoreValue = parseInt(this.scoreInput.value, 10);
@@ -305,54 +307,68 @@ export class GpSpEditForm {
             return;
         }
 
-        const newSpData = {
-             spId: spId,
-             spVersion: version || null, // Store null if no version selected
-             spScore: score
-        };
+        // prepare payload
+        const payload = { spId, spVersion: version || null, spScore: score };
 
-        if (this.editingSpIndex !== null) {
-            // Update existing SP instance
-            // Check if the combination already exists elsewhere (excluding the current index)
-            const duplicateIndex = this.gpInstance.spInstances.findIndex((sp, idx) =>
-                idx !== this.editingSpIndex && sp.spId === spId && sp.spVersion === (version || null)
-            );
-            if (duplicateIndex !== -1) {
-                 UiService.showNotification(`Another instance with SP ${spId} ${version ? `(v${version})` : ''} already exists. Cannot update.`, "danger");
-                 return;
+        let result;
+        try {
+            if (this.editingSpIndex !== null) {
+                // Update existing SP via backend
+                const spGuid = this.gpInstance.spInstances[this.editingSpIndex].guid;
+                const resp = await fetch(`/api/ascs/${this.ascId}/gpInstances/${this.gpInstance.guid}/spInstances/${spGuid}`, {
+                    method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)
+                });
+                result = await resp.json();
+                if (!resp.ok) throw new Error(result.error || resp.statusText);
+                this.gpInstance.spInstances[this.editingSpIndex] = result;
+                UiService.showNotification(`SP ${spId} updated.`, 'success');
+            } else {
+                // Create new SP via backend
+                const resp = await fetch(`/api/ascs/${this.ascId}/gpInstances/${this.gpInstance.guid}/spInstances`, {
+                    method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)
+                });
+                result = await resp.json();
+                if (!resp.ok) throw new Error(result.error || resp.statusText);
+                this.gpInstance.spInstances.push(result);
+                UiService.showNotification(`SP ${spId} added.`, 'success');
             }
-
-            this.gpInstance.spInstances[this.editingSpIndex] = newSpData;
-            UiService.showNotification(`SP ${spId} updated.`, 'success');
-        } else {
-            // Add new SP instance
-            // Check if SP/Version combo already exists
-            const existingIndex = this.gpInstance.spInstances.findIndex(sp => sp.spId === spId && sp.spVersion === (version || null));
-            if (existingIndex !== -1) {
-                 UiService.showNotification(`SP ${spId} ${version ? `(v${version})` : ''} already exists. Use Edit to modify score.`, "warning");
-                 return; // Prevent adding duplicate
-            }
-            this.gpInstance.spInstances.push(newSpData);
-            UiService.showNotification(`SP ${spId} added.`, 'success');
+        } catch (err) {
+            console.error(err);
+            UiService.showNotification(`Error saving SP: ${err.message}`, 'danger');
+            return;
         }
 
-        this.renderSpInstances(); // Re-render the list
-        this.updateCalculatedGpScore(); // Recalculate GP score
-        this.resetSpForm(); // Reset form fields and button state
+        this.renderSpInstances();
+        this.updateCalculatedGpScore();
+        this.resetSpForm();
     }
 
-    handleRemoveSpInstance(index) {
+    async handleRemoveSpInstance(index) {
         if (!this.gpInstance.spInstances || index < 0 || index >= this.gpInstance.spInstances.length) return;
 
         const spToRemove = this.gpInstance.spInstances[index];
         const spInfo = this.allSps.find(sp => sp.id === spToRemove.spId);
         const spName = spInfo ? spInfo.name : spToRemove.spId;
 
-        if (confirm(`Are you sure you want to remove SP instance "${spName}" (v${spToRemove.spVersion || 'N/A'})?`)) {
+        if (!confirm(`Remove SP instance "${spName}" (v${spToRemove.spVersion || 'N/A'})?`)) return;
+        try {
+            const spGuid = this.gpInstance.spInstances[index].guid;
+            const resp = await fetch(`/api/ascs/${this.ascId}/gpInstances/${this.gpInstance.guid}/spInstances/${spGuid}`, { method: 'DELETE' });
+            const res = await resp.json();
+            if (!resp.ok || !res.success) throw new Error(res.error || 'Delete failed');
+            // Remove from data
             this.gpInstance.spInstances.splice(index, 1);
-            this.renderSpInstances(); // Re-render the list
-            this.updateCalculatedGpScore(); // Recalculate GP score
+            // Remove DOM row
+            const li = this.spListContainer.querySelector(`li[data-sp-index="${index}"]`);
+            if (li) li.remove();
+            // Re-index remaining items
+            this.spListContainer.querySelectorAll('li').forEach((el, i) => el.dataset.spIndex = i);
+            // Update GP score badge
+            this.updateCalculatedGpScore();
             UiService.showNotification(`SP Instance ${spName} removed.`, 'warning');
+        } catch (err) {
+            console.error(err);
+            UiService.showNotification(`Error deleting SP: ${err.message}`, 'danger');
         }
     }
 
@@ -375,7 +391,7 @@ export class GpSpEditForm {
         let totalScore = 0;
         let validScoresCount = 0; // Count SPs that contribute to the average (have version and valid score)
 
-        this.gpInstance.spInstances.forEach(spInst => {
+        this.gpInstance.spInstances.forEach((spInst) => {
              // Only include score if version is set
              if (spInst.spVersion) {
                  const scoreValue = parseInt(spInst.spScore || '0', 10);

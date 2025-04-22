@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
             sortable: true,
             //cellClass: 'text-center',
             render: (value) => {
-              const statusClass = `status-badge status-${value.toLowerCase().replace(' ', '-')}`;
+              const statusClass = `status-badge status-${(value || '').toLowerCase().replace(' ', '-')}`;
               return `<span class="${statusClass}">${value}</span>`;
             }
 

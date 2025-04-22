@@ -243,7 +243,7 @@ body {
         {% endif %}
         <div class="dropdown">
             <a href="#" class="btn dropdown-toggle">
-                <i class="fas fa-cloud-download-alt"></i> Get API
+                <i class="fas fa-cloud-download-alt"></i> API
             </a>
             <div class="dropdown-content">
                 <a href="#" onclick="event.preventDefault(); fetchIERReport()">Get IER Cover</a>
@@ -254,30 +254,39 @@ body {
         </div>
         <div class="dropdown">
             <a href="#" class="btn dropdown-toggle">
-                <i class="fas fa-sitemap"></i> View Coverage
+                <i class="fas fa-sitemap"></i> Coverage
             </a>
             <div class="dropdown-content">
-                <a href="/view_tree">View SREQ Cover</a>
-                <a href="/view_ier_tree">View IER Cover</a>
-                <a href="/view_tree_func">View FUNC Cover</a>
+                <a href="/view_tree">SP5 SREQ/TIN Cover</a>
+                <a href="/view_ier_tree">SP5 IER/SRV Cover</a>
+                <a href="/view_tree_func">SP5 SREQ/Func Cover</a>
             </div>
         </div>
         <!-- New ASC Dropdown -->
         <div class="dropdown">
             <a href="#" class="btn dropdown-toggle">
-                <i class="fas fa-building"></i> ASC
+                <i class="fas fa-building"></i> FSIP
             </a>
             <div class="dropdown-content">
                 <a href="{{ url_for('views.affiliates') }}">Affiliates</a>
-                <a href="{{ url_for('views.asc_models') }}">Models</a>
                 <a href="{{ url_for('views.asc_services') }}">Services</a>
+                <a href="{{ url_for('views.asc_sps') }}">SPs</a>
+                <a href="{{ url_for('views.asc_ascs') }}">ASCs</a>
+                <a href="{{ url_for('views.asc_kanban') }}">ASC Kanban</a>
+            </div>
+        </div>
+        <!-- New Repository Dropdown -->
+        <div class="dropdown">
+            <a href="#" class="btn dropdown-toggle">
+                <i class="fas fa-database"></i> Repository
+            </a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('views.asc_models') }}">Models</a>
                 <a href="{{ url_for('views.asc_gps') }}">GPs</a>
                 <a href="{{ url_for('views.asc_actors2gp') }}">Actors2GPs</a>
                 <a href="{{ url_for('views.asc_links') }}">Links</a>
                 <a href="{{ url_for('views.asc_config_items') }}">CIs</a>
-                <a href="{{ url_for('views.asc_sps') }}">SPs</a>
-                <a href="{{ url_for('views.asc_ascs') }}">ASCs</a>
-                <a href="{{ url_for('views.asc_kanban') }}">ASC Kanban</a>
+                <a href="/test_cases">Test Cases</a>
             </div>
         </div>
         <!-- New Execution Dropdown -->
@@ -290,14 +299,9 @@ body {
                 <a href="{{ url_for('views.objectives_view') }}">Objectives</a> {# Updated link #}
                 <a href="{{ url_for('views.participants_view') }}">Participants</a> {# Updated link #}
                 <a href="{{ url_for('views.work_in_progress') }}">Statistics</a>
+                <a href="/system_monitor">System Monitor</a>
             </div>
         </div>
-        <a href="/system_monitor" class="btn">
-            <i class="fas fa-desktop"></i> System Monitor
-        </a>
-        <a href="/test_cases" class="btn">
-            <i class="fas fa-tasks"></i> See Test Cases
-        </a>
         <a href="#" class="btn" onclick="logout()">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>

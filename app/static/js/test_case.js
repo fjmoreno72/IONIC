@@ -32,7 +32,7 @@ function isLatestTestCaseVersion(testCase) {
 async function fetchData() {
     try {
         // Fetch patterns first from the new API endpoint
-        const patternResponse = await fetch('/api/patterns_data'); // Updated URL
+        const patternResponse = await fetch('/api/patterns'); // Updated URL
         if (!patternResponse.ok) throw new Error('Failed to fetch patterns data');
         const patternData = await patternResponse.json();
         fullPatternData = patternData;

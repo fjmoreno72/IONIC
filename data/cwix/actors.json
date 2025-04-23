@@ -1299,6 +1299,28 @@
         }
     },
     {
+        "actorType": "technical",
+        "id": "960d291f-73a3-449d-a8f3-b26d3dab0410",
+        "key": "ACT-CWIX-000385",
+        "name": "CC493",
+        "itemId": "2aae685b-bc21-4aa0-832d-fd53f0403dbe",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-22T11:19:24.8366737+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "9472116f-c144-48dc-8710-bb38ef266d7f",
+        "key": "ACT-CWIX-000384",
+        "name": "CC-493",
+        "itemId": "19173d65-261c-4a86-8fdd-59ae01481e16",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-22T11:17:34.6891012+02:00"
+        }
+    },
+    {
         "actorType": "functional",
         "id": "d05aff82-24b7-4d24-912a-46e27a21db9d",
         "key": "ACT-CWIX-000306",
@@ -2067,6 +2089,17 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "3a07be5e-396e-4838-ba86-72e5db39db57",
+        "key": "ACT-CWIX-000383",
+        "name": "Core Service",
+        "itemId": "1f131920-7090-42bf-9577-e4a896464ad9",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-17T18:57:36.6375757+02:00"
         }
     },
     {
@@ -2943,6 +2976,17 @@
     },
     {
         "actorType": "technical",
+        "id": "ef07a068-23f7-488f-8d02-2f77ac14ccf5",
+        "key": "ACT-CWIX-000382",
+        "name": "Distributed Simulation Service",
+        "itemId": "8380fcd9-9555-4067-8bdb-6783edf327d5",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-17T18:57:18.116745+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "d8a47a72-9395-4c1b-8f9f-4422ef2351b8",
         "key": "ACT-CWIX-000153",
         "name": "DLEP Radio",
@@ -3082,6 +3126,28 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "62ecc6da-d548-4034-b5c0-a02b774eeeca",
+        "key": "ACT-CWIX-000369",
+        "name": "e-Delivery Access Point 1",
+        "itemId": "a6797215-1d7b-41fa-b6b9-66111a91eb0c",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:16:37.5177577+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "ef5d8aec-9fca-4dae-a897-12c92b1c391c",
+        "key": "ACT-CWIX-000370",
+        "name": "e-Delivery Access Point 2",
+        "itemId": "e76914bd-8a04-4495-8097-9edc4d53f406",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:17:29.0458111+02:00"
         }
     },
     {
@@ -6766,6 +6832,28 @@
         }
     },
     {
+        "actorType": "functional",
+        "id": "0cf30d73-3b5a-4ca6-928d-2bdee2457ce5",
+        "key": "ACT-CWIX-000375",
+        "name": "Message Client 1",
+        "itemId": "5ad35936-fdee-419c-98e3-4cec19cc27e4",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:21:38.2675968+02:00"
+        }
+    },
+    {
+        "actorType": "functional",
+        "id": "4d361994-bfa8-4a6a-a19c-dd838f785952",
+        "key": "ACT-CWIX-000376",
+        "name": "Message Client 2",
+        "itemId": "826d2bbd-63b2-4b56-8aab-ece97bf9341e",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:22:01.6781351+02:00"
+        }
+    },
+    {
         "actorType": "technical",
         "id": "ad2e80c0-bdf4-4008-bf3e-d15d05324897",
         "key": "ACT-CWIX-000022",
@@ -6796,6 +6884,28 @@
         "version": {
             "number": 1,
             "createdOn": "2024-10-10T09:47:02.0494939+00:00"
+        }
+    },
+    {
+        "actorType": "functional",
+        "id": "68959e03-f0ec-488b-a544-2d1dc94b8385",
+        "key": "ACT-CWIX-000371",
+        "name": "Message Service 1",
+        "itemId": "81a6b6fb-033d-475c-8f62-cb39d7100f6b",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:18:19.0174522+02:00"
+        }
+    },
+    {
+        "actorType": "functional",
+        "id": "a0b66dc5-5ff3-45c6-8150-3ebd7a06428b",
+        "key": "ACT-CWIX-000372",
+        "name": "Message Service 2",
+        "itemId": "248fe31d-fe3d-4064-a446-a2522281dbf7",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:19:02.0864587+02:00"
         }
     },
     {
@@ -7720,6 +7830,28 @@
         }
     },
     {
+        "actorType": "technical",
+        "id": "85c76258-8f8e-467d-934c-23a04e3df497",
+        "key": "ACT-CWIX-000387",
+        "name": "NMCD IES Consumer",
+        "itemId": "e0c247c7-6527-42a7-862f-81228e7baa8f",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-22T17:36:25.3964385+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "bbaf8af6-2280-4822-82d5-2ab96d0c0ec0",
+        "key": "ACT-CWIX-000386",
+        "name": "NMCD IES Provider",
+        "itemId": "1620b0e8-cd6a-4456-a9f8-d92a8766a851",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-22T17:36:09.5400749+02:00"
+        }
+    },
+    {
         "actorType": "organizational",
         "id": "dbbb98b0-8cc9-40aa-925b-9652c4b0775f",
         "key": "ACT-CIAV-000315",
@@ -8281,6 +8413,40 @@
         }
     },
     {
+        "actorType": "technical",
+        "id": "0ef58122-6213-4ad3-b448-5fc9162fbad1",
+        "key": "ACT-CWIX-000380",
+        "name": "PCS_A",
+        "itemId": "991ee49a-27e4-4b82-bd7b-d3698748733e",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-16T21:12:11.8210804+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "e0a7514c-4297-4ff8-b766-a62f85c587c6",
+        "key": "ACT-CWIX-000381",
+        "name": "PCS_B",
+        "itemId": "21ce6bac-5a62-41c0-b055-12737506c0ee",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-16T21:12:31.8761343+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "ce0148bb-a38f-4058-b3b8-705136364fb1",
+        "key": "ACT-CWIX-000377",
+        "name": "PCS_C",
+        "itemId": "1adb4ef0-d9f9-42bf-aa38-6353ba13c7e3",
+        "predecessor": "fbafe49c-55f4-409d-886d-63f2143e98bb",
+        "version": {
+            "number": 4,
+            "createdOn": "2025-04-16T21:12:46.4375217+02:00"
+        }
+    },
+    {
         "actorType": "organizational",
         "id": "82873415-7284-4791-9ee8-9ec9e29882a9",
         "key": "ACT-CIAV-002817",
@@ -8444,6 +8610,17 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "3d3c350c-c7af-46c7-9e2b-edddee9a87fa",
+        "key": "ACT-CWIX-000373",
+        "name": "Primary App Server Instance",
+        "itemId": "b3b6be83-db8c-45d5-974b-c6f6e11c78ec",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:19:39.2974504+02:00"
         }
     },
     {
@@ -9337,6 +9514,17 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "9b781e2d-e48d-4233-be13-0f7be014557a",
+        "key": "ACT-CWIX-000374",
+        "name": "Secondary App Server Instance ",
+        "itemId": "2518c86c-0f00-4eb8-bbc8-a13d1de77e8c",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:20:08.2837976+02:00"
         }
     },
     {

@@ -2,8 +2,7 @@
 Models API routes
 Handle operations for models
 """
-import json
-from flask import Blueprint, jsonify, current_app
+from flask import Blueprint, jsonify
 from app.core.auth import login_required
 from app.data_access.models_repository import get_all_models
 import logging

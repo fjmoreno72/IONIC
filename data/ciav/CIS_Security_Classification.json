@@ -1,0 +1,21 @@
+{
+    "fileName": "CIS_Security_Classification.json",
+    "securityClassifications": [
+        {
+            "name": "UNCLASSIFIED",
+            "guid": "aa1e8400-j79b-41d4-l166-446655476666",
+            "key": "CL-UNCLASS",
+            "releasabilityString": "REL TO USA",
+            "order": 1,
+            "colour": "#008000"
+        },
+        {
+            "name": "SECRET",
+            "guid": "cc5e8400-l99b-41d4-n386-446655478888",
+            "key": "CL-SECRET",
+            "releasabilityString": "REL TO USA, FVEY",
+            "order": 3,
+            "colour": "#FF0000"
+        }
+    ]
+}

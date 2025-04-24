@@ -1,4 +1,4 @@
-from flask import Blueprint, session, jsonify, request, current_app
+from flask import Blueprint, session, jsonify, request, current_app, render_template, redirect, url_for
 from app.data_access.cis_plan_repository import (
     get_all_cis_plan, get_all_cis_security_classification,
     add_mission_network, update_mission_network, delete_mission_network,
@@ -692,3 +692,37 @@ def _validate_participant(participant_id: str) -> bool:
         # Decide if validation failure should prevent creation/update
         # For now, let's treat it as a server error preventing the operation.
         raise ConnectionError(f"Failed to validate participant ID: {e}")
+
+@cis_plan_bp.route('/cis_plan_view')
+@cis_plan_bp.route('/cis_plan_view/')
+def cis_plan_view():
+    """Render the CIS Plan view page."""
+    try:
+        environment = get_environment()
+        return render_template('pages/cis_plan.html')
+    except Exception as e:
+        current_app.logger.error(f"Error rendering CIS Plan view: {e}")
+        # Redirect to home on error
+        return redirect(url_for('views.index'))
+
+# The API route is moved to use the actual API blueprint
+from app.routes.api import api_bp
+
+@api_bp.route('/cis_plan/tree', methods=['GET'])
+def get_cis_plan_tree():
+    """Get CIS Plan data structured for tree visualization."""
+    try:
+        environment = get_environment()
+        data = get_all_cis_plan(environment)
+        
+        # Return the mission networks with their hierarchical structure
+        return jsonify({
+            "status": "success",
+            "data": data.get('missionNetworks', [])
+        })
+    except Exception as e:
+        current_app.logger.error(f"Error getting CIS Plan tree data: {e}")
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500

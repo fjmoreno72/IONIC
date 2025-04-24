@@ -88,6 +88,252 @@
           ]
         }
       ]
+    },
+    {
+      "name": "TempMN_HWStackTest_test_repo_hw_1745511952",
+      "guid": "c6b5d3ae-d98a-4735-9dc1-1cc51f5cbc1f",
+      "id": "MN-0005",
+      "networkSegments": [
+        {
+          "name": "TempNS_HWStackTest_test_repo_hw_1745511952",
+          "guid": "be346c43-43c5-4093-b266-64c44e519418",
+          "id": "NS-0004",
+          "securityDomains": [
+            {
+              "name": "TempSD_HWStackTest_test_repo_hw_1745511952",
+              "guid": "78cdeef6-927f-4d19-9764-1ea00a26aa1d",
+              "id": "SD-0001",
+              "hwStacks": [
+                {
+                  "name": "testRepoHWStack_updated_1745511952",
+                  "guid": "d8675737-adcd-4a78-8014-7fc6b1841665",
+                  "id": "HW-0001",
+                  "cisParticipantID": "PT-UPDATED-002",
+                  "assets": [
+                    {
+                      "name": "testRepoAsset_updated_1745511952",
+                      "guid": "5d23b73c-5213-4dd0-9db4-c5c0cf834c8c",
+                      "id": "AS-0001",
+                      "networkInterfaces": [
+                        {
+                          "name": "testRepoNetworkInterface_updated_1745511952",
+                          "guid": "30488544-4ec8-4d78-9554-86072e8868a6",
+                          "id": "NI-0001",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "192.168.1.100",
+                              "guid": "81e9844e-4bb9-4899-848b-385bd3bd99de"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "255.255.255.0",
+                              "guid": "b12a797a-dda8-4880-b4b5-134dbb167231"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "test-server.example.com",
+                              "guid": "e516b4a8-2871-4848-99b7-c994d5441a9c"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0043",
+                          "guid": "0466a660-3028-49ef-bed6-1c5e0905d6b6",
+                          "instanceLabel": "testRepoGPInstance_updated_1745511952",
+                          "serviceId": "SV-UPDATED-002",
+                          "spInstances": [
+                            {
+                              "guid": "00293adb-dc94-413c-b104-270efada9e90",
+                              "spId": "SP-0043",
+                              "spVersion": "2.0.0"
+                            }
+                          ],
+                          "configurationItems": [
+                            {
+                              "Name": "COP Sync URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "134f52a5-3620-4369-9753-540683e40717",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "KML File URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "8e271095-cd47-44db-8a9a-0d8104987b15",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "NVG File URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "8baa7c5d-ed45-4604-a74f-75ec9c4f1cf5",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "NVG RR URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "4e174248-17f2-4dc2-81dd-144ffecd763f",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Web Service URL NVG",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "00a82a00-8108-449f-81f5-b9ac17c7508c",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Web Service URL PubSub",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "868890c3-ba43-4113-8e8c-f3dec4554405",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ApiTestParent_MN_api_test_1745511952",
+      "guid": "382fd5d1-d4e5-4755-8868-73f5980c80db",
+      "id": "MN-0006",
+      "networkSegments": [
+        {
+          "name": "ApiTestParent_NS_api_test_1745511952",
+          "guid": "cf31b670-da60-454c-84c0-009eb17c1056",
+          "id": "NS-0005",
+          "securityDomains": [
+            {
+              "name": "ApiTestParent_SD_api_test_1745511952",
+              "guid": "9b8def4a-4f9f-4fab-85a6-1f5b5e470ada",
+              "id": "SD-0001",
+              "hwStacks": [
+                {
+                  "name": "testApiHWStack_updated_1745511952",
+                  "guid": "1ab30780-30cb-4c03-b085-e3b7c0df64c3",
+                  "id": "HW-0001",
+                  "cisParticipantID": "PT-API-UPDATED-VALID",
+                  "assets": [
+                    {
+                      "name": "apiTestAsset_updated_1745511953",
+                      "guid": "23244a8a-e5fc-454f-9f59-ad47b5da4329",
+                      "id": "AS-0001",
+                      "networkInterfaces": [
+                        {
+                          "name": "apiTestNetworkInterface_updated_1745511953",
+                          "guid": "f5778e55-ef56-483f-8fa0-466c3e88d289",
+                          "id": "NI-0001",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "10.20.30.40",
+                              "guid": "67413007-bfcd-4870-813b-847d3baa141f"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "255.255.0.0",
+                              "guid": "990a1d4c-4f6a-4df4-a892-124222e4c08f"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "api-test-server.example.org",
+                              "guid": "731a5ce0-c9a2-4143-ab3a-096ec174617c"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0043",
+                          "guid": "ba8dbb59-636e-495e-9861-49a64e99b6b8",
+                          "instanceLabel": "ApiGPInstanceUpdated_1745511953",
+                          "serviceId": "SV-API-UPDATED-002",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "COP Sync URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "be8fff79-5dcd-435d-b347-4c65f6a0fcfc",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "KML File URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "da0e43ee-b60e-46bf-94d1-b9d35f4088c7",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "NVG File URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "7d80cead-44be-4a97-b20d-4983d6e18840",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "NVG RR URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "19ae17e2-9fc9-4059-8014-e00ba1c2bb97",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Web Service URL NVG",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "b7ec60e9-fad4-4725-ba74-6ab3f96cb84d",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Web Service URL PubSub",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "a6f8aa31-9bb7-4dbf-a805-3954a22aee19",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

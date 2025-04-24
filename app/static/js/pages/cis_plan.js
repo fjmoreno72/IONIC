@@ -117,9 +117,20 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create a container for the children (network segments)
             const segmentsContainer = document.createElement('div');
             segmentsContainer.className = 'tree-node-children ms-4';
-            segmentsContainer.style.display = 'none'; // Initially collapsed
+            segmentsContainer.style.display = 'block'; // Initially expanded so we can see the hierarchy
             segmentsContainer.setAttribute('data-parent', missionNetwork.id);
             treeContainer.appendChild(segmentsContainer);
+            
+            // Immediately render network segments to show the full hierarchy
+            if (missionNetwork.networkSegments && missionNetwork.networkSegments.length > 0) {
+                renderNetworkSegments(segmentsContainer, missionNetwork.networkSegments, missionNetwork);
+                
+                // Update the toggle icon to show expanded state
+                const icon = missionNetworkNode.querySelector('.tree-toggle');
+                if (icon) {
+                    icon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                }
+            }
             
             // Add click event to mission network node to toggle children
             missionNetworkNode.addEventListener('click', function(e) {
@@ -174,9 +185,20 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create a container for the children (security domains)
             const domainsContainer = document.createElement('div');
             domainsContainer.className = 'tree-node-children ms-4';
-            domainsContainer.style.display = 'none'; // Initially collapsed
+            domainsContainer.style.display = 'block'; // Initially expanded
             domainsContainer.setAttribute('data-parent', segment.id);
             container.appendChild(domainsContainer);
+            
+            // Immediately render security domains to show the full hierarchy
+            if (segment.securityDomains && segment.securityDomains.length > 0) {
+                renderSecurityDomains(domainsContainer, segment.securityDomains, segment, parentMissionNetwork);
+                
+                // Update the toggle icon to show expanded state
+                const icon = segmentNode.querySelector('.tree-toggle');
+                if (icon) {
+                    icon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                }
+            }
             
             // Add click event to segment node to toggle children
             segmentNode.addEventListener('click', function(e) {
@@ -231,9 +253,20 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create a container for the children (hw stacks)
             const stacksContainer = document.createElement('div');
             stacksContainer.className = 'tree-node-children ms-4';
-            stacksContainer.style.display = 'none'; // Initially collapsed
+            stacksContainer.style.display = 'block'; // Initially expanded
             stacksContainer.setAttribute('data-parent', domain.id);
             container.appendChild(stacksContainer);
+            
+            // Immediately render HW stacks to show the full hierarchy
+            if (domain.hwStacks && domain.hwStacks.length > 0) {
+                renderHWStacks(stacksContainer, domain.hwStacks, domain, parentSegment, parentMissionNetwork);
+                
+                // Update the toggle icon to show expanded state
+                const icon = domainNode.querySelector('.tree-toggle');
+                if (icon) {
+                    icon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                }
+            }
             
             // Add click event to domain node to toggle children
             domainNode.addEventListener('click', function(e) {
@@ -378,10 +411,13 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleSpan.innerHTML = '<i class="fas fa-chevron-right"></i>';
         node.appendChild(toggleSpan);
         
-        // Create the icon
+        // Create the icon - use SVG icons from getElementIcon function
         const iconSpan = document.createElement('span');
         iconSpan.className = 'me-2';
-        iconSpan.innerHTML = `<i class="fas ${iconClass}"></i>`;
+        
+        // Get the appropriate SVG icon for this element type
+        const iconPath = getElementIcon(type);
+        iconSpan.innerHTML = `<img src="${iconPath}" width="16" height="16" alt="${type} icon">`;
         node.appendChild(iconSpan);
         
         // Create the text
@@ -469,16 +505,32 @@ document.addEventListener('DOMContentLoaded', function() {
             const cardBody = document.createElement('div');
             cardBody.className = 'card-body';
             
-            const cardTitle = document.createElement('h5');
-            cardTitle.className = 'card-title';
-            cardTitle.textContent = element.name;
+            // Get the SVG icon for this element type
+            const iconPath = getElementIcon(type);
             
+            // Create a header with icon and title
+            const cardHeader = document.createElement('div');
+            cardHeader.className = 'd-flex align-items-center mb-2';
+            
+            // Add icon
+            const iconSpan = document.createElement('span');
+            iconSpan.className = 'me-2';
+            iconSpan.innerHTML = `<img src="${iconPath}" width="24" height="24" alt="${type} icon">`;
+            cardHeader.appendChild(iconSpan);
+            
+            // Create title with the icon
+            const cardTitle = document.createElement('h5');
+            cardTitle.className = 'card-title mb-0';
+            cardTitle.textContent = element.name;
+            cardHeader.appendChild(cardTitle);
+            
+            // Add the header to the card body
+            cardBody.appendChild(cardHeader);
+            
+            // Add subtitle (ID)
             const cardSubtitle = document.createElement('h6');
             cardSubtitle.className = 'card-subtitle mb-2 text-muted';
-            cardSubtitle.textContent = element.id || '';
-            
-            // Append elements to each other
-            cardBody.appendChild(cardTitle);
+            cardSubtitle.textContent = element.id || '';  
             cardBody.appendChild(cardSubtitle);
             card.appendChild(cardBody);
             cardCol.appendChild(card);

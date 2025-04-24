@@ -1221,17 +1221,220 @@ def delete_gp_instance(environment: str, mission_network_id: str, segment_id: st
         if not asset:
             return False
         
-        gp_instances = asset.get('gpInstances', [])
-        original_len = len(gp_instances)
-        asset['gpInstances'] = [gpi for gpi in gp_instances if gpi.get('gpid') != instance_id]
+        # Find and remove the GP instance
+        for i, gp_instance in enumerate(asset.get('gpInstances', [])):
+            if gp_instance.get('gpid') == instance_id:
+                asset['gpInstances'].pop(i)
+                _save_cis_plan(environment, data)
+                logging.info(f"Repository: Deleted GP instance '{instance_id}' from asset '{asset_id}'")
+                return True
         
-        if len(asset['gpInstances']) < original_len:
-            _save_cis_plan(environment, data)
-            logging.info(f"Repository: Deleted GP instance '{instance_id}' from asset '{asset_id}'")
-            return True
         return False
     except Exception as e:
         logging.error(f"Repository: Error deleting GP instance: {str(e)}")
+        raise
+
+# --- SP Instance Repository Functions ---
+
+def add_sp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, 
+                  asset_id: str, gp_instance_id: str, sp_id: str, sp_version: str) -> dict:
+    """Adds a new SP instance to a GP instance."""
+    try:
+        import uuid
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        
+        # Find the GP instance
+        gp_instance = None
+        for gpi in asset.get('gpInstances', []):
+            if gpi.get('gpid') == gp_instance_id:
+                gp_instance = gpi
+                break
+        
+        if not gp_instance:
+            return None
+        
+        # Initialize the spInstances list if it doesn't exist
+        if 'spInstances' not in gp_instance:
+            gp_instance['spInstances'] = []
+        
+        # Check if SP instance with same ID already exists
+        for sp in gp_instance['spInstances']:
+            if sp.get('spId') == sp_id:
+                logging.warning(f"Repository: SP instance with ID '{sp_id}' already exists in GP instance '{gp_instance_id}'")
+                return None
+        
+        # Create the new SP instance
+        new_sp_instance = {
+            "guid": str(uuid.uuid4()),
+            "spId": sp_id,
+            "spVersion": sp_version
+        }
+        
+        gp_instance['spInstances'].append(new_sp_instance)
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Added SP instance '{sp_id}' to GP instance '{gp_instance_id}'")
+        
+        return new_sp_instance
+    except Exception as e:
+        logging.error(f"Repository: Error adding SP instance: {str(e)}")
+        raise
+
+def get_all_sp_instances(environment: str, mission_network_id: str, segment_id: str, domain_id: str, 
+                        stack_id: str, asset_id: str, gp_instance_id: str) -> list:
+    """Gets all SP instances in a GP instance."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return []
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return []
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return []
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return []
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return []
+        
+        # Find the GP instance
+        for gpi in asset.get('gpInstances', []):
+            if gpi.get('gpid') == gp_instance_id:
+                return gpi.get('spInstances', [])
+        
+        return []
+    except Exception as e:
+        logging.error(f"Repository: Error getting SP instances: {str(e)}")
+        raise
+
+def get_sp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str,
+                   stack_id: str, asset_id: str, gp_instance_id: str, sp_id: str) -> dict:
+    """Gets a specific SP instance by ID."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        
+        # Find the GP instance
+        for gpi in asset.get('gpInstances', []):
+            if gpi.get('gpid') == gp_instance_id:
+                # Find the SP instance
+                for spi in gpi.get('spInstances', []):
+                    if spi.get('spId') == sp_id:
+                        return spi
+                break
+        
+        return None
+    except Exception as e:
+        logging.error(f"Repository: Error getting SP instance: {str(e)}")
+        raise
+
+def update_sp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str,
+                      stack_id: str, asset_id: str, gp_instance_id: str, sp_id: str, sp_version: str) -> dict:
+    """Updates an SP instance in a GP instance."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        
+        # Find the GP instance
+        for gpi in asset.get('gpInstances', []):
+            if gpi.get('gpid') == gp_instance_id:
+                # Find the SP instance
+                for spi in gpi.get('spInstances', []):
+                    if spi.get('spId') == sp_id:
+                        # Update the SP instance
+                        spi['spVersion'] = sp_version
+                        _save_cis_plan(environment, data)
+                        logging.info(f"Repository: Updated SP instance '{sp_id}' in GP instance '{gp_instance_id}'")
+                        return spi
+                break
+        
+        return None
+    except Exception as e:
+        logging.error(f"Repository: Error updating SP instance: {str(e)}")
+        raise
+
+def delete_sp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str,
+                      stack_id: str, asset_id: str, gp_instance_id: str, sp_id: str) -> bool:
+    """Deletes an SP instance from a GP instance."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return False
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return False
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return False
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return False
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return False
+        
+        # Find the GP instance
+        for gpi in asset.get('gpInstances', []):
+            if gpi.get('gpid') == gp_instance_id:
+                # Find and remove the SP instance
+                for i, spi in enumerate(gpi.get('spInstances', [])):
+                    if spi.get('spId') == sp_id:
+                        gpi['spInstances'].pop(i)
+                        _save_cis_plan(environment, data)
+                        logging.info(f"Repository: Deleted SP instance '{sp_id}' from GP instance '{gp_instance_id}'")
+                        return True
+                break
+        
+        return False
+    except Exception as e:
+        logging.error(f"Repository: Error deleting SP instance: {str(e)}")
         raise
 
 # --- Network Segment Functions ---

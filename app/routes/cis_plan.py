@@ -8,7 +8,8 @@ from app.data_access.cis_plan_repository import (
     get_all_assets, get_asset, add_asset, update_asset, delete_asset,
     add_network_interface, get_all_network_interfaces, get_network_interface, update_network_interface, delete_network_interface,
     update_configuration_item, get_all_gp_instances, get_gp_instance, add_gp_instance, update_gp_instance, delete_gp_instance,
-    refresh_gp_instance_config_items
+    refresh_gp_instance_config_items,
+    add_sp_instance, get_all_sp_instances, get_sp_instance, update_sp_instance, delete_sp_instance
 )
 from app.api.iocore2 import IOCore2ApiClient 
 
@@ -508,24 +509,133 @@ def handle_gp_instance(mn_id, seg_id, dom_id, stack_id, asset_id, instance_id):
         except Exception as e:
             return error_response(f"Error deleting GP instance: {str(e)}")
 
-@cis_plan_bp.route('/api/cis_plan/mission_network/<mn_id>/segment/<seg_id>/security_domain/<dom_id>/hw_stacks/<stack_id>/assets/<asset_id>/gp_instances/<instance_id>/refresh_config', methods=['POST'])
-def refresh_gp_instance_configs(mn_id, seg_id, dom_id, stack_id, asset_id, instance_id):
-    """Refresh the configuration items for a GP instance by fetching the latest from the config item catalog."""
-    env = get_environment()
-    
+@cis_plan_bp.route('/api/cis_plan/<environment>/mission_networks/<mn_id>/network_segments/<seg_id>/security_domains/<dom_id>/hw_stacks/<stack_id>/assets/<asset_id>/gp_instances/<instance_id>/refresh_config', methods=['POST'])
+def refresh_gp_instance_configs(environment, mn_id, seg_id, dom_id, stack_id, asset_id, instance_id):
     try:
-        # Call the repository function to refresh config items
-        updated_instance = refresh_gp_instance_config_items(env, mn_id, seg_id, dom_id, stack_id, asset_id, instance_id)
-        if not updated_instance:
-            return error_response(f"GP instance {instance_id} not found or could not be updated.", status=404)
-        
-        # Return the updated instance
-        return success_response({
-            "message": f"Configuration items refreshed for GP instance {instance_id}.",
-            "instance": updated_instance
-        })
+        # This endpoint only supports POST for refreshing config items
+        if request.method == 'POST':
+            refreshed_instance = refresh_gp_instance_config_items(environment, mn_id, seg_id, dom_id, stack_id, asset_id, instance_id)
+            if refreshed_instance:
+                return jsonify({
+                    'status': 'success',
+                    'message': f"Successfully refreshed config items for GP instance {instance_id}",
+                    'data': refreshed_instance
+                })
+            else:
+                return jsonify({
+                    'status': 'error',
+                    'message': f"Failed to refresh config items for GP instance {instance_id}"
+                }), 404
     except Exception as e:
-        return error_response(f"Error refreshing GP instance configuration items: {str(e)}", 500)
+        logging.error(f"API Error refreshing GP instance config items: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f"Error refreshing config items: {str(e)}"
+        }), 500
+
+# --- SP Instance API Routes ---
+
+@cis_plan_bp.route('/api/cis_plan/<environment>/mission_networks/<mn_id>/network_segments/<seg_id>/security_domains/<dom_id>/hw_stacks/<stack_id>/assets/<asset_id>/gp_instances/<gp_id>/sp_instances', methods=['GET', 'POST'])
+def sp_instances(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id):
+    try:
+        if request.method == 'GET':
+            # Get all SP instances in a GP instance
+            instances = get_all_sp_instances(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id)
+            return jsonify({
+                'status': 'success',
+                'message': f"Found {len(instances)} SP instances in GP instance {gp_id}",
+                'data': instances
+            })
+        elif request.method == 'POST':
+            # Create a new SP instance
+            data = request.json
+            if not data or not all(key in data for key in ['spId', 'spVersion']):
+                return jsonify({
+                    'status': 'error',
+                    'message': "Missing required fields: 'spId', 'spVersion'"
+                }), 400
+            
+            sp_id = data.get('spId')
+            sp_version = data.get('spVersion')
+            
+            new_instance = add_sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id, sp_version)
+            if new_instance:
+                return jsonify({
+                    'status': 'success',
+                    'message': f"Successfully added SP instance {sp_id} to GP instance {gp_id}",
+                    'data': new_instance
+                }), 201
+            else:
+                return jsonify({
+                    'status': 'error',
+                    'message': f"Failed to add SP instance to GP instance {gp_id}. It may already exist or the GP instance was not found."
+                }), 400
+    except Exception as e:
+        logging.error(f"API Error processing SP instances: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f"Error processing SP instances: {str(e)}"
+        }), 500
+
+@cis_plan_bp.route('/api/cis_plan/<environment>/mission_networks/<mn_id>/network_segments/<seg_id>/security_domains/<dom_id>/hw_stacks/<stack_id>/assets/<asset_id>/gp_instances/<gp_id>/sp_instances/<sp_id>', methods=['GET', 'PUT', 'DELETE'])
+def sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id):
+    try:
+        if request.method == 'GET':
+            # Get a specific SP instance
+            instance = get_sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id)
+            if instance:
+                return jsonify({
+                    'status': 'success',
+                    'message': f"Found SP instance {sp_id} in GP instance {gp_id}",
+                    'data': instance
+                })
+            else:
+                return jsonify({
+                    'status': 'error',
+                    'message': f"SP instance {sp_id} not found in GP instance {gp_id}"
+                }), 404
+        elif request.method == 'PUT':
+            # Update an SP instance
+            data = request.json
+            if not data or 'spVersion' not in data:
+                return jsonify({
+                    'status': 'error',
+                    'message': "Missing required field: 'spVersion'"
+                }), 400
+            
+            sp_version = data.get('spVersion')
+            
+            updated_instance = update_sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id, sp_version)
+            if updated_instance:
+                return jsonify({
+                    'status': 'success',
+                    'message': f"Successfully updated SP instance {sp_id} in GP instance {gp_id}",
+                    'data': updated_instance
+                })
+            else:
+                return jsonify({
+                    'status': 'error',
+                    'message': f"Failed to update SP instance {sp_id} in GP instance {gp_id}. It may not exist."
+                }), 404
+        elif request.method == 'DELETE':
+            # Delete an SP instance
+            success = delete_sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id)
+            if success:
+                return jsonify({
+                    'status': 'success',
+                    'message': f"Successfully deleted SP instance {sp_id} from GP instance {gp_id}"
+                })
+            else:
+                return jsonify({
+                    'status': 'error',
+                    'message': f"Failed to delete SP instance {sp_id} from GP instance {gp_id}. It may not exist."
+                }), 404
+    except Exception as e:
+        logging.error(f"API Error processing SP instance {sp_id}: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f"Error processing SP instance {sp_id}: {str(e)}"
+        }), 500
 
 @cis_plan_bp.route('/api/cis_plan/all', methods=['GET'])
 def get_cis_plan_all():

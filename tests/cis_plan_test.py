@@ -14,7 +14,8 @@ from app.data_access.cis_plan_repository import (
     add_network_segment, update_network_segment, delete_network_segment, add_security_domain, update_security_domain, delete_security_domain,
     get_all_security_domains, get_all_hw_stacks, get_hw_stack, add_hw_stack, update_hw_stack, delete_hw_stack, add_asset, get_asset, get_all_assets,
     update_asset, delete_asset, add_network_interface, get_network_interface, get_all_network_interfaces, update_network_interface, delete_network_interface,
-    update_configuration_item, add_gp_instance, update_gp_instance, delete_gp_instance, get_all_gp_instances, get_gp_instance, refresh_gp_instance_config_items
+    update_configuration_item, add_gp_instance, update_gp_instance, delete_gp_instance, get_all_gp_instances, get_gp_instance, refresh_gp_instance_config_items,
+    add_sp_instance, get_all_sp_instances, get_sp_instance, update_sp_instance, delete_sp_instance
 )
 from app.routes.cis_plan import cis_plan_bp
 from app.api.iocore2 import IOCore2ApiClient
@@ -1100,6 +1101,181 @@ def test_repo_update_gp_instance():
             print_fail(f"update_gp_instance() failed to update instance {instance_id}.")
     except Exception as e:
         print_fail(f"update_gp_instance() raised exception: {e}")
+
+# --- SP Instance Repository Tests ---
+
+def test_repo_add_sp_instance():
+    print_test_header("test_repo_add_sp_instance")
+    mn_id = created_ids.get('mission_network_repo_temp_hw')
+    seg_id = created_ids.get('network_segment_repo_temp_hw')
+    dom_id = created_ids.get('security_domain_repo_temp_hw')
+    stack_id = created_ids.get('hw_stack_repo')
+    asset_id = created_ids.get('asset_repo')
+    gp_instance_id = created_ids.get('gp_instance_repo')
+    
+    if not all([mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id]):
+        print_fail("Skipping add SP instance test, missing required IDs.")
+        return
+    
+    try:
+        # Create a test app and push an application context
+        app = init_test_app()
+        with app.app_context():
+            sp_id = "SP-0043"
+            sp_version = "1.2.3"
+            
+            new_sp_instance = add_sp_instance('ciav', mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id, sp_id, sp_version)
+            if new_sp_instance:
+                print_pass(f"add_sp_instance() created SP instance '{sp_id}' in GP instance {gp_instance_id}.")
+                if VERBOSE:
+                    print(f"Complete SP Instance data: {json.dumps(new_sp_instance, indent=2)}")
+                created_ids['sp_instance_repo'] = sp_id
+                
+                # Verify SP instance has correct structure
+                if new_sp_instance.get('spId') == sp_id and new_sp_instance.get('spVersion') == sp_version:
+                    print_pass(f"SP instance has correct spId and spVersion.")
+                else:
+                    print_fail(f"SP instance does not have correct spId or spVersion.")
+            else:
+                print_fail(f"add_sp_instance() failed to create an SP instance.")
+    except Exception as e:
+        print_fail(f"add_sp_instance() raised exception: {e}")
+
+def test_repo_get_all_sp_instances():
+    print_test_header("test_repo_get_all_sp_instances")
+    mn_id = created_ids.get('mission_network_repo_temp_hw')
+    seg_id = created_ids.get('network_segment_repo_temp_hw')
+    dom_id = created_ids.get('security_domain_repo_temp_hw')
+    stack_id = created_ids.get('hw_stack_repo')
+    asset_id = created_ids.get('asset_repo')
+    gp_instance_id = created_ids.get('gp_instance_repo')
+    
+    if not all([mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id]):
+        print_fail("Skipping get all SP instances test, missing required IDs.")
+        return
+    
+    try:
+        # Create a test app and push an application context
+        app = init_test_app()
+        with app.app_context():
+            sp_instances = get_all_sp_instances('ciav', mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id)
+            
+            print_pass(f"get_all_sp_instances() returned {len(sp_instances)} SP instances.")
+            if VERBOSE:
+                print(f"All SP Instances: {json.dumps(sp_instances, indent=2)}")
+            
+            # Check if our created SP instance is in the list
+            sp_id = created_ids.get('sp_instance_repo')
+            if sp_id and any(sp.get('spId') == sp_id for sp in sp_instances):
+                print_pass(f"Found created SP instance '{sp_id}' in the returned list.")
+            elif sp_id:
+                print_fail(f"Could not find created SP instance '{sp_id}' in the returned list.")
+    except Exception as e:
+        print_fail(f"get_all_sp_instances() raised exception: {e}")
+
+def test_repo_get_sp_instance():
+    print_test_header("test_repo_get_sp_instance")
+    mn_id = created_ids.get('mission_network_repo_temp_hw')
+    seg_id = created_ids.get('network_segment_repo_temp_hw')
+    dom_id = created_ids.get('security_domain_repo_temp_hw')
+    stack_id = created_ids.get('hw_stack_repo')
+    asset_id = created_ids.get('asset_repo')
+    gp_instance_id = created_ids.get('gp_instance_repo')
+    sp_id = created_ids.get('sp_instance_repo')
+    
+    if not all([mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id, sp_id]):
+        print_fail("Skipping get SP instance test, missing required IDs.")
+        return
+    
+    try:
+        # Create a test app and push an application context
+        app = init_test_app()
+        with app.app_context():
+            sp_instance = get_sp_instance('ciav', mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id, sp_id)
+            if sp_instance:
+                print_pass(f"get_sp_instance() retrieved SP instance '{sp_id}'.")
+                if VERBOSE:
+                    print(f"SP Instance data: {json.dumps(sp_instance, indent=2)}")
+                
+                # Verify SP instance has correct structure
+                if sp_instance.get('spId') == sp_id:
+                    print_pass(f"SP instance has correct spId.")
+                else:
+                    print_fail(f"SP instance does not have correct spId.")
+            else:
+                print_fail(f"get_sp_instance() failed to retrieve SP instance '{sp_id}'.")
+    except Exception as e:
+        print_fail(f"get_sp_instance() raised exception: {e}")
+
+def test_repo_update_sp_instance():
+    print_test_header("test_repo_update_sp_instance")
+    mn_id = created_ids.get('mission_network_repo_temp_hw')
+    seg_id = created_ids.get('network_segment_repo_temp_hw')
+    dom_id = created_ids.get('security_domain_repo_temp_hw')
+    stack_id = created_ids.get('hw_stack_repo')
+    asset_id = created_ids.get('asset_repo')
+    gp_instance_id = created_ids.get('gp_instance_repo')
+    sp_id = created_ids.get('sp_instance_repo')
+    
+    if not all([mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id, sp_id]):
+        print_fail("Skipping update SP instance test, missing required IDs.")
+        return
+    
+    try:
+        # Create a test app and push an application context
+        app = init_test_app()
+        with app.app_context():
+            updated_version = "2.0.0"
+            updated_sp = update_sp_instance('ciav', mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id, sp_id, updated_version)
+            
+            if updated_sp:
+                print_pass(f"update_sp_instance() updated SP instance '{sp_id}'.")
+                if VERBOSE:
+                    print(f"Updated SP Instance data: {json.dumps(updated_sp, indent=2)}")
+                
+                # Verify SP instance has been updated
+                if updated_sp.get('spVersion') == updated_version:
+                    print_pass(f"SP instance version was updated to '{updated_version}'.")
+                else:
+                    print_fail(f"SP instance version was not updated correctly.")
+            else:
+                print_fail(f"update_sp_instance() failed to update SP instance '{sp_id}'.")
+    except Exception as e:
+        print_fail(f"update_sp_instance() raised exception: {e}")
+
+def test_repo_delete_sp_instance():
+    print_test_header("test_repo_delete_sp_instance")
+    
+    if SKIP_DELETION:
+        print_pass(f"Skipping SP instance deletion test to preserve resources.")
+        return
+    
+    mn_id = created_ids.get('mission_network_repo_temp_hw')
+    seg_id = created_ids.get('network_segment_repo_temp_hw')
+    dom_id = created_ids.get('security_domain_repo_temp_hw')
+    stack_id = created_ids.get('hw_stack_repo')
+    asset_id = created_ids.get('asset_repo')
+    gp_instance_id = created_ids.get('gp_instance_repo')
+    sp_id = created_ids.get('sp_instance_repo')
+    
+    if not all([mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id, sp_id]):
+        print_fail("Skipping delete SP instance test, missing required IDs.")
+        return
+    
+    try:
+        # Create a test app and push an application context
+        app = init_test_app()
+        with app.app_context():
+            deleted = delete_sp_instance('ciav', mn_id, seg_id, dom_id, stack_id, asset_id, gp_instance_id, sp_id)
+            
+            if deleted:
+                print_pass(f"delete_sp_instance() deleted SP instance '{sp_id}' from GP instance {gp_instance_id}.")
+                created_ids['sp_instance_repo'] = None
+            else:
+                print_fail(f"delete_sp_instance() failed to delete SP instance '{sp_id}'.")
+    except Exception as e:
+        print_fail(f"delete_sp_instance() raised exception: {e}")
+
 
 def test_repo_delete_gp_instance():
     print_test_header("test_repo_delete_gp_instance")
@@ -2504,8 +2680,8 @@ def test_api_refresh_gp_instance_config_items():
         return
     
     try:
-        # Call the refresh config endpoint
-        url = f'/api/cis_plan/mission_network/{mn_id}/segment/{seg_id}/security_domain/{dom_id}/hw_stacks/{stack_id}/assets/{asset_id}/gp_instances/{instance_id}/refresh_config'
+        # Call the refresh config endpoint with the updated URL format
+        url = f'/api/cis_plan/ciav/mission_networks/{mn_id}/network_segments/{seg_id}/security_domains/{dom_id}/hw_stacks/{stack_id}/assets/{asset_id}/gp_instances/{instance_id}/refresh_config'
         response = client.post(url)
         data = response.get_json()
         
@@ -2513,8 +2689,9 @@ def test_api_refresh_gp_instance_config_items():
             print_pass(f"POST {url} successfully refreshed configuration items for GP instance {instance_id}.")
             
             # Verify the instance was returned
-            if 'instance' in data.get('data', {}):
-                instance = data['data']['instance']
+            # In our new API format, the instance is directly in the 'data' field
+            if data.get('data'):
+                instance = data['data']
                 if 'configurationItems' in instance:
                     print_pass(f"Refreshed instance has {len(instance['configurationItems'])} config items.")
                 else:
@@ -2525,7 +2702,7 @@ def test_api_refresh_gp_instance_config_items():
             print_fail(f"POST {url} failed to refresh config items.", f"Status: {response.status_code}, Response: {data}")
             
         # Test with invalid GP instance ID
-        invalid_url = f'/api/cis_plan/mission_network/{mn_id}/segment/{seg_id}/security_domain/{dom_id}/hw_stacks/{stack_id}/assets/{asset_id}/gp_instances/GP-NOTFOUND/refresh_config'
+        invalid_url = f'/api/cis_plan/ciav/mission_networks/{mn_id}/network_segments/{seg_id}/security_domains/{dom_id}/hw_stacks/{stack_id}/assets/{asset_id}/gp_instances/GP-NOTFOUND/refresh_config'
         response = client.post(invalid_url)
         if response.status_code == 404:
             print_pass(f"POST {invalid_url} correctly returned 404 for non-existent GP instance.")
@@ -2675,9 +2852,15 @@ if __name__ == '__main__':
         # GP Instance Repo Tests
         test_repo_add_gp_instance()
         test_repo_refresh_gp_instance_config_items()
-        test_repo_get_all_gp_instances()
         test_repo_get_gp_instance()
         test_repo_update_gp_instance()
+        
+        # SP Instance Tests
+        test_repo_add_sp_instance()
+        test_repo_get_all_sp_instances()
+        test_repo_get_sp_instance()
+        test_repo_update_sp_instance()
+        test_repo_delete_sp_instance()
         
         if not SKIP_DELETION:
             test_repo_delete_gp_instance()

@@ -885,13 +885,47 @@
             "spVersion": "3.5.2"
           }
         ]
+      },
+      {
+        "gpId": "GP-0142",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [
+          {
+            "spId": "SP-0253",
+            "spVersion": "4.4.0",
+            "spScore": "100%",
+            "guid": "adda29eb-8680-4008-935d-3c150fd5abea"
+          }
+        ],
+        "models": [
+          "MOD-0001"
+        ],
+        "guid": "9f31c822-be5f-4481-83d9-65eee94d1f71"
+      },
+      {
+        "gpId": "GP-0021",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [
+          {
+            "spId": "SP-0253",
+            "spVersion": "4.4.0",
+            "spScore": "100%",
+            "guid": "8af43800-f2de-450e-9ad3-2ffaf3095b77"
+          }
+        ],
+        "models": [
+          "MOD-0001"
+        ],
+        "guid": "4daf2563-11f4-4ddc-a4c6-7856914cade2"
       }
     ],
     "guid": "e6feebab-612a-4445-98b7-bbdda137c0cd",
     "id": "ASC-0018",
     "model": "MOD-0001",
     "serviceId": "SRV-0009",
-    "status": "In Review"
+    "status": "In Progress"
   },
   {
     "affiliateId": "AFF-0027",
@@ -1965,6 +1999,26 @@
           "MOD-0001"
         ],
         "spInstances": []
+      },
+      {
+        "gpId": "GP-0142",
+        "gpScore": "0%",
+        "guid": "94d41f14-d2a0-4918-851b-53de23e16f9d",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0021",
+        "gpScore": "0%",
+        "guid": "89b745e8-0996-4a88-ba58-6a4fb491ce5f",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
       }
     ],
     "guid": "5c6b8846-12bd-4eea-81df-24770587c08a",
@@ -2498,76 +2552,5 @@
     "model": "MOD-0001",
     "serviceId": "SRV-0004",
     "status": "Validated"
-  },
-  {
-    "id": "ASC-0060",
-    "affiliateId": "AFF-0001",
-    "environment": "Static",
-    "serviceId": "SRV-0012",
-    "model": "MOD-0001",
-    "ascScore": "0%",
-    "status": "Initial",
-    "gpInstances": [
-      {
-        "gpId": "GP-0026",
-        "gpScore": "0%",
-        "guid": "4f0a10d5-e964-4e2a-8aa2-9abf7f024e3d",
-        "instanceLabel": "",
-        "models": [
-          "MOD-0001"
-        ],
-        "spInstances": []
-      },
-      {
-        "gpId": "GP-0029",
-        "gpScore": "0%",
-        "guid": "9eeef5fe-9f31-4ad4-b62b-353bd53fccb6",
-        "instanceLabel": "",
-        "models": [
-          "MOD-0001"
-        ],
-        "spInstances": []
-      },
-      {
-        "gpId": "GP-0015",
-        "gpScore": "0%",
-        "guid": "34a3a294-6a52-44c1-96a5-eb7c853d4249",
-        "instanceLabel": "",
-        "models": [
-          "MOD-0001"
-        ],
-        "spInstances": []
-      },
-      {
-        "gpId": "GP-0084",
-        "gpScore": "0%",
-        "guid": "0592efae-5abe-4194-8f51-14b6d54c5da5",
-        "instanceLabel": "",
-        "models": [
-          "MOD-0001"
-        ],
-        "spInstances": []
-      },
-      {
-        "gpId": "GP-0019",
-        "gpScore": "0%",
-        "guid": "448a6825-b796-4797-8122-752c508bf090",
-        "instanceLabel": "",
-        "models": [
-          "MOD-0001"
-        ],
-        "spInstances": []
-      },
-      {
-        "gpId": "GP-0016",
-        "gpScore": "0%",
-        "guid": "ec486d46-5ca0-4dc8-ae94-cb14a5241e3b",
-        "instanceLabel": "",
-        "models": [
-          "MOD-0001"
-        ],
-        "spInstances": []
-      }
-    ]
   }
 ]

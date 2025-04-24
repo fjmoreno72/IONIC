@@ -341,6 +341,26 @@ def _find_hw_stack(stacks, stack_id):
     """Finds an HW stack by its ID within a list of stacks."""
     return next((stack for stack in stacks if stack.get('id') == stack_id), None)
 
+def _find_asset(assets, asset_id):
+    return next((asset for asset in assets if asset.get('id') == asset_id), None)
+
+def _get_next_asset_id(assets):
+    """Get the next available asset ID."""
+    if not assets:
+        return "AS-0001"
+    
+    max_id = 0
+    for asset in assets:
+        asset_id = asset.get('id', '')
+        if asset_id.startswith('AS-'):
+            try:
+                num = int(asset_id[3:])
+                max_id = max(max_id, num)
+            except ValueError:
+                pass
+    
+    return f"AS-{max_id + 1:04d}"
+
 def _get_next_global_hw_stack_id(hw_stacks):
     """Generates the next available HW stack ID (HW-xxxx)."""
     max_id = 0
@@ -468,6 +488,594 @@ def delete_hw_stack(environment: str, mission_network_id: str, segment_id: str, 
         return False
     except Exception as e:
         logging.error(f"Repository: Error deleting HW stack: {str(e)}")
+        raise
+
+# --- Asset Functions ---
+
+def add_asset(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, name: str) -> dict:
+    """Adds a new asset to a hardware stack."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not stack:
+            return None
+
+        assets = stack.setdefault('assets', [])
+        new_id = _get_next_asset_id(assets)
+        new_guid = str(uuid.uuid4())
+        new_asset = {
+            "name": name,
+            "guid": new_guid,
+            "id": new_id,
+            "networkInterfaces": [], # Initialize with empty networkInterfaces
+            "gpInstances": []       # Initialize with empty gpInstances array
+        }
+        assets.append(new_asset)
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Added asset '{name}' ({new_id}) to HW stack '{stack_id}'")
+        return new_asset
+    except Exception as e:
+        logging.error(f"Repository: Error adding asset: {str(e)}")
+        raise
+
+def update_asset(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, name: str) -> dict:
+    """Updates an existing asset in a hardware stack."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not stack:
+            return None
+        
+        assets = stack.get('assets', [])
+        asset = _find_asset(assets, asset_id)
+        if not asset:
+            return None
+            
+        # Update the asset properties
+        asset['name'] = name
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Updated asset '{name}' ({asset_id}) in HW stack '{stack_id}'")
+        return asset
+    except Exception as e:
+        logging.error(f"Repository: Error updating asset: {str(e)}")
+        raise
+
+def get_all_assets(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str) -> list:
+    """Gets all assets in a hardware stack."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return []
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return []
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return []
+        stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not stack:
+            return []
+        
+        return stack.get('assets', [])
+    except Exception as e:
+        logging.error(f"Repository: Error getting assets: {str(e)}")
+        return []
+
+def get_asset(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str) -> dict:
+    """Gets a specific asset by ID."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not stack:
+            return None
+        
+        assets = stack.get('assets', [])
+        return _find_asset(assets, asset_id)
+    except Exception as e:
+        logging.error(f"Repository: Error getting asset: {str(e)}")
+        return None
+
+def delete_asset(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str) -> bool:
+    """Deletes an asset from a hardware stack."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return False
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return False
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return False
+        stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not stack:
+            return False
+        
+        assets = stack.get('assets', [])
+        original_len = len(assets)
+        stack['assets'] = [asset for asset in assets if asset.get('id') != asset_id]
+        
+        if len(stack['assets']) < original_len:
+            _save_cis_plan(environment, data)
+            logging.info(f"Repository: Deleted asset '{asset_id}' from HW stack '{stack_id}'")
+            return True
+        return False
+    except Exception as e:
+        logging.error(f"Repository: Error deleting asset: {str(e)}")
+        raise
+
+# --- Network Interface and Configuration Item Functions ---
+
+def _find_network_interface(network_interfaces, interface_id):
+    """Finds a network interface by its ID within a list of interfaces."""
+    return next((ni for ni in network_interfaces if ni.get('id') == interface_id), None)
+
+def _get_next_network_interface_id(network_interfaces):
+    """Get the next available network interface ID."""
+    if not network_interfaces:
+        return "NI-0001"
+    
+    # Extract numbers from existing IDs
+    id_nums = []
+    for ni in network_interfaces:
+        ni_id = ni.get('id', '')
+        if ni_id.startswith('NI-'):
+            try:
+                id_nums.append(int(ni_id[3:]))
+            except ValueError:
+                continue
+    
+    # Get the next ID number
+    next_id_num = max(id_nums) + 1 if id_nums else 1
+    return f"NI-{next_id_num:04d}"
+
+def add_network_interface(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, name: str) -> dict:
+    """Adds a new network interface to an asset with the three required configurationItems (IP Address, Sub-Net, FQDN)."""
+    try:
+        import uuid
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        
+        # Initialize the networkInterfaces list if it doesn't exist
+        if 'networkInterfaces' not in asset:
+            asset['networkInterfaces'] = []
+        
+        # Create the new network interface with empty configuration items
+        new_interface = {
+            "name": name,
+            "guid": str(uuid.uuid4()),
+            "id": _get_next_network_interface_id(asset.get('networkInterfaces', [])),
+            "configurationItems": [
+                {
+                    "Name": "IP Address",
+                    "ConfigurationAnswerType": "Text Field (Single Line)",
+                    "AnswerContent": "",
+                    "guid": str(uuid.uuid4())
+                },
+                {
+                    "Name": "Sub-Net",
+                    "ConfigurationAnswerType": "Text Field (Single Line)",
+                    "AnswerContent": "",
+                    "guid": str(uuid.uuid4())
+                },
+                {
+                    "Name": "FQDN",
+                    "ConfigurationAnswerType": "Text Field (Single Line)",
+                    "AnswerContent": "",
+                    "guid": str(uuid.uuid4())
+                }
+            ]
+        }
+        
+        asset['networkInterfaces'].append(new_interface)
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Added network interface '{new_interface['id']}' to asset '{asset_id}'")
+        
+        return new_interface
+    except Exception as e:
+        logging.error(f"Repository: Error adding network interface: {str(e)}")
+        raise
+
+def get_all_network_interfaces(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str) -> list:
+    """Gets all network interfaces in an asset."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return []
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return []
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return []
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return []
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return []
+        
+        return asset.get('networkInterfaces', [])
+    except Exception as e:
+        logging.error(f"Repository: Error getting network interfaces: {str(e)}")
+        raise
+
+def get_network_interface(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, interface_id: str) -> dict:
+    """Gets a specific network interface by ID."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        
+        return _find_network_interface(asset.get('networkInterfaces', []), interface_id)
+    except Exception as e:
+        logging.error(f"Repository: Error getting network interface: {str(e)}")
+        raise
+
+def update_network_interface(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, interface_id: str, name: str) -> dict:
+    """Updates the name of a network interface."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        
+        network_interface = _find_network_interface(asset.get('networkInterfaces', []), interface_id)
+        if not network_interface:
+            return None
+        
+        network_interface['name'] = name
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Updated network interface '{interface_id}' name to '{name}'")
+        
+        return network_interface
+    except Exception as e:
+        logging.error(f"Repository: Error updating network interface: {str(e)}")
+        raise
+
+def delete_network_interface(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, interface_id: str) -> bool:
+    """Deletes a network interface from an asset."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return False
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return False
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return False
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return False
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return False
+        
+        network_interfaces = asset.get('networkInterfaces', [])
+        original_len = len(network_interfaces)
+        asset['networkInterfaces'] = [ni for ni in network_interfaces if ni.get('id') != interface_id]
+        
+        if len(asset['networkInterfaces']) < original_len:
+            _save_cis_plan(environment, data)
+            logging.info(f"Repository: Deleted network interface '{interface_id}' from asset '{asset_id}'")
+            return True
+        return False
+    except Exception as e:
+        logging.error(f"Repository: Error deleting network interface: {str(e)}")
+        raise
+
+def _find_configuration_item(config_items, item_name):
+    """Finds a configuration item by its name within a list of configuration items."""
+    return next((ci for ci in config_items if ci.get('Name') == item_name), None)
+
+def update_configuration_item(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, interface_id: str, item_name: str, answer_content: str) -> dict:
+    """Updates a specific configuration item (IP Address, Sub-Net, or FQDN) within a network interface."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        network_interface = _find_network_interface(asset.get('networkInterfaces', []), interface_id)
+        if not network_interface:
+            return None
+        
+        # Validate item_name is one of the allowed values
+        if item_name not in ["IP Address", "Sub-Net", "FQDN"]:
+            logging.error(f"Repository: Invalid configuration item name: {item_name}")
+            return None
+        
+        config_item = _find_configuration_item(network_interface.get('configurationItems', []), item_name)
+        if not config_item:
+            # If the configuration item doesn't exist, create it
+            import uuid
+            config_item = {
+                "Name": item_name,
+                "ConfigurationAnswerType": "Text Field (Single Line)",
+                "AnswerContent": "",
+                "guid": str(uuid.uuid4())
+            }
+            if 'configurationItems' not in network_interface:
+                network_interface['configurationItems'] = []
+            network_interface['configurationItems'].append(config_item)
+        
+        # Update the answer content
+        config_item['AnswerContent'] = answer_content
+        
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Updated configuration item '{item_name}' in network interface '{interface_id}' to '{answer_content}'")
+        
+        return config_item
+    except Exception as e:
+        logging.error(f"Repository: Error updating configuration item: {str(e)}")
+        raise
+
+# --- GP Instance Functions ---
+
+def _find_gp_instance(gp_instances, instance_id):
+    """Finds a GP instance by its gpid within a list of GP instances."""
+    return next((gpi for gpi in gp_instances if gpi.get('gpid') == instance_id), None)
+
+def _get_next_gp_instance_id(gp_instances):
+    """Get the next available GP instance ID."""
+    if not gp_instances:
+        return "GP-0001"
+    
+    # Extract numbers from existing IDs
+    id_nums = []
+    for gpi in gp_instances:
+        gp_id = gpi.get('gpid', '')
+        if gp_id.startswith('GP-'):
+            try:
+                id_nums.append(int(gp_id[3:]))
+            except ValueError:
+                continue
+    
+    # Get the next ID number
+    next_id_num = max(id_nums) + 1 if id_nums else 1
+    return f"GP-{next_id_num:04d}"
+
+def add_gp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, instance_label: str, service_id: str) -> dict:
+    """Adds a new GP instance to an asset with empty spInstances and configurationItems arrays."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        
+        # Initialize the gpInstances list if it doesn't exist
+        if 'gpInstances' not in asset:
+            asset['gpInstances'] = []
+        
+        # Create the new GP instance with empty spInstances and configurationItems arrays
+        new_gp_instance = {
+            "gpid": _get_next_gp_instance_id(asset.get('gpInstances', [])),
+            "guid": str(uuid.uuid4()),
+            "instanceLabel": instance_label,
+            "serviceId": service_id,
+            "spInstances": [],
+            "configurationItems": []
+        }
+        
+        asset['gpInstances'].append(new_gp_instance)
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Added GP instance '{new_gp_instance['gpid']}' to asset '{asset_id}'")
+        
+        return new_gp_instance
+    except Exception as e:
+        logging.error(f"Repository: Error adding GP instance: {str(e)}")
+        raise
+
+def get_all_gp_instances(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str) -> list:
+    """Gets all GP instances in an asset."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return []
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return []
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return []
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return []
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return []
+        
+        return asset.get('gpInstances', [])
+    except Exception as e:
+        logging.error(f"Repository: Error getting GP instances: {str(e)}")
+        raise
+
+def get_gp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, instance_id: str) -> dict:
+    """Gets a specific GP instance by ID."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        
+        return _find_gp_instance(asset.get('gpInstances', []), instance_id)
+    except Exception as e:
+        logging.error(f"Repository: Error getting GP instance: {str(e)}")
+        raise
+
+def update_gp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, instance_id: str, instance_label: str, service_id: str) -> dict:
+    """Updates a GP instance."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return None
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return None
+        
+        gp_instance = _find_gp_instance(asset.get('gpInstances', []), instance_id)
+        if not gp_instance:
+            return None
+        
+        gp_instance['instanceLabel'] = instance_label
+        gp_instance['serviceId'] = service_id
+        
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Updated GP instance '{instance_id}' in asset '{asset_id}'")
+        
+        return gp_instance
+    except Exception as e:
+        logging.error(f"Repository: Error updating GP instance: {str(e)}")
+        raise
+
+def delete_gp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, instance_id: str) -> bool:
+    """Deletes a GP instance from an asset."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return False
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return False
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return False
+        hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+        if not hw_stack:
+            return False
+        asset = _find_asset(hw_stack.get('assets', []), asset_id)
+        if not asset:
+            return False
+        
+        gp_instances = asset.get('gpInstances', [])
+        original_len = len(gp_instances)
+        asset['gpInstances'] = [gpi for gpi in gp_instances if gpi.get('gpid') != instance_id]
+        
+        if len(asset['gpInstances']) < original_len:
+            _save_cis_plan(environment, data)
+            logging.info(f"Repository: Deleted GP instance '{instance_id}' from asset '{asset_id}'")
+            return True
+        return False
+    except Exception as e:
+        logging.error(f"Repository: Error deleting GP instance: {str(e)}")
         raise
 
 # --- Network Segment Functions ---

@@ -35,22 +35,38 @@
                           "configurationItems": [
                             {
                               "Name": "IP Address",
-                              "DefaultValue": "10.0.0.1",
-                              "HelpText": "The static IP address for this network interface",
                               "ConfigurationAnswerType": "Text Field (Single Line)",
                               "AnswerContent": "10.0.0.1",
-                              "id": "CI-0001",
                               "guid": "7h5e8400-f79b-41d4-h166-446655446666"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "24",
+                              "guid": "7h5e8400-f79b-41d4-h166-446655446667"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "myserver.mission.com",
+                              "guid": "7h5e8400-f79b-41d4-h166-446655446668"
                             }
                           ]
                         }
                       ],
-                      "gpContainers": [
+                      "gpInstances": [
                         {
-                          "id": "GP-0001",
+                          "gpid": "GP-0001",
                           "guid": "1r9e8400-m49b-41d4-o836-446655453333",
-                          "label": "Server Configuration Group",
-                          "serviceID": "SV-0001",
+                          "instanceLabel": "Server Configuration Group",
+                          "serviceId": "SV-0001",
+                          "spInstances": [
+                            {
+                              "guid": "9v7e8400-q89b-41d4-s276-446655457777",
+                              "spId": "SP-0001",
+                              "spVersion": "2.1.0"
+                            }
+                          ],
                           "configurationItems": [
                             {
                               "Name": "All certificates across trust path",
@@ -60,20 +76,6 @@
                               "AnswerContent": "",
                               "id": "CI-0002",
                               "guid": "3s1e8400-n59b-41d4-p946-446655454444"
-                            }
-                          ],
-                          "gpInstances": [
-                            {
-                              "gpId": "GP-0001",
-                              "guid": "7u5e8400-p79b-41d4-r166-446655456666",
-                              "instanceLabel": "Command and Control Server",
-                              "spInstances": [
-                                {
-                                  "guid": "9v7e8400-q89b-41d4-s276-446655457777",
-                                  "spId": "SP-0001",
-                                  "spVersion": "2.1.0"
-                                }
-                              ]
                             }
                           ]
                         }

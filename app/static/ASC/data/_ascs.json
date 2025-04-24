@@ -782,9 +782,13 @@
     "status": "Initial"
   },
   {
+    "id": "ASC-0018",
     "affiliateId": "AFF-0027",
-    "ascScore": "67%",
     "environment": "Static",
+    "serviceId": "SRV-0009",
+    "model": "MOD-0001",
+    "ascScore": "75%",
+    "status": "In Progress",
     "gpInstances": [
       {
         "gpId": "GP-0130",
@@ -885,13 +889,42 @@
             "spVersion": "3.5.2"
           }
         ]
+      },
+      {
+        "gpId": "GP-0142",
+        "gpScore": "100%",
+        "guid": "9f31c822-be5f-4481-83d9-65eee94d1f71",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": [
+          {
+            "guid": "adda29eb-8680-4008-935d-3c150fd5abea",
+            "spId": "SP-0253",
+            "spScore": "100%",
+            "spVersion": "4.4.0"
+          }
+        ]
+      },
+      {
+        "gpId": "GP-0021",
+        "gpScore": "100%",
+        "guid": "4daf2563-11f4-4ddc-a4c6-7856914cade2",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": [
+          {
+            "guid": "8af43800-f2de-450e-9ad3-2ffaf3095b77",
+            "spId": "SP-0253",
+            "spScore": "100%",
+            "spVersion": "4.4.0"
+          }
+        ]
       }
-    ],
-    "guid": "e6feebab-612a-4445-98b7-bbdda137c0cd",
-    "id": "ASC-0018",
-    "model": "MOD-0001",
-    "serviceId": "SRV-0009",
-    "status": "In Review"
+    ]
   },
   {
     "affiliateId": "AFF-0027",
@@ -1960,6 +1993,26 @@
         "gpId": "GP-0132",
         "gpScore": "0%",
         "guid": "fe1fbfdd-6ce3-4f74-b8bd-281decafec9a",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0142",
+        "gpScore": "0%",
+        "guid": "94d41f14-d2a0-4918-851b-53de23e16f9d",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0021",
+        "gpScore": "0%",
+        "guid": "89b745e8-0996-4a88-ba58-6a4fb491ce5f",
         "instanceLabel": "",
         "models": [
           "MOD-0001"

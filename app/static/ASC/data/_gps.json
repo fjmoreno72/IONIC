@@ -825,5 +825,11 @@
     "description": "Weapon Delivery Asset",
     "iconPath": "",
     "id": "GP-0141"
+  },
+  {
+    "name": "FFT Augmentation",
+    "description": "",
+    "iconPath": "",
+    "id": "GP-0142"
   }
 ]

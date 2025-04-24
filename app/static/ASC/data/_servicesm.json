@@ -232,10 +232,23 @@
         "models": [
           "MOD-0001"
         ]
+      },
+      {
+        "id": "GP-0142",
+        "models": [
+          "MOD-0001"
+        ]
+      },
+      {
+        "id": "GP-0021",
+        "models": [
+          "MOD-0001"
+        ]
       }
     ],
     "id": "SRV-0009",
-    "iconPath": "./image/srv/icon_friendly_force_tracking.png"
+    "iconPath": "./image/srv/icon_friendly_force_tracking.png",
+    "originalId": "SRV-0009"
   },
   {
     "name": "Ground-to-Air Information Exchange",

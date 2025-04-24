@@ -50,15 +50,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             
-            // API endpoints under the api blueprint use this path format
+            // API endpoint is registered at this path in the api blueprint
             const response = await fetch('/api/cis_plan/tree');
             if (!response.ok) {
                 throw new Error('Failed to fetch CIS Plan data');
             }
             
             const data = await response.json();
+            console.log('API response:', data);
             if (data.status === 'success') {
                 cisPlanData = data.data;
+                console.log('CIS Plan data:', cisPlanData);
                 renderTree(cisPlanData);
             } else {
                 cisTree.innerHTML = `

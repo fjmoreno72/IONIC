@@ -25,6 +25,9 @@ api_bp = Blueprint('api', __name__)
 
 import app.routes.ascs  # Register ASC routes
 
+# Import CIS Plan data access functions
+from app.data_access.cis_plan_repository import get_all_cis_plan
+
 # --- Actor Mappings ---
 _actor_map = None  # Maps actor key to name
 _actor_id_map = None  # Maps actor ID to name
@@ -1082,3 +1085,25 @@ def process_sreq_coverage_in_background(url, cookies, environment):
 
     except Exception as e:
         logging.exception(f"Error in background SREQ processing: {str(e)}")
+
+
+# CIS Plan tree API endpoint
+@api_bp.route('/api/cis_plan/tree', methods=['GET'])
+def get_cis_plan_tree():
+    """Get CIS Plan data structured for tree visualization."""
+    try:
+        from app.routes.cis_plan import get_environment
+        environment = get_environment()
+        data = get_all_cis_plan(environment)
+        
+        # Return the mission networks with their hierarchical structure
+        return jsonify({
+            "status": "success",
+            "data": data.get('missionNetworks', [])
+        })
+    except Exception as e:
+        current_app.logger.error(f"Error getting CIS Plan tree data: {e}")
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500

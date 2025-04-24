@@ -31,6 +31,33 @@ def get_all_config_items():
         current_app.logger.error(f"Error reading Config Item data file {json_file_path}: {e}")
         return []
 
+def get_config_items_by_gp_id(gp_id):
+    """
+    Get all configuration items that are associated with the specified Generic Product ID.
+    
+    Args:
+        gp_id (str): The Generic Product ID (e.g. 'GP-0034')
+        
+    Returns:
+        list: A list of configuration item dictionaries that match the GP ID.
+              Returns an empty list if no matches are found or if there's an error.
+    """
+    try:
+        # Get all config items
+        all_config_items = get_all_config_items()
+        
+        # Filter the items where the GP ID is in the GenericProducts array
+        matching_items = []
+        for item in all_config_items:
+            generic_products = item.get('GenericProducts', [])
+            if gp_id in generic_products:
+                matching_items.append(item)
+                
+        return matching_items
+    except Exception as e:
+        current_app.logger.error(f"Error finding config items for GP ID {gp_id}: {e}")
+        return []
+
 def save_config_items(config_items_data):
     """
     Writes the list of configuration items to the JSON file.

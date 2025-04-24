@@ -6,9 +6,9 @@ from app.data_access.cis_plan_repository import (
     add_security_domain, get_all_security_domains, update_security_domain, delete_security_domain,
     get_all_hw_stacks, get_hw_stack, add_hw_stack, update_hw_stack, delete_hw_stack,
     get_all_assets, get_asset, add_asset, update_asset, delete_asset,
-    add_network_interface, get_all_network_interfaces, get_network_interface,
-    update_network_interface, delete_network_interface, update_configuration_item,
-    add_gp_instance, get_all_gp_instances, get_gp_instance, update_gp_instance, delete_gp_instance
+    add_network_interface, get_all_network_interfaces, get_network_interface, update_network_interface, delete_network_interface,
+    update_configuration_item, get_all_gp_instances, get_gp_instance, add_gp_instance, update_gp_instance, delete_gp_instance,
+    refresh_gp_instance_config_items
 )
 from app.api.iocore2 import IOCore2ApiClient 
 
@@ -506,7 +506,26 @@ def handle_gp_instance(mn_id, seg_id, dom_id, stack_id, asset_id, instance_id):
                 return error_response(f"GP instance {instance_id} not found.", status=404)
             return success_response({"deleted": True, "id": instance_id})
         except Exception as e:
-            return error_response(f"Error deleting GP instance: {str(e)}"), 500
+            return error_response(f"Error deleting GP instance: {str(e)}")
+
+@cis_plan_bp.route('/api/cis_plan/mission_network/<mn_id>/segment/<seg_id>/security_domain/<dom_id>/hw_stacks/<stack_id>/assets/<asset_id>/gp_instances/<instance_id>/refresh_config', methods=['POST'])
+def refresh_gp_instance_configs(mn_id, seg_id, dom_id, stack_id, asset_id, instance_id):
+    """Refresh the configuration items for a GP instance by fetching the latest from the config item catalog."""
+    env = get_environment()
+    
+    try:
+        # Call the repository function to refresh config items
+        updated_instance = refresh_gp_instance_config_items(env, mn_id, seg_id, dom_id, stack_id, asset_id, instance_id)
+        if not updated_instance:
+            return error_response(f"GP instance {instance_id} not found or could not be updated.", status=404)
+        
+        # Return the updated instance
+        return success_response({
+            "message": f"Configuration items refreshed for GP instance {instance_id}.",
+            "instance": updated_instance
+        })
+    except Exception as e:
+        return error_response(f"Error refreshing GP instance configuration items: {str(e)}", 500)
 
 @cis_plan_bp.route('/api/cis_plan/all', methods=['GET'])
 def get_cis_plan_all():

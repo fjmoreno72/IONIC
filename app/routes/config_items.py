@@ -8,10 +8,36 @@ from pathlib import Path
 from flask import Blueprint, request, jsonify, current_app # Import current_app
 from app.config import settings
 from app.core.auth import login_required
-from app.data_access.config_items_repository import get_all_config_items, save_config_items # Import repository
+from app.data_access.config_items_repository import get_all_config_items, save_config_items, get_config_items_by_gp_id # Import repository functions
 import logging
 
 config_items_bp = Blueprint('config_items', __name__)
+
+@config_items_bp.route('/api/config-items/by-gp-id/<gp_id>', methods=['GET'])
+@login_required
+def get_config_items_for_gp(gp_id):
+    """
+    Get all configuration items associated with a specific Generic Product ID
+    
+    Args:
+        gp_id (str): The Generic Product ID (e.g. 'GP-0034')
+        
+    Returns:
+        JSON response with all matching configuration items
+    """
+    try:
+        config_items = get_config_items_by_gp_id(gp_id)
+        return jsonify({
+            'status': 'success',
+            'data': config_items,
+            'count': len(config_items)
+        })
+    except Exception as e:
+        current_app.logger.error(f"Error retrieving config items for GP ID {gp_id}: {e}")
+        return jsonify({
+            'status': 'error',
+            'message': f"Failed to retrieve configuration items for GP ID {gp_id}: {str(e)}"
+        }), 500
 
 @config_items_bp.route('/api/config-items', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @login_required

@@ -334,4 +334,143 @@ def get_all_cis_plan(environment: str) -> Dict[str, Any]:
     except Exception as e:
         logging.error(f"Repository: Error reading CIS Plan file: {str(e)}")
         return []
-    
+
+# --- HW Stack Functions ---
+
+def _find_hw_stack(stacks, stack_id):
+    """Finds an HW stack by its ID within a list of stacks."""
+    return next((stack for stack in stacks if stack.get('id') == stack_id), None)
+
+def _get_next_global_hw_stack_id(hw_stacks):
+    """Generates the next available HW stack ID (HW-xxxx)."""
+    max_id = 0
+    for stack in hw_stacks:
+        if stack.get('id', '').startswith('HW-'):
+            try:
+                num = int(stack['id'].split('-')[1])
+                if num > max_id:
+                    max_id = num
+            except Exception:
+                continue
+    return f"HW-{max_id+1:04d}"
+
+def get_all_hw_stacks(environment: str, mission_network_id: str, segment_id: str, domain_id: str):
+    """Gets all HW stacks for a given security domain."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return []
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return []
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return []
+        return sd.get('hwStacks', [])
+    except Exception as e:
+        logging.error(f"Repository: Error reading HW stacks: {str(e)}")
+        raise
+
+def get_hw_stack(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str):
+    """Gets a specific HW stack by its ID."""
+    try:
+        stacks = get_all_hw_stacks(environment, mission_network_id, segment_id, domain_id)
+        return _find_hw_stack(stacks, stack_id)
+    except Exception as e:
+        logging.error(f"Repository: Error reading HW stack {stack_id}: {str(e)}")
+        raise
+
+def add_hw_stack(environment: str, mission_network_id: str, segment_id: str, domain_id: str, name: str, cis_participant_id: str) -> dict:
+    """Adds a new HW stack to a security domain."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None # Or raise error
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+
+        hw_stacks = sd.setdefault('hwStacks', [])
+        new_id = _get_next_global_hw_stack_id(hw_stacks)
+        new_guid = str(uuid.uuid4())
+        new_stack = {
+            "name": name,
+            "guid": new_guid,
+            "id": new_id,
+            "cisParticipantID": cis_participant_id,
+            "assets": [] # Initialize with empty assets
+        }
+        hw_stacks.append(new_stack)
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Added HW stack '{name}' ({new_id}) to domain '{domain_id}'")
+        return new_stack
+    except Exception as e:
+        logging.error(f"Repository: Error adding HW stack: {str(e)}")
+        raise
+
+def update_hw_stack(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, name: str, cis_participant_id: str) -> dict:
+    """Updates an existing HW stack."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return None
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return None
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return None
+        
+        hw_stacks = sd.get('hwStacks', [])
+        stack = _find_hw_stack(hw_stacks, stack_id)
+        if not stack:
+            return None
+
+        stack['name'] = name
+        stack['cisParticipantID'] = cis_participant_id
+        # Potentially update other fields if needed
+
+        _save_cis_plan(environment, data)
+        logging.info(f"Repository: Updated HW stack '{stack_id}' in domain '{domain_id}'")
+        return stack
+    except Exception as e:
+        logging.error(f"Repository: Error updating HW stack: {str(e)}")
+        raise
+
+def delete_hw_stack(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str) -> bool:
+    """Deletes an HW stack."""
+    try:
+        data = _load_cis_plan(environment)
+        mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
+        if not mn:
+            return False
+        seg = _find_network_segment(mn, segment_id)
+        if not seg:
+            return False
+        sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
+        if not sd:
+            return False
+
+        hw_stacks = sd.get('hwStacks', [])
+        original_len = len(hw_stacks)
+        sd['hwStacks'] = [stack for stack in hw_stacks if stack.get('id') != stack_id]
+
+        if len(sd['hwStacks']) < original_len:
+            _save_cis_plan(environment, data)
+            logging.info(f"Repository: Deleted HW stack '{stack_id}' from domain '{domain_id}'")
+            return True
+        return False
+    except Exception as e:
+        logging.error(f"Repository: Error deleting HW stack: {str(e)}")
+        raise
+
+# --- Network Segment Functions ---
+
+def _find_network_segment(mn, segment_id):
+    return next((seg for seg in mn.get('networkSegments', []) if seg.get('id') == segment_id), None)

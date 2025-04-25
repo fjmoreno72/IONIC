@@ -683,7 +683,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Update the details panel with the selected element's data
-    function updateDetailsPanel(element, type) {
+    function updateDetailPanel(element, type) {
         // Clear the details container
         if (detailsContainer) {
             detailsContainer.innerHTML = '';

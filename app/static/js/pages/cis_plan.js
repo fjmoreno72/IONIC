@@ -375,9 +375,14 @@ document.addEventListener('DOMContentLoaded', function() {
             );
             container.appendChild(assetNode);
             
-            // No more expandable children for assets, so no container needed
+            // Create a container for the children (networkInterfaces and gpInstances)
+            const assetChildrenContainer = document.createElement('div');
+            assetChildrenContainer.className = 'tree-node-children ms-4';
+            assetChildrenContainer.style.display = 'none'; // Initially collapsed
+            assetChildrenContainer.setAttribute('data-parent', asset.id);
+            container.appendChild(assetChildrenContainer);
             
-            // Add click event to asset node
+            // Add click event to asset node to toggle children
             assetNode.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const isActive = this.classList.contains('active');
@@ -393,10 +398,100 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentTreeNode = this;
                     loadSelectedNodeChildren(asset, 'assets', parentStack, parentDomain, parentSegment, parentMissionNetwork);
                 }
+                
+                // Toggle children container
+                const childrenContainer = document.querySelector(`.tree-node-children[data-parent="${asset.id}"]`);
+                if (childrenContainer) {
+                    const isExpanded = childrenContainer.style.display !== 'none';
+                    childrenContainer.style.display = isExpanded ? 'none' : 'block';
+                    
+                    // Toggle the icon for expand/collapse
+                    const icon = this.querySelector('.tree-toggle');
+                    if (icon) {
+                        icon.innerHTML = isExpanded ? '<i class="fas fa-chevron-right"></i>' : '<i class="fas fa-chevron-down"></i>';
+                    }
+                    
+                    // If expanding and no children yet, render networkInterfaces and gpInstances
+                    if (!isExpanded && childrenContainer.children.length === 0) {
+                        // Render network interfaces if they exist
+                        if (asset.networkInterfaces && asset.networkInterfaces.length > 0) {
+                            renderNetworkInterfaces(childrenContainer, asset.networkInterfaces, asset, parentStack, parentDomain, parentSegment, parentMissionNetwork);
+                        }
+                        
+                        // Render GP instances if they exist
+                        if (asset.gpInstances && asset.gpInstances.length > 0) {
+                            renderGPInstances(childrenContainer, asset.gpInstances, asset, parentStack, parentDomain, parentSegment, parentMissionNetwork);
+                        }
+                    }
+                }
             });
         });
     }
     
+    // Render network interfaces under an asset
+    function renderNetworkInterfaces(container, networkInterfaces, parentAsset, parentStack, parentDomain, parentSegment, parentMissionNetwork) {
+        networkInterfaces.forEach(networkInterface => {
+            const networkInterfaceNode = createTreeNode(
+                'networkInterfaces', 
+                networkInterface.name, 
+                networkInterface.id, 
+                networkInterface.guid,
+                'fa-network-wired'
+            );
+            container.appendChild(networkInterfaceNode);
+            
+            // Add click event to network interface node
+            networkInterfaceNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isActive = this.classList.contains('active');
+                
+                // Remove active class from all nodes
+                document.querySelectorAll('.tree-node.active').forEach(node => {
+                    node.classList.remove('active');
+                });
+                
+                // Toggle active class for this node
+                if (!isActive) {
+                    this.classList.add('active');
+                    currentTreeNode = this;
+                    loadSelectedNodeChildren(networkInterface, 'networkInterfaces', parentAsset, parentStack, parentDomain, parentSegment, parentMissionNetwork);
+                }
+            });
+        });
+    }
+    
+    // Render GP instances under an asset
+    function renderGPInstances(container, gpInstances, parentAsset, parentStack, parentDomain, parentSegment, parentMissionNetwork) {
+        gpInstances.forEach(gpInstance => {
+            const gpInstanceNode = createTreeNode(
+                'gpInstances', 
+                gpInstance.name || gpInstance.instanceLabel || `GP Instance ${gpInstance.id}`, 
+                gpInstance.id, 
+                gpInstance.guid,
+                'fa-cogs'
+            );
+            container.appendChild(gpInstanceNode);
+            
+            // Add click event to GP instance node
+            gpInstanceNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isActive = this.classList.contains('active');
+                
+                // Remove active class from all nodes
+                document.querySelectorAll('.tree-node.active').forEach(node => {
+                    node.classList.remove('active');
+                });
+                
+                // Toggle active class for this node
+                if (!isActive) {
+                    this.classList.add('active');
+                    currentTreeNode = this;
+                    loadSelectedNodeChildren(gpInstance, 'gpInstances', parentAsset, parentStack, parentDomain, parentSegment, parentMissionNetwork);
+                }
+            });
+        });
+    }
+
     // Create a tree node element
     function createTreeNode(type, name, id, guid, iconClass) {
         const node = document.createElement('div');
@@ -470,6 +565,34 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!hasNetworkInterfaces && !hasGPInstances) {
                 showNoElementsMessage(elementsContainer);
             }
+            
+            // Update detail panel with asset information
+            updateDetailPanel(nodeData, nodeType);
+        } else if (nodeType === 'networkInterfaces') {
+            // Network interface selected - no child elements in panel
+            // Just update detail panel with network interface information
+            updateDetailPanel(nodeData, nodeType);
+            showNoElementsMessage(elementsContainer);
+        } else if (nodeType === 'gpInstances') {
+            // GP Instance selected - show details including spInstances and configurationItems
+            const hasSpInstances = nodeData.spInstances && nodeData.spInstances.length > 0;
+            const hasConfigItems = nodeData.configurationItems && nodeData.configurationItems.length > 0;
+            
+            // Don't show these in tree, but show in elements panel
+            if (hasSpInstances) {
+                renderElementCards(elementsContainer, nodeData.spInstances, 'spInstances');
+            }
+            
+            if (hasConfigItems) {
+                renderElementCards(elementsContainer, nodeData.configurationItems, 'configurationItems');
+            }
+            
+            if (!hasSpInstances && !hasConfigItems) {
+                showNoElementsMessage(elementsContainer);
+            }
+            
+            // Update detail panel with GP Instance information
+            updateDetailPanel(nodeData, nodeType);
         } else {
             // No children to display
             showNoElementsMessage(elementsContainer);

@@ -35,8 +35,281 @@ document.addEventListener('DOMContentLoaded', function() {
         refreshButton.addEventListener('click', fetchCISPlanData);
     }
     
+    // Add element button opens the appropriate modal based on current selection
+    if (addElementButton) {
+        addElementButton.addEventListener('click', function() {
+            // Root node (CIS Plan) selected - add mission network
+            if (currentTreeNode && currentTreeNode.getAttribute('data-id') === 'root-cisplan') {
+                // Show add mission network modal
+                const addModal = new bootstrap.Modal(document.getElementById('addMissionNetworkModal'));
+                addModal.show();
+            }
+            // Other node types would be handled here as the feature expands
+        });
+    }
+    
+    // Edit button opens the appropriate modal based on what's selected
+    if (editDetailButton) {
+        editDetailButton.addEventListener('click', function() {
+            if (currentElement) {
+                const type = currentElement.type || currentTreeNode.getAttribute('data-type');
+                
+                if (type === 'missionNetworks') {
+                    // Populate and show edit mission network modal
+                    document.getElementById('editMissionNetworkId').value = currentElement.id;
+                    document.getElementById('editMissionNetworkName').value = currentElement.name;
+                    
+                    const editModal = new bootstrap.Modal(document.getElementById('editMissionNetworkModal'));
+                    editModal.show();
+                }
+                // Other node types would be handled here as the feature expands
+            }
+        });
+    }
+    
+    // Delete button shows delete confirmation modal
+    if (deleteDetailButton) {
+        deleteDetailButton.addEventListener('click', function() {
+            if (currentElement) {
+                // The type is now stored directly in the currentElement object
+                const elementType = currentElement.type;
+                
+                console.log('Delete item:', currentElement.name, 'type:', elementType); // Debug log
+                
+                document.getElementById('deleteItemName').textContent = currentElement.name;
+                document.getElementById('deleteItemId').value = currentElement.id;
+                document.getElementById('deleteItemType').value = elementType;
+                
+                const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+                deleteModal.show();
+            }
+        });
+    }
+    
+    // Mission Network add/edit/delete event handlers
+    const saveMissionNetworkBtn = document.getElementById('saveMissionNetworkBtn');
+    if (saveMissionNetworkBtn) {
+        saveMissionNetworkBtn.addEventListener('click', addMissionNetwork);
+    }
+    
+    const updateMissionNetworkBtn = document.getElementById('updateMissionNetworkBtn');
+    if (updateMissionNetworkBtn) {
+        updateMissionNetworkBtn.addEventListener('click', updateMissionNetwork);
+    }
+    
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener('click', deleteItem);
+    }
+    
     // Initial data load
     fetchCISPlanData();
+    
+    // Show a toast notification
+    function showToast(message, type = 'success') {
+        const toastContainer = document.getElementById('toastContainer');
+        if (!toastContainer) return;
+        
+        const toastId = 'toast-' + Date.now();
+        const toastEl = document.createElement('div');
+        toastEl.className = `toast align-items-center text-white bg-${type} border-0`;
+        toastEl.id = toastId;
+        toastEl.setAttribute('role', 'alert');
+        toastEl.setAttribute('aria-live', 'assertive');
+        toastEl.setAttribute('aria-atomic', 'true');
+        
+        toastEl.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">
+                    ${message}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        `;
+        
+        toastContainer.appendChild(toastEl);
+        
+        const toast = new bootstrap.Toast(toastEl, { autohide: true, delay: 5000 });
+        toast.show();
+        
+        // Auto-remove the toast element after it hides
+        toastEl.addEventListener('hidden.bs.toast', function() {
+            toastEl.remove();
+        });
+    }
+    
+    // Add a new mission network
+    async function addMissionNetwork() {
+        const nameInput = document.getElementById('addMissionNetworkName');
+        const name = nameInput.value.trim();
+        
+        if (!name) {
+            showToast('Please enter a mission network name', 'warning');
+            return;
+        }
+        
+        try {
+            const response = await fetch('/api/cis_plan/mission_network', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name })
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Properly close the modal and clear focus
+                const modalElement = document.getElementById('addMissionNetworkModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                
+                // Blur (unfocus) the save button before hiding the modal
+                document.getElementById('saveMissionNetworkBtn').blur();
+                
+                // Small delay to ensure blur takes effect before closing the modal
+                setTimeout(() => {
+                    modal.hide();
+                }, 10);
+                
+                // Clear the form
+                nameInput.value = '';
+                
+                // Show success message
+                showToast(`Mission Network "${name}" created successfully!`);
+                
+                // Refresh the data
+                fetchCISPlanData();
+            } else {
+                showToast(`${result.message || 'Failed to create mission network'}`, 'danger');
+            }
+        } catch (error) {
+            console.error('Error adding mission network:', error);
+            showToast('An error occurred while creating the mission network', 'danger');
+        }
+    }
+    
+    // Update an existing mission network
+    async function updateMissionNetwork() {
+        const idInput = document.getElementById('editMissionNetworkId');
+        const nameInput = document.getElementById('editMissionNetworkName');
+        const id = idInput.value;
+        const name = nameInput.value.trim();
+        
+        if (!name) {
+            showToast('Please enter a mission network name', 'warning');
+            return;
+        }
+        
+        try {
+            const response = await fetch(`/api/cis_plan/mission_network/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name })
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Properly close the modal and clear focus
+                const modalElement = document.getElementById('editMissionNetworkModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                
+                // Blur (unfocus) the update button before hiding the modal
+                document.getElementById('updateMissionNetworkBtn').blur();
+                
+                // Small delay to ensure blur takes effect before closing the modal
+                setTimeout(() => {
+                    modal.hide();
+                }, 10);
+                
+                // Show success message
+                showToast(`Mission Network updated successfully!`);
+                
+                // Update the current element with the new name
+                if (currentElement && currentElement.id === id) {
+                    currentElement.name = name;
+                    
+                    // Update the details panel with the new name
+                    updateDetailPanel(currentElement, currentElement.type);
+                }
+                
+                // Refresh the data
+                fetchCISPlanData();
+            } else {
+                showToast(`${result.message || 'Failed to update mission network'}`, 'danger');
+            }
+        } catch (error) {
+            console.error('Error updating mission network:', error);
+            showToast('An error occurred while updating the mission network', 'danger');
+        }
+    }
+    
+    // Delete an item (mission network, segment, etc.)
+    async function deleteItem() {
+        const id = document.getElementById('deleteItemId').value;
+        const type = document.getElementById('deleteItemType').value;
+        const name = document.getElementById('deleteItemName').textContent;
+        
+        console.log('Deleting item:', { id, type, name }); // Debug log
+        
+        let endpoint = '';
+        
+        // Determine the correct endpoint based on the item type
+        if (type === 'missionNetworks') {
+            endpoint = `/api/cis_plan/mission_network/${id}`;
+        }
+        // Add other item types as needed
+        
+        if (!endpoint) {
+            showToast('Unknown item type: ' + type, 'warning');
+            return;
+        }
+        
+        try {
+            const response = await fetch(endpoint, {
+                method: 'DELETE'
+            });
+            
+            const result = await response.json();
+            
+            // Properly close the modal and clear focus
+            const modalElement = document.getElementById('deleteConfirmModal');
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            
+            // Blur (unfocus) the confirm button before hiding the modal
+            document.getElementById('confirmDeleteBtn').blur();
+            
+            // Small delay to ensure blur takes effect before closing the modal
+            setTimeout(() => {
+                modal.hide();
+            }, 10);
+            
+            if (response.ok) {
+                // Show success message
+                showToast(`${name} deleted successfully!`);
+                
+                // Refresh the data
+                fetchCISPlanData();
+                
+                // Clear the details panel
+                if (detailsContainer) {
+                    detailsContainer.innerHTML = '';
+                }
+                
+                if (detailsTitle) {
+                    detailsTitle.textContent = 'Details';
+                }
+            } else {
+                showToast(`${result.message || 'Failed to delete item'}`, 'danger');
+            }
+        } catch (error) {
+            console.error('Error deleting item:', error);
+            showToast('An error occurred while deleting the item', 'danger');
+        }
+    }
     
     // Fetch CIS Plan data from the API
     async function fetchCISPlanData() {
@@ -50,26 +323,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             
-            // API endpoint is registered at this path in the api blueprint
+            // Make API request to get CIS Plan data
             const response = await fetch('/api/cis_plan/tree');
             if (!response.ok) {
-                throw new Error('Failed to fetch CIS Plan data');
+                throw new Error(`Failed to fetch CIS Plan data: ${response.statusText}`);
             }
             
-            const data = await response.json();
-            console.log('API response:', data);
-            if (data.status === 'success') {
-                cisPlanData = data.data;
-                console.log('CIS Plan data:', cisPlanData);
-                renderTree(cisPlanData);
+            const result = await response.json();
+            if (result.status === 'success') {
+                // Store the data and render the tree
+                data = result.data;
+                renderTree(data);
+                
+                // If the root node is currently selected, refresh the elements panel
+                if (currentTreeNode && currentTreeNode.getAttribute('data-id') === 'root-cisplan') {
+                    if (elementsTitle) {
+                        elementsTitle.textContent = 'CIS Plan - Mission Networks';
+                    }
+                    
+                    if (elementsContainer) {
+                        elementsContainer.innerHTML = '';
+                        renderElementCards(elementsContainer, data, 'missionNetworks');
+                    }
+                }
             } else {
                 cisTree.innerHTML = `
                     <div class="alert alert-danger m-3">
                         <i class="fas fa-exclamation-triangle me-2"></i>
-                        Error fetching CIS Plan data: ${data.message || 'Unknown error'}
+                        Error fetching CIS Plan data: ${result.message || 'Unknown error'}
                     </div>
                 `;
-                console.error('Error fetching CIS Plan data:', data.message);
+                console.error('Error fetching CIS Plan data:', result.message);
             }
         } catch (error) {
             cisTree.innerHTML = `
@@ -133,6 +417,25 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isActive) {
                 this.classList.add('active');
                 currentTreeNode = this;
+                
+                // When the root node is selected, display all mission networks in the Elements panel
+                if (elementsTitle) {
+                    elementsTitle.textContent = 'CIS Plan - Mission Networks';
+                }
+                
+                if (elementsContainer) {
+                    elementsContainer.innerHTML = '';
+                    renderElementCards(elementsContainer, data, 'missionNetworks');
+                }
+                
+                // Clear the details panel
+                if (detailsContainer) {
+                    detailsContainer.innerHTML = '';
+                }
+                
+                if (detailsTitle) {
+                    detailsTitle.textContent = 'CIS Plan Details';
+                }
             }
             
             // Toggle children container
@@ -559,15 +862,27 @@ document.addEventListener('DOMContentLoaded', function() {
         if (nodeType === 'missionNetworks' && nodeData.networkSegments) {
             // Display network segments
             renderElementCards(elementsContainer, nodeData.networkSegments, 'networkSegments');
+            
+            // Show mission network details in the details panel
+            updateDetailPanel(nodeData, nodeType);
         } else if (nodeType === 'networkSegments' && nodeData.securityDomains) {
             // Display security domains
             renderElementCards(elementsContainer, nodeData.securityDomains, 'securityDomains');
+            
+            // Show network segment details in the details panel
+            updateDetailPanel(nodeData, nodeType);
         } else if (nodeType === 'securityDomains' && nodeData.hwStacks) {
             // Display hardware stacks
             renderElementCards(elementsContainer, nodeData.hwStacks, 'hwStacks');
+            
+            // Show security domain details in the details panel
+            updateDetailPanel(nodeData, nodeType);
         } else if (nodeType === 'hwStacks' && nodeData.assets) {
             // Display assets
             renderElementCards(elementsContainer, nodeData.assets, 'assets');
+            
+            // Show hw stack details in the details panel
+            updateDetailPanel(nodeData, nodeType);
         } else if (nodeType === 'assets') {
             // Display both network interfaces and GP instances if available
             const hasNetworkInterfaces = nodeData.networkInterfaces && nodeData.networkInterfaces.length > 0;
@@ -688,11 +1003,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Add active class to this card
                 this.classList.add('active');
                 
-                // Store the selected element
+                // Store the selected element and its type
                 currentElement = element;
+                currentElement.type = type; // Add the type property to the element
+                
+                console.log('Selected element:', { ...currentElement }); // Debug log
                 
                 // Update the details panel
-                updateDetailsPanel(element, type);
+                updateDetailPanel(element, type);
                 
                 // Enable edit and delete buttons
                 if (editDetailButton) editDetailButton.disabled = false;

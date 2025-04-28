@@ -2,7 +2,7 @@
   "fileName": "CIS_Plan.json",
   "missionNetworks": [
     {
-      "name": "Mission1",
+      "name": "Mission 1",
       "guid": "550e8400-e29b-41d4-a716-446655440000",
       "id": "MN-0001",
       "networkSegments": [
@@ -56,15 +56,15 @@
                       ],
                       "gpInstances": [
                         {
-                          "gpid": "GP-0001",
+                          "gpid": "GP-0125",
                           "guid": "1r9e8400-m49b-41d4-o836-446655453333",
                           "instanceLabel": "Server Configuration Group",
-                          "serviceId": "SV-0001",
+                          "serviceId": "SV-0019",
                           "spInstances": [
                             {
                               "guid": "9v7e8400-q89b-41d4-s276-446655457777",
-                              "spId": "SP-0001",
-                              "spVersion": "2.1.0"
+                              "spId": "SP-0011",
+                              "spVersion": "2019"
                             }
                           ],
                           "configurationItems": [

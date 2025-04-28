@@ -2,34 +2,34 @@
   "fileName": "CIS_Plan.json",
   "missionNetworks": [
     {
-      "name": "Operation Secure Shield",
+      "name": "Mission1",
       "guid": "550e8400-e29b-41d4-a716-446655440000",
       "id": "MN-0001",
       "networkSegments": [
         {
-          "name": "Field Operations Segment",
+          "name": "Command North",
           "guid": "7b5e8400-a29b-41d4-c316-446655441111",
           "id": "NS-0001",
           "securityDomains": [
             {
-              "name": "Tactical Command Domain",
+              "name": "NU",
               "guid": "9c7e8400-b39b-41d4-d526-446655442222",
               "id": "SD-0001",
               "classificationID": "CL-SECRET",
               "hwStacks": [
                 {
-                  "name": "Command Center Stack",
+                  "name": "ESP-PoP",
                   "guid": "1d9e8400-c49b-41d4-e736-446655443333",
                   "id": "HW-0001",
                   "cisParticipantID": "PT-0001",
                   "assets": [
                     {
-                      "name": "Primary Command Server",
+                      "name": "Mail Server",
                       "guid": "3f1e8400-d59b-41d4-f846-446655444444",
                       "id": "AS-0001",
                       "networkInterfaces": [
                         {
-                          "name": "Primary Network Interface",
+                          "name": "PNI-1",
                           "guid": "5g3e8400-e69b-41d4-g956-446655445555",
                           "id": "NI-0001",
                           "configurationItems": [
@@ -90,7 +90,7 @@
       ]
     },
     {
-      "name": "TempMN_HWStackTest_test_repo_hw_1745511952",
+      "name": "Mission 2",
       "guid": "c6b5d3ae-d98a-4735-9dc1-1cc51f5cbc1f",
       "id": "MN-0005",
       "networkSegments": [
@@ -216,7 +216,7 @@
       ]
     },
     {
-      "name": "ApiTestParent_MN_api_test_1745511952",
+      "name": "Mission 3",
       "guid": "382fd5d1-d4e5-4755-8868-73f5980c80db",
       "id": "MN-0006",
       "networkSegments": [

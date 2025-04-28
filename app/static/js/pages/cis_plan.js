@@ -102,8 +102,55 @@ document.addEventListener('DOMContentLoaded', function() {
         const treeContainer = document.createElement('div');
         treeContainer.className = 'tree-list p-2';
         cisTree.appendChild(treeContainer);
+
+        // Create a root "CIS Plan" node
+        const rootNode = createTreeNode(
+            'cisplan',
+            'CIS Plan',
+            'root-cisplan',
+            'root-guid',
+            'cisplan'
+        );
+        treeContainer.appendChild(rootNode);
         
-        // Render each mission network as a top level node
+        // Create a container for mission networks under the root node
+        const missionNetworksContainer = document.createElement('div');
+        missionNetworksContainer.className = 'tree-node-children ms-4';
+        missionNetworksContainer.style.display = 'none'; // Initially collapsed
+        missionNetworksContainer.setAttribute('data-parent', 'root-cisplan');
+        treeContainer.appendChild(missionNetworksContainer);
+        
+        // Add click event to toggle mission networks visibility
+        rootNode.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isActive = this.classList.contains('active');
+            
+            // Toggle active class
+            document.querySelectorAll('.tree-node.active').forEach(node => {
+                node.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                this.classList.add('active');
+                currentTreeNode = this;
+            }
+            
+            // Toggle children container
+            // Use nextElementSibling instead of global query to avoid affecting other branches
+            const childrenContainer = this.nextElementSibling;
+            if (childrenContainer) {
+                const isExpanded = childrenContainer.style.display !== 'none';
+                childrenContainer.style.display = isExpanded ? 'none' : 'block';
+                
+                // Toggle icon
+                const icon = this.querySelector('.tree-toggle');
+                if (icon) {
+                    icon.innerHTML = isExpanded ? '<i class="fas fa-chevron-right"></i>' : '<i class="fas fa-chevron-down"></i>';
+                }
+            }
+        });
+        
+        // Render mission networks under the root node
         data.forEach(missionNetwork => {
             const missionNetworkNode = createTreeNode(
                 'missionNetworks', 
@@ -112,25 +159,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 missionNetwork.guid,
                 'fa-project-diagram'
             );
-            treeContainer.appendChild(missionNetworkNode);
+            missionNetworksContainer.appendChild(missionNetworkNode);
             
             // Create a container for the children (network segments)
             const segmentsContainer = document.createElement('div');
             segmentsContainer.className = 'tree-node-children ms-4';
-            segmentsContainer.style.display = 'block'; // Initially expanded so we can see the hierarchy
+            segmentsContainer.style.display = 'none'; // Initially collapsed
             segmentsContainer.setAttribute('data-parent', missionNetwork.id);
-            treeContainer.appendChild(segmentsContainer);
-            
-            // Immediately render network segments to show the full hierarchy
-            if (missionNetwork.networkSegments && missionNetwork.networkSegments.length > 0) {
-                renderNetworkSegments(segmentsContainer, missionNetwork.networkSegments, missionNetwork);
-                
-                // Update the toggle icon to show expanded state
-                const icon = missionNetworkNode.querySelector('.tree-toggle');
-                if (icon) {
-                    icon.innerHTML = '<i class="fas fa-chevron-down"></i>';
-                }
-            }
+            missionNetworksContainer.appendChild(segmentsContainer);
             
             // Add click event to mission network node to toggle children
             missionNetworkNode.addEventListener('click', function(e) {
@@ -150,7 +186,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Toggle children container
-                const childrenContainer = document.querySelector(`.tree-node-children[data-parent="${missionNetwork.id}"]`);
+                // Use nextElementSibling instead of global query to avoid affecting other branches
+                const childrenContainer = this.nextElementSibling;
                 if (childrenContainer) {
                     const isExpanded = childrenContainer.style.display !== 'none';
                     childrenContainer.style.display = isExpanded ? 'none' : 'block';
@@ -185,20 +222,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create a container for the children (security domains)
             const domainsContainer = document.createElement('div');
             domainsContainer.className = 'tree-node-children ms-4';
-            domainsContainer.style.display = 'block'; // Initially expanded
+            domainsContainer.style.display = 'none'; // Initially collapsed
             domainsContainer.setAttribute('data-parent', segment.id);
             container.appendChild(domainsContainer);
-            
-            // Immediately render security domains to show the full hierarchy
-            if (segment.securityDomains && segment.securityDomains.length > 0) {
-                renderSecurityDomains(domainsContainer, segment.securityDomains, segment, parentMissionNetwork);
-                
-                // Update the toggle icon to show expanded state
-                const icon = segmentNode.querySelector('.tree-toggle');
-                if (icon) {
-                    icon.innerHTML = '<i class="fas fa-chevron-down"></i>';
-                }
-            }
             
             // Add click event to segment node to toggle children
             segmentNode.addEventListener('click', function(e) {
@@ -218,7 +244,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Toggle children container
-                const childrenContainer = document.querySelector(`.tree-node-children[data-parent="${segment.id}"]`);
+                // Use nextElementSibling instead of global query to avoid affecting other branches
+                const childrenContainer = this.nextElementSibling;
                 if (childrenContainer) {
                     const isExpanded = childrenContainer.style.display !== 'none';
                     childrenContainer.style.display = isExpanded ? 'none' : 'block';
@@ -253,20 +280,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create a container for the children (hw stacks)
             const stacksContainer = document.createElement('div');
             stacksContainer.className = 'tree-node-children ms-4';
-            stacksContainer.style.display = 'block'; // Initially expanded
+            stacksContainer.style.display = 'none'; // Initially collapsed
             stacksContainer.setAttribute('data-parent', domain.id);
             container.appendChild(stacksContainer);
-            
-            // Immediately render HW stacks to show the full hierarchy
-            if (domain.hwStacks && domain.hwStacks.length > 0) {
-                renderHWStacks(stacksContainer, domain.hwStacks, domain, parentSegment, parentMissionNetwork);
-                
-                // Update the toggle icon to show expanded state
-                const icon = domainNode.querySelector('.tree-toggle');
-                if (icon) {
-                    icon.innerHTML = '<i class="fas fa-chevron-down"></i>';
-                }
-            }
             
             // Add click event to domain node to toggle children
             domainNode.addEventListener('click', function(e) {
@@ -286,7 +302,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Toggle children container
-                const childrenContainer = document.querySelector(`.tree-node-children[data-parent="${domain.id}"]`);
+                // Use nextElementSibling instead of global query to avoid affecting other branches
+                const childrenContainer = this.nextElementSibling;
                 if (childrenContainer) {
                     const isExpanded = childrenContainer.style.display !== 'none';
                     childrenContainer.style.display = isExpanded ? 'none' : 'block';
@@ -343,7 +360,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Toggle children container
-                const childrenContainer = document.querySelector(`.tree-node-children[data-parent="${stack.id}"]`);
+                // Use nextElementSibling instead of global query to avoid affecting other branches
+                const childrenContainer = this.nextElementSibling;
                 if (childrenContainer) {
                     const isExpanded = childrenContainer.style.display !== 'none';
                     childrenContainer.style.display = isExpanded ? 'none' : 'block';
@@ -400,7 +418,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Toggle children container
-                const childrenContainer = document.querySelector(`.tree-node-children[data-parent="${asset.id}"]`);
+                // Use nextElementSibling instead of global query to avoid affecting other branches
+                const childrenContainer = this.nextElementSibling;
                 if (childrenContainer) {
                     const isExpanded = childrenContainer.style.display !== 'none';
                     childrenContainer.style.display = isExpanded ? 'none' : 'block';
@@ -512,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Get the appropriate SVG icon for this element type
         const iconPath = getElementIcon(type);
-        iconSpan.innerHTML = `<img src="${iconPath}" width="16" height="16" alt="${type} icon">`;
+        iconSpan.innerHTML = `<img src="${iconPath}" width="18" height="18" alt="${type} icon">`;
         node.appendChild(iconSpan);
         
         // Create the text
@@ -638,7 +657,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add icon
             const iconSpan = document.createElement('span');
             iconSpan.className = 'me-2';
-            iconSpan.innerHTML = `<img src="${iconPath}" width="24" height="24" alt="${type} icon">`;
+            iconSpan.innerHTML = `<img src="${iconPath}" width="26" height="26" alt="${type} icon">`;
             cardHeader.appendChild(iconSpan);
             
             // Create title with the icon
@@ -827,6 +846,7 @@ function getTypeIcon(type) {
 function getElementIcon(type) {
     // This will return the appropriate icon for the element type
     const iconMap = {
+        'cisplan': '/static/img/CIS-PLAN.svg',
         'missionNetworks': '/static/img/missionNetworks.svg',
         'networkSegments': '/static/img/networkSegments.svg',
         'securityDomains': '/static/img/securityDomains.svg',

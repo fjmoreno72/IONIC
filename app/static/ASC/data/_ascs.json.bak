@@ -119,7 +119,7 @@
     "id": "ASC-0001",
     "model": "MOD-0001",
     "serviceId": "SRV-0008",
-    "status": "Validated"
+    "status": "In Progress"
   },
   {
     "affiliateId": "AFF-0027",
@@ -193,13 +193,30 @@
             "spVersion": "2.5.0"
           }
         ]
+      },
+      {
+        "gpId": "GP-0005",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [
+          {
+            "spId": "SP-0007",
+            "spVersion": "17.0v24",
+            "spScore": "100%",
+            "guid": "b130148b-1c4b-45a9-bee6-355db3f5ecef"
+          }
+        ],
+        "models": [
+          "MOD-0001"
+        ],
+        "guid": "bf8f453e-e993-4f19-895b-aa467216dbac"
       }
     ],
     "guid": "5c378266-fc6c-441b-9b89-e28670179756",
     "id": "ASC-0006",
     "model": "MOD-0001",
     "serviceId": "SRV-0021",
-    "status": "Validated"
+    "status": "In Progress"
   },
   {
     "affiliateId": "AFF-0027",
@@ -783,7 +800,7 @@
   },
   {
     "affiliateId": "AFF-0027",
-    "ascScore": "67%",
+    "ascScore": "75%",
     "environment": "Static",
     "gpInstances": [
       {
@@ -888,40 +905,39 @@
       },
       {
         "gpId": "GP-0142",
-        "gpScore": "0%",
+        "gpScore": "100%",
+        "guid": "9f31c822-be5f-4481-83d9-65eee94d1f71",
         "instanceLabel": "",
-        "spInstances": [
-          {
-            "spId": "SP-0253",
-            "spVersion": "4.4.0",
-            "spScore": "100%",
-            "guid": "adda29eb-8680-4008-935d-3c150fd5abea"
-          }
-        ],
         "models": [
           "MOD-0001"
         ],
-        "guid": "9f31c822-be5f-4481-83d9-65eee94d1f71"
+        "spInstances": [
+          {
+            "guid": "adda29eb-8680-4008-935d-3c150fd5abea",
+            "spId": "SP-0253",
+            "spScore": "100%",
+            "spVersion": "4.4.0"
+          }
+        ]
       },
       {
         "gpId": "GP-0021",
-        "gpScore": "0%",
+        "gpScore": "100%",
+        "guid": "4daf2563-11f4-4ddc-a4c6-7856914cade2",
         "instanceLabel": "",
-        "spInstances": [
-          {
-            "spId": "SP-0253",
-            "spVersion": "4.4.0",
-            "spScore": "100%",
-            "guid": "8af43800-f2de-450e-9ad3-2ffaf3095b77"
-          }
-        ],
         "models": [
           "MOD-0001"
         ],
-        "guid": "4daf2563-11f4-4ddc-a4c6-7856914cade2"
+        "spInstances": [
+          {
+            "guid": "8af43800-f2de-450e-9ad3-2ffaf3095b77",
+            "spId": "SP-0253",
+            "spScore": "100%",
+            "spVersion": "4.4.0"
+          }
+        ]
       }
     ],
-    "guid": "e6feebab-612a-4445-98b7-bbdda137c0cd",
     "id": "ASC-0018",
     "model": "MOD-0001",
     "serviceId": "SRV-0009",

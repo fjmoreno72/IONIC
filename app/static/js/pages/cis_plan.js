@@ -44,6 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const addModal = new bootstrap.Modal(document.getElementById('addMissionNetworkModal'));
                 addModal.show();
             }
+            // Mission Network selected - add network segment
+            else if (currentTreeNode && currentTreeNode.getAttribute('data-type') === 'missionNetworks') {
+                // Show add network segment modal
+                document.getElementById('addNetworkSegmentMissionNetworkId').value = currentTreeNode.getAttribute('data-id');
+                const addModal = new bootstrap.Modal(document.getElementById('addNetworkSegmentModal'));
+                addModal.show();
+            }
             // Other node types would be handled here as the feature expands
         });
     }
@@ -60,6 +67,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('editMissionNetworkName').value = currentElement.name;
                     
                     const editModal = new bootstrap.Modal(document.getElementById('editMissionNetworkModal'));
+                    editModal.show();
+                }
+                else if (type === 'networkSegments') {
+                    // Populate and show edit network segment modal
+                    document.getElementById('editNetworkSegmentId').value = currentElement.id;
+                    document.getElementById('editNetworkSegmentName').value = currentElement.name;
+                    
+                    // Store mission network ID for the API call
+                    const missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network') || 
+                                           (currentElement.parentMissionNetwork ? currentElement.parentMissionNetwork.id : '');
+                    document.getElementById('editNetworkSegmentMissionNetworkId').value = missionNetworkId;
+                    
+                    const editModal = new bootstrap.Modal(document.getElementById('editNetworkSegmentModal'));
                     editModal.show();
                 }
                 // Other node types would be handled here as the feature expands
@@ -80,6 +100,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('deleteItemId').value = currentElement.id;
                 document.getElementById('deleteItemType').value = elementType;
                 
+                // For hierarchical items that need parent ID for deletion
+                if (elementType === 'networkSegments') {
+                    // Get parent mission network ID - either from the tree node or element data
+                    const missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network') || 
+                                           (currentElement.parentMissionNetwork ? currentElement.parentMissionNetwork.id : '');
+                    document.getElementById('deleteItemParentId').value = missionNetworkId;
+                }
+                
                 const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
                 deleteModal.show();
             }
@@ -95,6 +123,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const updateMissionNetworkBtn = document.getElementById('updateMissionNetworkBtn');
     if (updateMissionNetworkBtn) {
         updateMissionNetworkBtn.addEventListener('click', updateMissionNetwork);
+    }
+    
+    // Network Segment add/edit event handlers
+    const saveNetworkSegmentBtn = document.getElementById('saveNetworkSegmentBtn');
+    if (saveNetworkSegmentBtn) {
+        saveNetworkSegmentBtn.addEventListener('click', addNetworkSegment);
+    }
+    
+    const updateNetworkSegmentBtn = document.getElementById('updateNetworkSegmentBtn');
+    if (updateNetworkSegmentBtn) {
+        updateNetworkSegmentBtn.addEventListener('click', updateNetworkSegment);
     }
     
     const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
@@ -247,6 +286,129 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Add a new network segment
+    async function addNetworkSegment() {
+        const nameInput = document.getElementById('addNetworkSegmentName');
+        const missionNetworkIdInput = document.getElementById('addNetworkSegmentMissionNetworkId');
+        const name = nameInput.value.trim();
+        const missionNetworkId = missionNetworkIdInput.value;
+        
+        if (!name) {
+            showToast('Please enter a network segment name', 'warning');
+            return;
+        }
+        
+        if (!missionNetworkId) {
+            showToast('Missing mission network ID', 'warning');
+            return;
+        }
+        
+        try {
+            const response = await fetch(`/api/cis_plan/mission_network/${missionNetworkId}/segment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name })
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Properly close the modal and clear focus
+                const modalElement = document.getElementById('addNetworkSegmentModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                
+                // Blur (unfocus) the save button before hiding the modal
+                document.getElementById('saveNetworkSegmentBtn').blur();
+                
+                // Small delay to ensure blur takes effect before closing the modal
+                setTimeout(() => {
+                    modal.hide();
+                }, 10);
+                
+                // Clear the form
+                nameInput.value = '';
+                
+                // Show success message
+                showToast(`Network Segment "${name}" created successfully!`);
+                
+                // Refresh the data
+                fetchCISPlanData();
+            } else {
+                showToast(`${result.message || 'Failed to create network segment'}`, 'danger');
+            }
+        } catch (error) {
+            console.error('Error adding network segment:', error);
+            showToast('An error occurred while creating the network segment', 'danger');
+        }
+    }
+    
+    // Update an existing network segment
+    async function updateNetworkSegment() {
+        const idInput = document.getElementById('editNetworkSegmentId');
+        const nameInput = document.getElementById('editNetworkSegmentName');
+        const missionNetworkIdInput = document.getElementById('editNetworkSegmentMissionNetworkId');
+        const id = idInput.value;
+        const name = nameInput.value.trim();
+        const missionNetworkId = missionNetworkIdInput.value;
+        
+        if (!name) {
+            showToast('Please enter a network segment name', 'warning');
+            return;
+        }
+        
+        if (!missionNetworkId) {
+            showToast('Missing mission network ID', 'warning');
+            return;
+        }
+        
+        try {
+            const response = await fetch(`/api/cis_plan/mission_network/${missionNetworkId}/segment/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name })
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Properly close the modal and clear focus
+                const modalElement = document.getElementById('editNetworkSegmentModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                
+                // Blur (unfocus) the update button before hiding the modal
+                document.getElementById('updateNetworkSegmentBtn').blur();
+                
+                // Small delay to ensure blur takes effect before closing the modal
+                setTimeout(() => {
+                    modal.hide();
+                }, 10);
+                
+                // Show success message
+                showToast(`Network Segment updated successfully!`);
+                
+                // Update the current element with the new name
+                if (currentElement && currentElement.id === id) {
+                    currentElement.name = name;
+                    
+                    // Update the details panel with the new name
+                    updateDetailPanel(currentElement, currentElement.type);
+                }
+                
+                // Refresh the data
+                fetchCISPlanData();
+            } else {
+                showToast(`${result.message || 'Failed to update network segment'}`, 'danger');
+            }
+        } catch (error) {
+            console.error('Error updating network segment:', error);
+            showToast('An error occurred while updating the network segment', 'danger');
+        }
+    }
+    
     // Delete an item (mission network, segment, etc.)
     async function deleteItem() {
         const id = document.getElementById('deleteItemId').value;
@@ -260,6 +422,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Determine the correct endpoint based on the item type
         if (type === 'missionNetworks') {
             endpoint = `/api/cis_plan/mission_network/${id}`;
+        }
+        else if (type === 'networkSegments') {
+            const missionNetworkId = document.getElementById('deleteItemParentId').value;
+            endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${id}`;
         }
         // Add other item types as needed
         
@@ -314,6 +480,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch CIS Plan data from the API
     async function fetchCISPlanData() {
         try {
+            // Store current selection state before refresh
+            let currentNodeId = null;
+            let currentNodeType = null;
+            let currentElementId = null;
+            
+            if (currentTreeNode) {
+                currentNodeId = currentTreeNode.getAttribute('data-id');
+                currentNodeType = currentTreeNode.getAttribute('data-type');
+            }
+            
+            if (currentElement) {
+                currentElementId = currentElement.id;
+            }
+            
             // Show loading indicator in the tree
             cisTree.innerHTML = `
                 <div class="d-flex justify-content-center p-5">
@@ -335,8 +515,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 data = result.data;
                 renderTree(data);
                 
-                // If the root node is currently selected, refresh the elements panel
-                if (currentTreeNode && currentTreeNode.getAttribute('data-id') === 'root-cisplan') {
+                // Now restore selection and update panels based on the current selection state
+                let nodeToSelect = null;
+                
+                // Find and re-select the previously selected node in the tree
+                if (currentNodeId) {
+                    // If it was a mission network, network segment, etc.
+                    if (currentNodeId !== 'root-cisplan') {
+                        nodeToSelect = document.querySelector(`.tree-node[data-id="${currentNodeId}"][data-type="${currentNodeType}"]`);
+                    } else {
+                        // If it was the root CIS Plan node
+                        nodeToSelect = document.querySelector('.tree-node[data-id="root-cisplan"]');
+                    }
+                    
+                    // If we found the node, programmatically click it to restore selection
+                    if (nodeToSelect) {
+                        nodeToSelect.click();
+                        
+                        // For nodes with children, ensure they're expanded
+                        const childrenContainer = nodeToSelect.nextElementSibling;
+                        if (childrenContainer && childrenContainer.classList.contains('tree-node-children')) {
+                            childrenContainer.style.display = 'block';
+                            const toggleIcon = nodeToSelect.querySelector('.tree-toggle');
+                            if (toggleIcon) {
+                                toggleIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                            }
+                        }
+                        
+                        // If we had a selected element in the elements panel, try to re-select it
+                        if (currentElementId) {
+                            setTimeout(() => {
+                                const elementCard = document.querySelector(`.element-card[data-id="${currentElementId}"]`);
+                                if (elementCard) {
+                                    elementCard.click();
+                                }
+                            }, 100); // Small delay to ensure elements are rendered
+                        }
+                    }
+                } else {
+                    // If no selection was active, show root level elements
                     if (elementsTitle) {
                         elementsTitle.textContent = 'CIS Plan - Mission Networks';
                     }
@@ -520,6 +737,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 segment.guid,
                 'fa-network-wired'
             );
+            
+            // Store parent mission network ID for use in operations
+            if (parentMissionNetwork && parentMissionNetwork.id) {
+                segmentNode.setAttribute('data-parent-mission-network', parentMissionNetwork.id);
+                // Store full parent reference in the segment's data
+                segment.parentMissionNetwork = parentMissionNetwork;
+            }
+            
             container.appendChild(segmentNode);
             
             // Create a container for the children (security domains)
@@ -948,6 +1173,12 @@ document.addEventListener('DOMContentLoaded', function() {
             container.appendChild(cardsContainer);
         }
         
+        // Store current selected element ID if there is one
+        let selectedElementId = '';
+        if (currentElement && currentElement.id) {
+            selectedElementId = currentElement.id;
+        }
+        
         // Render each element as a card
         elements.forEach(element => {
             const cardCol = document.createElement('div');
@@ -955,6 +1186,13 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const card = document.createElement('div');
             card.className = 'card element-card h-100';
+            
+            // If this card represents the currently selected element, add active class
+            if (selectedElementId === element.id) {
+                card.classList.add('active');
+                console.log('Applied active class during render:', element.id); // Debug log
+            }
+            
             card.setAttribute('data-type', type);
             card.setAttribute('data-id', element.id);
             card.setAttribute('data-guid', element.guid);
@@ -1007,6 +1245,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentElement = element;
                 currentElement.type = type; // Add the type property to the element
                 
+                // For network segments, ensure parent mission network reference is maintained
+                if (type === 'networkSegments' && currentTreeNode) {
+                    const missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network') || 
+                                           currentTreeNode.getAttribute('data-id');
+                    if (missionNetworkId && !element.parentMissionNetwork) {
+                        // If we're viewing network segments from a mission network tree node, store the parent reference
+                        element.parentMissionNetwork = { id: missionNetworkId };
+                    }
+                }
+                
                 console.log('Selected element:', { ...currentElement }); // Debug log
                 
                 // Update the details panel
@@ -1024,6 +1272,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // Clear the details container
         if (detailsContainer) {
             detailsContainer.innerHTML = '';
+        }
+        
+        // Ensure the corresponding element card is highlighted
+        if (element && element.id) {
+            // First remove active class from all element cards
+            document.querySelectorAll('.element-card.active').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Find and highlight the card that corresponds to the element being displayed
+            const cardToHighlight = document.querySelector(`.element-card[data-id="${element.id}"]`);
+            if (cardToHighlight) {
+                cardToHighlight.classList.add('active');
+                console.log('Card highlighted:', element.id, cardToHighlight); // Debug log
+            } else {
+                console.log('Card not found to highlight:', element.id); // Debug log
+            }
         }
         
         // Update the details title

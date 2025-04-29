@@ -86,6 +86,11 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Command South",
+          "guid": "9d50d5c6-ca99-4d31-b7e8-46f6b27f43dc",
+          "id": "NS-0006"
         }
       ]
     },

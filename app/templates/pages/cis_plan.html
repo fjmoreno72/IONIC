@@ -52,6 +52,58 @@
             position: relative;
         }
         
+        /* Tree node styling */
+        .tree-node {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            border: 1px solid transparent;
+        }
+        
+        .tree-node:hover {
+            background-color: rgba(68, 114, 196, 0.1);
+        }
+        
+        /* Selected tree node highlighting */
+        .tree-node.active {
+            background-color: rgba(68, 114, 196, 0.2);
+            border: 1px solid var(--primary-color);
+            font-weight: var(--font-weight-medium);
+            box-shadow: 0 0 0 1px rgba(68, 114, 196, 0.2);
+        }
+        
+        /* Element card styling */
+        .element-card {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        .element-card:hover {
+            background-color: rgba(68, 114, 196, 0.05);
+        }
+        
+        /* Selected element card highlighting */
+        .element-card.active {
+            background-color: rgba(68, 114, 196, 0.15);
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 8px rgba(68, 114, 196, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        /* Add a highlighted corner indicator for selected cards */
+        .element-card.active::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+        
         .resize-handle {
             position: absolute;
             top: 0;
@@ -302,14 +354,66 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete <span id="deleteItemName"></span>?</p>
+                    <p>Are you sure you want to delete <span id="deleteItemName" class="fw-bold"></span>?</p>
                     <p class="text-danger">This action cannot be undone.</p>
                     <input type="hidden" id="deleteItemId">
                     <input type="hidden" id="deleteItemType">
+                    <input type="hidden" id="deleteItemParentId">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Network Segment Modal -->
+    <div class="modal fade" id="addNetworkSegmentModal" tabindex="-1" aria-labelledby="addNetworkSegmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addNetworkSegmentModalLabel">Add Network Segment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addNetworkSegmentForm">
+                        <input type="hidden" id="addNetworkSegmentMissionNetworkId">
+                        <div class="mb-3">
+                            <label for="addNetworkSegmentName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="addNetworkSegmentName" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveNetworkSegmentBtn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Network Segment Modal -->
+    <div class="modal fade" id="editNetworkSegmentModal" tabindex="-1" aria-labelledby="editNetworkSegmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editNetworkSegmentModalLabel">Edit Network Segment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editNetworkSegmentForm">
+                        <input type="hidden" id="editNetworkSegmentId">
+                        <input type="hidden" id="editNetworkSegmentMissionNetworkId">
+                        <div class="mb-3">
+                            <label for="editNetworkSegmentName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="editNetworkSegmentName" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="updateNetworkSegmentBtn">Update</button>
                 </div>
             </div>
         </div>

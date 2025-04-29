@@ -13,23 +13,85 @@
           "securityDomains": [
             {
               "id": "CL-UNCLASS"
+            },
+            {
+              "id": "CL-SECRET"
+            },
+            {
+              "id": "CL-RESTRICTED"
             }
           ]
         },
         {
           "name": "Command S",
           "guid": "2cfc2fae-d186-4437-b4d1-1177985f661e",
-          "id": "NS-0002"
+          "id": "NS-0002",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS"
+            },
+            {
+              "id": "CL-RESTRICTED"
+            },
+            {
+              "id": "CL-SECRET"
+            }
+          ]
         },
         {
           "name": "Command W",
           "guid": "b8eb757a-8f30-45a9-b6bc-a03677c086db",
-          "id": "NS-0003"
+          "id": "NS-0003",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS"
+            },
+            {
+              "id": "CL-SECRET"
+            },
+            {
+              "id": "CL-RESTRICTED"
+            }
+          ]
         },
         {
           "name": "Command E",
           "guid": "c5afd67f-a19e-438f-b110-62d6bcdc60c1",
-          "id": "NS-0004"
+          "id": "NS-0004",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS"
+            },
+            {
+              "id": "CL-RESTRICTED"
+            },
+            {
+              "id": "CL-SECRET"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mission 2",
+      "guid": "7a4d49eb-8b31-4272-8926-d928d0c79f7e",
+      "id": "MN-0008",
+      "networkSegments": [
+        {
+          "name": "Segement 1",
+          "guid": "2e7b0d91-af43-4f0f-a88e-d0155c4e007b",
+          "id": "NS-0005",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS"
+            },
+            {
+              "id": "CL-RESTRICTED"
+            },
+            {
+              "id": "CL-SECRET"
+            }
+          ]
         }
       ]
     }

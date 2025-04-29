@@ -50,8 +50,8 @@ def add_security_domain(environment: str, mission_network_id: str, segment_id: s
         # Check if ID already exists (optional but good practice)
         if any(sd.get('id') == id for sd in security_domains):
             logging.warning(f"Repository: Security domain with id '{id}' already exists in segment '{segment_id}'.")
-            # Decide how to handle duplicates: raise error, return existing, or overwrite? For now, let's just log and append.
-            # raise ValueError(f"Security domain with id '{id}' already exists.")
+            # Prevent duplicates by raising an error
+            raise ValueError(f"Security domain with id '{id}' already exists in segment '{segment_id}'.")
             
         # Remove internal ID and GUID generation
         # new_id = _get_next_global_security_domain_id(security_domains) # Removed

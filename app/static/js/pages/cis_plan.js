@@ -11,7 +11,6 @@ let cisPlanData = null;
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('CIS Plan JS loaded');
     
     // Get references to DOM elements
     const treeSearchInput = document.getElementById('treeSearchInput');
@@ -34,6 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (refreshButton) {
         refreshButton.addEventListener('click', fetchCISPlanData);
     }
+    
+    // Let's keep it simple and follow the same pattern as mission networks
     
     // Add element button opens the appropriate modal based on current selection
     if (addElementButton) {
@@ -172,8 +173,121 @@ document.addEventListener('DOMContentLoaded', function() {
         confirmDeleteBtn.addEventListener('click', deleteItem);
     }
     
-    // Initial data load
-    fetchCISPlanData();
+    // Initial data fetch
+    async function initializeApp() {
+        // Load security classifications first
+        await fetchSecurityClassifications();
+        console.log('Security classifications loaded:', securityClassifications);
+        
+        // Then load the CIS Plan data
+        await fetchCISPlanData();
+    }
+    
+    // Refresh panels while preserving tree state and selection
+    async function refreshPanelsWithState(stateToRestore) {
+        try {
+            // Default state is empty if not provided
+            stateToRestore = stateToRestore || {};
+            
+            // Store current state if not provided
+            if (!stateToRestore.missionNetworkId && currentTreeNode) {
+                // Get current tree node and its parents
+                stateToRestore.nodeType = currentTreeNode.getAttribute('data-type');
+                stateToRestore.nodeId = currentTreeNode.getAttribute('data-id');
+                
+                // Store parent references if available
+                if (stateToRestore.nodeType === 'securityDomains') {
+                    stateToRestore.segmentId = currentTreeNode.getAttribute('data-parent-segment');
+                    stateToRestore.missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network');
+                } else if (stateToRestore.nodeType === 'networkSegments') {
+                    stateToRestore.missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network');
+                }
+                
+                console.log('Saving state before refresh:', stateToRestore);
+            }
+            
+            // Fetch updated data
+            await fetchCISPlanData();
+            
+            // Now restore the state
+            setTimeout(() => {
+                // Start by looking for the mission network if available
+                if (stateToRestore.missionNetworkId) {
+                    console.log('Restoring state after refresh:', stateToRestore);
+                    
+                    // First find and expand the mission network
+                    const mnNode = document.querySelector(`.tree-node[data-type="missionNetworks"][data-id="${stateToRestore.missionNetworkId}"]`);
+                    if (mnNode) {
+                        console.log('Found mission network to restore:', stateToRestore.missionNetworkId);
+                        
+                        // First select and expand the mission network
+                        mnNode.click();
+                        const mnChildren = mnNode.nextElementSibling;
+                        if (mnChildren && mnChildren.classList.contains('tree-node-children')) {
+                            mnChildren.style.display = 'block'; // Show children
+                            
+                            // Update toggle icon
+                            const mnToggle = mnNode.querySelector('.tree-toggle i');
+                            if (mnToggle) mnToggle.className = 'fas fa-chevron-down';
+                            
+                            // If we have a segment to restore, look for it
+                            if (stateToRestore.segmentId) {
+                                const segNode = mnChildren.querySelector(`.tree-node[data-type="networkSegments"][data-id="${stateToRestore.segmentId}"]`);
+                                if (segNode) {
+                                    console.log('Found segment to restore:', stateToRestore.segmentId);
+                                    
+                                    // Select and expand the segment
+                                    segNode.click();
+                                    const segChildren = segNode.nextElementSibling;
+                                    if (segChildren && segChildren.classList.contains('tree-node-children')) {
+                                        segChildren.style.display = 'block'; // Show children
+                                        
+                                        // Update toggle icon
+                                        const segToggle = segNode.querySelector('.tree-toggle i');
+                                        if (segToggle) segToggle.className = 'fas fa-chevron-down';
+                                        
+                                        // If we have a security domain to restore, look for it
+                                        if (stateToRestore.nodeType === 'securityDomains' && stateToRestore.nodeId) {
+                                            console.log('Looking for security domain with ID:', stateToRestore.nodeId);
+                                            
+                                            // Debug: List all security domain nodes in this segment
+                                            const allSDNodes = segChildren.querySelectorAll(`.tree-node[data-type="securityDomains"]`);
+                                            console.log(`Found ${allSDNodes.length} security domain nodes in segment ${stateToRestore.segmentId}:`);
+                                            allSDNodes.forEach(node => {
+                                                console.log(`- Security domain node ID: ${node.getAttribute('data-id')}`);
+                                            });
+                                            
+                                            // Try to find the security domain node
+                                            const sdNode = segChildren.querySelector(`.tree-node[data-type="securityDomains"][data-id="${stateToRestore.nodeId}"]`);
+                                            if (sdNode) {
+                                                console.log('Found security domain to restore:', stateToRestore.nodeId);
+                                                sdNode.click(); // Select the security domain
+                                            } else {
+                                                console.warn(`Could not find security domain node with ID ${stateToRestore.nodeId}`);
+                                                // As a fallback, look for any security domain that contains the specified ID
+                                                for (const node of allSDNodes) {
+                                                    if (node.textContent.includes(stateToRestore.nodeId)) {
+                                                        console.log('Found security domain by name match:', node.textContent);
+                                                        node.click();
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }, 300); // Delay to ensure DOM is updated
+        } catch (error) {
+            console.error('Error refreshing panels with state:', error);
+        }
+    }
+    
+    // Start app initialization
+    initializeApp();
     
     // Show a toast notification
     function showToast(message, type = 'success') {
@@ -443,6 +557,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // Store security classifications data
     let securityClassifications = [];
     
+    // Helper function to get security classification details by ID
+    function getSecurityClassificationById(id) {
+        if (!id) {
+            console.log('No ID provided for classification lookup');
+            return { 
+                id: 'Unknown', 
+                name: 'Unknown Classification', 
+                guid: 'N/A',
+                releasabilityString: 'N/A',
+                order: 0,
+                colour: '#808080' 
+            };
+        }
+        
+        // Log state for debugging
+        // Classification lookup
+        
+        // Find the classification with the matching ID
+        const classification = securityClassifications.find(c => c.id === id);
+        
+        if (classification) {
+            // Classification found
+            return classification;
+        } else {
+            // Classification not found
+            // Return a default object with the ID
+            return { 
+                id: id, 
+                name: id, // Fallback to showing the ID as name if not found
+                guid: 'N/A',
+                releasabilityString: 'N/A',
+                order: 0,
+                colour: '#808080' // Default gray color
+            };
+        }
+    }
+    
     // Fetch security classifications for dropdown
     async function fetchSecurityClassifications() {
         try {
@@ -455,8 +606,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const result = await response.json();
             
             if (result.status === 'success') {
-                // Store the data
+                // Store the data - directly accessing the securityClassifications array
                 securityClassifications = result.data.securityClassifications || [];
+                // Security classifications loaded
                 
                 // Populate the dropdown
                 const dropdown = document.getElementById('addSecurityDomainClassification');
@@ -508,12 +660,37 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        // Check if this security domain classification already exists in this segment
+        // Need to check if data is properly initialized first
+        if (data && data.missionNetworks && Array.isArray(data.missionNetworks)) {
+            // First find the segment in our data
+            const missionNetwork = data.missionNetworks.find(mn => mn.id === missionNetworkId);
+            if (missionNetwork && missionNetwork.networkSegments && Array.isArray(missionNetwork.networkSegments)) {
+                const segment = missionNetwork.networkSegments.find(seg => seg.id === segmentId);
+                if (segment && segment.securityDomains && Array.isArray(segment.securityDomains)) {
+                    // Check if any existing security domain has the same classification ID
+                    const existingDomain = segment.securityDomains.find(sd => sd.id === classificationId);
+                    if (existingDomain) {
+                        const classification = getSecurityClassificationById(classificationId);
+                        if (classification) {
+                            showToast(`Security Domain "${classification.name}" already exists in this segment`, 'warning');
+                        } else {
+                            showToast(`Security Domain with ID ${classificationId} already exists in this segment`, 'warning');
+                        }
+                        return;
+                    }
+                }
+            }
+        }
+        
         // Get the selected classification object
         const selectedOption = classificationSelect.options[classificationSelect.selectedIndex];
         const name = selectedOption.textContent;
         const guid = selectedOption.getAttribute('data-guid');
         
         try {
+            // Adding security domain
+            
             const response = await fetch(`/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain`, {
                 method: 'POST',
                 headers: {
@@ -548,174 +725,51 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Show success message
                 showToast(`Security Domain "${name}" created successfully!`);
                 
-                try {
-                    // Refresh tree, which will erase the current DOM
-                    await fetchCISPlanData();
-                    
-                    // After data is fetched and DOM is rebuilt, find our nodes
-                    // Use a longer timeout to ensure the DOM is fully rebuilt
-                    setTimeout(() => {
-                        console.log('Trying to restore selection after adding security domain');
-                        console.log(`Looking for segment ID: ${segmentId} and mission network ID: ${missionNetworkId}`);
-                        
-                        // Try multiple selector patterns to find the segment node
-                        let segmentNode = document.querySelector(`div.tree-node[data-type="networkSegments"][data-id="${segmentId}"]`);
-                        
-                        if (!segmentNode) {
-                            // Fallback to a less specific selector
-                            console.log('First segment selector failed, trying alternative selector');
-                            segmentNode = document.querySelector(`[data-type="networkSegments"][data-id="${segmentId}"]`);
-                        }
-                        
-                        if (!segmentNode) {
-                            // Try a different approach - first find mission network, then find the segment within it
-                            console.log('Both segment selectors failed, trying to find via parent mission network');
-                            const missionNetwork = document.querySelector(`[data-type="missionNetworks"][data-id="${missionNetworkId}"]`);
-                            
-                            if (missionNetwork) {
-                                console.log('Found mission network, checking its children for segment');
-                                const mnChildren = missionNetwork.nextElementSibling;
-                                
-                                if (mnChildren && mnChildren.classList.contains('tree-node-children')) {
-                                    // Ensure mission network is expanded
-                                    mnChildren.style.display = 'block';
-                                    
-                                    // Update toggle icon
-                                    const mnToggleIcon = missionNetwork.querySelector('.tree-toggle i');
-                                    if (mnToggleIcon) {
-                                        mnToggleIcon.className = 'fas fa-chevron-down';
-                                    }
-                                    
-                                    // Now look for the segment within the mission network's children
-                                    segmentNode = mnChildren.querySelector(`[data-id="${segmentId}"]`);
-                                    console.log('Searched within mission network children, found segment:', !!segmentNode);
-                                }
-                            }
-                        }
-                        
-                        if (segmentNode) {
-                            console.log(`Found segment node ${segmentId}, looking for newly added security domain`);
-                            
-                            // First ensure segment node is expanded
-                            let parent = segmentNode.parentElement;
-                            while (parent) {
-                                if (parent.classList.contains('tree-node-children')) {
-                                    parent.style.display = 'block';
-                                    // If this is under a mission network, make sure its toggle is updated
-                                    const parentTreeNode = parent.previousElementSibling;
-                                    if (parentTreeNode && parentTreeNode.querySelector('.tree-toggle i')) {
-                                        parentTreeNode.querySelector('.tree-toggle i').className = 'fas fa-chevron-down';
-                                    }
-                                }
-                                parent = parent.parentElement;
-                            }
-                            
-                            // Make sure segment node is expanded
-                            const childrenContainer = segmentNode.nextElementSibling;
-                            if (childrenContainer && childrenContainer.classList.contains('tree-node-children')) {
-                                childrenContainer.style.display = 'block';
-                                
-                                // Update toggle icon
-                                const toggleIcon = segmentNode.querySelector('.tree-toggle i');
-                                if (toggleIcon) {
-                                    toggleIcon.className = 'fas fa-chevron-down';
-                                }
-                                
-                                // Find all security domains
-                                let allSecurityDomains = childrenContainer.querySelectorAll('.tree-node[data-type="securityDomains"]');
-                                console.log(`Found ${allSecurityDomains.length} security domains under segment`);
-                                
-                                // Find the one we just added by name
-                                let securityDomainNode = null;
-                                allSecurityDomains.forEach(node => {
-                                    const nodeName = node.querySelector('.tree-node-text').textContent.trim();
-                                    if (nodeName === securityDomainName) {
-                                        securityDomainNode = node;
-                                        console.log('Found security domain by name match:', nodeName);
-                                    }
-                                });
-                                
-                                // If not found by name, take the last one which is likely the newest
-                                if (!securityDomainNode && allSecurityDomains.length > 0) {
-                                    securityDomainNode = allSecurityDomains[allSecurityDomains.length - 1];
-                                    console.log('Using last security domain as fallback');
-                                }
-                                
-                                if (securityDomainNode) {
-                                    console.log('Selecting the security domain node');
-                                    
-                                    // Update currentTreeNode and UI state
-                                    currentTreeNode = securityDomainNode;
-                                    
-                                    // Remove active class from all nodes
-                                    document.querySelectorAll('.tree-node').forEach(node => {
-                                        node.classList.remove('active');
-                                    });
-                                    
-                                    // Add active class to the security domain node
-                                    securityDomainNode.classList.add('active');
-                                    
-                                    // Update elements panel for this security domain
-                                    const domainId = securityDomainNode.getAttribute('data-id');
-                                    
-                                    if (elementsContainer) {
-                                        const nodeData = {
-                                            id: domainId,
-                                            type: 'securityDomains'
-                                        };
-                                        
-                                        const parentData = {
-                                            segmentId: segmentId,
-                                            missionNetworkId: missionNetworkId
-                                        };
-                                        
-                                        // Load hardware stacks for this security domain
-                                        loadSelectedNodeChildren(nodeData, 'securityDomains', parentData);
-                                    }
-                                } else {
-                                    // If we can't find the security domain, select the segment as fallback
-                                    console.log('Could not find security domain node, selecting segment instead');
-                                    segmentNode.click();
-                                }
-                            } else {
-                                // If we can't expand the segment node, just select it
-                                console.log('Could not find children container for segment, selecting segment');
-                                segmentNode.click();
-                            }
-                        } else {
-                            // If we can't find the segment node, try to find the mission network
-                            console.warn(`Could not find segment node with ID ${segmentId}, falling back to mission network`);
-                            const missionNetworkNode = document.querySelector(`div.tree-node[data-type="missionNetworks"][data-id="${missionNetworkId}"]`);
-                            
-                            if (missionNetworkNode) {
-                                console.log('Found mission network, selecting it');
-                                missionNetworkNode.click();
-                            }
-                        }
-                    }, 300); // Longer delay to ensure DOM is fully updated
-                } catch (refreshError) {
-                    console.error('Error refreshing data after adding security domain:', refreshError);
-                }
+                // We need to store just enough information to expand the right segment after refresh
+                // This is much simpler than our previous complex approach
+                sessionStorage.setItem('lastAddedSecurityDomain', JSON.stringify({
+                    missionNetworkId: missionNetworkId,
+                    segmentId: segmentId
+                }));
+                
+                // Then refresh - the fetch function will handle expansion
+                fetchCISPlanData();
             } else {
-                showToast(`${result.message || 'Failed to create security domain'}`, 'danger');
+                // Log the error response for debugging
+                console.log('Error response from backend:', result);
+                
+                // Handle specific errors from backend
+                if (result.error && typeof result.error === 'string' && result.error.includes('already exists')) {
+                    // This is a duplicate security domain error
+                    const classification = getSecurityClassificationById(classificationId);
+                    const name = classification ? classification.name : classificationId;
+                    showToast(`Security domain "${name}" already exists in this segment`, 'warning');
+                } else if (response.status === 400) {
+                    // Specific handling for 400 Bad Request which is likely a duplicate
+                    const classification = getSecurityClassificationById(classificationId);
+                    const name = classification ? classification.name : classificationId;
+                    showToast(`Cannot add duplicate security domain "${name}" to this segment`, 'warning');
+                } else {
+                    // Other errors
+                    showToast(`Failed to add security domain: ${result.error || 'Unknown error'}`, 'danger');
+                }
             }
         } catch (error) {
             console.error('Error adding security domain:', error);
-            showToast('An error occurred while creating the security domain', 'danger');
+            showToast('An error occurred while adding the security domain', 'danger');
         }
     }
     
     // Delete an item (mission network, segment, etc.)
     async function deleteItem() {
-        const id = document.getElementById('deleteItemId').value;
         const type = document.getElementById('deleteItemType').value;
+        const id = document.getElementById('deleteItemId').value;
         const name = document.getElementById('deleteItemName').textContent;
         
-        console.log('Deleting item:', { id, type, name }); // Debug log
+        console.log(`Deleting ${type} item with ID: ${id}`);
         
         let endpoint = '';
         
-        // Determine the correct endpoint based on the item type
         if (type === 'missionNetworks') {
             endpoint = `/api/cis_plan/mission_network/${id}`;
         }
@@ -729,7 +783,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const segmentId = parentIds[1];
             endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${id}`;
         }
-        // Add other item types as needed
         
         if (!endpoint) {
             showToast('Unknown item type: ' + type, 'warning');
@@ -743,19 +796,19 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const result = await response.json();
             
-            // Properly close the modal and clear focus
-            const modalElement = document.getElementById('deleteConfirmModal');
-            const modal = bootstrap.Modal.getInstance(modalElement);
-            
-            // Blur (unfocus) the confirm button before hiding the modal
-            document.getElementById('confirmDeleteBtn').blur();
-            
-            // Small delay to ensure blur takes effect before closing the modal
-            setTimeout(() => {
-                modal.hide();
-            }, 10);
-            
             if (response.ok) {
+                // Properly close the modal and clear focus
+                const modalElement = document.getElementById('deleteConfirmModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                
+                // Blur (unfocus) the confirm button before hiding the modal
+                document.getElementById('confirmDeleteBtn').blur();
+                
+                // Small delay to ensure blur takes effect before closing the modal
+                setTimeout(() => {
+                    modal.hide();
+                }, 10);
+                
                 // Show success message
                 showToast(`${name} deleted successfully!`);
                 
@@ -778,210 +831,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 console.log(`Deleted ${type} item, will restore to parent type: ${parentType}, id: ${parentId}`);
                 
-                // Refresh the data
-                fetchCISPlanData().then(() => {
-                    console.log(`Refreshed data after deleting ${type} item, will restore to parent type: ${parentType}, id: ${parentId}`);
-                    
-                    // For security domain deletion, we want to go back to showing the network segment view
-                    // to maintain context but show remaining security domains
-                    if (type === 'securityDomains') {
-                        console.log('Security domain deleted - will restore to parent segment');
-                        
-                        // Add a small delay to ensure DOM is fully updated
-                        setTimeout(() => {
-                            console.log(`Looking for parent segment node with ID: ${parentId} after deleting security domain`);
-                            
-                            // Try multiple selector patterns to find the segment node
-                            let segmentNode = document.querySelector(`div.tree-node[data-type="networkSegments"][data-id="${parentId}"]`);
-                            
-                            if (!segmentNode) {
-                                // Fallback to a less specific selector
-                                console.log('First segment selector failed, trying alternative selector');
-                                segmentNode = document.querySelector(`[data-type="networkSegments"][data-id="${parentId}"]`);
-                            }
-                            
-                            if (!segmentNode) {
-                                // Try a different approach - first find mission network, then find the segment within it
-                                console.log('Both segment selectors failed, trying to find via parent mission network');
-                                const missionNetwork = document.querySelector(`[data-type="missionNetworks"][data-id="${missionNetworkId}"]`);
-                                
-                                if (missionNetwork) {
-                                    console.log('Found mission network, checking its children for segment');
-                                    const mnChildren = missionNetwork.nextElementSibling;
-                                    
-                                    if (mnChildren && mnChildren.classList.contains('tree-node-children')) {
-                                        // Ensure mission network is expanded
-                                        mnChildren.style.display = 'block';
-                                        
-                                        // Update toggle icon
-                                        const mnToggleIcon = missionNetwork.querySelector('.tree-toggle i');
-                                        if (mnToggleIcon) {
-                                            mnToggleIcon.className = 'fas fa-chevron-down';
-                                        }
-                                        
-                                        // Now look for the segment within the mission network's children
-                                        segmentNode = mnChildren.querySelector(`[data-id="${parentId}"]`);
-                                        console.log('Searched within mission network children, found segment:', !!segmentNode);
-                                    }
-                                }
-                            }
-                            
-                            if (segmentNode) {
-                                console.log(`Found parent segment node ${parentId}, selecting it`);
-                                
-                                // First, expand all parent containers
-                                let parent = segmentNode.parentElement;
-                                while (parent) {
-                                    if (parent.classList.contains('tree-node-children')) {
-                                        parent.style.display = 'block';
-                                    }
-                                    parent = parent.parentElement;
-                                }
-                                
-                                // Set as current tree node
-                                currentTreeNode = segmentNode;
-                                
-                                // Update node highlighting in the tree
-                                document.querySelectorAll('.tree-node').forEach(node => {
-                                    node.classList.remove('active');
-                                });
-                                segmentNode.classList.add('active');
-                                
-                                // Force segment node to expand 
-                                const childrenContainer = segmentNode.nextElementSibling;
-                                if (childrenContainer && childrenContainer.classList.contains('tree-node-children')) {
-                                    childrenContainer.style.display = 'block';
-                                    
-                                    // Update toggle icon
-                                    const toggleIcon = segmentNode.querySelector('.tree-toggle i');
-                                    if (toggleIcon) {
-                                        toggleIcon.className = 'fas fa-chevron-down';
-                                    }
-                                }
-                                
-                                // Update the elements panel to show remaining security domains
-                                if (elementsContainer) {
-                                    elementsContainer.innerHTML = '';
-                                    
-                                    const nodeData = {
-                                        id: parentId,
-                                        type: 'networkSegments'
-                                    };
-                                    
-                                    const parentData = {
-                                        missionNetworkId: missionNetworkId
-                                    };
-                                    
-                                    // Load security domains in the elements panel
-                                    loadSelectedNodeChildren(nodeData, 'networkSegments', parentData);
-                                }
-                            } else {
-                                // Fallback to mission network if segment not found
-                                console.log('Could not find segment, falling back to mission network');
-                                const missionNetworkNode = document.querySelector(`div.tree-node[data-type="missionNetworks"][data-id="${missionNetworkId}"]`);
-                                
-                                if (missionNetworkNode) {
-                                    missionNetworkNode.click();
-                                }
-                            }
-                        }, 300); // Longer delay to ensure DOM is fully updated
-                        
-                        return; // Exit early since we've handled the refresh
-                    }
-                    
-                    // Add a small delay to ensure DOM is fully updated
-                    setTimeout(() => {
-                        // If we have a parent ID to restore
-                        if (parentId) {
-                            console.log(`Looking for parent node ${parentType}:${parentId}`);
-                            
-                            // Try multiple selectors to find the node
-                            let parentNode = document.querySelector(`div.tree-node[data-type="${parentType}"][data-id="${parentId}"]`);
-                            
-                            // Fallback to a simpler selector if the specific one fails
-                            if (!parentNode) {
-                                console.log('Trying alternative selector for parent...');
-                                parentNode = document.querySelector(`[data-id="${parentId}"]`);
-                            }
-                            
-                            if (parentNode) {
-                                console.log(`Found parent node ${parentId}, restoring selection`);
-                                
-                                // First, expand all parent containers
-                                let parent = parentNode.parentElement;
-                                while (parent) {
-                                    if (parent.classList.contains('tree-node-children')) {
-                                        parent.style.display = 'block';
-                                    }
-                                    parent = parent.parentElement;
-                                }
-                                
-                                // Manually restore selection state
-                                currentTreeNode = parentNode;
-                                
-                                // Update node highlighting in the tree
-                                document.querySelectorAll('.tree-node').forEach(node => {
-                                    node.classList.remove('active');
-                                });
-                                parentNode.classList.add('active');
-                                
-                                // Force parent node to expand to show its children
-                                const childrenContainer = parentNode.nextElementSibling;
-                                if (childrenContainer && childrenContainer.classList.contains('tree-node-children')) {
-                                    childrenContainer.style.display = 'block';
-                                    
-                                    // Update toggle icon
-                                    const toggleIcon = parentNode.querySelector('.tree-toggle i');
-                                    if (toggleIcon) {
-                                        toggleIcon.className = 'fas fa-chevron-down';
-                                    }
-                                }
-                                
-                                // Update the elements panel 
-                                if (elementsContainer) {
-                                    elementsContainer.innerHTML = '';
-                                    
-                                    // Get the parent data from the currentTreeNode
-                                    const nodeData = {
-                                        id: parentId,
-                                        type: parentType
-                                    };
-                                    
-                                    const parentData = parentType === 'networkSegments' ? { missionNetworkId } : null;
-                                    
-                                    // Load children in the elements panel
-                                    loadSelectedNodeChildren(nodeData, parentType, parentData);
-                                }
-                            } else {
-                                console.warn(`Could not find parent node with ID ${parentId} after refresh, falling back to root`);
-                                
-                                // Fallback to root if parent not found
-                                const rootNode = document.querySelector(`div.tree-node[data-id="root-cisplan"]`);
-                                if (rootNode) {
-                                    rootNode.click();
-                                } else {
-                                    // Clear the details panel as last resort
-                                    if (detailsContainer) {
-                                        detailsContainer.innerHTML = '';
-                                    }
-                                    
-                                    if (detailsTitle) {
-                                        detailsTitle.textContent = 'Details';
-                                    }
-                                }
-                            }
-                        } else {
-                            // If no parent to restore to, just clear the details panel
-                            if (detailsContainer) {
-                                detailsContainer.innerHTML = '';
-                            }
-                            
-                            if (detailsTitle) {
-                                detailsTitle.textContent = 'Details';
-                            }
-                        }
-                    }, 300); // Longer delay to ensure DOM is fully updated
-                });
+                // Create a state object that will be used to restore the UI state
+                const stateToRestore = {
+                    nodeType: parentType,
+                    nodeId: parentId,
+                    missionNetworkId: missionNetworkId
+                };
+                
+                // If we're restoring to a network segment, we need to include the segment ID
+                if (parentType === 'networkSegments') {
+                    stateToRestore.segmentId = parentId;
+                }
+                
+                try {
+                    // Use the state-preserving refresh function
+                    await refreshPanelsWithState(stateToRestore);
+                } catch (error) {
+                    console.error('Error updating tree after deleting item:', error);
+                    showToast('Item was deleted, but there was a problem updating the display', 'warning');
+                }
             } else {
                 showToast(`${result.message || 'Failed to delete item'}`, 'danger');
             }
@@ -1029,43 +897,87 @@ document.addEventListener('DOMContentLoaded', function() {
                 data = result.data;
                 renderTree(data);
                 
-                // Now restore selection and update panels based on the current selection state
-                let nodeToSelect = null;
-                
-                // Find and re-select the previously selected node in the tree
-                if (currentNodeId) {
-                    // If it was a mission network, network segment, etc.
-                    if (currentNodeId !== 'root-cisplan') {
-                        nodeToSelect = document.querySelector(`.tree-node[data-id="${currentNodeId}"][data-type="${currentNodeType}"]`);
-                    } else {
-                        // If it was the root CIS Plan node
-                        nodeToSelect = document.querySelector('.tree-node[data-id="root-cisplan"]');
-                    }
-                    
-                    // If we found the node, programmatically click it to restore selection
-                    if (nodeToSelect) {
-                        nodeToSelect.click();
+                // Check if we've just added a security domain and need to expand its parent nodes
+                const lastAddedSecurityDomain = sessionStorage.getItem('lastAddedSecurityDomain');
+                if (lastAddedSecurityDomain) {
+                    try {
+                        const sdInfo = JSON.parse(lastAddedSecurityDomain);
+                        // Clear it immediately to prevent repeated application
+                        sessionStorage.removeItem('lastAddedSecurityDomain');
                         
-                        // For nodes with children, ensure they're expanded
-                        const childrenContainer = nodeToSelect.nextElementSibling;
-                        if (childrenContainer && childrenContainer.classList.contains('tree-node-children')) {
-                            childrenContainer.style.display = 'block';
-                            const toggleIcon = nodeToSelect.querySelector('.tree-toggle');
-                            if (toggleIcon) {
-                                toggleIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                        // Add a small delay to ensure DOM is rendered
+                        setTimeout(() => {
+                            // First find and expand the mission network
+                            const mnNode = document.querySelector(`.tree-node[data-type="missionNetworks"][data-id="${sdInfo.missionNetworkId}"]`);
+                            if (mnNode) {
+                                // Click the toggle to expand it
+                                const mnToggle = mnNode.querySelector('.tree-toggle');
+                                if (mnToggle) mnToggle.click();
+                                
+                                // Small delay to let mission network expand
+                                setTimeout(() => {
+                                    // Then find and expand the segment
+                                    const segNode = document.querySelector(`.tree-node[data-type="networkSegments"][data-id="${sdInfo.segmentId}"]`);
+                                    if (segNode) {
+                                        // Select the segment
+                                        segNode.click();
+                                        
+                                        // Click the toggle to expand it
+                                        const segToggle = segNode.querySelector('.tree-toggle');
+                                        if (segToggle) segToggle.click();
+                                    }
+                                }, 100);
+                            }
+                        }, 150);
+                    } catch (e) {
+                        // Error handling for expansion
+                    }
+                }
+                
+                // IMPORTANT: Check if we have a pending security domain selection
+                // If so, skip the default state restoration as it will be handled by the event listener
+                const hasPendingSDSelection = sessionStorage.getItem('pendingSecurityDomainSelect') !== null;
+                
+                // Only do regular state restoration if no security domain selection is pending
+                if (!hasPendingSDSelection) {
+                    // Now restore selection and update panels based on the current selection state
+                    let nodeToSelect = null;
+                    
+                    // Find and re-select the previously selected node in the tree
+                    if (currentNodeId) {
+                        // If it was a mission network, network segment, etc.
+                        if (currentNodeId !== 'root-cisplan') {
+                            nodeToSelect = document.querySelector(`.tree-node[data-id="${currentNodeId}"][data-type="${currentNodeType}"]`);
+                        } else {
+                            // If it was the root CIS Plan node
+                            nodeToSelect = document.querySelector('.tree-node[data-id="root-cisplan"]');
+                        }
+                        
+                        // If we found the node, programmatically click it to restore selection
+                        if (nodeToSelect) {
+                            nodeToSelect.click();
+                            
+                            // For nodes with children, ensure they're expanded
+                            const childrenContainer = nodeToSelect.nextElementSibling;
+                            if (childrenContainer && childrenContainer.classList.contains('tree-node-children')) {
+                                childrenContainer.style.display = 'block';
+                                const toggleIcon = nodeToSelect.querySelector('.tree-toggle');
+                                if (toggleIcon) {
+                                    toggleIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                                }
+                            }
+                            
+                            // If we had a selected element in the elements panel, try to re-select it
+                            if (currentElementId) {
+                                setTimeout(() => {
+                                    const elementCard = document.querySelector(`.element-card[data-id="${currentElementId}"]`);
+                                    if (elementCard) {
+                                        elementCard.click();
+                                    }
+                                }, 100); // Small delay to ensure elements are rendered
                             }
                         }
-                        
-                        // If we had a selected element in the elements panel, try to re-select it
-                        if (currentElementId) {
-                            setTimeout(() => {
-                                const elementCard = document.querySelector(`.element-card[data-id="${currentElementId}"]`);
-                                if (elementCard) {
-                                    elementCard.click();
-                                }
-                            }, 100); // Small delay to ensure elements are rendered
-                        }
-                    }
+                    } 
                 } else {
                     // If no selection was active, show root level elements
                     if (elementsTitle) {
@@ -1310,13 +1222,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Render security domains under a network segment
     function renderSecurityDomains(container, domains, parentSegment, parentMissionNetwork) {
         domains.forEach(domain => {
+            // Look up full classification details using the domain's ID
+            const classification = getSecurityClassificationById(domain.id);
+            
             const domainNode = createTreeNode(
                 'securityDomains', 
-                domain.name, 
+                classification.name, // Use name from classification data
                 domain.id, 
-                domain.guid,
+                classification.guid, // Use guid from classification data
                 'fa-shield-alt'
             );
+            
+            // Store parent references as attributes for better state restoration
+            if (parentSegment && parentSegment.id) {
+                domainNode.setAttribute('data-parent-segment', parentSegment.id);
+                // Added parent segment reference
+            }
+            
+            if (parentMissionNetwork && parentMissionNetwork.id) {
+                domainNode.setAttribute('data-parent-mission-network', parentMissionNetwork.id);
+                // Added parent mission network reference
+            }
+            
             container.appendChild(domainNode);
             
             // Create a container for the children (hw stacks)
@@ -1730,7 +1657,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create title with the icon
             const cardTitle = document.createElement('h5');
             cardTitle.className = 'card-title mb-0';
-            cardTitle.textContent = element.name;
+            
+            // For security domains, look up the classification name
+            if (type === 'securityDomains') {
+                const classification = getSecurityClassificationById(element.id);
+                cardTitle.textContent = classification.name;
+            } else {
+                cardTitle.textContent = element.name;
+            }
+            
             cardHeader.appendChild(cardTitle);
             
             // Add the header to the card body
@@ -1799,15 +1734,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const cardToHighlight = document.querySelector(`.element-card[data-id="${element.id}"]`);
             if (cardToHighlight) {
                 cardToHighlight.classList.add('active');
-                console.log('Card highlighted:', element.id, cardToHighlight); // Debug log
+                // Card highlighted
             } else {
-                console.log('Card not found to highlight:', element.id); // Debug log
+                // Card not found to highlight
             }
         }
         
         // Update the details title
         if (detailsTitle) {
-            detailsTitle.textContent = `${element.name} Details`;
+            // For security domains, look up the classification name
+            if (type === 'securityDomains') {
+                const classification = getSecurityClassificationById(element.id);
+                detailsTitle.textContent = `${classification.name} Details`;
+            } else {
+                detailsTitle.textContent = `${element.name} Details`;
+            }
         }
         
         // Create a card to display the details
@@ -1817,10 +1758,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create the card header
         const cardHeader = document.createElement('div');
         cardHeader.className = 'card-header d-flex align-items-center';
-        cardHeader.innerHTML = `
-            <i class="fas ${getTypeIcon(type)} me-2"></i>
-            <h5 class="mb-0">${element.name}</h5>
-        `;
+        
+        // For security domains, use the classification name
+        if (type === 'securityDomains') {
+            const classification = getSecurityClassificationById(element.id);
+            cardHeader.innerHTML = `
+                <i class="fas ${getTypeIcon(type)} me-2"></i>
+                <h5 class="mb-0">${classification.name}</h5>
+            `;
+        } else {
+            cardHeader.innerHTML = `
+                <i class="fas ${getTypeIcon(type)} me-2"></i>
+                <h5 class="mb-0">${element.name}</h5>
+            `;
+        }
         detailCard.appendChild(cardHeader);
         
         // Create the card body
@@ -1832,22 +1783,58 @@ document.addEventListener('DOMContentLoaded', function() {
         table.className = 'table table-bordered';
         
         // Add the basic details rows
-        table.innerHTML = `
-            <tbody>
-                <tr>
-                    <th scope="row">Name</th>
-                    <td>${element.name}</td>
-                </tr>
-                <tr>
-                    <th scope="row">ID</th>
-                    <td>${element.id || 'N/A'}</td>
-                </tr>
-                <tr>
-                    <th scope="row">GUID</th>
-                    <td>${element.guid || 'N/A'}</td>
-                </tr>
-            </tbody>
-        `;
+        if (type === 'securityDomains') {
+            // For security domains, get full classification details and show all properties
+            const classification = getSecurityClassificationById(element.id);
+            table.innerHTML = `
+                <tbody>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>${classification.name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">ID</th>
+                        <td>${classification.id || 'N/A'}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">GUID</th>
+                        <td>${classification.guid || 'N/A'}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Releasability</th>
+                        <td>${classification.releasabilityString || 'N/A'}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Order</th>
+                        <td>${classification.order || 'N/A'}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Color</th>
+                        <td>
+                            <span style="display: inline-block; width: 20px; height: 20px; background-color: ${classification.colour || '#808080'}; margin-right: 5px; vertical-align: middle;"></span>
+                            ${classification.colour || 'N/A'}
+                        </td>
+                    </tr>
+                </tbody>
+            `;
+        } else {
+            table.innerHTML = `
+                <tbody>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>${element.name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">ID</th>
+                        <td>${element.id || 'N/A'}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">GUID</th>
+                        <td>${element.guid || 'N/A'}</td>
+                    </tr>
+                </tbody>
+            `;
+        }
         
         // Add type-specific details
         // This can be expanded based on the different element types

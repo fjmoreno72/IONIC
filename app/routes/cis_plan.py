@@ -208,7 +208,7 @@ def handle_security_domain(mission_network_id, segment_id, domain_id):
         elif request.method == 'DELETE':
             deleted = delete_security_domain(environment, mission_network_id, segment_id, domain_id)
             if deleted:
-                return success_response({"deleted": True, "id": domain_id}), 200
+                return success_response({"deleted": True, "id": domain_id})
             else:
                 return error_response("Security domain not found.", 404, deleted=False)
     except ValueError as ve:

@@ -1513,98 +1513,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Load and display children of the selected node in the elements panel
-    function loadSelectedNodeChildren(nodeData, nodeType, parentData) {
+    // Config-driven: Load and display children of the selected node in the elements panel
+    function loadSelectedNodeChildren(nodeData, nodeType, ...parentData) {
         // Update the elements panel title
         if (elementsTitle) {
-            // Use centralized ENTITY_META for label
-            elementsTitle.textContent = `${nodeData.name} - ${formatNodeTypeName(nodeType)}`;
+            let displayName = nodeData.name;
+            if (nodeType === 'securityDomains') {
+                const classification = getSecurityClassificationById(nodeData.id);
+                displayName = classification.name;
+            }
+            elementsTitle.textContent = `${displayName} - ${formatNodeTypeName(nodeType)}`;
         }
-        
-        // Clear the elements container
+
         if (elementsContainer) {
             elementsContainer.innerHTML = '';
         }
-        
-        // Determine which children to display based on node type
-        if (nodeType === 'missionNetworks' && nodeData.networkSegments) {
-            // Display network segments
-            renderElementCards(elementsContainer, nodeData.networkSegments, 'networkSegments');
-            
-            // Show mission network details in the details panel
-            updateDetailPanel(nodeData, nodeType);
-        } else if (nodeType === 'networkSegments' && nodeData.securityDomains) {
-            // Display security domains
-            renderElementCards(elementsContainer, nodeData.securityDomains, 'securityDomains');
-            
-            // Show network segment details in the details panel
-            updateDetailPanel(nodeData, nodeType);
-        } else if (nodeType === 'securityDomains' && nodeData.hwStacks) {
-            // Display hardware stacks
-            renderElementCards(elementsContainer, nodeData.hwStacks, 'hwStacks');
-            
-            // Show security domain details in the details panel
-            updateDetailPanel(nodeData, nodeType);
-        } else if (nodeType === 'hwStacks' && nodeData.assets) {
-            // Display assets
-            renderElementCards(elementsContainer, nodeData.assets, 'assets');
-            
-            // Show hw stack details in the details panel
-            updateDetailPanel(nodeData, nodeType);
-        } else if (nodeType === 'assets') {
-            // Display both network interfaces and GP instances if available
-            const hasNetworkInterfaces = nodeData.networkInterfaces && nodeData.networkInterfaces.length > 0;
-            const hasGPInstances = nodeData.gpInstances && nodeData.gpInstances.length > 0;
-            
-            if (hasNetworkInterfaces) {
-                renderElementCards(elementsContainer, nodeData.networkInterfaces, 'networkInterfaces');
-            }
-            
-            if (hasGPInstances) {
-                renderElementCards(elementsContainer, nodeData.gpInstances, 'gpInstances');
-            }
-            
-            if (!hasNetworkInterfaces && !hasGPInstances) {
-                showNoElementsMessage(elementsContainer);
-            }
-            
-            // Update detail panel with asset information
-            updateDetailPanel(nodeData, nodeType);
-        } else if (nodeType === 'networkInterfaces') {
-            // Network interface selected - no child elements in panel
-            // Just update detail panel with network interface information
-            updateDetailPanel(nodeData, nodeType);
-            showNoElementsMessage(elementsContainer);
-        } else if (nodeType === 'gpInstances') {
-            // GP Instance selected - show details including spInstances and configurationItems
-            const hasSpInstances = nodeData.spInstances && nodeData.spInstances.length > 0;
-            const hasConfigItems = nodeData.configurationItems && nodeData.configurationItems.length > 0;
-            
-            // Don't show these in tree, but show in elements panel
-            if (hasSpInstances) {
-                renderElementCards(elementsContainer, nodeData.spInstances, 'spInstances');
-            }
-            
-            if (hasConfigItems) {
-                renderElementCards(elementsContainer, nodeData.configurationItems, 'configurationItems');
-            }
-            
-            if (!hasSpInstances && !hasConfigItems) {
-                showNoElementsMessage(elementsContainer);
-            }
-            
-            // Update detail panel with GP Instance information
-            updateDetailPanel(nodeData, nodeType);
-        } else {
-            // No children to display
+
+        // Use ENTITY_CHILDREN config to determine children to render
+        const childrenDefs = ENTITY_CHILDREN[nodeType];
+        let childrenRendered = false;
+
+        if (childrenDefs) {
+            childrenDefs.forEach(def => {
+                const children = nodeData[def.key];
+                if (children && Array.isArray(children) && children.length > 0) {
+                    renderElementCards(elementsContainer, children, def.type);
+                    childrenRendered = true;
+                }
+            });
+        }
+
+        if (!childrenRendered) {
             showNoElementsMessage(elementsContainer);
         }
-        
-        // Enable the add button if appropriate
-        if (addElementButton) {
-            addElementButton.disabled = false;
-        }
+
+        // Always update detail panel
+        updateDetailPanel(nodeData, nodeType);
     }
-    
+
     // Render element cards in the elements panel
     function renderElementCards(container, elements, type) {
         // Create a container for the cards if it doesn't exist
@@ -1913,6 +1859,24 @@ const ENTITY_META = {
     gpInstances:         { label: 'Generic Product',     icon: '/static/img/gpInstances.svg' },
     configurationItems:  { label: 'Configuration Item',  icon: '/static/img/configurationItems.svg' },
     spInstances:         { label: 'Specific Product',    icon: '/static/img/spInstances.svg' }
+};
+
+// ---- Entity Children Mapping (Config-Driven Panel Rendering) ----
+// Maps each node type to its child collections and types
+const ENTITY_CHILDREN = {
+    missionNetworks:   [{ key: 'networkSegments', type: 'networkSegments' }],
+    networkSegments:   [{ key: 'securityDomains', type: 'securityDomains' }],
+    securityDomains:   [{ key: 'hwStacks', type: 'hwStacks' }],
+    hwStacks:          [{ key: 'assets', type: 'assets' }],
+    assets: [
+        { key: 'networkInterfaces', type: 'networkInterfaces' },
+        { key: 'gpInstances', type: 'gpInstances' }
+    ],
+    gpInstances: [
+        { key: 'spInstances', type: 'spInstances' },
+        { key: 'configurationItems', type: 'configurationItems' }
+    ]
+    // Add more as needed
 };
 
 // Utility functions

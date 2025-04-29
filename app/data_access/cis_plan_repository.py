@@ -33,25 +33,37 @@ def _get_next_global_security_domain_id(security_domains):
                 continue
     return f"SD-{max_id+1:04d}"
 
-def add_security_domain(environment: str, mission_network_id: str, segment_id: str, name: str) -> dict:
+def add_security_domain(environment: str, mission_network_id: str, segment_id: str, id: str) -> dict:
     try:
         data = _load_cis_plan(environment)
         mission_networks = data.get('missionNetworks', [])
         mn = _find_mission_network(mission_networks, mission_network_id)
         if not mn:
-            return None
+            return None # Mission Network not found
         segments = mn.get('networkSegments', [])
         seg = _find_network_segment(mn, segment_id)
         if not seg:
-            return None
+            return None # Network Segment not found
+        
         security_domains = seg.get('securityDomains', [])
-        new_id = _get_next_global_security_domain_id(security_domains)
-        new_guid = str(uuid.uuid4())
-        new_sd = {"name": name, "guid": new_guid, "id": new_id}
+        
+        # Check if ID already exists (optional but good practice)
+        if any(sd.get('id') == id for sd in security_domains):
+            logging.warning(f"Repository: Security domain with id '{id}' already exists in segment '{segment_id}'.")
+            # Decide how to handle duplicates: raise error, return existing, or overwrite? For now, let's just log and append.
+            # raise ValueError(f"Security domain with id '{id}' already exists.")
+            
+        # Remove internal ID and GUID generation
+        # new_id = _get_next_global_security_domain_id(security_domains) # Removed
+        # new_guid = str(uuid.uuid4()) # Removed
+        
+        # Create the new security domain object with the provided ID only
+        new_sd = {"id": id}
+        
         security_domains.append(new_sd)
         seg['securityDomains'] = security_domains
         _save_cis_plan(environment, data)
-        logging.info(f"Repository: Added new security domain '{name}' with id '{new_id}' to segment '{segment_id}' in mission network '{mission_network_id}'")
+        logging.info(f"Repository: Added new security domain with id '{id}' to segment '{segment_id}' in mission network '{mission_network_id}'")
         return new_sd
     except Exception as e:
         logging.error(f"Repository: Error adding security domain: {str(e)}")
@@ -70,28 +82,6 @@ def get_all_security_domains(environment: str, mission_network_id: str, segment_
         return seg.get('securityDomains', [])
     except Exception as e:
         logging.error(f"Repository: Error reading security domains: {str(e)}")
-        raise
-
-def update_security_domain(environment: str, mission_network_id: str, segment_id: str, domain_id: str, new_name: str) -> dict:
-    try:
-        data = _load_cis_plan(environment)
-        mission_networks = data.get('missionNetworks', [])
-        mn = _find_mission_network(mission_networks, mission_network_id)
-        if not mn:
-            return None
-        seg = _find_network_segment(mn, segment_id)
-        if not seg:
-            return None
-        security_domains = seg.get('securityDomains', [])
-        sd = _find_security_domain(security_domains, domain_id)
-        if not sd:
-            return None
-        sd['name'] = new_name
-        _save_cis_plan(environment, data)
-        logging.info(f"Repository: Updated security domain '{domain_id}' to new name '{new_name}' in segment '{segment_id}' of mission network '{mission_network_id}'")
-        return sd
-    except Exception as e:
-        logging.error(f"Repository: Error updating security domain: {str(e)}")
         raise
 
 def delete_security_domain(environment: str, mission_network_id: str, segment_id: str, domain_id: str) -> bool:
@@ -264,25 +254,30 @@ def add_mission_network(environment: str, name: str) -> dict:
 
 def _get_cis_security_classification_path() -> Path:
     """
-    Get the path to the CIS_Security_Classification.json file.
+    Get the path to the CIS_Security_Classification.json file based on the current environment.
+    Uses the get_dynamic_data_path utility to handle 'ciav' or 'cwix' environments.
     Returns:
         Path: The path to the CIS_Security_Classification.json file.
     """
-    return Path("data/cwix/CIS_Security_Classification.json")
+    from flask import session
+    from app.utils.file_operations import get_dynamic_data_path
+    return get_dynamic_data_path("CIS_Security_Classification.json")
 
 
 def get_all_cis_security_classification() -> Any:
     """
     Reads the CIS_Security_Classification.json file and returns its contents.
+    Always reads directly from the file to get the latest data.
     Returns:
         list or dict: The content of the CIS_Security_Classification.json file.
     """
     json_file_path = _get_cis_security_classification_path()
     logging.info(f"Repository: Attempting to read CIS Security Classification data from: {json_file_path}")
     try:
+        # Always read fresh data from the file (no caching)
         with open(json_file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-        logging.info(f"Repository: JSON loaded successfully. Found {len(data)} items.")
+        logging.info(f"Repository: JSON loaded successfully. Found {len(data.get('securityClassifications', []))} classifications.")
         return data
     except FileNotFoundError:
         logging.error(f"Repository: CIS Security Classification file not found at {json_file_path}")
@@ -874,7 +869,7 @@ def update_configuration_item(environment: str, mission_network_id: str, segment
             config_item = {
                 "Name": item_name,
                 "ConfigurationAnswerType": "Text Field (Single Line)",
-                "AnswerContent": "",
+                "AnswerContent": "",  # Initialize as empty
                 "guid": str(uuid.uuid4())
             }
             if 'configurationItems' not in network_interface:

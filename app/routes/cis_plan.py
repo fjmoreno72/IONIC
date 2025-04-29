@@ -3,7 +3,7 @@ from app.data_access.cis_plan_repository import (
     get_all_cis_plan, get_all_cis_security_classification,
     add_mission_network, update_mission_network, delete_mission_network,
     add_network_segment, update_network_segment, delete_network_segment,
-    add_security_domain, get_all_security_domains, update_security_domain, delete_security_domain,
+    add_security_domain, get_all_security_domains, delete_security_domain,
     get_all_hw_stacks, get_hw_stack, add_hw_stack, update_hw_stack, delete_hw_stack,
     get_all_assets, get_asset, add_asset, update_asset, delete_asset,
     add_network_interface, get_all_network_interfaces, get_network_interface, update_network_interface, delete_network_interface,
@@ -165,12 +165,15 @@ def handle_security_domains(mission_network_id, segment_id):
         if request.method == 'POST':
             # --- Create Security Domain ---
             data = request.get_json()
-            name = get_json_field(data, 'name')
-            new_domain = add_security_domain(environment, mission_network_id, segment_id, name)
+            # Change expected field from 'name' to 'id'
+            sec_domain_id = get_json_field(data, 'id') 
+            # Call repository function with the provided id
+            new_domain = add_security_domain(environment, mission_network_id, segment_id, sec_domain_id)
             if new_domain:
                 return success_response(new_domain, 201)
             else:
-                return error_response("Failed to create security domain - parent resources may not exist.", 404, mission_network_id=mission_network_id, segment_id=segment_id)
+                # More specific error based on repository return? Could check if MN or Seg not found.
+                return error_response("Failed to create security domain - parent resources may not exist or ID might conflict.", 404, mission_network_id=mission_network_id, segment_id=segment_id)
         elif request.method == 'GET':
             # --- Get All Security Domains ---
             domains = get_all_security_domains(environment, mission_network_id, segment_id)
@@ -190,7 +193,7 @@ def get_security_domains(mission_network_id, segment_id):
     except Exception as e:
         return error_response(str(e), 500)
 
-@cis_plan_bp.route('/api/cis_plan/mission_network/<mission_network_id>/segment/<segment_id>/security_domain/<domain_id>', methods=['GET', 'PUT', 'DELETE'])
+@cis_plan_bp.route('/api/cis_plan/mission_network/<mission_network_id>/segment/<segment_id>/security_domain/<domain_id>', methods=['GET', 'DELETE'])
 def handle_security_domain(mission_network_id, segment_id, domain_id):
     try:
         environment = get_environment()
@@ -199,27 +202,19 @@ def handle_security_domain(mission_network_id, segment_id, domain_id):
             # First need to get all domains in the segment
             domains = get_all_security_domains(environment, mission_network_id, segment_id)
             domain = next((d for d in domains if d.get('id') == domain_id), None)
-            if domain:
-                return success_response(domain, 200)
-            else:
-                return error_response(f"Security domain {domain_id} not found.", 404, domain_id=domain_id)
-        elif request.method == 'PUT':
-            data = request.get_json()
-            name = get_json_field(data, 'name')
-            updated = update_security_domain(environment, mission_network_id, segment_id, domain_id, name)
-            if updated:
-                return success_response(updated)
-            else:
-                return error_response("Security domain not found.", 404)
+            if not domain:
+                return error_response(f"Security domain {domain_id} not found", 404, domain_id=domain_id)
+            return success_response(domain, 200)
         elif request.method == 'DELETE':
             deleted = delete_security_domain(environment, mission_network_id, segment_id, domain_id)
             if deleted:
-                return jsonify({"status": "success", "deleted": True}), 200
+                return success_response({"deleted": True, "id": domain_id}), 200
             else:
-                return jsonify({"status": "error", "message": "Security domain not found.", "deleted": False}), 404
+                return error_response("Security domain not found.", 404, deleted=False)
     except ValueError as ve:
         return error_response(str(ve), 400)
     except Exception as e:
+        current_app.logger.error(f"Error handling security domain {domain_id}: {e}")
         return error_response(str(e), 500)
 
 @cis_plan_bp.route('/api/cis_plan/mission_network/<mn_id>/segment/<seg_id>/security_domain/<dom_id>/hw_stacks', methods=['GET', 'POST'])
@@ -364,7 +359,7 @@ def handle_network_interfaces(mn_id, seg_id, dom_id, stack_id, asset_id):
             name = get_json_field(data, 'name')  # Network interface name is required
             new_interface = add_network_interface(env, mn_id, seg_id, dom_id, stack_id, asset_id, name)
             if not new_interface:
-                return error_response(f"Could not create network interface. Parent resource not found.", status=404)
+                return error_response(f"Could not create network interface. Parent resource not found?", status=404)
             return success_response(new_interface, status=201)
         except ValueError as e:
             return error_response(str(e))
@@ -381,7 +376,7 @@ def handle_network_interface(mn_id, seg_id, dom_id, stack_id, asset_id, interfac
         try:
             interface = get_network_interface(env, mn_id, seg_id, dom_id, stack_id, asset_id, interface_id)
             if not interface:
-                return error_response(f"Network interface {interface_id} not found.", status=404)
+                return error_response(f"Network interface {interface_id} not found", 404)
             return success_response(interface)
         except Exception as e:
             return error_response(f"Error retrieving network interface: {str(e)}")
@@ -393,7 +388,7 @@ def handle_network_interface(mn_id, seg_id, dom_id, stack_id, asset_id, interfac
             name = get_json_field(data, 'name')  # Network interface name is required
             updated_interface = update_network_interface(env, mn_id, seg_id, dom_id, stack_id, asset_id, interface_id, name)
             if not updated_interface:
-                return error_response(f"Network interface {interface_id} not found.", status=404)
+                return error_response(f"Network interface {interface_id} not found", 404)
             return success_response(updated_interface)
         except ValueError as e:
             return error_response(str(e))
@@ -405,7 +400,7 @@ def handle_network_interface(mn_id, seg_id, dom_id, stack_id, asset_id, interfac
         try:
             deleted = delete_network_interface(env, mn_id, seg_id, dom_id, stack_id, asset_id, interface_id)
             if not deleted:
-                return error_response(f"Network interface {interface_id} not found.", status=404)
+                return error_response(f"Network interface {interface_id} not found", 404)
             return success_response({"deleted": True, "id": interface_id})
         except Exception as e:
             return error_response(f"Error deleting network interface: {str(e)}")
@@ -430,7 +425,7 @@ def handle_configuration_items(mn_id, seg_id, dom_id, stack_id, asset_id, interf
                 
             updated_item = update_configuration_item(env, mn_id, seg_id, dom_id, stack_id, asset_id, interface_id, item_name, answer_content)
             if not updated_item:
-                return error_response(f"Could not update configuration item. Parent resource not found.", status=404)
+                return error_response(f"Could not update configuration item. Parent resource not found?", 404)
             return success_response(updated_item)
         except ValueError as e:
             return error_response(str(e))
@@ -461,7 +456,7 @@ def handle_gp_instances(mn_id, seg_id, dom_id, stack_id, asset_id):
             
             new_instance = add_gp_instance(env, mn_id, seg_id, dom_id, stack_id, asset_id, instance_label, service_id)
             if not new_instance:
-                return error_response(f"Could not create GP instance. Parent resource not found.", status=404)
+                return error_response(f"Could not create GP instance. Parent resource not found?", status=404)
             return success_response(new_instance, status=201)
         except ValueError as e:
             return error_response(str(e))
@@ -478,7 +473,7 @@ def handle_gp_instance(mn_id, seg_id, dom_id, stack_id, asset_id, instance_id):
         try:
             instance = get_gp_instance(env, mn_id, seg_id, dom_id, stack_id, asset_id, instance_id)
             if not instance:
-                return error_response(f"GP instance {instance_id} not found.", status=404)
+                return error_response(f"GP instance {instance_id} not found", 404)
             return success_response(instance)
         except Exception as e:
             return error_response(f"Error retrieving GP instance: {str(e)}")
@@ -492,7 +487,7 @@ def handle_gp_instance(mn_id, seg_id, dom_id, stack_id, asset_id, instance_id):
             
             updated_instance = update_gp_instance(env, mn_id, seg_id, dom_id, stack_id, asset_id, instance_id, instance_label, service_id)
             if not updated_instance:
-                return error_response(f"GP instance {instance_id} not found.", status=404)
+                return error_response(f"GP instance {instance_id} not found", 404)
             return success_response(updated_instance)
         except ValueError as e:
             return error_response(str(e))
@@ -504,7 +499,7 @@ def handle_gp_instance(mn_id, seg_id, dom_id, stack_id, asset_id, instance_id):
         try:
             deleted = delete_gp_instance(env, mn_id, seg_id, dom_id, stack_id, asset_id, instance_id)
             if not deleted:
-                return error_response(f"GP instance {instance_id} not found.", status=404)
+                return error_response(f"GP instance {instance_id} not found", 404)
             return success_response({"deleted": True, "id": instance_id})
         except Exception as e:
             return error_response(f"Error deleting GP instance: {str(e)}")

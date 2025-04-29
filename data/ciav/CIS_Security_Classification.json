@@ -4,15 +4,23 @@
         {
             "name": "UNCLASSIFIED",
             "guid": "aa1e8400-j79b-41d4-l166-446655476666",
-            "key": "CL-UNCLASS",
+            "id": "CL-UNCLASS",
             "releasabilityString": "REL TO USA",
             "order": 1,
             "colour": "#008000"
         },
         {
+            "name": "RESTRICTED",
+            "guid": "aa1e8400-j79b-41d4-l166-446655476688",
+            "id": "CL-RESTRICTED",
+            "releasabilityString": "REL TO USA",
+            "order": 2,
+            "colour": "#008000"
+        },
+        {
             "name": "SECRET",
             "guid": "cc5e8400-l99b-41d4-n386-446655478888",
-            "key": "CL-SECRET",
+            "id": "CL-SECRET",
             "releasabilityString": "REL TO USA, FVEY",
             "order": 3,
             "colour": "#FF0000"

@@ -1494,7 +1494,7 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleSpan.innerHTML = '<i class="fas fa-chevron-right"></i>';
         node.appendChild(toggleSpan);
         
-        // Create the icon - use SVG icons from getElementIcon function
+        // Create the icon - use SVG icons from ENTITY_META via getElementIcon function
         const iconSpan = document.createElement('span');
         iconSpan.className = 'me-2';
         
@@ -1516,6 +1516,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadSelectedNodeChildren(nodeData, nodeType, parentData) {
         // Update the elements panel title
         if (elementsTitle) {
+            // Use centralized ENTITY_META for label
             elementsTitle.textContent = `${nodeData.name} - ${formatNodeTypeName(nodeType)}`;
         }
         
@@ -1642,6 +1643,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cardBody.className = 'card-body';
             
             // Get the SVG icon for this element type
+            // Use centralized ENTITY_META for icon
             const iconPath = getElementIcon(type);
             
             // Create a header with icon and title

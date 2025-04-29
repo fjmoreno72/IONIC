@@ -50,6 +50,16 @@
               "id": "CL-SECRET"
             }
           ]
+        },
+        {
+          "name": "Command E",
+          "guid": "d5032cf6-02c5-4751-9cbb-31d7112dab19",
+          "id": "NS-0004",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS"
+            }
+          ]
         }
       ]
     }

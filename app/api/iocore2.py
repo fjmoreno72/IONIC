@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from app.api.client import ApiClient
 from app.core.exceptions import ApiRequestError, InvalidSession, DataFormatError
 from app.config import settings
-from app.utils.file_operations import write_json_file, write_markdown_file, get_dynamic_data_path # Added import
+from app.utils.file_operations import write_json_file, write_markdown_file, get_dynamic_data_path, read_json_file # Imported read_json_file
 
 class IOCore2ApiClient(ApiClient):
     """Client for interacting with the IOCore2 API."""
@@ -694,3 +694,25 @@ class IOCore2ApiClient(ApiClient):
                  message=f"Unexpected error processing system health response: {str(e)}",
                  details={"url": api_url}
              )
+
+    def get_participant_id_by_name(self, name: str, environment: str) -> Optional[str]:
+        """
+        Lookup participant ID by name from saved participants.json.
+        """
+        json_file_path = get_dynamic_data_path("participants.json", environment=environment)
+        data = read_json_file(json_file_path)
+        for p in data:
+            if p.get("name") == name:
+                return p.get("id")
+        return None
+
+    def get_participant_name_by_id(self, participant_id: str, environment: str) -> Optional[str]:
+        """
+        Lookup participant name by ID from saved participants.json.
+        """
+        json_file_path = get_dynamic_data_path("participants.json", environment=environment)
+        data = read_json_file(json_file_path)
+        for p in data:
+            if p.get("id") == participant_id:
+                return p.get("name")
+        return None

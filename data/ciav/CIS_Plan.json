@@ -48,6 +48,9 @@
             },
             {
               "id": "CL-SECRET"
+            },
+            {
+              "id": "CL-RESTRICTED"
             }
           ]
         },

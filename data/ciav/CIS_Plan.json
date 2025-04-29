@@ -48,48 +48,6 @@
             },
             {
               "id": "CL-SECRET"
-            },
-            {
-              "id": "CL-RESTRICTED"
-            }
-          ]
-        },
-        {
-          "name": "Command E",
-          "guid": "c5afd67f-a19e-438f-b110-62d6bcdc60c1",
-          "id": "NS-0004",
-          "securityDomains": [
-            {
-              "id": "CL-UNCLASS"
-            },
-            {
-              "id": "CL-RESTRICTED"
-            },
-            {
-              "id": "CL-SECRET"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Mission 2",
-      "guid": "7a4d49eb-8b31-4272-8926-d928d0c79f7e",
-      "id": "MN-0008",
-      "networkSegments": [
-        {
-          "name": "Segement 1",
-          "guid": "2e7b0d91-af43-4f0f-a88e-d0155c4e007b",
-          "id": "NS-0005",
-          "securityDomains": [
-            {
-              "id": "CL-UNCLASS"
-            },
-            {
-              "id": "CL-RESTRICTED"
-            },
-            {
-              "id": "CL-SECRET"
             }
           ]
         }

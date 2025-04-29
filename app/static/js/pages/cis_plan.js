@@ -1898,15 +1898,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ---- Entity Metadata (Quick Win Refactor) ----
+// Centralized meta for entity labels and icons
+const ENTITY_META = {
+    cisplan:            { label: 'CIS Plan',            icon: '/static/img/CIS-PLAN.svg' },
+    missionNetworks:     { label: 'Mission Network',     icon: '/static/img/missionNetworks.svg' },
+    networkSegments:     { label: 'Network Segment',     icon: '/static/img/networkSegments.svg' },
+    securityDomains:     { label: 'Security Domain',     icon: '/static/img/securityDomains.svg' },
+    hwStacks:            { label: 'HW Stack',            icon: '/static/img/hwStacks.svg' },
+    assets:              { label: 'Asset',               icon: '/static/img/assets.svg' },
+    networkInterfaces:   { label: 'Network Interface',   icon: '/static/img/networkInterfaces.svg' },
+    gpInstances:         { label: 'Generic Product',     icon: '/static/img/gpInstances.svg' },
+    configurationItems:  { label: 'Configuration Item',  icon: '/static/img/configurationItems.svg' },
+    spInstances:         { label: 'Specific Product',    icon: '/static/img/spInstances.svg' }
+};
+
 // Utility functions
 
-// Format node type name for display
+// Format node type name for display (now uses ENTITY_META)
 function formatNodeTypeName(type) {
-    // Convert camelCase to Title Case with spaces
-    return type
-        .replace(/([A-Z])/g, ' $1') // Insert space before uppercase letters
-        .replace(/^./, function(str) { return str.toUpperCase(); }) // Capitalize first letter
-        .trim(); // Remove leading/trailing spaces
+    return ENTITY_META[type]?.label || type
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/^./, function(str) { return str.toUpperCase(); })
+        .trim();
 }
 
 // Get icon class for a specific element type
@@ -1926,21 +1940,7 @@ function getTypeIcon(type) {
     return iconMap[type] || 'fa-file';
 }
 
-// Get SVG icon path for a specific element type
+// Get SVG icon path for a specific element type (now uses ENTITY_META)
 function getElementIcon(type) {
-    // This will return the appropriate icon for the element type
-    const iconMap = {
-        'cisplan': '/static/img/CIS-PLAN.svg',
-        'missionNetworks': '/static/img/missionNetworks.svg',
-        'networkSegments': '/static/img/networkSegments.svg',
-        'securityDomains': '/static/img/securityDomains.svg',
-        'hwStacks': '/static/img/hwStacks.svg',
-        'assets': '/static/img/assets.svg',
-        'networkInterfaces': '/static/img/networkInterfaces.svg',
-        'gpInstances': '/static/img/gpInstances.svg',
-        'configurationItems': '/static/img/configurationItems.svg',
-        'spInstances': '/static/img/spInstances.svg'
-    };
-    
-    return iconMap[type] || '/static/img/default.svg';
+    return ENTITY_META[type]?.icon || '/static/img/default.svg';
 }

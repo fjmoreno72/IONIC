@@ -2305,13 +2305,117 @@ async function updateAsset() {
 
     // Render element cards in the elements panel
     function renderElementCards(container, elements, type) {
-        // Create a container for the cards if it doesn't exist
-        let cardsContainer = container.querySelector('.element-cards-container');
-        if (!cardsContainer) {
-            cardsContainer = document.createElement('div');
-            cardsContainer.className = 'element-cards-container row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 m-1';
-            container.appendChild(cardsContainer);
+        // First, clear the container
+        container.innerHTML = '';
+        
+        // Create a sticky header for the Add button if we're on a scrollable list
+        if (type === 'assets') {
+            // Create sticky header with add button
+            const stickyHeader = document.createElement('div');
+            stickyHeader.className = 'sticky-top bg-light mb-2 p-2 d-flex justify-content-between align-items-center border-bottom';
+            stickyHeader.style.zIndex = '100';
+            
+            // Create title in sticky header
+            const headerTitle = document.createElement('h5');
+            headerTitle.className = 'm-0';
+            headerTitle.textContent = `Assets (${elements.length})`;
+            stickyHeader.appendChild(headerTitle);
+            
+            // Create add button in sticky header
+            const addButton = document.createElement('button');
+            addButton.className = 'btn btn-sm btn-primary';
+            addButton.innerHTML = '<i class="fas fa-plus"></i> Add Asset';
+            addButton.addEventListener('click', function() {
+                // This will trigger the same action as the main Add Element button when HW Stack is selected
+                if (currentTreeNode && currentTreeNode.getAttribute('data-type') === 'hwStacks') {
+                    const mn = currentTreeNode.getAttribute('data-parent-mission-network');
+                    const seg = currentTreeNode.getAttribute('data-parent-segment');
+                    const dom = currentTreeNode.getAttribute('data-parent-domain');
+                    const stack = currentTreeNode.getAttribute('data-id');
+                    document.getElementById('addAssetMissionNetworkId').value = mn;
+                    document.getElementById('addAssetSegmentId').value = seg;
+                    document.getElementById('addAssetDomainId').value = dom;
+                    document.getElementById('addAssetHwStackId').value = stack;
+                    const addModal = new bootstrap.Modal(document.getElementById('addAssetModal'));
+                    addModal.show();
+                }
+            });
+            stickyHeader.appendChild(addButton);
+            
+            container.appendChild(stickyHeader);
+            
+            // For assets, use a compact list view instead of cards
+            const compactList = document.createElement('div');
+            compactList.className = 'compact-asset-list';
+            container.appendChild(compactList);
+            
+            // Create a grid layout for more condensed view
+            const grid = document.createElement('div');
+            grid.className = 'row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2';
+            compactList.appendChild(grid);
+            
+            // Store current selected element ID if there is one
+            let selectedElementId = '';
+            if (currentElement && currentElement.id) {
+                selectedElementId = currentElement.id;
+            }
+            
+            // Render each asset in a compact form
+            elements.forEach(element => {
+                const col = document.createElement('div');
+                col.className = 'col';
+                
+                const assetItem = document.createElement('div');
+                assetItem.className = 'asset-item p-2 border rounded d-flex align-items-center';
+                if (selectedElementId === element.id) {
+                    assetItem.classList.add('active', 'bg-primary', 'text-white');
+                }
+                
+                assetItem.setAttribute('data-type', type);
+                assetItem.setAttribute('data-id', element.id);
+                assetItem.setAttribute('data-guid', element.guid);
+                
+                // Get icon for asset
+                const iconPath = getElementIcon(type);
+                
+                // Create compact layout with icon and name
+                assetItem.innerHTML = `
+                    <img src="${iconPath}" width="20" height="20" alt="${type} icon" class="me-2">
+                    <div class="asset-name text-truncate">${element.name}</div>
+                `;
+                
+                // Add tooltip with ID info
+                assetItem.setAttribute('title', `${element.name} (${element.id})`);
+                
+                // Add click event
+                assetItem.addEventListener('click', function() {
+                    // Remove active class from all items
+                    document.querySelectorAll('.asset-item.active').forEach(item => {
+                        item.classList.remove('active', 'bg-primary', 'text-white');
+                    });
+                    
+                    // Add active class to this item
+                    this.classList.add('active', 'bg-primary', 'text-white');
+                    
+                    // Store the selected element and its type
+                    currentElement = element;
+                    currentElement.type = type;
+                    
+                    // Update detail panel
+                    updateDetailPanel(element, type);
+                });
+                
+                col.appendChild(assetItem);
+                grid.appendChild(col);
+            });
+            
+            return; // Exit early since we've handled the assets case specially
         }
+        
+        // For non-asset types, use the original card layout
+        let cardsContainer = document.createElement('div');
+        cardsContainer.className = 'element-cards-container row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 m-1';
+        container.appendChild(cardsContainer);
         
         // Store current selected element ID if there is one
         let selectedElementId = '';

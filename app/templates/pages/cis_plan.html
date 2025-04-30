@@ -194,6 +194,45 @@
             font-size: 20px;
         }
 
+        /* Compact asset view styling */
+        .compact-asset-list {
+            width: 100%;
+            padding: 5px;
+        }
+        
+        .asset-item {
+            min-height: 40px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            overflow: hidden;
+        }
+        
+        .asset-item:hover {
+            background-color: rgba(68, 114, 196, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .asset-item.active {
+            background-color: var(--primary-color) !important;
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 6px rgba(68, 114, 196, 0.5);
+        }
+        
+        .asset-name {
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+        
+        /* Sticky header for assets */
+        .sticky-top.bg-light {
+            background-color: var(--card-background) !important;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
         .wip-message {
             background-color: var(--card-background);
             border: 1px solid var(--border-color);

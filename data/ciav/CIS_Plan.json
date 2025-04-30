@@ -96,6 +96,20 @@
                       "id": "AS-0011",
                       "networkInterfaces": [],
                       "gpInstances": []
+                    },
+                    {
+                      "name": "ROUTER2",
+                      "guid": "d9dd0083-e829-49c1-b929-cb10a401abfb",
+                      "id": "AS-0012",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "CORSOM",
+                      "guid": "e492da74-988d-4770-9891-c18c0f904fc7",
+                      "id": "AS-0013",
+                      "networkInterfaces": [],
+                      "gpInstances": []
                     }
                   ]
                 }

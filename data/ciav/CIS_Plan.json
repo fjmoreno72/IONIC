@@ -18,8 +18,23 @@
                   "name": "POP-55",
                   "guid": "8fc3c9e1-7d34-41c7-ae0e-ac0dfce2a91a",
                   "id": "HW-0001",
-                  "cisParticipantID": "PAR-CIAV-000045",
-                  "assets": []
+                  "cisParticipantID": "PAR-CIAV-000053",
+                  "assets": [
+                    {
+                      "name": "Asset 1",
+                      "guid": "959982ca-b5f8-4aa6-991c-f933dd899ad3",
+                      "id": "AS-0001",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "Asset 2",
+                      "guid": "c2460565-06c0-4874-b60b-3b31b61a1b26",
+                      "id": "AS-0002",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
+                  ]
                 }
               ]
             },

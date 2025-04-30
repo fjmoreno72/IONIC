@@ -11,6 +11,11 @@ let cisPlanData = null;
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Add event listener for the saveAssetBtn
+    document.getElementById('saveAssetBtn').addEventListener('click', addAsset);
+    
+    // Add event listener for the updateAssetBtn
+    document.getElementById('updateAssetBtn').addEventListener('click', updateAsset);
     
     // Get references to DOM elements
     const treeSearchInput = document.getElementById('treeSearchInput');
@@ -85,6 +90,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 const addModal = new bootstrap.Modal(document.getElementById('addHwStackModal'));
                 addModal.show();
             }
+            // HW Stack selected - add Asset
+            else if (currentTreeNode && currentTreeNode.getAttribute('data-type') === 'hwStacks') {
+                const mn = currentTreeNode.getAttribute('data-parent-mission-network');
+                const seg = currentTreeNode.getAttribute('data-parent-segment');
+                const dom = currentTreeNode.getAttribute('data-parent-domain');
+                const stack = currentTreeNode.getAttribute('data-id');
+                document.getElementById('addAssetMissionNetworkId').value = mn;
+                document.getElementById('addAssetSegmentId').value = seg;
+                document.getElementById('addAssetDomainId').value = dom;
+                document.getElementById('addAssetHwStackId').value = stack;
+                const addModal = new bootstrap.Modal(document.getElementById('addAssetModal'));
+                addModal.show();
+            }
             // Other node types would be handled here as the feature expands
         });
     }
@@ -153,6 +171,72 @@ document.addEventListener('DOMContentLoaded', function() {
                         editModal.show();
                     });
                 }
+                else if (type === 'assets') {
+                    // Populate and show edit Asset modal
+                    document.getElementById('editAssetId').value = currentElement.id;
+                    document.getElementById('editAssetName').value = currentElement.name;
+                    
+                    // Store parent IDs for the API call
+                    let hwStackId, domainId, segmentId, missionNetworkId;
+                
+                    // First try to get the hwStackId directly if available (we added this as a redundant property)
+                    if (currentElement && currentElement.hwStackId) {
+                        // Check if hwStackId is an object and extract id if needed
+                        if (typeof currentElement.hwStackId === 'object' && currentElement.hwStackId !== null) {
+                            hwStackId = currentElement.hwStackId.id || '';
+                        } else {
+                            hwStackId = currentElement.hwStackId;
+                        }
+                    }
+                    
+                    if (currentTreeNode) {
+                        // Get from tree node if available
+                        hwStackId = hwStackId || currentTreeNode.getAttribute('data-parent-stack');
+                        domainId = currentTreeNode.getAttribute('data-parent-domain');
+                        segmentId = currentTreeNode.getAttribute('data-parent-segment');
+                        missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network');
+                    } 
+                    
+                    if (currentElement) {
+                        // Try to get from the current element if any values are still missing
+                        if (!hwStackId) {
+                            // Try parentStack
+                            if (typeof currentElement.parentStack === 'object' && currentElement.parentStack !== null) {
+                                hwStackId = currentElement.parentStack.id || '';
+                            } else {
+                                hwStackId = currentElement.parentStack || '';
+                            }
+                        }
+                        
+                        if (!domainId) {
+                            domainId = typeof currentElement.parentDomain === 'object' ? 
+                                (currentElement.parentDomain ? currentElement.parentDomain.id : '') : 
+                                currentElement.parentDomain;
+                        }
+                        
+                        if (!segmentId) {
+                            segmentId = typeof currentElement.parentSegment === 'object' ? 
+                                (currentElement.parentSegment ? currentElement.parentSegment.id : '') : 
+                                currentElement.parentSegment;
+                        }
+                        
+                        if (!missionNetworkId) {
+                            missionNetworkId = typeof currentElement.parentMissionNetwork === 'object' ? 
+                                (currentElement.parentMissionNetwork ? currentElement.parentMissionNetwork.id : '') : 
+                                currentElement.parentMissionNetwork;
+                        }
+                    }
+                
+                    console.log('Edit Asset - Parent IDs:', { hwStackId, domainId, segmentId, missionNetworkId });
+                    
+                    document.getElementById('editAssetHwStackId').value = hwStackId;
+                    document.getElementById('editAssetDomainId').value = domainId;
+                    document.getElementById('editAssetSegmentId').value = segmentId;
+                    document.getElementById('editAssetMissionNetworkId').value = missionNetworkId;
+                    
+                    const editModal = new bootstrap.Modal(document.getElementById('editAssetModal'));
+                    editModal.show();
+                }
                 // Other node types would be handled here as the feature expands
             }
         });
@@ -198,6 +282,53 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Store all three parent IDs as comma-separated values
                     document.getElementById('deleteItemParentId').value = `${missionNetworkId},${segmentId},${domainId}`;
+                }
+                else if (elementType === 'assets') {
+                    // For assets, we need mission network ID, segment ID, domain ID, and HW stack ID
+                    // Extract hwStackId properly - first try direct property, then parentStack
+                    let hwStackId = '';
+                    if (currentElement) {
+                        // First try direct hwStackId property
+                        if (currentElement.hwStackId) {
+                            if (typeof currentElement.hwStackId === 'object' && currentElement.hwStackId !== null) {
+                                hwStackId = currentElement.hwStackId.id || '';
+                            } else {
+                                hwStackId = currentElement.hwStackId;
+                            }
+                        } 
+                        // Then try parentStack
+                        else if (currentElement.parentStack) {
+                            if (typeof currentElement.parentStack === 'object' && currentElement.parentStack !== null) {
+                                hwStackId = currentElement.parentStack.id || '';
+                            } else {
+                                hwStackId = currentElement.parentStack;
+                            }
+                        }
+                    }
+                    
+                    // If we still don't have hwStackId, try from tree node
+                    if (!hwStackId && currentTreeNode) {
+                        hwStackId = currentTreeNode.getAttribute('data-parent-stack') || '';
+                    }
+                    
+                    // Extract other parent IDs
+                    const domainId = currentTreeNode.getAttribute('data-parent-domain') || 
+                                   (currentElement.parentDomain ? (typeof currentElement.parentDomain === 'object' ? currentElement.parentDomain.id : currentElement.parentDomain) : '');
+                    const segmentId = currentTreeNode.getAttribute('data-parent-segment') || 
+                                     (currentElement.parentSegment ? (typeof currentElement.parentSegment === 'object' ? currentElement.parentSegment.id : currentElement.parentSegment) : '');
+                    const missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network') || 
+                                            (currentElement.parentMissionNetwork ? (typeof currentElement.parentMissionNetwork === 'object' ? currentElement.parentMissionNetwork.id : currentElement.parentMissionNetwork) : '');
+                    
+                    // Store all four parent IDs as comma-separated values
+                    document.getElementById('deleteItemParentId').value = `${missionNetworkId},${segmentId},${domainId},${hwStackId}`;
+                    
+                    console.log('Enhanced asset parent references:', {
+                        hwStackId,
+                        parentStack: currentElement.parentStack,
+                        parentDomain: currentElement.parentDomain,
+                        parentSegment: currentElement.parentSegment,
+                        parentMissionNetwork: currentElement.parentMissionNetwork
+                    });
                 }
                 
                 const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
@@ -275,6 +406,20 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             console.error('Error loading participants:', error);
             return [];
+        }
+    }
+    
+    // Get participant name by key
+    async function getParticipantNameByKey(key) {
+        if (!key) return 'N/A';
+        
+        try {
+            const participants = await fetchParticipants();
+            const participant = participants.find(p => p.key === key);
+            return participant ? participant.name : key; // Return name if found, otherwise return the key
+        } catch (error) {
+            console.error('Error getting participant name:', error);
+            return key; // Return the key if there's an error
         }
     }
     
@@ -784,7 +929,196 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Store security classifications data
+    // Add a new asset
+async function addAsset() {
+    const nameInput = document.getElementById('addAssetName');
+    const missionNetworkIdInput = document.getElementById('addAssetMissionNetworkId');
+    const segmentIdInput = document.getElementById('addAssetSegmentId');
+    const domainIdInput = document.getElementById('addAssetDomainId');
+    const hwStackIdInput = document.getElementById('addAssetHwStackId');
+    
+    const name = nameInput.value.trim();
+    const missionNetworkId = missionNetworkIdInput.value;
+    const segmentId = segmentIdInput.value;
+    const domainId = domainIdInput.value;
+    const hwStackId = hwStackIdInput.value;
+    
+    if (!name) {
+        showToast('Please enter an asset name', 'warning');
+        return;
+    }
+    
+    if (!missionNetworkId || !segmentId || !domainId || !hwStackId) {
+        showToast('Missing parent ID information', 'warning');
+        return;
+    }
+    
+    try {
+        const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets`;
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name })
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Properly close the modal and clear focus
+            const modalElement = document.getElementById('addAssetModal');
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            
+            // Blur (unfocus) the save button before hiding the modal
+            document.getElementById('saveAssetBtn').blur();
+            
+            // Small delay to ensure blur takes effect before closing the modal
+            setTimeout(() => {
+                modal.hide();
+            }, 10);
+            
+            // Clear the form
+            nameInput.value = '';
+            
+            // Show success message
+            showToast(`Asset "${name}" created successfully!`);
+            
+            // Get the ID of the new asset from the response if available
+            let newAssetId = null;
+            if (result.data && result.data.id) {
+                newAssetId = result.data.id;
+                console.log('New asset created with ID:', newAssetId);
+            }
+            
+            // Create a state object that contains the full parent hierarchy
+            const stateToRestore = {
+                nodeType: 'hwStacks',
+                nodeId: hwStackId,
+                domainId: domainId,
+                segmentId: segmentId,
+                missionNetworkId: missionNetworkId,
+                highlightNewAsset: newAssetId
+            };
+            
+            console.log('Refreshing with state:', stateToRestore);
+            await refreshPanelsWithState(stateToRestore);
+            
+            // If the new asset ID is available, try to highlight it after refresh
+            if (newAssetId) {
+                // Let the DOM update first
+                setTimeout(() => {
+                    const assetNode = document.querySelector(`.tree-node[data-id="${newAssetId}"]`);
+                    if (assetNode) {
+                        assetNode.click(); // Programmatically click the node to select it
+                    }
+                }, 100);
+            }
+        } else {
+            showToast(`${result.message || 'Failed to create asset'}`, 'danger');
+        }
+    } catch (error) {
+        console.error('Error adding asset:', error);
+        showToast('An error occurred while creating the asset', 'danger');
+    }
+}
+
+// Update an existing asset
+async function updateAsset() {
+    console.log('Updating asset with current element:', currentElement);
+    const idInput = document.getElementById('editAssetId');
+    const nameInput = document.getElementById('editAssetName');
+    const missionNetworkIdInput = document.getElementById('editAssetMissionNetworkId');
+    const segmentIdInput = document.getElementById('editAssetSegmentId');
+    const domainIdInput = document.getElementById('editAssetDomainId');
+    const hwStackIdInput = document.getElementById('editAssetHwStackId');
+    
+    const id = idInput.value;
+    const name = nameInput.value.trim();
+    const missionNetworkId = missionNetworkIdInput.value;
+    const segmentId = segmentIdInput.value;
+    const domainId = domainIdInput.value;
+    const hwStackId = hwStackIdInput.value;
+    
+    // Make sure hwStackId is a string, not an object
+    if (typeof hwStackId === 'object' && hwStackId !== null) {
+        hwStackId = hwStackId.id || '';
+    }
+    
+    console.log('Asset update values:', {
+        id,
+        name,
+        missionNetworkId,
+        segmentId,
+        domainId,
+        hwStackId
+    });
+    
+    if (!name) {
+        showToast('Please enter an asset name', 'warning');
+        return;
+    }
+    
+    if (!missionNetworkId || !segmentId || !domainId || !hwStackId) {
+        showToast('Missing parent ID information', 'warning');
+        return;
+    }
+    
+    try {
+        const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${id}`;
+        const response = await fetch(endpoint, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name })
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Properly close the modal and clear focus
+            const modalElement = document.getElementById('editAssetModal');
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            
+            // Blur (unfocus) the update button before hiding the modal
+            document.getElementById('updateAssetBtn').blur();
+            
+            // Small delay to ensure blur takes effect before closing the modal
+            setTimeout(() => {
+                modal.hide();
+            }, 10);
+            
+            // Show success message
+            showToast(`Asset updated successfully!`);
+            
+            // Update the current element with the new name
+            if (currentElement && currentElement.id === id) {
+                currentElement.name = name;
+                
+                // Update the details panel with the new name
+                updateDetailPanel(currentElement, currentElement.type);
+            }
+            
+            // Refresh the data with state preservation
+            // Create a state object to restore UI to the HW Stack
+            await refreshPanelsWithState({
+                nodeType: 'hwStacks',
+                nodeId: hwStackId,
+                domainId: domainId,
+                segmentId: segmentId,
+                missionNetworkId: missionNetworkId
+            });
+        } else {
+            showToast(`${result.message || 'Failed to update asset'}`, 'danger');
+        }
+    } catch (error) {
+        console.error('Error updating asset:', error);
+        showToast('An error occurred while updating the asset', 'danger');
+    }
+}
+
+// Store security classifications data
     let securityClassifications = [];
     
     // Helper function to get security classification details by ID
@@ -1020,6 +1354,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const domainId = parentIds[2];
             endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${id}`;
         }
+        else if (type === 'assets') {
+            const parentIds = document.getElementById('deleteItemParentId').value.split(',');
+            const missionNetworkId = parentIds[0];
+            const segmentId = parentIds[1];
+            const domainId = parentIds[2];
+            const hwStackId = parentIds[3];
+            endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${id}`;
+        }
         
         if (!endpoint) {
             showToast('Unknown item type: ' + type, 'warning');
@@ -1054,6 +1396,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let parentType = '';
                 let missionNetworkId = '';
                 let segmentId = '';
+                let domainId = '';
                 
                 if (type === 'securityDomains') {
                     // For security domains, we want to restore the segment selection
@@ -1068,6 +1411,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     segmentId = parentIds[1]; // Store segment ID
                     missionNetworkId = parentIds[0]; // Store mission network ID
                     parentType = 'securityDomains';
+                } else if (type === 'assets') {
+                    // For assets, we want to restore the HW stack selection
+                    const parentIds = document.getElementById('deleteItemParentId').value.split(',');
+                    parentId = parentIds[3]; // Use HW stack ID
+                    domainId = parentIds[2]; // Store domain ID
+                    segmentId = parentIds[1]; // Store segment ID
+                    missionNetworkId = parentIds[0]; // Store mission network ID
+                    parentType = 'hwStacks';
                 } else if (type === 'networkSegments') {
                     // For network segments, we want to restore the mission network selection
                     parentId = document.getElementById('deleteItemParentId').value;
@@ -1086,6 +1437,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 // If we're restoring to a network segment, we need to include the segment ID
                 if (parentType === 'networkSegments') {
                     stateToRestore.segmentId = parentId;
+                }
+                
+                // If we're restoring to a security domain or HW stack, include the segment ID
+                if (segmentId && (parentType === 'securityDomains' || parentType === 'hwStacks')) {
+                    stateToRestore.segmentId = segmentId;
+                }
+                
+                // If we're restoring to an HW stack, include the domain ID
+                if (domainId && parentType === 'hwStacks') {
+                    stateToRestore.domainId = domainId;
                 }
                 
                 try {
@@ -1620,67 +1981,69 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Render assets under a hardware stack
     function renderAssets(container, assets, parentStack, parentDomain, parentSegment, parentMissionNetwork) {
+        if (!assets || assets.length === 0) {
+            return;
+        }
+        
+        // Create a container for the assets
+        const assetsContainer = document.createElement('div');
+        container.appendChild(assetsContainer);
+        
+        // For each asset, create a tree node
         assets.forEach(asset => {
-            const assetNode = createTreeNode(
-                'assets', 
-                asset.name, 
-                asset.id, 
-                asset.guid,
-                'fa-desktop'
-            );
-            container.appendChild(assetNode);
+            const assetNode = createTreeNode('assets', asset.name, asset.id, asset.guid);
             
-            // Create a container for the children (networkInterfaces and gpInstances)
-            const assetChildrenContainer = document.createElement('div');
-            assetChildrenContainer.className = 'tree-node-children ms-4';
-            assetChildrenContainer.style.display = 'none'; // Initially collapsed
-            assetChildrenContainer.setAttribute('data-parent', asset.id);
-            container.appendChild(assetChildrenContainer);
+            // Store parent references as data attributes
+            assetNode.setAttribute('data-parent-stack', parentStack);
+            assetNode.setAttribute('data-parent-domain', parentDomain);
+            assetNode.setAttribute('data-parent-segment', parentSegment);
+            assetNode.setAttribute('data-parent-mission-network', parentMissionNetwork);
             
-            // Add click event to asset node to toggle children
+            // Store these references in asset object too for when selected from the elements panel
+            // Make sure all references are string IDs, not objects
+            asset.parentStack = parentStack;
+            asset.parentDomain = parentDomain;
+            asset.parentSegment = parentSegment;
+            asset.parentMissionNetwork = parentMissionNetwork;
+            // We also store the hwStackId directly to ensure it's always available
+            asset.hwStackId = parentStack;
+            
+            // Add click event for the asset node
             assetNode.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const isActive = this.classList.contains('active');
+                e.stopPropagation(); // Prevent event bubbling
                 
                 // Remove active class from all nodes
                 document.querySelectorAll('.tree-node.active').forEach(node => {
                     node.classList.remove('active');
                 });
                 
-                // Toggle active class for this node
-                if (!isActive) {
-                    this.classList.add('active');
-                    currentTreeNode = this;
-                    loadSelectedNodeChildren(asset, 'assets', parentStack, parentDomain, parentSegment, parentMissionNetwork);
-                }
+                // Add active class to this node
+                this.classList.add('active');
                 
-                // Toggle children container
-                // Use nextElementSibling instead of global query to avoid affecting other branches
-                const childrenContainer = this.nextElementSibling;
-                if (childrenContainer) {
-                    const isExpanded = childrenContainer.style.display !== 'none';
-                    childrenContainer.style.display = isExpanded ? 'none' : 'block';
-                    
-                    // Toggle the icon for expand/collapse
-                    const icon = this.querySelector('.tree-toggle');
-                    if (icon) {
-                        icon.innerHTML = isExpanded ? '<i class="fas fa-chevron-right"></i>' : '<i class="fas fa-chevron-down"></i>';
-                    }
-                    
-                    // If expanding and no children yet, render networkInterfaces and gpInstances
-                    if (!isExpanded && childrenContainer.children.length === 0) {
-                        // Render network interfaces if they exist
-                        if (asset.networkInterfaces && asset.networkInterfaces.length > 0) {
-                            renderNetworkInterfaces(childrenContainer, asset.networkInterfaces, asset, parentStack, parentDomain, parentSegment, parentMissionNetwork);
-                        }
-                        
-                        // Render GP instances if they exist
-                        if (asset.gpInstances && asset.gpInstances.length > 0) {
-                            renderGPInstances(childrenContainer, asset.gpInstances, asset, parentStack, parentDomain, parentSegment, parentMissionNetwork);
-                        }
-                    }
-                }
+                // Update currentTreeNode
+                currentTreeNode = this;
+                
+                // Update the elements panel with the children of this node
+                loadSelectedNodeChildren(
+                    asset,
+                    'assets',
+                    { id: parentStack },
+                    { id: parentDomain },
+                    { id: parentSegment },
+                    { id: parentMissionNetwork }
+                );
+                
+                // Enable the "Add Element" button
+                if (addElementButton) addElementButton.disabled = false;
             });
+            
+            assetsContainer.appendChild(assetNode);
+            
+            // Recursively render network interfaces if any
+            renderNetworkInterfaces(assetsContainer, asset.networkInterfaces, asset.id, parentStack, parentDomain, parentSegment, parentMissionNetwork);
+            
+            // Recursively render GP instances if any
+            renderGPInstances(assetsContainer, asset.gpInstances, asset.id, parentStack, parentDomain, parentSegment, parentMissionNetwork);
         });
     }
     
@@ -1783,6 +2146,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load and display children of the selected node in the elements panel
     // Config-driven: Load and display children of the selected node in the elements panel
     function loadSelectedNodeChildren(nodeData, nodeType, ...parentData) {
+        console.log('Loading children for node:', nodeType, nodeData, 'Parents:', parentData);
         // Update the elements panel title
         if (elementsTitle) {
             let displayName = nodeData.name;
@@ -1892,6 +2256,23 @@ document.addEventListener('DOMContentLoaded', function() {
             cardSubtitle.className = 'card-subtitle mb-2 text-muted';
             cardSubtitle.textContent = element.id || '';  
             cardBody.appendChild(cardSubtitle);
+            
+            // For HW Stacks, add participant info if available
+            if (type === 'hwStacks' && element.cisParticipantID) {
+                const participantContainer = document.createElement('div');
+                participantContainer.className = 'small text-secondary mb-2';
+                participantContainer.innerHTML = `<strong>Participant:</strong> <span class="participant-name">${element.cisParticipantID}</span>`;
+                cardBody.appendChild(participantContainer);
+                
+                // Asynchronously fetch and update the participant name
+                (async function() {
+                    const participantName = await getParticipantNameByKey(element.cisParticipantID);
+                    const nameSpan = participantContainer.querySelector('.participant-name');
+                    if (nameSpan && participantName !== element.cisParticipantID) {
+                        nameSpan.textContent = participantName;
+                    }
+                })();
+            }
             card.appendChild(cardBody);
             cardCol.appendChild(card);
             cardsContainer.appendChild(cardCol);
@@ -1920,7 +2301,39 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 
-                console.log('Selected element:', { ...currentElement }); // Debug log
+                console.log('Selected element:', { ...currentElement, type }); // Debug log with type
+            
+            // Ensure parent references for hierarchy are populated
+            if (type === 'assets') {
+                // For assets, we need to ensure all parent references are set
+                // Try to get from current element first
+                let hwStackId = element.hwStackId || element.parentStack;
+                
+                // If not found and we have a currentTreeNode, get from there
+                if ((!hwStackId || hwStackId === 'undefined') && currentTreeNode) {
+                    hwStackId = currentTreeNode.getAttribute('data-parent-stack');
+                    element.parentDomain = currentTreeNode.getAttribute('data-parent-domain');
+                    element.parentSegment = currentTreeNode.getAttribute('data-parent-segment');
+                    element.parentMissionNetwork = currentTreeNode.getAttribute('data-parent-mission-network');
+                }
+                
+                // Ensure we store it in both places for redundancy and as a string
+                if (typeof hwStackId === 'object' && hwStackId !== null) {
+                    element.parentStack = hwStackId.id || '';
+                    element.hwStackId = hwStackId.id || '';
+                } else {
+                    element.parentStack = hwStackId;
+                    element.hwStackId = hwStackId;
+                }
+                
+                console.log('Enhanced asset parent references:', {
+                    hwStackId: element.hwStackId,
+                    parentStack: element.parentStack,
+                    parentDomain: element.parentDomain,
+                    parentSegment: element.parentSegment,
+                    parentMissionNetwork: element.parentMissionNetwork
+                });
+            }
                 
                 // Update the details panel
                 updateDetailPanel(element, type);
@@ -2055,12 +2468,32 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add type-specific details
         // This can be expanded based on the different element types
         if (type === 'hwStacks' && element.cisParticipantID) {
+            // Add the participant ID row
             table.querySelector('tbody').innerHTML += `
                 <tr>
                     <th scope="row">CIS Participant ID</th>
                     <td>${element.cisParticipantID}</td>
                 </tr>
             `;
+            
+            // Add participant name asynchronously
+            (async function() {
+                const participantName = await getParticipantNameByKey(element.cisParticipantID);
+                
+                // Only add the row if we got a valid name that's different from the key
+                if (participantName !== element.cisParticipantID && participantName !== 'N/A') {
+                    // Check if the details panel is still showing the same element
+                    if (currentElement && currentElement.id === element.id) {
+                        const participantRow = document.createElement('tr');
+                        participantRow.innerHTML = `
+                            <th scope="row">CIS Participant</th>
+                            <td>${participantName}</td>
+                        `;
+                        
+                        table.querySelector('tbody').appendChild(participantRow);
+                    }
+                }
+            })();
         }
         
         // Add the table to the card body

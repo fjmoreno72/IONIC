@@ -314,7 +314,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="saveMissionNetworkBtn">Save</button>
+                    <button type="button" class="btn btn-primary" id="saveMissionNetworkBtn" autofocus>Save</button>
                 </div>
             </div>
         </div>
@@ -339,7 +339,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="updateMissionNetworkBtn">Update</button>
+                    <button type="button" class="btn btn-primary" id="updateMissionNetworkBtn" autofocus>Update</button>
                 </div>
             </div>
         </div>
@@ -362,7 +362,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn" autofocus>Delete</button>
                 </div>
             </div>
         </div>
@@ -387,7 +387,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="saveNetworkSegmentBtn">Save</button>
+                    <button type="button" class="btn btn-primary" id="saveNetworkSegmentBtn" autofocus>Save</button>
                 </div>
             </div>
         </div>
@@ -413,7 +413,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="updateNetworkSegmentBtn">Update</button>
+                    <button type="button" class="btn btn-primary" id="updateNetworkSegmentBtn" autofocus>Update</button>
                 </div>
             </div>
         </div>
@@ -442,7 +442,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="saveSecurityDomainBtn">Save</button>
+                    <button type="button" class="btn btn-primary" id="saveSecurityDomainBtn" autofocus>Save</button>
                 </div>
             </div>
         </div>
@@ -475,7 +475,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="saveHwStackBtn">Save</button>
+                    <button type="button" class="btn btn-primary" id="saveHwStackBtn" autofocus>Save</button>
                 </div>
             </div>
         </div>
@@ -509,7 +509,64 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="updateHwStackBtn">Update</button>
+                    <button type="button" class="btn btn-primary" id="updateHwStackBtn" autofocus>Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Asset Modal -->    
+    <div class="modal fade" id="addAssetModal" tabindex="-1" aria-labelledby="addAssetModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addAssetModalLabel">Add Asset</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addAssetForm">
+                        <input type="hidden" id="addAssetMissionNetworkId">
+                        <input type="hidden" id="addAssetSegmentId">
+                        <input type="hidden" id="addAssetDomainId">
+                        <input type="hidden" id="addAssetHwStackId">
+                        <div class="mb-3">
+                            <label for="addAssetName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="addAssetName" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveAssetBtn" autofocus>Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Asset Modal -->
+    <div class="modal fade" id="editAssetModal" tabindex="-1" aria-labelledby="editAssetModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editAssetModalLabel">Edit Asset</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editAssetForm">
+                        <input type="hidden" id="editAssetMissionNetworkId">
+                        <input type="hidden" id="editAssetSegmentId">
+                        <input type="hidden" id="editAssetDomainId">
+                        <input type="hidden" id="editAssetHwStackId">
+                        <input type="hidden" id="editAssetId">
+                        <div class="mb-3">
+                            <label for="editAssetName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="editAssetName" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="updateAssetBtn" autofocus>Update</button>
                 </div>
             </div>
         </div>

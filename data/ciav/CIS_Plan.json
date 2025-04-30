@@ -12,7 +12,16 @@
           "id": "NS-0001",
           "securityDomains": [
             {
-              "id": "CL-UNCLASS"
+              "id": "CL-UNCLASS",
+              "hwStacks": [
+                {
+                  "name": "POP-55",
+                  "guid": "8fc3c9e1-7d34-41c7-ae0e-ac0dfce2a91a",
+                  "id": "HW-0001",
+                  "cisParticipantID": "PAR-CIAV-000045",
+                  "assets": []
+                }
+              ]
             },
             {
               "id": "CL-SECRET"

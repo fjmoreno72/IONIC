@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add element button opens the appropriate modal based on current selection
     if (addElementButton) {
-        addElementButton.addEventListener('click', function() {
+        addElementButton.addEventListener('click', async function() {
             // Root node (CIS Plan) selected - add mission network
             if (currentTreeNode && currentTreeNode.getAttribute('data-id') === 'root-cisplan') {
                 // Show add mission network modal
@@ -67,6 +67,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     const addModal = new bootstrap.Modal(document.getElementById('addSecurityDomainModal'));
                     addModal.show();
                 });
+            }
+            // Security Domain selected - add HW Stack
+            else if (currentTreeNode && currentTreeNode.getAttribute('data-type') === 'securityDomains') {
+                const mn = currentTreeNode.getAttribute('data-parent-mission-network');
+                const seg = currentTreeNode.getAttribute('data-parent-segment');
+                const dom = currentTreeNode.getAttribute('data-id');
+                document.getElementById('addHwStackMissionNetworkId').value = mn;
+                document.getElementById('addHwStackSegmentId').value = seg;
+                document.getElementById('addHwStackDomainId').value = dom;
+                const select = document.getElementById('addHwStackCisParticipant');
+                select.innerHTML = '';
+                const participants = await fetchParticipants();
+                participants.forEach(p => {
+                    const opt = document.createElement('option'); opt.value = p.key; opt.textContent = p.name; select.appendChild(opt);
+                });
+                const addModal = new bootstrap.Modal(document.getElementById('addHwStackModal'));
+                addModal.show();
             }
             // Other node types would be handled here as the feature expands
         });
@@ -98,6 +115,43 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     const editModal = new bootstrap.Modal(document.getElementById('editNetworkSegmentModal'));
                     editModal.show();
+                }
+                else if (type === 'hwStacks') {
+                    // Populate and show edit HW Stack modal
+                    document.getElementById('editHwStackId').value = currentElement.id;
+                    document.getElementById('editHwStackName').value = currentElement.name;
+                    
+                    // Store parent IDs for the API call
+                    const domainId = currentTreeNode.getAttribute('data-parent-domain') || 
+                                    (currentElement.parentDomain ? currentElement.parentDomain.id : '');
+                    const segmentId = currentTreeNode.getAttribute('data-parent-segment') || 
+                                     (currentElement.parentSegment ? currentElement.parentSegment.id : '');
+                    const missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network') || 
+                                            (currentElement.parentMissionNetwork ? currentElement.parentMissionNetwork.id : '');
+                    
+                    document.getElementById('editHwStackDomainId').value = domainId;
+                    document.getElementById('editHwStackSegmentId').value = segmentId;
+                    document.getElementById('editHwStackMissionNetworkId').value = missionNetworkId;
+                    
+                    // Populate participants dropdown
+                    const select = document.getElementById('editHwStackCisParticipant');
+                    select.innerHTML = '<option value="" disabled>Select a participant...</option>';
+                    
+                    // Set current participant ID
+                    fetchParticipants().then(participants => {
+                        participants.forEach(p => {
+                            const opt = document.createElement('option');
+                            opt.value = p.key;
+                            opt.textContent = p.name;
+                            if (p.key === currentElement.cisParticipantID) {
+                                opt.selected = true;
+                            }
+                            select.appendChild(opt);
+                        });
+                        
+                        const editModal = new bootstrap.Modal(document.getElementById('editHwStackModal'));
+                        editModal.show();
+                    });
                 }
                 // Other node types would be handled here as the feature expands
             }
@@ -132,6 +186,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Store both parent IDs as comma-separated values
                     document.getElementById('deleteItemParentId').value = `${missionNetworkId},${segmentId}`;
+                }
+                else if (elementType === 'hwStacks') {
+                    // For HW stacks, we need mission network ID, segment ID, and domain ID
+                    const domainId = currentTreeNode.getAttribute('data-parent-domain') || 
+                                   (currentElement.parentDomain ? currentElement.parentDomain.id : '');
+                    const segmentId = currentTreeNode.getAttribute('data-parent-segment') || 
+                                    (currentElement.parentSegment ? currentElement.parentSegment.id : '');
+                    const missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network') || 
+                                           (currentElement.parentMissionNetwork ? currentElement.parentMissionNetwork.id : '');
+                    
+                    // Store all three parent IDs as comma-separated values
+                    document.getElementById('deleteItemParentId').value = `${missionNetworkId},${segmentId},${domainId}`;
                 }
                 
                 const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
@@ -168,6 +234,17 @@ document.addEventListener('DOMContentLoaded', function() {
         saveSecurityDomainBtn.addEventListener('click', addSecurityDomain);
     }
     
+    // HW Stack add/edit event handlers
+    const saveHwStackBtn = document.getElementById('saveHwStackBtn');
+    if (saveHwStackBtn) {
+        saveHwStackBtn.addEventListener('click', addHwStack);
+    }
+    
+    const updateHwStackBtn = document.getElementById('updateHwStackBtn');
+    if (updateHwStackBtn) {
+        updateHwStackBtn.addEventListener('click', updateHwStack);
+    }
+    
     const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
     if (confirmDeleteBtn) {
         confirmDeleteBtn.addEventListener('click', deleteItem);
@@ -183,6 +260,159 @@ document.addEventListener('DOMContentLoaded', function() {
         await fetchCISPlanData();
     }
     
+    // Fetch participants from API
+    async function fetchParticipants() {
+        try {
+            const response = await fetch('/api/participants');
+            const result = await response.json();
+            if (result.status === 'success') {
+                console.log('Participants loaded:', result.data.length);
+                return result.data || [];
+            } else {
+                console.error('Failed to load participants:', result.message);
+                return [];
+            }
+        } catch (error) {
+            console.error('Error loading participants:', error);
+            return [];
+        }
+    }
+    
+    // Add HW Stack
+    async function addHwStack() {
+        const name = document.getElementById('addHwStackName').value.trim();
+        const cisParticipantID = document.getElementById('addHwStackCisParticipant').value;
+        const missionNetworkId = document.getElementById('addHwStackMissionNetworkId').value;
+        const segmentId = document.getElementById('addHwStackSegmentId').value;
+        const domainId = document.getElementById('addHwStackDomainId').value;
+        
+        // Validation
+        if (!name) {
+            showToast('Please enter a HW Stack name', 'warning');
+            return;
+        }
+        
+        if (!cisParticipantID) {
+            showToast('Please select a participant', 'warning');
+            return;
+        }
+        
+        if (!missionNetworkId || !segmentId || !domainId) {
+            showToast('Missing parent information', 'warning');
+            return;
+        }
+        
+        try {
+            const url = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks`;
+            console.log('Adding HW Stack with URL:', url);
+            
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, cisParticipantID })
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Properly close the modal and clear focus
+                const modalElement = document.getElementById('addHwStackModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                
+                // Blur (unfocus) the save button before hiding the modal
+                document.getElementById('saveHwStackBtn').blur();
+                
+                // Small delay to ensure blur takes effect before closing the modal
+                setTimeout(() => {
+                    modal.hide();
+                }, 10);
+                
+                showToast(`HW Stack "${name}" created successfully!`);
+                
+                // Refresh the UI with the proper state
+                await refreshPanelsWithState({
+                    nodeType: 'securityDomains',
+                    nodeId: domainId,
+                    segmentId: segmentId,
+                    missionNetworkId: missionNetworkId
+                });
+            } else {
+                showToast(`${result.message || 'Failed to create HW Stack'}`, 'danger');
+            }
+        } catch (error) {
+            console.error('Error creating HW Stack:', error);
+            showToast('An error occurred while creating the HW Stack', 'danger');
+        }
+    }
+    
+    // Update HW Stack
+    async function updateHwStack() {
+        const name = document.getElementById('editHwStackName').value.trim();
+        const cisParticipantID = document.getElementById('editHwStackCisParticipant').value;
+        const missionNetworkId = document.getElementById('editHwStackMissionNetworkId').value;
+        const segmentId = document.getElementById('editHwStackSegmentId').value;
+        const domainId = document.getElementById('editHwStackDomainId').value;
+        const id = document.getElementById('editHwStackId').value;
+        
+        // Validation
+        if (!name) {
+            showToast('Please enter a HW Stack name', 'warning');
+            return;
+        }
+        
+        if (!cisParticipantID) {
+            showToast('Please select a participant', 'warning');
+            return;
+        }
+        
+        if (!missionNetworkId || !segmentId || !domainId || !id) {
+            showToast('Missing required information', 'warning');
+            return;
+        }
+        
+        try {
+            const url = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${id}`;
+            console.log('Updating HW Stack with URL:', url);
+            
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, cisParticipantID })
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Properly close the modal and clear focus
+                const modalElement = document.getElementById('editHwStackModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                
+                // Blur (unfocus) the update button before hiding the modal
+                document.getElementById('updateHwStackBtn').blur();
+                
+                // Small delay to ensure blur takes effect before closing the modal
+                setTimeout(() => {
+                    modal.hide();
+                }, 10);
+                
+                showToast(`HW Stack updated successfully!`);
+                
+                // Refresh the UI with the proper state
+                await refreshPanelsWithState({
+                    nodeType: 'securityDomains',
+                    nodeId: domainId,
+                    segmentId: segmentId,
+                    missionNetworkId: missionNetworkId
+                });
+            } else {
+                showToast(`${result.message || 'Failed to update HW Stack'}`, 'danger');
+            }
+        } catch (error) {
+            console.error('Error updating HW Stack:', error);
+            showToast('An error occurred while updating the HW Stack', 'danger');
+        }
+    }
+
     // Refresh panels while preserving tree state and selection
     async function refreshPanelsWithState(stateToRestore) {
         try {
@@ -783,6 +1013,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const segmentId = parentIds[1];
             endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${id}`;
         }
+        else if (type === 'hwStacks') {
+            const parentIds = document.getElementById('deleteItemParentId').value.split(',');
+            const missionNetworkId = parentIds[0];
+            const segmentId = parentIds[1];
+            const domainId = parentIds[2];
+            endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${id}`;
+        }
         
         if (!endpoint) {
             showToast('Unknown item type: ' + type, 'warning');
@@ -816,6 +1053,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let parentId = '';
                 let parentType = '';
                 let missionNetworkId = '';
+                let segmentId = '';
                 
                 if (type === 'securityDomains') {
                     // For security domains, we want to restore the segment selection
@@ -823,6 +1061,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     parentId = parentIds[1]; // Use segment ID
                     missionNetworkId = parentIds[0]; // Store mission network ID
                     parentType = 'networkSegments';
+                } else if (type === 'hwStacks') {
+                    // For HW stacks, we want to restore the security domain selection
+                    const parentIds = document.getElementById('deleteItemParentId').value.split(',');
+                    parentId = parentIds[2]; // Use domain ID
+                    segmentId = parentIds[1]; // Store segment ID
+                    missionNetworkId = parentIds[0]; // Store mission network ID
+                    parentType = 'securityDomains';
                 } else if (type === 'networkSegments') {
                     // For network segments, we want to restore the mission network selection
                     parentId = document.getElementById('deleteItemParentId').value;
@@ -1295,6 +1540,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Render hardware stacks under a security domain
     function renderHWStacks(container, stacks, parentDomain, parentSegment, parentMissionNetwork) {
         stacks.forEach(stack => {
+            // Add parent references to the stack object itself
+            if (parentDomain && parentDomain.id) {
+                stack.parentDomain = { id: parentDomain.id };
+            }
+            if (parentSegment && parentSegment.id) {
+                stack.parentSegment = { id: parentSegment.id };
+            }
+            if (parentMissionNetwork && parentMissionNetwork.id) {
+                stack.parentMissionNetwork = { id: parentMissionNetwork.id };
+            }
+            
             const stackNode = createTreeNode(
                 'hwStacks', 
                 stack.name, 
@@ -1302,6 +1558,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 stack.guid,
                 'fa-server'
             );
+            
+            // Set parent attributes for proper edit/delete functionality
+            if (parentDomain && parentDomain.id) {
+                stackNode.setAttribute('data-parent-domain', parentDomain.id);
+            }
+            if (parentSegment && parentSegment.id) {
+                stackNode.setAttribute('data-parent-segment', parentSegment.id);
+            }
+            if (parentMissionNetwork && parentMissionNetwork.id) {
+                stackNode.setAttribute('data-parent-mission-network', parentMissionNetwork.id);
+            }
+            
             container.appendChild(stackNode);
             
             // Create a container for the children (assets)

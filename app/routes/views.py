@@ -16,6 +16,7 @@ from app.data_access.sps_repository import get_all_sps, save_sps # Added SP repo
 from app.data_access.links_repository import get_all_links, add_link, update_link, delete_link # Added Links repository import
 from app.data_access.ascs_repository import get_all_ascs, save_ascs # Added ASCs repository import
 from app.config import settings
+from app.api.iocore2 import IOCore2ApiClient  # Imported client to expose helper methods
 from werkzeug.utils import secure_filename
 
 # Create blueprint
@@ -373,9 +374,7 @@ def participants_view():
         return render_template('participants.html', participants=[], error="Error reading data file format.")
     except Exception as e:
         logging.exception("Error processing participants data:")
-        # Generic error for unexpected issues
         return render_template('participants.html', participants=[], error="An unexpected error occurred while processing participant data.")
-
 
 @views_bp.route('/objectives')
 @login_required
@@ -520,7 +519,6 @@ def objectives_view():
     except Exception as e:
         logging.exception("Error processing objectives data:")
         return render_template('objectives.html', objectives=[], error="An unexpected error occurred while processing objectives data.")
-
 
 # --- Updated ASC Routes ---
 
@@ -891,6 +889,7 @@ def manage_links():
             highest_id = 0
             if links:
                 try:
+                    # Extract all numeric parts and find the highest
                     for link in links:
                         if 'id' in link and link['id'].startswith('LNK-'):
                             try:
@@ -899,8 +898,8 @@ def manage_links():
                             except (IndexError, ValueError):
                                 pass
                 except Exception:
-                    pass # Ignore errors during ID finding
-            
+                    pass
+                    
             new_id = f"LNK-{str(highest_id + 1).zfill(4)}"
             
             # Double-check uniqueness (though repository might also do this)
@@ -978,7 +977,49 @@ def manage_links():
         logging.exception(f"Error managing Links: {str(e)}")
         return jsonify({'error': f'An unexpected error occurred: {str(e)}'}), 500
 
-# Removed conflicting /api/gps route (now handled in app/routes/gps.py)
+@views_bp.route('/api/participants/key_by_name')
+@login_required
+def api_get_participant_key_by_name():
+    name = request.args.get('name')
+    if not name:
+        return jsonify({'status': 'error', 'message': 'Missing query parameter: name'}), 400
+    environment = session.get('environment', 'ciav')
+    client = IOCore2ApiClient(base_url=settings.DEFAULT_URL, cookies=session.get('cookies'))
+    participant_key = client.get_participant_key_by_name(name, environment)
+    if participant_key is None:
+        return jsonify({'status': 'error', 'message': 'Participant not found'}), 404
+    return jsonify({'status': 'success', 'key': participant_key}), 200
+
+@views_bp.route('/api/participants/name_by_key')
+@login_required
+def api_get_participant_name_by_key():
+    key = request.args.get('key')
+    if not key:
+        return jsonify({'status': 'error', 'message': 'Missing query parameter: key'}), 400
+    environment = session.get('environment', 'ciav')
+    client = IOCore2ApiClient(base_url=settings.DEFAULT_URL, cookies=session.get('cookies'))
+    name = client.get_participant_name_by_key(key, environment)
+    if name is None:
+        return jsonify({'status': 'error', 'message': 'Participant not found'}), 404
+    return jsonify({'status': 'success', 'name': name}), 200
+
+@views_bp.route('/api/participants', methods=['GET'])
+@login_required
+def api_list_participants():
+    """List all participants from IOCore2."""
+    environment = session.get('environment', 'ciav')
+    client = IOCore2ApiClient(base_url=settings.DEFAULT_URL, cookies=session.get('cookies'))
+    try:
+        resp = client.get_participants(environment)
+        if resp.get('success'):
+            return jsonify({'status': 'success', 'data': resp.get('data', [])}), 200
+        else:
+            return jsonify({'status': 'error', 'message': 'Failed to fetch participants'}), 500
+    except Exception as e:
+        logging.exception('Error listing participants')
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+# --- API Routes for SPs ---
 
 @views_bp.route('/api/sps', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @login_required

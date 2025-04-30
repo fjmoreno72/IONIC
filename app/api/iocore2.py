@@ -695,7 +695,7 @@ class IOCore2ApiClient(ApiClient):
                  details={"url": api_url}
              )
 
-    def get_participant_id_by_name(self, name: str, environment: str) -> Optional[str]:
+    def get_participant_key_by_name(self, name: str, environment: str) -> Optional[str]:
         """
         Lookup participant ID by name from saved participants.json.
         """
@@ -703,16 +703,16 @@ class IOCore2ApiClient(ApiClient):
         data = read_json_file(json_file_path)
         for p in data:
             if p.get("name") == name:
-                return p.get("id")
+                return p.get("key")
         return None
 
-    def get_participant_name_by_id(self, participant_id: str, environment: str) -> Optional[str]:
+    def get_participant_name_by_key(self, participant_key: str, environment: str) -> Optional[str]:
         """
-        Lookup participant name by ID from saved participants.json.
+        Lookup participant name by key from saved participants.json.
         """
         json_file_path = get_dynamic_data_path("participants.json", environment=environment)
         data = read_json_file(json_file_path)
         for p in data:
-            if p.get("id") == participant_id:
+            if p.get("key") == participant_key:
                 return p.get("name")
         return None

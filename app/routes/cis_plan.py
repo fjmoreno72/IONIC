@@ -668,25 +668,28 @@ def get_cis_security_classification_summary():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-def _validate_participant(participant_id: str) -> bool:
-    """Helper to validate cisParticipantID using IOCore2 API."""
+def _validate_participant(participant_key: str) -> bool:
+    """Helper to validate cisParticipantID (which is actually the participant key) using IOCore2 API."""
     try:
-        # Assuming iocore2_client is attached to current_app or accessible somehow
-        # You might need to adjust how the client is obtained based on your app setup
-        iocore_client: IOCore2ApiClient = current_app.iocore2_client 
-        participants = iocore_client.get_participants()
-        return any(p.get('id') == participant_id for p in participants)
-    except AttributeError:
-         # Handle case where client isn't configured on app
-         current_app.logger.error("IOCore2ApiClient not found on current_app. Cannot validate participant ID.")
-         # Decide if this should be a hard failure or allow creation without validation
-         # For now, let's treat it as a server error preventing the operation.
-         raise ConnectionError("Participant validation service not configured.")
+        # Create IOCore2ApiClient using session cookies
+        from app import settings
+        environment = session.get('environment', 'ciav')
+        iocore_client = IOCore2ApiClient(base_url=settings.DEFAULT_URL, cookies=session.get('cookies'))
+        
+        # Get participants and validate if the given key exists
+        response = iocore_client.get_participants(environment)
+        if response.get('success') and 'data' in response:
+            participants = response.get('data', [])
+            # Check if any participant has the given key
+            return any(p.get('key') == participant_key for p in participants)
+        else:
+            current_app.logger.error(f"Failed to get participants: {response}")
+            return False
     except Exception as e:
-        current_app.logger.error(f"Error validating participant ID {participant_id}: {e}")
-        # Decide if validation failure should prevent creation/update
-        # For now, let's treat it as a server error preventing the operation.
-        raise ConnectionError(f"Failed to validate participant ID: {e}")
+        current_app.logger.error(f"Error validating participant key {participant_key}: {e}")
+        # For now, return False instead of raising an exception to avoid 500 errors
+        # This makes the creation process more robust
+        return False
 
 @cis_plan_bp.route('/cis_plan_view')
 @cis_plan_bp.route('/cis_plan_view/')

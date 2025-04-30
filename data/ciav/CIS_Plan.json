@@ -33,6 +33,69 @@
                       "id": "AS-0002",
                       "networkInterfaces": [],
                       "gpInstances": []
+                    },
+                    {
+                      "name": "Asset 3",
+                      "guid": "71260120-62e4-4546-a6f1-b225edabafe6",
+                      "id": "AS-0003",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "Router",
+                      "guid": "592b3d1f-8aea-41d3-95c3-059ca5c96a55",
+                      "id": "AS-0004",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "NIRIS",
+                      "guid": "4b819f58-5dca-4c4c-b7eb-aefcee7fab4c",
+                      "id": "AS-0005",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "e-Mail Server",
+                      "guid": "2a87424c-ae66-4dd4-a81c-76d479490709",
+                      "id": "AS-0006",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "Web Portal",
+                      "guid": "80adf929-c5a9-49ec-9fbc-c4f7fc8d3257",
+                      "id": "AS-0007",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "LOGFAS",
+                      "guid": "d5abaabb-3798-449d-94f1-0578acaefcf6",
+                      "id": "AS-0008",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "TOPFAS",
+                      "guid": "da748248-3c90-4612-a7a4-5247e69d4940",
+                      "id": "AS-0009",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "NCOP",
+                      "guid": "af21c39a-b6d0-4c3d-b7cf-71dfc3b41587",
+                      "id": "AS-0010",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "Asset 5",
+                      "guid": "84717316-8711-4808-8c2b-37fae05474f5",
+                      "id": "AS-0011",
+                      "networkInterfaces": [],
+                      "gpInstances": []
                     }
                   ]
                 }

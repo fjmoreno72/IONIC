@@ -17,6 +17,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listener for the updateAssetBtn
     document.getElementById('updateAssetBtn').addEventListener('click', updateAsset);
     
+    // Add Enter key save functionality to all modals
+    // Function to add Enter key handler to a modal
+    function addEnterKeyHandler(modalId, saveFunction) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevent default form submission
+                    saveFunction(); // Call the save function
+                }
+            });
+        }
+    }
+    
+    // Apply Enter key handlers to all entity modals
+    // Mission Networks
+    addEnterKeyHandler('addMissionNetworkModal', addMissionNetwork);
+    addEnterKeyHandler('editMissionNetworkModal', updateMissionNetwork);
+    
+    // Network Segments
+    addEnterKeyHandler('addNetworkSegmentModal', addNetworkSegment);
+    addEnterKeyHandler('editNetworkSegmentModal', updateNetworkSegment);
+    
+    // Security Domains
+    addEnterKeyHandler('addSecurityDomainModal', addSecurityDomain);
+    
+    // HW Stacks
+    addEnterKeyHandler('addHwStackModal', addHwStack);
+    addEnterKeyHandler('editHwStackModal', updateHwStack);
+    
+    // Assets
+    addEnterKeyHandler('addAssetModal', addAsset);
+    addEnterKeyHandler('editAssetModal', updateAsset);
+    
     // Get references to DOM elements
     const treeSearchInput = document.getElementById('treeSearchInput');
     const elementsSearchInput = document.getElementById('elementsSearchInput');
@@ -571,7 +605,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 stateToRestore.nodeId = currentTreeNode.getAttribute('data-id');
                 
                 // Store parent references if available
-                if (stateToRestore.nodeType === 'securityDomains') {
+                if (stateToRestore.nodeType === 'assets') {
+                    stateToRestore.hwStackId = currentTreeNode.getAttribute('data-parent-stack');
+                    stateToRestore.domainId = currentTreeNode.getAttribute('data-parent-domain');
+                    stateToRestore.segmentId = currentTreeNode.getAttribute('data-parent-segment');
+                    stateToRestore.missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network');
+                } else if (stateToRestore.nodeType === 'hwStacks') {
+                    stateToRestore.domainId = currentTreeNode.getAttribute('data-parent-domain');
+                    stateToRestore.segmentId = currentTreeNode.getAttribute('data-parent-segment');
+                    stateToRestore.missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network');
+                } else if (stateToRestore.nodeType === 'securityDomains') {
                     stateToRestore.segmentId = currentTreeNode.getAttribute('data-parent-segment');
                     stateToRestore.missionNetworkId = currentTreeNode.getAttribute('data-parent-mission-network');
                 } else if (stateToRestore.nodeType === 'networkSegments') {
@@ -622,7 +665,84 @@ document.addEventListener('DOMContentLoaded', function() {
                                         if (segToggle) segToggle.className = 'fas fa-chevron-down';
                                         
                                         // If we have a security domain to restore, look for it
-                                        if (stateToRestore.nodeType === 'securityDomains' && stateToRestore.nodeId) {
+                                        if (stateToRestore.domainId) {
+                                            console.log('Looking for security domain with ID:', stateToRestore.domainId);
+                                            
+                                            // Debug: List all security domain nodes in this segment
+                                            const allSDNodes = segChildren.querySelectorAll(`.tree-node[data-type="securityDomains"]`);
+                                            console.log(`Found ${allSDNodes.length} security domain nodes in segment ${stateToRestore.segmentId}:`);
+                                            allSDNodes.forEach(node => {
+                                                console.log(`- Security domain node ID: ${node.getAttribute('data-id')}`);
+                                            });
+                                            
+                                            // Try to find the security domain node
+                                            const sdNode = segChildren.querySelector(`.tree-node[data-type="securityDomains"][data-id="${stateToRestore.domainId}"]`);
+                                            if (sdNode) {
+                                                console.log('Found security domain to restore:', stateToRestore.domainId);
+                                                sdNode.click(); // Select the security domain
+                                                const sdChildren = sdNode.nextElementSibling;
+                                                if (sdChildren && sdChildren.classList.contains('tree-node-children')) {
+                                                    sdChildren.style.display = 'block'; // Show children
+                                                    
+                                                    // Update toggle icon
+                                                    const sdToggle = sdNode.querySelector('.tree-toggle i');
+                                                    if (sdToggle) sdToggle.className = 'fas fa-chevron-down';
+                                                    
+                                                    // If we have an HW stack to restore, look for it
+                                                    if (stateToRestore.nodeType === 'hwStacks' && stateToRestore.nodeId) {
+                                                        console.log('Looking for HW stack with ID:', stateToRestore.nodeId);
+                                                        
+                                                        // Debug: List all HW stack nodes in this domain
+                                                        const allHWNodes = sdChildren.querySelectorAll(`.tree-node[data-type="hwStacks"]`);
+                                                        console.log(`Found ${allHWNodes.length} HW stack nodes in domain ${stateToRestore.domainId}:`);
+                                                        allHWNodes.forEach(node => {
+                                                            console.log(`- HW stack node ID: ${node.getAttribute('data-id')}`);
+                                                        });
+                                                        
+                                                        // Try to find the HW stack node
+                                                        const hwNode = sdChildren.querySelector(`.tree-node[data-type="hwStacks"][data-id="${stateToRestore.nodeId}"]`);
+                                                        if (hwNode) {
+                                                            console.log('Found HW stack to restore:', stateToRestore.nodeId);
+                                                            hwNode.click(); // Select the HW stack
+                                                            
+                                                            // If we need to go further to assets
+                                                            if (stateToRestore.hwStackId || (stateToRestore.nodeType === 'assets' && stateToRestore.nodeId)) {
+                                                                const hwChildren = hwNode.nextElementSibling;
+                                                                if (hwChildren && hwChildren.classList.contains('tree-node-children')) {
+                                                                    hwChildren.style.display = 'block'; // Show children
+                                                                    
+                                                                    // Update toggle icon
+                                                                    const hwToggle = hwNode.querySelector('.tree-toggle i');
+                                                                    if (hwToggle) hwToggle.className = 'fas fa-chevron-down';
+                                                                    
+                                                                    // Find asset if needed
+                                                                    if (stateToRestore.nodeType === 'assets' && stateToRestore.nodeId) {
+                                                                        console.log('Looking for asset with ID:', stateToRestore.nodeId);
+                                                                        const assetNode = hwChildren.querySelector(`.tree-node[data-type="assets"][data-id="${stateToRestore.nodeId}"]`);
+                                                                        if (assetNode) {
+                                                                            console.log('Found asset to restore:', stateToRestore.nodeId);
+                                                                            assetNode.click(); // Select the asset
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else {
+                                                            console.warn(`Could not find HW stack node with ID ${stateToRestore.nodeId}`);
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                console.warn(`Could not find security domain node with ID ${stateToRestore.domainId}`);
+                                                // As a fallback, look for any security domain that contains the specified ID
+                                                for (const node of allSDNodes) {
+                                                    if (node.textContent.includes(stateToRestore.domainId)) {
+                                                        console.log('Found security domain by name match:', node.textContent);
+                                                        node.click();
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        } else if (stateToRestore.nodeType === 'securityDomains' && stateToRestore.nodeId) {
                                             console.log('Looking for security domain with ID:', stateToRestore.nodeId);
                                             
                                             // Debug: List all security domain nodes in this segment

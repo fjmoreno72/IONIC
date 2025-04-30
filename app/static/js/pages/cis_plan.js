@@ -64,9 +64,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const editDetailButton = document.getElementById('editDetailButton');
     const deleteDetailButton = document.getElementById('deleteDetailButton');
     
+    // We'll add navigation elements to the elements panel dynamically when needed
+    
     // Add event listeners for search inputs
     treeSearchInput.addEventListener('input', handleTreeSearch);
+    treeSearchInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            focusFirstMatchingTreeNode();
+        }
+    });
     elementsSearchInput.addEventListener('input', handleElementsSearch);
+    
+    // Navigation events will be added dynamically when the elements panel is populated
     
     // Add event listeners for buttons
     if (refreshButton) {
@@ -2267,20 +2276,57 @@ async function updateAsset() {
     // Config-driven: Load and display children of the selected node in the elements panel
     function loadSelectedNodeChildren(nodeData, nodeType, ...parentData) {
         console.log('Loading children for node:', nodeType, nodeData, 'Parents:', parentData);
-        // Update the elements panel title
-        if (elementsTitle) {
-            let displayName = nodeData.name;
-            if (nodeType === 'securityDomains') {
-                const classification = getSecurityClassificationById(nodeData.id);
-                displayName = classification.name;
-            }
-            elementsTitle.textContent = `${displayName} - ${formatNodeTypeName(nodeType)}`;
-        }
-
+        
         if (elementsContainer) {
             elementsContainer.innerHTML = '';
         }
-
+        
+        // Add navigation header with title and Up button if not at root level
+        const headerContainer = document.createElement('div');
+        headerContainer.className = 'd-flex justify-content-between align-items-center mb-3 pb-2 border-bottom';
+        
+        // Add title to the header
+        const titleDiv = document.createElement('div');
+        let displayName = nodeData.name;
+        if (nodeType === 'securityDomains') {
+            const classification = getSecurityClassificationById(nodeData.id);
+            displayName = classification.name;
+        }
+        titleDiv.className = 'h5 mb-0';
+        titleDiv.id = 'elementsTitle';
+        titleDiv.textContent = `${displayName} - ${formatNodeTypeName(nodeType)}`;
+        headerContainer.appendChild(titleDiv);
+        
+        // Add Up button if not at root level
+        if (nodeType !== 'root-cisplan') {
+            const upButton = document.createElement('button');
+            upButton.className = 'btn btn-sm btn-outline-secondary';
+            upButton.innerHTML = '<i class="fas fa-arrow-up"></i> Up';
+            upButton.title = 'Navigate up to parent';
+            upButton.id = 'elementsUpButton';
+            
+            // Add event listener for up navigation
+            upButton.addEventListener('click', function() {
+                navigateUp();
+            });
+            
+            // Add tooltip for better UX
+            upButton.setAttribute('data-bs-toggle', 'tooltip');
+            upButton.setAttribute('data-bs-placement', 'top');
+            upButton.setAttribute('data-bs-title', 'Navigate to parent');
+            
+            headerContainer.appendChild(upButton);
+        }
+        
+        // Add the header container to the elements container
+        elementsContainer.appendChild(headerContainer);
+        
+        // Create a container for the actual elements
+        const elementsContent = document.createElement('div');
+        elementsContent.className = 'elements-content';
+        elementsContent.id = 'elementsContent';
+        elementsContainer.appendChild(elementsContent);
+        
         // Use ENTITY_CHILDREN config to determine children to render
         const childrenDefs = ENTITY_CHILDREN[nodeType];
         let childrenRendered = false;
@@ -2289,14 +2335,14 @@ async function updateAsset() {
             childrenDefs.forEach(def => {
                 const children = nodeData[def.key];
                 if (children && Array.isArray(children) && children.length > 0) {
-                    renderElementCards(elementsContainer, children, def.type);
+                    renderElementCards(elementsContent, children, def.type);
                     childrenRendered = true;
                 }
             });
         }
 
         if (!childrenRendered) {
-            showNoElementsMessage(elementsContainer);
+            showNoElementsMessage(elementsContent);
         }
 
         // Always update detail panel
@@ -2399,10 +2445,16 @@ async function updateAsset() {
                     
                     // Store the selected element and its type
                     currentElement = element;
-                    currentElement.type = type;
+                    currentElement.type = type; // Store the type explicitly
                     
                     // Update detail panel
                     updateDetailPanel(element, type);
+                });
+                
+                // Add double-click handler for drill-down navigation
+                assetItem.addEventListener('dblclick', function(event) {
+                    // Find and select the corresponding tree node
+                    findAndSelectTreeNode(type, element.id);
                 });
                 
                 col.appendChild(assetItem);
@@ -2500,6 +2552,15 @@ async function updateAsset() {
             card.appendChild(cardBody);
             cardCol.appendChild(card);
             cardsContainer.appendChild(cardCol);
+            
+            // Add double-click handler for drill-down navigation (separate from click handler)
+            card.addEventListener('dblclick', function(event) {
+                // Prevent the click event from firing
+                event.stopPropagation();
+                
+                // Find and select the corresponding tree node
+                findAndSelectTreeNode(type, element.id);
+            });
             
             // Add click event to the card
             card.addEventListener('click', function() {
@@ -2743,32 +2804,520 @@ async function updateAsset() {
     // Search functionality for the tree
     function handleTreeSearch(e) {
         const searchTerm = e.target.value.toLowerCase();
-        const treeNodes = document.querySelectorAll('.tree-node');
+        const treeNodes = document.querySelectorAll('#cisTree .tree-node');
+        let matchFound = false;
+        
+        // Clear any previous selection from search
+        document.querySelectorAll('.tree-node.search-selected').forEach(node => {
+            node.classList.remove('search-selected');
+        });
+        
+        // If search is empty, show all nodes
+        if (searchTerm === '') {
+            treeNodes.forEach(node => {
+                node.style.display = 'flex';
+                node.classList.remove('search-match');
+                // Show collapse/expand icons
+                const toggleIcon = node.querySelector('.toggle-icon');
+                if (toggleIcon) toggleIcon.style.visibility = 'visible';
+            });
+            // Reset all parent nodes
+            document.querySelectorAll('.parent-node').forEach(parentNode => {
+                const childContainer = parentNode.nextElementSibling;
+                if (childContainer && childContainer.classList.contains('child-container')) {
+                    childContainer.style.display = parentNode.classList.contains('expanded') ? 'block' : 'none';
+                }
+            });
+            return;
+        }
+        
+        // First pass: Find matching nodes
+        const matchingNodes = new Set();
+        const directMatchingNodes = [];
         
         treeNodes.forEach(node => {
             const nodeText = node.textContent.toLowerCase();
-            if (nodeText.includes(searchTerm) || searchTerm === '') {
-                node.style.display = 'flex';
-            } else {
-                node.style.display = 'none';
+            const nodeId = node.getAttribute('data-id');
+            const nodeName = node.querySelector('.node-name')?.textContent.toLowerCase() || '';
+            
+            // Check for matches in node text or specifically in the node name
+            if (nodeText.includes(searchTerm) || nodeName.includes(searchTerm)) {
+                matchingNodes.add(nodeId);
+                directMatchingNodes.push(node);
+                matchFound = true;
+                
+                // Also add all parent nodes to ensure hierarchy is maintained
+                let parentNode = node.parentElement;
+                while (parentNode) {
+                    const parentTreeNode = parentNode.closest('.tree-node');
+                    if (parentTreeNode) {
+                        matchingNodes.add(parentTreeNode.getAttribute('data-id'));
+                        parentNode = parentTreeNode.parentElement;
+                    } else {
+                        break;
+                    }
+                }
             }
         });
+        
+        // Second pass: Show/hide based on matches
+        treeNodes.forEach(node => {
+            const nodeId = node.getAttribute('data-id');
+            if (matchingNodes.has(nodeId)) {
+                node.style.display = 'flex';
+                
+                // Only add search-match class to direct matches, not parent nodes
+                if (directMatchingNodes.includes(node)) {
+                    node.classList.add('search-match');
+                }
+                
+                // Ensure all parent containers are visible
+                let parentContainer = node.parentElement;
+                while (parentContainer) {
+                    if (parentContainer.classList.contains('child-container')) {
+                        parentContainer.style.display = 'block';
+                        
+                        // Also expand the corresponding parent node
+                        const parentTreeNode = parentContainer.previousElementSibling;
+                        if (parentTreeNode && parentTreeNode.classList.contains('parent-node')) {
+                            parentTreeNode.classList.add('expanded');
+                        }
+                    }
+                    parentContainer = parentContainer.parentElement;
+                }
+            } else {
+                node.style.display = 'none';
+                node.classList.remove('search-match');
+            }
+        });
+        
+        // Show a message if no matches found
+        const noMatchMessage = document.getElementById('treeNoMatchMessage');
+        if (!noMatchMessage && !matchFound) {
+            const message = document.createElement('div');
+            message.id = 'treeNoMatchMessage';
+            message.className = 'alert alert-info mt-2';
+            message.textContent = 'No matching items found';
+            document.getElementById('cisTree').appendChild(message);
+        } else if (noMatchMessage && matchFound) {
+            noMatchMessage.remove();
+        }
+        
+        // Return direct matching nodes for potential focusing
+        return directMatchingNodes;
     }
     
     // Search functionality for the elements panel
     function handleElementsSearch(e) {
         const searchTerm = e.target.value.toLowerCase();
-        const elementCards = document.querySelectorAll('.element-card');
+        let matchFound = false;
         
+        // First, clear previous search highlights
+        document.querySelectorAll('#elementsContainer .search-match').forEach(el => {
+            el.classList.remove('search-match');
+        });
+        
+        // If search is empty, show everything
+        if (searchTerm === '') {
+            // Show all regular element cards
+            document.querySelectorAll('#elementsContainer .col').forEach(col => {
+                col.style.display = 'block';
+            });
+            // Show all assets
+            document.querySelectorAll('#elementsContainer .asset-item').forEach(asset => {
+                asset.closest('.col').style.display = 'block';
+                // Clear the yellow highlight
+                asset.style.backgroundColor = '';
+                // Reset any animations
+                asset.style.animation = 'none';
+            });
+            
+            // Update elements count in title
+            updateElementsCount();
+            
+            // Remove any no-match message
+            const noMatchMessage = document.getElementById('elementsNoMatchMessage');
+            if (noMatchMessage) noMatchMessage.remove();
+            
+            return;
+        }
+        
+        // Step 1: Search regular element cards
+        const elementCards = document.querySelectorAll('#elementsContainer .element-card');
         elementCards.forEach(card => {
             const cardText = card.textContent.toLowerCase();
-            if (cardText.includes(searchTerm) || searchTerm === '') {
-                card.closest('.col').style.display = 'block';
+            const cardName = card.querySelector('.element-card-title')?.textContent.toLowerCase() || '';
+            const cardType = card.getAttribute('data-type')?.toLowerCase() || '';
+            
+            // Improved matching: check title, content, and type attributes
+            if (cardText.includes(searchTerm) || 
+                cardName.includes(searchTerm) || 
+                cardType.includes(searchTerm)) {
+                
+                const columnElement = card.closest('.col');
+                if (columnElement) {
+                    columnElement.style.display = 'block';
+                    matchFound = true;
+                    card.classList.add('search-match');
+                    
+                    // Add subtle highlight animation for matched cards
+                    card.style.animation = 'none';
+                    setTimeout(() => {
+                        card.style.animation = 'highlight-pulse 1s';
+                    }, 10);
+                }
             } else {
-                card.closest('.col').style.display = 'none';
+                const columnElement = card.closest('.col');
+                if (columnElement) {
+                    columnElement.style.display = 'none';
+                }
             }
         });
+        
+        // Step 2: Search asset items (which have a different structure)
+        const assetItems = document.querySelectorAll('#elementsContainer .asset-item');
+        assetItems.forEach(asset => {
+            const assetText = asset.textContent.toLowerCase();
+            const assetName = asset.querySelector('.asset-name')?.textContent.toLowerCase() || '';
+            const assetType = asset.getAttribute('data-type')?.toLowerCase() || '';
+            
+            if (assetText.includes(searchTerm) || 
+                assetName.includes(searchTerm) || 
+                assetType.includes(searchTerm)) {
+                
+                const columnElement = asset.closest('.col');
+                if (columnElement) {
+                    columnElement.style.display = 'block';
+                    matchFound = true;
+                    asset.classList.add('search-match');
+                    
+                    // Add highlight animation
+                    asset.style.animation = 'none';
+                    setTimeout(() => {
+                        asset.style.animation = 'highlight-pulse 1s';
+                    }, 10);
+                    
+                    // For assets in the compact view, add a stronger highlight
+                    asset.style.backgroundColor = 'rgba(255, 255, 0, 0.1)';
+                }
+            } else {
+                const columnElement = asset.closest('.col');
+                if (columnElement) {
+                    columnElement.style.display = 'none';
+                }
+            }
+        });
+        
+        // Show a message if no matches found and search is not empty
+        const elementsContainer = document.getElementById('elementsContainer');
+        const noMatchMessage = document.getElementById('elementsNoMatchMessage');
+        
+        if (!matchFound) {
+            if (!noMatchMessage) {
+                const message = document.createElement('div');
+                message.id = 'elementsNoMatchMessage';
+                message.className = 'alert alert-info mt-2';
+                message.textContent = 'No matching elements found';
+                elementsContainer.appendChild(message);
+            }
+        } else if (noMatchMessage) {
+            noMatchMessage.remove();
+        }
+        
+        // Update elements count in title
+        updateElementsCount();
     }
+    
+    // Helper function to update elements count in the title
+    function updateElementsCount() {
+        const visibleCount = document.querySelectorAll('#elementsContainer .col[style="display: block;"]').length;
+        const elementsTitle = document.getElementById('elementsTitle');
+        if (elementsTitle) {
+            const titleText = elementsTitle.textContent.split('(')[0].trim();
+            elementsTitle.textContent = `${titleText} (${visibleCount})`;
+        }
+    }
+});
+
+// Function to find and select a node in the tree by type and ID
+function findAndSelectTreeNode(type, id) {
+    // First, find the node in the tree
+    const targetNode = document.querySelector(`.tree-node[data-type="${type}"][data-id="${id}"]`);
+    
+    if (!targetNode) {
+        console.log(`Node not found: type=${type}, id=${id}`);
+        return false; // Return false to indicate failure
+    }
+    
+    // Ensure all parent containers are expanded
+    let parentContainer = targetNode.parentElement;
+    while (parentContainer) {
+        if (parentContainer.classList.contains('child-container')) {
+            parentContainer.style.display = 'block';
+            
+            // Also expand the corresponding parent node
+            const parentTreeNode = parentContainer.previousElementSibling;
+            if (parentTreeNode && parentTreeNode.classList.contains('parent-node')) {
+                parentTreeNode.classList.add('expanded');
+            }
+        }
+        parentContainer = parentContainer.parentElement;
+    }
+    
+    // Clear any previous selection
+    document.querySelectorAll('.tree-node.selected').forEach(node => {
+        node.classList.remove('selected');
+    });
+    
+    // Select the target node and ensure it's visible
+    targetNode.classList.add('selected');
+    targetNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Update currentTreeNode reference
+    currentTreeNode = targetNode;
+    
+    // Simulate a click to load its children and update the UI
+    targetNode.click();
+    
+    // Add visual feedback
+    targetNode.style.animation = 'none';
+    setTimeout(() => {
+        targetNode.style.animation = 'highlight-pulse 1s';
+    }, 10);
+    
+    return true; // Return true to indicate success
+}
+
+// Function to navigate up one level in the tree
+function navigateUp() {
+    // Check the current element type first - this is what gets updated when clicking in the elements panel
+    let type;
+    let parentNodeId;
+    
+    // Use currentElement if available, otherwise fall back to currentTreeNode
+    if (currentElement && currentElement.type) {
+        type = currentElement.type;
+        console.log('Navigating up from element type:', type);
+        
+        // Handle based on element type
+        if (type === 'assets') {
+            // For assets, we need to find the parent HW Stack
+            // First check if there's a parentStack or hwStackId property
+            let parentStack = currentElement.parentStack || currentElement.hwStackId;
+            
+            // Extract ID if it's an object
+            if (parentStack && typeof parentStack === 'object' && parentStack.id) {
+                parentNodeId = parentStack.id;
+            } else {
+                parentNodeId = parentStack;
+            }
+            
+            // If not found, try to get from parent attributes
+            if (!parentNodeId && currentTreeNode) {
+                parentNodeId = currentTreeNode.getAttribute('data-parent-stack');
+            }
+            
+            if (parentNodeId) {
+                console.log('Navigating up to HW Stack ID:', parentNodeId);
+                if (findAndSelectTreeNode('hwStacks', parentNodeId)) {
+                    // Reset currentElement to ensure next navigation works
+                    currentElement = null;
+                }
+                return;
+            }
+        } 
+        else if (type === 'hwStacks') {
+            // For HW Stacks, we need to find the parent Security Domain
+            let parentDomain = currentElement.parentDomain || currentElement.domainId;
+            
+            // Extract ID if it's an object
+            if (parentDomain && typeof parentDomain === 'object' && parentDomain.id) {
+                parentNodeId = parentDomain.id;
+            } else {
+                parentNodeId = parentDomain;
+            }
+            
+            if (!parentNodeId && currentTreeNode) {
+                parentNodeId = currentTreeNode.getAttribute('data-parent-domain');
+            }
+            
+            if (parentNodeId) {
+                console.log('Navigating up to Security Domain ID:', parentNodeId);
+                if (findAndSelectTreeNode('securityDomains', parentNodeId)) {
+                    // Reset currentElement to ensure next navigation works
+                    currentElement = null;
+                }
+                return;
+            }
+        } 
+        else if (type === 'securityDomains') {
+            // For Security Domains, navigate to parent Network Segment
+            let parentSegment = currentElement.parentSegment || currentElement.segmentId;
+            
+            // Extract ID if it's an object
+            if (parentSegment && typeof parentSegment === 'object' && parentSegment.id) {
+                parentNodeId = parentSegment.id;
+            } else {
+                parentNodeId = parentSegment;
+            }
+            
+            if (!parentNodeId && currentTreeNode) {
+                parentNodeId = currentTreeNode.getAttribute('data-parent-segment');
+            }
+            
+            if (parentNodeId) {
+                console.log('Navigating up to Network Segment ID:', parentNodeId);
+                if (findAndSelectTreeNode('networkSegments', parentNodeId)) {
+                    // Reset currentElement to ensure next navigation works
+                    currentElement = null;
+                }
+                return;
+            }
+        } 
+        else if (type === 'networkSegments') {
+            // For Network Segments, navigate to parent Mission Network
+            let parentMissionNetwork = currentElement.parentMissionNetwork;
+            
+            // Extract ID if it's an object
+            if (parentMissionNetwork && typeof parentMissionNetwork === 'object' && parentMissionNetwork.id) {
+                parentNodeId = parentMissionNetwork.id;
+            } else {
+                parentNodeId = parentMissionNetwork;
+            }
+            
+            if (!parentNodeId && currentTreeNode) {
+                parentNodeId = currentTreeNode.getAttribute('data-parent-mission-network');
+            }
+            
+            if (parentNodeId) {
+                console.log('Navigating up to Mission Network ID:', parentNodeId);
+                if (findAndSelectTreeNode('missionNetworks', parentNodeId)) {
+                    // Reset currentElement to ensure next navigation works
+                    currentElement = null;
+                }
+                return;
+            }
+        } 
+        else if (type === 'missionNetworks') {
+            // Go to the root node
+            const rootNode = document.querySelector('.tree-node[data-id="root-cisplan"]');
+            if (rootNode) rootNode.click();
+            return;
+        }
+    }
+    
+    // Fallback to current tree node if we haven't returned yet
+    if (!currentTreeNode) return;
+    
+    // Get the parent node's ID based on data attributes
+    const nodeType = currentTreeNode.getAttribute('data-type');
+    
+    if (nodeType === 'assets') {
+        parentNodeId = currentTreeNode.getAttribute('data-parent-stack');
+        if (parentNodeId) {
+            // Find and select the parent HW Stack node
+            if (findAndSelectTreeNode('hwStacks', parentNodeId)) {
+                // Reset currentElement to ensure next navigation works
+                currentElement = null;
+            }
+        }
+    } else if (nodeType === 'hwStacks') {
+        parentNodeId = currentTreeNode.getAttribute('data-parent-domain');
+        if (parentNodeId) {
+            // Find and select the parent Security Domain node
+            if (findAndSelectTreeNode('securityDomains', parentNodeId)) {
+                // Reset currentElement to ensure next navigation works
+                currentElement = null;
+            }
+        }
+    } else if (nodeType === 'securityDomains') {
+        parentNodeId = currentTreeNode.getAttribute('data-parent-segment');
+        if (parentNodeId) {
+            // Find and select the parent Network Segment node
+            if (findAndSelectTreeNode('networkSegments', parentNodeId)) {
+                // Reset currentElement to ensure next navigation works
+                currentElement = null;
+            }
+        }
+    } else if (nodeType === 'networkSegments') {
+        parentNodeId = currentTreeNode.getAttribute('data-parent-mission-network');
+        if (parentNodeId) {
+            // Find and select the parent Mission Network node
+            if (findAndSelectTreeNode('missionNetworks', parentNodeId)) {
+                // Reset currentElement to ensure next navigation works
+                currentElement = null;
+            }
+        }
+    } else if (nodeType === 'missionNetworks') {
+        // Go to the root node
+        const rootNode = document.querySelector('.tree-node[data-id="root-cisplan"]');
+        if (rootNode) {
+            rootNode.click();
+            // Reset currentElement to ensure next navigation works
+            currentElement = null;
+        }
+    }
+}
+
+// No longer needed as we're using a different navigation approach
+
+// Add new function to focus the first matching tree node
+function focusFirstMatchingTreeNode() {
+    const searchTerm = document.getElementById('treeSearchInput').value.toLowerCase();
+    if (!searchTerm) return;
+    
+    // Find all matching nodes that are currently visible
+    const matchingNodes = document.querySelectorAll('#cisTree .tree-node.search-match');
+    if (matchingNodes.length === 0) return;
+    
+    // Clear any previous selection
+    document.querySelectorAll('.tree-node.selected').forEach(node => {
+        node.classList.remove('selected');
+    });
+    document.querySelectorAll('.tree-node.search-selected').forEach(node => {
+        node.classList.remove('search-selected');
+    });
+    
+    // Focus on the first matching node
+    const firstMatchingNode = matchingNodes[0];
+    firstMatchingNode.classList.add('selected');
+    firstMatchingNode.classList.add('search-selected');
+    
+    // Scroll the node into view with a smooth animation
+    firstMatchingNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Simulate a click to load its details
+    firstMatchingNode.click();
+    
+    // Add visual feedback
+    firstMatchingNode.style.animation = 'none';
+    setTimeout(() => {
+        firstMatchingNode.style.animation = 'highlight-pulse 1s';
+    }, 10);
+    
+    // No longer updating breadcrumb since we're not using it
+}
+
+// Add CSS for search highlighting
+document.addEventListener('DOMContentLoaded', function() {
+    // Add search highlight styles to head
+    const style = document.createElement('style');
+    style.textContent = `
+        .search-match {
+            background-color: rgba(255, 255, 0, 0.1);
+        }
+        .search-selected {
+            background-color: rgba(255, 255, 0, 0.4) !important;
+            border-left: 3px solid #007bff !important;
+        }
+        /* Navigation styles moved to more specific elements */
+        @keyframes highlight-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.5); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+        }
+    `;
+    document.head.appendChild(style);
 });
 
 // ---- Entity Metadata (Quick Win Refactor) ----

@@ -313,6 +313,10 @@ export class DialogManager {
       if (firstInput) {
         firstInput.focus();
       }
+      
+      // Ensure all close/cancel buttons work properly
+      // This is a safety measure for browser compatibility
+      this.ensureCloseButtonsWork();
     }, 100);
     
     // Trigger content initialization with data if applicable
@@ -383,36 +387,43 @@ export class DialogManager {
     cancelBtn.dataset.action = 'cancel';
     cancelBtn.dataset.role = 'cancel-button'; // Add an identifying attribute
     
-    // Use addEventListener instead of onclick for better cross-browser compatibility
-    cancelBtn.addEventListener('click', function(event) {
-      event.preventDefault();
-      self.close();
-    });
-    
     // Create Save button
     const saveBtn = document.createElement('button');
     saveBtn.type = 'button';
     saveBtn.className = 'btn btn-primary';
     saveBtn.textContent = 'Save';
     saveBtn.dataset.action = 'save';
+    saveBtn.dataset.role = 'save-button'; // Add an identifying attribute
     
-    // Use addEventListener with a named function for better reliability
-    saveBtn.addEventListener('click', function(event) {
-      event.preventDefault();
-      if (self.onSave) {
-        // If onSave returns false, prevent dialog from closing
-        const result = self.onSave();
-        if (result !== false) {
-          self.close();
-        }
-      } else {
-        self.close();
-      }
-    });
-    
-    // Add buttons to footer
+    // Add buttons to footer first
     footer.appendChild(cancelBtn);
     footer.appendChild(saveBtn);
+    
+    // Then attach event listeners after they're in the DOM
+    // This helps ensure proper event binding in all environments
+    setTimeout(() => {
+      // Handle Cancel button click
+      cancelBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        self.close();
+      });
+      
+      // Handle Save button click
+      saveBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (self.onSave) {
+          // If onSave returns false, prevent dialog from closing
+          const result = self.onSave();
+          if (result !== false) {
+            self.close();
+          }
+        } else {
+          self.close();
+        }
+      });
+    }, 0);
   }
   
   /**
@@ -421,6 +432,7 @@ export class DialogManager {
    * @param {string} buttons[].text - Button text
    * @param {string} buttons[].class - Button CSS class
    * @param {string} buttons[].action - Button action ('cancel', 'save', or custom)
+   * @param {Function} buttons[].onClick - Custom click handler function
    */
   setButtons(buttons) {
     if (!this.dialogElement) return;
@@ -440,42 +452,71 @@ export class DialogManager {
     // Store reference to the dialog instance for use in event handlers
     const self = this;
     
-    // Add custom buttons
-    buttons.forEach(button => {
+    // First create all button elements and add them to the DOM
+    const buttonElements = buttons.map(button => {
       const btnElement = document.createElement('button');
       btnElement.type = 'button';
       btnElement.className = `btn ${button.class || 'btn-secondary'}`;
       btnElement.textContent = button.text || 'Button';
       btnElement.dataset.action = button.action || '';
       
-      // Set click handler based on action
+      // Add specific role attributes for better identification
       if (button.action === 'cancel') {
-        // Use a more explicit approach with a named function for better browser compatibility
-        btnElement.addEventListener('click', function(event) {
-          event.preventDefault();
-          self.close();
-        });
-        
-        // Add data attribute to ensure we can identify this button
         btnElement.dataset.role = 'cancel-button';
       } else if (button.action === 'save') {
-        btnElement.addEventListener('click', function(event) {
-          event.preventDefault();
-          if (self.onSave) {
-            const result = self.onSave();
-            if (result !== false) {
-              self.close();
-            }
-          } else {
-            self.close();
-          }
-        });
-      } else if (button.onClick && typeof button.onClick === 'function') {
-        btnElement.addEventListener('click', button.onClick);
+        btnElement.dataset.role = 'save-button';
+      } else if (button.onClick) {
+        btnElement.dataset.role = 'custom-button';
       }
       
+      // Store original config for reference
+      btnElement._buttonConfig = button;
+      
+      // Add to footer
       footer.appendChild(btnElement);
+      
+      return btnElement;
     });
+    
+    // Then attach event listeners after all buttons are in the DOM
+    // This helps ensure reliable event binding in all environments
+    setTimeout(() => {
+      buttonElements.forEach(btnElement => {
+        const button = btnElement._buttonConfig;
+        
+        // Remove reference to avoid memory leaks
+        delete btnElement._buttonConfig;
+        
+        // Set click handler based on action
+        if (button.action === 'cancel') {
+          btnElement.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            self.close();
+          });
+        } else if (button.action === 'save') {
+          btnElement.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (self.onSave) {
+              const result = self.onSave();
+              if (result !== false) {
+                self.close();
+              }
+            } else {
+              self.close();
+            }
+          });
+        } else if (button.onClick && typeof button.onClick === 'function') {
+          btnElement.addEventListener('click', function(event) {
+            // Wrap custom handler to ensure proper event handling
+            event.preventDefault();
+            event.stopPropagation();
+            button.onClick.call(this, event);
+          });
+        }
+      });
+    }, 0);
   }
   
   /**
@@ -493,5 +534,32 @@ export class DialogManager {
     this.dialogElement = null;
     this.backdropElement = null;
     this.contentElement = null;
+  }
+  
+  /**
+   * Ensure all close/cancel buttons have working event handlers
+   * This is a safety measure to guarantee consistent behavior
+   * @private
+   */
+  ensureCloseButtonsWork() {
+    if (!this.dialogElement) return;
+    
+    const self = this;
+    const closeButtons = [
+      // Include all possible close buttons based on different selector patterns
+      ...this.dialogElement.querySelectorAll('.btn-close'),
+      ...this.dialogElement.querySelectorAll('.btn-secondary[data-action="cancel"]'),
+      ...this.dialogElement.querySelectorAll('[data-role="cancel-button"]')
+    ];
+    
+    closeButtons.forEach(button => {
+      // We'll add a direct, reliable event handler that will work alongside any existing ones
+      // This is a safety measure that ensures buttons will always close the dialog
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        self.close();
+      });
+    });
   }
 }

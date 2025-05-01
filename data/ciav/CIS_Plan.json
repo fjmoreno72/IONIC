@@ -91,23 +91,16 @@
                       "gpInstances": []
                     },
                     {
-                      "name": "Asset 5",
-                      "guid": "84717316-8711-4808-8c2b-37fae05474f5",
-                      "id": "AS-0011",
-                      "networkInterfaces": [],
-                      "gpInstances": []
-                    },
-                    {
-                      "name": "ROUTER2",
-                      "guid": "d9dd0083-e829-49c1-b929-cb10a401abfb",
-                      "id": "AS-0012",
-                      "networkInterfaces": [],
-                      "gpInstances": []
-                    },
-                    {
                       "name": "CORSOM",
                       "guid": "e492da74-988d-4770-9891-c18c0f904fc7",
                       "id": "AS-0013",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "Super-Computer",
+                      "guid": "4d7911c6-22f7-44a0-9cd9-f787599cfee3",
+                      "id": "AS-0014",
                       "networkInterfaces": [],
                       "gpInstances": []
                     }
@@ -154,19 +147,20 @@
                   "id": "HW-0007",
                   "cisParticipantID": "PAR-CIAV-000122",
                   "assets": []
-                },
-                {
-                  "name": "POP-X",
-                  "guid": "3d2afc8c-c60e-43c0-8d65-9bd6d604a7d3",
-                  "id": "HW-0008",
-                  "cisParticipantID": "PAR-CIAV-000120",
-                  "assets": []
                 }
               ]
             },
             {
               "id": "CL-SECRET",
-              "hwStacks": []
+              "hwStacks": [
+                {
+                  "name": "POP-1",
+                  "guid": "6905d465-ff9a-499a-bbe6-8b3cc4ddd5a6",
+                  "id": "HW-0001",
+                  "cisParticipantID": "PAR-CIAV-000036",
+                  "assets": []
+                }
+              ]
             },
             {
               "id": "CL-RESTRICTED"

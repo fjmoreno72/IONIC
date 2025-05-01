@@ -798,37 +798,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start app initialization
     initializeApp();
     
-    // Show a toast notification
+    // Show a toast notification - delegates to CISUtils
     function showToast(message, type = 'success') {
-        const toastContainer = document.getElementById('toastContainer');
-        if (!toastContainer) return;
-        
-        const toastId = 'toast-' + Date.now();
-        const toastEl = document.createElement('div');
-        toastEl.className = `toast align-items-center text-white bg-${type} border-0`;
-        toastEl.id = toastId;
-        toastEl.setAttribute('role', 'alert');
-        toastEl.setAttribute('aria-live', 'assertive');
-        toastEl.setAttribute('aria-atomic', 'true');
-        
-        toastEl.innerHTML = `
-            <div class="d-flex">
-                <div class="toast-body">
-                    ${message}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        `;
-        
-        toastContainer.appendChild(toastEl);
-        
-        const toast = new bootstrap.Toast(toastEl, { autohide: true, delay: 5000 });
-        toast.show();
-        
-        // Auto-remove the toast element after it hides
-        toastEl.addEventListener('hidden.bs.toast', function() {
-            toastEl.remove();
-        });
+        return CISUtils.showToast(message, type);
     }
     
     // Add a new mission network
@@ -3379,19 +3351,65 @@ const ENTITY_CHILDREN = {
     // Add more as needed
 };
 
+// Minimal utility namespace - keeps backward compatibility
+const CISUtils = {
+    // Format node type name for display
+    formatNodeTypeName: function(type) {
+        return ENTITY_META[type]?.label || type
+            .replace(/([A-Z])/g, ' $1')
+            .replace(/^./, function(str) { return str.toUpperCase(); })
+            .trim();
+    },
+    
+    // Get SVG icon path for a specific element type
+    getElementIcon: function(type) {
+        return ENTITY_META[type]?.icon || '/static/img/default.svg';
+    },
+    
+    // Show a toast notification
+    showToast: function(message, type = 'success') {
+        const toastContainer = document.getElementById('toastContainer');
+        if (!toastContainer) return;
+        
+        const toastId = 'toast-' + Date.now();
+        const toastEl = document.createElement('div');
+        toastEl.className = `toast align-items-center text-white bg-${type} border-0`;
+        toastEl.id = toastId;
+        toastEl.setAttribute('role', 'alert');
+        toastEl.setAttribute('aria-live', 'assertive');
+        toastEl.setAttribute('aria-atomic', 'true');
+        
+        toastEl.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">
+                    ${message}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        `;
+        
+        toastContainer.appendChild(toastEl);
+        
+        const toast = new bootstrap.Toast(toastEl, { autohide: true, delay: 5000 });
+        toast.show();
+        
+        // Auto-remove the toast element after it hides
+        toastEl.addEventListener('hidden.bs.toast', function() {
+            toastEl.remove();
+        });
+    }
+};
+
 // Utility functions
 
-// Format node type name for display (now uses ENTITY_META)
+// Format node type name for display - delegates to CISUtils
 function formatNodeTypeName(type) {
-    return ENTITY_META[type]?.label || type
-        .replace(/([A-Z])/g, ' $1')
-        .replace(/^./, function(str) { return str.toUpperCase(); })
-        .trim();
+    return CISUtils.formatNodeTypeName(type);
 }
 
 // Removed getTypeIcon function as it was replaced by getElementIcon
 
-// Get SVG icon path for a specific element type (now uses ENTITY_META)
+// Get SVG icon path for a specific element type - delegates to CISUtils
 function getElementIcon(type) {
-    return ENTITY_META[type]?.icon || '/static/img/default.svg';
+    return CISUtils.getElementIcon(type);
 }

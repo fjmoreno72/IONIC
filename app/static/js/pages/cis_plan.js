@@ -458,6 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add HW Stack
+    // Add a hardware stack - delegates to CISApi
     async function addHwStack() {
         const name = document.getElementById('addHwStackName').value.trim();
         const cisParticipantID = document.getElementById('addHwStackCisParticipant').value;
@@ -482,18 +483,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         try {
-            const url = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks`;
-            console.log('Adding HW Stack with URL:', url);
+            // Call the API to add the hardware stack
+            console.log('Adding HW Stack for security domain:', domainId);
+            const apiResult = await CISApi.addHwStack(missionNetworkId, segmentId, domainId, name, cisParticipantID);
             
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, cisParticipantID })
-            });
-            
-            const result = await response.json();
-            
-            if (response.ok) {
+            if (apiResult.success) {
                 // Properly close the modal and clear focus
                 const modalElement = document.getElementById('addHwStackModal');
                 const modal = bootstrap.Modal.getInstance(modalElement);
@@ -516,15 +510,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     missionNetworkId: missionNetworkId
                 });
             } else {
-                showToast(`${result.message || 'Failed to create HW Stack'}`, 'danger');
+                showToast(`${apiResult.message || apiResult.error || 'Failed to create HW Stack'}`, 'danger');
             }
         } catch (error) {
-            console.error('Error creating HW Stack:', error);
+            console.error('Error in addHwStack function:', error);
             showToast('An error occurred while creating the HW Stack', 'danger');
         }
     }
     
-    // Update HW Stack
+    // Update HW Stack - delegates to CISApi
     async function updateHwStack() {
         const name = document.getElementById('editHwStackName').value.trim();
         const cisParticipantID = document.getElementById('editHwStackCisParticipant').value;
@@ -550,18 +544,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         try {
-            const url = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${id}`;
-            console.log('Updating HW Stack with URL:', url);
+            // Call the API to update the hardware stack
+            console.log('Updating HW Stack with ID:', id);
+            const apiResult = await CISApi.updateHwStack(missionNetworkId, segmentId, domainId, id, name, cisParticipantID);
             
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, cisParticipantID })
-            });
-            
-            const result = await response.json();
-            
-            if (response.ok) {
+            if (apiResult.success) {
                 // Properly close the modal and clear focus
                 const modalElement = document.getElementById('editHwStackModal');
                 const modal = bootstrap.Modal.getInstance(modalElement);
@@ -584,10 +571,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     missionNetworkId: missionNetworkId
                 });
             } else {
-                showToast(`${result.message || 'Failed to update HW Stack'}`, 'danger');
+                showToast(`${apiResult.message || apiResult.error || 'Failed to update HW Stack'}`, 'danger');
             }
         } catch (error) {
-            console.error('Error updating HW Stack:', error);
+            console.error('Error in updateHwStack function:', error);
             showToast('An error occurred while updating the HW Stack', 'danger');
         }
     }
@@ -996,7 +983,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Add a new asset
+    // Add a new asset - delegates to CISApi
 async function addAsset() {
     const nameInput = document.getElementById('addAssetName');
     const missionNetworkIdInput = document.getElementById('addAssetMissionNetworkId');
@@ -1021,18 +1008,10 @@ async function addAsset() {
     }
     
     try {
-        const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets`;
-        const response = await fetch(endpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name })
-        });
+        // Call the API to add the asset
+        const apiResult = await CISApi.addAsset(missionNetworkId, segmentId, domainId, hwStackId, name);
         
-        const result = await response.json();
-        
-        if (response.ok) {
+        if (apiResult.success) {
             // Properly close the modal and clear focus
             const modalElement = document.getElementById('addAssetModal');
             const modal = bootstrap.Modal.getInstance(modalElement);
@@ -1053,8 +1032,8 @@ async function addAsset() {
             
             // Get the ID of the new asset from the response if available
             let newAssetId = null;
-            if (result.data && result.data.id) {
-                newAssetId = result.data.id;
+            if (apiResult.data && apiResult.data.id) {
+                newAssetId = apiResult.data.id;
                 console.log('New asset created with ID:', newAssetId);
             }
             
@@ -1082,15 +1061,17 @@ async function addAsset() {
                 }, 100);
             }
         } else {
-            showToast(`${result.message || 'Failed to create asset'}`, 'danger');
+            const errorMessage = apiResult.message || apiResult.error || 'Failed to create asset';
+            console.error('Error creating asset:', errorMessage);
+            showToast(errorMessage, 'danger');
         }
     } catch (error) {
-        console.error('Error adding asset:', error);
+        console.error('Error in addAsset function:', error);
         showToast('An error occurred while creating the asset', 'danger');
     }
 }
 
-// Update an existing asset
+// Update an existing asset - delegates to CISApi
 async function updateAsset() {
     console.log('Updating asset with current element:', currentElement);
     const idInput = document.getElementById('editAssetId');
@@ -1105,7 +1086,7 @@ async function updateAsset() {
     const missionNetworkId = missionNetworkIdInput.value;
     const segmentId = segmentIdInput.value;
     const domainId = domainIdInput.value;
-    const hwStackId = hwStackIdInput.value;
+    let hwStackId = hwStackIdInput.value;
     
     // Make sure hwStackId is a string, not an object
     if (typeof hwStackId === 'object' && hwStackId !== null) {
@@ -1132,18 +1113,10 @@ async function updateAsset() {
     }
     
     try {
-        const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${id}`;
-        const response = await fetch(endpoint, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name })
-        });
+        // Call the API to update the asset
+        const apiResult = await CISApi.updateAsset(missionNetworkId, segmentId, domainId, hwStackId, id, name);
         
-        const result = await response.json();
-        
-        if (response.ok) {
+        if (apiResult.success) {
             // Properly close the modal and clear focus
             const modalElement = document.getElementById('editAssetModal');
             const modal = bootstrap.Modal.getInstance(modalElement);
@@ -1177,10 +1150,10 @@ async function updateAsset() {
                 missionNetworkId: missionNetworkId
             });
         } else {
-            showToast(`${result.message || 'Failed to update asset'}`, 'danger');
+            showToast(`${apiResult.message || apiResult.error || 'Failed to update asset'}`, 'danger');
         }
     } catch (error) {
-        console.error('Error updating asset:', error);
+        console.error('Error in updateAsset function:', error);
         showToast('An error occurred while updating the asset', 'danger');
     }
 }
@@ -3300,9 +3273,23 @@ const CISUtils = {
 
 // API namespace is already defined - removed redundant declaration
 
-// API functionality namespace - slimmed down version
+/**
+ * CISApi namespace for API-related functions.
+ * 
+ * This namespace encapsulates all the API calls made by the CIS Plan UI.
+ * Each method handles its own input validation, API communication, and standardized error responses.
+ * The original UI functions delegate to these methods while maintaining backward compatibility.
+ * 
+ * @namespace CISApi
+ */
 const CISApi = {
-    // Fetch CIS Plan tree data
+    /**
+     * Fetches the CIS Plan tree data from the server.
+     * Handles loading states, error display, and tree selection restoration.
+     * 
+     * @async
+     * @returns {Promise<Object>} Object containing success flag, status code, and data if successful
+     */
     fetchCISPlanData: async function() {
         try {
             // Show loading indicator in the tree
@@ -3371,7 +3358,12 @@ const CISApi = {
         }
     },
     
-    // Fetch participants from the API
+    /**
+     * Fetches the list of participants (organizations) from the server.
+     * 
+     * @async
+     * @returns {Promise<Array>} Array of participant objects
+     */
     fetchParticipants: async function() {
         try {
             const response = await fetch('/api/participants');
@@ -3423,7 +3415,16 @@ const CISApi = {
         }
     },
     
-    // Delete an item from the CIS Plan based on its type and IDs
+    /**
+     * Generic delete function for any entity type in the CIS Plan hierarchy.
+     * Constructs the appropriate endpoint based on the entity type and handles API communication.
+     * 
+     * @async
+     * @param {string} type - The type of entity to delete (e.g., 'missionNetworks', 'segments')
+     * @param {string} id - The ID of the entity to delete
+     * @param {Object} parentIds - Object containing IDs of parent entities for proper endpoint construction
+     * @returns {Promise<Object>} Object containing success flag, status code, and message
+     */
     deleteItem: async function(type, id, parentIds) {
         try {
             let endpoint = '';
@@ -3660,6 +3661,258 @@ const CISApi = {
             };
         } catch (error) {
             console.error('Error in updateMissionNetwork API call:', error);
+            return {
+                success: false,
+                error: error.message || 'Network error occurred',
+                status: 0
+            };
+        }
+    },
+    
+    /**
+     * Adds a new hardware stack to a security domain.
+     * 
+     * @async
+     * @param {string} missionNetworkId - ID of the parent mission network
+     * @param {string} segmentId - ID of the parent network segment
+     * @param {string} domainId - ID of the parent security domain
+     * @param {string} name - Name of the new hardware stack
+     * @param {string} cisParticipantID - ID of the CIS participant who owns this hardware stack
+     * @returns {Promise<Object>} Object containing success flag, status code, data, and message
+     */
+    addHwStack: async function(missionNetworkId, segmentId, domainId, name, cisParticipantID) {
+        try {
+            // Validate the input
+            if (!name || typeof name !== 'string' || name.trim() === '') {
+                return {
+                    success: false,
+                    error: 'HW Stack name is required',
+                    status: 400
+                };
+            }
+            
+            if (!cisParticipantID) {
+                return {
+                    success: false,
+                    error: 'Participant ID is required',
+                    status: 400
+                };
+            }
+            
+            if (!missionNetworkId || !segmentId || !domainId) {
+                return {
+                    success: false,
+                    error: 'Parent IDs (mission network, segment, domain) are required',
+                    status: 400
+                };
+            }
+            
+            // Make the API request
+            const url = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks`;
+            
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    name: name.trim(), 
+                    cisParticipantID 
+                })
+            });
+            
+            const result = await response.json();
+            
+            return {
+                success: response.ok,
+                status: response.status,
+                data: result,
+                message: result.message || ''
+            };
+        } catch (error) {
+            console.error('Error in addHwStack API call:', error);
+            return {
+                success: false,
+                error: error.message || 'Network error occurred',
+                status: 0
+            };
+        }
+    },
+    
+    /**
+     * Updates an existing hardware stack's name and participant ID.
+     * 
+     * @async
+     * @param {string} missionNetworkId - ID of the parent mission network
+     * @param {string} segmentId - ID of the parent network segment
+     * @param {string} domainId - ID of the parent security domain
+     * @param {string} hwStackId - ID of the hardware stack to update
+     * @param {string} name - New name for the hardware stack
+     * @param {string} cisParticipantID - New participant ID for the hardware stack
+     * @returns {Promise<Object>} Object containing success flag, status code, data, and message
+     */
+    updateHwStack: async function(missionNetworkId, segmentId, domainId, hwStackId, name, cisParticipantID) {
+        try {
+            // Validate the input
+            if (!name || typeof name !== 'string' || name.trim() === '') {
+                return {
+                    success: false,
+                    error: 'HW Stack name is required',
+                    status: 400
+                };
+            }
+            
+            if (!cisParticipantID) {
+                return {
+                    success: false,
+                    error: 'Participant ID is required',
+                    status: 400
+                };
+            }
+            
+            if (!missionNetworkId || !segmentId || !domainId || !hwStackId) {
+                return {
+                    success: false,
+                    error: 'All IDs (mission network, segment, domain, hw stack) are required',
+                    status: 400
+                };
+            }
+            
+            // Make the API request
+            const url = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}`;
+            
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    name: name.trim(), 
+                    cisParticipantID 
+                })
+            });
+            
+            const result = await response.json();
+            
+            return {
+                success: response.ok,
+                status: response.status,
+                data: result,
+                message: result.message || ''
+            };
+        } catch (error) {
+            console.error('Error in updateHwStack API call:', error);
+            return {
+                success: false,
+                error: error.message || 'Network error occurred',
+                status: 0
+            };
+        }
+    },
+    
+    /**
+     * Adds a new asset to a hardware stack.
+     * 
+     * @async
+     * @param {string} missionNetworkId - ID of the parent mission network
+     * @param {string} segmentId - ID of the parent network segment
+     * @param {string} domainId - ID of the parent security domain
+     * @param {string} hwStackId - ID of the parent hardware stack
+     * @param {string} name - Name of the new asset
+     * @returns {Promise<Object>} Object containing success flag, status code, data, and message
+     */
+    addAsset: async function(missionNetworkId, segmentId, domainId, hwStackId, name) {
+        try {
+            // Validate the input
+            if (!name || typeof name !== 'string' || name.trim() === '') {
+                return {
+                    success: false,
+                    error: 'Asset name is required',
+                    status: 400
+                };
+            }
+            
+            if (!missionNetworkId || !segmentId || !domainId || !hwStackId) {
+                return {
+                    success: false,
+                    error: 'All parent IDs (mission network, segment, domain, hw stack) are required',
+                    status: 400
+                };
+            }
+            
+            // Make the API request
+            const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets`;
+            
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name.trim() })
+            });
+            
+            const result = await response.json();
+            
+            return {
+                success: response.ok,
+                status: response.status,
+                data: result,
+                message: result.message || ''
+            };
+        } catch (error) {
+            console.error('Error in addAsset API call:', error);
+            return {
+                success: false,
+                error: error.message || 'Network error occurred',
+                status: 0
+            };
+        }
+    },
+    
+    /**
+     * Updates an existing asset's name.
+     * 
+     * @async
+     * @param {string} missionNetworkId - ID of the parent mission network
+     * @param {string} segmentId - ID of the parent network segment
+     * @param {string} domainId - ID of the parent security domain
+     * @param {string} hwStackId - ID of the parent hardware stack
+     * @param {string} assetId - ID of the asset to update
+     * @param {string} name - New name for the asset
+     * @returns {Promise<Object>} Object containing success flag, status code, data, and message
+     */
+    updateAsset: async function(missionNetworkId, segmentId, domainId, hwStackId, assetId, name) {
+        try {
+            // Validate the input
+            if (!name || typeof name !== 'string' || name.trim() === '') {
+                return {
+                    success: false,
+                    error: 'Asset name is required',
+                    status: 400
+                };
+            }
+            
+            if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+                return {
+                    success: false,
+                    error: 'All IDs (mission network, segment, domain, hw stack, asset) are required',
+                    status: 400
+                };
+            }
+            
+            // Make the API request
+            const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}`;
+            
+            const response = await fetch(endpoint, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name.trim() })
+            });
+            
+            const result = await response.json();
+            
+            return {
+                success: response.ok,
+                status: response.status,
+                data: result,
+                message: result.message || ''
+            };
+        } catch (error) {
+            console.error('Error in updateAsset API call:', error);
             return {
                 success: false,
                 error: error.message || 'Network error occurred',

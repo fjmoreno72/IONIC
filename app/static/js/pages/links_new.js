@@ -429,6 +429,20 @@ document.addEventListener('DOMContentLoaded', function() {
         { text: 'Close', class: 'btn-secondary', action: 'cancel' }
       ]);
       
+      // Force refresh of event handlers with direct binding
+      setTimeout(() => {
+        // Find Close button and ensure it has a working event handler
+        const closeButton = document.querySelector('#ciForLinkDialog .btn-secondary[data-action="cancel"]');
+        if (closeButton) {
+          // Add a direct close handler regardless of what might be set by DialogManager
+          closeButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            ciDialog.close();
+          });
+        }
+      }, 50);
+      
       // Show loading state in the dialog content
       const loadingContent = document.createElement('div');
       loadingContent.className = 'text-center p-5';

@@ -154,6 +154,27 @@
                   "id": "HW-0008",
                   "cisParticipantID": "PAR-CIAV-000026",
                   "assets": []
+                },
+                {
+                  "name": "POP-Y",
+                  "guid": "c0210b7e-ba22-488e-b9a5-8de5014d44d0",
+                  "id": "HW-0009",
+                  "cisParticipantID": "PAR-CIAV-000120",
+                  "assets": []
+                },
+                {
+                  "name": "POP-Z",
+                  "guid": "2e90c159-cbc7-4bab-abb6-c6564ee8fb92",
+                  "id": "HW-0010",
+                  "cisParticipantID": "PAR-CIAV-000116",
+                  "assets": []
+                },
+                {
+                  "name": "POP-K",
+                  "guid": "2af5ea32-64de-47ff-9101-428313e2a09e",
+                  "id": "HW-0011",
+                  "cisParticipantID": "PAR-CIAV-000119",
+                  "assets": []
                 }
               ]
             },

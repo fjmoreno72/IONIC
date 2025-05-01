@@ -440,19 +440,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Fetch participants from API
+    // Fetch participants - delegates to CISApi
     async function fetchParticipants() {
         try {
-            const response = await fetch('/api/participants');
-            const result = await response.json();
-            if (result.status === 'success') {
-                console.log('Participants loaded:', result.data.length);
-                return result.data || [];
-            } else {
-                console.error('Failed to load participants:', result.message);
-                return [];
-            }
+            const participants = await CISApi.fetchParticipants();
+            console.log('Participants loaded:', participants.length);
+            return participants;
         } catch (error) {
-            console.error('Error loading participants:', error);
+            console.error('Error in fetchParticipants:', error);
             return [];
         }
     }
@@ -1256,46 +1251,36 @@ async function updateAsset() {
     }
     
     // Fetch security classifications for dropdown
+    // Fetch security classifications - delegates to CISApi
     async function fetchSecurityClassifications() {
         try {
-            const response = await fetch('/api/cis_security_classification/all');
+            // Use the API namespace to fetch the data
+            const classifications = await CISApi.fetchSecurityClassifications();
             
-            if (!response.ok) {
-                throw new Error(`Failed to fetch security classifications: ${response.statusText}`);
-            }
+            // Store the data globally
+            securityClassifications = classifications;
             
-            const result = await response.json();
-            
-            if (result.status === 'success') {
-                // Store the data - directly accessing the securityClassifications array
-                securityClassifications = result.data.securityClassifications || [];
-                // Security classifications loaded
-                
-                // Populate the dropdown
-                const dropdown = document.getElementById('addSecurityDomainClassification');
-                if (dropdown) {
-                    // Clear existing options except the first one
-                    while (dropdown.options.length > 1) {
-                        dropdown.remove(1);
-                    }
-                    
-                    // Add options from the security classifications
-                    securityClassifications.forEach(classification => {
-                        const option = document.createElement('option');
-                        option.value = classification.id; // Use classification.id for the option value
-                        option.textContent = classification.name;
-                        option.setAttribute('data-guid', classification.guid);
-                        dropdown.appendChild(option);
-                    });
+            // Populate the dropdown
+            const dropdown = document.getElementById('addSecurityDomainClassification');
+            if (dropdown) {
+                // Clear existing options except the first one
+                while (dropdown.options.length > 1) {
+                    dropdown.remove(1);
                 }
                 
-                return securityClassifications;
-            } else {
-                showToast('Failed to load security classifications', 'danger');
-                return [];
+                // Add options from the security classifications
+                securityClassifications.forEach(classification => {
+                    const option = document.createElement('option');
+                    option.value = classification.id; // Use classification.id for the option value
+                    option.textContent = classification.name;
+                    option.setAttribute('data-guid', classification.guid);
+                    dropdown.appendChild(option);
+                });
             }
+            
+            return securityClassifications;
         } catch (error) {
-            console.error('Error fetching security classifications:', error);
+            console.error('Error in fetchSecurityClassifications:', error);
             showToast('Error loading security classifications', 'danger');
             return [];
         }
@@ -1350,21 +1335,10 @@ async function updateAsset() {
         const guid = selectedOption.getAttribute('data-guid');
         
         try {
-            // Adding security domain
+            // Adding security domain - using CISApi
+            const apiResult = await CISApi.addSecurityDomain(missionNetworkId, segmentId, classificationId);
             
-            const response = await fetch(`/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 
-                    id: classificationId 
-                })
-            });
-            
-            const result = await response.json();
-            
-            if (response.ok) {
+            if (apiResult.success) {
                 // Properly close the modal
                 const modalElement = document.getElementById('addSecurityDomainModal');
                 const modal = bootstrap.Modal.getInstance(modalElement);
@@ -1397,22 +1371,22 @@ async function updateAsset() {
                 fetchCISPlanData();
             } else {
                 // Log the error response for debugging
-                console.log('Error response from backend:', result);
+                console.log('Error response from backend:', apiResult.data);
                 
                 // Handle specific errors from backend
-                if (result.error && typeof result.error === 'string' && result.error.includes('already exists')) {
+                if (apiResult.error && typeof apiResult.error === 'string' && apiResult.error.includes('already exists')) {
                     // This is a duplicate security domain error
                     const classification = getSecurityClassificationById(classificationId);
                     const name = classification ? classification.name : classificationId;
                     showToast(`Security domain "${name}" already exists in this segment`, 'warning');
-                } else if (response.status === 400) {
+                } else if (apiResult.status === 400) {
                     // Specific handling for 400 Bad Request which is likely a duplicate
                     const classification = getSecurityClassificationById(classificationId);
                     const name = classification ? classification.name : classificationId;
                     showToast(`Cannot add duplicate security domain "${name}" to this segment`, 'warning');
                 } else {
                     // Other errors
-                    showToast(`Failed to add security domain: ${result.error || 'Unknown error'}`, 'danger');
+                    showToast(`Failed to add security domain: ${apiResult.error || 'Unknown error'}`, 'danger');
                 }
             }
         } catch (error) {
@@ -3390,6 +3364,7 @@ const CISUtils = {
 
 // API functionality namespace - slimmed down version
 const CISApi = {
+    // Fetch CIS Plan tree data
     fetchCISPlanData: async function() {
         try {
             // Show loading indicator in the tree
@@ -3431,6 +3406,82 @@ const CISApi = {
             `;
             console.error('Error fetching CIS Plan data:', error);
             return null;
+        }
+    },
+    
+    // Fetch security classifications from the API
+    fetchSecurityClassifications: async function() {
+        try {
+            const response = await fetch('/api/cis_security_classification/all');
+            
+            if (!response.ok) {
+                throw new Error(`Failed to fetch security classifications: ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                // Return the classifications data
+                return result.data.securityClassifications || [];
+            } else {
+                console.error('Failed to load security classifications:', result.message);
+                return [];
+            }
+        } catch (error) {
+            console.error('Error fetching security classifications:', error);
+            return [];
+        }
+    },
+    
+    // Fetch participants from the API
+    fetchParticipants: async function() {
+        try {
+            const response = await fetch('/api/participants');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch participants: ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            if (result.status === 'success') {
+                return result.data || [];
+            } else {
+                console.error('Failed to load participants:', result.message);
+                return [];
+            }
+        } catch (error) {
+            console.error('Error loading participants:', error);
+            return [];
+        }
+    },
+    
+    // Add a security domain to a network segment
+    addSecurityDomain: async function(missionNetworkId, segmentId, classificationId) {
+        try {
+            const response = await fetch(`/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    id: classificationId 
+                })
+            });
+            
+            const result = await response.json();
+            
+            return {
+                success: response.ok,
+                status: response.status,
+                data: result,
+                error: result.error || null
+            };
+        } catch (error) {
+            console.error('Error in addSecurityDomain API call:', error);
+            return {
+                success: false,
+                error: error.message || 'Network error occurred',
+                status: 0
+            };
         }
     }
 };

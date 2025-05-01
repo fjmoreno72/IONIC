@@ -2297,9 +2297,17 @@ async function updateAsset() {
             const classification = getSecurityClassificationById(nodeData.id);
             displayName = classification.name;
         }
-        titleDiv.className = 'h5 mb-0';
+        titleDiv.className = 'h5 mb-0 d-flex align-items-center';
         titleDiv.id = 'elementsTitle';
-        titleDiv.textContent = `${displayName} - ${formatNodeTypeName(nodeType)}`;
+        
+        // Get the SVG icon for this node type
+        const iconPath = getElementIcon(nodeType);
+        
+        // Create icon element
+        titleDiv.innerHTML = `
+            <img src="${iconPath}" alt="${nodeType}" class="icon-small me-2" style="width: 20px; height: 20px;">
+            <span>${displayName} - ${formatNodeTypeName(nodeType)}</span>
+        `;
         headerContainer.appendChild(titleDiv);
         
         // Add Up button if not at root level
@@ -2692,13 +2700,15 @@ async function updateAsset() {
         // For security domains, use the classification name
         if (type === 'securityDomains') {
             const classification = getSecurityClassificationById(element.id);
+            const iconPath = getElementIcon(type);
             cardHeader.innerHTML = `
-                <i class="fas ${getTypeIcon(type)} me-2"></i>
+                <img src="${iconPath}" alt="${type}" class="icon-small me-2" style="width: 20px; height: 20px;">
                 <h5 class="mb-0">${classification.name}</h5>
             `;
         } else {
+            const iconPath = getElementIcon(type);
             cardHeader.innerHTML = `
-                <i class="fas ${getTypeIcon(type)} me-2"></i>
+                <img src="${iconPath}" alt="${type}" class="icon-small me-2" style="width: 20px; height: 20px;">
                 <h5 class="mb-0">${element.name}</h5>
             `;
         }
@@ -3379,22 +3389,7 @@ function formatNodeTypeName(type) {
         .trim();
 }
 
-// Get icon class for a specific element type
-function getTypeIcon(type) {
-    const iconMap = {
-        'missionNetworks': 'fa-project-diagram',
-        'networkSegments': 'fa-network-wired',
-        'securityDomains': 'fa-shield-alt',
-        'hwStacks': 'fa-server',
-        'assets': 'fa-desktop',
-        'networkInterfaces': 'fa-ethernet',
-        'gpInstances': 'fa-cogs',
-        'configurationItems': 'fa-wrench',
-        'spInstances': 'fa-puzzle-piece'
-    };
-    
-    return iconMap[type] || 'fa-file';
-}
+// Removed getTypeIcon function as it was replaced by getElementIcon
 
 // Get SVG icon path for a specific element type (now uses ENTITY_META)
 function getElementIcon(type) {

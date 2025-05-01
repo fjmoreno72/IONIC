@@ -103,6 +103,13 @@
                       "id": "AS-0014",
                       "networkInterfaces": [],
                       "gpInstances": []
+                    },
+                    {
+                      "name": "Quantum computer",
+                      "guid": "4e7f18ef-ccf2-4b56-a173-d653e2263268",
+                      "id": "AS-0015",
+                      "networkInterfaces": [],
+                      "gpInstances": []
                     }
                   ]
                 },
@@ -142,10 +149,10 @@
                   "assets": []
                 },
                 {
-                  "name": "POP-10012",
-                  "guid": "ad7baa78-b0cd-45b1-8951-69866aa5bf7d",
-                  "id": "HW-0007",
-                  "cisParticipantID": "PAR-CIAV-000122",
+                  "name": "POP-88",
+                  "guid": "9a56b21b-890b-4d09-bb57-0aefb3607001",
+                  "id": "HW-0008",
+                  "cisParticipantID": "PAR-CIAV-000026",
                   "assets": []
                 }
               ]

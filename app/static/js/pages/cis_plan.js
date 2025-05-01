@@ -426,12 +426,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initial data fetch
     async function initializeApp() {
-        // Load security classifications first
-        await fetchSecurityClassifications();
-        console.log('Security classifications loaded:', securityClassifications);
-        
-        // Then load the CIS Plan data
-        await fetchCISPlanData();
+        try {
+            // Load security classifications first
+            await fetchSecurityClassifications();
+            console.log('Security classifications loaded:', securityClassifications);
+            
+            // Then load the CIS Plan data
+            await fetchCISPlanData();
+        } catch (error) {
+            console.error('Error initializing CIS Plan app:', error);
+            showToast('Error initializing application: ' + error.message, 'danger');
+        }
     }
     
     // Fetch participants from API
@@ -452,23 +457,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Get participant name by key
+    // Get participant name by key - delegates to CISUtils
     async function getParticipantNameByKey(key) {
-        if (!key) return 'N/A';
-        
-        try {
-            const response = await fetch(`/api/participants/name_by_key?key=${encodeURIComponent(key)}`);
-            const result = await response.json();
-            if (result.status === 'success') {
-                return result.name || key; // Return name if found, otherwise return the key
-            } else {
-                console.warn('Participant name not found for key:', key);
-                return key; // Return the key if not found
-            }
-        } catch (error) {
-            console.error('Error getting participant name:', error);
-            return key; // Return the key if there's an error
-        }
+        return CISUtils.getParticipantNameByKey(key);
     }
     
     // Add HW Stack
@@ -1572,152 +1563,128 @@ async function updateAsset() {
     }
     
     // Fetch CIS Plan data from the API
+    // Fetch CIS Plan tree data - delegates to CISApi
     async function fetchCISPlanData() {
-        try {
-            // Store current selection state before refresh
-            let currentNodeId = null;
-            let currentNodeType = null;
-            let currentElementId = null;
+        const treeData = await CISApi.fetchCISPlanData();
+        
+        if (treeData) {
+            // Now manually call renderTree since it's a function outside the API namespace
+            renderTree(treeData);
             
-            if (currentTreeNode) {
-                currentNodeId = currentTreeNode.getAttribute('data-id');
-                currentNodeType = currentTreeNode.getAttribute('data-type');
-            }
-            
-            if (currentElement) {
-                currentElementId = currentElement.id;
-            }
-            
-            // Show loading indicator in the tree
-            cisTree.innerHTML = `
-                <div class="d-flex justify-content-center p-5">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            `;
-            
-            // Make API request to get CIS Plan data
-            const response = await fetch('/api/cis_plan/tree');
-            if (!response.ok) {
-                throw new Error(`Failed to fetch CIS Plan data: ${response.statusText}`);
-            }
-            
-            const result = await response.json();
-            if (result.status === 'success') {
-                // Store the data and render the tree
-                data = result.data;
-                renderTree(data);
-                
-                // Check if we've just added a security domain and need to expand its parent nodes
-                const lastAddedSecurityDomain = sessionStorage.getItem('lastAddedSecurityDomain');
-                if (lastAddedSecurityDomain) {
-                    try {
-                        const sdInfo = JSON.parse(lastAddedSecurityDomain);
-                        // Clear it immediately to prevent repeated application
-                        sessionStorage.removeItem('lastAddedSecurityDomain');
-                        
-                        // Add a small delay to ensure DOM is rendered
-                        setTimeout(() => {
-                            // First find and expand the mission network
-                            const mnNode = document.querySelector(`.tree-node[data-type="missionNetworks"][data-id="${sdInfo.missionNetworkId}"]`);
-                            if (mnNode) {
-                                // Click the toggle to expand it
-                                const mnToggle = mnNode.querySelector('.tree-toggle');
-                                if (mnToggle) mnToggle.click();
-                                
-                                // Small delay to let mission network expand
-                                setTimeout(() => {
-                                    // Then find and expand the segment
-                                    const segNode = document.querySelector(`.tree-node[data-type="networkSegments"][data-id="${sdInfo.segmentId}"]`);
-                                    if (segNode) {
-                                        // Select the segment
-                                        segNode.click();
-                                        
-                                        // Click the toggle to expand it
-                                        const segToggle = segNode.querySelector('.tree-toggle');
-                                        if (segToggle) segToggle.click();
-                                    }
-                                }, 100);
-                            }
-                        }, 150);
-                    } catch (e) {
-                        // Error handling for expansion
-                    }
-                }
-                
-                // IMPORTANT: Check if we have a pending security domain selection
-                // If so, skip the default state restoration as it will be handled by the event listener
-                const hasPendingSDSelection = sessionStorage.getItem('pendingSecurityDomainSelect') !== null;
-                
-                // Only do regular state restoration if no security domain selection is pending
-                if (!hasPendingSDSelection) {
-                    // Now restore selection and update panels based on the current selection state
-                    let nodeToSelect = null;
+            // Handle special cases like recently added security domains
+            const lastAddedSecurityDomain = sessionStorage.getItem('lastAddedSecurityDomain');
+            if (lastAddedSecurityDomain) {
+                try {
+                    const sdInfo = JSON.parse(lastAddedSecurityDomain);
+                    // Clear it immediately to prevent repeated application
+                    sessionStorage.removeItem('lastAddedSecurityDomain');
                     
-                    // Find and re-select the previously selected node in the tree
-                    if (currentNodeId) {
-                        // If it was a mission network, network segment, etc.
-                        if (currentNodeId !== 'root-cisplan') {
-                            nodeToSelect = document.querySelector(`.tree-node[data-id="${currentNodeId}"][data-type="${currentNodeType}"]`);
-                        } else {
-                            // If it was the root CIS Plan node
-                            nodeToSelect = document.querySelector('.tree-node[data-id="root-cisplan"]');
-                        }
-                        
-                        // If we found the node, programmatically click it to restore selection
-                        if (nodeToSelect) {
-                            nodeToSelect.click();
+                    // Add a small delay to ensure DOM is rendered
+                    setTimeout(() => {
+                        // First find and expand the mission network
+                        const mnNode = document.querySelector(`.tree-node[data-type="missionNetworks"][data-id="${sdInfo.missionNetworkId}"]`);
+                        if (mnNode) {
+                            // Click the toggle to expand it
+                            const mnToggle = mnNode.querySelector('.tree-toggle');
+                            if (mnToggle) mnToggle.click();
                             
-                            // For nodes with children, ensure they're expanded
-                            const childrenContainer = nodeToSelect.nextElementSibling;
-                            if (childrenContainer && childrenContainer.classList.contains('tree-node-children')) {
-                                childrenContainer.style.display = 'block';
-                                const toggleIcon = nodeToSelect.querySelector('.tree-toggle');
-                                if (toggleIcon) {
-                                    toggleIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                            // Small delay to let mission network expand
+                            setTimeout(() => {
+                                // Then find and expand the segment
+                                const segNode = document.querySelector(`.tree-node[data-type="networkSegments"][data-id="${sdInfo.segmentId}"]`);
+                                if (segNode) {
+                                    // Select the segment
+                                    segNode.click();
+                                    
+                                    // Click the toggle to expand it
+                                    const segToggle = segNode.querySelector('.tree-toggle');
+                                    if (segToggle) segToggle.click();
                                 }
-                            }
-                            
-                            // If we had a selected element in the elements panel, try to re-select it
-                            if (currentElementId) {
-                                setTimeout(() => {
-                                    const elementCard = document.querySelector(`.element-card[data-id="${currentElementId}"]`);
-                                    if (elementCard) {
-                                        elementCard.click();
-                                    }
-                                }, 100); // Small delay to ensure elements are rendered
-                            }
+                            }, 100);
                         }
-                    } 
+                    }, 150);
+                } catch (e) {
+                    console.warn('Error parsing security domain info:', e);
+                }
+            }
+            
+            // Restore selection state if needed
+            restoreSelectionState();
+        }
+        
+        return treeData;
+    }
+    
+    // Helper function to restore selection state after tree refresh
+    function restoreSelectionState() {
+        // Get current selection state
+        let currentNodeId = null;
+        let currentNodeType = null;
+        let currentElementId = null;
+        
+        if (currentTreeNode) {
+            currentNodeId = currentTreeNode.getAttribute('data-id');
+            currentNodeType = currentTreeNode.getAttribute('data-type');
+        }
+        
+        if (currentElement) {
+            currentElementId = currentElement.id;
+        }
+        
+        // IMPORTANT: Check if we have a pending security domain selection
+        // If so, skip the default state restoration as it will be handled by the event listener
+        const hasPendingSDSelection = sessionStorage.getItem('pendingSecurityDomainSelect') !== null;
+        
+        // Only do regular state restoration if no security domain selection is pending
+        if (!hasPendingSDSelection) {
+            // Now restore selection and update panels based on the current selection state
+            let nodeToSelect = null;
+            
+            // Find and re-select the previously selected node in the tree
+            if (currentNodeId) {
+                // If it was a mission network, network segment, etc.
+                if (currentNodeId !== 'root-cisplan') {
+                    nodeToSelect = document.querySelector(`.tree-node[data-id="${currentNodeId}"][data-type="${currentNodeType}"]`);
                 } else {
-                    // If no selection was active, show root level elements
-                    if (elementsTitle) {
-                        elementsTitle.textContent = 'CIS Plan - Mission Networks';
+                    // If it was the root CIS Plan node
+                    nodeToSelect = document.querySelector('.tree-node[data-id="root-cisplan"]');
+                }
+                
+                // If we found the node, programmatically click it to restore selection
+                if (nodeToSelect) {
+                    nodeToSelect.click();
+                    
+                    // For nodes with children, ensure they're expanded
+                    const childrenContainer = nodeToSelect.nextElementSibling;
+                    if (childrenContainer && childrenContainer.classList.contains('tree-node-children')) {
+                        childrenContainer.style.display = 'block';
+                        const toggleIcon = nodeToSelect.querySelector('.tree-toggle');
+                        if (toggleIcon) {
+                            toggleIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                        }
                     }
                     
-                    if (elementsContainer) {
-                        elementsContainer.innerHTML = '';
-                        renderElementCards(elementsContainer, data, 'missionNetworks');
+                    // If we had a selected element in the elements panel, try to re-select it
+                    if (currentElementId) {
+                        setTimeout(() => {
+                            const elementCard = document.querySelector(`.element-card[data-id="${currentElementId}"]`);
+                            if (elementCard) {
+                                elementCard.click();
+                            }
+                        }, 100); // Small delay to ensure elements are rendered
                     }
                 }
-            } else {
-                cisTree.innerHTML = `
-                    <div class="alert alert-danger m-3">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        Error fetching CIS Plan data: ${result.message || 'Unknown error'}
-                    </div>
-                `;
-                console.error('Error fetching CIS Plan data:', result.message);
+            } 
+        } else {
+            // If no selection was active, show root level elements
+            if (elementsTitle) {
+                elementsTitle.textContent = 'CIS Plan - Mission Networks';
             }
-        } catch (error) {
-            cisTree.innerHTML = `
-                <div class="alert alert-danger m-3">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    Error fetching CIS Plan data: ${error.message || 'Unknown error'}
-                </div>
-            `;
-            console.error('Error fetching CIS Plan data:', error);
+            
+            if (elementsContainer) {
+                elementsContainer.innerHTML = '';
+                renderElementCards(elementsContainer, data, 'missionNetworks');
+            }
         }
     }
     
@@ -3397,8 +3364,78 @@ const CISUtils = {
         toastEl.addEventListener('hidden.bs.toast', function() {
             toastEl.remove();
         });
+    },
+    
+    // Get participant name by key from the API
+    getParticipantNameByKey: async function(key) {
+        if (!key) return 'N/A';
+        
+        try {
+            const response = await fetch(`/api/participants/name_by_key?key=${encodeURIComponent(key)}`);
+            const result = await response.json();
+            if (result.status === 'success') {
+                return result.name || key; // Return name if found, otherwise return the key
+            } else {
+                console.warn('Participant name not found for key:', key);
+                return key; // Return the key if not found
+            }
+        } catch (error) {
+            console.error('Error getting participant name:', error);
+            return key; // Return the key if there's an error
+        }
     }
 };
+
+// API namespace is already defined - removed redundant declaration
+
+// API functionality namespace - slimmed down version
+const CISApi = {
+    fetchCISPlanData: async function() {
+        try {
+            // Show loading indicator in the tree
+            cisTree.innerHTML = `
+                <div class="d-flex justify-content-center p-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            `;
+            
+            // Make API request to get CIS Plan data
+            const response = await fetch('/api/cis_plan/tree');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch CIS Plan data: ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            if (result.status === 'success') {
+                // Store the data and render the tree
+                data = result.data;
+                return result.data;
+            } else {
+                cisTree.innerHTML = `
+                    <div class="alert alert-danger m-3">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Error fetching CIS Plan data: ${result.message || 'Unknown error'}
+                    </div>
+                `;
+                console.error('Error fetching CIS Plan data:', result.message);
+                return null;
+            }
+        } catch (error) {
+            cisTree.innerHTML = `
+                <div class="alert alert-danger m-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Error fetching CIS Plan data: ${error.message || 'Unknown error'}
+                </div>
+            `;
+            console.error('Error fetching CIS Plan data:', error);
+            return null;
+        }
+    }
+};
+    
+// Utility functions
 
 // Utility functions
 

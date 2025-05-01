@@ -790,6 +790,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add a new mission network
+    // Add a mission network - delegates to CISApi
     async function addMissionNetwork() {
         const nameInput = document.getElementById('addMissionNetworkName');
         const name = nameInput.value.trim();
@@ -800,17 +801,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         try {
-            const response = await fetch('/api/cis_plan/mission_network', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name })
-            });
+            // Call the API to add the mission network
+            const apiResult = await CISApi.addMissionNetwork(name);
             
-            const result = await response.json();
-            
-            if (response.ok) {
+            if (apiResult.success) {
                 // Properly close the modal and clear focus
                 const modalElement = document.getElementById('addMissionNetworkModal');
                 const modal = bootstrap.Modal.getInstance(modalElement);
@@ -832,10 +826,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Refresh the data
                 fetchCISPlanData();
             } else {
-                showToast(`${result.message || 'Failed to create mission network'}`, 'danger');
+                showToast(`${apiResult.message || apiResult.error || 'Failed to create mission network'}`, 'danger');
             }
         } catch (error) {
-            console.error('Error adding mission network:', error);
+            console.error('Error in addMissionNetwork function:', error);
             showToast('An error occurred while creating the mission network', 'danger');
         }
     }
@@ -899,6 +893,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add a new network segment
+    // Add a network segment - delegates to CISApi
     async function addNetworkSegment() {
         const nameInput = document.getElementById('addNetworkSegmentName');
         const missionNetworkIdInput = document.getElementById('addNetworkSegmentMissionNetworkId');
@@ -916,17 +911,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         try {
-            const response = await fetch(`/api/cis_plan/mission_network/${missionNetworkId}/segment`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name })
-            });
+            // Call the API to add the network segment
+            const apiResult = await CISApi.addNetworkSegment(missionNetworkId, name);
             
-            const result = await response.json();
-            
-            if (response.ok) {
+            if (apiResult.success) {
                 // Properly close the modal and clear focus
                 const modalElement = document.getElementById('addNetworkSegmentModal');
                 const modal = bootstrap.Modal.getInstance(modalElement);
@@ -948,10 +936,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Refresh the data
                 fetchCISPlanData();
             } else {
-                showToast(`${result.message || 'Failed to create network segment'}`, 'danger');
+                showToast(`${apiResult.message || apiResult.error || 'Failed to create network segment'}`, 'danger');
             }
         } catch (error) {
-            console.error('Error adding network segment:', error);
+            console.error('Error in addNetworkSegment function:', error);
             showToast('An error occurred while creating the network segment', 'danger');
         }
     }
@@ -3497,6 +3485,92 @@ const CISApi = {
             };
         } catch (error) {
             console.error(`Error in deleteItem API call for ${type}:`, error);
+            return {
+                success: false,
+                error: error.message || 'Network error occurred',
+                status: 0
+            };
+        }
+    },
+    
+    // Add a new mission network to the CIS Plan
+    addMissionNetwork: async function(name) {
+        try {
+            // Validate the input
+            if (!name || typeof name !== 'string' || name.trim() === '') {
+                return {
+                    success: false,
+                    error: 'Mission network name is required',
+                    status: 400
+                };
+            }
+            
+            // Make the API request
+            const response = await fetch('/api/cis_plan/mission_network', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: name.trim() })
+            });
+            
+            const result = await response.json();
+            
+            return {
+                success: response.ok,
+                status: response.status,
+                data: result,
+                message: result.message || ''
+            };
+        } catch (error) {
+            console.error('Error in addMissionNetwork API call:', error);
+            return {
+                success: false,
+                error: error.message || 'Network error occurred',
+                status: 0
+            };
+        }
+    },
+    
+    // Add a new network segment to a mission network
+    addNetworkSegment: async function(missionNetworkId, name) {
+        try {
+            // Validate the input
+            if (!name || typeof name !== 'string' || name.trim() === '') {
+                return {
+                    success: false,
+                    error: 'Network segment name is required',
+                    status: 400
+                };
+            }
+            
+            if (!missionNetworkId) {
+                return {
+                    success: false,
+                    error: 'Mission network ID is required',
+                    status: 400
+                };
+            }
+            
+            // Make the API request
+            const response = await fetch(`/api/cis_plan/mission_network/${missionNetworkId}/segment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: name.trim() })
+            });
+            
+            const result = await response.json();
+            
+            return {
+                success: response.ok,
+                status: response.status,
+                data: result,
+                message: result.message || ''
+            };
+        } catch (error) {
+            console.error('Error in addNetworkSegment API call:', error);
             return {
                 success: false,
                 error: error.message || 'Network error occurred',

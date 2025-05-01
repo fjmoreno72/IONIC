@@ -372,13 +372,22 @@ export class DialogManager {
     // Clear any existing buttons
     footer.innerHTML = '';
     
+    // Store reference to the dialog instance for use in event handlers
+    const self = this;
+    
     // Create Cancel button
     const cancelBtn = document.createElement('button');
     cancelBtn.type = 'button';
     cancelBtn.className = 'btn btn-secondary';
     cancelBtn.textContent = 'Cancel';
     cancelBtn.dataset.action = 'cancel';
-    cancelBtn.onclick = () => this.close();
+    cancelBtn.dataset.role = 'cancel-button'; // Add an identifying attribute
+    
+    // Use addEventListener instead of onclick for better cross-browser compatibility
+    cancelBtn.addEventListener('click', function(event) {
+      event.preventDefault();
+      self.close();
+    });
     
     // Create Save button
     const saveBtn = document.createElement('button');
@@ -386,17 +395,20 @@ export class DialogManager {
     saveBtn.className = 'btn btn-primary';
     saveBtn.textContent = 'Save';
     saveBtn.dataset.action = 'save';
-    saveBtn.onclick = () => {
-      if (this.onSave) {
+    
+    // Use addEventListener with a named function for better reliability
+    saveBtn.addEventListener('click', function(event) {
+      event.preventDefault();
+      if (self.onSave) {
         // If onSave returns false, prevent dialog from closing
-        const result = this.onSave();
+        const result = self.onSave();
         if (result !== false) {
-          this.close();
+          self.close();
         }
       } else {
-        this.close();
+        self.close();
       }
-    };
+    });
     
     // Add buttons to footer
     footer.appendChild(cancelBtn);
@@ -425,6 +437,9 @@ export class DialogManager {
       return;
     }
     
+    // Store reference to the dialog instance for use in event handlers
+    const self = this;
+    
     // Add custom buttons
     buttons.forEach(button => {
       const btnElement = document.createElement('button');
@@ -435,20 +450,28 @@ export class DialogManager {
       
       // Set click handler based on action
       if (button.action === 'cancel') {
-        btnElement.onclick = () => this.close();
+        // Use a more explicit approach with a named function for better browser compatibility
+        btnElement.addEventListener('click', function(event) {
+          event.preventDefault();
+          self.close();
+        });
+        
+        // Add data attribute to ensure we can identify this button
+        btnElement.dataset.role = 'cancel-button';
       } else if (button.action === 'save') {
-        btnElement.onclick = () => {
-          if (this.onSave) {
-            const result = this.onSave();
+        btnElement.addEventListener('click', function(event) {
+          event.preventDefault();
+          if (self.onSave) {
+            const result = self.onSave();
             if (result !== false) {
-              this.close();
+              self.close();
             }
           } else {
-            this.close();
+            self.close();
           }
-        };
+        });
       } else if (button.onClick && typeof button.onClick === 'function') {
-        btnElement.onclick = button.onClick;
+        btnElement.addEventListener('click', button.onClick);
       }
       
       footer.appendChild(btnElement);

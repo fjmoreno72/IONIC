@@ -236,6 +236,20 @@ document.addEventListener('DOMContentLoaded', function() {
         { text: 'Save', class: 'btn-primary', action: 'save' }
       ]);
       
+      // Force refresh of any event handlers by adding a small delay and manual event binding
+      setTimeout(() => {
+        // Find any cancel button and ensure it has a working event handler
+        const cancelButton = document.querySelector('#ciForGpDialog .btn-secondary[data-action="cancel"]');
+        if (cancelButton) {
+          // Add a direct close handler regardless of what might be set by DialogManager
+          cancelButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            ciDialog.close();
+          });
+        }
+      }, 50);
+      
       // Show loading state in the dialog content
       const loadingContent = document.createElement('div');
       loadingContent.className = 'text-center p-5';
@@ -364,6 +378,21 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       { text: 'Save', class: 'btn-primary', action: 'save' }
     ]);
+    
+    // Force refresh of event handlers with direct binding
+    setTimeout(() => {
+      // Find Back to List button and ensure it has a working event handler
+      const backButton = document.querySelector('#ciForGpDialog .btn-secondary');
+      if (backButton) {
+        // Add a direct handler to ensure it works
+        backButton.addEventListener('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          // Return to CI list view
+          showCiModal(gpId, gpName);
+        });
+      }
+    }, 50);
     
     // Show a loading message while we prepare the form
     const loadingContent = document.createElement('div');

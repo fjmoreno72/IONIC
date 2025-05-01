@@ -457,9 +457,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!key) return 'N/A';
         
         try {
-            const participants = await fetchParticipants();
-            const participant = participants.find(p => p.key === key);
-            return participant ? participant.name : key; // Return name if found, otherwise return the key
+            const response = await fetch(`/api/participants/name_by_key?key=${encodeURIComponent(key)}`);
+            const result = await response.json();
+            if (result.status === 'success') {
+                return result.name || key; // Return name if found, otherwise return the key
+            } else {
+                console.warn('Participant name not found for key:', key);
+                return key; // Return the key if not found
+            }
         } catch (error) {
             console.error('Error getting participant name:', error);
             return key; // Return the key if there's an error
@@ -2533,21 +2538,32 @@ async function updateAsset() {
             cardSubtitle.textContent = element.id || '';  
             cardBody.appendChild(cardSubtitle);
             
-            // For HW Stacks, add participant info if available
-            if (type === 'hwStacks' && element.cisParticipantID) {
-                const participantContainer = document.createElement('div');
-                participantContainer.className = 'small text-secondary mb-2';
-                participantContainer.innerHTML = `<strong>Participant:</strong> <span class="participant-name">${element.cisParticipantID}</span>`;
-                cardBody.appendChild(participantContainer);
+            // For HW Stacks, use a more condensed layout
+            if (type === 'hwStacks') {
+                // Remove the subtitle (ID) that was added earlier for HW stacks
+                cardBody.removeChild(cardSubtitle);
                 
-                // Asynchronously fetch and update the participant name
-                (async function() {
-                    const participantName = await getParticipantNameByKey(element.cisParticipantID);
-                    const nameSpan = participantContainer.querySelector('.participant-name');
-                    if (nameSpan && participantName !== element.cisParticipantID) {
-                        nameSpan.textContent = participantName;
-                    }
-                })();
+                // Add participant info if available in a more compact way
+                if (element.cisParticipantID) {
+                    const participantContainer = document.createElement('div');
+                    participantContainer.className = 'small text-secondary mb-1';
+                    participantContainer.innerHTML = `<span class="participant-name text-truncate">${element.cisParticipantID}</span>`;
+                    cardBody.appendChild(participantContainer);
+                    
+                    // Asynchronously fetch and update the participant name
+                    (async function() {
+                        const participantName = await getParticipantNameByKey(element.cisParticipantID);
+                        const nameSpan = participantContainer.querySelector('.participant-name');
+                        if (nameSpan && participantName !== element.cisParticipantID) {
+                            nameSpan.textContent = participantName;
+                        }
+                    })();
+                }
+                
+                // Make the card more compact
+                card.classList.add('compact-hw-stack');
+                cardBody.classList.add('p-2');
+                cardHeader.classList.add('mb-1');
             }
             card.appendChild(cardBody);
             cardCol.appendChild(card);

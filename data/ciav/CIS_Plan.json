@@ -112,11 +112,61 @@
                       "gpInstances": []
                     }
                   ]
+                },
+                {
+                  "name": "POP-88",
+                  "guid": "7311e9da-ad5b-49ba-9d7d-e98e4aea35bc",
+                  "id": "HW-0002",
+                  "cisParticipantID": "PAR-CIAV-000056",
+                  "assets": []
+                },
+                {
+                  "name": "POP-146",
+                  "guid": "f594b15b-ea65-4f01-9e9f-a11f1bca5718",
+                  "id": "HW-0003",
+                  "cisParticipantID": "PAR-CIAV-000061",
+                  "assets": []
+                },
+                {
+                  "name": "POP-99",
+                  "guid": "5fe6a079-1b82-42e4-a3c3-1f3e4dc95dd0",
+                  "id": "HW-0004",
+                  "cisParticipantID": "PAR-CIAV-000036",
+                  "assets": []
+                },
+                {
+                  "name": "POP-122",
+                  "guid": "bc132b08-634b-4c23-a024-4739163a1464",
+                  "id": "HW-0005",
+                  "cisParticipantID": "PAR-CIAV-000029",
+                  "assets": []
+                },
+                {
+                  "name": "POP-126",
+                  "guid": "8d0eeab1-1cbe-4c76-865a-4689fbbcba63",
+                  "id": "HW-0006",
+                  "cisParticipantID": "PAR-CIAV-000042",
+                  "assets": []
+                },
+                {
+                  "name": "POP-10012",
+                  "guid": "ad7baa78-b0cd-45b1-8951-69866aa5bf7d",
+                  "id": "HW-0007",
+                  "cisParticipantID": "PAR-CIAV-000122",
+                  "assets": []
+                },
+                {
+                  "name": "POP-X",
+                  "guid": "3d2afc8c-c60e-43c0-8d65-9bd6d604a7d3",
+                  "id": "HW-0008",
+                  "cisParticipantID": "PAR-CIAV-000120",
+                  "assets": []
                 }
               ]
             },
             {
-              "id": "CL-SECRET"
+              "id": "CL-SECRET",
+              "hwStacks": []
             },
             {
               "id": "CL-RESTRICTED"
@@ -164,6 +214,45 @@
               "id": "CL-UNCLASS"
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "Mission 2",
+      "guid": "a0a139d7-74a2-4fb9-95e2-ca6ea6d4ada8",
+      "id": "MN-0008",
+      "networkSegments": [
+        {
+          "name": "Segment A",
+          "guid": "0a3d0175-edb8-4d56-aa2a-276227ef3371",
+          "id": "NS-0005",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS",
+              "hwStacks": [
+                {
+                  "name": "POP3",
+                  "guid": "c13fa90d-46cd-4f3e-8124-69d31d94f14b",
+                  "id": "HW-0001",
+                  "cisParticipantID": "PAR-CIAV-000049",
+                  "assets": [
+                    {
+                      "name": "FFT Server",
+                      "guid": "07f6b392-079a-4184-b9bd-4f5904e51b35",
+                      "id": "AS-0001",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Segment B",
+          "guid": "337fc4d6-bb88-4b85-8195-4137962e07b9",
+          "id": "NS-0006"
         }
       ]
     }

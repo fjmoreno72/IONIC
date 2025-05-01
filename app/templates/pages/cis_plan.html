@@ -104,7 +104,7 @@
             z-index: 1;
         }
         
-        .resize-handle {
+        .resize-handle-vertical {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -116,11 +116,11 @@
             transition: background-color 0.2s;
         }
         
-        .resize-handle:hover {
+        .resize-handle-vertical:hover {
             background-color: rgba(68, 114, 196, 0.3);
         }
         
-        .resize-handle::after {
+        .resize-handle-vertical::after {
             content: "";
             position: absolute;
             top: 10px;
@@ -130,9 +130,42 @@
             background-color: var(--primary-color);
             border-radius: 1px;
         }
+        
+        .resize-handle-horizontal {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 10px;
+            cursor: row-resize;
+            z-index: 10;
+            background-color: transparent;
+            transition: background-color 0.2s;
+        }
+        
+        .resize-handle-horizontal:hover {
+            background-color: rgba(68, 114, 196, 0.3);
+        }
+        
+        .resize-handle-horizontal::after {
+            content: "";
+            position: absolute;
+            left: 10px;
+            bottom: 4px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+            border-radius: 1px;
+        }
 
         .tree-search {
             margin-bottom: 15px;
+            position: sticky;
+            top: 50px;
+            z-index: 998;
+            background-color: var(--card-background);
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
         .tree-content {
@@ -148,15 +181,26 @@
         }
 
         .elements-panel {
-            height: 50%;
+            height: 70%;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
             overflow-y: auto;
             background-color: var(--card-background);
+            position: relative;
+        }
+        
+        /* Filter elements styling */
+        .filter-elements-container {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background-color: var(--card-background);
+            padding: 0 0 10px 0;
+            margin-bottom: 10px;
         }
 
         .details-panel {
-            height: 50%;
+            height: 30%;
             padding-top: 10px;
             overflow-y: auto;
             background-color: var(--card-background);
@@ -172,6 +216,9 @@
             background-color: var(--primary-color);
             color: white;
             border-radius: 4px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
         }
         
         .panel-title h4 {
@@ -198,6 +245,21 @@
         .compact-asset-list {
             width: 100%;
             padding: 5px;
+        }
+        
+        /* Compact HW stack styling */
+        .compact-hw-stack {
+            padding: 0;
+            margin-bottom: 5px;
+        }
+        
+        .compact-hw-stack .card-body {
+            padding: 8px !important;
+        }
+        
+        .compact-hw-stack .card-title {
+            font-size: 0.95rem;
+            font-weight: 500;
         }
         
         .asset-item {
@@ -259,8 +321,8 @@
         
         <div class="cis-plan-container">
             <!-- Left side - Tree navigation -->
-            <div class="tree-container" id="treeContainer">
-                <div class="resize-handle" id="resizeHandle"></div>
+            <div id="treeContainer" class="tree-container">
+                <div id="resizeHandleVertical" class="resize-handle-vertical"></div>
                 <div class="panel-title">
                     <h4>CIS Plan Elements</h4>
                 </div>
@@ -282,19 +344,24 @@
             <!-- Right side - Elements and Details panels -->
             <div class="right-container">
                 <!-- Top panel - Elements -->
-                <div class="elements-panel">
+                <div id="elementsPanel" class="elements-panel">
+                    <div id="resizeHandleHorizontal" class="resize-handle-horizontal"></div>
+                    <div class="filter-elements-container">
                     <div class="panel-title">
                         <h4 id="elementsTitle">Elements</h4>
                         <button id="addElementButton" class="btn btn-sm btn-light">
                             <i class="fas fa-plus"></i> Add
                         </button>
                     </div>
-                    <div class="elements-search mb-3 px-3">
+                    
+                    <!-- Search/filter box for elements -->
+                    <div class="mb-3">
                         <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            <span class="input-group-text"><i class="fas fa-filter"></i></span>
                             <input type="text" id="elementsSearchInput" class="form-control" placeholder="Filter elements...">
                         </div>
                     </div>
+                </div>
                     <div id="elementsContainer">
                         <div class="wip-message">
                             <p><i class="fas fa-list-alt"></i> Elements list will be displayed here</p>
@@ -306,16 +373,16 @@
                 <!-- Bottom panel - Details -->
                 <div class="details-panel">
                     <div class="panel-title">
-                        <h4 id="detailsTitle">Details</h4>
-                        <div>
-                            <button id="editDetailButton" class="btn btn-sm btn-light me-2">
-                                <i class="fas fa-edit"></i> Edit
-                            </button>
-                            <button id="deleteDetailButton" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i> Delete
-                            </button>
-                        </div>
+                    <h4 id="detailsTitle">Details</h4>
+                    <div>
+                        <button id="editDetailButton" class="btn btn-sm btn-light" disabled>
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button id="deleteDetailButton" class="btn btn-sm btn-danger" disabled>
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
                     </div>
+                </div>
                     <div id="detailsContainer">
                         <div class="wip-message">
                             <p><i class="fas fa-info-circle"></i> Element details will be displayed here</p>
@@ -620,15 +687,16 @@
             localStorage.setItem('theme', theme);
         }
         
-        // Tree panel resizing functionality
+        // Panel resizing functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Vertical resizing for the tree panel
             const treeContainer = document.getElementById('treeContainer');
-            const resizeHandle = document.getElementById('resizeHandle');
-            let isResizing = false;
+            const resizeHandleVertical = document.getElementById('resizeHandleVertical');
+            let isResizingVertical = false;
             
-            // Initialize resizing
-            resizeHandle.addEventListener('mousedown', function(e) {
-                isResizing = true;
+            // Initialize vertical resizing
+            resizeHandleVertical.addEventListener('mousedown', function(e) {
+                isResizingVertical = true;
                 document.body.style.cursor = 'col-resize';
                 document.body.style.userSelect = 'none';
                 
@@ -640,12 +708,12 @@
                 const startWidth = treeContainer.offsetWidth;
                 
                 // Add event listeners for mouse movement and release
-                document.addEventListener('mousemove', handleMouseMove);
-                document.addEventListener('mouseup', handleMouseUp);
+                document.addEventListener('mousemove', handleVerticalMouseMove);
+                document.addEventListener('mouseup', handleVerticalMouseUp);
                 
-                // Handle mouse movement
-                function handleMouseMove(e) {
-                    if (!isResizing) return;
+                // Handle mouse movement for vertical resize
+                function handleVerticalMouseMove(e) {
+                    if (!isResizingVertical) return;
                     
                     // Calculate new width
                     let newWidth = startWidth + (e.clientX - startX);
@@ -658,15 +726,72 @@
                     treeContainer.style.width = newWidth + 'px';
                 }
                 
-                // Handle mouse release
-                function handleMouseUp() {
-                    isResizing = false;
+                // Handle mouse release for vertical resize
+                function handleVerticalMouseUp() {
+                    isResizingVertical = false;
                     document.body.style.cursor = '';
                     document.body.style.userSelect = '';
                     
                     // Remove event listeners
-                    document.removeEventListener('mousemove', handleMouseMove);
-                    document.removeEventListener('mouseup', handleMouseUp);
+                    document.removeEventListener('mousemove', handleVerticalMouseMove);
+                    document.removeEventListener('mouseup', handleVerticalMouseUp);
+                }
+            });
+            
+            // Horizontal resizing between elements and details panels
+            const elementsPanel = document.getElementById('elementsPanel');
+            const resizeHandleHorizontal = document.getElementById('resizeHandleHorizontal');
+            let isResizingHorizontal = false;
+            
+            // Initialize horizontal resizing
+            resizeHandleHorizontal.addEventListener('mousedown', function(e) {
+                isResizingHorizontal = true;
+                document.body.style.cursor = 'row-resize';
+                document.body.style.userSelect = 'none';
+                
+                // Prevent text selection during resize
+                e.preventDefault();
+                
+                // Store initial position and height
+                const startY = e.clientY;
+                const containerHeight = elementsPanel.parentElement.offsetHeight;
+                const startHeight = elementsPanel.offsetHeight;
+                
+                // Add event listeners for mouse movement and release
+                document.addEventListener('mousemove', handleHorizontalMouseMove);
+                document.addEventListener('mouseup', handleHorizontalMouseUp);
+                
+                // Handle mouse movement for horizontal resize
+                function handleHorizontalMouseMove(e) {
+                    if (!isResizingHorizontal) return;
+                    
+                    // Calculate new height
+                    let newHeight = startHeight + (e.clientY - startY);
+                    
+                    // Apply constraints (minimum 30% and maximum 90% of container)
+                    const minHeight = containerHeight * 0.3;
+                    const maxHeight = containerHeight * 0.9;
+                    if (newHeight < minHeight) newHeight = minHeight;
+                    if (newHeight > maxHeight) newHeight = maxHeight;
+                    
+                    // Set new height as percentage
+                    const newHeightPercent = (newHeight / containerHeight) * 100;
+                    elementsPanel.style.height = newHeightPercent + '%';
+                    
+                    // Adjust details panel height
+                    const detailsHeightPercent = 100 - newHeightPercent - 2; // Subtract a bit for the margin
+                    document.querySelector('.details-panel').style.height = detailsHeightPercent + '%';
+                }
+                
+                // Handle mouse release for horizontal resize
+                function handleHorizontalMouseUp() {
+                    isResizingHorizontal = false;
+                    document.body.style.cursor = '';
+                    document.body.style.userSelect = '';
+                    
+                    // Remove event listeners
+                    document.removeEventListener('mousemove', handleHorizontalMouseMove);
+                    document.removeEventListener('mouseup', handleHorizontalMouseUp);
                 }
             });
         });

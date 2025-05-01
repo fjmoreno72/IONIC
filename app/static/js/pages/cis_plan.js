@@ -1396,57 +1396,20 @@ async function updateAsset() {
     }
     
     // Delete an item (mission network, segment, etc.)
+    // Delete an item from the CIS Plan - delegates to CISApi
     async function deleteItem() {
         const type = document.getElementById('deleteItemType').value;
         const id = document.getElementById('deleteItemId').value;
         const name = document.getElementById('deleteItemName').textContent;
+        const parentId = document.getElementById('deleteItemParentId').value;
         
         console.log(`Deleting ${type} item with ID: ${id}`);
         
-        let endpoint = '';
-        
-        if (type === 'missionNetworks') {
-            endpoint = `/api/cis_plan/mission_network/${id}`;
-        }
-        else if (type === 'networkSegments') {
-            const missionNetworkId = document.getElementById('deleteItemParentId').value;
-            endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${id}`;
-        }
-        else if (type === 'securityDomains') {
-            const parentIds = document.getElementById('deleteItemParentId').value.split(',');
-            const missionNetworkId = parentIds[0];
-            const segmentId = parentIds[1];
-            endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${id}`;
-        }
-        else if (type === 'hwStacks') {
-            const parentIds = document.getElementById('deleteItemParentId').value.split(',');
-            const missionNetworkId = parentIds[0];
-            const segmentId = parentIds[1];
-            const domainId = parentIds[2];
-            endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${id}`;
-        }
-        else if (type === 'assets') {
-            const parentIds = document.getElementById('deleteItemParentId').value.split(',');
-            const missionNetworkId = parentIds[0];
-            const segmentId = parentIds[1];
-            const domainId = parentIds[2];
-            const hwStackId = parentIds[3];
-            endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${id}`;
-        }
-        
-        if (!endpoint) {
-            showToast('Unknown item type: ' + type, 'warning');
-            return;
-        }
-        
         try {
-            const response = await fetch(endpoint, {
-                method: 'DELETE'
-            });
+            // Call the API to delete the item
+            const apiResult = await CISApi.deleteItem(type, id, parentId);
             
-            const result = await response.json();
-            
-            if (response.ok) {
+            if (apiResult.success) {
                 // Properly close the modal and clear focus
                 const modalElement = document.getElementById('deleteConfirmModal');
                 const modal = bootstrap.Modal.getInstance(modalElement);
@@ -1528,10 +1491,10 @@ async function updateAsset() {
                     showToast('Item was deleted, but there was a problem updating the display', 'warning');
                 }
             } else {
-                showToast(`${result.message || 'Failed to delete item'}`, 'danger');
+                showToast(`${apiResult.message || apiResult.error || 'Failed to delete item'}`, 'danger');
             }
         } catch (error) {
-            console.error('Error deleting item:', error);
+            console.error('Error in deleteItem function:', error);
             showToast('An error occurred while deleting the item', 'danger');
         }
     }
@@ -3477,6 +3440,63 @@ const CISApi = {
             };
         } catch (error) {
             console.error('Error in addSecurityDomain API call:', error);
+            return {
+                success: false,
+                error: error.message || 'Network error occurred',
+                status: 0
+            };
+        }
+    },
+    
+    // Delete an item from the CIS Plan based on its type and IDs
+    deleteItem: async function(type, id, parentIds) {
+        try {
+            let endpoint = '';
+            
+            // Construct the appropriate endpoint based on item type
+            if (type === 'missionNetworks') {
+                endpoint = `/api/cis_plan/mission_network/${id}`;
+            }
+            else if (type === 'networkSegments') {
+                const missionNetworkId = parentIds; // For segments, parentIds is just the mission network ID
+                endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${id}`;
+            }
+            else if (type === 'securityDomains') {
+                const [missionNetworkId, segmentId] = Array.isArray(parentIds) ? parentIds : parentIds.split(',');
+                endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${id}`;
+            }
+            else if (type === 'hwStacks') {
+                const [missionNetworkId, segmentId, domainId] = Array.isArray(parentIds) ? parentIds : parentIds.split(',');
+                endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${id}`;
+            }
+            else if (type === 'assets') {
+                const [missionNetworkId, segmentId, domainId, hwStackId] = Array.isArray(parentIds) ? parentIds : parentIds.split(',');
+                endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${id}`;
+            }
+            
+            if (!endpoint) {
+                return {
+                    success: false,
+                    error: `Unknown item type: ${type}`,
+                    status: 400
+                };
+            }
+            
+            // Make the DELETE request
+            const response = await fetch(endpoint, {
+                method: 'DELETE'
+            });
+            
+            const result = await response.json();
+            
+            return {
+                success: response.ok,
+                status: response.status,
+                data: result,
+                message: result.message || ''
+            };
+        } catch (error) {
+            console.error(`Error in deleteItem API call for ${type}:`, error);
             return {
                 success: false,
                 error: error.message || 'Network error occurred',

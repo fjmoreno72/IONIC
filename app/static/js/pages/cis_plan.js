@@ -402,12 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
 
-          console.log("Edit Asset - Parent IDs:", {
-            hwStackId,
-            domainId,
-            segmentId,
-            missionNetworkId,
-          });
+          // Parent IDs for asset editing
 
           document.getElementById("editAssetHwStackId").value = hwStackId;
           document.getElementById("editAssetDomainId").value = domainId;
@@ -432,7 +427,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // The type is now stored directly in the currentElement object
         const elementType = currentElement.type;
 
-        console.log("Delete item:", currentElement.name, "type:", elementType); // Debug log
+        // Preparing to delete item
 
         document.getElementById("deleteItemName").textContent =
           currentElement.name;
@@ -622,7 +617,7 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       // Load security classifications first
       await fetchSecurityClassifications();
-      console.log("Security classifications loaded:", securityClassifications);
+      // Security classifications loaded
 
       // Then load the CIS Plan data
       await fetchCISPlanData();
@@ -637,7 +632,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function fetchParticipants() {
     try {
       const participants = await CISApi.fetchParticipants();
-      console.log("Participants loaded:", participants.length);
+      // Participants loaded
       return participants;
     } catch (error) {
       console.error("Error in fetchParticipants:", error);
@@ -681,7 +676,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       // Call the API to add the hardware stack
-      console.log("Adding HW Stack for security domain:", domainId);
+      // Adding HW Stack for security domain
       const apiResult = await CISApi.addHwStack(
         missionNetworkId,
         segmentId,
@@ -750,7 +745,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       // Call the API to update the hardware stack
-      console.log("Updating HW Stack with ID:", id);
+      // Updating HW Stack
       const apiResult = await CISApi.updateHwStack(
         missionNetworkId,
         segmentId,
@@ -798,7 +793,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Store current state if not provided
       if (!stateToRestore.missionNetworkId && currentTreeNode) {
         stateToRestore = captureCurrentTreeState(currentTreeNode);
-        console.log("Saving state before refresh:", stateToRestore);
+        // Saving state before refresh
       }
 
       // Fetch updated data
@@ -846,13 +841,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // Helper function to restore the tree state
   function restoreTreeState(state) {
     if (!state.missionNetworkId) return;
-    console.log("Restoring state after refresh:", state);
+    // Restoring state after refresh
     
     // First find and restore the mission network
     const mnNode = findTreeNode("missionNetworks", state.missionNetworkId);
     if (!mnNode) return;
     
-    console.log("Found mission network to restore:", state.missionNetworkId);
+    // Found mission network to restore
     selectAndExpandNode(mnNode);
     
     // If we have a segment to restore, find and restore it
@@ -860,7 +855,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const segNode = findTreeNodeInParent(mnNode, "networkSegments", state.segmentId);
     if (!segNode) return;
     
-    console.log("Found segment to restore:", state.segmentId);
+    // Found segment to restore
     selectAndExpandNode(segNode);
     
     // Determine which security domain ID to look for
@@ -872,9 +867,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Debug: List all security domain nodes in this segment
     const segChildren = getChildrenContainer(segNode);
     const allSDNodes = segChildren.querySelectorAll(`.tree-node[data-type="securityDomains"]`);
-    console.log(`Found ${allSDNodes.length} security domain nodes in segment ${state.segmentId}:`);
+    // Found security domain nodes in segment
     allSDNodes.forEach((node) => {
-      console.log(`- Security domain node ID: ${node.getAttribute("data-id")}`);
+      // Security domain node IDs logged
     });
     
     // Try to find the security domain node
@@ -885,10 +880,10 @@ document.addEventListener("DOMContentLoaded", function () {
       console.warn(`Could not find security domain node with ID ${domainId}`);
       sdNode = findNodeByTextContent(allSDNodes, domainId);
       if (sdNode) {
-        console.log("Found security domain by name match:", sdNode.textContent);
+        // Found security domain by name match
       }
     } else {
-      console.log("Found security domain to restore:", domainId);
+      // Found security domain to restore
     }
     
     if (!sdNode) return;
@@ -903,9 +898,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Debug: List all HW stack nodes in this domain
     const sdChildren = getChildrenContainer(sdNode);
     const allHWNodes = sdChildren.querySelectorAll(`.tree-node[data-type="hwStacks"]`);
-    console.log(`Found ${allHWNodes.length} HW stack nodes in domain ${domainId}:`);
+    // Found HW stack nodes in domain
     allHWNodes.forEach((node) => {
-      console.log(`- HW stack node ID: ${node.getAttribute("data-id")}`);
+      // HW stack node IDs logged
     });
     
     // Try to find the HW stack node
@@ -915,16 +910,16 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
     
-    console.log("Found HW stack to restore:", hwStackId);
+    // Found HW stack to restore
     selectAndExpandNode(hwNode);
     
     // If we have an asset to restore, find and restore it
     if (state.nodeType !== "assets" || !state.nodeId) return;
     
-    console.log("Looking for asset with ID:", state.nodeId);
+    // Looking for asset
     const assetNode = findTreeNodeInParent(hwNode, "assets", state.nodeId);
     if (assetNode) {
-      console.log("Found asset to restore:", state.nodeId);
+      // Found asset to restore
       assetNode.click(); // Just select the asset, no need to expand
     }
   }
@@ -1286,7 +1281,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let newAssetId = null;
         if (apiResult.data && apiResult.data.id) {
           newAssetId = apiResult.data.id;
-          console.log("New asset created with ID:", newAssetId);
+          // New asset created
         }
 
         // Create a state object that contains the full parent hierarchy
@@ -1299,7 +1294,7 @@ document.addEventListener("DOMContentLoaded", function () {
           highlightNewAsset: newAssetId,
         };
 
-        console.log("Refreshing with state:", stateToRestore);
+        // Refreshing with state
         await refreshPanelsWithState(stateToRestore);
 
         // If the new asset ID is available, try to highlight it after refresh
@@ -1328,7 +1323,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update an existing asset - delegates to CISApi
   async function updateAsset() {
-    console.log("Updating asset with current element:", currentElement);
+    // Updating asset with current element
     const idInput = document.getElementById("editAssetId");
     const nameInput = document.getElementById("editAssetName");
     const missionNetworkIdInput = document.getElementById(
@@ -1350,14 +1345,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hwStackId = hwStackId.id || "";
     }
 
-    console.log("Asset update values:", {
-      id,
-      name,
-      missionNetworkId,
-      segmentId,
-      domainId,
-      hwStackId,
-    });
+    // Asset update values
 
     if (!name) {
       showToast("Please enter an asset name", "warning");
@@ -1417,13 +1405,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Store security classifications data
-  let securityClassifications = [];
+  // Store security classifications data globally
+  // This is initialized in the fetchSecurityClassifications function
 
   // Helper function to get security classification details by ID
   function getSecurityClassificationById(id) {
     if (!id) {
-      console.log("No ID provided for classification lookup");
+      // No ID provided for classification lookup
       return {
         id: "Unknown",
         name: "Unknown Classification",
@@ -1619,7 +1607,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchCISPlanData();
       } else {
         // Log the error response for debugging
-        console.log("Error response from backend:", apiResult.data);
+        // Error response received from backend
 
         // Handle specific errors from backend
         if (
@@ -1668,7 +1656,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const name = document.getElementById("deleteItemName").textContent;
     const parentId = document.getElementById("deleteItemParentId").value;
 
-    console.log(`Deleting ${type} item with ID: ${id}`);
+    // Deleting item
 
     try {
       // Call the API to delete the item
@@ -1684,9 +1672,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Use CISUtils to build a restoration state based on entity hierarchy
         const stateToRestore = CISUtils.buildRestoreState(type, parentId);
         
-        console.log(
-          `Deleted ${type} item, will restore to parent type: ${stateToRestore.nodeType}, id: ${stateToRestore.nodeId}`
-        );
+        // Item deleted, preparing to restore parent node
         
         try {
           // Use the state-preserving refresh function
@@ -2560,14 +2546,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Load and display children of the selected node in the elements panel
   // Config-driven: Load and display children of the selected node in the elements panel
   function loadSelectedNodeChildren(nodeData, nodeType, ...parentData) {
-    console.log(
-      "Loading children for node:",
-      nodeType,
-      nodeData,
-      "Parents:",
-      parentData
-    );
-
     if (elementsContainer) {
       elementsContainer.innerHTML = "";
     }
@@ -2796,7 +2774,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // If this card represents the currently selected element, add active class
       if (selectedElementId === element.id) {
         card.classList.add("active");
-        console.log("Applied active class during render:", element.id); // Debug log
+        // Applied active class during render
       }
 
       card.setAttribute("data-type", type);
@@ -2911,7 +2889,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
 
-        console.log("Selected element:", { ...currentElement, type }); // Debug log with type
+        // Selected element for detail panel
 
         // Ensure parent references for hierarchy are populated
         if (type === "assets") {
@@ -3418,7 +3396,7 @@ function findAndSelectTreeNode(type, id) {
   );
 
   if (!targetNode) {
-    console.log(`Node not found: type=${type}, id=${id}`);
+    // Node not found in tree
     return false; // Return false to indicate failure
   }
 
@@ -3470,7 +3448,7 @@ function navigateUp() {
   // Use currentElement if available, otherwise fall back to currentTreeNode
   if (currentElement && currentElement.type) {
     type = currentElement.type;
-    console.log("Navigating up from element type:", type);
+    // Navigating up from element type
 
     // Handle based on element type
     if (type === "assets") {
@@ -3491,7 +3469,7 @@ function navigateUp() {
       }
 
       if (parentNodeId) {
-        console.log("Navigating up to HW Stack ID:", parentNodeId);
+        // Navigating up to HW Stack
         if (findAndSelectTreeNode("hwStacks", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;
@@ -3514,7 +3492,7 @@ function navigateUp() {
       }
 
       if (parentNodeId) {
-        console.log("Navigating up to Security Domain ID:", parentNodeId);
+        // Navigating up to Security Domain
         if (findAndSelectTreeNode("securityDomains", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;
@@ -3542,7 +3520,7 @@ function navigateUp() {
       }
 
       if (parentNodeId) {
-        console.log("Navigating up to Network Segment ID:", parentNodeId);
+        // Navigating up to Network Segment
         if (findAndSelectTreeNode("networkSegments", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;
@@ -3571,7 +3549,7 @@ function navigateUp() {
       }
 
       if (parentNodeId) {
-        console.log("Navigating up to Mission Network ID:", parentNodeId);
+        // Navigating up to Mission Network
         if (findAndSelectTreeNode("missionNetworks", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;

@@ -189,6 +189,9 @@
                   "assets": []
                 }
               ]
+            },
+            {
+              "id": "CL-RESTRICTED"
             }
           ]
         },
@@ -274,6 +277,12 @@
           "id": "NS-0006"
         }
       ]
+    },
+    {
+      "name": "a",
+      "guid": "3ef3cff0-448b-4b91-92f3-c00224217147",
+      "id": "MN-0009",
+      "networkSegments": []
     }
   ]
 }

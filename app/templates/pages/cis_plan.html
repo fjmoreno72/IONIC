@@ -411,10 +411,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addMissionNetworkForm">
+                    <form id="addMissionNetworkForm" autocomplete="off" novalidate data-form-type="add-mission-network">
                         <div class="mb-3">
                             <label for="addMissionNetworkName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="addMissionNetworkName" required>
+                            <input type="text" class="form-control" id="addMissionNetworkName" name="missionNetworkName_random" autocomplete="new-password" required>
                         </div>
                     </form>
                 </div>
@@ -435,11 +435,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="editMissionNetworkForm">
-                        <input type="hidden" id="editMissionNetworkId">
+                    <form id="editMissionNetworkForm" autocomplete="off" novalidate data-form-type="edit-mission-network">
+                        <input type="hidden" id="editMissionNetworkId" name="missionNetworkId_random" autocomplete="new-password">
                         <div class="mb-3">
                             <label for="editMissionNetworkName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="editMissionNetworkName" required>
+                            <input type="text" class="form-control" id="editMissionNetworkName" name="missionNetworkName_random" autocomplete="new-password" required>
                         </div>
                     </form>
                 </div>
@@ -483,11 +483,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addNetworkSegmentForm">
-                        <input type="hidden" id="addNetworkSegmentMissionNetworkId">
+                    <form id="addNetworkSegmentForm" autocomplete="off" novalidate data-form-type="add-network-segment">
+                        <input type="hidden" id="addNetworkSegmentMissionNetworkId" name="networkSegmentMissionNetworkId_random" autocomplete="new-password">
                         <div class="mb-3">
                             <label for="addNetworkSegmentName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="addNetworkSegmentName" required>
+                            <input type="text" class="form-control" id="addNetworkSegmentName" name="networkSegmentName_random" autocomplete="new-password" required>
                         </div>
                     </form>
                 </div>
@@ -508,12 +508,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="editNetworkSegmentForm">
-                        <input type="hidden" id="editNetworkSegmentId">
-                        <input type="hidden" id="editNetworkSegmentMissionNetworkId">
+                    <form id="editNetworkSegmentForm" autocomplete="off" novalidate data-form-type="edit-network-segment">
+                        <input type="hidden" id="editNetworkSegmentId" name="networkSegmentId_random" autocomplete="new-password">
+                        <input type="hidden" id="editNetworkSegmentMissionNetworkId" name="networkSegmentMissionNetworkId_random" autocomplete="new-password">
                         <div class="mb-3">
                             <label for="editNetworkSegmentName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="editNetworkSegmentName" required>
+                            <input type="text" class="form-control" id="editNetworkSegmentName" name="networkSegmentName_random" autocomplete="new-password" required>
                         </div>
                     </form>
                 </div>
@@ -534,9 +534,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addSecurityDomainForm">
-                        <input type="hidden" id="addSecurityDomainMissionNetworkId">
-                        <input type="hidden" id="addSecurityDomainSegmentId">
+                    <form id="addSecurityDomainForm" autocomplete="off" novalidate data-form-type="add-security-domain">
+                        <input type="hidden" id="addSecurityDomainMissionNetworkId" name="securityDomainMissionNetworkId_random" autocomplete="new-password">
+                        <input type="hidden" id="addSecurityDomainSegmentId" name="securityDomainSegmentId_random" autocomplete="new-password">
                         <div class="mb-3">
                             <label for="addSecurityDomainClassification" class="form-label">Security Classification</label>
                             <select class="form-select" id="addSecurityDomainClassification" required>
@@ -563,17 +563,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addHwStackForm">
-                        <input type="hidden" id="addHwStackMissionNetworkId">
-                        <input type="hidden" id="addHwStackSegmentId">
-                        <input type="hidden" id="addHwStackDomainId">
+                    <form id="addHwStackForm" autocomplete="off" novalidate data-form-type="add-hw-stack">
+                        <input type="hidden" id="addHwStackMissionNetworkId" name="hwStackMissionNetworkId_random" autocomplete="new-password">
+                        <input type="hidden" id="addHwStackSegmentId" name="hwStackSegmentId_random" autocomplete="new-password">
+                        <input type="hidden" id="addHwStackDomainId" name="hwStackDomainId_random" autocomplete="new-password">
                         <div class="mb-3">
                             <label for="addHwStackName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="addHwStackName" required>
+                            <input type="text" class="form-control" id="addHwStackName" name="hwStackName_random" autocomplete="new-password" required>
                         </div>
                         <div class="mb-3">
                             <label for="addHwStackCisParticipant" class="form-label">Participant</label>
-                            <select class="form-select" id="addHwStackCisParticipant" required>
+                            <select class="form-select" id="addHwStackCisParticipant" name="hwStackParticipant_random" autocomplete="new-password" required>
                                 <option value="" selected disabled>Select a participant...</option>
                             </select>
                         </div>
@@ -596,18 +596,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="editHwStackForm">
-                        <input type="hidden" id="editHwStackMissionNetworkId">
-                        <input type="hidden" id="editHwStackSegmentId">
-                        <input type="hidden" id="editHwStackDomainId">
-                        <input type="hidden" id="editHwStackId">
+                    <form id="editHwStackForm" autocomplete="off" novalidate data-form-type="edit-hw-stack">
+                        <input type="hidden" id="editHwStackMissionNetworkId" name="hwStackMissionNetworkId_random" autocomplete="new-password">
+                        <input type="hidden" id="editHwStackSegmentId" name="hwStackSegmentId_random" autocomplete="new-password">
+                        <input type="hidden" id="editHwStackDomainId" name="hwStackDomainId_random" autocomplete="new-password">
+                        <input type="hidden" id="editHwStackId" name="hwStackId_random" autocomplete="new-password">
                         <div class="mb-3">
                             <label for="editHwStackName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="editHwStackName" required>
+                            <input type="text" class="form-control" id="editHwStackName" name="hwStackName_random" autocomplete="new-password" required>
                         </div>
                         <div class="mb-3">
                             <label for="editHwStackCisParticipant" class="form-label">Participant</label>
-                            <select class="form-select" id="editHwStackCisParticipant" required>
+                            <select class="form-select" id="editHwStackCisParticipant" name="hwStackParticipant_random" autocomplete="new-password" required>
                                 <option value="" selected disabled>Select a participant...</option>
                             </select>
                         </div>
@@ -630,14 +630,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addAssetForm">
-                        <input type="hidden" id="addAssetMissionNetworkId">
-                        <input type="hidden" id="addAssetSegmentId">
-                        <input type="hidden" id="addAssetDomainId">
-                        <input type="hidden" id="addAssetHwStackId">
+                    <form id="addAssetForm" autocomplete="off" novalidate data-form-type="add-asset">
+                        <input type="hidden" id="addAssetMissionNetworkId" name="assetMissionNetworkId_random" autocomplete="new-password">
+                        <input type="hidden" id="addAssetSegmentId" name="assetSegmentId_random" autocomplete="new-password">
+                        <input type="hidden" id="addAssetDomainId" name="assetDomainId_random" autocomplete="new-password">
+                        <input type="hidden" id="addAssetHwStackId" name="assetHwStackId_random" autocomplete="new-password">
                         <div class="mb-3">
                             <label for="addAssetName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="addAssetName" required>
+                            <input type="text" class="form-control" id="addAssetName" name="assetName_random" autocomplete="new-password" required>
                         </div>
                     </form>
                 </div>
@@ -658,15 +658,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="editAssetForm">
-                        <input type="hidden" id="editAssetMissionNetworkId">
-                        <input type="hidden" id="editAssetSegmentId">
-                        <input type="hidden" id="editAssetDomainId">
-                        <input type="hidden" id="editAssetHwStackId">
-                        <input type="hidden" id="editAssetId">
+                    <form id="editAssetForm" autocomplete="off" novalidate data-form-type="edit-asset">
+                        <input type="hidden" id="editAssetMissionNetworkId" name="assetMissionNetworkId_random" autocomplete="new-password">
+                        <input type="hidden" id="editAssetSegmentId" name="assetSegmentId_random" autocomplete="new-password">
+                        <input type="hidden" id="editAssetDomainId" name="assetDomainId_random" autocomplete="new-password">
+                        <input type="hidden" id="editAssetHwStackId" name="assetHwStackId_random" autocomplete="new-password">
+                        <input type="hidden" id="editAssetId" name="assetId_random" autocomplete="new-password">
                         <div class="mb-3">
                             <label for="editAssetName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="editAssetName" required>
+                            <input type="text" class="form-control" id="editAssetName" name="assetName_random" autocomplete="new-password" required>
                         </div>
                     </form>
                 </div>
@@ -812,6 +812,56 @@
     <!-- Load CIS Plan JavaScript -->
     <script src="/static/js/pages/cis_utils.js"></script>
     <script src="/static/js/pages/cis_api.js"></script>
+    <!-- Custom styles for form elements and selection behavior -->
+    <style>
+        /* Prevent text selection on UI elements except where needed */
+        .tree-node, .modal-header, .modal-footer, button, .card-header, label {
+            user-select: none; /* Standard syntax */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+        }
+        
+        /* Allow selection only where needed */
+        .card-body p, .details-content, input, select, textarea {
+            user-select: text;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+        }
+        
+        /* Improve form field appearance */
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            border-color: #86b7fe;
+        }
+        
+        /* Style input fields to make them look cleaner */
+        .form-control {
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        
+        /* Highlight current element without ugly selection */
+        .element-card.active {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        /* Custom style for tree nodes to prevent text selection issues */
+        .tree-node {
+            cursor: pointer;
+            border-radius: 0.25rem;
+            transition: background-color 0.15s ease-in-out;
+        }
+        
+        .tree-node:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .tree-node.active {
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+    </style>
     <script src="/static/js/pages/cis_plan.js"></script>
 </body>
 </html>

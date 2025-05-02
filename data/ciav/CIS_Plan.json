@@ -103,6 +103,13 @@
                       "id": "AS-0015",
                       "networkInterfaces": [],
                       "gpInstances": []
+                    },
+                    {
+                      "name": "b",
+                      "guid": "1894f0e3-6d3b-44fa-be84-20720f52b831",
+                      "id": "AS-0016",
+                      "networkInterfaces": [],
+                      "gpInstances": []
                     }
                   ]
                 },
@@ -182,9 +189,6 @@
                   "assets": []
                 }
               ]
-            },
-            {
-              "id": "CL-RESTRICTED"
             }
           ]
         },

@@ -142,6 +142,58 @@ const CISUtils = {
             console.error(`Error in getParticipantNameByKey for key ${key}:`, error);
             return key;
         }
+    },
+    
+    /**
+     * Handles common Bootstrap modal operations: closing, blurring buttons, and showing toast messages.
+     * This standardizes modal handling across the application.
+     * 
+     * @param {string} modalId - The ID of the modal element to handle
+     * @param {string} buttonId - The ID of the button to blur (optional)
+     * @param {string} [successMessage] - Optional success message to show in a toast
+     * @param {string} [toastType='success'] - Toast type: 'success', 'warning', 'danger', 'info'
+     * @returns {Promise<void>} Promise that resolves after modal is handled
+     */
+    handleModal(modalId, buttonId, successMessage, toastType = 'success') {
+        return new Promise((resolve) => {
+            try {
+                // Get modal element and instance
+                const modalElement = document.getElementById(modalId);
+                if (!modalElement) {
+                    console.warn(`Modal element with ID ${modalId} not found`);
+                    resolve();
+                    return;
+                }
+                
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (!modal) {
+                    console.warn(`No Bootstrap modal instance found for ${modalId}`);
+                    resolve();
+                    return;
+                }
+                
+                // Blur button if provided
+                if (buttonId) {
+                    const button = document.getElementById(buttonId);
+                    if (button) button.blur();
+                }
+                
+                // Small delay to ensure blur takes effect before closing the modal
+                setTimeout(() => {
+                    modal.hide();
+                    
+                    // Show success message if provided
+                    if (successMessage) {
+                        this.showToast(successMessage, toastType);
+                    }
+                    
+                    resolve();
+                }, 10);
+            } catch (error) {
+                console.error('Error handling modal:', error);
+                resolve(); // Resolve anyway to prevent blocking
+            }
+        });
     }
 };
 

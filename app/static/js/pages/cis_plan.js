@@ -512,19 +512,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const apiResult = await CISApi.addHwStack(missionNetworkId, segmentId, domainId, name, cisParticipantID);
             
             if (apiResult.success) {
-                // Properly close the modal and clear focus
-                const modalElement = document.getElementById('addHwStackModal');
-                const modal = bootstrap.Modal.getInstance(modalElement);
-                
-                // Blur (unfocus) the save button before hiding the modal
-                document.getElementById('saveHwStackBtn').blur();
-                
-                // Small delay to ensure blur takes effect before closing the modal
-                setTimeout(() => {
-                    modal.hide();
-                }, 10);
-                
-                showToast(`HW Stack "${name}" created successfully!`);
+                // Use the utility function to handle modal, button, and toast in one call
+                await CISUtils.handleModal(
+                    'addHwStackModal',
+                    'saveHwStackBtn',
+                    `HW Stack "${name}" created successfully!`
+                );
                 
                 // Refresh the UI with the proper state
                 await refreshPanelsWithState({
@@ -573,19 +566,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const apiResult = await CISApi.updateHwStack(missionNetworkId, segmentId, domainId, id, name, cisParticipantID);
             
             if (apiResult.success) {
-                // Properly close the modal and clear focus
-                const modalElement = document.getElementById('editHwStackModal');
-                const modal = bootstrap.Modal.getInstance(modalElement);
-                
-                // Blur (unfocus) the update button before hiding the modal
-                document.getElementById('updateHwStackBtn').blur();
-                
-                // Small delay to ensure blur takes effect before closing the modal
-                setTimeout(() => {
-                    modal.hide();
-                }, 10);
-                
-                showToast(`HW Stack updated successfully!`);
+                // Use the utility function to handle modal, button, and toast in one call
+                await CISUtils.handleModal(
+                    'editHwStackModal',
+                    'updateHwStackBtn',
+                    `HW Stack updated successfully!`
+                );
                 
                 // Refresh the UI with the proper state
                 await refreshPanelsWithState({
@@ -820,23 +806,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const apiResult = await CISApi.addMissionNetwork(name);
             
             if (apiResult.success) {
-                // Properly close the modal and clear focus
-                const modalElement = document.getElementById('addMissionNetworkModal');
-                const modal = bootstrap.Modal.getInstance(modalElement);
-                
-                // Blur (unfocus) the save button before hiding the modal
-                document.getElementById('saveMissionNetworkBtn').blur();
-                
-                // Small delay to ensure blur takes effect before closing the modal
-                setTimeout(() => {
-                    modal.hide();
-                }, 10);
-                
                 // Clear the form
                 nameInput.value = '';
                 
-                // Show success message
-                showToast(`Mission Network "${name}" created successfully!`);
+                // Use the utility function to handle modal, button, and toast in one call
+                await CISUtils.handleModal(
+                    'addMissionNetworkModal',
+                    'saveMissionNetworkBtn',
+                    `Mission Network "${name}" created successfully!`
+                );
                 
                 // Refresh the data
                 fetchCISPlanData();
@@ -1040,23 +1018,15 @@ async function addAsset() {
         const apiResult = await CISApi.addAsset(missionNetworkId, segmentId, domainId, hwStackId, name);
         
         if (apiResult.success) {
-            // Properly close the modal and clear focus
-            const modalElement = document.getElementById('addAssetModal');
-            const modal = bootstrap.Modal.getInstance(modalElement);
-            
-            // Blur (unfocus) the save button before hiding the modal
-            document.getElementById('saveAssetBtn').blur();
-            
-            // Small delay to ensure blur takes effect before closing the modal
-            setTimeout(() => {
-                modal.hide();
-            }, 10);
-            
             // Clear the form
             nameInput.value = '';
             
-            // Show success message
-            showToast(`Asset "${name}" created successfully!`);
+            // Use the utility function to handle modal, button, and toast in one call
+            await CISUtils.handleModal(
+                'addAssetModal',
+                'saveAssetBtn',
+                `Asset "${name}" created successfully!`
+            );
             
             // Get the ID of the new asset from the response if available
             let newAssetId = null;
@@ -1145,20 +1115,12 @@ async function updateAsset() {
         const apiResult = await CISApi.updateAsset(missionNetworkId, segmentId, domainId, hwStackId, id, name);
         
         if (apiResult.success) {
-            // Properly close the modal and clear focus
-            const modalElement = document.getElementById('editAssetModal');
-            const modal = bootstrap.Modal.getInstance(modalElement);
-            
-            // Blur (unfocus) the update button before hiding the modal
-            document.getElementById('updateAssetBtn').blur();
-            
-            // Small delay to ensure blur takes effect before closing the modal
-            setTimeout(() => {
-                modal.hide();
-            }, 10);
-            
-            // Show success message
-            showToast(`Asset updated successfully!`);
+            // Use the utility function to handle modal, button, and toast in one call
+            await CISUtils.handleModal(
+                'editAssetModal',
+                'updateAssetBtn',
+                `Asset updated successfully!`
+            );
             
             // Update the current element with the new name
             if (currentElement && currentElement.id === id) {

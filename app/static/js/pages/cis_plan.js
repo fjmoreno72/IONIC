@@ -2812,177 +2812,151 @@ document.addEventListener("DOMContentLoaded", function () {
             );
           }
         }
-      });
     });
+  });
+}
+
+// Render assets under a hardware stack
+function renderAssets(
+  container,
+  assets,
+  parentStack,
+  parentDomain,
+  parentSegment,
+  parentMissionNetwork
+) {
+  if (!assets || assets.length === 0) {
+    return;
   }
 
-  // Render assets under a hardware stack
-  function renderAssets(
-    container,
-    assets,
-    parentStack,
-    parentDomain,
-    parentSegment,
-    parentMissionNetwork
-  ) {
-    if (!assets || assets.length === 0) {
-      return;
-    }
+  // Create a container for the assets
+  const assetsContainer = document.createElement("div");
+  container.appendChild(assetsContainer);
 
-    // Create a container for the assets
-    const assetsContainer = document.createElement("div");
-    container.appendChild(assetsContainer);
+  // For each asset, create a tree node
+  assets.forEach((asset) => {
+    // Create a wrapper for the asset and its children to ensure proper visual nesting
+    const assetWrapper = document.createElement("div");
+    assetWrapper.className = "asset-wrapper";
+    assetsContainer.appendChild(assetWrapper);
+    
+    // Create the asset node
+    const assetNode = createTreeNode(
+      "assets",
+      asset.name,
+      asset.id,
+      asset.guid
+    );
 
-    // For each asset, create a tree node
-    assets.forEach((asset) => {
-      const assetNode = createTreeNode(
-        "assets",
-        asset.name,
-        asset.id,
-        asset.guid
-      );
+    // Store parent references as data attributes - ensure we store ID strings, not objects
+    assetNode.setAttribute("data-parent-stack", typeof parentStack === 'object' ? parentStack.id : parentStack);
+    assetNode.setAttribute("data-parent-domain", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
+    assetNode.setAttribute("data-parent-segment", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
+    assetNode.setAttribute("data-parent-mission-network", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
+    
+    // Store IDs directly for easier access
+    assetNode.setAttribute("data-parent-stack-id", typeof parentStack === 'object' ? parentStack.id : parentStack);
+    assetNode.setAttribute("data-parent-domain-id", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
+    assetNode.setAttribute("data-parent-segment-id", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
+    assetNode.setAttribute("data-parent-mission-network-id", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
 
-      // Store parent references as data attributes - ensure we store ID strings, not objects
-      assetNode.setAttribute("data-parent-stack", typeof parentStack === 'object' ? parentStack.id : parentStack);
-      assetNode.setAttribute("data-parent-domain", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
-      assetNode.setAttribute("data-parent-segment", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
-      assetNode.setAttribute(
-        "data-parent-mission-network",
-        typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork
-      );
+    // Store these references in asset object too for when selected from the elements panel
+    asset.parentStack = parentStack;
+    asset.parentDomain = parentDomain;
+    asset.parentSegment = parentSegment;
+    asset.parentMissionNetwork = parentMissionNetwork;
+    asset.hwStackId = parentStack; // Ensure hwStackId is always available
+    
+    // Add the asset node first, so child elements appear after it
+    assetWrapper.appendChild(assetNode);
+    
+    // Create container for children (network interfaces, GP instances)
+    const childrenContainer = document.createElement("div");
+    childrenContainer.className = "ms-4"; // Margin-start for indentation
+    childrenContainer.style.display = "none"; // Initially collapsed
+    childrenContainer.setAttribute("data-parent", asset.id);
+    assetWrapper.appendChild(childrenContainer); // Add to the wrapper after the asset node
+
+    // Unified click handler for selection and expand/collapse
+    assetNode.onclick = function(e) {
+      e.stopPropagation();
       
-      // Also store these as explicit ID attributes for easier access
-      assetNode.setAttribute("data-parent-stack-id", typeof parentStack === 'object' ? parentStack.id : parentStack);
-      assetNode.setAttribute("data-parent-domain-id", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
-      assetNode.setAttribute("data-parent-segment-id", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
-      assetNode.setAttribute("data-parent-mission-network-id", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
-
-      // Store these references in asset object too for when selected from the elements panel
-      // Make sure all references are string IDs, not objects
-      asset.parentStack = parentStack;
-      asset.parentDomain = parentDomain;
-      asset.parentSegment = parentSegment;
-      asset.parentMissionNetwork = parentMissionNetwork;
-      // We also store the hwStackId directly to ensure it's always available
-      asset.hwStackId = parentStack;
-
-      // Add click event for the asset node
-      assetNode.addEventListener("click", function (e) {
-        e.stopPropagation(); // Prevent event bubbling
-
-        // Remove active class from all nodes
-        document.querySelectorAll(".tree-node.active").forEach((node) => {
-          node.classList.remove("active");
-        });
-
-        // Add active class to this node
-        this.classList.add("active");
-
-        // Update currentTreeNode
-        currentTreeNode = this;
-
-        // Update the elements panel with the children of this node
-        loadSelectedNodeChildren(
-          asset,
-          "assets",
-          { id: parentStack },
-          { id: parentDomain },
-          { id: parentSegment },
-          { id: parentMissionNetwork }
-        );
-
-        // Enable the "Add Element" button
-        if (addElementButton) addElementButton.disabled = false;
+      // Track if this node was already active before this click
+      const wasActive = this.classList.contains("active");
+      
+      // Handle selection
+      document.querySelectorAll(".tree-node.active").forEach((node) => {
+        node.classList.remove("active");
       });
-
-      assetsContainer.appendChild(assetNode);
-
-      // Create a child container for network interfaces and GP instances
-      const assetChildrenContainer = document.createElement("div");
-      assetChildrenContainer.className = "tree-node-children ms-4";
-      assetChildrenContainer.style.display = "none"; // Initially collapsed
-      assetChildrenContainer.setAttribute("data-parent", asset.id);
-      assetsContainer.appendChild(assetChildrenContainer);
+      this.classList.add("active");
+      currentTreeNode = this;
       
-      // Modify the existing click event to add expand/collapse functionality
-      // We need to preserve existing click behavior while adding expand/collapse
-      const originalClickHandler = assetNode.onclick;
-      assetNode.onclick = function(e) {
-        e.stopPropagation();
-        
-        // Call original handler if it exists
-        if (originalClickHandler) {
-          originalClickHandler.call(this, e);
-        }
-        
-        // Add selection behavior (copied from the standard click handler)
-        document.querySelectorAll(".tree-node.active").forEach((node) => {
-          node.classList.remove("active");
-        });
-        this.classList.add("active");
-        currentTreeNode = this;
-        
-        // Load the elements panel with asset children
-        loadSelectedNodeChildren(
-          asset,
-          "assets",
-          { id: parentStack },
-          { id: parentDomain },
-          { id: parentSegment },
-          { id: parentMissionNetwork }
-        );
-        
-        // Enable the "Add Element" button
-        if (addElementButton) addElementButton.disabled = false;
-        
-        // Now handle expand/collapse
-        // Check if clicking on the toggle icon specifically
-        const isExpandIconClick = e.target.closest('.tree-toggle');
-        
-        // Toggle children container visibility when clicking the icon
-        if (isExpandIconClick) {
-          const isExpanded = assetChildrenContainer.style.display !== "none";
-          assetChildrenContainer.style.display = isExpanded ? "none" : "block";
+      // Update elements panel
+      loadSelectedNodeChildren(
+        asset,
+        "assets",
+        { id: parentStack },
+        { id: parentDomain },
+        { id: parentSegment },
+        { id: parentMissionNetwork }
+      );
+      
+      // Enable the "Add Element" button
+      if (addElementButton) addElementButton.disabled = false;
+      
+      // Handle expand/collapse
+      const isExpandIconClick = e.target.closest('.tree-toggle');
+      if (isExpandIconClick || !wasActive) {
+        // Find the children container in our asset wrapper
+        const childContainer = this.parentElement.querySelector(`div[data-parent="${asset.id}"]`);
+        if (childContainer) {
+          const isExpanded = childContainer.style.display !== "none";
+          const shouldExpand = isExpandIconClick ? !isExpanded : true;
           
-          // Toggle the expand/collapse icon
+          // Toggle visibility
+          childContainer.style.display = shouldExpand ? "block" : "none";
+          
+          // Update icon
           const icon = this.querySelector(".tree-toggle");
           if (icon) {
-            icon.innerHTML = isExpanded
-              ? '<i class="fas fa-chevron-right"></i>'
-              : '<i class="fas fa-chevron-down"></i>';
+            icon.innerHTML = shouldExpand
+              ? '<i class="fas fa-chevron-down"></i>'
+              : '<i class="fas fa-chevron-right"></i>';
           }
           
-          // If expanding and no children yet, render them
-          if (!isExpanded && assetChildrenContainer.children.length === 0) {
-            // Recursively render network interfaces if any
-            renderNetworkInterfaces(
-              assetChildrenContainer,
-              asset.networkInterfaces || [],
-              asset.id,
-              parentStack,
-              parentDomain,
-              parentSegment,
-              parentMissionNetwork
-            );
-
-            // Recursively render GP instances if any
-            renderGPInstances(
-              assetChildrenContainer,
-              asset.gpInstances || [],
-              asset.id,
-              parentStack,
-              parentDomain,
-              parentSegment,
-              parentMissionNetwork
-            );
+          // Lazy load children if needed
+          if (shouldExpand && childContainer.children.length === 0) {
+            // Network interfaces
+            if (asset.networkInterfaces && asset.networkInterfaces.length > 0) {
+              renderNetworkInterfaces(
+                childContainer,
+                asset.networkInterfaces,
+                asset.id,
+                parentStack,
+                parentDomain,
+                parentSegment,
+                parentMissionNetwork
+              );
+            }
+            
+            // GP instances
+            if (asset.gpInstances && asset.gpInstances.length > 0) {
+              renderGPInstances(
+                childContainer,
+                asset.gpInstances,
+                asset.id,
+                parentStack,
+                parentDomain,
+                parentSegment,
+                parentMissionNetwork
+              );
+            }
           }
         }
-      };
-      
-      // Add the asset node to the DOM
-      assetsContainer.appendChild(assetNode);
-    });
-  }
+      }
+    };
+  });
+}
 
   // Render network interfaces under an asset
   function renderNetworkInterfaces(
@@ -3060,6 +3034,14 @@ document.addEventListener("DOMContentLoaded", function () {
         gpInstance.guid,
         "fa-cogs"
       );
+      
+      // Set parent reference data attributes
+      gpInstanceNode.setAttribute("data-parent-asset", typeof parentAsset === 'object' ? parentAsset.id : parentAsset);
+      gpInstanceNode.setAttribute("data-parent-stack", typeof parentStack === 'object' ? parentStack.id : parentStack);
+      gpInstanceNode.setAttribute("data-parent-domain", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
+      gpInstanceNode.setAttribute("data-parent-segment", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
+      gpInstanceNode.setAttribute("data-parent-mission-network", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
+      
       container.appendChild(gpInstanceNode);
 
       // Add click event to GP instance node

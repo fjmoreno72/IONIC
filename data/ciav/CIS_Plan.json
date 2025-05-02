@@ -49,6 +49,31 @@
                               "guid": "822e99bf-91db-44dc-aa43-0d9e080ef71a"
                             }
                           ]
+                        },
+                        {
+                          "name": "NET-Y",
+                          "guid": "9d8cdbeb-1b21-4d91-a459-022b6dcb0a27",
+                          "id": "NI-0002",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "54d88f24-7fd2-4c24-9758-67f18816df4b"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "68d24944-f813-40dc-8f84-2a9caf07733c"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "d723399c-e5b5-4790-8cfa-a41ab837aab3"
+                            }
+                          ]
                         }
                       ],
                       "gpInstances": []
@@ -57,7 +82,33 @@
                       "name": "Asset 2",
                       "guid": "c2460565-06c0-4874-b60b-3b31b61a1b26",
                       "id": "AS-0002",
-                      "networkInterfaces": [],
+                      "networkInterfaces": [
+                        {
+                          "name": "3X",
+                          "guid": "8530b8af-0772-4966-8b63-eb04a14b8bb8",
+                          "id": "NI-0001",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "8476aa60-807b-4b00-9bc0-f99dd89b0c33"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "2da9bac0-15a2-4d3e-8150-5f6ea8b5545c"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "57730008-6be6-405d-bb71-36096b015c18"
+                            }
+                          ]
+                        }
+                      ],
                       "gpInstances": []
                     },
                     {

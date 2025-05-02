@@ -226,6 +226,91 @@ const CISUtils = {
       }
     });
   },
+  /**
+   * Gets the parent entity type for a given entity type using ENTITY_CHILDREN mapping.
+   *
+   * @param {string} entityType - The entity type to find the parent for
+   * @returns {string|null} The parent entity type or null if no parent
+   */
+  getParentEntityType: function(entityType) {
+    // Root has no parent
+    if (entityType === 'cisplan' || !entityType) return null;
+    
+    // Loop through all entity types to find the one that contains the given type as a child
+    for (const [parentType, children] of Object.entries(ENTITY_CHILDREN)) {
+      for (const child of children) {
+        if (child.type === entityType) return parentType;
+      }
+    }
+    return null;
+  },
+  
+  /**
+   * Builds a complete entity path from root to the given entity type.
+   *
+   * @param {string} entityType - The entity type to build the path for
+   * @returns {Array<string>} Array of entity types, ordered from root to the specified entity
+   */
+  getEntityPath: function(entityType) {
+    const path = [];
+    let currentType = entityType;
+    
+    while (currentType) {
+      path.unshift(currentType); // Add to beginning of array
+      currentType = this.getParentEntityType(currentType);
+    }
+    
+    // Add root (cisplan) if not already there
+    if (path.length > 0 && path[0] !== 'cisplan') {
+      path.unshift('cisplan');
+    }
+    
+    return path;
+  },
+  
+  /**
+   * Builds a state object for tree state restoration based on entity type and parent references.
+   * This is used to properly restore UI state after CRUD operations.
+   *
+   * @param {string} entityType - The type of entity (e.g. 'assets', 'hwStacks')
+   * @param {string|Array} parentRefs - String of comma-separated IDs or array of IDs
+   * @returns {Object} State object for use with refreshPanelsWithState
+   */
+  buildRestoreState: function(entityType, parentRefs) {
+    // Convert parent references to array if it's a string
+    const parentIds = Array.isArray(parentRefs) ? parentRefs : 
+                     (typeof parentRefs === 'string' && parentRefs.includes(',')) ? 
+                       parentRefs.split(',') : [parentRefs];
+    
+    // Get parent entity type
+    const parentType = this.getParentEntityType(entityType);
+    if (!parentType || parentType === 'cisplan') return {};
+    
+    // Create state object
+    const state = {
+      nodeType: parentType,
+      nodeId: null
+    };
+    
+    // Map indices to type-specific properties
+    // The order is: missionNetworkId (0), segmentId (1), domainId (2), hwStackId (3), assetId (4)
+    const entityPath = this.getEntityPath(entityType);
+    const parentIndex = entityPath.indexOf(parentType);
+    
+    if (parentIndex >= 0) {
+      // The pattern is that parent references are stored in reverse order
+      // (mission network first, then segment, etc.)
+      state.nodeId = parentIds[entityPath.indexOf(parentType)];
+      
+      // Add appropriate parent references needed for restoration
+      if (parentIds[0]) state.missionNetworkId = parentIds[0];
+      if (parentIds[1] && parentType !== 'missionNetworks') state.segmentId = parentIds[1];
+      if (parentIds[2] && ['securityDomains', 'hwStacks', 'assets'].includes(parentType)) state.domainId = parentIds[2];
+      if (parentIds[3] && parentType === 'hwStacks') state.hwStackId = parentIds[3];
+    }
+    
+    return state;
+  }
 };
 
 // Export the namespace and constants

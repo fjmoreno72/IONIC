@@ -1675,90 +1675,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const apiResult = await CISApi.deleteItem(type, id, parentId);
 
       if (apiResult.success) {
-        // Properly close the modal and clear focus
-        const modalElement = document.getElementById("deleteConfirmModal");
-        const modal = bootstrap.Modal.getInstance(modalElement);
-
-        // Blur (unfocus) the confirm button before hiding the modal
-        document.getElementById("confirmDeleteBtn").blur();
-
-        // Small delay to ensure blur takes effect before closing the modal
-        setTimeout(() => {
-          modal.hide();
-        }, 10);
-
+        // Close the modal using CISUtils helper for consistent modal handling
+        closeDeleteModal();
+        
         // Show success message
         showToast(`${name} deleted successfully!`);
-
-        // Store parent info before refreshing
-        let parentId = "";
-        let parentType = "";
-        let missionNetworkId = "";
-        let segmentId = "";
-        let domainId = "";
-
-        if (type === "securityDomains") {
-          // For security domains, we want to restore the segment selection
-          const parentIds = document
-            .getElementById("deleteItemParentId")
-            .value.split(",");
-          parentId = parentIds[1]; // Use segment ID
-          missionNetworkId = parentIds[0]; // Store mission network ID
-          parentType = "networkSegments";
-        } else if (type === "hwStacks") {
-          // For HW stacks, we want to restore the security domain selection
-          const parentIds = document
-            .getElementById("deleteItemParentId")
-            .value.split(",");
-          parentId = parentIds[2]; // Use domain ID
-          segmentId = parentIds[1]; // Store segment ID
-          missionNetworkId = parentIds[0]; // Store mission network ID
-          parentType = "securityDomains";
-        } else if (type === "assets") {
-          // For assets, we want to restore the HW stack selection
-          const parentIds = document
-            .getElementById("deleteItemParentId")
-            .value.split(",");
-          parentId = parentIds[3]; // Use HW stack ID
-          domainId = parentIds[2]; // Store domain ID
-          segmentId = parentIds[1]; // Store segment ID
-          missionNetworkId = parentIds[0]; // Store mission network ID
-          parentType = "hwStacks";
-        } else if (type === "networkSegments") {
-          // For network segments, we want to restore the mission network selection
-          parentId = document.getElementById("deleteItemParentId").value;
-          parentType = "missionNetworks";
-        }
-
+        
+        // Use CISUtils to build a restoration state based on entity hierarchy
+        const stateToRestore = CISUtils.buildRestoreState(type, parentId);
+        
         console.log(
-          `Deleted ${type} item, will restore to parent type: ${parentType}, id: ${parentId}`
+          `Deleted ${type} item, will restore to parent type: ${stateToRestore.nodeType}, id: ${stateToRestore.nodeId}`
         );
-
-        // Create a state object that will be used to restore the UI state
-        const stateToRestore = {
-          nodeType: parentType,
-          nodeId: parentId,
-          missionNetworkId: missionNetworkId,
-        };
-
-        // If we're restoring to a network segment, we need to include the segment ID
-        if (parentType === "networkSegments") {
-          stateToRestore.segmentId = parentId;
-        }
-
-        // If we're restoring to a security domain or HW stack, include the segment ID
-        if (
-          segmentId &&
-          (parentType === "securityDomains" || parentType === "hwStacks")
-        ) {
-          stateToRestore.segmentId = segmentId;
-        }
-
-        // If we're restoring to an HW stack, include the domain ID
-        if (domainId && parentType === "hwStacks") {
-          stateToRestore.domainId = domainId;
-        }
-
+        
         try {
           // Use the state-preserving refresh function
           await refreshPanelsWithState(stateToRestore);
@@ -1781,9 +1710,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /**
+   * Helper function to close the delete confirmation modal
+   * This encapsulates the modal closing logic
+   */
+  function closeDeleteModal() {
+    const modalElement = document.getElementById("deleteConfirmModal");
+    const modal = bootstrap.Modal.getInstance(modalElement);
+
+    // Blur (unfocus) the confirm button before hiding the modal
+    document.getElementById("confirmDeleteBtn").blur();
+
+    // Small delay to ensure blur takes effect before closing the modal
+    setTimeout(() => {
+      modal.hide();
+    }, 10);
+  }
+
   // Fetch CIS Plan data from the API
   // Fetch CIS Plan tree data - delegates to CISApi
   async function fetchCISPlanData() {
+    // ... (rest of the code remains the same)
     const treeData = await CISApi.fetchCISPlanData();
 
     if (treeData) {

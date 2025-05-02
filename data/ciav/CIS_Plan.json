@@ -24,7 +24,33 @@
                       "name": "Asset 1",
                       "guid": "959982ca-b5f8-4aa6-991c-f933dd899ad3",
                       "id": "AS-0001",
-                      "networkInterfaces": [],
+                      "networkInterfaces": [
+                        {
+                          "name": "NET-X",
+                          "guid": "64894cc0-e44f-4bf2-9fce-6aab1e09403e",
+                          "id": "NI-0001",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "192.168.1.1",
+                              "guid": "30c24c89-eb70-4ae8-be42-923ddf7b6bb3"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "5f4f7d9d-0895-4cac-a2b1-2f6bd5943542"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "tonto.dot.com",
+                              "guid": "822e99bf-91db-44dc-aa43-0d9e080ef71a"
+                            }
+                          ]
+                        }
+                      ],
                       "gpInstances": []
                     },
                     {

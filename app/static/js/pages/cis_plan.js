@@ -70,6 +70,14 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("updateAssetBtn")
     .addEventListener("click", updateAsset);
 
+  // Add event listeners for network interface buttons
+  document.getElementById("saveNetworkInterfaceBtn").addEventListener("click", addNetworkInterface);
+  document.getElementById("updateNetworkInterfaceBtn").addEventListener("click", updateNetworkInterface);
+
+  // Add event listeners for GP container buttons
+  document.getElementById("saveGPContainerBtn").addEventListener("click", addGPContainer);
+  document.getElementById("updateGPContainerBtn").addEventListener("click", updateGPContainer);
+
   // Add Enter key save functionality to all modals
   // Function to add Enter key handler to a modal
   function addEnterKeyHandler(modalId, saveFunction) {
@@ -103,6 +111,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Assets
   addEnterKeyHandler("addAssetModal", addAsset);
   addEnterKeyHandler("editAssetModal", updateAsset);
+
+  // Network Interfaces
+  addEnterKeyHandler("addNetworkInterfaceModal", addNetworkInterface);
+  addEnterKeyHandler("editNetworkInterfaceModal", updateNetworkInterface);
+
+  // GP Containers
+  addEnterKeyHandler("addGPContainerModal", addGPContainer);
+  addEnterKeyHandler("editGPContainerModal", updateGPContainer);
 
   // Get references to DOM elements
   const treeSearchInput = document.getElementById("treeSearchInput");
@@ -237,6 +253,154 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("addAssetModal")
         );
         addModal.show();
+      }
+      // Asset selected - add Network Interface or GP Container
+      else if (
+        currentTreeNode &&
+        currentTreeNode.getAttribute("data-type") === "assets"
+      ) {
+        // Create a split panel with options for Network Interface and GP Container
+        const modalContent = document.createElement("div");
+        modalContent.className = "container";
+        modalContent.innerHTML = `
+          <div class="row">
+            <div class="col-md-6 border-end">
+              <div class="p-3 text-center">
+                <img src="${getElementIcon('networkInterfaces')}" width="48" height="48" alt="Network Interface">
+                <h5 class="mt-3">Network Interface</h5>
+                <p class="small text-muted">Add a new network interface to this asset</p>
+                <button class="btn btn-primary btn-add-network-interface">Add Network Interface</button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 text-center">
+                <img src="${getElementIcon('gpInstances')}" width="48" height="48" alt="GP Container">
+                <h5 class="mt-3">Generic Product</h5>
+                <p class="small text-muted">Add a new generic product to this asset</p>
+                <button class="btn btn-primary btn-add-gp-container">Add Generic Product</button>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        // Create a modal to display the options
+        const modalDialog = document.createElement("div");
+        modalDialog.className = "modal fade";
+        modalDialog.id = "assetAddOptionsModal";
+        modalDialog.setAttribute("tabindex", "-1");
+        modalDialog.setAttribute("aria-labelledby", "assetAddOptionsModalLabel");
+        modalDialog.setAttribute("aria-hidden", "true");
+        
+        modalDialog.innerHTML = `
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="assetAddOptionsModalLabel">Add to ${currentTreeNode.querySelector('.node-text').textContent}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Content will be inserted here -->
+              </div>
+            </div>
+          </div>
+        `;
+        
+        // Add the modal to the document if it doesn't exist
+        if (!document.getElementById("assetAddOptionsModal")) {
+          document.body.appendChild(modalDialog);
+        } else {
+          document.getElementById("assetAddOptionsModal").querySelector('.modal-body').innerHTML = '';
+        }
+        
+        // Add the content to the modal
+        document.getElementById("assetAddOptionsModal").querySelector('.modal-body').appendChild(modalContent);
+        
+        // Show the modal
+        const optionsModal = new bootstrap.Modal(document.getElementById("assetAddOptionsModal"));
+        optionsModal.show();
+        
+        // Add event listeners to the buttons
+        document.querySelector('.btn-add-network-interface').addEventListener('click', function() {
+          // Hide the options modal
+          optionsModal.hide();
+          
+          // Get the parent information - ensure we're getting string values
+          const mn = currentTreeNode.getAttribute("data-parent-mission-network");
+          const seg = currentTreeNode.getAttribute("data-parent-segment");
+          const dom = currentTreeNode.getAttribute("data-parent-domain");
+          const stack = currentTreeNode.getAttribute("data-parent-stack");
+          const asset = currentTreeNode.getAttribute("data-id");
+          
+          console.log('DEBUG - Raw parent values:', { 
+            mn: mn, 
+            seg: seg, 
+            dom: dom, 
+            stack: stack, 
+            asset: asset, 
+            mnType: typeof mn,
+            segType: typeof seg,
+            domType: typeof dom,
+            stackType: typeof stack,
+            assetType: typeof asset
+          });
+          
+          // Extract actual IDs from the parent tree nodes
+          // Special handling for '[object Object]' strings
+          let mnId = currentTreeNode.getAttribute("data-parent-mission-network-id") || "MN-0001";
+          let segId = currentTreeNode.getAttribute("data-parent-segment-id") || "SEG-0001";
+          let domId = currentTreeNode.getAttribute("data-parent-domain-id") || "DOM-0001";
+          let stackId = currentTreeNode.getAttribute("data-parent-stack-id") || "HWS-0001";
+          let assetId = asset;
+          
+          console.log('DEBUG - Processed parent IDs from direct ID attributes:', { 
+            mnId, 
+            segId, 
+            domId, 
+            stackId, 
+            assetId 
+          });
+          
+          // Populate the hidden fields in the add network interface modal
+          document.getElementById("addNetworkInterfaceMissionNetworkId").value = mnId;
+          document.getElementById("addNetworkInterfaceSegmentId").value = segId;
+          document.getElementById("addNetworkInterfaceDomainId").value = domId;
+          document.getElementById("addNetworkInterfaceHwStackId").value = stackId;
+          document.getElementById("addNetworkInterfaceAssetId").value = assetId;
+          
+          // Show the add network interface modal
+          const addModal = new bootstrap.Modal(document.getElementById("addNetworkInterfaceModal"));
+          addModal.show();
+        });
+        
+        document.querySelector('.btn-add-gp-container').addEventListener('click', function() {
+          // Hide the options modal
+          optionsModal.hide();
+          
+          // Get the parent information - ensure we're getting string values
+          const mn = currentTreeNode.getAttribute("data-parent-mission-network");
+          const seg = currentTreeNode.getAttribute("data-parent-segment");
+          const dom = currentTreeNode.getAttribute("data-parent-domain");
+          const stack = currentTreeNode.getAttribute("data-parent-stack");
+          const asset = currentTreeNode.getAttribute("data-id");
+          
+          // Ensure we have string values, not objects
+          const mnId = typeof mn === 'object' ? mn.id || mn : mn;
+          const segId = typeof seg === 'object' ? seg.id || seg : seg;
+          const domId = typeof dom === 'object' ? dom.id || dom : dom;
+          const stackId = typeof stack === 'object' ? stack.id || stack : stack;
+          const assetId = typeof asset === 'object' ? asset.id || asset : asset;
+          
+          // Populate the hidden fields in the add GP container modal
+          document.getElementById("addGPContainerMissionNetworkId").value = mnId;
+          document.getElementById("addGPContainerSegmentId").value = segId;
+          document.getElementById("addGPContainerDomainId").value = domId;
+          document.getElementById("addGPContainerHwStackId").value = stackId;
+          document.getElementById("addGPContainerAssetId").value = assetId;
+          
+          // Show the add GP container modal
+          const addModal = new bootstrap.Modal(document.getElementById("addGPContainerModal"));
+          addModal.show();
+        });
       }
       // Other node types would be handled here as the feature expands
     });
@@ -413,6 +577,47 @@ document.addEventListener("DOMContentLoaded", function () {
           const editModal = new bootstrap.Modal(
             document.getElementById("editAssetModal")
           );
+          editModal.show();
+        } else if (type === "networkInterfaces") {
+          // Populate and show edit Network Interface modal
+          document.getElementById("editNetworkInterfaceId").value = currentElement.id;
+          document.getElementById("editNetworkInterfaceName").value = currentElement.name;
+
+          // Store parent IDs for the API call
+          const assetId = currentTreeNode.getAttribute("data-parent-asset") || currentElement.parentAsset;
+          const hwStackId = currentTreeNode.getAttribute("data-parent-stack") || currentElement.parentStack;
+          const domainId = currentTreeNode.getAttribute("data-parent-domain") || currentElement.parentDomain;
+          const segmentId = currentTreeNode.getAttribute("data-parent-segment") || currentElement.parentSegment;
+          const missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network") || currentElement.parentMissionNetwork;
+
+          document.getElementById("editNetworkInterfaceAssetId").value = assetId;
+          document.getElementById("editNetworkInterfaceHwStackId").value = hwStackId;
+          document.getElementById("editNetworkInterfaceDomainId").value = domainId;
+          document.getElementById("editNetworkInterfaceSegmentId").value = segmentId;
+          document.getElementById("editNetworkInterfaceMissionNetworkId").value = missionNetworkId;
+
+          const editModal = new bootstrap.Modal(document.getElementById("editNetworkInterfaceModal"));
+          editModal.show();
+        } else if (type === "gpInstances") {
+          // Populate and show edit GP instance modal
+          document.getElementById("editGPContainerId").value = currentElement.id;
+          document.getElementById("editGPContainerInstanceLabel").value = currentElement.instanceLabel || "";
+          document.getElementById("editGPContainerServiceId").value = currentElement.serviceId || "";
+
+          // Store parent IDs for the API call
+          const assetId = currentTreeNode.getAttribute("data-parent-asset") || currentElement.parentAsset;
+          const hwStackId = currentTreeNode.getAttribute("data-parent-stack") || currentElement.parentStack;
+          const domainId = currentTreeNode.getAttribute("data-parent-domain") || currentElement.parentDomain;
+          const segmentId = currentTreeNode.getAttribute("data-parent-segment") || currentElement.parentSegment;
+          const missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network") || currentElement.parentMissionNetwork;
+
+          document.getElementById("editGPContainerAssetId").value = assetId;
+          document.getElementById("editGPContainerHwStackId").value = hwStackId;
+          document.getElementById("editGPContainerDomainId").value = domainId;
+          document.getElementById("editGPContainerSegmentId").value = segmentId;
+          document.getElementById("editGPContainerMissionNetworkId").value = missionNetworkId;
+
+          const editModal = new bootstrap.Modal(document.getElementById("editGPContainerModal"));
           editModal.show();
         }
         // Other node types would be handled here as the feature expands
@@ -1405,6 +1610,307 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Add a new network interface to an asset
+  async function addNetworkInterface() {
+    const nameInput = document.getElementById("addNetworkInterfaceName");
+    const missionNetworkIdInput = document.getElementById("addNetworkInterfaceMissionNetworkId");
+    const segmentIdInput = document.getElementById("addNetworkInterfaceSegmentId");
+    const domainIdInput = document.getElementById("addNetworkInterfaceDomainId");
+    const hwStackIdInput = document.getElementById("addNetworkInterfaceHwStackId");
+    const assetIdInput = document.getElementById("addNetworkInterfaceAssetId");
+
+    const name = nameInput.value.trim();
+    const missionNetworkId = missionNetworkIdInput.value;
+    const segmentId = segmentIdInput.value;
+    const domainId = domainIdInput.value;
+    const hwStackId = hwStackIdInput.value;
+    const assetId = assetIdInput.value;
+
+    if (!name) {
+      showToast("Please enter a network interface name", "warning");
+      return;
+    }
+
+    if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+      showToast("Missing parent ID information", "warning");
+      return;
+    }
+
+    try {
+      // Call the API to add the network interface
+      const apiResult = await CISApi.addNetworkInterface(
+        missionNetworkId,
+        segmentId,
+        domainId,
+        hwStackId,
+        assetId,
+        name
+      );
+
+      if (apiResult.success) {
+        // Clear the form
+        nameInput.value = "";
+
+        // Use the utility function to handle modal, button, and toast in one call
+        await CISUtils.handleModal(
+          "addNetworkInterfaceModal",
+          "saveNetworkInterfaceBtn",
+          `Network Interface "${name}" created successfully!`
+        );
+
+        // Refresh the data with state preservation
+        // Create a state object to restore UI to the Asset
+        await refreshPanelsWithState({
+          nodeType: "assets",
+          nodeId: assetId,
+          hwStackId: hwStackId,
+          domainId: domainId,
+          segmentId: segmentId,
+          missionNetworkId: missionNetworkId,
+        });
+      } else {
+        showToast(
+          `${apiResult.message || apiResult.error || "Failed to create network interface"}`,
+          "danger"
+        );
+      }
+    } catch (error) {
+      console.error("Error in addNetworkInterface function:", error);
+      showToast("An error occurred while creating the network interface", "danger");
+    }
+  }
+
+  // Update an existing network interface
+  async function updateNetworkInterface() {
+    const idInput = document.getElementById("editNetworkInterfaceId");
+    const nameInput = document.getElementById("editNetworkInterfaceName");
+    const missionNetworkIdInput = document.getElementById("editNetworkInterfaceMissionNetworkId");
+    const segmentIdInput = document.getElementById("editNetworkInterfaceSegmentId");
+    const domainIdInput = document.getElementById("editNetworkInterfaceDomainId");
+    const hwStackIdInput = document.getElementById("editNetworkInterfaceHwStackId");
+    const assetIdInput = document.getElementById("editNetworkInterfaceAssetId");
+
+    const id = idInput.value;
+    const name = nameInput.value.trim();
+    const missionNetworkId = missionNetworkIdInput.value;
+    const segmentId = segmentIdInput.value;
+    const domainId = domainIdInput.value;
+    const hwStackId = hwStackIdInput.value;
+    const assetId = assetIdInput.value;
+
+    if (!name) {
+      showToast("Please enter a network interface name", "warning");
+      return;
+    }
+
+    if (!id || !missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+      showToast("Missing ID information", "warning");
+      return;
+    }
+
+    try {
+      // Call the API to update the network interface
+      const apiResult = await CISApi.updateNetworkInterface(
+        missionNetworkId,
+        segmentId,
+        domainId,
+        hwStackId,
+        assetId,
+        id,
+        name
+      );
+
+      if (apiResult.success) {
+        // Use the utility function to handle modal, button, and toast in one call
+        await CISUtils.handleModal(
+          "editNetworkInterfaceModal",
+          "updateNetworkInterfaceBtn",
+          `Network Interface updated successfully!`
+        );
+
+        // Update the current element with the new name
+        if (currentElement && currentElement.id === id) {
+          currentElement.name = name;
+
+          // Update the details panel with the new name
+          updateDetailPanel(currentElement, currentElement.type);
+        }
+
+        // Refresh the data with state preservation
+        await refreshPanelsWithState({
+          nodeType: "assets",
+          nodeId: assetId,
+          hwStackId: hwStackId,
+          domainId: domainId,
+          segmentId: segmentId,
+          missionNetworkId: missionNetworkId,
+        });
+      } else {
+        showToast(
+          `${apiResult.message || apiResult.error || "Failed to update network interface"}`,
+          "danger"
+        );
+      }
+    } catch (error) {
+      console.error("Error in updateNetworkInterface function:", error);
+      showToast("An error occurred while updating the network interface", "danger");
+    }
+  }
+
+  // Add a new GP container (GP instance) to an asset
+  async function addGPContainer() {
+    const instanceLabelInput = document.getElementById("addGPContainerInstanceLabel");
+    const serviceIdInput = document.getElementById("addGPContainerServiceId");
+    const missionNetworkIdInput = document.getElementById("addGPContainerMissionNetworkId");
+    const segmentIdInput = document.getElementById("addGPContainerSegmentId");
+    const domainIdInput = document.getElementById("addGPContainerDomainId");
+    const hwStackIdInput = document.getElementById("addGPContainerHwStackId");
+    const assetIdInput = document.getElementById("addGPContainerAssetId");
+
+    const instanceLabel = instanceLabelInput.value.trim();
+    const serviceId = serviceIdInput.value.trim();
+    const missionNetworkId = missionNetworkIdInput.value;
+    const segmentId = segmentIdInput.value;
+    const domainId = domainIdInput.value;
+    const hwStackId = hwStackIdInput.value;
+    const assetId = assetIdInput.value;
+
+    if (!instanceLabel || !serviceId) {
+      showToast("Please fill in all required fields", "warning");
+      return;
+    }
+
+    if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+      showToast("Missing parent ID information", "warning");
+      return;
+    }
+
+    try {
+      // Call the API to add the GP container
+      const apiResult = await CISApi.addGPInstance(
+        missionNetworkId,
+        segmentId,
+        domainId,
+        hwStackId,
+        assetId,
+        instanceLabel,
+        serviceId
+      );
+
+      if (apiResult.success) {
+        // Clear the form
+        instanceLabelInput.value = "";
+        serviceIdInput.value = "";
+
+        // Use the utility function to handle modal, button, and toast in one call
+        await CISUtils.handleModal(
+          "addGPContainerModal",
+          "saveGPContainerBtn",
+          `Generic Product "${instanceLabel}" created successfully!`
+        );
+
+        // Refresh the data with state preservation
+        await refreshPanelsWithState({
+          nodeType: "assets",
+          nodeId: assetId,
+          hwStackId: hwStackId,
+          domainId: domainId,
+          segmentId: segmentId,
+          missionNetworkId: missionNetworkId,
+        });
+      } else {
+        showToast(
+          `${apiResult.message || apiResult.error || "Failed to create generic product"}`,
+          "danger"
+        );
+      }
+    } catch (error) {
+      console.error("Error in addGPContainer function:", error);
+      showToast("An error occurred while creating the generic product", "danger");
+    }
+  }
+
+  // Update an existing GP container (GP instance)
+  async function updateGPContainer() {
+    const idInput = document.getElementById("editGPContainerId");
+    const instanceLabelInput = document.getElementById("editGPContainerInstanceLabel");
+    const serviceIdInput = document.getElementById("editGPContainerServiceId");
+    const missionNetworkIdInput = document.getElementById("editGPContainerMissionNetworkId");
+    const segmentIdInput = document.getElementById("editGPContainerSegmentId");
+    const domainIdInput = document.getElementById("editGPContainerDomainId");
+    const hwStackIdInput = document.getElementById("editGPContainerHwStackId");
+    const assetIdInput = document.getElementById("editGPContainerAssetId");
+
+    const id = idInput.value;
+    const instanceLabel = instanceLabelInput.value.trim();
+    const serviceId = serviceIdInput.value.trim();
+    const missionNetworkId = missionNetworkIdInput.value;
+    const segmentId = segmentIdInput.value;
+    const domainId = domainIdInput.value;
+    const hwStackId = hwStackIdInput.value;
+    const assetId = assetIdInput.value;
+
+    if (!instanceLabel || !serviceId) {
+      showToast("Please fill in all required fields", "warning");
+      return;
+    }
+
+    if (!id || !missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+      showToast("Missing ID information", "warning");
+      return;
+    }
+
+    try {
+      // Call the API to update the GP container
+      const apiResult = await CISApi.updateGPInstance(
+        missionNetworkId,
+        segmentId,
+        domainId,
+        hwStackId,
+        assetId,
+        id,
+        instanceLabel,
+        serviceId
+      );
+
+      if (apiResult.success) {
+        // Use the utility function to handle modal, button, and toast in one call
+        await CISUtils.handleModal(
+          "editGPContainerModal",
+          "updateGPContainerBtn",
+          `Generic Product updated successfully!`
+        );
+
+        // Update the current element if it's the one being edited
+        if (currentElement && currentElement.id === id) {
+          currentElement.instanceLabel = instanceLabel;
+          currentElement.serviceId = serviceId;
+
+          // Update the details panel with the new data
+          updateDetailPanel(currentElement, currentElement.type);
+        }
+
+        // Refresh the data with state preservation
+        await refreshPanelsWithState({
+          nodeType: "assets",
+          nodeId: assetId,
+          hwStackId: hwStackId,
+          domainId: domainId,
+          segmentId: segmentId,
+          missionNetworkId: missionNetworkId,
+        });
+      } else {
+        showToast(
+          `${apiResult.message || apiResult.error || "Failed to update generic product"}`,
+          "danger"
+        );
+      }
+    } catch (error) {
+      console.error("Error in updateGPContainer function:", error);
+      showToast("An error occurred while updating the generic product", "danger");
+    }
+  }
+
   // Store security classifications data globally
   // This is initialized in the fetchSecurityClassifications function
 
@@ -2336,14 +2842,20 @@ document.addEventListener("DOMContentLoaded", function () {
         asset.guid
       );
 
-      // Store parent references as data attributes
-      assetNode.setAttribute("data-parent-stack", parentStack);
-      assetNode.setAttribute("data-parent-domain", parentDomain);
-      assetNode.setAttribute("data-parent-segment", parentSegment);
+      // Store parent references as data attributes - ensure we store ID strings, not objects
+      assetNode.setAttribute("data-parent-stack", typeof parentStack === 'object' ? parentStack.id : parentStack);
+      assetNode.setAttribute("data-parent-domain", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
+      assetNode.setAttribute("data-parent-segment", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
       assetNode.setAttribute(
         "data-parent-mission-network",
-        parentMissionNetwork
+        typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork
       );
+      
+      // Also store these as explicit ID attributes for easier access
+      assetNode.setAttribute("data-parent-stack-id", typeof parentStack === 'object' ? parentStack.id : parentStack);
+      assetNode.setAttribute("data-parent-domain-id", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
+      assetNode.setAttribute("data-parent-segment-id", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
+      assetNode.setAttribute("data-parent-mission-network-id", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
 
       // Store these references in asset object too for when selected from the elements panel
       // Make sure all references are string IDs, not objects
@@ -2385,27 +2897,90 @@ document.addEventListener("DOMContentLoaded", function () {
 
       assetsContainer.appendChild(assetNode);
 
-      // Recursively render network interfaces if any
-      renderNetworkInterfaces(
-        assetsContainer,
-        asset.networkInterfaces,
-        asset.id,
-        parentStack,
-        parentDomain,
-        parentSegment,
-        parentMissionNetwork
-      );
+      // Create a child container for network interfaces and GP instances
+      const assetChildrenContainer = document.createElement("div");
+      assetChildrenContainer.className = "tree-node-children ms-4";
+      assetChildrenContainer.style.display = "none"; // Initially collapsed
+      assetChildrenContainer.setAttribute("data-parent", asset.id);
+      assetsContainer.appendChild(assetChildrenContainer);
+      
+      // Modify the existing click event to add expand/collapse functionality
+      // We need to preserve existing click behavior while adding expand/collapse
+      const originalClickHandler = assetNode.onclick;
+      assetNode.onclick = function(e) {
+        e.stopPropagation();
+        
+        // Call original handler if it exists
+        if (originalClickHandler) {
+          originalClickHandler.call(this, e);
+        }
+        
+        // Add selection behavior (copied from the standard click handler)
+        document.querySelectorAll(".tree-node.active").forEach((node) => {
+          node.classList.remove("active");
+        });
+        this.classList.add("active");
+        currentTreeNode = this;
+        
+        // Load the elements panel with asset children
+        loadSelectedNodeChildren(
+          asset,
+          "assets",
+          { id: parentStack },
+          { id: parentDomain },
+          { id: parentSegment },
+          { id: parentMissionNetwork }
+        );
+        
+        // Enable the "Add Element" button
+        if (addElementButton) addElementButton.disabled = false;
+        
+        // Now handle expand/collapse
+        // Check if clicking on the toggle icon specifically
+        const isExpandIconClick = e.target.closest('.tree-toggle');
+        
+        // Toggle children container visibility when clicking the icon
+        if (isExpandIconClick) {
+          const isExpanded = assetChildrenContainer.style.display !== "none";
+          assetChildrenContainer.style.display = isExpanded ? "none" : "block";
+          
+          // Toggle the expand/collapse icon
+          const icon = this.querySelector(".tree-toggle");
+          if (icon) {
+            icon.innerHTML = isExpanded
+              ? '<i class="fas fa-chevron-right"></i>'
+              : '<i class="fas fa-chevron-down"></i>';
+          }
+          
+          // If expanding and no children yet, render them
+          if (!isExpanded && assetChildrenContainer.children.length === 0) {
+            // Recursively render network interfaces if any
+            renderNetworkInterfaces(
+              assetChildrenContainer,
+              asset.networkInterfaces || [],
+              asset.id,
+              parentStack,
+              parentDomain,
+              parentSegment,
+              parentMissionNetwork
+            );
 
-      // Recursively render GP instances if any
-      renderGPInstances(
-        assetsContainer,
-        asset.gpInstances,
-        asset.id,
-        parentStack,
-        parentDomain,
-        parentSegment,
-        parentMissionNetwork
-      );
+            // Recursively render GP instances if any
+            renderGPInstances(
+              assetChildrenContainer,
+              asset.gpInstances || [],
+              asset.id,
+              parentStack,
+              parentDomain,
+              parentSegment,
+              parentMissionNetwork
+            );
+          }
+        }
+      };
+      
+      // Add the asset node to the DOM
+      assetsContainer.appendChild(assetNode);
     });
   }
 
@@ -2427,6 +3002,14 @@ document.addEventListener("DOMContentLoaded", function () {
         networkInterface.guid,
         "fa-network-wired"
       );
+      
+      // Set parent reference data attributes
+      networkInterfaceNode.setAttribute("data-parent-asset", typeof parentAsset === 'object' ? parentAsset.id : parentAsset);
+      networkInterfaceNode.setAttribute("data-parent-stack", typeof parentStack === 'object' ? parentStack.id : parentStack);
+      networkInterfaceNode.setAttribute("data-parent-domain", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
+      networkInterfaceNode.setAttribute("data-parent-segment", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
+      networkInterfaceNode.setAttribute("data-parent-mission-network", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
+      
       container.appendChild(networkInterfaceNode);
 
       // Add click event to network interface node
@@ -3045,6 +3628,63 @@ document.addEventListener("DOMContentLoaded", function () {
                     </tr>
                 </tbody>
             `;
+    } else if (type === "networkInterfaces") {
+      // For network interfaces, show config items (IP Address, Sub-Net, FQDN)
+      // Start with basic info
+      let tableHtml = `
+                <tbody>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>${element.name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">ID</th>
+                        <td>${element.id || "N/A"}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">GUID</th>
+                        <td>${element.guid || "N/A"}</td>
+                    </tr>
+      `;
+      
+      // Add configuration items if present
+      if (element.configurationItems && element.configurationItems.length > 0) {
+        // Add each config item
+        element.configurationItems.forEach(item => {
+          // Find if it's one of our standard items (IP Address, Sub-Net, FQDN)
+          if (["IP Address", "Sub-Net", "FQDN"].includes(item.Name)) {
+            tableHtml += `
+                    <tr>
+                        <th scope="row">${item.Name}</th>
+                        <td>${item.AnswerContent || "<em>Not set</em>"}</td>
+                    </tr>
+            `;
+          }
+        });
+      } else {
+        // If no config items, show placeholders
+        tableHtml += `
+                    <tr>
+                        <th scope="row">IP Address</th>
+                        <td><em>Not set</em></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Sub-Net</th>
+                        <td><em>Not set</em></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">FQDN</th>
+                        <td><em>Not set</em></td>
+                    </tr>
+        `;
+      }
+      
+      // Close the table
+      tableHtml += `
+                </tbody>
+            `;
+      
+      table.innerHTML = tableHtml;
     } else {
       table.innerHTML = `
                 <tbody>
@@ -3386,10 +4026,15 @@ document.addEventListener("DOMContentLoaded", function () {
       elementsTitle.textContent = `${titleText} (${visibleCount})`;
     }
   }
-});
-
-// Function to find and select a node in the tree by type and ID
-function findAndSelectTreeNode(type, id) {
+  
+  // Make these functions globally available so they can be called from outside the DOMContentLoaded event
+  window.findAndSelectTreeNode = findAndSelectTreeNode;
+  window.navigateUp = navigateUp;
+  window.focusFirstMatchingTreeNode = focusFirstMatchingTreeNode;
+  
+  // Function definitions inside document.ready scope
+  // Function to find and select a node in the tree by type and ID
+  function findAndSelectTreeNode(type, id) {
   // First, find the node in the tree
   const targetNode = document.querySelector(
     `.tree-node[data-type="${type}"][data-id="${id}"]`
@@ -3451,7 +4096,31 @@ function navigateUp() {
     // Navigating up from element type
 
     // Handle based on element type
-    if (type === "assets") {
+    if (type === "networkInterfaces") {
+      // For network interfaces, navigate to parent asset
+      let parentAsset = currentElement.parentAsset || currentElement.assetId;
+      
+      // Extract ID if it's an object
+      if (parentAsset && typeof parentAsset === "object" && parentAsset.id) {
+        parentNodeId = parentAsset.id;
+      } else {
+        parentNodeId = parentAsset;
+      }
+      
+      // If not found, try to get from parent attributes
+      if (!parentNodeId && currentTreeNode) {
+        parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
+      }
+      
+      if (parentNodeId) {
+        // Navigating up to Asset
+        if (findAndSelectTreeNode("assets", parentNodeId)) {
+          // Reset currentElement to ensure next navigation works
+          currentElement = null;
+        }
+        return;
+      }
+    } else if (type === "assets") {
       // For assets, we need to find the parent HW Stack
       // First check if there's a parentStack or hwStackId property
       let parentStack = currentElement.parentStack || currentElement.hwStackId;
@@ -3572,7 +4241,16 @@ function navigateUp() {
   // Get the parent node's ID based on data attributes
   const nodeType = currentTreeNode.getAttribute("data-type");
 
-  if (nodeType === "assets") {
+  if (nodeType === "networkInterfaces") {
+    parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
+    if (parentNodeId) {
+      // Find and select the parent Asset node
+      if (findAndSelectTreeNode("assets", parentNodeId)) {
+        // Reset currentElement to ensure next navigation works
+        currentElement = null;
+      }
+    }
+  } else if (nodeType === "assets") {
     parentNodeId = currentTreeNode.getAttribute("data-parent-stack");
     if (parentNodeId) {
       // Find and select the parent HW Stack node
@@ -3609,13 +4287,10 @@ function navigateUp() {
       }
     }
   } else if (nodeType === "missionNetworks") {
-    // Go to the root node
-    const rootNode = document.querySelector(
-      '.tree-node[data-id="root-cisplan"]'
-    );
+    // From Mission Network, navigate to the root node
+    const rootNode = document.querySelector('.tree-node[data-id="root-cisplan"]');
     if (rootNode) {
       rootNode.click();
-      // Reset currentElement to ensure next navigation works
       currentElement = null;
     }
   }
@@ -3624,6 +4299,7 @@ function navigateUp() {
 // No longer needed as we're using a different navigation approach
 
 // Add new function to focus the first matching tree node
+// [MermaidChart: ac030ad5-84cd-4131-a8f6-8239aa45927d]
 function focusFirstMatchingTreeNode() {
   const searchTerm = document
     .getElementById("treeSearchInput")
@@ -3744,3 +4420,6 @@ function formatNodeTypeName(type) {
 function getElementIcon(type) {
   return CISUtils.getElementIcon(type);
 }
+
+// Close the DOMContentLoaded event handler
+});

@@ -1002,6 +1002,17 @@
         }
     },
     {
+        "actorType": "technical",
+        "id": "9b347382-f14c-46cb-85c3-a9b300c60afd",
+        "key": "ACT-CWIX-000392",
+        "name": "C2SIM Client",
+        "itemId": "db855e09-4b5d-4529-ab8c-32dd61c73479",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-30T17:06:19.3322714+02:00"
+        }
+    },
+    {
         "actorType": "functional",
         "id": "c561f19d-a6f3-4f84-b986-e6ac81aa8ce5",
         "key": "ACT-CIAV-000415",
@@ -3549,6 +3560,18 @@
     },
     {
         "actorType": "technical",
+        "id": "c3a327dc-5e24-4967-bace-b7bec08f498d",
+        "key": "ACT-CWIX-000393",
+        "name": "Federate Protocol Server",
+        "itemId": "bbbe21ff-31de-4126-9a96-cdd80e12c451",
+        "predecessor": "27d089ca-bb3c-41df-8312-ae38c518db6c",
+        "version": {
+            "number": 2,
+            "createdOn": "2025-05-01T18:56:46.4090297+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "1d8492be-4c42-4393-8db5-8069833bdd21",
         "key": "ACT-CWIX-000182",
         "name": "FFT Augmentation",
@@ -4349,6 +4372,17 @@
         "version": {
             "number": 1,
             "createdOn": "2025-04-09T18:00:36.8769898+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "3081dde6-54e1-4ccd-8a67-1b1bd4a75907",
+        "key": "ACT-CWIX-000394",
+        "name": "HLA Federate",
+        "itemId": "f188062e-4896-410d-8d9e-e6e5740ffaf0",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-01T18:57:09.454276+02:00"
         }
     },
     {
@@ -7721,6 +7755,17 @@
     },
     {
         "actorType": "technical",
+        "id": "f7a92540-8a51-43ae-af79-2ff9c02b24d1",
+        "key": "ACT-CWIX-000390",
+        "name": "NCMD IES",
+        "itemId": "5c41e07e-5812-468d-8f5b-a009e7c2354f",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-24T19:45:13.40893+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "2747b94e-4543-409a-841b-df1eb277b2d9",
         "key": "ACT-CWIX-000308",
         "name": "NCOP",
@@ -8922,6 +8967,17 @@
         }
     },
     {
+        "actorType": "technical",
+        "id": "59b044c0-1a48-486a-9723-d92bd66128a2",
+        "key": "ACT-CWIX-000395",
+        "name": "Recording Service",
+        "itemId": "d9bb5702-e92c-4d48-b699-60e10e40946b",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-01T23:19:45.7611335+02:00"
+        }
+    },
+    {
         "actorType": "functional",
         "id": "ca03dfd9-653d-490b-823e-dd717eecf68f",
         "key": "ACT-CIAV-000428",
@@ -9694,6 +9750,17 @@
     },
     {
         "actorType": "technical",
+        "id": "c5d92941-2d5c-4f84-890b-dacb49c6f8d5",
+        "key": "ACT-CWIX-000396",
+        "name": "Simulation Management Application",
+        "itemId": "e77580c8-8ad2-4e58-adce-e372514bbde0",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-01T23:20:18.209008+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "86f10fc7-35ac-4b64-8c7d-a9b414be2a1b",
         "key": "ACT-CWIX-000318",
         "name": "Simulation Service",
@@ -9957,6 +10024,17 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "6d223de3-4648-4863-83d6-a8ee04d1ed68",
+        "key": "ACT-CWIX-000391",
+        "name": "Static PCN",
+        "itemId": "a61970f5-d6a2-4cf3-91bd-abce3b93d2d0",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-30T12:33:12.3900032+02:00"
         }
     },
     {

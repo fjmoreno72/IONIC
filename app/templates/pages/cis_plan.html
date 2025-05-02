@@ -678,6 +678,132 @@
         </div>
     </div>
 
+    <!-- Add Network Interface Modal -->    
+    <div class="modal fade" id="addNetworkInterfaceModal" tabindex="-1" aria-labelledby="addNetworkInterfaceModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addNetworkInterfaceModalLabel">Add Network Interface</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addNetworkInterfaceForm" autocomplete="off" novalidate data-form-type="add-network-interface">
+                        <input type="hidden" id="addNetworkInterfaceMissionNetworkId" name="niMissionNetworkId_random" autocomplete="new-password">
+                        <input type="hidden" id="addNetworkInterfaceSegmentId" name="niSegmentId_random" autocomplete="new-password">
+                        <input type="hidden" id="addNetworkInterfaceDomainId" name="niDomainId_random" autocomplete="new-password">
+                        <input type="hidden" id="addNetworkInterfaceHwStackId" name="niHwStackId_random" autocomplete="new-password">
+                        <input type="hidden" id="addNetworkInterfaceAssetId" name="niAssetId_random" autocomplete="new-password">
+                        <div class="mb-3">
+                            <label for="addNetworkInterfaceName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="addNetworkInterfaceName" name="niName_random" autocomplete="new-password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveNetworkInterfaceBtn" autofocus>Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Network Interface Modal -->    
+    <div class="modal fade" id="editNetworkInterfaceModal" tabindex="-1" aria-labelledby="editNetworkInterfaceModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editNetworkInterfaceModalLabel">Edit Network Interface</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editNetworkInterfaceForm" autocomplete="off" novalidate data-form-type="edit-network-interface">
+                        <input type="hidden" id="editNetworkInterfaceMissionNetworkId" name="niMissionNetworkId_random" autocomplete="new-password">
+                        <input type="hidden" id="editNetworkInterfaceSegmentId" name="niSegmentId_random" autocomplete="new-password">
+                        <input type="hidden" id="editNetworkInterfaceDomainId" name="niDomainId_random" autocomplete="new-password">
+                        <input type="hidden" id="editNetworkInterfaceHwStackId" name="niHwStackId_random" autocomplete="new-password">
+                        <input type="hidden" id="editNetworkInterfaceAssetId" name="niAssetId_random" autocomplete="new-password">
+                        <input type="hidden" id="editNetworkInterfaceId" name="niId_random" autocomplete="new-password">
+                        <div class="mb-3">
+                            <label for="editNetworkInterfaceName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="editNetworkInterfaceName" name="niName_random" autocomplete="new-password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="updateNetworkInterfaceBtn" autofocus>Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add GP Container Modal -->    
+    <div class="modal fade" id="addGPContainerModal" tabindex="-1" aria-labelledby="addGPContainerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addGPContainerModalLabel">Add Generic Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addGPContainerForm" autocomplete="off" novalidate data-form-type="add-gp-container">
+                        <input type="hidden" id="addGPContainerMissionNetworkId" name="gpMissionNetworkId_random" autocomplete="new-password">
+                        <input type="hidden" id="addGPContainerSegmentId" name="gpSegmentId_random" autocomplete="new-password">
+                        <input type="hidden" id="addGPContainerDomainId" name="gpDomainId_random" autocomplete="new-password">
+                        <input type="hidden" id="addGPContainerHwStackId" name="gpHwStackId_random" autocomplete="new-password">
+                        <input type="hidden" id="addGPContainerAssetId" name="gpAssetId_random" autocomplete="new-password">
+                        <div class="mb-3">
+                            <label for="addGPContainerInstanceLabel" class="form-label">Label</label>
+                            <input type="text" class="form-control" id="addGPContainerInstanceLabel" name="gpInstanceLabel_random" autocomplete="new-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addGPContainerServiceId" class="form-label">Service ID</label>
+                            <input type="text" class="form-control" id="addGPContainerServiceId" name="gpServiceId_random" autocomplete="new-password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveGPContainerBtn" autofocus>Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit GP Container Modal -->    
+    <div class="modal fade" id="editGPContainerModal" tabindex="-1" aria-labelledby="editGPContainerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editGPContainerModalLabel">Edit Generic Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editGPContainerForm" autocomplete="off" novalidate data-form-type="edit-gp-container">
+                        <input type="hidden" id="editGPContainerMissionNetworkId" name="gpMissionNetworkId_random" autocomplete="new-password">
+                        <input type="hidden" id="editGPContainerSegmentId" name="gpSegmentId_random" autocomplete="new-password">
+                        <input type="hidden" id="editGPContainerDomainId" name="gpDomainId_random" autocomplete="new-password">
+                        <input type="hidden" id="editGPContainerHwStackId" name="gpHwStackId_random" autocomplete="new-password">
+                        <input type="hidden" id="editGPContainerAssetId" name="gpAssetId_random" autocomplete="new-password">
+                        <input type="hidden" id="editGPContainerId" name="gpId_random" autocomplete="new-password">
+                        <div class="mb-3">
+                            <label for="editGPContainerInstanceLabel" class="form-label">Label</label>
+                            <input type="text" class="form-control" id="editGPContainerInstanceLabel" name="gpInstanceLabel_random" autocomplete="new-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editGPContainerServiceId" class="form-label">Service ID</label>
+                            <input type="text" class="form-control" id="editGPContainerServiceId" name="gpServiceId_random" autocomplete="new-password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="updateGPContainerBtn" autofocus>Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Theme toggling

@@ -1,13 +1,33 @@
 /**
  * CIS Plan JavaScript file
  * 
- * This file handles the functionality for the CIS Plan view
+ * This file handles the functionality for the CIS Plan view.
+ * The code is organized into the following sections:
+ * 
+ * 1. Global Variables & State Management
+ * 2. Event Handlers & Initialization
+ * 3. API Integration Functions (delegating to CISApi)
+ * 4. Tree Rendering & Manipulation
+ * 5. Panel Rendering & Element Display
+ * 6. Search & Navigation Functions
+ * 7. Utility & Helper Functions
  */
 
-// Initialize variables for state management
-let currentTreeNode = null;
-let currentElement = null;
-let cisPlanData = null;
+//=============================================================================
+// 1. GLOBAL VARIABLES & STATE MANAGEMENT
+//=============================================================================
+
+// Core state management variables
+let currentTreeNode = null;  // Currently selected tree node
+let currentElement = null;   // Currently selected element within a node
+let cisPlanData = null;      // CIS Plan tree data from API
+
+// Store security classifications data
+let securityClassifications = [];
+
+//=============================================================================
+// 2. EVENT HANDLERS & INITIALIZATION
+//=============================================================================
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -424,6 +444,10 @@ document.addEventListener('DOMContentLoaded', function() {
         confirmDeleteBtn.addEventListener('click', deleteItem);
     }
     
+    //-------------------------------------------------------------------------
+    // Application Initialization
+    //-------------------------------------------------------------------------
+    
     // Initial data fetch
     async function initializeApp() {
         try {
@@ -770,6 +794,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start app initialization
     initializeApp();
+    
+    //=========================================================================
+    // 3. API INTEGRATION FUNCTIONS
+    //=========================================================================
     
     // Show a toast notification - delegates to CISUtils
     function showToast(message, type = 'success') {
@@ -1503,6 +1531,10 @@ async function updateAsset() {
         return treeData;
     }
     
+    //=========================================================================
+    // 4. TREE RENDERING & MANIPULATION
+    //=========================================================================
+    
     // Helper function to restore selection state after tree refresh
     function restoreSelectionState() {
         // Get current selection state
@@ -2072,6 +2104,10 @@ async function updateAsset() {
         });
     }
 
+    //=========================================================================
+    // 5. PANEL RENDERING & ELEMENT DISPLAY
+    //=========================================================================
+    
     // Create a tree node element
     function createTreeNode(type, name, id, guid, iconClass) {
         const node = document.createElement('div');
@@ -2654,6 +2690,10 @@ async function updateAsset() {
         `;
     }
     
+    //=========================================================================
+    // 6. SEARCH & NAVIGATION FUNCTIONS
+    //=========================================================================
+    
     // Search functionality for the tree
     function handleTreeSearch(e) {
         const searchTerm = e.target.value.toLowerCase();
@@ -3172,6 +3212,10 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
+
+//=============================================================================
+// 7. UTILITY & HELPER FUNCTIONS
+//=============================================================================
 
 // ---- Entity Metadata and Children ----
 // These are now defined in cis_utils.js

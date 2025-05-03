@@ -242,6 +242,32 @@ const CISApi = {
           hwStackId = parsedParentIds.hwStackId;
         }
         endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${id}`;
+      } else if (type === "networkInterfaces") {
+        // Handle network interface deletion
+        let missionNetworkId, segmentId, domainId, hwStackId, assetId;
+        if (Array.isArray(parsedParentIds)) {
+          missionNetworkId = parsedParentIds[0];
+          segmentId = parsedParentIds[1];
+          domainId = parsedParentIds[2];
+          hwStackId = parsedParentIds[3];
+          assetId = parsedParentIds[4];
+        } else {
+          missionNetworkId = parsedParentIds.missionNetworkId;
+          segmentId = parsedParentIds.segmentId;
+          domainId = parsedParentIds.domainId;
+          hwStackId = parsedParentIds.hwStackId;
+          assetId = parsedParentIds.assetId;
+        }
+
+        // Use the dedicated deleteNetworkInterface method which has better error handling
+        return this.deleteNetworkInterface(
+          missionNetworkId,
+          segmentId,
+          domainId,
+          hwStackId,
+          assetId,
+          id
+        );
       } else {
         return {
           success: false,
@@ -785,33 +811,27 @@ const CISApi = {
     domainId,
     hwStackId,
     assetId,
-    name
+    name,
+    configurationItems
   ) {
     try {
-      // Log input parameters for debugging
-      console.log('DEBUG API - addNetworkInterface parameters:', {
-        missionNetworkId,
-        segmentId,
-        domainId,
-        hwStackId,
-        assetId,
-        name,
-        missionNetworkIdType: typeof missionNetworkId,
-        segmentIdType: typeof segmentId,
-        domainIdType: typeof domainId,
-        hwStackIdType: typeof hwStackId,
-        assetIdType: typeof assetId
-      });
-      
       // Input validation
-      if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId || !name) {
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId ||
+        !name ||
+        !configurationItems
+      ) {
         return {
           success: false,
           error: "Missing required parameters",
           status: 400,
         };
       }
-      
+
       // Handle '[object Object]' string values with hardcoded values for now
       // This is a temporary fix until we properly store the ID values in the tree nodes
       let mnId = missionNetworkId;
@@ -819,29 +839,22 @@ const CISApi = {
       let domId = domainId;
       let stackId = hwStackId;
       let astId = assetId;
-      
+
       // Check if we have '[object Object]' strings and replace with hardcoded IDs
-      if (mnId === '[object Object]') mnId = 'MN-0001';
-      if (segId === '[object Object]') segId = 'SEG-0001';
-      if (domId === '[object Object]') domId = 'DOM-0001';
-      if (stackId === '[object Object]') stackId = 'HWS-0001';
-      
-      console.log('DEBUG API - Processed IDs:', {
-        mnId,
-        segId,
-        domId,
-        stackId,
-        astId
-      });
+      if (mnId === "[object Object]") mnId = "MN-0001";
+      if (segId === "[object Object]") segId = "SEG-0001";
+      if (domId === "[object Object]") domId = "DOM-0001";
+      if (stackId === "[object Object]") stackId = "HWS-0001";
 
       const endpoint = `/api/cis_plan/mission_network/${mnId}/segment/${segId}/security_domain/${domId}/hw_stacks/${stackId}/assets/${astId}/network_interfaces`;
-      
-      console.log('DEBUG API - Endpoint:', endpoint);
 
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name }),
+        body: JSON.stringify({
+          name: name,
+          configurationItems: configurationItems,
+        }),
       });
 
       const result = await response.json();
@@ -875,18 +888,41 @@ const CISApi = {
    * @param {string} name - New name for the network interface
    * @returns {Promise<Object>} Object containing success flag, status code, data, and message
    */
-  updateNetworkInterface: async function (
+  /**
+   * Updates a configuration item for a network interface.
+   *
+   * @async
+   * @param {string} missionNetworkId - ID of the parent mission network
+   * @param {string} segmentId - ID of the parent network segment
+   * @param {string} domainId - ID of the parent security domain
+   * @param {string} hwStackId - ID of the parent hardware stack
+   * @param {string} assetId - ID of the parent asset
+   * @param {string} interfaceId - ID of the network interface to update
+   * @param {string} itemName - Name of the configuration item (IP Address, Sub-Net, or FQDN)
+   * @param {string} itemValue - Value for the configuration item
+   * @returns {Promise<Object>} Object containing success flag, status code, data, and message
+   */
+  updateNetworkInterfaceConfigItem: async function (
     missionNetworkId,
     segmentId,
     domainId,
     hwStackId,
     assetId,
     interfaceId,
-    name
+    itemName,
+    itemValue
   ) {
     try {
       // Input validation
-      if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId || !interfaceId || !name) {
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId ||
+        !interfaceId ||
+        !itemName
+      ) {
         return {
           success: false,
           error: "Missing required parameters",
@@ -894,12 +930,86 @@ const CISApi = {
         };
       }
 
+      // Validate item name is one of the allowed values
+      if (!["IP Address", "Sub-Net", "FQDN"].includes(itemName)) {
+        return {
+          success: false,
+          error: `Invalid configuration item name: ${itemName}. Must be one of: IP Address, Sub-Net, FQDN.`,
+          status: 400,
+        };
+      }
+
+      const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/network_interfaces/${interfaceId}/config`;
+
+      const response = await fetch(endpoint, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: itemName,
+          value: itemValue,
+        }),
+      });
+
+      const result = await response.json();
+
+      return {
+        success: response.ok,
+        status: response.status,
+        data: result.data || {},
+        message: result.message || "",
+      };
+    } catch (error) {
+      console.error(
+        "Error in updateNetworkInterfaceConfigItem API call:",
+        error
+      );
+      return {
+        success: false,
+        error: error.message || "Network error occurred",
+        status: 0,
+      };
+    }
+  },
+
+  updateNetworkInterface: async function (
+    missionNetworkId,
+    segmentId,
+    domainId,
+    hwStackId,
+    assetId,
+    interfaceId,
+    name,
+    configurationItems
+  ) {
+    try {
+      // Input validation
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId ||
+        !interfaceId ||
+        !name
+      ) {
+        return {
+          success: false,
+          error: "Missing required parameters",
+          status: 400,
+        };
+      }
+
+      // configurationItems is optional
+
       const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/network_interfaces/${interfaceId}`;
 
       const response = await fetch(endpoint, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name }),
+        body: JSON.stringify({
+          name: name,
+          configurationItems: configurationItems || [],
+        }),
       });
 
       const result = await response.json();
@@ -912,6 +1022,68 @@ const CISApi = {
       };
     } catch (error) {
       console.error("Error in updateNetworkInterface API call:", error);
+      return {
+        success: false,
+        error: error.message || "Network error occurred",
+        status: 0,
+      };
+    }
+  },
+
+  /**
+   * Deletes a network interface.
+   *
+   * @async
+   * @param {string} missionNetworkId - ID of the parent mission network
+   * @param {string} segmentId - ID of the parent network segment
+   * @param {string} domainId - ID of the parent security domain
+   * @param {string} hwStackId - ID of the parent hardware stack
+   * @param {string} assetId - ID of the parent asset
+   * @param {string} interfaceId - ID of the network interface to delete
+   * @returns {Promise<Object>} Object containing success flag, status code, data, and message
+   */
+  deleteNetworkInterface: async function (
+    missionNetworkId,
+    segmentId,
+    domainId,
+    hwStackId,
+    assetId,
+    interfaceId
+  ) {
+    try {
+      // Input validation
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId ||
+        !interfaceId
+      ) {
+        return {
+          success: false,
+          error: "Missing required parameters",
+          status: 400,
+        };
+      }
+
+      const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/network_interfaces/${interfaceId}`;
+
+      const response = await fetch(endpoint, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const result = await response.json();
+
+      return {
+        success: response.ok,
+        status: response.status,
+        data: result.data || {},
+        message: result.message || "",
+      };
+    } catch (error) {
+      console.error("Error in deleteNetworkInterface API call:", error);
       return {
         success: false,
         error: error.message || "Network error occurred",
@@ -944,7 +1116,15 @@ const CISApi = {
   ) {
     try {
       // Input validation
-      if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId || !instanceLabel || !serviceId) {
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId ||
+        !instanceLabel ||
+        !serviceId
+      ) {
         return {
           success: false,
           error: "Missing required parameters",
@@ -957,9 +1137,9 @@ const CISApi = {
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           instanceLabel: instanceLabel,
-          serviceId: serviceId 
+          serviceId: serviceId,
         }),
       });
 
@@ -1007,7 +1187,16 @@ const CISApi = {
   ) {
     try {
       // Input validation
-      if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId || !instanceId || !instanceLabel || !serviceId) {
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId ||
+        !instanceId ||
+        !instanceLabel ||
+        !serviceId
+      ) {
         return {
           success: false,
           error: "Missing required parameters",
@@ -1020,9 +1209,9 @@ const CISApi = {
       const response = await fetch(endpoint, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           instanceLabel: instanceLabel,
-          serviceId: serviceId 
+          serviceId: serviceId,
         }),
       });
 
@@ -1042,7 +1231,7 @@ const CISApi = {
         status: 0,
       };
     }
-  }
+  },
 };
 
 // Export the CISApi namespace

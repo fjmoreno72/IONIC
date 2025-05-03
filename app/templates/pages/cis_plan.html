@@ -694,9 +694,13 @@
                         <input type="hidden" id="addNetworkInterfaceHwStackId" name="niHwStackId_random" autocomplete="new-password">
                         <input type="hidden" id="addNetworkInterfaceAssetId" name="niAssetId_random" autocomplete="new-password">
                         <div class="mb-3">
-                            <label for="addNetworkInterfaceName" class="form-label">Name</label>
+                            <label for="addNetworkInterfaceName" class="form-label">Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="addNetworkInterfaceName" name="niName_random" autocomplete="new-password" required>
                         </div>
+                        <!-- Hidden fields - still in form to maintain JavaScript compatibility -->
+                        <input type="hidden" id="addNetworkInterfaceIpAddress" name="niIpAddress_random" autocomplete="new-password">
+                        <input type="hidden" id="addNetworkInterfaceSubnet" name="niSubnet_random" autocomplete="new-password">
+                        <input type="hidden" id="addNetworkInterfaceFqdn" name="niFqdn_random" autocomplete="new-password">
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -724,8 +728,20 @@
                         <input type="hidden" id="editNetworkInterfaceAssetId" name="niAssetId_random" autocomplete="new-password">
                         <input type="hidden" id="editNetworkInterfaceId" name="niId_random" autocomplete="new-password">
                         <div class="mb-3">
-                            <label for="editNetworkInterfaceName" class="form-label">Name</label>
+                            <label for="editNetworkInterfaceName" class="form-label">Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="editNetworkInterfaceName" name="niName_random" autocomplete="new-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNetworkInterfaceIpAddress" class="form-label">IP Address <small class="text-muted">(optional)</small></label>
+                            <input type="text" class="form-control" id="editNetworkInterfaceIpAddress" name="niIpAddress_random" autocomplete="new-password" placeholder="e.g., 192.168.1.1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNetworkInterfaceSubnet" class="form-label">Sub-Net <small class="text-muted">(optional)</small></label>
+                            <input type="text" class="form-control" id="editNetworkInterfaceSubnet" name="niSubnet_random" autocomplete="new-password" placeholder="e.g., 255.255.255.0">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNetworkInterfaceFqdn" class="form-label">FQDN <small class="text-muted">(optional)</small></label>
+                            <input type="text" class="form-control" id="editNetworkInterfaceFqdn" name="niFqdn_random" autocomplete="new-password" placeholder="e.g., device.example.com">
                         </div>
                     </form>
                 </div>

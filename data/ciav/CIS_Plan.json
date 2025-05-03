@@ -33,13 +33,13 @@
                             {
                               "Name": "IP Address",
                               "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "192.168.1.1",
+                              "AnswerContent": "192.168.1.2",
                               "guid": "30c24c89-eb70-4ae8-be42-923ddf7b6bb3"
                             },
                             {
                               "Name": "Sub-Net",
                               "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
+                              "AnswerContent": "255.255.255.0",
                               "guid": "5f4f7d9d-0895-4cac-a2b1-2f6bd5943542"
                             },
                             {
@@ -74,6 +74,31 @@
                               "guid": "d723399c-e5b5-4790-8cfa-a41ab837aab3"
                             }
                           ]
+                        },
+                        {
+                          "name": "zz",
+                          "guid": "5e89a8b3-2e69-4243-ad84-1834bd1f0eaa",
+                          "id": "NI-0003",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "4ac79463-acfb-4703-97c3-503da9d1025d"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "eb33b805-1b43-46ea-8bc3-142daec9e937"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "0251fa64-b1b4-4185-8308-3fc59d777617"
+                            }
+                          ]
                         }
                       ],
                       "gpInstances": []
@@ -105,6 +130,31 @@
                               "ConfigurationAnswerType": "Text Field (Single Line)",
                               "AnswerContent": "",
                               "guid": "57730008-6be6-405d-bb71-36096b015c18"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "4X",
+                          "guid": "ef53467b-95e2-46dd-b70b-b24a4ef2f0eb",
+                          "id": "NI-0002",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "58eee851-8cc5-42b5-8b11-bf958b351b93"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "f99af2d4-4658-4e61-8595-71115d8c2a87"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "6d8eacc7-75e6-498d-ad88-1f08d044f45e"
                             }
                           ]
                         }

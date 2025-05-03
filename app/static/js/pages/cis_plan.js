@@ -71,12 +71,20 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", updateAsset);
 
   // Add event listeners for network interface buttons
-  document.getElementById("saveNetworkInterfaceBtn").addEventListener("click", addNetworkInterface);
-  document.getElementById("updateNetworkInterfaceBtn").addEventListener("click", updateNetworkInterface);
+  document
+    .getElementById("saveNetworkInterfaceBtn")
+    .addEventListener("click", addNetworkInterface);
+  document
+    .getElementById("updateNetworkInterfaceBtn")
+    .addEventListener("click", updateNetworkInterface);
 
   // Add event listeners for GP container buttons
-  document.getElementById("saveGPContainerBtn").addEventListener("click", addGPContainer);
-  document.getElementById("updateGPContainerBtn").addEventListener("click", updateGPContainer);
+  document
+    .getElementById("saveGPContainerBtn")
+    .addEventListener("click", addGPContainer);
+  document
+    .getElementById("updateGPContainerBtn")
+    .addEventListener("click", updateGPContainer);
 
   // Add Enter key save functionality to all modals
   // Function to add Enter key handler to a modal
@@ -266,7 +274,9 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="row">
             <div class="col-md-6 border-end">
               <div class="p-3 text-center">
-                <img src="${getElementIcon('networkInterfaces')}" width="48" height="48" alt="Network Interface">
+                <img src="${getElementIcon(
+                  "networkInterfaces"
+                )}" width="48" height="48" alt="Network Interface">
                 <h5 class="mt-3">Network Interface</h5>
                 <p class="small text-muted">Add a new network interface to this asset</p>
                 <button class="btn btn-primary btn-add-network-interface">Add Network Interface</button>
@@ -274,7 +284,9 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div class="col-md-6">
               <div class="p-3 text-center">
-                <img src="${getElementIcon('gpInstances')}" width="48" height="48" alt="GP Container">
+                <img src="${getElementIcon(
+                  "gpInstances"
+                )}" width="48" height="48" alt="GP Container">
                 <h5 class="mt-3">Generic Product</h5>
                 <p class="small text-muted">Add a new generic product to this asset</p>
                 <button class="btn btn-primary btn-add-gp-container">Add Generic Product</button>
@@ -282,20 +294,25 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </div>
         `;
-        
+
         // Create a modal to display the options
         const modalDialog = document.createElement("div");
         modalDialog.className = "modal fade";
         modalDialog.id = "assetAddOptionsModal";
         modalDialog.setAttribute("tabindex", "-1");
-        modalDialog.setAttribute("aria-labelledby", "assetAddOptionsModalLabel");
+        modalDialog.setAttribute(
+          "aria-labelledby",
+          "assetAddOptionsModalLabel"
+        );
         modalDialog.setAttribute("aria-hidden", "true");
-        
+
         modalDialog.innerHTML = `
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="assetAddOptionsModalLabel">Add to ${currentTreeNode.querySelector('.node-text').textContent}</h5>
+                <h5 class="modal-title" id="assetAddOptionsModalLabel">Add to ${
+                  currentTreeNode.querySelector(".node-text").textContent
+                }</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -304,103 +321,117 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           </div>
         `;
-        
+
         // Add the modal to the document if it doesn't exist
         if (!document.getElementById("assetAddOptionsModal")) {
           document.body.appendChild(modalDialog);
         } else {
-          document.getElementById("assetAddOptionsModal").querySelector('.modal-body').innerHTML = '';
+          document
+            .getElementById("assetAddOptionsModal")
+            .querySelector(".modal-body").innerHTML = "";
         }
-        
+
         // Add the content to the modal
-        document.getElementById("assetAddOptionsModal").querySelector('.modal-body').appendChild(modalContent);
-        
+        document
+          .getElementById("assetAddOptionsModal")
+          .querySelector(".modal-body")
+          .appendChild(modalContent);
+
         // Show the modal
-        const optionsModal = new bootstrap.Modal(document.getElementById("assetAddOptionsModal"));
+        const optionsModal = new bootstrap.Modal(
+          document.getElementById("assetAddOptionsModal")
+        );
         optionsModal.show();
-        
+
         // Add event listeners to the buttons
-        document.querySelector('.btn-add-network-interface').addEventListener('click', function() {
-          // Hide the options modal
-          optionsModal.hide();
-          
-          // Get the parent information - ensure we're getting string values
-          const mn = currentTreeNode.getAttribute("data-parent-mission-network");
-          const seg = currentTreeNode.getAttribute("data-parent-segment");
-          const dom = currentTreeNode.getAttribute("data-parent-domain");
-          const stack = currentTreeNode.getAttribute("data-parent-stack");
-          const asset = currentTreeNode.getAttribute("data-id");
-          
-          console.log('DEBUG - Raw parent values:', { 
-            mn: mn, 
-            seg: seg, 
-            dom: dom, 
-            stack: stack, 
-            asset: asset, 
-            mnType: typeof mn,
-            segType: typeof seg,
-            domType: typeof dom,
-            stackType: typeof stack,
-            assetType: typeof asset
+        document
+          .querySelector(".btn-add-network-interface")
+          .addEventListener("click", function () {
+            // Hide the options modal
+            optionsModal.hide();
+
+            // Get the parent information - ensure we're getting string values
+            const mn = currentTreeNode.getAttribute(
+              "data-parent-mission-network"
+            );
+            const seg = currentTreeNode.getAttribute("data-parent-segment");
+            const dom = currentTreeNode.getAttribute("data-parent-domain");
+            const stack = currentTreeNode.getAttribute("data-parent-stack");
+            const asset = currentTreeNode.getAttribute("data-id");
+            // Extract actual IDs from the parent tree nodes
+            // Special handling for '[object Object]' strings
+            let mnId =
+              currentTreeNode.getAttribute("data-parent-mission-network-id") ||
+              "MN-0001";
+            let segId =
+              currentTreeNode.getAttribute("data-parent-segment-id") ||
+              "SEG-0001";
+            let domId =
+              currentTreeNode.getAttribute("data-parent-domain-id") ||
+              "DOM-0001";
+            let stackId =
+              currentTreeNode.getAttribute("data-parent-stack-id") ||
+              "HWS-0001";
+            let assetId = asset;
+
+            // Populate the hidden fields in the add network interface modal
+            document.getElementById(
+              "addNetworkInterfaceMissionNetworkId"
+            ).value = mnId;
+            document.getElementById("addNetworkInterfaceSegmentId").value =
+              segId;
+            document.getElementById("addNetworkInterfaceDomainId").value =
+              domId;
+            document.getElementById("addNetworkInterfaceHwStackId").value =
+              stackId;
+            document.getElementById("addNetworkInterfaceAssetId").value =
+              assetId;
+
+            // Show the add network interface modal
+            const addModal = new bootstrap.Modal(
+              document.getElementById("addNetworkInterfaceModal")
+            );
+            addModal.show();
           });
-          
-          // Extract actual IDs from the parent tree nodes
-          // Special handling for '[object Object]' strings
-          let mnId = currentTreeNode.getAttribute("data-parent-mission-network-id") || "MN-0001";
-          let segId = currentTreeNode.getAttribute("data-parent-segment-id") || "SEG-0001";
-          let domId = currentTreeNode.getAttribute("data-parent-domain-id") || "DOM-0001";
-          let stackId = currentTreeNode.getAttribute("data-parent-stack-id") || "HWS-0001";
-          let assetId = asset;
-          
-          console.log('DEBUG - Processed parent IDs from direct ID attributes:', { 
-            mnId, 
-            segId, 
-            domId, 
-            stackId, 
-            assetId 
+
+        document
+          .querySelector(".btn-add-gp-container")
+          .addEventListener("click", function () {
+            // Hide the options modal
+            optionsModal.hide();
+
+            // Get the parent information - ensure we're getting string values
+            const mn = currentTreeNode.getAttribute(
+              "data-parent-mission-network"
+            );
+            const seg = currentTreeNode.getAttribute("data-parent-segment");
+            const dom = currentTreeNode.getAttribute("data-parent-domain");
+            const stack = currentTreeNode.getAttribute("data-parent-stack");
+            const asset = currentTreeNode.getAttribute("data-id");
+
+            // Ensure we have string values, not objects
+            const mnId = typeof mn === "object" ? mn.id || mn : mn;
+            const segId = typeof seg === "object" ? seg.id || seg : seg;
+            const domId = typeof dom === "object" ? dom.id || dom : dom;
+            const stackId =
+              typeof stack === "object" ? stack.id || stack : stack;
+            const assetId =
+              typeof asset === "object" ? asset.id || asset : asset;
+
+            // Populate the hidden fields in the add GP container modal
+            document.getElementById("addGPContainerMissionNetworkId").value =
+              mnId;
+            document.getElementById("addGPContainerSegmentId").value = segId;
+            document.getElementById("addGPContainerDomainId").value = domId;
+            document.getElementById("addGPContainerHwStackId").value = stackId;
+            document.getElementById("addGPContainerAssetId").value = assetId;
+
+            // Show the add GP container modal
+            const addModal = new bootstrap.Modal(
+              document.getElementById("addGPContainerModal")
+            );
+            addModal.show();
           });
-          
-          // Populate the hidden fields in the add network interface modal
-          document.getElementById("addNetworkInterfaceMissionNetworkId").value = mnId;
-          document.getElementById("addNetworkInterfaceSegmentId").value = segId;
-          document.getElementById("addNetworkInterfaceDomainId").value = domId;
-          document.getElementById("addNetworkInterfaceHwStackId").value = stackId;
-          document.getElementById("addNetworkInterfaceAssetId").value = assetId;
-          
-          // Show the add network interface modal
-          const addModal = new bootstrap.Modal(document.getElementById("addNetworkInterfaceModal"));
-          addModal.show();
-        });
-        
-        document.querySelector('.btn-add-gp-container').addEventListener('click', function() {
-          // Hide the options modal
-          optionsModal.hide();
-          
-          // Get the parent information - ensure we're getting string values
-          const mn = currentTreeNode.getAttribute("data-parent-mission-network");
-          const seg = currentTreeNode.getAttribute("data-parent-segment");
-          const dom = currentTreeNode.getAttribute("data-parent-domain");
-          const stack = currentTreeNode.getAttribute("data-parent-stack");
-          const asset = currentTreeNode.getAttribute("data-id");
-          
-          // Ensure we have string values, not objects
-          const mnId = typeof mn === 'object' ? mn.id || mn : mn;
-          const segId = typeof seg === 'object' ? seg.id || seg : seg;
-          const domId = typeof dom === 'object' ? dom.id || dom : dom;
-          const stackId = typeof stack === 'object' ? stack.id || stack : stack;
-          const assetId = typeof asset === 'object' ? asset.id || asset : asset;
-          
-          // Populate the hidden fields in the add GP container modal
-          document.getElementById("addGPContainerMissionNetworkId").value = mnId;
-          document.getElementById("addGPContainerSegmentId").value = segId;
-          document.getElementById("addGPContainerDomainId").value = domId;
-          document.getElementById("addGPContainerHwStackId").value = stackId;
-          document.getElementById("addGPContainerAssetId").value = assetId;
-          
-          // Show the add GP container modal
-          const addModal = new bootstrap.Modal(document.getElementById("addGPContainerModal"));
-          addModal.show();
-        });
       }
       // Other node types would be handled here as the feature expands
     });
@@ -580,44 +611,123 @@ document.addEventListener("DOMContentLoaded", function () {
           editModal.show();
         } else if (type === "networkInterfaces") {
           // Populate and show edit Network Interface modal
-          document.getElementById("editNetworkInterfaceId").value = currentElement.id;
-          document.getElementById("editNetworkInterfaceName").value = currentElement.name;
+          // Retrieve parent references from tree node
+          const parentAsset = currentTreeNode.getAttribute("data-parent-asset");
+          const parentStack = currentTreeNode.getAttribute("data-parent-stack");
+          const parentDomain =
+            currentTreeNode.getAttribute("data-parent-domain");
+          const parentSegment = currentTreeNode.getAttribute(
+            "data-parent-segment"
+          );
+          const parentMissionNetwork = currentTreeNode.getAttribute(
+            "data-parent-mission-network"
+          );
+
+          document.getElementById("editNetworkInterfaceId").value =
+            currentElement.id;
+          document.getElementById("editNetworkInterfaceName").value =
+            currentElement.name;
+
+          // The configuration items are stored in an array of objects with Name and AnswerContent properties
+          // Initialize default values
+          let ipAddressValue = "";
+          let subnetValue = "";
+          let fqdnValue = "";
+
+          // Extract values from configurationItems if they exist
+          if (
+            currentElement.configurationItems &&
+            Array.isArray(currentElement.configurationItems)
+          ) {
+            // Look for each specific item by name
+            currentElement.configurationItems.forEach((item) => {
+              if (item.Name === "IP Address" && item.AnswerContent) {
+                ipAddressValue = item.AnswerContent;
+              } else if (item.Name === "Sub-Net" && item.AnswerContent) {
+                subnetValue = item.AnswerContent;
+              } else if (item.Name === "FQDN" && item.AnswerContent) {
+                fqdnValue = item.AnswerContent;
+              }
+            });
+          }
+
+          // Set the form field values
+          document.getElementById("editNetworkInterfaceIpAddress").value =
+            ipAddressValue;
+          document.getElementById("editNetworkInterfaceSubnet").value =
+            subnetValue;
+          document.getElementById("editNetworkInterfaceFqdn").value = fqdnValue;
 
           // Store parent IDs for the API call
-          const assetId = currentTreeNode.getAttribute("data-parent-asset") || currentElement.parentAsset;
-          const hwStackId = currentTreeNode.getAttribute("data-parent-stack") || currentElement.parentStack;
-          const domainId = currentTreeNode.getAttribute("data-parent-domain") || currentElement.parentDomain;
-          const segmentId = currentTreeNode.getAttribute("data-parent-segment") || currentElement.parentSegment;
-          const missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network") || currentElement.parentMissionNetwork;
+          const assetId =
+            currentTreeNode.getAttribute("data-parent-asset") ||
+            currentElement.parentAsset;
+          const hwStackId =
+            currentTreeNode.getAttribute("data-parent-stack") ||
+            currentElement.parentStack;
+          const domainId =
+            currentTreeNode.getAttribute("data-parent-domain") ||
+            currentElement.parentDomain;
+          const segmentId =
+            currentTreeNode.getAttribute("data-parent-segment") ||
+            currentElement.parentSegment;
+          const missionNetworkId =
+            currentTreeNode.getAttribute("data-parent-mission-network") ||
+            currentElement.parentMissionNetwork;
 
-          document.getElementById("editNetworkInterfaceAssetId").value = assetId;
-          document.getElementById("editNetworkInterfaceHwStackId").value = hwStackId;
-          document.getElementById("editNetworkInterfaceDomainId").value = domainId;
-          document.getElementById("editNetworkInterfaceSegmentId").value = segmentId;
-          document.getElementById("editNetworkInterfaceMissionNetworkId").value = missionNetworkId;
+          // TEMPORARY FIX: Use AS-0001 as the asset ID for network interfaces
+          document.getElementById("editNetworkInterfaceAssetId").value =
+            "AS-0001";
+          document.getElementById("editNetworkInterfaceHwStackId").value =
+            hwStackId;
+          document.getElementById("editNetworkInterfaceDomainId").value =
+            domainId;
+          document.getElementById("editNetworkInterfaceSegmentId").value =
+            segmentId;
+          document.getElementById(
+            "editNetworkInterfaceMissionNetworkId"
+          ).value = missionNetworkId;
 
-          const editModal = new bootstrap.Modal(document.getElementById("editNetworkInterfaceModal"));
+          const editModal = new bootstrap.Modal(
+            document.getElementById("editNetworkInterfaceModal")
+          );
           editModal.show();
         } else if (type === "gpInstances") {
           // Populate and show edit GP instance modal
-          document.getElementById("editGPContainerId").value = currentElement.id;
-          document.getElementById("editGPContainerInstanceLabel").value = currentElement.instanceLabel || "";
-          document.getElementById("editGPContainerServiceId").value = currentElement.serviceId || "";
+          document.getElementById("editGPContainerId").value =
+            currentElement.id;
+          document.getElementById("editGPContainerInstanceLabel").value =
+            currentElement.instanceLabel || "";
+          document.getElementById("editGPContainerServiceId").value =
+            currentElement.serviceId || "";
 
           // Store parent IDs for the API call
-          const assetId = currentTreeNode.getAttribute("data-parent-asset") || currentElement.parentAsset;
-          const hwStackId = currentTreeNode.getAttribute("data-parent-stack") || currentElement.parentStack;
-          const domainId = currentTreeNode.getAttribute("data-parent-domain") || currentElement.parentDomain;
-          const segmentId = currentTreeNode.getAttribute("data-parent-segment") || currentElement.parentSegment;
-          const missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network") || currentElement.parentMissionNetwork;
+          const assetId =
+            currentTreeNode.getAttribute("data-parent-asset") ||
+            currentElement.parentAsset;
+          const hwStackId =
+            currentTreeNode.getAttribute("data-parent-stack") ||
+            currentElement.parentStack;
+          const domainId =
+            currentTreeNode.getAttribute("data-parent-domain") ||
+            currentElement.parentDomain;
+          const segmentId =
+            currentTreeNode.getAttribute("data-parent-segment") ||
+            currentElement.parentSegment;
+          const missionNetworkId =
+            currentTreeNode.getAttribute("data-parent-mission-network") ||
+            currentElement.parentMissionNetwork;
 
           document.getElementById("editGPContainerAssetId").value = assetId;
           document.getElementById("editGPContainerHwStackId").value = hwStackId;
           document.getElementById("editGPContainerDomainId").value = domainId;
           document.getElementById("editGPContainerSegmentId").value = segmentId;
-          document.getElementById("editGPContainerMissionNetworkId").value = missionNetworkId;
+          document.getElementById("editGPContainerMissionNetworkId").value =
+            missionNetworkId;
 
-          const editModal = new bootstrap.Modal(document.getElementById("editGPContainerModal"));
+          const editModal = new bootstrap.Modal(
+            document.getElementById("editGPContainerModal")
+          );
           editModal.show();
         }
         // Other node types would be handled here as the feature expands
@@ -741,14 +851,79 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById(
             "deleteItemParentId"
           ).value = `${missionNetworkId},${segmentId},${domainId},${hwStackId}`;
+        } else if (elementType === "networkInterfaces") {
+          // For network interfaces, we need mission network ID, segment ID, domain ID, HW stack ID, and asset ID
+          // First try to get parent IDs from data-parent-*-id attributes which are most reliable
+          let assetId = currentTreeNode.getAttribute("data-parent-asset-id");
+          let hwStackId = currentTreeNode.getAttribute("data-parent-stack-id");
+          let domainId = currentTreeNode.getAttribute("data-parent-domain-id");
+          let segmentId = currentTreeNode.getAttribute(
+            "data-parent-segment-id"
+          );
+          let missionNetworkId = currentTreeNode.getAttribute(
+            "data-parent-mission-network-id"
+          );
 
-          console.log("Enhanced asset parent references:", {
-            hwStackId,
-            parentStack: currentElement.parentStack,
-            parentDomain: currentElement.parentDomain,
-            parentSegment: currentElement.parentSegment,
-            parentMissionNetwork: currentElement.parentMissionNetwork,
-          });
+          // Extract parent IDs from data attributes
+
+          // Fall back to regular data attributes if needed
+          if (!assetId)
+            assetId = currentTreeNode.getAttribute("data-parent-asset");
+          if (!hwStackId)
+            hwStackId = currentTreeNode.getAttribute("data-parent-stack");
+          if (!domainId)
+            domainId = currentTreeNode.getAttribute("data-parent-domain");
+          if (!segmentId)
+            segmentId = currentTreeNode.getAttribute("data-parent-segment");
+          if (!missionNetworkId)
+            missionNetworkId = currentTreeNode.getAttribute(
+              "data-parent-mission-network"
+            );
+
+          // Fall back to object properties if needed
+          if (!assetId && currentElement.parentAsset) {
+            assetId =
+              typeof currentElement.parentAsset === "object"
+                ? currentElement.parentAsset.id
+                : currentElement.parentAsset;
+          }
+
+          if (!hwStackId && currentElement.parentStack) {
+            hwStackId =
+              typeof currentElement.parentStack === "object"
+                ? currentElement.parentStack.id
+                : currentElement.parentStack;
+          }
+
+          if (!domainId && currentElement.parentDomain) {
+            domainId =
+              typeof currentElement.parentDomain === "object"
+                ? currentElement.parentDomain.id
+                : currentElement.parentDomain;
+          }
+
+          if (!segmentId && currentElement.parentSegment) {
+            segmentId =
+              typeof currentElement.parentSegment === "object"
+                ? currentElement.parentSegment.id
+                : currentElement.parentSegment;
+          }
+
+          if (!missionNetworkId && currentElement.parentMissionNetwork) {
+            missionNetworkId =
+              typeof currentElement.parentMissionNetwork === "object"
+                ? currentElement.parentMissionNetwork.id
+                : currentElement.parentMissionNetwork;
+          }
+
+          // All parent IDs retrieved and ready
+
+          // Store all five parent IDs as comma-separated values
+          document.getElementById(
+            "deleteItemParentId"
+          ).value = `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId}`;
+
+          // Store parent references for network interface deletion
         }
 
         const deleteModal = new bootstrap.Modal(
@@ -1015,31 +1190,39 @@ document.addEventListener("DOMContentLoaded", function () {
   function captureCurrentTreeState(treeNode) {
     const state = {
       nodeType: treeNode.getAttribute("data-type"),
-      nodeId: treeNode.getAttribute("data-id")
+      nodeId: treeNode.getAttribute("data-id"),
     };
-    
+
     // Add parent references based on node type
-    switch(state.nodeType) {
+    switch (state.nodeType) {
       case "assets":
         state.hwStackId = treeNode.getAttribute("data-parent-stack");
         state.domainId = treeNode.getAttribute("data-parent-domain");
         state.segmentId = treeNode.getAttribute("data-parent-segment");
-        state.missionNetworkId = treeNode.getAttribute("data-parent-mission-network");
+        state.missionNetworkId = treeNode.getAttribute(
+          "data-parent-mission-network"
+        );
         break;
       case "hwStacks":
         state.domainId = treeNode.getAttribute("data-parent-domain");
         state.segmentId = treeNode.getAttribute("data-parent-segment");
-        state.missionNetworkId = treeNode.getAttribute("data-parent-mission-network");
+        state.missionNetworkId = treeNode.getAttribute(
+          "data-parent-mission-network"
+        );
         break;
       case "securityDomains":
         state.segmentId = treeNode.getAttribute("data-parent-segment");
-        state.missionNetworkId = treeNode.getAttribute("data-parent-mission-network");
+        state.missionNetworkId = treeNode.getAttribute(
+          "data-parent-mission-network"
+        );
         break;
       case "networkSegments":
-        state.missionNetworkId = treeNode.getAttribute("data-parent-mission-network");
+        state.missionNetworkId = treeNode.getAttribute(
+          "data-parent-mission-network"
+        );
         break;
     }
-    
+
     return state;
   }
 
@@ -1047,39 +1230,46 @@ document.addEventListener("DOMContentLoaded", function () {
   function restoreTreeState(state) {
     if (!state.missionNetworkId) return;
     // Restoring state after refresh
-    
+
     // First find and restore the mission network
     const mnNode = findTreeNode("missionNetworks", state.missionNetworkId);
     if (!mnNode) return;
-    
+
     // Found mission network to restore
     selectAndExpandNode(mnNode);
-    
+
     // If we have a segment to restore, find and restore it
     if (!state.segmentId) return;
-    const segNode = findTreeNodeInParent(mnNode, "networkSegments", state.segmentId);
+    const segNode = findTreeNodeInParent(
+      mnNode,
+      "networkSegments",
+      state.segmentId
+    );
     if (!segNode) return;
-    
+
     // Found segment to restore
     selectAndExpandNode(segNode);
-    
+
     // Determine which security domain ID to look for
-    const domainId = state.domainId || 
+    const domainId =
+      state.domainId ||
       (state.nodeType === "securityDomains" ? state.nodeId : null);
-    
+
     if (!domainId) return;
-    
+
     // Debug: List all security domain nodes in this segment
     const segChildren = getChildrenContainer(segNode);
-    const allSDNodes = segChildren.querySelectorAll(`.tree-node[data-type="securityDomains"]`);
+    const allSDNodes = segChildren.querySelectorAll(
+      `.tree-node[data-type="securityDomains"]`
+    );
     // Found security domain nodes in segment
     allSDNodes.forEach((node) => {
       // Security domain node IDs logged
     });
-    
+
     // Try to find the security domain node
     let sdNode = findTreeNodeInParent(segNode, "securityDomains", domainId);
-    
+
     // Fallback to name matching if needed
     if (!sdNode) {
       console.warn(`Could not find security domain node with ID ${domainId}`);
@@ -1090,37 +1280,39 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       // Found security domain to restore
     }
-    
+
     if (!sdNode) return;
     selectAndExpandNode(sdNode);
-    
+
     // Determine which HW stack ID to look for
-    const hwStackId = state.hwStackId || 
-      (state.nodeType === "hwStacks" ? state.nodeId : null);
-    
+    const hwStackId =
+      state.hwStackId || (state.nodeType === "hwStacks" ? state.nodeId : null);
+
     if (!hwStackId) return;
-    
+
     // Debug: List all HW stack nodes in this domain
     const sdChildren = getChildrenContainer(sdNode);
-    const allHWNodes = sdChildren.querySelectorAll(`.tree-node[data-type="hwStacks"]`);
+    const allHWNodes = sdChildren.querySelectorAll(
+      `.tree-node[data-type="hwStacks"]`
+    );
     // Found HW stack nodes in domain
     allHWNodes.forEach((node) => {
       // HW stack node IDs logged
     });
-    
+
     // Try to find the HW stack node
     const hwNode = findTreeNodeInParent(sdNode, "hwStacks", hwStackId);
     if (!hwNode) {
       console.warn(`Could not find HW stack node with ID ${hwStackId}`);
       return;
     }
-    
+
     // Found HW stack to restore
     selectAndExpandNode(hwNode);
-    
+
     // If we have an asset to restore, find and restore it
     if (state.nodeType !== "assets" || !state.nodeId) return;
-    
+
     // Looking for asset
     const assetNode = findTreeNodeInParent(hwNode, "assets", state.nodeId);
     if (assetNode) {
@@ -1128,30 +1320,32 @@ document.addEventListener("DOMContentLoaded", function () {
       assetNode.click(); // Just select the asset, no need to expand
     }
   }
-  
+
   // Helper function to find a tree node by type and ID
   function findTreeNode(type, id) {
-    return document.querySelector(`.tree-node[data-type="${type}"][data-id="${id}"]`);
+    return document.querySelector(
+      `.tree-node[data-type="${type}"][data-id="${id}"]`
+    );
   }
-  
+
   // Helper function to find a tree node within a parent's children
   function findTreeNodeInParent(parentNode, childType, childId) {
     const childrenContainer = getChildrenContainer(parentNode);
     if (!childrenContainer) return null;
-    
+
     return childrenContainer.querySelector(
       `.tree-node[data-type="${childType}"][data-id="${childId}"]`
     );
   }
-  
+
   // Helper function to get the children container of a node
   function getChildrenContainer(node) {
     const container = node.nextElementSibling;
-    return (container && container.classList.contains("tree-node-children")) 
-      ? container 
+    return container && container.classList.contains("tree-node-children")
+      ? container
       : null;
   }
-  
+
   // Helper function to find a node by text content
   function findNodeByTextContent(nodeList, textToMatch) {
     for (const node of nodeList) {
@@ -1161,16 +1355,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return null;
   }
-  
+
   // Helper function to select and expand a tree node
   function selectAndExpandNode(node) {
     node.click(); // Select the node
-    
+
     const childrenContainer = getChildrenContainer(node);
     if (!childrenContainer) return;
-    
+
     childrenContainer.style.display = "block"; // Show children
-    
+
     // Update toggle icon
     const toggleIcon = node.querySelector(".tree-toggle i");
     if (toggleIcon) toggleIcon.className = "fas fa-chevron-down";
@@ -1613,30 +1807,77 @@ document.addEventListener("DOMContentLoaded", function () {
   // Add a new network interface to an asset
   async function addNetworkInterface() {
     const nameInput = document.getElementById("addNetworkInterfaceName");
-    const missionNetworkIdInput = document.getElementById("addNetworkInterfaceMissionNetworkId");
-    const segmentIdInput = document.getElementById("addNetworkInterfaceSegmentId");
-    const domainIdInput = document.getElementById("addNetworkInterfaceDomainId");
-    const hwStackIdInput = document.getElementById("addNetworkInterfaceHwStackId");
+    const ipAddressInput = document.getElementById(
+      "addNetworkInterfaceIpAddress"
+    );
+    const subnetInput = document.getElementById("addNetworkInterfaceSubnet");
+    const fqdnInput = document.getElementById("addNetworkInterfaceFqdn");
+    const missionNetworkIdInput = document.getElementById(
+      "addNetworkInterfaceMissionNetworkId"
+    );
+    const segmentIdInput = document.getElementById(
+      "addNetworkInterfaceSegmentId"
+    );
+    const domainIdInput = document.getElementById(
+      "addNetworkInterfaceDomainId"
+    );
+    const hwStackIdInput = document.getElementById(
+      "addNetworkInterfaceHwStackId"
+    );
     const assetIdInput = document.getElementById("addNetworkInterfaceAssetId");
 
     const name = nameInput.value.trim();
+    const ipAddress = ipAddressInput.value.trim();
+    const subnet = subnetInput.value.trim();
+    const fqdn = fqdnInput.value.trim();
     const missionNetworkId = missionNetworkIdInput.value;
     const segmentId = segmentIdInput.value;
     const domainId = domainIdInput.value;
     const hwStackId = hwStackIdInput.value;
     const assetId = assetIdInput.value;
 
+    // Validate required fields - only name is mandatory
     if (!name) {
       showToast("Please enter a network interface name", "warning");
       return;
     }
 
-    if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+    // IP Address, Subnet, and FQDN are optional
+
+    if (
+      !missionNetworkId ||
+      !segmentId ||
+      !domainId ||
+      !hwStackId ||
+      !assetId
+    ) {
       showToast("Missing parent ID information", "warning");
       return;
     }
 
     try {
+      // Create the configuration items array with the proper structure
+      const configItems = [
+        {
+          Name: "IP Address",
+          AnswerContent: ipAddress,
+        },
+        {
+          Name: "Sub-Net",
+          AnswerContent: subnet,
+        },
+      ];
+
+      // Only add FQDN if it's not empty
+      if (fqdn) {
+        configItems.push({
+          Name: "FQDN",
+          AnswerContent: fqdn,
+        });
+      }
+
+      // Prepare to add network interface
+
       // Call the API to add the network interface
       const apiResult = await CISApi.addNetworkInterface(
         missionNetworkId,
@@ -1644,7 +1885,8 @@ document.addEventListener("DOMContentLoaded", function () {
         domainId,
         hwStackId,
         assetId,
-        name
+        name,
+        configItems
       );
 
       if (apiResult.success) {
@@ -1670,13 +1912,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       } else {
         showToast(
-          `${apiResult.message || apiResult.error || "Failed to create network interface"}`,
+          `${
+            apiResult.message ||
+            apiResult.error ||
+            "Failed to create network interface"
+          }`,
           "danger"
         );
       }
     } catch (error) {
       console.error("Error in addNetworkInterface function:", error);
-      showToast("An error occurred while creating the network interface", "danger");
+      showToast(
+        "An error occurred while creating the network interface",
+        "danger"
+      );
     }
   }
 
@@ -1684,33 +1933,79 @@ document.addEventListener("DOMContentLoaded", function () {
   async function updateNetworkInterface() {
     const idInput = document.getElementById("editNetworkInterfaceId");
     const nameInput = document.getElementById("editNetworkInterfaceName");
-    const missionNetworkIdInput = document.getElementById("editNetworkInterfaceMissionNetworkId");
-    const segmentIdInput = document.getElementById("editNetworkInterfaceSegmentId");
-    const domainIdInput = document.getElementById("editNetworkInterfaceDomainId");
-    const hwStackIdInput = document.getElementById("editNetworkInterfaceHwStackId");
+    const ipAddressInput = document.getElementById(
+      "editNetworkInterfaceIpAddress"
+    );
+    const subnetInput = document.getElementById("editNetworkInterfaceSubnet");
+    const fqdnInput = document.getElementById("editNetworkInterfaceFqdn");
+    const missionNetworkIdInput = document.getElementById(
+      "editNetworkInterfaceMissionNetworkId"
+    );
+    const segmentIdInput = document.getElementById(
+      "editNetworkInterfaceSegmentId"
+    );
+    const domainIdInput = document.getElementById(
+      "editNetworkInterfaceDomainId"
+    );
+    const hwStackIdInput = document.getElementById(
+      "editNetworkInterfaceHwStackId"
+    );
     const assetIdInput = document.getElementById("editNetworkInterfaceAssetId");
 
     const id = idInput.value;
     const name = nameInput.value.trim();
+    const ipAddress = ipAddressInput.value.trim();
+    const subnet = subnetInput.value.trim();
+    const fqdn = fqdnInput.value.trim();
     const missionNetworkId = missionNetworkIdInput.value;
     const segmentId = segmentIdInput.value;
     const domainId = domainIdInput.value;
     const hwStackId = hwStackIdInput.value;
+
+    // Get the asset ID from the form input
     const assetId = assetIdInput.value;
 
+    // Validate required fields - only name is mandatory
     if (!name) {
       showToast("Please enter a network interface name", "warning");
       return;
     }
 
-    if (!id || !missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+    if (
+      !id ||
+      !missionNetworkId ||
+      !segmentId ||
+      !domainId ||
+      !hwStackId ||
+      !assetId
+    ) {
       showToast("Missing ID information", "warning");
       return;
     }
 
     try {
-      // Call the API to update the network interface
-      const apiResult = await CISApi.updateNetworkInterface(
+      // Create the configuration items array with the proper structure
+      const configItems = [
+        {
+          Name: "IP Address",
+          AnswerContent: ipAddress,
+        },
+        {
+          Name: "Sub-Net",
+          AnswerContent: subnet,
+        },
+      ];
+
+      // Only add FQDN if it's not empty
+      if (fqdn) {
+        configItems.push({
+          Name: "FQDN",
+          AnswerContent: fqdn,
+        });
+      }
+
+      // First update the network interface name
+      const nameUpdateResult = await CISApi.updateNetworkInterface(
         missionNetworkId,
         segmentId,
         domainId,
@@ -1720,6 +2015,78 @@ document.addEventListener("DOMContentLoaded", function () {
         name
       );
 
+      // Process name update result
+
+      if (!nameUpdateResult.success) {
+        return nameUpdateResult; // Return early if name update fails
+      }
+
+      // Now update each configuration item with a separate API call
+      const configItemResults = [];
+
+      // Update IP Address if provided
+      if (ipAddress) {
+        const ipAddressResult = await CISApi.updateNetworkInterfaceConfigItem(
+          missionNetworkId,
+          segmentId,
+          domainId,
+          hwStackId,
+          assetId,
+          id,
+          "IP Address",
+          ipAddress
+        );
+        configItemResults.push({ item: "IP Address", result: ipAddressResult });
+      }
+
+      // Update Sub-Net if provided
+      if (subnet) {
+        const subnetResult = await CISApi.updateNetworkInterfaceConfigItem(
+          missionNetworkId,
+          segmentId,
+          domainId,
+          hwStackId,
+          assetId,
+          id,
+          "Sub-Net",
+          subnet
+        );
+        configItemResults.push({ item: "Sub-Net", result: subnetResult });
+      }
+
+      // Update FQDN if provided
+      if (fqdn) {
+        const fqdnResult = await CISApi.updateNetworkInterfaceConfigItem(
+          missionNetworkId,
+          segmentId,
+          domainId,
+          hwStackId,
+          assetId,
+          id,
+          "FQDN",
+          fqdn
+        );
+        configItemResults.push({ item: "FQDN", result: fqdnResult });
+      }
+
+      // Check if all updates were successful
+      const allSuccess =
+        nameUpdateResult.success &&
+        (!configItemResults.length ||
+          configItemResults.every((item) => item.result.success));
+
+      // Create a combined result
+      const apiResult = {
+        success: allSuccess,
+        status: allSuccess ? 200 : 400,
+        data: { nameUpdate: nameUpdateResult, configItemResults },
+        message: allSuccess
+          ? "All updates successful"
+          : "One or more updates failed",
+      };
+
+      // Process the final combined result
+
       if (apiResult.success) {
         // Use the utility function to handle modal, button, and toast in one call
         await CISUtils.handleModal(
@@ -1728,15 +2095,40 @@ document.addEventListener("DOMContentLoaded", function () {
           `Network Interface updated successfully!`
         );
 
-        // Update the current element with the new name
+        // Update the current element with the new values
         if (currentElement && currentElement.id === id) {
+          // Update the name
           currentElement.name = name;
 
-          // Update the details panel with the new name
+          // Update the configuration items
+          if (!currentElement.configurationItems) {
+            currentElement.configurationItems = [];
+          }
+
+          // Map our config items to the expected format
+          configItems.forEach((item) => {
+            // Find existing item or create new one
+            const existingItemIndex =
+              currentElement.configurationItems.findIndex(
+                (ci) => ci.Name === item.Name
+              );
+            if (existingItemIndex >= 0) {
+              // Update existing
+              currentElement.configurationItems[
+                existingItemIndex
+              ].AnswerContent = item.AnswerContent;
+            } else {
+              // Add new
+              currentElement.configurationItems.push(item);
+            }
+          });
+
+          // Update the details panel with the new values
           updateDetailPanel(currentElement, currentElement.type);
         }
 
-        // Refresh the data with state preservation
+        // IMPORTANT: Force a full refresh of the tree to ensure changes are reflected
+        // Refresh UI to show updated network interface
         await refreshPanelsWithState({
           nodeType: "assets",
           nodeId: assetId,
@@ -1745,23 +2137,46 @@ document.addEventListener("DOMContentLoaded", function () {
           segmentId: segmentId,
           missionNetworkId: missionNetworkId,
         });
+
+        // After refresh, select the parent asset again to show the network interfaces
+        setTimeout(() => {
+          // Find and select the asset node
+          const assetNode = document.querySelector(
+            `[data-type="assets"][data-id="${assetId}"]`
+          );
+          if (assetNode) {
+            // Simulate a click to expand and show children
+            assetNode.click();
+          }
+        }, 500);
       } else {
         showToast(
-          `${apiResult.message || apiResult.error || "Failed to update network interface"}`,
+          `${
+            apiResult.message ||
+            apiResult.error ||
+            "Failed to update network interface"
+          }`,
           "danger"
         );
       }
     } catch (error) {
       console.error("Error in updateNetworkInterface function:", error);
-      showToast("An error occurred while updating the network interface", "danger");
+      showToast(
+        "An error occurred while updating the network interface",
+        "danger"
+      );
     }
   }
 
   // Add a new GP container (GP instance) to an asset
   async function addGPContainer() {
-    const instanceLabelInput = document.getElementById("addGPContainerInstanceLabel");
+    const instanceLabelInput = document.getElementById(
+      "addGPContainerInstanceLabel"
+    );
     const serviceIdInput = document.getElementById("addGPContainerServiceId");
-    const missionNetworkIdInput = document.getElementById("addGPContainerMissionNetworkId");
+    const missionNetworkIdInput = document.getElementById(
+      "addGPContainerMissionNetworkId"
+    );
     const segmentIdInput = document.getElementById("addGPContainerSegmentId");
     const domainIdInput = document.getElementById("addGPContainerDomainId");
     const hwStackIdInput = document.getElementById("addGPContainerHwStackId");
@@ -1780,7 +2195,13 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+    if (
+      !missionNetworkId ||
+      !segmentId ||
+      !domainId ||
+      !hwStackId ||
+      !assetId
+    ) {
       showToast("Missing parent ID information", "warning");
       return;
     }
@@ -1820,22 +2241,33 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       } else {
         showToast(
-          `${apiResult.message || apiResult.error || "Failed to create generic product"}`,
+          `${
+            apiResult.message ||
+            apiResult.error ||
+            "Failed to create generic product"
+          }`,
           "danger"
         );
       }
     } catch (error) {
       console.error("Error in addGPContainer function:", error);
-      showToast("An error occurred while creating the generic product", "danger");
+      showToast(
+        "An error occurred while creating the generic product",
+        "danger"
+      );
     }
   }
 
   // Update an existing GP container (GP instance)
   async function updateGPContainer() {
     const idInput = document.getElementById("editGPContainerId");
-    const instanceLabelInput = document.getElementById("editGPContainerInstanceLabel");
+    const instanceLabelInput = document.getElementById(
+      "editGPContainerInstanceLabel"
+    );
     const serviceIdInput = document.getElementById("editGPContainerServiceId");
-    const missionNetworkIdInput = document.getElementById("editGPContainerMissionNetworkId");
+    const missionNetworkIdInput = document.getElementById(
+      "editGPContainerMissionNetworkId"
+    );
     const segmentIdInput = document.getElementById("editGPContainerSegmentId");
     const domainIdInput = document.getElementById("editGPContainerDomainId");
     const hwStackIdInput = document.getElementById("editGPContainerHwStackId");
@@ -1855,7 +2287,14 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!id || !missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+    if (
+      !id ||
+      !missionNetworkId ||
+      !segmentId ||
+      !domainId ||
+      !hwStackId ||
+      !assetId
+    ) {
       showToast("Missing ID information", "warning");
       return;
     }
@@ -1901,13 +2340,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       } else {
         showToast(
-          `${apiResult.message || apiResult.error || "Failed to update generic product"}`,
+          `${
+            apiResult.message ||
+            apiResult.error ||
+            "Failed to update generic product"
+          }`,
           "danger"
         );
       }
     } catch (error) {
       console.error("Error in updateGPContainer function:", error);
-      showToast("An error occurred while updating the generic product", "danger");
+      showToast(
+        "An error occurred while updating the generic product",
+        "danger"
+      );
     }
   }
 
@@ -2171,15 +2617,34 @@ document.addEventListener("DOMContentLoaded", function () {
       if (apiResult.success) {
         // Close the modal using CISUtils helper for consistent modal handling
         closeDeleteModal();
-        
+
         // Show success message
         showToast(`${name} deleted successfully!`);
-        
-        // Use CISUtils to build a restoration state based on entity hierarchy
-        const stateToRestore = CISUtils.buildRestoreState(type, parentId);
-        
+
+        // Create a state to restore to the appropriate parent based on the entity type
+        let stateToRestore;
+
+        // Special handling for network interfaces
+        if (type === "networkInterfaces") {
+          // For network interfaces, extract parent IDs from the comma-separated string
+          const parentIds = parentId.split(",");
+
+          // Create state to restore to the parent asset (same format as add/edit operations)
+          stateToRestore = {
+            nodeType: "assets",
+            nodeId: parentIds[4], // assetId is at index 4
+            hwStackId: parentIds[3],
+            domainId: parentIds[2],
+            segmentId: parentIds[1],
+            missionNetworkId: parentIds[0],
+          };
+        } else {
+          // Use CISUtils to build a restoration state for other entity types
+          stateToRestore = CISUtils.buildRestoreState(type, parentId);
+        }
+
         // Item deleted, preparing to restore parent node
-        
+
         try {
           // Use the state-preserving refresh function
           await refreshPanelsWithState(stateToRestore);
@@ -2812,151 +3277,184 @@ document.addEventListener("DOMContentLoaded", function () {
             );
           }
         }
+      });
     });
-  });
-}
-
-// Render assets under a hardware stack
-function renderAssets(
-  container,
-  assets,
-  parentStack,
-  parentDomain,
-  parentSegment,
-  parentMissionNetwork
-) {
-  if (!assets || assets.length === 0) {
-    return;
   }
 
-  // Create a container for the assets
-  const assetsContainer = document.createElement("div");
-  container.appendChild(assetsContainer);
+  // Render assets under a hardware stack
+  function renderAssets(
+    container,
+    assets,
+    parentStack,
+    parentDomain,
+    parentSegment,
+    parentMissionNetwork
+  ) {
+    if (!assets || assets.length === 0) {
+      return;
+    }
 
-  // For each asset, create a tree node
-  assets.forEach((asset) => {
-    // Create a wrapper for the asset and its children to ensure proper visual nesting
-    const assetWrapper = document.createElement("div");
-    assetWrapper.className = "asset-wrapper";
-    assetsContainer.appendChild(assetWrapper);
-    
-    // Create the asset node
-    const assetNode = createTreeNode(
-      "assets",
-      asset.name,
-      asset.id,
-      asset.guid
-    );
+    // Create a container for the assets
+    const assetsContainer = document.createElement("div");
+    container.appendChild(assetsContainer);
 
-    // Store parent references as data attributes - ensure we store ID strings, not objects
-    assetNode.setAttribute("data-parent-stack", typeof parentStack === 'object' ? parentStack.id : parentStack);
-    assetNode.setAttribute("data-parent-domain", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
-    assetNode.setAttribute("data-parent-segment", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
-    assetNode.setAttribute("data-parent-mission-network", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
-    
-    // Store IDs directly for easier access
-    assetNode.setAttribute("data-parent-stack-id", typeof parentStack === 'object' ? parentStack.id : parentStack);
-    assetNode.setAttribute("data-parent-domain-id", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
-    assetNode.setAttribute("data-parent-segment-id", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
-    assetNode.setAttribute("data-parent-mission-network-id", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
+    // For each asset, create a tree node
+    assets.forEach((asset) => {
+      // Create a wrapper for the asset and its children to ensure proper visual nesting
+      const assetWrapper = document.createElement("div");
+      assetWrapper.className = "asset-wrapper";
+      assetsContainer.appendChild(assetWrapper);
 
-    // Store these references in asset object too for when selected from the elements panel
-    asset.parentStack = parentStack;
-    asset.parentDomain = parentDomain;
-    asset.parentSegment = parentSegment;
-    asset.parentMissionNetwork = parentMissionNetwork;
-    asset.hwStackId = parentStack; // Ensure hwStackId is always available
-    
-    // Add the asset node first, so child elements appear after it
-    assetWrapper.appendChild(assetNode);
-    
-    // Create container for children (network interfaces, GP instances)
-    const childrenContainer = document.createElement("div");
-    childrenContainer.className = "ms-4"; // Margin-start for indentation
-    childrenContainer.style.display = "none"; // Initially collapsed
-    childrenContainer.setAttribute("data-parent", asset.id);
-    assetWrapper.appendChild(childrenContainer); // Add to the wrapper after the asset node
-
-    // Unified click handler for selection and expand/collapse
-    assetNode.onclick = function(e) {
-      e.stopPropagation();
-      
-      // Track if this node was already active before this click
-      const wasActive = this.classList.contains("active");
-      
-      // Handle selection
-      document.querySelectorAll(".tree-node.active").forEach((node) => {
-        node.classList.remove("active");
-      });
-      this.classList.add("active");
-      currentTreeNode = this;
-      
-      // Update elements panel
-      loadSelectedNodeChildren(
-        asset,
+      // Create the asset node
+      const assetNode = createTreeNode(
         "assets",
-        { id: parentStack },
-        { id: parentDomain },
-        { id: parentSegment },
-        { id: parentMissionNetwork }
+        asset.name,
+        asset.id,
+        asset.guid
       );
-      
-      // Enable the "Add Element" button
-      if (addElementButton) addElementButton.disabled = false;
-      
-      // Handle expand/collapse
-      const isExpandIconClick = e.target.closest('.tree-toggle');
-      if (isExpandIconClick || !wasActive) {
-        // Find the children container in our asset wrapper
-        const childContainer = this.parentElement.querySelector(`div[data-parent="${asset.id}"]`);
-        if (childContainer) {
-          const isExpanded = childContainer.style.display !== "none";
-          const shouldExpand = isExpandIconClick ? !isExpanded : true;
-          
-          // Toggle visibility
-          childContainer.style.display = shouldExpand ? "block" : "none";
-          
-          // Update icon
-          const icon = this.querySelector(".tree-toggle");
-          if (icon) {
-            icon.innerHTML = shouldExpand
-              ? '<i class="fas fa-chevron-down"></i>'
-              : '<i class="fas fa-chevron-right"></i>';
-          }
-          
-          // Lazy load children if needed
-          if (shouldExpand && childContainer.children.length === 0) {
-            // Network interfaces
-            if (asset.networkInterfaces && asset.networkInterfaces.length > 0) {
-              renderNetworkInterfaces(
-                childContainer,
-                asset.networkInterfaces,
-                asset.id,
-                parentStack,
-                parentDomain,
-                parentSegment,
-                parentMissionNetwork
-              );
+
+      // Store parent references as data attributes - ensure we store ID strings, not objects
+      assetNode.setAttribute(
+        "data-parent-stack",
+        typeof parentStack === "object" ? parentStack.id : parentStack
+      );
+      assetNode.setAttribute(
+        "data-parent-domain",
+        typeof parentDomain === "object" ? parentDomain.id : parentDomain
+      );
+      assetNode.setAttribute(
+        "data-parent-segment",
+        typeof parentSegment === "object" ? parentSegment.id : parentSegment
+      );
+      assetNode.setAttribute(
+        "data-parent-mission-network",
+        typeof parentMissionNetwork === "object"
+          ? parentMissionNetwork.id
+          : parentMissionNetwork
+      );
+
+      // Store IDs directly for easier access
+      assetNode.setAttribute(
+        "data-parent-stack-id",
+        typeof parentStack === "object" ? parentStack.id : parentStack
+      );
+      assetNode.setAttribute(
+        "data-parent-domain-id",
+        typeof parentDomain === "object" ? parentDomain.id : parentDomain
+      );
+      assetNode.setAttribute(
+        "data-parent-segment-id",
+        typeof parentSegment === "object" ? parentSegment.id : parentSegment
+      );
+      assetNode.setAttribute(
+        "data-parent-mission-network-id",
+        typeof parentMissionNetwork === "object"
+          ? parentMissionNetwork.id
+          : parentMissionNetwork
+      );
+
+      // Store these references in asset object too for when selected from the elements panel
+      asset.parentStack = parentStack;
+      asset.parentDomain = parentDomain;
+      asset.parentSegment = parentSegment;
+      asset.parentMissionNetwork = parentMissionNetwork;
+      asset.hwStackId = parentStack; // Ensure hwStackId is always available
+
+      // Add the asset node first, so child elements appear after it
+      assetWrapper.appendChild(assetNode);
+
+      // Create container for children (network interfaces, GP instances)
+      const childrenContainer = document.createElement("div");
+      childrenContainer.className = "ms-4"; // Margin-start for indentation
+      childrenContainer.style.display = "none"; // Initially collapsed
+      childrenContainer.setAttribute("data-parent", asset.id);
+      assetWrapper.appendChild(childrenContainer); // Add to the wrapper after the asset node
+
+      // Unified click handler for selection and expand/collapse
+      assetNode.onclick = function (e) {
+        e.stopPropagation();
+
+        // Track if this node was already active before this click
+        const wasActive = this.classList.contains("active");
+
+        // Handle selection
+        document.querySelectorAll(".tree-node.active").forEach((node) => {
+          node.classList.remove("active");
+        });
+        this.classList.add("active");
+        currentTreeNode = this;
+
+        // Update elements panel
+        loadSelectedNodeChildren(
+          asset,
+          "assets",
+          { id: parentStack },
+          { id: parentDomain },
+          { id: parentSegment },
+          { id: parentMissionNetwork }
+        );
+
+        // Enable the "Add Element" button
+        if (addElementButton) addElementButton.disabled = false;
+
+        // Handle expand/collapse
+        const isExpandIconClick = e.target.closest(".tree-toggle");
+        if (isExpandIconClick || !wasActive) {
+          // Find the children container in our asset wrapper
+          const childContainer = this.parentElement.querySelector(
+            `div[data-parent="${asset.id}"]`
+          );
+          if (childContainer) {
+            const isExpanded = childContainer.style.display !== "none";
+            const shouldExpand = isExpandIconClick ? !isExpanded : true;
+
+            // Toggle visibility
+            childContainer.style.display = shouldExpand ? "block" : "none";
+
+            // Update icon
+            const icon = this.querySelector(".tree-toggle");
+            if (icon) {
+              icon.innerHTML = shouldExpand
+                ? '<i class="fas fa-chevron-down"></i>'
+                : '<i class="fas fa-chevron-right"></i>';
             }
-            
-            // GP instances
-            if (asset.gpInstances && asset.gpInstances.length > 0) {
-              renderGPInstances(
-                childContainer,
-                asset.gpInstances,
-                asset.id,
-                parentStack,
-                parentDomain,
-                parentSegment,
-                parentMissionNetwork
-              );
+
+            // Lazy load children if needed
+            if (shouldExpand && childContainer.children.length === 0) {
+              // Network interfaces
+              if (
+                asset.networkInterfaces &&
+                asset.networkInterfaces.length > 0
+              ) {
+                renderNetworkInterfaces(
+                  childContainer,
+                  asset.networkInterfaces,
+                  asset.id,
+                  parentStack,
+                  parentDomain,
+                  parentSegment,
+                  parentMissionNetwork
+                );
+              }
+
+              // GP instances
+              if (asset.gpInstances && asset.gpInstances.length > 0) {
+                renderGPInstances(
+                  childContainer,
+                  asset.gpInstances,
+                  asset.id,
+                  parentStack,
+                  parentDomain,
+                  parentSegment,
+                  parentMissionNetwork
+                );
+              }
             }
           }
         }
-      }
-    };
-  });
-}
+      };
+    });
+  }
 
   // Render network interfaces under an asset
   function renderNetworkInterfaces(
@@ -2976,14 +3474,62 @@ function renderAssets(
         networkInterface.guid,
         "fa-network-wired"
       );
-      
+
       // Set parent reference data attributes
-      networkInterfaceNode.setAttribute("data-parent-asset", typeof parentAsset === 'object' ? parentAsset.id : parentAsset);
-      networkInterfaceNode.setAttribute("data-parent-stack", typeof parentStack === 'object' ? parentStack.id : parentStack);
-      networkInterfaceNode.setAttribute("data-parent-domain", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
-      networkInterfaceNode.setAttribute("data-parent-segment", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
-      networkInterfaceNode.setAttribute("data-parent-mission-network", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
-      
+      networkInterfaceNode.setAttribute(
+        "data-parent-asset",
+        typeof parentAsset === "object" ? parentAsset.id : parentAsset
+      );
+      networkInterfaceNode.setAttribute(
+        "data-parent-stack",
+        typeof parentStack === "object" ? parentStack.id : parentStack
+      );
+      networkInterfaceNode.setAttribute(
+        "data-parent-domain",
+        typeof parentDomain === "object" ? parentDomain.id : parentDomain
+      );
+      networkInterfaceNode.setAttribute(
+        "data-parent-segment",
+        typeof parentSegment === "object" ? parentSegment.id : parentSegment
+      );
+      networkInterfaceNode.setAttribute(
+        "data-parent-mission-network",
+        typeof parentMissionNetwork === "object"
+          ? parentMissionNetwork.id
+          : parentMissionNetwork
+      );
+
+      // Set parent reference ID attributes (needed for deletion operations)
+      networkInterfaceNode.setAttribute(
+        "data-parent-asset-id",
+        typeof parentAsset === "object" ? parentAsset.id : parentAsset
+      );
+      networkInterfaceNode.setAttribute(
+        "data-parent-stack-id",
+        typeof parentStack === "object" ? parentStack.id : parentStack
+      );
+      networkInterfaceNode.setAttribute(
+        "data-parent-domain-id",
+        typeof parentDomain === "object" ? parentDomain.id : parentDomain
+      );
+      networkInterfaceNode.setAttribute(
+        "data-parent-segment-id",
+        typeof parentSegment === "object" ? parentSegment.id : parentSegment
+      );
+      networkInterfaceNode.setAttribute(
+        "data-parent-mission-network-id",
+        typeof parentMissionNetwork === "object"
+          ? parentMissionNetwork.id
+          : parentMissionNetwork
+      );
+
+      // Store these references in the network interface object too
+      networkInterface.parentAsset = parentAsset;
+      networkInterface.parentStack = parentStack;
+      networkInterface.parentDomain = parentDomain;
+      networkInterface.parentSegment = parentSegment;
+      networkInterface.parentMissionNetwork = parentMissionNetwork;
+
       container.appendChild(networkInterfaceNode);
 
       // Add click event to network interface node
@@ -3034,14 +3580,31 @@ function renderAssets(
         gpInstance.guid,
         "fa-cogs"
       );
-      
+
       // Set parent reference data attributes
-      gpInstanceNode.setAttribute("data-parent-asset", typeof parentAsset === 'object' ? parentAsset.id : parentAsset);
-      gpInstanceNode.setAttribute("data-parent-stack", typeof parentStack === 'object' ? parentStack.id : parentStack);
-      gpInstanceNode.setAttribute("data-parent-domain", typeof parentDomain === 'object' ? parentDomain.id : parentDomain);
-      gpInstanceNode.setAttribute("data-parent-segment", typeof parentSegment === 'object' ? parentSegment.id : parentSegment);
-      gpInstanceNode.setAttribute("data-parent-mission-network", typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork);
-      
+      gpInstanceNode.setAttribute(
+        "data-parent-asset",
+        typeof parentAsset === "object" ? parentAsset.id : parentAsset
+      );
+      gpInstanceNode.setAttribute(
+        "data-parent-stack",
+        typeof parentStack === "object" ? parentStack.id : parentStack
+      );
+      gpInstanceNode.setAttribute(
+        "data-parent-domain",
+        typeof parentDomain === "object" ? parentDomain.id : parentDomain
+      );
+      gpInstanceNode.setAttribute(
+        "data-parent-segment",
+        typeof parentSegment === "object" ? parentSegment.id : parentSegment
+      );
+      gpInstanceNode.setAttribute(
+        "data-parent-mission-network",
+        typeof parentMissionNetwork === "object"
+          ? parentMissionNetwork.id
+          : parentMissionNetwork
+      );
+
       container.appendChild(gpInstanceNode);
 
       // Add click event to GP instance node
@@ -3371,6 +3934,22 @@ function renderAssets(
       if (type === "securityDomains") {
         const classification = getSecurityClassificationById(element.id);
         cardTitle.textContent = classification.name;
+      } else if (type === "networkInterfaces") {
+        // For network interfaces, show name and IP address
+        let ipAddress = "N/A";
+        
+        // Extract IP address from configuration items if available
+        if (element.configurationItems && Array.isArray(element.configurationItems)) {
+          // Look for IP Address configuration item
+          element.configurationItems.forEach((item) => {
+            if (item.Name === "IP Address" && item.AnswerContent) {
+              ipAddress = item.AnswerContent;
+            }
+          });
+        }
+        
+        // Display name and IP address
+        cardTitle.textContent = `${element.name} - ${ipAddress}`;
       } else {
         cardTitle.textContent = element.name;
       }
@@ -3386,9 +3965,9 @@ function renderAssets(
       cardSubtitle.textContent = element.id || "";
       cardBody.appendChild(cardSubtitle);
 
-      // For HW Stacks, use a more condensed layout
-      if (type === "hwStacks") {
-        // Remove the subtitle (ID) that was added earlier for HW stacks
+      // For HW Stacks and Network Interfaces, use a more condensed layout
+      if (type === "hwStacks" || type === "networkInterfaces") {
+        // Remove the subtitle (ID) that was added earlier to save space
         cardBody.removeChild(cardSubtitle);
 
         // Add participant info if available in a more compact way
@@ -3483,14 +4062,6 @@ function renderAssets(
             element.parentStack = hwStackId;
             element.hwStackId = hwStackId;
           }
-
-          console.log("Enhanced asset parent references:", {
-            hwStackId: element.hwStackId,
-            parentStack: element.parentStack,
-            parentDomain: element.parentDomain,
-            parentSegment: element.parentSegment,
-            parentMissionNetwork: element.parentMissionNetwork,
-          });
         }
 
         // Update the details panel
@@ -3555,6 +4126,26 @@ function renderAssets(
       cardHeader.innerHTML = `
                 <img src="${iconPath}" alt="${type}" class="icon-small me-2" style="width: 20px; height: 20px;">
                 <h5 class="mb-0">${classification.name}</h5>
+            `;
+    } else if (type === "networkInterfaces") {
+      // For network interfaces, extract IP address from configuration items
+      let ipAddress = "N/A";
+      if (element.configurationItems && Array.isArray(element.configurationItems)) {
+        // Look for IP Address configuration item
+        element.configurationItems.forEach((item) => {
+          if (item.Name === "IP Address" && item.AnswerContent) {
+            ipAddress = item.AnswerContent;
+          }
+        });
+      }
+      
+      // Create display text with both name and IP address
+      const displayText = `${element.name} - ${ipAddress}`;
+      
+      const iconPath = getElementIcon(type);
+      cardHeader.innerHTML = `
+                <img src="${iconPath}" alt="${type}" class="icon-small me-2" style="width: 20px; height: 20px;">
+                <h5 class="mb-0">${displayText}</h5>
             `;
     } else {
       const iconPath = getElementIcon(type);
@@ -3628,11 +4219,11 @@ function renderAssets(
                         <td>${element.guid || "N/A"}</td>
                     </tr>
       `;
-      
+
       // Add configuration items if present
       if (element.configurationItems && element.configurationItems.length > 0) {
         // Add each config item
-        element.configurationItems.forEach(item => {
+        element.configurationItems.forEach((item) => {
           // Find if it's one of our standard items (IP Address, Sub-Net, FQDN)
           if (["IP Address", "Sub-Net", "FQDN"].includes(item.Name)) {
             tableHtml += `
@@ -3660,12 +4251,12 @@ function renderAssets(
                     </tr>
         `;
       }
-      
+
       // Close the table
       tableHtml += `
                 </tbody>
             `;
-      
+
       table.innerHTML = tableHtml;
     } else {
       table.innerHTML = `
@@ -4008,325 +4599,337 @@ function renderAssets(
       elementsTitle.textContent = `${titleText} (${visibleCount})`;
     }
   }
-  
+
   // Make these functions globally available so they can be called from outside the DOMContentLoaded event
   window.findAndSelectTreeNode = findAndSelectTreeNode;
   window.navigateUp = navigateUp;
   window.focusFirstMatchingTreeNode = focusFirstMatchingTreeNode;
-  
+
   // Function definitions inside document.ready scope
   // Function to find and select a node in the tree by type and ID
   function findAndSelectTreeNode(type, id) {
-  // First, find the node in the tree
-  const targetNode = document.querySelector(
-    `.tree-node[data-type="${type}"][data-id="${id}"]`
-  );
+    // First, find the node in the tree
+    const targetNode = document.querySelector(
+      `.tree-node[data-type="${type}"][data-id="${id}"]`
+    );
 
-  if (!targetNode) {
-    // Node not found in tree
-    return false; // Return false to indicate failure
+    if (!targetNode) {
+      // Node not found in tree
+      return false; // Return false to indicate failure
+    }
+
+    // Ensure all parent containers are expanded
+    let parentContainer = targetNode.parentElement;
+    while (parentContainer) {
+      if (parentContainer.classList.contains("child-container")) {
+        parentContainer.style.display = "block";
+
+        // Also expand the corresponding parent node
+        const parentTreeNode = parentContainer.previousElementSibling;
+        if (
+          parentTreeNode &&
+          parentTreeNode.classList.contains("parent-node")
+        ) {
+          parentTreeNode.classList.add("expanded");
+        }
+      }
+      parentContainer = parentContainer.parentElement;
+    }
+
+    // Clear any previous selection
+    document.querySelectorAll(".tree-node.selected").forEach((node) => {
+      node.classList.remove("selected");
+    });
+
+    // Select the target node and ensure it's visible
+    targetNode.classList.add("selected");
+    targetNode.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    // Update currentTreeNode reference
+    currentTreeNode = targetNode;
+
+    // Simulate a click to load its children and update the UI
+    targetNode.click();
+
+    // Add visual feedback
+    targetNode.style.animation = "none";
+    setTimeout(() => {
+      targetNode.style.animation = "highlight-pulse 1s";
+    }, 10);
+
+    return true; // Return true to indicate success
   }
 
-  // Ensure all parent containers are expanded
-  let parentContainer = targetNode.parentElement;
-  while (parentContainer) {
-    if (parentContainer.classList.contains("child-container")) {
-      parentContainer.style.display = "block";
+  // Function to navigate up one level in the tree
+  function navigateUp() {
+    // Check the current element type first - this is what gets updated when clicking in the elements panel
+    let type;
+    let parentNodeId;
 
-      // Also expand the corresponding parent node
-      const parentTreeNode = parentContainer.previousElementSibling;
-      if (parentTreeNode && parentTreeNode.classList.contains("parent-node")) {
-        parentTreeNode.classList.add("expanded");
+    // Use currentElement if available, otherwise fall back to currentTreeNode
+    if (currentElement && currentElement.type) {
+      type = currentElement.type;
+      // Navigating up from element type
+
+      // Handle based on element type
+      if (type === "networkInterfaces") {
+        // For network interfaces, navigate to parent asset
+        let parentAsset = currentElement.parentAsset || currentElement.assetId;
+
+        // Extract ID if it's an object
+        if (parentAsset && typeof parentAsset === "object" && parentAsset.id) {
+          parentNodeId = parentAsset.id;
+        } else {
+          parentNodeId = parentAsset;
+        }
+
+        // If not found, try to get from parent attributes
+        if (!parentNodeId && currentTreeNode) {
+          parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
+        }
+
+        if (parentNodeId) {
+          // Navigating up to Asset
+          if (findAndSelectTreeNode("assets", parentNodeId)) {
+            // Reset currentElement to ensure next navigation works
+            currentElement = null;
+          }
+          return;
+        }
+      } else if (type === "assets") {
+        // For assets, we need to find the parent HW Stack
+        // First check if there's a parentStack or hwStackId property
+        let parentStack =
+          currentElement.parentStack || currentElement.hwStackId;
+
+        // Extract ID if it's an object
+        if (parentStack && typeof parentStack === "object" && parentStack.id) {
+          parentNodeId = parentStack.id;
+        } else {
+          parentNodeId = parentStack;
+        }
+
+        // If not found, try to get from parent attributes
+        if (!parentNodeId && currentTreeNode) {
+          parentNodeId = currentTreeNode.getAttribute("data-parent-stack");
+        }
+
+        if (parentNodeId) {
+          // Navigating up to HW Stack
+          if (findAndSelectTreeNode("hwStacks", parentNodeId)) {
+            // Reset currentElement to ensure next navigation works
+            currentElement = null;
+          }
+          return;
+        }
+      } else if (type === "hwStacks") {
+        // For HW Stacks, we need to find the parent Security Domain
+        let parentDomain =
+          currentElement.parentDomain || currentElement.domainId;
+
+        // Extract ID if it's an object
+        if (
+          parentDomain &&
+          typeof parentDomain === "object" &&
+          parentDomain.id
+        ) {
+          parentNodeId = parentDomain.id;
+        } else {
+          parentNodeId = parentDomain;
+        }
+
+        if (!parentNodeId && currentTreeNode) {
+          parentNodeId = currentTreeNode.getAttribute("data-parent-domain");
+        }
+
+        if (parentNodeId) {
+          // Navigating up to Security Domain
+          if (findAndSelectTreeNode("securityDomains", parentNodeId)) {
+            // Reset currentElement to ensure next navigation works
+            currentElement = null;
+          }
+          return;
+        }
+      } else if (type === "securityDomains") {
+        // For Security Domains, navigate to parent Network Segment
+        let parentSegment =
+          currentElement.parentSegment || currentElement.segmentId;
+
+        // Extract ID if it's an object
+        if (
+          parentSegment &&
+          typeof parentSegment === "object" &&
+          parentSegment.id
+        ) {
+          parentNodeId = parentSegment.id;
+        } else {
+          parentNodeId = parentSegment;
+        }
+
+        if (!parentNodeId && currentTreeNode) {
+          parentNodeId = currentTreeNode.getAttribute("data-parent-segment");
+        }
+
+        if (parentNodeId) {
+          // Navigating up to Network Segment
+          if (findAndSelectTreeNode("networkSegments", parentNodeId)) {
+            // Reset currentElement to ensure next navigation works
+            currentElement = null;
+          }
+          return;
+        }
+      } else if (type === "networkSegments") {
+        // For Network Segments, navigate to parent Mission Network
+        let parentMissionNetwork = currentElement.parentMissionNetwork;
+
+        // Extract ID if it's an object
+        if (
+          parentMissionNetwork &&
+          typeof parentMissionNetwork === "object" &&
+          parentMissionNetwork.id
+        ) {
+          parentNodeId = parentMissionNetwork.id;
+        } else {
+          parentNodeId = parentMissionNetwork;
+        }
+
+        if (!parentNodeId && currentTreeNode) {
+          parentNodeId = currentTreeNode.getAttribute(
+            "data-parent-mission-network"
+          );
+        }
+
+        if (parentNodeId) {
+          // Navigating up to Mission Network
+          if (findAndSelectTreeNode("missionNetworks", parentNodeId)) {
+            // Reset currentElement to ensure next navigation works
+            currentElement = null;
+          }
+          return;
+        }
+      } else if (type === "missionNetworks") {
+        // Go to the root node
+        const rootNode = document.querySelector(
+          '.tree-node[data-id="root-cisplan"]'
+        );
+        if (rootNode) rootNode.click();
+        return;
       }
     }
-    parentContainer = parentContainer.parentElement;
-  }
 
-  // Clear any previous selection
-  document.querySelectorAll(".tree-node.selected").forEach((node) => {
-    node.classList.remove("selected");
-  });
+    // Fallback to current tree node if we haven't returned yet
+    if (!currentTreeNode) return;
 
-  // Select the target node and ensure it's visible
-  targetNode.classList.add("selected");
-  targetNode.scrollIntoView({ behavior: "smooth", block: "center" });
+    // Get the parent node's ID based on data attributes
+    const nodeType = currentTreeNode.getAttribute("data-type");
 
-  // Update currentTreeNode reference
-  currentTreeNode = targetNode;
-
-  // Simulate a click to load its children and update the UI
-  targetNode.click();
-
-  // Add visual feedback
-  targetNode.style.animation = "none";
-  setTimeout(() => {
-    targetNode.style.animation = "highlight-pulse 1s";
-  }, 10);
-
-  return true; // Return true to indicate success
-}
-
-// Function to navigate up one level in the tree
-function navigateUp() {
-  // Check the current element type first - this is what gets updated when clicking in the elements panel
-  let type;
-  let parentNodeId;
-
-  // Use currentElement if available, otherwise fall back to currentTreeNode
-  if (currentElement && currentElement.type) {
-    type = currentElement.type;
-    // Navigating up from element type
-
-    // Handle based on element type
-    if (type === "networkInterfaces") {
-      // For network interfaces, navigate to parent asset
-      let parentAsset = currentElement.parentAsset || currentElement.assetId;
-      
-      // Extract ID if it's an object
-      if (parentAsset && typeof parentAsset === "object" && parentAsset.id) {
-        parentNodeId = parentAsset.id;
-      } else {
-        parentNodeId = parentAsset;
-      }
-      
-      // If not found, try to get from parent attributes
-      if (!parentNodeId && currentTreeNode) {
-        parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
-      }
-      
+    if (nodeType === "networkInterfaces") {
+      parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
       if (parentNodeId) {
-        // Navigating up to Asset
+        // Find and select the parent Asset node
         if (findAndSelectTreeNode("assets", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;
         }
-        return;
       }
-    } else if (type === "assets") {
-      // For assets, we need to find the parent HW Stack
-      // First check if there's a parentStack or hwStackId property
-      let parentStack = currentElement.parentStack || currentElement.hwStackId;
-
-      // Extract ID if it's an object
-      if (parentStack && typeof parentStack === "object" && parentStack.id) {
-        parentNodeId = parentStack.id;
-      } else {
-        parentNodeId = parentStack;
-      }
-
-      // If not found, try to get from parent attributes
-      if (!parentNodeId && currentTreeNode) {
-        parentNodeId = currentTreeNode.getAttribute("data-parent-stack");
-      }
-
+    } else if (nodeType === "assets") {
+      parentNodeId = currentTreeNode.getAttribute("data-parent-stack");
       if (parentNodeId) {
-        // Navigating up to HW Stack
+        // Find and select the parent HW Stack node
         if (findAndSelectTreeNode("hwStacks", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;
         }
-        return;
       }
-    } else if (type === "hwStacks") {
-      // For HW Stacks, we need to find the parent Security Domain
-      let parentDomain = currentElement.parentDomain || currentElement.domainId;
-
-      // Extract ID if it's an object
-      if (parentDomain && typeof parentDomain === "object" && parentDomain.id) {
-        parentNodeId = parentDomain.id;
-      } else {
-        parentNodeId = parentDomain;
-      }
-
-      if (!parentNodeId && currentTreeNode) {
-        parentNodeId = currentTreeNode.getAttribute("data-parent-domain");
-      }
-
+    } else if (nodeType === "hwStacks") {
+      parentNodeId = currentTreeNode.getAttribute("data-parent-domain");
       if (parentNodeId) {
-        // Navigating up to Security Domain
+        // Find and select the parent Security Domain node
         if (findAndSelectTreeNode("securityDomains", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;
         }
-        return;
       }
-    } else if (type === "securityDomains") {
-      // For Security Domains, navigate to parent Network Segment
-      let parentSegment =
-        currentElement.parentSegment || currentElement.segmentId;
-
-      // Extract ID if it's an object
-      if (
-        parentSegment &&
-        typeof parentSegment === "object" &&
-        parentSegment.id
-      ) {
-        parentNodeId = parentSegment.id;
-      } else {
-        parentNodeId = parentSegment;
-      }
-
-      if (!parentNodeId && currentTreeNode) {
-        parentNodeId = currentTreeNode.getAttribute("data-parent-segment");
-      }
-
+    } else if (nodeType === "securityDomains") {
+      parentNodeId = currentTreeNode.getAttribute("data-parent-segment");
       if (parentNodeId) {
-        // Navigating up to Network Segment
+        // Find and select the parent Network Segment node
         if (findAndSelectTreeNode("networkSegments", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;
         }
-        return;
       }
-    } else if (type === "networkSegments") {
-      // For Network Segments, navigate to parent Mission Network
-      let parentMissionNetwork = currentElement.parentMissionNetwork;
-
-      // Extract ID if it's an object
-      if (
-        parentMissionNetwork &&
-        typeof parentMissionNetwork === "object" &&
-        parentMissionNetwork.id
-      ) {
-        parentNodeId = parentMissionNetwork.id;
-      } else {
-        parentNodeId = parentMissionNetwork;
-      }
-
-      if (!parentNodeId && currentTreeNode) {
-        parentNodeId = currentTreeNode.getAttribute(
-          "data-parent-mission-network"
-        );
-      }
-
+    } else if (nodeType === "networkSegments") {
+      parentNodeId = currentTreeNode.getAttribute(
+        "data-parent-mission-network"
+      );
       if (parentNodeId) {
-        // Navigating up to Mission Network
+        // Find and select the parent Mission Network node
         if (findAndSelectTreeNode("missionNetworks", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;
         }
-        return;
       }
-    } else if (type === "missionNetworks") {
-      // Go to the root node
+    } else if (nodeType === "missionNetworks") {
+      // From Mission Network, navigate to the root node
       const rootNode = document.querySelector(
         '.tree-node[data-id="root-cisplan"]'
       );
-      if (rootNode) rootNode.click();
-      return;
+      if (rootNode) {
+        rootNode.click();
+        currentElement = null;
+      }
     }
   }
 
-  // Fallback to current tree node if we haven't returned yet
-  if (!currentTreeNode) return;
+  // No longer needed as we're using a different navigation approach
 
-  // Get the parent node's ID based on data attributes
-  const nodeType = currentTreeNode.getAttribute("data-type");
+  // Add new function to focus the first matching tree node
+  function focusFirstMatchingTreeNode() {
+    const searchTerm = document
+      .getElementById("treeSearchInput")
+      .value.toLowerCase();
+    if (!searchTerm) return;
 
-  if (nodeType === "networkInterfaces") {
-    parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
-    if (parentNodeId) {
-      // Find and select the parent Asset node
-      if (findAndSelectTreeNode("assets", parentNodeId)) {
-        // Reset currentElement to ensure next navigation works
-        currentElement = null;
-      }
-    }
-  } else if (nodeType === "assets") {
-    parentNodeId = currentTreeNode.getAttribute("data-parent-stack");
-    if (parentNodeId) {
-      // Find and select the parent HW Stack node
-      if (findAndSelectTreeNode("hwStacks", parentNodeId)) {
-        // Reset currentElement to ensure next navigation works
-        currentElement = null;
-      }
-    }
-  } else if (nodeType === "hwStacks") {
-    parentNodeId = currentTreeNode.getAttribute("data-parent-domain");
-    if (parentNodeId) {
-      // Find and select the parent Security Domain node
-      if (findAndSelectTreeNode("securityDomains", parentNodeId)) {
-        // Reset currentElement to ensure next navigation works
-        currentElement = null;
-      }
-    }
-  } else if (nodeType === "securityDomains") {
-    parentNodeId = currentTreeNode.getAttribute("data-parent-segment");
-    if (parentNodeId) {
-      // Find and select the parent Network Segment node
-      if (findAndSelectTreeNode("networkSegments", parentNodeId)) {
-        // Reset currentElement to ensure next navigation works
-        currentElement = null;
-      }
-    }
-  } else if (nodeType === "networkSegments") {
-    parentNodeId = currentTreeNode.getAttribute("data-parent-mission-network");
-    if (parentNodeId) {
-      // Find and select the parent Mission Network node
-      if (findAndSelectTreeNode("missionNetworks", parentNodeId)) {
-        // Reset currentElement to ensure next navigation works
-        currentElement = null;
-      }
-    }
-  } else if (nodeType === "missionNetworks") {
-    // From Mission Network, navigate to the root node
-    const rootNode = document.querySelector('.tree-node[data-id="root-cisplan"]');
-    if (rootNode) {
-      rootNode.click();
-      currentElement = null;
-    }
+    // Find all matching nodes that are currently visible
+    const matchingNodes = document.querySelectorAll(
+      "#cisTree .tree-node.search-match"
+    );
+    if (matchingNodes.length === 0) return;
+
+    // Clear any previous selection
+    document.querySelectorAll(".tree-node.selected").forEach((node) => {
+      node.classList.remove("selected");
+    });
+    document.querySelectorAll(".tree-node.search-selected").forEach((node) => {
+      node.classList.remove("search-selected");
+    });
+
+    // Focus on the first matching node
+    const firstMatchingNode = matchingNodes[0];
+    firstMatchingNode.classList.add("selected");
+    firstMatchingNode.classList.add("search-selected");
+
+    // Scroll the node into view with a smooth animation
+    firstMatchingNode.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    // Simulate a click to load its details
+    firstMatchingNode.click();
+
+    // Add visual feedback
+    firstMatchingNode.style.animation = "none";
+    setTimeout(() => {
+      firstMatchingNode.style.animation = "highlight-pulse 1s";
+    }, 10);
+
+    // No longer updating breadcrumb since we're not using it
   }
-}
 
-// No longer needed as we're using a different navigation approach
-
-// Add new function to focus the first matching tree node
-// [MermaidChart: ac030ad5-84cd-4131-a8f6-8239aa45927d]
-function focusFirstMatchingTreeNode() {
-  const searchTerm = document
-    .getElementById("treeSearchInput")
-    .value.toLowerCase();
-  if (!searchTerm) return;
-
-  // Find all matching nodes that are currently visible
-  const matchingNodes = document.querySelectorAll(
-    "#cisTree .tree-node.search-match"
-  );
-  if (matchingNodes.length === 0) return;
-
-  // Clear any previous selection
-  document.querySelectorAll(".tree-node.selected").forEach((node) => {
-    node.classList.remove("selected");
-  });
-  document.querySelectorAll(".tree-node.search-selected").forEach((node) => {
-    node.classList.remove("search-selected");
-  });
-
-  // Focus on the first matching node
-  const firstMatchingNode = matchingNodes[0];
-  firstMatchingNode.classList.add("selected");
-  firstMatchingNode.classList.add("search-selected");
-
-  // Scroll the node into view with a smooth animation
-  firstMatchingNode.scrollIntoView({ behavior: "smooth", block: "center" });
-
-  // Simulate a click to load its details
-  firstMatchingNode.click();
-
-  // Add visual feedback
-  firstMatchingNode.style.animation = "none";
-  setTimeout(() => {
-    firstMatchingNode.style.animation = "highlight-pulse 1s";
-  }, 10);
-
-  // No longer updating breadcrumb since we're not using it
-}
-
-// Add CSS for search highlighting
-document.addEventListener("DOMContentLoaded", function () {
-  // Add search highlight styles to head
-  const style = document.createElement("style");
-  style.textContent = `
+  // Add CSS for search highlighting
+  document.addEventListener("DOMContentLoaded", function () {
+    // Add search highlight styles to head
+    const style = document.createElement("style");
+    style.textContent = `
         .search-match {
             background-color: rgba(255, 255, 0, 0.1);
         }
@@ -4341,67 +4944,67 @@ document.addEventListener("DOMContentLoaded", function () {
             100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
         }
     `;
-  document.head.appendChild(style);
-});
+    document.head.appendChild(style);
+  });
 
-//=============================================================================
-// 7. UTILITY & HELPER FUNCTIONS
-//=============================================================================
+  //=============================================================================
+  // 7. UTILITY & HELPER FUNCTIONS
+  //=============================================================================
 
-// ---- Entity Metadata and Children ----
-// These are now defined in cis_utils.js
+  // ---- Entity Metadata and Children ----
+  // These are now defined in cis_utils.js
 
-// CISUtils is now loaded from cis_utils.js
-// The below delegation functions remain for backward compatibility with existing code
+  // CISUtils is now loaded from cis_utils.js
+  // The below delegation functions remain for backward compatibility with existing code
 
-/**
- * Format node type name for display - delegates to CISUtils
- */
-function formatNodeTypeName(type) {
-  return CISUtils.formatNodeTypeName(type);
-}
+  /**
+   * Format node type name for display - delegates to CISUtils
+   */
+  function formatNodeTypeName(type) {
+    return CISUtils.formatNodeTypeName(type);
+  }
 
-/**
- * Get SVG icon path for a specific element type - delegates to CISUtils
- */
-function getElementIcon(type) {
-  return CISUtils.getElementIcon(type);
-}
+  /**
+   * Get SVG icon path for a specific element type - delegates to CISUtils
+   */
+  function getElementIcon(type) {
+    return CISUtils.getElementIcon(type);
+  }
 
-/**
- * Show a toast notification - delegates to CISUtils
- */
-function showToast(message, type = "success") {
-  return CISUtils.showToast(message, type);
-}
+  /**
+   * Show a toast notification - delegates to CISUtils
+   */
+  function showToast(message, type = "success") {
+    return CISUtils.showToast(message, type);
+  }
 
-/**
- * Get participant name by key from the API - delegates to CISUtils
- */
-async function getParticipantNameByKey(key) {
-  return await CISUtils.getParticipantNameByKey(key);
-}
+  /**
+   * Get participant name by key from the API - delegates to CISUtils
+   */
+  async function getParticipantNameByKey(key) {
+    return await CISUtils.getParticipantNameByKey(key);
+  }
 
-// API namespace is already defined - removed redundant declaration
+  // API namespace is already defined - removed redundant declaration
 
-// CISApi namespace has been moved to cis_api.js
-// This allows for better organization of code while maintaining backward compatibility
+  // CISApi namespace has been moved to cis_api.js
+  // This allows for better organization of code while maintaining backward compatibility
 
-// Utility functions
+  // Utility functions
 
-// Utility functions
+  // Utility functions
 
-// Format node type name for display - delegates to CISUtils
-function formatNodeTypeName(type) {
-  return CISUtils.formatNodeTypeName(type);
-}
+  // Format node type name for display - delegates to CISUtils
+  function formatNodeTypeName(type) {
+    return CISUtils.formatNodeTypeName(type);
+  }
 
-// Removed getTypeIcon function as it was replaced by getElementIcon
+  // Removed getTypeIcon function as it was replaced by getElementIcon
 
-// Get SVG icon path for a specific element type - delegates to CISUtils
-function getElementIcon(type) {
-  return CISUtils.getElementIcon(type);
-}
+  // Get SVG icon path for a specific element type - delegates to CISUtils
+  function getElementIcon(type) {
+    return CISUtils.getElementIcon(type);
+  }
 
-// Close the DOMContentLoaded event handler
+  // Close the DOMContentLoaded event handler
 });

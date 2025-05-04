@@ -4,15 +4,170 @@ Handle CRUD operations for services
 """
 import json
 import os
-from pathlib import Path
-from flask import Blueprint, request, jsonify, current_app
-from app.config import settings
-from app.core.auth import login_required
-from app.data_access.services_repository import get_all_services, save_services # Added import
-from werkzeug.utils import secure_filename
 import logging
+from pathlib import Path
+from flask import Blueprint, jsonify, request, current_app, send_file
+from werkzeug.utils import secure_filename
+from app.core.auth import login_required
+from app.config import settings
+from app.data_access.services_repository import (
+    get_all_services, save_services, get_service_id_by_name, get_service_name_by_id, 
+    get_service_gps, get_service_gps_all
+)
 
 services_bp = Blueprint('services', __name__)
+
+@services_bp.route('/api/services/name_to_id', methods=['GET'])
+def service_id_by_name():
+    """
+    Get a service ID by its name
+    
+    Query parameters:
+        name: The name of the service to look up
+        
+    Returns:
+        JSON with the service ID or error message
+    """
+    try:
+        # Get service name from query parameter
+        service_name = request.args.get('name', '')
+        
+        if not service_name:
+            return jsonify({
+                'success': False,
+                'message': 'Service name is required',
+            }), 400
+        
+        # Get service ID
+        service_id = get_service_id_by_name(service_name)
+        
+        if not service_id:
+            return jsonify({
+                'success': False,
+                'message': f'No service found with name: {service_name}',
+            }), 404
+        
+        return jsonify({
+            'success': True,
+            'id': service_id,
+        })
+        
+    except Exception as e:
+        logging.error(f"Error in service_id_by_name: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': f'Error: {str(e)}',
+        }), 500
+
+@services_bp.route('/api/services/id_to_name', methods=['GET'])
+def service_name_by_id():
+    """
+    Get a service name by its ID
+    
+    Query parameters:
+        id: The ID of the service to look up
+        
+    Returns:
+        JSON with the service name or error message
+    """
+    try:
+        # Get service ID from query parameter
+        service_id = request.args.get('id', '')
+        
+        if not service_id:
+            return jsonify({
+                'success': False,
+                'message': 'Service ID is required',
+            }), 400
+        
+        # Get service name
+        service_name = get_service_name_by_id(service_id)
+        
+        if not service_name:
+            return jsonify({
+                'success': False,
+                'message': f'No service found with ID: {service_id}',
+            }), 404
+        
+        return jsonify({
+            'success': True,
+            'name': service_name,
+        })
+        
+    except Exception as e:
+        logging.error(f"Error in service_name_by_id: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': f'Error: {str(e)}',
+        }), 500
+
+@services_bp.route('/api/services/<service_id>/gps', methods=['GET'])
+def service_gps(service_id):
+    """
+    Get GP IDs for a service that support a specific model
+    
+    Path parameters:
+        service_id: The ID of the service to search for
+        
+    Query parameters:
+        model_id: The ID of the model to filter by
+        
+    Returns:
+        JSON with a list of GP IDs or error message
+    """
+    try:
+        # Get the model ID from the query string
+        model_id = request.args.get('model_id', '')
+        
+        # Validate the model_id parameter
+        if not model_id:
+            return jsonify({
+                'success': False,
+                'message': 'Model ID is required',
+            }), 400
+        
+        # Get GP IDs
+        gp_ids = get_service_gps(service_id, model_id)
+        
+        return jsonify({
+            'success': True,
+            'gp_ids': gp_ids,
+        })
+        
+    except Exception as e:
+        logging.error(f"Error in service_gps: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': f'Error: {str(e)}',
+        }), 500
+
+@services_bp.route('/api/services/<service_id>/all_gps', methods=['GET'])
+@login_required
+def service_gps_all(service_id):
+    """
+    Get all GP IDs for a service regardless of model support
+    
+    Path parameters:
+        service_id: The ID of the service to search for
+        
+    Returns:
+        JSON with a list of GP IDs or error message
+    """
+    try:
+        # Get all GP IDs for the service without model filtering
+        gp_ids = get_service_gps_all(service_id)
+        
+        return jsonify({
+            'success': True,
+            'gp_ids': gp_ids,
+        })
+        
+    except Exception as e:
+        logging.error(f"Error in service_gps_all: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': f'Error: {str(e)}',
+        }), 500
 
 # Test endpoint to check if our routes are properly registered
 @services_bp.route('/api/services/test', methods=['GET'])

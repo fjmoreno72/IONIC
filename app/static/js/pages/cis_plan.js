@@ -60,6 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
       // Apply randomized names to all form fields when modal is shown
       // This defeats browser autocomplete and password manager interference
       applyRandomizedFieldNames();
+      
+      // If this is the GP Container modal, load the services
+      if (modal.id === "addGPContainerModal") {
+        fetchAndPopulateServices();
+      }
     });
   });
   // Add event listener for the saveAssetBtn
@@ -396,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document
           .querySelector(".btn-add-gp-container")
-          .addEventListener("click", function () {
+          .addEventListener("click", async function () {
             // Hide the options modal
             optionsModal.hide();
 
@@ -413,19 +418,39 @@ document.addEventListener("DOMContentLoaded", function () {
             const mnId = typeof mn === "object" ? mn.id || mn : mn;
             const segId = typeof seg === "object" ? seg.id || seg : seg;
             const domId = typeof dom === "object" ? dom.id || dom : dom;
-            const stackId =
-              typeof stack === "object" ? stack.id || stack : stack;
-            const assetId =
-              typeof asset === "object" ? asset.id || asset : asset;
+            const stackId = typeof stack === "object" ? stack.id || stack : stack;
+            const assetId = typeof asset === "object" ? asset.id || asset : asset;
 
             // Populate the hidden fields in the add GP container modal
-            document.getElementById("addGPContainerMissionNetworkId").value =
-              mnId;
+            document.getElementById("addGPContainerMissionNetworkId").value = mnId;
             document.getElementById("addGPContainerSegmentId").value = segId;
             document.getElementById("addGPContainerDomainId").value = domId;
             document.getElementById("addGPContainerHwStackId").value = stackId;
             document.getElementById("addGPContainerAssetId").value = assetId;
-
+            
+            // Reset the form fields to ensure we start fresh
+            document.getElementById('addGPContainerInstanceLabel').value = '';
+            
+            try {
+              // Reset both dropdowns to their default state
+              const serviceSelect = document.getElementById('addGPContainerServiceId');
+              const gpSelect = document.getElementById('addGPContainerGpId');
+              
+              // Reset service dropdown to first option
+              serviceSelect.selectedIndex = 0;
+              
+              // Reset GP dropdown to just the placeholder
+              while (gpSelect.options.length > 1) {
+                gpSelect.remove(1);
+              }
+              
+              // Fetch services before showing the modal
+              await fetchAndPopulateServices();
+            } catch (error) {
+              console.error('Error preparing GP container form:', error);
+              showToast('Error loading form data. Please try again.', 'error');
+            }
+            
             // Show the add GP container modal
             const addModal = new bootstrap.Modal(
               document.getElementById("addGPContainerModal")
@@ -2225,6 +2250,210 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Function to fetch services and populate the service dropdown
+  async function fetchAndPopulateServices() {
+    try {
+      // Get the select element
+      const serviceSelect = document.getElementById('addGPContainerServiceId');
+      
+      // Clear previous options (except the first placeholder)
+      while (serviceSelect.options.length > 1) {
+        serviceSelect.remove(1);
+      }
+      
+      // Show loading option
+      const loadingOption = document.createElement('option');
+      loadingOption.textContent = 'Loading services...';
+      loadingOption.disabled = true;
+      loadingOption.id = 'loading-services-option';
+      serviceSelect.appendChild(loadingOption);
+      
+      // Fetch services from API
+      const response = await fetch('/api/services');
+      
+      if (!response.ok) {
+        throw new Error(`Error fetching services: ${response.status}`);
+      }
+      
+      // Get services directly as an array
+      const services = await response.json() || [];
+      
+      // Remove loading option safely
+      const loadingOptionElement = document.getElementById('loading-services-option');
+      if (loadingOptionElement && loadingOptionElement.parentNode === serviceSelect) {
+        serviceSelect.removeChild(loadingOptionElement);
+      }
+      
+      // Sort services alphabetically by name
+      services.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Add an option for each service
+      services.forEach(service => {
+        const option = document.createElement('option');
+        option.value = service.id;
+        option.textContent = service.name;
+        option.setAttribute('data-service-id', service.id);
+        serviceSelect.appendChild(option);
+      });
+      
+      // Add change event handler to service select to update GPs when service changes
+      serviceSelect.addEventListener('change', fetchAndPopulateGPs);
+      
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      showToast('Error loading services. Please try again.', 'error');
+      
+      // Clear loading option if it exists
+      const serviceSelect = document.getElementById('addGPContainerServiceId');
+      for (let i = 1; i < serviceSelect.options.length; i++) {
+        if (serviceSelect.options[i].textContent === 'Loading services...') {
+          serviceSelect.remove(i);
+          break;
+        }
+      }
+    }
+  }
+  
+  // Function to fetch GP names for a list of GP IDs
+  async function fetchGPNames(gpIds) {
+    console.log('Fetching names for GP IDs:', gpIds);
+    const gpNames = {};
+    
+    if (!gpIds || gpIds.length === 0) {
+      console.warn('No GP IDs provided to fetchGPNames function');
+      return gpNames;
+    }
+    
+    // Fetch names for each GP ID
+    const promises = gpIds.map(async (gpId) => {
+      try {
+        console.log(`Fetching name for GP ${gpId}`);
+        const response = await fetch(`/api/gps/${gpId}/name`);
+        
+        if (response.ok) {
+          const result = await response.json();
+          console.log(`Result for GP ${gpId}:`, result);
+          
+          // Direct access to name field in the response, matching fetchGPName function
+          if (result.name) {
+            gpNames[gpId] = result.name;
+            console.log(`Got name for GP ${gpId}: ${result.name}`);
+          } else {
+            console.warn(`Name not found for GP ${gpId}, using fallback`);
+            gpNames[gpId] = `GP ${gpId}`; // Fallback if name not found
+          }
+        } else {
+          console.warn(`Failed to fetch name for GP ${gpId}: ${response.status}`);
+          gpNames[gpId] = `GP ${gpId}`; // Fallback if request fails
+        }
+      } catch (error) {
+        console.error(`Error fetching name for GP ${gpId}:`, error);
+        gpNames[gpId] = `GP ${gpId}`; // Fallback on error
+      }
+    });
+    
+    // Wait for all name fetches to complete
+    await Promise.all(promises);
+    
+    console.log('All GP names fetched:', gpNames);
+    return gpNames;
+  }
+  
+  // Function to fetch and populate GPs based on selected service
+  async function fetchAndPopulateGPs() {
+    try {
+      // Get the select elements
+      const serviceSelect = document.getElementById('addGPContainerServiceId');
+      const gpSelect = document.getElementById('addGPContainerGpId');
+      
+      const selectedServiceId = serviceSelect.value;
+      
+      if (!selectedServiceId) {
+        // Reset GP dropdown if no service selected
+        while (gpSelect.options.length > 1) {
+          gpSelect.remove(1);
+        }
+        return;
+      }
+      
+      // Clear previous GP options (except the first placeholder)
+      while (gpSelect.options.length > 1) {
+        gpSelect.remove(1);
+      }
+      
+      // Show loading option
+      const loadingOption = document.createElement('option');
+      loadingOption.textContent = 'Loading GPs...';
+      loadingOption.disabled = true;
+      loadingOption.id = 'loading-gps-option';
+      gpSelect.appendChild(loadingOption);
+      
+      // Fetch GPs for the selected service
+      const response = await fetch(`/api/services/${selectedServiceId}/all_gps`);
+      
+      if (!response.ok) {
+        throw new Error(`Error fetching GPs: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.message || 'Failed to retrieve GPs');
+      }
+      
+      const gpIds = result.gp_ids || [];
+      
+      // Remove loading option safely
+      const loadingOptionElement = document.getElementById('loading-gps-option');
+      if (loadingOptionElement && loadingOptionElement.parentNode === gpSelect) {
+        gpSelect.removeChild(loadingOptionElement);
+      }
+      
+      if (gpIds.length === 0) {
+        // Show a message if no GPs available
+        const noGpsOption = document.createElement('option');
+        noGpsOption.textContent = 'No GPs available for this service';
+        noGpsOption.disabled = true;
+        gpSelect.appendChild(noGpsOption);
+        return;
+      }
+      
+      // Fetch GP names for the IDs
+      const gpNames = await fetchGPNames(gpIds);
+      
+      // Create an array of GP objects with IDs and names for sorting
+      const gps = gpIds.map(id => ({
+        id,
+        name: gpNames[id] || `GP ${id}`
+      }));
+      
+      // Sort GPs alphabetically by name
+      gps.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Add an option for each GP
+      gps.forEach(gp => {
+        const option = document.createElement('option');
+        option.value = gp.id;
+        option.textContent = gp.name;
+        option.setAttribute('data-gp-id', gp.id);
+        gpSelect.appendChild(option);
+      });
+      
+    } catch (error) {
+      console.error('Error fetching GPs:', error);
+      showToast('Error loading Generic Products. Please try again.', 'error');
+      
+      // Clear loading option if it exists
+      const gpSelect = document.getElementById('addGPContainerGpId');
+      for (let i = 1; i < gpSelect.options.length; i++) {
+        if (gpSelect.options[i].textContent === 'Loading GPs...') {
+          gpSelect.remove(i);
+          break;
+        }
+      }
+    }
+  }
+  
   // Add a new GP container (GP instance) to an asset
   async function addGPContainer() {
     const instanceLabelInput = document.getElementById(

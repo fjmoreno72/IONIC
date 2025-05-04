@@ -384,6 +384,63 @@
                               "HelpText": "SOA Record Retry Interval  as defined by JMEI"
                             }
                           ]
+                        },
+                        {
+                          "gpid": "GP-0039",
+                          "guid": "d88e419a-ed0d-4f4a-9c42-00e1da1905e5",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0016",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Bias",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "3dfe562d-c8de-4cbf-9c95-973d8867e86f",
+                              "DefaultValue": "\t 0",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "MaximumOffset",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "c33365ee-47d2-4e62-90e0-6a79b20ea322",
+                              "DefaultValue": "1000",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "MaximumStratum",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "f0b51eaa-7199-417e-966c-b5f2f82b625a",
+                              "DefaultValue": "4",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "TimeSourceFQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "672261c6-5003-4f08-b118-08b1f2b7ecad",
+                              "DefaultValue": "",
+                              "HelpText": "FQDN of the NTP server you are synchronizing to"
+                            },
+                            {
+                              "Name": "TimeSourceIP",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "6b8b5fd1-4148-4644-8533-d437f45d78b3",
+                              "DefaultValue": "",
+                              "HelpText": "IP of the NTP server you are synchronizing to"
+                            },
+                            {
+                              "Name": "TimeZone",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "e1d000db-2ffd-4d93-bee4-d1f8d892b27d",
+                              "DefaultValue": "UTC",
+                              "HelpText": ""
+                            }
+                          ]
                         }
                       ]
                     },

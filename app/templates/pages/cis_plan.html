@@ -773,12 +773,20 @@
                             <input type="text" class="form-control" id="addGPContainerInstanceLabel" name="gpInstanceLabel_random" autocomplete="new-password">
                         </div>
                         <div class="mb-3">
-                            <label for="addGPContainerServiceId" class="form-label">Service ID</label>
-                            <input type="text" class="form-control" id="addGPContainerServiceId" name="gpServiceId_random" autocomplete="new-password" required>
+                            <label for="addGPContainerServiceId" class="form-label">Service</label>
+                            <select class="form-select" id="addGPContainerServiceId" name="gpServiceId_random" required>
+                                <option value="" selected disabled>Select a service...</option>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                            <div class="form-text">The service ID will be stored automatically</div>
                         </div>
                         <div class="mb-3">
-                            <label for="addGPContainerGpId" class="form-label">GP ID</label>
-                            <input type="text" class="form-control" id="addGPContainerGpId" name="gpId_random" autocomplete="new-password" required>
+                            <label for="addGPContainerGpId" class="form-label">Generic Product</label>
+                            <select class="form-select" id="addGPContainerGpId" name="gpId_random" required>
+                                <option value="" selected disabled>Select a GP...</option>
+                                <!-- Options will be populated dynamically based on selected service -->
+                            </select>
+                            <div class="form-text">Choose from available Generic Products for the selected service</div>
                         </div>
                     </form>
                 </div>

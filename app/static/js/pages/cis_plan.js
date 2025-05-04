@@ -1994,11 +1994,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       } else {
         showToast(
-          `${
-            apiResult.message ||
-            apiResult.error ||
-            "Failed to create network interface"
-          }`,
+          `${apiResult.message || apiResult.error || "Failed to create network interface"}`,
           "danger"
         );
       }
@@ -2008,6 +2004,30 @@ document.addEventListener("DOMContentLoaded", function () {
         "An error occurred while creating the network interface",
         "danger"
       );
+    }
+  }
+
+
+  function formatNodeTypeName(type) {
+    switch (type) {
+      case "missionNetworks":
+        return "Mission Network";
+      case "networkSegments":
+        return "Network Segment";
+      case "securityDomains":
+        return "Security Domain";
+      case "hwStacks":
+        return "Hardware Stack";
+      case "assets":
+        return "Asset";
+      case "networkInterfaces":
+        return "Network Interface";
+      case "gpInstances":
+        return "GP Instance";
+      case "spInstances":
+        return "SP Instance";
+      default:
+        return type;
     }
   }
 
@@ -3914,6 +3934,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "fa-cogs"
       );
       
+      // Store the display name as a data attribute for reference in the details panel
+      gpInstanceNode.setAttribute("data-display-name", displayText);
+      
       // Store gpid as a data attribute for reference if available
       if (gpInstance.gpid) {
         gpInstanceNode.setAttribute("data-gpid", gpInstance.gpid);
@@ -4012,6 +4035,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Load and display children of the selected node in the elements panel
   // Config-driven: Load and display children of the selected node in the elements panel
   function loadSelectedNodeChildren(nodeData, nodeType, ...parentData) {
+    // Special handling for GP instances - we want to show SP instances, not configuration items
+    if (nodeType === "gpInstances") {
+      loadGPInstanceChildren(nodeData, ...parentData);
+      return;
+    }
     if (elementsContainer) {
       elementsContainer.innerHTML = "";
     }
@@ -4033,11 +4061,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Get the SVG icon for this node type
     const iconPath = getElementIcon(nodeType);
+    
+    // Generate appropriate title based on the node type
+    let title = "";
+    
+    // Build the title with the correct hierarchy level
+    if (nodeType === "root-cisplan") {
+      title = "CIS Plan";
+    } else if (nodeType === "missionNetworks") {
+      title = "CIS Plan - Mission Networks";
+    } else if (nodeType === "networkSegments") {
+      title = "Network Segment";
+    } else if (nodeType === "securityDomains") {
+      title = "Security Domain";
+    } else if (nodeType === "hwStacks") {
+      title = "Hardware Stack";
+    } else if (nodeType === "assets") {
+      title = "Asset";
+    } else if (nodeType === "networkInterfaces") {
+      title = "Network Interface";
+    } else if (nodeType === "gpInstances") {
+      title = "Generic Product";
+    } else if (nodeType === "spInstances") {
+      title = "Specific Product";
+    } else {
+      title = formatNodeTypeName(nodeType);
+    }
 
     // Create icon element
     titleDiv.innerHTML = `
             <img src="${iconPath}" alt="${nodeType}" class="icon-small me-2" style="width: 20px; height: 20px;">
-            <span>${displayName} - ${formatNodeTypeName(nodeType)}</span>
+            <span>${displayName} - ${title}</span>
         `;
     headerContainer.appendChild(titleDiv);
 
@@ -4336,7 +4390,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // For security domains, look up the classification name
       if (type === "securityDomains") {
         const classification = getSecurityClassificationById(element.id);
-        cardTitle.textContent = classification.name;
+        const displayName = classification.name;
+        cardTitle.textContent = displayName;
+        // Store display name as data attribute
+        card.setAttribute("data-display-name", displayName);
       } else if (type === "networkInterfaces") {
         // For network interfaces, show name and IP address
         let ipAddress = "N/A";
@@ -4352,11 +4409,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         
         // Display name and IP address
-        cardTitle.textContent = `${element.name} - ${ipAddress}`;
+        const displayName = `${element.name} - ${ipAddress}`;
+        cardTitle.textContent = displayName;
+        // Store display name as data attribute
+        card.setAttribute("data-display-name", displayName);
       } else if (type === "gpInstances") {
         // For GP instances, show the GP name based on gpid and instance label
         // Set initial value to the instance label or default text
         let displayText = element.instanceLabel || `GP Instance ${element.id}`;
+        
+        // Store initial display name as data attribute
+        card.setAttribute("data-display-name", displayText);
         
         // If we have a gpid, fetch the actual GP name
         if (element.gpid) {
@@ -4381,6 +4444,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 // Update the card title with the GP name
                 cardTitle.textContent = updatedText;
+                // Update the data attribute with the final display name
+                card.setAttribute("data-display-name", updatedText);
               }
             } catch (error) {
               console.error(`Error fetching GP name for ${element.gpid}:`, error);
@@ -4391,7 +4456,10 @@ document.addEventListener("DOMContentLoaded", function () {
           cardTitle.textContent = displayText;
         }
       } else {
-        cardTitle.textContent = element.name;
+        const displayName = element.name || "";
+        cardTitle.textContent = displayName;
+        // Store display name as data attribute
+        card.setAttribute("data-display-name", displayName);
       }
 
       cardHeader.appendChild(cardTitle);
@@ -4444,7 +4512,13 @@ document.addEventListener("DOMContentLoaded", function () {
         // Prevent the click event from firing
         event.stopPropagation();
 
-        // Find and select the corresponding tree node
+        // For network interfaces, they're leaf nodes, so don't try to drill down
+        if (type === "networkInterfaces") {
+          // Just select the node but don't try to drill down further
+          return;
+        }
+
+        // For all other types, including GP instances, find and select the corresponding tree node
         findAndSelectTreeNode(type, element.id);
       });
 
@@ -4530,6 +4604,111 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Special function to handle children of GP instances (SP instances)
+  function loadGPInstanceChildren(gpInstance, ...parentData) {
+    if (elementsContainer) {
+      elementsContainer.innerHTML = "";
+    }
+
+    // Create the header with title and up button
+    const headerContainer = document.createElement("div");
+    headerContainer.className =
+      "d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom";
+
+    // Add title to the header - fetch the GP name for a nice title
+    const titleDiv = document.createElement("div");
+    titleDiv.className = "h5 mb-0 d-flex align-items-center";
+    titleDiv.id = "elementsTitle";
+    
+    // Default display text
+    let displayText = "GP Instance";
+    if (gpInstance.instanceLabel) {
+      displayText = gpInstance.instanceLabel;
+    } else if (gpInstance.gpid) {
+      displayText = `GP ${gpInstance.gpid}`;
+    }
+    
+    // Get the name asynchronously if we have a GP ID
+    if (gpInstance.gpid) {
+      fetchGPName(gpInstance.gpid).then(gpName => {
+        if (gpName) {
+          if (gpInstance.instanceLabel && gpInstance.instanceLabel !== gpName) {
+            const titleSpan = document.querySelector("#elementsTitle span");
+            if (titleSpan) {
+              titleSpan.textContent = `${gpName} (${gpInstance.instanceLabel}) - Specific Products`;
+            }
+          } else {
+            const titleSpan = document.querySelector("#elementsTitle span");
+            if (titleSpan) {
+              titleSpan.textContent = `${gpName} - Specific Products`;
+            }
+          }
+        }
+      });
+    }
+    
+    // Get the icon
+    const iconPath = getElementIcon("gpInstances");
+    
+    // Set the initial title
+    titleDiv.innerHTML = `
+      <img src="${iconPath}" alt="GP Instance" class="icon-small me-2" style="width: 20px; height: 20px;">
+      <span>${displayText} - Specific Products</span>
+    `;
+    headerContainer.appendChild(titleDiv);
+    
+    // Add up button
+    const upButton = document.createElement("button");
+    upButton.className = "btn btn-sm btn-outline-secondary";
+    upButton.innerHTML = '<i class="fas fa-arrow-up"></i> Up';
+    upButton.title = "Navigate up to parent";
+    upButton.id = "elementsUpButton";
+    
+    // Add event listener for up navigation
+    upButton.addEventListener("click", navigateUp);
+    
+    // Add tooltip for better UX
+    upButton.setAttribute("data-bs-toggle", "tooltip");
+    upButton.setAttribute("data-bs-placement", "top");
+    upButton.setAttribute("data-bs-title", "Navigate to parent");
+    
+    headerContainer.appendChild(upButton);
+    elementsContainer.appendChild(headerContainer);
+    
+    // Create a container for the elements
+    const elementsContent = document.createElement("div");
+    elementsContent.id = "elementsContent";
+    elementsContainer.appendChild(elementsContent);
+    
+    // Check if we have SP instances to display
+    let childrenRendered = false;
+    
+    if (gpInstance.spInstances && gpInstance.spInstances.length > 0) {
+      // Add a header for SP instances
+      const spHeader = document.createElement("h5");
+      spHeader.className = "mt-3 mb-2";
+      spHeader.innerHTML = `<i class="fas fa-cog me-2"></i> Specific Products (${gpInstance.spInstances.length})`;
+      elementsContent.appendChild(spHeader);
+      
+      // Render SP instances as cards
+      renderElementCards(elementsContent, gpInstance.spInstances, "spInstances");
+      childrenRendered = true;
+    }
+    
+    // If no children, show a message and add button
+    if (!childrenRendered) {
+      const noElementsDiv = document.createElement("div");
+      noElementsDiv.className = "alert alert-info";
+      noElementsDiv.innerHTML = `<i class="fas fa-info-circle me-2"></i> No Specific Products found. Use the Add SP button to add one.`;
+      elementsContent.appendChild(noElementsDiv);
+    }
+    
+    // Note: We're NOT adding a floating action button since there's already an Add button
+    
+    // Always update detail panel with the GP instance details
+    updateDetailPanel(gpInstance, "gpInstances");
+  }
+
   // Update the details panel with the selected element's data
   function updateDetailPanel(element, type) {
     // Clear the details container
@@ -4550,21 +4729,66 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       if (cardToHighlight) {
         cardToHighlight.classList.add("active");
-        // Card highlighted
-      } else {
-        // Card not found to highlight
       }
     }
 
-    // Update the details title
-    if (detailsTitle) {
-      // For security domains, look up the classification name
-      if (type === "securityDomains") {
-        const classification = getSecurityClassificationById(element.id);
-        detailsTitle.textContent = `${classification.name} Details`;
+    // For GP instances, update the title with the name and optional label
+    if (type === "gpInstances") {
+      // Start with a default title based on GP ID
+      let displayTitle = element.gpid ? `GP ${element.gpid}` : "Generic Product";
+      
+      // If we have a GP ID, fetch the actual name
+      if (element.gpid) {
+        // First update with what we have now
+        if (element.instanceLabel) {
+          detailsTitle.textContent = `${displayTitle} (${element.instanceLabel}) Details`;
+        } else {
+          detailsTitle.textContent = `${displayTitle} Details`;
+        }
+        
+        // Then fetch and update with the actual name
+        fetchGPName(element.gpid).then(gpName => {
+          if (gpName) {
+            // Update the details title with the fetched name
+            if (element.instanceLabel) {
+              detailsTitle.textContent = `${gpName} (${element.instanceLabel}) Details`;
+            } else {
+              detailsTitle.textContent = `${gpName} Details`;
+            }
+          }
+        }).catch(error => {
+          console.error(`Error fetching GP name: ${error}`);
+        });
+      } else if (element.instanceLabel) {
+        // If we just have an instance label, use that
+        detailsTitle.textContent = `${element.instanceLabel} Details`;
       } else {
-        detailsTitle.textContent = `${element.name} Details`;
+        // Last resort
+        detailsTitle.textContent = "Generic Product Details";
       }
+    } 
+    // For other types, set the title based on the element type
+    else if (type === "securityDomains") {
+      const classification = getSecurityClassificationById(element.id);
+      detailsTitle.textContent = `${classification.name} Details`;
+    } else if (type === "networkInterfaces") {
+      // For network interfaces, include IP address if available
+      let ipAddress = "N/A";
+      if (element.configurationItems && Array.isArray(element.configurationItems)) {
+        // Find IP Address in configuration items
+        element.configurationItems.forEach(item => {
+          if (item.Name === "IP Address" && item.AnswerContent) {
+            ipAddress = item.AnswerContent;
+          }
+        });
+      }
+      detailsTitle.textContent = `${element.name} - ${ipAddress} Details`;
+    } else if (element.name) {
+      // For all other named elements
+      detailsTitle.textContent = `${element.name} Details`;
+    } else {
+      // Complete fallback
+      detailsTitle.textContent = `${formatNodeTypeName(type)} Details`;
     }
 
     // Create a card to display the details
@@ -4575,14 +4799,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const cardHeader = document.createElement("div");
     cardHeader.className = "card-header d-flex align-items-center";
 
+    // Get the element's display name for the card header
+    let displayName = "";
+    
     // For security domains, use the classification name
     if (type === "securityDomains") {
       const classification = getSecurityClassificationById(element.id);
-      const iconPath = getElementIcon(type);
-      cardHeader.innerHTML = `
-                <img src="${iconPath}" alt="${type}" class="icon-small me-2" style="width: 20px; height: 20px;">
-                <h5 class="mb-0">${classification.name}</h5>
-            `;
+      displayName = classification.name;
     } else if (type === "networkInterfaces") {
       // For network interfaces, extract IP address from configuration items
       let ipAddress = "N/A";
@@ -4596,20 +4819,51 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       
       // Create display text with both name and IP address
-      const displayText = `${element.name} - ${ipAddress}`;
-      
-      const iconPath = getElementIcon(type);
-      cardHeader.innerHTML = `
-                <img src="${iconPath}" alt="${type}" class="icon-small me-2" style="width: 20px; height: 20px;">
-                <h5 class="mb-0">${displayText}</h5>
-            `;
+      displayName = `${element.name} - ${ipAddress}`;
+    } else if (type === "gpInstances") {
+      // For GP instances, start with the GP ID or instance label
+      if (element.instanceLabel) {
+        displayName = element.instanceLabel;
+      } else if (element.gpid) {
+        displayName = `GP ${element.gpid}`;
+      } else {
+        displayName = "Generic Product";
+      }
+    } else if (element.name) {
+      // For all other types with a name property
+      displayName = element.name;
     } else {
-      const iconPath = getElementIcon(type);
-      cardHeader.innerHTML = `
-                <img src="${iconPath}" alt="${type}" class="icon-small me-2" style="width: 20px; height: 20px;">
-                <h5 class="mb-0">${element.name}</h5>
-            `;
+      // Complete fallback for unknown types
+      displayName = `${formatNodeTypeName(type)} ${element.id || ''}`;
     }
+    
+    // Create the card header with icon and initial title
+    const iconPath = getElementIcon(type);
+    cardHeader.innerHTML = `
+      <img src="${iconPath}" alt="${type}" class="icon-small me-2" style="width: 20px; height: 20px;">
+      <h5 class="mb-0">${displayName}</h5>
+    `;
+    
+    // If this is a GP instance and we have a GP ID, fetch the actual name
+    if (type === "gpInstances" && element.gpid) {
+      fetchGPName(element.gpid).then(gpName => {
+        if (gpName) {
+          // Find the h5 element in the card header and update it
+          const headerTitle = cardHeader.querySelector('h5');
+          if (headerTitle) {
+            if (element.instanceLabel) {
+              headerTitle.textContent = `${gpName} (${element.instanceLabel})`;
+            } else {
+              headerTitle.textContent = gpName;
+            }
+          }
+        }
+      }).catch(error => {
+        console.error(`Error fetching GP name for card header: ${error}`);
+      });
+    }
+    
+    // Add the card header to the card
     detailCard.appendChild(cardHeader);
 
     // Create the card body

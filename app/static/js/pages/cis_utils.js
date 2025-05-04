@@ -52,7 +52,6 @@ const ENTITY_CHILDREN = {
   ],
   gpInstances: [
     { key: "spInstances", type: "spInstances" },
-    { key: "configurationItems", type: "configurationItems" },
   ],
   spInstances: [{ key: "configurationItems", type: "configurationItems" }],
   // Add more as needed

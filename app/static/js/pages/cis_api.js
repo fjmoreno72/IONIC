@@ -1112,7 +1112,8 @@ const CISApi = {
     hwStackId,
     assetId,
     instanceLabel,
-    serviceId
+    serviceId,
+    gpId
   ) {
     try {
       // Input validation
@@ -1122,8 +1123,8 @@ const CISApi = {
         !domainId ||
         !hwStackId ||
         !assetId ||
-        !instanceLabel ||
-        !serviceId
+        !serviceId ||
+        !gpId
       ) {
         return {
           success: false,
@@ -1134,13 +1135,21 @@ const CISApi = {
 
       const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/gp_instances`;
 
+      // Create a request body, only adding instanceLabel if it has a value
+      const requestBody = {
+        serviceId: serviceId,
+        gpid: gpId
+      };
+      
+      // Only add instanceLabel if it has a value
+      if (instanceLabel && instanceLabel.trim() !== '') {
+        requestBody.instanceLabel = instanceLabel;
+      }
+      
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          instanceLabel: instanceLabel,
-          serviceId: serviceId,
-        }),
+        body: JSON.stringify(requestBody),
       });
 
       const result = await response.json();

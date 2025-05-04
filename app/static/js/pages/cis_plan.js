@@ -2174,6 +2174,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "addGPContainerInstanceLabel"
     );
     const serviceIdInput = document.getElementById("addGPContainerServiceId");
+    const gpIdInput = document.getElementById("addGPContainerGpId");
     const missionNetworkIdInput = document.getElementById(
       "addGPContainerMissionNetworkId"
     );
@@ -2184,13 +2185,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const instanceLabel = instanceLabelInput.value.trim();
     const serviceId = serviceIdInput.value.trim();
+    const gpId = gpIdInput.value.trim();
     const missionNetworkId = missionNetworkIdInput.value;
     const segmentId = segmentIdInput.value;
     const domainId = domainIdInput.value;
     const hwStackId = hwStackIdInput.value;
     const assetId = assetIdInput.value;
 
-    if (!instanceLabel || !serviceId) {
+    if (!serviceId || !gpId) {
       showToast("Please fill in all required fields", "warning");
       return;
     }
@@ -2215,7 +2217,8 @@ document.addEventListener("DOMContentLoaded", function () {
         hwStackId,
         assetId,
         instanceLabel,
-        serviceId
+        serviceId,
+        gpId
       );
 
       if (apiResult.success) {
@@ -3561,6 +3564,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Render GP instances under an asset
+  // Fetch GP name for an item with its gpid
+  async function fetchGPName(gpid) {
+    try {
+      const response = await fetch(`/api/gps/${gpid}/name`);
+      if (response.ok) {
+        const result = await response.json();
+        return result.name;
+      }
+    } catch (error) {
+      console.error(`Error fetching GP name: ${error}`);
+    }
+    return null;
+  }
+
   function renderGPInstances(
     container,
     gpInstances,
@@ -3570,16 +3587,47 @@ document.addEventListener("DOMContentLoaded", function () {
     parentSegment,
     parentMissionNetwork
   ) {
-    gpInstances.forEach((gpInstance) => {
+    // First, pre-fetch all GP names to reduce flashing in the UI
+    const gpPromises = {};
+    gpInstances.forEach(gpInstance => {
+      if (gpInstance.gpid) {
+        gpPromises[gpInstance.gpid] = fetchGPName(gpInstance.gpid);
+      }
+    });
+    
+    // Once all promises are created, render the nodes
+    gpInstances.forEach(async (gpInstance) => {
+      let displayText = `GP Instance ${gpInstance.id}`;
+      
+      // If we have a GP ID, get the name (from cache or wait for fetch)
+      if (gpInstance.gpid && gpPromises[gpInstance.gpid]) {
+        const gpName = await gpPromises[gpInstance.gpid];
+        if (gpName) {
+          if (gpInstance.instanceLabel && gpInstance.instanceLabel !== gpName) {
+            displayText = `${gpName} (${gpInstance.instanceLabel})`;
+          } else {
+            displayText = gpName;
+          }
+        } else if (gpInstance.instanceLabel) {
+          displayText = gpInstance.instanceLabel;
+        }
+      } else if (gpInstance.instanceLabel) {
+        displayText = gpInstance.instanceLabel;
+      }
+      
+      // Create the node with the display text
       const gpInstanceNode = createTreeNode(
         "gpInstances",
-        gpInstance.name ||
-          gpInstance.instanceLabel ||
-          `GP Instance ${gpInstance.id}`,
+        displayText,
         gpInstance.id,
         gpInstance.guid,
         "fa-cogs"
       );
+      
+      // Store gpid as a data attribute for reference if available
+      if (gpInstance.gpid) {
+        gpInstanceNode.setAttribute("data-gpid", gpInstance.gpid);
+      }
 
       // Set parent reference data attributes
       gpInstanceNode.setAttribute(
@@ -3737,7 +3785,39 @@ document.addEventListener("DOMContentLoaded", function () {
     const childrenDefs = ENTITY_CHILDREN[nodeType];
     let childrenRendered = false;
 
-    if (childrenDefs) {
+    // For asset nodes, we specifically want to show both network interfaces and GP instances together
+    if (nodeType === "assets") {
+      const networkInterfacesContainer = document.createElement("div");
+      const gpInstancesContainer = document.createElement("div");
+      
+      // Add section headers for better organization
+      if (nodeData.networkInterfaces && nodeData.networkInterfaces.length > 0) {
+        const networkHeader = document.createElement("h5");
+        networkHeader.className = "mt-3 mb-2";
+        const networkIcon = getElementIcon("networkInterfaces");
+        networkHeader.innerHTML = `<img src="${networkIcon}" width="20" height="20" alt="Network Interfaces" class="me-2"> Network Interfaces (${nodeData.networkInterfaces.length})`;
+        elementsContent.appendChild(networkHeader);
+        
+        // Render network interfaces
+        renderElementCards(networkInterfacesContainer, nodeData.networkInterfaces, "networkInterfaces");
+        elementsContent.appendChild(networkInterfacesContainer);
+        childrenRendered = true;
+      }
+      
+      if (nodeData.gpInstances && nodeData.gpInstances.length > 0) {
+        const gpHeader = document.createElement("h5");
+        gpHeader.className = "mt-4 mb-2";
+        const gpIcon = getElementIcon("gpInstances");
+        gpHeader.innerHTML = `<img src="${gpIcon}" width="20" height="20" alt="Generic Products" class="me-2"> Generic Products (${nodeData.gpInstances.length})`;
+        elementsContent.appendChild(gpHeader);
+        
+        // Render GP instances
+        renderElementCards(gpInstancesContainer, nodeData.gpInstances, "gpInstances");
+        elementsContent.appendChild(gpInstancesContainer);
+        childrenRendered = true;
+      }
+    } else if (childrenDefs) {
+      // For other node types, use the standard approach
       childrenDefs.forEach((def) => {
         const children = nodeData[def.key];
         if (children && Array.isArray(children) && children.length > 0) {
@@ -3950,6 +4030,43 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Display name and IP address
         cardTitle.textContent = `${element.name} - ${ipAddress}`;
+      } else if (type === "gpInstances") {
+        // For GP instances, show the GP name based on gpid and instance label
+        // Set initial value to the instance label or default text
+        let displayText = element.instanceLabel || `GP Instance ${element.id}`;
+        
+        // If we have a gpid, fetch the actual GP name
+        if (element.gpid) {
+          // Temporarily show placeholder while we fetch the name
+          cardTitle.textContent = displayText;
+          
+          // Fetch GP name asynchronously
+          (async function() {
+            try {
+              const response = await fetch(`/api/gps/${element.gpid}/name`);
+              if (response.ok) {
+                const result = await response.json();
+                
+                // Format display name - include both GP name and instance label if available
+                let gpName = result.name;
+                let updatedText = gpName;
+                
+                // If we have an instance label and it's different from the GP name, add it in parentheses
+                if (element.instanceLabel && element.instanceLabel !== gpName) {
+                  updatedText = `${gpName} (${element.instanceLabel})`;
+                }
+                
+                // Update the card title with the GP name
+                cardTitle.textContent = updatedText;
+              }
+            } catch (error) {
+              console.error(`Error fetching GP name for ${element.gpid}:`, error);
+            }
+          })();
+        } else {
+          // No gpid available, just show the display text
+          cardTitle.textContent = displayText;
+        }
       } else {
         cardTitle.textContent = element.name;
       }

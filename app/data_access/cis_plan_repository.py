@@ -912,7 +912,7 @@ def _get_next_gp_instance_id(gp_instances):
     next_id_num = max(id_nums) + 1 if id_nums else 1
     return f"GP-{next_id_num:04d}"
 
-def _populate_gp_instance_config_items(gp_instance, gp_service_id):
+def _populate_gp_instance_config_items(gp_instance, gp_id):
     """
     Populates the configuration items for a GP instance based on its service ID.
     The service ID should match a GP-XXXX format ID in the configuration items catalog.
@@ -931,13 +931,9 @@ def _populate_gp_instance_config_items(gp_instance, gp_service_id):
         try:
             # Only import here to avoid circular imports
             from app.data_access.config_items_repository import get_config_items_by_gp_id
-            
-            # If running in a test, let it be handled by the test mocking
-            if gp_service_id.startswith("SV-TEST-"):
-                return True
                 
             # Get configuration items for this GP ID
-            config_items = get_config_items_by_gp_id(gp_service_id)
+            config_items = get_config_items_by_gp_id(gp_id)
             
             # Add each config item to the GP instance
             import uuid
@@ -1064,7 +1060,8 @@ def refresh_gp_instance_config_items(environment: str, mission_network_id: str, 
         logging.error(f"Repository: Error refreshing GP instance config items: {str(e)}")
         return None
 
-def add_gp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, instance_label: str, service_id: str) -> dict:
+def add_gp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, instance_label: str, service_id: str, gp_id: str) -> dict:
+    # instance_label is now optional and can be an empty string
     """Adds a new GP instance to an asset with empty spInstances and configurationItems arrays."""
     try:
         data = _load_cis_plan(environment)
@@ -1089,9 +1086,9 @@ def add_gp_instance(environment: str, mission_network_id: str, segment_id: str, 
             asset['gpInstances'] = []
         
         # Create the new GP instance with empty spInstances and an empty configurationItems array
-        # For GP instances, gpid should be the same as serviceId (e.g., GP-0043), not auto-generated
+    
         new_gp_instance = {
-            "gpid": service_id,  # Use the service_id as the gpid directly
+            "gpid": gp_id,
             "guid": str(uuid.uuid4()),
             "instanceLabel": instance_label,
             "serviceId": service_id,
@@ -1100,7 +1097,7 @@ def add_gp_instance(environment: str, mission_network_id: str, segment_id: str, 
         }
         
         # Populate the configuration items for this GP instance
-        _populate_gp_instance_config_items(new_gp_instance, service_id)
+        _populate_gp_instance_config_items(new_gp_instance, gp_id)
         
         asset['gpInstances'].append(new_gp_instance)
         _save_cis_plan(environment, data)

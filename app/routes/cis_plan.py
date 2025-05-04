@@ -451,10 +451,12 @@ def handle_gp_instances(mn_id, seg_id, dom_id, stack_id, asset_id):
         # Create new GP instance with empty spInstances and configurationItems arrays
         try:
             data = request.get_json()
-            instance_label = get_json_field(data, 'instanceLabel')  # Instance label is required
+            # Instance label is now optional
+            instance_label = data.get('instanceLabel', '') if data else ''
             service_id = get_json_field(data, 'serviceId')  # Service ID is required
+            gp_id = get_json_field(data, 'gpid')  # GP ID is required
             
-            new_instance = add_gp_instance(env, mn_id, seg_id, dom_id, stack_id, asset_id, instance_label, service_id)
+            new_instance = add_gp_instance(env, mn_id, seg_id, dom_id, stack_id, asset_id, instance_label, service_id, gp_id)
             if not new_instance:
                 return error_response(f"Could not create GP instance. Parent resource not found?", status=404)
             return success_response(new_instance, status=201)

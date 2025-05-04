@@ -23,6 +23,30 @@ def get_gps():
         current_app.logger.error(f"API Route: Error in /api/gps GET endpoint: {e}", exc_info=True)
         return jsonify({"error": "Internal server error fetching GP data"}), 500
 
+@gps_bp.route('/<gp_id>/name', methods=['GET'])
+def get_gp_name(gp_id):
+    """Endpoint to retrieve a GP name by its ID.
+    
+    Args:
+        gp_id (str): ID of the GP to find
+    
+    Returns:
+        JSON response with the GP name or an error message
+    """
+    current_app.logger.info(f"API Route: /api/gps/{gp_id}/name GET endpoint called.")
+    try:
+        gp_name = gps_repository.get_gp_name_by_id(gp_id)
+        
+        if gp_name is None:
+            current_app.logger.warning(f"API Route: GP with ID {gp_id} not found")
+            return jsonify({"error": f"GP with ID {gp_id} not found"}), 404
+        
+        current_app.logger.info(f"API Route: Found GP name '{gp_name}' for ID {gp_id}")
+        return jsonify({"id": gp_id, "name": gp_name})
+    except Exception as e:
+        current_app.logger.error(f"API Route: Error in /api/gps/{gp_id}/name GET endpoint: {e}", exc_info=True)
+        return jsonify({"error": "Internal server error fetching GP name"}), 500
+
 @gps_bp.route('', methods=['POST'])
 def add_gp():
     """Endpoint to add a new GP."""

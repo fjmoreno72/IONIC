@@ -101,7 +101,340 @@
                           ]
                         }
                       ],
-                      "gpInstances": []
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0001",
+                          "guid": "cf1cbf5a-f21b-49ac-84d0-fc72087f48b3",
+                          "instanceLabel": "NIRIS",
+                          "serviceId": "SRC-0008",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "C2/NonC2",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "dc0be8c6-f7f3-422f-b1c1-90d5f47b9bdb",
+                              "DefaultValue": "Non C2",
+                              "HelpText": "pick either:  \"C2\"  or \"Non C2\""
+                            },
+                            {
+                              "Name": "JRE ID",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "26b13efe-a8db-4d98-8cbb-7c45aa1787ec",
+                              "DefaultValue": "",
+                              "HelpText": "JRE ID assigned to you Data Link Server"
+                            },
+                            {
+                              "Name": "JREAP Time Sync (Preferred)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "212f731c-6224-4a3e-9007-387537a8ca1a",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
+                            },
+                            {
+                              "Name": "JREAP Time Sync (Supported)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "9a4f1870-dad5-43a1-a3a6-8458b967d6e0",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
+                            },
+                            {
+                              "Name": "JU Number",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "13715c1c-4799-4256-90a5-6cf2a83c5f60",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Maximum Offset",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "d406bf57-d4b9-476f-947f-b3ddb9f59c18",
+                              "DefaultValue": "0.5",
+                              "HelpText": "Time in seconds"
+                            },
+                            {
+                              "Name": "Platform Role",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "3649c04b-13df-4267-ade4-8951dc725b06",
+                              "DefaultValue": "semi-active",
+                              "HelpText": "pick either: \"active\", \"semi-active\", \"passive\"."
+                            },
+                            {
+                              "Name": "TN Block",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "a921f04e-8b2d-44bf-9931-5a48870f9711",
+                              "DefaultValue": "",
+                              "HelpText": "Track number block assigned to Active Platform"
+                            },
+                            {
+                              "Name": "URL Track Store",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "65ec2e9a-7dac-4730-b0f5-031e1e1556ae",
+                              "DefaultValue": "",
+                              "HelpText": "URL to connect to the Track Store (i.e TSS URL)"
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0005",
+                          "guid": "8463dd2b-5279-417f-9211-c1307f672236",
+                          "instanceLabel": "a",
+                          "serviceId": "a",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Port C2S",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "2f26c5a9-69cc-4eff-8ce5-405928155cdf",
+                              "DefaultValue": "TCP/5222",
+                              "HelpText": "Describes the TCP port (accepted) used for client to server connections. Usually 5222."
+                            },
+                            {
+                              "Name": "Port S2S",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "4cf59872-b81b-4fd2-b7ec-cd08f9d1ace2",
+                              "DefaultValue": "TCP/5269",
+                              "HelpText": "Describes the TCP port used for one chat server to federate with another server connections. Usually 5269."
+                            },
+                            {
+                              "Name": "QoS Value",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "91bc8a82-d9ab-40dc-8365-95d7ac4770b9",
+                              "DefaultValue": "CS3",
+                              "HelpText": "QoS DSCP values as specified on JMEI"
+                            },
+                            {
+                              "Name": "SRV Record  _xmpp-client",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "20d3b527-b1d5-4151-848c-094cf075a8de",
+                              "DefaultValue": "",
+                              "HelpText": "e.g. _xmpp-client._tcp Service Record"
+                            },
+                            {
+                              "Name": "SRV Record Broadcast",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "0917ecb4-5f66-420b-92ed-7297eaacad7b",
+                              "DefaultValue": "",
+                              "HelpText": "e.g. _xmpp-server._tcp Service Broadcast"
+                            },
+                            {
+                              "Name": "SRV Record Conference",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "a6e25d5f-5089-4466-850c-731a5a462581",
+                              "DefaultValue": "",
+                              "HelpText": "e.g. _xmpp-server._tcp Service Conference"
+                            },
+                            {
+                              "Name": "SRV Record FDP",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "a6181824-034a-47b6-98f8-f0020930bd07",
+                              "DefaultValue": "",
+                              "HelpText": "e.g. _xmpp-server._tcp Service FDP"
+                            },
+                            {
+                              "Name": "SRV Record General",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "48240e51-a444-49ed-8972-e374c833c3f4",
+                              "DefaultValue": "",
+                              "HelpText": "e.g. _xmpp-server._tcp Service Conference"
+                            },
+                            {
+                              "Name": "SRV Record PUBSUB",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "ff2b1473-6c9f-4820-91f6-eb6792969b5c",
+                              "DefaultValue": "",
+                              "HelpText": "e.g. _xmpp-server._tcp Service pubsub"
+                            },
+                            {
+                              "Name": "SRV Record Search",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "fc0f3ac6-51b5-472c-9c7c-b440a99000b3",
+                              "DefaultValue": "",
+                              "HelpText": "e.g. _xmpp-server._tcp Service Conference"
+                            },
+                            {
+                              "Name": "Security Settings",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "5e107c29-9805-4703-9a9c-b12dc8a9b45c",
+                              "DefaultValue": "",
+                              "HelpText": "Is mandatory TLS implemented for server to server communication"
+                            },
+                            {
+                              "Name": "TLS Secured",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "46711e5b-e05f-439b-b372-7c7b172ea46a",
+                              "DefaultValue": "Yes",
+                              "HelpText": "TLS Encryption for Server to Serve"
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0007",
+                          "guid": "ff96e705-6927-4b73-b963-70331df7eba1",
+                          "instanceLabel": "a",
+                          "serviceId": "s",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Forward Delegated Zones",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "b1a7d377-194f-4c88-a872-7bf1ad055ca2",
+                              "DefaultValue": "",
+                              "HelpText": "Forward Zones Delegated from the DNS Root Server"
+                            },
+                            {
+                              "Name": "Glue Records",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "91382b11-12e0-4cf9-89d6-cd4cfcb8464c",
+                              "DefaultValue": "",
+                              "HelpText": "Glue Records for each zone delegation"
+                            },
+                            {
+                              "Name": "IP Address (Anycast)",
+                              "ConfigurationAnswerType": "IP Address",
+                              "AnswerContent": "",
+                              "guid": "16fdd79a-7210-4b7d-9beb-cf7b87aa9a01",
+                              "DefaultValue": "",
+                              "HelpText": "The Anycast IP used by the DNS Root server"
+                            },
+                            {
+                              "Name": "Port",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "be996b33-3cf7-4cda-8298-6dc45d67547a",
+                              "DefaultValue": "443",
+                              "HelpText": "Port for the RAG Server"
+                            },
+                            {
+                              "Name": "Primary/Secondary",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "6709a34d-21f7-422b-9222-905ca6199c66",
+                              "DefaultValue": "Secondary",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "QoS",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "1e9d6de1-1dc7-4446-885d-df6902e6ff3e",
+                              "DefaultValue": "AF33",
+                              "HelpText": "QoS DSCP value used for DNS traffic"
+                            },
+                            {
+                              "Name": "Reverse Delegated Zones",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "d8fb675d-a59c-4c4f-a761-636cd7d5e978",
+                              "DefaultValue": "",
+                              "HelpText": "Reverse Zones Delegated from the DNS Root Server"
+                            },
+                            {
+                              "Name": "SOA Record Expiration",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "29be12bc-52ff-4eaa-a9cb-dcbefaa74857",
+                              "DefaultValue": "8640000",
+                              "HelpText": "SOA Record Expiration as defined by JMEI"
+                            },
+                            {
+                              "Name": "SOA Record Minimum TTL",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "4763f361-ba2c-4c94-9fe4-02c4e63caad6",
+                              "DefaultValue": "3600",
+                              "HelpText": "SOA Record Minimum TTL as defined by JMEI"
+                            },
+                            {
+                              "Name": "SOA Record Refresh Interval",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "002941ce-ef22-47e7-a0ce-701e44916afa",
+                              "DefaultValue": "3600",
+                              "HelpText": "SOA Record Refresh Interval as defined by JMEI"
+                            },
+                            {
+                              "Name": "SOA Record Retry Interval",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "283abb36-3524-41c8-9f1e-60e75e248eb4",
+                              "DefaultValue": "600",
+                              "HelpText": "SOA Record Retry Interval  as defined by JMEI"
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0013",
+                          "guid": "32825fb4-2e04-4d57-80ef-923645925471",
+                          "instanceLabel": "",
+                          "serviceId": "1",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Email address",
+                              "ConfigurationAnswerType": "Email Address",
+                              "AnswerContent": "",
+                              "guid": "5cfbbb35-ba61-4301-be16-674b50c44a59",
+                              "DefaultValue": "",
+                              "HelpText": "Email Address"
+                            },
+                            {
+                              "Name": "ORBAT UNIT",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "db73bc10-ed36-4703-9555-f2b7567532e7",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Remote App ICON",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "6c30b763-33da-4218-831e-bea0f5599204",
+                              "DefaultValue": "",
+                              "HelpText": "Name of the ICON of the App"
+                            },
+                            {
+                              "Name": "Remote App URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "3ad7a672-063b-44a8-8b79-b7e64f780217",
+                              "DefaultValue": "",
+                              "HelpText": "URL of the  Cloud App"
+                            },
+                            {
+                              "Name": "iBridge File URL",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "63bbe3b0-c8df-4412-aa01-f1d344571619",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            }
+                          ]
+                        }
+                      ]
                     },
                     {
                       "name": "Asset 2",

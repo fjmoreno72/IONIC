@@ -4063,35 +4063,41 @@ document.addEventListener("DOMContentLoaded", function () {
     const iconPath = getElementIcon(nodeType);
     
     // Generate appropriate title based on the node type
-    let title = "";
+    let elementTypeText = "";
     
-    // Build the title with the correct hierarchy level
+    // Get the formatted element type name for the title
     if (nodeType === "root-cisplan") {
-      title = "CIS Plan";
+      elementTypeText = "CIS Plan";
     } else if (nodeType === "missionNetworks") {
-      title = "CIS Plan - Mission Networks";
+      elementTypeText = "Mission Networks";
     } else if (nodeType === "networkSegments") {
-      title = "Network Segment";
+      elementTypeText = "Network Segments";
     } else if (nodeType === "securityDomains") {
-      title = "Security Domain";
+      elementTypeText = "Security Domains";
     } else if (nodeType === "hwStacks") {
-      title = "Hardware Stack";
+      elementTypeText = "Hardware Stacks";
     } else if (nodeType === "assets") {
-      title = "Asset";
+      elementTypeText = "Assets";
     } else if (nodeType === "networkInterfaces") {
-      title = "Network Interface";
+      elementTypeText = "Network Interfaces";
     } else if (nodeType === "gpInstances") {
-      title = "Generic Product";
+      elementTypeText = "Generic Products";
     } else if (nodeType === "spInstances") {
-      title = "Specific Product";
+      elementTypeText = "Specific Products";
     } else {
-      title = formatNodeTypeName(nodeType);
+      elementTypeText = formatNodeTypeName(nodeType);
+    }
+    
+    // Also update the main elements title at the top of the panel
+    const mainElementsTitle = document.getElementById("elementsTitle");
+    if (mainElementsTitle) {
+      mainElementsTitle.textContent = `CIS Plan - ${elementTypeText}`;
     }
 
-    // Create icon element
+    // Create icon element for breadcrumb
     titleDiv.innerHTML = `
             <img src="${iconPath}" alt="${nodeType}" class="icon-small me-2" style="width: 20px; height: 20px;">
-            <span>${displayName} - ${title}</span>
+            <span>${displayName} - ${elementTypeText}</span>
         `;
     headerContainer.appendChild(titleDiv);
 
@@ -4618,7 +4624,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add title to the header - fetch the GP name for a nice title
     const titleDiv = document.createElement("div");
     titleDiv.className = "h5 mb-0 d-flex align-items-center";
-    titleDiv.id = "elementsTitle";
+    titleDiv.id = "elementsBreadcrumb"; // Changed ID to avoid confusion with main title
+    
+    // Also update the main elements title at the top of the panel
+    const mainElementsTitle = document.getElementById("elementsTitle");
+    if (mainElementsTitle) {
+      mainElementsTitle.textContent = "CIS Plan - Generic Product Instance";
+    }
     
     // Default display text
     let displayText = "GP Instance";
@@ -4633,14 +4645,14 @@ document.addEventListener("DOMContentLoaded", function () {
       fetchGPName(gpInstance.gpid).then(gpName => {
         if (gpName) {
           if (gpInstance.instanceLabel && gpInstance.instanceLabel !== gpName) {
-            const titleSpan = document.querySelector("#elementsTitle span");
+            const titleSpan = document.querySelector("#elementsBreadcrumb span");
             if (titleSpan) {
-              titleSpan.textContent = `${gpName} (${gpInstance.instanceLabel}) - Specific Products`;
+              titleSpan.textContent = `${gpName} (${gpInstance.instanceLabel}) - Generic Product Instance`;
             }
           } else {
-            const titleSpan = document.querySelector("#elementsTitle span");
+            const titleSpan = document.querySelector("#elementsBreadcrumb span");
             if (titleSpan) {
-              titleSpan.textContent = `${gpName} - Specific Products`;
+              titleSpan.textContent = `${gpName} - Generic Product Instance`;
             }
           }
         }
@@ -4653,7 +4665,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set the initial title
     titleDiv.innerHTML = `
       <img src="${iconPath}" alt="GP Instance" class="icon-small me-2" style="width: 20px; height: 20px;">
-      <span>${displayText} - Specific Products</span>
+      <span>${displayText} - Generic Product Instance</span>
     `;
     headerContainer.appendChild(titleDiv);
     

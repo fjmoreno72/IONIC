@@ -103,289 +103,6 @@
                       ],
                       "gpInstances": [
                         {
-                          "gpid": "GP-0001",
-                          "guid": "cf1cbf5a-f21b-49ac-84d0-fc72087f48b3",
-                          "instanceLabel": "NIRIS",
-                          "serviceId": "SRC-0008",
-                          "spInstances": [],
-                          "configurationItems": [
-                            {
-                              "Name": "C2/NonC2",
-                              "ConfigurationAnswerType": "Static Drop Down",
-                              "AnswerContent": "",
-                              "guid": "dc0be8c6-f7f3-422f-b1c1-90d5f47b9bdb",
-                              "DefaultValue": "Non C2",
-                              "HelpText": "pick either:  \"C2\"  or \"Non C2\""
-                            },
-                            {
-                              "Name": "JRE ID",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "26b13efe-a8db-4d98-8cbb-7c45aa1787ec",
-                              "DefaultValue": "",
-                              "HelpText": "JRE ID assigned to you Data Link Server"
-                            },
-                            {
-                              "Name": "JREAP Time Sync (Preferred)",
-                              "ConfigurationAnswerType": "Static Drop Down",
-                              "AnswerContent": "",
-                              "guid": "212f731c-6224-4a3e-9007-387537a8ca1a",
-                              "DefaultValue": "UTC",
-                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
-                            },
-                            {
-                              "Name": "JREAP Time Sync (Supported)",
-                              "ConfigurationAnswerType": "Static Drop Down",
-                              "AnswerContent": "",
-                              "guid": "9a4f1870-dad5-43a1-a3a6-8458b967d6e0",
-                              "DefaultValue": "UTC",
-                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
-                            },
-                            {
-                              "Name": "JU Number",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "13715c1c-4799-4256-90a5-6cf2a83c5f60",
-                              "DefaultValue": "",
-                              "HelpText": ""
-                            },
-                            {
-                              "Name": "Maximum Offset",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "d406bf57-d4b9-476f-947f-b3ddb9f59c18",
-                              "DefaultValue": "0.5",
-                              "HelpText": "Time in seconds"
-                            },
-                            {
-                              "Name": "Platform Role",
-                              "ConfigurationAnswerType": "Static Drop Down",
-                              "AnswerContent": "",
-                              "guid": "3649c04b-13df-4267-ade4-8951dc725b06",
-                              "DefaultValue": "semi-active",
-                              "HelpText": "pick either: \"active\", \"semi-active\", \"passive\"."
-                            },
-                            {
-                              "Name": "TN Block",
-                              "ConfigurationAnswerType": "Text Field (Multi Line)",
-                              "AnswerContent": "",
-                              "guid": "a921f04e-8b2d-44bf-9931-5a48870f9711",
-                              "DefaultValue": "",
-                              "HelpText": "Track number block assigned to Active Platform"
-                            },
-                            {
-                              "Name": "URL Track Store",
-                              "ConfigurationAnswerType": "URL",
-                              "AnswerContent": "",
-                              "guid": "65ec2e9a-7dac-4730-b0f5-031e1e1556ae",
-                              "DefaultValue": "",
-                              "HelpText": "URL to connect to the Track Store (i.e TSS URL)"
-                            }
-                          ]
-                        },
-                        {
-                          "gpid": "GP-0005",
-                          "guid": "8463dd2b-5279-417f-9211-c1307f672236",
-                          "instanceLabel": "a",
-                          "serviceId": "a",
-                          "spInstances": [],
-                          "configurationItems": [
-                            {
-                              "Name": "Port C2S",
-                              "ConfigurationAnswerType": "Port",
-                              "AnswerContent": "",
-                              "guid": "2f26c5a9-69cc-4eff-8ce5-405928155cdf",
-                              "DefaultValue": "TCP/5222",
-                              "HelpText": "Describes the TCP port (accepted) used for client to server connections. Usually 5222."
-                            },
-                            {
-                              "Name": "Port S2S",
-                              "ConfigurationAnswerType": "Port",
-                              "AnswerContent": "",
-                              "guid": "4cf59872-b81b-4fd2-b7ec-cd08f9d1ace2",
-                              "DefaultValue": "TCP/5269",
-                              "HelpText": "Describes the TCP port used for one chat server to federate with another server connections. Usually 5269."
-                            },
-                            {
-                              "Name": "QoS Value",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "91bc8a82-d9ab-40dc-8365-95d7ac4770b9",
-                              "DefaultValue": "CS3",
-                              "HelpText": "QoS DSCP values as specified on JMEI"
-                            },
-                            {
-                              "Name": "SRV Record  _xmpp-client",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "20d3b527-b1d5-4151-848c-094cf075a8de",
-                              "DefaultValue": "",
-                              "HelpText": "e.g. _xmpp-client._tcp Service Record"
-                            },
-                            {
-                              "Name": "SRV Record Broadcast",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "0917ecb4-5f66-420b-92ed-7297eaacad7b",
-                              "DefaultValue": "",
-                              "HelpText": "e.g. _xmpp-server._tcp Service Broadcast"
-                            },
-                            {
-                              "Name": "SRV Record Conference",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "a6e25d5f-5089-4466-850c-731a5a462581",
-                              "DefaultValue": "",
-                              "HelpText": "e.g. _xmpp-server._tcp Service Conference"
-                            },
-                            {
-                              "Name": "SRV Record FDP",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "a6181824-034a-47b6-98f8-f0020930bd07",
-                              "DefaultValue": "",
-                              "HelpText": "e.g. _xmpp-server._tcp Service FDP"
-                            },
-                            {
-                              "Name": "SRV Record General",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "48240e51-a444-49ed-8972-e374c833c3f4",
-                              "DefaultValue": "",
-                              "HelpText": "e.g. _xmpp-server._tcp Service Conference"
-                            },
-                            {
-                              "Name": "SRV Record PUBSUB",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "ff2b1473-6c9f-4820-91f6-eb6792969b5c",
-                              "DefaultValue": "",
-                              "HelpText": "e.g. _xmpp-server._tcp Service pubsub"
-                            },
-                            {
-                              "Name": "SRV Record Search",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "fc0f3ac6-51b5-472c-9c7c-b440a99000b3",
-                              "DefaultValue": "",
-                              "HelpText": "e.g. _xmpp-server._tcp Service Conference"
-                            },
-                            {
-                              "Name": "Security Settings",
-                              "ConfigurationAnswerType": "Static Drop Down",
-                              "AnswerContent": "",
-                              "guid": "5e107c29-9805-4703-9a9c-b12dc8a9b45c",
-                              "DefaultValue": "",
-                              "HelpText": "Is mandatory TLS implemented for server to server communication"
-                            },
-                            {
-                              "Name": "TLS Secured",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "46711e5b-e05f-439b-b372-7c7b172ea46a",
-                              "DefaultValue": "Yes",
-                              "HelpText": "TLS Encryption for Server to Serve"
-                            }
-                          ]
-                        },
-                        {
-                          "gpid": "GP-0007",
-                          "guid": "ff96e705-6927-4b73-b963-70331df7eba1",
-                          "instanceLabel": "a",
-                          "serviceId": "s",
-                          "spInstances": [],
-                          "configurationItems": [
-                            {
-                              "Name": "Forward Delegated Zones",
-                              "ConfigurationAnswerType": "Text Field (Multi Line)",
-                              "AnswerContent": "",
-                              "guid": "b1a7d377-194f-4c88-a872-7bf1ad055ca2",
-                              "DefaultValue": "",
-                              "HelpText": "Forward Zones Delegated from the DNS Root Server"
-                            },
-                            {
-                              "Name": "Glue Records",
-                              "ConfigurationAnswerType": "Text Field (Multi Line)",
-                              "AnswerContent": "",
-                              "guid": "91382b11-12e0-4cf9-89d6-cd4cfcb8464c",
-                              "DefaultValue": "",
-                              "HelpText": "Glue Records for each zone delegation"
-                            },
-                            {
-                              "Name": "IP Address (Anycast)",
-                              "ConfigurationAnswerType": "IP Address",
-                              "AnswerContent": "",
-                              "guid": "16fdd79a-7210-4b7d-9beb-cf7b87aa9a01",
-                              "DefaultValue": "",
-                              "HelpText": "The Anycast IP used by the DNS Root server"
-                            },
-                            {
-                              "Name": "Port",
-                              "ConfigurationAnswerType": "Port",
-                              "AnswerContent": "",
-                              "guid": "be996b33-3cf7-4cda-8298-6dc45d67547a",
-                              "DefaultValue": "443",
-                              "HelpText": "Port for the RAG Server"
-                            },
-                            {
-                              "Name": "Primary/Secondary",
-                              "ConfigurationAnswerType": "Static Drop Down",
-                              "AnswerContent": "",
-                              "guid": "6709a34d-21f7-422b-9222-905ca6199c66",
-                              "DefaultValue": "Secondary",
-                              "HelpText": ""
-                            },
-                            {
-                              "Name": "QoS",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "1e9d6de1-1dc7-4446-885d-df6902e6ff3e",
-                              "DefaultValue": "AF33",
-                              "HelpText": "QoS DSCP value used for DNS traffic"
-                            },
-                            {
-                              "Name": "Reverse Delegated Zones",
-                              "ConfigurationAnswerType": "Text Field (Multi Line)",
-                              "AnswerContent": "",
-                              "guid": "d8fb675d-a59c-4c4f-a761-636cd7d5e978",
-                              "DefaultValue": "",
-                              "HelpText": "Reverse Zones Delegated from the DNS Root Server"
-                            },
-                            {
-                              "Name": "SOA Record Expiration",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "29be12bc-52ff-4eaa-a9cb-dcbefaa74857",
-                              "DefaultValue": "8640000",
-                              "HelpText": "SOA Record Expiration as defined by JMEI"
-                            },
-                            {
-                              "Name": "SOA Record Minimum TTL",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "4763f361-ba2c-4c94-9fe4-02c4e63caad6",
-                              "DefaultValue": "3600",
-                              "HelpText": "SOA Record Minimum TTL as defined by JMEI"
-                            },
-                            {
-                              "Name": "SOA Record Refresh Interval",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "002941ce-ef22-47e7-a0ce-701e44916afa",
-                              "DefaultValue": "3600",
-                              "HelpText": "SOA Record Refresh Interval as defined by JMEI"
-                            },
-                            {
-                              "Name": "SOA Record Retry Interval",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "283abb36-3524-41c8-9f1e-60e75e248eb4",
-                              "DefaultValue": "600",
-                              "HelpText": "SOA Record Retry Interval  as defined by JMEI"
-                            }
-                          ]
-                        },
-                        {
                           "gpid": "GP-0039",
                           "guid": "d88e419a-ed0d-4f4a-9c42-00e1da1905e5",
                           "instanceLabel": "",
@@ -439,6 +156,360 @@
                               "guid": "e1d000db-2ffd-4d93-bee4-d1f8d892b27d",
                               "DefaultValue": "UTC",
                               "HelpText": ""
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0018",
+                          "guid": "16fa4f22-324d-4052-83ac-4222adee98f4",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0014",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "All certificates across trust path",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "2e87d963-d802-4807-b5bc-9247581e940c",
+                              "DefaultValue": "",
+                              "HelpText": "All certificates across the trust path (CA certificates from Root CA down to the Issuing CA for Trust list) or cross-certification certificates"
+                            },
+                            {
+                              "Name": "CRL HTTP / AIA",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "75053f48-76f8-4f8e-834c-fd9ae0d33a3e",
+                              "DefaultValue": "80",
+                              "HelpText": "CRL HTTP /AIA"
+                            },
+                            {
+                              "Name": "CRL LDAP / AIA",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "09883c25-f2bf-42d0-9209-b1818c2bb520",
+                              "DefaultValue": "389",
+                              "HelpText": "CRL LDAP / AIA"
+                            },
+                            {
+                              "Name": "Certificate Request Authority",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "afe82017-b5e7-45df-a5c5-75ce2538bac9",
+                              "DefaultValue": "",
+                              "HelpText": "URL for the RA"
+                            },
+                            {
+                              "Name": "HTTP CRL FULL URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "a57e1da2-fabe-42b4-ad59-b9a1708e8246",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL as in CDP"
+                            },
+                            {
+                              "Name": "HTTP CRL PRT",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "d777ecf5-b21b-47d3-9012-7ccebba58815",
+                              "DefaultValue": "TCP/80",
+                              "HelpText": "Full URL as in CDP"
+                            },
+                            {
+                              "Name": "HTTP end-point IP for CRL retrieval",
+                              "ConfigurationAnswerType": "IP Address",
+                              "AnswerContent": "",
+                              "guid": "780c3b17-a1d5-475f-a1e6-f563e146323d",
+                              "DefaultValue": "",
+                              "HelpText": "IP of the HTTP service"
+                            },
+                            {
+                              "Name": "HTTP end-point URL for CRL retrieval",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "8a46a930-4b4c-4fcb-9bb7-3b05175cbed6",
+                              "DefaultValue": "",
+                              "HelpText": "Supply the port for the CRL"
+                            },
+                            {
+                              "Name": "LDAP PORT",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "8c443c66-00d0-429e-b966-b2f6208418f0",
+                              "DefaultValue": "TCP/389",
+                              "HelpText": "LDAP CRL PORT"
+                            },
+                            {
+                              "Name": "LDAP end-point IP for CRL retrieval",
+                              "ConfigurationAnswerType": "IP Address",
+                              "AnswerContent": "",
+                              "guid": "96759cc0-0e4f-4300-a723-20ab6eb5d851",
+                              "DefaultValue": "",
+                              "HelpText": "IP of the LDAP repository"
+                            },
+                            {
+                              "Name": "LDAP end-point URL for CRL retrieval",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "263c7491-825e-4313-a135-01a1bae988b6",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL as in CDP"
+                            },
+                            {
+                              "Name": "OCSP PORT",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "5f0faf75-f111-498a-a978-3588092f6cda",
+                              "DefaultValue": "TCP/80",
+                              "HelpText": "OCSP RESPONDER PORT"
+                            },
+                            {
+                              "Name": "OCSP Port",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "0b2e939d-fc70-4bfc-b0ca-c79507179326",
+                              "DefaultValue": "80",
+                              "HelpText": "Port of OCSP responder"
+                            },
+                            {
+                              "Name": "OCSP end-point IP",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "f51eae1f-ed98-4c43-8bfc-19a063cae479",
+                              "DefaultValue": "",
+                              "HelpText": "IP of OCSP responder"
+                            },
+                            {
+                              "Name": "OCSP end-point URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "f005ab93-5dd6-4276-87c1-a9ecd0135f63",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of OCSP in Responder as in CDP"
+                            },
+                            {
+                              "Name": "PKI Interoperability Framework (iTIF) Compliant",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "6a02f0c5-c101-4711-b178-92d5b205a295",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Port CRL HTTP",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "33a36ac8-ad40-4e57-bff8-5b7a21716ecd",
+                              "DefaultValue": "80",
+                              "HelpText": "Port for CRL HTTP/AIA"
+                            },
+                            {
+                              "Name": "Supported Certificate Request",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "9fe7f89e-1be7-40f1-84e0-942c8ca7e621",
+                              "DefaultValue": "",
+                              "HelpText": "Supported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)"
+                            },
+                            {
+                              "Name": "Supported Certificate Requests",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "e4e0cb10-eaad-46c1-b9e3-bf2391f6b2ee",
+                              "DefaultValue": "",
+                              "HelpText": " \tSupported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)"
+                            },
+                            {
+                              "Name": "URL - Expired Certificate",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "0191b58b-7dab-4d8d-8552-48e1eeebcee6",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of Web Server with Expired Certificate"
+                            },
+                            {
+                              "Name": "URL - Revoked Certificate",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "7a9f70b7-13cd-4955-b3c3-01032583050a",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of Web Server with Revoked Certificate"
+                            },
+                            {
+                              "Name": "URL - Valid Certificate",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "456d666a-1459-48f4-9aec-ef8292266eaf",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of Web Server with Valid Certificate"
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0080",
+                          "guid": "b54e685d-3d9d-452f-b202-c6659d088d24",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0010",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Area of Interest (AOI) Radius",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "1e4df881-6a1b-4cf8-a104-4d835a3f3b2a",
+                              "DefaultValue": "1000 meters",
+                              "HelpText": "Operationally set relevant AOI"
+                            },
+                            {
+                              "Name": "Drop Track Timer",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "0bb3a784-02f0-4d8f-80fd-af272e89519a",
+                              "DefaultValue": "45 seconds",
+                              "HelpText": "Drop reported tracks prior to STANAG 5516 retransmission time"
+                            },
+                            {
+                              "Name": "J12.6 Environment",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "7ca52f45-4f61-4245-9efe-7cf156dfc11a",
+                              "DefaultValue": "Land (Env=5)",
+                              "HelpText": "Land (Env=5), Surface (Env=3), and No Statement (Env = 0) Service filter J12.6 messages from other environments"
+                            },
+                            {
+                              "Name": "J12.6 Lockout Period",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "3e7cc12b-e541-4b28-bd1e-5c444951bec6",
+                              "DefaultValue": "45 seconds",
+                              "HelpText": "Prevent response to repeated/retransmitted J12.6 messages"
+                            },
+                            {
+                              "Name": "J12.6 Originator JU",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "b583a8b4-aa26-4278-9ced-fe7b55473233",
+                              "DefaultValue": "",
+                              "HelpText": "List of JUs authorized to trigger service Service filter J12.6 messages from extra JUs"
+                            },
+                            {
+                              "Name": "J12.6 Reporting Area",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "51450aa5-daf6-4a46-970f-8862c9ec602f",
+                              "DefaultValue": "",
+                              "HelpText": "Geographic area to respond to J12.6 Service filter J12.6 messages from outside geographic reporting area"
+                            },
+                            {
+                              "Name": "J12.6 SID",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "2504c576-2d93-4edd-aec8-f4c080da0999",
+                              "DefaultValue": "",
+                              "HelpText": "0, 9, 10 Service filter J12.6 messages with other settings"
+                            },
+                            {
+                              "Name": "J3.2 Emergency Indicator",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "6e48dd21-f14b-4d55-bf73-a3e30844d8b2",
+                              "DefaultValue": "0 (No Statement)",
+                              "HelpText": "Emergency Indicator not set unless PLI ALERT status indicates it or operationally directed"
+                            },
+                            {
+                              "Name": "J3.2 Force Tell Indicator",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "1ff112b7-86fc-4737-bf4c-da20ae01350b",
+                              "DefaultValue": "1 (Force Tell Status)",
+                              "HelpText": "Force Tell Indicator set unless operationally directed otherwise"
+                            },
+                            {
+                              "Name": "J3.2 Passive/Active Sensor",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "1d62cffa-6524-432c-a106-2a5057cf7db0",
+                              "DefaultValue": "0 (Passive)",
+                              "HelpText": "Fixed Value"
+                            },
+                            {
+                              "Name": "J3.2 Track Quality",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "a13b191b-9c26-4aab-812c-c34d40b18fdb",
+                              "DefaultValue": "9",
+                              "HelpText": "If reported information does not enable computation of Track Quality"
+                            },
+                            {
+                              "Name": "J3.5 Emergency Indicator",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "a23bce40-2648-4263-adf8-aead5d4eb794",
+                              "DefaultValue": "0 (No Statement)",
+                              "HelpText": "Emergency Indicator not set unless PLI ALERT status indicates it or operationally directed"
+                            },
+                            {
+                              "Name": "J3.5 Force Tell Indicator",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "7f77dbcf-3e17-4738-b5f4-3a468ea618c2",
+                              "DefaultValue": "1 (Force Tell Status)",
+                              "HelpText": "Force Tell Indicator set unless operationally directed otherwise"
+                            },
+                            {
+                              "Name": "J3.5 Passive/Active Sensor",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "8a538214-8103-4f11-872b-8e24e712ae84",
+                              "DefaultValue": "0 (Passive)",
+                              "HelpText": "Fixed Value"
+                            },
+                            {
+                              "Name": "J3.5 Track Quality",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "b9377e62-141c-4eb9-b771-d62a8f010617",
+                              "DefaultValue": "9",
+                              "HelpText": "If reported information does not enable computation of Track Quality"
+                            },
+                            {
+                              "Name": "Maximum PLI Age",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "7b2e6e84-6b9c-4ad6-b1ca-2b297435039f",
+                              "DefaultValue": "600 seconds",
+                              "HelpText": "Operationally set maximum age"
+                            },
+                            {
+                              "Name": "Number of PLI to report",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "81f756c6-2cc9-46d5-b05a-ae87c8a3e9b2",
+                              "DefaultValue": "5",
+                              "HelpText": "Operationally determine to reduce aircraft display clutter and provide most relevant data"
+                            },
+                            {
+                              "Name": "Text\tMessage (J28.2(0)) Enable",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "9691c04e-9859-4097-9382-248a6e5085b4",
+                              "DefaultValue": "NO",
+                              "HelpText": "NO (When \u2018Text Message Enable\u2019 is NO, do not transmit J28.2(0) to report the number of J3.x messages transmitted.)Only\ttransmit\tJ28.2(0) if operationally desired by WDA"
+                            },
+                            {
+                              "Name": "Transmit Text Message (J28.2(0)) with DISTANCE (Optional capability)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "0803f29a-3f9e-4988-b54d-de8bb26797a8",
+                              "DefaultValue": "NO",
+                              "HelpText": "Only transmit J28.2(0) with DISTANCE if operationally desired by WDA"
+                            },
+                            {
+                              "Name": "Transmit \u201cNo PLI Response\u201d J28.2(0) (Optional capability)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "dc60411c-1af8-4fff-9b78-59261efb2285",
+                              "DefaultValue": "NO",
+                              "HelpText": "Only transmit \u201cNo PLI Response\u201d J28.2(0) if operationally desired by WDA"
                             }
                           ]
                         }

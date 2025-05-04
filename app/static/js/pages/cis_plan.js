@@ -4657,6 +4657,140 @@ document.addEventListener("DOMContentLoaded", function () {
                     </tr>
                 </tbody>
             `;
+    } else if (type === "gpInstances") {
+      // Special handling for GP Instances
+      let tableHtml = `
+                <tbody>
+      `;
+
+      // Combined GP ID and Name row
+      if (element.gpid) {
+        // Add GP name asynchronously
+        fetchGPName(element.gpid).then(gpName => {
+          const gpNameCell = document.getElementById(`gp-name-cell-${element.guid}`);
+          if (gpNameCell) {
+            gpNameCell.textContent = gpName || `GP ${element.gpid}`;
+          }
+        });
+        
+        tableHtml += `
+                    <tr>
+                        <th scope="row">Generic Product</th>
+                        <td>
+                          <strong>ID:</strong> ${element.gpid}
+                          <br>
+                          <strong>Name:</strong> <span id="gp-name-cell-${element.guid}">Loading...</span>
+                        </td>
+                    </tr>
+        `;
+      }
+
+      // Combined GUID and Instance Label row
+      tableHtml += `
+                    <tr>
+                        <th scope="row">Instance</th>
+                        <td>
+                          <strong>GUID:</strong> ${element.guid || "N/A"}
+                          <br>
+                          <strong>Label:</strong> ${element.instanceLabel || "<em>Not set</em>"}
+                        </td>
+                    </tr>
+      `;
+
+      // Combined Service ID and Name row
+      if (element.serviceId) {
+        // Add Service name asynchronously
+        fetch(`/api/services/id_to_name?id=${element.serviceId}`)
+          .then(response => response.json())
+          .then(data => {
+            const serviceNameCell = document.getElementById(`service-name-cell-${element.guid}`);
+            if (serviceNameCell) {
+              serviceNameCell.textContent = data.name || element.serviceId;
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching service name:', error);
+            const serviceNameCell = document.getElementById(`service-name-cell-${element.guid}`);
+            if (serviceNameCell) {
+              serviceNameCell.textContent = "Error loading service name";
+            }
+          });
+        
+        tableHtml += `
+                    <tr>
+                        <th scope="row">Service</th>
+                        <td>
+                          <strong>ID:</strong> ${element.serviceId}
+                          <br>
+                          <strong>Name:</strong> <span id="service-name-cell-${element.guid}">Loading...</span>
+                        </td>
+                    </tr>
+        `;
+      }
+      
+      // Close basic details section
+      tableHtml += `
+                </tbody>
+            `;
+
+      table.innerHTML = tableHtml;
+      cardBody.appendChild(table);
+      
+      // Add Configuration Items section if present
+      if (element.configurationItems && element.configurationItems.length > 0) {
+        // Create a heading for Configuration Items
+        const configHeading = document.createElement('h5');
+        configHeading.className = 'mt-4 mb-3';
+        configHeading.textContent = 'Configuration Items';
+        cardBody.appendChild(configHeading);
+        
+        // Create a table for configuration items
+        const configTable = document.createElement('table');
+        configTable.className = 'table table-bordered table-sm';
+        
+        // Create the table header
+        const configThead = document.createElement('thead');
+        configThead.innerHTML = `
+          <tr>
+            <th>Name</th>
+            <th>Value</th>
+          </tr>
+        `;
+        configTable.appendChild(configThead);
+        
+        // Create table body and add each configuration item
+        const configTbody = document.createElement('tbody');
+        
+        element.configurationItems.forEach(item => {
+          const row = document.createElement('tr');
+          
+          // Name cell
+          const nameCell = document.createElement('td');
+          nameCell.textContent = item.Name;
+          if (item.HelpText) {
+            nameCell.title = item.HelpText; // Add tooltip with help text
+          }
+          row.appendChild(nameCell);
+          
+          // Value cell
+          const valueCell = document.createElement('td');
+          valueCell.innerHTML = item.AnswerContent || '<em>Not set</em>';
+          if (item.DefaultValue && !item.AnswerContent) {
+            valueCell.innerHTML += ` <small class="text-muted">(Default: ${item.DefaultValue})</small>`;
+          }
+          row.appendChild(valueCell);
+          
+          configTbody.appendChild(row);
+        });
+        
+        configTable.appendChild(configTbody);
+        cardBody.appendChild(configTable);
+        
+        // Return here since we've already appended table and configTable to cardBody
+        detailCard.appendChild(cardBody);
+        detailsContainer.appendChild(detailCard);
+        return;
+      }
     } else if (type === "networkInterfaces") {
       // For network interfaces, show config items (IP Address, Sub-Net, FQDN)
       // Start with basic info

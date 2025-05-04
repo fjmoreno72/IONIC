@@ -384,55 +384,6 @@
                               "HelpText": "SOA Record Retry Interval  as defined by JMEI"
                             }
                           ]
-                        },
-                        {
-                          "gpid": "GP-0013",
-                          "guid": "32825fb4-2e04-4d57-80ef-923645925471",
-                          "instanceLabel": "",
-                          "serviceId": "1",
-                          "spInstances": [],
-                          "configurationItems": [
-                            {
-                              "Name": "Email address",
-                              "ConfigurationAnswerType": "Email Address",
-                              "AnswerContent": "",
-                              "guid": "5cfbbb35-ba61-4301-be16-674b50c44a59",
-                              "DefaultValue": "",
-                              "HelpText": "Email Address"
-                            },
-                            {
-                              "Name": "ORBAT UNIT",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "db73bc10-ed36-4703-9555-f2b7567532e7",
-                              "DefaultValue": "",
-                              "HelpText": ""
-                            },
-                            {
-                              "Name": "Remote App ICON",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "6c30b763-33da-4218-831e-bea0f5599204",
-                              "DefaultValue": "",
-                              "HelpText": "Name of the ICON of the App"
-                            },
-                            {
-                              "Name": "Remote App URL",
-                              "ConfigurationAnswerType": "URL",
-                              "AnswerContent": "",
-                              "guid": "3ad7a672-063b-44a8-8b79-b7e64f780217",
-                              "DefaultValue": "",
-                              "HelpText": "URL of the  Cloud App"
-                            },
-                            {
-                              "Name": "iBridge File URL",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "63bbe3b0-c8df-4412-aa01-f1d344571619",
-                              "DefaultValue": "",
-                              "HelpText": ""
-                            }
-                          ]
                         }
                       ]
                     },

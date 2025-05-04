@@ -743,10 +743,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const elementType = currentElement.type;
 
         // Preparing to delete item
-
-        document.getElementById("deleteItemName").textContent =
-          currentElement.name;
-        document.getElementById("deleteItemId").value = currentElement.id;
+        
+        // Special handling for GP instances
+        if (elementType === "gpInstances") {
+          // For GP instances, set the name appropriately
+          const cardTitle = document.querySelector('.element-card.active .card-title');
+          let displayName = cardTitle ? cardTitle.textContent : (currentElement.instanceLabel || `GP Instance ${currentElement.id}`);
+          document.getElementById("deleteItemName").textContent = displayName;
+          
+          // Use guid or id for GP instances, making sure it's not undefined
+          const instanceId = currentElement.guid || currentElement.id || "";
+          console.log('GP instance ID for deletion:', instanceId);
+          document.getElementById("deleteItemId").value = instanceId;
+        } else {
+          // For other types, use the standard name and id
+          document.getElementById("deleteItemName").textContent = currentElement.name || "";
+          document.getElementById("deleteItemId").value = currentElement.id || "";
+        }
+        
         document.getElementById("deleteItemType").value = elementType;
 
         // For hierarchical items that need parent ID for deletion
@@ -924,6 +938,49 @@ document.addEventListener("DOMContentLoaded", function () {
           ).value = `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId}`;
 
           // Store parent references for network interface deletion
+        } else if (elementType === "gpInstances") {
+          // For GP instances, we need mission network ID, segment ID, domain ID, HW stack ID, and asset ID
+          // Similar to network interfaces, get parent IDs from various sources
+          let assetId = currentTreeNode.getAttribute("data-parent-asset");
+          let hwStackId = currentTreeNode.getAttribute("data-parent-stack");
+          let domainId = currentTreeNode.getAttribute("data-parent-domain");
+          let segmentId = currentTreeNode.getAttribute("data-parent-segment");
+          let missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network");
+
+          // Fall back to object properties if needed
+          if (!assetId && currentElement.parentAsset) {
+            assetId = typeof currentElement.parentAsset === "object"
+              ? currentElement.parentAsset.id
+              : currentElement.parentAsset;
+          }
+
+          if (!hwStackId && currentElement.parentStack) {
+            hwStackId = typeof currentElement.parentStack === "object"
+              ? currentElement.parentStack.id
+              : currentElement.parentStack;
+          }
+
+          if (!domainId && currentElement.parentDomain) {
+            domainId = typeof currentElement.parentDomain === "object"
+              ? currentElement.parentDomain.id
+              : currentElement.parentDomain;
+          }
+
+          if (!segmentId && currentElement.parentSegment) {
+            segmentId = typeof currentElement.parentSegment === "object"
+              ? currentElement.parentSegment.id
+              : currentElement.parentSegment;
+          }
+
+          if (!missionNetworkId && currentElement.parentMissionNetwork) {
+            missionNetworkId = typeof currentElement.parentMissionNetwork === "object"
+              ? currentElement.parentMissionNetwork.id
+              : currentElement.parentMissionNetwork;
+          }
+
+          // Store all five parent IDs as comma-separated values
+          document.getElementById("deleteItemParentId").value = 
+            `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId}`;
         }
 
         const deleteModal = new bootstrap.Modal(
@@ -2627,9 +2684,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Create a state to restore to the appropriate parent based on the entity type
         let stateToRestore;
 
-        // Special handling for network interfaces
-        if (type === "networkInterfaces") {
-          // For network interfaces, extract parent IDs from the comma-separated string
+        // Special handling for network interfaces and GP instances
+        if (type === "networkInterfaces" || type === "gpInstances") {
+          // For network interfaces and GP instances, extract parent IDs from the comma-separated string
           const parentIds = parentId.split(",");
 
           // Create state to restore to the parent asset (same format as add/edit operations)
@@ -2641,6 +2698,10 @@ document.addEventListener("DOMContentLoaded", function () {
             segmentId: parentIds[1],
             missionNetworkId: parentIds[0],
           };
+          
+          if (type === "gpInstances") {
+            console.log("Restoring view after GP instance deletion", stateToRestore);
+          }
         } else {
           // Use CISUtils to build a restoration state for other entity types
           stateToRestore = CISUtils.buildRestoreState(type, parentId);
@@ -3988,6 +4049,39 @@ document.addEventListener("DOMContentLoaded", function () {
       card.setAttribute("data-type", type);
       card.setAttribute("data-id", element.id);
       card.setAttribute("data-guid", element.guid);
+      
+      // For gpInstances or networkInterfaces, add parent reference attributes for proper deletion
+      if (type === "gpInstances" || type === "networkInterfaces") {
+        // Get parent references from the current tree node
+        if (currentTreeNode) {
+          // Add parent asset reference
+          const assetId = currentTreeNode.getAttribute("data-id");
+          if (assetId) {
+            card.setAttribute("data-parent-asset", assetId);
+          }
+          
+          // Add other parent references from the tree
+          const hwStackId = currentTreeNode.getAttribute("data-parent-stack");
+          if (hwStackId) {
+            card.setAttribute("data-parent-stack", hwStackId);
+          }
+          
+          const domainId = currentTreeNode.getAttribute("data-parent-domain");
+          if (domainId) {
+            card.setAttribute("data-parent-domain", domainId);
+          }
+          
+          const segmentId = currentTreeNode.getAttribute("data-parent-segment");
+          if (segmentId) {
+            card.setAttribute("data-parent-segment", segmentId);
+          }
+          
+          const mnId = currentTreeNode.getAttribute("data-parent-mission-network");
+          if (mnId) {
+            card.setAttribute("data-parent-mission-network", mnId);
+          }
+        }
+      }
 
       const cardBody = document.createElement("div");
       cardBody.className = "card-body";
@@ -4178,6 +4272,22 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             element.parentStack = hwStackId;
             element.hwStackId = hwStackId;
+          }
+        } else if (type === "gpInstances" || type === "networkInterfaces") {
+          // For GP instances and network interfaces, ensure parent asset and all hierarchy references are set
+          // First check if we have info from the current tree node
+          if (currentTreeNode) {
+            // Set all parent references
+            element.parentAsset = currentTreeNode.getAttribute("data-parent-asset") || 
+                                 card.getAttribute("data-parent-asset");
+            element.parentStack = currentTreeNode.getAttribute("data-parent-stack") || 
+                                 card.getAttribute("data-parent-stack");
+            element.parentDomain = currentTreeNode.getAttribute("data-parent-domain") || 
+                                  card.getAttribute("data-parent-domain");
+            element.parentSegment = currentTreeNode.getAttribute("data-parent-segment") || 
+                                   card.getAttribute("data-parent-segment");
+            element.parentMissionNetwork = currentTreeNode.getAttribute("data-parent-mission-network") || 
+                                          card.getAttribute("data-parent-mission-network");
           }
         }
 

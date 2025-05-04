@@ -1215,8 +1215,9 @@ def delete_gp_instance(environment: str, mission_network_id: str, segment_id: st
         
         # Find and remove the GP instance
         for i, gp_instance in enumerate(asset.get('gpInstances', [])):
-            if gp_instance.get('gpid') == instance_id:
-                asset['gpInstances'].pop(i)
+            # Check by id first (which might be an index), then by guid
+            if str(gp_instance.get('id')) == instance_id or gp_instance.get('guid') == instance_id:
+                deleted_instance = asset['gpInstances'].pop(i)
                 _save_cis_plan(environment, data)
                 logging.info(f"Repository: Deleted GP instance '{instance_id}' from asset '{asset_id}'")
                 return True

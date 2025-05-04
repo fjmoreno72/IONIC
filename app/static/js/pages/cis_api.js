@@ -268,6 +268,32 @@ const CISApi = {
           assetId,
           id
         );
+      } else if (type === "gpInstances") {
+        // Handle GP instance deletion
+        let missionNetworkId, segmentId, domainId, hwStackId, assetId;
+        if (Array.isArray(parsedParentIds)) {
+          missionNetworkId = parsedParentIds[0];
+          segmentId = parsedParentIds[1];
+          domainId = parsedParentIds[2];
+          hwStackId = parsedParentIds[3];
+          assetId = parsedParentIds[4];
+        } else {
+          missionNetworkId = parsedParentIds.missionNetworkId;
+          segmentId = parsedParentIds.segmentId;
+          domainId = parsedParentIds.domainId;
+          hwStackId = parsedParentIds.hwStackId;
+          assetId = parsedParentIds.assetId;
+        }
+        
+        // Use the dedicated deleteGPInstance method which has better error handling
+        return this.deleteGPInstance(
+          missionNetworkId,
+          segmentId,
+          domainId,
+          hwStackId,
+          assetId,
+          id
+        );
       } else {
         return {
           success: false,
@@ -1084,6 +1110,68 @@ const CISApi = {
       };
     } catch (error) {
       console.error("Error in deleteNetworkInterface API call:", error);
+      return {
+        success: false,
+        error: error.message || "Network error occurred",
+        status: 0,
+      };
+    }
+  },
+
+  /**
+   * Deletes a GP instance.
+   *
+   * @async
+   * @param {string} missionNetworkId - ID of the parent mission network
+   * @param {string} segmentId - ID of the parent network segment
+   * @param {string} domainId - ID of the parent security domain
+   * @param {string} hwStackId - ID of the parent hardware stack
+   * @param {string} assetId - ID of the parent asset
+   * @param {string} instanceId - ID of the GP instance to delete
+   * @returns {Promise<Object>} Object containing success flag, status code, data, and message
+   */
+  deleteGPInstance: async function (
+    missionNetworkId,
+    segmentId,
+    domainId,
+    hwStackId,
+    assetId,
+    instanceId
+  ) {
+    try {
+      // Input validation
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId ||
+        !instanceId
+      ) {
+        return {
+          success: false,
+          error: "Missing required parameters",
+          status: 400,
+        };
+      }
+
+      const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/gp_instances/${instanceId}`;
+
+      const response = await fetch(endpoint, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const result = await response.json();
+
+      return {
+        success: response.ok,
+        status: response.status,
+        data: result.data || {},
+        message: result.message || "",
+      };
+    } catch (error) {
+      console.error("Error in deleteGPInstance API call:", error);
       return {
         success: false,
         error: error.message || "Network error occurred",

@@ -759,9 +759,9 @@ document.addEventListener("DOMContentLoaded", function () {
             currentTreeNode.getAttribute("data-parent-mission-network") ||
             currentElement.parentMissionNetwork;
 
-          // TEMPORARY FIX: Use AS-0001 as the asset ID for network interfaces
+          // Use the actual parent asset ID for network interfaces
           document.getElementById("editNetworkInterfaceAssetId").value =
-            "AS-0001";
+            assetId;
           document.getElementById("editNetworkInterfaceHwStackId").value =
             hwStackId;
           document.getElementById("editNetworkInterfaceDomainId").value =
@@ -881,7 +881,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log("GP Instance ID for this SP instance (SIMPLIFIED):", gpInstanceId);
           
           // Get other parent IDs from the tree node
-          const assetId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-asset") : "AS-0001";
+          const assetId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-asset") : "";
           const hwStackId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-stack") : "HW-0001";
           const domainId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-domain") : "CL-UNCLASS";
           const segmentId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-segment") : "NS-0001";
@@ -2282,6 +2282,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update an existing network interface
   async function updateNetworkInterface() {
+    console.log("Starting network interface update...");
     const idInput = document.getElementById("editNetworkInterfaceId");
     const nameInput = document.getElementById("editNetworkInterfaceName");
     const ipAddressInput = document.getElementById(
@@ -2315,6 +2316,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Get the asset ID from the form input
     const assetId = assetIdInput.value;
+    
+    // Log all parent IDs for debugging
+    console.log("Network Interface Update - Parent IDs:", {
+      missionNetworkId,
+      segmentId,
+      domainId,
+      hwStackId,
+      assetId,
+      interfaceId: id
+    });
 
     // Validate required fields - only name is mandatory
     if (!name) {
@@ -2355,6 +2366,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
+      console.log("Making API call to update network interface name...");
+      console.log("Using asset ID:", assetId);
+      
       // First update the network interface name
       const nameUpdateResult = await CISApi.updateNetworkInterface(
         missionNetworkId,

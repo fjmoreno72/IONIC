@@ -288,14 +288,14 @@ const CISApi = {
           segmentId = parsedParentIds[1] || "NS-0001";
           domainId = parsedParentIds[2] || "CL-UNCLASS";
           hwStackId = parsedParentIds[3] || "HW-0001";
-          assetId = parsedParentIds[4] || "AS-0001";
+          assetId = parsedParentIds[4] || ""; // Don't use a hardcoded fallback that might not exist
           gpInstanceId = parsedParentIds[5] || "GP-0039";
         } else {
           missionNetworkId = parsedParentIds.missionNetworkId || "MN-0007";
           segmentId = parsedParentIds.segmentId || "NS-0001";
           domainId = parsedParentIds.domainId || "CL-UNCLASS";
           hwStackId = parsedParentIds.hwStackId || "HW-0001";
-          assetId = parsedParentIds.assetId || "AS-0001";
+          assetId = parsedParentIds.assetId || ""; // Don't use a hardcoded fallback that might not exist
           gpInstanceId = parsedParentIds.gpInstanceId || "GP-0039";
         }
         
@@ -1065,6 +1065,15 @@ const CISApi = {
     name,
     configurationItems
   ) {
+    console.log("CISApi.updateNetworkInterface called with:", {
+      missionNetworkId,
+      segmentId,
+      domainId,
+      hwStackId,
+      assetId,
+      interfaceId,
+      name
+    });
     try {
       // Input validation
       if (

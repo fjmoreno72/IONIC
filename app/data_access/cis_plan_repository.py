@@ -651,29 +651,24 @@ def _find_network_interface(network_interfaces, interface_id):
     """Finds a network interface by its ID within a list of interfaces."""
     return next((ni for ni in network_interfaces if ni.get('id') == interface_id), None)
 
-def _get_global_network_interface_ids(data):
-    """Collects all network interface IDs across the entire CIS plan data."""
-    ni_ids = []
-    for mn in data.get('missionNetworks', []):
-        for segment in mn.get('networkSegments', []):
-            for domain in segment.get('securityDomains', []):
-                for stack in domain.get('hwStacks', []):
-                    for asset in stack.get('assets', []):
-                        for ni in asset.get('networkInterfaces', []):
-                            ni_id = ni.get('id', '')
-                            if ni_id.startswith('NI-'):
-                                try:
-                                    num = int(ni_id[3:])
-                                    ni_ids.append(num)
-                                except ValueError:
-                                    continue
-    return ni_ids
-
-def _get_next_network_interface_id(data):
-    """Get the next available network interface ID by scanning the entire tree."""
-    ni_ids = _get_global_network_interface_ids(data)
-    max_id = max(ni_ids) if ni_ids else 0
-    return f"NI-{max_id + 1:04d}"
+def _get_next_network_interface_id(network_interfaces):
+    """Get the next available network interface ID within the parent asset."""
+    if not network_interfaces:
+        return "NI-0001"
+    
+    # Extract numbers from existing IDs
+    id_nums = []
+    for ni in network_interfaces:
+        ni_id = ni.get('id', '')
+        if ni_id.startswith('NI-'):
+            try:
+                id_nums.append(int(ni_id[3:]))
+            except ValueError:
+                continue
+    
+    # Get the next ID number
+    next_id_num = max(id_nums) + 1 if id_nums else 1
+    return f"NI-{next_id_num:04d}"
 
 def add_network_interface(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, name: str) -> dict:
     """Adds a new network interface to an asset with the three required configurationItems (IP Address, Sub-Net, FQDN)."""
@@ -704,7 +699,7 @@ def add_network_interface(environment: str, mission_network_id: str, segment_id:
         new_interface = {
             "name": name,
             "guid": str(uuid.uuid4()),
-            "id": _get_next_network_interface_id(data),
+            "id": _get_next_network_interface_id(asset.get('networkInterfaces', [])),
             "configurationItems": [
                 {
                     "Name": "IP Address",

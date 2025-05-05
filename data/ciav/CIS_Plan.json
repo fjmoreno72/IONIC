@@ -920,7 +920,7 @@
                   "cisParticipantID": "PAR-CIAV-000030",
                   "assets": [
                     {
-                      "name": "A1",
+                      "name": "A1-2",
                       "guid": "4a60371b-05ad-497a-a908-651b2fefec5b",
                       "id": "AS-0018",
                       "networkInterfaces": [
@@ -932,7 +932,7 @@
                             {
                               "Name": "IP Address",
                               "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
+                              "AnswerContent": "192.168.1.1",
                               "guid": "8da3ad79-4d64-420b-a92c-dee90a65488c"
                             },
                             {
@@ -946,6 +946,31 @@
                               "ConfigurationAnswerType": "Text Field (Single Line)",
                               "AnswerContent": "",
                               "guid": "79973bbb-3984-49f9-a0b0-b457b8a69b38"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Net-4",
+                          "guid": "fe313e22-bb3d-4303-8553-d92566fd1225",
+                          "id": "NI-0004",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "a",
+                              "guid": "622a6294-e9f7-41f5-993b-b87282beede8"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "a",
+                              "guid": "39cc5214-8e57-4265-ba05-18776c69738f"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "a",
+                              "guid": "52a1d02a-117f-41a7-96ee-aebd273d9fc8"
                             }
                           ]
                         }

@@ -1329,6 +1329,82 @@ const CISApi = {
       };
     }
   },
+
+  /**
+   * Adds a new SP instance to a GP instance.
+   *
+   * @async
+   * @param {string} missionNetworkId - ID of the parent mission network
+   * @param {string} segmentId - ID of the parent network segment
+   * @param {string} domainId - ID of the parent security domain
+   * @param {string} hwStackId - ID of the parent hardware stack
+   * @param {string} assetId - ID of the parent asset
+   * @param {string} gpInstanceId - ID of the parent GP instance
+   * @param {string} spId - ID of the SP to add
+   * @param {string} spVersion - Version of the SP
+   * @returns {Promise<Object>} Object containing success flag, status code, data, and message
+   */
+  addSPInstance: async function (
+    missionNetworkId,
+    segmentId,
+    domainId,
+    hwStackId,
+    assetId,
+    gpInstanceId,
+    spId,
+    spVersion
+  ) {
+    try {
+      // Input validation
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId ||
+        !gpInstanceId ||
+        !spId ||
+        !spVersion
+      ) {
+        return {
+          success: false,
+          error: "Missing required parameters",
+          status: 400,
+        };
+      }
+
+      // Get the current environment from the session
+      const environment = sessionStorage.getItem('environment') || 'ciav'; // Default to ciav if not set
+      
+      // Match the Flask route pattern exactly with plural names and environment parameter
+      const endpoint = `/api/cis_plan/${environment}/mission_networks/${missionNetworkId}/network_segments/${segmentId}/security_domains/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/gp_instances/${gpInstanceId}/sp_instances`;
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          spId: spId,
+          spVersion: spVersion
+        }),
+      });
+
+      const result = await response.json();
+
+      return {
+        success: response.ok,
+        status: response.status,
+        data: result.data || {},
+        message: result.message || "",
+      };
+    } catch (error) {
+      console.error("Error in addSPInstance API call:", error);
+      return {
+        success: false,
+        error: error.message || "Network error occurred",
+        status: 0,
+      };
+    }
+  },
 };
 
 // Export the CISApi namespace

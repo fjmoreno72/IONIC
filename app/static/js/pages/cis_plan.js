@@ -79,6 +79,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("updateGPContainerBtn")
     .addEventListener("click", updateGPContainer);
+    
+  // Add event listener for SP Instance button
+  document
+    .getElementById("saveSPInstanceBtn")
+    .addEventListener("click", addSPInstance);
 
   // Add Enter key save functionality to all modals
   // Function to add Enter key handler to a modal
@@ -121,6 +126,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // GP Containers
   addEnterKeyHandler("addGPContainerModal", addGPContainer);
   addEnterKeyHandler("editGPContainerModal", updateGPContainer);
+  
+  // SP Instances
+  addEnterKeyHandler("addSPInstanceModal", addSPInstance);
 
   // Get references to DOM elements
   const treeSearchInput = document.getElementById("treeSearchInput");
@@ -451,6 +459,53 @@ document.addEventListener("DOMContentLoaded", function () {
             );
             addModal.show();
           });
+      }
+      // GP Instance selected - add SP Instance
+      else if (
+        currentTreeNode &&
+        currentTreeNode.getAttribute("data-type") === "gpInstances"
+      ) {
+        // Get the parent information
+        // For GP instances, the ID we need for the API is actually stored in a data-gpid attribute
+        // or it can be found in the currentElement if available
+        let gpInstanceId;
+        if (currentElement && currentElement.gpid) {
+          // If we have a currentElement with gpid, use that (most reliable)
+          gpInstanceId = currentElement.gpid;
+        } else {
+          // Otherwise try to get it from the data-gpid attribute
+          gpInstanceId = currentTreeNode.getAttribute("data-gpid");
+          
+          // If still not found, use the data-id as a fallback (but this might not be correct)
+          if (!gpInstanceId) {
+            gpInstanceId = currentTreeNode.getAttribute("data-id");
+            console.warn("Warning: Using data-id instead of gpid for GP instance");
+          }
+        }
+        
+        const parentAsset = currentTreeNode.getAttribute("data-parent-asset");
+        const parentStack = currentTreeNode.getAttribute("data-parent-stack");
+        const parentDomain = currentTreeNode.getAttribute("data-parent-domain");
+        const parentSegment = currentTreeNode.getAttribute("data-parent-segment");
+        const parentMissionNetwork = currentTreeNode.getAttribute("data-parent-mission-network");
+        
+        // Store IDs in the form
+        document.getElementById("addSPInstanceGPId").value = gpInstanceId;
+        document.getElementById("addSPInstanceAssetId").value = parentAsset;
+        document.getElementById("addSPInstanceHwStackId").value = parentStack;
+        document.getElementById("addSPInstanceDomainId").value = parentDomain;
+        document.getElementById("addSPInstanceSegmentId").value = parentSegment;
+        document.getElementById("addSPInstanceMissionNetworkId").value = parentMissionNetwork;
+        
+        // Clear previous values
+        document.getElementById("addSPInstanceId").value = "";
+        document.getElementById("addSPInstanceVersion").value = "";
+        
+        // Show the add SP instance modal
+        const addModal = new bootstrap.Modal(
+          document.getElementById("addSPInstanceModal")
+        );
+        addModal.show();
       }
       // Other node types would be handled here as the feature expands
     });
@@ -1277,6 +1332,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Helper function to capture the current tree state
   function captureCurrentTreeState(treeNode) {
+    // If no tree node is provided, use the current tree node if available
+    if (!treeNode) {
+      treeNode = currentTreeNode;
+      
+      // If there's still no tree node available, return a minimal state object
+      if (!treeNode) {
+        console.log("No tree node available to capture state");
+        return {
+          nodeType: null,
+          nodeId: null
+        };
+      }
+    }
+    
     const state = {
       nodeType: treeNode.getAttribute("data-type"),
       nodeId: treeNode.getAttribute("data-id"),
@@ -1317,7 +1386,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Helper function to restore the tree state
   function restoreTreeState(state) {
-    if (!state.missionNetworkId) return;
+    // Return early if state is invalid
+    if (!state || !state.nodeType || !state.nodeId) {
+      console.log("Invalid tree state, unable to restore", state);
+      return;
+    }
+    
+    // For node types that don't have a mission network ID, we can't restore
+    if (!state.missionNetworkId) {
+      console.log("No mission network ID in state, unable to restore", state);
+      return;
+    }
     // Restoring state after refresh
 
     // First find and restore the mission network
@@ -2656,6 +2735,163 @@ document.addEventListener("DOMContentLoaded", function () {
         "danger"
       );
     }
+  }
+
+  // Add a new SP instance to a GP instance
+  async function addSPInstance() {
+    try {
+      // Get form fields
+      let gpInstanceId = document.getElementById("addSPInstanceGPId").value;
+      const missionNetworkId = document.getElementById("addSPInstanceMissionNetworkId").value;
+      const segmentId = document.getElementById("addSPInstanceSegmentId").value;
+      const domainId = document.getElementById("addSPInstanceDomainId").value;
+      const hwStackId = document.getElementById("addSPInstanceHwStackId").value;
+      const assetId = document.getElementById("addSPInstanceAssetId").value;
+      const spId = document.getElementById("addSPInstanceId").value;
+      const spVersion = document.getElementById("addSPInstanceVersion").value;
+      
+      // For GP instances, we need to find the actual gpid
+      // First try to check if currentElement is a GP instance and has the gpid property
+      if (currentElement && currentElement.type === "gpInstances" && currentElement.gpid) {
+        // Use the current element's gpid property
+        gpInstanceId = currentElement.gpid;
+        console.log("Using gpid from currentElement:", gpInstanceId);
+      } else if (currentTreeNode && currentTreeNode.getAttribute("data-type") === "gpInstances") {
+        // Try to get it from the data-gpid attribute on the tree node
+        const treeNodeGpid = currentTreeNode.getAttribute("data-gpid");
+        if (treeNodeGpid) {
+          gpInstanceId = treeNodeGpid;
+          console.log("Using gpid from tree node attribute:", gpInstanceId);
+        }
+      }
+
+      // Validate required fields
+      if (!spId || !spVersion) {
+        CISUtils.showToast("Please fill in all required fields", "danger");
+        return;
+      }
+
+      // Call API to add SP instance
+      const result = await CISApi.addSPInstance(
+        missionNetworkId,
+        segmentId,
+        domainId,
+        hwStackId,
+        assetId,
+        gpInstanceId,
+        spId,
+        spVersion
+      );
+
+      if (result.success) {
+        // Close the modal
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("addSPInstanceModal")
+        );
+        modal.hide();
+
+        // Clear the form fields
+        document.getElementById("addSPInstanceId").value = "";
+        document.getElementById("addSPInstanceVersion").value = "";
+
+        // Show success message
+        CISUtils.showToast("Specific Product added successfully", "success");
+
+        try {
+          // Save the current GP Instance information before refresh
+          const gpInstanceInfo = {
+            id: gpInstanceId,
+            missionNetworkId,
+            segmentId,
+            domainId,
+            hwStackId,
+            assetId
+          };
+          
+          // Refresh the CIS Plan tree data
+          const data = await CISApi.fetchCISPlanData();
+          if (data) {
+            // Store the data globally
+            cisPlanData = data;
+            
+            // Re-render the tree with the new data
+            renderTree(cisPlanData);
+            
+            console.log("Tree refreshed after adding SP instance");
+            
+            // Find the GP instance node in the tree
+            let foundNode = false;
+            
+            // First try to find by data-id (which may not be the GPID)
+            const gpsWithId = document.querySelectorAll(`[data-type="gpInstances"][data-id="${gpInstanceId}"]`);
+            if (gpsWithId && gpsWithId.length > 0) {
+              selectTreeNode(gpsWithId[0]);
+              foundNode = true;
+            }
+            
+            // If not found by ID, try to find by data-gpid
+            if (!foundNode) {
+              const gpsWithGpid = document.querySelectorAll(`[data-type="gpInstances"][data-gpid="${gpInstanceId}"]`);
+              if (gpsWithGpid && gpsWithGpid.length > 0) {
+                selectTreeNode(gpsWithGpid[0]);
+                foundNode = true;
+              }
+            }
+            
+            if (foundNode) {
+              console.log("Found and selected GP instance node after refresh");
+            } else {
+              console.log("Could not find GP instance node after refresh");
+            }
+          }
+        } catch (err) {
+          console.log("Error refreshing tree after adding SP instance:", err);
+        }
+      } else {
+        // Show error message
+        CISUtils.showToast(
+          result.error || "Failed to add Specific Product",
+          "danger"
+        );
+      }
+    } catch (error) {
+      console.error("Error adding SP instance:", error);
+      CISUtils.showToast("An error occurred while adding the Specific Product", "danger");
+    }
+  }
+  
+  // Helper function to find a GP instance by ID in the tree data
+  function findGPInstanceById(gpInstanceId, data) {
+    // Loop through mission networks
+    if (!data || !data.missionNetworks) return null;
+    
+    for (const missionNetwork of data.missionNetworks) {
+      if (!missionNetwork.segments) continue;
+      
+      for (const segment of missionNetwork.segments) {
+        if (!segment.securityDomains) continue;
+        
+        for (const domain of segment.securityDomains) {
+          if (!domain.hwStacks) continue;
+          
+          for (const stack of domain.hwStacks) {
+            if (!stack.assets) continue;
+            
+            for (const asset of stack.assets) {
+              if (!asset.gpInstances) continue;
+              
+              for (const gpInstance of asset.gpInstances) {
+                if (gpInstance.id === gpInstanceId) {
+                  return gpInstance;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    return null;
   }
 
   // Store security classifications data globally
@@ -5089,6 +5325,33 @@ document.addEventListener("DOMContentLoaded", function () {
         cardBody.appendChild(configTable);
 
         // Return here since we've already appended table and configTable to cardBody
+        // Add a button to add SP instances
+        const addSpButton = document.createElement('button');
+        addSpButton.className = 'btn btn-primary mt-3';
+        addSpButton.innerHTML = '<i class="fas fa-plus me-2"></i>Add Specific Product';
+        addSpButton.addEventListener('click', function() {
+          // Store gpInstanceId in the form
+          document.getElementById('addSPInstanceGPId').value = element.id;
+          
+          // Store all necessary parent IDs for creating proper API URLs
+          const parentAsset = currentTreeNode.getAttribute('data-parent-asset');
+          const parentStack = currentTreeNode.getAttribute('data-parent-stack');
+          const parentDomain = currentTreeNode.getAttribute('data-parent-domain');
+          const parentSegment = currentTreeNode.getAttribute('data-parent-segment');
+          const parentMissionNetwork = currentTreeNode.getAttribute('data-parent-mission-network');
+          
+          document.getElementById('addSPInstanceAssetId').value = parentAsset;
+          document.getElementById('addSPInstanceHwStackId').value = parentStack;
+          document.getElementById('addSPInstanceDomainId').value = parentDomain;
+          document.getElementById('addSPInstanceSegmentId').value = parentSegment;
+          document.getElementById('addSPInstanceMissionNetworkId').value = parentMissionNetwork;
+          
+          // Show the modal
+          const modal = new bootstrap.Modal(document.getElementById('addSPInstanceModal'));
+          modal.show();
+        });
+        cardBody.appendChild(addSpButton);
+        
         detailCard.appendChild(cardBody);
         detailsContainer.appendChild(detailCard);
         return;

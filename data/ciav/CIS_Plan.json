@@ -57,7 +57,18 @@
                           "guid": "d88e419a-ed0d-4f4a-9c42-00e1da1905e5",
                           "instanceLabel": "",
                           "serviceId": "SRV-0016",
-                          "spInstances": [],
+                          "spInstances": [
+                            {
+                              "guid": "41f66e95-8404-4b0f-81b4-54919d52b64e",
+                              "spId": "111111",
+                              "spVersion": "222222"
+                            },
+                            {
+                              "guid": "8b68b1ad-e616-441d-849c-2a50c39bcb24",
+                              "spId": "SP2",
+                              "spVersion": "2"
+                            }
+                          ],
                           "configurationItems": [
                             {
                               "Name": "Bias",

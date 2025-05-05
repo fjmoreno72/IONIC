@@ -10088,3 +10088,4 @@ app/static/ASC/data/~$LinkTypeConfigurationQuestionsOverview.xlsx
 .gitignore
 .DS_Store
 .DS_Store
+data/unmapped_sreqs.log

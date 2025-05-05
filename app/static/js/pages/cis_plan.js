@@ -2,20 +2,11 @@
  * CIS Plan JavaScript file
  *
  * This file handles the functionality for the CIS Plan view.
- * The code is organized into the following sections:
- *
- * 1. Global Variables & State Management
- * 2. Event Handlers & Initialization
- * 3. API Integration Functions (delegating to CISApi)
- * 4. Tree Rendering & Manipulation
- * 5. Panel Rendering & Element Display
- * 6. Search & Navigation Functions
- * 7. Utility & Helper Functions
+ * The code is organized into sections for state management, event handlers,
+ * API integration, tree rendering, panel rendering, search, and utility functions.
  */
 
-//=============================================================================
-// 1. GLOBAL VARIABLES & STATE MANAGEMENT
-//=============================================================================
+// GLOBAL VARIABLES & STATE MANAGEMENT
 
 // Core state management variables
 let currentTreeNode = null; // Currently selected tree node
@@ -25,9 +16,7 @@ let cisPlanData = null; // CIS Plan tree data from API
 // Store security classifications data
 let securityClassifications = [];
 
-//=============================================================================
-// 2. EVENT HANDLERS & INITIALIZATION
-//=============================================================================
+// EVENT HANDLERS & INITIALIZATION
 
 // Function to prevent unwanted autocomplete on forms by randomizing field names
 function applyRandomizedFieldNames() {
@@ -60,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Apply randomized names to all form fields when modal is shown
       // This defeats browser autocomplete and password manager interference
       applyRandomizedFieldNames();
-      
+
       // If this is the GP Container modal, load the services
       if (modal.id === "addGPContainerModal") {
         fetchAndPopulateServices();
@@ -418,39 +407,44 @@ document.addEventListener("DOMContentLoaded", function () {
             const mnId = typeof mn === "object" ? mn.id || mn : mn;
             const segId = typeof seg === "object" ? seg.id || seg : seg;
             const domId = typeof dom === "object" ? dom.id || dom : dom;
-            const stackId = typeof stack === "object" ? stack.id || stack : stack;
-            const assetId = typeof asset === "object" ? asset.id || asset : asset;
+            const stackId =
+              typeof stack === "object" ? stack.id || stack : stack;
+            const assetId =
+              typeof asset === "object" ? asset.id || asset : asset;
 
             // Populate the hidden fields in the add GP container modal
-            document.getElementById("addGPContainerMissionNetworkId").value = mnId;
+            document.getElementById("addGPContainerMissionNetworkId").value =
+              mnId;
             document.getElementById("addGPContainerSegmentId").value = segId;
             document.getElementById("addGPContainerDomainId").value = domId;
             document.getElementById("addGPContainerHwStackId").value = stackId;
             document.getElementById("addGPContainerAssetId").value = assetId;
-            
+
             // Reset the form fields to ensure we start fresh
-            document.getElementById('addGPContainerInstanceLabel').value = '';
-            
+            document.getElementById("addGPContainerInstanceLabel").value = "";
+
             try {
               // Reset both dropdowns to their default state
-              const serviceSelect = document.getElementById('addGPContainerServiceId');
-              const gpSelect = document.getElementById('addGPContainerGpId');
-              
+              const serviceSelect = document.getElementById(
+                "addGPContainerServiceId"
+              );
+              const gpSelect = document.getElementById("addGPContainerGpId");
+
               // Reset service dropdown to first option
               serviceSelect.selectedIndex = 0;
-              
+
               // Reset GP dropdown to just the placeholder
               while (gpSelect.options.length > 1) {
                 gpSelect.remove(1);
               }
-              
+
               // Fetch services before showing the modal
               await fetchAndPopulateServices();
             } catch (error) {
-              console.error('Error preparing GP container form:', error);
-              showToast('Error loading form data. Please try again.', 'error');
+              console.error("Error preparing GP container form:", error);
+              showToast("Error loading form data. Please try again.", "error");
             }
-            
+
             // Show the add GP container modal
             const addModal = new bootstrap.Modal(
               document.getElementById("addGPContainerModal")
@@ -768,24 +762,31 @@ document.addEventListener("DOMContentLoaded", function () {
         const elementType = currentElement.type;
 
         // Preparing to delete item
-        
+
         // Special handling for GP instances
         if (elementType === "gpInstances") {
           // For GP instances, set the name appropriately
-          const cardTitle = document.querySelector('.element-card.active .card-title');
-          let displayName = cardTitle ? cardTitle.textContent : (currentElement.instanceLabel || `GP Instance ${currentElement.id}`);
+          const cardTitle = document.querySelector(
+            ".element-card.active .card-title"
+          );
+          let displayName = cardTitle
+            ? cardTitle.textContent
+            : currentElement.instanceLabel ||
+              `GP Instance ${currentElement.id}`;
           document.getElementById("deleteItemName").textContent = displayName;
-          
+
           // Use guid or id for GP instances, making sure it's not undefined
           const instanceId = currentElement.guid || currentElement.id || "";
-          console.log('GP instance ID for deletion:', instanceId);
+
           document.getElementById("deleteItemId").value = instanceId;
         } else {
           // For other types, use the standard name and id
-          document.getElementById("deleteItemName").textContent = currentElement.name || "";
-          document.getElementById("deleteItemId").value = currentElement.id || "";
+          document.getElementById("deleteItemName").textContent =
+            currentElement.name || "";
+          document.getElementById("deleteItemId").value =
+            currentElement.id || "";
         }
-        
+
         document.getElementById("deleteItemType").value = elementType;
 
         // For hierarchical items that need parent ID for deletion
@@ -970,42 +971,50 @@ document.addEventListener("DOMContentLoaded", function () {
           let hwStackId = currentTreeNode.getAttribute("data-parent-stack");
           let domainId = currentTreeNode.getAttribute("data-parent-domain");
           let segmentId = currentTreeNode.getAttribute("data-parent-segment");
-          let missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network");
+          let missionNetworkId = currentTreeNode.getAttribute(
+            "data-parent-mission-network"
+          );
 
           // Fall back to object properties if needed
           if (!assetId && currentElement.parentAsset) {
-            assetId = typeof currentElement.parentAsset === "object"
-              ? currentElement.parentAsset.id
-              : currentElement.parentAsset;
+            assetId =
+              typeof currentElement.parentAsset === "object"
+                ? currentElement.parentAsset.id
+                : currentElement.parentAsset;
           }
 
           if (!hwStackId && currentElement.parentStack) {
-            hwStackId = typeof currentElement.parentStack === "object"
-              ? currentElement.parentStack.id
-              : currentElement.parentStack;
+            hwStackId =
+              typeof currentElement.parentStack === "object"
+                ? currentElement.parentStack.id
+                : currentElement.parentStack;
           }
 
           if (!domainId && currentElement.parentDomain) {
-            domainId = typeof currentElement.parentDomain === "object"
-              ? currentElement.parentDomain.id
-              : currentElement.parentDomain;
+            domainId =
+              typeof currentElement.parentDomain === "object"
+                ? currentElement.parentDomain.id
+                : currentElement.parentDomain;
           }
 
           if (!segmentId && currentElement.parentSegment) {
-            segmentId = typeof currentElement.parentSegment === "object"
-              ? currentElement.parentSegment.id
-              : currentElement.parentSegment;
+            segmentId =
+              typeof currentElement.parentSegment === "object"
+                ? currentElement.parentSegment.id
+                : currentElement.parentSegment;
           }
 
           if (!missionNetworkId && currentElement.parentMissionNetwork) {
-            missionNetworkId = typeof currentElement.parentMissionNetwork === "object"
-              ? currentElement.parentMissionNetwork.id
-              : currentElement.parentMissionNetwork;
+            missionNetworkId =
+              typeof currentElement.parentMissionNetwork === "object"
+                ? currentElement.parentMissionNetwork.id
+                : currentElement.parentMissionNetwork;
           }
 
           // Store all five parent IDs as comma-separated values
-          document.getElementById("deleteItemParentId").value = 
-            `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId}`;
+          document.getElementById(
+            "deleteItemParentId"
+          ).value = `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId}`;
         }
 
         const deleteModal = new bootstrap.Modal(
@@ -1090,7 +1099,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Fetch participants from API
-  // Fetch participants - delegates to CISApi
+
   async function fetchParticipants() {
     try {
       const participants = await CISApi.fetchParticipants();
@@ -1102,13 +1111,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Get participant name by key - delegates to CISUtils
   async function getParticipantNameByKey(key) {
     return CISUtils.getParticipantNameByKey(key);
   }
 
   // Add HW Stack
-  // Add a hardware stack - delegates to CISApi
   async function addHwStack() {
     const name = document.getElementById("addHwStackName").value.trim();
     const cisParticipantID = document.getElementById(
@@ -1455,9 +1462,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Start app initialization
   initializeApp();
 
-  //=========================================================================
-  // 3. API INTEGRATION FUNCTIONS
-  //=========================================================================
+  // API INTEGRATION FUNCTIONS
 
   // Show a toast notification - delegates to CISUtils
   function showToast(message, type = "success") {
@@ -1465,7 +1470,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Add a new mission network
-  // Add a mission network - delegates to CISApi
+
   async function addMissionNetwork() {
     const nameInput = document.getElementById("addMissionNetworkName");
     const name = nameInput.value.trim();
@@ -1512,7 +1517,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Update an existing mission network
-  // Update a mission network - delegates to CISApi
+
   async function updateMissionNetwork() {
     const idInput = document.getElementById("editMissionNetworkId");
     const nameInput = document.getElementById("editMissionNetworkName");
@@ -1574,7 +1579,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Add a new network segment
-  // Add a network segment - delegates to CISApi
+
   async function addNetworkSegment() {
     const nameInput = document.getElementById("addNetworkSegmentName");
     const missionNetworkIdInput = document.getElementById(
@@ -1637,7 +1642,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Update an existing network segment - delegates to CISApi
   async function updateNetworkSegment() {
     const idInput = document.getElementById("editNetworkSegmentId");
     const nameInput = document.getElementById("editNetworkSegmentName");
@@ -1711,7 +1715,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Add a new asset - delegates to CISApi
   async function addAsset() {
     const nameInput = document.getElementById("addAssetName");
     const missionNetworkIdInput = document.getElementById(
@@ -1802,7 +1805,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Update an existing asset - delegates to CISApi
   async function updateAsset() {
     // Updating asset with current element
     const idInput = document.getElementById("editAssetId");
@@ -1994,7 +1996,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       } else {
         showToast(
-          `${apiResult.message || apiResult.error || "Failed to create network interface"}`,
+          `${
+            apiResult.message ||
+            apiResult.error ||
+            "Failed to create network interface"
+          }`,
           "danger"
         );
       }
@@ -2007,28 +2013,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-
   function formatNodeTypeName(type) {
-    switch (type) {
-      case "missionNetworks":
-        return "Mission Network";
-      case "networkSegments":
-        return "Network Segment";
-      case "securityDomains":
-        return "Security Domain";
-      case "hwStacks":
-        return "Hardware Stack";
-      case "assets":
-        return "Asset";
-      case "networkInterfaces":
-        return "Network Interface";
-      case "gpInstances":
-        return "GP Instance";
-      case "spInstances":
-        return "SP Instance";
-      default:
-        return type;
-    }
+    return CISUtils.formatNodeTypeName(type);
   }
 
   // Update an existing network interface
@@ -2274,96 +2260,98 @@ document.addEventListener("DOMContentLoaded", function () {
   async function fetchAndPopulateServices() {
     try {
       // Get the select element
-      const serviceSelect = document.getElementById('addGPContainerServiceId');
-      
+      const serviceSelect = document.getElementById("addGPContainerServiceId");
+
       // Clear previous options (except the first placeholder)
       while (serviceSelect.options.length > 1) {
         serviceSelect.remove(1);
       }
-      
+
       // Show loading option
-      const loadingOption = document.createElement('option');
-      loadingOption.textContent = 'Loading services...';
+      const loadingOption = document.createElement("option");
+      loadingOption.textContent = "Loading services...";
       loadingOption.disabled = true;
-      loadingOption.id = 'loading-services-option';
+      loadingOption.id = "loading-services-option";
       serviceSelect.appendChild(loadingOption);
-      
+
       // Fetch services from API
-      const response = await fetch('/api/services');
-      
+      const response = await fetch("/api/services");
+
       if (!response.ok) {
         throw new Error(`Error fetching services: ${response.status}`);
       }
-      
+
       // Get services directly as an array
-      const services = await response.json() || [];
-      
+      const services = (await response.json()) || [];
+
       // Remove loading option safely
-      const loadingOptionElement = document.getElementById('loading-services-option');
-      if (loadingOptionElement && loadingOptionElement.parentNode === serviceSelect) {
+      const loadingOptionElement = document.getElementById(
+        "loading-services-option"
+      );
+      if (
+        loadingOptionElement &&
+        loadingOptionElement.parentNode === serviceSelect
+      ) {
         serviceSelect.removeChild(loadingOptionElement);
       }
-      
+
       // Sort services alphabetically by name
       services.sort((a, b) => a.name.localeCompare(b.name));
-      
+
       // Add an option for each service
-      services.forEach(service => {
-        const option = document.createElement('option');
+      services.forEach((service) => {
+        const option = document.createElement("option");
         option.value = service.id;
         option.textContent = service.name;
-        option.setAttribute('data-service-id', service.id);
+        option.setAttribute("data-service-id", service.id);
         serviceSelect.appendChild(option);
       });
-      
+
       // Add change event handler to service select to update GPs when service changes
-      serviceSelect.addEventListener('change', fetchAndPopulateGPs);
-      
+      serviceSelect.addEventListener("change", fetchAndPopulateGPs);
     } catch (error) {
-      console.error('Error fetching services:', error);
-      showToast('Error loading services. Please try again.', 'error');
-      
+      console.error("Error fetching services:", error);
+      showToast("Error loading services. Please try again.", "error");
+
       // Clear loading option if it exists
-      const serviceSelect = document.getElementById('addGPContainerServiceId');
+      const serviceSelect = document.getElementById("addGPContainerServiceId");
       for (let i = 1; i < serviceSelect.options.length; i++) {
-        if (serviceSelect.options[i].textContent === 'Loading services...') {
+        if (serviceSelect.options[i].textContent === "Loading services...") {
           serviceSelect.remove(i);
           break;
         }
       }
     }
   }
-  
+
   // Function to fetch GP names for a list of GP IDs
   async function fetchGPNames(gpIds) {
-    console.log('Fetching names for GP IDs:', gpIds);
     const gpNames = {};
-    
+
     if (!gpIds || gpIds.length === 0) {
-      console.warn('No GP IDs provided to fetchGPNames function');
+      console.warn("No GP IDs provided to fetchGPNames function");
       return gpNames;
     }
-    
+
     // Fetch names for each GP ID
     const promises = gpIds.map(async (gpId) => {
       try {
-        console.log(`Fetching name for GP ${gpId}`);
         const response = await fetch(`/api/gps/${gpId}/name`);
-        
+
         if (response.ok) {
           const result = await response.json();
-          console.log(`Result for GP ${gpId}:`, result);
-          
+
           // Direct access to name field in the response, matching fetchGPName function
           if (result.name) {
             gpNames[gpId] = result.name;
-            console.log(`Got name for GP ${gpId}: ${result.name}`);
           } else {
             console.warn(`Name not found for GP ${gpId}, using fallback`);
             gpNames[gpId] = `GP ${gpId}`; // Fallback if name not found
           }
         } else {
-          console.warn(`Failed to fetch name for GP ${gpId}: ${response.status}`);
+          console.warn(
+            `Failed to fetch name for GP ${gpId}: ${response.status}`
+          );
           gpNames[gpId] = `GP ${gpId}`; // Fallback if request fails
         }
       } catch (error) {
@@ -2371,23 +2359,22 @@ document.addEventListener("DOMContentLoaded", function () {
         gpNames[gpId] = `GP ${gpId}`; // Fallback on error
       }
     });
-    
+
     // Wait for all name fetches to complete
     await Promise.all(promises);
-    
-    console.log('All GP names fetched:', gpNames);
+
     return gpNames;
   }
-  
+
   // Function to fetch and populate GPs based on selected service
   async function fetchAndPopulateGPs() {
     try {
       // Get the select elements
-      const serviceSelect = document.getElementById('addGPContainerServiceId');
-      const gpSelect = document.getElementById('addGPContainerGpId');
-      
+      const serviceSelect = document.getElementById("addGPContainerServiceId");
+      const gpSelect = document.getElementById("addGPContainerGpId");
+
       const selectedServiceId = serviceSelect.value;
-      
+
       if (!selectedServiceId) {
         // Reset GP dropdown if no service selected
         while (gpSelect.options.length > 1) {
@@ -2395,85 +2382,90 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return;
       }
-      
+
       // Clear previous GP options (except the first placeholder)
       while (gpSelect.options.length > 1) {
         gpSelect.remove(1);
       }
-      
+
       // Show loading option
-      const loadingOption = document.createElement('option');
-      loadingOption.textContent = 'Loading GPs...';
+      const loadingOption = document.createElement("option");
+      loadingOption.textContent = "Loading GPs...";
       loadingOption.disabled = true;
-      loadingOption.id = 'loading-gps-option';
+      loadingOption.id = "loading-gps-option";
       gpSelect.appendChild(loadingOption);
-      
+
       // Fetch GPs for the selected service
-      const response = await fetch(`/api/services/${selectedServiceId}/all_gps`);
-      
+      const response = await fetch(
+        `/api/services/${selectedServiceId}/all_gps`
+      );
+
       if (!response.ok) {
         throw new Error(`Error fetching GPs: ${response.status}`);
       }
-      
+
       const result = await response.json();
-      
+
       if (!result.success) {
-        throw new Error(result.message || 'Failed to retrieve GPs');
+        throw new Error(result.message || "Failed to retrieve GPs");
       }
-      
+
       const gpIds = result.gp_ids || [];
-      
+
       // Remove loading option safely
-      const loadingOptionElement = document.getElementById('loading-gps-option');
-      if (loadingOptionElement && loadingOptionElement.parentNode === gpSelect) {
+      const loadingOptionElement =
+        document.getElementById("loading-gps-option");
+      if (
+        loadingOptionElement &&
+        loadingOptionElement.parentNode === gpSelect
+      ) {
         gpSelect.removeChild(loadingOptionElement);
       }
-      
+
       if (gpIds.length === 0) {
         // Show a message if no GPs available
-        const noGpsOption = document.createElement('option');
-        noGpsOption.textContent = 'No GPs available for this service';
+        const noGpsOption = document.createElement("option");
+        noGpsOption.textContent = "No GPs available for this service";
         noGpsOption.disabled = true;
         gpSelect.appendChild(noGpsOption);
         return;
       }
-      
+
       // Fetch GP names for the IDs
       const gpNames = await fetchGPNames(gpIds);
-      
+
       // Create an array of GP objects with IDs and names for sorting
-      const gps = gpIds.map(id => ({
+      const gps = gpIds.map((id) => ({
         id,
-        name: gpNames[id] || `GP ${id}`
+        name: gpNames[id] || `GP ${id}`,
       }));
-      
+
       // Sort GPs alphabetically by name
       gps.sort((a, b) => a.name.localeCompare(b.name));
-      
+
       // Add an option for each GP
-      gps.forEach(gp => {
-        const option = document.createElement('option');
+      gps.forEach((gp) => {
+        const option = document.createElement("option");
         option.value = gp.id;
         option.textContent = gp.name;
-        option.setAttribute('data-gp-id', gp.id);
+        option.setAttribute("data-gp-id", gp.id);
         gpSelect.appendChild(option);
       });
-      
     } catch (error) {
-      console.error('Error fetching GPs:', error);
-      showToast('Error loading Generic Products. Please try again.', 'error');
-      
+      console.error("Error fetching GPs:", error);
+      showToast("Error loading Generic Products. Please try again.", "error");
+
       // Clear loading option if it exists
-      const gpSelect = document.getElementById('addGPContainerGpId');
+      const gpSelect = document.getElementById("addGPContainerGpId");
       for (let i = 1; i < gpSelect.options.length; i++) {
-        if (gpSelect.options[i].textContent === 'Loading GPs...') {
+        if (gpSelect.options[i].textContent === "Loading GPs...") {
           gpSelect.remove(i);
           break;
         }
       }
     }
   }
-  
+
   // Add a new GP container (GP instance) to an asset
   async function addGPContainer() {
     const instanceLabelInput = document.getElementById(
@@ -2707,7 +2699,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Fetch security classifications for dropdown
-  // Fetch security classifications - delegates to CISApi
+
   async function fetchSecurityClassifications() {
     try {
       // Use the API namespace to fetch the data
@@ -2910,7 +2902,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Delete an item (mission network, segment, etc.)
-  // Delete an item from the CIS Plan - delegates to CISApi
+
   async function deleteItem() {
     const type = document.getElementById("deleteItemType").value;
     const id = document.getElementById("deleteItemId").value;
@@ -2947,9 +2939,8 @@ document.addEventListener("DOMContentLoaded", function () {
             segmentId: parentIds[1],
             missionNetworkId: parentIds[0],
           };
-          
+
           if (type === "gpInstances") {
-            console.log("Restoring view after GP instance deletion", stateToRestore);
           }
         } else {
           // Use CISUtils to build a restoration state for other entity types
@@ -2998,7 +2989,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Fetch CIS Plan data from the API
-  // Fetch CIS Plan tree data - delegates to CISApi
+
   async function fetchCISPlanData() {
     // ... (rest of the code remains the same)
     const treeData = await CISApi.fetchCISPlanData();
@@ -3060,9 +3051,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return treeData;
   }
 
-  //=========================================================================
-  // 4. TREE RENDERING & MANIPULATION
-  //=========================================================================
+  // TREE RENDERING & MANIPULATION
 
   // Helper function to restore selection state after tree refresh
   function restoreSelectionState() {
@@ -3899,16 +3888,16 @@ document.addEventListener("DOMContentLoaded", function () {
   ) {
     // First, pre-fetch all GP names to reduce flashing in the UI
     const gpPromises = {};
-    gpInstances.forEach(gpInstance => {
+    gpInstances.forEach((gpInstance) => {
       if (gpInstance.gpid) {
         gpPromises[gpInstance.gpid] = fetchGPName(gpInstance.gpid);
       }
     });
-    
+
     // Once all promises are created, render the nodes
     gpInstances.forEach(async (gpInstance) => {
       let displayText = `GP Instance ${gpInstance.id}`;
-      
+
       // If we have a GP ID, get the name (from cache or wait for fetch)
       if (gpInstance.gpid && gpPromises[gpInstance.gpid]) {
         const gpName = await gpPromises[gpInstance.gpid];
@@ -3924,7 +3913,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else if (gpInstance.instanceLabel) {
         displayText = gpInstance.instanceLabel;
       }
-      
+
       // Create the node with the display text
       const gpInstanceNode = createTreeNode(
         "gpInstances",
@@ -3933,10 +3922,10 @@ document.addEventListener("DOMContentLoaded", function () {
         gpInstance.guid,
         "fa-cogs"
       );
-      
+
       // Store the display name as a data attribute for reference in the details panel
       gpInstanceNode.setAttribute("data-display-name", displayText);
-      
+
       // Store gpid as a data attribute for reference if available
       if (gpInstance.gpid) {
         gpInstanceNode.setAttribute("data-gpid", gpInstance.gpid);
@@ -3996,9 +3985,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  //=========================================================================
-  // 5. PANEL RENDERING & ELEMENT DISPLAY
-  //=========================================================================
+  // PANEL RENDERING & ELEMENT DISPLAY
 
   // Create a tree node element
   function createTreeNode(type, name, id, guid, iconClass) {
@@ -4061,10 +4048,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Get the SVG icon for this node type
     const iconPath = getElementIcon(nodeType);
-    
+
     // Generate appropriate title based on the node type
     let elementTypeText = "";
-    
+
     // Get the formatted element type name for the title
     if (nodeType === "root-cisplan") {
       elementTypeText = "CIS Plan";
@@ -4087,7 +4074,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       elementTypeText = formatNodeTypeName(nodeType);
     }
-    
+
     // Also update the main elements title at the top of the panel
     const mainElementsTitle = document.getElementById("elementsTitle");
     if (mainElementsTitle) {
@@ -4139,7 +4126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (nodeType === "assets") {
       const networkInterfacesContainer = document.createElement("div");
       const gpInstancesContainer = document.createElement("div");
-      
+
       // Add section headers for better organization
       if (nodeData.networkInterfaces && nodeData.networkInterfaces.length > 0) {
         const networkHeader = document.createElement("h5");
@@ -4147,22 +4134,30 @@ document.addEventListener("DOMContentLoaded", function () {
         const networkIcon = getElementIcon("networkInterfaces");
         networkHeader.innerHTML = `<img src="${networkIcon}" width="20" height="20" alt="Network Interfaces" class="me-2"> Network Interfaces (${nodeData.networkInterfaces.length})`;
         elementsContent.appendChild(networkHeader);
-        
+
         // Render network interfaces
-        renderElementCards(networkInterfacesContainer, nodeData.networkInterfaces, "networkInterfaces");
+        renderElementCards(
+          networkInterfacesContainer,
+          nodeData.networkInterfaces,
+          "networkInterfaces"
+        );
         elementsContent.appendChild(networkInterfacesContainer);
         childrenRendered = true;
       }
-      
+
       if (nodeData.gpInstances && nodeData.gpInstances.length > 0) {
         const gpHeader = document.createElement("h5");
         gpHeader.className = "mt-4 mb-2";
         const gpIcon = getElementIcon("gpInstances");
         gpHeader.innerHTML = `<img src="${gpIcon}" width="20" height="20" alt="Generic Products" class="me-2"> Generic Products (${nodeData.gpInstances.length})`;
         elementsContent.appendChild(gpHeader);
-        
+
         // Render GP instances
-        renderElementCards(gpInstancesContainer, nodeData.gpInstances, "gpInstances");
+        renderElementCards(
+          gpInstancesContainer,
+          nodeData.gpInstances,
+          "gpInstances"
+        );
         elementsContent.appendChild(gpInstancesContainer);
         childrenRendered = true;
       }
@@ -4338,7 +4333,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.setAttribute("data-type", type);
       card.setAttribute("data-id", element.id);
       card.setAttribute("data-guid", element.guid);
-      
+
       // For gpInstances or networkInterfaces, add parent reference attributes for proper deletion
       if (type === "gpInstances" || type === "networkInterfaces") {
         // Get parent references from the current tree node
@@ -4348,24 +4343,26 @@ document.addEventListener("DOMContentLoaded", function () {
           if (assetId) {
             card.setAttribute("data-parent-asset", assetId);
           }
-          
+
           // Add other parent references from the tree
           const hwStackId = currentTreeNode.getAttribute("data-parent-stack");
           if (hwStackId) {
             card.setAttribute("data-parent-stack", hwStackId);
           }
-          
+
           const domainId = currentTreeNode.getAttribute("data-parent-domain");
           if (domainId) {
             card.setAttribute("data-parent-domain", domainId);
           }
-          
+
           const segmentId = currentTreeNode.getAttribute("data-parent-segment");
           if (segmentId) {
             card.setAttribute("data-parent-segment", segmentId);
           }
-          
-          const mnId = currentTreeNode.getAttribute("data-parent-mission-network");
+
+          const mnId = currentTreeNode.getAttribute(
+            "data-parent-mission-network"
+          );
           if (mnId) {
             card.setAttribute("data-parent-mission-network", mnId);
           }
@@ -4403,9 +4400,12 @@ document.addEventListener("DOMContentLoaded", function () {
       } else if (type === "networkInterfaces") {
         // For network interfaces, show name and IP address
         let ipAddress = "N/A";
-        
+
         // Extract IP address from configuration items if available
-        if (element.configurationItems && Array.isArray(element.configurationItems)) {
+        if (
+          element.configurationItems &&
+          Array.isArray(element.configurationItems)
+        ) {
           // Look for IP Address configuration item
           element.configurationItems.forEach((item) => {
             if (item.Name === "IP Address" && item.AnswerContent) {
@@ -4413,7 +4413,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           });
         }
-        
+
         // Display name and IP address
         const displayName = `${element.name} - ${ipAddress}`;
         cardTitle.textContent = displayName;
@@ -4423,38 +4423,41 @@ document.addEventListener("DOMContentLoaded", function () {
         // For GP instances, show the GP name based on gpid and instance label
         // Set initial value to the instance label or default text
         let displayText = element.instanceLabel || `GP Instance ${element.id}`;
-        
+
         // Store initial display name as data attribute
         card.setAttribute("data-display-name", displayText);
-        
+
         // If we have a gpid, fetch the actual GP name
         if (element.gpid) {
           // Temporarily show placeholder while we fetch the name
           cardTitle.textContent = displayText;
-          
+
           // Fetch GP name asynchronously
-          (async function() {
+          (async function () {
             try {
               const response = await fetch(`/api/gps/${element.gpid}/name`);
               if (response.ok) {
                 const result = await response.json();
-                
+
                 // Format display name - include both GP name and instance label if available
                 let gpName = result.name;
                 let updatedText = gpName;
-                
+
                 // If we have an instance label and it's different from the GP name, add it in parentheses
                 if (element.instanceLabel && element.instanceLabel !== gpName) {
                   updatedText = `${gpName} (${element.instanceLabel})`;
                 }
-                
+
                 // Update the card title with the GP name
                 cardTitle.textContent = updatedText;
                 // Update the data attribute with the final display name
                 card.setAttribute("data-display-name", updatedText);
               }
             } catch (error) {
-              console.error(`Error fetching GP name for ${element.gpid}:`, error);
+              console.error(
+                `Error fetching GP name for ${element.gpid}:`,
+                error
+              );
             }
           })();
         } else {
@@ -4587,16 +4590,21 @@ document.addEventListener("DOMContentLoaded", function () {
           // First check if we have info from the current tree node
           if (currentTreeNode) {
             // Set all parent references
-            element.parentAsset = currentTreeNode.getAttribute("data-parent-asset") || 
-                                 card.getAttribute("data-parent-asset");
-            element.parentStack = currentTreeNode.getAttribute("data-parent-stack") || 
-                                 card.getAttribute("data-parent-stack");
-            element.parentDomain = currentTreeNode.getAttribute("data-parent-domain") || 
-                                  card.getAttribute("data-parent-domain");
-            element.parentSegment = currentTreeNode.getAttribute("data-parent-segment") || 
-                                   card.getAttribute("data-parent-segment");
-            element.parentMissionNetwork = currentTreeNode.getAttribute("data-parent-mission-network") || 
-                                          card.getAttribute("data-parent-mission-network");
+            element.parentAsset =
+              currentTreeNode.getAttribute("data-parent-asset") ||
+              card.getAttribute("data-parent-asset");
+            element.parentStack =
+              currentTreeNode.getAttribute("data-parent-stack") ||
+              card.getAttribute("data-parent-stack");
+            element.parentDomain =
+              currentTreeNode.getAttribute("data-parent-domain") ||
+              card.getAttribute("data-parent-domain");
+            element.parentSegment =
+              currentTreeNode.getAttribute("data-parent-segment") ||
+              card.getAttribute("data-parent-segment");
+            element.parentMissionNetwork =
+              currentTreeNode.getAttribute("data-parent-mission-network") ||
+              card.getAttribute("data-parent-mission-network");
           }
         }
 
@@ -4625,13 +4633,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const titleDiv = document.createElement("div");
     titleDiv.className = "h5 mb-0 d-flex align-items-center";
     titleDiv.id = "elementsBreadcrumb"; // Changed ID to avoid confusion with main title
-    
+
     // Also update the main elements title at the top of the panel
     const mainElementsTitle = document.getElementById("elementsTitle");
     if (mainElementsTitle) {
       mainElementsTitle.textContent = "CIS Plan - Generic Product Instance";
     }
-    
+
     // Default display text
     let displayText = "GP Instance";
     if (gpInstance.instanceLabel) {
@@ -4639,18 +4647,22 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (gpInstance.gpid) {
       displayText = `GP ${gpInstance.gpid}`;
     }
-    
+
     // Get the name asynchronously if we have a GP ID
     if (gpInstance.gpid) {
-      fetchGPName(gpInstance.gpid).then(gpName => {
+      fetchGPName(gpInstance.gpid).then((gpName) => {
         if (gpName) {
           if (gpInstance.instanceLabel && gpInstance.instanceLabel !== gpName) {
-            const titleSpan = document.querySelector("#elementsBreadcrumb span");
+            const titleSpan = document.querySelector(
+              "#elementsBreadcrumb span"
+            );
             if (titleSpan) {
               titleSpan.textContent = `${gpName} (${gpInstance.instanceLabel}) - Generic Product Instance`;
             }
           } else {
-            const titleSpan = document.querySelector("#elementsBreadcrumb span");
+            const titleSpan = document.querySelector(
+              "#elementsBreadcrumb span"
+            );
             if (titleSpan) {
               titleSpan.textContent = `${gpName} - Generic Product Instance`;
             }
@@ -4658,55 +4670,59 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
-    
+
     // Get the icon
     const iconPath = getElementIcon("gpInstances");
-    
+
     // Set the initial title
     titleDiv.innerHTML = `
       <img src="${iconPath}" alt="GP Instance" class="icon-small me-2" style="width: 20px; height: 20px;">
       <span>${displayText} - Generic Product Instance</span>
     `;
     headerContainer.appendChild(titleDiv);
-    
+
     // Add up button
     const upButton = document.createElement("button");
     upButton.className = "btn btn-sm btn-outline-secondary";
     upButton.innerHTML = '<i class="fas fa-arrow-up"></i> Up';
     upButton.title = "Navigate up to parent";
     upButton.id = "elementsUpButton";
-    
+
     // Add event listener for up navigation
     upButton.addEventListener("click", navigateUp);
-    
+
     // Add tooltip for better UX
     upButton.setAttribute("data-bs-toggle", "tooltip");
     upButton.setAttribute("data-bs-placement", "top");
     upButton.setAttribute("data-bs-title", "Navigate to parent");
-    
+
     headerContainer.appendChild(upButton);
     elementsContainer.appendChild(headerContainer);
-    
+
     // Create a container for the elements
     const elementsContent = document.createElement("div");
     elementsContent.id = "elementsContent";
     elementsContainer.appendChild(elementsContent);
-    
+
     // Check if we have SP instances to display
     let childrenRendered = false;
-    
+
     if (gpInstance.spInstances && gpInstance.spInstances.length > 0) {
       // Add a header for SP instances
       const spHeader = document.createElement("h5");
       spHeader.className = "mt-3 mb-2";
       spHeader.innerHTML = `<i class="fas fa-cog me-2"></i> Specific Products (${gpInstance.spInstances.length})`;
       elementsContent.appendChild(spHeader);
-      
+
       // Render SP instances as cards
-      renderElementCards(elementsContent, gpInstance.spInstances, "spInstances");
+      renderElementCards(
+        elementsContent,
+        gpInstance.spInstances,
+        "spInstances"
+      );
       childrenRendered = true;
     }
-    
+
     // If no children, show a message and add button
     if (!childrenRendered) {
       const noElementsDiv = document.createElement("div");
@@ -4714,9 +4730,9 @@ document.addEventListener("DOMContentLoaded", function () {
       noElementsDiv.innerHTML = `<i class="fas fa-info-circle me-2"></i> No Specific Products found. Use the Add SP button to add one.`;
       elementsContent.appendChild(noElementsDiv);
     }
-    
+
     // Note: We're NOT adding a floating action button since there's already an Add button
-    
+
     // Always update detail panel with the GP instance details
     updateDetailPanel(gpInstance, "gpInstances");
   }
@@ -4747,8 +4763,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // For GP instances, update the title with the name and optional label
     if (type === "gpInstances") {
       // Start with a default title based on GP ID
-      let displayTitle = element.gpid ? `GP ${element.gpid}` : "Generic Product";
-      
+      let displayTitle = element.gpid
+        ? `GP ${element.gpid}`
+        : "Generic Product";
+
       // If we have a GP ID, fetch the actual name
       if (element.gpid) {
         // First update with what we have now
@@ -4757,20 +4775,22 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           detailsTitle.textContent = `${displayTitle} Details`;
         }
-        
+
         // Then fetch and update with the actual name
-        fetchGPName(element.gpid).then(gpName => {
-          if (gpName) {
-            // Update the details title with the fetched name
-            if (element.instanceLabel) {
-              detailsTitle.textContent = `${gpName} (${element.instanceLabel}) Details`;
-            } else {
-              detailsTitle.textContent = `${gpName} Details`;
+        fetchGPName(element.gpid)
+          .then((gpName) => {
+            if (gpName) {
+              // Update the details title with the fetched name
+              if (element.instanceLabel) {
+                detailsTitle.textContent = `${gpName} (${element.instanceLabel}) Details`;
+              } else {
+                detailsTitle.textContent = `${gpName} Details`;
+              }
             }
-          }
-        }).catch(error => {
-          console.error(`Error fetching GP name: ${error}`);
-        });
+          })
+          .catch((error) => {
+            console.error(`Error fetching GP name: ${error}`);
+          });
       } else if (element.instanceLabel) {
         // If we just have an instance label, use that
         detailsTitle.textContent = `${element.instanceLabel} Details`;
@@ -4778,7 +4798,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Last resort
         detailsTitle.textContent = "Generic Product Details";
       }
-    } 
+    }
     // For other types, set the title based on the element type
     else if (type === "securityDomains") {
       const classification = getSecurityClassificationById(element.id);
@@ -4786,9 +4806,12 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (type === "networkInterfaces") {
       // For network interfaces, include IP address if available
       let ipAddress = "N/A";
-      if (element.configurationItems && Array.isArray(element.configurationItems)) {
+      if (
+        element.configurationItems &&
+        Array.isArray(element.configurationItems)
+      ) {
         // Find IP Address in configuration items
-        element.configurationItems.forEach(item => {
+        element.configurationItems.forEach((item) => {
           if (item.Name === "IP Address" && item.AnswerContent) {
             ipAddress = item.AnswerContent;
           }
@@ -4813,7 +4836,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Get the element's display name for the card header
     let displayName = "";
-    
+
     // For security domains, use the classification name
     if (type === "securityDomains") {
       const classification = getSecurityClassificationById(element.id);
@@ -4821,7 +4844,10 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (type === "networkInterfaces") {
       // For network interfaces, extract IP address from configuration items
       let ipAddress = "N/A";
-      if (element.configurationItems && Array.isArray(element.configurationItems)) {
+      if (
+        element.configurationItems &&
+        Array.isArray(element.configurationItems)
+      ) {
         // Look for IP Address configuration item
         element.configurationItems.forEach((item) => {
           if (item.Name === "IP Address" && item.AnswerContent) {
@@ -4829,7 +4855,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       }
-      
+
       // Create display text with both name and IP address
       displayName = `${element.name} - ${ipAddress}`;
     } else if (type === "gpInstances") {
@@ -4846,35 +4872,37 @@ document.addEventListener("DOMContentLoaded", function () {
       displayName = element.name;
     } else {
       // Complete fallback for unknown types
-      displayName = `${formatNodeTypeName(type)} ${element.id || ''}`;
+      displayName = `${formatNodeTypeName(type)} ${element.id || ""}`;
     }
-    
+
     // Create the card header with icon and initial title
     const iconPath = getElementIcon(type);
     cardHeader.innerHTML = `
       <img src="${iconPath}" alt="${type}" class="icon-small me-2" style="width: 20px; height: 20px;">
       <h5 class="mb-0">${displayName}</h5>
     `;
-    
+
     // If this is a GP instance and we have a GP ID, fetch the actual name
     if (type === "gpInstances" && element.gpid) {
-      fetchGPName(element.gpid).then(gpName => {
-        if (gpName) {
-          // Find the h5 element in the card header and update it
-          const headerTitle = cardHeader.querySelector('h5');
-          if (headerTitle) {
-            if (element.instanceLabel) {
-              headerTitle.textContent = `${gpName} (${element.instanceLabel})`;
-            } else {
-              headerTitle.textContent = gpName;
+      fetchGPName(element.gpid)
+        .then((gpName) => {
+          if (gpName) {
+            // Find the h5 element in the card header and update it
+            const headerTitle = cardHeader.querySelector("h5");
+            if (headerTitle) {
+              if (element.instanceLabel) {
+                headerTitle.textContent = `${gpName} (${element.instanceLabel})`;
+              } else {
+                headerTitle.textContent = gpName;
+              }
             }
           }
-        }
-      }).catch(error => {
-        console.error(`Error fetching GP name for card header: ${error}`);
-      });
+        })
+        .catch((error) => {
+          console.error(`Error fetching GP name for card header: ${error}`);
+        });
     }
-    
+
     // Add the card header to the card
     detailCard.appendChild(cardHeader);
 
@@ -4932,13 +4960,15 @@ document.addEventListener("DOMContentLoaded", function () {
       // Combined GP ID and Name row
       if (element.gpid) {
         // Add GP name asynchronously
-        fetchGPName(element.gpid).then(gpName => {
-          const gpNameCell = document.getElementById(`gp-name-cell-${element.guid}`);
+        fetchGPName(element.gpid).then((gpName) => {
+          const gpNameCell = document.getElementById(
+            `gp-name-cell-${element.guid}`
+          );
           if (gpNameCell) {
             gpNameCell.textContent = gpName || `GP ${element.gpid}`;
           }
         });
-        
+
         tableHtml += `
                     <tr>
                         <th scope="row">Generic Product</th>
@@ -4958,7 +4988,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td>
                           <strong>GUID:</strong> ${element.guid || "N/A"}
                           <br>
-                          <strong>Label:</strong> ${element.instanceLabel || "<em>Not set</em>"}
+                          <strong>Label:</strong> ${
+                            element.instanceLabel || "<em>Not set</em>"
+                          }
                         </td>
                     </tr>
       `;
@@ -4967,21 +4999,25 @@ document.addEventListener("DOMContentLoaded", function () {
       if (element.serviceId) {
         // Add Service name asynchronously
         fetch(`/api/services/id_to_name?id=${element.serviceId}`)
-          .then(response => response.json())
-          .then(data => {
-            const serviceNameCell = document.getElementById(`service-name-cell-${element.guid}`);
+          .then((response) => response.json())
+          .then((data) => {
+            const serviceNameCell = document.getElementById(
+              `service-name-cell-${element.guid}`
+            );
             if (serviceNameCell) {
               serviceNameCell.textContent = data.name || element.serviceId;
             }
           })
-          .catch(error => {
-            console.error('Error fetching service name:', error);
-            const serviceNameCell = document.getElementById(`service-name-cell-${element.guid}`);
+          .catch((error) => {
+            console.error("Error fetching service name:", error);
+            const serviceNameCell = document.getElementById(
+              `service-name-cell-${element.guid}`
+            );
             if (serviceNameCell) {
               serviceNameCell.textContent = "Error loading service name";
             }
           });
-        
+
         tableHtml += `
                     <tr>
                         <th scope="row">Service</th>
@@ -4993,7 +5029,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </tr>
         `;
       }
-      
+
       // Close basic details section
       tableHtml += `
                 </tbody>
@@ -5001,21 +5037,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
       table.innerHTML = tableHtml;
       cardBody.appendChild(table);
-      
+
       // Add Configuration Items section if present
       if (element.configurationItems && element.configurationItems.length > 0) {
         // Create a heading for Configuration Items
-        const configHeading = document.createElement('h5');
-        configHeading.className = 'mt-4 mb-3';
-        configHeading.textContent = 'Configuration Items';
+        const configHeading = document.createElement("h5");
+        configHeading.className = "mt-4 mb-3";
+        configHeading.textContent = "Configuration Items";
         cardBody.appendChild(configHeading);
-        
+
         // Create a table for configuration items
-        const configTable = document.createElement('table');
-        configTable.className = 'table table-bordered table-sm';
-        
+        const configTable = document.createElement("table");
+        configTable.className = "table table-bordered table-sm";
+
         // Create the table header
-        const configThead = document.createElement('thead');
+        const configThead = document.createElement("thead");
         configThead.innerHTML = `
           <tr>
             <th>Name</th>
@@ -5023,35 +5059,35 @@ document.addEventListener("DOMContentLoaded", function () {
           </tr>
         `;
         configTable.appendChild(configThead);
-        
+
         // Create table body and add each configuration item
-        const configTbody = document.createElement('tbody');
-        
-        element.configurationItems.forEach(item => {
-          const row = document.createElement('tr');
-          
+        const configTbody = document.createElement("tbody");
+
+        element.configurationItems.forEach((item) => {
+          const row = document.createElement("tr");
+
           // Name cell
-          const nameCell = document.createElement('td');
+          const nameCell = document.createElement("td");
           nameCell.textContent = item.Name;
           if (item.HelpText) {
             nameCell.title = item.HelpText; // Add tooltip with help text
           }
           row.appendChild(nameCell);
-          
+
           // Value cell
-          const valueCell = document.createElement('td');
-          valueCell.innerHTML = item.AnswerContent || '<em>Not set</em>';
+          const valueCell = document.createElement("td");
+          valueCell.innerHTML = item.AnswerContent || "<em>Not set</em>";
           if (item.DefaultValue && !item.AnswerContent) {
             valueCell.innerHTML += ` <small class="text-muted">(Default: ${item.DefaultValue})</small>`;
           }
           row.appendChild(valueCell);
-          
+
           configTbody.appendChild(row);
         });
-        
+
         configTable.appendChild(configTbody);
         cardBody.appendChild(configTable);
-        
+
         // Return here since we've already appended table and configTable to cardBody
         detailCard.appendChild(cardBody);
         detailsContainer.appendChild(detailCard);
@@ -5189,9 +5225,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
   }
 
-  //=========================================================================
-  // 6. SEARCH & NAVIGATION FUNCTIONS
-  //=========================================================================
+  // SEARCH & NAVIGATION FUNCTIONS
 
   // Search functionality for the tree
   function handleTreeSearch(e) {
@@ -5456,12 +5490,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Make these functions globally available so they can be called from outside the DOMContentLoaded event
+  // Make these functions globally available
   window.findAndSelectTreeNode = findAndSelectTreeNode;
   window.navigateUp = navigateUp;
   window.focusFirstMatchingTreeNode = focusFirstMatchingTreeNode;
 
-  // Function definitions inside document.ready scope
   // Function to find and select a node in the tree by type and ID
   function findAndSelectTreeNode(type, id) {
     // First, find the node in the tree
@@ -5738,8 +5771,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // No longer needed as we're using a different navigation approach
-
   // Add new function to focus the first matching tree node
   function focusFirstMatchingTreeNode() {
     const searchTerm = document
@@ -5777,8 +5808,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       firstMatchingNode.style.animation = "highlight-pulse 1s";
     }, 10);
-
-    // No longer updating breadcrumb since we're not using it
   }
 
   // Add CSS for search highlighting
@@ -5793,7 +5822,7 @@ document.addEventListener("DOMContentLoaded", function () {
             background-color: rgba(255, 255, 0, 0.4) !important;
             border-left: 3px solid #007bff !important;
         }
-        /* Navigation styles moved to more specific elements */
+
         @keyframes highlight-pulse {
             0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.5); }
             70% { box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
@@ -5803,22 +5832,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.head.appendChild(style);
   });
 
-  //=============================================================================
-  // 7. UTILITY & HELPER FUNCTIONS
-  //=============================================================================
-
-  // ---- Entity Metadata and Children ----
-  // These are now defined in cis_utils.js
-
-  // CISUtils is now loaded from cis_utils.js
-  // The below delegation functions remain for backward compatibility with existing code
-
-  /**
-   * Format node type name for display - delegates to CISUtils
-   */
-  function formatNodeTypeName(type) {
-    return CISUtils.formatNodeTypeName(type);
-  }
+  // UTILITY & HELPER FUNCTIONS
 
   /**
    * Get SVG icon path for a specific element type - delegates to CISUtils
@@ -5828,39 +5842,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Show a toast notification - delegates to CISUtils
-   */
-  function showToast(message, type = "success") {
-    return CISUtils.showToast(message, type);
-  }
-
-  /**
    * Get participant name by key from the API - delegates to CISUtils
    */
   async function getParticipantNameByKey(key) {
     return await CISUtils.getParticipantNameByKey(key);
   }
 
-  // API namespace is already defined - removed redundant declaration
-
-  // CISApi namespace has been moved to cis_api.js
-  // This allows for better organization of code while maintaining backward compatibility
-
-  // Utility functions
-
-  // Utility functions
-
-  // Format node type name for display - delegates to CISUtils
-  function formatNodeTypeName(type) {
-    return CISUtils.formatNodeTypeName(type);
-  }
-
-  // Removed getTypeIcon function as it was replaced by getElementIcon
-
-  // Get SVG icon path for a specific element type - delegates to CISUtils
-  function getElementIcon(type) {
-    return CISUtils.getElementIcon(type);
-  }
-
-  // Close the DOMContentLoaded event handler
 });

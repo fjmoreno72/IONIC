@@ -1344,6 +1344,28 @@ const CISApi = {
    * @param {string} spVersion - Version of the SP
    * @returns {Promise<Object>} Object containing success flag, status code, data, and message
    */
+  /**
+   * Fetches all Specific Products (SPs) from the API.
+   *
+   * @async
+   * @returns {Promise<Array>} Array of SP objects or empty array if an error occurs
+   */
+  getAllSPs: async function () {
+    try {
+      const response = await fetch('/api/sps');
+      if (response.ok) {
+        const sps = await response.json();
+        return sps;
+      } else {
+        console.error('Error fetching SPs:', response.status, response.statusText);
+        return [];
+      }
+    } catch (error) {
+      console.error('Error fetching SPs:', error);
+      return [];
+    }
+  },
+
   addSPInstance: async function (
     missionNetworkId,
     segmentId,

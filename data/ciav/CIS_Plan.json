@@ -67,6 +67,21 @@
                               "guid": "8b68b1ad-e616-441d-849c-2a50c39bcb24",
                               "spId": "SP2",
                               "spVersion": "2"
+                            },
+                            {
+                              "guid": "64169844-f2d6-4c17-aa90-e4df3a6c9271",
+                              "spId": "SP-0084",
+                              "spVersion": "2"
+                            },
+                            {
+                              "guid": "417a4507-e4b0-44ba-b3e3-06c8be83c53f",
+                              "spId": "SP-0253",
+                              "spVersion": "23"
+                            },
+                            {
+                              "guid": "69c866fc-7ec1-479e-b45a-0615013b3131",
+                              "spId": "SP-0267",
+                              "spVersion": "23"
                             }
                           ],
                           "configurationItems": [

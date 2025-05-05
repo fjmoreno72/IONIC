@@ -9,9 +9,10 @@
 // GLOBAL VARIABLES & STATE MANAGEMENT
 
 // Core state management variables
-let currentTreeNode = null; // Currently selected tree node
 let currentElement = null; // Currently selected element within a node
+let currentTreeNode = null; // Currently selected tree node
 let cisPlanData = null; // CIS Plan tree data from API
+let allSPs = []; // Global variable for storing all SPs
 
 // Store security classifications data
 let securityClassifications = [];
@@ -84,6 +85,12 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("saveSPInstanceBtn")
     .addEventListener("click", addSPInstance);
+    
+  // Only add the modal show event listener for SP dropdown initialization
+  // Other listeners will be added dynamically when the modal opens
+  document
+    .getElementById("addSPInstanceModal")
+    .addEventListener("show.bs.modal", initializeSPDropdown);
 
   // Add Enter key save functionality to all modals
   // Function to add Enter key handler to a modal
@@ -2849,15 +2856,171 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } else {
         // Show error message
-        CISUtils.showToast(
-          result.error || "Failed to add Specific Product",
-          "danger"
-        );
+        CISUtils.showToast("Error adding SP instance: " + result.error, "error");
       }
     } catch (error) {
-      console.error("Error adding SP instance:", error);
-      CISUtils.showToast("An error occurred while adding the Specific Product", "danger");
+      console.log("Error adding SP instance:", error);
+      CISUtils.showToast("Error adding SP instance: " + error, "error");
     }
+  }
+  
+  /**
+   * Initialize the SP dropdown by loading all SPs from the API
+   */
+  async function initializeSPDropdown() {
+    try {
+      // Show loading state
+      const dropdownMenu = document.getElementById("spDropdownMenu");
+      dropdownMenu.innerHTML = '<div class="list-group-item text-muted">Loading SPs...</div>';
+      
+      // Clear the search input and selected SP display
+      document.getElementById("spSearchInput").value = "";
+      document.getElementById("selectedSPDisplay").innerHTML = "";
+      document.getElementById("addSPInstanceId").value = "";
+      
+      // Fetch all SPs from the API if we don't have them already
+      if (allSPs.length === 0) {
+        allSPs = await CISApi.getAllSPs();
+      }
+      
+      if (allSPs.length === 0) {
+        dropdownMenu.innerHTML = '<div class="list-group-item text-muted">No SPs found</div>';
+        return;
+      }
+      
+      // Sort SPs by name for better usability
+      allSPs.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+      
+      // Populate the dropdown
+      populateSPDropdown(allSPs);
+      
+      // Setup event listeners for this instance
+      setupSPSearchListeners();
+    } catch (error) {
+      console.error("Error initializing SP dropdown:", error);
+      document.getElementById("spDropdownMenu").innerHTML = 
+        '<div class="list-group-item text-muted">Error loading SPs</div>';
+    }
+  }
+  
+  /**
+   * Setup event listeners for SP search functionality
+   */
+  function setupSPSearchListeners() {
+    const searchInput = document.getElementById("spSearchInput");
+    const dropdownContainer = document.getElementById("spDropdownContainer");
+    
+    // Show dropdown when input is focused
+    searchInput.addEventListener("focus", function() {
+      dropdownContainer.classList.remove("d-none");
+    });
+    
+    // Add the input event listener for search filtering
+    searchInput.addEventListener("input", function() {
+      console.log("Search input changed, filtering SPs...");
+      filterSPs();
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function(event) {
+      const isClickInside = searchInput.contains(event.target) || 
+                           dropdownContainer.contains(event.target);
+      
+      if (!isClickInside) {
+        dropdownContainer.classList.add("d-none");
+      }
+    });
+    
+    // Reset dropdown when modal is closed
+    document.getElementById("addSPInstanceModal").addEventListener("hidden.bs.modal", function() {
+      dropdownContainer.classList.add("d-none");
+    });
+  }
+  
+  /**
+   * Populate the SP dropdown with the provided list of SPs
+   * @param {Array} spsToShow - The array of SPs to display
+   */
+  function populateSPDropdown(spsToShow) {
+    const dropdownMenu = document.getElementById("spDropdownMenu");
+    const dropdownContainer = document.getElementById("spDropdownContainer");
+    
+    if (spsToShow.length === 0) {
+      dropdownMenu.innerHTML = '<div class="list-group-item text-muted">No matching SPs found</div>';
+      return;
+    }
+    
+    // Create dropdown items for each SP
+    let dropdownHtml = '';
+    spsToShow.forEach(sp => {
+      dropdownHtml += `<div class="list-group-item" data-sp-id="${sp.id}" data-sp-name="${sp.name}">${sp.name} <small class="text-muted">(${sp.id})</small></div>`;
+    });
+    
+    dropdownMenu.innerHTML = dropdownHtml;
+    
+    // Add click handlers to the newly created items
+    const items = dropdownMenu.querySelectorAll(".list-group-item:not(.text-muted)");
+    items.forEach(item => {
+      item.addEventListener("click", selectSP);
+    });
+    
+    // Show the dropdown
+    dropdownContainer.classList.remove("d-none");
+  }
+  
+  /**
+   * Filter the SPs based on the search input
+   */
+  function filterSPs() {
+    const searchTerm = document.getElementById("spSearchInput").value.toLowerCase();
+    
+    // Show dropdown when user starts typing
+    document.getElementById("spDropdownContainer").classList.remove("d-none");
+    
+    if (!searchTerm) {
+      // If search is empty, show all SPs
+      populateSPDropdown(allSPs);
+      return;
+    }
+    
+    // Filter SPs based on name or ID containing the search term
+    const filteredSPs = allSPs.filter(sp => 
+      sp.name.toLowerCase().includes(searchTerm) || 
+      sp.id.toLowerCase().includes(searchTerm)
+    );
+    
+    populateSPDropdown(filteredSPs);
+  }
+  
+  /**
+   * Handle SP selection from the dropdown
+   * @param {Event} event - The click event
+   */
+  function selectSP(event) {
+    event.preventDefault();
+    
+    const target = event.currentTarget;
+    const spId = target.getAttribute("data-sp-id");
+    const spName = target.getAttribute("data-sp-name");
+    
+    if (!spId || !spName) return;
+    
+    // Update the hidden input with the selected SP ID
+    document.getElementById("addSPInstanceId").value = spId;
+    
+    // Update the display to show the selected SP
+    document.getElementById("selectedSPDisplay").innerHTML = 
+      `<strong>Selected:</strong> ${spName} <small class="text-muted">(${spId})</small>`;
+    
+    // Update the search input to show the selected SP
+    document.getElementById("spSearchInput").value = spName;
+    
+    // Hide the dropdown
+    document.getElementById("spDropdownContainer").classList.add("d-none");
+    
+    console.log(`Selected SP: ${spName} (${spId})`);
   }
   
   // Helper function to find a GP instance by ID in the tree data

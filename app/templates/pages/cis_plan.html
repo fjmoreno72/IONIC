@@ -849,8 +849,19 @@
                         <input type="hidden" id="addSPInstanceHwStackId" name="hwStackId_random" autocomplete="new-password">
                         <input type="hidden" id="addSPInstanceAssetId" name="assetId_random" autocomplete="new-password">
                         <div class="mb-3">
-                            <label for="addSPInstanceId" class="form-label">SP ID</label>
-                            <input type="text" class="form-control" id="addSPInstanceId" name="spId_random" autocomplete="new-password" required>
+                            <label for="spSearchInput" class="form-label">Select Specific Product</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" id="spSearchInput" placeholder="Search for SP..." autocomplete="off">
+                                <div class="position-absolute w-100" style="z-index: 1000;">
+                                    <div id="spDropdownContainer" class="d-none" style="max-height: 300px; overflow-y: auto; background-color: white; border: 1px solid #ced4da; border-radius: 0.25rem;">
+                                        <div id="spDropdownMenu" class="list-group list-group-flush" style="cursor: pointer;">
+                                            <div class="list-group-item text-muted">Loading SPs...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="addSPInstanceId" name="spId_random" required>
+                            <div id="selectedSPDisplay" class="form-text mt-2"></div>
                         </div>
                         <div class="mb-3">
                             <label for="addSPInstanceVersion" class="form-label">Version</label>

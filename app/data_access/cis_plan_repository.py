@@ -1265,11 +1265,8 @@ def add_sp_instance(environment: str, mission_network_id: str, segment_id: str, 
         if 'spInstances' not in gp_instance:
             gp_instance['spInstances'] = []
         
-        # Check if SP instance with same ID already exists
-        for sp in gp_instance['spInstances']:
-            if sp.get('spId') == sp_id:
-                logging.warning(f"Repository: SP instance with ID '{sp_id}' already exists in GP instance '{gp_instance_id}'")
-                return None
+        # We're now allowing multiple SP instances with the same SP ID
+        # This might be useful for having different versions of the same SP
         
         # Create the new SP instance
         new_sp_instance = {
@@ -1393,37 +1390,56 @@ def update_sp_instance(environment: str, mission_network_id: str, segment_id: st
         raise
 
 def delete_sp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str,
-                      stack_id: str, asset_id: str, gp_instance_id: str, sp_id: str) -> bool:
+                       stack_id: str, asset_id: str, gp_instance_id: str, sp_id: str) -> bool:
     """Deletes an SP instance from a GP instance."""
     try:
+        logging.info(f"Repository: Starting deletion of SP instance with params: environment={environment}, "
+                    f"mission_network_id={mission_network_id}, segment_id={segment_id}, domain_id={domain_id}, "
+                    f"stack_id={stack_id}, asset_id={asset_id}, gp_instance_id={gp_instance_id}, sp_id={sp_id}")
+        
         data = _load_cis_plan(environment)
         mn = _find_mission_network(data.get('missionNetworks', []), mission_network_id)
         if not mn:
+            logging.error(f"Repository: Mission network not found: {mission_network_id}")
             return False
         seg = _find_network_segment(mn, segment_id)
         if not seg:
+            logging.error(f"Repository: Network segment not found: {segment_id}")
             return False
         sd = _find_security_domain(seg.get('securityDomains', []), domain_id)
         if not sd:
+            logging.error(f"Repository: Security domain not found: {domain_id}")
             return False
         hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
         if not hw_stack:
+            logging.error(f"Repository: HW stack not found: {stack_id}")
             return False
         asset = _find_asset(hw_stack.get('assets', []), asset_id)
         if not asset:
+            logging.error(f"Repository: Asset not found: {asset_id}")
             return False
         
         # Find the GP instance
+        gp_instance = None
         for gpi in asset.get('gpInstances', []):
             if gpi.get('gpid') == gp_instance_id:
-                # Find and remove the SP instance
-                for i, spi in enumerate(gpi.get('spInstances', [])):
-                    if spi.get('spId') == sp_id:
-                        gpi['spInstances'].pop(i)
-                        _save_cis_plan(environment, data)
-                        logging.info(f"Repository: Deleted SP instance '{sp_id}' from GP instance '{gp_instance_id}'")
-                        return True
+                gp_instance = gpi
                 break
+                
+        if not gp_instance:
+            logging.error(f"Repository: GP instance not found: {gp_instance_id}")
+            return False
+            
+        logging.info(f"Repository: Found GP instance. It has {len(gp_instance.get('spInstances', []))} SP instances")
+            
+        # Find and remove the SP instance
+        for i, spi in enumerate(gp_instance.get('spInstances', [])):
+            logging.info(f"Repository: Checking SP instance {i}: {spi.get('spId')} against target {sp_id}")
+            if spi.get('spId') == sp_id:
+                gp_instance['spInstances'].pop(i)
+                _save_cis_plan(environment, data)
+                logging.info(f"Repository: Successfully deleted SP instance '{sp_id}' from GP instance '{gp_instance_id}'")
+                return True
         
         return False
     except Exception as e:

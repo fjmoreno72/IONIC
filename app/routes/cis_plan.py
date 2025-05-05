@@ -1,4 +1,5 @@
 from flask import Blueprint, session, jsonify, request, current_app, render_template, redirect, url_for
+import logging
 from app.data_access.cis_plan_repository import (
     get_all_cis_plan, get_all_cis_security_classification,
     add_mission_network, update_mission_network, delete_mission_network,
@@ -555,17 +556,79 @@ def sp_instances(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id):
             sp_id = data.get('spId')
             sp_version = data.get('spVersion')
             
-            new_instance = add_sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id, sp_version)
-            if new_instance:
-                return jsonify({
-                    'status': 'success',
-                    'message': f"Successfully added SP instance {sp_id} to GP instance {gp_id}",
-                    'data': new_instance
-                }), 201
-            else:
+            try:
+                new_instance = add_sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id, sp_version)
+                if new_instance:
+                    return jsonify({
+                        'status': 'success',
+                        'message': f"Successfully added SP instance {sp_id} to GP instance {gp_id}",
+                        'data': new_instance
+                    }), 201
+                else:
+                    # Check if SP instance already exists
+                    from app.data_access.cis_plan_repository import _load_cis_plan, _find_mission_network, _find_network_segment, _find_security_domain, _find_hw_stack, _find_asset
+                    
+                    data = _load_cis_plan(environment)
+                    mn = _find_mission_network(data.get('missionNetworks', []), mn_id)
+                    if not mn:
+                        return jsonify({
+                            'status': 'error',
+                            'message': f"Mission network {mn_id} not found"
+                        }), 400
+                        
+                    seg = _find_network_segment(mn, seg_id)
+                    if not seg:
+                        return jsonify({
+                            'status': 'error',
+                            'message': f"Network segment {seg_id} not found"
+                        }), 400
+                        
+                    sd = _find_security_domain(seg.get('securityDomains', []), dom_id)
+                    if not sd:
+                        return jsonify({
+                            'status': 'error',
+                            'message': f"Security domain {dom_id} not found"
+                        }), 400
+                        
+                    hw_stack = _find_hw_stack(sd.get('hwStacks', []), stack_id)
+                    if not hw_stack:
+                        return jsonify({
+                            'status': 'error',
+                            'message': f"Hardware stack {stack_id} not found"
+                        }), 400
+                        
+                    asset = _find_asset(hw_stack.get('assets', []), asset_id)
+                    if not asset:
+                        return jsonify({
+                            'status': 'error',
+                            'message': f"Asset {asset_id} not found"
+                        }), 400
+                    
+                    # Check if GP instance exists
+                    gp_instance = None
+                    for gpi in asset.get('gpInstances', []):
+                        if gpi.get('gpid') == gp_id:
+                            gp_instance = gpi
+                            break
+                    
+                    if not gp_instance:
+                        return jsonify({
+                            'status': 'error',
+                            'message': f"GP instance {gp_id} not found in asset {asset_id}"
+                        }), 400
+                    
+                    # We now allow multiple instances of the same SP
+                    # This enables having different versions of the same SP in a GP instance
+                    
+                    # Default error if we can't determine the specific issue
+                    return jsonify({
+                        'status': 'error',
+                        'message': f"Failed to add SP instance to GP instance {gp_id}. Unknown error."
+                    }), 400
+            except Exception as e:
                 return jsonify({
                     'status': 'error',
-                    'message': f"Failed to add SP instance to GP instance {gp_id}. It may already exist or the GP instance was not found."
+                    'message': f"Error adding SP instance: {str(e)}"
                 }), 400
     except Exception as e:
         logging.error(f"API Error processing SP instances: {str(e)}")
@@ -616,17 +679,36 @@ def sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, s
                 }), 404
         elif request.method == 'DELETE':
             # Delete an SP instance
-            success = delete_sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id)
-            if success:
-                return jsonify({
-                    'status': 'success',
-                    'message': f"Successfully deleted SP instance {sp_id} from GP instance {gp_id}"
-                })
-            else:
+            # Add detailed logging of parameters and URL to help diagnose issues
+            logging.info(f"DELETE SP instance request with params: environment={environment}, mn_id={mn_id}, "
+                       f"seg_id={seg_id}, dom_id={dom_id}, stack_id={stack_id}, asset_id={asset_id}, "
+                       f"gp_id={gp_id}, sp_id={sp_id}")
+            
+            # Log the full URL for troubleshooting
+            logging.info(f"DELETE SP instance URL: /api/cis_plan/{environment}/mission_networks/{mn_id}/"
+                       f"network_segments/{seg_id}/security_domains/{dom_id}/hw_stacks/{stack_id}/"
+                       f"assets/{asset_id}/gp_instances/{gp_id}/sp_instances/{sp_id}")
+            
+            try:
+                success = delete_sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id)
+                if success:
+                    logging.info(f"Successfully deleted SP instance {sp_id} from GP instance {gp_id}")
+                    return jsonify({
+                        'status': 'success',
+                        'message': f"Successfully deleted SP instance {sp_id} from GP instance {gp_id}"
+                    })
+                else:
+                    logging.error(f"Failed to delete SP instance {sp_id} from GP instance {gp_id}. It may not exist.")
+                    return jsonify({
+                        'status': 'error',
+                        'message': f"Failed to delete SP instance {sp_id} from GP instance {gp_id}. It may not exist."
+                    }), 404
+            except Exception as e:
+                logging.error(f"Exception in DELETE SP instance handler: {str(e)}")
                 return jsonify({
                     'status': 'error',
-                    'message': f"Failed to delete SP instance {sp_id} from GP instance {gp_id}. It may not exist."
-                }), 404
+                    'message': f"Exception while deleting SP instance: {str(e)}"
+                }), 500
     except Exception as e:
         logging.error(f"API Error processing SP instance {sp_id}: {str(e)}")
         return jsonify({

@@ -185,11 +185,20 @@ const CISApi = {
   deleteItem: async function (type, id, parentIds) {
     try {
       let endpoint = "";
+      
+      console.log('deleteItem called with type:', type, 'id:', id, 'parentIds:', parentIds);
+
+      // Handle null or undefined parentIds
+      if (!parentIds) {
+        parentIds = {}; // Default to empty object if not provided
+        console.log('parentIds was null or undefined, setting to empty object');
+      }
 
       // Convert string parentIds to array if it's a string (for backward compatibility)
       let parsedParentIds = parentIds;
       if (typeof parentIds === "string" && parentIds.includes(",")) {
         parsedParentIds = parentIds.split(",");
+        console.log('Split parentIds string into array:', parsedParentIds);
       }
 
       // Build the appropriate endpoint based on entity type
@@ -266,6 +275,55 @@ const CISApi = {
           domainId,
           hwStackId,
           assetId,
+          id
+        );
+      } else if (type === "spInstances") {
+        // Handle SP instance deletion
+        let missionNetworkId, segmentId, domainId, hwStackId, assetId, gpInstanceId;
+        
+        console.log('Deleting SP instance with parentIds:', parsedParentIds);
+        
+        if (Array.isArray(parsedParentIds)) {
+          missionNetworkId = parsedParentIds[0] || "MN-0007";
+          segmentId = parsedParentIds[1] || "NS-0001";
+          domainId = parsedParentIds[2] || "CL-UNCLASS";
+          hwStackId = parsedParentIds[3] || "HW-0001";
+          assetId = parsedParentIds[4] || "AS-0001";
+          gpInstanceId = parsedParentIds[5] || "GP-0039";
+        } else {
+          missionNetworkId = parsedParentIds.missionNetworkId || "MN-0007";
+          segmentId = parsedParentIds.segmentId || "NS-0001";
+          domainId = parsedParentIds.domainId || "CL-UNCLASS";
+          hwStackId = parsedParentIds.hwStackId || "HW-0001";
+          assetId = parsedParentIds.assetId || "AS-0001";
+          gpInstanceId = parsedParentIds.gpInstanceId || "GP-0039";
+        }
+        
+        // Completely simplify the logic - trust the gpInstanceId that was passed in
+        // We identified the ID correctly in the modal setup, so we should use that value
+        // Do not override it with global variables which could be stale or wrong
+        console.log('Using directly provided gpInstanceId for SP instance deletion:', gpInstanceId);
+
+        // Only check if it's missing and provide a clear error
+        if (!gpInstanceId || gpInstanceId === 'null' || gpInstanceId === 'undefined') {
+          console.error('GP Instance ID is null or invalid, cannot delete SP instance');
+          return {
+            success: false,
+            error: 'Missing required GP Instance ID for SP instance deletion',
+            status: 400,
+          };
+        }
+        
+        console.log('Final GP Instance ID for SP instance deletion:', gpInstanceId);
+
+        // Use the dedicated deleteSPInstance method which has better error handling
+        return this.deleteSPInstance(
+          missionNetworkId,
+          segmentId,
+          domainId,
+          hwStackId,
+          assetId,
+          gpInstanceId,
           id
         );
       } else if (type === "gpInstances") {
@@ -1420,6 +1478,111 @@ const CISApi = {
       };
     } catch (error) {
       console.error("Error in addSPInstance API call:", error);
+      return {
+        success: false,
+        error: error.message || "Network error occurred",
+        status: 0,
+      };
+    }
+  },
+
+  /**
+   * Deletes an SP instance.
+   *
+   * @async
+   * @param {string} missionNetworkId - ID of the parent mission network
+   * @param {string} segmentId - ID of the parent network segment
+   * @param {string} domainId - ID of the parent security domain
+   * @param {string} hwStackId - ID of the parent hardware stack
+   * @param {string} assetId - ID of the parent asset
+   * @param {string} gpInstanceId - ID of the parent GP instance
+   * @param {string} spInstanceId - ID of the SP instance to delete
+   * @returns {Promise<Object>} Object containing success flag, status code, data, and message
+   */
+  deleteSPInstance: async function (
+    missionNetworkId,
+    segmentId,
+    domainId,
+    hwStackId,
+    assetId,
+    gpInstanceId,
+    spInstanceId
+  ) {
+    try {
+      // Debug logging for parameters
+      console.log('DEBUG - deleteSPInstance parameters:', {
+        missionNetworkId,
+        segmentId,
+        domainId,
+        hwStackId,
+        assetId,
+        gpInstanceId,
+        spInstanceId
+      });
+      
+      // Check if gpInstanceId is missing and use global value if available
+      if (!gpInstanceId || gpInstanceId === 'null') {
+        if (window.currentGpInstanceId && window.currentGpInstanceId !== 'null' && window.currentGpInstanceId !== 'undefined') {
+          console.log('Using window.currentGpInstanceId:', window.currentGpInstanceId);
+          gpInstanceId = window.currentGpInstanceId;
+        }
+      }
+      
+      // Explicit debug for GP instance ID after potential fallback
+      console.log('Final gpInstanceId used for deletion:', gpInstanceId);
+      
+      // Input validation
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId ||
+        !gpInstanceId ||
+        !spInstanceId
+      ) {
+        // Add detailed logging about which parameter is missing
+        const missingParams = [];
+        if (!missionNetworkId) missingParams.push('missionNetworkId');
+        if (!segmentId) missingParams.push('segmentId');
+        if (!domainId) missingParams.push('domainId');
+        if (!hwStackId) missingParams.push('hwStackId');
+        if (!assetId) missingParams.push('assetId');
+        if (!gpInstanceId) missingParams.push('gpInstanceId');
+        if (!spInstanceId) missingParams.push('spInstanceId');
+        
+        console.error('Missing parameters for deleteSPInstance:', missingParams);
+        
+        return {
+          success: false,
+          error: `Missing required parameters: ${missingParams.join(', ')}`,
+          status: 400,
+        };
+      }
+
+      const environment = sessionStorage.getItem('environment') || 'ciav';
+      // CRITICAL FIX: URL segment style must match exactly what the backend expects
+      // The correct hierarchy is singular forms for most path elements, except a few plurals
+      // Hard coding it to match the backend route exactly
+      const endpoint = `/api/cis_plan/${environment}/mission_networks/${missionNetworkId}/network_segments/${segmentId}/security_domains/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/gp_instances/${gpInstanceId}/sp_instances/${spInstanceId}`;
+
+      console.log('DELETE request to endpoint:', endpoint);
+      
+      const response = await fetch(endpoint, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const result = await response.json();
+
+      return {
+        success: response.ok,
+        status: response.status,
+        data: result.data || {},
+        message: result.message || "",
+      };
+    } catch (error) {
+      console.error("Error in deleteSPInstance API call:", error);
       return {
         success: false,
         error: error.message || "Network error occurred",

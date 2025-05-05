@@ -59,29 +59,14 @@
                           "serviceId": "SRV-0016",
                           "spInstances": [
                             {
-                              "guid": "41f66e95-8404-4b0f-81b4-54919d52b64e",
-                              "spId": "111111",
-                              "spVersion": "222222"
-                            },
-                            {
-                              "guid": "8b68b1ad-e616-441d-849c-2a50c39bcb24",
-                              "spId": "SP2",
-                              "spVersion": "2"
-                            },
-                            {
-                              "guid": "64169844-f2d6-4c17-aa90-e4df3a6c9271",
-                              "spId": "SP-0084",
-                              "spVersion": "2"
-                            },
-                            {
-                              "guid": "417a4507-e4b0-44ba-b3e3-06c8be83c53f",
-                              "spId": "SP-0253",
-                              "spVersion": "23"
-                            },
-                            {
-                              "guid": "69c866fc-7ec1-479e-b45a-0615013b3131",
+                              "guid": "5c5ac25c-bd4a-4fc8-be27-0bd5425b2ba2",
                               "spId": "SP-0267",
-                              "spVersion": "23"
+                              "spVersion": "3"
+                            },
+                            {
+                              "guid": "98856d8b-ceb2-4003-a864-852673e78600",
+                              "spId": "SP-0147",
+                              "spVersion": "256"
                             }
                           ],
                           "configurationItems": [
@@ -140,7 +125,13 @@
                           "guid": "16fa4f22-324d-4052-83ac-4222adee98f4",
                           "instanceLabel": "",
                           "serviceId": "SRV-0014",
-                          "spInstances": [],
+                          "spInstances": [
+                            {
+                              "guid": "a077d2a7-15e0-4256-8176-6aad28a1b116",
+                              "spId": "SP-0090",
+                              "spVersion": "1"
+                            }
+                          ],
                           "configurationItems": [
                             {
                               "Name": "All certificates across trust path",
@@ -325,7 +316,13 @@
                           "guid": "b54e685d-3d9d-452f-b202-c6659d088d24",
                           "instanceLabel": "",
                           "serviceId": "SRV-0010",
-                          "spInstances": [],
+                          "spInstances": [
+                            {
+                              "guid": "726da8ce-ad45-4074-b5e3-09148b349580",
+                              "spId": "SP-0267",
+                              "spVersion": "25"
+                            }
+                          ],
                           "configurationItems": [
                             {
                               "Name": "Area of Interest (AOI) Radius",
@@ -547,7 +544,100 @@
                           ]
                         }
                       ],
-                      "gpInstances": []
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0001",
+                          "guid": "e6700155-6676-41c8-b562-050d42ed78c4",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0008",
+                          "spInstances": [
+                            {
+                              "guid": "e68b769d-f0df-4e02-9cf7-879787e2e38c",
+                              "spId": "SP-0106",
+                              "spVersion": "1"
+                            },
+                            {
+                              "guid": "4bf77ef8-f537-4ad9-99ea-855d9029ccd9",
+                              "spId": "SP-0106",
+                              "spVersion": "2"
+                            }
+                          ],
+                          "configurationItems": [
+                            {
+                              "Name": "C2/NonC2",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "074f6266-1c3a-4c24-8a0c-70c1de3e0a0e",
+                              "DefaultValue": "Non C2",
+                              "HelpText": "pick either:  \"C2\"  or \"Non C2\""
+                            },
+                            {
+                              "Name": "JRE ID",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "9958bf8d-c714-45f8-8982-d5c8ade4f060",
+                              "DefaultValue": "",
+                              "HelpText": "JRE ID assigned to you Data Link Server"
+                            },
+                            {
+                              "Name": "JREAP Time Sync (Preferred)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "822b6895-50ab-4478-ad76-42575cc109ce",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
+                            },
+                            {
+                              "Name": "JREAP Time Sync (Supported)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "c32de031-0ca0-4615-bd5c-5325f365faf6",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
+                            },
+                            {
+                              "Name": "JU Number",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "031281ac-0ead-4b7c-acf3-dc689256e5e8",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Maximum Offset",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "6ffbf902-ee40-464c-a11b-bd5098b0c42c",
+                              "DefaultValue": "0.5",
+                              "HelpText": "Time in seconds"
+                            },
+                            {
+                              "Name": "Platform Role",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "1b3fa1b5-3a1a-47e0-9f38-c5012d003546",
+                              "DefaultValue": "semi-active",
+                              "HelpText": "pick either: \"active\", \"semi-active\", \"passive\"."
+                            },
+                            {
+                              "Name": "TN Block",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "dc02f7d5-36d6-45c8-abe3-92f9a82be159",
+                              "DefaultValue": "",
+                              "HelpText": "Track number block assigned to Active Platform"
+                            },
+                            {
+                              "Name": "URL Track Store",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "fa0597fd-1962-493e-9ce4-95c6e436c1c9",
+                              "DefaultValue": "",
+                              "HelpText": "URL to connect to the Track Store (i.e TSS URL)"
+                            }
+                          ]
+                        }
+                      ]
                     },
                     {
                       "name": "Router",
@@ -561,7 +651,16 @@
                       "guid": "4b819f58-5dca-4c4c-b7eb-aefcee7fab4c",
                       "id": "AS-0005",
                       "networkInterfaces": [],
-                      "gpInstances": []
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0114",
+                          "guid": "dde22d1d-3b6d-4dc0-9cef-10ba19ad2612",
+                          "instanceLabel": "xxx",
+                          "serviceId": "SRV-0026",
+                          "spInstances": [],
+                          "configurationItems": []
+                        }
+                      ]
                     },
                     {
                       "name": "e-Mail Server",
@@ -623,6 +722,13 @@
                       "name": "b",
                       "guid": "1894f0e3-6d3b-44fa-be84-20720f52b831",
                       "id": "AS-0016",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "VION3",
+                      "guid": "3f786800-35a8-47da-9a79-6a980fd614e9",
+                      "id": "AS-0017",
                       "networkInterfaces": [],
                       "gpInstances": []
                     }

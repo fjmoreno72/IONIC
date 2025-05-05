@@ -10,9 +10,12 @@
 
 // Core state management variables
 let currentElement = null; // Currently selected element within a node
-let currentTreeNode = null; // Currently selected tree node
+let currentTreeNode = null; // Global variables to track state
 let cisPlanData = null; // CIS Plan tree data from API
 let allSPs = []; // Global variable for storing all SPs
+
+// Make this a window property so it's accessible from other scripts like cis_api.js
+window.currentGpInstanceId = null; // Tracks the current GP instance ID when viewing its SP instances
 
 // Store security classifications data
 let securityClassifications = [];
@@ -825,7 +828,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Preparing to delete item
 
-        // Special handling for GP instances
+        // Special handling for GP instances and SP instances
         if (elementType === "gpInstances") {
           // For GP instances, set the name appropriately
           const cardTitle = document.querySelector(
@@ -841,6 +844,73 @@ document.addEventListener("DOMContentLoaded", function () {
           const instanceId = currentElement.guid || currentElement.id || "";
 
           document.getElementById("deleteItemId").value = instanceId;
+        } else if (elementType === "spInstances") {
+          // For SP instances, set the name appropriately
+          let displayName = `SP ${currentElement.spId} v${currentElement.spVersion}`;
+          document.getElementById("deleteItemName").textContent = displayName;
+
+          // Use spId for SP instances (NOT id as SP instances don't have an id field)
+          document.getElementById("deleteItemId").value = currentElement.spId || "";
+          console.log("Setting SP instance ID for deletion:", currentElement.spId);
+          
+          // SIMPLIFIED FIX: Get parent GP instance ID directly
+          let gpInstanceId = null;
+          
+          // Try getting GP instance ID from tree node first (most reliable source)
+          if (currentTreeNode) {
+            gpInstanceId = currentTreeNode.getAttribute("data-parent-gp-instance");
+          }
+          
+          // If not found in tree node, check currentElement
+          if (!gpInstanceId && currentElement.parentGpInstance) {
+            gpInstanceId = typeof currentElement.parentGpInstance === 'object' 
+              ? currentElement.parentGpInstance.id 
+              : currentElement.parentGpInstance;
+          }
+          
+          // Check directly for gpid property as a fallback
+          if (!gpInstanceId && currentElement.gpid) {
+            gpInstanceId = currentElement.gpid;
+          }
+          
+          // Last ditch effort - try to get from parent context
+          if (!gpInstanceId && window.currentGpInstanceId) {
+            gpInstanceId = window.currentGpInstanceId;
+          }
+          
+          console.log("GP Instance ID for this SP instance (SIMPLIFIED):", gpInstanceId);
+          
+          // Get other parent IDs from the tree node
+          const assetId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-asset") : "AS-0001";
+          const hwStackId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-stack") : "HW-0001";
+          const domainId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-domain") : "CL-UNCLASS";
+          const segmentId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-segment") : "NS-0001";
+          const missionNetworkId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-mission-network") : "MN-0007";
+          
+          // For safety, ensure none of our values are null/undefined before setting the string
+          // This prevents literal 'null' or 'undefined' strings in the comma-separated values
+          const sanitizedGpInstanceId = gpInstanceId || ''; // Empty string if null/undefined
+          
+          // Log the actual GP instance ID we're using
+          console.log('Final GP instance ID for deletion (before storing in form):', sanitizedGpInstanceId || 'EMPTY STRING');
+          
+          // Skip setting the comma-separated values entirely if we don't have a valid GP instance ID
+          if (!sanitizedGpInstanceId) {
+            console.error('Cannot delete SP instance: No valid GP instance ID available');
+            showToast('Error: Cannot delete SP instance without a valid parent GP instance ID', 'danger');
+            return false; // Prevent continuing with deletion
+          }
+          
+          // ROBUST FIX: Store all parent IDs as comma-separated values 
+          // Make very sure we're using the sanitized GP instance ID that we know is valid
+          const parentIdString = `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId},${sanitizedGpInstanceId}`;
+          document.getElementById("deleteItemParentId").value = parentIdString;
+          
+          // Store the GP instance ID separately for extra redundancy
+          // This value will be checked in the deleteItem function
+          window.lastGpInstanceIdForDeletion = sanitizedGpInstanceId;
+          
+          console.log('Set parentId value for form:', parentIdString);
         } else {
           // For other types, use the standard name and id
           document.getElementById("deleteItemName").textContent =
@@ -1077,6 +1147,56 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById(
             "deleteItemParentId"
           ).value = `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId}`;
+        } else if (elementType === "spInstances") {
+          // For SP instances, we need mission network ID, segment ID, domain ID, HW stack ID, asset ID, and GP instance ID
+          let gpInstanceId = currentTreeNode.getAttribute("data-parent-gpinstance");
+          let assetId = currentTreeNode.getAttribute("data-parent-asset");
+          let hwStackId = currentTreeNode.getAttribute("data-parent-stack");
+          let domainId = currentTreeNode.getAttribute("data-parent-domain");
+          let segmentId = currentTreeNode.getAttribute("data-parent-segment");
+          let missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network");
+
+          // Fall back to object properties if needed
+          if (!gpInstanceId && currentElement.parentGPInstance) {
+            gpInstanceId = typeof currentElement.parentGPInstance === "object"
+              ? currentElement.parentGPInstance.id
+              : currentElement.parentGPInstance;
+          }
+
+          if (!assetId && currentElement.parentAsset) {
+            assetId = typeof currentElement.parentAsset === "object"
+              ? currentElement.parentAsset.id
+              : currentElement.parentAsset;
+          }
+
+          if (!hwStackId && currentElement.parentStack) {
+            hwStackId = typeof currentElement.parentStack === "object"
+              ? currentElement.parentStack.id
+              : currentElement.parentStack;
+          }
+
+          if (!domainId && currentElement.parentDomain) {
+            domainId = typeof currentElement.parentDomain === "object"
+              ? currentElement.parentDomain.id
+              : currentElement.parentDomain;
+          }
+
+          if (!segmentId && currentElement.parentSegment) {
+            segmentId = typeof currentElement.parentSegment === "object"
+              ? currentElement.parentSegment.id
+              : currentElement.parentSegment;
+          }
+
+          if (!missionNetworkId && currentElement.parentMissionNetwork) {
+            missionNetworkId = typeof currentElement.parentMissionNetwork === "object"
+              ? currentElement.parentMissionNetwork.id
+              : currentElement.parentMissionNetwork;
+          }
+
+          // Store all six parent IDs as comma-separated values
+          document.getElementById(
+            "deleteItemParentId"
+          ).value = `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId},${gpInstanceId}`;
         }
 
         const deleteModal = new bootstrap.Modal(
@@ -1485,14 +1605,71 @@ document.addEventListener("DOMContentLoaded", function () {
     // Found HW stack to restore
     selectAndExpandNode(hwNode);
 
-    // If we have an asset to restore, find and restore it
-    if (state.nodeType !== "assets" || !state.nodeId) return;
-
+    // Determine which asset to look for
+    const assetId = state.assetId || 
+                   (state.nodeType === "assets" ? state.nodeId : null);
+                   
+    if (!assetId) return;
+    
     // Looking for asset
-    const assetNode = findTreeNodeInParent(hwNode, "assets", state.nodeId);
-    if (assetNode) {
-      // Found asset to restore
-      assetNode.click(); // Just select the asset, no need to expand
+    const assetNode = findTreeNodeInParent(hwNode, "assets", assetId);
+    if (!assetNode) {
+      console.warn(`Could not find asset node with ID ${assetId}`);
+      return;
+    }
+    
+    // Found asset to restore 
+    selectAndExpandNode(assetNode); // Select and expand the asset to show children
+    
+    // For GP instances, use a more direct approach
+    if (state.nodeType === "gpInstances" && state.nodeId) {
+      // Log that we're attempting to restore a GP instance
+      console.log(`Attempting to restore GP instance with ID ${state.nodeId}`);
+      
+      // For SP instance deletion, we need to directly load and select the GP instance
+      if (state.fromSpDeletion) {
+        console.log('Using more direct approach for SP deletion scenario');
+        
+        // Use the loadGPInstanceChildren function which knows how to load SP instances 
+        // This will directly show GP instance SP children in the elements panel
+        loadGPInstanceChildren(assetNode, state.nodeId);
+        
+        // Set the current GP instance ID for SP operations
+        window.currentGpInstanceId = state.nodeId;
+        console.log('Set currentGpInstanceId to', window.currentGpInstanceId);
+        
+        // We've directly triggered the correct panel to show
+        return;
+      }
+      
+      // Standard approach for non-SP-deletion scenarios
+      // Look for GP instance within the asset node's children
+      const assetChildren = getChildrenContainer(assetNode);
+      if (!assetChildren) {
+        console.warn("Could not find children container for asset node");
+        return;
+      }
+      
+      // Find the GP instance by ID
+      const gpNode = assetChildren.querySelector(
+        `.tree-node[data-type="gpInstances"][data-id="${state.nodeId}"]`
+      );
+      
+      if (gpNode) {
+        console.log("Found GP instance node, selecting it");
+        // Found GP instance, select it to show its SP instances
+        gpNode.click();
+        
+        // Make sure the currentGpInstanceId is set so any operations on SP instances work correctly
+        if (gpNode.getAttribute("data-id")) {
+          window.currentGpInstanceId = gpNode.getAttribute("data-id");
+          console.log("Set currentGpInstanceId to", window.currentGpInstanceId);
+        }
+      } else {
+        console.warn(`Could not find GP instance node with ID ${state.nodeId}`);
+        // If we couldn't find the exact GP node, at least show all GP instances for this asset
+        loadElementChildren(assetNode, "gpInstances");
+      }
     }
   }
 
@@ -2747,6 +2924,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Add a new SP instance to a GP instance
   async function addSPInstance() {
     try {
+      // Store current state for restoration
+      const originalTreeNode = currentTreeNode;
+      const originalElement = currentElement;
+      
       // Get form fields
       let gpInstanceId = document.getElementById("addSPInstanceGPId").value;
       const missionNetworkId = document.getElementById("addSPInstanceMissionNetworkId").value;
@@ -2804,63 +2985,252 @@ document.addEventListener("DOMContentLoaded", function () {
         // Show success message
         CISUtils.showToast("Specific Product added successfully", "success");
 
-        try {
-          // Save the current GP Instance information before refresh
-          const gpInstanceInfo = {
-            id: gpInstanceId,
-            missionNetworkId,
-            segmentId,
-            domainId,
-            hwStackId,
-            assetId
-          };
+        // Reload the CIS Plan data
+        cisPlanData = await CISApi.fetchCISPlanData();
+        renderTree(cisPlanData);
+        
+        // Use an entirely different approach - navigate through the hierarchy sequentially
+        // Wait for the tree to be fully rendered
+        setTimeout(() => {
+          console.log("Starting sequential navigation through tree hierarchy");
           
-          // Refresh the CIS Plan tree data
-          const data = await CISApi.fetchCISPlanData();
-          if (data) {
-            // Store the data globally
-            cisPlanData = data;
-            
-            // Re-render the tree with the new data
-            renderTree(cisPlanData);
-            
-            console.log("Tree refreshed after adding SP instance");
-            
-            // Find the GP instance node in the tree
-            let foundNode = false;
-            
-            // First try to find by data-id (which may not be the GPID)
-            const gpsWithId = document.querySelectorAll(`[data-type="gpInstances"][data-id="${gpInstanceId}"]`);
-            if (gpsWithId && gpsWithId.length > 0) {
-              selectTreeNode(gpsWithId[0]);
-              foundNode = true;
-            }
-            
-            // If not found by ID, try to find by data-gpid
-            if (!foundNode) {
-              const gpsWithGpid = document.querySelectorAll(`[data-type="gpInstances"][data-gpid="${gpInstanceId}"]`);
-              if (gpsWithGpid && gpsWithGpid.length > 0) {
-                selectTreeNode(gpsWithGpid[0]);
-                foundNode = true;
-              }
-            }
-            
-            if (foundNode) {
-              console.log("Found and selected GP instance node after refresh");
-            } else {
-              console.log("Could not find GP instance node after refresh");
-            }
+          // Start by expanding the root node to make sure everything is visible
+          const rootNode = document.querySelector(".tree-node[data-id='root-cisplan']");
+          if (rootNode) {
+            rootNode.click();
+            console.log("Clicked root node");
           }
-        } catch (err) {
-          console.log("Error refreshing tree after adding SP instance:", err);
-        }
+          
+          // Wait for the root node expansion to take effect
+          setTimeout(() => {
+            // Step 1: Find and click the mission network
+            const missionNetworkSelector = `.tree-node[data-type="missionNetworks"][data-id="${missionNetworkId}"]`;
+            const missionNetworkNode = document.querySelector(missionNetworkSelector);
+            
+            if (missionNetworkNode) {
+              missionNetworkNode.click();
+              console.log(`Clicked mission network ${missionNetworkId}`);
+              
+              // Expand it if needed
+              const toggle = missionNetworkNode.querySelector(".tree-toggle");
+              if (toggle) {
+                const icon = toggle.querySelector("i");
+                if (icon && icon.classList.contains("fa-chevron-right")) {
+                  toggle.click();
+                  console.log("Expanded mission network");
+                }
+              }
+              
+              // Step 2: Find and click the network segment
+              setTimeout(() => {
+                const segmentSelector = `.tree-node[data-type="networkSegments"][data-id="${segmentId}"]`;
+                const segmentNode = document.querySelector(segmentSelector);
+                
+                if (segmentNode) {
+                  segmentNode.click();
+                  console.log(`Clicked network segment ${segmentId}`);
+                  
+                  // Expand it if needed
+                  const toggle = segmentNode.querySelector(".tree-toggle");
+                  if (toggle) {
+                    const icon = toggle.querySelector("i");
+                    if (icon && icon.classList.contains("fa-chevron-right")) {
+                      toggle.click();
+                      console.log("Expanded network segment");
+                    }
+                  }
+                  
+                  // Step 3: Find and click the security domain
+                  setTimeout(() => {
+                    const domainSelector = `.tree-node[data-type="securityDomains"][data-id="${domainId}"]`;
+                    const domainNode = document.querySelector(domainSelector);
+                    
+                    if (domainNode) {
+                      domainNode.click();
+                      console.log(`Clicked security domain ${domainId}`);
+                      
+                      // Expand it if needed
+                      const toggle = domainNode.querySelector(".tree-toggle");
+                      if (toggle) {
+                        const icon = toggle.querySelector("i");
+                        if (icon && icon.classList.contains("fa-chevron-right")) {
+                          toggle.click();
+                          console.log("Expanded security domain");
+                        }
+                      }
+                      
+                      // Step 4: Find and click the hardware stack
+                      setTimeout(() => {
+                        const hwStackSelector = `.tree-node[data-type="hwStacks"][data-id="${hwStackId}"]`;
+                        const hwStackNode = document.querySelector(hwStackSelector);
+                        
+                        if (hwStackNode) {
+                          hwStackNode.click();
+                          console.log(`Clicked hardware stack ${hwStackId}`);
+                          
+                          // Expand it if needed
+                          const toggle = hwStackNode.querySelector(".tree-toggle");
+                          if (toggle) {
+                            const icon = toggle.querySelector("i");
+                            if (icon && icon.classList.contains("fa-chevron-right")) {
+                              toggle.click();
+                              console.log("Expanded hardware stack");
+                            }
+                          }
+                          
+                          // Step 5: Find and click the asset
+                          setTimeout(() => {
+                            const assetSelector = `.tree-node[data-type="assets"][data-id="${assetId}"]`;
+                            const assetNode = document.querySelector(assetSelector);
+                            
+                            if (assetNode) {
+                              assetNode.click();
+                              console.log(`Clicked asset ${assetId}`);
+                              
+                              // Expand it if needed
+                              const toggle = assetNode.querySelector(".tree-toggle");
+                              if (toggle) {
+                                const icon = toggle.querySelector("i");
+                                if (icon && icon.classList.contains("fa-chevron-right")) {
+                                  toggle.click();
+                                  console.log("Expanded asset");
+                                }
+                              }
+                              
+                              // Step 6: After clicking the asset, find the GP instance in the tree
+                              // First wait for children to be rendered
+                              setTimeout(() => {
+                                console.log(`Looking for GP instance ${gpInstanceId} in the asset's children...`);
+                                
+                                // Asset children container is within the asset wrapper and has a data-parent attribute
+                                // matching the asset ID
+                                const assetWrapper = assetNode.parentElement; // Get the wrapper
+                                const assetChildren = assetWrapper.querySelector(`div[data-parent="${assetId}"]`);
+                                if (assetChildren) {
+                                  // Make sure the asset's children are expanded/visible
+                                  if (assetChildren.style.display === "none") {
+                                    const assetToggle = assetNode.querySelector(".tree-toggle");
+                                    if (assetToggle) {
+                                      assetToggle.click();
+                                      console.log("Expanded asset to see GP instances");
+                                    }
+                                  }
+                                  
+                                  // Now look for the GP instance node in the asset's children
+                                  setTimeout(() => {
+                                    // Try various selectors to find the GP instance
+                                    let gpNode = null;
+                                    
+                                    // First look for nodes with data-gpid attribute
+                                    const gpNodesWithGpid = assetChildren.querySelectorAll(`.tree-node[data-gpid="${gpInstanceId}"]`);
+                                    if (gpNodesWithGpid.length > 0) {
+                                      gpNode = gpNodesWithGpid[0];
+                                      console.log(`Found GP instance node with data-gpid=${gpInstanceId}`);
+                                    } else {
+                                      // Try with data-id attribute
+                                      const gpNodesWithId = assetChildren.querySelectorAll(`.tree-node[data-id="${gpInstanceId}"]`);
+                                      if (gpNodesWithId.length > 0) {
+                                        gpNode = gpNodesWithId[0];
+                                        console.log(`Found GP instance node with data-id=${gpInstanceId}`);
+                                      } else {
+                                        // Try by data-type
+                                        const gpNodes = assetChildren.querySelectorAll('.tree-node[data-type="gpInstances"]');
+                                        console.log(`Found ${gpNodes.length} GP instance nodes total`); 
+                                        
+                                        // Check each GP instance node to see if it's the one we want
+                                        for (let i = 0; i < gpNodes.length; i++) {
+                                          const node = gpNodes[i];
+                                          const nodeGpid = node.getAttribute("data-gpid");
+                                          const nodeId = node.getAttribute("data-id");
+                                          
+                                          console.log(`Checking node ${i+1}/${gpNodes.length}: data-gpid=${nodeGpid}, data-id=${nodeId}`);
+                                          
+                                          if (nodeGpid === gpInstanceId || nodeId === gpInstanceId) {
+                                            gpNode = node;
+                                            console.log(`Found matching GP instance node at position ${i+1}`);
+                                            break;
+                                          }
+                                        }
+                                      }
+                                    }
+                                    
+                                    // If we found the GP instance node, click it
+                                    if (gpNode) {
+                                      console.log(`Clicking GP instance node for ${gpInstanceId}`);
+                                      gpNode.click();
+                                      
+                                      // Expand the GP instance to show SP instances
+                                      setTimeout(() => {
+                                        const gpToggle = gpNode.querySelector(".tree-toggle");
+                                        if (gpToggle) {
+                                          const icon = gpToggle.querySelector("i");
+                                          if (icon && icon.classList.contains("fa-chevron-right")) {
+                                            gpToggle.click();
+                                            console.log("Expanded GP instance to show SP instances");
+                                          }
+                                        }
+                                        console.log("Successfully navigated to the GP instance");
+                                      }, 100);
+                                    } else {
+                                      console.log("Could not find GP instance node in the tree");
+                                      
+                                      // Try one last approach - look for it in the elements panel
+                                      console.log("Looking for GP instance in central panel as fallback");
+                                      const gpCard = document.querySelector(`.element-card[data-gpid="${gpInstanceId}"]`);
+                                      if (gpCard) {
+                                        console.log(`Found GP instance card for ${gpInstanceId}, clicking it`);
+                                        gpCard.click();
+                                      } else {
+                                        console.log("Could not find GP instance anywhere");
+                                        // If all else fails, try to restore the original state
+                                        if (originalTreeNode) {
+                                          originalTreeNode.click();
+                                        }
+                                      }
+                                    }
+                                  }, 200); // Wait for asset children to be fully rendered
+                                } else {
+                                  console.log("Could not find asset's children container");
+                                  if (originalTreeNode) originalTreeNode.click();
+                                }
+                              }, 300);
+                            } else {
+                              console.log(`Could not find asset ${assetId}`);
+                              if (originalTreeNode) originalTreeNode.click();
+                            }
+                          }, 200);
+                        } else {
+                          console.log(`Could not find hardware stack ${hwStackId}`);
+                          if (originalTreeNode) originalTreeNode.click();
+                        }
+                      }, 200);
+                    } else {
+                      console.log(`Could not find security domain ${domainId}`);
+                      if (originalTreeNode) originalTreeNode.click();
+                    }
+                  }, 200);
+                } else {
+                  console.log(`Could not find network segment ${segmentId}`);
+                  if (originalTreeNode) originalTreeNode.click();
+                }
+              }, 200);
+            } else {
+              console.log(`Could not find mission network ${missionNetworkId}`);
+              if (originalTreeNode) originalTreeNode.click();
+            }
+          }, 200);
+        }, 300); // Increased timeout to ensure tree is fully rendered
       } else {
         // Show error message
-        CISUtils.showToast("Error adding SP instance: " + result.error, "error");
+        if (result.message) {
+          CISUtils.showToast("Error adding SP instance: " + result.message, "danger");
+        } else {
+          CISUtils.showToast("Error adding SP instance: " + (result.error || "Unknown error"), "danger");
+        }
       }
     } catch (error) {
       console.log("Error adding SP instance:", error);
-      CISUtils.showToast("Error adding SP instance: " + error, "error");
+      CISUtils.showToast("Error adding SP instance: " + error, "danger");
     }
   }
   
@@ -2869,9 +3239,12 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   async function initializeSPDropdown() {
     try {
-      // Show loading state
+      // Prepare the dropdown menu but don't show it yet
       const dropdownMenu = document.getElementById("spDropdownMenu");
-      dropdownMenu.innerHTML = '<div class="list-group-item text-muted">Loading SPs...</div>';
+      const dropdownContainer = document.getElementById("spDropdownContainer");
+      
+      // Hide the dropdown by default
+      dropdownContainer.classList.add("d-none");
       
       // Clear the search input and selected SP display
       document.getElementById("spSearchInput").value = "";
@@ -2880,6 +3253,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
       // Fetch all SPs from the API if we don't have them already
       if (allSPs.length === 0) {
+        dropdownMenu.innerHTML = '<div class="list-group-item text-muted">Loading SPs...</div>';
         allSPs = await CISApi.getAllSPs();
       }
       
@@ -2893,8 +3267,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return a.name.localeCompare(b.name);
       });
       
-      // Populate the dropdown
-      populateSPDropdown(allSPs);
+      // Prepare the dropdown with all SPs but don't show it yet
+      // We'll set showDropdown to false to keep it hidden until user interaction
+      populateSPDropdown(allSPs, false);
       
       // Setup event listeners for this instance
       setupSPSearchListeners();
@@ -2942,8 +3317,9 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
    * Populate the SP dropdown with the provided list of SPs
    * @param {Array} spsToShow - The array of SPs to display
+   * @param {boolean} showDropdown - Whether to show the dropdown after populating
    */
-  function populateSPDropdown(spsToShow) {
+  function populateSPDropdown(spsToShow, showDropdown = false) {
     const dropdownMenu = document.getElementById("spDropdownMenu");
     const dropdownContainer = document.getElementById("spDropdownContainer");
     
@@ -2966,8 +3342,12 @@ document.addEventListener("DOMContentLoaded", function () {
       item.addEventListener("click", selectSP);
     });
     
-    // Show the dropdown
-    dropdownContainer.classList.remove("d-none");
+    // Only show the dropdown if requested
+    if (showDropdown) {
+      dropdownContainer.classList.remove("d-none");
+    } else {
+      dropdownContainer.classList.add("d-none");
+    }
   }
   
   /**
@@ -2976,22 +3356,22 @@ document.addEventListener("DOMContentLoaded", function () {
   function filterSPs() {
     const searchTerm = document.getElementById("spSearchInput").value.toLowerCase();
     
-    // Show dropdown when user starts typing
-    document.getElementById("spDropdownContainer").classList.remove("d-none");
-    
     if (!searchTerm) {
-      // If search is empty, show all SPs
-      populateSPDropdown(allSPs);
+      // If search is empty and this is due to initial load, hide the dropdown
+      // We'll keep the SPs loaded in the dropdown but hidden
+      populateSPDropdown(allSPs, false);
       return;
     }
     
+    // If user has typed something, show the dropdown with filtered results
     // Filter SPs based on name or ID containing the search term
     const filteredSPs = allSPs.filter(sp => 
       sp.name.toLowerCase().includes(searchTerm) || 
       sp.id.toLowerCase().includes(searchTerm)
     );
     
-    populateSPDropdown(filteredSPs);
+    // Show the dropdown with filtered results
+    populateSPDropdown(filteredSPs, true);
   }
   
   /**
@@ -3306,13 +3686,87 @@ document.addEventListener("DOMContentLoaded", function () {
     const type = document.getElementById("deleteItemType").value;
     const id = document.getElementById("deleteItemId").value;
     const name = document.getElementById("deleteItemName").textContent;
-    const parentId = document.getElementById("deleteItemParentId").value;
+    let parentId = document.getElementById("deleteItemParentId").value;
+
+    // Enhanced debugging
+    console.log('About to delete item with:', {
+      type,
+      id,
+      name,
+      parentId
+    });
+    
+    // For SP instances, validate that we have a valid GP instance ID (not null, undefined, or the string 'null')
+    if (type === 'spInstances') {
+      console.log('Checking parentId string:', parentId);
+      console.log('Last cached GP instance ID:', window.lastGpInstanceIdForDeletion);
+      
+      // Check for typical problems in the parentId string
+      const hasNullInString = parentId && parentId.includes(',null');
+      const hasUndefinedInString = parentId && parentId.includes(',undefined');
+      const endsWithComma = parentId && parentId.endsWith(',');
+      
+      // If any problem is detected, try to fix it
+      if (hasNullInString || hasUndefinedInString || endsWithComma) {
+        console.error('Invalid GP instance ID detected in parentId string:', parentId);
+        
+        // IMPROVED: Check both possible sources for the GP instance ID 
+        let correctGpId = window.lastGpInstanceIdForDeletion || window.currentGpInstanceId;
+        
+        console.log('Using backup GP instance ID:', correctGpId);
+        
+        if (correctGpId) {
+          // Parse the existing parentId to get the first 5 values
+          const parts = parentId.split(',');
+          const validParts = parts.slice(0, 5).filter(part => part && part !== 'null' && part !== 'undefined');
+          
+          // Reconstruct with the valid GP instance ID
+          if (validParts.length === 5) {
+            parentId = [...validParts, correctGpId].join(',');
+            console.log('Fixed parentId:', parentId);
+          } else {
+            console.error('Could not parse parentId string correctly');
+            showToast('Error: Invalid parent ID format', 'danger');
+            return; // Exit function
+          }
+        } else {
+          // No valid GP instance ID available - cannot proceed
+          console.error('Cannot delete SP instance without a valid GP instance ID');
+          showToast('Error: Cannot delete SP instance without a valid parent GP instance ID', 'danger');
+          return; // Exit function
+        }
+      }
+    }
 
     // Deleting item
-
     try {
-      // Call the API to delete the item
-      const apiResult = await CISApi.deleteItem(type, id, parentId);
+      // FINAL VALIDATION: For SP instances only, ensure the GP instance ID is in the parentId
+      if (type === 'spInstances') {
+        // Parse the parentId string into its components
+        const parts = parentId.split(',');
+        
+        // Check if the GP instance ID (6th element) is missing or invalid
+        if (parts.length < 6 || !parts[5] || parts[5] === 'null' || parts[5] === 'undefined') {
+          console.log('FINAL VALIDATION: Missing or invalid GP instance ID in parentId string');
+          
+          // Try to get the GP instance ID from our backup sources
+          const validGpId = window.lastGpInstanceIdForDeletion || window.currentGpInstanceId;
+          
+          if (validGpId) {
+            console.log('FINAL VALIDATION: Using backup GP instance ID:', validGpId);
+            
+            // If we have at least 5 parts (up to asset ID), add the GP instance ID
+            if (parts.length >= 5) {
+              parentId = parts.slice(0, 5).join(',') + ',' + validGpId;
+              console.log('FINAL VALIDATION: Fixed parentId:', parentId);
+            }
+          }
+        }
+      }
+      
+      // Call the API to delete the item - EXPLICITLY pass the parentId to ensure it's included
+      console.log('Making API call with final parentId:', parentId);
+      const apiResult = await CISApi.deleteItem(type, id, parentId || '');
 
       if (apiResult.success) {
         // Close the modal using CISUtils helper for consistent modal handling
@@ -3324,22 +3778,40 @@ document.addEventListener("DOMContentLoaded", function () {
         // Create a state to restore to the appropriate parent based on the entity type
         let stateToRestore;
 
-        // Special handling for network interfaces and GP instances
-        if (type === "networkInterfaces" || type === "gpInstances") {
-          // For network interfaces and GP instances, extract parent IDs from the comma-separated string
+        // Special handling for network interfaces, GP instances, and SP instances
+        if (type === "networkInterfaces" || type === "gpInstances" || type === "spInstances") {
+          // For network interfaces, GP instances, and SP instances, extract parent IDs from the comma-separated string
           const parentIds = parentId.split(",");
 
-          // Create state to restore to the parent asset (same format as add/edit operations)
-          stateToRestore = {
-            nodeType: "assets",
-            nodeId: parentIds[4], // assetId is at index 4
-            hwStackId: parentIds[3],
-            domainId: parentIds[2],
-            segmentId: parentIds[1],
-            missionNetworkId: parentIds[0],
-          };
-
-          if (type === "gpInstances") {
+          if (type === "spInstances") {
+            // For SP instances, we need to ensure we navigate directly to the GP instance view
+            // Get the GP Instance ID from the parentIds array or from our backup source
+            const gpInstanceId = parentIds[5] || window.lastGpInstanceIdForDeletion || window.currentGpInstanceId;
+            console.log('Preparing to restore to GP instance after SP deletion:', gpInstanceId);
+            
+            // Set up the complete state including all parent references
+            stateToRestore = {
+              nodeType: "gpInstances", // We're targeting a GP instance
+              nodeId: gpInstanceId,    // The GP instance ID to restore to
+              // All parent references for the hierarchy
+              assetId: parentIds[4],
+              hwStackId: parentIds[3],
+              domainId: parentIds[2],
+              segmentId: parentIds[1],
+              missionNetworkId: parentIds[0],
+              // Special flag to indicate this is an SP instance deletion
+              fromSpDeletion: true
+            };
+          } else {
+            // For network interfaces and GP instances, restore to the parent asset
+            stateToRestore = {
+              nodeType: "assets",
+              nodeId: parentIds[4], // assetId is at index 4
+              hwStackId: parentIds[3],
+              domainId: parentIds[2],
+              segmentId: parentIds[1],
+              missionNetworkId: parentIds[0],
+            };
           }
         } else {
           // Use CISUtils to build a restoration state for other entity types
@@ -4356,6 +4828,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
       container.appendChild(gpInstanceNode);
 
+      // Create children container for SP instances
+      const childrenContainer = document.createElement("div");
+      childrenContainer.className = "tree-node-children ms-4 ps-2 border-start";
+      childrenContainer.style.display = "none"; // Hidden by default
+      container.appendChild(childrenContainer);
+
+      // Add toggle functionality
+      gpInstanceNode.querySelector(".tree-toggle").addEventListener("click", function (e) {
+        e.stopPropagation();
+        const toggleIcon = this.querySelector("i");
+        const isExpanded = childrenContainer.style.display === "block";
+        
+        // Toggle children visibility
+        childrenContainer.style.display = isExpanded ? "none" : "block";
+        
+        // Toggle icon
+        toggleIcon.className = isExpanded 
+          ? "fas fa-chevron-right" 
+          : "fas fa-chevron-down";
+        
+        // If expanding and we have SP instances, render them
+        if (!isExpanded && gpInstance.spInstances && gpInstance.spInstances.length > 0) {
+          // Render SP instances inside the children container
+          renderSPInstances(
+            childrenContainer,
+            gpInstance.spInstances,
+            gpInstance,
+            parentAsset,
+            parentStack,
+            parentDomain,
+            parentSegment,
+            parentMissionNetwork
+          );
+        }
+      });
+
       // Add click event to GP instance node
       gpInstanceNode.addEventListener("click", function (e) {
         e.stopPropagation();
@@ -4379,6 +4887,152 @@ document.addEventListener("DOMContentLoaded", function () {
             parentSegment,
             parentMissionNetwork
           );
+        }
+      });
+    });
+  }
+  
+  // Render SP instances under a GP instance
+  function renderSPInstances(
+    container,
+    spInstances,
+    parentGPInstance,
+    parentAsset,
+    parentStack,
+    parentDomain,
+    parentSegment,
+    parentMissionNetwork
+  ) {
+    // Clear existing children to avoid duplicates
+    container.innerHTML = "";
+    
+    if (!spInstances || spInstances.length === 0) {
+      const noItemsMessage = document.createElement("div");
+      noItemsMessage.className = "text-muted small p-2";
+      noItemsMessage.textContent = "No SP instances";
+      container.appendChild(noItemsMessage);
+      return;
+    }
+    
+    // Render each SP instance
+    spInstances.forEach(spInstance => {
+      // Initial display name using SP ID and version
+      const initialDisplayName = `SP-${spInstance.spId} v${spInstance.spVersion}`;
+      
+      // Create the tree node with initial display name
+      const spInstanceNode = createTreeNode(
+        "spInstances",
+        initialDisplayName,
+        spInstance.id,
+        spInstance.guid,
+        "fa-cogs"
+      );
+
+      // Set parent references for proper navigation
+      spInstanceNode.setAttribute(
+        "data-parent-gp-instance",
+        typeof parentGPInstance === "object"
+          ? parentGPInstance.id
+          : parentGPInstance
+      );
+
+      spInstanceNode.setAttribute(
+        "data-parent-asset",
+        typeof parentAsset === "object" ? parentAsset.id : parentAsset
+      );
+
+      spInstanceNode.setAttribute(
+        "data-parent-stack",
+        typeof parentStack === "object" ? parentStack.id : parentStack
+      );
+
+      spInstanceNode.setAttribute(
+        "data-parent-domain",
+        typeof parentDomain === "object" ? parentDomain.id : parentDomain
+      );
+
+      spInstanceNode.setAttribute(
+        "data-parent-segment",
+        typeof parentSegment === "object" ? parentSegment.id : parentSegment
+      );
+
+      spInstanceNode.setAttribute(
+        "data-parent-mission-network",
+        typeof parentMissionNetwork === "object"
+          ? parentMissionNetwork.id
+          : parentMissionNetwork
+      );
+
+      // Add the node to the container
+      container.appendChild(spInstanceNode);
+      
+      // Fetch SP name and update the node text asynchronously
+      if (spInstance.spId) {
+        (async function() {
+          try {
+            const response = await fetch(`/api/sps/name/${spInstance.spId}`);
+            if (response.ok) {
+              const result = await response.json();
+              
+              if (result.success && result.name) {
+                // Format display name with SP name and version in parentheses
+                let displayName = result.name;
+                if (spInstance.spVersion) {
+                  displayName = `${result.name} (v${spInstance.spVersion})`;
+                }
+                
+                // Find the name element inside the tree node and update it
+                const nameElement = spInstanceNode.querySelector('.node-text');
+                if (nameElement) {
+                  nameElement.textContent = displayName;
+                }
+              }
+            }
+          } catch (error) {
+            console.error(`Error fetching SP name for ${spInstance.spId}:`, error);
+          }
+        })();
+      }
+
+      // Add click event to handle selection
+      spInstanceNode.addEventListener("click", function (e) {
+        e.stopPropagation();
+
+        // Check if this node is already active
+        const isActive = this.classList.contains("active");
+
+        // Remove active class from all nodes
+        document.querySelectorAll(".tree-node.active").forEach(node => {
+          node.classList.remove("active");
+        });
+
+        // If this node wasn't active before, make it active and load its data
+        if (!isActive) {
+          this.classList.add("active");
+          currentTreeNode = this;
+          
+          // Set current element (important for the detail panel)
+          currentElement = spInstance;
+          currentElement.type = "spInstances";
+          
+          // Get the parent GP instance ID from the tree node and add it to the currentElement
+          const gpInstanceId = this.getAttribute("data-parent-gp-instance");
+          console.log("Tree node click - GP instance ID for this SP instance:", gpInstanceId);
+          
+          // Always set the parent GP instance ID, even if we have to look in multiple places
+          if (gpInstanceId) {
+            currentElement.parentGpInstance = gpInstanceId;
+          } else if (spInstance.parentGpInstance) {
+            // Use the value already on the SP instance
+            console.log("Using parentGpInstance from spInstance object:", spInstance.parentGpInstance);
+          } else if (window.currentGpInstanceId) {
+            // Fall back to global context if available
+            currentElement.parentGpInstance = window.currentGpInstanceId;
+            console.log("Using currentGpInstanceId from window:", window.currentGpInstanceId);
+          }
+          
+          // Update the detail panel
+          updateDetailPanel(spInstance, "spInstances");
         }
       });
     });
@@ -4424,6 +5078,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // Special handling for GP instances - we want to show SP instances, not configuration items
     if (nodeType === "gpInstances") {
       loadGPInstanceChildren(nodeData, ...parentData);
+      return;
+    }
+    
+    // Special handling for SP instances - they don't have children, just show details
+    if (nodeType === "spInstances") {
+      // Clear the elements container
+      if (elementsContainer) {
+        elementsContainer.innerHTML = "";
+      }
+      
+      // Set current element to this SP instance
+      currentElement = nodeData;
+      currentElement.type = "spInstances";
+      
+      // Update the detail panel with SP instance details
+      updateDetailPanel(currentElement, "spInstances");
       return;
     }
     if (elementsContainer) {
@@ -4584,9 +5254,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // First, clear the container
     container.innerHTML = "";
 
-    // Create a sticky header for the Add button if we're on a scrollable list
+    // Create a sticky header for the Assets list if we're on a scrollable list
     if (type === "assets") {
-      // Create sticky header with add button
+      // Create sticky header with just the title (no add button - using the global one instead)
       const stickyHeader = document.createElement("div");
       stickyHeader.className =
         "sticky-top bg-light mb-2 p-2 d-flex justify-content-between align-items-center border-bottom";
@@ -4598,33 +5268,8 @@ document.addEventListener("DOMContentLoaded", function () {
       headerTitle.textContent = `Assets (${elements.length})`;
       stickyHeader.appendChild(headerTitle);
 
-      // Create add button in sticky header
-      const addButton = document.createElement("button");
-      addButton.className = "btn btn-sm btn-primary";
-      addButton.innerHTML = '<i class="fas fa-plus"></i> Add Asset';
-      addButton.addEventListener("click", function () {
-        // This will trigger the same action as the main Add Element button when HW Stack is selected
-        if (
-          currentTreeNode &&
-          currentTreeNode.getAttribute("data-type") === "hwStacks"
-        ) {
-          const mn = currentTreeNode.getAttribute(
-            "data-parent-mission-network"
-          );
-          const seg = currentTreeNode.getAttribute("data-parent-segment");
-          const dom = currentTreeNode.getAttribute("data-parent-domain");
-          const stack = currentTreeNode.getAttribute("data-id");
-          document.getElementById("addAssetMissionNetworkId").value = mn;
-          document.getElementById("addAssetSegmentId").value = seg;
-          document.getElementById("addAssetDomainId").value = dom;
-          document.getElementById("addAssetHwStackId").value = stack;
-          const addModal = new bootstrap.Modal(
-            document.getElementById("addAssetModal")
-          );
-          addModal.show();
-        }
-      });
-      stickyHeader.appendChild(addButton);
+      // Note: We're removing the redundant Add Asset button here as the main green Add button
+      // already provides this functionality
 
       container.appendChild(stickyHeader);
 
@@ -4733,8 +5378,8 @@ document.addEventListener("DOMContentLoaded", function () {
       card.setAttribute("data-id", element.id);
       card.setAttribute("data-guid", element.guid);
 
-      // For gpInstances or networkInterfaces, add parent reference attributes for proper deletion
-      if (type === "gpInstances" || type === "networkInterfaces") {
+      // For gpInstances, networkInterfaces, or spInstances, add parent reference attributes for proper deletion
+      if (type === "gpInstances" || type === "networkInterfaces" || type === "spInstances") {
         // Get parent references from the current tree node
         if (currentTreeNode) {
           // Add parent asset reference
@@ -4862,6 +5507,50 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           // No gpid available, just show the display text
           cardTitle.textContent = displayText;
+        }
+      } else if (type === "spInstances") {
+        // For SP instances, show the SP name from API and version
+        // Set initial value using SP ID and version as placeholder
+        let displayText = `SP ${element.spId}`;
+        if (element.spVersion) {
+          displayText += ` v${element.spVersion}`;
+        }
+        
+        // Initially set the placeholder text
+        cardTitle.textContent = displayText;
+        
+        // Store initial display name as data attribute
+        card.setAttribute("data-display-name", displayText);
+        
+        // If we have a spId, fetch the actual SP name
+        if (element.spId) {
+          // Fetch SP name asynchronously
+          (async function() {
+            try {
+              const response = await fetch(`/api/sps/name/${element.spId}`);
+              if (response.ok) {
+                const result = await response.json();
+                
+                if (result.success && result.name) {
+                  // Format display name - include SP name and version if available
+                  let spName = result.name;
+                  let updatedText = spName;
+                  
+                  // If we have a version, add it in parentheses
+                  if (element.spVersion) {
+                    updatedText = `${spName} (v${element.spVersion})`;
+                  }
+                  
+                  // Update the card title with the SP name
+                  cardTitle.textContent = updatedText;
+                  // Update the data attribute with the final display name
+                  card.setAttribute("data-display-name", updatedText);
+                }
+              }
+            } catch (error) {
+              console.error(`Error fetching SP name for ${element.spId}:`, error);
+            }
+          })();
         }
       } else {
         const displayName = element.name || "";
@@ -5018,9 +5707,35 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Special function to handle children of GP instances (SP instances)
+  // This function can be called in two ways:
+  // 1. From tree node click - with gpInstance as a GP instance object
+  // 2. From state restoration - with gpInstance as an asset node and parentData[0] as gpId string
   function loadGPInstanceChildren(gpInstance, ...parentData) {
     if (elementsContainer) {
       elementsContainer.innerHTML = "";
+    }
+    
+    // Handle both call patterns
+    let gpInstanceId;
+    
+    // Determine if this is a direct call from state restoration
+    if (parentData.length > 0 && typeof parentData[0] === 'string') {
+      // This is a call from state restoration with explicit GP ID
+      gpInstanceId = parentData[0];
+      console.log('Called loadGPInstanceChildren with explicit GP ID:', gpInstanceId);
+    } else {
+      // This is a regular call with a GP instance object
+      gpInstanceId = gpInstance.gpid;
+      console.log('Called loadGPInstanceChildren with GP instance object, ID:', gpInstanceId);
+    }
+    
+    // Store the current GP instance ID globally for SP instance deletion context
+    // Critical: only update if we have a valid ID
+    if (gpInstanceId) {
+      window.currentGpInstanceId = gpInstanceId;
+      console.log('Setting current GP instance ID:', window.currentGpInstanceId);
+    } else {
+      console.warn('No valid GP instance ID found, keeping existing:', window.currentGpInstanceId);
     }
 
     // Create the header with title and up button
@@ -5039,30 +5754,38 @@ document.addEventListener("DOMContentLoaded", function () {
       mainElementsTitle.textContent = "CIS Plan - Generic Product Instance";
     }
 
-    // Default display text
+    // Default display text - handle both object and string ID cases
     let displayText = "GP Instance";
-    if (gpInstance.instanceLabel) {
-      displayText = gpInstance.instanceLabel;
-    } else if (gpInstance.gpid) {
-      displayText = `GP ${gpInstance.gpid}`;
+    let gpId = gpInstanceId; // Use the determined ID from earlier
+    
+    // If we have a GP instance object (tree click case)
+    if (typeof gpInstance === 'object' && gpInstance !== null) {
+      if (gpInstance.instanceLabel) {
+        displayText = gpInstance.instanceLabel;
+      } else if (gpInstance.gpid) {
+        displayText = `GP ${gpInstance.gpid}`;
+        gpId = gpInstance.gpid;
+      }
+    } else if (gpId) {
+      // Direct GP ID case (state restoration)
+      displayText = `GP ${gpId}`;
     }
 
     // Get the name asynchronously if we have a GP ID
-    if (gpInstance.gpid) {
-      fetchGPName(gpInstance.gpid).then((gpName) => {
+    if (gpId) {
+      fetchGPName(gpId).then((gpName) => {
         if (gpName) {
-          if (gpInstance.instanceLabel && gpInstance.instanceLabel !== gpName) {
-            const titleSpan = document.querySelector(
-              "#elementsBreadcrumb span"
-            );
-            if (titleSpan) {
+          const titleSpan = document.querySelector(
+            "#elementsBreadcrumb span"
+          );
+          if (titleSpan) {
+            // If we have a GP instance object with an instance label
+            if (typeof gpInstance === 'object' && 
+                gpInstance !== null && 
+                gpInstance.instanceLabel && 
+                gpInstance.instanceLabel !== gpName) {
               titleSpan.textContent = `${gpName} (${gpInstance.instanceLabel}) - Generic Product Instance`;
-            }
-          } else {
-            const titleSpan = document.querySelector(
-              "#elementsBreadcrumb span"
-            );
-            if (titleSpan) {
+            } else {
               titleSpan.textContent = `${gpName} - Generic Product Instance`;
             }
           }
@@ -5105,18 +5828,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check if we have SP instances to display
     let childrenRendered = false;
-
-    if (gpInstance.spInstances && gpInstance.spInstances.length > 0) {
+    
+    // Find SP instances either from gpInstance object or by searching global data
+    let spInstances = [];
+    
+    // Case 1: We have a direct GP instance object with SP instances (tree click)
+    if (typeof gpInstance === 'object' && gpInstance !== null && 
+        gpInstance.spInstances && gpInstance.spInstances.length > 0) {
+      spInstances = gpInstance.spInstances;
+    } 
+    // Case 2: State restoration - need to find SP instances for this GP in the global data
+    else if (gpId && cisPlanData && cisPlanData.missionNetworks) {
+      console.log('Looking for SP instances for GP ID:', gpId);
+      
+      // Find SP instances for this GP ID in the global data
+      function findSpInstancesForGp(data, targetGpId) {
+        // Base case: We found a GP instance with the target ID
+        if (data && data.gpid === targetGpId && data.spInstances) {
+          return data.spInstances;
+        }
+        
+        // Recursive case: Check all arrays in the object
+        if (typeof data === 'object' && data !== null) {
+          for (const key in data) {
+            if (Array.isArray(data[key])) {
+              for (const item of data[key]) {
+                const result = findSpInstancesForGp(item, targetGpId);
+                if (result && result.length) {
+                  return result;
+                }
+              }
+            }
+          }
+        }
+        
+        return [];
+      }
+      
+      spInstances = findSpInstancesForGp(cisPlanData, gpId);
+      console.log('Found', spInstances.length, 'SP instances for GP ID:', gpId);
+    }
+    
+    // If we have SP instances to display
+    if (spInstances && spInstances.length > 0) {
       // Add a header for SP instances
       const spHeader = document.createElement("h5");
       spHeader.className = "mt-3 mb-2";
-      spHeader.innerHTML = `<i class="fas fa-cog me-2"></i> Specific Products (${gpInstance.spInstances.length})`;
+      spHeader.innerHTML = `<i class="fas fa-cog me-2"></i> Specific Products (${spInstances.length})`;
       elementsContent.appendChild(spHeader);
 
-      // Render SP instances as cards
+      // Add the GP instance ID to each SP instance for proper parent reference
+      const spInstancesWithParent = spInstances.map(spInstance => {
+        // Create a copy of the SP instance with an added parentGpInstance property
+        return {
+          ...spInstance,
+          parentGpInstance: gpId  // Add parent GP ID reference
+        };
+      });
+      
+      console.log('SP instances with parent GP ID:', spInstancesWithParent);
+      
+      // Render SP instances as cards with parent reference
       renderElementCards(
         elementsContent,
-        gpInstance.spInstances,
+        spInstancesWithParent,
         "spInstances"
       );
       childrenRendered = true;
@@ -5141,6 +5916,121 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clear the details container
     if (detailsContainer) {
       detailsContainer.innerHTML = "";
+    }
+    
+    // Handle SP instances
+    if (type === "spInstances") {
+      if (detailsContainer) {
+        // Create the card
+        const card = document.createElement("div");
+        card.className = "card mb-3";
+        
+        // Set up the card header
+        const cardHeader = document.createElement("div");
+        cardHeader.className = "card-header d-flex justify-content-between align-items-center";
+        
+        // Title with icon - will be updated with SP name if available
+        const title = document.createElement("h5");
+        title.className = "card-title mb-0 d-flex align-items-center";
+        const iconImg = document.createElement("img");
+        iconImg.src = CISUtils.getElementIcon("spInstances");
+        iconImg.width = 24;
+        iconImg.height = 24;
+        iconImg.className = "me-2";
+        title.appendChild(iconImg);
+        
+        // Create initial title with ID and version
+        const titleText = document.createElement("span");
+        titleText.textContent = `SP Instance: ${element.spId} v${element.spVersion}`;
+        title.appendChild(titleText);
+        
+        // Add title to header
+        cardHeader.appendChild(title);
+        
+        // Add header to card
+        card.appendChild(cardHeader);
+        
+        // Set up the card body
+        const cardBody = document.createElement("div");
+        cardBody.className = "card-body";
+        
+        // Create a table for the SP instance details
+        const table = document.createElement("table");
+        table.className = "table table-sm detail-table";
+        
+        // Table body
+        const tbody = document.createElement("tbody");
+        
+        // SP name row - will be populated asynchronously
+        const nameRow = document.createElement("tr");
+        const nameTh = document.createElement("th");
+        nameTh.textContent = "Name";
+        const nameTd = document.createElement("td");
+        nameTd.textContent = "Loading...";
+        nameRow.appendChild(nameTh);
+        nameRow.appendChild(nameTd);
+        tbody.appendChild(nameRow);
+        
+        // Add details rows
+        const detailRows = [
+          { label: "SP ID", value: element.spId },
+          { label: "Version", value: element.spVersion },
+          { label: "GUID", value: element.guid }
+        ];
+        
+        detailRows.forEach(row => {
+          const tr = document.createElement("tr");
+          const th = document.createElement("th");
+          th.textContent = row.label;
+          const td = document.createElement("td");
+          td.textContent = row.value || "N/A";
+          tr.appendChild(th);
+          tr.appendChild(td);
+          tbody.appendChild(tr);
+        });
+        
+        table.appendChild(tbody);
+        cardBody.appendChild(table);
+        card.appendChild(cardBody);
+        
+        // Add the card to the container
+        detailsContainer.appendChild(card);
+        
+        // Fetch SP name and update both title and details asynchronously
+        if (element.spId) {
+          (async function() {
+            try {
+              const response = await fetch(`/api/sps/name/${element.spId}`);
+              if (response.ok) {
+                const result = await response.json();
+                
+                if (result.success && result.name) {
+                  // Update name in details table
+                  nameTd.textContent = result.name;
+                  
+                  // Update the title with name and version
+                  let displayText = result.name;
+                  if (element.spVersion) {
+                    displayText = `${result.name} (v${element.spVersion})`;
+                  }
+                  titleText.textContent = `SP Instance: ${displayText}`;
+                }
+              }
+            } catch (error) {
+              console.error(`Error fetching SP name for ${element.spId}:`, error);
+              nameTd.textContent = "Error loading name";
+            }
+          })();
+        } else {
+          nameTd.textContent = "N/A";
+        }
+        
+        // Enable/disable buttons as needed
+        if (editDetailButton) editDetailButton.disabled = true; // Disable edit for SP instances for now
+        if (deleteDetailButton) deleteDetailButton.disabled = false;
+        
+        return;
+      }
     }
 
     // Ensure the corresponding element card is highlighted
@@ -6122,6 +7012,30 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           return;
         }
+      } else if (type === "gpInstances") {
+        // For GP instances, navigate to parent asset
+        let parentAsset = currentElement.parentAsset || currentElement.assetId;
+
+        // Extract ID if it's an object
+        if (parentAsset && typeof parentAsset === "object" && parentAsset.id) {
+          parentNodeId = parentAsset.id;
+        } else {
+          parentNodeId = parentAsset;
+        }
+
+        // If not found, try to get from parent attributes
+        if (!parentNodeId && currentTreeNode) {
+          parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
+        }
+
+        if (parentNodeId) {
+          // Navigating up to Asset
+          if (findAndSelectTreeNode("assets", parentNodeId)) {
+            // Reset currentElement to ensure next navigation works
+            currentElement = null;
+          }
+          return;
+        }
       } else if (type === "missionNetworks") {
         // Go to the root node
         const rootNode = document.querySelector(
@@ -6181,6 +7095,15 @@ document.addEventListener("DOMContentLoaded", function () {
       if (parentNodeId) {
         // Find and select the parent Mission Network node
         if (findAndSelectTreeNode("missionNetworks", parentNodeId)) {
+          // Reset currentElement to ensure next navigation works
+          currentElement = null;
+        }
+      }
+    } else if (nodeType === "gpInstances") {
+      parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
+      if (parentNodeId) {
+        // Find and select the parent Asset node
+        if (findAndSelectTreeNode("assets", parentNodeId)) {
           // Reset currentElement to ensure next navigation works
           currentElement = null;
         }

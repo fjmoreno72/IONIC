@@ -55,10 +55,10 @@ def add_security_domain(environment: str, mission_network_id: str, segment_id: s
             
         # Remove internal ID and GUID generation
         # new_id = _get_next_global_security_domain_id(security_domains) # Removed
-        # new_guid = str(uuid.uuid4()) # Removed
+        new_guid = str(uuid.uuid4())
         
         # Create the new security domain object with the provided ID only
-        new_sd = {"id": id}
+        new_sd = {"id": id, "guid": new_guid}
         
         security_domains.append(new_sd)
         seg['securityDomains'] = security_domains
@@ -339,34 +339,49 @@ def _find_hw_stack(stacks, stack_id):
 def _find_asset(assets, asset_id):
     return next((asset for asset in assets if asset.get('id') == asset_id), None)
 
-def _get_next_asset_id(assets):
-    """Get the next available asset ID."""
-    if not assets:
-        return "AS-0001"
-    
-    max_id = 0
-    for asset in assets:
-        asset_id = asset.get('id', '')
-        if asset_id.startswith('AS-'):
-            try:
-                num = int(asset_id[3:])
-                max_id = max(max_id, num)
-            except ValueError:
-                pass
-    
+def _get_global_asset_ids(data):
+    """Collects all asset IDs across the entire CIS plan data."""
+    asset_ids = []
+    for mn in data.get('missionNetworks', []):
+        for segment in mn.get('networkSegments', []):
+            for domain in segment.get('securityDomains', []):
+                for stack in domain.get('hwStacks', []):
+                    for asset in stack.get('assets', []):
+                        asset_id = asset.get('id', '')
+                        if asset_id.startswith('AS-'):
+                            try:
+                                num = int(asset_id[3:])
+                                asset_ids.append(num)
+                            except ValueError:
+                                continue
+    return asset_ids
+
+def _get_next_asset_id(data):
+    """Get the next available asset ID by scanning the entire tree."""
+    asset_ids = _get_global_asset_ids(data)
+    max_id = max(asset_ids) if asset_ids else 0
     return f"AS-{max_id + 1:04d}"
 
-def _get_next_global_hw_stack_id(hw_stacks):
-    """Generates the next available HW stack ID (HW-xxxx)."""
-    max_id = 0
-    for stack in hw_stacks:
-        if stack.get('id', '').startswith('HW-'):
-            try:
-                num = int(stack['id'].split('-')[1])
-                if num > max_id:
-                    max_id = num
-            except Exception:
-                continue
+def _get_global_hw_stack_ids(data):
+    """Collects all HW stack IDs across the entire CIS plan data."""
+    hw_ids = []
+    for mn in data.get('missionNetworks', []):
+        for segment in mn.get('networkSegments', []):
+            for domain in segment.get('securityDomains', []):
+                for stack in domain.get('hwStacks', []):
+                    stack_id = stack.get('id', '')
+                    if stack_id.startswith('HW-'):
+                        try:
+                            num = int(stack_id.split('-')[1])
+                            hw_ids.append(num)
+                        except Exception:
+                            continue
+    return hw_ids
+
+def _get_next_global_hw_stack_id(data):
+    """Generates the next available HW stack ID (HW-xxxx) by scanning the entire tree."""
+    hw_ids = _get_global_hw_stack_ids(data)
+    max_id = max(hw_ids) if hw_ids else 0
     return f"HW-{max_id+1:04d}"
 
 def get_all_hw_stacks(environment: str, mission_network_id: str, segment_id: str, domain_id: str):
@@ -411,7 +426,8 @@ def add_hw_stack(environment: str, mission_network_id: str, segment_id: str, dom
             return None
 
         hw_stacks = sd.setdefault('hwStacks', [])
-        new_id = _get_next_global_hw_stack_id(hw_stacks)
+        # Now using global ID generation
+        new_id = _get_next_global_hw_stack_id(data)
         new_guid = str(uuid.uuid4())
         new_stack = {
             "name": name,
@@ -505,7 +521,8 @@ def add_asset(environment: str, mission_network_id: str, segment_id: str, domain
             return None
 
         assets = stack.setdefault('assets', [])
-        new_id = _get_next_asset_id(assets)
+        # Now using global ID generation
+        new_id = _get_next_asset_id(data)
         new_guid = str(uuid.uuid4())
         new_asset = {
             "name": name,
@@ -634,24 +651,29 @@ def _find_network_interface(network_interfaces, interface_id):
     """Finds a network interface by its ID within a list of interfaces."""
     return next((ni for ni in network_interfaces if ni.get('id') == interface_id), None)
 
-def _get_next_network_interface_id(network_interfaces):
-    """Get the next available network interface ID."""
-    if not network_interfaces:
-        return "NI-0001"
-    
-    # Extract numbers from existing IDs
-    id_nums = []
-    for ni in network_interfaces:
-        ni_id = ni.get('id', '')
-        if ni_id.startswith('NI-'):
-            try:
-                id_nums.append(int(ni_id[3:]))
-            except ValueError:
-                continue
-    
-    # Get the next ID number
-    next_id_num = max(id_nums) + 1 if id_nums else 1
-    return f"NI-{next_id_num:04d}"
+def _get_global_network_interface_ids(data):
+    """Collects all network interface IDs across the entire CIS plan data."""
+    ni_ids = []
+    for mn in data.get('missionNetworks', []):
+        for segment in mn.get('networkSegments', []):
+            for domain in segment.get('securityDomains', []):
+                for stack in domain.get('hwStacks', []):
+                    for asset in stack.get('assets', []):
+                        for ni in asset.get('networkInterfaces', []):
+                            ni_id = ni.get('id', '')
+                            if ni_id.startswith('NI-'):
+                                try:
+                                    num = int(ni_id[3:])
+                                    ni_ids.append(num)
+                                except ValueError:
+                                    continue
+    return ni_ids
+
+def _get_next_network_interface_id(data):
+    """Get the next available network interface ID by scanning the entire tree."""
+    ni_ids = _get_global_network_interface_ids(data)
+    max_id = max(ni_ids) if ni_ids else 0
+    return f"NI-{max_id + 1:04d}"
 
 def add_network_interface(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, asset_id: str, name: str) -> dict:
     """Adds a new network interface to an asset with the three required configurationItems (IP Address, Sub-Net, FQDN)."""
@@ -682,7 +704,7 @@ def add_network_interface(environment: str, mission_network_id: str, segment_id:
         new_interface = {
             "name": name,
             "guid": str(uuid.uuid4()),
-            "id": _get_next_network_interface_id(asset.get('networkInterfaces', [])),
+            "id": _get_next_network_interface_id(data),
             "configurationItems": [
                 {
                     "Name": "IP Address",
@@ -893,24 +915,7 @@ def _find_gp_instance(gp_instances, instance_id):
     """Finds a GP instance by its gpid within a list of GP instances."""
     return next((gpi for gpi in gp_instances if gpi.get('gpid') == instance_id), None)
 
-def _get_next_gp_instance_id(gp_instances):
-    """Get the next available GP instance ID."""
-    if not gp_instances:
-        return "GP-0001"
-    
-    # Extract numbers from existing IDs
-    id_nums = []
-    for gpi in gp_instances:
-        gp_id = gpi.get('gpid', '')
-        if gp_id.startswith('GP-'):
-            try:
-                id_nums.append(int(gp_id[3:]))
-            except ValueError:
-                continue
-    
-    # Get the next ID number
-    next_id_num = max(id_nums) + 1 if id_nums else 1
-    return f"GP-{next_id_num:04d}"
+# GP instance IDs are set from external file, no need for global ID generation
 
 def _populate_gp_instance_config_items(gp_instance, gp_id):
     """

@@ -898,6 +898,67 @@
           "id": "NS-0006"
         }
       ]
+    },
+    {
+      "name": "Mission 3",
+      "guid": "e2c8d496-58ad-426c-a320-675ad2303b0b",
+      "id": "MN-0009",
+      "networkSegments": [
+        {
+          "name": "NET-SEG5",
+          "guid": "c45192b7-7d97-461e-a065-28f3ff6ddf85",
+          "id": "NS-0007",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS",
+              "guid": "94833e5c-926e-428b-a947-24e58c5102d8",
+              "hwStacks": [
+                {
+                  "name": "KK-44",
+                  "guid": "9685eb3f-e2aa-4374-b2ad-bd1187914828",
+                  "id": "HW-0012",
+                  "cisParticipantID": "PAR-CIAV-000030",
+                  "assets": [
+                    {
+                      "name": "A1",
+                      "guid": "4a60371b-05ad-497a-a908-651b2fefec5b",
+                      "id": "AS-0018",
+                      "networkInterfaces": [
+                        {
+                          "name": "Net-1",
+                          "guid": "f5d66ac1-8cbf-4ea7-969b-c19e2cb1667d",
+                          "id": "NI-0003",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "8da3ad79-4d64-420b-a92c-dee90a65488c"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "bdfba764-167e-44ed-8bae-aa771b0597c1"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "79973bbb-3984-49f9-a0b0-b457b8a69b38"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

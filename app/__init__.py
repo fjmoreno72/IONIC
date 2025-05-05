@@ -136,6 +136,7 @@ def register_blueprints(flask_app):
     from app.routes.views import views_bp
     from app.routes.config_items import config_items_bp
     from app.routes.services import services_bp
+    from app.routes.sps import sps_bp # Import the new SPs blueprint
     from app.routes.gps import gps_bp # Import the new GP blueprint
     from app.routes.models import models_bp # Import the new models blueprint
     from app.routes.actors2gp import actors2gp_bp # Import the new actors to GP blueprint
@@ -146,6 +147,7 @@ def register_blueprints(flask_app):
     flask_app.register_blueprint(views_bp)
     flask_app.register_blueprint(config_items_bp)
     flask_app.register_blueprint(services_bp)
+    flask_app.register_blueprint(sps_bp) # Register the new SPs blueprint
     flask_app.register_blueprint(gps_bp) # Register the new GP blueprint
     flask_app.register_blueprint(models_bp) # Register the new models blueprint
     flask_app.register_blueprint(actors2gp_bp) # Register the new actors to GP blueprint

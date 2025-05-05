@@ -53,11 +53,83 @@ def save_sps(sps_data):
         os.makedirs(os.path.dirname(json_file_path), exist_ok=True)
         
         with open(json_file_path, 'w', encoding='utf-8') as f:
-            json.dump(sps_data, f, indent=2) # Use indent=2 for readability
+            json.dump(sps_data, f, ensure_ascii=False, indent=2) # Use indent=2 for readability
         current_app.logger.info(f"Successfully saved SP data to {json_file_path}")
-    except IOError as e:
-        current_app.logger.error(f"Error writing SP data file {json_file_path}: {e}")
-        raise
     except Exception as e:
-        current_app.logger.error(f"An unexpected error occurred while saving SP data: {e}")
+        current_app.logger.error(f"Error saving SP data to {json_file_path}: {e}")
         raise
+
+def get_sp_versions_by_id(sp_id):
+    """
+    Get the list of versions for a specific SP by its ID.
+    
+    Args:
+        sp_id (str): The ID of the specific product (e.g., "SP-0001")
+        
+    Returns:
+        list: A list of version strings for the specified SP.
+              Returns an empty list if the SP is not found or has no versions.
+    """
+    try:
+        # Get all SPs
+        all_sps = get_all_sps()
+        
+        # Find the SP with the specified ID
+        sp = next((item for item in all_sps if item.get('id') == sp_id), None)
+        
+        # Return versions if found, empty list otherwise
+        if sp and 'versions' in sp and isinstance(sp['versions'], list):
+            return sp['versions']
+        else:
+            return []
+    except Exception as e:
+        current_app.logger.error(f"Error retrieving versions for SP ID {sp_id}: {e}")
+        return []
+
+
+def get_sp_name_by_id(sp_id):
+    """
+    Get the name of a specific SP by its ID.
+    
+    Args:
+        sp_id (str): The ID of the specific product (e.g., "SP-0001")
+        
+    Returns:
+        str: The name of the SP if found, None otherwise.
+    """
+    try:
+        # Get all SPs
+        all_sps = get_all_sps()
+        
+        # Find the SP with the specified ID
+        sp = next((item for item in all_sps if item.get('id') == sp_id), None)
+        
+        # Return name if found, None otherwise
+        return sp.get('name') if sp else None
+    except Exception as e:
+        current_app.logger.error(f"Error retrieving name for SP ID {sp_id}: {e}")
+        return None
+
+
+def get_sp_id_by_name(sp_name):
+    """
+    Get the ID of a specific SP by its name.
+    
+    Args:
+        sp_name (str): The name of the specific product to find
+        
+    Returns:
+        str: The ID of the SP if found, None otherwise.
+    """
+    try:
+        # Get all SPs
+        all_sps = get_all_sps()
+        
+        # Find the SP with the specified name (case-insensitive search)
+        sp = next((item for item in all_sps if item.get('name', '').lower() == sp_name.lower()), None)
+        
+        # Return ID if found, None otherwise
+        return sp.get('id') if sp else None
+    except Exception as e:
+        current_app.logger.error(f"Error retrieving ID for SP name '{sp_name}': {e}")
+        return None

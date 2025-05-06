@@ -3222,10 +3222,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Validate required fields
-      if (!spId || !spVersion) {
-        CISUtils.showToast("Please fill in all required fields", "danger");
+      if (!spId) {
+        CISUtils.showToast("Please select a Specific Product", "danger");
         return;
       }
+      // Version is optional - if not provided, it will be null or empty string
 
       // Call API to add SP instance
       const result = await CISApi.addSPInstance(
@@ -3463,6 +3464,70 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("spDropdownContainer").classList.add("d-none");
     
     console.log(`Selected SP: ${spName} (${spId})`);
+    
+    // Fetch and populate versions for this SP
+    fetchSPVersions(spId);
+  }
+  
+  /**
+   * Fetch versions for a specific SP and populate the version dropdown
+   * @param {string} spId - The ID of the SP to fetch versions for
+   */
+  async function fetchSPVersions(spId) {
+    if (!spId) return;
+    
+    // Show loading indicator
+    const versionLoadingIndicator = document.getElementById("versionLoadingIndicator");
+    const versionSelect = document.getElementById("addSPInstanceVersion");
+    
+    versionLoadingIndicator.classList.remove("d-none");
+    versionSelect.disabled = true;
+    
+    try {
+      // Call the API endpoint to get versions for this SP
+      const response = await fetch(`/api/sps/versions/${spId}`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch versions for SP ${spId}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data.success && Array.isArray(data.versions)) {
+        // Reset the select element
+        versionSelect.innerHTML = '<option value="" disabled selected>Select a version...</option>';
+        
+        // Add options for each version
+        data.versions.forEach(version => {
+          const option = document.createElement("option");
+          option.value = version;
+          option.textContent = version;
+          versionSelect.appendChild(option);
+        });
+        
+        // Enable the select if we have versions
+        versionSelect.disabled = data.versions.length === 0;
+        
+        // Show message if no versions
+        if (data.versions.length === 0) {
+          const option = document.createElement("option");
+          option.disabled = true;
+          option.selected = true;
+          option.textContent = "No versions available";
+          versionSelect.appendChild(option);
+        }
+      } else {
+        console.error("API returned success=false or invalid versions array", data);
+        versionSelect.innerHTML = '<option value="" disabled selected>Error loading versions</option>';
+      }
+    } catch (error) {
+      console.error(`Error fetching versions for SP ${spId}:`, error);
+      versionSelect.innerHTML = '<option value="" disabled selected>Error loading versions</option>';
+    } finally {
+      // Hide loading indicator
+      versionLoadingIndicator.classList.add("d-none");
+      versionSelect.disabled = false;
+    }
   }
   
   // Helper function to find a GP instance by ID in the tree data
@@ -4861,16 +4926,30 @@ document.addEventListener("DOMContentLoaded", function () {
   // Render GP instances under an asset
   // Fetch GP name for an item with its gpid
   async function fetchGPName(gpid) {
+    // Validate that this is actually a GP ID and not an asset ID or other ID type
+    if (!gpid || typeof gpid !== 'string') {
+      console.warn(`Invalid GP ID format: ${gpid}`);
+      return null;
+    }
+    
+    // Check if this looks like a GP ID (should start with GP-)
+    if (!gpid.startsWith('GP-')) {
+      console.warn(`ID ${gpid} doesn't appear to be a valid GP ID (doesn't start with GP-). Skipping API call.`);
+      return `Generic Product`; // Return a generic name instead of null to avoid UI issues
+    }
+    
     try {
       const response = await fetch(`/api/gps/${gpid}/name`);
       if (response.ok) {
         const result = await response.json();
         return result.name;
+      } else {
+        console.warn(`API returned non-OK response for GP name fetch: ${response.status}`);
       }
     } catch (error) {
       console.error(`Error fetching GP name: ${error}`);
     }
-    return null;
+    return `GP ${gpid.substring(3)}`; // Return a formatted version of the ID as fallback
   }
 
   function renderGPInstances(

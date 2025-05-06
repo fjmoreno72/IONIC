@@ -1022,7 +1022,18 @@
                           "guid": "434accb5-fd52-4ea0-99a1-2f9950684b64",
                           "instanceLabel": "GENE!",
                           "serviceId": "SRV-0014",
-                          "spInstances": [],
+                          "spInstances": [
+                            {
+                              "guid": "c88a328c-e195-4f21-8cdf-3a7aa67d0001",
+                              "spId": "SP-0267",
+                              "spVersion": "2.0"
+                            },
+                            {
+                              "guid": "16be5060-6629-4a25-988f-7be208961d0a",
+                              "spId": "SP-0465",
+                              "spVersion": "1.6.0"
+                            }
+                          ],
                           "configurationItems": []
                         }
                       ]
@@ -1117,6 +1128,11 @@
                               "guid": "91e737e4-bbbd-4566-aab6-de41315f603c",
                               "spId": "SP-0519",
                               "spVersion": "1"
+                            },
+                            {
+                              "guid": "dc4dbd26-24fa-4a6a-b41a-e0aa8bd65b60",
+                              "spId": "SP-0253",
+                              "spVersion": "4.00"
                             }
                           ],
                           "configurationItems": [
@@ -1240,6 +1256,11 @@
                               "guid": "042b53a1-b334-431c-aeb2-1fc26c9a3b54",
                               "spId": "SP-0147",
                               "spVersion": "11"
+                            },
+                            {
+                              "guid": "e3ef883c-4502-48a2-81dd-2ddf8bbb51fa",
+                              "spId": "SP-0147",
+                              "spVersion": ""
                             }
                           ],
                           "configurationItems": [

@@ -1745,8 +1745,7 @@ const CISApi = {
         !hwStackId ||
         !assetId ||
         !gpInstanceId ||
-        !spId ||
-        !spVersion
+        !spId
       ) {
         return {
           success: false,
@@ -1754,6 +1753,8 @@ const CISApi = {
           status: 400,
         };
       }
+      
+      // Version is optional - it could be null, undefined, or empty string
 
       // Get the current environment from the session
       const environment = sessionStorage.getItem('environment') || 'ciav'; // Default to ciav if not set

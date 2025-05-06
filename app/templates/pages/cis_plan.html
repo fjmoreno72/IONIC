@@ -950,7 +950,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="addSPInstanceVersion" class="form-label">Version</label>
-                            <input type="text" class="form-control" id="addSPInstanceVersion" name="spVersion_random" autocomplete="new-password" required>
+                            <select class="form-select" id="addSPInstanceVersion" name="spVersion_random">
+                                <option value="" disabled selected>Select a version...</option>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                            <div id="versionLoadingIndicator" class="form-text d-none">Loading versions...</div>
                         </div>
                     </form>
                 </div>

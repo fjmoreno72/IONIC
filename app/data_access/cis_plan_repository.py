@@ -1232,7 +1232,7 @@ def delete_gp_instance(environment: str, mission_network_id: str, segment_id: st
 # --- SP Instance Repository Functions ---
 
 def add_sp_instance(environment: str, mission_network_id: str, segment_id: str, domain_id: str, stack_id: str, 
-                  asset_id: str, gp_instance_id: str, sp_id: str, sp_version: str) -> dict:
+                  asset_id: str, gp_instance_id: str, sp_id: str, sp_version: str = '') -> dict:
     """Adds a new SP instance to a GP instance."""
     try:
         import uuid

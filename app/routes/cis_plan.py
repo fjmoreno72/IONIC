@@ -547,14 +547,14 @@ def sp_instances(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id):
         elif request.method == 'POST':
             # Create a new SP instance
             data = request.json
-            if not data or not all(key in data for key in ['spId', 'spVersion']):
+            if not data or 'spId' not in data:
                 return jsonify({
                     'status': 'error',
-                    'message': "Missing required fields: 'spId', 'spVersion'"
+                    'message': "Missing required field: 'spId'"
                 }), 400
             
             sp_id = data.get('spId')
-            sp_version = data.get('spVersion')
+            sp_version = data.get('spVersion', '') # Optional, defaults to empty string
             
             try:
                 new_instance = add_sp_instance(environment, mn_id, seg_id, dom_id, stack_id, asset_id, gp_id, sp_id, sp_version)

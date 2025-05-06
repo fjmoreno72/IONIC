@@ -1356,9 +1356,97 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Then load the CIS Plan data
       await fetchCISPlanData();
+      
+      // Check if we need to navigate to a specific GP instance after SP creation
+      checkAndHandleSPCreationRedirect();
     } catch (error) {
       console.error("Error initializing CIS Plan app:", error);
       showToast("Error initializing application: " + error.message, "danger");
+    }
+  }
+  
+  // Function to check for SP creation redirect and navigate to the GP instance
+  function checkAndHandleSPCreationRedirect() {
+    const storedPath = localStorage.getItem('cis_plan_sp_creation_path');
+    if (storedPath) {
+      try {
+        // Parse the stored path
+        const path = JSON.parse(storedPath);
+        console.log("Found SP creation path, will navigate to:", path);
+        
+        // Clear it immediately to prevent reprocessing
+        localStorage.removeItem('cis_plan_sp_creation_path');
+        
+        // Wait for the tree to be fully rendered
+        setTimeout(async () => {
+          // Navigate the tree to show the GP instance with its new SP
+          // First expand the mission network
+          const mnNode = document.querySelector(`.tree-node[data-type="missionNetworks"][data-id="${path.missionNetworkId}"]`);
+          if (mnNode) {
+            console.log("Expanding mission network");
+            mnNode.click();
+            await new Promise(resolve => setTimeout(resolve, 100));
+            
+            // Then expand the segment
+            const segNode = document.querySelector(`.tree-node[data-type="networkSegments"][data-id="${path.segmentId}"]`);
+            if (segNode) {
+              console.log("Expanding segment");
+              segNode.click();
+              await new Promise(resolve => setTimeout(resolve, 100));
+              
+              // Then expand the domain
+              const domainNode = document.querySelector(`.tree-node[data-type="securityDomains"][data-id="${path.domainId}"]`);
+              if (domainNode) {
+                console.log("Expanding domain");
+                domainNode.click();
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
+                // Then expand the hw stack
+                const stackNode = document.querySelector(`.tree-node[data-type="hwStacks"][data-id="${path.hwStackId}"]`);
+                if (stackNode) {
+                  console.log("Expanding HW stack");
+                  stackNode.click();
+                  await new Promise(resolve => setTimeout(resolve, 100));
+                  
+                  // Then find the asset
+                  const assetNode = document.querySelector(`.tree-node[data-type="assets"][data-id="${path.assetId}"]`);
+                  if (assetNode) {
+                    console.log("Expanding asset");
+                    assetNode.click();
+                    await new Promise(resolve => setTimeout(resolve, 200));
+                    
+                    // Find the GP instance
+                    const gpSelectors = [
+                      `.tree-node[data-type="gpInstances"][data-gpid="${path.gpInstanceId}"]`,
+                      `.tree-node[data-type="gpInstances"][data-id="${path.gpInstanceId}"]`
+                    ];
+                    
+                    let gpNode = null;
+                    for (const selector of gpSelectors) {
+                      const nodes = document.querySelectorAll(selector);
+                      if (nodes.length > 0) {
+                        gpNode = nodes[0];
+                        break;
+                      }
+                    }
+                    
+                    if (gpNode) {
+                      console.log("Selecting GP instance to show new SP instance");
+                      gpNode.click();
+                      // Set the global variable for SP operations
+                      window.currentGpInstanceId = path.gpInstanceId;
+                    } else {
+                      console.log("Could not find GP instance node, staying on asset view");
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }, 700); // Wait for tree to be fully rendered
+      } catch (error) {
+        console.error("Error processing SP creation redirect:", error);
+      }
     }
   }
 
@@ -1708,6 +1796,31 @@ document.addEventListener("DOMContentLoaded", function () {
       // Log that we're attempting to restore a GP instance
       console.log(`Attempting to restore GP instance with ID ${state.nodeId}`);
       
+      // First, ensure the asset node is fully expanded to display its child GP instances
+      // Force the expansion by clicking the toggle if it's not already expanded
+      const assetToggle = assetNode.querySelector(".tree-toggle");
+      if (assetToggle) {
+        // Check if the toggle icon indicates it's collapsed
+        const toggleIcon = assetToggle.querySelector("i");
+        if (toggleIcon && toggleIcon.classList.contains("fa-chevron-right")) {
+          console.log("Asset node is collapsed, expanding it");
+          assetToggle.click();
+          // Give a moment for the DOM to update
+          setTimeout(() => {
+            // Now try to locate the children container
+            findAndSelectGPInstance(assetNode, state);
+          }, 100);
+          return; // Early return since we'll continue in the timeout
+        }
+      }
+      
+      // If we get here, the asset node should already be expanded, so proceed immediately
+      findAndSelectGPInstance(assetNode, state);
+      return;
+    }
+    
+    // Helper function to find and select a GP instance within an asset node
+    function findAndSelectGPInstance(assetNode, state) {
       // For SP instance deletion, we need to directly load and select the GP instance
       if (state.fromSpDeletion) {
         console.log('Using more direct approach for SP deletion scenario');
@@ -1724,18 +1837,66 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
       
-      // Standard approach for non-SP-deletion scenarios
-      // Look for GP instance within the asset node's children
-      const assetChildren = getChildrenContainer(assetNode);
+      // Try multiple approaches to find the children container
+      let assetChildren = getChildrenContainer(assetNode);
+      
+      // If the standard approach didn't work, try another way
       if (!assetChildren) {
-        console.warn("Could not find children container for asset node");
+        console.log("Standard approach didn't find asset children, trying alternative...");
+        // The asset wrapper is the parent of the asset node
+        const assetWrapper = assetNode.parentElement;
+        if (assetWrapper) {
+          // Look for a div that has data-parent matching the asset ID
+          const assetId = assetNode.getAttribute("data-id");
+          if (assetId) {
+            assetChildren = assetWrapper.querySelector(`div[data-parent="${assetId}"]`);
+          }
+        }
+      }
+      
+      // If we still couldn't find the children container, try one last approach
+      if (!assetChildren) {
+        console.log("Alternative approach also failed, trying one last method...");
+        // Look for any div that immediately follows this asset node in the DOM
+        let nextElement = assetNode.nextElementSibling;
+        if (nextElement && nextElement.tagName === "DIV" && !nextElement.classList.contains("tree-node")) {
+          assetChildren = nextElement;
+        }
+      }
+      
+      // If we still couldn't find it, we're out of options
+      if (!assetChildren) {
+        console.warn("Could not find children container for asset node after multiple attempts");
         return;
       }
       
-      // Find the GP instance by ID
-      const gpNode = assetChildren.querySelector(
+      console.log("Found asset children container, looking for GP instance");
+      
+      // Try multiple approaches to find the GP instance
+      let gpNode = null;
+      
+      // Try by ID
+      gpNode = assetChildren.querySelector(
         `.tree-node[data-type="gpInstances"][data-id="${state.nodeId}"]`
       );
+      
+      // If that didn't work, try by GPID attribute
+      if (!gpNode) {
+        gpNode = assetChildren.querySelector(
+          `.tree-node[data-type="gpInstances"][data-gpid="${state.nodeId}"]`
+        );
+      }
+      
+      // If still not found, try searching all GP instances and matching by text content
+      if (!gpNode) {
+        const allGpNodes = assetChildren.querySelectorAll('.tree-node[data-type="gpInstances"]');
+        for (const node of allGpNodes) {
+          if (node.textContent && node.textContent.includes(state.nodeId)) {
+            gpNode = node;
+            break;
+          }
+        }
+      }
       
       if (gpNode) {
         console.log("Found GP instance node, selecting it");
@@ -1743,14 +1904,25 @@ document.addEventListener("DOMContentLoaded", function () {
         gpNode.click();
         
         // Make sure the currentGpInstanceId is set so any operations on SP instances work correctly
-        if (gpNode.getAttribute("data-id")) {
+        if (gpNode.getAttribute("data-gpid")) {
+          window.currentGpInstanceId = gpNode.getAttribute("data-gpid");
+        } else if (gpNode.getAttribute("data-id")) {
           window.currentGpInstanceId = gpNode.getAttribute("data-id");
-          console.log("Set currentGpInstanceId to", window.currentGpInstanceId);
         }
+        console.log("Set currentGpInstanceId to", window.currentGpInstanceId);
       } else {
         console.warn(`Could not find GP instance node with ID ${state.nodeId}`);
         // If we couldn't find the exact GP node, at least show all GP instances for this asset
-        loadElementChildren(assetNode, "gpInstances");
+        const assetId = assetNode.getAttribute("data-id");
+        if (assetId) {
+          // Use loadSelectedNodeChildren which is the correct function to load children
+          const assetData = findAssetById(assetId);
+          if (assetData) {
+            loadSelectedNodeChildren(assetData, "assets", assetId, 
+              state.hwStackId, state.domainId, state.segmentId, state.missionNetworkId);
+            console.log("Loaded asset node children as fallback");
+          }
+        }
       }
     }
   }
@@ -3081,241 +3253,35 @@ document.addEventListener("DOMContentLoaded", function () {
         // Show success message
         CISUtils.showToast("Specific Product added successfully", "success");
 
-        // Reload the CIS Plan data
-        cisPlanData = await CISApi.fetchCISPlanData();
-        renderTree(cisPlanData);
-        
-        // Use an entirely different approach - navigate through the hierarchy sequentially
-        // Wait for the tree to be fully rendered
-        setTimeout(() => {
-          console.log("Starting sequential navigation through tree hierarchy");
+        // ULTRA SIMPLE: Force a full UI reload
+        try {
+          // Show a brief message to the user
+          CISUtils.showToast("Refreshing CIS Plan with new SP instance...", "info");
+
+          // First, store the path information that we need to navigate to after refresh
+          const path = {
+            missionNetworkId,
+            segmentId,
+            domainId,
+            hwStackId,
+            assetId,
+            gpInstanceId
+          };
           
-          // Start by expanding the root node to make sure everything is visible
-          const rootNode = document.querySelector(".tree-node[data-id='root-cisplan']");
-          if (rootNode) {
-            rootNode.click();
-            console.log("Clicked root node");
-          }
+          // Store this in local storage so it persists through navigation
+          localStorage.setItem('cis_plan_sp_creation_path', JSON.stringify(path));
           
-          // Wait for the root node expansion to take effect
+          // Now reload the entire page - this is a guaranteed way to refresh everything
+          console.log("Reloading page to refresh CIS Plan data");
+          
+          // Use a short timeout to ensure the localStorage is set before reload
           setTimeout(() => {
-            // Step 1: Find and click the mission network
-            const missionNetworkSelector = `.tree-node[data-type="missionNetworks"][data-id="${missionNetworkId}"]`;
-            const missionNetworkNode = document.querySelector(missionNetworkSelector);
-            
-            if (missionNetworkNode) {
-              missionNetworkNode.click();
-              console.log(`Clicked mission network ${missionNetworkId}`);
-              
-              // Expand it if needed
-              const toggle = missionNetworkNode.querySelector(".tree-toggle");
-              if (toggle) {
-                const icon = toggle.querySelector("i");
-                if (icon && icon.classList.contains("fa-chevron-right")) {
-                  toggle.click();
-                  console.log("Expanded mission network");
-                }
-              }
-              
-              // Step 2: Find and click the network segment
-              setTimeout(() => {
-                const segmentSelector = `.tree-node[data-type="networkSegments"][data-id="${segmentId}"]`;
-                const segmentNode = document.querySelector(segmentSelector);
-                
-                if (segmentNode) {
-                  segmentNode.click();
-                  console.log(`Clicked network segment ${segmentId}`);
-                  
-                  // Expand it if needed
-                  const toggle = segmentNode.querySelector(".tree-toggle");
-                  if (toggle) {
-                    const icon = toggle.querySelector("i");
-                    if (icon && icon.classList.contains("fa-chevron-right")) {
-                      toggle.click();
-                      console.log("Expanded network segment");
-                    }
-                  }
-                  
-                  // Step 3: Find and click the security domain
-                  setTimeout(() => {
-                    const domainSelector = `.tree-node[data-type="securityDomains"][data-id="${domainId}"]`;
-                    const domainNode = document.querySelector(domainSelector);
-                    
-                    if (domainNode) {
-                      domainNode.click();
-                      console.log(`Clicked security domain ${domainId}`);
-                      
-                      // Expand it if needed
-                      const toggle = domainNode.querySelector(".tree-toggle");
-                      if (toggle) {
-                        const icon = toggle.querySelector("i");
-                        if (icon && icon.classList.contains("fa-chevron-right")) {
-                          toggle.click();
-                          console.log("Expanded security domain");
-                        }
-                      }
-                      
-                      // Step 4: Find and click the hardware stack
-                      setTimeout(() => {
-                        const hwStackSelector = `.tree-node[data-type="hwStacks"][data-id="${hwStackId}"]`;
-                        const hwStackNode = document.querySelector(hwStackSelector);
-                        
-                        if (hwStackNode) {
-                          hwStackNode.click();
-                          console.log(`Clicked hardware stack ${hwStackId}`);
-                          
-                          // Expand it if needed
-                          const toggle = hwStackNode.querySelector(".tree-toggle");
-                          if (toggle) {
-                            const icon = toggle.querySelector("i");
-                            if (icon && icon.classList.contains("fa-chevron-right")) {
-                              toggle.click();
-                              console.log("Expanded hardware stack");
-                            }
-                          }
-                          
-                          // Step 5: Find and click the asset
-                          setTimeout(() => {
-                            const assetSelector = `.tree-node[data-type="assets"][data-id="${assetId}"]`;
-                            const assetNode = document.querySelector(assetSelector);
-                            
-                            if (assetNode) {
-                              assetNode.click();
-                              console.log(`Clicked asset ${assetId}`);
-                              
-                              // Expand it if needed
-                              const toggle = assetNode.querySelector(".tree-toggle");
-                              if (toggle) {
-                                const icon = toggle.querySelector("i");
-                                if (icon && icon.classList.contains("fa-chevron-right")) {
-                                  toggle.click();
-                                  console.log("Expanded asset");
-                                }
-                              }
-                              
-                              // Step 6: After clicking the asset, find the GP instance in the tree
-                              // First wait for children to be rendered
-                              setTimeout(() => {
-                                console.log(`Looking for GP instance ${gpInstanceId} in the asset's children...`);
-                                
-                                // Asset children container is within the asset wrapper and has a data-parent attribute
-                                // matching the asset ID
-                                const assetWrapper = assetNode.parentElement; // Get the wrapper
-                                const assetChildren = assetWrapper.querySelector(`div[data-parent="${assetId}"]`);
-                                if (assetChildren) {
-                                  // Make sure the asset's children are expanded/visible
-                                  if (assetChildren.style.display === "none") {
-                                    const assetToggle = assetNode.querySelector(".tree-toggle");
-                                    if (assetToggle) {
-                                      assetToggle.click();
-                                      console.log("Expanded asset to see GP instances");
-                                    }
-                                  }
-                                  
-                                  // Now look for the GP instance node in the asset's children
-                                  setTimeout(() => {
-                                    // Try various selectors to find the GP instance
-                                    let gpNode = null;
-                                    
-                                    // First look for nodes with data-gpid attribute
-                                    const gpNodesWithGpid = assetChildren.querySelectorAll(`.tree-node[data-gpid="${gpInstanceId}"]`);
-                                    if (gpNodesWithGpid.length > 0) {
-                                      gpNode = gpNodesWithGpid[0];
-                                      console.log(`Found GP instance node with data-gpid=${gpInstanceId}`);
-                                    } else {
-                                      // Try with data-id attribute
-                                      const gpNodesWithId = assetChildren.querySelectorAll(`.tree-node[data-id="${gpInstanceId}"]`);
-                                      if (gpNodesWithId.length > 0) {
-                                        gpNode = gpNodesWithId[0];
-                                        console.log(`Found GP instance node with data-id=${gpInstanceId}`);
-                                      } else {
-                                        // Try by data-type
-                                        const gpNodes = assetChildren.querySelectorAll('.tree-node[data-type="gpInstances"]');
-                                        console.log(`Found ${gpNodes.length} GP instance nodes total`); 
-                                        
-                                        // Check each GP instance node to see if it's the one we want
-                                        for (let i = 0; i < gpNodes.length; i++) {
-                                          const node = gpNodes[i];
-                                          const nodeGpid = node.getAttribute("data-gpid");
-                                          const nodeId = node.getAttribute("data-id");
-                                          
-                                          console.log(`Checking node ${i+1}/${gpNodes.length}: data-gpid=${nodeGpid}, data-id=${nodeId}`);
-                                          
-                                          if (nodeGpid === gpInstanceId || nodeId === gpInstanceId) {
-                                            gpNode = node;
-                                            console.log(`Found matching GP instance node at position ${i+1}`);
-                                            break;
-                                          }
-                                        }
-                                      }
-                                    }
-                                    
-                                    // If we found the GP instance node, click it
-                                    if (gpNode) {
-                                      console.log(`Clicking GP instance node for ${gpInstanceId}`);
-                                      gpNode.click();
-                                      
-                                      // Expand the GP instance to show SP instances
-                                      setTimeout(() => {
-                                        const gpToggle = gpNode.querySelector(".tree-toggle");
-                                        if (gpToggle) {
-                                          const icon = gpToggle.querySelector("i");
-                                          if (icon && icon.classList.contains("fa-chevron-right")) {
-                                            gpToggle.click();
-                                            console.log("Expanded GP instance to show SP instances");
-                                          }
-                                        }
-                                        console.log("Successfully navigated to the GP instance");
-                                      }, 100);
-                                    } else {
-                                      console.log("Could not find GP instance node in the tree");
-                                      
-                                      // Try one last approach - look for it in the elements panel
-                                      console.log("Looking for GP instance in central panel as fallback");
-                                      const gpCard = document.querySelector(`.element-card[data-gpid="${gpInstanceId}"]`);
-                                      if (gpCard) {
-                                        console.log(`Found GP instance card for ${gpInstanceId}, clicking it`);
-                                        gpCard.click();
-                                      } else {
-                                        console.log("Could not find GP instance anywhere");
-                                        // If all else fails, try to restore the original state
-                                        if (originalTreeNode) {
-                                          originalTreeNode.click();
-                                        }
-                                      }
-                                    }
-                                  }, 200); // Wait for asset children to be fully rendered
-                                } else {
-                                  console.log("Could not find asset's children container");
-                                  if (originalTreeNode) originalTreeNode.click();
-                                }
-                              }, 300);
-                            } else {
-                              console.log(`Could not find asset ${assetId}`);
-                              if (originalTreeNode) originalTreeNode.click();
-                            }
-                          }, 200);
-                        } else {
-                          console.log(`Could not find hardware stack ${hwStackId}`);
-                          if (originalTreeNode) originalTreeNode.click();
-                        }
-                      }, 200);
-                    } else {
-                      console.log(`Could not find security domain ${domainId}`);
-                      if (originalTreeNode) originalTreeNode.click();
-                    }
-                  }, 200);
-                } else {
-                  console.log(`Could not find network segment ${segmentId}`);
-                  if (originalTreeNode) originalTreeNode.click();
-                }
-              }, 200);
-            } else {
-              console.log(`Could not find mission network ${missionNetworkId}`);
-              if (originalTreeNode) originalTreeNode.click();
-            }
-          }, 200);
-        }, 300); // Increased timeout to ensure tree is fully rendered
+            window.location.reload();
+          }, 100);
+          
+        } catch (error) {
+          console.error("Error refreshing UI after SP instance creation:", error);
+        }
       } else {
         // Show error message
         if (result.message) {
@@ -3500,14 +3466,72 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   // Helper function to find a GP instance by ID in the tree data
-  function findGPInstanceById(gpInstanceId, data) {
-    // Loop through mission networks
-    if (!data || !data.missionNetworks) return null;
+  /**
+   * Find an asset by its ID in the CIS plan data
+   * @param {string} assetId - The ID of the asset to find
+   * @param {object} [data] - Optional data object to search in, defaults to cisPlanData
+   * @returns {object|null} - The asset object or null if not found
+   */
+  function findAssetById(assetId, data) {
+    console.log(`Looking for Asset with ID: ${assetId}`);
     
-    for (const missionNetwork of data.missionNetworks) {
-      if (!missionNetwork.segments) continue;
+    // Use provided data or fall back to cisPlanData global
+    const searchData = data || window.cisPlanData;
+    if (!searchData || !searchData.missionNetworks) {
+      console.warn("No data available to search for asset");
+      return null;
+    }
+    
+    // Loop through mission networks
+    for (const missionNetwork of searchData.missionNetworks) {
+      if (!missionNetwork.networkSegments) continue;
       
-      for (const segment of missionNetwork.segments) {
+      for (const segment of missionNetwork.networkSegments) {
+        if (!segment.securityDomains) continue;
+        
+        for (const domain of segment.securityDomains) {
+          if (!domain.hwStacks) continue;
+          
+          for (const stack of domain.hwStacks) {
+            if (!stack.assets) continue;
+            
+            for (const asset of stack.assets) {
+              if (asset.id === assetId) {
+                console.log(`Found Asset: ${assetId}`, asset);
+                return asset;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    console.warn(`Asset ${assetId} not found in data model`);
+    return null;
+  }
+  
+  /**
+   * Find a GP instance by its ID, gpid, or guid
+   * @param {string} gpInstanceId - The ID, gpid, or guid of the GP instance to find
+   * @param {object} [data] - Optional data object to search in, defaults to cisPlanData
+   * @returns {object|null} - The GP instance object or null if not found
+   */
+  function findGPInstanceById(gpInstanceId, data) {
+    console.log(`Looking for GP instance with ID: ${gpInstanceId}`);
+    
+    // Use provided data or fall back to cisPlanData global
+    const searchData = data || window.cisPlanData;
+    if (!searchData || !searchData.missionNetworks) {
+      console.warn("No data available to search for GP instance");
+      return null;
+    }
+    
+    // Loop through mission networks
+    for (const missionNetwork of searchData.missionNetworks) {
+      // Use networkSegments (correct property name) instead of segments
+      if (!missionNetwork.networkSegments) continue;
+      
+      for (const segment of missionNetwork.networkSegments) {
         if (!segment.securityDomains) continue;
         
         for (const domain of segment.securityDomains) {
@@ -3520,7 +3544,11 @@ document.addEventListener("DOMContentLoaded", function () {
               if (!asset.gpInstances) continue;
               
               for (const gpInstance of asset.gpInstances) {
-                if (gpInstance.id === gpInstanceId) {
+                // Check all possible ID fields: id, gpid, guid
+                if (gpInstance.id === gpInstanceId || 
+                    gpInstance.gpid === gpInstanceId || 
+                    gpInstance.guid === gpInstanceId) {
+                  console.log(`Found GP instance: ${gpInstanceId}`, gpInstance);
                   return gpInstance;
                 }
               }
@@ -3530,6 +3558,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     
+    console.warn(`GP instance ${gpInstanceId} not found in data model`);
     return null;
   }
 
@@ -7278,6 +7307,145 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   async function getParticipantNameByKey(key) {
     return await CISUtils.getParticipantNameByKey(key);
+  }
+  
+  /**
+   * Fetch detailed GP instance data directly from the API
+   * This is used for refreshing after adding SP instances
+   */
+  async function fetchGPInstanceDetails(gpInstanceId, assetId) {
+    try {
+      // We need to find the full path to the GP instance to construct the correct API URL
+      const gpInstance = findGPInstanceById(gpInstanceId);
+      if (!gpInstance) {
+        console.error(`Cannot find GP instance ${gpInstanceId} in the data model`);
+        return null;
+      }
+      
+      // Find parent IDs - either from the GP instance object or from the DOM
+      let missionNetworkId, segmentId, domainId, hwStackId;
+      
+      // Try to get from the GP instance object first
+      if (gpInstance.parentMissionNetwork) {
+        missionNetworkId = typeof gpInstance.parentMissionNetwork === 'object' ? 
+          gpInstance.parentMissionNetwork.id : gpInstance.parentMissionNetwork;
+      }
+      
+      if (gpInstance.parentSegment) {
+        segmentId = typeof gpInstance.parentSegment === 'object' ? 
+          gpInstance.parentSegment.id : gpInstance.parentSegment;
+      }
+      
+      if (gpInstance.parentDomain) {
+        domainId = typeof gpInstance.parentDomain === 'object' ? 
+          gpInstance.parentDomain.id : gpInstance.parentDomain;
+      }
+      
+      if (gpInstance.parentStack) {
+        hwStackId = typeof gpInstance.parentStack === 'object' ? 
+          gpInstance.parentStack.id : gpInstance.parentStack;
+      }
+      
+      // If we couldn't get the parent IDs from the GP instance object, try to get them from the DOM
+      const gpNode = document.querySelector(`.tree-node[data-type="gpInstances"][data-gpid="${gpInstanceId}"]`);
+      
+      if (gpNode) {
+        if (!missionNetworkId) {
+          missionNetworkId = gpNode.getAttribute("data-parent-mission-network") || 
+                           gpNode.getAttribute("data-parent-mission-network-id");
+        }
+        
+        if (!segmentId) {
+          segmentId = gpNode.getAttribute("data-parent-segment") || 
+                     gpNode.getAttribute("data-parent-segment-id");
+        }
+        
+        if (!domainId) {
+          domainId = gpNode.getAttribute("data-parent-domain") || 
+                    gpNode.getAttribute("data-parent-domain-id");
+        }
+        
+        if (!hwStackId) {
+          hwStackId = gpNode.getAttribute("data-parent-stack") || 
+                     gpNode.getAttribute("data-parent-stack-id");
+        }
+        
+        if (!assetId) {
+          assetId = gpNode.getAttribute("data-parent-asset") || 
+                   gpNode.getAttribute("data-parent-asset-id");
+        }
+      }
+      
+      // If we still don't have all the parent IDs, we can't fetch the GP instance
+      if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
+        console.error("Missing parent IDs for GP instance", { 
+          missionNetworkId, segmentId, domainId, hwStackId, assetId 
+        });
+        return null;
+      }
+      
+      // Construct the API URL
+      const url = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/gp_instances/${gpInstanceId}`;
+      
+      // Fetch the GP instance details
+      const response = await fetch(url);
+      
+      if (response.ok) {
+        const result = await response.json();
+        return result.data || null;
+      } else {
+        console.error(`Error fetching GP instance details: ${response.status} ${response.statusText}`);
+        return null;
+      }
+    } catch (error) {
+      console.error("Error in fetchGPInstanceDetails:", error);
+      return null;
+    }
+  }
+  
+  /**
+   * Update a GP instance in the CIS plan data model
+   * This is used after adding SP instances to ensure the model stays in sync
+   */
+  function updateGPInstanceInCISPlanData(gpInstanceId, updatedGpInstance) {
+    try {
+      if (!window.cisPlanData || !window.cisPlanData.missionNetworks) {
+        console.error("CIS plan data is not available");
+        return false;
+      }
+      
+      // Iterate through the data model to find and update the GP instance
+      for (const mn of window.cisPlanData.missionNetworks) {
+        for (const segment of mn.networkSegments || []) {
+          for (const domain of segment.securityDomains || []) {
+            for (const stack of domain.hwStacks || []) {
+              for (const asset of stack.assets || []) {
+                // Find the matching GP instance
+                const gpIndex = (asset.gpInstances || []).findIndex(gp => 
+                  gp.id === gpInstanceId || gp.guid === gpInstanceId || gp.gpid === gpInstanceId
+                );
+                
+                if (gpIndex !== -1) {
+                  // Found it - update the GP instance with the new data
+                  // But preserve any properties that might be missing in the updated instance
+                  const originalGp = asset.gpInstances[gpIndex];
+                  asset.gpInstances[gpIndex] = { ...originalGp, ...updatedGpInstance };
+                  
+                  console.log(`Updated GP instance ${gpInstanceId} in CIS plan data`, asset.gpInstances[gpIndex]);
+                  return true;
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      console.error(`Could not find GP instance ${gpInstanceId} in CIS plan data`);
+      return false;
+    } catch (error) {
+      console.error("Error in updateGPInstanceInCISPlanData:", error);
+      return false;
+    }
   }
 
 });

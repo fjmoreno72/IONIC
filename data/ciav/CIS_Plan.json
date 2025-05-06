@@ -1102,6 +1102,21 @@
                               "guid": "f73a2d0c-a74e-444f-8dec-1e50e423dcd8",
                               "spId": "SP-0147",
                               "spVersion": "1"
+                            },
+                            {
+                              "guid": "279a5a01-a73f-4eb0-a6c5-38b0356da70d",
+                              "spId": "SP-0267",
+                              "spVersion": "2"
+                            },
+                            {
+                              "guid": "82c4f145-dd57-446b-976e-b7c7c969276d",
+                              "spId": "SP-0253",
+                              "spVersion": "5"
+                            },
+                            {
+                              "guid": "91e737e4-bbbd-4566-aab6-de41315f603c",
+                              "spId": "SP-0519",
+                              "spVersion": "1"
                             }
                           ],
                           "configurationItems": [
@@ -1160,7 +1175,18 @@
                           "guid": "fbcf8029-f6dc-4e1a-ba22-4434093882c4",
                           "instanceLabel": "",
                           "serviceId": "SRV-0017",
-                          "spInstances": [],
+                          "spInstances": [
+                            {
+                              "guid": "74a60046-40da-4a30-a5d1-3c7d1f05310d",
+                              "spId": "SP-0218",
+                              "spVersion": "12"
+                            },
+                            {
+                              "guid": "0f99d64c-445b-4bf0-8af6-427911215704",
+                              "spId": "SP-0104",
+                              "spVersion": "2"
+                            }
+                          ],
                           "configurationItems": [
                             {
                               "Name": "Port",
@@ -1185,6 +1211,213 @@
                               "guid": "b892375d-fbfb-403e-a9fd-11875b11cb7c",
                               "DefaultValue": "",
                               "HelpText": "List of DNS root servers configured on the DNS resolver(s)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "XXX",
+                  "guid": "e70d4811-ae34-4762-bedc-14eddc81f298",
+                  "id": "HW-0015",
+                  "cisParticipantID": "PAR-CIAV-000026",
+                  "assets": [
+                    {
+                      "name": "1",
+                      "guid": "0334cc5a-4f82-4424-ae05-036f6c5d3c21",
+                      "id": "AS-0020",
+                      "networkInterfaces": [],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0018",
+                          "guid": "2a624fcc-e1d0-4df4-a33b-9edb682001db",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0014",
+                          "spInstances": [
+                            {
+                              "guid": "042b53a1-b334-431c-aeb2-1fc26c9a3b54",
+                              "spId": "SP-0147",
+                              "spVersion": "11"
+                            }
+                          ],
+                          "configurationItems": [
+                            {
+                              "Name": "All certificates across trust path",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "9f0c5e2b-c6a5-459b-8017-5f2badfa868a",
+                              "DefaultValue": "",
+                              "HelpText": "All certificates across the trust path (CA certificates from Root CA down to the Issuing CA for Trust list) or cross-certification certificates"
+                            },
+                            {
+                              "Name": "CRL HTTP / AIA",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "98852816-d7a6-4eb5-b2ea-bdc8b012b90b",
+                              "DefaultValue": "80",
+                              "HelpText": "CRL HTTP /AIA"
+                            },
+                            {
+                              "Name": "CRL LDAP / AIA",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "779cfaa9-b15d-40eb-9e31-d6502b553d08",
+                              "DefaultValue": "389",
+                              "HelpText": "CRL LDAP / AIA"
+                            },
+                            {
+                              "Name": "Certificate Request Authority",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "3af2531a-4b13-46fa-884c-579140756693",
+                              "DefaultValue": "",
+                              "HelpText": "URL for the RA"
+                            },
+                            {
+                              "Name": "HTTP CRL FULL URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "469bfc19-d852-46db-b915-dde7481a1b30",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL as in CDP"
+                            },
+                            {
+                              "Name": "HTTP CRL PRT",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "221c3a1c-eb98-40c9-b42c-bdd01320a9e3",
+                              "DefaultValue": "TCP/80",
+                              "HelpText": "Full URL as in CDP"
+                            },
+                            {
+                              "Name": "HTTP end-point IP for CRL retrieval",
+                              "ConfigurationAnswerType": "IP Address",
+                              "AnswerContent": "",
+                              "guid": "d093a6a2-8574-4448-b0a6-ef7a1a28934f",
+                              "DefaultValue": "",
+                              "HelpText": "IP of the HTTP service"
+                            },
+                            {
+                              "Name": "HTTP end-point URL for CRL retrieval",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "9f6a2a9a-dfd4-4022-8db9-30bcfd85de97",
+                              "DefaultValue": "",
+                              "HelpText": "Supply the port for the CRL"
+                            },
+                            {
+                              "Name": "LDAP PORT",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "ccfe1ba2-70de-43ee-8596-4f406a256131",
+                              "DefaultValue": "TCP/389",
+                              "HelpText": "LDAP CRL PORT"
+                            },
+                            {
+                              "Name": "LDAP end-point IP for CRL retrieval",
+                              "ConfigurationAnswerType": "IP Address",
+                              "AnswerContent": "",
+                              "guid": "afdc5803-3ee5-47f9-98db-0f3c9026d8bc",
+                              "DefaultValue": "",
+                              "HelpText": "IP of the LDAP repository"
+                            },
+                            {
+                              "Name": "LDAP end-point URL for CRL retrieval",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "2ad04824-e066-4079-a77f-1d42d9a207f4",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL as in CDP"
+                            },
+                            {
+                              "Name": "OCSP PORT",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "3fac3cb3-5483-4ebb-b18a-a599f076836d",
+                              "DefaultValue": "TCP/80",
+                              "HelpText": "OCSP RESPONDER PORT"
+                            },
+                            {
+                              "Name": "OCSP Port",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "7f3c4270-5189-42c3-834e-41683991749d",
+                              "DefaultValue": "80",
+                              "HelpText": "Port of OCSP responder"
+                            },
+                            {
+                              "Name": "OCSP end-point IP",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "7d049c3e-c806-418c-b849-17bf60d1434a",
+                              "DefaultValue": "",
+                              "HelpText": "IP of OCSP responder"
+                            },
+                            {
+                              "Name": "OCSP end-point URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "f936f6ea-33a5-4461-953d-9e390b5e6c0f",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of OCSP in Responder as in CDP"
+                            },
+                            {
+                              "Name": "PKI Interoperability Framework (iTIF) Compliant",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "dd79b550-46f1-41a0-809c-ae3f14f76983",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Port CRL HTTP",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "7980b5d3-6eb4-4f88-97d0-4b4a220bbbb2",
+                              "DefaultValue": "80",
+                              "HelpText": "Port for CRL HTTP/AIA"
+                            },
+                            {
+                              "Name": "Supported Certificate Request",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "83f8a392-cb17-40a6-a0a0-f5630cab6320",
+                              "DefaultValue": "",
+                              "HelpText": "Supported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)"
+                            },
+                            {
+                              "Name": "Supported Certificate Requests",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "db99eff5-4c8f-4378-adb7-709847fdc0bb",
+                              "DefaultValue": "",
+                              "HelpText": " \tSupported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)"
+                            },
+                            {
+                              "Name": "URL - Expired Certificate",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "67205f4d-ca2e-4d2f-bf65-6b058dcdfed3",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of Web Server with Expired Certificate"
+                            },
+                            {
+                              "Name": "URL - Revoked Certificate",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "afa44798-eff5-4296-87ba-1215cbf372c7",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of Web Server with Revoked Certificate"
+                            },
+                            {
+                              "Name": "URL - Valid Certificate",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "4aea5140-026d-44d2-853c-4e1e0378bfcc",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of Web Server with Valid Certificate"
                             }
                           ]
                         }

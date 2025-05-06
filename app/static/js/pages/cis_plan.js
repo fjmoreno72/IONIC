@@ -1415,18 +1415,69 @@ document.addEventListener("DOMContentLoaded", function () {
                     assetNode.click();
                     await new Promise(resolve => setTimeout(resolve, 10));
                     
-                    // Find the GP instance
-                    const gpSelectors = [
-                      `.tree-node[data-type="gpInstances"][data-gpid="${path.gpInstanceId}"]`,
-                      `.tree-node[data-type="gpInstances"][data-id="${path.gpInstanceId}"]`
-                    ];
+                    // Find the GP instance - improve selection logic with more comprehensive selectors
+                    console.log("Looking for GP instance with ID or GPID:", path.gpInstanceId);
                     
-                    let gpNode = null;
-                    for (const selector of gpSelectors) {
-                      const nodes = document.querySelectorAll(selector);
-                      if (nodes.length > 0) {
-                        gpNode = nodes[0];
-                        break;
+                    // CRITICAL FIX: We need a more robust approach to find GP instance nodes
+                    // after adding a new SP instance and page refresh
+                    
+                    // First, wait to make sure the tree is fully expanded and all nodes are visible
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    // We need to expand the asset node first to make sure all GP instances are loaded in the DOM
+                    console.log("Clicking asset node again to ensure full expansion");
+                    assetNode.click();
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    // Define multiple approaches to find the GP instance
+                    // First try: Use data-id attribute (Now has the gpid value)
+                    let gpNode = document.querySelector(`.tree-node[data-type="gpInstances"][data-id="${path.gpInstanceId}"]`);
+                    console.log("Attempt 1 - By data-id:", gpNode ? "Found" : "Not found");
+                    
+                    // Second try: Use data-gpid attribute
+                    if (!gpNode) {
+                      gpNode = document.querySelector(`.tree-node[data-type="gpInstances"][data-gpid="${path.gpInstanceId}"]`);
+                      console.log("Attempt 2 - By data-gpid:", gpNode ? "Found" : "Not found");
+                    }
+                    
+                    // Third try: Use more generic tree-node selectors and check attributes
+                    if (!gpNode) {
+                      // Get all visible GP nodes
+                      const allGpNodes = document.querySelectorAll('.tree-node[data-type="gpInstances"]');
+                      console.log("Found", allGpNodes.length, "total GP instance nodes");
+                      
+                      // First filter by instance-id attribute (the original ID)
+                      for (const node of allGpNodes) {
+                        if (node.getAttribute('data-instance-id') === path.instanceId) {
+                          gpNode = node;
+                          console.log("Found node by instance-id attribute");
+                          break;
+                        }
+                      }
+                      
+                      // If still not found, try by data-parent-asset
+                      if (!gpNode) {
+                        const assetGpNodes = Array.from(allGpNodes).filter(node => {
+                          return node.getAttribute('data-parent-asset') === path.assetId ||
+                                 node.getAttribute('data-parent-asset-id') === path.assetId;
+                        });
+                        
+                        console.log("Found", assetGpNodes.length, "GP nodes under asset ID", path.assetId);
+                        
+                        // Last resort: Log all nodes and select the last one as fallback
+                        assetGpNodes.forEach((node, index) => {
+                          console.log(`GP node ${index}:`, {
+                            id: node.getAttribute('data-id'),
+                            instanceId: node.getAttribute('data-instance-id'),
+                            gpid: node.getAttribute('data-gpid'),
+                            text: node.textContent.trim()
+                          });
+                        });
+                        
+                        if (assetGpNodes.length > 0) {
+                          gpNode = assetGpNodes[assetGpNodes.length - 1]; // Select the last one as fallback
+                          console.log("Selecting the last GP node under this asset as fallback");
+                        }
                       }
                     }
                     
@@ -1825,9 +1876,33 @@ document.addEventListener("DOMContentLoaded", function () {
       if (state.fromSpDeletion) {
         console.log('Using more direct approach for SP deletion scenario');
         
+        // CRITICAL FIX: Check if state.nodeId is a GP ID (starts with GP-), if not, we should not proceed
+        // This prevents asset IDs from being incorrectly used as GP IDs
+        if (!state.nodeId || typeof state.nodeId !== 'string' || !state.nodeId.startsWith('GP-')) {
+          console.warn('Invalid GP ID format in state restoration:', state.nodeId, 'Must be a string starting with GP-');
+          // Try to find the actual GP instance in the data model as a fallback
+          if (assetNode) {
+            const assetId = assetNode.getAttribute('data-id');
+            if (assetId) {
+              const foundGp = findGPInstanceByParentAsset(assetId);
+              if (foundGp && foundGp.gpid) {
+                console.log('Found GP instance by asset:', foundGp);
+                state.nodeId = foundGp.gpid; // Use the correct GP ID instead
+              }
+            }
+          }
+          
+          // If we still don't have a valid GP ID, we can't proceed
+          if (!state.nodeId || typeof state.nodeId !== 'string' || !state.nodeId.startsWith('GP-')) {
+            console.error('Could not determine a valid GP ID for state restoration. Aborting.');
+            return;
+          }
+        }
+        
         // Use the loadGPInstanceChildren function which knows how to load SP instances 
-        // This will directly show GP instance SP children in the elements panel
-        loadGPInstanceChildren(assetNode, state.nodeId);
+        // We're now passing a valid GP ID, not an asset ID or node
+        console.log('Loading GP instance children with verified GP ID:', state.nodeId);
+        loadGPInstanceChildren({ id: state.nodeId, gpid: state.nodeId, type: 'gpInstances' });
         
         // Set the current GP instance ID for SP operations
         window.currentGpInstanceId = state.nodeId;
@@ -3260,14 +3335,60 @@ document.addEventListener("DOMContentLoaded", function () {
           CISUtils.showToast("Refreshing CIS Plan with new SP instance...", "info");
 
           // First, store the path information that we need to navigate to after refresh
+          // CRITICAL: Validate that gpInstanceId is a proper GP ID to avoid asset IDs being used
+          if (!gpInstanceId || typeof gpInstanceId !== 'string' || !gpInstanceId.startsWith('GP-')) {
+            console.warn('Invalid GP ID detected before saving SP creation path:', gpInstanceId);
+            // Try to find the actual GP ID using the API or data model
+            try {
+              // First attempt: Check if we have it in window.currentGpInstanceId
+              if (window.currentGpInstanceId && 
+                  typeof window.currentGpInstanceId === 'string' && 
+                  window.currentGpInstanceId.startsWith('GP-')) {
+                console.log('Using window.currentGpInstanceId instead:', window.currentGpInstanceId);
+                gpInstanceId = window.currentGpInstanceId;
+              } 
+              // Second attempt: Try to find the GP instance using the asset ID
+              else if (assetId) {
+                const foundGp = findGPInstanceByParentAsset(assetId);
+                if (foundGp && foundGp.gpid) {
+                  console.log('Found GP instance by asset:', foundGp);
+                  gpInstanceId = foundGp.gpid;
+                }
+              }
+            } catch (err) {
+              console.error('Error finding correct GP ID:', err);
+            }
+            
+            // Final validation before storing
+            if (!gpInstanceId || typeof gpInstanceId !== 'string' || !gpInstanceId.startsWith('GP-')) {
+              console.error('Could not determine a valid GP ID for SP creation path. Using a placeholder.');
+            }
+          }
+          
+          // Store path with validated GP ID and additional information
+          // IMPORTANT: Store both the GP ID (product ID) and the instance ID (original ID) 
+          // to make it easier to find the correct node after page refresh
           const path = {
             missionNetworkId,
             segmentId,
             domainId,
             hwStackId,
             assetId,
-            gpInstanceId
+            gpInstanceId,  // The GP ID (product ID) - starts with GP-
+            instanceId: null  // We'll try to find the original instance ID from the data model
           };
+          
+          // Try to get the instance ID from the current element or tree node
+          try {
+            // Try to find the GP instance in the data model to get its instance ID
+            const gpInstance = findGPInstanceById(gpInstanceId);
+            if (gpInstance) {
+              console.log('Found GP instance in data model:', gpInstance);
+              path.instanceId = gpInstance.id;  // This is the instance ID (original ID)
+            }
+          } catch (err) {
+            console.error('Error finding GP instance for path storage:', err);
+          }
           
           // Store this in local storage so it persists through navigation
           localStorage.setItem('cis_plan_sp_creation_path', JSON.stringify(path));
@@ -3625,6 +3746,99 @@ document.addEventListener("DOMContentLoaded", function () {
     
     console.warn(`GP instance ${gpInstanceId} not found in data model`);
     return null;
+  }
+  
+  /**
+   * Find a GP instance by its parent asset ID
+   * @param {string} assetId - The parent asset ID to search for
+   * @param {object} [data] - Optional data object to search in, defaults to cisPlanData
+   * @returns {object|null} - The first found GP instance or null if none found
+   */
+  function findGPInstanceByParentAsset(assetId, data = window.cisPlanData) {
+    console.log(`Looking for GP instances under asset ID: ${assetId}`);
+    
+    // Validate inputs
+    if (!assetId || !data || !data.missionNetworks) {
+      console.warn('Invalid input to findGPInstanceByParentAsset');
+      return null;
+    }
+    
+    // Search through the data structure
+    for (const mn of data.missionNetworks) {
+      if (!mn.networkSegments) continue;
+      
+      for (const segment of mn.networkSegments) {
+        if (!segment.securityDomains) continue;
+        
+        for (const domain of segment.securityDomains) {
+          if (!domain.hwStacks) continue;
+          
+          for (const hwStack of domain.hwStacks) {
+            if (!hwStack.assets) continue;
+            
+            for (const asset of hwStack.assets) {
+              // Check if this is the asset we're looking for
+              if (asset.id === assetId) {
+                // Found the asset, return the first GP instance if any exist
+                if (asset.gpInstances && asset.gpInstances.length > 0) {
+                  console.log('Found GP instance under asset', assetId, ':', asset.gpInstances[0]);
+                  return asset.gpInstances[0];
+                } else {
+                  console.log('Asset found but it has no GP instances:', assetId);
+                  return null;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    console.log('Asset not found:', assetId);
+    return null;
+  }
+  
+  // * Update a GP instance in the CIS plan data model
+  //    * This is used after adding SP instances to ensure the model stays in sync
+  //    */
+  function updateGPInstanceInCISPlanData(gpInstanceId, updatedGpInstance) {
+    // Traverse the CIS plan data to find the GP instance
+    if (!window.cisPlanData || !window.cisPlanData.missionNetworks) return false;
+    
+    const missionNetworks = window.cisPlanData.missionNetworks;
+    
+    // Search through each mission network
+    for (const mn of missionNetworks) {
+      if (!mn.networkSegments) continue;
+      
+      for (const segment of mn.networkSegments) {
+        if (!segment.securityDomains) continue;
+        
+        for (const domain of segment.securityDomains) {
+          if (!domain.hwStacks) continue;
+          
+          for (const hwStack of domain.hwStacks) {
+            if (!hwStack.assets) continue;
+            
+            for (const asset of hwStack.assets) {
+              if (!asset.gpInstances) continue;
+              
+              // Look for the GP instance
+              for (let i = 0; i < asset.gpInstances.length; i++) {
+                if (asset.gpInstances[i].id === gpInstanceId || asset.gpInstances[i].gpid === gpInstanceId) {
+                  // Found it - update it
+                  asset.gpInstances[i] = { ...asset.gpInstances[i], ...updatedGpInstance };
+                  console.log('Updated GP instance in data model:', asset.gpInstances[i]);
+                  return true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    return false;
   }
 
   // Store security classifications data globally
@@ -4990,13 +5204,18 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Create the node with the display text
+      // IMPORTANT: For GP instances, use gpid as the data-id instead of id, to prevent confusion
+      // when navigating in the tree. The gpid is what we use consistently elsewhere.
       const gpInstanceNode = createTreeNode(
         "gpInstances",
         displayText,
-        gpInstance.id,
+        gpInstance.gpid || gpInstance.id, // Use gpid for the data-id attribute, fall back to id if not available
         gpInstance.guid,
         "fa-cogs"
       );
+      
+      // Store the actual id as data-instance-id for reference
+      gpInstanceNode.setAttribute("data-instance-id", gpInstance.id);
 
       // Store the display name as a data attribute for reference in the details panel
       gpInstanceNode.setAttribute("data-display-name", displayText);
@@ -5114,15 +5333,42 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
+          
+          // Create a proper GP instance object to pass to loadSelectedNodeChildren
+          // Make sure we're passing the actual GP instance ID, not the asset ID
+          const gpInstanceData = {
+            ...gpInstance,
+            // CRITICAL: For tree node clicks, pass gpid as the main id to ensure consistency
+            // Retrieve the actual gpid that was used as data-id when creating the tree node
+            id: this.getAttribute("data-id"), // This is now the gpid based on our changes to createTreeNode
+            // Also store the actual instance ID as a separate property
+            instanceId: gpInstance.id,
+            // Double ensure gpid is correct
+            gpid: gpInstance.gpid || this.getAttribute("data-id") || null,
+            guid: gpInstance.guid || null,
+            // Make sure the type is explicitly set
+            type: "gpInstances"
+          };
+          
+          console.log("Clicked GP instance tree node, passing data with gpid:", gpInstanceData.id, gpInstanceData);
+          
+          // CRITICAL FIX: When calling loadSelectedNodeChildren for GP instances,
+          // we need to make sure we're not passing the asset as the first parent parameter.
+          // Instead, we'll pass the GP ID explicitly as the first parameter to ensure
+          // that when loadGPInstanceChildren receives this in parentData[0], it's the correct GP ID.
           loadSelectedNodeChildren(
-            gpInstance,
+            gpInstanceData,
             "gpInstances",
+            gpInstanceData.gpid, // Pass GP ID as first parameter instead of asset ID
             parentAsset,
             parentStack,
             parentDomain,
             parentSegment,
             parentMissionNetwork
           );
+          
+          // Also set the global window.currentGpInstanceId for consistency
+          window.currentGpInstanceId = gpInstanceData.gpid || gpInstanceData.id;
         }
       });
     });
@@ -5574,8 +5820,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Add double-click handler for drill-down navigation
         assetItem.addEventListener("dblclick", function (event) {
-          // Find and select the corresponding tree node
-          findAndSelectTreeNode(type, element.id);
+          // For GP instances, use the gpid instead of id to correctly find the tree node
+          if (type === "gpInstances" && element.gpid) {
+            console.log("Double-click on GP instance card, using gpid for tree navigation:", element.gpid);
+            findAndSelectTreeNode(type, element.gpid);
+          } else {
+            // For other types, use the regular id
+            findAndSelectTreeNode(type, element.id);
+          }
         });
 
         col.appendChild(assetItem);
@@ -5850,8 +6102,14 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
         
-        // For all other types, find and select the corresponding tree node
-        findAndSelectTreeNode(type, element.id);
+        // For GP instances, use gpid for tree navigation instead of id
+        if (type === "gpInstances" && element.gpid) {
+          console.log("Double-click on GP instance card, using gpid for tree navigation:", element.gpid);
+          findAndSelectTreeNode(type, element.gpid);
+        } else {
+          // For other types, use the regular id
+          findAndSelectTreeNode(type, element.id);
+        }
       });
 
       col.appendChild(itemElement);
@@ -5911,26 +6169,96 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Special function to handle children of GP instances (SP instances)
-  // This function can be called in two ways:
-  // 1. From tree node click - with gpInstance as a GP instance object
-  // 2. From state restoration - with gpInstance as an asset node and parentData[0] as gpId string
+  // This function can be called in three ways:
+  // 1. From tree node click - with gpInstance as a GP instance object with proper id/gpid
+  // 2. From state restoration - with gpInstance as node data and parentData[0] as gpId string
+  // 3. From SP-creation redirect with potentially incorrect IDs
   function loadGPInstanceChildren(gpInstance, ...parentData) {
     if (elementsContainer) {
       elementsContainer.innerHTML = "";
     }
     
-    // Handle both call patterns
+    // Handle the different call patterns
     let gpInstanceId;
+    let actualGpInstance = null;
     
-    // Determine if this is a direct call from state restoration
+    // First, determine the source of our GP instance data
     if (parentData.length > 0 && typeof parentData[0] === 'string') {
       // This is a call from state restoration with explicit GP ID
       gpInstanceId = parentData[0];
-      console.log('Called loadGPInstanceChildren with explicit GP ID:', gpInstanceId);
-    } else {
+      console.log('***** parentData *****', parentData);
+      
+      // CRITICAL FIX: Validate that parentData[0] is a GP ID, not an asset ID
+      if (gpInstanceId.startsWith('AS-')) {
+        console.warn('Received asset ID in parentData[0]:', gpInstanceId);
+        // Check if we have a GP instance in the data, and a valid gpid property
+        if (gpInstance && typeof gpInstance === 'object' && gpInstance.gpid && 
+            typeof gpInstance.gpid === 'string' && gpInstance.gpid.startsWith('GP-')) {
+          console.log('Using gpid from gpInstance object instead:', gpInstance.gpid);
+          gpInstanceId = gpInstance.gpid;
+        } else {
+          // Try to find the actual GP instance using the asset ID
+          console.log('Trying to find GP instance by asset ID...');
+          const foundGp = findGPInstanceByParentAsset(gpInstanceId);
+          if (foundGp && foundGp.gpid) {
+            console.log('Found GP instance by asset:', foundGp);
+            gpInstanceId = foundGp.gpid;
+          }
+        }
+      }
+      
+      console.log('Using GP ID after validation:', gpInstanceId);
+    } else if (gpInstance && typeof gpInstance === 'object') {
       // This is a regular call with a GP instance object
-      gpInstanceId = gpInstance.gpid;
-      console.log('Called loadGPInstanceChildren with GP instance object, ID:', gpInstanceId);
+      // Check if the object itself is properly typed
+      if (gpInstance.type === 'gpInstances') {
+        // We have a properly typed GP instance object
+        // IMPORTANT: For tree node clicks, we now use gpid as id, to ensure consistency
+        // After our tree node changes, gpInstance.id should already be the gpid, not the asset ID
+        gpInstanceId = gpInstance.id; // This is now the gpid
+        actualGpInstance = gpInstance;
+        console.log('Called loadGPInstanceChildren with properly typed GP instance, using ID:', gpInstanceId);
+      } else {
+        // We have an object but it might not be properly identified
+        // Prioritize gpid over id if available
+        gpInstanceId = gpInstance.gpid || gpInstance.id;
+        console.log('Called loadGPInstanceChildren with object, determined ID:', gpInstanceId);
+      }
+    } else {
+      console.warn('Called loadGPInstanceChildren with invalid parameters');
+      return; // Cannot proceed without valid data
+    }
+    
+    // Validate the GP instance ID format
+    if (gpInstanceId && typeof gpInstanceId === 'string') {
+      // Now that we're consistently using GP IDs (GP-xxxx) for GP instance nodes,
+      // we can be more precise with our validation
+      if (gpInstanceId.startsWith('GP-')) {
+        // This is a valid GP ID format - proceed normally
+        console.log('Confirmed valid GP ID format:', gpInstanceId);
+      } else if (gpInstanceId.startsWith('AS-')) {
+        // Legacy case: Still handle the case where we somehow got an asset ID
+        console.warn('Received an asset ID instead of a GP instance ID:', gpInstanceId);
+        
+        // Try to find the actual GP instance under this asset
+        if (window.cisPlanData) {
+          const foundGPInstance = findGPInstanceByParentAsset(gpInstanceId, window.cisPlanData);
+          if (foundGPInstance) {
+            console.log('Found related GP instance:', foundGPInstance.id);
+            gpInstanceId = foundGPInstance.id;
+            actualGpInstance = foundGPInstance;
+          } else {
+            // If we couldn't find a GP instance, we need to handle this gracefully
+            console.warn('Could not find a GP instance under asset', gpInstanceId);
+            // Show a friendly message in the elements panel
+            showNoElementsMessage(elementsContainer, 'No Generic Products found for this asset.');
+            return;
+          }
+        }
+      }
+    } else {
+      console.warn('Invalid GP instance ID:', gpInstanceId);
+      return; // Cannot proceed without valid ID
     }
     
     // Store the current GP instance ID globally for SP instance deletion context
@@ -6723,11 +7051,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Show a message when there are no elements to display
-  function showNoElementsMessage(container) {
+  function showNoElementsMessage(container, customMessage = null) {
     container.innerHTML = `
             <div class="alert alert-info m-3">
                 <i class="fas fa-info-circle me-2"></i>
-                No elements available
+                ${customMessage || 'No elements available'}
             </div>
         `;
   }

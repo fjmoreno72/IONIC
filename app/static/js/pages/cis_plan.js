@@ -5363,40 +5363,57 @@ document.addEventListener("DOMContentLoaded", function () {
       return; // Exit early since we've handled the assets case specially
     }
 
-    // For non-asset types, use a more space-efficient horizontal card layout
-    let cardsContainer = document.createElement("div");
-    cardsContainer.className =
-      "element-cards-container row row-cols-1 row-cols-md-2 row-cols-lg-2 g-2 m-0"; // Reduced gap and margin
-    container.appendChild(cardsContainer);
-
+    // For all non-asset types, also use the compact approach similar to assets
+    // Create title header for the element type
+    const stickyHeader = document.createElement("div");
+    stickyHeader.className =
+      "sticky-top bg-light mb-2 p-2 d-flex justify-content-between align-items-center border-bottom";
+    stickyHeader.style.zIndex = "100";
+    
+    // Format the type name for display (e.g., "networkInterfaces" -> "Network Interfaces")
+    const formattedType = type.replace(/([A-Z])/g, ' $1')
+      .replace(/^./, str => str.toUpperCase())
+      .replace(/([a-z])([A-Z])/g, '$1 $2');
+      
+    // Create title in sticky header
+    const headerTitle = document.createElement("h5");
+    headerTitle.className = "m-0";
+    headerTitle.textContent = `${formattedType} (${elements.length})`;
+    stickyHeader.appendChild(headerTitle);
+    
+    container.appendChild(stickyHeader);
+    
+    // Create compact layout container
+    const compactList = document.createElement("div");
+    compactList.className = "compact-element-list";
+    compactList.style.overflow = "auto"; // Enable scrolling if needed
+    container.appendChild(compactList);
+    
+    // Create a grid layout for more condensed view with minimal gaps
+    const grid = document.createElement("div");
+    grid.className = "row row-cols-2 row-cols-md-3 row-cols-lg-3 g-1"; // Smallest gap
+    compactList.appendChild(grid);
+    
     // Store current selected element ID if there is one
     let selectedElementId = "";
     if (currentElement && currentElement.id) {
       selectedElementId = currentElement.id;
     }
-
-    // Render each element as a card
+    
+    // Render each element in a compact form
     elements.forEach((element) => {
-      const cardCol = document.createElement("div");
-      cardCol.className = "col";
-
-      const card = document.createElement("div");
-      card.className = "card element-card h-100";
-      // Optimize card dimensions for better horizontal space usage
-      card.style.minHeight = "80px"; // Reduced height
-      card.style.width = "100%";
-      card.style.display = "flex"; // Use flexbox for better layout control
-      card.style.flexDirection = "column";
-
-      // If this card represents the currently selected element, add active class
+      const col = document.createElement("div");
+      col.className = "col";
+      
+      const itemElement = document.createElement("div");
+      itemElement.className = "element-item p-1 border rounded d-flex align-items-center";
       if (selectedElementId === element.id) {
-        card.classList.add("active");
-        // Applied active class during render
+        itemElement.classList.add("active", "bg-primary", "text-white");
       }
 
-      card.setAttribute("data-type", type);
-      card.setAttribute("data-id", element.id);
-      card.setAttribute("data-guid", element.guid);
+      itemElement.setAttribute("data-type", type);
+      itemElement.setAttribute("data-id", element.id);
+      itemElement.setAttribute("data-guid", element.guid);
 
       // For gpInstances, networkInterfaces, or spInstances, add parent reference attributes for proper deletion
       if (type === "gpInstances" || type === "networkInterfaces" || type === "spInstances") {
@@ -5405,67 +5422,46 @@ document.addEventListener("DOMContentLoaded", function () {
           // Add parent asset reference
           const assetId = currentTreeNode.getAttribute("data-id");
           if (assetId) {
-            card.setAttribute("data-parent-asset", assetId);
+            itemElement.setAttribute("data-parent-asset", assetId);
           }
 
           // Add other parent references from the tree
           const hwStackId = currentTreeNode.getAttribute("data-parent-stack");
           if (hwStackId) {
-            card.setAttribute("data-parent-stack", hwStackId);
+            itemElement.setAttribute("data-parent-stack", hwStackId);
           }
 
           const domainId = currentTreeNode.getAttribute("data-parent-domain");
           if (domainId) {
-            card.setAttribute("data-parent-domain", domainId);
+            itemElement.setAttribute("data-parent-domain", domainId);
           }
 
           const segmentId = currentTreeNode.getAttribute("data-parent-segment");
           if (segmentId) {
-            card.setAttribute("data-parent-segment", segmentId);
+            itemElement.setAttribute("data-parent-segment", segmentId);
           }
 
           const mnId = currentTreeNode.getAttribute(
             "data-parent-mission-network"
           );
           if (mnId) {
-            card.setAttribute("data-parent-mission-network", mnId);
+            itemElement.setAttribute("data-parent-mission-network", mnId);
           }
         }
       }
 
-      const cardBody = document.createElement("div");
-      cardBody.className = "card-body p-2"; // Consistently small padding
-      cardBody.style.flex = "1 1 auto"; // Make body fill available space
-      cardBody.style.display = "flex";
-      cardBody.style.flexDirection = "column";
-      cardBody.style.justifyContent = "space-between"; // Space elements evenly
-
       // Get the SVG icon for this element type
-      // Use centralized ENTITY_META for icon
       const iconPath = getElementIcon(type);
-
-      // Create a condensed header with icon and title
-      const cardHeader = document.createElement("div");
-      cardHeader.className = "d-flex align-items-center mb-1"; // Reduced bottom margin
-
-      // Add icon (slightly smaller)
-      const iconSpan = document.createElement("span");
-      iconSpan.className = "me-2 flex-shrink-0"; // Prevent icon from shrinking
-      iconSpan.innerHTML = `<img src="${iconPath}" width="22" height="22" alt="${type} icon">`;
-      cardHeader.appendChild(iconSpan);
-
-      // Create title with the icon, with text-truncate to add ellipsis
-      const cardTitle = document.createElement("h5");
-      cardTitle.className = "card-title mb-0 text-truncate flex-grow-1"; // Grow to fill available space
-      cardTitle.style.fontSize = "0.9rem"; // Consistent smaller font size
+      
+      // Generate display content based on element type
+      let displayName = element.name || "";
 
       // For security domains, look up the classification name
       if (type === "securityDomains") {
         const classification = getSecurityClassificationById(element.id);
-        const displayName = classification.name;
-        cardTitle.textContent = displayName;
+        displayName = classification.name;
         // Store display name as data attribute
-        card.setAttribute("data-display-name", displayName);
+        itemElement.setAttribute("data-display-name", displayName);
       } else if (type === "networkInterfaces") {
         // For network interfaces, show name and IP address
         let ipAddress = "N/A";
@@ -5484,24 +5480,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Display name and IP address
-        const displayName = `${element.name} - ${ipAddress}`;
-        cardTitle.textContent = displayName;
+        displayName = `${element.name} - ${ipAddress}`;
         // Store display name as data attribute
-        card.setAttribute("data-display-name", displayName);
+        itemElement.setAttribute("data-display-name", displayName);
       } else if (type === "gpInstances") {
         // For GP instances, show the GP name based on gpid and instance label
         // Set initial value to the instance label or default text
-        let displayText = element.instanceLabel || `GP Instance ${element.id}`;
+        displayName = element.instanceLabel || `GP Instance ${element.id}`;
 
         // Store initial display name as data attribute
-        card.setAttribute("data-display-name", displayText);
+        itemElement.setAttribute("data-display-name", displayName);
 
         // If we have a gpid, fetch the actual GP name
         if (element.gpid) {
-          // Temporarily show placeholder while we fetch the name
-          cardTitle.textContent = displayText;
-
-          // Fetch GP name asynchronously
+          // Fetch GP name asynchronously and update the element
           (async function () {
             try {
               const response = await fetch(`/api/gps/${element.gpid}/name`);
@@ -5517,10 +5509,15 @@ document.addEventListener("DOMContentLoaded", function () {
                   updatedText = `${gpName} (${element.instanceLabel})`;
                 }
 
-                // Update the card title with the GP name
-                cardTitle.textContent = updatedText;
+                // Find and update the element name span
+                const nameSpan = itemElement.querySelector('.element-name');
+                if (nameSpan) {
+                  nameSpan.textContent = updatedText;
+                }
                 // Update the data attribute with the final display name
-                card.setAttribute("data-display-name", updatedText);
+                itemElement.setAttribute("data-display-name", updatedText);
+                // Update tooltip
+                itemElement.setAttribute("title", `${updatedText} (${element.id})`);
               }
             } catch (error) {
               console.error(
@@ -5529,23 +5526,17 @@ document.addEventListener("DOMContentLoaded", function () {
               );
             }
           })();
-        } else {
-          // No gpid available, just show the display text
-          cardTitle.textContent = displayText;
         }
       } else if (type === "spInstances") {
         // For SP instances, show the SP name from API and version
         // Set initial value using SP ID and version as placeholder
-        let displayText = `SP ${element.spId}`;
+        displayName = `SP ${element.spId}`;
         if (element.spVersion) {
-          displayText += ` v${element.spVersion}`;
+          displayName += ` v${element.spVersion}`;
         }
         
-        // Initially set the placeholder text
-        cardTitle.textContent = displayText;
-        
         // Store initial display name as data attribute
-        card.setAttribute("data-display-name", displayText);
+        itemElement.setAttribute("data-display-name", displayName);
         
         // If we have a spId, fetch the actual SP name
         if (element.spId) {
@@ -5566,10 +5557,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     updatedText = `${spName} (v${element.spVersion})`;
                   }
                   
-                  // Update the card title with the SP name
-                  cardTitle.textContent = updatedText;
+                  // Find and update the element name span
+                  const nameSpan = itemElement.querySelector('.element-name');
+                  if (nameSpan) {
+                    nameSpan.textContent = updatedText;
+                  }
                   // Update the data attribute with the final display name
-                  card.setAttribute("data-display-name", updatedText);
+                  itemElement.setAttribute("data-display-name", updatedText);
+                  // Update tooltip
+                  itemElement.setAttribute("title", `${updatedText} (${element.id})`);
                 }
               }
             } catch (error) {
@@ -5577,164 +5573,118 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           })();
         }
-      } else {
-        const displayName = element.name || "";
-        cardTitle.textContent = displayName;
-        // Store display name as data attribute
-        card.setAttribute("data-display-name", displayName);
       }
-
-      cardHeader.appendChild(cardTitle);
-
-      // Add the header to the card body
-      cardBody.appendChild(cardHeader);
-
-      // Content container to hold subtitle and other info
-      const contentContainer = document.createElement("div");
-      contentContainer.className = "d-flex flex-column";
-      contentContainer.style.minHeight = "0"; // Allow container to shrink
       
-      // Add subtitle (ID) with truncation - in a more compact form
-      const cardSubtitle = document.createElement("h6");
-      cardSubtitle.className = "card-subtitle mb-1 text-muted text-truncate"; // Reduced margin
-      cardSubtitle.style.fontSize = "0.75rem"; // Smaller consistent font size
-      cardSubtitle.textContent = element.id || "";
-      contentContainer.appendChild(cardSubtitle);
-      cardBody.appendChild(contentContainer);
-
-      // For HW Stacks and Network Interfaces, use a more condensed layout
-      if (type === "hwStacks" || type === "networkInterfaces") {
-        // Remove the subtitle (ID) that was added earlier to save space
-        // We no longer need to explicitly remove it since we're using a container
-        contentContainer.removeChild(cardSubtitle);
-        
-        // Add participant info if available in a more compact way
-        if (element.cisParticipantID) {
-          const participantContainer = document.createElement("div");
-          participantContainer.className = "small text-secondary mb-0"; // No bottom margin
-          participantContainer.style.fontSize = "0.7rem"; // Consistent smallest font size
-          participantContainer.innerHTML = `<span class="participant-name text-truncate" style="display: inline-block; max-width: 100%;">${element.cisParticipantID}</span>`;
-          contentContainer.appendChild(participantContainer);
-
-          // Asynchronously fetch and update the participant name
-          (async function () {
-            const participantName = await getParticipantNameByKey(
-              element.cisParticipantID
-            );
-            const nameSpan =
-              participantContainer.querySelector(".participant-name");
-            if (nameSpan && participantName !== element.cisParticipantID) {
-              nameSpan.textContent = participantName;
-            }
-          })();
-        }
-
-        // Make the card more compact and consistent with other card types
-        card.classList.add("compact-hw-stack");
+      // Create compact layout with icon and name (similar to assets)
+      itemElement.innerHTML = `
+        <img src="${iconPath}" width="20" height="20" alt="${type} icon" class="me-2">
+        <div class="element-name text-truncate" style="font-size: 0.85rem;">${displayName}</div>
+      `;
+      
+      // Add tooltip with full name and ID info
+      itemElement.setAttribute("title", `${displayName} (${element.id})`);
+      
+      // For special types that need participant info, add it to the tooltip
+      if (type === "hwStacks" && element.cisParticipantID) {
+        // Asynchronously fetch and update the participant name
+        (async function () {
+          const participantName = await getParticipantNameByKey(element.cisParticipantID);
+          if (participantName && participantName !== element.cisParticipantID) {
+            const currentTitle = itemElement.getAttribute("title");
+            itemElement.setAttribute("title", `${currentTitle}\nParticipant: ${participantName}`);
+          }
+        })();
       }
-      card.appendChild(cardBody);
-      cardCol.appendChild(card);
-      cardsContainer.appendChild(cardCol);
 
-      // Add double-click handler for drill-down navigation (separate from click handler)
-      card.addEventListener("dblclick", function (event) {
-        // Prevent the click event from firing
-        event.stopPropagation();
-
-        // For network interfaces, they're leaf nodes, so don't try to drill down
-        if (type === "networkInterfaces") {
-          // Just select the node but don't try to drill down further
-          return;
-        }
-
-        // For all other types, including GP instances, find and select the corresponding tree node
-        findAndSelectTreeNode(type, element.id);
-      });
-
-      // Add click event to the card
-      card.addEventListener("click", function () {
-        // Remove active class from all cards
-        document.querySelectorAll(".element-card.active").forEach((card) => {
-          card.classList.remove("active");
+      // Add click event
+      itemElement.addEventListener("click", function () {
+        // Remove active class from all items
+        document.querySelectorAll(".element-item.active").forEach((item) => {
+          item.classList.remove("active", "bg-primary", "text-white");
         });
 
-        // Add active class to this card
-        this.classList.add("active");
+        // Add active class to this item
+        this.classList.add("active", "bg-primary", "text-white");
 
         // Store the selected element and its type
         currentElement = element;
-        currentElement.type = type; // Add the type property to the element
+        currentElement.type = type; // Store the type explicitly
 
-        // For network segments, ensure parent mission network reference is maintained
-        if (type === "networkSegments" && currentTreeNode) {
-          const missionNetworkId =
-            currentTreeNode.getAttribute("data-parent-mission-network") ||
-            currentTreeNode.getAttribute("data-id");
-          if (missionNetworkId && !element.parentMissionNetwork) {
-            // If we're viewing network segments from a mission network tree node, store the parent reference
-            element.parentMissionNetwork = { id: missionNetworkId };
-          }
-        }
-
-        // Selected element for detail panel
-
-        // Ensure parent references for hierarchy are populated
-        if (type === "assets") {
-          // For assets, we need to ensure all parent references are set
-          // Try to get from current element first
-          let hwStackId = element.hwStackId || element.parentStack;
-
-          // If not found and we have a currentTreeNode, get from there
-          if ((!hwStackId || hwStackId === "undefined") && currentTreeNode) {
-            hwStackId = currentTreeNode.getAttribute("data-parent-stack");
-            element.parentDomain =
-              currentTreeNode.getAttribute("data-parent-domain");
-            element.parentSegment = currentTreeNode.getAttribute(
-              "data-parent-segment"
-            );
-            element.parentMissionNetwork = currentTreeNode.getAttribute(
-              "data-parent-mission-network"
-            );
-          }
-
-          // Ensure we store it in both places for redundancy and as a string
-          if (typeof hwStackId === "object" && hwStackId !== null) {
-            element.parentStack = hwStackId.id || "";
-            element.hwStackId = hwStackId.id || "";
-          } else {
-            element.parentStack = hwStackId;
-            element.hwStackId = hwStackId;
-          }
-        } else if (type === "gpInstances" || type === "networkInterfaces") {
-          // For GP instances and network interfaces, ensure parent asset and all hierarchy references are set
-          // First check if we have info from the current tree node
-          if (currentTreeNode) {
-            // Set all parent references
-            element.parentAsset =
-              currentTreeNode.getAttribute("data-parent-asset") ||
-              card.getAttribute("data-parent-asset");
-            element.parentStack =
-              currentTreeNode.getAttribute("data-parent-stack") ||
-              card.getAttribute("data-parent-stack");
-            element.parentDomain =
-              currentTreeNode.getAttribute("data-parent-domain") ||
-              card.getAttribute("data-parent-domain");
-            element.parentSegment =
-              currentTreeNode.getAttribute("data-parent-segment") ||
-              card.getAttribute("data-parent-segment");
-            element.parentMissionNetwork =
-              currentTreeNode.getAttribute("data-parent-mission-network") ||
-              card.getAttribute("data-parent-mission-network");
-          }
-        }
-
-        // Update the details panel
+        // Update detail panel
         updateDetailPanel(element, type);
-
+        
         // Enable edit and delete buttons
         if (editDetailButton) editDetailButton.disabled = false;
         if (deleteDetailButton) deleteDetailButton.disabled = false;
       });
+
+      // Add double-click handler for drill-down navigation
+      itemElement.addEventListener("dblclick", function (event) {
+        // Prevent the click event from firing
+        event.stopPropagation();
+        
+        // For leaf node types, don't try to drill down
+        if (type === "networkInterfaces" || type === "spInstances") {
+          return;
+        }
+        
+        // For all other types, find and select the corresponding tree node
+        findAndSelectTreeNode(type, element.id);
+      });
+
+      col.appendChild(itemElement);
+      grid.appendChild(col);
+
+      // For network segments, ensure parent mission network reference is maintained
+      if (type === "networkSegments" && currentTreeNode) {
+        const missionNetworkId =
+          currentTreeNode.getAttribute("data-parent-mission-network") ||
+          currentTreeNode.getAttribute("data-id");
+        if (missionNetworkId && !element.parentMissionNetwork) {
+          // If we're viewing network segments from a mission network tree node, store the parent reference
+          element.parentMissionNetwork = { id: missionNetworkId };
+        }
+      }
+      
+      // Ensure parent references for hierarchy are populated
+      if (type === "assets") {
+        // For assets, we need to ensure all parent references are set
+        // Try to get from current element first
+        let hwStackId = element.hwStackId || element.parentStack;
+
+        // If not found and we have a currentTreeNode, get from there
+        if ((!hwStackId || hwStackId === "undefined") && currentTreeNode) {
+          hwStackId = currentTreeNode.getAttribute("data-parent-stack");
+          element.parentDomain =
+            currentTreeNode.getAttribute("data-parent-domain");
+          element.parentSegment = currentTreeNode.getAttribute(
+            "data-parent-segment"
+          );
+          element.parentMissionNetwork = currentTreeNode.getAttribute(
+            "data-parent-mission-network"
+          );
+        }
+
+        // Ensure we store it in both places for redundancy and as a string
+        if (typeof hwStackId === "object" && hwStackId !== null) {
+          element.parentStack = hwStackId.id || "";
+          element.hwStackId = hwStackId.id || "";
+        } else {
+          element.parentStack = hwStackId;
+          element.hwStackId = hwStackId;
+        }
+      } else if (type === "gpInstances" || type === "networkInterfaces") {
+        // For GP instances and network interfaces, ensure parent asset and all hierarchy references are set
+        // First check if we have info from the current tree node
+        if (currentTreeNode) {
+          // Set all parent references using only currentTreeNode since itemElement might not have these attributes yet
+          element.parentAsset = currentTreeNode.getAttribute("data-parent-asset");
+          element.parentStack = currentTreeNode.getAttribute("data-parent-stack");
+          element.parentDomain = currentTreeNode.getAttribute("data-parent-domain");
+          element.parentSegment = currentTreeNode.getAttribute("data-parent-segment");
+          element.parentMissionNetwork = currentTreeNode.getAttribute("data-parent-mission-network");
+        }
+      }
     });
   }
 

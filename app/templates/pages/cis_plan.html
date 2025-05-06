@@ -1196,41 +1196,8 @@
                 detailsPanel.classList.add('collapsed');
             }
             
-            // Add a tooltip explaining panel collapse
-            const tooltip = document.createElement('div');
-            tooltip.className = 'toast show';
-            tooltip.style.position = 'fixed';
-            tooltip.style.bottom = '20px';
-            tooltip.style.right = '20px';
-            tooltip.style.zIndex = '9999';
-            tooltip.innerHTML = `
-                <div class="toast-header">
-                    <strong class="me-auto">Panel Controls</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-                </div>
-                <div class="toast-body">
-                    <p>You can now collapse and expand panels. If panels get stuck:</p>
-                    <ul>
-                        <li>Double-click on a collapsed panel to expand it</li>
-                        <li>Press <kbd>Esc</kbd> to restore a collapsed tree panel</li>
-                        <li>Press <kbd>Ctrl+Alt+R</kbd> to restore all panels</li>
-                    </ul>
-                </div>
-            `;
-            
-            document.body.appendChild(tooltip);
-            
-            // Close button functionality
-            tooltip.querySelector('.btn-close').addEventListener('click', function() {
-                tooltip.remove();
-            });
-            
-            // Auto-remove after 10 seconds
-            setTimeout(function() {
-                if (tooltip.parentNode) {
-                    tooltip.remove();
-                }
-            }, 10000);
+            // Panel collapse functionality is available but we don't need to show a popup about it
+            // The functionality remains: double-click to expand, Esc to restore tree panel, Ctrl+Alt+R to restore all
         });
         
         // Check for saved theme preference or use system preference

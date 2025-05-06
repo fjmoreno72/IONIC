@@ -67,6 +67,11 @@
                               "guid": "98856d8b-ceb2-4003-a864-852673e78600",
                               "spId": "SP-0147",
                               "spVersion": "256"
+                            },
+                            {
+                              "guid": "433cfbd2-d583-436b-a071-5047dd6e094c",
+                              "spId": "SP-0104",
+                              "spVersion": "4.0"
                             }
                           ],
                           "configurationItems": [
@@ -560,6 +565,11 @@
                               "guid": "4bf77ef8-f537-4ad9-99ea-855d9029ccd9",
                               "spId": "SP-0106",
                               "spVersion": "2"
+                            },
+                            {
+                              "guid": "afda32dc-9d89-4d65-a447-40cbf8a5a381",
+                              "spId": "SP-0104",
+                              "spVersion": "4.0.2"
                             }
                           ],
                           "configurationItems": [

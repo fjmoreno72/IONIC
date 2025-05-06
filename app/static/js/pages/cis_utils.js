@@ -291,22 +291,67 @@ const CISUtils = {
       nodeId: null
     };
     
-    // Map indices to type-specific properties
-    // The order is: missionNetworkId (0), segmentId (1), domainId (2), hwStackId (3), assetId (4)
-    const entityPath = this.getEntityPath(entityType);
-    const parentIndex = entityPath.indexOf(parentType);
-    
-    if (parentIndex >= 0) {
-      // The pattern is that parent references are stored in reverse order
-      // (mission network first, then segment, etc.)
-      state.nodeId = parentIds[entityPath.indexOf(parentType)];
-      
-      // Add appropriate parent references needed for restoration
-      if (parentIds[0]) state.missionNetworkId = parentIds[0];
-      if (parentIds[1] && parentType !== 'missionNetworks') state.segmentId = parentIds[1];
-      if (parentIds[2] && ['securityDomains', 'hwStacks', 'assets'].includes(parentType)) state.domainId = parentIds[2];
-      if (parentIds[3] && parentType === 'hwStacks') state.hwStackId = parentIds[3];
+    // Special handling based on entity types - this is much more reliable than
+    // trying to use array indices that may not align
+    switch (entityType) {
+      case 'networkSegments':
+        // For network segments, parent is mission network (index 0)
+        state.nodeId = parentIds[0]; // Mission Network ID
+        state.missionNetworkId = parentIds[0];
+        break;
+        
+      case 'securityDomains':
+        // For security domains, parent is network segment (index 1)
+        state.nodeId = parentIds[1]; // Network Segment ID
+        state.missionNetworkId = parentIds[0];
+        state.segmentId = parentIds[1];
+        break;
+        
+      case 'hwStacks':
+        // For HW stacks, parent is security domain (index 2)
+        state.nodeId = parentIds[2]; // Security Domain ID
+        state.missionNetworkId = parentIds[0];
+        state.segmentId = parentIds[1];
+        state.domainId = parentIds[2];
+        break;
+        
+      case 'assets':
+        // For assets, parent is HW stack (index 3)
+        state.nodeId = parentIds[3]; // HW Stack ID
+        state.missionNetworkId = parentIds[0];
+        state.segmentId = parentIds[1];
+        state.domainId = parentIds[2];
+        state.hwStackId = parentIds[3];
+        break;
+        
+      default:
+        // Fallback to the previous logic for other types
+        // Add appropriate parent references needed for restoration
+        if (parentIds[0]) state.missionNetworkId = parentIds[0];
+        if (parentIds[1] && parentType !== 'missionNetworks') state.segmentId = parentIds[1];
+        if (parentIds[2] && ['securityDomains', 'hwStacks', 'assets'].includes(parentType)) state.domainId = parentIds[2];
+        if (parentIds[3] && parentType === 'hwStacks') state.hwStackId = parentIds[3];
+        
+        // For all other cases, use explicit parent type matching
+        if (parentType === 'missionNetworks') {
+          state.nodeId = parentIds[0];
+        } else if (parentType === 'networkSegments') {
+          state.nodeId = parentIds[1];
+        } else if (parentType === 'securityDomains') {
+          state.nodeId = parentIds[2];
+        } else if (parentType === 'hwStacks') {
+          state.nodeId = parentIds[3];
+        } else if (parentType === 'assets') {
+          state.nodeId = parentIds[4];
+        }
     }
+    
+    // Log the state we're going to restore to for debugging
+    console.log(`Building restore state for ${entityType} deletion:`, {
+      parentType,
+      parentIds,
+      resultState: state
+    });
     
     return state;
   }

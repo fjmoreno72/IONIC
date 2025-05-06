@@ -162,9 +162,13 @@
     "status": "Validated"
   },
   {
+    "id": "ASC-0006",
     "affiliateId": "AFF-0027",
-    "ascScore": "100%",
     "environment": "Deployable",
+    "serviceId": "SRV-0021",
+    "model": "MOD-0001",
+    "ascScore": "100%",
+    "status": "In Progress",
     "gpInstances": [
       {
         "gpId": "GP-0005",
@@ -196,27 +200,22 @@
       },
       {
         "gpId": "GP-0005",
-        "gpScore": "0%",
-        "instanceLabel": "",
-        "spInstances": [
-          {
-            "spId": "SP-0007",
-            "spVersion": "17.0v24",
-            "spScore": "100%",
-            "guid": "b130148b-1c4b-45a9-bee6-355db3f5ecef"
-          }
-        ],
+        "gpScore": "100%",
+        "guid": "bf8f453e-e993-4f19-895b-aa467216dbac",
+        "instanceLabel": "M-Link",
         "models": [
           "MOD-0001"
         ],
-        "guid": "bf8f453e-e993-4f19-895b-aa467216dbac"
+        "spInstances": [
+          {
+            "guid": "b130148b-1c4b-45a9-bee6-355db3f5ecef",
+            "spId": "SP-0007",
+            "spScore": "100%",
+            "spVersion": "17.0v24"
+          }
+        ]
       }
-    ],
-    "guid": "5c378266-fc6c-441b-9b89-e28670179756",
-    "id": "ASC-0006",
-    "model": "MOD-0001",
-    "serviceId": "SRV-0021",
-    "status": "In Progress"
+    ]
   },
   {
     "affiliateId": "AFF-0027",

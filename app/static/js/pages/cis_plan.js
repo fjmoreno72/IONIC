@@ -840,8 +840,18 @@ document.addEventListener("DOMContentLoaded", function () {
               `GP Instance ${currentElement.id}`;
           document.getElementById("deleteItemName").textContent = displayName;
 
-          // Use guid or id for GP instances, making sure it's not undefined
-          const instanceId = currentElement.guid || currentElement.id || "";
+          // IMPORTANT: For GP instances, we need to use gpid, NOT guid
+          // First try to get it from the tree node data attribute
+          let gpId = currentTreeNode ? currentTreeNode.getAttribute("data-gpid") : null;
+          
+          // If not found in tree node, check the current element's gpid property
+          if (!gpId && currentElement && currentElement.gpid) {
+            gpId = currentElement.gpid;
+          }
+          
+          // Fall back to ID or GUID only if we couldn't find a gpid
+          const instanceId = gpId || currentElement.id || currentElement.guid || "";
+          console.log("Using GP ID for deletion:", instanceId, "(gpid:", gpId, ")");
 
           document.getElementById("deleteItemId").value = instanceId;
         } else if (elementType === "spInstances") {
@@ -1098,21 +1108,93 @@ document.addEventListener("DOMContentLoaded", function () {
           // Store parent references for network interface deletion
         } else if (elementType === "gpInstances") {
           // For GP instances, we need mission network ID, segment ID, domain ID, HW stack ID, and asset ID
-          // Similar to network interfaces, get parent IDs from various sources
-          let assetId = currentTreeNode.getAttribute("data-parent-asset");
-          let hwStackId = currentTreeNode.getAttribute("data-parent-stack");
-          let domainId = currentTreeNode.getAttribute("data-parent-domain");
-          let segmentId = currentTreeNode.getAttribute("data-parent-segment");
-          let missionNetworkId = currentTreeNode.getAttribute(
-            "data-parent-mission-network"
-          );
+          // Try all possible ways to get the asset ID - this is critical for deletion to work
+          
+          // First try to get parent asset ID using the same pattern as network interfaces
+          let assetId = currentTreeNode.getAttribute("data-parent-asset-id");
+          if (!assetId) assetId = currentTreeNode.getAttribute("data-parent-asset");
+          
+          let hwStackId = currentTreeNode.getAttribute("data-parent-stack-id");
+          if (!hwStackId) hwStackId = currentTreeNode.getAttribute("data-parent-stack");
+          
+          let domainId = currentTreeNode.getAttribute("data-parent-domain-id");
+          if (!domainId) domainId = currentTreeNode.getAttribute("data-parent-domain");
+          
+          let segmentId = currentTreeNode.getAttribute("data-parent-segment-id");
+          if (!segmentId) segmentId = currentTreeNode.getAttribute("data-parent-segment");
+          
+          let missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network-id");
+          if (!missionNetworkId) missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network");
 
-          // Fall back to object properties if needed
+          // Fall back to object properties if still not found
           if (!assetId && currentElement.parentAsset) {
             assetId =
               typeof currentElement.parentAsset === "object"
                 ? currentElement.parentAsset.id
                 : currentElement.parentAsset;
+          }
+          
+          // If still not found, try to search in the global data
+          if (!assetId || assetId === 'null' || assetId === 'undefined') {
+            // CRITICAL: First check if we have a gpid from the tree node or element
+            let gpId = currentTreeNode ? currentTreeNode.getAttribute("data-gpid") : null;
+            if (!gpId && currentElement && currentElement.gpid) {
+              gpId = currentElement.gpid;
+            }
+            
+            // If we have a valid gpid, use that for searching
+            const searchId = gpId || currentElement.id || currentElement.guid;
+            console.log('Searching for asset ID in the data model for GP instance using ID:', searchId);
+            
+            // Find which asset contains this GP instance
+            if (window.cisPlanData && Array.isArray(window.cisPlanData)) {
+              const findAsset = (gpId, data) => {
+                // Recursive function to search through the hierarchy
+                const searchNodes = (nodes) => {
+                  if (!Array.isArray(nodes)) return null;
+                  
+                  for (const node of nodes) {
+                    // Check if this node has assets
+                    if (Array.isArray(node.assets)) {
+                      for (const asset of node.assets) {
+                        if (Array.isArray(asset.gpInstances)) {
+                          for (const gp of asset.gpInstances) {
+                            // Match by gpid first, then id, then guid
+                            if ((gpId && gp.gpid === gpId) || gp.id === gpId || gp.guid === gpId) {
+                              console.log('Found matching GP instance in asset:', asset.id, 'GP instance details:', gp);
+                              return asset.id;
+                            }
+                          }
+                        }
+                      }
+                    }
+                    
+                    // Check segments, domains, etc.
+                    if (Array.isArray(node.networkSegments)) {
+                      const result = searchNodes(node.networkSegments);
+                      if (result) return result;
+                    }
+                    if (Array.isArray(node.securityDomains)) {
+                      const result = searchNodes(node.securityDomains);
+                      if (result) return result;
+                    }
+                    if (Array.isArray(node.hwStacks)) {
+                      const result = searchNodes(node.hwStacks);
+                      if (result) return result;
+                    }
+                  }
+                  return null;
+                };
+                
+                return searchNodes(data);
+              };
+              
+              const foundAssetId = findAsset(searchId, window.cisPlanData);
+              if (foundAssetId) {
+                console.log('Found asset ID from data model:', foundAssetId);
+                assetId = foundAssetId;
+              }
+            }
           }
 
           if (!hwStackId && currentElement.parentStack) {
@@ -4839,6 +4921,38 @@ document.addEventListener("DOMContentLoaded", function () {
           ? parentMissionNetwork.id
           : parentMissionNetwork
       );
+      
+      // CRITICAL: Set parent reference ID attributes (needed for deletion operations)
+      // This is the critical difference from network interfaces - these ID-suffixed attributes are needed
+      gpInstanceNode.setAttribute(
+        "data-parent-asset-id",
+        typeof parentAsset === "object" ? parentAsset.id : parentAsset
+      );
+      gpInstanceNode.setAttribute(
+        "data-parent-stack-id",
+        typeof parentStack === "object" ? parentStack.id : parentStack
+      );
+      gpInstanceNode.setAttribute(
+        "data-parent-domain-id",
+        typeof parentDomain === "object" ? parentDomain.id : parentDomain
+      );
+      gpInstanceNode.setAttribute(
+        "data-parent-segment-id",
+        typeof parentSegment === "object" ? parentSegment.id : parentSegment
+      );
+      gpInstanceNode.setAttribute(
+        "data-parent-mission-network-id",
+        typeof parentMissionNetwork === "object"
+          ? parentMissionNetwork.id
+          : parentMissionNetwork
+      );
+      
+      // Also store the references directly on the gpInstance object, like we do for network interfaces
+      gpInstance.parentAsset = parentAsset;
+      gpInstance.parentStack = parentStack;
+      gpInstance.parentDomain = parentDomain;
+      gpInstance.parentSegment = parentSegment;
+      gpInstance.parentMissionNetwork = parentMissionNetwork;
 
       container.appendChild(gpInstanceNode);
 
@@ -5956,8 +6070,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add details rows
         const detailRows = [
           { label: "SP ID", value: element.spId },
-          { label: "Version", value: element.spVersion },
-          { label: "GUID", value: element.guid }
+          { label: "Version", value: element.spVersion }
         ];
         
         detailRows.forEach(row => {
@@ -6199,10 +6312,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <th scope="row">ID</th>
                         <td>${classification.id || "N/A"}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">GUID</th>
-                        <td>${classification.guid || "N/A"}</td>
-                    </tr>
+
                     <tr>
                         <th scope="row">Releasability</th>
                         <td>${classification.releasabilityString || "N/A"}</td>
@@ -6257,8 +6367,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <tr>
                         <th scope="row">Instance</th>
                         <td>
-                          <strong>GUID:</strong> ${element.guid || "N/A"}
-                          <br>
+
                           <strong>Label:</strong> ${
                             element.instanceLabel || "<em>Not set</em>"
                           }
@@ -6404,10 +6513,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         <th scope="row">ID</th>
                         <td>${element.id || "N/A"}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">GUID</th>
-                        <td>${element.guid || "N/A"}</td>
-                    </tr>
       `;
 
       // Add configuration items if present
@@ -6458,10 +6563,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     <tr>
                         <th scope="row">ID</th>
                         <td>${element.id || "N/A"}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">GUID</th>
-                        <td>${element.guid || "N/A"}</td>
                     </tr>
                 </tbody>
             `;

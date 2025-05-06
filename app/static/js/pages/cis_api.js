@@ -343,14 +343,201 @@ const CISApi = {
           assetId = parsedParentIds.assetId;
         }
         
+        console.log('Trying to delete GP instance:', id);
+        
+        // We need to find both the correct asset ID and the correct instance ID
+        // First, try to find the asset ID in the global data model if it's missing
+        if (!assetId || assetId === 'null' || assetId === 'undefined') {
+          console.log('Looking for asset ID in CIS Plan data');
+          
+          // Search for the GP instance in the global data model
+          const findAssetForGPInstance = (gpInstanceId, data) => {
+            let foundAsset = null;
+            
+            // Function to recursively search through networks, segments, domains, stacks
+            const searchHierarchy = (node) => {
+              if (!node) return null;
+              
+              // Check if this is an array of assets
+              if (Array.isArray(node.assets)) {
+                // Check each asset for the GP instance
+                for (const asset of node.assets) {
+                  if (Array.isArray(asset.gpInstances)) {
+                    for (const gpInstance of asset.gpInstances) {
+                      // Match by ID or GUID
+                      if (gpInstance.id === gpInstanceId || gpInstance.guid === gpInstanceId) {
+                        console.log('Found GP instance in asset:', asset.id);
+                        return asset;
+                      }
+                    }
+                  }
+                }
+              }
+              
+              // Recurse into children if any
+              for (const key in node) {
+                if (node[key] && typeof node[key] === 'object') {
+                  const result = searchHierarchy(node[key]);
+                  if (result) return result;
+                }
+              }
+              
+              return null;
+            };
+            
+            // Start search from mission networks
+            if (window.cisPlanData && Array.isArray(window.cisPlanData)) {
+              for (const network of window.cisPlanData) {
+                const result = searchHierarchy(network);
+                if (result) {
+                  foundAsset = result;
+                  break;
+                }
+              }
+            }
+            
+            return foundAsset;
+          };
+          
+          // Try to find the asset for this GP instance
+          const asset = findAssetForGPInstance(id, window.cisPlanData);
+          if (asset) {
+            assetId = asset.id;
+            console.log('Found asset ID from data model:', assetId);
+          }
+        }
+        
+        // Now check if we need to convert GUID to ID for the GP instance
+        const isGuid = id && id.includes('-') && id.length > 30;
+        let correctInstanceId = id;
+        
+        if (isGuid) {
+          console.log('Detected GUID instead of GP ID, attempting to find the actual gpid');
+          
+          // Try to get the GP ID from the current tree node
+          if (window.currentTreeNode) {
+            const gpId = window.currentTreeNode.getAttribute('data-gpid');
+            if (gpId) {
+              console.log('Found gpid from tree node:', gpId);
+              correctInstanceId = gpId;
+            }
+          }
+          
+          // If still not found, check the current element
+          if (correctInstanceId === id && window.currentElement) {
+            const gpId = window.currentElement.gpid;
+            if (gpId) {
+              console.log('Found gpid from currentElement:', gpId);
+              correctInstanceId = gpId;
+            }
+          }
+          
+          // If still not found, search in the data model
+          if (correctInstanceId === id && window.cisPlanData) {
+            const findGPId = (gpGuid) => {
+              let found = null;
+              
+              const searchNodes = (nodes) => {
+                if (!Array.isArray(nodes)) return null;
+                
+                for (const node of nodes) {
+                  // Check if this node has assets
+                  if (Array.isArray(node.assets)) {
+                    for (const asset of node.assets) {
+                      if (Array.isArray(asset.gpInstances)) {
+                        for (const gpInstance of asset.gpInstances) {
+                          if (gpInstance.guid === gpGuid && gpInstance.gpid) {
+                            return gpInstance.gpid;
+                          }
+                        }
+                      }
+                    }
+                  }
+                  
+                  // Check segments, domains, etc.
+                  if (Array.isArray(node.networkSegments)) {
+                    const result = searchNodes(node.networkSegments);
+                    if (result) return result;
+                  }
+                  if (Array.isArray(node.securityDomains)) {
+                    const result = searchNodes(node.securityDomains);
+                    if (result) return result;
+                  }
+                  if (Array.isArray(node.hwStacks)) {
+                    const result = searchNodes(node.hwStacks);
+                    if (result) return result;
+                  }
+                }
+                
+                return null;
+              };
+              
+              found = searchNodes(window.cisPlanData);
+              return found;
+            };
+            
+            const foundGPId = findGPId(id);
+            if (foundGPId) {
+              console.log('Found GP ID from data model:', foundGPId);
+              correctInstanceId = foundGPId;
+            }
+          }
+          
+          console.log('Using GP ID for deletion:', correctInstanceId);
+        }
+        
+        // One more attempt to find the asset ID if it's still missing
+        if (!assetId || assetId === 'null' || assetId === 'undefined') {
+          // Try to get asset ID directly from the HTML DOM
+          const gpInstanceElement = document.querySelector(`.tree-node[data-type="gpInstances"][data-id="${correctInstanceId}"]`);
+          if (gpInstanceElement) {
+            const domAssetId = gpInstanceElement.getAttribute('data-parent-asset') || gpInstanceElement.getAttribute('data-parent-asset-id');
+            if (domAssetId && domAssetId !== 'null' && domAssetId !== 'undefined') {
+              console.log('Found asset ID directly from DOM element:', domAssetId);
+              assetId = domAssetId;
+            }
+          }
+          
+          // Check if the currentElement has any asset ID reference
+          if ((!assetId || assetId === 'null' || assetId === 'undefined') && window.currentElement) {
+            // Try all possible naming patterns
+            const possibleAssetRefs = ['assetId', 'asset_id', 'parentAssetId', 'parent_asset_id', 'parentAsset'];
+            for (const ref of possibleAssetRefs) {
+              if (window.currentElement[ref]) {
+                const refValue = window.currentElement[ref];
+                const elementAssetId = typeof refValue === 'object' ? refValue.id : refValue;
+                if (elementAssetId && elementAssetId !== 'null' && elementAssetId !== 'undefined') {
+                  console.log(`Found asset ID from currentElement.${ref}:`, elementAssetId);
+                  assetId = elementAssetId;
+                  break;
+                }
+              }
+            }
+          }
+        }
+        
+        // Final check if we have a valid asset ID
+        if (!assetId || assetId === 'null' || assetId === 'undefined') {
+          console.error('Could not find a valid asset ID, cannot delete GP instance');
+          return {
+            success: false,
+            error: "Unable to determine parent asset ID for the GP instance",
+            status: 400,
+          };
+        }
+        
         // Use the dedicated deleteGPInstance method which has better error handling
+        console.log('Calling deleteGPInstance with:', {
+          missionNetworkId, segmentId, domainId, hwStackId, assetId, instanceId: correctInstanceId
+        });
+        
         return this.deleteGPInstance(
           missionNetworkId,
           segmentId,
           domainId,
           hwStackId,
           assetId,
-          id
+          correctInstanceId
         );
       } else {
         return {
@@ -1144,22 +1331,67 @@ const CISApi = {
     interfaceId
   ) {
     try {
-      // Input validation
-      if (
-        !missionNetworkId ||
-        !segmentId ||
-        !domainId ||
-        !hwStackId ||
-        !assetId ||
-        !interfaceId
-      ) {
+      console.log('deleteNetworkInterface called with params:', {
+        missionNetworkId,
+        segmentId,
+        domainId,
+        hwStackId,
+        assetId,
+        interfaceId
+      });
+
+      // Enhanced input validation with fallback mechanism
+      if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !interfaceId) {
         return {
           success: false,
-          error: "Missing required parameters",
+          error: "Missing required parameters: network hierarchy IDs or interface ID",
           status: 400,
         };
       }
 
+      // Special handling for asset ID
+      // Check if assetId is null or 'null' string and attempt to find it from DOM
+      if (!assetId || assetId === 'null' || assetId === 'undefined') {
+        console.log('Asset ID is missing or invalid, attempting to find from current selection');
+        
+        // Try to get asset ID from current tree node
+        const currentTreeNode = window.currentTreeNode;
+        if (currentTreeNode) {
+          const treeNodeAssetId = currentTreeNode.getAttribute('data-parent-asset') || 
+                               currentTreeNode.getAttribute('data-parent-asset-id');
+          
+          if (treeNodeAssetId && treeNodeAssetId !== 'null' && treeNodeAssetId !== 'undefined') {
+            console.log('Found asset ID from tree node:', treeNodeAssetId);
+            assetId = treeNodeAssetId;
+          }
+        }
+        
+        // If still not found, try to get from currentElement
+        if (!assetId || assetId === 'null' || assetId === 'undefined') {
+          const currentElement = window.currentElement;
+          if (currentElement && currentElement.parentAsset) {
+            const elementAssetId = typeof currentElement.parentAsset === 'object' ? 
+                                 currentElement.parentAsset.id : currentElement.parentAsset;
+            
+            if (elementAssetId && elementAssetId !== 'null' && elementAssetId !== 'undefined') {
+              console.log('Found asset ID from currentElement:', elementAssetId);
+              assetId = elementAssetId;
+            }
+          }
+        }
+        
+        // If still not found, fetch the asset ID by querying the parent element in the tree
+        if (!assetId || assetId === 'null' || assetId === 'undefined') {
+          console.error('Could not find a valid asset ID, cannot proceed with deletion');
+          return {
+            success: false,
+            error: "Unable to determine parent asset ID for the network interface",
+            status: 400,
+          };
+        }
+      }
+
+      console.log('Using asset ID for network interface deletion:', assetId);
       const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/network_interfaces/${interfaceId}`;
 
       const response = await fetch(endpoint, {
@@ -1206,22 +1438,83 @@ const CISApi = {
     instanceId
   ) {
     try {
-      // Input validation
-      if (
-        !missionNetworkId ||
-        !segmentId ||
-        !domainId ||
-        !hwStackId ||
-        !assetId ||
-        !instanceId
-      ) {
+      console.log('deleteGPInstance called with params:', {
+        missionNetworkId,
+        segmentId,
+        domainId,
+        hwStackId,
+        assetId,
+        instanceId
+      });
+
+      // Enhanced input validation with fallback for hierarchy IDs
+      if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !instanceId) {
         return {
           success: false,
-          error: "Missing required parameters",
+          error: "Missing required parameters: network hierarchy IDs or instance ID",
           status: 400,
         };
       }
 
+      // Special handling for asset ID - similar to networkInterface deletion
+      if (!assetId || assetId === 'null' || assetId === 'undefined') {
+        console.log('Asset ID is missing or invalid, attempting to find from current selection');
+        
+        // Try to get asset ID from current tree node
+        const currentTreeNode = window.currentTreeNode;
+        if (currentTreeNode) {
+          const treeNodeAssetId = currentTreeNode.getAttribute('data-parent-asset') || 
+                               currentTreeNode.getAttribute('data-parent-asset-id');
+          
+          if (treeNodeAssetId && treeNodeAssetId !== 'null' && treeNodeAssetId !== 'undefined') {
+            console.log('Found asset ID from tree node:', treeNodeAssetId);
+            assetId = treeNodeAssetId;
+          }
+        }
+        
+        // If still not found, try to get from currentElement
+        if (!assetId || assetId === 'null' || assetId === 'undefined') {
+          const currentElement = window.currentElement;
+          if (currentElement && currentElement.parentAsset) {
+            const elementAssetId = typeof currentElement.parentAsset === 'object' ? 
+                                 currentElement.parentAsset.id : currentElement.parentAsset;
+            
+            if (elementAssetId && elementAssetId !== 'null' && elementAssetId !== 'undefined') {
+              console.log('Found asset ID from currentElement:', elementAssetId);
+              assetId = elementAssetId;
+            }
+          }
+        }
+        
+        // If still not found, cannot proceed
+        if (!assetId || assetId === 'null' || assetId === 'undefined') {
+          console.error('Could not find a valid asset ID, cannot proceed with GP deletion');
+          return {
+            success: false,
+            error: "Unable to determine parent asset ID for the GP instance",
+            status: 400,
+          };
+        }
+      }
+      
+      // Check if we're using the GUID instead of ID for the GP instance
+      // This can happen if the tree node stores the GUID as the ID
+      const isGuid = instanceId && instanceId.includes('-') && instanceId.length > 30;
+      if (isGuid) {
+        console.log('Detected GUID instead of ID for GP instance, trying to find the actual ID');
+        // Try to find the ID from the current tree node
+        const currentTreeNode = window.currentTreeNode;
+        if (currentTreeNode) {
+          // Check for gpid data attribute which would be the correct ID to use
+          const gpId = currentTreeNode.getAttribute('data-gpid');
+          if (gpId) {
+            console.log('Found GP ID from tree node:', gpId);
+            instanceId = gpId;
+          }
+        }
+      }
+
+      console.log('Using asset ID:', assetId, 'and instance ID:', instanceId, 'for GP instance deletion');
       const endpoint = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/gp_instances/${instanceId}`;
 
       const response = await fetch(endpoint, {

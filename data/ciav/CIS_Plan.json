@@ -653,10 +653,90 @@
                       "networkInterfaces": [],
                       "gpInstances": [
                         {
-                          "gpid": "GP-0114",
-                          "guid": "dde22d1d-3b6d-4dc0-9cef-10ba19ad2612",
-                          "instanceLabel": "xxx",
-                          "serviceId": "SRV-0026",
+                          "gpid": "GP-0021",
+                          "guid": "702c6051-1382-4595-9a57-05b262bdbfd5",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0009",
+                          "spInstances": [
+                            {
+                              "guid": "021e48c5-a37e-40b9-8cce-a4257490038c",
+                              "spId": "SP-0253",
+                              "spVersion": "4.6"
+                            }
+                          ],
+                          "configurationItems": [
+                            {
+                              "Name": "FFT Message Standards",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "ea616ede-d342-4014-9011-de6124268908",
+                              "DefaultValue": "FFI XML MTF - APP-11(D)(1)",
+                              "HelpText": "Enter the Message Standards used: i.e. NFFI 1.3,  FFI XML MTF - APP-11(D)(1)"
+                            },
+                            {
+                              "Name": "FFT Protocols Supported",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "8a4244fb-1856-4d6b-8b6a-8be53a778397",
+                              "DefaultValue": "ADatP-36 IP1",
+                              "HelpText": "Enter the Protocols Supported: i.e. D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub."
+                            },
+                            {
+                              "Name": "Subsystem ID",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "eb5ac946-e948-4a75-9a70-58d4411613b7",
+                              "DefaultValue": "",
+                              "HelpText": "Assigned FFI SubSystem"
+                            },
+                            {
+                              "Name": "System ID",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "1348341e-c2c9-4499-9cd9-cd1dfdd1e973",
+                              "DefaultValue": "",
+                              "HelpText": "Assigned FFI System"
+                            },
+                            {
+                              "Name": "System Name",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "b90ec2b8-c0d1-412d-beb4-782cca07c0a3",
+                              "DefaultValue": "",
+                              "HelpText": "Specifies the system name. should be unique in the MN context"
+                            },
+                            {
+                              "Name": "URL Track Store",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "86877c2c-00da-4128-944d-5820f4b538f0",
+                              "DefaultValue": "",
+                              "HelpText": "URL to connect to the Track Store (i.e TSS URL)"
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0037",
+                          "guid": "f5f4b539-b123-4b98-8bbc-223099a1bc9a",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0008",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Provider URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "6a45caea-4fe8-4a85-9cd5-5560ced1632e",
+                              "DefaultValue": "",
+                              "HelpText": "For example the URL of the trackstore you are accessing"
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0142",
+                          "guid": "858d5bf3-d3ba-4a14-8395-6399de00003d",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0009",
                           "spInstances": [],
                           "configurationItems": []
                         }
@@ -944,6 +1024,169 @@
                           "serviceId": "SRV-0014",
                           "spInstances": [],
                           "configurationItems": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mission X",
+      "guid": "fc57e6b3-7436-4cd1-b3f8-cfca5cff0ab4",
+      "id": "MN-0010",
+      "networkSegments": [
+        {
+          "name": "RGN",
+          "guid": "e735773d-257f-447f-bf61-587371986346",
+          "id": "NS-0008",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS",
+              "guid": "18760d41-faed-49e8-aa4e-4de28411f404",
+              "hwStacks": [
+                {
+                  "name": "STACK 2.1",
+                  "guid": "d889432f-3d21-4612-a7d5-d207c5aa2e39",
+                  "id": "HW-0014",
+                  "cisParticipantID": "PAR-CIAV-000026",
+                  "assets": [
+                    {
+                      "name": "A1",
+                      "guid": "bcf3db44-2f8a-481b-9832-0d8192855ca7",
+                      "id": "AS-0019",
+                      "networkInterfaces": [
+                        {
+                          "name": "NET2.1",
+                          "guid": "b6a4f629-c691-4913-a20f-fef6fca11c1f",
+                          "id": "NI-0002",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "192.168.1.1",
+                              "guid": "97459538-c74e-4d96-ad44-eb29df36c4db"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "2615df4a-8d5a-474d-a5a4-f8bdef9c76d1"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "72245a85-dc84-472f-81af-e3655a462dcc"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0021",
+                          "guid": "6499fa44-7804-4126-9ea6-c483afc51a05",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0009",
+                          "spInstances": [
+                            {
+                              "guid": "ccde3485-16ec-4a44-8596-af963e7816fa",
+                              "spId": "SP-0106",
+                              "spVersion": "123"
+                            },
+                            {
+                              "guid": "f73a2d0c-a74e-444f-8dec-1e50e423dcd8",
+                              "spId": "SP-0147",
+                              "spVersion": "1"
+                            }
+                          ],
+                          "configurationItems": [
+                            {
+                              "Name": "FFT Message Standards",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "2ba43e3a-45e1-469e-bea5-26e0072127b8",
+                              "DefaultValue": "FFI XML MTF - APP-11(D)(1)",
+                              "HelpText": "Enter the Message Standards used: i.e. NFFI 1.3,  FFI XML MTF - APP-11(D)(1)"
+                            },
+                            {
+                              "Name": "FFT Protocols Supported",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "9a982c23-0aaa-40dd-b59b-4aa1d7d82b81",
+                              "DefaultValue": "ADatP-36 IP1",
+                              "HelpText": "Enter the Protocols Supported: i.e. D-Doc NFFI IP1, D-Doc NFFI IP2, SIP3 1.1 Req/Res, SIP3 1.1 Pub/Sub, ADatP-36 IP1, ADatP-36 IP2, ADatP-36 SIP3 1.2 Req/Res, ADatP-36 SIP3 1.2 Pub/Sub, ADatP-36 WSMP 1.1 Req/Res, ADatP-36 WSMP 1.1 Pub/Sub."
+                            },
+                            {
+                              "Name": "Subsystem ID",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "4aea41f0-3c2c-4364-86c6-dd51b6e1ffa3",
+                              "DefaultValue": "",
+                              "HelpText": "Assigned FFI SubSystem"
+                            },
+                            {
+                              "Name": "System ID",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "b7f6dac0-88fb-4b2a-a0bf-929f4c62ac13",
+                              "DefaultValue": "",
+                              "HelpText": "Assigned FFI System"
+                            },
+                            {
+                              "Name": "System Name",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "cbd550fd-e288-45a2-8737-b7c25033eba4",
+                              "DefaultValue": "",
+                              "HelpText": "Specifies the system name. should be unique in the MN context"
+                            },
+                            {
+                              "Name": "URL Track Store",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "56ef15dd-308e-47cd-8e99-9988c83ec97d",
+                              "DefaultValue": "",
+                              "HelpText": "URL to connect to the Track Store (i.e TSS URL)"
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0090",
+                          "guid": "fbcf8029-f6dc-4e1a-ba22-4434093882c4",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0017",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Port",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "f34e45bb-2694-45c1-b47c-1d2f4201b660",
+                              "DefaultValue": "443",
+                              "HelpText": "Port for the RAG Server"
+                            },
+                            {
+                              "Name": "QoS",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "dc696287-f3a9-4469-9b50-30c880aa0856",
+                              "DefaultValue": "AF33",
+                              "HelpText": "QoS DSCP value used for DNS traffic"
+                            },
+                            {
+                              "Name": "Root Hints",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "b892375d-fbfb-403e-a9fd-11875b11cb7c",
+                              "DefaultValue": "",
+                              "HelpText": "List of DNS root servers configured on the DNS resolver(s)"
+                            }
+                          ]
                         }
                       ]
                     }

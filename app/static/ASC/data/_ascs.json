@@ -2567,5 +2567,77 @@
     "model": "MOD-0001",
     "serviceId": "SRV-0004",
     "status": "Validated"
+  },
+  {
+    "guid": "831a21fd-6ec2-4b92-8b77-e680ba0d7f4a",
+    "id": "ASC-0059",
+    "affiliateId": "AFF-0005",
+    "environment": "Static",
+    "serviceId": "SRV-0012",
+    "model": "MOD-0001",
+    "ascScore": "0%",
+    "status": "Initial",
+    "gpInstances": [
+      {
+        "gpId": "GP-0026",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [],
+        "models": [
+          "MOD-0001"
+        ],
+        "guid": "ff1cee17-c69b-41c9-b760-66784c1225ed"
+      },
+      {
+        "gpId": "GP-0029",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [],
+        "models": [
+          "MOD-0001"
+        ],
+        "guid": "ee1a7e5d-91a5-4ddb-854b-e2cff11b34bd"
+      },
+      {
+        "gpId": "GP-0015",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [],
+        "models": [
+          "MOD-0001"
+        ],
+        "guid": "4f6cacd4-7111-4c7f-b6f6-46fb24fd5573"
+      },
+      {
+        "gpId": "GP-0016",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [],
+        "models": [
+          "MOD-0001"
+        ],
+        "guid": "e89b9fbf-4c7c-46fc-a016-390cbb67ac0e"
+      },
+      {
+        "gpId": "GP-0084",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [],
+        "models": [
+          "MOD-0001"
+        ],
+        "guid": "2e46471d-5d45-42d2-bb41-086b38070270"
+      },
+      {
+        "gpId": "GP-0019",
+        "gpScore": "0%",
+        "instanceLabel": "",
+        "spInstances": [],
+        "models": [
+          "MOD-0001"
+        ],
+        "guid": "a495e25b-2bce-4afd-81d0-e7233b03479e"
+      }
+    ]
   }
 ]

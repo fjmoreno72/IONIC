@@ -5287,14 +5287,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       container.appendChild(stickyHeader);
 
-      // For assets, use a compact list view instead of cards
+      // For assets, use an even more compact list view
       const compactList = document.createElement("div");
       compactList.className = "compact-asset-list";
+      compactList.style.overflow = "auto"; // Enable scrolling if needed
       container.appendChild(compactList);
 
-      // Create a grid layout for more condensed view
+      // Create a grid layout for more condensed view with minimal gaps
       const grid = document.createElement("div");
-      grid.className = "row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2";
+      grid.className = "row row-cols-2 row-cols-md-3 row-cols-lg-3 g-1"; // Smallest gap
       compactList.appendChild(grid);
 
       // Store current selected element ID if there is one
@@ -5310,7 +5311,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const assetItem = document.createElement("div");
         assetItem.className =
-          "asset-item p-2 border rounded d-flex align-items-center";
+          "asset-item p-1 border rounded d-flex align-items-center"; // Reduced padding
         if (selectedElementId === element.id) {
           assetItem.classList.add("active", "bg-primary", "text-white");
         }
@@ -5325,7 +5326,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Create compact layout with icon and name
         assetItem.innerHTML = `
                     <img src="${iconPath}" width="20" height="20" alt="${type} icon" class="me-2">
-                    <div class="asset-name text-truncate">${element.name}</div>
+                    <div class="asset-name text-truncate" style="font-size: 0.85rem;">${element.name}</div>
                 `;
 
         // Add tooltip with ID info
@@ -5362,10 +5363,10 @@ document.addEventListener("DOMContentLoaded", function () {
       return; // Exit early since we've handled the assets case specially
     }
 
-    // For non-asset types, use the original card layout
+    // For non-asset types, use a more space-efficient horizontal card layout
     let cardsContainer = document.createElement("div");
     cardsContainer.className =
-      "element-cards-container row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 m-1";
+      "element-cards-container row row-cols-1 row-cols-md-2 row-cols-lg-2 g-2 m-0"; // Reduced gap and margin
     container.appendChild(cardsContainer);
 
     // Store current selected element ID if there is one
@@ -5381,6 +5382,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const card = document.createElement("div");
       card.className = "card element-card h-100";
+      // Optimize card dimensions for better horizontal space usage
+      card.style.minHeight = "80px"; // Reduced height
+      card.style.width = "100%";
+      card.style.display = "flex"; // Use flexbox for better layout control
+      card.style.flexDirection = "column";
 
       // If this card represents the currently selected element, add active class
       if (selectedElementId === element.id) {
@@ -5428,25 +5434,30 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       const cardBody = document.createElement("div");
-      cardBody.className = "card-body";
+      cardBody.className = "card-body p-2"; // Consistently small padding
+      cardBody.style.flex = "1 1 auto"; // Make body fill available space
+      cardBody.style.display = "flex";
+      cardBody.style.flexDirection = "column";
+      cardBody.style.justifyContent = "space-between"; // Space elements evenly
 
       // Get the SVG icon for this element type
       // Use centralized ENTITY_META for icon
       const iconPath = getElementIcon(type);
 
-      // Create a header with icon and title
+      // Create a condensed header with icon and title
       const cardHeader = document.createElement("div");
-      cardHeader.className = "d-flex align-items-center mb-2";
+      cardHeader.className = "d-flex align-items-center mb-1"; // Reduced bottom margin
 
-      // Add icon
+      // Add icon (slightly smaller)
       const iconSpan = document.createElement("span");
-      iconSpan.className = "me-2";
-      iconSpan.innerHTML = `<img src="${iconPath}" width="26" height="26" alt="${type} icon">`;
+      iconSpan.className = "me-2 flex-shrink-0"; // Prevent icon from shrinking
+      iconSpan.innerHTML = `<img src="${iconPath}" width="22" height="22" alt="${type} icon">`;
       cardHeader.appendChild(iconSpan);
 
-      // Create title with the icon
+      // Create title with the icon, with text-truncate to add ellipsis
       const cardTitle = document.createElement("h5");
-      cardTitle.className = "card-title mb-0";
+      cardTitle.className = "card-title mb-0 text-truncate flex-grow-1"; // Grow to fill available space
+      cardTitle.style.fontSize = "0.9rem"; // Consistent smaller font size
 
       // For security domains, look up the classification name
       if (type === "securityDomains") {
@@ -5578,23 +5589,32 @@ document.addEventListener("DOMContentLoaded", function () {
       // Add the header to the card body
       cardBody.appendChild(cardHeader);
 
-      // Add subtitle (ID)
+      // Content container to hold subtitle and other info
+      const contentContainer = document.createElement("div");
+      contentContainer.className = "d-flex flex-column";
+      contentContainer.style.minHeight = "0"; // Allow container to shrink
+      
+      // Add subtitle (ID) with truncation - in a more compact form
       const cardSubtitle = document.createElement("h6");
-      cardSubtitle.className = "card-subtitle mb-2 text-muted";
+      cardSubtitle.className = "card-subtitle mb-1 text-muted text-truncate"; // Reduced margin
+      cardSubtitle.style.fontSize = "0.75rem"; // Smaller consistent font size
       cardSubtitle.textContent = element.id || "";
-      cardBody.appendChild(cardSubtitle);
+      contentContainer.appendChild(cardSubtitle);
+      cardBody.appendChild(contentContainer);
 
       // For HW Stacks and Network Interfaces, use a more condensed layout
       if (type === "hwStacks" || type === "networkInterfaces") {
         // Remove the subtitle (ID) that was added earlier to save space
-        cardBody.removeChild(cardSubtitle);
-
+        // We no longer need to explicitly remove it since we're using a container
+        contentContainer.removeChild(cardSubtitle);
+        
         // Add participant info if available in a more compact way
         if (element.cisParticipantID) {
           const participantContainer = document.createElement("div");
-          participantContainer.className = "small text-secondary mb-1";
-          participantContainer.innerHTML = `<span class="participant-name text-truncate">${element.cisParticipantID}</span>`;
-          cardBody.appendChild(participantContainer);
+          participantContainer.className = "small text-secondary mb-0"; // No bottom margin
+          participantContainer.style.fontSize = "0.7rem"; // Consistent smallest font size
+          participantContainer.innerHTML = `<span class="participant-name text-truncate" style="display: inline-block; max-width: 100%;">${element.cisParticipantID}</span>`;
+          contentContainer.appendChild(participantContainer);
 
           // Asynchronously fetch and update the participant name
           (async function () {
@@ -5609,10 +5629,8 @@ document.addEventListener("DOMContentLoaded", function () {
           })();
         }
 
-        // Make the card more compact
+        // Make the card more compact and consistent with other card types
         card.classList.add("compact-hw-stack");
-        cardBody.classList.add("p-2");
-        cardHeader.classList.add("mb-1");
       }
       card.appendChild(cardBody);
       cardCol.appendChild(card);

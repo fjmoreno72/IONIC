@@ -778,28 +778,48 @@ document.addEventListener("DOMContentLoaded", function () {
           editModal.show();
         } else if (type === "gpInstances") {
           // Populate and show edit GP instance modal
-          document.getElementById("editGPContainerId").value =
-            currentElement.id;
+          // CRITICAL: Use gpid instead of id to avoid 404 errors
+          const gpid = currentElement.gpid || currentElement.id;
+          console.log('Editing GP instance with ID:', gpid, 'Current element:', currentElement);
+          
+          document.getElementById("editGPContainerId").value = gpid;
           document.getElementById("editGPContainerInstanceLabel").value =
             currentElement.instanceLabel || "";
           document.getElementById("editGPContainerServiceId").value =
             currentElement.serviceId || "";
 
-          // Store parent IDs for the API call
+          // Store parent IDs for the API call - try both attribute formats
+          console.log('Current tree node for parent lookups:', currentTreeNode);
+          
+          // Try all possible ways to get the parent IDs
           const assetId =
+            currentTreeNode.getAttribute("data-parent-asset-id") ||
             currentTreeNode.getAttribute("data-parent-asset") ||
+            currentElement.parentAssetId ||
             currentElement.parentAsset;
+            
           const hwStackId =
+            currentTreeNode.getAttribute("data-parent-stack-id") ||
             currentTreeNode.getAttribute("data-parent-stack") ||
+            currentElement.parentStackId ||
             currentElement.parentStack;
+            
           const domainId =
+            currentTreeNode.getAttribute("data-parent-domain-id") ||
             currentTreeNode.getAttribute("data-parent-domain") ||
+            currentElement.parentDomainId ||
             currentElement.parentDomain;
+            
           const segmentId =
+            currentTreeNode.getAttribute("data-parent-segment-id") ||
             currentTreeNode.getAttribute("data-parent-segment") ||
+            currentElement.parentSegmentId ||
             currentElement.parentSegment;
+            
           const missionNetworkId =
+            currentTreeNode.getAttribute("data-parent-mission-network-id") ||
             currentTreeNode.getAttribute("data-parent-mission-network") ||
+            currentElement.parentMissionNetworkId ||
             currentElement.parentMissionNetwork;
 
           document.getElementById("editGPContainerAssetId").value = assetId;
@@ -3194,6 +3214,16 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // Debug which ID is missing
+    console.log('Edit GP Instance - IDs:', {
+      id,
+      missionNetworkId,
+      segmentId,
+      domainId,
+      hwStackId,
+      assetId
+    });
+    
     if (
       !id ||
       !missionNetworkId ||
@@ -3202,7 +3232,17 @@ document.addEventListener("DOMContentLoaded", function () {
       !hwStackId ||
       !assetId
     ) {
+      // Provide more specific information about which ID is missing
+      let missingIds = [];
+      if (!id) missingIds.push('GP Instance ID');
+      if (!missionNetworkId) missingIds.push('Mission Network ID');
+      if (!segmentId) missingIds.push('Segment ID');
+      if (!domainId) missingIds.push('Domain ID');
+      if (!hwStackId) missingIds.push('HW Stack ID');
+      if (!assetId) missingIds.push('Asset ID');
+      
       showToast("Missing ID information", "warning");
+      console.error('Missing IDs:', missingIds);
       return;
     }
 

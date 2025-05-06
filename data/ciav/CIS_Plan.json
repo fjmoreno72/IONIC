@@ -558,7 +558,7 @@
                         {
                           "gpid": "GP-0001",
                           "guid": "e6700155-6676-41c8-b562-050d42ed78c4",
-                          "instanceLabel": "",
+                          "instanceLabel": "ECHO2",
                           "serviceId": "SRV-0008",
                           "spInstances": [
                             {
@@ -998,7 +998,65 @@
           "id": "NS-0004",
           "securityDomains": [
             {
-              "id": "CL-UNCLASS"
+              "id": "CL-UNCLASS",
+              "hwStacks": [
+                {
+                  "name": "a",
+                  "guid": "24c76fae-9262-4707-94a8-2ba837a80ecf",
+                  "id": "HW-0018",
+                  "cisParticipantID": "PAR-CIAV-000029",
+                  "assets": [
+                    {
+                      "name": "df",
+                      "guid": "e1ccc169-6201-41f0-83fb-558797a021cf",
+                      "id": "AS-0024",
+                      "networkInterfaces": [
+                        {
+                          "name": "ssss",
+                          "guid": "42092e68-82ef-4a50-b57f-ead034a6920b",
+                          "id": "NI-0001",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "69853401-483d-4db8-9cc9-06ba0fe3353c"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "94605439-3250-4a99-9024-80c8893aa209"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "4abf44e3-7ae5-4db5-bf85-85b8aedaf8e9"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0141",
+                          "guid": "5fb4a833-5665-4f41-90e2-575713558bf7",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0010",
+                          "spInstances": [
+                            {
+                              "guid": "545f4f91-6171-4b68-96cb-16c28fdc8c84",
+                              "spId": "SP-0232",
+                              "spVersion": "R80.30"
+                            }
+                          ],
+                          "configurationItems": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -1513,112 +1571,6 @@
                               "guid": "4aea5140-026d-44d2-853c-4e1e0378bfcc",
                               "DefaultValue": "",
                               "HelpText": "Full URL of Web Server with Valid Certificate"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "FINAL",
-      "guid": "016fe9fe-c379-464e-a5e4-15038ccc017f",
-      "id": "MN-0011",
-      "networkSegments": [
-        {
-          "name": "NS-UNO",
-          "guid": "be82d266-1e57-4f08-8c9f-392870ccbfb7",
-          "id": "NS-0009",
-          "securityDomains": [
-            {
-              "id": "CL-UNCLASS",
-              "guid": "743a19d6-2e16-414e-bd60-38a3bdc74e1a",
-              "hwStacks": [
-                {
-                  "name": "HW-UNO",
-                  "guid": "1d391b3e-b521-403d-adf3-199d409e9e0c",
-                  "id": "HW-0017",
-                  "cisParticipantID": "PAR-CIAV-000026",
-                  "assets": [
-                    {
-                      "name": "AUNO",
-                      "guid": "102af1f6-7b53-40ca-b81d-f01eaac3fee0",
-                      "id": "AS-0022",
-                      "networkInterfaces": [
-                        {
-                          "name": "N-1",
-                          "guid": "f293994b-a013-44d9-96d8-9c4ca7ffba1c",
-                          "id": "NI-0001",
-                          "configurationItems": [
-                            {
-                              "Name": "IP Address",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "df05322d-98bc-4737-aabe-95ac40f137eb"
-                            },
-                            {
-                              "Name": "Sub-Net",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "a60d866d-cc12-4895-84af-90ceb47975fd"
-                            },
-                            {
-                              "Name": "FQDN",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "25f993ab-8f5d-4bcb-aba5-7d44844cc808"
-                            }
-                          ]
-                        }
-                      ],
-                      "gpInstances": [
-                        {
-                          "gpid": "GP-0126",
-                          "guid": "5dc010c3-3420-41a3-b310-320700eb7b24",
-                          "instanceLabel": "G1",
-                          "serviceId": "SRV-0001",
-                          "spInstances": [
-                            {
-                              "guid": "b7628582-0ca6-48d1-a158-6cd2127be555",
-                              "spId": "SP-0491",
-                              "spVersion": "2.1"
-                            },
-                            {
-                              "guid": "d46068c0-76b8-4740-9690-78ec7f185df5",
-                              "spId": "SP-0104",
-                              "spVersion": "4.0"
-                            }
-                          ],
-                          "configurationItems": []
-                        }
-                      ]
-                    },
-                    {
-                      "name": "ADOS",
-                      "guid": "a62513db-3aea-44b5-85fa-aad7fe38ed85",
-                      "id": "AS-0023",
-                      "networkInterfaces": [],
-                      "gpInstances": [
-                        {
-                          "gpid": "GP-0037",
-                          "guid": "f87c7ce1-31ae-4168-8241-ea8fd0557e7d",
-                          "instanceLabel": "",
-                          "serviceId": "SRV-0008",
-                          "spInstances": [],
-                          "configurationItems": [
-                            {
-                              "Name": "Provider URL",
-                              "ConfigurationAnswerType": "URL",
-                              "AnswerContent": "",
-                              "guid": "66f2f9a7-5d00-400e-a04c-99d52abe5b79",
-                              "DefaultValue": "",
-                              "HelpText": "For example the URL of the trackstore you are accessing"
                             }
                           ]
                         }

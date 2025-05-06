@@ -1234,6 +1234,17 @@
     },
     {
         "actorType": "technical",
+        "id": "1f8ead40-86e6-4039-8b31-a16178b96ac3",
+        "key": "ACT-CWIX-000407",
+        "name": "CC-025",
+        "itemId": "6085c164-8dee-46af-affb-bb1d588e4481",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-06T09:45:55.4890926+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "5b062bae-f4e4-41eb-9027-61e3a11a3eca",
         "key": "ACT-CWIX-000230",
         "name": "CC-040",
@@ -1245,6 +1256,39 @@
     },
     {
         "actorType": "technical",
+        "id": "481eb045-4907-477b-b2ee-f375237bbc2f",
+        "key": "ACT-CWIX-000401",
+        "name": "CC-062",
+        "itemId": "6831d974-b6f9-48ed-8b17-190f509bea83",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-06T09:45:10.4401202+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "ac571f26-a593-4242-bae2-944edd52ced9",
+        "key": "ACT-CWIX-000406",
+        "name": "CC-136",
+        "itemId": "122389b1-01bc-4782-8e1e-4388451473db",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-06T09:45:48.5530072+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "3dfc91a7-1833-4ee7-aa16-c88983a3af75",
+        "key": "ACT-CWIX-000402",
+        "name": "CC-156",
+        "itemId": "6f512f76-035d-4aa7-b2d0-6573bbeecf5f",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-06T09:45:17.7397296+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "9700449b-74b4-45a2-9925-1e9720d01401",
         "key": "ACT-CWIX-000323",
         "name": "CC-190",
@@ -1252,6 +1296,17 @@
         "version": {
             "number": 1,
             "createdOn": "2025-03-20T09:53:23.7695617+01:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "201bbed6-712d-40b0-aec9-c1f818463dc1",
+        "key": "ACT-CWIX-000403",
+        "name": "CC-227",
+        "itemId": "677ffbfe-7d7a-4ac2-b231-8ca69e32c3b6",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-06T09:45:24.2256235+02:00"
         }
     },
     {
@@ -1285,6 +1340,17 @@
         "version": {
             "number": 1,
             "createdOn": "2025-03-19T12:11:50.7664125+01:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "4b38e531-b2d7-44a1-b7c2-a8f72ce2df55",
+        "key": "ACT-CWIX-000400",
+        "name": "CC-342",
+        "itemId": "500ebeff-4a7b-4e0c-856b-f44c3053c76f",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-06T09:44:11.5543571+02:00"
         }
     },
     {
@@ -1329,6 +1395,28 @@
         "version": {
             "number": 1,
             "createdOn": "2025-04-22T11:17:34.6891012+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "0b3de054-bdea-4361-9fc9-88393e02447c",
+        "key": "ACT-CWIX-000405",
+        "name": "CC-496",
+        "itemId": "7e378e4a-af7e-403b-a75e-555b27b73f8e",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-06T09:45:39.9661166+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "8a5a721d-f4e9-413f-af6d-7d33864d6577",
+        "key": "ACT-CWIX-000399",
+        "name": "CC-592",
+        "itemId": "c77fdd4e-4108-4a3f-9142-d4d3c4b41c3f",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-06T09:43:56.7262492+02:00"
         }
     },
     {
@@ -7916,6 +8004,28 @@
         "version": {
             "number": 1,
             "createdOn": "2025-04-22T17:36:09.5400749+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "f3ccc30f-9a98-4127-9bd4-46e363efeb5f",
+        "key": "ACT-CWIX-000397",
+        "name": "NMCD PCS_A",
+        "itemId": "108ed8b4-569d-4545-afe5-a255d7190f0f",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-05T14:01:57.1756982+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "69cceabc-5ee4-4fae-af31-7a8311a97ef9",
+        "key": "ACT-CWIX-000398",
+        "name": "NMCD PCS_B",
+        "itemId": "bbdc1374-322b-4677-9d6a-e1c8605f5ce7",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-05T14:02:06.3050151+02:00"
         }
     },
     {

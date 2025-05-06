@@ -77,6 +77,16 @@
                             }
                           ]
                         }
+                      ],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0140",
+                          "guid": "813f1bac-0507-4790-9a6a-3a90ac2f326b",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0002",
+                          "spInstances": [],
+                          "configurationItems": []
+                        }
                       ]
                     }
                   ]

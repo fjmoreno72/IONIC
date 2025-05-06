@@ -37,12 +37,86 @@
             height: calc(100vh - 150px);
             margin-top: 10px;
             position: relative;
+            flex-direction: row;
+            overflow: hidden;
+        }
+        
+        /* Add styles for collapsed panels */
+        .tree-container.collapsed {
+            width: 48px !important;
+            min-width: 48px !important;
+            overflow: hidden;
+            padding: 10px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .tree-container.collapsed .tree-search,
+        .tree-container.collapsed .tree-content,
+        .tree-container.collapsed h4 {
+            display: none;
+        }
+        
+        .tree-container.collapsed .panel-title {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .tree-container.collapsed #collapseTreeBtn {
+            position: relative;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            margin: 5px 0;
+            width: 38px;
+            height: 38px;
+            z-index: 1001;
+        }
+        
+        .tree-container.collapsed #collapseTreeBtn i {
+            transform: rotate(180deg);
+        }
+        
+        /* Add an emergency restore button that's always visible */
+        .emergency-restore {
+            position: fixed;
+            left: 4px;
+            top: 150px;
+            z-index: 2000;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            padding: 5px;
+            font-size: 12px;
+            display: none;
+        }
+        
+        body.panels-emergency .emergency-restore {
+            display: block;
+        }
+        
+        .details-panel.collapsed {
+            width: 48px !important;
+            min-width: 48px !important;
+            overflow: hidden;
+        }
+        
+        .details-panel.collapsed #detailsContainer,
+        .details-panel.collapsed #editDetailButton,
+        .details-panel.collapsed #deleteDetailButton,
+        .details-panel.collapsed #collapseDetailsBtn,
+        .details-panel.collapsed #detailsTitle {
+            display: none;
+        }
+        
+        .details-panel.collapsed #expandDetailsBtn {
+            display: inline-block !important;
         }
 
         .tree-container {
-            width: 400px;
-            min-width: 250px;
-            max-width: 600px;
+            width: 20%;
+            min-width: 180px;
             border-right: 1px solid var(--border-color);
             padding: 10px;
             overflow-y: auto;
@@ -131,31 +205,32 @@
             border-radius: 1px;
         }
         
-        .resize-handle-horizontal {
+        .resize-handle-elements {
             position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -5px;
-            height: 10px;
-            cursor: row-resize;
+            top: 0;
+            bottom: 0;
+            right: -5px;
+            width: 10px;
+            cursor: col-resize;
             z-index: 10;
             background-color: transparent;
             transition: background-color 0.2s;
         }
         
-        .resize-handle-horizontal:hover {
+        .resize-handle-elements:hover {
             background-color: rgba(68, 114, 196, 0.3);
         }
         
-        .resize-handle-horizontal::after {
+        .resize-handle-elements::after {
             content: "";
             position: absolute;
-            left: 10px;
-            bottom: 4px;
-            width: 30px;
-            height: 2px;
+            top: 50%;
+            right: 4px;
+            height: 30px;
+            width: 2px;
             background-color: var(--primary-color);
             border-radius: 1px;
+            transform: translateY(-50%);
         }
 
         .tree-search {
@@ -173,17 +248,13 @@
             overflow-y: auto;
         }
 
-        .right-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-        }
+        /* Removed .right-container as it's no longer needed in 3-panel layout */
 
         .elements-panel {
-            height: 70%;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+            width: 45%;
+            flex-grow: 1;
+            border-right: 1px solid var(--border-color);
+            padding: 10px;
             overflow-y: auto;
             background-color: var(--card-background);
             position: relative;
@@ -200,11 +271,12 @@
         }
 
         .details-panel {
-            height: 30%;
-            padding-top: 10px;
+            width: 35%;
+            min-width: 150px;
+            flex-grow: 1;
+            padding: 10px;
             overflow-y: auto;
             background-color: var(--card-background);
-            margin-top: 10px;
         }
 
         .panel-title {
@@ -323,9 +395,17 @@
             <!-- Left side - Tree navigation -->
             <div id="treeContainer" class="tree-container">
                 <div id="resizeHandleVertical" class="resize-handle-vertical"></div>
-                <div class="panel-title">
+                <div class="panel-title d-flex justify-content-between align-items-center">
                     <h4>CIS Plan Elements</h4>
+                    <button id="collapseTreeBtn" class="btn btn-sm btn-light" title="Toggle tree panel">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
                 </div>
+                
+                <!-- Emergency restore button -->
+                <button id="emergencyRestore" class="emergency-restore" title="Restore panels">
+                    <i class="fas fa-expand-arrows-alt"></i> Restore
+                </button>
                 <div class="tree-search">
                     <div class="input-group">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
@@ -341,12 +421,10 @@
                 </div>
             </div>
             
-            <!-- Right side - Elements and Details panels -->
-            <div class="right-container">
-                <!-- Top panel - Elements -->
-                <div id="elementsPanel" class="elements-panel">
-                    <div id="resizeHandleHorizontal" class="resize-handle-horizontal"></div>
-                    <div class="filter-elements-container">
+            <!-- Center panel - Elements -->
+            <div id="elementsPanel" class="elements-panel">
+                <div id="resizeHandleElements" class="resize-handle-elements"></div>
+                <div class="filter-elements-container">
                     <div class="panel-title">
                         <h4 id="elementsTitle">Elements</h4>
                         <button id="addElementButton" class="btn btn-sm btn-light">
@@ -362,19 +440,27 @@
                         </div>
                     </div>
                 </div>
-                    <div id="elementsContainer">
-                        <div class="wip-message">
-                            <p><i class="fas fa-list-alt"></i> Elements list will be displayed here</p>
-                            <p>When a tree item is selected, all its child elements will appear here</p>
-                        </div>
+                <div id="elementsContainer">
+                    <div class="wip-message">
+                        <p><i class="fas fa-list-alt"></i> Elements list will be displayed here</p>
+                        <p>When a tree item is selected, all its child elements will appear here</p>
                     </div>
                 </div>
-                
-                <!-- Bottom panel - Details -->
-                <div class="details-panel">
-                    <div class="panel-title">
-                    <h4 id="detailsTitle">Details</h4>
+            </div>
+            
+            <!-- Right panel - Details -->
+            <div id="detailsPanel" class="details-panel">
+                <div class="panel-title d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <button id="expandDetailsBtn" class="btn btn-sm btn-light me-2" title="Expand details panel" style="display: none;">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <h4 id="detailsTitle">Details</h4>
+                    </div>
                     <div>
+                        <button id="collapseDetailsBtn" class="btn btn-sm btn-light me-2" title="Collapse details panel">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                         <button id="editDetailButton" class="btn btn-sm btn-light" disabled>
                             <i class="fas fa-edit"></i> Edit
                         </button>
@@ -383,11 +469,10 @@
                         </button>
                     </div>
                 </div>
-                    <div id="detailsContainer">
-                        <div class="wip-message">
-                            <p><i class="fas fa-info-circle"></i> Element details will be displayed here</p>
-                            <p>When an element is selected, its details will appear in this panel</p>
-                        </div>
+                <div id="detailsContainer">
+                    <div class="wip-message">
+                        <p><i class="fas fa-info-circle"></i> Element details will be displayed here</p>
+                        <p>When an element is selected, its details will appear in this panel</p>
                     </div>
                 </div>
             </div>
@@ -892,109 +977,258 @@
             const treeContainer = document.getElementById('treeContainer');
             const resizeHandleVertical = document.getElementById('resizeHandleVertical');
             let isResizingVertical = false;
+            let lastX = 0;
             
             // Initialize vertical resizing
             resizeHandleVertical.addEventListener('mousedown', function(e) {
                 isResizingVertical = true;
+                lastX = e.clientX;
                 document.body.style.cursor = 'col-resize';
                 document.body.style.userSelect = 'none';
                 
                 // Prevent text selection during resize
                 e.preventDefault();
                 
-                // Store initial position and width
-                const startX = e.clientX;
-                const startWidth = treeContainer.offsetWidth;
-                
                 // Add event listeners for mouse movement and release
                 document.addEventListener('mousemove', handleVerticalMouseMove);
                 document.addEventListener('mouseup', handleVerticalMouseUp);
+            });
+            
+            function handleVerticalMouseMove(e) {
+                if (!isResizingVertical) return;
                 
-                // Handle mouse movement for vertical resize
-                function handleVerticalMouseMove(e) {
-                    if (!isResizingVertical) return;
-                    
-                    // Calculate new width
-                    let newWidth = startWidth + (e.clientX - startX);
-                    
-                    // Apply constraints
-                    if (newWidth < 250) newWidth = 250;
-                    if (newWidth > 600) newWidth = 600;
-                    
-                    // Set new width
+                // Skip resizing if tree is collapsed
+                if (treeContainer.classList.contains('collapsed')) return;
+                
+                const dx = e.clientX - lastX;
+                const newWidth = treeContainer.offsetWidth + dx;
+                const container = document.querySelector('.cis-plan-container');
+                const containerWidth = container.offsetWidth;
+                
+                // Apply more flexible minimum and maximum constraints
+                // Min: 10% of container or 100px (whichever is smaller)
+                // Max: 40% of container
+                const minWidth = Math.min(100, containerWidth * 0.1);
+                const maxWidth = containerWidth * 0.4;
+                
+                if (newWidth >= minWidth && newWidth <= maxWidth) {
                     treeContainer.style.width = newWidth + 'px';
+                    lastX = e.clientX;
                 }
-                
-                // Handle mouse release for vertical resize
-                function handleVerticalMouseUp() {
-                    isResizingVertical = false;
-                    document.body.style.cursor = '';
-                    document.body.style.userSelect = '';
-                    
-                    // Remove event listeners
-                    document.removeEventListener('mousemove', handleVerticalMouseMove);
-                    document.removeEventListener('mouseup', handleVerticalMouseUp);
-                }
-            });
+            }
+
+            function handleVerticalMouseUp() {
+                isResizingVertical = false;
+                document.removeEventListener('mousemove', handleVerticalMouseMove);
+                document.removeEventListener('mouseup', handleVerticalMouseUp);
+                document.body.style.cursor = '';
+                document.body.style.userSelect = '';
+            }
             
-            // Horizontal resizing between elements and details panels
+            // Vertical resizing for the elements panel
             const elementsPanel = document.getElementById('elementsPanel');
-            const resizeHandleHorizontal = document.getElementById('resizeHandleHorizontal');
-            let isResizingHorizontal = false;
-            
-            // Initialize horizontal resizing
-            resizeHandleHorizontal.addEventListener('mousedown', function(e) {
-                isResizingHorizontal = true;
-                document.body.style.cursor = 'row-resize';
-                document.body.style.userSelect = 'none';
+            const resizeHandleElements = document.getElementById('resizeHandleElements');
+            let isResizingElements = false;
+            let lastXElements = 0;
+
+            if (resizeHandleElements) {
+                resizeHandleElements.addEventListener('mousedown', function(e) {
+                    isResizingElements = true;
+                    lastXElements = e.clientX;
+                    document.addEventListener('mousemove', handleElementsMouseMove);
+                    document.addEventListener('mouseup', handleElementsMouseUp);
+                    document.body.style.cursor = 'col-resize';
+                    // Prevent text selection during resize
+                    document.body.style.userSelect = 'none';
+                    e.preventDefault();
+                });
+            }
+
+            function handleElementsMouseMove(e) {
+                if (!isResizingElements) return;
                 
-                // Prevent text selection during resize
-                e.preventDefault();
+                const dx = e.clientX - lastXElements;
+                const container = document.querySelector('.cis-plan-container');
+                const containerWidth = container.offsetWidth;
+                const treeWidth = treeContainer.offsetWidth;
+                const detailsPanel = document.querySelector('.details-panel');
+                const isDetailsCollapsed = detailsPanel.classList.contains('collapsed');
                 
-                // Store initial position and height
-                const startY = e.clientY;
-                const containerHeight = elementsPanel.parentElement.offsetHeight;
-                const startHeight = elementsPanel.offsetHeight;
+                // Calculate available space and current widths
+                const availableSpace = containerWidth - treeWidth;
+                const newWidth = elementsPanel.offsetWidth + dx;
+                const detailsWidth = availableSpace - newWidth;
                 
-                // Add event listeners for mouse movement and release
-                document.addEventListener('mousemove', handleHorizontalMouseMove);
-                document.addEventListener('mouseup', handleHorizontalMouseUp);
+                // More flexible constraints
+                // If details panel is collapsed, allow elements panel to take more space
+                // Otherwise ensure details panel has at least 48px if collapsed or 120px if expanded
+                const minWidth = Math.min(150, availableSpace * 0.15);
+                const minDetailsWidth = isDetailsCollapsed ? 48 : 120;
+                const maxWidth = availableSpace - minDetailsWidth;
                 
-                // Handle mouse movement for horizontal resize
-                function handleHorizontalMouseMove(e) {
-                    if (!isResizingHorizontal) return;
-                    
-                    // Calculate new height
-                    let newHeight = startHeight + (e.clientY - startY);
-                    
-                    // Apply constraints (minimum 30% and maximum 90% of container)
-                    const minHeight = containerHeight * 0.3;
-                    const maxHeight = containerHeight * 0.9;
-                    if (newHeight < minHeight) newHeight = minHeight;
-                    if (newHeight > maxHeight) newHeight = maxHeight;
-                    
-                    // Set new height as percentage
-                    const newHeightPercent = (newHeight / containerHeight) * 100;
-                    elementsPanel.style.height = newHeightPercent + '%';
-                    
-                    // Adjust details panel height
-                    const detailsHeightPercent = 100 - newHeightPercent - 2; // Subtract a bit for the margin
-                    document.querySelector('.details-panel').style.height = detailsHeightPercent + '%';
+                if (newWidth >= minWidth && newWidth <= maxWidth) {
+                    elementsPanel.style.width = newWidth + 'px';
+                    lastXElements = e.clientX;
                 }
-                
-                // Handle mouse release for horizontal resize
-                function handleHorizontalMouseUp() {
-                    isResizingHorizontal = false;
-                    document.body.style.cursor = '';
-                    document.body.style.userSelect = '';
-                    
-                    // Remove event listeners
-                    document.removeEventListener('mousemove', handleHorizontalMouseMove);
-                    document.removeEventListener('mouseup', handleHorizontalMouseUp);
-                }
-            });
+            }
+
+            function handleElementsMouseUp() {
+                isResizingElements = false;
+                document.removeEventListener('mousemove', handleElementsMouseMove);
+                document.removeEventListener('mouseup', handleElementsMouseUp);
+                document.body.style.cursor = '';
+                document.body.style.userSelect = '';
+            }
         });
 
+        // Add event listeners for collapsing/expanding panels
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const treeContainer = document.getElementById('treeContainer');
+            const elementsPanel = document.getElementById('elementsPanel');
+            const detailsPanel = document.getElementById('detailsPanel');
+            const collapseTreeBtn = document.getElementById('collapseTreeBtn');
+            const collapseDetailsBtn = document.getElementById('collapseDetailsBtn');
+            const expandDetailsBtn = document.getElementById('expandDetailsBtn');
+            const emergencyRestore = document.getElementById('emergencyRestore');
+            
+            // Tree panel collapse/expand
+            if (collapseTreeBtn) {
+                collapseTreeBtn.addEventListener('click', function() {
+                    treeContainer.classList.toggle('collapsed');
+                    // Store tree collapsed state in local storage
+                    localStorage.setItem('treeCollapsed', treeContainer.classList.contains('collapsed'));
+                });
+            }
+            
+            // Double-click on collapsed tree container to expand
+            treeContainer.addEventListener('dblclick', function() {
+                if (treeContainer.classList.contains('collapsed')) {
+                    treeContainer.classList.remove('collapsed');
+                    localStorage.setItem('treeCollapsed', false);
+                }
+            });
+            
+            // Emergency restore functionality
+            if (emergencyRestore) {
+                emergencyRestore.addEventListener('click', function() {
+                    treeContainer.classList.remove('collapsed');
+                    detailsPanel.classList.remove('collapsed');
+                    localStorage.setItem('treeCollapsed', false);
+                    localStorage.setItem('detailsCollapsed', false);
+                    body.classList.remove('panels-emergency');
+                });
+            }
+            
+            // Add keyboard shortcut (Ctrl+Alt+R) to restore panels
+            document.addEventListener('keydown', function(e) {
+                // Check if Ctrl+Alt+R is pressed
+                if (e.ctrlKey && e.altKey && e.key === 'r') {
+                    treeContainer.classList.remove('collapsed');
+                    detailsPanel.classList.remove('collapsed');
+                    localStorage.setItem('treeCollapsed', false);
+                    localStorage.setItem('detailsCollapsed', false);
+                    body.classList.remove('panels-emergency');
+                }
+                
+                // Check if Esc is pressed when tree is collapsed
+                if (e.key === 'Escape' && treeContainer.classList.contains('collapsed')) {
+                    treeContainer.classList.remove('collapsed');
+                    localStorage.setItem('treeCollapsed', false);
+                }
+            });
+            
+            // If both panels are collapsed, show emergency restore
+            function checkEmergencyState() {
+                if (treeContainer.classList.contains('collapsed') && 
+                    detailsPanel.classList.contains('collapsed')) {
+                    body.classList.add('panels-emergency');
+                } else {
+                    body.classList.remove('panels-emergency');
+                }
+            }
+            
+            // Monitor for panel state changes
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'class') {
+                        checkEmergencyState();
+                    }
+                });
+            });
+            
+            observer.observe(treeContainer, { attributes: true });
+            observer.observe(detailsPanel, { attributes: true });
+            
+            // Check emergency state on load
+            setTimeout(checkEmergencyState, 500);
+            
+            // Details panel collapse/expand
+            if (collapseDetailsBtn) {
+                collapseDetailsBtn.addEventListener('click', function() {
+                    detailsPanel.classList.add('collapsed');
+                    // Store details collapsed state in local storage
+                    localStorage.setItem('detailsCollapsed', true);
+                });
+            }
+            
+            if (expandDetailsBtn) {
+                expandDetailsBtn.addEventListener('click', function() {
+                    detailsPanel.classList.remove('collapsed');
+                    // Store details collapsed state in local storage
+                    localStorage.setItem('detailsCollapsed', false);
+                });
+            }
+            
+            // Restore collapsed state from local storage if it exists
+            const savedTreeCollapsed = localStorage.getItem('treeCollapsed');
+            const savedDetailsCollapsed = localStorage.getItem('detailsCollapsed');
+            
+            if (savedTreeCollapsed === 'true') {
+                treeContainer.classList.add('collapsed');
+            }
+            
+            if (savedDetailsCollapsed === 'true') {
+                detailsPanel.classList.add('collapsed');
+            }
+            
+            // Add a tooltip explaining panel collapse
+            const tooltip = document.createElement('div');
+            tooltip.className = 'toast show';
+            tooltip.style.position = 'fixed';
+            tooltip.style.bottom = '20px';
+            tooltip.style.right = '20px';
+            tooltip.style.zIndex = '9999';
+            tooltip.innerHTML = `
+                <div class="toast-header">
+                    <strong class="me-auto">Panel Controls</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                </div>
+                <div class="toast-body">
+                    <p>You can now collapse and expand panels. If panels get stuck:</p>
+                    <ul>
+                        <li>Double-click on a collapsed panel to expand it</li>
+                        <li>Press <kbd>Esc</kbd> to restore a collapsed tree panel</li>
+                        <li>Press <kbd>Ctrl+Alt+R</kbd> to restore all panels</li>
+                    </ul>
+                </div>
+            `;
+            
+            document.body.appendChild(tooltip);
+            
+            // Close button functionality
+            tooltip.querySelector('.btn-close').addEventListener('click', function() {
+                tooltip.remove();
+            });
+            
+            // Auto-remove after 10 seconds
+            setTimeout(function() {
+                if (tooltip.parentNode) {
+                    tooltip.remove();
+                }
+            }, 10000);
+        });
+        
         // Check for saved theme preference or use system preference
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {

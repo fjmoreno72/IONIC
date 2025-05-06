@@ -861,45 +861,6 @@
       ]
     },
     {
-      "name": "Mission 2",
-      "guid": "a0a139d7-74a2-4fb9-95e2-ca6ea6d4ada8",
-      "id": "MN-0008",
-      "networkSegments": [
-        {
-          "name": "Segment A",
-          "guid": "0a3d0175-edb8-4d56-aa2a-276227ef3371",
-          "id": "NS-0005",
-          "securityDomains": [
-            {
-              "id": "CL-UNCLASS",
-              "hwStacks": [
-                {
-                  "name": "POP3",
-                  "guid": "c13fa90d-46cd-4f3e-8124-69d31d94f14b",
-                  "id": "HW-0001",
-                  "cisParticipantID": "PAR-CIAV-000049",
-                  "assets": [
-                    {
-                      "name": "FFT Server",
-                      "guid": "07f6b392-079a-4184-b9bd-4f5904e51b35",
-                      "id": "AS-0001",
-                      "networkInterfaces": [],
-                      "gpInstances": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Segment B",
-          "guid": "337fc4d6-bb88-4b85-8195-4137962e07b9",
-          "id": "NS-0006"
-        }
-      ]
-    },
-    {
       "name": "Mission 3",
       "guid": "e2c8d496-58ad-426c-a320-675ad2303b0b",
       "id": "MN-0009",
@@ -975,7 +936,16 @@
                           ]
                         }
                       ],
-                      "gpInstances": []
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0038",
+                          "guid": "434accb5-fd52-4ea0-99a1-2f9950684b64",
+                          "instanceLabel": "GENE!",
+                          "serviceId": "SRV-0014",
+                          "spInstances": [],
+                          "configurationItems": []
+                        }
+                      ]
                     }
                   ]
                 }

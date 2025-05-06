@@ -1385,35 +1385,35 @@ document.addEventListener("DOMContentLoaded", function () {
           if (mnNode) {
             console.log("Expanding mission network");
             mnNode.click();
-            await new Promise(resolve => setTimeout(resolve, 100));
+            await new Promise(resolve => setTimeout(resolve, 10));
             
             // Then expand the segment
             const segNode = document.querySelector(`.tree-node[data-type="networkSegments"][data-id="${path.segmentId}"]`);
             if (segNode) {
               console.log("Expanding segment");
               segNode.click();
-              await new Promise(resolve => setTimeout(resolve, 100));
+              await new Promise(resolve => setTimeout(resolve, 10));
               
               // Then expand the domain
               const domainNode = document.querySelector(`.tree-node[data-type="securityDomains"][data-id="${path.domainId}"]`);
               if (domainNode) {
                 console.log("Expanding domain");
                 domainNode.click();
-                await new Promise(resolve => setTimeout(resolve, 100));
+                await new Promise(resolve => setTimeout(resolve, 10));
                 
                 // Then expand the hw stack
                 const stackNode = document.querySelector(`.tree-node[data-type="hwStacks"][data-id="${path.hwStackId}"]`);
                 if (stackNode) {
                   console.log("Expanding HW stack");
                   stackNode.click();
-                  await new Promise(resolve => setTimeout(resolve, 100));
+                  await new Promise(resolve => setTimeout(resolve, 10));
                   
                   // Then find the asset
                   const assetNode = document.querySelector(`.tree-node[data-type="assets"][data-id="${path.assetId}"]`);
                   if (assetNode) {
                     console.log("Expanding asset");
                     assetNode.click();
-                    await new Promise(resolve => setTimeout(resolve, 200));
+                    await new Promise(resolve => setTimeout(resolve, 10));
                     
                     // Find the GP instance
                     const gpSelectors = [

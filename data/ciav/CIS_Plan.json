@@ -912,7 +912,56 @@
           "id": "NS-0002",
           "securityDomains": [
             {
-              "id": "CL-UNCLASS"
+              "id": "CL-UNCLASS",
+              "hwStacks": [
+                {
+                  "name": "ss",
+                  "guid": "9a6e86d3-0802-482c-933f-12064279e8a3",
+                  "id": "HW-0016",
+                  "cisParticipantID": "PAR-CIAV-000026",
+                  "assets": [
+                    {
+                      "name": "s",
+                      "guid": "1e10b9ae-7420-41bd-b4a0-fa5ff004281d",
+                      "id": "AS-0021",
+                      "networkInterfaces": [],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0024",
+                          "guid": "60ac9ec5-7225-481f-96b7-0754721381ac",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0016",
+                          "spInstances": [
+                            {
+                              "guid": "9e29dbd0-57ab-4ea3-bfb6-2d34cb1fb33f",
+                              "spId": "SP-0093",
+                              "spVersion": "20.0.0"
+                            }
+                          ],
+                          "configurationItems": [
+                            {
+                              "Name": "Port",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "1df827e9-a090-416e-a7d7-d3ec43c13516",
+                              "DefaultValue": "443",
+                              "HelpText": "Port for the RAG Server"
+                            },
+                            {
+                              "Name": "Time Source",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "56c605ff-bfde-4273-bea9-cf8c37d89c97",
+                              "DefaultValue": "GPS",
+                              "HelpText": "Pick either: \"GPS\", \"CDMA\", \"Radio Clock\", \"Atomic Clock\",  \"Modem\",  \"Other\"."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "CL-RESTRICTED"

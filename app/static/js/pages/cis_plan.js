@@ -524,16 +524,46 @@ document.addEventListener("DOMContentLoaded", function () {
   // Edit button opens the appropriate modal based on what's selected
   if (editDetailButton) {
     editDetailButton.addEventListener("click", function () {
-      if (currentElement) {
-        const type =
-          currentElement.type || currentTreeNode.getAttribute("data-type");
+      // Get the selected element from CISPlanPointer instead of using currentElement
+      const pointerState = CISPlanPointer.getState();
+      
+      // Check if we have a selected element in the pointer that's not the root
+      if (pointerState.selected && pointerState.selected.type !== 'root') {
+        // Log the edit action and selected element
+        console.log('I am editing the selected element from CISPlanPointer');
+        const pointerElement = CISPlanPointer.logEditElement();
+        
+        // Get the element details and type from the pointer state
+        const element = pointerState.selected.element;
+        const originalType = pointerState.selected.type; // Original type (singular form)
+        
+        // Store a reference to the element being edited to preserve it during refresh
+        const elementBeingEdited = Object.assign({}, element);
+        
+        // Normalize the type for API calls if needed (some APIs expect plural forms)
+        let type = originalType;
+        if (type === 'missionNetwork') type = 'missionNetworks';
+        else if (type === 'networkSegment') type = 'networkSegments';
+        else if (type === 'securityDomain') type = 'securityDomains';
+        else if (type === 'hwStack') type = 'hwStacks';
+        else if (type === 'asset') type = 'assets';
+        
+        console.log('Using element for edit:', element, 'with type:', type);
+        
+        // Store current element for compatibility with existing code
+        currentElement = element;
+        currentElement.type = type;
+        
+        // Store this element for the update handler to use
+        window.elementBeingEdited = element;
 
-        if (type === "missionNetworks") {
+        if (type === "missionNetworks" || type === "missionNetwork") {
           // Populate and show edit mission network modal
-          document.getElementById("editMissionNetworkId").value =
-            currentElement.id;
-          document.getElementById("editMissionNetworkName").value =
-            currentElement.name;
+          document.getElementById("editMissionNetworkId").value = element.id;
+          document.getElementById("editMissionNetworkName").value = element.name;
+          
+          // Make sure the element has the correct type attribute for the update function
+          element.type = type;
 
           const editModal = new bootstrap.Modal(
             document.getElementById("editMissionNetworkModal")
@@ -1585,13 +1615,19 @@ document.addEventListener("DOMContentLoaded", function () {
           `HW Stack "${name}" created successfully!`
         );
 
-        // Refresh the UI with the proper state
+        // This is the correct state that will select the HW Stack directly
         await refreshPanelsWithState({
-          nodeType: "securityDomains",
-          nodeId: domainId,
+          nodeType: "hwStacks",
+          nodeId: id,
+          hwStackId: id,
+          domainId: domainId,
           segmentId: segmentId,
-          missionNetworkId: missionNetworkId,
+          missionNetworkId: missionNetworkId
         });
+        
+        // Set the flag for HW Stack restoration
+        window.restoringHwStack = true;
+        window.hwStackToRestore = id;
       } else {
         showToast(
           `${
@@ -1655,13 +1691,19 @@ document.addEventListener("DOMContentLoaded", function () {
           `HW Stack updated successfully!`
         );
 
-        // Refresh the UI with the proper state
+        // This is the correct state that will select the HW Stack directly
         await refreshPanelsWithState({
-          nodeType: "securityDomains",
-          nodeId: domainId,
+          nodeType: "hwStacks",
+          nodeId: id,
+          hwStackId: id,
+          domainId: domainId,
           segmentId: segmentId,
-          missionNetworkId: missionNetworkId,
+          missionNetworkId: missionNetworkId
         });
+        
+        // Set the flag for HW Stack restoration
+        window.restoringHwStack = true;
+        window.hwStackToRestore = id;
       } else {
         showToast(
           `${
@@ -1765,7 +1807,56 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("No mission network ID in state, unable to restore", state);
       return;
     }
-    // Restoring state after refresh
+    
+    // Special handling for HW Stack selections to make sure they're properly selected
+    if (state.nodeType === "hwStacks" && state.nodeId && state.domainId) {
+      console.log("Special handling for HW Stack state:", state);
+      
+      // Set a flag on window to indicate we're in the process of restoring an HW Stack
+      window.restoringHwStack = true;
+      window.hwStackToRestore = state.nodeId;
+    }
+    
+    // Special handling for central panel selections
+    if (state.isCentralPanelSelection) {
+      console.log("Central panel selection detected, preserving root view", state);
+      
+      // For central panel selections, don't select the mission network in the tree
+      // Instead, just update the detail panel with the selected element
+      
+      try {
+        // Check if cisPlanData is available - it might not be fully loaded yet
+        // so add defensive checks throughout the code
+        if (typeof cisPlanData !== 'undefined' && cisPlanData && Array.isArray(cisPlanData.missionNetworks)) {
+          // If this is a mission network selection
+          if (state.nodeType === 'missionNetworks') {
+            // Find the mission network
+            const mn = cisPlanData.missionNetworks.find(m => m.id === state.nodeId);
+            
+            if (mn) {
+              // Update current element
+              currentElement = mn;
+              currentElement.type = state.nodeType;
+              
+              // Update detail panel
+              updateDetailPanel(mn, state.nodeType);
+              
+              // Update selected element in pointer
+              CISPlanPointer.updateSelectedOnly(state.nodeType.replace(/s$/, ''), 'L1', 
+                                              state.nodeId, mn.name, mn);
+              
+              console.log("Updated detail panel for mission network from central panel selection");
+              return; // Early return as we've handled this special case
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error handling central panel selection:", error);
+      }
+    }
+    
+    // Restoring state after refresh - standard tree navigation
+    console.log("Standard tree restore for state:", state);
 
     // First find and restore the mission network
     const mnNode = findTreeNode("missionNetworks", state.missionNetworkId);
@@ -1790,7 +1881,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const domainId =
       state.domainId ||
       (state.nodeType === "securityDomains" ? state.nodeId : null);
-
+      
     if (!domainId) return;
 
     // Debug: List all security domain nodes in this segment
@@ -1819,6 +1910,78 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!sdNode) return;
     selectAndExpandNode(sdNode);
+    
+    // If we're restoring an HW Stack, find and select it after the security domain is expanded
+    if (window.restoringHwStack && window.hwStackToRestore && state.nodeType === "hwStacks") {
+      console.log("Looking for HW Stack to restore:", window.hwStackToRestore);
+      
+      // Wait a short time to let the security domain expand and populate children
+      setTimeout(() => {
+        try {
+          const domainChildren = getChildrenContainer(sdNode);
+          
+          if (domainChildren) {
+            // Find the HW Stack node
+            const hwStackNode = domainChildren.querySelector(
+              `.tree-node[data-type="hwStacks"][data-id="${window.hwStackToRestore}"]`
+            );
+            
+            if (hwStackNode) {
+              console.log("Found HW Stack to restore, selecting it:", hwStackNode);
+              
+              // Remove active class from security domain
+              sdNode.classList.remove("active");
+              
+              // Add active class to HW Stack
+              hwStackNode.classList.add("active");
+              
+              // Set currentTreeNode
+              currentTreeNode = hwStackNode;
+              
+              // Trigger the node's click handler to fully select it
+              hwStackNode.click();
+              
+              // Update detail panel with HW Stack info
+              if (typeof cisPlanData !== 'undefined' && cisPlanData) {
+                // Find the HW Stack element in the data
+                let hwStackElement = null;
+                
+                // Find the element in the data by traversing the hierarchy
+                if (cisPlanData.missionNetworks) {
+                  const mn = cisPlanData.missionNetworks.find(m => m.id === state.missionNetworkId);
+                  if (mn && mn.segments) {
+                    const segment = mn.segments.find(s => s.id === state.segmentId);
+                    if (segment && segment.securityDomains) {
+                      const domain = segment.securityDomains.find(d => d.id === state.domainId);
+                      if (domain && domain.hwStacks) {
+                        hwStackElement = domain.hwStacks.find(h => h.id === state.nodeId);
+                      }
+                    }
+                  }
+                }
+                
+                if (hwStackElement) {
+                  // Update current element
+                  currentElement = hwStackElement;
+                  currentElement.type = "hwStacks";
+                  
+                  // Update detail panel
+                  updateDetailPanel(hwStackElement, "hwStacks");
+                }
+              }
+            } else {
+              console.log("Could not find HW Stack node to restore");
+            }
+          }
+        } catch (error) {
+          console.error("Error restoring HW Stack:", error);
+        } finally {
+          // Clear the restoration flags
+          window.restoringHwStack = false;
+          window.hwStackToRestore = null;
+        }
+      }, 100); // Short delay to allow DOM to update
+    }
 
     // Determine which HW stack ID to look for
     const hwStackId =
@@ -2059,16 +2222,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Helper function to select and expand a tree node
   function selectAndExpandNode(node) {
+    // Extract node information
+    const type = node.getAttribute('data-type');
+    const id = node.getAttribute('data-id');
+    const name = node.querySelector('.tree-label')?.textContent.trim() || '';
+    
+    // Log that we're manually expanding a node during state restoration
+    console.log(`Selecting and expanding node: ${type}/${id} (${name})`);
+    
+    // Call click to execute the node's click handler
     node.click(); // Select the node
-
+    
+    // Ensure the children container is expanded
     const childrenContainer = getChildrenContainer(node);
     if (!childrenContainer) return;
-
+    
     childrenContainer.style.display = "block"; // Show children
-
+    
     // Update toggle icon
     const toggleIcon = node.querySelector(".tree-toggle i");
     if (toggleIcon) toggleIcon.className = "fas fa-chevron-down";
+    
+    // Set the currentTreeNode explicitly
+    currentTreeNode = node;
+    
+    // If this is a mission network and we're restoring after an edit, 
+    // make sure we also update the detail panel and CISPlanPointer
+    if (type === 'missionNetworks') {
+      try {
+        // Make sure cisPlanData and its properties are defined
+        if (typeof cisPlanData !== 'undefined' && cisPlanData && Array.isArray(cisPlanData.missionNetworks)) {
+          // Find the mission network in the data
+          const missionNetwork = cisPlanData.missionNetworks.find(mn => mn.id === id);
+          if (missionNetwork) {
+            // Update the currently selected element
+            currentElement = missionNetwork;
+            currentElement.type = type;
+            
+            // Update the detail panel
+            updateDetailPanel(missionNetwork, type);
+            
+            // Ensure the CISPlanPointer is updated
+            CISPlanPointer.handleTreeClick(type, id, name, missionNetwork);
+          } else {
+            console.warn(`Mission network with ID ${id} not found in data`);
+          }
+        } else {
+          console.warn('cisPlanData or missionNetworks array is not available');
+        }
+      } catch (error) {
+        console.error('Error in selectAndExpandNode for mission network:', error);
+      }
+    }
   }
 
   // Start app initialization
@@ -2128,8 +2333,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Update an existing mission network
+  // Helper function to refresh data while preserving position using CISPlanPointer
+  async function refreshWithPointerState() {
+    // Get state to preserve from CISPlanPointer
+    const stateToRestore = CISPlanPointer.getStateForRefresh();
+    
+    // Log what we're preserving
+    console.log('Preserving state during refresh:', stateToRestore);
+    
+    // Refresh while preserving state
+    await refreshPanelsWithState(stateToRestore);
+  }
 
+  // Update an existing mission network
   async function updateMissionNetwork() {
     const idInput = document.getElementById("editMissionNetworkId");
     const nameInput = document.getElementById("editMissionNetworkName");
@@ -2161,6 +2377,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Show success message
         showToast(`Mission Network updated successfully!`);
 
+        // Check if we have a stored element being edited
+        const editedElement = window.elementBeingEdited;
+        
         // Update the current element with the new name
         if (currentElement && currentElement.id === id) {
           currentElement.name = name;
@@ -2168,9 +2387,35 @@ document.addEventListener("DOMContentLoaded", function () {
           // Update the details panel with the new name
           updateDetailPanel(currentElement, currentElement.type);
         }
-
-        // Refresh the data
-        fetchCISPlanData();
+        
+        // Create a custom state to restore the element being edited
+        let stateToRestore = {};
+        
+        // If we have an element being edited, use that for restoration
+        if (editedElement && editedElement.id === id) {
+          console.log('Using stored element for state restoration:', editedElement);
+          
+          // Create a proper state object for a mission network in the central panel
+          stateToRestore = {
+            isCentralPanelSelection: true,  // Mark this as a central panel selection
+            nodeType: 'missionNetworks',    // Use plural form expected by restoreTreeState
+            nodeId: id,                     // Use the ID from the form
+            missionNetworkId: id,           // Set explicitly to prevent state override
+            elementName: name               // Store updated name
+          };
+          
+          // Clear the stored element
+          window.elementBeingEdited = null;
+        } else {
+          // Fallback to the CISPlanPointer state
+          stateToRestore = CISPlanPointer.getStateForRefresh();
+        }
+        
+        // Log what we're preserving
+        console.log('Preserving state during mission network update:', stateToRestore);
+        
+        // Refresh while preserving state
+        await refreshPanelsWithState(stateToRestore);
       } else {
         showToast(
           `${
@@ -4502,6 +4747,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isActive) {
         this.classList.add("active");
         currentTreeNode = this;
+        
+        // Update the CISPlanPointer with the root node selection
+        CISPlanPointer.handleTreeClick(this, {name: "CIS Plan"}, 'root', {});
 
         // When the root node is selected, display all mission networks in the Elements panel
         if (elementsTitle) {
@@ -4572,6 +4820,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
+          
+          // Update the CISPlanPointer with the mission network selection
+          CISPlanPointer.handleTreeClick(this, missionNetwork, 'missionNetwork', {});
+          
           loadSelectedNodeChildren(missionNetwork, "missionNetworks");
         }
 
@@ -4651,6 +4903,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
+          
+          // Update the CISPlanPointer with the network segment selection
+          CISPlanPointer.handleTreeClick(this, segment, 'networkSegment', {
+            missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null
+          });
+          
           loadSelectedNodeChildren(
             segment,
             "networkSegments",
@@ -4747,6 +5005,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
+          
+          // Update the CISPlanPointer with the security domain selection
+          CISPlanPointer.handleTreeClick(this, domain, 'securityDomain', {
+            missionNetwork: parentMissionNetwork ? parentMissionNetwork.id : null,
+            networkSegment: parentSegment ? parentSegment.id : null
+          });
+          
           loadSelectedNodeChildren(
             domain,
             "securityDomains",
@@ -4854,6 +5119,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
+          
+          // Update the CISPlanPointer with the hardware stack selection
+          CISPlanPointer.handleTreeClick(this, stack, 'hwStack', {
+            missionNetwork: parentMissionNetwork ? parentMissionNetwork.id : null,
+            networkSegment: parentSegment ? parentSegment.id : null,
+            securityDomain: parentDomain ? parentDomain.id : null
+          });
+          
           loadSelectedNodeChildren(
             stack,
             "hwStacks",
@@ -5000,6 +5273,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         this.classList.add("active");
         currentTreeNode = this;
+        
+        // Update the CISPlanPointer with the asset selection
+        CISPlanPointer.handleTreeClick(this, asset, 'asset', {
+          missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null,
+          networkSegment: parentSegment ? (typeof parentSegment === 'object' ? parentSegment.id : parentSegment) : null,
+          securityDomain: parentDomain ? (typeof parentDomain === 'object' ? parentDomain.id : parentDomain) : null,
+          hwStack: parentStack ? (typeof parentStack === 'object' ? parentStack.id : parentStack) : null
+        });
 
         // Update elements panel
         loadSelectedNodeChildren(
@@ -5163,6 +5444,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
+          
+          // Update the CISPlanPointer with the network interface selection
+          CISPlanPointer.handleTreeClick(this, networkInterface, 'networkInterface', {
+            missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null,
+            networkSegment: parentSegment ? (typeof parentSegment === 'object' ? parentSegment.id : parentSegment) : null,
+            securityDomain: parentDomain ? (typeof parentDomain === 'object' ? parentDomain.id : parentDomain) : null,
+            hwStack: parentStack ? (typeof parentStack === 'object' ? parentStack.id : parentStack) : null,
+            asset: parentAsset ? (typeof parentAsset === 'object' ? parentAsset.id : parentAsset) : null
+          });
+          
           loadSelectedNodeChildren(
             networkInterface,
             "networkInterfaces",
@@ -5390,6 +5681,15 @@ document.addEventListener("DOMContentLoaded", function () {
             type: "gpInstances"
           };
           
+          // Update the CISPlanPointer with the GP instance selection
+          CISPlanPointer.handleTreeClick(this, gpInstanceData, 'gpInstance', {
+            missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null,
+            networkSegment: parentSegment ? (typeof parentSegment === 'object' ? parentSegment.id : parentSegment) : null,
+            securityDomain: parentDomain ? (typeof parentDomain === 'object' ? parentDomain.id : parentDomain) : null,
+            hwStack: parentStack ? (typeof parentStack === 'object' ? parentStack.id : parentStack) : null,
+            asset: parentAsset ? (typeof parentAsset === 'object' ? parentAsset.id : parentAsset) : null
+          });
+          
           console.log("Clicked GP instance tree node, passing data with gpid:", gpInstanceData.id, gpInstanceData);
           
           // CRITICAL FIX: When calling loadSelectedNodeChildren for GP instances,
@@ -5540,6 +5840,16 @@ document.addEventListener("DOMContentLoaded", function () {
           // Get the parent GP instance ID from the tree node and add it to the currentElement
           const gpInstanceId = this.getAttribute("data-parent-gp-instance");
           console.log("Tree node click - GP instance ID for this SP instance:", gpInstanceId);
+          
+          // Update the CISPlanPointer with the SP instance selection
+          CISPlanPointer.handleTreeClick(this, spInstance, 'spInstance', {
+            missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null,
+            networkSegment: parentSegment ? (typeof parentSegment === 'object' ? parentSegment.id : parentSegment) : null,
+            securityDomain: parentDomain ? (typeof parentDomain === 'object' ? parentDomain.id : parentDomain) : null,
+            hwStack: parentStack ? (typeof parentStack === 'object' ? parentStack.id : parentStack) : null,
+            asset: parentAsset ? (typeof parentAsset === 'object' ? parentAsset.id : parentAsset) : null,
+            gpInstance: parentGPInstance ? (typeof parentGPInstance === 'object' ? parentGPInstance.gpid || parentGPInstance.id : parentGPInstance) : gpInstanceId
+          });
           
           // Always set the parent GP instance ID, even if we have to look in multiple places
           if (gpInstanceId) {
@@ -5853,6 +6163,37 @@ document.addEventListener("DOMContentLoaded", function () {
           // Store the selected element and its type
           currentElement = element;
           currentElement.type = type; // Store the type explicitly
+          
+          // Use the CISPlanPointer to handle the central panel element click
+          // This will update the selected element in the pointer system
+          console.log('Asset clicked in central panel:', element);
+          
+          if (!currentTreeNode) {
+            console.warn('currentTreeNode is not defined when clicking asset in central panel!');
+            // In this case, we can't get parent references from the currentTreeNode
+            // Let's try to find the tree node that corresponds to this asset
+            const assetTreeNode = document.querySelector(`.tree-node[data-type="asset"][data-id="${element.id}"]`);
+            
+            if (assetTreeNode) {
+              console.log('Found corresponding tree node for asset:', assetTreeNode);
+              // Use this node instead
+              CISPlanPointer.handleCentralPanelClick(element, type, assetTreeNode);
+            } else {
+              console.warn('Could not find corresponding tree node for asset:', element.id);
+              // Just update with the element itself, no parent references
+              CISPlanPointer.updateSelectedOnly(type, 'L1.1.1.1.1', element.id, element.name, element, {});
+            }
+          } else {
+            console.log('Current tree node:', currentTreeNode);
+            console.log('currentTreeNode type:', currentTreeNode.getAttribute("data-type"));
+            console.log('currentTreeNode parent-stack:', currentTreeNode.getAttribute("data-parent-stack"));
+            console.log('currentTreeNode parent-domain:', currentTreeNode.getAttribute("data-parent-domain"));
+            console.log('currentTreeNode parent-segment:', currentTreeNode.getAttribute("data-parent-segment"));
+            console.log('currentTreeNode parent-mission-network:', currentTreeNode.getAttribute("data-parent-mission-network"));
+            
+            // Pass detailed information to the pointer
+            CISPlanPointer.handleCentralPanelClick(element, type, currentTreeNode);
+          }
 
           // Update detail panel
           updateDetailPanel(element, type);
@@ -6123,6 +6464,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Store the selected element and its type
         currentElement = element;
         currentElement.type = type; // Store the type explicitly
+        
+        // Use the CISPlanPointer to handle the central panel element click
+        // This will update the selected element in the pointer system
+        CISPlanPointer.handleCentralPanelClick(element, type, currentTreeNode);
 
         // Update detail panel
         updateDetailPanel(element, type);
@@ -7426,6 +7771,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to navigate up one level in the tree
   function navigateUp() {
+    // Log the current position and where we should navigate to
+    console.log('Navigating UP from current position...');
+    CISPlanPointer.logNavigationUp();
+    
     // Check the current element type first - this is what gets updated when clicking in the elements panel
     let type;
     let parentNodeId;

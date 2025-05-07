@@ -830,7 +830,7 @@
                   ]
                 },
                 {
-                  "name": "POP-88",
+                  "name": "POP-8888",
                   "guid": "7311e9da-ad5b-49ba-9d7d-e98e4aea35bc",
                   "id": "HW-0002",
                   "cisParticipantID": "PAR-CIAV-000056",
@@ -844,7 +844,7 @@
                   "assets": []
                 },
                 {
-                  "name": "POP-99",
+                  "name": "POP-999",
                   "guid": "5fe6a079-1b82-42e4-a3c3-1f3e4dc95dd0",
                   "id": "HW-0004",
                   "cisParticipantID": "PAR-CIAV-000036",
@@ -872,21 +872,21 @@
                   "assets": []
                 },
                 {
-                  "name": "POP-Y",
+                  "name": "POP-YY",
                   "guid": "c0210b7e-ba22-488e-b9a5-8de5014d44d0",
                   "id": "HW-0009",
                   "cisParticipantID": "PAR-CIAV-000120",
                   "assets": []
                 },
                 {
-                  "name": "POP-Z",
+                  "name": "POP-ZZ",
                   "guid": "2e90c159-cbc7-4bab-abb6-c6564ee8fb92",
                   "id": "HW-0010",
                   "cisParticipantID": "PAR-CIAV-000116",
                   "assets": []
                 },
                 {
-                  "name": "POP-K",
+                  "name": "POP-KK2",
                   "guid": "2af5ea32-64de-47ff-9101-428313e2a09e",
                   "id": "HW-0011",
                   "cisParticipantID": "PAR-CIAV-000119",
@@ -1063,7 +1063,7 @@
       ]
     },
     {
-      "name": "Mission 3",
+      "name": "Mission 333",
       "guid": "e2c8d496-58ad-426c-a320-675ad2303b0b",
       "id": "MN-0009",
       "networkSegments": [
@@ -1174,7 +1174,7 @@
       ]
     },
     {
-      "name": "Mission X",
+      "name": "Mission (**)",
       "guid": "fc57e6b3-7436-4cd1-b3f8-cfca5cff0ab4",
       "id": "MN-0010",
       "networkSegments": [

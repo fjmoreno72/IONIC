@@ -26,7 +26,7 @@
                       "id": "AS-0001",
                       "networkInterfaces": [
                         {
-                          "name": "NET-X",
+                          "name": "NET-X*",
                           "guid": "64894cc0-e44f-4bf2-9fce-6aab1e09403e",
                           "id": "NI-0001",
                           "configurationItems": [
@@ -47,6 +47,31 @@
                               "ConfigurationAnswerType": "Text Field (Single Line)",
                               "AnswerContent": "tonto.dot.com",
                               "guid": "822e99bf-91db-44dc-aa43-0d9e080ef71a"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "gg",
+                          "guid": "0170cdb2-dac7-43e3-b755-351aa95fc515",
+                          "id": "NI-0002",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "d37e8f69-306b-4861-9080-d48386fd8949"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "e69c481c-49b6-4c6b-9099-2bf694e1a8c4"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "84ced125-d521-4299-b0f4-b63e720efb02"
                             }
                           ]
                         }
@@ -495,6 +520,191 @@
                               "HelpText": "Only transmit \u201cNo PLI Response\u201d J28.2(0) if operationally desired by WDA"
                             }
                           ]
+                        },
+                        {
+                          "gpid": "GP-0018",
+                          "guid": "4736e482-e7d3-47dd-b0ea-d7b2de758c53",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0014",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "All certificates across trust path",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "372485e3-66f3-4aaf-b724-c5f9cba607c6",
+                              "DefaultValue": "",
+                              "HelpText": "All certificates across the trust path (CA certificates from Root CA down to the Issuing CA for Trust list) or cross-certification certificates"
+                            },
+                            {
+                              "Name": "CRL HTTP / AIA",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "9937e7bb-ef9b-4840-bd6e-62c3eb3fa33a",
+                              "DefaultValue": "80",
+                              "HelpText": "CRL HTTP /AIA"
+                            },
+                            {
+                              "Name": "CRL LDAP / AIA",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "e0eeaf09-f963-4c4b-8dce-c2adb6f11a3e",
+                              "DefaultValue": "389",
+                              "HelpText": "CRL LDAP / AIA"
+                            },
+                            {
+                              "Name": "Certificate Request Authority",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "9aa05669-0c52-47db-b77b-fac11599c18d",
+                              "DefaultValue": "",
+                              "HelpText": "URL for the RA"
+                            },
+                            {
+                              "Name": "HTTP CRL FULL URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "526a766e-88d9-436c-a53f-20cbb90098fa",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL as in CDP"
+                            },
+                            {
+                              "Name": "HTTP CRL PRT",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "b9a540ec-be02-4627-8f3d-7d8808b35f77",
+                              "DefaultValue": "TCP/80",
+                              "HelpText": "Full URL as in CDP"
+                            },
+                            {
+                              "Name": "HTTP end-point IP for CRL retrieval",
+                              "ConfigurationAnswerType": "IP Address",
+                              "AnswerContent": "",
+                              "guid": "97512d94-4ac9-42ef-a15d-8e1424088108",
+                              "DefaultValue": "",
+                              "HelpText": "IP of the HTTP service"
+                            },
+                            {
+                              "Name": "HTTP end-point URL for CRL retrieval",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "33981084-3688-4b71-ad7e-ced7a96c31c1",
+                              "DefaultValue": "",
+                              "HelpText": "Supply the port for the CRL"
+                            },
+                            {
+                              "Name": "LDAP PORT",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "cb42619e-f4fc-425e-ab40-51c65beeb510",
+                              "DefaultValue": "TCP/389",
+                              "HelpText": "LDAP CRL PORT"
+                            },
+                            {
+                              "Name": "LDAP end-point IP for CRL retrieval",
+                              "ConfigurationAnswerType": "IP Address",
+                              "AnswerContent": "",
+                              "guid": "cb3c045b-7159-46cb-8240-95123686fc05",
+                              "DefaultValue": "",
+                              "HelpText": "IP of the LDAP repository"
+                            },
+                            {
+                              "Name": "LDAP end-point URL for CRL retrieval",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "2dbe761b-e4f4-4fbd-be03-ed70eedecff3",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL as in CDP"
+                            },
+                            {
+                              "Name": "OCSP PORT",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "c87e4139-4da2-4c24-b914-7d9c6d2cb87c",
+                              "DefaultValue": "TCP/80",
+                              "HelpText": "OCSP RESPONDER PORT"
+                            },
+                            {
+                              "Name": "OCSP Port",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "06dd88ba-c0ea-44f2-a007-94d6e5f2ecc5",
+                              "DefaultValue": "80",
+                              "HelpText": "Port of OCSP responder"
+                            },
+                            {
+                              "Name": "OCSP end-point IP",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "4f755ae8-0915-4281-a1e7-aa97be1fc0c4",
+                              "DefaultValue": "",
+                              "HelpText": "IP of OCSP responder"
+                            },
+                            {
+                              "Name": "OCSP end-point URL",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "4981fa83-e623-4051-a4c8-b22b7352aa60",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of OCSP in Responder as in CDP"
+                            },
+                            {
+                              "Name": "PKI Interoperability Framework (iTIF) Compliant",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "0f92109f-8903-45df-a85d-0cef6855e14a",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Port CRL HTTP",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "20b011bf-0ee9-4b4f-9c79-b2952a4cf3c8",
+                              "DefaultValue": "80",
+                              "HelpText": "Port for CRL HTTP/AIA"
+                            },
+                            {
+                              "Name": "Supported Certificate Request",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "dbfd63b2-3bd5-4aa2-b37c-70e08815c284",
+                              "DefaultValue": "",
+                              "HelpText": "Supported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)"
+                            },
+                            {
+                              "Name": "Supported Certificate Requests",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "b7fa000a-1107-40e3-a784-72278f66e737",
+                              "DefaultValue": "",
+                              "HelpText": " \tSupported Certificate Request (certificate request formats supported by the CA, e.g PKCS #10 or SPKAC)"
+                            },
+                            {
+                              "Name": "URL - Expired Certificate",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "9f12b2b2-49b0-4d48-bdaa-66bf448fbfc1",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of Web Server with Expired Certificate"
+                            },
+                            {
+                              "Name": "URL - Revoked Certificate",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "2f82c3c1-9f66-4abd-9748-c988458b63eb",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of Web Server with Revoked Certificate"
+                            },
+                            {
+                              "Name": "URL - Valid Certificate",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "3ab0e8b4-6c1b-47e8-9311-96a64a243a74",
+                              "DefaultValue": "",
+                              "HelpText": "Full URL of Web Server with Valid Certificate"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -662,7 +872,7 @@
                       "gpInstances": []
                     },
                     {
-                      "name": "NIRIS",
+                      "name": "NIRIS*",
                       "guid": "4b819f58-5dca-4c4c-b7eb-aefcee7fab4c",
                       "id": "AS-0005",
                       "networkInterfaces": [],
@@ -869,7 +1079,15 @@
                   "guid": "9a56b21b-890b-4d09-bb57-0aefb3607001",
                   "id": "HW-0008",
                   "cisParticipantID": "PAR-CIAV-000026",
-                  "assets": []
+                  "assets": [
+                    {
+                      "name": "A3X",
+                      "guid": "d55a404d-8fd4-4f88-82f6-3105fd332d2a",
+                      "id": "AS-0026",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
+                  ]
                 },
                 {
                   "name": "POP-YY",
@@ -890,7 +1108,15 @@
                   "guid": "2af5ea32-64de-47ff-9101-428313e2a09e",
                   "id": "HW-0011",
                   "cisParticipantID": "PAR-CIAV-000119",
-                  "assets": []
+                  "assets": [
+                    {
+                      "name": "A33",
+                      "guid": "cca670f8-7d27-4e3d-b7d5-4f72cc5b73b0",
+                      "id": "AS-0027",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
+                  ]
                 }
               ]
             },
@@ -991,79 +1217,11 @@
               "id": "CL-RESTRICTED"
             }
           ]
-        },
-        {
-          "name": "Command E",
-          "guid": "d5032cf6-02c5-4751-9cbb-31d7112dab19",
-          "id": "NS-0004",
-          "securityDomains": [
-            {
-              "id": "CL-UNCLASS",
-              "hwStacks": [
-                {
-                  "name": "a",
-                  "guid": "24c76fae-9262-4707-94a8-2ba837a80ecf",
-                  "id": "HW-0018",
-                  "cisParticipantID": "PAR-CIAV-000029",
-                  "assets": [
-                    {
-                      "name": "df",
-                      "guid": "e1ccc169-6201-41f0-83fb-558797a021cf",
-                      "id": "AS-0024",
-                      "networkInterfaces": [
-                        {
-                          "name": "ssss",
-                          "guid": "42092e68-82ef-4a50-b57f-ead034a6920b",
-                          "id": "NI-0001",
-                          "configurationItems": [
-                            {
-                              "Name": "IP Address",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "69853401-483d-4db8-9cc9-06ba0fe3353c"
-                            },
-                            {
-                              "Name": "Sub-Net",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "94605439-3250-4a99-9024-80c8893aa209"
-                            },
-                            {
-                              "Name": "FQDN",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "4abf44e3-7ae5-4db5-bf85-85b8aedaf8e9"
-                            }
-                          ]
-                        }
-                      ],
-                      "gpInstances": [
-                        {
-                          "gpid": "GP-0141",
-                          "guid": "5fb4a833-5665-4f41-90e2-575713558bf7",
-                          "instanceLabel": "",
-                          "serviceId": "SRV-0010",
-                          "spInstances": [
-                            {
-                              "guid": "545f4f91-6171-4b68-96cb-16c28fdc8c84",
-                              "spId": "SP-0232",
-                              "spVersion": "R80.30"
-                            }
-                          ],
-                          "configurationItems": []
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
         }
       ]
     },
     {
-      "name": "Mission 333",
+      "name": "Mission 3",
       "guid": "e2c8d496-58ad-426c-a320-675ad2303b0b",
       "id": "MN-0009",
       "networkSegments": [
@@ -1174,7 +1332,7 @@
       ]
     },
     {
-      "name": "Mission (**)",
+      "name": "Mission 2",
       "guid": "fc57e6b3-7436-4cd1-b3f8-cfca5cff0ab4",
       "id": "MN-0010",
       "networkSegments": [
@@ -1188,13 +1346,13 @@
               "guid": "18760d41-faed-49e8-aa4e-4de28411f404",
               "hwStacks": [
                 {
-                  "name": "STACK 2.1",
+                  "name": "STACK 2.1.1",
                   "guid": "d889432f-3d21-4612-a7d5-d207c5aa2e39",
                   "id": "HW-0014",
                   "cisParticipantID": "PAR-CIAV-000026",
                   "assets": [
                     {
-                      "name": "A1",
+                      "name": "A11",
                       "guid": "bcf3db44-2f8a-481b-9832-0d8192855ca7",
                       "id": "AS-0019",
                       "networkInterfaces": [
@@ -1367,13 +1525,13 @@
                   ]
                 },
                 {
-                  "name": "XXX",
+                  "name": "X",
                   "guid": "e70d4811-ae34-4762-bedc-14eddc81f298",
                   "id": "HW-0015",
                   "cisParticipantID": "PAR-CIAV-000026",
                   "assets": [
                     {
-                      "name": "1",
+                      "name": "A1",
                       "guid": "0334cc5a-4f82-4424-ae05-036f6c5d3c21",
                       "id": "AS-0020",
                       "networkInterfaces": [],

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
     {# Link to the same CSS as test_case for consistency #}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    {# Additional CSS for participants table #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/participants-fix.css') }}">
     <style>
         /* Style for highlighting test count - Ensure red color and bold */
         .test-count-issue {
@@ -74,7 +76,10 @@
                             <th class="sortable" data-sort="description">Description <i class="fas fa-sort"></i></th>
                             <th class="sortable" data-sort="nation">Nation <i class="fas fa-sort"></i></th>
                             <th class="sortable" data-sort="status">Status <i class="fas fa-sort"></i></th>
-                            <th class="sortable" data-sort="test_count">Number of Tests <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="test_count">Total Tests <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="coordinator_count">As Coordinator <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="partner_count">As Partner <i class="fas fa-sort"></i></th>
+                            <th class="sortable" data-sort="observer_count">As Observer <i class="fas fa-sort"></i></th>
                         </tr>
                     </thead>
                     <tbody id="participantsTableBody"> {# Changed ID #}
@@ -89,6 +94,9 @@
                                 <td class="{{ 'test-count-issue' if participant.test_count == 0 and participant.status != 'Withdraw' else '' }}">
                                     {{ participant.test_count }}
                                 </td>
+                                <td>{{ participant.coordinator_count }}</td>
+                                <td>{{ participant.partner_count }}</td>
+                                <td>{{ participant.observer_count }}</td>
                             </tr>
                             {% endfor %}
                         {% else %}
@@ -96,7 +104,7 @@
                             {# Or show a message if no participants were passed from backend #}
                             {% if not error %}
                             <tr>
-                                <td colspan="5" class="text-center">No participants found.</td>
+                                <td colspan="8" class="text-center">No participants found.</td>
                             </tr>
                             {% endif %}
                         {% endif %}

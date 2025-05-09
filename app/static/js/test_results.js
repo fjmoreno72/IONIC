@@ -171,7 +171,7 @@ function updateTable() {
 
     if (paginatedItems.length === 0) {
         noResults.classList.remove('d-none');
-        tableBody.innerHTML = `<tr><td colspan="7" class="text-center">No test results found matching your criteria.</td></tr>`; // Adjusted colspan
+        tableBody.innerHTML = `<tr><td colspan="7" class="text-center">No test results found matching your criteria.</td></tr>`; // Colspan already matches (7 columns total)
     } else {
         noResults.classList.add('d-none');
         paginatedItems.forEach(result => {
@@ -185,12 +185,13 @@ function updateTable() {
                 return cell;
             };
 
+            addCell(result.key);
             addCell(result.objectiveKey);
-            addCell(result.testPlanKey);
             addCell(result.testName);
             addCell(result.status);
             addCell(result.coordinator);
             addCell(result.partners?.join(', ')); // Display partners array as string
+            addCell(result.observers?.join(', ')); // Display observers array as string
             addCell(result.overallResult);
 
             tableBody.appendChild(row);
@@ -217,20 +218,22 @@ function applyFilters() {
         const matchesObjective = selectedObjectives.length === 0 || selectedObjectives.includes(result.objectiveKey);
         const matchesParticipant = selectedParticipants.length === 0 ||
             selectedParticipants.includes(result.coordinator) ||
-            (result.partners && result.partners.some(p => selectedParticipants.includes(p)));
+            (result.partners && result.partners.some(p => selectedParticipants.includes(p))) ||
+            (result.observers && result.observers.some(o => selectedParticipants.includes(o)));
 
         // Standard dropdown checks
         const matchesStatus = statusFilterValue === '' || result.status === statusFilterValue;
         const matchesOverallResult = overallResultFilterValue === '' || result.overallResult === overallResultFilterValue;
 
-        // Search term check (remains the same)
+        // Search term check (updated to include key and observers)
         const matchesSearch = searchTerm === '' ||
+            (result.key && result.key.toLowerCase().includes(searchTerm)) ||
             (result.objectiveKey && result.objectiveKey.toLowerCase().includes(searchTerm)) ||
-            (result.testPlanKey && result.testPlanKey.toLowerCase().includes(searchTerm)) ||
             (result.testName && result.testName.toLowerCase().includes(searchTerm)) ||
             (result.status && result.status.toLowerCase().includes(searchTerm)) ||
             (result.coordinator && result.coordinator.toLowerCase().includes(searchTerm)) ||
             (result.partners && result.partners.some(p => p.toLowerCase().includes(searchTerm))) ||
+            (result.observers && result.observers.some(o => o.toLowerCase().includes(searchTerm))) ||
             (result.overallResult && result.overallResult.toLowerCase().includes(searchTerm));
 
         return matchesObjective && matchesStatus && matchesOverallResult && matchesParticipant && matchesSearch;

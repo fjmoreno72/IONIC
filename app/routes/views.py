@@ -243,9 +243,19 @@ def participants_view():
         if test_results_data: # Only process if data was loaded
             # Check if test_results_data was loaded and is a dictionary
             if isinstance(test_results_data, dict):
-                if 'TestPlans' in test_results_data:
+                # First check for the new format with 'Tests' at the root level
+                if 'Tests' in test_results_data:
+                    tests_list = test_results_data['Tests']
+                    if isinstance(tests_list, list):
+                        logging.info(f"Processing {len(tests_list)} Tests from test_results (new format).")
+                        actual_test_list = tests_list # Direct assignment since test list is at the root level
+                    else:
+                        logging.error(f"'Tests' key found in test_results_data, but its value is not a list (type: {type(tests_list)}). Cannot extract tests.")
+                # Fallback to old format with 'TestPlans' if new format not found
+                elif 'TestPlans' in test_results_data:
                     test_plans_list = test_results_data['TestPlans']
                     if isinstance(test_plans_list, list):
+                        logging.info(f"Processing {len(test_plans_list)} TestPlans from test_results (legacy format).")
                         # Iterate through each TestPlan to extract its Tests
                         for test_plan in test_plans_list:
                             if isinstance(test_plan, dict):
@@ -255,24 +265,19 @@ def participants_view():
                                          actual_test_list.extend(tests_list) # Add tests from this plan to the main list
                                      else:
                                          logging.warning(f"Found 'Tests' key in test_plan, but its value is not a list (type: {type(tests_list)}). Skipping tests in this plan.")
-                                # else: # Removed log for missing 'Tests' key as it's expected
-                                #      logging.warning("Found test_plan dictionary, but it's missing the 'Tests' key. Skipping tests in this plan.")
                             else:
                                 logging.warning(f"Item in 'TestPlans' list is not a dictionary (type: {type(test_plan)}). Skipping tests in this plan.")
-                        # Removed log for empty actual_test_list after processing TestPlans
-                        # if not actual_test_list:
-                        #      logging.warning("Successfully processed 'TestPlans' list, but it contained no actual 'Tests' lists within its items.")
                     else:
                         logging.error(f"'TestPlans' key found in test_results_data, but its value is not a list (type: {type(test_plans_list)}). Cannot extract tests.")
                 else:
-                    logging.error("'TestPlans' key not found in the test_results_data dictionary. Cannot extract tests.")
+                    logging.error("Neither 'Tests' nor 'TestPlans' key found in the test_results_data dictionary. Cannot extract tests.")
             elif isinstance(test_results_data, list):
                  # Fallback if the structure is just a flat list (less likely based on API)
                  actual_test_list = test_results_data
                  logging.warning("Test results data is a list. Processing as a flat list of tests.")
             else:
                  # This covers cases where test_results_data is None or other types
-                 logging.error(f"Test results data loaded but is not a dictionary with 'TestPlans' or a list (type: {type(test_results_data)}). Cannot calculate test counts accurately.")
+                 logging.error(f"Test results data loaded but is not a dictionary with 'Tests', 'TestPlans', or a list (type: {type(test_results_data)}). Cannot calculate test counts accurately.")
         else:
             # This case handles when the file didn't exist or read_json_file returned None/empty
              logging.warning("Test results data is empty or was not loaded. Test counts will be 0.")
@@ -301,49 +306,109 @@ def participants_view():
                     elif prop_name == 'Status':
                         status = prop_values[0]
 
-            # Calculate test count using the pre-compiled actual_test_list
-            test_count = 0
+            # Calculate test counts using the pre-compiled actual_test_list
+            total_test_count = 0
+            coordinator_count = 0
+            partner_count = 0
+            observer_count = 0
 
+            # Extract all identifiers we can match on from the participant
+            # First get the participant ID/key (if available)
+            participant_id_str = str(participant_id) if participant_id else ''
+            
             # Get the participant name from participants.json to use for matching
             participant_name_from_source = participant.get('name')
             # Normalize the name (lowercase, strip whitespace) for robust comparison
             participant_name_normalized = participant_name_from_source.strip().lower() if participant_name_from_source else None
-
-            logging.debug(f"Processing participant: '{participant_name_normalized}' (Source: '{participant_name_from_source}')")
-
-            # Proceed with counting only if we have a normalized participant name and a valid list of tests
-            if participant_name_normalized and actual_test_list:
-                 for test_index, test in enumerate(actual_test_list): # Iterate through each test
+            
+            # In the property bag, look for any keys that might be used for matching
+            alternative_identifiers = set()
+            if participant_name_normalized:
+                alternative_identifiers.add(participant_name_normalized)
+            
+            # Sometimes, participant IDs in test_results_data are in a different format (like '2025-DEU-CC-311')
+            # Extract these from the property bag if available
+            for prop in properties:
+                if prop.get('name') == 'ParticipantKey' and prop.get('values'):
+                    for val in prop.get('values'):
+                        if val:
+                            alternative_identifiers.add(val.strip().lower())
+            
+            logging.debug(f"Processing participant: '{participant_name_normalized}' with ID '{participant_id_str}' and alternative IDs: {alternative_identifiers}")
+            
+            # Proceed with counting only if we have a participant to match and a valid list of tests
+            if actual_test_list and (participant_name_normalized or alternative_identifiers):
+                for test_index, test in enumerate(actual_test_list): # Iterate through each test
                     if not isinstance(test, dict):
                         continue
 
-                    found_in_this_test = False # Flag to track if participant found in this specific test
+                    found_in_this_test = False # Flag to track if participant found in any role for overall count
+                    found_as_coordinator = False
+                    found_as_partner = False
+                    found_as_observer = False
 
                     # Check coordinator
                     coordinator_data = test.get('Coordinator', {})
                     coordinator_participant_raw = coordinator_data.get('Participant') if isinstance(coordinator_data, dict) else None
-                    coordinator_participant_normalized = coordinator_participant_raw.strip().lower() if coordinator_participant_raw else None
+                    
+                    if coordinator_participant_raw:
+                        # Try an exact match on the coordinator string
+                        coord_lower = coordinator_participant_raw.strip().lower()
+                        
+                        # Check if the coordinator matches any of our identifiers
+                        if (participant_name_normalized and coord_lower == participant_name_normalized) or \
+                           coord_lower in alternative_identifiers:
+                            found_in_this_test = True
+                            found_as_coordinator = True
+                            logging.debug(f"    MATCH found in Coordinator '{coordinator_participant_raw}' for participant in test {test_index}")
 
-                    if coordinator_participant_normalized and coordinator_participant_normalized == participant_name_normalized:
-                        found_in_this_test = True
-                        logging.debug(f"    MATCH found in Coordinator for '{participant_name_normalized}' in test {test_index}")
-
-                    # If not found as coordinator, check partners
-                    if not found_in_this_test:
-                        partners_data = test.get('Partners', [])
-                        if isinstance(partners_data, list):
-                            for partner_entry in partners_data:
-                                partner_participant_raw = partner_entry.get('Participant') if isinstance(partner_entry, dict) else None
-                                partner_participant_normalized = partner_participant_raw.strip().lower() if partner_participant_raw else None
-                                if partner_participant_normalized and partner_participant_normalized == participant_name_normalized:
+                    # Check partners (regardless of coordinator match)
+                    partners_data = test.get('Partners', [])
+                    if isinstance(partners_data, list):
+                        for partner_entry in partners_data:
+                            partner_participant_raw = partner_entry.get('Participant') if isinstance(partner_entry, dict) else None
+                            
+                            if partner_participant_raw:
+                                # Try an exact match on the partner string
+                                partner_lower = partner_participant_raw.strip().lower()
+                                
+                                # Check if the partner matches any of our identifiers
+                                if (participant_name_normalized and partner_lower == participant_name_normalized) or \
+                                   partner_lower in alternative_identifiers:
                                     found_in_this_test = True
-                                    logging.debug(f"      MATCH found in Partners for '{participant_name_normalized}' in test {test_index}")
+                                    found_as_partner = True
+                                    logging.debug(f"      MATCH found in Partner '{partner_participant_raw}' for participant in test {test_index}")
                                     break # Found as partner, no need to check other partners for this test
+                    
+                    # Check observers (regardless of coordinator/partner match)
+                    observers_data = test.get('Observers', [])
+                    if isinstance(observers_data, list):
+                        for observer_entry in observers_data:
+                            observer_participant_raw = observer_entry.get('Participant') if isinstance(observer_entry, dict) else None
+                            
+                            if observer_participant_raw:
+                                # Try an exact match on the observer string
+                                observer_lower = observer_participant_raw.strip().lower()
+                                
+                                # Check if the observer matches any of our identifiers
+                                if (participant_name_normalized and observer_lower == participant_name_normalized) or \
+                                   observer_lower in alternative_identifiers:
+                                    found_in_this_test = True
+                                    found_as_observer = True
+                                    logging.debug(f"      MATCH found in Observer '{observer_participant_raw}' for participant in test {test_index}")
+                                    break # Found as observer, no need to check other observers for this test
 
-                    # If found in either role for this test, increment count
+                    # If found in any role for this test, increment overall count
                     if found_in_this_test:
-                        test_count += 1
-                        # The outer loop will naturally proceed to the next test
+                        total_test_count += 1
+                    
+                    # Increment individual role counts
+                    if found_as_coordinator:
+                        coordinator_count += 1
+                    if found_as_partner:
+                        partner_count += 1
+                    if found_as_observer:
+                        observer_count += 1
 
             else:
                  if not participant_name_normalized:
@@ -359,7 +424,10 @@ def participants_view():
                 'description': description,
                 'nation': nation,
                 'status': status,
-                'test_count': test_count
+                'test_count': total_test_count,
+                'coordinator_count': coordinator_count,
+                'partner_count': partner_count,
+                'observer_count': observer_count
             })
 
         return render_template('participants.html', participants=processed_participants)
@@ -413,10 +481,31 @@ def objectives_view():
         if test_results_path.exists():
             try:
                 test_results_data = read_json_file(test_results_path)
-                # Ensure test_results_data is a dictionary and contains 'TestPlans' which is a list
-                if isinstance(test_results_data, dict) and 'TestPlans' in test_results_data and isinstance(test_results_data['TestPlans'], list):
+                # Check if the new format is being used (with 'Tests' at the top level)
+                if isinstance(test_results_data, dict) and 'Tests' in test_results_data and isinstance(test_results_data['Tests'], list):
+                    tests_list = test_results_data['Tests']
+                    logging.info(f"Processing {len(tests_list)} Tests from {test_results_path} (new format).")
+                    
+                    # Process each test entry
+                    for i, test in enumerate(tests_list):
+                        if isinstance(test, dict):
+                            # Extract the Objective Key from the nested structure
+                            objective_data = test.get('Objective', {})
+                            objective_key = objective_data.get('Key') if isinstance(objective_data, dict) else None
+                            
+                            # Ensure the objective key exists and starts with OBJ-
+                            if objective_key and objective_key.startswith('OBJ-'):
+                                # Increment the test count for this objective
+                                objective_test_counts[objective_key] = objective_test_counts.get(objective_key, 0) + 1
+                                logging.debug(f"  Test {i}: Key='{objective_key}', Cumulative count for key: {objective_test_counts[objective_key]}")
+                            else:
+                                logging.warning(f"  Skipping Test {i}: Invalid objective key. Key='{objective_key}' (Type: {type(objective_key)})")
+                        else:
+                            logging.warning(f"  Skipping Test {i}: Item is not a dictionary (Type: {type(test)}).")
+                # Fallback to old format if new format not detected
+                elif isinstance(test_results_data, dict) and 'TestPlans' in test_results_data and isinstance(test_results_data['TestPlans'], list):
                     test_plans_list = test_results_data['TestPlans']
-                    logging.info(f"Processing {len(test_plans_list)} TestPlans from {test_results_path}.")
+                    logging.info(f"Processing {len(test_plans_list)} TestPlans from {test_results_path} (legacy format).")
                     for i, test_plan in enumerate(test_plans_list):
                         if isinstance(test_plan, dict):
                             # Correctly extract the Objective Key from the nested structure
@@ -436,7 +525,7 @@ def objectives_view():
                         else:
                             logging.warning(f"  Skipping TestPlan {i}: Item is not a dictionary (Type: {type(test_plan)}).")
                 else:
-                    logging.warning(f"Test results file {test_results_path} loaded but structure is invalid. Expected dict with 'TestPlans' list. Found type: {type(test_results_data)}")
+                    logging.warning(f"Test results file {test_results_path} loaded but structure is invalid. Expected dict with 'Tests' or 'TestPlans' list. Found type: {type(test_results_data)}")
 
             except json.JSONDecodeError as e:
                 logging.error(f"Error decoding test results JSON file {test_results_path}: {e}")

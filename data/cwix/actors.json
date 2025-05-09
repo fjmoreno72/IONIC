@@ -2731,6 +2731,17 @@
         }
     },
     {
+        "actorType": "technical",
+        "id": "f26b717d-58b8-4b73-b345-2e038b498d51",
+        "key": "ACT-CWIX-000409",
+        "name": "Cyber SA System",
+        "itemId": "09e4a095-bbc5-47e8-bf2c-de6ea2d20521",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-08T18:19:20.44074+02:00"
+        }
+    },
+    {
         "actorType": "organizational",
         "id": "a71fd0ff-8516-412a-bfd4-957951d5badb",
         "key": "ACT-CIAV-000345",
@@ -3987,6 +3998,17 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "5f877c7a-9f6a-4643-9139-be02266ee208",
+        "key": "ACT-CWIX-000408",
+        "name": "FMV Secure Labeling Service",
+        "itemId": "552e6af1-e85d-4196-8f2f-d89540dcc27a",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-08T17:24:06.6990175+02:00"
         }
     },
     {

@@ -1,0 +1,1037 @@
+/**
+ * CIS Plan Pointer - A global navigation state manager for CIS Plan
+ *
+ * This module tracks the current position in the CIS Plan tree hierarchy,
+ * the previous position, and the currently selected element.
+ *
+ * Hierarchy levels:
+ * L1 → missionNetworks
+ * L1.1 → networkSegments
+ * L1.1.1 → securityDomains
+ * L1.1.1.1 → hwStacks
+ * L1.1.1.1.1 → assets
+ * L1.1.1.1.1.1 → networkInterfaces
+ * L1.1.1.1.1.1.1 → configurationItems
+ * L1.1.1.1.1.2 → gpInstances
+ * L1.1.1.1.1.2.1 → spInstances
+ * L1.1.1.1.1.2.2 → configurationItems
+ */
+
+const CISPlanPointer = (function () {
+  // Constants and configuration
+  const ELEMENT_TYPES = {
+    CIS_PLAN: "cisplan",
+    MISSION_NETWORK: "missionNetwork",
+    NETWORK_SEGMENT: "networkSegment",
+    SECURITY_DOMAIN: "securityDomain",
+    HW_STACK: "hwStack",
+    ASSET: "asset",
+    NETWORK_INTERFACE: "networkInterface",
+    NI_CONFIG_ITEM: "niConfigItem",
+    GP_INSTANCE: "gpInstance",
+    SP_INSTANCE: "spInstance",
+    GP_CONFIG_ITEM: "gpConfigItem",
+    ROOT: "root",
+  };
+
+  // Navigation hierarchy configuration
+  const NAVIGATION_CONFIG = {
+    'L0': { parentLevel: null, parentType: null },
+    'L1.1.1.1.1.2.1': { parentLevel: 'L1.1.1.1.1.2', parentType: ELEMENT_TYPES.GP_INSTANCE },
+    'L1.1.1.1.1.2': { parentLevel: 'L1.1.1.1.1', parentType: ELEMENT_TYPES.ASSET },
+    'L1.1.1.1.1.1': { parentLevel: 'L1.1.1.1.1', parentType: ELEMENT_TYPES.ASSET },
+    'L1.1.1.1.1': { parentLevel: 'L1.1.1.1', parentType: ELEMENT_TYPES.HW_STACK },
+    'L1.1.1.1': { parentLevel: 'L1.1.1', parentType: ELEMENT_TYPES.SECURITY_DOMAIN },
+    'L1.1.1': { parentLevel: 'L1.1', parentType: ELEMENT_TYPES.NETWORK_SEGMENT },
+    'L1.1': { parentLevel: 'L1', parentType: ELEMENT_TYPES.MISSION_NETWORK },
+    'L1': { parentLevel: 'L0', parentType: ELEMENT_TYPES.CIS_PLAN }
+  };
+
+  const state = {
+    // Previous position
+    previous: {
+      level: null,
+      type: null,
+      id: null,
+      name: null,
+      parentIds: {},
+    },
+
+    // Current position
+    current: {
+      level: null,
+      type: null,
+      id: null,
+      name: null,
+      parentIds: {},
+    },
+
+    // Currently selected element (same as current for tree clicks)
+    selected: {
+      level: null,
+      type: null,
+      id: null,
+      name: null,
+      element: null,
+      parentIds: {},
+    },
+  };
+
+  /**
+   * Updates the navigation state when a new element is clicked in the tree
+   * @param {string} elementType - Type of element (from ELEMENT_TYPES)
+   * @param {string} level - Hierarchy level (e.g., "L1", "L1.1.1")
+   * @param {string} id - Element ID
+   * @param {string} name - Element name
+   * @param {Object} element - Full element data
+   * @param {Object} parentIds - IDs of parent elements in the hierarchy
+   */
+  /**
+   * Creates a new state object with the given parameters
+   */
+  // Map of plural to singular type names
+  const TYPE_MAP = {
+    'missionnetworks': 'missionnetwork',
+    'networksegments': 'networksegment',
+    'securitydomains': 'securitydomain',
+    'hwstacks': 'hwstack',
+    'assets': 'asset',
+    'networkinterfaces': 'networkinterface',
+    'gpinstances': 'gpinstance',
+    'spinstances': 'spinstance'
+  };
+
+  // Parent type mapping
+  const PARENT_TYPE_MAP = {
+    'networkSegment': 'missionNetwork',
+    'securityDomain': 'networkSegment',
+    'hwStack': 'securityDomain',
+    'asset': 'hwStack',
+    'networkInterface': 'asset',
+    'gpInstance': 'asset',
+    'spInstance': 'gpInstance'
+  };
+
+  function normalizeType(type) {
+    // Convert to lowercase
+    const lcType = type.toLowerCase();
+    // Return mapped singular form if it exists, otherwise return as is
+    return TYPE_MAP[lcType] || lcType;
+  }
+
+  function createStateObject(elementType, level, id, name, element = null, parentIds = {}) {
+    return {
+      type: normalizeType(elementType),
+      level,
+      id,
+      name,
+      element,
+      parentIds
+    };
+  }
+
+  /**
+   * Validates state parameters
+   */
+  function validateStateParams(elementType, level, id) {
+    // Check if the element type exists in our valid types (case-insensitive)
+    const validType = Object.values(ELEMENT_TYPES).some(
+      type => type.toLowerCase() === elementType.toLowerCase()
+    );
+    if (!elementType || !validType) {
+      console.warn(`Invalid element type: ${elementType}`);
+      return false;
+    }
+    if (!level || !NAVIGATION_CONFIG[level]) {
+      console.warn(`Invalid navigation level: ${level}`);
+      return false;
+    }
+    if (!id) {
+      console.error('Element ID is required');
+      throw new Error('Element ID is required');
+    }
+    return true;
+  }
+
+  /**
+   * Updates the navigation state when a new element is clicked
+   */
+  function updateState(elementType, level, id, name, element, parentIds = {}) {
+    if (!validateStateParams(elementType, level, id)) {
+      return false;
+    }
+
+    // Convert element type to lowercase for consistency
+    elementType = elementType.toLowerCase();
+
+    // Normalize parent IDs to use lowercase keys
+    const normalizedParentIds = {};
+    Object.entries(parentIds).forEach(([key, value]) => {
+      normalizedParentIds[key.toLowerCase()] = value;
+    });
+
+    // Create new state objects
+    const newState = createStateObject(elementType, level, id, name, element, normalizedParentIds);
+    
+    // Update state
+    state.previous = { ...state.current };
+    state.current = { ...newState };
+    state.selected = { ...newState };
+
+    if (window.DEBUG_CIS_PLAN_POINTER) {
+      logNavigationState();
+    }
+
+    return true;
+  }
+
+  /**
+   * Updates only the selected element when clicking in the central panel
+   * This preserves the current tree position while changing what's selected
+   *
+   * @param {string} elementType - Type of element (from ELEMENT_TYPES)
+   * @param {string} level - Hierarchy level (e.g., "L1", "L1.1.1")
+   * @param {string} id - Element ID
+   * @param {string} name - Element name
+   * @param {Object} element - Full element data
+   * @param {Object} parentIds - IDs of parent elements in the hierarchy
+   */
+  function updateSelectedOnly(
+    elementType,
+    level,
+    id,
+    name,
+    element,
+    parentIds = {}
+  ) {
+    // Only update the selected element, leaving current and previous unchanged
+    state.selected = {
+      level,
+      type: elementType,
+      id,
+      name,
+      element: element,
+      parentIds: { ...parentIds },
+    };
+
+    // Log the navigation state with updated selection
+    console.group("CIS Plan Navigation State (Central Panel Selection)");
+    console.log("Previous Position:", state.previous);
+    console.log("Current Position:", state.current);
+    console.log("Selected Element:", state.selected);
+    console.groupEnd();
+  }
+
+  /**
+   * Log the current navigation state to console
+   */
+  /**
+   * Logs the current navigation state if debugging is enabled
+   */
+  function logNavigationState() {
+    if (!window.DEBUG_CIS_PLAN_POINTER) return;
+
+    console.group("CIS Plan Navigation State");
+    console.log("Previous Position:", {
+      type: state.previous?.type,
+      id: state.previous?.id,
+      parentIds: state.previous?.parentIds
+    });
+    console.log("Current Position:", {
+      type: state.current?.type,
+      id: state.current?.id,
+      parentIds: state.current?.parentIds
+    });
+    console.log("Selected Element:", {
+      type: state.selected?.type,
+      id: state.selected?.id,
+      parentIds: state.selected?.parentIds
+    });
+    console.groupEnd();
+  }
+
+  /**
+   * Gets parent navigation information for the current level
+   */
+  function getParentNavInfo() {
+    const currentState = state.current;
+    if (!currentState?.level) {
+      console.warn('CISPlanPointer: Cannot determine navigation path - no current position set');
+      return null;
+    }
+
+    const config = NAVIGATION_CONFIG[currentState.level];
+    if (!config) {
+      console.warn(`CISPlanPointer: Unknown level ${currentState.level}`);
+      return null;
+    }
+
+    // Get parent type in lowercase for consistency
+    const parentType = config.parentType.toLowerCase();
+    
+    // Get parent ID from current state
+    let parentId;
+    if (currentState.type === 'spinstance') {
+      // For SP instances, get the parent GP instance ID
+      parentId = currentTreeNode.getAttribute('data-parent-gp-id');
+    } else {
+      parentId = currentState.parentIds?.[parentType] || 
+                currentState.parentIds?.[config.parentType] || 
+                'Unknown';
+    }
+
+    if (parentId === 'Unknown') {
+      console.log('Parent IDs available:', currentState.parentIds);
+      console.log('Looking for parent type:', parentType);
+    }
+
+    return {
+      level: config.parentLevel,
+      type: parentType,
+      id: parentId
+    };
+  }
+
+  /**
+   * Logs navigation path for UP button
+   */
+  function logNavigationUp() {
+    const parentInfo = getParentNavInfo();
+    if (!parentInfo) return;
+
+    if (window.DEBUG_CIS_PLAN_POINTER) {
+      console.group('CIS Plan Navigation Path');
+      console.log('Current:', state.current);
+      console.log('Parent:', parentInfo);
+      console.groupEnd();
+    }
+
+    // Log current position and intended target
+    console.log(
+      "%cCISPlanPointer: Navigation UP",
+      "font-weight: bold; color: blue;"
+    );
+    console.log("%cCurrent Position:", "color: green;", {
+      level: currentState.level,
+      type: currentState.type,
+      id: currentState.id,
+      name: currentState.name,
+    });
+    console.log("%cNavigate To:", "color: orange;", {
+      level: targetLevel,
+      type: targetType,
+      id: targetId,
+    });
+  }
+
+  /**
+   * Log when editing an element
+   * Shows information about the selected element being edited
+   */
+  function logEditElement() {
+    if (!state.selected) {
+      console.warn("CISPlanPointer: No selected element to edit");
+      return null;
+    }
+
+    console.log("CISPlanPointer: Editing Element");
+    console.log("Selected Element:", state.selected);
+    console.log("Element Details:", state.selected.element);
+
+    return state.selected;
+  }
+
+  /**
+   * Creates a special refresh state for HW Stacks that ensures proper selection after update
+   * @param {string} hwStackId - The ID of the HW Stack to restore
+   * @param {string} domainId - The ID of the parent security domain
+   * @param {string} segmentId - The ID of the parent network segment
+   * @param {string} missionNetworkId - The ID of the root mission network
+   * @returns {Object} A state object for refreshPanelsWithState
+   */
+  /**
+   * Creates a refresh state for any CIS Plan element using explicit parameters
+   * Useful when calling from outside the pointer module with known IDs
+   *
+   * @param {string} elementType - The singular type of element (e.g. 'hwStack', 'asset')
+   * @param {string} elementId - The ID of the element to select
+   * @param {Object} parentIds - Object containing parent IDs {missionNetworkId, segmentId, domainId, etc.}
+   * @returns {Object} A state object for refreshPanelsWithState
+   */
+  function createElementRefreshState(elementType, elementId, parentIds) {
+    console.log(`CISPlanPointer: Creating ${elementType} refresh state`);
+
+    // Convert singular element type to plural for API/tree navigation
+    let nodeType = elementType;
+    if (elementType.endsWith("y")) {
+      // Handle special cases like 'securityDomain' -> 'securityDomains'
+      nodeType = elementType.replace(/y$/, "ies");
+    } else if (!elementType.endsWith("s")) {
+      nodeType = elementType + "s";
+    }
+
+    // Create base refresh state
+    const refreshState = {
+      nodeType: nodeType,
+      nodeId: elementId,
+      fromPointer: true,
+    };
+
+    // Add appropriate parent references based on the element type
+    if (parentIds) {
+      if (parentIds.missionNetworkId) {
+        refreshState.missionNetworkId = parentIds.missionNetworkId;
+      }
+
+      if (parentIds.segmentId || parentIds.networkSegmentId) {
+        refreshState.segmentId =
+          parentIds.segmentId || parentIds.networkSegmentId;
+      }
+
+      if (parentIds.domainId || parentIds.securityDomainId) {
+        refreshState.domainId =
+          parentIds.domainId || parentIds.securityDomainId;
+      }
+
+      // Add element-specific ID fields based on type
+      if (elementType === "hwStack") {
+        refreshState.hwStackId = elementId;
+      } else if (elementType === "asset") {
+        refreshState.assetId = elementId;
+        if (parentIds.hwStackId || parentIds.stackId) {
+          refreshState.hwStackId = parentIds.hwStackId || parentIds.stackId;
+        }
+      } else if (elementType === "networkInterface") {
+        refreshState.networkInterfaceId = elementId;
+        if (parentIds.assetId) {
+          refreshState.assetId = parentIds.assetId;
+        }
+        if (parentIds.hwStackId || parentIds.stackId) {
+          refreshState.hwStackId = parentIds.hwStackId || parentIds.stackId;
+        }
+      }
+    }
+
+    console.log(
+      `CISPlanPointer: Created ${elementType} refresh state:`,
+      refreshState
+    );
+    return refreshState;
+  }
+
+  /**
+   * Get the current position in the navigation hierarchy
+   * @returns {Object} Current position object with level, type, id, name, and element
+   */
+  function getCurrentPosition() {
+    return { ...state.current };
+  }
+
+  /**
+   * Set the current position in the navigation hierarchy
+   * @param {Object} position - Object with level, type, id, name, and element properties
+   */
+  function setCurrentPosition(position) {
+    if (!position) return;
+
+    state.current = {
+      level: position.level || null,
+      type: position.type || null,
+      id: position.id || null,
+      name: position.name || null,
+      element: position.element || null,
+      parentIds: position.parentIds || null,
+    };
+
+    // Log the position change for debugging
+    if (window.DEBUG_CIS_PLAN_POINTER) {
+      console.log("CISPlanPointer: setCurrentPosition", { ...state.current });
+    }
+  }
+
+  /**
+   * Get the currently selected element
+   * @returns {Object} Selected element object with type, id, name, and element
+   */
+  function getSelectedElement() {
+    return { ...state.selected };
+  }
+
+  /**
+   * Set the currently selected element
+   * @param {Object} element - Object with type, id, name, and element properties
+   */
+  function setSelectedElement(element) {
+    if (!element) return;
+
+    state.selected = {
+      type: element.type || null,
+      id: element.id || null,
+      name: element.name || null,
+      element: element.element || null,
+    };
+
+    // Log the selection change for debugging
+    if (window.DEBUG_CIS_PLAN_POINTER) {
+      console.log("CISPlanPointer: setSelectedElement", { ...state.selected });
+    }
+  }
+
+  /**
+   * Get the current navigation state
+   * @returns {Object} Current state
+   */
+  function getState() {
+    return {
+      previous: { ...state.previous },
+      current: { ...state.current },
+      selected: { ...state.selected },
+    };
+  }
+
+  /**
+   * Set the navigation state to the provided state object
+   * @param {Object} newState - The new state object with previous, current, and selected properties
+   */
+  function setState(newState) {
+    if (!newState) return;
+
+    if (newState.previous) {
+      state.previous = {
+        level: newState.previous.level || null,
+        type: newState.previous.type || null,
+        id: newState.previous.id || null,
+        name: newState.previous.name || null,
+        element: newState.previous.element || null,
+      };
+    }
+
+    if (newState.current) {
+      state.current = {
+        level: newState.current.level || null,
+        type: newState.current.type || null,
+        id: newState.current.id || null,
+        name: newState.current.name || null,
+        element: newState.current.element || null,
+      };
+    }
+
+    if (newState.selected) {
+      state.selected = {
+        type: newState.selected.type || null,
+        id: newState.selected.id || null,
+        name: newState.selected.name || null,
+        element: newState.selected.element || null,
+      };
+    }
+
+    // Log the state change for debugging
+    if (window.DEBUG_CIS_PLAN_POINTER) {
+      console.log("CISPlanPointer: setState", { ...state });
+    }
+  }
+
+  /**
+   * Reset the navigation state to initial values
+   */
+  function resetState() {
+    state.previous = {
+      level: null,
+      type: null,
+      id: null,
+      name: null,
+      parentIds: {},
+    };
+
+    state.current = {
+      level: null,
+      type: null,
+      id: null,
+      name: null,
+      parentIds: {},
+    };
+
+    state.selected = {
+      level: null,
+      type: null,
+      id: null,
+      name: null,
+      element: null,
+      parentIds: {},
+    };
+
+    console.log("CIS Plan Navigation State Reset");
+  }
+
+  /**
+   * Handle tree click events
+   * @param {Object} treeNode - DOM node representing the tree item
+   * @param {Object} element - Data element associated with the tree node
+   * @param {string} type - Type of element
+   * @param {Object} parentIds - IDs of all parent elements
+   */
+  function handleTreeClick(treeNode, element, type, parentIds = {}) {
+    console.log('CISPlanPointer.handleTreeClick called with:', {
+      element: element,
+      treeNode: treeNode,
+      type: type,
+      parentIds: parentIds
+    });
+
+    if (!element) {
+      console.error('No element provided to handleTreeClick');
+      return false;
+    }
+
+    try {
+      let level = "";
+      // Extract ID based on element type - for SP instances, use spId
+      let id = element.id || element.gpid || element.spId;
+      console.log('Extracted element ID in tree click:', id, 'from element:', element);
+      let name = element.name || element.Name || id;
+
+      // Get references to the edit and delete buttons
+      const editDetailButton = document.getElementById("editDetailButton");
+      const deleteDetailButton = document.getElementById("deleteDetailButton");
+
+    // Set the global currentElement to enable proper edit/delete functionality
+    // This mirrors what happens in the central panel click handler
+    if (
+      typeof window.currentElement !== "undefined" &&
+      element &&
+      type !== "root"
+    ) {
+      // Create a shallow copy of the element
+      window.currentElement = element;
+
+      // Explicitly set the type on the element to ensure edit works properly
+      window.currentElement.type = type;
+
+      console.log(
+        "CISPlanPointer: Set currentElement for edit/delete:",
+        window.currentElement
+      );
+    }
+
+    switch (type) {
+      case "root":
+        level = "L0";
+        id = "root";
+        name = "CIS Plan";
+
+        // Disable edit/delete for root
+        if (editDetailButton) editDetailButton.disabled = true;
+        if (deleteDetailButton) deleteDetailButton.disabled = true;
+        break;
+      case "missionNetwork":
+        level = "L1";
+        id = element.id;
+        name = element.name;
+
+        // Enable edit/delete for mission networks
+        if (editDetailButton) editDetailButton.disabled = false;
+        if (deleteDetailButton) deleteDetailButton.disabled = false;
+        break;
+      case "networkSegment":
+        level = "L1.1";
+        id = element.id;
+        name = element.name;
+
+        // Enable edit/delete for network segments
+        if (editDetailButton) editDetailButton.disabled = false;
+        if (deleteDetailButton) deleteDetailButton.disabled = false;
+        break;
+      case "securityDomain":
+        level = "L1.1.1";
+        id = element.id;
+        name = element.name;
+
+        // Enable edit/delete for security domains
+        if (editDetailButton) editDetailButton.disabled = false;
+        if (deleteDetailButton) deleteDetailButton.disabled = false;
+        break;
+      case "hwStack":
+        level = "L1.1.1.1";
+        id = element.id;
+        name = element.name;
+
+        // Enable edit/delete for hardware stacks
+        if (editDetailButton) editDetailButton.disabled = false;
+        if (deleteDetailButton) deleteDetailButton.disabled = false;
+        break;
+      case "asset":
+        level = "L1.1.1.1.1";
+        id = element.id;
+        name = element.name;
+
+        // Enable edit/delete for assets
+        if (editDetailButton) editDetailButton.disabled = false;
+        if (deleteDetailButton) deleteDetailButton.disabled = false;
+        break;
+      case "networkInterface":
+        level = "L1.1.1.1.1.1";
+        id = element.id;
+        name = element.name;
+
+        // Enable edit/delete for network interfaces
+        if (editDetailButton) editDetailButton.disabled = false;
+        if (deleteDetailButton) deleteDetailButton.disabled = false;
+        break;
+      case "configItem":
+        // Check if parent is network interface or GP instance
+        if (parentIds.networkInterface) {
+          level = "L1.1.1.1.1.1.1";
+          id = element.Name || element.name;
+          name = element.Name || element.name;
+        } else if (parentIds.gpInstance) {
+          level = "L1.1.1.1.1.2.2";
+          id = element.Name || element.name;
+          name = element.Name || element.name;
+        }
+        break;
+      case "gpInstance":
+        level = "L1.1.1.1.1.2";
+        id = element.gpid;
+        name = element.name;
+        break;
+      case "spInstance":
+        level = "L1.1.1.1.1.2.1";
+        id = element.spid;
+        name = element.name;
+        break;
+      default:
+        console.warn("Unknown element type:", type);
+        return;
+    }
+
+    return updateState(type, level, id, name, element, parentIds);
+  }
+
+  /**
+   * Handle central panel element click events
+   * This specifically handles elements clicked in the center panel
+   *
+   * @param {Object} element - Data element that was clicked
+   * @param {string} type - Type of element
+   * @param {Object} currentTreeNode - The current tree node for context
+   */
+  function handleCentralPanelClick(element, type, currentTreeNode) {
+    if (!element) {
+      console.error('No element provided to handleCentralPanelClick');
+      return false;
+    }
+
+    try {
+      // Extract element ID based on type
+      let id =
+        element.id ||
+        element.gpid ||
+        element.spid ||
+        element.Name ||
+        element.name ||
+        element.guid;
+
+      console.log('Extracted element ID in central panel:', id);
+      let name = element.name || element.Name || id;
+
+      // Get parent IDs based on the current tree position
+      const parentIds = {};
+
+      // Normalize type - convert plural form to singular form
+      const typeMap = {
+        missionNetworks: "missionNetwork",
+        networkSegments: "networkSegment",
+        securityDomains: "securityDomain",
+        hwStacks: "hwStack",
+        assets: "asset",
+        networkInterfaces: "networkInterface",
+        gpInstances: "gpInstance",
+        spInstances: "spInstance",
+        configItems: "configItem",
+      };
+
+      // Convert plural to singular if needed
+      const normalizedType = typeMap[type] || type;
+      console.log('Normalized type:', normalizedType);
+
+      // Map the element type to the correct level in the hierarchy
+      let level = "";
+      switch (normalizedType) {
+        case "missionNetwork":
+          level = "L1";
+          break;
+        case "networkSegment":
+          level = "L2";
+          parentIds.missionNetwork = currentTreeNode?.getAttribute("data-parent-mission-network");
+          break;
+        case "securityDomain":
+          level = "L3";
+          parentIds.missionNetwork = currentTreeNode?.getAttribute("data-parent-mission-network");
+          parentIds.networkSegment = currentTreeNode?.getAttribute("data-parent-segment");
+          break;
+        case "hwStack":
+          level = "L4";
+          parentIds.missionNetwork = currentTreeNode?.getAttribute("data-parent-mission-network");
+          parentIds.networkSegment = currentTreeNode?.getAttribute("data-parent-segment");
+          parentIds.securityDomain = currentTreeNode?.getAttribute("data-parent-domain");
+          break;
+        case "asset":
+          level = "L5";
+          parentIds.missionNetwork = currentTreeNode?.getAttribute("data-parent-mission-network");
+          parentIds.networkSegment = currentTreeNode?.getAttribute("data-parent-segment");
+          parentIds.securityDomain = currentTreeNode?.getAttribute("data-parent-domain");
+          parentIds.hwStack = currentTreeNode?.getAttribute("data-parent-stack");
+          break;
+        case "networkInterface":
+        case "gpInstance":
+          level = "L6";
+          parentIds.missionNetwork = currentTreeNode?.getAttribute("data-parent-mission-network");
+          parentIds.networkSegment = currentTreeNode?.getAttribute("data-parent-segment");
+          parentIds.securityDomain = currentTreeNode?.getAttribute("data-parent-domain");
+          parentIds.hwStack = currentTreeNode?.getAttribute("data-parent-stack");
+          parentIds.asset = currentTreeNode?.getAttribute("data-parent-asset");
+          break;
+        case "spInstance":
+          level = "L7";
+          parentIds.missionNetwork = currentTreeNode?.getAttribute("data-parent-mission-network");
+          parentIds.networkSegment = currentTreeNode?.getAttribute("data-parent-segment");
+          parentIds.securityDomain = currentTreeNode?.getAttribute("data-parent-domain");
+          parentIds.hwStack = currentTreeNode?.getAttribute("data-parent-stack");
+          parentIds.asset = currentTreeNode?.getAttribute("data-parent-asset");
+          parentIds.gpInstance = currentTreeNode?.getAttribute("data-parent-gp-id");
+          break;
+        default:
+          console.warn("Unknown element type:", normalizedType);
+          return false;
+      }
+
+      // Update the state
+      return updateState(normalizedType, level, id, name, element, parentIds);
+    } catch (error) {
+      console.error('Error in handleCentralPanelClick:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Get state for element refresh
+   * Used to preserve current selection state during refreshes
+   * @returns {Object} State object suitable for refreshPanelsWithState
+   */
+  function getStateForRefresh() {
+    try {
+      const state = getState();
+      if (!state.selected?.type) {
+        console.warn('CISPlanPointer: No element selected');
+        return null;
+      }
+
+      // Check if this is a central panel selection
+      const isCentralPanelSelection = state.current?.type === 'root' && state.selected.type !== 'root';
+
+      // Convert singular element types to plural for tree state restoration
+      let normalizedType = state.selected.type;
+      switch (normalizedType) {
+        case 'asset':
+          normalizedType = 'assets';
+          break;
+        case 'networkSegment':
+          normalizedType = 'networkSegments';
+          break;
+        case 'securityDomain':
+          normalizedType = 'securityDomains';
+          break;
+        case 'hwStack':
+          normalizedType = 'hwStacks';
+          break;
+        case 'gpInstance':
+          normalizedType = 'gpInstances';
+          break;
+        case 'spInstance':
+          normalizedType = 'spInstances';
+          break;
+        default:
+          break;
+      }
+
+      // Create base refresh state
+      const refreshState = {
+        type: normalizedType,
+        id: state.selected.id,
+        name: state.selected.name,
+        fromPointer: true,
+        isCentralPanelSelection,
+        skipLegacyHandling: true
+      };
+      
+      // Add parent IDs if present
+      if (state.selected.parentIds) {
+        const parentMap = {
+          missionNetwork: 'missionNetworkId',
+          networkSegment: 'segmentId',
+          segment: 'segmentId',
+          securityDomain: 'domainId',
+          domain: 'domainId',
+          hwStack: 'hwStackId',
+          stack: 'hwStackId',
+          asset: 'assetId',
+          gpInstance: 'gpInstanceId'
+        };
+
+        for (const [parentType, stateKey] of Object.entries(parentMap)) {
+          const parentId = state.selected.parentIds[parentType];
+          if (parentId) {
+            refreshState[stateKey] = parentId;
+          }
+        }
+      }
+      
+      // Special handling for assets
+      if (state.selected.type === 'asset') {
+        refreshState.isAssetEdit = true;
+        refreshState.assetId = state.selected.id;
+      }
+      
+      if (window.DEBUG_CIS_PLAN_POINTER) {
+        console.log('CISPlanPointer: Created refresh state:', refreshState);
+      }
+      
+      return refreshState;
+    } catch (error) {
+      console.error('Error in getStateForRefresh:', error);
+      return null;
+    }
+  }
+
+
+
+  // Public API
+
+  /**
+   * Check if we are currently editing an asset
+   * @returns {boolean} True if we are editing an asset
+   */
+  function isEditingAsset() {
+    return state.selected && state.selected.type === "asset";
+  }
+
+  /**
+   * Get the current asset being edited, if any
+   * @returns {Object|null} The asset object or null if not editing an asset
+   */
+  function getCurrentAsset() {
+    if (isEditingAsset()) {
+      return {
+        id: state.selected.id,
+        parentIds: state.selected.parentIds,
+        element: state.selected.element,
+      };
+    }
+    return null;
+  }
+  /**
+   * Navigate up one level in the hierarchy
+   * @returns {boolean} True if navigation was successful
+   */
+  function navigateUp() {
+    if (window.DEBUG_CIS_PLAN_POINTER) {
+      logNavigationUp();
+    }
+
+    const currentState = getState();
+    if (!currentState.current) {
+      console.warn('CISPlanPointer: No current position for navigation');
+      return false;
+    }
+
+    // Get parent info based on current level
+    const parentInfo = getParentNavInfo();
+    if (!parentInfo) {
+      console.warn('CISPlanPointer: No parent found for current element');
+      return false;
+    }
+
+    const { type: parentType, id: parentId, level: parentLevel } = parentInfo;
+    if (!parentType || !parentId || parentId === 'Unknown') {
+      console.warn('CISPlanPointer: Invalid parent info:', parentInfo);
+      return false;
+    }
+
+    // Log detailed parent search info
+    console.group('CISPlanPointer: Parent Node Search');
+    console.log('Looking for parent:', { type: parentType, id: parentId });
+    console.log('Current state:', {
+      type: state.current?.type,
+      id: state.current?.id,
+      parentIds: state.current?.parentIds
+    });
+
+    // Find all nodes with matching ID
+    const nodesWithId = Array.from(document.querySelectorAll(`[data-id="${parentId}"]`));
+    console.log('Found nodes with matching ID:', nodesWithId.map(n => ({
+      type: n.getAttribute('data-type'),
+      id: n.getAttribute('data-id'),
+      text: n.textContent.trim()
+    })));
+
+    // Use case-insensitive attribute selector for data-type and handle plural forms
+    const parentNode = nodesWithId.find(node => {
+      const nodeType = node.getAttribute('data-type').toLowerCase();
+      // Remove trailing 's' from node type for comparison
+      const singularNodeType = nodeType.endsWith('s') ? nodeType.slice(0, -1) : nodeType;
+      const singularParentType = parentType.endsWith('s') ? parentType.slice(0, -1) : parentType;
+      return singularNodeType === singularParentType;
+    });
+
+    if (!parentNode) {
+      console.warn('CISPlanPointer: Could not find parent node:', parentType, parentId);
+      // Log all tree nodes for debugging
+      const allTreeNodes = Array.from(document.querySelectorAll('.tree-node'));
+      console.log('All available tree nodes:', allTreeNodes.map(n => ({
+        type: n.getAttribute('data-type'),
+        id: n.getAttribute('data-id'),
+        text: n.textContent.trim()
+      })));
+      console.groupEnd();
+      return false;
+    }
+    console.log('Found parent node:', {
+      type: parentNode.getAttribute('data-type'),
+      id: parentNode.getAttribute('data-id'),
+      text: parentNode.textContent.trim()
+    });
+    console.groupEnd();
+
+    // Simulate a click on the parent node to trigger proper state updates
+    parentNode.click();
+    return true;
+  }
+
+  // Return public API
+  return {
+    ELEMENT_TYPES,
+    getState,
+    setState,
+    resetState,
+    normalizeType,
+    updateState,
+    updateSelectedOnly,
+    getCurrentPosition,
+    setCurrentPosition,
+    getSelectedElement,
+    setSelectedElement,
+    navigateUp,
+    isEditingAsset,
+    getCurrentAsset,
+    handleTreeClick,
+    handleCentralPanelClick,
+    logNavigationState,
+    logNavigationUp,
+    logEditElement,
+    getStateForRefresh,
+    createElementRefreshState,
+  };
+})();
+
+// Export for global use
+window.CISPlanPointer = CISPlanPointer;

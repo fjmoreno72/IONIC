@@ -53,16 +53,21 @@ function initializeParticipantData() {
     const rows = tableBody.querySelectorAll('tr');
     allParticipants = Array.from(rows).map(row => {
         const cells = row.querySelectorAll('td');
-        if (cells.length < 5) return null; // Basic validation
+        if (cells.length < 8) return null; // Updated validation to expect 8 columns
 
         // Check for the 'no participants' row
-        if (cells.length === 1 && cells[0].getAttribute('colspan') === '5') {
+        if (cells.length === 1 && cells[0].getAttribute('colspan') === '8') { // Updated colspan check
             return null;
         }
 
         const testCountCell = cells[4];
         const testCount = parseInt(testCountCell.textContent, 10);
         const isIssue = testCountCell.classList.contains('test-count-issue'); // Check if the issue class is present
+        
+        // Get the new role-specific counts
+        const coordinatorCount = parseInt(cells[5].textContent, 10) || 0;
+        const partnerCount = parseInt(cells[6].textContent, 10) || 0;
+        const observerCount = parseInt(cells[7].textContent, 10) || 0;
 
         return {
             name: cells[0].textContent,
@@ -70,6 +75,9 @@ function initializeParticipantData() {
             nation: cells[2].textContent,
             status: cells[3].textContent,
             test_count: testCount,
+            coordinator_count: coordinatorCount,
+            partner_count: partnerCount,
+            observer_count: observerCount,
             // We need the original status to correctly re-apply the issue class logic if needed
             // The class logic is already handled by Jinja, but good practice for JS-driven tables
         };
@@ -181,7 +189,7 @@ function updateTable() {
 
     if (paginatedItems.length === 0) {
         if (noResults) noResults.classList.remove('d-none');
-        tableBody.innerHTML = `<tr><td colspan="5" class="text-center">No participants found matching your criteria.</td></tr>`; // Adjusted colspan
+        tableBody.innerHTML = `<tr><td colspan="8" class="text-center">No participants found matching your criteria.</td></tr>`; // Updated colspan to 8
     } else {
         if (noResults) noResults.classList.add('d-none');
         paginatedItems.forEach(participant => {
@@ -209,6 +217,11 @@ function updateTable() {
             if (participant.test_count === 0 && participant.status !== 'Withdraw') {
                 countCell.classList.add('test-count-issue');
             }
+            
+            // Add the new role-specific counts
+            addCell(participant.coordinator_count);
+            addCell(participant.partner_count);
+            addCell(participant.observer_count);
 
             tableBody.appendChild(row);
         });
@@ -420,7 +433,7 @@ function exportTableToExcel() {
     // 1. Prepare data for SheetJS
     const dataToExport = [
         // Headers
-        ["Name", "Description", "Nation", "Status", "Number of Tests"]
+        ["Name", "Description", "Nation", "Status", "Total Tests", "As Coordinator", "As Partner", "As Observer"]
     ];
 
     // Add filtered data rows
@@ -434,7 +447,10 @@ function exportTableToExcel() {
             cleanDescription,
             p.nation,
             p.status,
-            p.test_count
+            p.test_count,
+            p.coordinator_count || 0,
+            p.partner_count || 0,
+            p.observer_count || 0
         ]);
     });
 

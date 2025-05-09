@@ -1,0 +1,46 @@
+/* Additional CSS for the participants table */
+.test-cases-table th, 
+.test-cases-table td {
+    border-right: 1px solid var(--border-color);
+}
+
+.test-cases-table th:last-child, 
+.test-cases-table td:last-child {
+    border-right: none;
+}
+
+/* Fix for the table to ensure it renders correctly */
+.test-cases-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* Specific widths for the columns to ensure proper rendering */
+.test-cases-table th:nth-child(1), 
+.test-cases-table td:nth-child(1) {
+    width: 15%;  /* Name */
+}
+
+.test-cases-table th:nth-child(2), 
+.test-cases-table td:nth-child(2) {
+    width: 25%;  /* Description */
+}
+
+.test-cases-table th:nth-child(3), 
+.test-cases-table td:nth-child(3),
+.test-cases-table th:nth-child(4), 
+.test-cases-table td:nth-child(4) {
+    width: 10%;  /* Nation, Status */
+}
+
+.test-cases-table th:nth-child(5), 
+.test-cases-table td:nth-child(5),
+.test-cases-table th:nth-child(6), 
+.test-cases-table td:nth-child(6),
+.test-cases-table th:nth-child(7), 
+.test-cases-table td:nth-child(7),
+.test-cases-table th:nth-child(8), 
+.test-cases-table td:nth-child(8) {
+    width: 8%;  /* Total Tests, As Coordinator, As Partner, As Observer */
+    text-align: center;
+}

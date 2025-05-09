@@ -83,12 +83,12 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("updateGPContainerBtn")
     .addEventListener("click", updateGPContainer);
-    
+
   // Add event listener for SP Instance button
   document
     .getElementById("saveSPInstanceBtn")
     .addEventListener("click", addSPInstance);
-    
+
   // Only add the modal show event listener for SP dropdown initialization
   // Other listeners will be added dynamically when the modal opens
   document
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // GP Containers
   addEnterKeyHandler("addGPContainerModal", addGPContainer);
   addEnterKeyHandler("editGPContainerModal", updateGPContainer);
-  
+
   // SP Instances
   addEnterKeyHandler("addSPInstanceModal", addSPInstance);
 
@@ -485,32 +485,39 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           // Otherwise try to get it from the data-gpid attribute
           gpInstanceId = currentTreeNode.getAttribute("data-gpid");
-          
+
           // If still not found, use the data-id as a fallback (but this might not be correct)
           if (!gpInstanceId) {
             gpInstanceId = currentTreeNode.getAttribute("data-id");
-            console.warn("Warning: Using data-id instead of gpid for GP instance");
+            console.warn(
+              "Warning: Using data-id instead of gpid for GP instance"
+            );
           }
         }
-        
+
         const parentAsset = currentTreeNode.getAttribute("data-parent-asset");
         const parentStack = currentTreeNode.getAttribute("data-parent-stack");
         const parentDomain = currentTreeNode.getAttribute("data-parent-domain");
-        const parentSegment = currentTreeNode.getAttribute("data-parent-segment");
-        const parentMissionNetwork = currentTreeNode.getAttribute("data-parent-mission-network");
-        
+        const parentSegment = currentTreeNode.getAttribute(
+          "data-parent-segment"
+        );
+        const parentMissionNetwork = currentTreeNode.getAttribute(
+          "data-parent-mission-network"
+        );
+
         // Store IDs in the form
         document.getElementById("addSPInstanceGPId").value = gpInstanceId;
         document.getElementById("addSPInstanceAssetId").value = parentAsset;
         document.getElementById("addSPInstanceHwStackId").value = parentStack;
         document.getElementById("addSPInstanceDomainId").value = parentDomain;
         document.getElementById("addSPInstanceSegmentId").value = parentSegment;
-        document.getElementById("addSPInstanceMissionNetworkId").value = parentMissionNetwork;
-        
+        document.getElementById("addSPInstanceMissionNetworkId").value =
+          parentMissionNetwork;
+
         // Clear previous values
         document.getElementById("addSPInstanceId").value = "";
         document.getElementById("addSPInstanceVersion").value = "";
-        
+
         // Show the add SP instance modal
         const addModal = new bootstrap.Modal(
           document.getElementById("addSPInstanceModal")
@@ -526,42 +533,43 @@ document.addEventListener("DOMContentLoaded", function () {
     editDetailButton.addEventListener("click", function () {
       // Get the selected element from CISPlanPointer instead of using currentElement
       const pointerState = CISPlanPointer.getState();
-      
+
       // Check if we have a selected element in the pointer that's not the root
-      if (pointerState.selected && pointerState.selected.type !== 'root') {
+      if (pointerState.selected && pointerState.selected.type !== "root") {
         // Log the edit action and selected element
-        console.log('I am editing the selected element from CISPlanPointer');
+        console.log("I am editing the selected element from CISPlanPointer");
         const pointerElement = CISPlanPointer.logEditElement();
-        
+
         // Get the element details and type from the pointer state
         const element = pointerState.selected.element;
         const originalType = pointerState.selected.type; // Original type (singular form)
-        
+
         // Store a reference to the element being edited to preserve it during refresh
         const elementBeingEdited = Object.assign({}, element);
-        
+
         // Normalize the type for API calls if needed (some APIs expect plural forms)
         let type = originalType;
-        if (type === 'missionNetwork') type = 'missionNetworks';
-        else if (type === 'networkSegment') type = 'networkSegments';
-        else if (type === 'securityDomain') type = 'securityDomains';
-        else if (type === 'hwStack') type = 'hwStacks';
-        else if (type === 'asset') type = 'assets';
-        
-        console.log('Using element for edit:', element, 'with type:', type);
-        
+        if (type === "missionNetwork") type = "missionNetworks";
+        else if (type === "networkSegment") type = "networkSegments";
+        else if (type === "securityDomain") type = "securityDomains";
+        else if (type === "hwStack") type = "hwStacks";
+        else if (type === "asset") type = "assets";
+
+        console.log("Using element for edit:", element, "with type:", type);
+
         // Store current element for compatibility with existing code
         currentElement = element;
         currentElement.type = type;
-        
+
         // Store this element for the update handler to use
         window.elementBeingEdited = element;
 
         if (type === "missionNetworks" || type === "missionNetwork") {
           // Populate and show edit mission network modal
           document.getElementById("editMissionNetworkId").value = element.id;
-          document.getElementById("editMissionNetworkName").value = element.name;
-          
+          document.getElementById("editMissionNetworkName").value =
+            element.name;
+
           // Make sure the element has the correct type attribute for the update function
           element.type = type;
 
@@ -810,8 +818,13 @@ document.addEventListener("DOMContentLoaded", function () {
           // Populate and show edit GP instance modal
           // CRITICAL: Use gpid instead of id to avoid 404 errors
           const gpid = currentElement.gpid || currentElement.id;
-          console.log('Editing GP instance with ID:', gpid, 'Current element:', currentElement);
-          
+          console.log(
+            "Editing GP instance with ID:",
+            gpid,
+            "Current element:",
+            currentElement
+          );
+
           document.getElementById("editGPContainerId").value = gpid;
           document.getElementById("editGPContainerInstanceLabel").value =
             currentElement.instanceLabel || "";
@@ -819,33 +832,33 @@ document.addEventListener("DOMContentLoaded", function () {
             currentElement.serviceId || "";
 
           // Store parent IDs for the API call - try both attribute formats
-          console.log('Current tree node for parent lookups:', currentTreeNode);
-          
+          console.log("Current tree node for parent lookups:", currentTreeNode);
+
           // Try all possible ways to get the parent IDs
           const assetId =
             currentTreeNode.getAttribute("data-parent-asset-id") ||
             currentTreeNode.getAttribute("data-parent-asset") ||
             currentElement.parentAssetId ||
             currentElement.parentAsset;
-            
+
           const hwStackId =
             currentTreeNode.getAttribute("data-parent-stack-id") ||
             currentTreeNode.getAttribute("data-parent-stack") ||
             currentElement.parentStackId ||
             currentElement.parentStack;
-            
+
           const domainId =
             currentTreeNode.getAttribute("data-parent-domain-id") ||
             currentTreeNode.getAttribute("data-parent-domain") ||
             currentElement.parentDomainId ||
             currentElement.parentDomain;
-            
+
           const segmentId =
             currentTreeNode.getAttribute("data-parent-segment-id") ||
             currentTreeNode.getAttribute("data-parent-segment") ||
             currentElement.parentSegmentId ||
             currentElement.parentSegment;
-            
+
           const missionNetworkId =
             currentTreeNode.getAttribute("data-parent-mission-network-id") ||
             currentTreeNode.getAttribute("data-parent-mission-network") ||
@@ -872,6 +885,31 @@ document.addEventListener("DOMContentLoaded", function () {
   // Delete button shows delete confirmation modal
   if (deleteDetailButton) {
     deleteDetailButton.addEventListener("click", function () {
+      // First ensure we're using the most up-to-date element info from CISPlanPointer
+      const currentState = CISPlanPointer.getState();
+      
+      // If we have a valid selected element in the state, use that instead of currentElement
+      if (currentState && currentState.selected && currentState.selected.element) {
+        // Update the currentElement with the one from CISPlanPointer state
+        currentElement = currentState.selected.element;
+        
+        // Make sure the type is set correctly
+        if (currentState.selected.type) {
+          // Convert singular to plural form if needed for API calls
+          let elementType = currentState.selected.type;
+          if (elementType === "missionNetwork") elementType = "missionNetworks";
+          else if (elementType === "networkSegment") elementType = "networkSegments";
+          else if (elementType === "securityDomain") elementType = "securityDomains";
+          else if (elementType === "hwStack") elementType = "hwStacks";
+          else if (elementType === "asset") elementType = "assets";
+          
+          // Set the type on currentElement
+          currentElement.type = elementType;
+        }
+        
+        console.log("Using element from CISPlanPointer for delete:", currentElement);
+      }
+      
       if (currentElement) {
         // The type is now stored directly in the currentElement object
         const elementType = currentElement.type;
@@ -892,16 +930,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // IMPORTANT: For GP instances, we need to use gpid, NOT guid
           // First try to get it from the tree node data attribute
-          let gpId = currentTreeNode ? currentTreeNode.getAttribute("data-gpid") : null;
-          
+          let gpId = currentTreeNode
+            ? currentTreeNode.getAttribute("data-gpid")
+            : null;
+
           // If not found in tree node, check the current element's gpid property
           if (!gpId && currentElement && currentElement.gpid) {
             gpId = currentElement.gpid;
           }
-          
+
           // Fall back to ID or GUID only if we couldn't find a gpid
-          const instanceId = gpId || currentElement.id || currentElement.guid || "";
-          console.log("Using GP ID for deletion:", instanceId, "(gpid:", gpId, ")");
+          const instanceId =
+            gpId || currentElement.id || currentElement.guid || "";
+          console.log(
+            "Using GP ID for deletion:",
+            instanceId,
+            "(gpid:",
+            gpId,
+            ")"
+          );
 
           document.getElementById("deleteItemId").value = instanceId;
         } else if (elementType === "spInstances") {
@@ -910,67 +957,95 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("deleteItemName").textContent = displayName;
 
           // Use spId for SP instances (NOT id as SP instances don't have an id field)
-          document.getElementById("deleteItemId").value = currentElement.spId || "";
-          console.log("Setting SP instance ID for deletion:", currentElement.spId);
-          
+          document.getElementById("deleteItemId").value =
+            currentElement.spId || "";
+          console.log(
+            "Setting SP instance ID for deletion:",
+            currentElement.spId
+          );
+
           // SIMPLIFIED FIX: Get parent GP instance ID directly
           let gpInstanceId = null;
-          
+
           // Try getting GP instance ID from tree node first (most reliable source)
           if (currentTreeNode) {
-            gpInstanceId = currentTreeNode.getAttribute("data-parent-gp-instance");
+            gpInstanceId = currentTreeNode.getAttribute(
+              "data-parent-gp-instance"
+            );
           }
-          
+
           // If not found in tree node, check currentElement
           if (!gpInstanceId && currentElement.parentGpInstance) {
-            gpInstanceId = typeof currentElement.parentGpInstance === 'object' 
-              ? currentElement.parentGpInstance.id 
-              : currentElement.parentGpInstance;
+            gpInstanceId =
+              typeof currentElement.parentGpInstance === "object"
+                ? currentElement.parentGpInstance.id
+                : currentElement.parentGpInstance;
           }
-          
+
           // Check directly for gpid property as a fallback
           if (!gpInstanceId && currentElement.gpid) {
             gpInstanceId = currentElement.gpid;
           }
-          
+
           // Last ditch effort - try to get from parent context
           if (!gpInstanceId && window.currentGpInstanceId) {
             gpInstanceId = window.currentGpInstanceId;
           }
-          
-          console.log("GP Instance ID for this SP instance (SIMPLIFIED):", gpInstanceId);
-          
+
+          console.log(
+            "GP Instance ID for this SP instance (SIMPLIFIED):",
+            gpInstanceId
+          );
+
           // Get other parent IDs from the tree node
-          const assetId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-asset") : "";
-          const hwStackId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-stack") : "HW-0001";
-          const domainId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-domain") : "CL-UNCLASS";
-          const segmentId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-segment") : "NS-0001";
-          const missionNetworkId = currentTreeNode ? currentTreeNode.getAttribute("data-parent-mission-network") : "MN-0007";
-          
+          const assetId = currentTreeNode
+            ? currentTreeNode.getAttribute("data-parent-asset")
+            : "";
+          const hwStackId = currentTreeNode
+            ? currentTreeNode.getAttribute("data-parent-stack")
+            : "HW-0001";
+          const domainId = currentTreeNode
+            ? currentTreeNode.getAttribute("data-parent-domain")
+            : "CL-UNCLASS";
+          const segmentId = currentTreeNode
+            ? currentTreeNode.getAttribute("data-parent-segment")
+            : "NS-0001";
+          const missionNetworkId = currentTreeNode
+            ? currentTreeNode.getAttribute("data-parent-mission-network")
+            : "MN-0007";
+
           // For safety, ensure none of our values are null/undefined before setting the string
           // This prevents literal 'null' or 'undefined' strings in the comma-separated values
-          const sanitizedGpInstanceId = gpInstanceId || ''; // Empty string if null/undefined
-          
+          const sanitizedGpInstanceId = gpInstanceId || ""; // Empty string if null/undefined
+
           // Log the actual GP instance ID we're using
-          console.log('Final GP instance ID for deletion (before storing in form):', sanitizedGpInstanceId || 'EMPTY STRING');
-          
+          console.log(
+            "Final GP instance ID for deletion (before storing in form):",
+            sanitizedGpInstanceId || "EMPTY STRING"
+          );
+
           // Skip setting the comma-separated values entirely if we don't have a valid GP instance ID
           if (!sanitizedGpInstanceId) {
-            console.error('Cannot delete SP instance: No valid GP instance ID available');
-            showToast('Error: Cannot delete SP instance without a valid parent GP instance ID', 'danger');
+            console.error(
+              "Cannot delete SP instance: No valid GP instance ID available"
+            );
+            showToast(
+              "Error: Cannot delete SP instance without a valid parent GP instance ID",
+              "danger"
+            );
             return false; // Prevent continuing with deletion
           }
-          
-          // ROBUST FIX: Store all parent IDs as comma-separated values 
+
+          // ROBUST FIX: Store all parent IDs as comma-separated values
           // Make very sure we're using the sanitized GP instance ID that we know is valid
           const parentIdString = `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId},${sanitizedGpInstanceId}`;
           document.getElementById("deleteItemParentId").value = parentIdString;
-          
+
           // Store the GP instance ID separately for extra redundancy
           // This value will be checked in the deleteItem function
           window.lastGpInstanceIdForDeletion = sanitizedGpInstanceId;
-          
-          console.log('Set parentId value for form:', parentIdString);
+
+          console.log("Set parentId value for form:", parentIdString);
         } else {
           // For other types, use the standard name and id
           document.getElementById("deleteItemName").textContent =
@@ -1159,22 +1234,33 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (elementType === "gpInstances") {
           // For GP instances, we need mission network ID, segment ID, domain ID, HW stack ID, and asset ID
           // Try all possible ways to get the asset ID - this is critical for deletion to work
-          
+
           // First try to get parent asset ID using the same pattern as network interfaces
           let assetId = currentTreeNode.getAttribute("data-parent-asset-id");
-          if (!assetId) assetId = currentTreeNode.getAttribute("data-parent-asset");
-          
+          if (!assetId)
+            assetId = currentTreeNode.getAttribute("data-parent-asset");
+
           let hwStackId = currentTreeNode.getAttribute("data-parent-stack-id");
-          if (!hwStackId) hwStackId = currentTreeNode.getAttribute("data-parent-stack");
-          
+          if (!hwStackId)
+            hwStackId = currentTreeNode.getAttribute("data-parent-stack");
+
           let domainId = currentTreeNode.getAttribute("data-parent-domain-id");
-          if (!domainId) domainId = currentTreeNode.getAttribute("data-parent-domain");
-          
-          let segmentId = currentTreeNode.getAttribute("data-parent-segment-id");
-          if (!segmentId) segmentId = currentTreeNode.getAttribute("data-parent-segment");
-          
-          let missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network-id");
-          if (!missionNetworkId) missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network");
+          if (!domainId)
+            domainId = currentTreeNode.getAttribute("data-parent-domain");
+
+          let segmentId = currentTreeNode.getAttribute(
+            "data-parent-segment-id"
+          );
+          if (!segmentId)
+            segmentId = currentTreeNode.getAttribute("data-parent-segment");
+
+          let missionNetworkId = currentTreeNode.getAttribute(
+            "data-parent-mission-network-id"
+          );
+          if (!missionNetworkId)
+            missionNetworkId = currentTreeNode.getAttribute(
+              "data-parent-mission-network"
+            );
 
           // Fall back to object properties if still not found
           if (!assetId && currentElement.parentAsset) {
@@ -1183,26 +1269,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 ? currentElement.parentAsset.id
                 : currentElement.parentAsset;
           }
-          
+
           // If still not found, try to search in the global data
-          if (!assetId || assetId === 'null' || assetId === 'undefined') {
+          if (!assetId || assetId === "null" || assetId === "undefined") {
             // CRITICAL: First check if we have a gpid from the tree node or element
-            let gpId = currentTreeNode ? currentTreeNode.getAttribute("data-gpid") : null;
+            let gpId = currentTreeNode
+              ? currentTreeNode.getAttribute("data-gpid")
+              : null;
             if (!gpId && currentElement && currentElement.gpid) {
               gpId = currentElement.gpid;
             }
-            
+
             // If we have a valid gpid, use that for searching
             const searchId = gpId || currentElement.id || currentElement.guid;
-            console.log('Searching for asset ID in the data model for GP instance using ID:', searchId);
-            
+            console.log(
+              "Searching for asset ID in the data model for GP instance using ID:",
+              searchId
+            );
+
             // Find which asset contains this GP instance
             if (window.cisPlanData && Array.isArray(window.cisPlanData)) {
               const findAsset = (gpId, data) => {
                 // Recursive function to search through the hierarchy
                 const searchNodes = (nodes) => {
                   if (!Array.isArray(nodes)) return null;
-                  
+
                   for (const node of nodes) {
                     // Check if this node has assets
                     if (Array.isArray(node.assets)) {
@@ -1210,15 +1301,24 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (Array.isArray(asset.gpInstances)) {
                           for (const gp of asset.gpInstances) {
                             // Match by gpid first, then id, then guid
-                            if ((gpId && gp.gpid === gpId) || gp.id === gpId || gp.guid === gpId) {
-                              console.log('Found matching GP instance in asset:', asset.id, 'GP instance details:', gp);
+                            if (
+                              (gpId && gp.gpid === gpId) ||
+                              gp.id === gpId ||
+                              gp.guid === gpId
+                            ) {
+                              console.log(
+                                "Found matching GP instance in asset:",
+                                asset.id,
+                                "GP instance details:",
+                                gp
+                              );
                               return asset.id;
                             }
                           }
                         }
                       }
                     }
-                    
+
                     // Check segments, domains, etc.
                     if (Array.isArray(node.networkSegments)) {
                       const result = searchNodes(node.networkSegments);
@@ -1235,13 +1335,13 @@ document.addEventListener("DOMContentLoaded", function () {
                   }
                   return null;
                 };
-                
+
                 return searchNodes(data);
               };
-              
+
               const foundAssetId = findAsset(searchId, window.cisPlanData);
               if (foundAssetId) {
-                console.log('Found asset ID from data model:', foundAssetId);
+                console.log("Found asset ID from data model:", foundAssetId);
                 assetId = foundAssetId;
               }
             }
@@ -1281,48 +1381,58 @@ document.addEventListener("DOMContentLoaded", function () {
           ).value = `${missionNetworkId},${segmentId},${domainId},${hwStackId},${assetId}`;
         } else if (elementType === "spInstances") {
           // For SP instances, we need mission network ID, segment ID, domain ID, HW stack ID, asset ID, and GP instance ID
-          let gpInstanceId = currentTreeNode.getAttribute("data-parent-gpinstance");
+          let gpInstanceId = currentTreeNode.getAttribute(
+            "data-parent-gpinstance"
+          );
           let assetId = currentTreeNode.getAttribute("data-parent-asset");
           let hwStackId = currentTreeNode.getAttribute("data-parent-stack");
           let domainId = currentTreeNode.getAttribute("data-parent-domain");
           let segmentId = currentTreeNode.getAttribute("data-parent-segment");
-          let missionNetworkId = currentTreeNode.getAttribute("data-parent-mission-network");
+          let missionNetworkId = currentTreeNode.getAttribute(
+            "data-parent-mission-network"
+          );
 
           // Fall back to object properties if needed
           if (!gpInstanceId && currentElement.parentGPInstance) {
-            gpInstanceId = typeof currentElement.parentGPInstance === "object"
-              ? currentElement.parentGPInstance.id
-              : currentElement.parentGPInstance;
+            gpInstanceId =
+              typeof currentElement.parentGPInstance === "object"
+                ? currentElement.parentGPInstance.id
+                : currentElement.parentGPInstance;
           }
 
           if (!assetId && currentElement.parentAsset) {
-            assetId = typeof currentElement.parentAsset === "object"
-              ? currentElement.parentAsset.id
-              : currentElement.parentAsset;
+            assetId =
+              typeof currentElement.parentAsset === "object"
+                ? currentElement.parentAsset.id
+                : currentElement.parentAsset;
           }
 
           if (!hwStackId && currentElement.parentStack) {
-            hwStackId = typeof currentElement.parentStack === "object"
-              ? currentElement.parentStack.id
-              : currentElement.parentStack;
+            hwStackId =
+              typeof currentElement.parentStack === "object"
+                ? currentElement.parentStack.id
+                : currentElement.parentStack;
           }
 
           if (!domainId && currentElement.parentDomain) {
-            domainId = typeof currentElement.parentDomain === "object"
-              ? currentElement.parentDomain.id
-              : currentElement.parentDomain;
+            domainId =
+              typeof currentElement.parentDomain === "object"
+                ? currentElement.parentDomain.id
+                : currentElement.parentDomain;
           }
 
           if (!segmentId && currentElement.parentSegment) {
-            segmentId = typeof currentElement.parentSegment === "object"
-              ? currentElement.parentSegment.id
-              : currentElement.parentSegment;
+            segmentId =
+              typeof currentElement.parentSegment === "object"
+                ? currentElement.parentSegment.id
+                : currentElement.parentSegment;
           }
 
           if (!missionNetworkId && currentElement.parentMissionNetwork) {
-            missionNetworkId = typeof currentElement.parentMissionNetwork === "object"
-              ? currentElement.parentMissionNetwork.id
-              : currentElement.parentMissionNetwork;
+            missionNetworkId =
+              typeof currentElement.parentMissionNetwork === "object"
+                ? currentElement.parentMissionNetwork.id
+                : currentElement.parentMissionNetwork;
           }
 
           // Store all six parent IDs as comma-separated values
@@ -1406,7 +1516,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Then load the CIS Plan data
       await fetchCISPlanData();
-      
+
       // Check if we need to navigate to a specific GP instance after SP creation
       checkAndHandleSPCreationRedirect();
     } catch (error) {
@@ -1414,130 +1524,181 @@ document.addEventListener("DOMContentLoaded", function () {
       showToast("Error initializing application: " + error.message, "danger");
     }
   }
-  
+
   // Function to check for SP creation redirect and navigate to the GP instance
   function checkAndHandleSPCreationRedirect() {
-    const storedPath = localStorage.getItem('cis_plan_sp_creation_path');
+    const storedPath = localStorage.getItem("cis_plan_sp_creation_path");
     if (storedPath) {
       try {
         // Parse the stored path
         const path = JSON.parse(storedPath);
         console.log("Found SP creation path, will navigate to:", path);
-        
+
         // Clear it immediately to prevent reprocessing
-        localStorage.removeItem('cis_plan_sp_creation_path');
-        
+        localStorage.removeItem("cis_plan_sp_creation_path");
+
         // Wait for the tree to be fully rendered
         setTimeout(async () => {
           // Navigate the tree to show the GP instance with its new SP
           // First expand the mission network
-          const mnNode = document.querySelector(`.tree-node[data-type="missionNetworks"][data-id="${path.missionNetworkId}"]`);
+          const mnNode = document.querySelector(
+            `.tree-node[data-type="missionNetworks"][data-id="${path.missionNetworkId}"]`
+          );
           if (mnNode) {
             console.log("Expanding mission network");
             mnNode.click();
-            await new Promise(resolve => setTimeout(resolve, 10));
-            
+            await new Promise((resolve) => setTimeout(resolve, 10));
+
             // Then expand the segment
-            const segNode = document.querySelector(`.tree-node[data-type="networkSegments"][data-id="${path.segmentId}"]`);
+            const segNode = document.querySelector(
+              `.tree-node[data-type="networkSegments"][data-id="${path.segmentId}"]`
+            );
             if (segNode) {
               console.log("Expanding segment");
               segNode.click();
-              await new Promise(resolve => setTimeout(resolve, 10));
-              
+              await new Promise((resolve) => setTimeout(resolve, 10));
+
               // Then expand the domain
-              const domainNode = document.querySelector(`.tree-node[data-type="securityDomains"][data-id="${path.domainId}"]`);
+              const domainNode = document.querySelector(
+                `.tree-node[data-type="securityDomains"][data-id="${path.domainId}"]`
+              );
               if (domainNode) {
                 console.log("Expanding domain");
                 domainNode.click();
-                await new Promise(resolve => setTimeout(resolve, 10));
-                
+                await new Promise((resolve) => setTimeout(resolve, 10));
+
                 // Then expand the hw stack
-                const stackNode = document.querySelector(`.tree-node[data-type="hwStacks"][data-id="${path.hwStackId}"]`);
+                const stackNode = document.querySelector(
+                  `.tree-node[data-type="hwStacks"][data-id="${path.hwStackId}"]`
+                );
                 if (stackNode) {
                   console.log("Expanding HW stack");
                   stackNode.click();
-                  await new Promise(resolve => setTimeout(resolve, 10));
-                  
+                  await new Promise((resolve) => setTimeout(resolve, 10));
+
                   // Then find the asset
-                  const assetNode = document.querySelector(`.tree-node[data-type="assets"][data-id="${path.assetId}"]`);
+                  const assetNode = document.querySelector(
+                    `.tree-node[data-type="assets"][data-id="${path.assetId}"]`
+                  );
                   if (assetNode) {
                     console.log("Expanding asset");
                     assetNode.click();
-                    await new Promise(resolve => setTimeout(resolve, 10));
-                    
+                    await new Promise((resolve) => setTimeout(resolve, 10));
+
                     // Find the GP instance - improve selection logic with more comprehensive selectors
-                    console.log("Looking for GP instance with ID or GPID:", path.gpInstanceId);
-                    
+                    console.log(
+                      "Looking for GP instance with ID or GPID:",
+                      path.gpInstanceId
+                    );
+
                     // CRITICAL FIX: We need a more robust approach to find GP instance nodes
                     // after adding a new SP instance and page refresh
-                    
+
                     // First, wait to make sure the tree is fully expanded and all nodes are visible
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                    
+                    await new Promise((resolve) => setTimeout(resolve, 500));
+
                     // We need to expand the asset node first to make sure all GP instances are loaded in the DOM
-                    console.log("Clicking asset node again to ensure full expansion");
+                    console.log(
+                      "Clicking asset node again to ensure full expansion"
+                    );
                     assetNode.click();
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                    
+                    await new Promise((resolve) => setTimeout(resolve, 500));
+
                     // Define multiple approaches to find the GP instance
                     // First try: Use data-id attribute (Now has the gpid value)
-                    let gpNode = document.querySelector(`.tree-node[data-type="gpInstances"][data-id="${path.gpInstanceId}"]`);
-                    console.log("Attempt 1 - By data-id:", gpNode ? "Found" : "Not found");
-                    
+                    let gpNode = document.querySelector(
+                      `.tree-node[data-type="gpInstances"][data-id="${path.gpInstanceId}"]`
+                    );
+                    console.log(
+                      "Attempt 1 - By data-id:",
+                      gpNode ? "Found" : "Not found"
+                    );
+
                     // Second try: Use data-gpid attribute
                     if (!gpNode) {
-                      gpNode = document.querySelector(`.tree-node[data-type="gpInstances"][data-gpid="${path.gpInstanceId}"]`);
-                      console.log("Attempt 2 - By data-gpid:", gpNode ? "Found" : "Not found");
+                      gpNode = document.querySelector(
+                        `.tree-node[data-type="gpInstances"][data-gpid="${path.gpInstanceId}"]`
+                      );
+                      console.log(
+                        "Attempt 2 - By data-gpid:",
+                        gpNode ? "Found" : "Not found"
+                      );
                     }
-                    
+
                     // Third try: Use more generic tree-node selectors and check attributes
                     if (!gpNode) {
                       // Get all visible GP nodes
-                      const allGpNodes = document.querySelectorAll('.tree-node[data-type="gpInstances"]');
-                      console.log("Found", allGpNodes.length, "total GP instance nodes");
-                      
+                      const allGpNodes = document.querySelectorAll(
+                        '.tree-node[data-type="gpInstances"]'
+                      );
+                      console.log(
+                        "Found",
+                        allGpNodes.length,
+                        "total GP instance nodes"
+                      );
+
                       // First filter by instance-id attribute (the original ID)
                       for (const node of allGpNodes) {
-                        if (node.getAttribute('data-instance-id') === path.instanceId) {
+                        if (
+                          node.getAttribute("data-instance-id") ===
+                          path.instanceId
+                        ) {
                           gpNode = node;
                           console.log("Found node by instance-id attribute");
                           break;
                         }
                       }
-                      
+
                       // If still not found, try by data-parent-asset
                       if (!gpNode) {
-                        const assetGpNodes = Array.from(allGpNodes).filter(node => {
-                          return node.getAttribute('data-parent-asset') === path.assetId ||
-                                 node.getAttribute('data-parent-asset-id') === path.assetId;
-                        });
-                        
-                        console.log("Found", assetGpNodes.length, "GP nodes under asset ID", path.assetId);
-                        
+                        const assetGpNodes = Array.from(allGpNodes).filter(
+                          (node) => {
+                            return (
+                              node.getAttribute("data-parent-asset") ===
+                                path.assetId ||
+                              node.getAttribute("data-parent-asset-id") ===
+                                path.assetId
+                            );
+                          }
+                        );
+
+                        console.log(
+                          "Found",
+                          assetGpNodes.length,
+                          "GP nodes under asset ID",
+                          path.assetId
+                        );
+
                         // Last resort: Log all nodes and select the last one as fallback
                         assetGpNodes.forEach((node, index) => {
                           console.log(`GP node ${index}:`, {
-                            id: node.getAttribute('data-id'),
-                            instanceId: node.getAttribute('data-instance-id'),
-                            gpid: node.getAttribute('data-gpid'),
-                            text: node.textContent.trim()
+                            id: node.getAttribute("data-id"),
+                            instanceId: node.getAttribute("data-instance-id"),
+                            gpid: node.getAttribute("data-gpid"),
+                            text: node.textContent.trim(),
                           });
                         });
-                        
+
                         if (assetGpNodes.length > 0) {
                           gpNode = assetGpNodes[assetGpNodes.length - 1]; // Select the last one as fallback
-                          console.log("Selecting the last GP node under this asset as fallback");
+                          console.log(
+                            "Selecting the last GP node under this asset as fallback"
+                          );
                         }
                       }
                     }
-                    
+
                     if (gpNode) {
-                      console.log("Selecting GP instance to show new SP instance");
+                      console.log(
+                        "Selecting GP instance to show new SP instance"
+                      );
                       gpNode.click();
                       // Set the global variable for SP operations
                       window.currentGpInstanceId = path.gpInstanceId;
                     } else {
-                      console.log("Could not find GP instance node, staying on asset view");
+                      console.log(
+                        "Could not find GP instance node, staying on asset view"
+                      );
                     }
                   }
                 }
@@ -1622,9 +1783,9 @@ document.addEventListener("DOMContentLoaded", function () {
           hwStackId: id,
           domainId: domainId,
           segmentId: segmentId,
-          missionNetworkId: missionNetworkId
+          missionNetworkId: missionNetworkId,
         });
-        
+
         // Set the flag for HW Stack restoration
         window.restoringHwStack = true;
         window.hwStackToRestore = id;
@@ -1698,9 +1859,9 @@ document.addEventListener("DOMContentLoaded", function () {
           hwStackId: id,
           domainId: domainId,
           segmentId: segmentId,
-          missionNetworkId: missionNetworkId
+          missionNetworkId: missionNetworkId,
         });
-        
+
         // Set the flag for HW Stack restoration
         window.restoringHwStack = true;
         window.hwStackToRestore = id;
@@ -1720,14 +1881,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Refresh panels while preserving tree state and selection
   async function refreshPanelsWithState(stateToRestore) {
+    console.log("refreshPanelsWithState called with state:", stateToRestore);
     try {
       // Default state is empty if not provided
       stateToRestore = stateToRestore || {};
-
-      // Store current state if not provided
-      if (!stateToRestore.missionNetworkId && currentTreeNode) {
-        stateToRestore = captureCurrentTreeState(currentTreeNode);
-        // Saving state before refresh
+      const isRootLevel = stateToRestore.isRootLevel === true;
+      
+      // IMPORTANT: Don't override the provided state if it's explicitly for root level
+      // or if the node type is 'root', as this is likely after a deletion
+      if (!isRootLevel && stateToRestore.nodeType !== 'root') {
+        // Only capture current tree state if no mission network ID is provided AND we're not at root level
+        if (!stateToRestore.missionNetworkId && currentTreeNode) {
+          // Store the isRootLevel flag before overriding
+          const wasRootLevel = isRootLevel;
+          
+          // Now capture current state
+          stateToRestore = captureCurrentTreeState(currentTreeNode);
+          
+          // Restore the isRootLevel flag if it was set
+          if (wasRootLevel) {
+            stateToRestore.isRootLevel = true;
+          }
+          
+          console.log("Captured current tree state:", stateToRestore);
+        }
+      } else {
+        console.log("Preserving root state during refresh", stateToRestore);
       }
 
       // Fetch updated data
@@ -1737,6 +1916,7 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => restoreTreeState(stateToRestore), 300);
     } catch (error) {
       console.error("Error refreshing panels with state:", error);
+      showToast("An error occurred while refreshing the view", "danger");
     }
   }
 
@@ -1745,17 +1925,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // If no tree node is provided, use the current tree node if available
     if (!treeNode) {
       treeNode = currentTreeNode;
-      
+
       // If there's still no tree node available, return a minimal state object
       if (!treeNode) {
         console.log("No tree node available to capture state");
         return {
           nodeType: null,
-          nodeId: null
+          nodeId: null,
         };
       }
     }
-    
+
     const state = {
       nodeType: treeNode.getAttribute("data-type"),
       nodeId: treeNode.getAttribute("data-id"),
@@ -1796,6 +1976,108 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Helper function to restore the tree state
   function restoreTreeState(state) {
+    console.log("restoreTreeState called with state:", state);
+    // Handle root state explicitly
+    if (state.nodeType === 'root' || state.isRootLevel === true) {
+      console.log("Restoring to root level", state);
+      // Clear any selections
+      document.querySelectorAll('.tree-node.active').forEach(node => {
+        node.classList.remove('active');
+      });
+      
+      // Select the root node
+      const rootNode = document.querySelector('.tree-node[data-id="root-cisplan"]');
+      if (rootNode) {
+        rootNode.classList.add('active');
+        // Update current tree node reference
+        currentTreeNode = rootNode;
+        
+        // CRITICAL DEBUG: Check if elementsContainer is defined
+        console.log("elementsContainer defined in restoreTreeState?", !!elementsContainer);
+        console.log("typeof elementsContainer:", typeof elementsContainer);
+        
+        // Let's check the elementsContainer ID to make sure it's the right element
+        console.log("elementsContainer id:", elementsContainer?.id || "No ID");
+        
+        // Direct solution: Show mission networks in the central panel
+        // Clear the elements container first
+        
+        if (elementsContainer) {
+          elementsContainer.innerHTML = "";
+          
+          // Add header
+          const headerContainer = document.createElement("div");
+          headerContainer.className = "d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom";
+          
+          // Add title with CIS Plan icon
+          const titleDiv = document.createElement("div");
+          titleDiv.className = "h5 mb-0 d-flex align-items-center";
+          titleDiv.id = "elementsTitle";
+          
+          const iconPath = getElementIcon("cisplan");
+          titleDiv.innerHTML = `
+            <img src="${iconPath}" alt="CIS Plan" class="icon-small me-2" style="width: 20px; height: 20px;">
+            <span>CIS Plan - Mission Networks</span>
+          `;
+          headerContainer.appendChild(titleDiv);
+          elementsContainer.appendChild(headerContainer);
+          
+          // Create content container
+          const elementsContent = document.createElement("div");
+          elementsContent.className = "elements-content";
+          elementsContent.id = "elementsContent";
+          elementsContainer.appendChild(elementsContent);
+          
+          // DETAILED LOGGING: Check cisPlanData
+          console.log("cisPlanData available in restoreTreeState:", !!cisPlanData);
+          console.log("cisPlanData contents:", cisPlanData);
+          
+          // CRITICAL FIX: The cisPlanData variable is directly an array of mission networks
+          // NOT an object with a missionNetworks property
+          
+          // Check if cisPlanData is an array with items
+          if (cisPlanData && Array.isArray(cisPlanData) && cisPlanData.length > 0) {
+            console.log("Detected mission networks directly in cisPlanData array:", cisPlanData.length);
+            
+            // Render mission networks directly from the array
+            renderElementCards(elementsContent, cisPlanData, "missionNetworks");
+          } else {
+            // Extreme backup approach: directly fetch mission networks from the API
+            console.log("No mission networks found in cisPlanData, attempting direct API fetch");
+            
+            // Try a direct API call as a last resort
+            try {
+              fetch("/api/cis_plan/tree")
+                .then(response => response.json())
+                .then(result => {
+                  console.log("Direct API fetch result:", result);
+                  
+                  // The data is in result.data array
+                  if (result && result.data && Array.isArray(result.data) && result.data.length > 0) {
+                    console.log("Rendering mission networks from direct API call:", result.data.length);
+                    renderElementCards(elementsContent, result.data, "missionNetworks");
+                  } else {
+                    console.log("No mission networks to display, showing empty message");
+                    showNoElementsMessage(elementsContent);
+                  }
+                })
+                .catch(error => {
+                  console.error("Error fetching direct data:", error);
+                  showNoElementsMessage(elementsContent);
+                });
+            } catch (error) {
+              console.error("Exception during direct fetch attempt:", error);
+              showNoElementsMessage(elementsContent);
+            }
+          }
+        }
+        
+        // Update detail panel with root info
+        updateDetailPanel({id: "root-cisplan", name: "CIS Plan"}, "cisplan");
+        return;
+      }
+    }
+    
     // Return early if state is invalid
     if (!state || !state.nodeType || !state.nodeId) {
       console.log("Invalid tree state, unable to restore", state);
@@ -1803,49 +2085,92 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     // For node types that don't have a mission network ID, we can't restore
-    if (!state.missionNetworkId) {
+    // Exception: 'missionNetworks' type trying to restore itself
+    if (!state.missionNetworkId && state.nodeType !== 'missionNetworks') {
       console.log("No mission network ID in state, unable to restore", state);
       return;
     }
     
+    // For 'missionNetworks' type, validate it exists before trying to restore
+    if (state.nodeType === 'missionNetworks') {
+      console.log("Checking if mission network exists for restoration:", state.nodeId);
+      
+      // CRITICAL FIX: cisPlanData is the array of mission networks directly
+      let missionNetworkExists = false;
+      
+      if (cisPlanData && Array.isArray(cisPlanData)) {
+        // Direct check on the array
+        missionNetworkExists = cisPlanData.some(mn => mn.id === state.nodeId);
+        console.log("Mission network exists in cisPlanData?", missionNetworkExists);
+      } else {
+        console.log("Unexpected cisPlanData structure:", cisPlanData);
+        // Handle the case where we don't have expected data structure
+        // Just try to continue as it might be a transient issue
+        missionNetworkExists = true; 
+      }
+      
+      if (!missionNetworkExists) {
+        console.log("Cannot restore to deleted mission network: " + state.nodeId);
+        // Since mission network doesn't exist anymore, restore to root instead
+        restoreTreeState({ nodeType: 'root', nodeId: 'root-cisplan', isRootLevel: true });
+        return;
+      }
+    }
+
     // Special handling for HW Stack selections to make sure they're properly selected
     if (state.nodeType === "hwStacks" && state.nodeId && state.domainId) {
       console.log("Special handling for HW Stack state:", state);
-      
+
       // Set a flag on window to indicate we're in the process of restoring an HW Stack
       window.restoringHwStack = true;
       window.hwStackToRestore = state.nodeId;
     }
-    
+
     // Special handling for central panel selections
     if (state.isCentralPanelSelection) {
-      console.log("Central panel selection detected, preserving root view", state);
-      
+      console.log(
+        "Central panel selection detected, preserving root view",
+        state
+      );
+
       // For central panel selections, don't select the mission network in the tree
       // Instead, just update the detail panel with the selected element
-      
+
       try {
         // Check if cisPlanData is available - it might not be fully loaded yet
         // so add defensive checks throughout the code
-        if (typeof cisPlanData !== 'undefined' && cisPlanData && Array.isArray(cisPlanData.missionNetworks)) {
+        if (
+          typeof cisPlanData !== "undefined" &&
+          cisPlanData &&
+          Array.isArray(cisPlanData.missionNetworks)
+        ) {
           // If this is a mission network selection
-          if (state.nodeType === 'missionNetworks') {
+          if (state.nodeType === "missionNetworks") {
             // Find the mission network
-            const mn = cisPlanData.missionNetworks.find(m => m.id === state.nodeId);
-            
+            const mn = cisPlanData.missionNetworks.find(
+              (m) => m.id === state.nodeId
+            );
+
             if (mn) {
               // Update current element
               currentElement = mn;
               currentElement.type = state.nodeType;
-              
+
               // Update detail panel
               updateDetailPanel(mn, state.nodeType);
-              
+
               // Update selected element in pointer
-              CISPlanPointer.updateSelectedOnly(state.nodeType.replace(/s$/, ''), 'L1', 
-                                              state.nodeId, mn.name, mn);
-              
-              console.log("Updated detail panel for mission network from central panel selection");
+              CISPlanPointer.updateSelectedOnly(
+                state.nodeType.replace(/s$/, ""),
+                "L1",
+                state.nodeId,
+                mn.name,
+                mn
+              );
+
+              console.log(
+                "Updated detail panel for mission network from central panel selection"
+              );
               return; // Early return as we've handled this special case
             }
           }
@@ -1854,7 +2179,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error handling central panel selection:", error);
       }
     }
-    
+
     // Restoring state after refresh - standard tree navigation
     console.log("Standard tree restore for state:", state);
 
@@ -1866,11 +2191,16 @@ document.addEventListener("DOMContentLoaded", function () {
     selectAndExpandNode(mnNode);
 
     // If we have a segment to restore, find and restore it
-    if (!state.segmentId) return;
+    // Handle both state.segmentId and nodeId if nodeType is networkSegments
+    const segmentId = state.segmentId || (state.nodeType === "networkSegments" ? state.nodeId : null);
+    if (!segmentId) return;
+    
+    console.log(`Looking for segment with ID: ${segmentId} in mission network ${state.missionNetworkId}`);
+    
     const segNode = findTreeNodeInParent(
       mnNode,
       "networkSegments",
-      state.segmentId
+      segmentId
     );
     if (!segNode) return;
 
@@ -1881,7 +2211,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const domainId =
       state.domainId ||
       (state.nodeType === "securityDomains" ? state.nodeId : null);
-      
+
     if (!domainId) return;
 
     // Debug: List all security domain nodes in this segment
@@ -1910,61 +2240,76 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!sdNode) return;
     selectAndExpandNode(sdNode);
-    
+
     // If we're restoring an HW Stack, find and select it after the security domain is expanded
-    if (window.restoringHwStack && window.hwStackToRestore && state.nodeType === "hwStacks") {
+    if (
+      window.restoringHwStack &&
+      window.hwStackToRestore &&
+      state.nodeType === "hwStacks"
+    ) {
       console.log("Looking for HW Stack to restore:", window.hwStackToRestore);
-      
+
       // Wait a short time to let the security domain expand and populate children
       setTimeout(() => {
         try {
           const domainChildren = getChildrenContainer(sdNode);
-          
+
           if (domainChildren) {
             // Find the HW Stack node
             const hwStackNode = domainChildren.querySelector(
               `.tree-node[data-type="hwStacks"][data-id="${window.hwStackToRestore}"]`
             );
-            
+
             if (hwStackNode) {
-              console.log("Found HW Stack to restore, selecting it:", hwStackNode);
-              
+              console.log(
+                "Found HW Stack to restore, selecting it:",
+                hwStackNode
+              );
+
               // Remove active class from security domain
               sdNode.classList.remove("active");
-              
+
               // Add active class to HW Stack
               hwStackNode.classList.add("active");
-              
+
               // Set currentTreeNode
               currentTreeNode = hwStackNode;
-              
+
               // Trigger the node's click handler to fully select it
               hwStackNode.click();
-              
+
               // Update detail panel with HW Stack info
-              if (typeof cisPlanData !== 'undefined' && cisPlanData) {
+              if (typeof cisPlanData !== "undefined" && cisPlanData) {
                 // Find the HW Stack element in the data
                 let hwStackElement = null;
-                
+
                 // Find the element in the data by traversing the hierarchy
                 if (cisPlanData.missionNetworks) {
-                  const mn = cisPlanData.missionNetworks.find(m => m.id === state.missionNetworkId);
+                  const mn = cisPlanData.missionNetworks.find(
+                    (m) => m.id === state.missionNetworkId
+                  );
                   if (mn && mn.segments) {
-                    const segment = mn.segments.find(s => s.id === state.segmentId);
+                    const segment = mn.segments.find(
+                      (s) => s.id === state.segmentId
+                    );
                     if (segment && segment.securityDomains) {
-                      const domain = segment.securityDomains.find(d => d.id === state.domainId);
+                      const domain = segment.securityDomains.find(
+                        (d) => d.id === state.domainId
+                      );
                       if (domain && domain.hwStacks) {
-                        hwStackElement = domain.hwStacks.find(h => h.id === state.nodeId);
+                        hwStackElement = domain.hwStacks.find(
+                          (h) => h.id === state.nodeId
+                        );
                       }
                     }
                   }
                 }
-                
+
                 if (hwStackElement) {
                   // Update current element
                   currentElement = hwStackElement;
                   currentElement.type = "hwStacks";
-                  
+
                   // Update detail panel
                   updateDetailPanel(hwStackElement, "hwStacks");
                 }
@@ -2010,26 +2355,26 @@ document.addEventListener("DOMContentLoaded", function () {
     selectAndExpandNode(hwNode);
 
     // Determine which asset to look for
-    const assetId = state.assetId || 
-                   (state.nodeType === "assets" ? state.nodeId : null);
-                   
+    const assetId =
+      state.assetId || (state.nodeType === "assets" ? state.nodeId : null);
+
     if (!assetId) return;
-    
+
     // Looking for asset
     const assetNode = findTreeNodeInParent(hwNode, "assets", assetId);
     if (!assetNode) {
       console.warn(`Could not find asset node with ID ${assetId}`);
       return;
     }
-    
-    // Found asset to restore 
+
+    // Found asset to restore
     selectAndExpandNode(assetNode); // Select and expand the asset to show children
-    
+
     // For GP instances, use a more direct approach
     if (state.nodeType === "gpInstances" && state.nodeId) {
       // Log that we're attempting to restore a GP instance
       console.log(`Attempting to restore GP instance with ID ${state.nodeId}`);
-      
+
       // First, ensure the asset node is fully expanded to display its child GP instances
       // Force the expansion by clicking the toggle if it's not already expanded
       const assetToggle = assetNode.querySelector(".tree-toggle");
@@ -2047,107 +2392,142 @@ document.addEventListener("DOMContentLoaded", function () {
           return; // Early return since we'll continue in the timeout
         }
       }
-      
+
       // If we get here, the asset node should already be expanded, so proceed immediately
       findAndSelectGPInstance(assetNode, state);
       return;
     }
-    
+
     // Helper function to find and select a GP instance within an asset node
     function findAndSelectGPInstance(assetNode, state) {
       // For SP instance deletion, we need to directly load and select the GP instance
       if (state.fromSpDeletion) {
-        console.log('Using more direct approach for SP deletion scenario');
-        
+        console.log("Using more direct approach for SP deletion scenario");
+
         // CRITICAL FIX: Check if state.nodeId is a GP ID (starts with GP-), if not, we should not proceed
         // This prevents asset IDs from being incorrectly used as GP IDs
-        if (!state.nodeId || typeof state.nodeId !== 'string' || !state.nodeId.startsWith('GP-')) {
-          console.warn('Invalid GP ID format in state restoration:', state.nodeId, 'Must be a string starting with GP-');
+        if (
+          !state.nodeId ||
+          typeof state.nodeId !== "string" ||
+          !state.nodeId.startsWith("GP-")
+        ) {
+          console.warn(
+            "Invalid GP ID format in state restoration:",
+            state.nodeId,
+            "Must be a string starting with GP-"
+          );
           // Try to find the actual GP instance in the data model as a fallback
           if (assetNode) {
-            const assetId = assetNode.getAttribute('data-id');
+            const assetId = assetNode.getAttribute("data-id");
             if (assetId) {
               const foundGp = findGPInstanceByParentAsset(assetId);
               if (foundGp && foundGp.gpid) {
-                console.log('Found GP instance by asset:', foundGp);
+                console.log("Found GP instance by asset:", foundGp);
                 state.nodeId = foundGp.gpid; // Use the correct GP ID instead
               }
             }
           }
-          
+
           // If we still don't have a valid GP ID, we can't proceed
-          if (!state.nodeId || typeof state.nodeId !== 'string' || !state.nodeId.startsWith('GP-')) {
-            console.error('Could not determine a valid GP ID for state restoration. Aborting.');
+          if (
+            !state.nodeId ||
+            typeof state.nodeId !== "string" ||
+            !state.nodeId.startsWith("GP-")
+          ) {
+            console.error(
+              "Could not determine a valid GP ID for state restoration. Aborting."
+            );
             return;
           }
         }
-        
-        // Use the loadGPInstanceChildren function which knows how to load SP instances 
+
+        // Use the loadGPInstanceChildren function which knows how to load SP instances
         // We're now passing a valid GP ID, not an asset ID or node
-        console.log('Loading GP instance children with verified GP ID:', state.nodeId);
-        loadGPInstanceChildren({ id: state.nodeId, gpid: state.nodeId, type: 'gpInstances' });
-        
+        console.log(
+          "Loading GP instance children with verified GP ID:",
+          state.nodeId
+        );
+        loadGPInstanceChildren({
+          id: state.nodeId,
+          gpid: state.nodeId,
+          type: "gpInstances",
+        });
+
         // Set the current GP instance ID for SP operations
         window.currentGpInstanceId = state.nodeId;
-        console.log('Set currentGpInstanceId to', window.currentGpInstanceId);
-        
+        console.log("Set currentGpInstanceId to", window.currentGpInstanceId);
+
         // We've directly triggered the correct panel to show
         return;
       }
-      
+
       // Try multiple approaches to find the children container
       let assetChildren = getChildrenContainer(assetNode);
-      
+
       // If the standard approach didn't work, try another way
       if (!assetChildren) {
-        console.log("Standard approach didn't find asset children, trying alternative...");
+        console.log(
+          "Standard approach didn't find asset children, trying alternative..."
+        );
         // The asset wrapper is the parent of the asset node
         const assetWrapper = assetNode.parentElement;
         if (assetWrapper) {
           // Look for a div that has data-parent matching the asset ID
           const assetId = assetNode.getAttribute("data-id");
           if (assetId) {
-            assetChildren = assetWrapper.querySelector(`div[data-parent="${assetId}"]`);
+            assetChildren = assetWrapper.querySelector(
+              `div[data-parent="${assetId}"]`
+            );
           }
         }
       }
-      
+
       // If we still couldn't find the children container, try one last approach
       if (!assetChildren) {
-        console.log("Alternative approach also failed, trying one last method...");
+        console.log(
+          "Alternative approach also failed, trying one last method..."
+        );
         // Look for any div that immediately follows this asset node in the DOM
         let nextElement = assetNode.nextElementSibling;
-        if (nextElement && nextElement.tagName === "DIV" && !nextElement.classList.contains("tree-node")) {
+        if (
+          nextElement &&
+          nextElement.tagName === "DIV" &&
+          !nextElement.classList.contains("tree-node")
+        ) {
           assetChildren = nextElement;
         }
       }
-      
+
       // If we still couldn't find it, we're out of options
       if (!assetChildren) {
-        console.warn("Could not find children container for asset node after multiple attempts");
+        console.warn(
+          "Could not find children container for asset node after multiple attempts"
+        );
         return;
       }
-      
+
       console.log("Found asset children container, looking for GP instance");
-      
+
       // Try multiple approaches to find the GP instance
       let gpNode = null;
-      
+
       // Try by ID
       gpNode = assetChildren.querySelector(
         `.tree-node[data-type="gpInstances"][data-id="${state.nodeId}"]`
       );
-      
+
       // If that didn't work, try by GPID attribute
       if (!gpNode) {
         gpNode = assetChildren.querySelector(
           `.tree-node[data-type="gpInstances"][data-gpid="${state.nodeId}"]`
         );
       }
-      
+
       // If still not found, try searching all GP instances and matching by text content
       if (!gpNode) {
-        const allGpNodes = assetChildren.querySelectorAll('.tree-node[data-type="gpInstances"]');
+        const allGpNodes = assetChildren.querySelectorAll(
+          '.tree-node[data-type="gpInstances"]'
+        );
         for (const node of allGpNodes) {
           if (node.textContent && node.textContent.includes(state.nodeId)) {
             gpNode = node;
@@ -2155,12 +2535,12 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       }
-      
+
       if (gpNode) {
         console.log("Found GP instance node, selecting it");
         // Found GP instance, select it to show its SP instances
         gpNode.click();
-        
+
         // Make sure the currentGpInstanceId is set so any operations on SP instances work correctly
         if (gpNode.getAttribute("data-gpid")) {
           window.currentGpInstanceId = gpNode.getAttribute("data-gpid");
@@ -2176,8 +2556,15 @@ document.addEventListener("DOMContentLoaded", function () {
           // Use loadSelectedNodeChildren which is the correct function to load children
           const assetData = findAssetById(assetId);
           if (assetData) {
-            loadSelectedNodeChildren(assetData, "assets", assetId, 
-              state.hwStackId, state.domainId, state.segmentId, state.missionNetworkId);
+            loadSelectedNodeChildren(
+              assetData,
+              "assets",
+              assetId,
+              state.hwStackId,
+              state.domainId,
+              state.segmentId,
+              state.missionNetworkId
+            );
             console.log("Loaded asset node children as fallback");
           }
         }
@@ -2219,61 +2606,174 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return null;
   }
+  
+  // Helper function to expand all parent containers of a tree node
+  function expandParentContainers(node) {
+    if (!node) return;
+    
+    // Get parent node
+    let parent = node.parentElement;
+    
+    // Continue up the DOM tree until we reach the main tree container
+    while (parent && !parent.classList.contains('main-tree-container')) {
+      // If this is a children container, make it visible
+      if (parent.classList.contains('children-container')) {
+        parent.style.display = 'block';
+        
+        // Find the toggle icon in the parent tree node and update it
+        const parentTreeNode = parent.parentElement;
+        if (parentTreeNode) {
+          const toggleIcon = parentTreeNode.querySelector('.toggle-icon');
+          if (toggleIcon) {
+            toggleIcon.classList.remove('fa-chevron-right');
+            toggleIcon.classList.add('fa-chevron-down');
+          }
+        }
+      }
+      
+      // Move up to the next parent
+      parent = parent.parentElement;
+    }
+  }
 
   // Helper function to select and expand a tree node
   function selectAndExpandNode(node) {
-    // Extract node information
-    const type = node.getAttribute('data-type');
-    const id = node.getAttribute('data-id');
-    const name = node.querySelector('.tree-label')?.textContent.trim() || '';
+    if (!node) return;
+    console.log(
+      `Selecting and expanding node: ${node.getAttribute(
+        "data-type"
+      )}/${node.getAttribute("data-id")} (${node.getAttribute("data-name")})`
+    );
+    node.classList.add("active");
+    expandParentContainers(node);
     
-    // Log that we're manually expanding a node during state restoration
-    console.log(`Selecting and expanding node: ${type}/${id} (${name})`);
+    // Get node type and id for special handling
+    const nodeType = node.getAttribute("data-type");
+    const nodeId = node.getAttribute("data-id");
     
-    // Call click to execute the node's click handler
-    node.click(); // Select the node
+    // Simulate click on the node
+    simulateTreeNodeClick(node);
     
+    // For network segments, ensure we load the right panel
+    if (nodeType === "networkSegments") {
+      console.log(`Special handling for network segment ${nodeId} - ensuring detail panel loads correctly`);
+      
+      // Find the element in CIS Plan data
+      const foundElement = findNetworkSegmentById(nodeId);
+      
+      // If found, update the detail panel explicitly
+      if (foundElement) {
+        currentElement = foundElement;
+        updateDetailPanel(foundElement, "networkSegments");
+        // Also update the CISPlanPointer
+        CISPlanPointer.setSelectedElement(foundElement, "networkSegments");
+      }
+    }
+  }
+  
+  // Helper function to find a network segment by ID
+  function findNetworkSegmentById(segmentId) {
+    if (!cisPlanData || !Array.isArray(cisPlanData)) return null;
+    
+    // Search through mission networks
+    for (const mn of cisPlanData) {
+      if (mn.networkSegments && Array.isArray(mn.networkSegments)) {
+        const segment = mn.networkSegments.find(seg => seg.id === segmentId);
+        if (segment) return segment;
+      }
+    }
+    
+    return null;
+  }
+  
+  // Helper function to find a mission network by ID
+  function findMissionNetworkById(missionNetworkId) {
+    if (!cisPlanData || !Array.isArray(cisPlanData)) return null;
+    
+    // Find the mission network in the CIS plan data
+    const missionNetwork = cisPlanData.find(mn => mn.id === missionNetworkId);
+    
+    // Log results for debugging
+    console.log(`Finding mission network ${missionNetworkId}: ${missionNetwork ? 'Found' : 'Not found'}`);
+    
+    return missionNetwork;
+  }
+
+  // Function to simulate a click on a tree node
+  function simulateTreeNodeClick(node) {
+    if (!node) return;
+    
+    // Get node data before clicking
+    const nodeType = node.getAttribute("data-type");
+    const nodeId = node.getAttribute("data-id");
+    
+    // Custom event handling for different node types
+    if (nodeType === "networkSegments") {
+      console.log(`Using custom event handling for network segment ${nodeId}`);
+      
+      // Find the actual element data
+      const segmentElement = findNetworkSegmentById(nodeId);
+      
+      if (segmentElement) {
+        // Set as current element before triggering tree behavior
+        currentElement = segmentElement;
+        
+        // Create a custom handler for tree click that will set the proper context
+        const customHandler = function() {
+          // Directly load the network segment's children
+          loadSelectedNodeChildren(segmentElement, "networkSegments");
+          // Update detail panel with segment details
+          updateDetailPanel(segmentElement, "networkSegments");
+          // Update CISPlanPointer state
+          CISPlanPointer.setSelectedElement(segmentElement, "networkSegments");
+        };
+        
+        // Execute the custom handler
+        setTimeout(customHandler, 50);
+      }
+    } else if (nodeType === "missionNetworks") {
+      console.log(`Using custom event handling for mission network ${nodeId}`);
+      
+      // Find the actual mission network element data
+      const missionNetworkElement = findMissionNetworkById(nodeId);
+      
+      if (missionNetworkElement) {
+        // Set as current element before triggering tree behavior
+        currentElement = missionNetworkElement;
+        
+        // Create a custom handler for tree click that will set the proper context
+        const customHandler = function() {
+          // Directly load the mission network's children
+          loadSelectedNodeChildren(missionNetworkElement, "missionNetworks");
+          // Update detail panel with mission network details
+          updateDetailPanel(missionNetworkElement, "missionNetworks");
+          // Update CISPlanPointer state
+          CISPlanPointer.setSelectedElement(missionNetworkElement, "missionNetworks");
+        };
+        
+        // Execute the custom handler
+        setTimeout(customHandler, 50);
+      }
+    }
+    
+    // Click the node to trigger default behavior
+    node.click();
+
     // Ensure the children container is expanded
     const childrenContainer = getChildrenContainer(node);
     if (!childrenContainer) return;
-    
+
     childrenContainer.style.display = "block"; // Show children
-    
+
     // Update toggle icon
     const toggleIcon = node.querySelector(".tree-toggle i");
     if (toggleIcon) toggleIcon.className = "fas fa-chevron-down";
-    
+
     // Set the currentTreeNode explicitly
     currentTreeNode = node;
-    
-    // If this is a mission network and we're restoring after an edit, 
+
+    // If this is a mission network and we're restoring after an edit,
     // make sure we also update the detail panel and CISPlanPointer
-    if (type === 'missionNetworks') {
-      try {
-        // Make sure cisPlanData and its properties are defined
-        if (typeof cisPlanData !== 'undefined' && cisPlanData && Array.isArray(cisPlanData.missionNetworks)) {
-          // Find the mission network in the data
-          const missionNetwork = cisPlanData.missionNetworks.find(mn => mn.id === id);
-          if (missionNetwork) {
-            // Update the currently selected element
-            currentElement = missionNetwork;
-            currentElement.type = type;
-            
-            // Update the detail panel
-            updateDetailPanel(missionNetwork, type);
-            
-            // Ensure the CISPlanPointer is updated
-            CISPlanPointer.handleTreeClick(type, id, name, missionNetwork);
-          } else {
-            console.warn(`Mission network with ID ${id} not found in data`);
-          }
-        } else {
-          console.warn('cisPlanData or missionNetworks array is not available');
-        }
-      } catch (error) {
-        console.error('Error in selectAndExpandNode for mission network:', error);
-      }
-    }
   }
 
   // Start app initialization
@@ -2337,10 +2837,10 @@ document.addEventListener("DOMContentLoaded", function () {
   async function refreshWithPointerState() {
     // Get state to preserve from CISPlanPointer
     const stateToRestore = CISPlanPointer.getStateForRefresh();
-    
+
     // Log what we're preserving
-    console.log('Preserving state during refresh:', stateToRestore);
-    
+    console.log("Preserving state during refresh:", stateToRestore);
+
     // Refresh while preserving state
     await refreshPanelsWithState(stateToRestore);
   }
@@ -2379,7 +2879,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Check if we have a stored element being edited
         const editedElement = window.elementBeingEdited;
-        
+
         // Update the current element with the new name
         if (currentElement && currentElement.id === id) {
           currentElement.name = name;
@@ -2387,33 +2887,39 @@ document.addEventListener("DOMContentLoaded", function () {
           // Update the details panel with the new name
           updateDetailPanel(currentElement, currentElement.type);
         }
-        
+
         // Create a custom state to restore the element being edited
         let stateToRestore = {};
-        
+
         // If we have an element being edited, use that for restoration
         if (editedElement && editedElement.id === id) {
-          console.log('Using stored element for state restoration:', editedElement);
-          
+          console.log(
+            "Using stored element for state restoration:",
+            editedElement
+          );
+
           // Create a proper state object for a mission network in the central panel
           stateToRestore = {
-            isCentralPanelSelection: true,  // Mark this as a central panel selection
-            nodeType: 'missionNetworks',    // Use plural form expected by restoreTreeState
-            nodeId: id,                     // Use the ID from the form
-            missionNetworkId: id,           // Set explicitly to prevent state override
-            elementName: name               // Store updated name
+            isCentralPanelSelection: true, // Mark this as a central panel selection
+            nodeType: "missionNetworks", // Use plural form expected by restoreTreeState
+            nodeId: id, // Use the ID from the form
+            missionNetworkId: id, // Set explicitly to prevent state override
+            elementName: name, // Store updated name
           };
-          
+
           // Clear the stored element
           window.elementBeingEdited = null;
         } else {
           // Fallback to the CISPlanPointer state
           stateToRestore = CISPlanPointer.getStateForRefresh();
         }
-        
+
         // Log what we're preserving
-        console.log('Preserving state during mission network update:', stateToRestore);
-        
+        console.log(
+          "Preserving state during mission network update:",
+          stateToRestore
+        );
+
         // Refresh while preserving state
         await refreshPanelsWithState(stateToRestore);
       } else {
@@ -2543,6 +3049,18 @@ document.addEventListener("DOMContentLoaded", function () {
         // Show success message
         showToast(`Network Segment updated successfully!`);
 
+        // Store the state before refreshing
+        let stateToRestore = {
+          nodeType: "networkSegments",
+          nodeId: id,
+          missionNetworkId: missionNetworkId,
+          elementName: name
+        };
+
+        // Capture the current CISPlanPointer state to ensure we restore to the right place
+        const currentPointerState = CISPlanPointer.getState();
+        console.log("Preserving CISPlanPointer state before refresh:", currentPointerState);
+
         // Update the current element with the new name
         if (currentElement && currentElement.id === id) {
           currentElement.name = name;
@@ -2551,8 +3069,9 @@ document.addEventListener("DOMContentLoaded", function () {
           updateDetailPanel(currentElement, currentElement.type);
         }
 
-        // Refresh the data
-        fetchCISPlanData();
+        // Refresh the data with state preservation
+        console.log("Refreshing data with network segment state preservation:", stateToRestore);
+        refreshPanelsWithState(stateToRestore);
       } else {
         showToast(
           `${
@@ -2910,7 +3429,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Get the asset ID from the form input
     const assetId = assetIdInput.value;
-    
+
     // Log all parent IDs for debugging
     console.log("Network Interface Update - Parent IDs:", {
       missionNetworkId,
@@ -2918,7 +3437,7 @@ document.addEventListener("DOMContentLoaded", function () {
       domainId,
       hwStackId,
       assetId,
-      interfaceId: id
+      interfaceId: id,
     });
 
     // Validate required fields - only name is mandatory
@@ -2962,7 +3481,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       console.log("Making API call to update network interface name...");
       console.log("Using asset ID:", assetId);
-      
+
       // First update the network interface name
       const nameUpdateResult = await CISApi.updateNetworkInterface(
         missionNetworkId,
@@ -3460,15 +3979,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Debug which ID is missing
-    console.log('Edit GP Instance - IDs:', {
+    console.log("Edit GP Instance - IDs:", {
       id,
       missionNetworkId,
       segmentId,
       domainId,
       hwStackId,
-      assetId
+      assetId,
     });
-    
+
     if (
       !id ||
       !missionNetworkId ||
@@ -3479,15 +3998,15 @@ document.addEventListener("DOMContentLoaded", function () {
     ) {
       // Provide more specific information about which ID is missing
       let missingIds = [];
-      if (!id) missingIds.push('GP Instance ID');
-      if (!missionNetworkId) missingIds.push('Mission Network ID');
-      if (!segmentId) missingIds.push('Segment ID');
-      if (!domainId) missingIds.push('Domain ID');
-      if (!hwStackId) missingIds.push('HW Stack ID');
-      if (!assetId) missingIds.push('Asset ID');
-      
+      if (!id) missingIds.push("GP Instance ID");
+      if (!missionNetworkId) missingIds.push("Mission Network ID");
+      if (!segmentId) missingIds.push("Segment ID");
+      if (!domainId) missingIds.push("Domain ID");
+      if (!hwStackId) missingIds.push("HW Stack ID");
+      if (!assetId) missingIds.push("Asset ID");
+
       showToast("Missing ID information", "warning");
-      console.error('Missing IDs:', missingIds);
+      console.error("Missing IDs:", missingIds);
       return;
     }
 
@@ -3555,24 +4074,33 @@ document.addEventListener("DOMContentLoaded", function () {
       // Store current state for restoration
       const originalTreeNode = currentTreeNode;
       const originalElement = currentElement;
-      
+
       // Get form fields
       let gpInstanceId = document.getElementById("addSPInstanceGPId").value;
-      const missionNetworkId = document.getElementById("addSPInstanceMissionNetworkId").value;
+      const missionNetworkId = document.getElementById(
+        "addSPInstanceMissionNetworkId"
+      ).value;
       const segmentId = document.getElementById("addSPInstanceSegmentId").value;
       const domainId = document.getElementById("addSPInstanceDomainId").value;
       const hwStackId = document.getElementById("addSPInstanceHwStackId").value;
       const assetId = document.getElementById("addSPInstanceAssetId").value;
       const spId = document.getElementById("addSPInstanceId").value;
       const spVersion = document.getElementById("addSPInstanceVersion").value;
-      
+
       // For GP instances, we need to find the actual gpid
       // First try to check if currentElement is a GP instance and has the gpid property
-      if (currentElement && currentElement.type === "gpInstances" && currentElement.gpid) {
+      if (
+        currentElement &&
+        currentElement.type === "gpInstances" &&
+        currentElement.gpid
+      ) {
         // Use the current element's gpid property
         gpInstanceId = currentElement.gpid;
         console.log("Using gpid from currentElement:", gpInstanceId);
-      } else if (currentTreeNode && currentTreeNode.getAttribute("data-type") === "gpInstances") {
+      } else if (
+        currentTreeNode &&
+        currentTreeNode.getAttribute("data-type") === "gpInstances"
+      ) {
         // Try to get it from the data-gpid attribute on the tree node
         const treeNodeGpid = currentTreeNode.getAttribute("data-gpid");
         if (treeNodeGpid) {
@@ -3617,41 +4145,62 @@ document.addEventListener("DOMContentLoaded", function () {
         // ULTRA SIMPLE: Force a full UI reload
         try {
           // Show a brief message to the user
-          CISUtils.showToast("Refreshing CIS Plan with new SP instance...", "info");
+          CISUtils.showToast(
+            "Refreshing CIS Plan with new SP instance...",
+            "info"
+          );
 
           // First, store the path information that we need to navigate to after refresh
           // CRITICAL: Validate that gpInstanceId is a proper GP ID to avoid asset IDs being used
-          if (!gpInstanceId || typeof gpInstanceId !== 'string' || !gpInstanceId.startsWith('GP-')) {
-            console.warn('Invalid GP ID detected before saving SP creation path:', gpInstanceId);
+          if (
+            !gpInstanceId ||
+            typeof gpInstanceId !== "string" ||
+            !gpInstanceId.startsWith("GP-")
+          ) {
+            console.warn(
+              "Invalid GP ID detected before saving SP creation path:",
+              gpInstanceId
+            );
             // Try to find the actual GP ID using the API or data model
             try {
               // First attempt: Check if we have it in window.currentGpInstanceId
-              if (window.currentGpInstanceId && 
-                  typeof window.currentGpInstanceId === 'string' && 
-                  window.currentGpInstanceId.startsWith('GP-')) {
-                console.log('Using window.currentGpInstanceId instead:', window.currentGpInstanceId);
+              if (
+                window.currentGpInstanceId &&
+                typeof window.currentGpInstanceId === "string" &&
+                window.currentGpInstanceId.startsWith("GP-")
+              ) {
+                console.log(
+                  "Using window.currentGpInstanceId instead:",
+                  window.currentGpInstanceId
+                );
                 gpInstanceId = window.currentGpInstanceId;
-              } 
+              }
               // Second attempt: Try to find the GP instance using the asset ID
               else if (assetId) {
                 const foundGp = findGPInstanceByParentAsset(assetId);
                 if (foundGp && foundGp.gpid) {
-                  console.log('Found GP instance by asset:', foundGp);
+                  console.log("Found GP instance by asset:", foundGp);
                   gpInstanceId = foundGp.gpid;
                 }
               }
             } catch (err) {
-              console.error('Error finding correct GP ID:', err);
+              console.error("Error finding correct GP ID:", err);
             }
-            
+
             // Final validation before storing
-            if (!gpInstanceId || typeof gpInstanceId !== 'string' || !gpInstanceId.startsWith('GP-')) {
-              console.error('Could not determine a valid GP ID for SP creation path. Using a placeholder.');
+            if (
+              !gpInstanceId ||
+              typeof gpInstanceId !== "string" ||
+              !gpInstanceId.startsWith("GP-")
+            ) {
+              console.error(
+                "Could not determine a valid GP ID for SP creation path. Using a placeholder."
+              );
             }
           }
-          
+
           // Store path with validated GP ID and additional information
-          // IMPORTANT: Store both the GP ID (product ID) and the instance ID (original ID) 
+          // IMPORTANT: Store both the GP ID (product ID) and the instance ID (original ID)
           // to make it easier to find the correct node after page refresh
           const path = {
             missionNetworkId,
@@ -3659,42 +4208,53 @@ document.addEventListener("DOMContentLoaded", function () {
             domainId,
             hwStackId,
             assetId,
-            gpInstanceId,  // The GP ID (product ID) - starts with GP-
-            instanceId: null  // We'll try to find the original instance ID from the data model
+            gpInstanceId, // The GP ID (product ID) - starts with GP-
+            instanceId: null, // We'll try to find the original instance ID from the data model
           };
-          
+
           // Try to get the instance ID from the current element or tree node
           try {
             // Try to find the GP instance in the data model to get its instance ID
             const gpInstance = findGPInstanceById(gpInstanceId);
             if (gpInstance) {
-              console.log('Found GP instance in data model:', gpInstance);
-              path.instanceId = gpInstance.id;  // This is the instance ID (original ID)
+              console.log("Found GP instance in data model:", gpInstance);
+              path.instanceId = gpInstance.id; // This is the instance ID (original ID)
             }
           } catch (err) {
-            console.error('Error finding GP instance for path storage:', err);
+            console.error("Error finding GP instance for path storage:", err);
           }
-          
+
           // Store this in local storage so it persists through navigation
-          localStorage.setItem('cis_plan_sp_creation_path', JSON.stringify(path));
-          
+          localStorage.setItem(
+            "cis_plan_sp_creation_path",
+            JSON.stringify(path)
+          );
+
           // Now reload the entire page - this is a guaranteed way to refresh everything
           console.log("Reloading page to refresh CIS Plan data");
-          
+
           // Use a short timeout to ensure the localStorage is set before reload
           setTimeout(() => {
             window.location.reload();
           }, 100);
-          
         } catch (error) {
-          console.error("Error refreshing UI after SP instance creation:", error);
+          console.error(
+            "Error refreshing UI after SP instance creation:",
+            error
+          );
         }
       } else {
         // Show error message
         if (result.message) {
-          CISUtils.showToast("Error adding SP instance: " + result.message, "danger");
+          CISUtils.showToast(
+            "Error adding SP instance: " + result.message,
+            "danger"
+          );
         } else {
-          CISUtils.showToast("Error adding SP instance: " + (result.error || "Unknown error"), "danger");
+          CISUtils.showToast(
+            "Error adding SP instance: " + (result.error || "Unknown error"),
+            "danger"
+          );
         }
       }
     } catch (error) {
@@ -3702,7 +4262,7 @@ document.addEventListener("DOMContentLoaded", function () {
       CISUtils.showToast("Error adding SP instance: " + error, "danger");
     }
   }
-  
+
   /**
    * Initialize the SP dropdown by loading all SPs from the API
    */
@@ -3711,78 +4271,83 @@ document.addEventListener("DOMContentLoaded", function () {
       // Prepare the dropdown menu but don't show it yet
       const dropdownMenu = document.getElementById("spDropdownMenu");
       const dropdownContainer = document.getElementById("spDropdownContainer");
-      
+
       // Hide the dropdown by default
       dropdownContainer.classList.add("d-none");
-      
+
       // Clear the search input and selected SP display
       document.getElementById("spSearchInput").value = "";
       document.getElementById("selectedSPDisplay").innerHTML = "";
       document.getElementById("addSPInstanceId").value = "";
-      
+
       // Fetch all SPs from the API if we don't have them already
       if (allSPs.length === 0) {
-        dropdownMenu.innerHTML = '<div class="list-group-item text-muted">Loading SPs...</div>';
+        dropdownMenu.innerHTML =
+          '<div class="list-group-item text-muted">Loading SPs...</div>';
         allSPs = await CISApi.getAllSPs();
       }
-      
+
       if (allSPs.length === 0) {
-        dropdownMenu.innerHTML = '<div class="list-group-item text-muted">No SPs found</div>';
+        dropdownMenu.innerHTML =
+          '<div class="list-group-item text-muted">No SPs found</div>';
         return;
       }
-      
+
       // Sort SPs by name for better usability
       allSPs.sort((a, b) => {
         return a.name.localeCompare(b.name);
       });
-      
+
       // Prepare the dropdown with all SPs but don't show it yet
       // We'll set showDropdown to false to keep it hidden until user interaction
       populateSPDropdown(allSPs, false);
-      
+
       // Setup event listeners for this instance
       setupSPSearchListeners();
     } catch (error) {
       console.error("Error initializing SP dropdown:", error);
-      document.getElementById("spDropdownMenu").innerHTML = 
+      document.getElementById("spDropdownMenu").innerHTML =
         '<div class="list-group-item text-muted">Error loading SPs</div>';
     }
   }
-  
+
   /**
    * Setup event listeners for SP search functionality
    */
   function setupSPSearchListeners() {
     const searchInput = document.getElementById("spSearchInput");
     const dropdownContainer = document.getElementById("spDropdownContainer");
-    
+
     // Show dropdown when input is focused
-    searchInput.addEventListener("focus", function() {
+    searchInput.addEventListener("focus", function () {
       dropdownContainer.classList.remove("d-none");
     });
-    
+
     // Add the input event listener for search filtering
-    searchInput.addEventListener("input", function() {
+    searchInput.addEventListener("input", function () {
       console.log("Search input changed, filtering SPs...");
       filterSPs();
     });
-    
+
     // Close dropdown when clicking outside
-    document.addEventListener("click", function(event) {
-      const isClickInside = searchInput.contains(event.target) || 
-                           dropdownContainer.contains(event.target);
-      
+    document.addEventListener("click", function (event) {
+      const isClickInside =
+        searchInput.contains(event.target) ||
+        dropdownContainer.contains(event.target);
+
       if (!isClickInside) {
         dropdownContainer.classList.add("d-none");
       }
     });
-    
+
     // Reset dropdown when modal is closed
-    document.getElementById("addSPInstanceModal").addEventListener("hidden.bs.modal", function() {
-      dropdownContainer.classList.add("d-none");
-    });
+    document
+      .getElementById("addSPInstanceModal")
+      .addEventListener("hidden.bs.modal", function () {
+        dropdownContainer.classList.add("d-none");
+      });
   }
-  
+
   /**
    * Populate the SP dropdown with the provided list of SPs
    * @param {Array} spsToShow - The array of SPs to display
@@ -3791,26 +4356,29 @@ document.addEventListener("DOMContentLoaded", function () {
   function populateSPDropdown(spsToShow, showDropdown = false) {
     const dropdownMenu = document.getElementById("spDropdownMenu");
     const dropdownContainer = document.getElementById("spDropdownContainer");
-    
+
     if (spsToShow.length === 0) {
-      dropdownMenu.innerHTML = '<div class="list-group-item text-muted">No matching SPs found</div>';
+      dropdownMenu.innerHTML =
+        '<div class="list-group-item text-muted">No matching SPs found</div>';
       return;
     }
-    
+
     // Create dropdown items for each SP
-    let dropdownHtml = '';
-    spsToShow.forEach(sp => {
+    let dropdownHtml = "";
+    spsToShow.forEach((sp) => {
       dropdownHtml += `<div class="list-group-item" data-sp-id="${sp.id}" data-sp-name="${sp.name}">${sp.name} <small class="text-muted">(${sp.id})</small></div>`;
     });
-    
+
     dropdownMenu.innerHTML = dropdownHtml;
-    
+
     // Add click handlers to the newly created items
-    const items = dropdownMenu.querySelectorAll(".list-group-item:not(.text-muted)");
-    items.forEach(item => {
+    const items = dropdownMenu.querySelectorAll(
+      ".list-group-item:not(.text-muted)"
+    );
+    items.forEach((item) => {
       item.addEventListener("click", selectSP);
     });
-    
+
     // Only show the dropdown if requested
     if (showDropdown) {
       dropdownContainer.classList.remove("d-none");
@@ -3818,102 +4386,109 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdownContainer.classList.add("d-none");
     }
   }
-  
+
   /**
    * Filter the SPs based on the search input
    */
   function filterSPs() {
-    const searchTerm = document.getElementById("spSearchInput").value.toLowerCase();
-    
+    const searchTerm = document
+      .getElementById("spSearchInput")
+      .value.toLowerCase();
+
     if (!searchTerm) {
       // If search is empty and this is due to initial load, hide the dropdown
       // We'll keep the SPs loaded in the dropdown but hidden
       populateSPDropdown(allSPs, false);
       return;
     }
-    
+
     // If user has typed something, show the dropdown with filtered results
     // Filter SPs based on name or ID containing the search term
-    const filteredSPs = allSPs.filter(sp => 
-      sp.name.toLowerCase().includes(searchTerm) || 
-      sp.id.toLowerCase().includes(searchTerm)
+    const filteredSPs = allSPs.filter(
+      (sp) =>
+        sp.name.toLowerCase().includes(searchTerm) ||
+        sp.id.toLowerCase().includes(searchTerm)
     );
-    
+
     // Show the dropdown with filtered results
     populateSPDropdown(filteredSPs, true);
   }
-  
+
   /**
    * Handle SP selection from the dropdown
    * @param {Event} event - The click event
    */
   function selectSP(event) {
     event.preventDefault();
-    
+
     const target = event.currentTarget;
     const spId = target.getAttribute("data-sp-id");
     const spName = target.getAttribute("data-sp-name");
-    
+
     if (!spId || !spName) return;
-    
+
     // Update the hidden input with the selected SP ID
     document.getElementById("addSPInstanceId").value = spId;
-    
+
     // Update the display to show the selected SP
-    document.getElementById("selectedSPDisplay").innerHTML = 
-      `<strong>Selected:</strong> ${spName} <small class="text-muted">(${spId})</small>`;
-    
+    document.getElementById(
+      "selectedSPDisplay"
+    ).innerHTML = `<strong>Selected:</strong> ${spName} <small class="text-muted">(${spId})</small>`;
+
     // Update the search input to show the selected SP
     document.getElementById("spSearchInput").value = spName;
-    
+
     // Hide the dropdown
     document.getElementById("spDropdownContainer").classList.add("d-none");
-    
+
     console.log(`Selected SP: ${spName} (${spId})`);
-    
+
     // Fetch and populate versions for this SP
     fetchSPVersions(spId);
   }
-  
+
   /**
    * Fetch versions for a specific SP and populate the version dropdown
    * @param {string} spId - The ID of the SP to fetch versions for
    */
   async function fetchSPVersions(spId) {
     if (!spId) return;
-    
+
     // Show loading indicator
-    const versionLoadingIndicator = document.getElementById("versionLoadingIndicator");
+    const versionLoadingIndicator = document.getElementById(
+      "versionLoadingIndicator"
+    );
     const versionSelect = document.getElementById("addSPInstanceVersion");
-    
+
     versionLoadingIndicator.classList.remove("d-none");
     versionSelect.disabled = true;
-    
+
     try {
       // Call the API endpoint to get versions for this SP
       const response = await fetch(`/api/sps/versions/${spId}`);
-      
+
       if (!response.ok) {
         throw new Error(`Failed to fetch versions for SP ${spId}`);
       }
-      
+
       const data = await response.json();
-      
+
       if (data.success && Array.isArray(data.versions)) {
         // Reset the select element
-        versionSelect.innerHTML = '<option value="" disabled selected>Select a version...</option>';
-        
+        versionSelect.innerHTML =
+          '<option value="" disabled selected>Select a version...</option>';
+
         // Add options for each version
-        data.versions.forEach(version => {
+        data.versions.forEach((version) => {
           const option = document.createElement("option");
           option.value = version;
           option.textContent = version;
           versionSelect.appendChild(option);
         });
-        
+
         // Enable the select if we have versions
         versionSelect.disabled = data.versions.length === 0;
-        
+
         // Show message if no versions
         if (data.versions.length === 0) {
           const option = document.createElement("option");
@@ -3923,19 +4498,24 @@ document.addEventListener("DOMContentLoaded", function () {
           versionSelect.appendChild(option);
         }
       } else {
-        console.error("API returned success=false or invalid versions array", data);
-        versionSelect.innerHTML = '<option value="" disabled selected>Error loading versions</option>';
+        console.error(
+          "API returned success=false or invalid versions array",
+          data
+        );
+        versionSelect.innerHTML =
+          '<option value="" disabled selected>Error loading versions</option>';
       }
     } catch (error) {
       console.error(`Error fetching versions for SP ${spId}:`, error);
-      versionSelect.innerHTML = '<option value="" disabled selected>Error loading versions</option>';
+      versionSelect.innerHTML =
+        '<option value="" disabled selected>Error loading versions</option>';
     } finally {
       // Hide loading indicator
       versionLoadingIndicator.classList.add("d-none");
       versionSelect.disabled = false;
     }
   }
-  
+
   // Helper function to find a GP instance by ID in the tree data
   /**
    * Find an asset by its ID in the CIS plan data
@@ -3945,27 +4525,27 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function findAssetById(assetId, data) {
     console.log(`Looking for Asset with ID: ${assetId}`);
-    
+
     // Use provided data or fall back to cisPlanData global
     const searchData = data || window.cisPlanData;
     if (!searchData || !searchData.missionNetworks) {
       console.warn("No data available to search for asset");
       return null;
     }
-    
+
     // Loop through mission networks
     for (const missionNetwork of searchData.missionNetworks) {
       if (!missionNetwork.networkSegments) continue;
-      
+
       for (const segment of missionNetwork.networkSegments) {
         if (!segment.securityDomains) continue;
-        
+
         for (const domain of segment.securityDomains) {
           if (!domain.hwStacks) continue;
-          
+
           for (const stack of domain.hwStacks) {
             if (!stack.assets) continue;
-            
+
             for (const asset of stack.assets) {
               if (asset.id === assetId) {
                 console.log(`Found Asset: ${assetId}`, asset);
@@ -3976,11 +4556,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
-    
+
     console.warn(`Asset ${assetId} not found in data model`);
     return null;
   }
-  
+
   /**
    * Find a GP instance by its ID, gpid, or guid
    * @param {string} gpInstanceId - The ID, gpid, or guid of the GP instance to find
@@ -3989,36 +4569,38 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function findGPInstanceById(gpInstanceId, data) {
     console.log(`Looking for GP instance with ID: ${gpInstanceId}`);
-    
+
     // Use provided data or fall back to cisPlanData global
     const searchData = data || window.cisPlanData;
     if (!searchData || !searchData.missionNetworks) {
       console.warn("No data available to search for GP instance");
       return null;
     }
-    
+
     // Loop through mission networks
     for (const missionNetwork of searchData.missionNetworks) {
       // Use networkSegments (correct property name) instead of segments
       if (!missionNetwork.networkSegments) continue;
-      
+
       for (const segment of missionNetwork.networkSegments) {
         if (!segment.securityDomains) continue;
-        
+
         for (const domain of segment.securityDomains) {
           if (!domain.hwStacks) continue;
-          
+
           for (const stack of domain.hwStacks) {
             if (!stack.assets) continue;
-            
+
             for (const asset of stack.assets) {
               if (!asset.gpInstances) continue;
-              
+
               for (const gpInstance of asset.gpInstances) {
                 // Check all possible ID fields: id, gpid, guid
-                if (gpInstance.id === gpInstanceId || 
-                    gpInstance.gpid === gpInstanceId || 
-                    gpInstance.guid === gpInstanceId) {
+                if (
+                  gpInstance.id === gpInstanceId ||
+                  gpInstance.gpid === gpInstanceId ||
+                  gpInstance.guid === gpInstanceId
+                ) {
                   console.log(`Found GP instance: ${gpInstanceId}`, gpInstance);
                   return gpInstance;
                 }
@@ -4028,11 +4610,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
-    
+
     console.warn(`GP instance ${gpInstanceId} not found in data model`);
     return null;
   }
-  
+
   /**
    * Find a GP instance by its parent asset ID
    * @param {string} assetId - The parent asset ID to search for
@@ -4041,35 +4623,43 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function findGPInstanceByParentAsset(assetId, data = window.cisPlanData) {
     console.log(`Looking for GP instances under asset ID: ${assetId}`);
-    
+
     // Validate inputs
     if (!assetId || !data || !data.missionNetworks) {
-      console.warn('Invalid input to findGPInstanceByParentAsset');
+      console.warn("Invalid input to findGPInstanceByParentAsset");
       return null;
     }
-    
+
     // Search through the data structure
     for (const mn of data.missionNetworks) {
       if (!mn.networkSegments) continue;
-      
+
       for (const segment of mn.networkSegments) {
         if (!segment.securityDomains) continue;
-        
+
         for (const domain of segment.securityDomains) {
           if (!domain.hwStacks) continue;
-          
+
           for (const hwStack of domain.hwStacks) {
             if (!hwStack.assets) continue;
-            
+
             for (const asset of hwStack.assets) {
               // Check if this is the asset we're looking for
               if (asset.id === assetId) {
                 // Found the asset, return the first GP instance if any exist
                 if (asset.gpInstances && asset.gpInstances.length > 0) {
-                  console.log('Found GP instance under asset', assetId, ':', asset.gpInstances[0]);
+                  console.log(
+                    "Found GP instance under asset",
+                    assetId,
+                    ":",
+                    asset.gpInstances[0]
+                  );
                   return asset.gpInstances[0];
                 } else {
-                  console.log('Asset found but it has no GP instances:', assetId);
+                  console.log(
+                    "Asset found but it has no GP instances:",
+                    assetId
+                  );
                   return null;
                 }
               }
@@ -4078,42 +4668,52 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
-    
-    console.log('Asset not found:', assetId);
+
+    console.log("Asset not found:", assetId);
     return null;
   }
-  
+
   // * Update a GP instance in the CIS plan data model
   //    * This is used after adding SP instances to ensure the model stays in sync
   //    */
   function updateGPInstanceInCISPlanData(gpInstanceId, updatedGpInstance) {
     // Traverse the CIS plan data to find the GP instance
-    if (!window.cisPlanData || !window.cisPlanData.missionNetworks) return false;
-    
+    if (!window.cisPlanData || !window.cisPlanData.missionNetworks)
+      return false;
+
     const missionNetworks = window.cisPlanData.missionNetworks;
-    
+
     // Search through each mission network
     for (const mn of missionNetworks) {
       if (!mn.networkSegments) continue;
-      
+
       for (const segment of mn.networkSegments) {
         if (!segment.securityDomains) continue;
-        
+
         for (const domain of segment.securityDomains) {
           if (!domain.hwStacks) continue;
-          
+
           for (const hwStack of domain.hwStacks) {
             if (!hwStack.assets) continue;
-            
+
             for (const asset of hwStack.assets) {
               if (!asset.gpInstances) continue;
-              
+
               // Look for the GP instance
               for (let i = 0; i < asset.gpInstances.length; i++) {
-                if (asset.gpInstances[i].id === gpInstanceId || asset.gpInstances[i].gpid === gpInstanceId) {
+                if (
+                  asset.gpInstances[i].id === gpInstanceId ||
+                  asset.gpInstances[i].gpid === gpInstanceId
+                ) {
                   // Found it - update it
-                  asset.gpInstances[i] = { ...asset.gpInstances[i], ...updatedGpInstance };
-                  console.log('Updated GP instance in data model:', asset.gpInstances[i]);
+                  asset.gpInstances[i] = {
+                    ...asset.gpInstances[i],
+                    ...updatedGpInstance,
+                  };
+                  console.log(
+                    "Updated GP instance in data model:",
+                    asset.gpInstances[i]
+                  );
                   return true;
                 }
               }
@@ -4122,7 +4722,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
-    
+
     return false;
   }
 
@@ -4376,52 +4976,67 @@ document.addEventListener("DOMContentLoaded", function () {
     const id = document.getElementById("deleteItemId").value;
     const name = document.getElementById("deleteItemName").textContent;
     let parentId = document.getElementById("deleteItemParentId").value;
+    let stateToRestore;
 
     // Enhanced debugging
-    console.log('About to delete item with:', {
+    console.log("About to delete item with:", {
       type,
       id,
       name,
-      parentId
+      parentId,
     });
-    
+
     // For SP instances, validate that we have a valid GP instance ID (not null, undefined, or the string 'null')
-    if (type === 'spInstances') {
-      console.log('Checking parentId string:', parentId);
-      console.log('Last cached GP instance ID:', window.lastGpInstanceIdForDeletion);
-      
+    if (type === "spInstances") {
+      console.log("Checking parentId string:", parentId);
+      console.log(
+        "Last cached GP instance ID:",
+        window.lastGpInstanceIdForDeletion
+      );
+
       // Check for typical problems in the parentId string
-      const hasNullInString = parentId && parentId.includes(',null');
-      const hasUndefinedInString = parentId && parentId.includes(',undefined');
-      const endsWithComma = parentId && parentId.endsWith(',');
-      
+      const hasNullInString = parentId && parentId.includes(",null");
+      const hasUndefinedInString = parentId && parentId.includes(",undefined");
+      const endsWithComma = parentId && parentId.endsWith(",");
+
       // If any problem is detected, try to fix it
       if (hasNullInString || hasUndefinedInString || endsWithComma) {
-        console.error('Invalid GP instance ID detected in parentId string:', parentId);
-        
-        // IMPROVED: Check both possible sources for the GP instance ID 
-        let correctGpId = window.lastGpInstanceIdForDeletion || window.currentGpInstanceId;
-        
-        console.log('Using backup GP instance ID:', correctGpId);
-        
+        console.error(
+          "Invalid GP instance ID detected in parentId string:",
+          parentId
+        );
+
+        // IMPROVED: Check both possible sources for the GP instance ID
+        let correctGpId =
+          window.lastGpInstanceIdForDeletion || window.currentGpInstanceId;
+
+        console.log("Using backup GP instance ID:", correctGpId);
+
         if (correctGpId) {
           // Parse the existing parentId to get the first 5 values
-          const parts = parentId.split(',');
-          const validParts = parts.slice(0, 5).filter(part => part && part !== 'null' && part !== 'undefined');
-          
+          const parts = parentId.split(",");
+          const validParts = parts
+            .slice(0, 5)
+            .filter((part) => part && part !== "null" && part !== "undefined");
+
           // Reconstruct with the valid GP instance ID
           if (validParts.length === 5) {
-            parentId = [...validParts, correctGpId].join(',');
-            console.log('Fixed parentId:', parentId);
+            parentId = [...validParts, correctGpId].join(",");
+            console.log("Fixed parentId:", parentId);
           } else {
-            console.error('Could not parse parentId string correctly');
-            showToast('Error: Invalid parent ID format', 'danger');
+            console.error("Could not parse parentId string correctly");
+            showToast("Error: Invalid parent ID format", "danger");
             return; // Exit function
           }
         } else {
           // No valid GP instance ID available - cannot proceed
-          console.error('Cannot delete SP instance without a valid GP instance ID');
-          showToast('Error: Cannot delete SP instance without a valid parent GP instance ID', 'danger');
+          console.error(
+            "Cannot delete SP instance without a valid GP instance ID"
+          );
+          showToast(
+            "Error: Cannot delete SP instance without a valid parent GP instance ID",
+            "danger"
+          );
           return; // Exit function
         }
       }
@@ -4430,32 +5045,43 @@ document.addEventListener("DOMContentLoaded", function () {
     // Deleting item
     try {
       // FINAL VALIDATION: For SP instances only, ensure the GP instance ID is in the parentId
-      if (type === 'spInstances') {
+      if (type === "spInstances") {
         // Parse the parentId string into its components
-        const parts = parentId.split(',');
-        
+        const parts = parentId.split(",");
+
         // Check if the GP instance ID (6th element) is missing or invalid
-        if (parts.length < 6 || !parts[5] || parts[5] === 'null' || parts[5] === 'undefined') {
-          console.log('FINAL VALIDATION: Missing or invalid GP instance ID in parentId string');
-          
+        if (
+          parts.length < 6 ||
+          !parts[5] ||
+          parts[5] === "null" ||
+          parts[5] === "undefined"
+        ) {
+          console.log(
+            "FINAL VALIDATION: Missing or invalid GP instance ID in parentId string"
+          );
+
           // Try to get the GP instance ID from our backup sources
-          const validGpId = window.lastGpInstanceIdForDeletion || window.currentGpInstanceId;
-          
+          const validGpId =
+            window.lastGpInstanceIdForDeletion || window.currentGpInstanceId;
+
           if (validGpId) {
-            console.log('FINAL VALIDATION: Using backup GP instance ID:', validGpId);
-            
+            console.log(
+              "FINAL VALIDATION: Using backup GP instance ID:",
+              validGpId
+            );
+
             // If we have at least 5 parts (up to asset ID), add the GP instance ID
             if (parts.length >= 5) {
-              parentId = parts.slice(0, 5).join(',') + ',' + validGpId;
-              console.log('FINAL VALIDATION: Fixed parentId:', parentId);
+              parentId = parts.slice(0, 5).join(",") + "," + validGpId;
+              console.log("FINAL VALIDATION: Fixed parentId:", parentId);
             }
           }
         }
       }
-      
+
       // Call the API to delete the item - EXPLICITLY pass the parentId to ensure it's included
-      console.log('Making API call with final parentId:', parentId);
-      const apiResult = await CISApi.deleteItem(type, id, parentId || '');
+      console.log("Making API call with final parentId:", parentId);
+      const apiResult = await CISApi.deleteItem(type, id, parentId || "");
 
       if (apiResult.success) {
         // Close the modal using CISUtils helper for consistent modal handling
@@ -4464,24 +5090,77 @@ document.addEventListener("DOMContentLoaded", function () {
         // Show success message
         showToast(`${name} deleted successfully!`);
 
-        // Create a state to restore to the appropriate parent based on the entity type
-        let stateToRestore;
+        // ADD THIS CODE: Reset CISPlanPointer state to properly clear the detail panel after deletion
+        if (type === "missionNetworks") {
+          // If we're deleting a mission network, navigate to the root
+          console.log(
+            "Resetting CISPlanPointer state to root after mission network deletion"
+          );
+          CISPlanPointer.resetState();
 
+          // Set current to root node for consistency
+          CISPlanPointer.updateState("root", "L0", "root-cisplan", "CIS Plan", {
+            id: "root-cisplan",
+            name: "CIS Plan",
+            type: "root",
+          });
+
+          console.log(
+            "CISPlanPointer state after reset:",
+            CISPlanPointer.getState()
+          );
+
+          // IMPORTANT: Update stateToRestore to use the root node instead of the deleted mission network
+          stateToRestore = {
+            nodeType: "root",
+            nodeId: "root-cisplan",
+            // Add this line to explicitly set this as a root-level element
+            isRootLevel: true,
+          };
+
+          console.log("Updated stateToRestore to root:", stateToRestore);
+          // Call refresh panels directly with the root state
+          try {
+            await refreshPanelsWithState(stateToRestore);
+            // Return early to prevent the regular refresh logic
+            return;
+          } catch (error) {
+            console.error(
+              "Error updating tree after mission network deletion:",
+              error
+            );
+            showToast(
+              "Mission network was deleted, but there was a problem updating the display",
+              "warning"
+            );
+            return;
+          }
+        }
         // Special handling for network interfaces, GP instances, and SP instances
-        if (type === "networkInterfaces" || type === "gpInstances" || type === "spInstances") {
+        if (
+          type === "networkInterfaces" ||
+          type === "gpInstances" ||
+          type === "spInstances"
+        ) {
           // For network interfaces, GP instances, and SP instances, extract parent IDs from the comma-separated string
           const parentIds = parentId.split(",");
 
           if (type === "spInstances") {
             // For SP instances, we need to ensure we navigate directly to the GP instance view
             // Get the GP Instance ID from the parentIds array or from our backup source
-            const gpInstanceId = parentIds[5] || window.lastGpInstanceIdForDeletion || window.currentGpInstanceId;
-            console.log('Preparing to restore to GP instance after SP deletion:', gpInstanceId);
-            
+            const gpInstanceId =
+              parentIds[5] ||
+              window.lastGpInstanceIdForDeletion ||
+              window.currentGpInstanceId;
+            console.log(
+              "Preparing to restore to GP instance after SP deletion:",
+              gpInstanceId
+            );
+
             // Set up the complete state including all parent references
             stateToRestore = {
               nodeType: "gpInstances", // We're targeting a GP instance
-              nodeId: gpInstanceId,    // The GP instance ID to restore to
+              nodeId: gpInstanceId, // The GP instance ID to restore to
               // All parent references for the hierarchy
               assetId: parentIds[4],
               hwStackId: parentIds[3],
@@ -4489,7 +5168,7 @@ document.addEventListener("DOMContentLoaded", function () {
               segmentId: parentIds[1],
               missionNetworkId: parentIds[0],
               // Special flag to indicate this is an SP instance deletion
-              fromSpDeletion: true
+              fromSpDeletion: true,
             };
           } else {
             // For network interfaces and GP instances, restore to the parent asset
@@ -4747,9 +5426,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isActive) {
         this.classList.add("active");
         currentTreeNode = this;
-        
+
         // Update the CISPlanPointer with the root node selection
-        CISPlanPointer.handleTreeClick(this, {name: "CIS Plan"}, 'root', {});
+        CISPlanPointer.handleTreeClick(this, { name: "CIS Plan" }, "root", {});
 
         // When the root node is selected, display all mission networks in the Elements panel
         if (elementsTitle) {
@@ -4820,10 +5499,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
-          
+
           // Update the CISPlanPointer with the mission network selection
-          CISPlanPointer.handleTreeClick(this, missionNetwork, 'missionNetwork', {});
-          
+          CISPlanPointer.handleTreeClick(
+            this,
+            missionNetwork,
+            "missionNetwork",
+            {}
+          );
+
           loadSelectedNodeChildren(missionNetwork, "missionNetworks");
         }
 
@@ -4903,12 +5587,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
-          
+
           // Update the CISPlanPointer with the network segment selection
-          CISPlanPointer.handleTreeClick(this, segment, 'networkSegment', {
-            missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null
+          CISPlanPointer.handleTreeClick(this, segment, "networkSegment", {
+            missionNetwork: parentMissionNetwork
+              ? typeof parentMissionNetwork === "object"
+                ? parentMissionNetwork.id
+                : parentMissionNetwork
+              : null,
           });
-          
+
           loadSelectedNodeChildren(
             segment,
             "networkSegments",
@@ -5005,13 +5693,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
-          
+
           // Update the CISPlanPointer with the security domain selection
-          CISPlanPointer.handleTreeClick(this, domain, 'securityDomain', {
-            missionNetwork: parentMissionNetwork ? parentMissionNetwork.id : null,
-            networkSegment: parentSegment ? parentSegment.id : null
+          CISPlanPointer.handleTreeClick(this, domain, "securityDomain", {
+            missionNetwork: parentMissionNetwork
+              ? parentMissionNetwork.id
+              : null,
+            networkSegment: parentSegment ? parentSegment.id : null,
           });
-          
+
           loadSelectedNodeChildren(
             domain,
             "securityDomains",
@@ -5119,14 +5809,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
-          
+
           // Update the CISPlanPointer with the hardware stack selection
-          CISPlanPointer.handleTreeClick(this, stack, 'hwStack', {
-            missionNetwork: parentMissionNetwork ? parentMissionNetwork.id : null,
+          CISPlanPointer.handleTreeClick(this, stack, "hwStack", {
+            missionNetwork: parentMissionNetwork
+              ? parentMissionNetwork.id
+              : null,
             networkSegment: parentSegment ? parentSegment.id : null,
-            securityDomain: parentDomain ? parentDomain.id : null
+            securityDomain: parentDomain ? parentDomain.id : null,
           });
-          
+
           loadSelectedNodeChildren(
             stack,
             "hwStacks",
@@ -5273,13 +5965,29 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         this.classList.add("active");
         currentTreeNode = this;
-        
+
         // Update the CISPlanPointer with the asset selection
-        CISPlanPointer.handleTreeClick(this, asset, 'asset', {
-          missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null,
-          networkSegment: parentSegment ? (typeof parentSegment === 'object' ? parentSegment.id : parentSegment) : null,
-          securityDomain: parentDomain ? (typeof parentDomain === 'object' ? parentDomain.id : parentDomain) : null,
-          hwStack: parentStack ? (typeof parentStack === 'object' ? parentStack.id : parentStack) : null
+        CISPlanPointer.handleTreeClick(this, asset, "asset", {
+          missionNetwork: parentMissionNetwork
+            ? typeof parentMissionNetwork === "object"
+              ? parentMissionNetwork.id
+              : parentMissionNetwork
+            : null,
+          networkSegment: parentSegment
+            ? typeof parentSegment === "object"
+              ? parentSegment.id
+              : parentSegment
+            : null,
+          securityDomain: parentDomain
+            ? typeof parentDomain === "object"
+              ? parentDomain.id
+              : parentDomain
+            : null,
+          hwStack: parentStack
+            ? typeof parentStack === "object"
+              ? parentStack.id
+              : parentStack
+            : null,
         });
 
         // Update elements panel
@@ -5444,16 +6152,41 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
-          
+
           // Update the CISPlanPointer with the network interface selection
-          CISPlanPointer.handleTreeClick(this, networkInterface, 'networkInterface', {
-            missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null,
-            networkSegment: parentSegment ? (typeof parentSegment === 'object' ? parentSegment.id : parentSegment) : null,
-            securityDomain: parentDomain ? (typeof parentDomain === 'object' ? parentDomain.id : parentDomain) : null,
-            hwStack: parentStack ? (typeof parentStack === 'object' ? parentStack.id : parentStack) : null,
-            asset: parentAsset ? (typeof parentAsset === 'object' ? parentAsset.id : parentAsset) : null
-          });
-          
+          CISPlanPointer.handleTreeClick(
+            this,
+            networkInterface,
+            "networkInterface",
+            {
+              missionNetwork: parentMissionNetwork
+                ? typeof parentMissionNetwork === "object"
+                  ? parentMissionNetwork.id
+                  : parentMissionNetwork
+                : null,
+              networkSegment: parentSegment
+                ? typeof parentSegment === "object"
+                  ? parentSegment.id
+                  : parentSegment
+                : null,
+              securityDomain: parentDomain
+                ? typeof parentDomain === "object"
+                  ? parentDomain.id
+                  : parentDomain
+                : null,
+              hwStack: parentStack
+                ? typeof parentStack === "object"
+                  ? parentStack.id
+                  : parentStack
+                : null,
+              asset: parentAsset
+                ? typeof parentAsset === "object"
+                  ? parentAsset.id
+                  : parentAsset
+                : null,
+            }
+          );
+
           loadSelectedNodeChildren(
             networkInterface,
             "networkInterfaces",
@@ -5472,24 +6205,28 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fetch GP name for an item with its gpid
   async function fetchGPName(gpid) {
     // Validate that this is actually a GP ID and not an asset ID or other ID type
-    if (!gpid || typeof gpid !== 'string') {
+    if (!gpid || typeof gpid !== "string") {
       console.warn(`Invalid GP ID format: ${gpid}`);
       return null;
     }
-    
+
     // Check if this looks like a GP ID (should start with GP-)
-    if (!gpid.startsWith('GP-')) {
-      console.warn(`ID ${gpid} doesn't appear to be a valid GP ID (doesn't start with GP-). Skipping API call.`);
+    if (!gpid.startsWith("GP-")) {
+      console.warn(
+        `ID ${gpid} doesn't appear to be a valid GP ID (doesn't start with GP-). Skipping API call.`
+      );
       return `Generic Product`; // Return a generic name instead of null to avoid UI issues
     }
-    
+
     try {
       const response = await fetch(`/api/gps/${gpid}/name`);
       if (response.ok) {
         const result = await response.json();
         return result.name;
       } else {
-        console.warn(`API returned non-OK response for GP name fetch: ${response.status}`);
+        console.warn(
+          `API returned non-OK response for GP name fetch: ${response.status}`
+        );
       }
     } catch (error) {
       console.error(`Error fetching GP name: ${error}`);
@@ -5544,7 +6281,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gpInstance.guid,
         "fa-cogs"
       );
-      
+
       // Store the actual id as data-instance-id for reference
       gpInstanceNode.setAttribute("data-instance-id", gpInstance.id);
 
@@ -5579,7 +6316,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ? parentMissionNetwork.id
           : parentMissionNetwork
       );
-      
+
       // CRITICAL: Set parent reference ID attributes (needed for deletion operations)
       // This is the critical difference from network interfaces - these ID-suffixed attributes are needed
       gpInstanceNode.setAttribute(
@@ -5604,7 +6341,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ? parentMissionNetwork.id
           : parentMissionNetwork
       );
-      
+
       // Also store the references directly on the gpInstance object, like we do for network interfaces
       gpInstance.parentAsset = parentAsset;
       gpInstance.parentStack = parentStack;
@@ -5621,34 +6358,40 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(childrenContainer);
 
       // Add toggle functionality
-      gpInstanceNode.querySelector(".tree-toggle").addEventListener("click", function (e) {
-        e.stopPropagation();
-        const toggleIcon = this.querySelector("i");
-        const isExpanded = childrenContainer.style.display === "block";
-        
-        // Toggle children visibility
-        childrenContainer.style.display = isExpanded ? "none" : "block";
-        
-        // Toggle icon
-        toggleIcon.className = isExpanded 
-          ? "fas fa-chevron-right" 
-          : "fas fa-chevron-down";
-        
-        // If expanding and we have SP instances, render them
-        if (!isExpanded && gpInstance.spInstances && gpInstance.spInstances.length > 0) {
-          // Render SP instances inside the children container
-          renderSPInstances(
-            childrenContainer,
-            gpInstance.spInstances,
-            gpInstance,
-            parentAsset,
-            parentStack,
-            parentDomain,
-            parentSegment,
-            parentMissionNetwork
-          );
-        }
-      });
+      gpInstanceNode
+        .querySelector(".tree-toggle")
+        .addEventListener("click", function (e) {
+          e.stopPropagation();
+          const toggleIcon = this.querySelector("i");
+          const isExpanded = childrenContainer.style.display === "block";
+
+          // Toggle children visibility
+          childrenContainer.style.display = isExpanded ? "none" : "block";
+
+          // Toggle icon
+          toggleIcon.className = isExpanded
+            ? "fas fa-chevron-right"
+            : "fas fa-chevron-down";
+
+          // If expanding and we have SP instances, render them
+          if (
+            !isExpanded &&
+            gpInstance.spInstances &&
+            gpInstance.spInstances.length > 0
+          ) {
+            // Render SP instances inside the children container
+            renderSPInstances(
+              childrenContainer,
+              gpInstance.spInstances,
+              gpInstance,
+              parentAsset,
+              parentStack,
+              parentDomain,
+              parentSegment,
+              parentMissionNetwork
+            );
+          }
+        });
 
       // Add click event to GP instance node
       gpInstanceNode.addEventListener("click", function (e) {
@@ -5664,7 +6407,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
-          
+
           // Create a proper GP instance object to pass to loadSelectedNodeChildren
           // Make sure we're passing the actual GP instance ID, not the asset ID
           const gpInstanceData = {
@@ -5678,20 +6421,44 @@ document.addEventListener("DOMContentLoaded", function () {
             gpid: gpInstance.gpid || this.getAttribute("data-id") || null,
             guid: gpInstance.guid || null,
             // Make sure the type is explicitly set
-            type: "gpInstances"
+            type: "gpInstances",
           };
-          
+
           // Update the CISPlanPointer with the GP instance selection
-          CISPlanPointer.handleTreeClick(this, gpInstanceData, 'gpInstance', {
-            missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null,
-            networkSegment: parentSegment ? (typeof parentSegment === 'object' ? parentSegment.id : parentSegment) : null,
-            securityDomain: parentDomain ? (typeof parentDomain === 'object' ? parentDomain.id : parentDomain) : null,
-            hwStack: parentStack ? (typeof parentStack === 'object' ? parentStack.id : parentStack) : null,
-            asset: parentAsset ? (typeof parentAsset === 'object' ? parentAsset.id : parentAsset) : null
+          CISPlanPointer.handleTreeClick(this, gpInstanceData, "gpInstance", {
+            missionNetwork: parentMissionNetwork
+              ? typeof parentMissionNetwork === "object"
+                ? parentMissionNetwork.id
+                : parentMissionNetwork
+              : null,
+            networkSegment: parentSegment
+              ? typeof parentSegment === "object"
+                ? parentSegment.id
+                : parentSegment
+              : null,
+            securityDomain: parentDomain
+              ? typeof parentDomain === "object"
+                ? parentDomain.id
+                : parentDomain
+              : null,
+            hwStack: parentStack
+              ? typeof parentStack === "object"
+                ? parentStack.id
+                : parentStack
+              : null,
+            asset: parentAsset
+              ? typeof parentAsset === "object"
+                ? parentAsset.id
+                : parentAsset
+              : null,
           });
-          
-          console.log("Clicked GP instance tree node, passing data with gpid:", gpInstanceData.id, gpInstanceData);
-          
+
+          console.log(
+            "Clicked GP instance tree node, passing data with gpid:",
+            gpInstanceData.id,
+            gpInstanceData
+          );
+
           // CRITICAL FIX: When calling loadSelectedNodeChildren for GP instances,
           // we need to make sure we're not passing the asset as the first parent parameter.
           // Instead, we'll pass the GP ID explicitly as the first parameter to ensure
@@ -5706,14 +6473,14 @@ document.addEventListener("DOMContentLoaded", function () {
             parentSegment,
             parentMissionNetwork
           );
-          
+
           // Also set the global window.currentGpInstanceId for consistency
           window.currentGpInstanceId = gpInstanceData.gpid || gpInstanceData.id;
         }
       });
     });
   }
-  
+
   // Render SP instances under a GP instance
   function renderSPInstances(
     container,
@@ -5727,7 +6494,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ) {
     // Clear existing children to avoid duplicates
     container.innerHTML = "";
-    
+
     if (!spInstances || spInstances.length === 0) {
       const noItemsMessage = document.createElement("div");
       noItemsMessage.className = "text-muted small p-2";
@@ -5735,12 +6502,12 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(noItemsMessage);
       return;
     }
-    
+
     // Render each SP instance
-    spInstances.forEach(spInstance => {
+    spInstances.forEach((spInstance) => {
       // Initial display name using SP ID and version
       const initialDisplayName = `SP-${spInstance.spId} v${spInstance.spVersion}`;
-      
+
       // Create the tree node with initial display name
       const spInstanceNode = createTreeNode(
         "spInstances",
@@ -5787,31 +6554,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Add the node to the container
       container.appendChild(spInstanceNode);
-      
+
       // Fetch SP name and update the node text asynchronously
       if (spInstance.spId) {
-        (async function() {
+        (async function () {
           try {
             const response = await fetch(`/api/sps/name/${spInstance.spId}`);
             if (response.ok) {
               const result = await response.json();
-              
+
               if (result.success && result.name) {
                 // Format display name with SP name and version in parentheses
                 let displayName = result.name;
                 if (spInstance.spVersion) {
                   displayName = `${result.name} (v${spInstance.spVersion})`;
                 }
-                
+
                 // Find the name element inside the tree node and update it
-                const nameElement = spInstanceNode.querySelector('.node-text');
+                const nameElement = spInstanceNode.querySelector(".node-text");
                 if (nameElement) {
                   nameElement.textContent = displayName;
                 }
               }
             }
           } catch (error) {
-            console.error(`Error fetching SP name for ${spInstance.spId}:`, error);
+            console.error(
+              `Error fetching SP name for ${spInstance.spId}:`,
+              error
+            );
           }
         })();
       }
@@ -5824,7 +6594,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const isActive = this.classList.contains("active");
 
         // Remove active class from all nodes
-        document.querySelectorAll(".tree-node.active").forEach(node => {
+        document.querySelectorAll(".tree-node.active").forEach((node) => {
           node.classList.remove("active");
         });
 
@@ -5832,37 +6602,70 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isActive) {
           this.classList.add("active");
           currentTreeNode = this;
-          
+
           // Set current element (important for the detail panel)
           currentElement = spInstance;
           currentElement.type = "spInstances";
-          
+
           // Get the parent GP instance ID from the tree node and add it to the currentElement
           const gpInstanceId = this.getAttribute("data-parent-gp-instance");
-          console.log("Tree node click - GP instance ID for this SP instance:", gpInstanceId);
-          
+          console.log(
+            "Tree node click - GP instance ID for this SP instance:",
+            gpInstanceId
+          );
+
           // Update the CISPlanPointer with the SP instance selection
-          CISPlanPointer.handleTreeClick(this, spInstance, 'spInstance', {
-            missionNetwork: parentMissionNetwork ? (typeof parentMissionNetwork === 'object' ? parentMissionNetwork.id : parentMissionNetwork) : null,
-            networkSegment: parentSegment ? (typeof parentSegment === 'object' ? parentSegment.id : parentSegment) : null,
-            securityDomain: parentDomain ? (typeof parentDomain === 'object' ? parentDomain.id : parentDomain) : null,
-            hwStack: parentStack ? (typeof parentStack === 'object' ? parentStack.id : parentStack) : null,
-            asset: parentAsset ? (typeof parentAsset === 'object' ? parentAsset.id : parentAsset) : null,
-            gpInstance: parentGPInstance ? (typeof parentGPInstance === 'object' ? parentGPInstance.gpid || parentGPInstance.id : parentGPInstance) : gpInstanceId
+          CISPlanPointer.handleTreeClick(this, spInstance, "spInstance", {
+            missionNetwork: parentMissionNetwork
+              ? typeof parentMissionNetwork === "object"
+                ? parentMissionNetwork.id
+                : parentMissionNetwork
+              : null,
+            networkSegment: parentSegment
+              ? typeof parentSegment === "object"
+                ? parentSegment.id
+                : parentSegment
+              : null,
+            securityDomain: parentDomain
+              ? typeof parentDomain === "object"
+                ? parentDomain.id
+                : parentDomain
+              : null,
+            hwStack: parentStack
+              ? typeof parentStack === "object"
+                ? parentStack.id
+                : parentStack
+              : null,
+            asset: parentAsset
+              ? typeof parentAsset === "object"
+                ? parentAsset.id
+                : parentAsset
+              : null,
+            gpInstance: parentGPInstance
+              ? typeof parentGPInstance === "object"
+                ? parentGPInstance.gpid || parentGPInstance.id
+                : parentGPInstance
+              : gpInstanceId,
           });
-          
+
           // Always set the parent GP instance ID, even if we have to look in multiple places
           if (gpInstanceId) {
             currentElement.parentGpInstance = gpInstanceId;
           } else if (spInstance.parentGpInstance) {
             // Use the value already on the SP instance
-            console.log("Using parentGpInstance from spInstance object:", spInstance.parentGpInstance);
+            console.log(
+              "Using parentGpInstance from spInstance object:",
+              spInstance.parentGpInstance
+            );
           } else if (window.currentGpInstanceId) {
             // Fall back to global context if available
             currentElement.parentGpInstance = window.currentGpInstanceId;
-            console.log("Using currentGpInstanceId from window:", window.currentGpInstanceId);
+            console.log(
+              "Using currentGpInstanceId from window:",
+              window.currentGpInstanceId
+            );
           }
-          
+
           // Update the detail panel
           updateDetailPanel(spInstance, "spInstances");
         }
@@ -5912,18 +6715,18 @@ document.addEventListener("DOMContentLoaded", function () {
       loadGPInstanceChildren(nodeData, ...parentData);
       return;
     }
-    
+
     // Special handling for SP instances - they don't have children, just show details
     if (nodeType === "spInstances") {
       // Clear the elements container
       if (elementsContainer) {
         elementsContainer.innerHTML = "";
       }
-      
+
       // Set current element to this SP instance
       currentElement = nodeData;
       currentElement.type = "spInstances";
-      
+
       // Update the detail panel with SP instance details
       updateDetailPanel(currentElement, "spInstances");
       return;
@@ -6083,8 +6886,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Render element cards in the elements panel
   function renderElementCards(container, elements, type) {
+    console.log("renderElementCards called with", {
+      containerExists: !!container,
+      elementsCount: elements?.length || 0,
+      type: type
+    });
+    
     // First, clear the container
     container.innerHTML = "";
+    console.log("Container cleared");
 
     // Create a sticky header for the Assets list if we're on a scrollable list
     if (type === "assets") {
@@ -6163,36 +6973,76 @@ document.addEventListener("DOMContentLoaded", function () {
           // Store the selected element and its type
           currentElement = element;
           currentElement.type = type; // Store the type explicitly
-          
+
           // Use the CISPlanPointer to handle the central panel element click
           // This will update the selected element in the pointer system
-          console.log('Asset clicked in central panel:', element);
-          
+          console.log("Asset clicked in central panel:", element);
+
           if (!currentTreeNode) {
-            console.warn('currentTreeNode is not defined when clicking asset in central panel!');
+            console.warn(
+              "currentTreeNode is not defined when clicking asset in central panel!"
+            );
             // In this case, we can't get parent references from the currentTreeNode
             // Let's try to find the tree node that corresponds to this asset
-            const assetTreeNode = document.querySelector(`.tree-node[data-type="asset"][data-id="${element.id}"]`);
-            
+            const assetTreeNode = document.querySelector(
+              `.tree-node[data-type="asset"][data-id="${element.id}"]`
+            );
+
             if (assetTreeNode) {
-              console.log('Found corresponding tree node for asset:', assetTreeNode);
+              console.log(
+                "Found corresponding tree node for asset:",
+                assetTreeNode
+              );
               // Use this node instead
-              CISPlanPointer.handleCentralPanelClick(element, type, assetTreeNode);
+              CISPlanPointer.handleCentralPanelClick(
+                element,
+                type,
+                assetTreeNode
+              );
             } else {
-              console.warn('Could not find corresponding tree node for asset:', element.id);
+              console.warn(
+                "Could not find corresponding tree node for asset:",
+                element.id
+              );
               // Just update with the element itself, no parent references
-              CISPlanPointer.updateSelectedOnly(type, 'L1.1.1.1.1', element.id, element.name, element, {});
+              CISPlanPointer.updateSelectedOnly(
+                type,
+                "L1.1.1.1.1",
+                element.id,
+                element.name,
+                element,
+                {}
+              );
             }
           } else {
-            console.log('Current tree node:', currentTreeNode);
-            console.log('currentTreeNode type:', currentTreeNode.getAttribute("data-type"));
-            console.log('currentTreeNode parent-stack:', currentTreeNode.getAttribute("data-parent-stack"));
-            console.log('currentTreeNode parent-domain:', currentTreeNode.getAttribute("data-parent-domain"));
-            console.log('currentTreeNode parent-segment:', currentTreeNode.getAttribute("data-parent-segment"));
-            console.log('currentTreeNode parent-mission-network:', currentTreeNode.getAttribute("data-parent-mission-network"));
-            
+            console.log("Current tree node:", currentTreeNode);
+            console.log(
+              "currentTreeNode type:",
+              currentTreeNode.getAttribute("data-type")
+            );
+            console.log(
+              "currentTreeNode parent-stack:",
+              currentTreeNode.getAttribute("data-parent-stack")
+            );
+            console.log(
+              "currentTreeNode parent-domain:",
+              currentTreeNode.getAttribute("data-parent-domain")
+            );
+            console.log(
+              "currentTreeNode parent-segment:",
+              currentTreeNode.getAttribute("data-parent-segment")
+            );
+            console.log(
+              "currentTreeNode parent-mission-network:",
+              currentTreeNode.getAttribute("data-parent-mission-network")
+            );
+
             // Pass detailed information to the pointer
-            CISPlanPointer.handleCentralPanelClick(element, type, currentTreeNode);
+            CISPlanPointer.handleCentralPanelClick(
+              element,
+              type,
+              currentTreeNode
+            );
           }
 
           // Update detail panel
@@ -6203,7 +7053,10 @@ document.addEventListener("DOMContentLoaded", function () {
         assetItem.addEventListener("dblclick", function (event) {
           // For GP instances, use the gpid instead of id to correctly find the tree node
           if (type === "gpInstances" && element.gpid) {
-            console.log("Double-click on GP instance card, using gpid for tree navigation:", element.gpid);
+            console.log(
+              "Double-click on GP instance card, using gpid for tree navigation:",
+              element.gpid
+            );
             findAndSelectTreeNode(type, element.gpid);
           } else {
             // For other types, use the regular id
@@ -6224,44 +7077,46 @@ document.addEventListener("DOMContentLoaded", function () {
     stickyHeader.className =
       "sticky-top bg-light mb-2 p-2 d-flex justify-content-between align-items-center border-bottom";
     stickyHeader.style.zIndex = "100";
-    
+
     // Format the type name for display (e.g., "networkInterfaces" -> "Network Interfaces")
-    const formattedType = type.replace(/([A-Z])/g, ' $1')
-      .replace(/^./, str => str.toUpperCase())
-      .replace(/([a-z])([A-Z])/g, '$1 $2');
-      
+    const formattedType = type
+      .replace(/([A-Z])/g, " $1")
+      .replace(/^./, (str) => str.toUpperCase())
+      .replace(/([a-z])([A-Z])/g, "$1 $2");
+
     // Create title in sticky header
     const headerTitle = document.createElement("h5");
     headerTitle.className = "m-0";
     headerTitle.textContent = `${formattedType} (${elements.length})`;
     stickyHeader.appendChild(headerTitle);
-    
+
     container.appendChild(stickyHeader);
-    
+
     // Create compact layout container
     const compactList = document.createElement("div");
     compactList.className = "compact-element-list";
     compactList.style.overflow = "auto"; // Enable scrolling if needed
     container.appendChild(compactList);
-    
+
     // Create a grid layout for more condensed view with minimal gaps
     const grid = document.createElement("div");
     grid.className = "row row-cols-2 row-cols-md-3 row-cols-lg-3 g-1"; // Smallest gap
     compactList.appendChild(grid);
-    
+
     // Store current selected element ID if there is one
     let selectedElementId = "";
     if (currentElement && currentElement.id) {
       selectedElementId = currentElement.id;
     }
-    
+
     // Render each element in a compact form
     elements.forEach((element) => {
       const col = document.createElement("div");
       col.className = "col";
-      
+
       const itemElement = document.createElement("div");
-      itemElement.className = "element-item p-1 border rounded d-flex align-items-center";
+      itemElement.className =
+        "element-item p-1 border rounded d-flex align-items-center";
       if (selectedElementId === element.id) {
         itemElement.classList.add("active", "bg-primary", "text-white");
       }
@@ -6271,7 +7126,11 @@ document.addEventListener("DOMContentLoaded", function () {
       itemElement.setAttribute("data-guid", element.guid);
 
       // For gpInstances, networkInterfaces, or spInstances, add parent reference attributes for proper deletion
-      if (type === "gpInstances" || type === "networkInterfaces" || type === "spInstances") {
+      if (
+        type === "gpInstances" ||
+        type === "networkInterfaces" ||
+        type === "spInstances"
+      ) {
         // Get parent references from the current tree node
         if (currentTreeNode) {
           // Add parent asset reference
@@ -6307,7 +7166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Get the SVG icon for this element type
       const iconPath = getElementIcon(type);
-      
+
       // Generate display content based on element type
       let displayName = element.name || "";
 
@@ -6365,14 +7224,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 // Find and update the element name span
-                const nameSpan = itemElement.querySelector('.element-name');
+                const nameSpan = itemElement.querySelector(".element-name");
                 if (nameSpan) {
                   nameSpan.textContent = updatedText;
                 }
                 // Update the data attribute with the final display name
                 itemElement.setAttribute("data-display-name", updatedText);
                 // Update tooltip
-                itemElement.setAttribute("title", `${updatedText} (${element.id})`);
+                itemElement.setAttribute(
+                  "title",
+                  `${updatedText} (${element.id})`
+                );
               }
             } catch (error) {
               console.error(
@@ -6389,64 +7251,75 @@ document.addEventListener("DOMContentLoaded", function () {
         if (element.spVersion) {
           displayName += ` v${element.spVersion}`;
         }
-        
+
         // Store initial display name as data attribute
         itemElement.setAttribute("data-display-name", displayName);
-        
+
         // If we have a spId, fetch the actual SP name
         if (element.spId) {
           // Fetch SP name asynchronously
-          (async function() {
+          (async function () {
             try {
               const response = await fetch(`/api/sps/name/${element.spId}`);
               if (response.ok) {
                 const result = await response.json();
-                
+
                 if (result.success && result.name) {
                   // Format display name - include SP name and version if available
                   let spName = result.name;
                   let updatedText = spName;
-                  
+
                   // If we have a version, add it in parentheses
                   if (element.spVersion) {
                     updatedText = `${spName} (v${element.spVersion})`;
                   }
-                  
+
                   // Find and update the element name span
-                  const nameSpan = itemElement.querySelector('.element-name');
+                  const nameSpan = itemElement.querySelector(".element-name");
                   if (nameSpan) {
                     nameSpan.textContent = updatedText;
                   }
                   // Update the data attribute with the final display name
                   itemElement.setAttribute("data-display-name", updatedText);
                   // Update tooltip
-                  itemElement.setAttribute("title", `${updatedText} (${element.id})`);
+                  itemElement.setAttribute(
+                    "title",
+                    `${updatedText} (${element.id})`
+                  );
                 }
               }
             } catch (error) {
-              console.error(`Error fetching SP name for ${element.spId}:`, error);
+              console.error(
+                `Error fetching SP name for ${element.spId}:`,
+                error
+              );
             }
           })();
         }
       }
-      
+
       // Create compact layout with icon and name (similar to assets)
       itemElement.innerHTML = `
         <img src="${iconPath}" width="20" height="20" alt="${type} icon" class="me-2">
         <div class="element-name text-truncate" style="font-size: 0.85rem;">${displayName}</div>
       `;
-      
+
       // Add tooltip with full name and ID info
       itemElement.setAttribute("title", `${displayName} (${element.id})`);
-      
+
       // For special types that need participant info, add it to the tooltip
       if (type === "hwStacks" && element.cisParticipantID) {
         // Asynchronously fetch and update the participant name
         (async function () {
-          const participantName = await getParticipantNameByKey(element.cisParticipantID);
+          const participantName = await getParticipantNameByKey(
+            element.cisParticipantID
+          );
           if (participantName && participantName !== element.cisParticipantID) {
             const currentTitle = itemElement.getAttribute("title");
-            itemElement.setAttribute("title", `${currentTitle}\nParticipant: ${participantName}`);
+            itemElement.setAttribute(
+              "title",
+              `${currentTitle}\nParticipant: ${participantName}`
+            );
           }
         })();
       }
@@ -6464,14 +7337,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // Store the selected element and its type
         currentElement = element;
         currentElement.type = type; // Store the type explicitly
-        
+
         // Use the CISPlanPointer to handle the central panel element click
         // This will update the selected element in the pointer system
         CISPlanPointer.handleCentralPanelClick(element, type, currentTreeNode);
 
         // Update detail panel
         updateDetailPanel(element, type);
-        
+
         // Enable edit and delete buttons
         if (editDetailButton) editDetailButton.disabled = false;
         if (deleteDetailButton) deleteDetailButton.disabled = false;
@@ -6481,15 +7354,18 @@ document.addEventListener("DOMContentLoaded", function () {
       itemElement.addEventListener("dblclick", function (event) {
         // Prevent the click event from firing
         event.stopPropagation();
-        
+
         // For leaf node types, don't try to drill down
         if (type === "networkInterfaces" || type === "spInstances") {
           return;
         }
-        
+
         // For GP instances, use gpid for tree navigation instead of id
         if (type === "gpInstances" && element.gpid) {
-          console.log("Double-click on GP instance card, using gpid for tree navigation:", element.gpid);
+          console.log(
+            "Double-click on GP instance card, using gpid for tree navigation:",
+            element.gpid
+          );
           findAndSelectTreeNode(type, element.gpid);
         } else {
           // For other types, use the regular id
@@ -6510,7 +7386,7 @@ document.addEventListener("DOMContentLoaded", function () {
           element.parentMissionNetwork = { id: missionNetworkId };
         }
       }
-      
+
       // Ensure parent references for hierarchy are populated
       if (type === "assets") {
         // For assets, we need to ensure all parent references are set
@@ -6543,11 +7419,18 @@ document.addEventListener("DOMContentLoaded", function () {
         // First check if we have info from the current tree node
         if (currentTreeNode) {
           // Set all parent references using only currentTreeNode since itemElement might not have these attributes yet
-          element.parentAsset = currentTreeNode.getAttribute("data-parent-asset");
-          element.parentStack = currentTreeNode.getAttribute("data-parent-stack");
-          element.parentDomain = currentTreeNode.getAttribute("data-parent-domain");
-          element.parentSegment = currentTreeNode.getAttribute("data-parent-segment");
-          element.parentMissionNetwork = currentTreeNode.getAttribute("data-parent-mission-network");
+          element.parentAsset =
+            currentTreeNode.getAttribute("data-parent-asset");
+          element.parentStack =
+            currentTreeNode.getAttribute("data-parent-stack");
+          element.parentDomain =
+            currentTreeNode.getAttribute("data-parent-domain");
+          element.parentSegment = currentTreeNode.getAttribute(
+            "data-parent-segment"
+          );
+          element.parentMissionNetwork = currentTreeNode.getAttribute(
+            "data-parent-mission-network"
+          );
         }
       }
     });
@@ -6562,97 +7445,129 @@ document.addEventListener("DOMContentLoaded", function () {
     if (elementsContainer) {
       elementsContainer.innerHTML = "";
     }
-    
+
     // Handle the different call patterns
     let gpInstanceId;
     let actualGpInstance = null;
-    
+
     // First, determine the source of our GP instance data
-    if (parentData.length > 0 && typeof parentData[0] === 'string') {
+    if (parentData.length > 0 && typeof parentData[0] === "string") {
       // This is a call from state restoration with explicit GP ID
       gpInstanceId = parentData[0];
-      console.log('***** parentData *****', parentData);
-      
+      console.log("***** parentData *****", parentData);
+
       // CRITICAL FIX: Validate that parentData[0] is a GP ID, not an asset ID
-      if (gpInstanceId.startsWith('AS-')) {
-        console.warn('Received asset ID in parentData[0]:', gpInstanceId);
+      if (gpInstanceId.startsWith("AS-")) {
+        console.warn("Received asset ID in parentData[0]:", gpInstanceId);
         // Check if we have a GP instance in the data, and a valid gpid property
-        if (gpInstance && typeof gpInstance === 'object' && gpInstance.gpid && 
-            typeof gpInstance.gpid === 'string' && gpInstance.gpid.startsWith('GP-')) {
-          console.log('Using gpid from gpInstance object instead:', gpInstance.gpid);
+        if (
+          gpInstance &&
+          typeof gpInstance === "object" &&
+          gpInstance.gpid &&
+          typeof gpInstance.gpid === "string" &&
+          gpInstance.gpid.startsWith("GP-")
+        ) {
+          console.log(
+            "Using gpid from gpInstance object instead:",
+            gpInstance.gpid
+          );
           gpInstanceId = gpInstance.gpid;
         } else {
           // Try to find the actual GP instance using the asset ID
-          console.log('Trying to find GP instance by asset ID...');
+          console.log("Trying to find GP instance by asset ID...");
           const foundGp = findGPInstanceByParentAsset(gpInstanceId);
           if (foundGp && foundGp.gpid) {
-            console.log('Found GP instance by asset:', foundGp);
+            console.log("Found GP instance by asset:", foundGp);
             gpInstanceId = foundGp.gpid;
           }
         }
       }
-      
-      console.log('Using GP ID after validation:', gpInstanceId);
-    } else if (gpInstance && typeof gpInstance === 'object') {
+
+      console.log("Using GP ID after validation:", gpInstanceId);
+    } else if (gpInstance && typeof gpInstance === "object") {
       // This is a regular call with a GP instance object
       // Check if the object itself is properly typed
-      if (gpInstance.type === 'gpInstances') {
+      if (gpInstance.type === "gpInstances") {
         // We have a properly typed GP instance object
         // IMPORTANT: For tree node clicks, we now use gpid as id, to ensure consistency
         // After our tree node changes, gpInstance.id should already be the gpid, not the asset ID
         gpInstanceId = gpInstance.id; // This is now the gpid
         actualGpInstance = gpInstance;
-        console.log('Called loadGPInstanceChildren with properly typed GP instance, using ID:', gpInstanceId);
+        console.log(
+          "Called loadGPInstanceChildren with properly typed GP instance, using ID:",
+          gpInstanceId
+        );
       } else {
         // We have an object but it might not be properly identified
         // Prioritize gpid over id if available
         gpInstanceId = gpInstance.gpid || gpInstance.id;
-        console.log('Called loadGPInstanceChildren with object, determined ID:', gpInstanceId);
+        console.log(
+          "Called loadGPInstanceChildren with object, determined ID:",
+          gpInstanceId
+        );
       }
     } else {
-      console.warn('Called loadGPInstanceChildren with invalid parameters');
+      console.warn("Called loadGPInstanceChildren with invalid parameters");
       return; // Cannot proceed without valid data
     }
-    
+
     // Validate the GP instance ID format
-    if (gpInstanceId && typeof gpInstanceId === 'string') {
+    if (gpInstanceId && typeof gpInstanceId === "string") {
       // Now that we're consistently using GP IDs (GP-xxxx) for GP instance nodes,
       // we can be more precise with our validation
-      if (gpInstanceId.startsWith('GP-')) {
+      if (gpInstanceId.startsWith("GP-")) {
         // This is a valid GP ID format - proceed normally
-        console.log('Confirmed valid GP ID format:', gpInstanceId);
-      } else if (gpInstanceId.startsWith('AS-')) {
+        console.log("Confirmed valid GP ID format:", gpInstanceId);
+      } else if (gpInstanceId.startsWith("AS-")) {
         // Legacy case: Still handle the case where we somehow got an asset ID
-        console.warn('Received an asset ID instead of a GP instance ID:', gpInstanceId);
-        
+        console.warn(
+          "Received an asset ID instead of a GP instance ID:",
+          gpInstanceId
+        );
+
         // Try to find the actual GP instance under this asset
         if (window.cisPlanData) {
-          const foundGPInstance = findGPInstanceByParentAsset(gpInstanceId, window.cisPlanData);
+          const foundGPInstance = findGPInstanceByParentAsset(
+            gpInstanceId,
+            window.cisPlanData
+          );
           if (foundGPInstance) {
-            console.log('Found related GP instance:', foundGPInstance.id);
+            console.log("Found related GP instance:", foundGPInstance.id);
             gpInstanceId = foundGPInstance.id;
             actualGpInstance = foundGPInstance;
           } else {
             // If we couldn't find a GP instance, we need to handle this gracefully
-            console.warn('Could not find a GP instance under asset', gpInstanceId);
+            console.warn(
+              "Could not find a GP instance under asset",
+              gpInstanceId
+            );
             // Show a friendly message in the elements panel
-            showNoElementsMessage(elementsContainer, 'No Generic Products found for this asset.');
+            showNoElementsMessage(
+              elementsContainer,
+              "No Generic Products found for this asset."
+            );
             return;
           }
         }
       }
     } else {
-      console.warn('Invalid GP instance ID:', gpInstanceId);
+      console.warn("Invalid GP instance ID:", gpInstanceId);
       return; // Cannot proceed without valid ID
     }
-    
+
     // Store the current GP instance ID globally for SP instance deletion context
     // Critical: only update if we have a valid ID
     if (gpInstanceId) {
       window.currentGpInstanceId = gpInstanceId;
-      console.log('Setting current GP instance ID:', window.currentGpInstanceId);
+      console.log(
+        "Setting current GP instance ID:",
+        window.currentGpInstanceId
+      );
     } else {
-      console.warn('No valid GP instance ID found, keeping existing:', window.currentGpInstanceId);
+      console.warn(
+        "No valid GP instance ID found, keeping existing:",
+        window.currentGpInstanceId
+      );
     }
 
     // Create the header with title and up button
@@ -6674,9 +7589,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Default display text - handle both object and string ID cases
     let displayText = "GP Instance";
     let gpId = gpInstanceId; // Use the determined ID from earlier
-    
+
     // If we have a GP instance object (tree click case)
-    if (typeof gpInstance === 'object' && gpInstance !== null) {
+    if (typeof gpInstance === "object" && gpInstance !== null) {
       if (gpInstance.instanceLabel) {
         displayText = gpInstance.instanceLabel;
       } else if (gpInstance.gpid) {
@@ -6692,15 +7607,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (gpId) {
       fetchGPName(gpId).then((gpName) => {
         if (gpName) {
-          const titleSpan = document.querySelector(
-            "#elementsBreadcrumb span"
-          );
+          const titleSpan = document.querySelector("#elementsBreadcrumb span");
           if (titleSpan) {
             // If we have a GP instance object with an instance label
-            if (typeof gpInstance === 'object' && 
-                gpInstance !== null && 
-                gpInstance.instanceLabel && 
-                gpInstance.instanceLabel !== gpName) {
+            if (
+              typeof gpInstance === "object" &&
+              gpInstance !== null &&
+              gpInstance.instanceLabel &&
+              gpInstance.instanceLabel !== gpName
+            ) {
               titleSpan.textContent = `${gpName} (${gpInstance.instanceLabel}) - Generic Product Instance`;
             } else {
               titleSpan.textContent = `${gpName} - Generic Product Instance`;
@@ -6745,28 +7660,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check if we have SP instances to display
     let childrenRendered = false;
-    
+
     // Find SP instances either from gpInstance object or by searching global data
     let spInstances = [];
-    
+
     // Case 1: We have a direct GP instance object with SP instances (tree click)
-    if (typeof gpInstance === 'object' && gpInstance !== null && 
-        gpInstance.spInstances && gpInstance.spInstances.length > 0) {
+    if (
+      typeof gpInstance === "object" &&
+      gpInstance !== null &&
+      gpInstance.spInstances &&
+      gpInstance.spInstances.length > 0
+    ) {
       spInstances = gpInstance.spInstances;
-    } 
+    }
     // Case 2: State restoration - need to find SP instances for this GP in the global data
     else if (gpId && cisPlanData && cisPlanData.missionNetworks) {
-      console.log('Looking for SP instances for GP ID:', gpId);
-      
+      console.log("Looking for SP instances for GP ID:", gpId);
+
       // Find SP instances for this GP ID in the global data
       function findSpInstancesForGp(data, targetGpId) {
         // Base case: We found a GP instance with the target ID
         if (data && data.gpid === targetGpId && data.spInstances) {
           return data.spInstances;
         }
-        
+
         // Recursive case: Check all arrays in the object
-        if (typeof data === 'object' && data !== null) {
+        if (typeof data === "object" && data !== null) {
           for (const key in data) {
             if (Array.isArray(data[key])) {
               for (const item of data[key]) {
@@ -6778,14 +7697,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
         }
-        
+
         return [];
       }
-      
+
       spInstances = findSpInstancesForGp(cisPlanData, gpId);
-      console.log('Found', spInstances.length, 'SP instances for GP ID:', gpId);
+      console.log("Found", spInstances.length, "SP instances for GP ID:", gpId);
     }
-    
+
     // If we have SP instances to display
     if (spInstances && spInstances.length > 0) {
       // Add a header for SP instances
@@ -6795,22 +7714,18 @@ document.addEventListener("DOMContentLoaded", function () {
       elementsContent.appendChild(spHeader);
 
       // Add the GP instance ID to each SP instance for proper parent reference
-      const spInstancesWithParent = spInstances.map(spInstance => {
+      const spInstancesWithParent = spInstances.map((spInstance) => {
         // Create a copy of the SP instance with an added parentGpInstance property
         return {
           ...spInstance,
-          parentGpInstance: gpId  // Add parent GP ID reference
+          parentGpInstance: gpId, // Add parent GP ID reference
         };
       });
-      
-      console.log('SP instances with parent GP ID:', spInstancesWithParent);
-      
+
+      console.log("SP instances with parent GP ID:", spInstancesWithParent);
+
       // Render SP instances as cards with parent reference
-      renderElementCards(
-        elementsContent,
-        spInstancesWithParent,
-        "spInstances"
-      );
+      renderElementCards(elementsContent, spInstancesWithParent, "spInstances");
       childrenRendered = true;
     }
 
@@ -6834,18 +7749,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (detailsContainer) {
       detailsContainer.innerHTML = "";
     }
-    
+
     // Handle SP instances
     if (type === "spInstances") {
       if (detailsContainer) {
         // Create the card
         const card = document.createElement("div");
         card.className = "card mb-3";
-        
+
         // Set up the card header
         const cardHeader = document.createElement("div");
-        cardHeader.className = "card-header d-flex justify-content-between align-items-center";
-        
+        cardHeader.className =
+          "card-header d-flex justify-content-between align-items-center";
+
         // Title with icon - will be updated with SP name if available
         const title = document.createElement("h5");
         title.className = "card-title mb-0 d-flex align-items-center";
@@ -6855,29 +7771,29 @@ document.addEventListener("DOMContentLoaded", function () {
         iconImg.height = 24;
         iconImg.className = "me-2";
         title.appendChild(iconImg);
-        
+
         // Create initial title with ID and version
         const titleText = document.createElement("span");
         titleText.textContent = `SP Instance: ${element.spId} v${element.spVersion}`;
         title.appendChild(titleText);
-        
+
         // Add title to header
         cardHeader.appendChild(title);
-        
+
         // Add header to card
         card.appendChild(cardHeader);
-        
+
         // Set up the card body
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
-        
+
         // Create a table for the SP instance details
         const table = document.createElement("table");
         table.className = "table table-sm detail-table";
-        
+
         // Table body
         const tbody = document.createElement("tbody");
-        
+
         // SP name row - will be populated asynchronously
         const nameRow = document.createElement("tr");
         const nameTh = document.createElement("th");
@@ -6887,14 +7803,14 @@ document.addEventListener("DOMContentLoaded", function () {
         nameRow.appendChild(nameTh);
         nameRow.appendChild(nameTd);
         tbody.appendChild(nameRow);
-        
+
         // Add details rows
         const detailRows = [
           { label: "SP ID", value: element.spId },
-          { label: "Version", value: element.spVersion }
+          { label: "Version", value: element.spVersion },
         ];
-        
-        detailRows.forEach(row => {
+
+        detailRows.forEach((row) => {
           const tr = document.createElement("tr");
           const th = document.createElement("th");
           th.textContent = row.label;
@@ -6904,26 +7820,26 @@ document.addEventListener("DOMContentLoaded", function () {
           tr.appendChild(td);
           tbody.appendChild(tr);
         });
-        
+
         table.appendChild(tbody);
         cardBody.appendChild(table);
         card.appendChild(cardBody);
-        
+
         // Add the card to the container
         detailsContainer.appendChild(card);
-        
+
         // Fetch SP name and update both title and details asynchronously
         if (element.spId) {
-          (async function() {
+          (async function () {
             try {
               const response = await fetch(`/api/sps/name/${element.spId}`);
               if (response.ok) {
                 const result = await response.json();
-                
+
                 if (result.success && result.name) {
                   // Update name in details table
                   nameTd.textContent = result.name;
-                  
+
                   // Update the title with name and version
                   let displayText = result.name;
                   if (element.spVersion) {
@@ -6933,18 +7849,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
               }
             } catch (error) {
-              console.error(`Error fetching SP name for ${element.spId}:`, error);
+              console.error(
+                `Error fetching SP name for ${element.spId}:`,
+                error
+              );
               nameTd.textContent = "Error loading name";
             }
           })();
         } else {
           nameTd.textContent = "N/A";
         }
-        
+
         // Enable/disable buttons as needed
         if (editDetailButton) editDetailButton.disabled = true; // Disable edit for SP instances for now
         if (deleteDetailButton) deleteDetailButton.disabled = false;
-        
+
         return;
       }
     }
@@ -7291,32 +8210,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Return here since we've already appended table and configTable to cardBody
         // Add a button to add SP instances
-        const addSpButton = document.createElement('button');
-        addSpButton.className = 'btn btn-primary mt-3';
-        addSpButton.innerHTML = '<i class="fas fa-plus me-2"></i>Add Specific Product';
-        addSpButton.addEventListener('click', function() {
+        const addSpButton = document.createElement("button");
+        addSpButton.className = "btn btn-primary mt-3";
+        addSpButton.innerHTML =
+          '<i class="fas fa-plus me-2"></i>Add Specific Product';
+        addSpButton.addEventListener("click", function () {
           // Store gpInstanceId in the form
-          document.getElementById('addSPInstanceGPId').value = element.id;
-          
+          document.getElementById("addSPInstanceGPId").value = element.id;
+
           // Store all necessary parent IDs for creating proper API URLs
-          const parentAsset = currentTreeNode.getAttribute('data-parent-asset');
-          const parentStack = currentTreeNode.getAttribute('data-parent-stack');
-          const parentDomain = currentTreeNode.getAttribute('data-parent-domain');
-          const parentSegment = currentTreeNode.getAttribute('data-parent-segment');
-          const parentMissionNetwork = currentTreeNode.getAttribute('data-parent-mission-network');
-          
-          document.getElementById('addSPInstanceAssetId').value = parentAsset;
-          document.getElementById('addSPInstanceHwStackId').value = parentStack;
-          document.getElementById('addSPInstanceDomainId').value = parentDomain;
-          document.getElementById('addSPInstanceSegmentId').value = parentSegment;
-          document.getElementById('addSPInstanceMissionNetworkId').value = parentMissionNetwork;
-          
+          const parentAsset = currentTreeNode.getAttribute("data-parent-asset");
+          const parentStack = currentTreeNode.getAttribute("data-parent-stack");
+          const parentDomain =
+            currentTreeNode.getAttribute("data-parent-domain");
+          const parentSegment = currentTreeNode.getAttribute(
+            "data-parent-segment"
+          );
+          const parentMissionNetwork = currentTreeNode.getAttribute(
+            "data-parent-mission-network"
+          );
+
+          document.getElementById("addSPInstanceAssetId").value = parentAsset;
+          document.getElementById("addSPInstanceHwStackId").value = parentStack;
+          document.getElementById("addSPInstanceDomainId").value = parentDomain;
+          document.getElementById("addSPInstanceSegmentId").value =
+            parentSegment;
+          document.getElementById("addSPInstanceMissionNetworkId").value =
+            parentMissionNetwork;
+
           // Show the modal
-          const modal = new bootstrap.Modal(document.getElementById('addSPInstanceModal'));
+          const modal = new bootstrap.Modal(
+            document.getElementById("addSPInstanceModal")
+          );
           modal.show();
         });
         cardBody.appendChild(addSpButton);
-        
+
         detailCard.appendChild(cardBody);
         detailsContainer.appendChild(detailCard);
         return;
@@ -7440,7 +8369,7 @@ document.addEventListener("DOMContentLoaded", function () {
     container.innerHTML = `
             <div class="alert alert-info m-3">
                 <i class="fas fa-info-circle me-2"></i>
-                ${customMessage || 'No elements available'}
+                ${customMessage || "No elements available"}
             </div>
         `;
   }
@@ -7772,9 +8701,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to navigate up one level in the tree
   function navigateUp() {
     // Log the current position and where we should navigate to
-    console.log('Navigating UP from current position...');
+    console.log("Navigating UP from current position...");
     CISPlanPointer.logNavigationUp();
-    
+
     // Check the current element type first - this is what gets updated when clicking in the elements panel
     let type;
     let parentNodeId;
@@ -8104,7 +9033,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function getParticipantNameByKey(key) {
     return await CISUtils.getParticipantNameByKey(key);
   }
-  
+
   /**
    * Fetch detailed GP instance data directly from the API
    * This is used for refreshing after adding SP instances
@@ -8114,83 +9043,112 @@ document.addEventListener("DOMContentLoaded", function () {
       // We need to find the full path to the GP instance to construct the correct API URL
       const gpInstance = findGPInstanceById(gpInstanceId);
       if (!gpInstance) {
-        console.error(`Cannot find GP instance ${gpInstanceId} in the data model`);
+        console.error(
+          `Cannot find GP instance ${gpInstanceId} in the data model`
+        );
         return null;
       }
-      
+
       // Find parent IDs - either from the GP instance object or from the DOM
       let missionNetworkId, segmentId, domainId, hwStackId;
-      
+
       // Try to get from the GP instance object first
       if (gpInstance.parentMissionNetwork) {
-        missionNetworkId = typeof gpInstance.parentMissionNetwork === 'object' ? 
-          gpInstance.parentMissionNetwork.id : gpInstance.parentMissionNetwork;
+        missionNetworkId =
+          typeof gpInstance.parentMissionNetwork === "object"
+            ? gpInstance.parentMissionNetwork.id
+            : gpInstance.parentMissionNetwork;
       }
-      
+
       if (gpInstance.parentSegment) {
-        segmentId = typeof gpInstance.parentSegment === 'object' ? 
-          gpInstance.parentSegment.id : gpInstance.parentSegment;
+        segmentId =
+          typeof gpInstance.parentSegment === "object"
+            ? gpInstance.parentSegment.id
+            : gpInstance.parentSegment;
       }
-      
+
       if (gpInstance.parentDomain) {
-        domainId = typeof gpInstance.parentDomain === 'object' ? 
-          gpInstance.parentDomain.id : gpInstance.parentDomain;
+        domainId =
+          typeof gpInstance.parentDomain === "object"
+            ? gpInstance.parentDomain.id
+            : gpInstance.parentDomain;
       }
-      
+
       if (gpInstance.parentStack) {
-        hwStackId = typeof gpInstance.parentStack === 'object' ? 
-          gpInstance.parentStack.id : gpInstance.parentStack;
+        hwStackId =
+          typeof gpInstance.parentStack === "object"
+            ? gpInstance.parentStack.id
+            : gpInstance.parentStack;
       }
-      
+
       // If we couldn't get the parent IDs from the GP instance object, try to get them from the DOM
-      const gpNode = document.querySelector(`.tree-node[data-type="gpInstances"][data-gpid="${gpInstanceId}"]`);
-      
+      const gpNode = document.querySelector(
+        `.tree-node[data-type="gpInstances"][data-gpid="${gpInstanceId}"]`
+      );
+
       if (gpNode) {
         if (!missionNetworkId) {
-          missionNetworkId = gpNode.getAttribute("data-parent-mission-network") || 
-                           gpNode.getAttribute("data-parent-mission-network-id");
+          missionNetworkId =
+            gpNode.getAttribute("data-parent-mission-network") ||
+            gpNode.getAttribute("data-parent-mission-network-id");
         }
-        
+
         if (!segmentId) {
-          segmentId = gpNode.getAttribute("data-parent-segment") || 
-                     gpNode.getAttribute("data-parent-segment-id");
+          segmentId =
+            gpNode.getAttribute("data-parent-segment") ||
+            gpNode.getAttribute("data-parent-segment-id");
         }
-        
+
         if (!domainId) {
-          domainId = gpNode.getAttribute("data-parent-domain") || 
-                    gpNode.getAttribute("data-parent-domain-id");
+          domainId =
+            gpNode.getAttribute("data-parent-domain") ||
+            gpNode.getAttribute("data-parent-domain-id");
         }
-        
+
         if (!hwStackId) {
-          hwStackId = gpNode.getAttribute("data-parent-stack") || 
-                     gpNode.getAttribute("data-parent-stack-id");
+          hwStackId =
+            gpNode.getAttribute("data-parent-stack") ||
+            gpNode.getAttribute("data-parent-stack-id");
         }
-        
+
         if (!assetId) {
-          assetId = gpNode.getAttribute("data-parent-asset") || 
-                   gpNode.getAttribute("data-parent-asset-id");
+          assetId =
+            gpNode.getAttribute("data-parent-asset") ||
+            gpNode.getAttribute("data-parent-asset-id");
         }
       }
-      
+
       // If we still don't have all the parent IDs, we can't fetch the GP instance
-      if (!missionNetworkId || !segmentId || !domainId || !hwStackId || !assetId) {
-        console.error("Missing parent IDs for GP instance", { 
-          missionNetworkId, segmentId, domainId, hwStackId, assetId 
+      if (
+        !missionNetworkId ||
+        !segmentId ||
+        !domainId ||
+        !hwStackId ||
+        !assetId
+      ) {
+        console.error("Missing parent IDs for GP instance", {
+          missionNetworkId,
+          segmentId,
+          domainId,
+          hwStackId,
+          assetId,
         });
         return null;
       }
-      
+
       // Construct the API URL
       const url = `/api/cis_plan/mission_network/${missionNetworkId}/segment/${segmentId}/security_domain/${domainId}/hw_stacks/${hwStackId}/assets/${assetId}/gp_instances/${gpInstanceId}`;
-      
+
       // Fetch the GP instance details
       const response = await fetch(url);
-      
+
       if (response.ok) {
         const result = await response.json();
         return result.data || null;
       } else {
-        console.error(`Error fetching GP instance details: ${response.status} ${response.statusText}`);
+        console.error(
+          `Error fetching GP instance details: ${response.status} ${response.statusText}`
+        );
         return null;
       }
     } catch (error) {
@@ -8198,7 +9156,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return null;
     }
   }
-  
+
   /**
    * Update a GP instance in the CIS plan data model
    * This is used after adding SP instances to ensure the model stays in sync
@@ -8209,7 +9167,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("CIS plan data is not available");
         return false;
       }
-      
+
       // Iterate through the data model to find and update the GP instance
       for (const mn of window.cisPlanData.missionNetworks) {
         for (const segment of mn.networkSegments || []) {
@@ -8217,17 +9175,26 @@ document.addEventListener("DOMContentLoaded", function () {
             for (const stack of domain.hwStacks || []) {
               for (const asset of stack.assets || []) {
                 // Find the matching GP instance
-                const gpIndex = (asset.gpInstances || []).findIndex(gp => 
-                  gp.id === gpInstanceId || gp.guid === gpInstanceId || gp.gpid === gpInstanceId
+                const gpIndex = (asset.gpInstances || []).findIndex(
+                  (gp) =>
+                    gp.id === gpInstanceId ||
+                    gp.guid === gpInstanceId ||
+                    gp.gpid === gpInstanceId
                 );
-                
+
                 if (gpIndex !== -1) {
                   // Found it - update the GP instance with the new data
                   // But preserve any properties that might be missing in the updated instance
                   const originalGp = asset.gpInstances[gpIndex];
-                  asset.gpInstances[gpIndex] = { ...originalGp, ...updatedGpInstance };
-                  
-                  console.log(`Updated GP instance ${gpInstanceId} in CIS plan data`, asset.gpInstances[gpIndex]);
+                  asset.gpInstances[gpIndex] = {
+                    ...originalGp,
+                    ...updatedGpInstance,
+                  };
+
+                  console.log(
+                    `Updated GP instance ${gpInstanceId} in CIS plan data`,
+                    asset.gpInstances[gpIndex]
+                  );
                   return true;
                 }
               }
@@ -8235,13 +9202,14 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       }
-      
-      console.error(`Could not find GP instance ${gpInstanceId} in CIS plan data`);
+
+      console.error(
+        `Could not find GP instance ${gpInstanceId} in CIS plan data`
+      );
       return false;
     } catch (error) {
       console.error("Error in updateGPInstanceInCISPlanData:", error);
       return false;
     }
   }
-
 });

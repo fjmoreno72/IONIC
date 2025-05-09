@@ -1001,42 +1001,101 @@ def get_test_results_data_file():
         overall_results = set()
         participants = set()
 
+        # Try to determine the structure of the JSON file
+        with open(test_results_path, 'r') as f_check:
+            # Just read a small part to check structure
+            header = f_check.read(1000)
+            # Check if the new format is being used
+            if '"Tests":' in header and not '"TestPlans":' in header:
+                logging.info("Detected new format with 'Tests' at root level")
+                use_new_format = True
+            else:
+                logging.info("Using legacy format with 'TestPlans'")
+                use_new_format = False
+        
         with open(test_results_path, 'rb') as f: # Open in binary mode for ijson
-            # Stream the 'TestPlans' array
-            test_plans = ijson.items(f, 'TestPlans.item')
-            for test_plan in test_plans:
-                objective_key = test_plan.get('Objective', {}).get('Key')
-                test_plan_key = test_plan.get('Key')
-                if objective_key:
-                    objectives.add(objective_key)
+            if use_new_format:
+                # Stream the 'Tests' array directly from root
+                tests_stream = ijson.items(f, 'Tests.item')
+                for test in tests_stream:
+                    # Extract objective data
+                    objective_data = test.get('Objective', {})
+                    objective_key = objective_data.get('Key')
+                    
+                    if objective_key:
+                        objectives.add(objective_key)
+                    
+                    # Get test data
+                    coordinator = test.get('Coordinator', {}).get('Participant')
+                    partners_list = [p.get('Participant') for p in test.get('Partners', []) if p.get('Participant')]
+                    observers_list = [o.get('Participant') for o in test.get('Observers', []) if o.get('Participant')]
+                    status = test.get('Status')
+                    
+                    # In new format, test case may have a different structure
+                    test_case = test.get('TestCase', {})
+                    
+                    # Try to get overall result (may have a different structure in new format)
+                    overall_result = test.get('AnalysisResult', {}).get('OverallResult', {}).get('Result')
+                    
+                    if status:
+                        statuses.add(status)
+                    if overall_result:
+                        overall_results.add(overall_result)
+                    if coordinator:
+                        participants.add(coordinator)
+                    for partner in partners_list:
+                        participants.add(partner)
+                    for observer in observers_list:
+                        participants.add(observer)
+                    
+                    results_data.append({
+                        "key": test.get('Key'),
+                        "objectiveKey": objective_key,
+                        "testName": test.get('Name'),
+                        "status": status,
+                        "coordinator": coordinator,
+                        "partners": partners_list,
+                        "observers": observers_list,
+                        "overallResult": overall_result
+                    })
+            else:
+                # Legacy format - Stream the 'TestPlans' array
+                test_plans = ijson.items(f, 'TestPlans.item')
+                for test_plan in test_plans:
+                    objective_key = test_plan.get('Objective', {}).get('Key')
+                    test_plan_key = test_plan.get('Key')
+                    if objective_key:
+                        objectives.add(objective_key)
 
-                # Iterate through tests within the current test plan
-                tests = test_plan.get('Tests', [])
-                if tests: # Ensure 'Tests' exists and is a list
-                    for test in tests:
-                        coordinator = test.get('Coordinator', {}).get('Participant')
-                        partners_list = [p.get('Participant') for p in test.get('Partners', []) if p.get('Participant')]
-                        status = test.get('Status')
-                        overall_result = test.get('AnalysisResult', {}).get('OverallResult', {}).get('Result')
+                    # Iterate through tests within the current test plan
+                    tests = test_plan.get('Tests', [])
+                    if tests: # Ensure 'Tests' exists and is a list
+                        for test in tests:
+                            coordinator = test.get('Coordinator', {}).get('Participant')
+                            partners_list = [p.get('Participant') for p in test.get('Partners', []) if p.get('Participant')]
+                            observers_list = [o.get('Participant') for o in test.get('Observers', []) if o.get('Participant')]
+                            status = test.get('Status')
+                            overall_result = test.get('AnalysisResult', {}).get('OverallResult', {}).get('Result')
 
-                        if status:
-                            statuses.add(status)
-                        if overall_result:
-                            overall_results.add(overall_result)
-                        if coordinator:
-                            participants.add(coordinator)
-                        for partner in partners_list:
-                            participants.add(partner)
+                            if status:
+                                statuses.add(status)
+                            if overall_result:
+                                overall_results.add(overall_result)
+                            if coordinator:
+                                participants.add(coordinator)
+                            for partner in partners_list:
+                                participants.add(partner)
 
-                        results_data.append({
-                            "objectiveKey": objective_key,
-                            "testPlanKey": test_plan_key,
-                            "testName": test.get('Name'),
-                            "status": status,
-                            "coordinator": coordinator,
-                            "partners": partners_list,
-                            "overallResult": overall_result
-                        })
+                            results_data.append({
+                                "key": test.get('Key'),
+                                "objectiveKey": objective_key,
+                                "testName": test.get('Name'),
+                                "status": status,
+                                "coordinator": coordinator,
+                                "partners": partners_list,
+                                "observers": observers_list,
+                                "overallResult": overall_result
+                            })
 
         logging.info(f"Successfully processed {len(results_data)} test results from stream.")
 

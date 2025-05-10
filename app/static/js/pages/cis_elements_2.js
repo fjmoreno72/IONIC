@@ -343,68 +343,10 @@ const CISElements2 = {
      * @returns {HTMLElement} The created card element
      */
     createElementCard: function(element, type) {
-        const card = document.createElement('div');
-        card.className = 'element-card';
-        card.setAttribute('data-type', type);
-        card.setAttribute('data-guid', element.guid || '');
-        
-        // Get the appropriate display name based on entity type
-        let displayName = '';
-        switch (type) {
-            case 'mission_network':
-            case 'network_segment':
-            case 'hw_stack':
-            case 'asset':
-                displayName = element.name || 'Unnamed';
-                break;
-                
-            case 'security_domain':
-                displayName = element.id || 'Unnamed';
-                break;
-                
-            case 'network_interface':
-                displayName = element.name || element.id || 'Unnamed';
-                break;
-                
-            case 'gp_instance':
-                displayName = element.name || element.gpid || 'Unnamed';
-                break;
-                
-            case 'sp_instance':
-                displayName = element.name || element.spId || 'Unnamed';
-                break;
-                
-            default:
-                displayName = element.name || element.id || 'Unnamed';
-        }
-        
-        // Get the entity icon using the centralized utility function
-        const iconUrl = CISUtil2.getEntityIcon(type);
-        
-        // Create a simple rectangular card with the entity name and icon
-        card.innerHTML = `
-            <div class="card mb-2">
-                <div class="card-body d-flex align-items-center p-3">
-                    <img src="${iconUrl}" alt="${type}" style="width: 24px; height: 24px; margin-right: 15px;">
-                    <span style="font-size: 15px;">${displayName}</span>
-                </div>
-            </div>
-        `;
-        
-        // Add hover effect with CSS
-        card.style.cursor = 'pointer';
-        card.style.transition = 'all 0.2s ease';
-        
-        // Add click handler to select the element
-        card.addEventListener('click', () => {
-            // Highlight the selected card
-            document.querySelectorAll('.element-card .card').forEach(c => {
-                c.style.backgroundColor = '';
-            });
-            card.querySelector('.card').style.backgroundColor = '#e3f0ff';
-            
-            // Select the element
-            this.selectElement(element, type);
+        // Use the utility function to create the card
+        const self = this;
+        const card = CISUtil2.createElementCard(element, type, function(element, type) {
+            self.selectElement(element, type);
         });
         
         return card;
@@ -425,52 +367,16 @@ const CISElements2 = {
     findEntityByGuid: function(data, guid) {
         if (!data || !guid) return null;
         
-        // Result object to store the found entity and its parent path
-        let result = null;
+        // Use the utility function to find the entity
+        const entity = CISUtil2.findEntityByGuid(data, guid);
         
-        // Search function to recursively traverse the data structure
-        const search = (node, parentPath = []) => {
-            // Check if current node has the target GUID
-            if (node && node.guid === guid) {
-                result = {
-                    entity: node,
-                    parentPath: parentPath
-                };
-                return true;
-            }
-            
-            // If node is not an object or we already found the result, stop searching
-            if (!node || typeof node !== 'object' || result) return false;
-            
-            // Check all possible child collections
-            const childCollections = [
-                'missionNetworks',
-                'networkSegments',
-                'securityDomains',
-                'hwStacks',
-                'assets',
-                'networkInterfaces',
-                'gpInstances',
-                'spInstances'
-            ];
-            
-            // Recursively search through child collections
-            for (const collection of childCollections) {
-                if (Array.isArray(node[collection])) {
-                    for (const child of node[collection]) {
-                        // Add current node to parent path and search in child
-                        const found = search(child, [...parentPath, node]);
-                        if (found) return true;
-                    }
-                }
-            }
-            
-            return false;
+        if (!entity) return null;
+        
+        // For backward compatibility, return in the expected format
+        return {
+            entity: entity,
+            parentPath: [] // Note: The utility version doesn't track parent path
         };
-        
-        // Start search from the root data
-        search(data);
-        return result;
     },
     
     findConfigurationItem: function(element, itemName) {
@@ -492,25 +398,8 @@ const CISElements2 = {
         // Update state
         this.currentElement = element;
         
-        // Update the details panel
-        const event = new CustomEvent('cis:update-details', {
-            detail: {
-                type: type,
-                guid: element.guid,
-                element: element
-            }
-        });
-        document.dispatchEvent(event);
-        
-        // Highlight the selected card
-        document.querySelectorAll('.element-card.active').forEach(card => {
-            card.classList.remove('active');
-        });
-        
-        const selectedCard = document.querySelector(`.element-card[data-guid="${element.guid}"]`);
-        if (selectedCard) {
-            selectedCard.classList.add('active');
-        }
+        // Use the utility function to handle the selection
+        CISUtil2.selectElement(element, type);
     },
     
     /**

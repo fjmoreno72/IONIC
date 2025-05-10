@@ -385,5 +385,121 @@ const CISUtil2 = {
             expandIcon.innerHTML = '&#9660;'; // Down-pointing triangle
             return true;
         }
+    },
+    
+    /**
+     * Select an element and update the details panel
+     * @param {Object} element - The selected element
+     * @param {string} type - Type of the selected element
+     */
+    selectElement: function(element, type) {
+        if (!element) return;
+        
+        // Update the details panel
+        const event = new CustomEvent('cis:update-details', {
+            detail: {
+                type: type,
+                guid: element.guid,
+                element: element
+            }
+        });
+        document.dispatchEvent(event);
+        
+        // Highlight the selected card
+        document.querySelectorAll('.element-card.active').forEach(card => {
+            card.classList.remove('active');
+        });
+        
+        const selectedCard = document.querySelector(`.element-card[data-guid="${element.guid}"]`);
+        if (selectedCard) {
+            selectedCard.classList.add('active');
+        }
+    },
+    
+    /**
+     * Get the appropriate display name for an entity based on its type
+     * @param {Object} element - The element data
+     * @param {string} type - Type of element
+     * @returns {string} The display name
+     */
+    getEntityDisplayName: function(element, type) {
+        if (!element) return 'Unnamed';
+        
+        switch (type) {
+            case 'mission_network':
+            case 'network_segment':
+            case 'hw_stack':
+            case 'asset':
+                return element.name || 'Unnamed';
+                
+            case 'security_domain':
+                return element.id || 'Unnamed';
+                
+            case 'network_interface':
+                // Special case for network interfaces - show IP address if available
+                if (element.ipAddress) {
+                    return `${element.name || element.id || 'Unnamed'} - ${element.ipAddress}`;
+                }
+                return element.name || element.id || 'Unnamed';
+                
+            case 'gp_instance':
+                return element.name || element.gpid || 'Unnamed';
+                
+            case 'sp_instance':
+                return element.name || element.spId || 'Unnamed';
+                
+            default:
+                return element.name || element.id || 'Unnamed';
+        }
+    },
+    
+    /**
+     * Create an element card for a single element
+     * @param {Object} element - The element data
+     * @param {string} type - Type of element
+     * @param {Function} onSelectCallback - Callback function when element is selected
+     * @returns {HTMLElement} The created card element
+     */
+    createElementCard: function(element, type, onSelectCallback) {
+        const card = document.createElement('div');
+        card.className = 'element-card';
+        card.setAttribute('data-type', type);
+        card.setAttribute('data-guid', element.guid || '');
+        
+        // Get the appropriate display name based on entity type
+        const displayName = this.getEntityDisplayName(element, type);
+        
+        // Get the entity icon
+        const iconUrl = this.getEntityIcon(type);
+        
+        // Create a simple rectangular card with the entity name and icon
+        card.innerHTML = `
+            <div class="card mb-2">
+                <div class="card-body d-flex align-items-center p-3">
+                    <img src="${iconUrl}" alt="${type}" style="width: 24px; height: 24px; margin-right: 15px;">
+                    <span style="font-size: 15px;">${displayName}</span>
+                </div>
+            </div>
+        `;
+        
+        // Add hover effect with CSS
+        card.style.cursor = 'pointer';
+        card.style.transition = 'all 0.2s ease';
+        
+        // Add click handler to select the element
+        card.addEventListener('click', () => {
+            // Highlight the selected card
+            document.querySelectorAll('.element-card .card').forEach(c => {
+                c.style.backgroundColor = '';
+            });
+            card.querySelector('.card').style.backgroundColor = '#e3f0ff';
+            
+            // Call the select callback if provided
+            if (typeof onSelectCallback === 'function') {
+                onSelectCallback(element, type);
+            }
+        });
+        
+        return card;
     }
 };

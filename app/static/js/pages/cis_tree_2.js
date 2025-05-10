@@ -12,6 +12,7 @@ const CISTree2 = {
     // State management
     currentTreeNode: null,
     expandedNodes: new Set(),
+    fullTreeData: null,
     
     // Entity type to display name mapping
     entityTypeLabels: {
@@ -43,59 +44,149 @@ const CISTree2 = {
      */
     renderTree: function(cisPlanData) {
         console.log('Rendering CIS Plan tree with data:', cisPlanData);
+        
+        // Process and store the data
+        if (cisPlanData) {
+            if (cisPlanData.data && cisPlanData.data.missionNetworks) {
+                // API response format: {data: {missionNetworks: [...]}}
+                this.fullTreeData = cisPlanData.data;
+                console.log('Extracted data from API response format');
+            } else if (cisPlanData.missionNetworks) {
+                // Direct data format: {missionNetworks: [...]}
+                this.fullTreeData = cisPlanData;
+                console.log('Using direct data format');
+            }
+        }
+        
+        // Validate we have data to render
+        if (!this.fullTreeData || !this.fullTreeData.missionNetworks) {
+            console.error('No valid CIS Plan data to render');
+            return;
+        }
+        
         if (!this.treeContent) {
             console.error('Tree content element not found for rendering');
             return;
         }
-        if (!cisPlanData) {
-            console.error('No CIS Plan data provided for rendering');
-            return;
-        }
+        
+        // Apply vertical tree styling
+        this.treeContent.style.display = 'block';
+        this.treeContent.style.padding = '10px';
+        this.treeContent.style.overflow = 'auto';
         
         // Clear existing content
         this.treeContent.innerHTML = '';
         
-        // Reset expanded nodes set
-        this.expandedNodes = new Set();
-        
         // Create root node
         const rootNode = this.createTreeNode('cisplan', 'CIS Plan', null, null);
-        rootNode.classList.add('active');
-        this.currentTreeNode = rootNode;
         this.treeContent.appendChild(rootNode);
         
-        let missionNetworks = [];
-        
-        // Extract mission networks from the data structure
-        if (cisPlanData.missionNetworks && Array.isArray(cisPlanData.missionNetworks)) {
-            // Case: Direct access to missionNetworks array
-            console.log('Found mission networks directly in cisPlanData');
-            missionNetworks = cisPlanData.missionNetworks;
-        } else if (cisPlanData.data && cisPlanData.data.missionNetworks && Array.isArray(cisPlanData.data.missionNetworks)) {
-            // Case: API response with data.missionNetworks
-            console.log('Found mission networks in cisPlanData.data');
-            missionNetworks = cisPlanData.data.missionNetworks;
-        }
-        
-        // Add mission networks to the root node
-        if (missionNetworks.length > 0) {
-            console.log(`Found ${missionNetworks.length} mission networks to render`);
+        // Add click handler to root node
+        const self = this;
+        rootNode.addEventListener('click', function(e) {
+            e.stopPropagation();
             
-            const childContainer = document.createElement('div');
-            childContainer.className = 'tree-children';
-            childContainer.style.display = 'none'; // Initially hidden
-            rootNode.appendChild(childContainer);
+            // Select this node using the centralized function
+            self.selectTreeNode(this);
             
-            // Add expand icon to root node
-            const expandIcon = rootNode.querySelector('.expand-icon');
-            if (expandIcon) {
-                expandIcon.style.visibility = 'visible';
-                expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+            // Dispatch node selected event
+            const event = new CustomEvent('cis:node-selected', {
+                detail: {
+                    type: 'cisplan',
+                    id: null,
+                    guid: null,
+                    data: self.fullTreeData
+                }
+            });
+            document.dispatchEvent(event);
+        });
+        
+        // Get mission networks from the stored data
+        const missionNetworks = this.fullTreeData.missionNetworks || [];
+        console.log(`Found ${missionNetworks.length} mission networks to render`);
+        
+        // Initialize expanded nodes set if not already done
+        // By default, expand all nodes to show the full hierarchy
+        if (!this._expandedInitialized) {
+            // Add root node to expanded set
+            this.expandedNodes.add(null);
+            
+            // Add all entity GUIDs to expanded set
+            function collectAllGuids(data) {
+                const guids = new Set();
+                
+                function addEntityGuids(entity) {
+                    if (!entity || typeof entity !== 'object') return;
+                    
+                    // Add this entity's GUID if it has one
+                    if (entity.guid) guids.add(entity.guid);
+                    
+                    // Process all possible child collections
+                    const childCollections = [
+                        'missionNetworks',
+                        'networkSegments',
+                        'securityDomains',
+                        'hwStacks',
+                        'assets',
+                        'networkInterfaces',
+                        'gpInstances',
+                        'spInstances'
+                    ];
+                    
+                    // Recursively process all children
+                    childCollections.forEach(collection => {
+                        if (Array.isArray(entity[collection])) {
+                            entity[collection].forEach(child => addEntityGuids(child));
+                        }
+                    });
+                }
+                
+                // Start with the top-level entity
+                addEntityGuids(data);
+                return guids;
             }
             
+            // Collect all GUIDs and add them to expanded nodes
+            const allGuids = collectAllGuids(this.fullTreeData);
+            allGuids.forEach(guid => this.expandedNodes.add(guid));
+            
+            console.log(`Auto-expanded ${allGuids.size} nodes in the tree`);
+            this._expandedInitialized = true;
+        }
+        
+        // Create container for mission networks
+        const childContainer = document.createElement('div');
+        childContainer.className = 'tree-children';
+        // Set vertical styling for children container
+        childContainer.style.display = 'block';
+        childContainer.style.marginLeft = '20px';
+        childContainer.style.paddingLeft = '10px';
+        childContainer.style.borderLeft = '1px dotted #ccc';
+        rootNode.appendChild(childContainer);
+        
+        // Set expand icon for root
+        const expandIcon = rootNode.querySelector('.expand-icon');
+        if (expandIcon) {
+            expandIcon.style.visibility = 'visible';
+            expandIcon.innerHTML = '&#9660;'; // Down-pointing triangle (expanded)
+            expandIcon.onclick = (e) => {
+                e.stopPropagation();
+                if (childContainer.style.display === 'block') {
+                    childContainer.style.display = 'none';
+                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                } else {
+                    childContainer.style.display = 'block';
+                    expandIcon.innerHTML = '&#9660;'; // Down-pointing triangle
+                }
+            };
+        }
+        
+        // Render mission networks
+        if (missionNetworks.length > 0) {
             this.renderMissionNetworks(childContainer, missionNetworks);
         } else {
             console.warn('No mission networks found in data');
+            childContainer.innerHTML = '<div class="tree-node-empty">No mission networks found</div>';
         }
     },
     
@@ -105,178 +196,295 @@ const CISTree2 = {
      * @param {Array} missionNetworks - Array of mission networks
      */
     renderMissionNetworks: function(container, missionNetworks) {
-        console.log('Rendering mission networks:', missionNetworks);
+        console.log(`Rendering ${missionNetworks.length} mission networks`);
         if (!missionNetworks || !missionNetworks.length) {
             console.warn('No mission networks to render');
             return;
         }
         
-        missionNetworks.forEach(missionNetwork => {
-            console.log('Processing mission network:', missionNetwork);
-            const node = this.createTreeNode(
+        const self = this;
+        
+        // Process each mission network
+        missionNetworks.forEach(network => {
+            // Create mission network node
+            const networkNode = this.createTreeNode(
                 'mission_network',
-                missionNetwork.name, 
-                missionNetwork.id, 
-                missionNetwork.guid
+                network.name,
+                network.id,
+                network.guid
             );
+            container.appendChild(networkNode);
             
-            container.appendChild(node);
+            // Set up click handler
+            networkNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Select this node using the centralized function
+                self.selectTreeNode(this);
+                
+                // Dispatch node selected event
+                const event = new CustomEvent('cis:node-selected', {
+                    detail: {
+                        type: 'mission_network',
+                        id: network.id,
+                        guid: network.guid,
+                        data: network
+                    }
+                });
+                document.dispatchEvent(event);
+            });
             
-            // If this mission network has segments, create a container for them
-            if (missionNetwork.networkSegments && missionNetwork.networkSegments.length > 0) {
-                console.log(`Mission network ${missionNetwork.name} has ${missionNetwork.networkSegments.length} segments`);
+            // If network has segments, create child container
+            if (network.networkSegments && network.networkSegments.length > 0) {
                 const childContainer = document.createElement('div');
                 childContainer.className = 'tree-children';
-                childContainer.style.display = 'none'; // Initially hidden
-                node.appendChild(childContainer);
+                networkNode.appendChild(childContainer);
                 
-                // Add expand icon to node
-                const expandIcon = node.querySelector('.expand-icon');
+                // Apply consistent styling
+                this.styleChildContainer(childContainer);
+                
+                // Set display based on expanded state
+                const isExpanded = this.expandedNodes.has(network.guid);
+                childContainer.style.display = isExpanded ? 'block' : 'none';
+                
+                // Update expand icon
+                const expandIcon = networkNode.querySelector('.expand-icon');
                 if (expandIcon) {
                     expandIcon.style.visibility = 'visible';
-                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                    expandIcon.innerHTML = isExpanded ? '&#9660;' : '&#9658;';
+                    
+                    // Add click handler for expand/collapse
+                    expandIcon.onclick = (e) => {
+                        e.stopPropagation();
+                        this.toggleNodeExpanded(networkNode);
+                    };
                 }
                 
-                // Only show children if this node is expanded
-                if (this.expandedNodes.has(missionNetwork.guid)) {
-                    childContainer.style.display = 'block';
-                    this.renderNetworkSegments(childContainer, missionNetwork.networkSegments, missionNetwork);
-                }
-            } else {
-                console.log(`Mission network ${missionNetwork.name} has no segments`);
+                // Render network segments
+                this.renderNetworkSegments(childContainer, network.networkSegments, network);
             }
         });
     },
     
     /**
-     * Render network segments in the tree
-     * @param {HTMLElement} container - Container element
-     * @param {Array} networkSegments - Array of network segments
+     * Render network segments
+     * @param {HTMLElement} container - The container element
+     * @param {Array} segments - Array of network segments
      * @param {Object} parentNetwork - Parent mission network
      */
-    renderNetworkSegments: function(container, networkSegments, parentNetwork) {
-        networkSegments.forEach(segment => {
-            const node = this.createTreeNode(
+    renderNetworkSegments: function(container, segments, parentNetwork) {
+        if (!segments || !segments.length) return;
+        
+        const self = this;
+        
+        segments.forEach(segment => {
+            // Create segment node
+            const segmentNode = this.createTreeNode(
                 'network_segment',
-                segment.name, 
-                segment.id, 
-                segment.guid,
-                parentNetwork.guid
+                segment.name,
+                segment.id,
+                segment.guid
             );
+            container.appendChild(segmentNode);
             
-            container.appendChild(node);
+            // Set up click handler
+            segmentNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Select this node using the centralized function
+                self.selectTreeNode(this);
+                
+                // Dispatch node selected event
+                const event = new CustomEvent('cis:node-selected', {
+                    detail: {
+                        type: 'network_segment',
+                        id: segment.id,
+                        guid: segment.guid,
+                        data: segment,
+                        parentNetwork: parentNetwork
+                    }
+                });
+                document.dispatchEvent(event);
+            });
             
-            // If this segment has security domains, create a container for them
+            // If segment has security domains, create child container
             if (segment.securityDomains && segment.securityDomains.length > 0) {
                 const childContainer = document.createElement('div');
                 childContainer.className = 'tree-children';
-                childContainer.style.display = 'none'; // Initially hidden
-                node.appendChild(childContainer);
+                segmentNode.appendChild(childContainer);
                 
-                // Add expand icon to node
-                const expandIcon = node.querySelector('.expand-icon');
+                // Set display based on expanded state
+                const isExpanded = this.expandedNodes.has(segment.guid);
+                childContainer.style.display = isExpanded ? 'block' : 'none';
+                
+                // Update expand icon
+                const expandIcon = segmentNode.querySelector('.expand-icon');
                 if (expandIcon) {
                     expandIcon.style.visibility = 'visible';
-                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                    expandIcon.innerHTML = isExpanded ? '&#9660;' : '&#9658;';
+                    
+                    // Add click handler for expand/collapse
+                    expandIcon.onclick = (e) => {
+                        e.stopPropagation();
+                        this.toggleNodeExpanded(segmentNode);
+                    };
                 }
                 
-                // Only show children if this node is expanded
-                if (this.expandedNodes.has(segment.guid)) {
-                    childContainer.style.display = 'block';
-                    this.renderSecurityDomains(childContainer, segment.securityDomains, segment, parentNetwork);
-                }
+                // Render security domains
+                this.renderSecurityDomains(childContainer, segment.securityDomains, segment, parentNetwork);
             }
         });
     },
     
     /**
-     * Render security domains in the tree
-     * @param {HTMLElement} container - Container element
-     * @param {Array} securityDomains - Array of security domains
+     * Render security domains
+     * @param {HTMLElement} container - The container element
+     * @param {Array} domains - Array of security domains
      * @param {Object} parentSegment - Parent network segment
      * @param {Object} parentNetwork - Parent mission network
      */
-    renderSecurityDomains: function(container, securityDomains, parentSegment, parentNetwork) {
-        securityDomains.forEach(domain => {
-            const node = this.createTreeNode(
+    renderSecurityDomains: function(container, domains, parentSegment, parentNetwork) {
+        if (!domains || !domains.length) return;
+        
+        const self = this;
+        
+        domains.forEach(domain => {
+            // Create domain node
+            const domainNode = this.createTreeNode(
                 'security_domain',
-                domain.id, // Security domains use ID as name
+                domain.id, // Using ID as name since security domains often use classification IDs
                 domain.id,
-                domain.guid,
-                parentSegment.guid
+                domain.guid
             );
+            container.appendChild(domainNode);
             
-            container.appendChild(node);
+            // Set up click handler
+            domainNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Select this node using the centralized function
+                self.selectTreeNode(this);
+                
+                // Dispatch node selected event
+                const event = new CustomEvent('cis:node-selected', {
+                    detail: {
+                        type: 'security_domain',
+                        id: domain.id,
+                        guid: domain.guid,
+                        data: domain,
+                        parentSegment: parentSegment,
+                        parentNetwork: parentNetwork
+                    }
+                });
+                document.dispatchEvent(event);
+            });
             
-            // If this domain has HW stacks, create a container for them
+            // If domain has HW stacks, create child container
             if (domain.hwStacks && domain.hwStacks.length > 0) {
                 const childContainer = document.createElement('div');
                 childContainer.className = 'tree-children';
-                childContainer.style.display = 'none'; // Initially hidden
-                node.appendChild(childContainer);
+                domainNode.appendChild(childContainer);
                 
-                // Add expand icon to node
-                const expandIcon = node.querySelector('.expand-icon');
+                // Set display based on expanded state
+                const isExpanded = this.expandedNodes.has(domain.guid);
+                childContainer.style.display = isExpanded ? 'block' : 'none';
+                
+                // Update expand icon
+                const expandIcon = domainNode.querySelector('.expand-icon');
                 if (expandIcon) {
                     expandIcon.style.visibility = 'visible';
-                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                    expandIcon.innerHTML = isExpanded ? '&#9660;' : '&#9658;';
+                    
+                    // Add click handler for expand/collapse
+                    expandIcon.onclick = (e) => {
+                        e.stopPropagation();
+                        this.toggleNodeExpanded(domainNode);
+                    };
                 }
                 
-                // Only show children if this node is expanded
-                if (this.expandedNodes.has(domain.guid)) {
-                    childContainer.style.display = 'block';
-                    this.renderHWStacks(childContainer, domain.hwStacks, domain, parentSegment, parentNetwork);
-                }
+                // Render HW stacks
+                this.renderHWStacks(childContainer, domain.hwStacks, domain, parentSegment, parentNetwork);
             }
         });
     },
     
     /**
-     * Render HW stacks in the tree
-     * @param {HTMLElement} container - Container element
-     * @param {Array} hwStacks - Array of HW stacks
+     * Render HW stacks
+     * @param {HTMLElement} container - The container element
+     * @param {Array} stacks - Array of HW stacks
      * @param {Object} parentDomain - Parent security domain
      * @param {Object} parentSegment - Parent network segment
      * @param {Object} parentNetwork - Parent mission network
      */
-    renderHWStacks: function(container, hwStacks, parentDomain, parentSegment, parentNetwork) {
-        hwStacks.forEach(stack => {
-            const node = this.createTreeNode(
+    renderHWStacks: function(container, stacks, parentDomain, parentSegment, parentNetwork) {
+        if (!stacks || !stacks.length) return;
+        
+        const self = this;
+        
+        stacks.forEach(stack => {
+            // Create stack node
+            const stackNode = this.createTreeNode(
                 'hw_stack',
-                stack.name, 
-                stack.id, 
-                stack.guid,
-                parentDomain.guid
+                stack.name,
+                stack.id,
+                stack.guid
             );
+            container.appendChild(stackNode);
             
-            container.appendChild(node);
+            // Set up click handler
+            stackNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Select this node using the centralized function
+                self.selectTreeNode(this);
+                
+                // Dispatch node selected event
+                const event = new CustomEvent('cis:node-selected', {
+                    detail: {
+                        type: 'hw_stack',
+                        id: stack.id,
+                        guid: stack.guid,
+                        data: stack,
+                        parentDomain: parentDomain,
+                        parentSegment: parentSegment,
+                        parentNetwork: parentNetwork
+                    }
+                });
+                document.dispatchEvent(event);
+            });
             
-            // If this stack has assets, create a container for them
+            // If stack has assets, create child container
             if (stack.assets && stack.assets.length > 0) {
                 const childContainer = document.createElement('div');
                 childContainer.className = 'tree-children';
-                childContainer.style.display = 'none'; // Initially hidden
-                node.appendChild(childContainer);
+                stackNode.appendChild(childContainer);
                 
-                // Add expand icon to node
-                const expandIcon = node.querySelector('.expand-icon');
+                // Set display based on expanded state
+                const isExpanded = this.expandedNodes.has(stack.guid);
+                childContainer.style.display = isExpanded ? 'block' : 'none';
+                
+                // Update expand icon
+                const expandIcon = stackNode.querySelector('.expand-icon');
                 if (expandIcon) {
                     expandIcon.style.visibility = 'visible';
-                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                    expandIcon.innerHTML = isExpanded ? '&#9660;' : '&#9658;';
+                    
+                    // Add click handler for expand/collapse
+                    expandIcon.onclick = (e) => {
+                        e.stopPropagation();
+                        this.toggleNodeExpanded(stackNode);
+                    };
                 }
                 
-                // Only show children if this node is expanded
-                if (this.expandedNodes.has(stack.guid)) {
-                    childContainer.style.display = 'block';
-                    this.renderAssets(childContainer, stack.assets, stack, parentDomain, parentSegment, parentNetwork);
-                }
+                // Render assets
+                this.renderAssets(childContainer, stack.assets, stack, parentDomain, parentSegment, parentNetwork);
             }
         });
     },
     
     /**
-     * Render assets in the tree
-     * @param {HTMLElement} container - Container element
+     * Render assets
+     * @param {HTMLElement} container - The container element
      * @param {Array} assets - Array of assets
      * @param {Object} parentStack - Parent HW stack
      * @param {Object} parentDomain - Parent security domain
@@ -284,52 +492,86 @@ const CISTree2 = {
      * @param {Object} parentNetwork - Parent mission network
      */
     renderAssets: function(container, assets, parentStack, parentDomain, parentSegment, parentNetwork) {
+        if (!assets || !assets.length) return;
+        
+        const self = this;
+        
         assets.forEach(asset => {
-            const node = this.createTreeNode(
+            // Create asset node
+            const assetNode = this.createTreeNode(
                 'asset',
-                asset.name, 
-                asset.id, 
-                asset.guid,
-                parentStack.guid
+                asset.name,
+                asset.id,
+                asset.guid
             );
+            container.appendChild(assetNode);
             
-            container.appendChild(node);
+            // Set up click handler
+            assetNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Select this node using the centralized function
+                self.selectTreeNode(this);
+                
+                // Dispatch node selected event
+                const event = new CustomEvent('cis:node-selected', {
+                    detail: {
+                        type: 'asset',
+                        id: asset.id,
+                        guid: asset.guid,
+                        data: asset,
+                        parentStack: parentStack,
+                        parentDomain: parentDomain,
+                        parentSegment: parentSegment,
+                        parentNetwork: parentNetwork
+                    }
+                });
+                document.dispatchEvent(event);
+            });
             
-            // If this asset has network interfaces or GP instances, create containers for them
+            // Check if asset has network interfaces or GP instances
             const hasNetworkInterfaces = asset.networkInterfaces && asset.networkInterfaces.length > 0;
-            const hasGpInstances = asset.gpInstances && asset.gpInstances.length > 0;
+            const hasGPInstances = asset.gpInstances && asset.gpInstances.length > 0;
             
-            if (hasNetworkInterfaces || hasGpInstances) {
+            // If asset has children, create child container
+            if (hasNetworkInterfaces || hasGPInstances) {
                 const childContainer = document.createElement('div');
                 childContainer.className = 'tree-children';
-                childContainer.style.display = 'none'; // Initially hidden
-                node.appendChild(childContainer);
+                assetNode.appendChild(childContainer);
                 
-                // Add expand icon to node
-                const expandIcon = node.querySelector('.expand-icon');
+                // Set display based on expanded state
+                const isExpanded = this.expandedNodes.has(asset.guid);
+                childContainer.style.display = isExpanded ? 'block' : 'none';
+                
+                // Update expand icon
+                const expandIcon = assetNode.querySelector('.expand-icon');
                 if (expandIcon) {
                     expandIcon.style.visibility = 'visible';
-                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                    expandIcon.innerHTML = isExpanded ? '&#9660;' : '&#9658;';
+                    
+                    // Add click handler for expand/collapse
+                    expandIcon.onclick = (e) => {
+                        e.stopPropagation();
+                        this.toggleNodeExpanded(assetNode);
+                    };
                 }
                 
-                // Only show children if this node is expanded
-                if (this.expandedNodes.has(asset.guid)) {
-                    childContainer.style.display = 'block';
-                    if (hasNetworkInterfaces) {
-                        this.renderNetworkInterfaces(childContainer, asset.networkInterfaces, asset, parentStack, parentDomain, parentSegment, parentNetwork);
-                    }
-                    
-                    if (hasGpInstances) {
-                        this.renderGPInstances(childContainer, asset.gpInstances, asset, parentStack, parentDomain, parentSegment, parentNetwork);
-                    }
+                // Render network interfaces
+                if (hasNetworkInterfaces) {
+                    this.renderNetworkInterfaces(childContainer, asset.networkInterfaces, asset, parentStack, parentDomain, parentSegment, parentNetwork);
+                }
+                
+                // Render GP instances
+                if (hasGPInstances) {
+                    this.renderGPInstances(childContainer, asset.gpInstances, asset, parentStack, parentDomain, parentSegment, parentNetwork);
                 }
             }
         });
     },
     
     /**
-     * Render network interfaces in the tree
-     * @param {HTMLElement} container - Container element
+     * Render network interfaces
+     * @param {HTMLElement} container - The container element
      * @param {Array} interfaces - Array of network interfaces
      * @param {Object} parentAsset - Parent asset
      * @param {Object} parentStack - Parent HW stack
@@ -338,22 +580,59 @@ const CISTree2 = {
      * @param {Object} parentNetwork - Parent mission network
      */
     renderNetworkInterfaces: function(container, interfaces, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
+        if (!interfaces || !interfaces.length) return;
+        
+        const self = this;
+        
         interfaces.forEach(iface => {
-            const node = this.createTreeNode(
-                'network_interface',
-                iface.name, 
-                iface.id, 
-                iface.guid,
-                parentAsset.guid
-            );
+            // Get IP address from configuration items if available
+            let ipAddress = 'N/A';
+            if (iface.configurationItems && Array.isArray(iface.configurationItems)) {
+                const ipItem = iface.configurationItems.find(item => item.Name === 'IP Address');
+                if (ipItem && ipItem.AnswerContent) {
+                    ipAddress = ipItem.AnswerContent;
+                }
+            }
             
-            container.appendChild(node);
+            // Create interface node with name and IP address
+            const displayName = `${iface.name} - ${ipAddress}`;
+            const interfaceNode = this.createTreeNode(
+                'network_interface',
+                displayName,
+                iface.id,
+                iface.guid
+            );
+            container.appendChild(interfaceNode);
+            
+            // Set up click handler
+            interfaceNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Select this node using the centralized function
+                self.selectTreeNode(this);
+                
+                // Dispatch node selected event
+                const event = new CustomEvent('cis:node-selected', {
+                    detail: {
+                        type: 'network_interface',
+                        id: iface.id,
+                        guid: iface.guid,
+                        data: iface,
+                        parentAsset: parentAsset,
+                        parentStack: parentStack,
+                        parentDomain: parentDomain,
+                        parentSegment: parentSegment,
+                        parentNetwork: parentNetwork
+                    }
+                });
+                document.dispatchEvent(event);
+            });
         });
     },
     
     /**
-     * Render GP instances in the tree
-     * @param {HTMLElement} container - Container element
+     * Render GP instances
+     * @param {HTMLElement} container - The container element
      * @param {Array} gpInstances - Array of GP instances
      * @param {Object} parentAsset - Parent asset
      * @param {Object} parentStack - Parent HW stack
@@ -362,48 +641,77 @@ const CISTree2 = {
      * @param {Object} parentNetwork - Parent mission network
      */
     renderGPInstances: function(container, gpInstances, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
+        if (!gpInstances || !gpInstances.length) return;
+        
+        const self = this;
+        
         gpInstances.forEach(gp => {
-            // Create a display name that includes the instance label if available
-            const displayName = gp.instanceLabel ? 
-                `${gp.gpid} (${gp.instanceLabel})` : 
-                gp.gpid;
-                
-            const node = this.createTreeNode(
+            // Create GP instance node
+            const displayName = gp.instanceLabel ? `${gp.gpid} (${gp.instanceLabel})` : gp.gpid;
+            const gpNode = this.createTreeNode(
                 'gp_instance',
-                displayName, 
-                gp.gpid, 
-                gp.guid,
-                parentAsset.guid
+                displayName,
+                gp.gpid,
+                gp.guid
             );
+            container.appendChild(gpNode);
             
-            container.appendChild(node);
+            // Set up click handler
+            gpNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Select this node using the centralized function
+                self.selectTreeNode(this);
+                
+                // Dispatch node selected event
+                const event = new CustomEvent('cis:node-selected', {
+                    detail: {
+                        type: 'gp_instance',
+                        id: gp.gpid,
+                        guid: gp.guid,
+                        data: gp,
+                        parentAsset: parentAsset,
+                        parentStack: parentStack,
+                        parentDomain: parentDomain,
+                        parentSegment: parentSegment,
+                        parentNetwork: parentNetwork
+                    }
+                });
+                document.dispatchEvent(event);
+            });
             
-            // If this GP instance has SP instances, create a container for them
+            // If GP instance has SP instances, create child container
             if (gp.spInstances && gp.spInstances.length > 0) {
                 const childContainer = document.createElement('div');
                 childContainer.className = 'tree-children';
-                childContainer.style.display = 'none'; // Initially hidden
-                node.appendChild(childContainer);
+                gpNode.appendChild(childContainer);
                 
-                // Add expand icon to node
-                const expandIcon = node.querySelector('.expand-icon');
+                // Set display based on expanded state
+                const isExpanded = this.expandedNodes.has(gp.guid);
+                childContainer.style.display = isExpanded ? 'block' : 'none';
+                
+                // Update expand icon
+                const expandIcon = gpNode.querySelector('.expand-icon');
                 if (expandIcon) {
                     expandIcon.style.visibility = 'visible';
-                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                    expandIcon.innerHTML = isExpanded ? '&#9660;' : '&#9658;';
+                    
+                    // Add click handler for expand/collapse
+                    expandIcon.onclick = (e) => {
+                        e.stopPropagation();
+                        this.toggleNodeExpanded(gpNode);
+                    };
                 }
                 
-                // Only show children if this node is expanded
-                if (this.expandedNodes.has(gp.guid)) {
-                    childContainer.style.display = 'block';
-                    this.renderSPInstances(childContainer, gp.spInstances, gp, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork);
-                }
+                // Render SP instances
+                this.renderSPInstances(childContainer, gp.spInstances, gp, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork);
             }
         });
     },
     
     /**
-     * Render SP instances in the tree
-     * @param {HTMLElement} container - Container element
+     * Render SP instances
+     * @param {HTMLElement} container - The container element
      * @param {Array} spInstances - Array of SP instances
      * @param {Object} parentGP - Parent GP instance
      * @param {Object} parentAsset - Parent asset
@@ -413,21 +721,45 @@ const CISTree2 = {
      * @param {Object} parentNetwork - Parent mission network
      */
     renderSPInstances: function(container, spInstances, parentGP, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
+        if (!spInstances || !spInstances.length) return;
+        
+        const self = this;
+        
         spInstances.forEach(sp => {
-            // Create a display name that includes the SP version
-            const displayName = sp.spVersion ? 
-                `${sp.spId} (v${sp.spVersion})` : 
-                sp.spId;
-                
-            const node = this.createTreeNode(
+            // Create SP instance node
+            const displayName = sp.spVersion ? `${sp.spId} (v${sp.spVersion})` : sp.spId;
+            const spNode = this.createTreeNode(
                 'sp_instance',
-                displayName, 
-                sp.spId, 
-                sp.guid,
-                parentGP.guid
+                displayName,
+                sp.spId,
+                sp.guid
             );
+            container.appendChild(spNode);
             
-            container.appendChild(node);
+            // Set up click handler
+            spNode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Select this node using the centralized function
+                self.selectTreeNode(this);
+                
+                // Dispatch node selected event
+                const event = new CustomEvent('cis:node-selected', {
+                    detail: {
+                        type: 'sp_instance',
+                        id: sp.spId,
+                        guid: sp.guid,
+                        data: sp,
+                        parentGP: parentGP,
+                        parentAsset: parentAsset,
+                        parentStack: parentStack,
+                        parentDomain: parentDomain,
+                        parentSegment: parentSegment,
+                        parentNetwork: parentNetwork
+                    }
+                });
+                document.dispatchEvent(event);
+            });
         });
     },
     
@@ -437,90 +769,70 @@ const CISTree2 = {
      * @param {string} name - Display name
      * @param {string} id - ID of the entity
      * @param {string} guid - GUID of the entity
-     * @param {string} parentGuid - GUID of the parent entity
      * @returns {HTMLElement} The created tree node
      */
-    createTreeNode: function(type, name, id, guid, parentGuid) {
+    createTreeNode: function(type, name, id, guid) {
+        // Create node container with vertical layout
         const node = document.createElement('div');
         node.className = 'tree-node';
         node.setAttribute('data-type', type);
         if (id) node.setAttribute('data-id', id);
         if (guid) node.setAttribute('data-guid', guid);
-        if (parentGuid) node.setAttribute('data-parent-guid', parentGuid);
         
-        // Check if this is a container node that can have children
-        const isContainer = ['cisplan', 'mission_network', 'network_segment', 'security_domain', 'hw_stack', 'asset'].includes(type);
+        // Apply vertical styling
+        node.style.display = 'block';
+        node.style.marginBottom = '5px';
         
-        // Create node content
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'tree-node-content';
+        // Create node content container
+        const nodeContent = document.createElement('div');
+        nodeContent.className = 'tree-node-content';
+        nodeContent.style.display = 'flex';
+        nodeContent.style.alignItems = 'center';
+        nodeContent.style.padding = '4px 6px';
+        nodeContent.style.borderRadius = '3px';
+        nodeContent.style.cursor = 'pointer';
+        node.appendChild(nodeContent);
         
-        // Add expand/collapse icon if the node can have children
+        // Create expand icon (hidden by default)
         const expandIcon = document.createElement('span');
         expandIcon.className = 'expand-icon';
-        expandIcon.innerHTML = isContainer ? '&#9658;' : ''; // Right-pointing triangle
-        expandIcon.style.visibility = isContainer ? 'visible' : 'hidden';
-        contentDiv.appendChild(expandIcon);
-
-        // Add debug attribute to help diagnose issues
-        node.setAttribute('data-debug-name', name);
+        expandIcon.style.visibility = 'hidden';
+        expandIcon.style.width = '12px';
+        expandIcon.style.textAlign = 'center';
+        expandIcon.style.marginRight = '4px';
+        expandIcon.style.fontSize = '10px';
+        nodeContent.appendChild(expandIcon);
         
-        // Add icon
-        const icon = document.createElement('img');
-        icon.className = 'node-icon';
-        icon.src = this.getEntityIcon(type);
-        icon.alt = type;
-        contentDiv.appendChild(icon);
+        // Create node icon
+        const iconUrl = this.getEntityIcon(type);
+        const iconImg = document.createElement('img');
+        iconImg.className = 'node-icon';
+        iconImg.src = iconUrl;
+        iconImg.alt = type;
+        iconImg.style.width = '18px';
+        iconImg.style.height = '18px';
+        iconImg.style.marginRight = '8px';
+        nodeContent.appendChild(iconImg);
         
-        // Add label
-        const label = document.createElement('span');
-        label.textContent = name;
-        contentDiv.appendChild(label);
-        
-        // Append the content div to the node
-        node.appendChild(contentDiv);
-        
-        // Add click handler for expand/collapse and selection
-        node.addEventListener('click', (e) => {
-            e.stopPropagation();
-            console.log(`Tree node clicked: ${type} - ${name} (${guid})`);
-            
-            // Toggle expanded state if clicking on the expand icon
-            if (isContainer && (e.target === expandIcon || e.target === expandIcon.firstChild)) {
-                console.log('Expand icon clicked, toggling node expansion');
-                this.toggleNodeExpanded(node);
-                return;
-            }
-            
-            // Set as active node
-            this.selectTreeNode(node);
-            
-            // Double click expands and navigates down
-            if (e.detail === 2 && isContainer) {
-                console.log('Double click detected, expanding node and navigating down');
-                this.expandNode(node);
-                
-                // Signal to navigate to this node
-                const event = new CustomEvent('cis:node-navigate', {
-                    detail: {
-                        guid: guid,
-                        type: type
-                    }
-                });
-                document.dispatchEvent(event);
-            }
-        });
-        
-        // Explicitly add click handler to expand icon to ensure it works
-        if (isContainer) {
-            expandIcon.addEventListener('click', (e) => {
-                e.stopPropagation();
-                console.log('Expand icon directly clicked');
-                this.toggleNodeExpanded(node);
-            });
-        }
+        // Create node label
+        const nodeLabel = document.createElement('span');
+        nodeLabel.className = 'node-label';
+        nodeLabel.textContent = name || 'Unnamed';
+        nodeLabel.style.fontSize = '14px';
+        nodeContent.appendChild(nodeLabel);
         
         return node;
+    },
+    
+    /**
+     * Apply consistent styling to a tree children container
+     * @param {HTMLElement} container - The container to style
+     */
+    styleChildContainer: function(container) {
+        container.style.display = 'block';
+        container.style.marginLeft = '20px';
+        container.style.paddingLeft = '10px';
+        container.style.borderLeft = '1px dotted #ccc';
     },
     
     /**
@@ -530,25 +842,54 @@ const CISTree2 = {
     selectTreeNode: function(node) {
         if (!node) return;
         
-        // Remove active class from all nodes
-        document.querySelectorAll('.tree-node.active').forEach(n => {
-            n.classList.remove('active');
+        // Remove active class from all node contents
+        document.querySelectorAll('.tree-node-content.active').forEach(content => {
+            content.classList.remove('active');
+            content.style.backgroundColor = '';
+            content.style.color = '';
         });
         
-        // Add active class to this node
-        node.classList.add('active');
+        // Add active class to this node's content only
+        const nodeContent = node.querySelector('.tree-node-content');
+        if (nodeContent) {
+            nodeContent.classList.add('active');
+            nodeContent.style.backgroundColor = '#e3f0ff';
+            nodeContent.style.color = '#222';
+        }
+        
         this.currentTreeNode = node;
+    },
+    
+    /**
+     * Expand all parent nodes of a given node
+     * @param {HTMLElement} node - The node whose parents to expand
+     */
+    expandParents: function(node) {
+        if (!node) return;
         
-        // Dispatch selection event
-        const event = new CustomEvent('cis:node-selected', {
-            detail: {
-                type: node.getAttribute('data-type'),
-                id: node.getAttribute('data-id'),
-                guid: node.getAttribute('data-guid'),
-                parentGuid: node.getAttribute('data-parent-guid')
+        let parent = node.parentElement;
+        while (parent) {
+            // If parent is a tree-children container, expand it
+            if (parent.classList.contains('tree-children')) {
+                parent.style.display = 'block';
+                
+                // Update the expand icon of the parent node
+                const parentNode = parent.parentElement;
+                if (parentNode && parentNode.classList.contains('tree-node')) {
+                    const expandIcon = parentNode.querySelector('.expand-icon');
+                    if (expandIcon) {
+                        expandIcon.innerHTML = '&#9660;'; // Down arrow
+                    }
+                    
+                    // Add the parent node's GUID to expanded nodes set if available
+                    const guid = parentNode.getAttribute('data-guid');
+                    if (guid) {
+                        this.expandedNodes.add(guid);
+                    }
+                }
             }
-        });
-        document.dispatchEvent(event);
+            parent = parent.parentElement;
+        }
     },
     
     /**
@@ -556,87 +897,50 @@ const CISTree2 = {
      * @param {HTMLElement} node - The node to toggle
      */
     toggleNodeExpanded: function(node) {
-        const guid = node.getAttribute('data-guid') || node.getAttribute('data-type');
-        const name = node.getAttribute('data-debug-name');
-        const expandIcon = node.querySelector('.expand-icon');
-        const childContainer = node.querySelector('.tree-children');
+        if (!node) return;
         
-        console.log(`Toggling expansion for node: ${guid} (${name})`);
-        
-        if (this.expandedNodes.has(guid)) {
-            // Collapse
-            console.log(`Collapsing node: ${guid} (${name})`);
-            this.expandedNodes.delete(guid);
-            if (expandIcon) expandIcon.innerHTML = '&#9658;';
-            
-            // Hide children visually
-            if (childContainer) {
-                childContainer.style.display = 'none';
-            }
-        } else {
-            // Expand
-            console.log(`Expanding node: ${guid} (${name})`);
-            this.expandedNodes.add(guid);
-            if (expandIcon) expandIcon.innerHTML = '&#9660;';
-            
-            // Show children visually
-            if (childContainer) {
-                childContainer.style.display = 'block';
-            } else {
-                // Load children if not already loaded
-                this.expandNode(node);
-            }
-        }
-    },
-    
-    /**
-     * Expand a node and ensure its children are loaded
-     * @param {HTMLElement} node - The node to expand
-     */
-    expandNode: function(node) {
         const guid = node.getAttribute('data-guid');
-        const type = node.getAttribute('data-type');
-        
-        // Add to expanded nodes set
-        if (guid) {
-            this.expandedNodes.add(guid);
-        } else if (type) {
-            this.expandedNodes.add(type);
-        }
-        
-        // Update expand icon
-        const expandIcon = node.querySelector('.expand-icon');
-        if (expandIcon) expandIcon.innerHTML = '&#9660;';
-        
-        // If children container doesn't exist or is empty, we need to refresh it
         const childContainer = node.querySelector('.tree-children');
-        if (!childContainer || childContainer.children.length === 0) {
-            // This would trigger a data fetch and repopulation of the children
-            const event = new CustomEvent('cis:refresh-children', {
-                detail: {
-                    guid: guid,
-                    type: type,
-                    node: node
-                }
-            });
-            document.dispatchEvent(event);
+        const expandIcon = node.querySelector('.expand-icon');
+        
+        if (!childContainer || !expandIcon) return;
+        
+        const isExpanded = childContainer.style.display === 'block';
+        
+        if (isExpanded) {
+            // Collapse node
+            childContainer.style.display = 'none';
+            expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+            if (guid) this.expandedNodes.delete(guid);
+        } else {
+            // Expand node
+            childContainer.style.display = 'block';
+            expandIcon.innerHTML = '&#9660;'; // Down-pointing triangle
+            if (guid) this.expandedNodes.add(guid);
         }
     },
     
     /**
      * Select a tree node by its GUID
      * @param {string} guid - GUID of the node to select
-     * @returns {boolean} Whether the node was found and selected
+     * @returns {boolean} True if the node was found and selected, false otherwise
      */
     selectNodeByGuid: function(guid) {
         if (!guid) return false;
         
+        // Find the node with the given GUID
         const node = document.querySelector(`.tree-node[data-guid="${guid}"]`);
         if (node) {
+            // Select the node
             this.selectTreeNode(node);
             
-            // Ensure the node is visible by expanding its parents
-            this.expandParents(node);
+            // Trigger a click on the node to dispatch the node-selected event
+            const clickEvent = new MouseEvent('click', {
+                bubbles: true,
+                cancelable: true,
+                view: window
+            });
+            node.dispatchEvent(clickEvent);
             
             return true;
         }
@@ -646,19 +950,26 @@ const CISTree2 = {
     
     /**
      * Select a tree node by its type and ID
-     * @param {string} type - Type of the node
-     * @param {string} id - ID of the node
-     * @returns {boolean} Whether the node was found and selected
+     * @param {string} type - Type of the node to select
+     * @param {string} id - ID of the node to select
+     * @returns {boolean} True if the node was found and selected, false otherwise
      */
     selectNodeByTypeAndId: function(type, id) {
         if (!type || !id) return false;
         
+        // Find the node with the given type and ID
         const node = document.querySelector(`.tree-node[data-type="${type}"][data-id="${id}"]`);
         if (node) {
+            // Select the node
             this.selectTreeNode(node);
             
-            // Ensure the node is visible by expanding its parents
-            this.expandParents(node);
+            // Trigger a click on the node to dispatch the node-selected event
+            const clickEvent = new MouseEvent('click', {
+                bubbles: true,
+                cancelable: true,
+                view: window
+            });
+            node.dispatchEvent(clickEvent);
             
             return true;
         }
@@ -667,63 +978,30 @@ const CISTree2 = {
     },
     
     /**
-     * Expand all parent nodes to make a node visible
-     * @param {HTMLElement} node - The node whose parents should be expanded
+     * Navigate up to the parent node
      */
-    expandParents: function(node) {
-        if (!node) return;
+    navigateUp: function() {
+        if (!this.currentTreeNode) return;
         
-        let parent = node.parentElement;
+        // Find the parent tree node
+        let parent = this.currentTreeNode.parentElement;
         while (parent) {
-            if (parent.classList.contains('tree-children')) {
-                const parentNode = parent.parentElement;
-                if (parentNode && parentNode.classList.contains('tree-node')) {
-                    const guid = parentNode.getAttribute('data-guid');
-                    const type = parentNode.getAttribute('data-type');
-                    
-                    // Add to expanded nodes set
-                    if (guid) {
-                        this.expandedNodes.add(guid);
-                    } else if (type) {
-                        this.expandedNodes.add(type);
-                    }
-                    
-                    // Update expand icon
-                    const expandIcon = parentNode.querySelector('.expand-icon');
-                    if (expandIcon) expandIcon.innerHTML = '&#9660;';
-                }
+            if (parent.classList.contains('tree-node')) {
+                // Select the parent node
+                this.selectTreeNode(parent);
+                
+                // Trigger a click on the parent node to dispatch the node-selected event
+                const clickEvent = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
+                parent.dispatchEvent(clickEvent);
+                
+                return;
             }
             parent = parent.parentElement;
         }
-    },
-    
-    /**
-     * Navigate up the tree from the current node
-     * @returns {boolean} Whether navigation was successful
-     */
-    navigateUp: function() {
-        if (!this.currentTreeNode) return false;
-        
-        const type = this.currentTreeNode.getAttribute('data-type');
-        const parentGuid = this.currentTreeNode.getAttribute('data-parent-guid');
-        
-        // Can't go up from root
-        if (type === 'cisplan') return false;
-        
-        if (parentGuid) {
-            return this.selectNodeByGuid(parentGuid);
-        }
-        
-        // If no parent GUID, navigate to root
-        if (type === 'mission_network') {
-            const rootNode = document.querySelector('.tree-node[data-type="cisplan"]');
-            if (rootNode) {
-                this.selectTreeNode(rootNode);
-                return true;
-            }
-        }
-        
-        return false;
     },
     
     /**
@@ -732,19 +1010,7 @@ const CISTree2 = {
      * @returns {string} URL of the icon
      */
     getEntityIcon: function(type) {
-        // Map entity types to icon URLs from CISUtils.ENTITY_META
-        const iconMappings = {
-            'cisplan': '/static/img/CIS-PLAN.svg',
-            'mission_network': '/static/img/missionNetworks.svg',
-            'network_segment': '/static/img/networkSegments.svg',
-            'security_domain': '/static/img/securityDomains.svg',
-            'hw_stack': '/static/img/hwStacks.svg',
-            'asset': '/static/img/assets.svg',
-            'network_interface': '/static/img/networkInterfaces.svg',
-            'gp_instance': '/static/img/gpInstances.svg',
-            'sp_instance': '/static/img/spInstances.svg'
-        };
-        
-        return iconMappings[type] || '/static/img/unknown.svg';
+        // Use the centralized utility function
+        return CISUtil2.getEntityIcon(type);
     }
-};
+}

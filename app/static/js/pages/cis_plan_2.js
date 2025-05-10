@@ -15,6 +15,10 @@ const CISPlan2 = {
      */
     init: function() {
         console.log('Initializing CIS Plan 2.0 application');
+        
+        // Store component references
+        this.CISTree2 = CISTree2;
+        
         // Initialize components
         CISTree2.init();
         CISElements2.init();
@@ -134,26 +138,6 @@ const CISPlan2 = {
         document.getElementById('close-edit-modal').addEventListener('click', () => {
             document.getElementById('edit-modal').style.display = 'none';
         });
-        
-        document.getElementById('cancel-edit-btn').addEventListener('click', () => {
-            document.getElementById('edit-modal').style.display = 'none';
-        });
-        
-        // Delete modal close handlers
-        document.getElementById('close-delete-modal').addEventListener('click', () => {
-            document.getElementById('delete-modal').style.display = 'none';
-        });
-        
-        document.getElementById('cancel-delete-btn').addEventListener('click', () => {
-            document.getElementById('delete-modal').style.display = 'none';
-        });
-        
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-            }
-        });
     },
     
     /**
@@ -163,9 +147,18 @@ const CISPlan2 = {
         // Listen for node selection in the tree
         document.addEventListener('cis:node-selected', (event) => {
             const detail = event.detail;
+            console.log('Node selected event:', detail);
             
             // Render child elements in the elements panel
-            CISElements2.renderElements(this.cisPlanData, detail.type, detail.guid);
+            if (detail.type === 'cisplan') {
+                // For the root node, pass the full CIS Plan data
+                this.renderElements(detail.type, this.cisPlanData, detail.guid);
+            } else if (detail.data) {
+                // For other nodes, pass the node's data
+                this.renderElements(detail.type, detail.data, detail.guid);
+            } else {
+                console.error('Node selected event missing data:', detail);
+            }
         });
         
         // Listen for node selection in the elements panel
@@ -192,9 +185,8 @@ const CISPlan2 = {
         
         // Listen for node expand/refresh children events
         document.addEventListener('cis:refresh-children', (event) => {
-            // In a complete implementation, this would fetch data for the specific node
-            // For now, just refresh the entire tree
-            this.refreshTree();
+            console.log('Refresh children event:', event.detail);
+            // For now, we don't need to do anything - the tree already has all data
         });
     },
     
@@ -210,39 +202,35 @@ const CISPlan2 = {
                 // Store the complete API response first
                 this.apiResponse = response;
                 
-                // Extract the actual CIS Plan data from the response
-                if (response && response.status === 'success' && response.data) {
+                if (response && response.status === 'success') {
                     console.log('API response successful, extracting data');
-                    this.cisPlanData = response.data;
-                } else {
-                    console.warn('API response missing data property');
-                    this.cisPlanData = response; // Try using the response directly
-                }
-                
-                console.log('Extracted CIS Plan data:', this.cisPlanData);
-                
-                // Check if we have mission networks directly or nested
-                let hasMissionNetworks = false;
-                
-                if (this.cisPlanData.missionNetworks && Array.isArray(this.cisPlanData.missionNetworks)) {
-                    console.log(`Found ${this.cisPlanData.missionNetworks.length} mission networks directly in data`);
-                    hasMissionNetworks = this.cisPlanData.missionNetworks.length > 0;
-                } else if (response.data && response.data.missionNetworks && Array.isArray(response.data.missionNetworks)) {
-                    console.log(`Found ${response.data.missionNetworks.length} mission networks in response.data`);
-                    // Update cisPlanData to point to the correct structure
-                    this.cisPlanData = response.data;
-                    hasMissionNetworks = this.cisPlanData.missionNetworks.length > 0;
-                }
-                
-                if (hasMissionNetworks) {
-                    this.refreshUI();
-                } else {
-                    console.warn('No mission networks found in any data structure');
-                    // Display a message in the tree panel
-                    const treeContent = document.getElementById('tree-content');
-                    if (treeContent) {
-                        treeContent.innerHTML = '<div class="p-3 text-center">No Mission Networks available</div>';
+                    
+                    // Extract the data from the response
+                    if (response.data) {
+                        // Update with the actual data structure
+                        this.cisPlanData = response.data;
+                        console.log('Extracted CIS Plan data:', this.cisPlanData);
+                        
+                        // Check how to access mission networks based on the API response format
+                        if (this.cisPlanData.missionNetworks && Array.isArray(this.cisPlanData.missionNetworks)) {
+                            console.log(`Found ${this.cisPlanData.missionNetworks.length} mission networks directly in data`);
+                        } else if (this.cisPlanData.data && this.cisPlanData.data.missionNetworks) {
+                            // Handle nested response format
+                            console.log(`Found ${this.cisPlanData.data.missionNetworks.length} mission networks in nested data`);
+                            this.cisPlanData = this.cisPlanData.data;
+                        } else {
+                            console.warn('No mission networks found in data');
+                        }
+                        
+                        // Refresh the UI with the new data
+                        this.refreshUI();
+                    } else {
+                        console.error('API response successful but no data found');
+                        this.showError('API response successful but no data found');
                     }
+                } else {
+                    console.error('API response indicates an error');
+                    this.showError('API request failed: ' + (response.message || 'Unknown error'));
                 }
             })
             .catch(error => {
@@ -257,96 +245,50 @@ const CISPlan2 = {
     },
     
     /**
-     * Refresh the entire UI
+     * Refresh the UI with the CIS Plan data
      */
     refreshUI: function() {
         console.log('Refreshing UI with CIS Plan data');
         
-        try {
-            // Render tree directly with the data
-            CISTree2.renderTree(this.cisPlanData);
-            
-            // Clear other panels
-            CISElements2.clearElements();
-            CISDetails2.clearDetails();
-            
-            // Show the root node elements (mission networks)
-            if (this.cisPlanData && this.cisPlanData.missionNetworks) {
-                console.log('Displaying mission networks in elements panel');
-                // Pass just the mission networks array to the elements panel
-                CISElements2.renderElements(this.cisPlanData.missionNetworks, 'mission_network');
-            } else {
-                console.warn('No mission networks to display in elements panel');
-            }
-            
-            // Set up all event listeners
-            this.setupListeners();
-        } catch (error) {
-            console.error('Error refreshing UI:', error);
-            this.showError('Error refreshing UI: ' + error.message);
+        // Set the CIS Plan data reference in the elements component
+        CISElements2.setCISPlanData(this.cisPlanData);
+        
+        // Ensure we have the CISTree2 reference
+        if (!this.CISTree2) {
+            console.log('Setting CISTree2 reference');
+            this.CISTree2 = CISTree2;
         }
+        
+        // Render in the tree
+        if (this.CISTree2) {
+            this.CISTree2.renderTree(this.cisPlanData);
+        } else {
+            console.error('CISTree2 reference is missing');
+        }
+        
+        // Reset the elements panel with mission networks
+        if (this.cisPlanData && this.cisPlanData.missionNetworks) {
+            this.renderElements('mission_network', this.cisPlanData.missionNetworks);
+        }
+        
+        // Clear the details panel
+        CISDetails2.clearDetails();
     },
     
     /**
-     * Set up event listeners for tree node selection and other events
+     * Render data in the elements panel
+     * @param {string} type - Type of data to render ('mission_network', etc.)
+     * @param {Object|Array} data - Data to render
+     * @param {string} guid - GUID of the selected entity (optional)
      */
-    setupListeners: function() {
-        console.log('Setting up event listeners');
+    renderElements: function(type, data, guid) {
+        // Make sure CISElements2 has the reference to the full CIS Plan data
+        if (this.cisPlanData && !CISElements2.cisPlanData) {
+            CISElements2.setCISPlanData(this.cisPlanData);
+        }
         
-        // Tree node selection
-        document.removeEventListener('cis:node-selected', this.handleNodeSelection);
-        document.addEventListener('cis:node-selected', (event) => {
-            console.log('Node selected event:', event.detail);
-            const detail = event.detail;
-            
-            // Find the entity in the data structure
-            if (detail.type === 'cisplan') {
-                // Root node - show mission networks
-                if (this.cisPlanData && this.cisPlanData.missionNetworks) {
-                    CISElements2.renderElements(this.cisPlanData.missionNetworks, 'mission_network');
-                }
-            } else {
-                // Find entity by guid
-                const entity = this.findEntityByGuid(detail.guid, detail.type);
-                if (entity) {
-                    // Show entity's children in elements panel
-                    this.showEntityChildren(entity, detail.type);
-                    
-                    // Show entity details in details panel
-                    CISDetails2.updateDetails(detail.guid, detail.type, detail.parentGuid, null);
-                }
-            }
-        });
-        
-        // Tree navigation
-        document.removeEventListener('cis:node-navigate', this.handleNodeNavigation);
-        document.addEventListener('cis:node-navigate', (event) => {
-            console.log('Node navigate event:', event.detail);
-            // Handle navigation within the tree
-        });
-        
-        // Refresh children request
-        document.removeEventListener('cis:refresh-children', this.handleRefreshChildren);
-        document.addEventListener('cis:refresh-children', (event) => {
-            console.log('Refresh children event:', event.detail);
-            // Handle refreshing a node's children
-        });
-    },
-    
-    /**
-     * Find an entity by its GUID in the CIS Plan data
-     * @param {string} guid - The GUID to search for
-     * @param {string} type - The type of entity to search for
-     * @returns {Object|null} The found entity or null
-     */
-    findEntityByGuid: function(guid, type) {
-        console.log(`Finding entity by GUID: ${guid}, type: ${type}`);
-        
-        if (!guid || !this.cisPlanData) return null;
-        
-        // Simple implementation for now - in a real app, this would be more sophisticated
-        // with a recursive search through the entire hierarchy
-        return null;
+        // Delegate to the CISElements2 component with correct parameter order
+        CISElements2.renderElements(type, data, guid);
     },
     
     /**
@@ -379,61 +321,39 @@ const CISPlan2 = {
                 childType = 'asset';
                 break;
             case 'asset':
-                // Assets have two child types: network interfaces and GP instances
-                const networkInterfaces = entity.networkInterfaces || [];
-                const gpInstances = entity.gpInstances || [];
-                
-                // Create a container for each type if they exist
-                if (networkInterfaces.length > 0 || gpInstances.length > 0) {
-                    CISElements2.renderMixedAssetChildren(networkInterfaces, gpInstances, entity);
-                    return;
+                // Assets can have both network interfaces and GP instances
+                if (entity.networkInterfaces && entity.networkInterfaces.length > 0) {
+                    children = entity.networkInterfaces;
+                    childType = 'network_interface';
+                } else if (entity.gpInstances && entity.gpInstances.length > 0) {
+                    children = entity.gpInstances;
+                    childType = 'gp_instance';
                 }
                 break;
             case 'gp_instance':
                 children = entity.spInstances || [];
                 childType = 'sp_instance';
                 break;
+            default:
+                console.warn(`Unknown entity type: ${entityType}`);
+                break;
         }
         
-        // Render the children in the elements panel
         if (children.length > 0) {
-            CISElements2.renderElements(children, childType, entity.guid);
+            this.renderElements(childType, children);
         } else {
-            CISElements2.showEmptyState(`No ${this.formatEntityTypeName(childType)} found`);
+            CISElements2.showEmptyState(`No children found for this ${entityType}`);
         }
-    },
-    
-    /**
-     * Format an entity type name for display
-     * @param {string} type - The entity type
-     * @returns {string} The formatted entity type name
-     */
-    formatEntityTypeName: function(type) {
-        const typeNames = {
-            'mission_network': 'Mission Networks',
-            'network_segment': 'Network Segments',
-            'security_domain': 'Security Domains',
-            'hw_stack': 'HW Stacks',
-            'asset': 'Assets',
-            'network_interface': 'Network Interfaces',
-            'gp_instance': 'GP Instances',
-            'sp_instance': 'SP Instances'
-        };
-        
-        return typeNames[type] || type;
     },
     
     /**
      * Show an error message to the user
-     * @param {string} message - Error message to display
+     * @param {string} message - The error message to display
      */
     showError: function(message) {
-        // Use toast notification if available, otherwise alert
-        if (typeof showToast === 'function') {
-            showToast(message, 'error');
-        } else {
-            alert(message);
-        }
+        console.error('Error:', message);
+        // This is a placeholder - in a real application, this would show a popup or toast message
+        alert('Error: ' + message);
     }
 };
 

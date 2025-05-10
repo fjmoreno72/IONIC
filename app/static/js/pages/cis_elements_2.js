@@ -50,13 +50,28 @@ const CISElements2 = {
     },
     
     /**
-     * Render the elements based on the selected node
-     * @param {Object} data - The data to render (array of elements or CIS Plan data)
-     * @param {string} selectedType - Type of the selected node
-     * @param {string} selectedGuid - GUID of the selected node
+     * CIS Plan data reference
+     * This will be set by the parent CISPlan2 component
      */
-    renderElements: function(data, selectedType, selectedGuid) {
-        console.log('Rendering elements:', selectedType, data);
+    cisPlanData: null,
+
+    /**
+     * Set the CIS Plan data reference
+     * @param {Object} data - The complete CIS Plan data
+     */
+    setCISPlanData: function(data) {
+        console.log('Setting CIS Plan data reference in Elements component');
+        this.cisPlanData = data;
+    },
+
+    /**
+     * Render the elements based on the selected node
+     * @param {string} selectedType - Type of the selected node
+     * @param {Object} data - The data to render (entity object or CIS Plan data)
+     * @param {string} selectedGuid - GUID of the selected node (optional)
+     */
+    renderElements: function(selectedType, data, selectedGuid) {
+        console.log('Rendering elements for:', selectedType, 'GUID:', selectedGuid, 'Data:', data);
         if (!this.elementsContent) {
             console.error('Elements content element not found');
             return;
@@ -70,61 +85,165 @@ const CISElements2 = {
         this.currentParentGuid = selectedGuid;
         this.currentElement = null;
         
-        // Reset the details panel with the parent data
-        const event = new CustomEvent('cis:update-details', {
-            detail: {
-                type: selectedType,
-                guid: selectedGuid,
-                element: null
-            }
-        });
-        document.dispatchEvent(event);
+        // Add a title to the elements panel with parent name if available
+        const titleElement = document.createElement('div');
+        titleElement.className = 'elements-title mb-3';
         
-        // Handle different data types - either the full CIS Plan data or an array of specific elements
+        // Get parent name if available
+        let parentName = '';
+        if (data) {
+            if (selectedType === 'cisplan') {
+                parentName = 'CIS Plan';
+            } else if (data.name) {
+                parentName = data.name;
+            } else if (data.id) {
+                parentName = data.id;
+            }
+        }
+        
+        // Create title with parent name
+        if (parentName) {
+            titleElement.innerHTML = `<h5>${this.getEntityTypeName(selectedType)} Elements - ${parentName}</h5>`;
+        } else {
+            titleElement.innerHTML = `<h5>${this.getEntityTypeName(selectedType)} Elements</h5>`;
+        }
+        
+        this.elementsContent.appendChild(titleElement);
+        
+        // For the root CIS Plan node
         if (selectedType === 'cisplan') {
-            console.log('Rendering for cisplan root node');
-            // If we're passed the full data object with missionNetworks property
-            if (data.missionNetworks && Array.isArray(data.missionNetworks)) {
-                console.log('Rendering mission networks from full data object');
-                this.renderMissionNetworks(data.missionNetworks);
-            } 
-            // If we're passed the mission networks array directly
-            else if (Array.isArray(data)) {
-                console.log('Rendering mission networks from direct array');
-                this.renderMissionNetworks(data);
+            if (data && data.missionNetworks && Array.isArray(data.missionNetworks)) {
+                this.renderElementCards(data.missionNetworks, 'mission_network');
             } else {
-                console.warn('No mission networks found in data');
                 this.showEmptyState('No Mission Networks');
             }
             return;
         }
         
-        // For non-root nodes, find the entity and render its children
-        if (selectedGuid) {
-            // Find the entity in the CIS Plan data
-            const entityInfo = this.findEntityByGuid(cisPlanData, selectedGuid);
+        // For other nodes, we have two options:
+        // 1. We received the entity data directly
+        // 2. We need to find the entity by GUID
+        
+        let entityToRender = null;
+        
+        // Option 1: We received the entity data directly
+        if (data && typeof data === 'object') {
+            entityToRender = data;
+        }
+        // Option 2: We need to find the entity by GUID
+        else if (selectedGuid && this.cisPlanData) {
+            const entityInfo = this.findEntityByGuid(this.cisPlanData, selectedGuid);
             if (entityInfo && entityInfo.entity) {
-                this.renderEntityChildren(entityInfo.entity, selectedType);
-            } else {
-                this.showEmptyState('Entity not found');
+                entityToRender = entityInfo.entity;
             }
+        }
+        
+        if (entityToRender) {
+            this.renderEntityChildren(entityToRender, selectedType);
+        } else {
+            this.showEmptyState('Entity not found or no data available');
         }
     },
     
     /**
-     * Render mission networks
-     * @param {Array} missionNetworks - Array of mission networks
+     * Render the children of an entity based on its type
+     * @param {Object} entity - The entity whose children to render
+     * @param {string} entityType - The type of the entity
      */
-    renderMissionNetworks: function(missionNetworks) {
-        console.log('Rendering mission networks in elements panel:', missionNetworks);
-        if (!missionNetworks || missionNetworks.length === 0) {
-            console.warn('No mission networks to render');
-            this.showEmptyState('No Mission Networks');
+    renderEntityChildren: function(entity, entityType) {
+        console.log('Rendering children for entity type:', entityType);
+        
+        if (!entity) {
+            this.showEmptyState('Entity data not available');
             return;
         }
         
-        // Create element cards for each mission network
-        this.renderElementCards(missionNetworks, 'mission_network');
+        // Render different child types based on parent entity type
+        switch (entityType) {
+            case 'mission_network':
+                if (entity.networkSegments && entity.networkSegments.length > 0) {
+                    this.renderElementCards(entity.networkSegments, 'network_segment');
+                } else {
+                    this.showEmptyState('No Network Segments');
+                }
+                break;
+                
+            case 'network_segment':
+                if (entity.securityDomains && entity.securityDomains.length > 0) {
+                    this.renderElementCards(entity.securityDomains, 'security_domain');
+                } else {
+                    this.showEmptyState('No Security Domains');
+                }
+                break;
+                
+            case 'security_domain':
+                if (entity.hwStacks && entity.hwStacks.length > 0) {
+                    this.renderElementCards(entity.hwStacks, 'hw_stack');
+                } else {
+                    this.showEmptyState('No HW Stacks');
+                }
+                break;
+                
+            case 'hw_stack':
+                if (entity.assets && entity.assets.length > 0) {
+                    this.renderElementCards(entity.assets, 'asset');
+                } else {
+                    this.showEmptyState('No Assets');
+                }
+                break;
+                
+            case 'asset':
+                // Assets can have both network interfaces and GP instances
+                const hasNetworkInterfaces = entity.networkInterfaces && entity.networkInterfaces.length > 0;
+                const hasGPInstances = entity.gpInstances && entity.gpInstances.length > 0;
+                
+                if (hasNetworkInterfaces || hasGPInstances) {
+                    // Create section for network interfaces if they exist
+                    if (hasNetworkInterfaces) {
+                        const sectionTitle = document.createElement('h6');
+                        sectionTitle.className = 'mt-3 mb-2';
+                        sectionTitle.textContent = 'Network Interfaces';
+                        this.elementsContent.appendChild(sectionTitle);
+                        
+                        this.renderElementCards(entity.networkInterfaces, 'network_interface');
+                    }
+                    
+                    // Create section for GP instances if they exist
+                    if (hasGPInstances) {
+                        const sectionTitle = document.createElement('h6');
+                        sectionTitle.className = 'mt-3 mb-2';
+                        sectionTitle.textContent = 'GP Instances';
+                        this.elementsContent.appendChild(sectionTitle);
+                        
+                        this.renderElementCards(entity.gpInstances, 'gp_instance');
+                    }
+                } else {
+                    this.showEmptyState('No Network Interfaces or GP Instances');
+                }
+                break;
+                
+            case 'gp_instance':
+                if (entity.spInstances && entity.spInstances.length > 0) {
+                    this.renderElementCards(entity.spInstances, 'sp_instance');
+                } else {
+                    this.showEmptyState('No SP Instances');
+                }
+                break;
+                
+            default:
+                this.showEmptyState(`No child elements for ${this.getEntityTypeName(entityType)}`);
+                break;
+        }
+    },
+    
+    /**
+     * Get a human-readable name for an entity type
+     * @param {string} type - The entity type
+     * @returns {string} Human-readable type name
+     */
+    getEntityTypeName: function(type) {
+        // Use the centralized utility function
+        return CISUtil2.getEntityTypeName(type);
     },
     
     /**
@@ -226,88 +345,65 @@ const CISElements2 = {
     createElementCard: function(element, type) {
         const card = document.createElement('div');
         card.className = 'element-card';
-        
-        // Set data attributes for the card
         card.setAttribute('data-type', type);
-        card.setAttribute('data-id', element.id || '');
         card.setAttribute('data-guid', element.guid || '');
         
-        // Create card content based on type
-        let cardTitle = element.name || 'Unnamed';
-        let cardProperties = [];
-        
+        // Get the appropriate display name based on entity type
+        let displayName = '';
         switch (type) {
             case 'mission_network':
-                cardProperties.push(`ID: ${element.id || 'N/A'}`);
-                break;
-                
             case 'network_segment':
-                cardProperties.push(`ID: ${element.id || 'N/A'}`);
+            case 'hw_stack':
+            case 'asset':
+                displayName = element.name || 'Unnamed';
                 break;
                 
             case 'security_domain':
-                cardProperties.push(`Classification: ${element.id || 'N/A'}`);
-                break;
-                
-            case 'hw_stack':
-                cardProperties.push(`ID: ${element.id || 'N/A'}`);
-                break;
-                
-            case 'asset':
-                cardProperties.push(`ID: ${element.id || 'N/A'}`);
+                displayName = element.id || 'Unnamed';
                 break;
                 
             case 'network_interface':
-                // User preference: Show IP address in format "Name - IP Address"
-                const ipConfig = this.findConfigurationItem(element, 'IP Address');
-                const ipAddress = ipConfig ? ipConfig.AnswerContent : 'N/A';
-                cardTitle = `${element.name} - ${ipAddress}`;
+                displayName = element.name || element.id || 'Unnamed';
                 break;
                 
             case 'gp_instance':
-                cardProperties.push(`GP ID: ${element.gpid || 'N/A'}`);
-                if (element.label) {
-                    cardProperties.push(`Label: ${element.label}`);
-                }
+                displayName = element.name || element.gpid || 'Unnamed';
                 break;
                 
             case 'sp_instance':
-                cardProperties.push(`SP ID: ${element.spId || 'N/A'}`);
-                if (element.version) {
-                    cardProperties.push(`Version: ${element.version}`);
-                }
+                displayName = element.name || element.spId || 'Unnamed';
                 break;
+                
+            default:
+                displayName = element.name || element.id || 'Unnamed';
         }
         
-        // Create card HTML with the correct image paths
-        // Map entity types to the correct image filenames
-        const typeToImageMapping = {
-            'cisplan': 'CIS-PLAN',
-            'mission_network': 'missionNetworks',
-            'network_segment': 'networkSegments',
-            'security_domain': 'securityDomains',
-            'hw_stack': 'hwStacks',
-            'asset': 'assets',
-            'network_interface': 'networkInterfaces',
-            'gp_instance': 'gpInstances',
-            'sp_instance': 'spInstances',
-            'configuration_item': 'configurationItems'
-        };
+        // Get the entity icon using the centralized utility function
+        const iconUrl = CISUtil2.getEntityIcon(type);
         
-        const imageName = typeToImageMapping[type] || 'CIS-PLAN';
-        
+        // Create a simple rectangular card with the entity name and icon
         card.innerHTML = `
-            <div class="card-header">
-                <img src="/static/img/${imageName}.svg" class="card-icon" alt="${type}" onerror="this.src='/static/img/CIS-PLAN.svg'" />
-                <span class="card-title">${cardTitle}</span>
-            </div>
-            <div class="card-body">
-                ${cardProperties.map(prop => `<div class="card-property">${prop}</div>`).join('')}
+            <div class="card mb-2">
+                <div class="card-body d-flex align-items-center p-3">
+                    <img src="${iconUrl}" alt="${type}" style="width: 24px; height: 24px; margin-right: 15px;">
+                    <span style="font-size: 15px;">${displayName}</span>
+                </div>
             </div>
         `;
         
-        // Add click event listener
+        // Add hover effect with CSS
+        card.style.cursor = 'pointer';
+        card.style.transition = 'all 0.2s ease';
+        
+        // Add click handler to select the element
         card.addEventListener('click', () => {
+            // Highlight the selected card
+            document.querySelectorAll('.element-card .card').forEach(c => {
+                c.style.backgroundColor = '';
+            });
+            card.querySelector('.card').style.backgroundColor = '#e3f0ff';
+            
+            // Select the element
             this.selectElement(element, type);
         });
         
@@ -320,12 +416,69 @@ const CISElements2 = {
      * @param {string} itemName - The name of the configuration item
      * @returns {Object|null} The found configuration item or null
      */
+    /**
+     * Find an entity by its GUID in the CIS Plan data
+     * @param {Object} data - The CIS Plan data to search in
+     * @param {string} guid - The GUID to search for
+     * @returns {Object|null} Object containing the entity and its parent path, or null if not found
+     */
+    findEntityByGuid: function(data, guid) {
+        if (!data || !guid) return null;
+        
+        // Result object to store the found entity and its parent path
+        let result = null;
+        
+        // Search function to recursively traverse the data structure
+        const search = (node, parentPath = []) => {
+            // Check if current node has the target GUID
+            if (node && node.guid === guid) {
+                result = {
+                    entity: node,
+                    parentPath: parentPath
+                };
+                return true;
+            }
+            
+            // If node is not an object or we already found the result, stop searching
+            if (!node || typeof node !== 'object' || result) return false;
+            
+            // Check all possible child collections
+            const childCollections = [
+                'missionNetworks',
+                'networkSegments',
+                'securityDomains',
+                'hwStacks',
+                'assets',
+                'networkInterfaces',
+                'gpInstances',
+                'spInstances'
+            ];
+            
+            // Recursively search through child collections
+            for (const collection of childCollections) {
+                if (Array.isArray(node[collection])) {
+                    for (const child of node[collection]) {
+                        // Add current node to parent path and search in child
+                        const found = search(child, [...parentPath, node]);
+                        if (found) return true;
+                    }
+                }
+            }
+            
+            return false;
+        };
+        
+        // Start search from the root data
+        search(data);
+        return result;
+    },
+    
     findConfigurationItem: function(element, itemName) {
         if (!element || !element.configurationItems || !Array.isArray(element.configurationItems)) {
             return null;
         }
         
-        return element.configurationItems.find(item => item.Name === itemName);
+        return element.configurationItems.find(item => item.Name === itemName) || null;
     },
     
     /**

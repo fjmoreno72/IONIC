@@ -94,6 +94,9 @@ const CISElements2 = {
         if (data) {
             if (selectedType === 'cisplan') {
                 parentName = 'CIS Plan';
+            } else if (selectedType === 'gp_instance') {
+                // Special handling for GP instances
+                parentName = data.gpid || data.id || '';
             } else if (data.name) {
                 parentName = data.name;
             } else if (data.id) {

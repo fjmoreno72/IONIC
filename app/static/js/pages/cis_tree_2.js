@@ -772,56 +772,8 @@ const CISTree2 = {
      * @returns {HTMLElement} The created tree node
      */
     createTreeNode: function(type, name, id, guid) {
-        // Create node container with vertical layout
-        const node = document.createElement('div');
-        node.className = 'tree-node';
-        node.setAttribute('data-type', type);
-        if (id) node.setAttribute('data-id', id);
-        if (guid) node.setAttribute('data-guid', guid);
-        
-        // Apply vertical styling
-        node.style.display = 'block';
-        node.style.marginBottom = '5px';
-        
-        // Create node content container
-        const nodeContent = document.createElement('div');
-        nodeContent.className = 'tree-node-content';
-        nodeContent.style.display = 'flex';
-        nodeContent.style.alignItems = 'center';
-        nodeContent.style.padding = '4px 6px';
-        nodeContent.style.borderRadius = '3px';
-        nodeContent.style.cursor = 'pointer';
-        node.appendChild(nodeContent);
-        
-        // Create expand icon (hidden by default)
-        const expandIcon = document.createElement('span');
-        expandIcon.className = 'expand-icon';
-        expandIcon.style.visibility = 'hidden';
-        expandIcon.style.width = '12px';
-        expandIcon.style.textAlign = 'center';
-        expandIcon.style.marginRight = '4px';
-        expandIcon.style.fontSize = '10px';
-        nodeContent.appendChild(expandIcon);
-        
-        // Create node icon
-        const iconUrl = this.getEntityIcon(type);
-        const iconImg = document.createElement('img');
-        iconImg.className = 'node-icon';
-        iconImg.src = iconUrl;
-        iconImg.alt = type;
-        iconImg.style.width = '18px';
-        iconImg.style.height = '18px';
-        iconImg.style.marginRight = '8px';
-        nodeContent.appendChild(iconImg);
-        
-        // Create node label
-        const nodeLabel = document.createElement('span');
-        nodeLabel.className = 'node-label';
-        nodeLabel.textContent = name || 'Unnamed';
-        nodeLabel.style.fontSize = '14px';
-        nodeContent.appendChild(nodeLabel);
-        
-        return node;
+        // Use the utility function from CISUtil2
+        return CISUtil2.createTreeNode(type, name, id, guid);
     },
     
     /**
@@ -829,10 +781,8 @@ const CISTree2 = {
      * @param {HTMLElement} container - The container to style
      */
     styleChildContainer: function(container) {
-        container.style.display = 'block';
-        container.style.marginLeft = '20px';
-        container.style.paddingLeft = '10px';
-        container.style.borderLeft = '1px dotted #ccc';
+        // Use the utility function from CISUtil2
+        CISUtil2.styleChildContainer(container);
     },
     
     /**
@@ -842,21 +792,10 @@ const CISTree2 = {
     selectTreeNode: function(node) {
         if (!node) return;
         
-        // Remove active class from all node contents
-        document.querySelectorAll('.tree-node-content.active').forEach(content => {
-            content.classList.remove('active');
-            content.style.backgroundColor = '';
-            content.style.color = '';
-        });
+        // Use the utility function from CISUtil2
+        CISUtil2.selectTreeNode(node);
         
-        // Add active class to this node's content only
-        const nodeContent = node.querySelector('.tree-node-content');
-        if (nodeContent) {
-            nodeContent.classList.add('active');
-            nodeContent.style.backgroundColor = '#e3f0ff';
-            nodeContent.style.color = '#222';
-        }
-        
+        // Store the current node reference
         this.currentTreeNode = node;
     },
     
@@ -900,23 +839,15 @@ const CISTree2 = {
         if (!node) return;
         
         const guid = node.getAttribute('data-guid');
-        const childContainer = node.querySelector('.tree-children');
-        const expandIcon = node.querySelector('.expand-icon');
+        const isExpanded = CISUtil2.toggleNodeExpanded(node);
         
-        if (!childContainer || !expandIcon) return;
-        
-        const isExpanded = childContainer.style.display === 'block';
-        
-        if (isExpanded) {
-            // Collapse node
-            childContainer.style.display = 'none';
-            expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
-            if (guid) this.expandedNodes.delete(guid);
-        } else {
-            // Expand node
-            childContainer.style.display = 'block';
-            expandIcon.innerHTML = '&#9660;'; // Down-pointing triangle
-            if (guid) this.expandedNodes.add(guid);
+        // Update the expanded nodes set
+        if (guid) {
+            if (isExpanded) {
+                this.expandedNodes.add(guid);
+            } else {
+                this.expandedNodes.delete(guid);
+            }
         }
     },
     

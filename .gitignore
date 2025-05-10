@@ -10089,3 +10089,5 @@ app/static/ASC/data/~$LinkTypeConfigurationQuestionsOverview.xlsx
 .DS_Store
 .DS_Store
 data/unmapped_sreqs.log
+
+**/.claude/settings.local.json

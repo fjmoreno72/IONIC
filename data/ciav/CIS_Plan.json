@@ -2,7 +2,7 @@
   "fileName": "CIS_Plan.json",
   "missionNetworks": [
     {
-      "name": "Mission 1",
+      "name": "Mission 1*",
       "guid": "5ead1bb0-72f5-4a9c-b64c-8b8ac8ca2017",
       "id": "MN-0007",
       "networkSegments": [
@@ -1221,7 +1221,7 @@
       ]
     },
     {
-      "name": "Mission 3",
+      "name": "Mission 3*",
       "guid": "e2c8d496-58ad-426c-a320-675ad2303b0b",
       "id": "MN-0009",
       "networkSegments": [
@@ -1735,6 +1735,143 @@
                       ]
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mission X",
+      "guid": "07786c3e-53c9-48d4-9236-1971bb051589",
+      "id": "MN-0011",
+      "networkSegments": [
+        {
+          "name": "NetS1*",
+          "guid": "727a86e1-14f8-47aa-97cc-ac9890ccdc8e",
+          "id": "NS-0009",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS",
+              "guid": "09c65b02-e0ab-4249-b699-40d466610866",
+              "hwStacks": [
+                {
+                  "name": "HWS1",
+                  "guid": "106a92b3-53a4-47d4-97f3-c00eb16ecd85",
+                  "id": "HW-0017",
+                  "cisParticipantID": "PAR-CIAV-000112",
+                  "assets": []
+                },
+                {
+                  "name": "HWS2",
+                  "guid": "8284b734-46ac-45ca-bcc4-9c0582cb6d63",
+                  "id": "HW-0018",
+                  "cisParticipantID": "PAR-CIAV-000045",
+                  "assets": []
+                },
+                {
+                  "name": "HWS3",
+                  "guid": "191d86a4-4fef-405c-a16a-819d0431c672",
+                  "id": "HW-0019",
+                  "cisParticipantID": "PAR-CIAV-000046",
+                  "assets": []
+                },
+                {
+                  "name": "HWS5",
+                  "guid": "7589fb9b-6efc-4fe4-aa09-27415d3ca020",
+                  "id": "HW-0020",
+                  "cisParticipantID": "PAR-CIAV-000047",
+                  "assets": []
+                },
+                {
+                  "name": "NEW",
+                  "guid": "dc254d6d-b1d3-48e0-8461-4c7d2abaf566",
+                  "id": "HW-0021",
+                  "cisParticipantID": "PAR-CIAV-000026",
+                  "assets": []
+                },
+                {
+                  "name": "NEW2",
+                  "guid": "828cfa24-124c-4153-99a6-ff20a4a8ebf0",
+                  "id": "HW-0022",
+                  "cisParticipantID": "PAR-CIAV-000046",
+                  "assets": []
+                },
+                {
+                  "name": "zzz",
+                  "guid": "0fa89ba4-0247-4a0a-b78b-d23cd08ef819",
+                  "id": "HW-0023",
+                  "cisParticipantID": "PAR-CIAV-000053",
+                  "assets": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "NET2",
+          "guid": "ddef0f68-d004-441b-9056-c4024de0188a",
+          "id": "NS-0010",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS",
+              "guid": "b2aa6846-85d5-4105-9111-8fbad705e8d1",
+              "hwStacks": [
+                {
+                  "name": "HW3",
+                  "guid": "5781511a-2d92-43b4-8c21-2136fc91df2e",
+                  "id": "HW-0024",
+                  "cisParticipantID": "PAR-CIAV-000045",
+                  "assets": []
+                },
+                {
+                  "name": "XXXX",
+                  "guid": "3970fad8-636c-4a6b-97ae-8d4857cf29f6",
+                  "id": "HW-0025",
+                  "cisParticipantID": "PAR-CIAV-000116",
+                  "assets": []
+                },
+                {
+                  "name": "ZZZZZ",
+                  "guid": "761eadeb-40c2-4dc7-b7f2-7939ddd499d2",
+                  "id": "HW-0026",
+                  "cisParticipantID": "PAR-CIAV-000055",
+                  "assets": []
+                },
+                {
+                  "name": "JJJ",
+                  "guid": "df10db00-bcb1-4d05-a107-a560bf019c1f",
+                  "id": "HW-0030",
+                  "cisParticipantID": "PAR-CIAV-000026",
+                  "assets": []
+                }
+              ]
+            },
+            {
+              "id": "CL-RESTRICTED",
+              "guid": "0c037b59-b18c-4014-b81f-cac886f0f7f9",
+              "hwStacks": [
+                {
+                  "name": "XXX",
+                  "guid": "97556efb-8c9a-46db-8098-c182e08c6506",
+                  "id": "HW-0027",
+                  "cisParticipantID": "PAR-CIAV-000054",
+                  "assets": []
+                },
+                {
+                  "name": "YYY",
+                  "guid": "06758827-4317-4fec-a54e-fe7ec6107b23",
+                  "id": "HW-0028",
+                  "cisParticipantID": "PAR-CIAV-000045",
+                  "assets": []
+                },
+                {
+                  "name": "ZZZ**",
+                  "guid": "bbfdaff4-ca28-46bc-a41e-0e6dd3422f69",
+                  "id": "HW-0029",
+                  "cisParticipantID": "PAR-CIAV-000026",
+                  "assets": []
                 }
               ]
             }

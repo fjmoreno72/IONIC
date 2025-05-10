@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIS Planner 2.0 - IOCore2</title>
+    {% include 'components/head_favicons.html' %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+    .panel-container {
+        display: flex;
+        width: 100%;
+        height: calc(100vh - 130px);
+        overflow: hidden;
+    }
+    
+    .panel {
+        overflow: auto;
+        transition: width 0.3s;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        background-color: white;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .tree-panel {
+        width: 30%;
+        border-right: none;
+    }
+    
+    .elements-panel {
+        width: 40%;
+        border-right: none;
+    }
+    
+    .details-panel {
+        width: 30%;
+    }
+    
+    .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 10px;
+    }
+    
+    .panel-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    
+    .panel-content {
+        flex: 1;
+        overflow: auto;
+    }
+    
+    .tree-node {
+        padding: 5px;
+        margin: 2px 0;
+        cursor: pointer;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .tree-node:hover {
+        background-color: #f5f5f5;
+    }
+    
+    .tree-node.active {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .tree-children {
+        margin-left: 20px;
+    }
+    
+    .node-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+    
+    .expand-icon {
+        margin-right: 5px;
+        width: 16px;
+        text-align: center;
+    }
+    
+    .element-card {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+        width: 100%;
+    }
+    
+    .element-card:hover {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+    }
+    
+    .element-card.active {
+        border-color: var(--primary-color);
+        background-color: rgba(var(--primary-color-rgb), 0.05);
+    }
+    
+    .card-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+    }
+    
+    .card-content {
+        flex: 1;
+    }
+    
+    .card-title {
+        font-weight: bold;
+        margin-bottom: 3px;
+    }
+    
+    .card-subtitle {
+        color: #666;
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #666;
+        margin: 20px 0 10px 0;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .detail-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .detail-table th {
+        text-align: left;
+        width: 40%;
+        padding: 8px;
+        background-color: #f5f5f5;
+    }
+    
+    .detail-table td {
+        padding: 8px;
+    }
+    
+    .detail-table tr {
+        border-bottom: 1px solid #eee;
+    }
+    
+    .nav-button {
+        color: var(--primary-color);
+        background-color: transparent;
+        border: 1px solid var(--primary-color);
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+    
+    .nav-button:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .action-button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+    
+    .action-button:hover {
+        background-color: var(--primary-dark-color);
+    }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+    
+    .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 5px;
+        width: 50%;
+        max-width: 500px;
+    }
+    
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .modal-title {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    .close-modal {
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    .modal-body {
+        margin-bottom: 20px;
+    }
+    
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .resizer {
+        width: 5px;
+        background-color: #f0f0f0;
+        cursor: col-resize;
+    }
+        :root {
+            --primary-color: #4472C4;
+            --primary-color-rgb: 68, 114, 196;
+            --primary-dark-color: #345baa;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3399ff;
+            --primary-color-rgb: 51, 153, 255;
+            --primary-dark-color: #0077e6;
+            --background-color: #0f172a;
+            --card-background: #1e293b;
+            --text-primary: #f1f5f9;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            transition: background-color 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav_menu.html' %}
+    
+    <div class="container-fluid px-4 mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2><i class="fas fa-cogs me-2"></i>CIS Planner 2.0</h2>
+            <div>
+                <button id="refreshButton" class="btn btn-outline-primary" title="Refresh data">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+        </div>
+        <!-- Panel container -->
+            <div class="panel-container">
+                <!-- Tree Panel -->
+                <div class="panel tree-panel" id="tree-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">CIS Plan Hierarchy</div>
+                    </div>
+                    <div class="panel-content" id="tree-content"></div>
+                </div>
+                
+                <!-- Resizer -->
+                <div class="resizer" id="tree-resizer"></div>
+                
+                <!-- Elements Panel -->
+                <div class="panel elements-panel" id="elements-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Elements</div>
+                        <div>
+                            <button id="navigate-up-btn" class="nav-button">
+                                <i class="fas fa-arrow-up"></i> Up
+                            </button>
+                            <button id="add-element-btn" class="action-button">
+                                <i class="fas fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="panel-content" id="elements-content"></div>
+                </div>
+                
+                <!-- Resizer -->
+                <div class="resizer" id="elements-resizer"></div>
+                
+                <!-- Details Panel -->
+                <div class="panel details-panel" id="details-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Details</div>
+                        <div>
+                            <button id="edit-element-btn" class="action-button" disabled>
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button id="delete-element-btn" class="action-button" disabled>
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                    <div class="panel-content" id="details-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Element Modal -->
+<div id="add-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">Add New Element</div>
+            <span class="close-modal" id="close-add-modal">&times;</span>
+        </div>
+        <div class="modal-body" id="add-modal-body">
+            <!-- Content will be dynamically added -->
+        </div>
+        <div class="modal-footer">
+            <button class="nav-button" id="cancel-add-btn">Cancel</button>
+            <button class="action-button" id="confirm-add-btn">Add</button>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Element Modal -->
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">Edit Element</div>
+            <span class="close-modal" id="close-edit-modal">&times;</span>
+        </div>
+        <div class="modal-body" id="edit-modal-body">
+            <!-- Content will be dynamically added -->
+        </div>
+        <div class="modal-footer">
+            <button class="nav-button" id="cancel-edit-btn">Cancel</button>
+            <button class="action-button" id="confirm-edit-btn">Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="delete-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">Confirm Delete</div>
+            <span class="close-modal" id="close-delete-modal">&times;</span>
+        </div>
+        <div class="modal-body" id="delete-modal-body">
+            Are you sure you want to delete this element?
+        </div>
+        <div class="modal-footer">
+            <button class="nav-button" id="cancel-delete-btn">Cancel</button>
+            <button class="action-button" id="confirm-delete-btn">Delete</button>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Element Modal -->
+    <div id="add-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Add New Element</div>
+                <span class="close-modal" id="close-add-modal">&times;</span>
+            </div>
+            <div class="modal-body" id="add-modal-body">
+                <!-- Content will be dynamically added -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary" id="cancel-add-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirm-add-btn">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Element Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Edit Element</div>
+                <span class="close-modal" id="close-edit-modal">&times;</span>
+            </div>
+            <div class="modal-body" id="edit-modal-body">
+                <!-- Content will be dynamically added -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary" id="cancel-edit-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirm-edit-btn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Confirm Delete</div>
+                <span class="close-modal" id="close-delete-modal">&times;</span>
+            </div>
+            <div class="modal-body" id="delete-modal-body">
+                Are you sure you want to delete this element?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary" id="cancel-delete-btn">Cancel</button>
+                <button class="btn btn-danger" id="confirm-delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification container -->
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1500;"></div>
+    
+    <!-- Theme toggle button -->
+    <button class="btn btn-sm btn-outline-secondary position-fixed" 
+            style="bottom: 20px; left: 20px; z-index: 1000; border-radius: 50%; width: 40px; height: 40px;" 
+            onclick="toggleTheme()">
+        🌓
+    </button>
+
+    <!-- JavaScript bundle includes -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme toggle function
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Check for saved theme preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+            
+            // Set up refresh button
+            document.getElementById('refreshButton').addEventListener('click', function() {
+                // Dispatch refresh UI event
+                const event = new CustomEvent('cis:refresh-ui');
+                document.dispatchEvent(event);
+            });
+        });
+    </script>
+
+    <!-- CIS Plan 2.0 scripts -->
+    <script src="{{ url_for('static', filename='js/pages/cis_api_2.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pages/cis_tree_2.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pages/cis_elements_2.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pages/cis_details_2.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pages/cis_plan_2.js') }}"></script>
+</body>
+</html>

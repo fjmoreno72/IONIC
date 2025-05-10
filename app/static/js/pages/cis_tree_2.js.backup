@@ -1,0 +1,720 @@
+/**
+ * CIS Plan Tree Component 2.0
+ * 
+ * Manages the tree view for CIS Plan hierarchy visualization.
+ * Provides functions for creating, selecting, and navigating tree nodes.
+ */
+
+const CISTree2 = {
+    // DOM element references
+    treeContent: null,
+    
+    // State management
+    currentTreeNode: null,
+    expandedNodes: new Set(),
+    
+    // Entity type to display name mapping
+    entityTypeLabels: {
+        'mission_network': 'Mission Network',
+        'network_segment': 'Network Segment',
+        'security_domain': 'Security Domain',
+        'hw_stack': 'HW Stack',
+        'asset': 'Asset',
+        'network_interface': 'Network Interface',
+        'gp_instance': 'GP Instance',
+        'sp_instance': 'SP Instance'
+    },
+    
+    /**
+     * Initialize the tree component
+     */
+    init: function() {
+        console.log('Initializing CIS Tree component');
+        this.treeContent = document.getElementById('tree-content');
+        if (!this.treeContent) {
+            console.error('Tree content element not found');
+            return;
+        }
+    },
+    
+    /**
+     * Render the CIS Plan tree
+     * @param {Object} cisPlanData - The CIS Plan data
+     */
+    renderTree: function(cisPlanData) {
+        console.log('Rendering CIS Plan tree with data:', cisPlanData);
+        if (!this.treeContent) {
+            console.error('Tree content element not found for rendering');
+            return;
+        }
+        if (!cisPlanData) {
+            console.error('No CIS Plan data provided for rendering');
+            return;
+        }
+        
+        // Clear existing content
+        this.treeContent.innerHTML = '';
+        
+        // Reset expanded nodes set
+        this.expandedNodes = new Set();
+        
+        // Create root node
+        const rootNode = this.createTreeNode('cisplan', 'CIS Plan', null, null);
+        rootNode.classList.add('active');
+        this.currentTreeNode = rootNode;
+        this.treeContent.appendChild(rootNode);
+        
+        // Explicitly make sure the expand icon for root is visible
+        const expandIcon = rootNode.querySelector('.expand-icon');
+        if (expandIcon) {
+            expandIcon.style.visibility = 'visible';
+            expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+        }
+        
+        let missionNetworks = [];
+        
+        // Extract mission networks from the data structure
+        if (cisPlanData.missionNetworks && Array.isArray(cisPlanData.missionNetworks)) {
+            // Case: Direct access to missionNetworks array
+            console.log('Found mission networks directly in cisPlanData');
+            missionNetworks = cisPlanData.missionNetworks;
+        } else if (cisPlanData.data && cisPlanData.data.missionNetworks && Array.isArray(cisPlanData.data.missionNetworks)) {
+            // Case: API response with data.missionNetworks
+            console.log('Found mission networks in cisPlanData.data');
+            missionNetworks = cisPlanData.data.missionNetworks;
+        }
+        
+        // Add mission networks to the root node
+        if (missionNetworks.length > 0) {
+            console.log(`Found ${missionNetworks.length} mission networks to render`);
+            
+            const childContainer = document.createElement('div');
+            childContainer.className = 'tree-children';
+            childContainer.style.display = 'none'; // Initially hidden
+            rootNode.appendChild(childContainer);
+            
+            // Add expand icon to root node
+            const expandIcon = rootNode.querySelector('.expand-icon');
+            if (expandIcon) {
+                expandIcon.style.visibility = 'visible';
+                expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+            }
+            
+            this.renderMissionNetworks(childContainer, missionNetworks);
+        } else {
+            console.warn('No mission networks found in data');
+        }
+    },
+    
+    /**
+     * Render mission networks
+     * @param {HTMLElement} container - The container element
+     * @param {Array} missionNetworks - Array of mission networks
+     */
+    renderMissionNetworks: function(container, missionNetworks) {
+        console.log('Rendering mission networks:', missionNetworks);
+        if (!missionNetworks || !missionNetworks.length) {
+            console.warn('No mission networks to render');
+            return;
+        }
+        
+        missionNetworks.forEach(missionNetwork => {
+            console.log('Processing mission network:', missionNetwork);
+            const node = this.createTreeNode(
+                'mission_network',
+                missionNetwork.name, 
+                missionNetwork.id, 
+                missionNetwork.guid
+            );
+            
+            container.appendChild(node);
+            
+            // If this mission network has segments, create a container for them
+            if (missionNetwork.networkSegments && missionNetwork.networkSegments.length > 0) {
+                console.log(`Mission network ${missionNetwork.name} has ${missionNetwork.networkSegments.length} segments`);
+                const childContainer = document.createElement('div');
+                childContainer.className = 'tree-children';
+                childContainer.style.display = 'none'; // Initially hidden
+                node.appendChild(childContainer);
+                
+                // Add expand icon to node
+                const expandIcon = node.querySelector('.expand-icon');
+                if (expandIcon) {
+                    expandIcon.style.visibility = 'visible';
+                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                }
+                
+                // Only show children if this node is expanded
+                if (this.expandedNodes.has(missionNetwork.guid)) {
+                    childContainer.style.display = 'block';
+                    this.renderNetworkSegments(childContainer, missionNetwork.networkSegments, missionNetwork);
+                }
+            } else {
+                console.log(`Mission network ${missionNetwork.name} has no segments`);
+            }
+        });
+    },
+    
+    /**
+     * Render network segments in the tree
+     * @param {HTMLElement} container - Container element
+     * @param {Array} networkSegments - Array of network segments
+     * @param {Object} parentNetwork - Parent mission network
+     */
+    renderNetworkSegments: function(container, networkSegments, parentNetwork) {
+        networkSegments.forEach(segment => {
+            const node = this.createTreeNode(
+                'network_segment',
+                segment.name, 
+                segment.id, 
+                segment.guid,
+                parentNetwork.guid
+            );
+            
+            container.appendChild(node);
+            
+            // If this segment has security domains, create a container for them
+            if (segment.securityDomains && segment.securityDomains.length > 0) {
+                const childContainer = document.createElement('div');
+                childContainer.className = 'tree-children';
+                childContainer.style.display = 'none'; // Initially hidden
+                node.appendChild(childContainer);
+                
+                // Add expand icon to node
+                const expandIcon = node.querySelector('.expand-icon');
+                if (expandIcon) {
+                    expandIcon.style.visibility = 'visible';
+                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                }
+                
+                // Only show children if this node is expanded
+                if (this.expandedNodes.has(segment.guid)) {
+                    childContainer.style.display = 'block';
+                    this.renderSecurityDomains(childContainer, segment.securityDomains, segment, parentNetwork);
+                }
+            }
+        });
+    },
+    
+    /**
+     * Render security domains in the tree
+     * @param {HTMLElement} container - Container element
+     * @param {Array} securityDomains - Array of security domains
+     * @param {Object} parentSegment - Parent network segment
+     * @param {Object} parentNetwork - Parent mission network
+     */
+    renderSecurityDomains: function(container, securityDomains, parentSegment, parentNetwork) {
+        securityDomains.forEach(domain => {
+            const node = this.createTreeNode(
+                'security_domain',
+                domain.id, // Security domains use ID as name
+                domain.id,
+                domain.guid,
+                parentSegment.guid
+            );
+            
+            container.appendChild(node);
+            
+            // If this domain has HW stacks, create a container for them
+            if (domain.hwStacks && domain.hwStacks.length > 0) {
+                const childContainer = document.createElement('div');
+                childContainer.className = 'tree-children';
+                childContainer.style.display = 'none'; // Initially hidden
+                node.appendChild(childContainer);
+                
+                // Add expand icon to node
+                const expandIcon = node.querySelector('.expand-icon');
+                if (expandIcon) {
+                    expandIcon.style.visibility = 'visible';
+                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                }
+                
+                // Only show children if this node is expanded
+                if (this.expandedNodes.has(domain.guid)) {
+                    childContainer.style.display = 'block';
+                    this.renderHWStacks(childContainer, domain.hwStacks, domain, parentSegment, parentNetwork);
+                }
+            }
+        });
+    },
+    
+    /**
+     * Render HW stacks in the tree
+     * @param {HTMLElement} container - Container element
+     * @param {Array} hwStacks - Array of HW stacks
+     * @param {Object} parentDomain - Parent security domain
+     * @param {Object} parentSegment - Parent network segment
+     * @param {Object} parentNetwork - Parent mission network
+     */
+    renderHWStacks: function(container, hwStacks, parentDomain, parentSegment, parentNetwork) {
+        hwStacks.forEach(stack => {
+            const node = this.createTreeNode(
+                'hw_stack',
+                stack.name, 
+                stack.id, 
+                stack.guid,
+                parentDomain.guid
+            );
+            
+            container.appendChild(node);
+            
+            // If this stack has assets, create a container for them
+            if (stack.assets && stack.assets.length > 0) {
+                const childContainer = document.createElement('div');
+                childContainer.className = 'tree-children';
+                childContainer.style.display = 'none'; // Initially hidden
+                node.appendChild(childContainer);
+                
+                // Add expand icon to node
+                const expandIcon = node.querySelector('.expand-icon');
+                if (expandIcon) {
+                    expandIcon.style.visibility = 'visible';
+                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                }
+                
+                // Only show children if this node is expanded
+                if (this.expandedNodes.has(stack.guid)) {
+                    childContainer.style.display = 'block';
+                    this.renderAssets(childContainer, stack.assets, stack, parentDomain, parentSegment, parentNetwork);
+                }
+            }
+        });
+    },
+    
+    /**
+     * Render assets in the tree
+     * @param {HTMLElement} container - Container element
+     * @param {Array} assets - Array of assets
+     * @param {Object} parentStack - Parent HW stack
+     * @param {Object} parentDomain - Parent security domain
+     * @param {Object} parentSegment - Parent network segment
+     * @param {Object} parentNetwork - Parent mission network
+     */
+    renderAssets: function(container, assets, parentStack, parentDomain, parentSegment, parentNetwork) {
+        assets.forEach(asset => {
+            const node = this.createTreeNode(
+                'asset',
+                asset.name, 
+                asset.id, 
+                asset.guid,
+                parentStack.guid
+            );
+            
+            container.appendChild(node);
+            
+            // If this asset has network interfaces or GP instances, create containers for them
+            const hasNetworkInterfaces = asset.networkInterfaces && asset.networkInterfaces.length > 0;
+            const hasGpInstances = asset.gpInstances && asset.gpInstances.length > 0;
+            
+            if (hasNetworkInterfaces || hasGpInstances) {
+                const childContainer = document.createElement('div');
+                childContainer.className = 'tree-children';
+                childContainer.style.display = 'none'; // Initially hidden
+                node.appendChild(childContainer);
+                
+                // Add expand icon to node
+                const expandIcon = node.querySelector('.expand-icon');
+                if (expandIcon) {
+                    expandIcon.style.visibility = 'visible';
+                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                }
+                
+                // Only show children if this node is expanded
+                if (this.expandedNodes.has(asset.guid)) {
+                    childContainer.style.display = 'block';
+                    if (hasNetworkInterfaces) {
+                        this.renderNetworkInterfaces(childContainer, asset.networkInterfaces, asset, parentStack, parentDomain, parentSegment, parentNetwork);
+                    }
+                    
+                    if (hasGpInstances) {
+                        this.renderGPInstances(childContainer, asset.gpInstances, asset, parentStack, parentDomain, parentSegment, parentNetwork);
+                    }
+                }
+            }
+        });
+    },
+    
+    /**
+     * Render network interfaces in the tree
+     * @param {HTMLElement} container - Container element
+     * @param {Array} interfaces - Array of network interfaces
+     * @param {Object} parentAsset - Parent asset
+     * @param {Object} parentStack - Parent HW stack
+     * @param {Object} parentDomain - Parent security domain
+     * @param {Object} parentSegment - Parent network segment
+     * @param {Object} parentNetwork - Parent mission network
+     */
+    renderNetworkInterfaces: function(container, interfaces, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
+        interfaces.forEach(iface => {
+            const node = this.createTreeNode(
+                'network_interface',
+                iface.name, 
+                iface.id, 
+                iface.guid,
+                parentAsset.guid
+            );
+            
+            container.appendChild(node);
+        });
+    },
+    
+    /**
+     * Render GP instances in the tree
+     * @param {HTMLElement} container - Container element
+     * @param {Array} gpInstances - Array of GP instances
+     * @param {Object} parentAsset - Parent asset
+     * @param {Object} parentStack - Parent HW stack
+     * @param {Object} parentDomain - Parent security domain
+     * @param {Object} parentSegment - Parent network segment
+     * @param {Object} parentNetwork - Parent mission network
+     */
+    renderGPInstances: function(container, gpInstances, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
+        gpInstances.forEach(gp => {
+            // Create a display name that includes the instance label if available
+            const displayName = gp.instanceLabel ? 
+                `${gp.gpid} (${gp.instanceLabel})` : 
+                gp.gpid;
+                
+            const node = this.createTreeNode(
+                'gp_instance',
+                displayName, 
+                gp.gpid, 
+                gp.guid,
+                parentAsset.guid
+            );
+            
+            container.appendChild(node);
+            
+            // If this GP instance has SP instances, create a container for them
+            if (gp.spInstances && gp.spInstances.length > 0) {
+                const childContainer = document.createElement('div');
+                childContainer.className = 'tree-children';
+                childContainer.style.display = 'none'; // Initially hidden
+                node.appendChild(childContainer);
+                
+                // Add expand icon to node
+                const expandIcon = node.querySelector('.expand-icon');
+                if (expandIcon) {
+                    expandIcon.style.visibility = 'visible';
+                    expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+                }
+                
+                // Only show children if this node is expanded
+                if (this.expandedNodes.has(gp.guid)) {
+                    childContainer.style.display = 'block';
+                    this.renderSPInstances(childContainer, gp.spInstances, gp, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork);
+                }
+            }
+        });
+    },
+    
+    /**
+     * Render SP instances in the tree
+     * @param {HTMLElement} container - Container element
+     * @param {Array} spInstances - Array of SP instances
+     * @param {Object} parentGP - Parent GP instance
+     * @param {Object} parentAsset - Parent asset
+     * @param {Object} parentStack - Parent HW stack
+     * @param {Object} parentDomain - Parent security domain
+     * @param {Object} parentSegment - Parent network segment
+     * @param {Object} parentNetwork - Parent mission network
+     */
+    renderSPInstances: function(container, spInstances, parentGP, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
+        spInstances.forEach(sp => {
+            // Create a display name that includes the SP version
+            const displayName = sp.spVersion ? 
+                `${sp.spId} (v${sp.spVersion})` : 
+                sp.spId;
+                
+            const node = this.createTreeNode(
+                'sp_instance',
+                displayName, 
+                sp.spId, 
+                sp.guid,
+                parentGP.guid
+            );
+            
+            container.appendChild(node);
+        });
+    },
+    
+    /**
+     * Create a tree node element
+     * @param {string} type - Type of node
+     * @param {string} name - Display name
+     * @param {string} id - ID of the entity
+     * @param {string} guid - GUID of the entity
+     * @param {string} parentGuid - GUID of the parent entity
+     * @returns {HTMLElement} The created tree node
+     */
+    createTreeNode: function(type, name, id, guid, parentGuid) {
+        const node = document.createElement('div');
+        node.className = 'tree-node';
+        node.setAttribute('data-type', type);
+        if (id) node.setAttribute('data-id', id);
+        if (guid) node.setAttribute('data-guid', guid);
+        if (parentGuid) node.setAttribute('data-parent-guid', parentGuid);
+        
+        // Add debug attribute to help diagnose issues
+        node.setAttribute('data-debug-name', name);
+        
+        // Check if this is a container node that can have children
+        const isContainer = ['cisplan', 'mission_network', 'network_segment', 'security_domain', 'hw_stack', 'asset', 'gp_instance'].includes(type);
+        
+        // Add expand/collapse icon if the node can have children
+        const expandIcon = document.createElement('span');
+        expandIcon.className = 'expand-icon';
+        expandIcon.innerHTML = isContainer ? '&#9658;' : ''; // Right-pointing triangle
+        expandIcon.style.visibility = isContainer ? 'visible' : 'hidden';
+        node.appendChild(expandIcon);
+        
+        // Map type to the correct SVG file name for icons
+        const typeToImageMap = {
+            'cisplan': 'CIS-PLAN',
+            'mission_network': 'missionNetworks',
+            'network_segment': 'networkSegments',
+            'security_domain': 'securityDomains',
+            'hw_stack': 'hwStacks',
+            'asset': 'assets',
+            'network_interface': 'networkInterfaces',
+            'gp_instance': 'gpInstances',
+            'sp_instance': 'spInstances',
+            'configuration_item': 'configurationItems'
+        };
+        
+        const imageName = typeToImageMap[type] || 'CIS-PLAN';
+        
+        // Add icon
+        const icon = document.createElement('img');
+        icon.className = 'node-icon';
+            
+    // Add expand icon to node
+    const expandIcon = node.querySelector('.expand-icon');
+    if (expandIcon) {
+        expandIcon.style.visibility = 'visible';
+        expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+    }
+            
+    // Only show children if this node is expanded
+    if (this.expandedNodes.has(asset.guid)) {
+        childContainer.style.display = 'block';
+        if (hasNetworkInterfaces) {
+            this.renderNetworkInterfaces(childContainer, asset.networkInterfaces, asset, parentStack, parentDomain, parentSegment, parentNetwork);
+        }
+                
+        if (hasGpInstances) {
+            this.renderGPInstances(childContainer, asset.gpInstances, asset, parentStack, parentDomain, parentSegment, parentNetwork);
+        }
+    }
+}
+},
+        
+/**
+ * Render network interfaces in the tree
+ * @param {HTMLElement} container - Container element
+ * @param {Array} interfaces - Array of network interfaces
+ * @param {Object} parentAsset - Parent asset
+ * @param {Object} parentStack - Parent HW stack
+ * @param {Object} parentDomain - Parent security domain
+ * @param {Object} parentSegment - Parent network segment
+ * @param {Object} parentNetwork - Parent mission network
+ */
+renderNetworkInterfaces: function(container, interfaces, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
+    interfaces.forEach(iface => {
+        const node = this.createTreeNode(
+            'network_interface',
+            iface.name, 
+            iface.id, 
+            iface.guid,
+            parentAsset.guid
+        );
+                
+        container.appendChild(node);
+    });
+},
+        
+/**
+ * Render GP instances in the tree
+ * @param {HTMLElement} container - Container element
+ * @param {Array} gpInstances - Array of GP instances
+ * @param {Object} parentAsset - Parent asset
+ * @param {Object} parentStack - Parent HW stack
+ * @param {Object} parentDomain - Parent security domain
+ * @param {Object} parentSegment - Parent network segment
+ * @param {Object} parentNetwork - Parent mission network
+ */
+renderGPInstances: function(container, gpInstances, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
+    gpInstances.forEach(gp => {
+        // Create a display name that includes the instance label if available
+        const displayName = gp.instanceLabel ? 
+            `${gp.gpid} (${gp.instanceLabel})` : 
+            gp.gpid;
+                
+        const node = this.createTreeNode(
+            'gp_instance',
+            displayName, 
+            gp.gpid, 
+            gp.guid,
+            parentAsset.guid
+        );
+                
+        container.appendChild(node);
+                
+        // If this GP instance has SP instances, create a container for them
+        if (gp.spInstances && gp.spInstances.length > 0) {
+            const childContainer = document.createElement('div');
+            childContainer.className = 'tree-children';
+            childContainer.style.display = 'none'; // Initially hidden
+            node.appendChild(childContainer);
+                    
+            // Add expand icon to node
+            const expandIcon = node.querySelector('.expand-icon');
+            if (expandIcon) {
+                expandIcon.style.visibility = 'visible';
+                expandIcon.innerHTML = '&#9658;'; // Right-pointing triangle
+            }
+                    
+            // Only show children if this node is expanded
+            if (this.expandedNodes.has(gp.guid)) {
+                childContainer.style.display = 'block';
+                this.renderSPInstances(childContainer, gp.spInstances, gp, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork);
+            }
+        }
+    });
+},
+        
+/**
+ * Render SP instances in the tree
+ * @param {HTMLElement} container - Container element
+ * @param {Array} spInstances - Array of SP instances
+ * @param {Object} parentGP - Parent GP instance
+ * @param {Object} parentAsset - Parent asset
+ * @param {Object} parentStack - Parent HW stack
+ * @param {Object} parentDomain - Parent security domain
+ * @param {Object} parentSegment - Parent network segment
+ * @param {Object} parentNetwork - Parent mission network
+ */
+renderSPInstances: function(container, spInstances, parentGP, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
+    spInstances.forEach(sp => {
+        // Create a display name that includes the SP version
+        const displayName = sp.spVersion ? 
+            `${sp.spId} (v${sp.spVersion})` : 
+            sp.spId;
+                
+        const node = this.createTreeNode(
+            'sp_instance',
+            displayName, 
+            sp.spId, 
+            sp.guid,
+            parentGP.guid
+        );
+                
+        container.appendChild(node);
+    });
+},
+        
+/**
+ * Create a tree node element
+ * @param {string} type - Type of node
+ * @param {string} name - Display name
+ * @param {string} id - ID of the entity
+ * @param {string} guid - GUID of the entity
+ * @param {string} parentGuid - GUID of the parent entity
+ * @returns {HTMLElement} The created tree node
+ */
+createTreeNode: function(type, name, id, guid, parentGuid) {
+    const node = document.createElement('div');
+    node.className = 'tree-node';
+    node.setAttribute('data-type', type);
+    if (id) node.setAttribute('data-id', id);
+    if (guid) node.setAttribute('data-guid', guid);
+    if (parentGuid) node.setAttribute('data-parent-guid', parentGuid);
+            
+    // Add debug attribute to help diagnose issues
+    node.setAttribute('data-debug-name', name);
+            
+    // Check if this is a container node that can have children
+    const isContainer = ['cisplan', 'mission_network', 'network_segment', 'security_domain', 'hw_stack', 'asset', 'gp_instance'].includes(type);
+            
+    // Add expand/collapse icon if the node can have children
+    const expandIcon = document.createElement('span');
+    expandIcon.className = 'expand-icon';
+    expandIcon.innerHTML = isContainer ? '&#9658;' : ''; // Right-pointing triangle
+    expandIcon.style.visibility = isContainer ? 'visible' : 'hidden';
+    node.appendChild(expandIcon);
+            
+    // Map type to the correct SVG file name for icons
+    const typeToImageMap = {
+        'cisplan': 'CIS-PLAN',
+        'mission_network': 'missionNetworks',
+        'network_segment': 'networkSegments',
+        'security_domain': 'securityDomains',
+        'hw_stack': 'hwStacks',
+        'asset': 'assets',
+        'network_interface': 'networkInterfaces',
+        'gp_instance': 'gpInstances',
+        'sp_instance': 'spInstances',
+        'configuration_item': 'configurationItems'
+    };
+            
+    const imageName = typeToImageMap[type] || 'CIS-PLAN';
+            
+    // Add icon
+    const icon = document.createElement('img');
+    icon.className = 'node-icon';
+    icon.src = this.getEntityIcon(type);
+    icon.alt = type;
+    icon.onerror = function() { this.src = '/static/img/CIS-PLAN.svg'; };
+    node.appendChild(icon);
+            
+    // Add label
+    const label = document.createElement('span');
+    label.className = 'node-text';
+    label.textContent = name || 'Unnamed';
+    node.appendChild(label);
+            
+    // Add click handler for expand/collapse and selection
+    node.addEventListener('click', (e) => {
+        e.stopPropagation();
+        console.log(`Tree node clicked: ${type} - ${name} (${guid})`);
+                
+        // Toggle expanded state if clicking on the expand icon
+        if (isContainer && (e.target === expandIcon || e.target === expandIcon.firstChild)) {
+            console.log('Expand icon clicked, toggling node expansion');
+            this.toggleNodeExpanded(node);
+            return;
+        }
+                
+        // Set as active node
+        this.selectTreeNode(node);
+                
+        // Double click expands and navigates down
+        if (e.detail === 2 && isContainer) {
+            console.log('Double click detected, expanding node and navigating down');
+            this.expandNode(node);
+                    
+            // Signal to navigate to this node
+            const event = new CustomEvent('cis:node-navigate', {
+                detail: {
+                    guid: guid,
+                    type: type
+                }
+            });
+            document.dispatchEvent(event);
+        }
+    });
+            
+    // Explicitly add click handler to expand icon to ensure it works
+    if (isContainer) {
+        expandIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log('Expand icon directly clicked');
+            this.toggleNodeExpanded(node);
+        });
+            'gp_instance': '/static/img/gpInstances.svg',
+            'sp_instance': '/static/img/spInstances.svg'
+        };
+        
+        return iconMappings[type] || '/static/img/unknown.svg';
+    }
+};

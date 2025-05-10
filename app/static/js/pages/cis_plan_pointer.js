@@ -69,7 +69,8 @@ const CISPlanPointer = (function () {
       missionnetworks:   'missionNetwork',
       networksegments:   'networkSegment',
       securitydomains:   'securityDomain',
-      hwstacks:          'hwStack',
+      // SPECIAL CASE: Let hwStacks remain in plural form to match node attributes
+      // hwstacks:          'hwStack',
       assets:            'asset',
       networkinterfaces: 'networkInterface',
       gpinstances:       'gpInstance',
@@ -81,6 +82,8 @@ const CISPlanPointer = (function () {
       networksegment:    'networkSegment',
       securitydomain:    'securityDomain',
       hwstack:           'hwStack',
+      // Special mapping to preserve actual type used in tree nodes
+      hwstacks:          'hwStacks',
       asset:             'asset',
       networkinterface:  'networkInterface',
       gpinstance:        'gpInstance',
@@ -452,10 +455,11 @@ const CISPlanPointer = (function () {
             break;
           case "securityDomain":
             level = "L1.1.1";
-            parentIds.missionNetwork   = currentTreeNode?.getAttribute("data-parent-mission-network");
-            parentIds.networkSegment   = currentTreeNode?.getAttribute("data-parent-segment");
+            parentIds.missionNetworkId = currentTreeNode?.getAttribute("data-parent-mission-network");
+            parentIds.segmentId       = currentTreeNode?.getAttribute("data-parent-segment");
             break;
           case "hwStack":
+          case "hwStacks": // Add support for both singular and plural forms
             level = "L1.1.1.1";
             parentIds.missionNetwork   = currentTreeNode?.getAttribute("data-parent-mission-network");
             parentIds.networkSegment   = currentTreeNode?.getAttribute("data-parent-segment");

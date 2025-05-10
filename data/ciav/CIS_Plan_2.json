@@ -1,0 +1,130 @@
+{
+  "fileName": "CIS_Plan.json",
+  "missionNetworks": [
+    {
+      "name": "Mission 1*",
+      "guid": "5ead1bb0-72f5-4a9c-b64c-8b8ac8ca2017",
+      "id": "MN-0007",
+      "networkSegments": [
+        {
+          "name": "Command N",
+          "guid": "4f934db4-f4ac-4e34-977a-65c427a0f509",
+          "id": "NS-0001",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS",
+              "guid": "8fc3c9e1-7d34-41c7-ae0e-ac0dfce2a82x",
+              "hwStacks": [
+                {
+                  "name": "POP-55",
+                  "guid": "8fc3c9e1-7d34-41c7-ae0e-ac0dfce2a91a",
+                  "id": "HW-0001",
+                  "cisParticipantID": "PAR-CIAV-000053",
+                  "assets": [
+                    {
+                      "name": "Asset 1",
+                      "guid": "959982ca-b5f8-4aa6-991c-f933dd899ad3",
+                      "id": "AS-0001",
+                      "networkInterfaces": [
+                        {
+                          "name": "NET-X*",
+                          "guid": "64894cc0-e44f-4bf2-9fce-6aab1e09403e",
+                          "id": "NI-0001",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "192.168.1.2",
+                              "guid": "30c24c89-eb70-4ae8-be42-923ddf7b6bb3"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "255.255.255.0",
+                              "guid": "5f4f7d9d-0895-4cac-a2b1-2f6bd5943542"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "tonto.dot.com",
+                              "guid": "822e99bf-91db-44dc-aa43-0d9e080ef71a"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0039",
+                          "guid": "d88e419a-ed0d-4f4a-9c42-00e1da1905e5",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0016",
+                          "spInstances": [
+                            {
+                              "guid": "5c5ac25c-bd4a-4fc8-be27-0bd5425b2ba2",
+                              "spId": "SP-0267",
+                              "spVersion": "3"
+                            }
+                          ],
+                          "configurationItems": [
+                            {
+                              "Name": "Bias",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "3dfe562d-c8de-4cbf-9c95-973d8867e86f",
+                              "DefaultValue": "\t 0",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "MaximumOffset",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "c33365ee-47d2-4e62-90e0-6a79b20ea322",
+                              "DefaultValue": "1000",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "MaximumStratum",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "f0b51eaa-7199-417e-966c-b5f2f82b625a",
+                              "DefaultValue": "4",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "TimeSourceFQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "672261c6-5003-4f08-b118-08b1f2b7ecad",
+                              "DefaultValue": "",
+                              "HelpText": "FQDN of the NTP server you are synchronizing to"
+                            },
+                            {
+                              "Name": "TimeSourceIP",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "6b8b5fd1-4148-4644-8533-d437f45d78b3",
+                              "DefaultValue": "",
+                              "HelpText": "IP of the NTP server you are synchronizing to"
+                            },
+                            {
+                              "Name": "TimeZone",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "e1d000db-2ffd-4d93-bee4-d1f8d892b27d",
+                              "DefaultValue": "UTC",
+                              "HelpText": ""
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

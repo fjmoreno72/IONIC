@@ -141,6 +141,7 @@ def register_blueprints(flask_app):
     from app.routes.models import models_bp # Import the new models blueprint
     from app.routes.actors2gp import actors2gp_bp # Import the new actors to GP blueprint
     from app.routes.cis_plan import cis_plan_bp  # Register CIS Plan blueprint
+    from app.routes.cis_plan_2 import cis_plan_bp_2  # Register CIS Plan 2 blueprint
 
     flask_app.register_blueprint(auth_bp)
     flask_app.register_blueprint(api_bp)  # Register at root for backward compatibility
@@ -152,4 +153,5 @@ def register_blueprints(flask_app):
     flask_app.register_blueprint(models_bp) # Register the new models blueprint
     flask_app.register_blueprint(actors2gp_bp) # Register the new actors to GP blueprint
     flask_app.register_blueprint(cis_plan_bp)  # Register the CIS Plan blueprint
+    flask_app.register_blueprint(cis_plan_bp_2)  # Register the CIS Plan 2 blueprint
 

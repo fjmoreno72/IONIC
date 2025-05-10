@@ -1068,8 +1068,19 @@ document.addEventListener("DOMContentLoaded", function () {
             missionNetworkId;
         } else if (elementType === "securityDomains") {
           // For security domains, we need both the mission network ID and the segment ID
-          // Get them from the tree node or the current element
-          const segmentId = currentTreeNode.getAttribute("data-id");
+          // First, determine what type of tree node we have (could be the security domain itself or the parent segment)
+          const currentNodeType = currentTreeNode.getAttribute("data-type");
+          
+          // Get segment ID with fallback options
+          let segmentId;
+          if (currentNodeType === "securityDomains") {
+            // If current node is a security domain, use its parent-segment attribute
+            segmentId = currentTreeNode.getAttribute("data-parent-segment");
+          } else if (currentNodeType === "networkSegments") {
+            // If current node is a network segment (when selecting from element panel), use its own ID
+            segmentId = currentTreeNode.getAttribute("data-id");
+          }
+
           const missionNetworkId =
             currentTreeNode.getAttribute("data-parent-mission-network") || "";
 
@@ -1507,8 +1518,30 @@ document.addEventListener("DOMContentLoaded", function () {
   // Application Initialization
   //-------------------------------------------------------------------------
 
+  // Add CSS for highlighting newly created elements
+  function addHighlightStyles() {
+    // Create a style element
+    const style = document.createElement('style');
+    style.textContent = `
+      .highlight-new {
+        animation: pulse-highlight 3s ease-in-out;
+      }
+      
+      @keyframes pulse-highlight {
+        0% { box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.7); }
+        50% { box-shadow: 0 0 0 10px rgba(25, 135, 84, 0.7); }
+        100% { box-shadow: 0 0 0 0 rgba(25, 135, 84, 0); }
+      }
+    `;
+    
+    // Add the style to the document head
+    document.head.appendChild(style);
+  }
+  
   // Initial data fetch
   async function initializeApp() {
+    // Add highlight styles
+    addHighlightStyles();
     try {
       // Load security classifications first
       await fetchSecurityClassifications();
@@ -1769,6 +1802,9 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
       if (apiResult.success) {
+        // Extract the ID of the new HW stack from the correct path in the API response
+        const newHwStackId = apiResult.data?.data?.id;
+        
         // Use the utility function to handle modal, button, and toast in one call
         await CISUtils.handleModal(
           "addHwStackModal",
@@ -1776,19 +1812,28 @@ document.addEventListener("DOMContentLoaded", function () {
           `HW Stack "${name}" created successfully!`
         );
 
-        // This is the correct state that will select the HW Stack directly
-        await refreshPanelsWithState({
-          nodeType: "hwStacks",
-          nodeId: id,
-          hwStackId: id,
-          domainId: domainId,
-          segmentId: segmentId,
-          missionNetworkId: missionNetworkId,
-        });
-
-        // Set the flag for HW Stack restoration
-        window.restoringHwStack = true;
-        window.hwStackToRestore = id;
+        console.log("New HW Stack created with ID:", newHwStackId);
+        
+        if (newHwStackId) {
+          // Store just enough information about the new HW stack in sessionStorage
+          // This follows the pattern used for security domains
+          sessionStorage.setItem(
+            "lastAddedHwStack",
+            JSON.stringify({
+              hwStackId: newHwStackId,
+              domainId: domainId,
+              segmentId: segmentId,
+              missionNetworkId: missionNetworkId,
+            })
+          );
+          
+          // Simply reload the data - the fetch function will handle restoring the right node
+          fetchCISPlanData();
+        } else {
+          // If we couldn't get the ID, just refresh the current view
+          console.log("Could not extract new HW Stack ID from response, refreshing current view");
+          fetchCISPlanData();
+        }
       } else {
         showToast(
           `${
@@ -1834,7 +1879,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       // Call the API to update the hardware stack
-      // Updating HW Stack
       const apiResult = await CISApi.updateHwStack(
         missionNetworkId,
         segmentId,
@@ -1845,31 +1889,89 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
       if (apiResult.success) {
-        // Use the utility function to handle modal, button, and toast in one call
+        // Close the modal and show success message
         await CISUtils.handleModal(
           "editHwStackModal",
           "updateHwStackBtn",
           `HW Stack updated successfully!`
         );
-
-        // This is the correct state that will select the HW Stack directly
-        await refreshPanelsWithState({
-          nodeType: "hwStacks",
-          nodeId: id,
-          hwStackId: id,
-          domainId: domainId,
-          segmentId: segmentId,
-          missionNetworkId: missionNetworkId,
-        });
-
-        // Set the flag for HW Stack restoration
-        window.restoringHwStack = true;
-        window.hwStackToRestore = id;
+        
+        // DIRECT APPROACH: Fetch fresh data and update the UI
+        try {
+          // 1. Get fresh data
+          console.log("Fetching fresh CIS Plan data after HW Stack update");
+          await fetchCISPlanData();
+          
+          // 2. Find the updated HW Stack
+          const updatedHwStack = findHwStackById(id);
+          if (updatedHwStack) {
+            console.log("Found updated HW Stack with new data:", updatedHwStack);
+            
+            // 3. Find the security domain node in the tree
+            const domainNode = document.querySelector(
+              `.tree-node[data-type="securityDomains"][data-id="${domainId}"]`
+            );
+            
+            if (domainNode) {
+              // Select domain to show all HW Stacks
+              console.log(`Selecting parent domain ${domainId} to refresh HW Stack list`);
+              
+              // Clear all selections
+              document.querySelectorAll('.tree-node.active').forEach(node => {
+                node.classList.remove('active');
+              });
+              
+              // Click the domain node
+              domainNode.click();
+              
+              // Wait for domain selection to update central panel
+              setTimeout(() => {
+                // Find the HW Stack card in the central panel
+                const stackCards = document.querySelectorAll(`.element-card[data-id="${id}"]`);
+                if (stackCards.length > 0) {
+                  console.log("Found HW Stack card in central panel, clicking it");
+                  stackCards[0].click();
+                } else {
+                  // If we can't find the card, try to find the tree node
+                  console.log("No card found, looking for tree node");
+                  const hwStackNode = document.querySelector(
+                    `.tree-node[data-type="hwStacks"][data-id="${id}"]`
+                  );
+                  
+                  if (hwStackNode) {
+                    console.log("Found HW Stack tree node, selecting it");
+                    hwStackNode.click();
+                  } else {
+                    // Last resort - manual update
+                    console.log("Direct manual update of detail panel");
+                    currentElement = updatedHwStack;
+                    updateDetailPanel(updatedHwStack, "hwStacks");
+                    if (CISPlanPointer && typeof CISPlanPointer.setSelectedElement === 'function') {
+                      CISPlanPointer.setSelectedElement(updatedHwStack, "hwStacks");
+                    }
+                  }
+                }
+              }, 300);
+            } else {
+              // Domain node not found - direct update approach
+              console.log("Domain node not found, using direct update");
+              currentElement = updatedHwStack;
+              updateDetailPanel(updatedHwStack, "hwStacks");
+              if (CISPlanPointer && typeof CISPlanPointer.setSelectedElement === 'function') {
+                CISPlanPointer.setSelectedElement(updatedHwStack, "hwStacks");
+              }
+            }
+          } else {
+            console.error(`Could not find updated HW Stack with ID ${id} in fresh data`);
+            showToast("HW Stack updated but UI refresh failed", "warning");
+          }
+        } catch (refreshError) {
+          console.error("Error during UI refresh:", refreshError);
+          showToast("HW Stack updated but UI refresh failed", "warning");
+        }
       } else {
         showToast(
-          `${
-            apiResult.message || apiResult.error || "Failed to update HW Stack"
-          }`,
+          `${apiResult.message || apiResult.error || "Failed to update HW Stack"}`,
           "danger"
         );
       }
@@ -2275,10 +2377,61 @@ document.addEventListener("DOMContentLoaded", function () {
               // Set currentTreeNode
               currentTreeNode = hwStackNode;
 
-              // Trigger the node's click handler to fully select it
-              hwStackNode.click();
+              console.log("Manually handling HW stack selection without using click()");
+              
+              // Instead of using click(), which can trigger unwanted event propagation,
+              // directly handle the stack selection here
+              let stackData = null;
+              
+              // First, try to get the stack data from the node's attributes
+              const stackId = hwStackNode.getAttribute("data-id");
+              const stackGuid = hwStackNode.getAttribute("data-guid");
+              
+              console.log("Direct stack selection with ID:", stackId, "and GUID:", stackGuid);
+              
+              // Find the hardware stack element in the data to pass to handleCentralPanelClick
+              let hwStackElement = null;
+              if (window.cisPlanData) {
+                const domainData = findDomainById(state.domainId, window.cisPlanData);
+                if (domainData && domainData.hwStacks) {
+                  hwStackElement = domainData.hwStacks.find(stack => stack.id === stackId);
+                }
+              }
+              
+              // Directly call CISPlanPointer.handleCentralPanelClick with proper parameters
+              // This matches what would happen in normal user interaction
+              if (window.CISPlanPointer && typeof CISPlanPointer.handleCentralPanelClick === 'function') {
+                try {
+                  // We need to call handleCentralPanelClick with the correct parameter structure
+                  // The function expects (element, type, currentTreeNode) parameters, not a params object
+                  console.log("Directly calling handleCentralPanelClick with proper parameters");
+                  
+                  // Try to call with both plural and singular forms if one fails
+                  try {
+                    CISPlanPointer.handleCentralPanelClick(
+                      hwStackElement || {id: stackId, guid: stackGuid}, // element
+                      "hwStacks", // try plural form first 
+                      hwStackNode // currentTreeNode
+                    );
+                  } catch (error) {
+                    console.log("First attempt with 'hwStacks' failed, trying 'hwStack'", error);
+                    try {
+                      // Try with singular form as fallback
+                      CISPlanPointer.handleCentralPanelClick(
+                        hwStackElement || {id: stackId, guid: stackGuid}, // element
+                        "hwStack", // singular form fallback
+                        hwStackNode // currentTreeNode
+                      );
+                    } catch (secondError) {
+                      console.error("Both attempts to restore HW Stack failed", secondError);
+                    }
+                  }
+                } catch (err) {
+                  console.error("Error in direct handleCentralPanelClick call:", err);
+                }
+              }
 
-              // Update detail panel with HW Stack info
+              // Update detail panel with HW Stack info as a fallback
               if (typeof cisPlanData !== "undefined" && cisPlanData) {
                 // Find the HW Stack element in the data
                 let hwStackElement = null;
@@ -2637,22 +2790,41 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Helper function to select and expand a tree node
-  function selectAndExpandNode(node) {
-    if (!node) return;
-    console.log(
-      `Selecting and expanding node: ${node.getAttribute(
-        "data-type"
-      )}/${node.getAttribute("data-id")} (${node.getAttribute("data-name")})`
-    );
-    node.classList.add("active");
-    expandParentContainers(node);
+  // Can accept either a DOM node or a data object with type and id
+  function selectAndExpandNode(node, type) {
+    if (!node) return false;
     
-    // Get node type and id for special handling
-    const nodeType = node.getAttribute("data-type");
-    const nodeId = node.getAttribute("data-id");
+    let nodeElement;
+    let nodeType;
+    let nodeId;
+    
+    // Determine if we're dealing with a DOM node or a data object
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      // It's a DOM node
+      nodeElement = node;
+      nodeType = node.getAttribute("data-type");
+      nodeId = node.getAttribute("data-id");
+      console.log(`Selecting and expanding DOM node: ${nodeType}/${nodeId} (${node.getAttribute("data-name")})`);
+    } else {
+      // It's a data object
+      nodeType = type || node.type || "hwStacks";
+      nodeId = node.id;
+      console.log(`Finding and selecting node by ID: ${nodeType}/${nodeId}`);
+      
+      // Find the DOM node that represents this object
+      nodeElement = document.querySelector(`.tree-node[data-type="${nodeType}"][data-id="${nodeId}"]`);
+      if (!nodeElement) {
+        console.warn(`Could not find DOM node for ${nodeType}/${nodeId}`);
+        return false;
+      }
+    }
+    
+    // Now we have a DOM node element - proceed as before
+    nodeElement.classList.add("active");
+    expandParentContainers(nodeElement);
     
     // Simulate click on the node
-    simulateTreeNodeClick(node);
+    simulateTreeNodeClick(nodeElement);
     
     // For network segments, ensure we load the right panel
     if (nodeType === "networkSegments") {
@@ -2667,6 +2839,115 @@ document.addEventListener("DOMContentLoaded", function () {
         updateDetailPanel(foundElement, "networkSegments");
         // Also update the CISPlanPointer
         CISPlanPointer.setSelectedElement(foundElement, "networkSegments");
+      }
+    }
+    // For HW Stacks, ensure we load the right panel (similar to networkSegments)
+    else if (nodeType === "hwStacks") {
+      console.log(`Special handling for HW Stack ${nodeId} - ensuring detail panel loads correctly`);
+      
+      // Find the element in CIS Plan data
+      const foundElement = findHwStackById(nodeId);
+      
+      // If found, update the detail panel explicitly
+      if (foundElement) {
+        console.log("Found HW Stack element, updating panels:", foundElement);
+        currentElement = foundElement;
+        
+        // Update the detail panel and pointer state
+        updateDetailPanel(foundElement, "hwStacks");
+        
+        // Update the pointer state if available
+        if (CISPlanPointer && typeof CISPlanPointer.setSelectedElement === 'function') {
+          CISPlanPointer.setSelectedElement(foundElement, "hwStacks");
+        }
+        
+        // DIRECT FIX: Get the parent domain to display all HW Stacks in the central panel
+        let parentDomainId;
+        
+        if (nodeElement) {
+          parentDomainId = nodeElement.getAttribute("data-parent-domain");
+          console.log(`Getting HW Stacks for parent domain from DOM: ${parentDomainId}`);
+        }
+        
+        // If we can't get the parent domain from the DOM, try to find it from the data
+        if (!parentDomainId) {
+          // Look through all security domains to find which one contains this HW Stack
+          for (const missionNetwork of cisPlanData) {
+            for (const segment of missionNetwork.networkSegments || []) {
+              for (const domain of segment.securityDomains || []) {
+                if (domain.hwStacks && domain.hwStacks.some(stack => stack.id === nodeId)) {
+                  parentDomainId = domain.id;
+                  console.log(`Found parent domain ${parentDomainId} by scanning data`);
+                  break;
+                }
+              }
+              if (parentDomainId) break;
+            }
+            if (parentDomainId) break;
+          }
+        }
+        
+        // Find the parent domain and its HW Stacks for the central panel
+        const domainData = findDomainById(parentDomainId, cisPlanData);
+        if (domainData && domainData.hwStacks && Array.isArray(domainData.hwStacks)) {
+          console.log(`Found ${domainData.hwStacks.length} HW Stacks in domain ${parentDomainId} for central panel`);
+          
+          // Make sure our current HW Stack is included and updated
+          const stackIndex = domainData.hwStacks.findIndex(stack => stack.id === nodeId);
+          if (stackIndex >= 0) {
+            console.log(`Updating stack at index ${stackIndex} with latest data`);
+            domainData.hwStacks[stackIndex] = foundElement;
+          }
+          
+          // Explicitly update central panel with HW Stacks from same domain
+          if (elementsContainer) {
+            // Clear the container
+            elementsContainer.innerHTML = "";
+            
+            // Add title
+            const headerContainer = document.createElement("div");
+            headerContainer.className = "d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom";
+            
+            const titleDiv = document.createElement("div");
+            titleDiv.className = "h5 mb-0 d-flex align-items-center";
+            titleDiv.id = "elementsTitle";
+            
+            const iconPath = getElementIcon("hwStacks");
+            titleDiv.innerHTML = `
+              <img src="${iconPath}" alt="HW Stacks" class="icon-small me-2" style="width: 20px; height: 20px;">
+              <span>HW Stacks</span>
+            `;
+            
+            headerContainer.appendChild(titleDiv);
+            elementsContainer.appendChild(headerContainer);
+            
+            // Create content container
+            const elementsContent = document.createElement("div");
+            elementsContent.className = "elements-content";
+            elementsContent.id = "elementsContent";
+            elementsContainer.appendChild(elementsContent);
+            
+            // Ensure the central panel shows all HW Stacks in this domain
+            renderElementCards(elementsContent, domainData.hwStacks, "hwStacks");
+          }
+        }
+        
+        // Update the detail panel
+        updateDetailPanel(foundElement, "hwStacks");
+        
+        // Update the CISPlanPointer
+        CISPlanPointer.setSelectedElement(foundElement, "hwStacks");
+        
+        // Force selection in the tree
+        const hwStackNode = document.querySelector(`.tree-node[data-type="hwStacks"][data-id="${nodeId}"]`);
+        if (hwStackNode) {
+          // Remove active class from all nodes
+          document.querySelectorAll('.tree-node.active').forEach(n => n.classList.remove('active'));
+          // Add active class to HW Stack node
+          hwStackNode.classList.add('active');
+          // Update currentTreeNode reference
+          currentTreeNode = hwStackNode;
+        }
       }
     }
   }
@@ -2697,6 +2978,33 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(`Finding mission network ${missionNetworkId}: ${missionNetwork ? 'Found' : 'Not found'}`);
     
     return missionNetwork;
+  }
+  
+  // Helper function to find a HW Stack by ID
+  function findHwStackById(hwStackId) {
+    if (!cisPlanData || !Array.isArray(cisPlanData)) return null;
+    
+    // Search through mission networks > segments > domains > hwStacks
+    for (const mn of cisPlanData) {
+      if (mn.networkSegments && Array.isArray(mn.networkSegments)) {
+        for (const segment of mn.networkSegments) {
+          if (segment.securityDomains && Array.isArray(segment.securityDomains)) {
+            for (const domain of segment.securityDomains) {
+              if (domain.hwStacks && Array.isArray(domain.hwStacks)) {
+                const hwStack = domain.hwStacks.find(stack => stack.id === hwStackId);
+                if (hwStack) {
+                  console.log(`Found HW Stack ${hwStackId} in domain ${domain.id}`);
+                  return hwStack;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    console.log(`HW Stack ${hwStackId} not found in CIS Plan data`);
+    return null;
   }
 
   // Function to simulate a click on a tree node
@@ -4616,6 +4924,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
+   * Find a security domain by its ID
+   * @param {string} domainId - The ID of the security domain to find
+   * @param {object} [data] - Optional data object to search in, defaults to cisPlanData
+   * @returns {object|null} - The security domain object or null if not found
+   */
+  function findDomainById(domainId, data = window.cisPlanData) {
+    if (!data || !domainId) return null;
+
+    // Iterate through all mission networks
+    for (const missionNetwork of data.missionNetworks || []) {
+      // Iterate through network segments in each mission network
+      for (const segment of missionNetwork.networkSegments || []) {
+        // Iterate through security domains in each segment
+        for (const domain of segment.securityDomains || []) {
+          if (domain.id === domainId) {
+            return domain;
+          }
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  /**
    * Find a GP instance by its parent asset ID
    * @param {string} assetId - The parent asset ID to search for
    * @param {object} [data] - Optional data object to search in, defaults to cisPlanData
@@ -4672,63 +5005,6 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Asset not found:", assetId);
     return null;
   }
-
-  // * Update a GP instance in the CIS plan data model
-  //    * This is used after adding SP instances to ensure the model stays in sync
-  //    */
-  function updateGPInstanceInCISPlanData(gpInstanceId, updatedGpInstance) {
-    // Traverse the CIS plan data to find the GP instance
-    if (!window.cisPlanData || !window.cisPlanData.missionNetworks)
-      return false;
-
-    const missionNetworks = window.cisPlanData.missionNetworks;
-
-    // Search through each mission network
-    for (const mn of missionNetworks) {
-      if (!mn.networkSegments) continue;
-
-      for (const segment of mn.networkSegments) {
-        if (!segment.securityDomains) continue;
-
-        for (const domain of segment.securityDomains) {
-          if (!domain.hwStacks) continue;
-
-          for (const hwStack of domain.hwStacks) {
-            if (!hwStack.assets) continue;
-
-            for (const asset of hwStack.assets) {
-              if (!asset.gpInstances) continue;
-
-              // Look for the GP instance
-              for (let i = 0; i < asset.gpInstances.length; i++) {
-                if (
-                  asset.gpInstances[i].id === gpInstanceId ||
-                  asset.gpInstances[i].gpid === gpInstanceId
-                ) {
-                  // Found it - update it
-                  asset.gpInstances[i] = {
-                    ...asset.gpInstances[i],
-                    ...updatedGpInstance,
-                  };
-                  console.log(
-                    "Updated GP instance in data model:",
-                    asset.gpInstances[i]
-                  );
-                  return true;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    return false;
-  }
-
-  // Store security classifications data globally
-  // This is initialized in the fetchSecurityClassifications function
-
   // Helper function to get security classification details by ID
   function getSecurityClassificationById(id) {
     if (!id) {
@@ -5240,7 +5516,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // Now manually call renderTree since it's a function outside the API namespace
       renderTree(treeData);
 
-      // Handle special cases like recently added security domains
+      // Handle special cases like recently added security domains or HW stacks
+      
+      // First check for security domains
       const lastAddedSecurityDomain = sessionStorage.getItem(
         "lastAddedSecurityDomain"
       );
@@ -5280,6 +5558,81 @@ document.addEventListener("DOMContentLoaded", function () {
           }, 150);
         } catch (e) {
           console.warn("Error parsing security domain info:", e);
+        }
+      }
+      
+      // Then check for HW stacks
+      const lastAddedHwStack = sessionStorage.getItem("lastAddedHwStack");
+      if (lastAddedHwStack) {
+        try {
+          const hwInfo = JSON.parse(lastAddedHwStack);
+          // Clear it immediately to prevent repeated application
+          sessionStorage.removeItem("lastAddedHwStack");
+          
+          console.log("Restoring newly added HW stack:", hwInfo);
+
+          // Add a small delay to ensure DOM is rendered
+          setTimeout(() => {
+            // First find and expand the mission network
+            const mnNode = document.querySelector(
+              `.tree-node[data-type="missionNetworks"][data-id="${hwInfo.missionNetworkId}"]`
+            );
+            if (mnNode) {
+              // Click the toggle to expand mission network
+              const mnToggle = mnNode.querySelector(".tree-toggle");
+              if (mnToggle) mnToggle.click();
+
+              // Small delay to let mission network expand
+              setTimeout(() => {
+                // Find and expand the segment
+                const segNode = document.querySelector(
+                  `.tree-node[data-type="networkSegments"][data-id="${hwInfo.segmentId}"]`
+                );
+                if (segNode) {
+                  // Click the toggle to expand segment
+                  const segToggle = segNode.querySelector(".tree-toggle");
+                  if (segToggle) segToggle.click();
+                  
+                  // Small delay to let segment expand
+                  setTimeout(() => {
+                    // Find and expand the domain
+                    const domainNode = document.querySelector(
+                      `.tree-node[data-type="securityDomains"][data-id="${hwInfo.domainId}"]`
+                    );
+                    if (domainNode) {
+                      // Click the toggle to expand domain
+                      const domainToggle = domainNode.querySelector(".tree-toggle");
+                      if (domainToggle) domainToggle.click();
+                      
+                      // For HW stacks, we just select the domain node and let the user see all HW stacks
+                      // This matches the pattern used for security domains and creates a consistent workflow
+                      console.log("Selecting security domain to show all HW stacks including the new one");
+                      
+                      // Select the domain node
+                      domainNode.click();
+                      
+                      // Optional: Highlight the new HW stack in the UI without selecting it
+                      setTimeout(() => {
+                        // Find the HW stack in the central panel
+                        const hwCard = document.querySelector(
+                          `.element-card[data-id="${hwInfo.hwStackId}"]`
+                        );
+                        if (hwCard) {
+                          // Add a brief highlight effect
+                          hwCard.classList.add("highlight-new");
+                          setTimeout(() => {
+                            hwCard.classList.remove("highlight-new");
+                          }, 3000); // Remove after 3 seconds
+                        }
+                      }, 300);
+                    }
+                  }, 100);
+                }
+              }, 100);
+            }
+          }, 150);
+        } catch (e) {
+          console.warn("Error parsing HW stack info:", e);
         }
       }
 
@@ -5699,7 +6052,7 @@ document.addEventListener("DOMContentLoaded", function () {
             missionNetwork: parentMissionNetwork
               ? parentMissionNetwork.id
               : null,
-            networkSegment: parentSegment ? parentSegment.id : null,
+            segmentId: parentSegment ? parentSegment.id : null,
           });
 
           loadSelectedNodeChildren(
@@ -5811,7 +6164,9 @@ document.addEventListener("DOMContentLoaded", function () {
           currentTreeNode = this;
 
           // Update the CISPlanPointer with the hardware stack selection
-          CISPlanPointer.handleTreeClick(this, stack, "hwStack", {
+          // Use "hwStacks" (plural) to match the expected type in updateDetailPanel
+          console.log("Calling handleTreeClick for HW stack with stack data:", stack);
+          CISPlanPointer.handleTreeClick(this, stack, "hwStacks", {
             missionNetwork: parentMissionNetwork
               ? parentMissionNetwork.id
               : null,
@@ -7745,6 +8100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update the details panel with the selected element's data
   function updateDetailPanel(element, type) {
+    console.log(`updateDetailPanel called with type: ${type}`, element);
     // Clear the details container
     if (detailsContainer) {
       detailsContainer.innerHTML = "";
@@ -8320,7 +8676,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add type-specific details
     // This can be expanded based on the different element types
-    if (type === "hwStacks" && element.cisParticipantID) {
+    console.log("Checking for hwStacks type:", type, "Has cisParticipantID:", element && element.cisParticipantID ? "Yes" : "No");
+    
+    if (type === "hwStacks") {
+      console.log("Rendering HW Stack detail panel with element:", element);
+      
+      if (element.cisParticipantID) {
       // Add the participant ID row
       table.querySelector("tbody").innerHTML += `
                 <tr>
@@ -8352,6 +8713,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       })();
+      }
     }
 
     // Add the table to the card body
@@ -8698,264 +9060,23 @@ document.addEventListener("DOMContentLoaded", function () {
     return true; // Return true to indicate success
   }
 
-  // Function to navigate up one level in the tree
   function navigateUp() {
-    // Log the current position and where we should navigate to
+    // Log the current position
     console.log("Navigating UP from current position...");
-    CISPlanPointer.logNavigationUp();
-
-    // Check the current element type first - this is what gets updated when clicking in the elements panel
-    let type;
-    let parentNodeId;
-
-    // Use currentElement if available, otherwise fall back to currentTreeNode
-    if (currentElement && currentElement.type) {
-      type = currentElement.type;
-      // Navigating up from element type
-
-      // Handle based on element type
-      if (type === "networkInterfaces") {
-        // For network interfaces, navigate to parent asset
-        let parentAsset = currentElement.parentAsset || currentElement.assetId;
-
-        // Extract ID if it's an object
-        if (parentAsset && typeof parentAsset === "object" && parentAsset.id) {
-          parentNodeId = parentAsset.id;
-        } else {
-          parentNodeId = parentAsset;
-        }
-
-        // If not found, try to get from parent attributes
-        if (!parentNodeId && currentTreeNode) {
-          parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
-        }
-
-        if (parentNodeId) {
-          // Navigating up to Asset
-          if (findAndSelectTreeNode("assets", parentNodeId)) {
-            // Reset currentElement to ensure next navigation works
-            currentElement = null;
-          }
-          return;
-        }
-      } else if (type === "assets") {
-        // For assets, we need to find the parent HW Stack
-        // First check if there's a parentStack or hwStackId property
-        let parentStack =
-          currentElement.parentStack || currentElement.hwStackId;
-
-        // Extract ID if it's an object
-        if (parentStack && typeof parentStack === "object" && parentStack.id) {
-          parentNodeId = parentStack.id;
-        } else {
-          parentNodeId = parentStack;
-        }
-
-        // If not found, try to get from parent attributes
-        if (!parentNodeId && currentTreeNode) {
-          parentNodeId = currentTreeNode.getAttribute("data-parent-stack");
-        }
-
-        if (parentNodeId) {
-          // Navigating up to HW Stack
-          if (findAndSelectTreeNode("hwStacks", parentNodeId)) {
-            // Reset currentElement to ensure next navigation works
-            currentElement = null;
-          }
-          return;
-        }
-      } else if (type === "hwStacks") {
-        // For HW Stacks, we need to find the parent Security Domain
-        let parentDomain =
-          currentElement.parentDomain || currentElement.domainId;
-
-        // Extract ID if it's an object
-        if (
-          parentDomain &&
-          typeof parentDomain === "object" &&
-          parentDomain.id
-        ) {
-          parentNodeId = parentDomain.id;
-        } else {
-          parentNodeId = parentDomain;
-        }
-
-        if (!parentNodeId && currentTreeNode) {
-          parentNodeId = currentTreeNode.getAttribute("data-parent-domain");
-        }
-
-        if (parentNodeId) {
-          // Navigating up to Security Domain
-          if (findAndSelectTreeNode("securityDomains", parentNodeId)) {
-            // Reset currentElement to ensure next navigation works
-            currentElement = null;
-          }
-          return;
-        }
-      } else if (type === "securityDomains") {
-        // For Security Domains, navigate to parent Network Segment
-        let parentSegment =
-          currentElement.parentSegment || currentElement.segmentId;
-
-        // Extract ID if it's an object
-        if (
-          parentSegment &&
-          typeof parentSegment === "object" &&
-          parentSegment.id
-        ) {
-          parentNodeId = parentSegment.id;
-        } else {
-          parentNodeId = parentSegment;
-        }
-
-        if (!parentNodeId && currentTreeNode) {
-          parentNodeId = currentTreeNode.getAttribute("data-parent-segment");
-        }
-
-        if (parentNodeId) {
-          // Navigating up to Network Segment
-          if (findAndSelectTreeNode("networkSegments", parentNodeId)) {
-            // Reset currentElement to ensure next navigation works
-            currentElement = null;
-          }
-          return;
-        }
-      } else if (type === "networkSegments") {
-        // For Network Segments, navigate to parent Mission Network
-        let parentMissionNetwork = currentElement.parentMissionNetwork;
-
-        // Extract ID if it's an object
-        if (
-          parentMissionNetwork &&
-          typeof parentMissionNetwork === "object" &&
-          parentMissionNetwork.id
-        ) {
-          parentNodeId = parentMissionNetwork.id;
-        } else {
-          parentNodeId = parentMissionNetwork;
-        }
-
-        if (!parentNodeId && currentTreeNode) {
-          parentNodeId = currentTreeNode.getAttribute(
-            "data-parent-mission-network"
-          );
-        }
-
-        if (parentNodeId) {
-          // Navigating up to Mission Network
-          if (findAndSelectTreeNode("missionNetworks", parentNodeId)) {
-            // Reset currentElement to ensure next navigation works
-            currentElement = null;
-          }
-          return;
-        }
-      } else if (type === "gpInstances") {
-        // For GP instances, navigate to parent asset
-        let parentAsset = currentElement.parentAsset || currentElement.assetId;
-
-        // Extract ID if it's an object
-        if (parentAsset && typeof parentAsset === "object" && parentAsset.id) {
-          parentNodeId = parentAsset.id;
-        } else {
-          parentNodeId = parentAsset;
-        }
-
-        // If not found, try to get from parent attributes
-        if (!parentNodeId && currentTreeNode) {
-          parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
-        }
-
-        if (parentNodeId) {
-          // Navigating up to Asset
-          if (findAndSelectTreeNode("assets", parentNodeId)) {
-            // Reset currentElement to ensure next navigation works
-            currentElement = null;
-          }
-          return;
-        }
-      } else if (type === "missionNetworks") {
-        // Go to the root node
-        const rootNode = document.querySelector(
-          '.tree-node[data-id="root-cisplan"]'
-        );
-        if (rootNode) rootNode.click();
-        return;
-      }
+    
+    // Use the CISPlanPointer's navigateUp function which handles all the logic
+    const success = CISPlanPointer.navigateUp();
+    
+    if (success) {
+      // Reset currentElement to avoid state conflicts
+      currentElement = null;
+    } else {
+      console.warn("Navigation up failed - no parent found");
     }
-
-    // Fallback to current tree node if we haven't returned yet
-    if (!currentTreeNode) return;
-
-    // Get the parent node's ID based on data attributes
-    const nodeType = currentTreeNode.getAttribute("data-type");
-
-    if (nodeType === "networkInterfaces") {
-      parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
-      if (parentNodeId) {
-        // Find and select the parent Asset node
-        if (findAndSelectTreeNode("assets", parentNodeId)) {
-          // Reset currentElement to ensure next navigation works
-          currentElement = null;
-        }
-      }
-    } else if (nodeType === "assets") {
-      parentNodeId = currentTreeNode.getAttribute("data-parent-stack");
-      if (parentNodeId) {
-        // Find and select the parent HW Stack node
-        if (findAndSelectTreeNode("hwStacks", parentNodeId)) {
-          // Reset currentElement to ensure next navigation works
-          currentElement = null;
-        }
-      }
-    } else if (nodeType === "hwStacks") {
-      parentNodeId = currentTreeNode.getAttribute("data-parent-domain");
-      if (parentNodeId) {
-        // Find and select the parent Security Domain node
-        if (findAndSelectTreeNode("securityDomains", parentNodeId)) {
-          // Reset currentElement to ensure next navigation works
-          currentElement = null;
-        }
-      }
-    } else if (nodeType === "securityDomains") {
-      parentNodeId = currentTreeNode.getAttribute("data-parent-segment");
-      if (parentNodeId) {
-        // Find and select the parent Network Segment node
-        if (findAndSelectTreeNode("networkSegments", parentNodeId)) {
-          // Reset currentElement to ensure next navigation works
-          currentElement = null;
-        }
-      }
-    } else if (nodeType === "networkSegments") {
-      parentNodeId = currentTreeNode.getAttribute(
-        "data-parent-mission-network"
-      );
-      if (parentNodeId) {
-        // Find and select the parent Mission Network node
-        if (findAndSelectTreeNode("missionNetworks", parentNodeId)) {
-          // Reset currentElement to ensure next navigation works
-          currentElement = null;
-        }
-      }
-    } else if (nodeType === "gpInstances") {
-      parentNodeId = currentTreeNode.getAttribute("data-parent-asset");
-      if (parentNodeId) {
-        // Find and select the parent Asset node
-        if (findAndSelectTreeNode("assets", parentNodeId)) {
-          // Reset currentElement to ensure next navigation works
-          currentElement = null;
-        }
-      }
-    } else if (nodeType === "missionNetworks") {
-      // From Mission Network, navigate to the root node
-      const rootNode = document.querySelector(
-        '.tree-node[data-id="root-cisplan"]'
-      );
-      if (rootNode) {
-        rootNode.click();
-        currentElement = null;
-      }
-    }
+    
+    return success;
   }
+
 
   // Add new function to focus the first matching tree node
   function focusFirstMatchingTreeNode() {

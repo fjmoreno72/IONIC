@@ -36,6 +36,14 @@ const CISPlan2 = {
         // Add refresh button handler
         document.getElementById('refreshButton').addEventListener('click', () => {
             console.log('Refresh button clicked');
+            
+            // Reset the tree's expanded nodes state
+            if (this.CISTree2) {
+                this.CISTree2.expandedNodes = new Set();
+                this.CISTree2._expandedInitialized = false;
+            }
+            
+            // Reload the data and reset the UI
             this.loadCISPlanData();
         });
         
@@ -273,7 +281,22 @@ const CISPlan2 = {
         
         // Reset the elements panel with mission networks
         if (this.cisPlanData && this.cisPlanData.missionNetworks) {
-            this.renderElements('mission_network', this.cisPlanData.missionNetworks);
+            // First clear the elements panel
+            CISElements2.clearElements();
+            
+            // Render the mission networks directly in the elements panel
+            CISElements2.renderElementCards(this.cisPlanData.missionNetworks, 'mission_network');
+            
+            // Add a title to the elements panel
+            const titleElement = document.createElement('div');
+            titleElement.className = 'elements-title mb-3';
+            titleElement.innerHTML = '<h5>Mission Network Elements</h5>';
+            
+            // Insert the title at the beginning of the elements content
+            const elementsContent = document.getElementById('elements-content');
+            if (elementsContent && elementsContent.firstChild) {
+                elementsContent.insertBefore(titleElement, elementsContent.firstChild);
+            }
         }
         
         // Clear the details panel

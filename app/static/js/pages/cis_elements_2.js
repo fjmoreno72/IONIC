@@ -352,15 +352,14 @@ const CISElements2 = {
             self.selectElement(element, type);
         });
         
+        // Add double-click handler for navigation down
+        card.addEventListener('dblclick', function() {
+            self.navigateDown(element, type);
+        });
+        
         return card;
     },
     
-    /**
-     * Find a configuration item by name in an element's configuration
-     * @param {Object} element - The element to search in
-     * @param {string} itemName - The name of the configuration item
-     * @returns {Object|null} The found configuration item or null
-     */
     /**
      * Find an entity by its GUID in the CIS Plan data
      * @param {Object} data - The CIS Plan data to search in
@@ -409,8 +408,40 @@ const CISElements2 = {
      * Navigate up to the parent element
      */
     navigateUp: function() {
-        // This will be implemented as needed
         console.log('Navigate up requested');
+        
+        // Dispatch a custom event to trigger the tree's navigateUp function
+        const navigateUpEvent = new CustomEvent('cis:navigate-up');
+        document.dispatchEvent(navigateUpEvent);
+    },
+    
+    /**
+     * Navigate down to the selected element
+     * @param {Object} element - The element to navigate to
+     * @param {string} type - Type of the element
+     */
+    navigateDown: function(element, type) {
+        console.log('Navigate down requested to:', type, element);
+        
+        // Dispatch a custom event to trigger the tree to select this node
+        let guid = element.guid;
+        let id = element.id || element.gpid; // Handle GP instances which use gpid instead of id
+        
+        if (!guid && !id) {
+            console.error('Cannot navigate to element without guid or id');
+            return;
+        }
+        
+        // Create and dispatch the event to select the node in the tree
+        const selectNodeEvent = new CustomEvent('cis:select-tree-node', {
+            detail: {
+                type: type,
+                id: id,
+                guid: guid
+            }
+        });
+        
+        document.dispatchEvent(selectNodeEvent);
     },
     
     /**

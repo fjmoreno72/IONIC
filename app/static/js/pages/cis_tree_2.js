@@ -185,6 +185,9 @@ const CISTree2 = {
             
             // Apply consistent styling to all tree levels
             this.applyConsistentStylingToTree();
+            
+            // Select the root node by default
+            this.selectRootNodeByDefault();
         } else {
             console.warn('No mission networks found in data');
             childContainer.innerHTML = '<div class="tree-node-empty">No mission networks found</div>';
@@ -862,6 +865,51 @@ const CISTree2 = {
         });
         
         console.log(`Applied consistent styling to ${allContainers.length} tree containers`);
+    },
+    
+    /**
+     * Select the root node by default when the page loads
+     * This will also trigger the display of mission networks in the elements panel
+     */
+    selectRootNodeByDefault: function() {
+        console.log('Selecting root node by default');
+        
+        // Find the root node
+        const rootNode = document.querySelector('.tree-node[data-type="cisplan"]');
+        if (!rootNode) {
+            console.warn('Root node not found for default selection');
+            return;
+        }
+        
+        // Select the root node
+        this.selectTreeNode(rootNode);
+        
+        // Dispatch node selected event to update elements panel
+        const event = new CustomEvent('cis:node-selected', {
+            detail: {
+                type: 'cisplan',
+                id: null,
+                guid: null,
+                data: this.fullTreeData
+            }
+        });
+        document.dispatchEvent(event);
+        
+        // Ensure the elements panel shows mission networks
+        setTimeout(() => {
+            // Check if the elements panel is showing mission networks, if not, render them explicitly
+            const elementsTitle = document.querySelector('.elements-title h5');
+            if (!elementsTitle || !elementsTitle.textContent.includes('Mission Network')) {
+                console.log('Explicitly rendering mission networks in elements panel');
+                if (this.fullTreeData && this.fullTreeData.missionNetworks) {
+                    // Use the direct CISElements2 API to render mission networks
+                    CISElements2.clearElements();
+                    CISElements2.renderElementCards(this.fullTreeData.missionNetworks, 'mission_network');
+                }
+            }
+        }, 100); // Small delay to ensure DOM is updated
+        
+        console.log('Root node selected by default with elements panel updated');
     },
     
     /**

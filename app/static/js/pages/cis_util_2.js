@@ -501,9 +501,21 @@ const CISUtil2 = {
             </div>
         `;
         
-        // Add hover effect with CSS
+        // Add hover effect with CSS and prevent text selection
         card.style.cursor = 'pointer';
         card.style.transition = 'all 0.2s ease';
+        card.style.userSelect = 'none'; // Prevent text selection on double-click
+        
+        // Also apply user-select: none to the inner elements to ensure no text selection
+        const cardBody = card.querySelector('.card-body');
+        if (cardBody) {
+            cardBody.style.userSelect = 'none';
+        }
+        
+        const textSpan = card.querySelector('span');
+        if (textSpan) {
+            textSpan.style.userSelect = 'none';
+        }
         
         // Add click handler to select the element
         card.addEventListener('click', () => {

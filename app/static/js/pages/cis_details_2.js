@@ -124,54 +124,14 @@ const CISDetails2 = {
             return;
         }
         
-        // Create table for details
-        const table = document.createElement('table');
-        table.className = 'detail-table table table-striped';
+        // Clear existing content first
+        this.detailsContent.innerHTML = '';
         
-        // Basic information available in all elements
-        let tableContent = '';
+        // Get the appropriate renderer for this element type
+        const renderer = CISDetailRenderers2.getRenderer(type);
         
-        // Add element type
-        tableContent += `
-            <tr>
-                <th scope="row">Type</th>
-                <td>${this.formatElementType(type)}</td>
-            </tr>
-        `;
-        
-        // Add name if available
-        if (element.name) {
-            tableContent += `
-                <tr>
-                    <th scope="row">Name</th>
-                    <td>${element.name}</td>
-                </tr>
-            `;
-        }
-        
-        // Add ID if available
-        if (element.id) {
-            tableContent += `
-                <tr>
-                    <th scope="row">ID</th>
-                    <td>${element.id}</td>
-                </tr>
-            `;
-        }
-        
-        // Add GUID (all elements should have this)
-        if (element.guid) {
-            tableContent += `
-                <tr>
-                    <th scope="row">GUID</th>
-                    <td>${element.guid}</td>
-                </tr>
-            `;
-        }
-        
-        // Set table content
-        table.innerHTML = `<tbody>${tableContent}</tbody>`;
-        this.detailsContent.appendChild(table);
+        // Use the renderer to display the element details
+        renderer.call(CISDetailRenderers2, element, type, this.detailsContent);
     },
     
     /**

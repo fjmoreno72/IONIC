@@ -106,63 +106,61 @@ const CISTree2 = {
         console.log(`Found ${missionNetworks.length} mission networks to render`);
         
         // Initialize expanded nodes set if not already done
-        // By default, expand all nodes to show the full hierarchy
+        // By default, expand only up to the asset level (not including network interfaces, GP instances, or SP instances)
         if (!this._expandedInitialized) {
+            // Clear any previous expanded nodes
+            this.expandedNodes = new Set();
+            
             // Add root node to expanded set
             this.expandedNodes.add(null);
             
-            // Add all entity GUIDs to expanded set
-            function collectAllGuids(data) {
-                const guids = new Set();
-                
-                function addEntityGuids(entity) {
-                    if (!entity || typeof entity !== 'object') return;
+            // Only expand up to the asset level
+            if (this.fullTreeData && this.fullTreeData.missionNetworks) {
+                // Process each mission network
+                this.fullTreeData.missionNetworks.forEach(network => {
+                    // Add mission network GUID to expanded nodes
+                    if (network.guid) this.expandedNodes.add(network.guid);
                     
-                    // Add this entity's GUID if it has one
-                    if (entity.guid) guids.add(entity.guid);
-                    
-                    // Process all possible child collections
-                    const childCollections = [
-                        'missionNetworks',
-                        'networkSegments',
-                        'securityDomains',
-                        'hwStacks',
-                        'assets',
-                        'networkInterfaces',
-                        'gpInstances',
-                        'spInstances'
-                    ];
-                    
-                    // Recursively process all children
-                    childCollections.forEach(collection => {
-                        if (Array.isArray(entity[collection])) {
-                            entity[collection].forEach(child => addEntityGuids(child));
-                        }
-                    });
-                }
-                
-                // Start with the top-level entity
-                addEntityGuids(data);
-                return guids;
+                    // Process each network segment
+                    if (network.networkSegments) {
+                        network.networkSegments.forEach(segment => {
+                            // Add segment GUID to expanded nodes
+                            if (segment.guid) this.expandedNodes.add(segment.guid);
+                            
+                            // Process each security domain
+                            if (segment.securityDomains) {
+                                segment.securityDomains.forEach(domain => {
+                                    // Add domain GUID to expanded nodes
+                                    if (domain.guid) this.expandedNodes.add(domain.guid);
+                                    
+                                    // Process each HW stack
+                                    if (domain.hwStacks) {
+                                        domain.hwStacks.forEach(stack => {
+                                            // Add stack GUID to expanded nodes
+                                            if (stack.guid) this.expandedNodes.add(stack.guid);
+                                            
+                                            // We do NOT add assets' children (network interfaces, GP instances, SP instances)
+                                            // to the expanded nodes set
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
             }
             
-            // Collect all GUIDs and add them to expanded nodes
-            const allGuids = collectAllGuids(this.fullTreeData);
-            allGuids.forEach(guid => this.expandedNodes.add(guid));
-            
-            console.log(`Auto-expanded ${allGuids.size} nodes in the tree`);
+            console.log(`Expanded tree up to asset level with ${this.expandedNodes.size} nodes`);
             this._expandedInitialized = true;
         }
         
         // Create container for mission networks
         const childContainer = document.createElement('div');
         childContainer.className = 'tree-children';
-        // Set vertical styling for children container
-        childContainer.style.display = 'block';
-        childContainer.style.marginLeft = '20px';
-        childContainer.style.paddingLeft = '10px';
-        childContainer.style.borderLeft = '1px dotted #ccc';
         rootNode.appendChild(childContainer);
+        
+        // Apply consistent styling using the utility function
+        CISUtil2.styleChildContainer(childContainer);
         
         // Set expand icon for root
         const expandIcon = rootNode.querySelector('.expand-icon');
@@ -184,6 +182,9 @@ const CISTree2 = {
         // Render mission networks
         if (missionNetworks.length > 0) {
             this.renderMissionNetworks(childContainer, missionNetworks);
+            
+            // Apply consistent styling to all tree levels
+            this.applyConsistentStylingToTree();
         } else {
             console.warn('No mission networks found in data');
             childContainer.innerHTML = '<div class="tree-node-empty">No mission networks found</div>';
@@ -313,6 +314,9 @@ const CISTree2 = {
                 childContainer.className = 'tree-children';
                 segmentNode.appendChild(childContainer);
                 
+                // Apply consistent styling
+                CISUtil2.styleChildContainer(childContainer);
+                
                 // Set display based on expanded state
                 const isExpanded = this.expandedNodes.has(segment.guid);
                 childContainer.style.display = isExpanded ? 'block' : 'none';
@@ -384,6 +388,9 @@ const CISTree2 = {
                 const childContainer = document.createElement('div');
                 childContainer.className = 'tree-children';
                 domainNode.appendChild(childContainer);
+                
+                // Apply consistent styling
+                CISUtil2.styleChildContainer(childContainer);
                 
                 // Set display based on expanded state
                 const isExpanded = this.expandedNodes.has(domain.guid);
@@ -458,6 +465,9 @@ const CISTree2 = {
                 const childContainer = document.createElement('div');
                 childContainer.className = 'tree-children';
                 stackNode.appendChild(childContainer);
+                
+                // Apply consistent styling
+                CISUtil2.styleChildContainer(childContainer);
                 
                 // Set display based on expanded state
                 const isExpanded = this.expandedNodes.has(stack.guid);
@@ -538,6 +548,9 @@ const CISTree2 = {
                 const childContainer = document.createElement('div');
                 childContainer.className = 'tree-children';
                 assetNode.appendChild(childContainer);
+                
+                // Apply consistent styling
+                CISUtil2.styleChildContainer(childContainer);
                 
                 // Set display based on expanded state
                 const isExpanded = this.expandedNodes.has(asset.guid);
@@ -832,6 +845,26 @@ const CISTree2 = {
     },
     
     /**
+     * Apply consistent styling to all levels of the tree
+     * This ensures vertical lines appear at all levels
+     */
+    applyConsistentStylingToTree: function() {
+        console.log('Applying consistent styling to all tree levels');
+        
+        // Get all tree-children containers in the tree
+        const allContainers = document.querySelectorAll('.tree-children');
+        
+        // Apply consistent styling to each container
+        allContainers.forEach(container => {
+            container.style.marginLeft = '20px';
+            container.style.paddingLeft = '10px';
+            container.style.borderLeft = '2px solid #ccc';
+        });
+        
+        console.log(`Applied consistent styling to ${allContainers.length} tree containers`);
+    },
+    
+    /**
      * Toggle the expanded state of a node
      * @param {HTMLElement} node - The node to toggle
      */
@@ -849,6 +882,9 @@ const CISTree2 = {
                 this.expandedNodes.delete(guid);
             }
         }
+        
+        // Apply consistent styling after toggling
+        this.applyConsistentStylingToTree();
     },
     
     /**

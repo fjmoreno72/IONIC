@@ -330,10 +330,29 @@ const CISUtil2 = {
      * @param {HTMLElement} container - The container to style
      */
     styleChildContainer: function(container) {
+        // Apply core styles to this container
         container.style.display = 'block';
         container.style.marginLeft = '20px';
         container.style.paddingLeft = '10px';
-        container.style.borderLeft = '1px dotted #ccc';
+        container.style.borderLeft = '2px solid #ccc';
+        
+        // Make sure the container has the tree-children class for CSS targeting
+        if (!container.classList.contains('tree-children')) {
+            container.classList.add('tree-children');
+        }
+        
+        // Apply the same styling to all direct child containers
+        const directChildContainers = Array.from(container.children)
+            .filter(el => el.classList.contains('tree-node'))
+            .map(node => node.querySelector('.tree-children'))
+            .filter(el => el !== null);
+            
+        directChildContainers.forEach(childContainer => {
+            childContainer.style.display = childContainer.style.display; // Preserve display state
+            childContainer.style.marginLeft = '20px';
+            childContainer.style.paddingLeft = '10px';
+            childContainer.style.borderLeft = '2px solid #ccc';
+        });
     },
     
     /**

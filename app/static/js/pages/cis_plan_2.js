@@ -156,6 +156,9 @@ const CISPlan2 = {
             } else if (detail.data) {
                 // For other nodes, pass the node's data
                 this.renderElements(detail.type, detail.data, detail.guid);
+                
+                // Also update the details panel with the selected node
+                CISUtil2.selectElement(detail.data, detail.type);
             } else {
                 console.error('Node selected event missing data:', detail);
             }
@@ -262,6 +265,8 @@ const CISPlan2 = {
         // Render in the tree
         if (this.CISTree2) {
             this.CISTree2.renderTree(this.cisPlanData);
+            
+            // Tree expansion is now handled directly in the CISTree2 component
         } else {
             console.error('CISTree2 reference is missing');
         }
@@ -274,6 +279,8 @@ const CISPlan2 = {
         // Clear the details panel
         CISDetails2.clearDetails();
     },
+    
+
     
     /**
      * Render data in the elements panel

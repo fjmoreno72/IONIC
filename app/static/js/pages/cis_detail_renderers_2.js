@@ -285,12 +285,42 @@ const CISDetailRenderers2 = {
         if (table) {
             // Add participant ID if available
             if (element.cisParticipantID) {
-                const participantRow = document.createElement('tr');
-                participantRow.innerHTML = `
+                const participantIdRow = document.createElement('tr');
+                participantIdRow.innerHTML = `
                     <th scope="row">Participant ID</th>
                     <td>${element.cisParticipantID}</td>
                 `;
-                table.appendChild(participantRow);
+                table.appendChild(participantIdRow);
+                
+                // Add participant name as a separate row
+                const participantNameRow = document.createElement('tr');
+                participantNameRow.id = 'participant-name-row';
+                participantNameRow.innerHTML = `
+                    <th scope="row">Participant Name</th>
+                    <td id="participant-name-cell">
+                        <span id="participant-name-loading">Loading...</span>
+                    </td>
+                `;
+                table.appendChild(participantNameRow);
+                
+                // Fetch participant name from the new API endpoint
+                fetch(`/api/participants/key_to_name?key=${element.cisParticipantID}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const nameCell = document.getElementById('participant-name-cell');
+                        if (data.status === 'success' && nameCell) {
+                            nameCell.innerHTML = data.name;
+                        } else if (nameCell) {
+                            nameCell.innerHTML = '<em>Not found</em>'; // Show not found message
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching participant name:', error);
+                        const nameCell = document.getElementById('participant-name-cell');
+                        if (nameCell) {
+                            nameCell.innerHTML = '<em>Error loading name</em>';
+                        }
+                    });
             }
             
             // Add asset count

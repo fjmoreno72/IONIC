@@ -199,6 +199,26 @@ const CISApi2 = {
             return [];
         }
     },
+    
+    /**
+     * Get security classification details by ID
+     * @param {string} classificationId - The ID of the security classification (e.g., CL-UNCLASS)
+     * @returns {Promise<Object|null>} The security classification details or null if not found
+     */
+    getSecurityClassificationById: async function(classificationId) {
+        try {
+            // Get all classifications and find the one with matching ID
+            const response = await this.getSecurityClassifications();
+            if (response && response.data && Array.isArray(response.data)) {
+                const classification = response.data.find(item => item.id === classificationId);
+                return classification || null;
+            }
+            return null;
+        } catch (error) {
+            console.error(`Error fetching security classification ${classificationId}:`, error);
+            return null;
+        }
+    },
 
     /**
      * Show an error message to the user

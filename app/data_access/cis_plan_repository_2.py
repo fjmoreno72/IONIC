@@ -67,7 +67,7 @@ def _get_cis_security_classification_path(environment: str) -> Path:
     Returns:
         Path: The path to the CIS_Security_Classification.json file.
     """
-    return get_dynamic_data_path(environment) / "CIS_Security_Classification.json"
+    return get_dynamic_data_path("CIS_Security_Classification.json", environment=environment)
 
 def _load_cis_plan(environment: str) -> dict:
     """Load the CIS Plan data from the JSON file."""

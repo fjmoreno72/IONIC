@@ -166,7 +166,7 @@ const CISDetailRenderers2 = {
      * @param {string} type - The element type
      * @param {HTMLElement} container - The container to render into
      */
-    renderSecurityDomainDetails: function(element, type, container) {
+    renderSecurityDomainDetails: async function(element, type, container) {
         // Start with default rendering
         this.renderDefaultDetails(element, type, container);
         
@@ -181,6 +181,92 @@ const CISDetailRenderers2 = {
                 <td>${stackCount}</td>
             `;
             table.appendChild(stackRow);
+            
+            // Show loading indicator for classification details
+            const loadingRow = document.createElement('tr');
+            loadingRow.id = 'classification-loading';
+            loadingRow.innerHTML = `
+                <th scope="row">Classification</th>
+                <td><em>Loading classification details...</em></td>
+            `;
+            table.appendChild(loadingRow);
+            
+            // Fetch security classification details
+            try {
+                const classificationId = element.id;
+                if (classificationId) {
+                    const classification = await CISApi2.getSecurityClassificationById(classificationId);
+                    
+                    if (classification) {
+                        // Remove loading indicator
+                        const loadingElement = document.getElementById('classification-loading');
+                        if (loadingElement) {
+                            loadingElement.remove();
+                        }
+                        
+                        // Add classification name
+                        if (classification.name) {
+                            const nameRow = document.createElement('tr');
+                            nameRow.innerHTML = `
+                                <th scope="row">Classification</th>
+                                <td>${classification.name}</td>
+                            `;
+                            table.appendChild(nameRow);
+                        }
+                        
+                        // Add releasability string
+                        if (classification.releasabilityString) {
+                            const relRow = document.createElement('tr');
+                            relRow.innerHTML = `
+                                <th scope="row">Releasability</th>
+                                <td>${classification.releasabilityString}</td>
+                            `;
+                            table.appendChild(relRow);
+                        }
+                        
+                        // Add order
+                        if (classification.order !== undefined) {
+                            const orderRow = document.createElement('tr');
+                            orderRow.innerHTML = `
+                                <th scope="row">Order</th>
+                                <td>${classification.order}</td>
+                            `;
+                            table.appendChild(orderRow);
+                        }
+                        
+                        // Add color with visual indicator
+                        if (classification.colour) {
+                            const colorRow = document.createElement('tr');
+                            colorRow.innerHTML = `
+                                <th scope="row">Color</th>
+                                <td>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="width: 20px; height: 20px; background-color: ${classification.colour}; border: 1px solid #ccc; margin-right: 10px; border-radius: 3px;"></div>
+                                        ${classification.colour}
+                                    </div>
+                                </td>
+                            `;
+                            table.appendChild(colorRow);
+                        }
+                    } else {
+                        // Classification not found
+                        const notFoundRow = document.createElement('tr');
+                        notFoundRow.innerHTML = `
+                            <th scope="row">Classification</th>
+                            <td><em>Classification details not found</em></td>
+                        `;
+                        table.appendChild(notFoundRow);
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching classification details:', error);
+                const errorRow = document.createElement('tr');
+                errorRow.innerHTML = `
+                    <th scope="row">Classification</th>
+                    <td><em>Error loading classification details</em></td>
+                `;
+                table.appendChild(errorRow);
+            }
         }
     },
     

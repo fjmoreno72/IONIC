@@ -317,7 +317,7 @@ const CISUtil2 = {
         
         // Create node label
         const nodeLabel = document.createElement('span');
-        nodeLabel.className = 'node-label';
+        nodeLabel.className = 'node-label tree-node-text';
         nodeLabel.textContent = name || 'Unnamed';
         nodeLabel.style.fontSize = '14px';
         nodeContent.appendChild(nodeLabel);
@@ -462,10 +462,16 @@ const CISUtil2 = {
                 return element.name || element.id || 'Unnamed';
                 
             case 'gp_instance':
-                return element.name || element.gpid || 'Unnamed';
+                // Start with the gpid as fallback
+                return element.instanceLabel ? 
+                    `${element.gpid} (${element.instanceLabel})` : 
+                    element.gpid;
                 
             case 'sp_instance':
-                return element.name || element.spId || 'Unnamed';
+                // Start with the spId and version as fallback
+                return element.spVersion ? 
+                    `${element.spId} (v${element.spVersion})` : 
+                    element.spId;
                 
             default:
                 return element.name || element.id || 'Unnamed';
@@ -496,10 +502,55 @@ const CISUtil2 = {
             <div class="card mb-2">
                 <div class="card-body d-flex align-items-center p-3">
                     <img src="${iconUrl}" alt="${type}" style="width: 24px; height: 24px; margin-right: 15px;">
-                    <span style="font-size: 15px;">${displayName}</span>
+                    <span style="font-size: 15px;" 
+                        ${type === 'gp_instance' ? `data-gpid="${element.gpid}"` : ''}
+                        ${type === 'sp_instance' ? `data-spid="${element.spId}"` : ''}
+                    >${displayName}</span>
                 </div>
             </div>
         `;
+        
+        // For GP instances, fetch and update the name asynchronously
+        if (type === 'gp_instance' && element.gpid) {
+            fetch(`/api/gps/${element.gpid}/name`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.name) {
+                        // Find the span in this card with the gpid data attribute
+                        const nameSpan = card.querySelector(`span[data-gpid="${element.gpid}"]`);
+                        if (nameSpan) {
+                            const newDisplayName = element.instanceLabel ? 
+                                `${data.name} (${element.instanceLabel})` : 
+                                data.name;
+                            nameSpan.textContent = newDisplayName;
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error fetching GP name for ${element.gpid}:`, error);
+                });
+        }
+        
+        // For SP instances, fetch and update the name asynchronously
+        if (type === 'sp_instance' && element.spId) {
+            fetch(`/api/sps/name/${element.spId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.success && data.name) {
+                        // Find the span in this card with the spid data attribute
+                        const nameSpan = card.querySelector(`span[data-spid="${element.spId}"]`);
+                        if (nameSpan) {
+                            const newDisplayName = element.spVersion ? 
+                                `${data.name} (v${element.spVersion})` : 
+                                data.name;
+                            nameSpan.textContent = newDisplayName;
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error fetching SP name for ${element.spId}:`, error);
+                });
+        }
         
         // Add hover effect with CSS and prevent text selection
         card.style.cursor = 'pointer';

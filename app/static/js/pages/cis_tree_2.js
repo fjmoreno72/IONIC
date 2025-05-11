@@ -14,17 +14,7 @@ const CISTree2 = {
     expandedNodes: new Set(),
     fullTreeData: null,
     
-    // Entity type to display name mapping
-    entityTypeLabels: {
-        'mission_network': 'Mission Network',
-        'network_segment': 'Network Segment',
-        'security_domain': 'Security Domain',
-        'hw_stack': 'HW Stack',
-        'asset': 'Asset',
-        'network_interface': 'Network Interface',
-        'gp_instance': 'GP Instance',
-        'sp_instance': 'SP Instance'
-    },
+    // Use the centralized entity type names from CISUtil2
     
     /**
      * Initialize the tree component
@@ -659,18 +649,63 @@ const CISTree2 = {
     renderGPInstances: function(container, gpInstances, parentAsset, parentStack, parentDomain, parentSegment, parentNetwork) {
         if (!gpInstances || !gpInstances.length) return;
         
+        console.log(`Rendering ${gpInstances.length} GP instances in tree view`);
+        
         const self = this;
         
         gpInstances.forEach(gp => {
-            // Create GP instance node
-            const displayName = gp.instanceLabel ? `${gp.gpid} (${gp.instanceLabel})` : gp.gpid;
+            console.log(`Creating tree node for GP instance: ${gp.gpid}`, gp);
+            
+            // Create GP instance node with loading placeholder
+            const initialDisplayName = gp.instanceLabel ? `${gp.gpid} (${gp.instanceLabel})` : gp.gpid;
+            console.log(`Initial display name: ${initialDisplayName}`);
+            
             const gpNode = this.createTreeNode(
                 'gp_instance',
-                displayName,
+                initialDisplayName,
                 gp.gpid,
                 gp.guid
             );
+            
+            // Add a data attribute to identify this node by gpid
+            gpNode.setAttribute('data-gpid', gp.gpid);
             container.appendChild(gpNode);
+            
+            console.log(`Fetching GP name for: ${gp.gpid}`);
+            
+            // Fetch the GP name from the API
+            fetch(`/api/gps/${gp.gpid}/name`)
+                .then(response => {
+                    console.log(`GP name API response for ${gp.gpid}:`, response);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(`GP name data for ${gp.gpid}:`, data);
+                    if (data && data.name) {
+                        console.log(`Found GP name: ${data.name} for ${gp.gpid}`);
+                        // Find all nodes with this gpid and update them
+                        const nodes = document.querySelectorAll(`.tree-node[data-gpid="${gp.gpid}"]`);
+                        console.log(`Found ${nodes.length} nodes to update for ${gp.gpid}`);
+                        
+                        nodes.forEach(node => {
+                            const nodeText = node.querySelector('.tree-node-text');
+                            if (nodeText) {
+                                const displayName = gp.instanceLabel ? 
+                                    `${data.name} (${gp.instanceLabel})` : 
+                                    data.name;
+                                console.log(`Updating node text to: ${displayName}`);
+                                nodeText.textContent = displayName;
+                            } else {
+                                console.warn(`No .tree-node-text found in node for ${gp.gpid}`);
+                            }
+                        });
+                    } else {
+                        console.warn(`No name data found for GP ${gp.gpid}`);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error fetching GP name for ${gp.gpid}:`, error);
+                });
             
             // Set up click handler
             gpNode.addEventListener('click', function(e) {
@@ -742,15 +777,39 @@ const CISTree2 = {
         const self = this;
         
         spInstances.forEach(sp => {
-            // Create SP instance node
-            const displayName = sp.spVersion ? `${sp.spId} (v${sp.spVersion})` : sp.spId;
+            // Create SP instance node with loading placeholder
+            const initialDisplayName = sp.spVersion ? `${sp.spId} (v${sp.spVersion})` : sp.spId;
             const spNode = this.createTreeNode(
                 'sp_instance',
-                displayName,
+                initialDisplayName,
                 sp.spId,
                 sp.guid
             );
+            
+            // Add a data attribute to identify this node by spId
+            spNode.setAttribute('data-spid', sp.spId);
             container.appendChild(spNode);
+            
+            // Fetch the SP name from the API
+            fetch(`/api/sps/name/${sp.spId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.success && data.name) {
+                        // Find all nodes with this spId and update them
+                        document.querySelectorAll(`.tree-node[data-spid="${sp.spId}"]`).forEach(node => {
+                            const nodeText = node.querySelector('.tree-node-text');
+                            if (nodeText) {
+                                const displayName = sp.spVersion ? 
+                                    `${data.name} (v${sp.spVersion})` : 
+                                    data.name;
+                                nodeText.textContent = displayName;
+                            }
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error fetching SP name for ${sp.spId}:`, error);
+                });
             
             // Set up click handler
             spNode.addEventListener('click', function(e) {

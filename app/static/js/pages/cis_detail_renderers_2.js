@@ -422,6 +422,48 @@ const CISDetailRenderers2 = {
         // Add GP Instance specific details
         const table = container.querySelector('.detail-table tbody');
         if (table) {
+            // Add GP ID
+            if (element.gpid) {
+                const gpidRow = document.createElement('tr');
+                gpidRow.innerHTML = `
+                    <th scope="row">GP ID</th>
+                    <td>${element.gpid}</td>
+                `;
+                table.appendChild(gpidRow);
+                
+                // Add GP Name as a separate row
+                const gpNameRow = document.createElement('tr');
+                gpNameRow.id = 'gp-name-row';
+                gpNameRow.innerHTML = `
+                    <th scope="row">GP Name</th>
+                    <td id="gp-name-cell">
+                        <span id="gp-name-loading">Loading...</span>
+                    </td>
+                `;
+                table.appendChild(gpNameRow);
+                
+                // Fetch GP name from the API endpoint
+                fetch(`/api/gps/${element.gpid}/name`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const nameCell = document.getElementById('gp-name-cell');
+                        if (nameCell) {
+                            if (data.name) {
+                                nameCell.innerHTML = data.name;
+                            } else {
+                                nameCell.innerHTML = '<em>Not found</em>';
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching GP name:', error);
+                        const nameCell = document.getElementById('gp-name-cell');
+                        if (nameCell) {
+                            nameCell.innerHTML = '<em>Error loading name</em>';
+                        }
+                    });
+            }
+            
             // Add service ID
             if (element.serviceId) {
                 const serviceRow = document.createElement('tr');
@@ -430,6 +472,38 @@ const CISDetailRenderers2 = {
                     <td>${element.serviceId}</td>
                 `;
                 table.appendChild(serviceRow);
+                
+                // Add Service Name as a separate row
+                const serviceNameRow = document.createElement('tr');
+                serviceNameRow.id = 'service-name-row';
+                serviceNameRow.innerHTML = `
+                    <th scope="row">Service Name</th>
+                    <td id="service-name-cell">
+                        <span id="service-name-loading">Loading...</span>
+                    </td>
+                `;
+                table.appendChild(serviceNameRow);
+                
+                // Fetch Service name from the API endpoint
+                fetch(`/api/services/id_to_name?id=${element.serviceId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const nameCell = document.getElementById('service-name-cell');
+                        if (nameCell) {
+                            if (data.success && data.name) {
+                                nameCell.innerHTML = data.name;
+                            } else {
+                                nameCell.innerHTML = '<em>Not found</em>';
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching Service name:', error);
+                        const nameCell = document.getElementById('service-name-cell');
+                        if (nameCell) {
+                            nameCell.innerHTML = '<em>Error loading name</em>';
+                        }
+                    });
             }
             
             // Add instance label if available
@@ -505,6 +579,38 @@ const CISDetailRenderers2 = {
                     <td>${element.spId}</td>
                 `;
                 table.appendChild(spIdRow);
+                
+                // Add SP Name as a separate row
+                const spNameRow = document.createElement('tr');
+                spNameRow.id = 'sp-name-row';
+                spNameRow.innerHTML = `
+                    <th scope="row">SP Name</th>
+                    <td id="sp-name-cell">
+                        <span id="sp-name-loading">Loading...</span>
+                    </td>
+                `;
+                table.appendChild(spNameRow);
+                
+                // Fetch SP name from the API endpoint
+                fetch(`/api/sps/name/${element.spId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const nameCell = document.getElementById('sp-name-cell');
+                        if (nameCell) {
+                            if (data.success && data.name) {
+                                nameCell.innerHTML = data.name;
+                            } else {
+                                nameCell.innerHTML = '<em>Not found</em>';
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching SP name:', error);
+                        const nameCell = document.getElementById('sp-name-cell');
+                        if (nameCell) {
+                            nameCell.innerHTML = '<em>Error loading name</em>';
+                        }
+                    });
             }
             
             // Add SP version

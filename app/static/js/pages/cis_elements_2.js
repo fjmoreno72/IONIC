@@ -97,6 +97,28 @@ const CISElements2 = {
             } else if (selectedType === 'gp_instance') {
                 // Special handling for GP instances
                 parentName = data.gpid || data.id || '';
+                
+                // Create a unique ID for this title element to update it later
+                titleElement.id = `gp-title-${parentName}`;
+                
+                // Fetch the GP name asynchronously
+                fetch(`/api/gps/${parentName}/name`)
+                    .then(response => response.json())
+                    .then(gpData => {
+                        if (gpData && gpData.name) {
+                            // Update the title with the GP name
+                            const titleEl = document.getElementById(`gp-title-${parentName}`);
+                            if (titleEl) {
+                                const displayName = data.instanceLabel ? 
+                                    `${gpData.name} (${data.instanceLabel})` : 
+                                    gpData.name;
+                                titleEl.innerHTML = `<h5>${this.getEntityTypeName(selectedType)} Elements - ${displayName}</h5>`;
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error(`Error fetching GP name for title: ${error}`);
+                    });
             } else if (data.name) {
                 parentName = data.name;
             } else if (data.id) {

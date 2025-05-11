@@ -14,7 +14,6 @@ const CISPlan2 = {
      * Initialize the CIS Plan application
      */
     init: function() {
-        console.log('Initializing CIS Plan 2.0 application');
         
         // Store component references
         this.CISTree2 = CISTree2;
@@ -35,7 +34,6 @@ const CISPlan2 = {
         
         // Add refresh button handler
         document.getElementById('refreshButton').addEventListener('click', () => {
-            console.log('Refresh button clicked');
             
             // Reset the tree's expanded nodes state
             if (this.CISTree2) {
@@ -155,7 +153,6 @@ const CISPlan2 = {
         // Listen for node selection in the tree
         document.addEventListener('cis:node-selected', (event) => {
             const detail = event.detail;
-            console.log('Node selected event:', detail);
             
             // Render child elements in the elements panel
             if (detail.type === 'cisplan') {
@@ -196,7 +193,6 @@ const CISPlan2 = {
         
         // Listen for node expand/refresh children events
         document.addEventListener('cis:refresh-children', (event) => {
-            console.log('Refresh children event:', event.detail);
             // For now, we don't need to do anything - the tree already has all data
         });
     },
@@ -205,29 +201,22 @@ const CISPlan2 = {
      * Load the CIS Plan data from the API
      */
     loadCISPlanData: function() {
-        console.log('Loading CIS Plan data...');
         CISApi2.fetchCISPlanData()
             .then(response => {
-                console.log('CIS Plan data loaded:', response);
                 
                 // Store the complete API response first
                 this.apiResponse = response;
                 
                 if (response && response.status === 'success') {
-                    console.log('API response successful, extracting data');
                     
                     // Extract the data from the response
                     if (response.data) {
                         // Update with the actual data structure
-                        this.cisPlanData = response.data;
-                        console.log('Extracted CIS Plan data:', this.cisPlanData);
-                        
+                        this.cisPlanData = response.data; 
                         // Check how to access mission networks based on the API response format
                         if (this.cisPlanData.missionNetworks && Array.isArray(this.cisPlanData.missionNetworks)) {
-                            console.log(`Found ${this.cisPlanData.missionNetworks.length} mission networks directly in data`);
                         } else if (this.cisPlanData.data && this.cisPlanData.data.missionNetworks) {
                             // Handle nested response format
-                            console.log(`Found ${this.cisPlanData.data.missionNetworks.length} mission networks in nested data`);
                             this.cisPlanData = this.cisPlanData.data;
                         } else {
                             console.warn('No mission networks found in data');
@@ -259,14 +248,12 @@ const CISPlan2 = {
      * Refresh the UI with the CIS Plan data
      */
     refreshUI: function() {
-        console.log('Refreshing UI with CIS Plan data');
         
         // Set the CIS Plan data reference in the elements component
         CISElements2.setCISPlanData(this.cisPlanData);
         
         // Ensure we have the CISTree2 reference
         if (!this.CISTree2) {
-            console.log('Setting CISTree2 reference');
             this.CISTree2 = CISTree2;
         }
         
@@ -327,7 +314,6 @@ const CISPlan2 = {
      * @param {string} entityType - The type of the parent entity
      */
     showEntityChildren: function(entity, entityType) {
-        console.log(`Showing children of entity type: ${entityType}`);
         
         // Determine child entity type based on parent type
         let children = [];

@@ -52,8 +52,7 @@ const CISDetails2 = {
      * Clear the details panel content
      */
     clearDetails: function() {
-        console.log('Clearing details panel');
-        
+ 
         // Clear content
         if (this.detailsContent) {
             this.detailsContent.innerHTML = '';

@@ -43,7 +43,6 @@ const CISElements2 = {
      * Clear the elements panel content
      */
     clearElements: function() {
-        console.log('Clearing elements panel');
         if (this.elementsContent) {
             this.elementsContent.innerHTML = '';
         }
@@ -60,7 +59,6 @@ const CISElements2 = {
      * @param {Object} data - The complete CIS Plan data
      */
     setCISPlanData: function(data) {
-        console.log('Setting CIS Plan data reference in Elements component');
         this.cisPlanData = data;
     },
 
@@ -71,7 +69,6 @@ const CISElements2 = {
      * @param {string} selectedGuid - GUID of the selected node (optional)
      */
     renderElements: function(selectedType, data, selectedGuid) {
-        console.log('Rendering elements for:', selectedType, 'GUID:', selectedGuid, 'Data:', data);
         if (!this.elementsContent) {
             console.error('Elements content element not found');
             return;
@@ -176,7 +173,6 @@ const CISElements2 = {
      * @param {string} entityType - The type of the entity
      */
     renderEntityChildren: function(entity, entityType) {
-        console.log('Rendering children for entity type:', entityType);
         
         if (!entity) {
             this.showEmptyState('Entity data not available');
@@ -276,7 +272,6 @@ const CISElements2 = {
      * @param {string} message - The message to display
      */
     showEmptyState: function(message) {
-        console.log('Showing empty state:', message);
         if (!this.elementsContent) return;
         
         this.elementsContent.innerHTML = `
@@ -296,7 +291,6 @@ const CISElements2 = {
      * @param {Object} parentAsset - The parent asset object
      */
     renderMixedAssetChildren: function(networkInterfaces, gpInstances, parentAsset) {
-        console.log('Rendering mixed asset children:', networkInterfaces.length, 'network interfaces,', gpInstances.length, 'GP instances');
         if (!this.elementsContent) return;
         
         this.elementsContent.innerHTML = '';
@@ -348,7 +342,6 @@ const CISElements2 = {
      * @param {string} type - Type of elements
      */
     renderElementCards: function(elements, type) {
-        console.log(`Rendering ${elements.length} ${type} cards`);
         if (!this.elementsContent || !elements) return;
         
         const container = document.createElement('div');
@@ -417,7 +410,6 @@ const CISElements2 = {
      * @param {string} type - Type of the selected element
      */
     selectElement: function(element, type) {
-        console.log(`Element selected: ${type} - ${element.name || element.id || 'Unnamed'}`);
         
         // Update state
         this.currentElement = element;
@@ -430,7 +422,6 @@ const CISElements2 = {
      * Navigate up to the parent element
      */
     navigateUp: function() {
-        console.log('Navigate up requested');
         
         // Dispatch a custom event to trigger the tree's navigateUp function
         const navigateUpEvent = new CustomEvent('cis:navigate-up');
@@ -443,7 +434,6 @@ const CISElements2 = {
      * @param {string} type - Type of the element
      */
     navigateDown: function(element, type) {
-        console.log('Navigate down requested to:', type, element);
         
         // Dispatch a custom event to trigger the tree to select this node
         let guid = element.guid;
@@ -471,6 +461,5 @@ const CISElements2 = {
      */
     showAddElementDialog: function() {
         // This will be implemented as needed
-        console.log('Add element dialog requested');
     }
 };

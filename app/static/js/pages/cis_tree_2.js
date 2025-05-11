@@ -32,10 +32,14 @@ const CISTree2 = {
    * @param {Object} cisPlanData - The CIS Plan data
    */
   renderTree: function (cisPlanData) {
+    // Save the current expanded nodes before refreshing
+    const previouslyExpandedNodes = new Set(this.expandedNodes);
+    console.log('Saving expanded nodes state:', previouslyExpandedNodes.size, 'nodes');
+    
     // Process and store the data
     if (cisPlanData) {
       if (cisPlanData.data && cisPlanData.data.missionNetworks) {
-        // API response format: {data: {missionNetworks: [...]}}
+        // API response format: {data: {missionNetworks: [...]}}        
         this.fullTreeData = cisPlanData.data;
       } else if (cisPlanData.missionNetworks) {
         // Direct data format: {missionNetworks: [...]}
@@ -48,6 +52,9 @@ const CISTree2 = {
       console.error("No valid CIS Plan data to render");
       return;
     }
+    
+    // Store the previously expanded nodes to restore after rendering
+    this._previouslyExpandedNodes = previouslyExpandedNodes;
 
     if (!this.treeContent) {
       console.error("Tree content element not found for rendering");
@@ -168,6 +175,14 @@ const CISTree2 = {
 
       // Apply consistent styling to all tree levels
       this.applyConsistentStylingToTree();
+      
+      // Restore previously expanded nodes if available
+      if (this._previouslyExpandedNodes && this._previouslyExpandedNodes.size > 0) {
+        console.log('Restoring expanded nodes state:', this._previouslyExpandedNodes.size, 'nodes');
+        this.restoreExpandedNodes(this._previouslyExpandedNodes);
+        // Clear the temporary storage
+        this._previouslyExpandedNodes = null;
+      }
 
       // Select the root node by default
       this.selectRootNodeByDefault();
@@ -1071,6 +1086,73 @@ const CISTree2 = {
 
     // Apply consistent styling after toggling
     this.applyConsistentStylingToTree();
+  },
+  
+  /**
+   * Restore expanded nodes from a saved set of GUIDs
+   * @param {Set} expandedNodesSet - Set of GUIDs for nodes that should be expanded
+   */
+  restoreExpandedNodes: function (expandedNodesSet) {
+    if (!expandedNodesSet || expandedNodesSet.size === 0) return;
+    
+    console.log('Attempting to restore expanded nodes:', Array.from(expandedNodesSet));
+    
+    // First, update our internal expanded nodes set
+    expandedNodesSet.forEach(guid => {
+      if (guid) this.expandedNodes.add(guid);
+    });
+    
+    // Find all tree nodes in the DOM
+    const allNodes = document.querySelectorAll('.tree-node');
+    let expandedCount = 0;
+    
+    // For each node, check if its GUID is in the set of expanded nodes
+    allNodes.forEach(node => {
+      const guid = node.getAttribute('data-guid');
+      if (guid && expandedNodesSet.has(guid)) {
+        // Find the child container
+        const childContainer = node.querySelector('.tree-children');
+        const expandIcon = node.querySelector('.expand-icon');
+        
+        // Only expand if the node has children
+        if (childContainer && expandIcon) {
+          // Force expand the node regardless of current state
+          childContainer.style.display = 'block';
+          expandIcon.innerHTML = '&#9660;'; // Down-pointing triangle
+          node.classList.add('expanded'); // Add expanded class for CSS targeting
+          expandedCount++;
+        }
+      }
+    });
+    
+    // Apply consistent styling to ensure all child containers are properly styled
+    this.applyConsistentStylingToTree();
+    
+    console.log(`Expanded ${expandedCount} nodes from saved state`);
+    
+    // If we didn't expand any nodes but had some to expand, try again after a short delay
+    // This handles cases where the DOM might not be fully rendered yet
+    if (expandedCount === 0 && expandedNodesSet.size > 0) {
+      console.log('No nodes expanded, retrying after delay...');
+      setTimeout(() => {
+        let retryCount = 0;
+        allNodes.forEach(node => {
+          const guid = node.getAttribute('data-guid');
+          if (guid && expandedNodesSet.has(guid)) {
+            const childContainer = node.querySelector('.tree-children');
+            const expandIcon = node.querySelector('.expand-icon');
+            
+            if (childContainer && expandIcon) {
+              childContainer.style.display = 'block';
+              expandIcon.innerHTML = '&#9660;';
+              node.classList.add('expanded');
+              retryCount++;
+            }
+          }
+        });
+        console.log(`Retry expanded ${retryCount} nodes`);
+      }, 100);
+    }
   },
 
   /**

@@ -22,6 +22,7 @@ const CISPlan2 = {
         CISTree2.init();
         CISElements2.init();
         CISDetails2.init();
+        CISDialogs2.init();
         
         // Set up panel resizing
         this.setupPanelResizing();

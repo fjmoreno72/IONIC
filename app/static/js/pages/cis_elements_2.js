@@ -80,7 +80,7 @@ const CISElements2 = {
         // Update state
         this.currentParentType = selectedType;
         this.currentParentGuid = selectedGuid;
-        this.currentElement = null;
+        this.currentElement = data; // Set the current element to the parent data
         
         // Add a title to the elements panel with parent name if available
         const titleElement = document.createElement('div');
@@ -460,6 +460,100 @@ const CISElements2 = {
      * Show the add element dialog
      */
     showAddElementDialog: function() {
-        // This will be implemented as needed
+        // Get parent information
+        let parentType = this.currentParentType || 'cisplan';
+        let parentId = '';
+        let parentName = '';
+        
+        // Get the current element (parent)
+        let parentElement = this.currentElement;
+        
+        // Determine child element type to add based on parent type
+        // Use the utility function to get possible child types
+        let childTypes = CISUtil2.getChildEntityTypes(parentType);
+        let elementType = childTypes.length > 0 ? childTypes[0] : '';
+        
+        // Find parent information
+        if (parentType === 'cisplan') {
+            parentId = 'CIS Plan';
+            parentName = 'CIS Plan';
+        } else if (parentElement) {
+            // Extract parent ID based on type
+            switch (parentType) {
+                case 'mission_network':
+                case 'network_segment':
+                case 'hw_stack':
+                case 'asset':
+                    parentId = parentElement.id || '';
+                    break;
+                case 'security_domain':
+                    // Security domains use classification ID
+                    parentId = parentElement.id || '';
+                    break;
+                case 'gp_instance':
+                    parentId = parentElement.gpid || parentElement.id || '';
+                    break;
+                case 'sp_instance':
+                    parentId = parentElement.spid || parentElement.id || '';
+                    break;
+                case 'network_interface':
+                    parentId = parentElement.id || '';
+                    break;
+                default:
+                    parentId = parentElement.id || '';
+            }
+            
+            // Extract parent name based on type
+            switch (parentType) {
+                case 'mission_network':
+                case 'network_segment':
+                case 'hw_stack':
+                case 'asset':
+                case 'network_interface':
+                    parentName = parentElement.name || parentId;
+                    break;
+                case 'security_domain':
+                    // Security domains might not have a name property
+                    parentName = parentElement.name || parentElement.id || '';
+                    break;
+                case 'gp_instance':
+                    // Try to get the GP name if available
+                    if (parentElement.gpName) {
+                        parentName = parentElement.gpName;
+                        if (parentElement.instanceLabel) {
+                            parentName += ` (${parentElement.instanceLabel})`;
+                        }
+                    } else {
+                        parentName = parentElement.gpid || parentId;
+                    }
+                    break;
+                case 'sp_instance':
+                    // Try to get the SP name if available
+                    if (parentElement.spName) {
+                        parentName = parentElement.spName;
+                    } else {
+                        parentName = parentElement.spid || parentId;
+                    }
+                    break;
+                default:
+                    parentName = parentElement.name || parentId;
+            }
+        }
+        
+        // For assets, we need to determine which child type to add (network_interface or gp_instance)
+        if (parentType === 'asset' && childTypes.length > 1) {
+            // Show a dialog to choose between network interface and GP instance
+            // For now, just default to network_interface
+            elementType = 'network_interface';
+        }
+        
+        console.log(`Adding new ${elementType} to parent ${parentType} (${parentId}: ${parentName})`);
+        
+        // Show the add dialog with the collected information
+        if (CISDialogs2 && typeof CISDialogs2.showAddElementDialog === 'function') {
+            CISDialogs2.showAddElementDialog(elementType, parentType, parentId, parentName);
+        } else {
+            console.error('CISDialogs2 component not found or not initialized');
+        }
     }
 };

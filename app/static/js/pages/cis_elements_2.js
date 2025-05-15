@@ -219,25 +219,12 @@ const CISElements2 = {
                 const hasGPInstances = entity.gpInstances && entity.gpInstances.length > 0;
                 
                 if (hasNetworkInterfaces || hasGPInstances) {
-                    // Create section for network interfaces if they exist
-                    if (hasNetworkInterfaces) {
-                        const sectionTitle = document.createElement('h6');
-                        sectionTitle.className = 'mt-3 mb-2';
-                        sectionTitle.textContent = 'Network Interfaces';
-                        this.elementsContent.appendChild(sectionTitle);
-                        
-                        this.renderElementCards(entity.networkInterfaces, 'network_interface');
-                    }
-                    
-                    // Create section for GP instances if they exist
-                    if (hasGPInstances) {
-                        const sectionTitle = document.createElement('h6');
-                        sectionTitle.className = 'mt-3 mb-2';
-                        sectionTitle.textContent = 'GP Instances';
-                        this.elementsContent.appendChild(sectionTitle);
-                        
-                        this.renderElementCards(entity.gpInstances, 'gp_instance');
-                    }
+                    // Use the dedicated method for rendering mixed asset children
+                    this.renderMixedAssetChildren(
+                        hasNetworkInterfaces ? entity.networkInterfaces : [],
+                        hasGPInstances ? entity.gpInstances : [],
+                        entity
+                    );
                 } else {
                     this.showEmptyState('No Network Interfaces or GP Instances');
                 }
@@ -274,7 +261,13 @@ const CISElements2 = {
     showEmptyState: function(message) {
         if (!this.elementsContent) return;
         
-        this.elementsContent.innerHTML = `
+        // Clear the content
+        this.elementsContent.innerHTML = '';
+        
+        // Create a container for the empty state
+        const emptyContainer = document.createElement('div');
+        emptyContainer.className = 'element-empty-state';
+        emptyContainer.innerHTML = `
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-center text-muted">
                     <i class="fas fa-info-circle fa-2x mb-3"></i>
@@ -282,6 +275,7 @@ const CISElements2 = {
                 </div>
             </div>
         `;
+        this.elementsContent.appendChild(emptyContainer);
     },
     
     /**
@@ -297,7 +291,7 @@ const CISElements2 = {
         
         // Add section headers and containers
         if (networkInterfaces.length > 0) {
-            const header = document.createElement('h5');
+            const header = document.createElement('h6');
             header.className = 'section-header mt-2 mb-3';
             header.innerHTML = 'Network Interfaces';
             this.elementsContent.appendChild(header);
@@ -310,7 +304,7 @@ const CISElements2 = {
         }
         
         if (gpInstances.length > 0) {
-            const header = document.createElement('h5');
+            const header = document.createElement('h6');
             header.className = 'section-header mt-4 mb-3';
             header.innerHTML = 'GP Instances';
             this.elementsContent.appendChild(header);
@@ -344,9 +338,18 @@ const CISElements2 = {
     renderElementCards: function(elements, type) {
         if (!this.elementsContent || !elements) return;
         
-        const container = document.createElement('div');
-        container.className = 'element-cards';
-        this.elementsContent.appendChild(container);
+        // Check if there's already an element-cards container
+        let container = this.elementsContent.querySelector('.element-cards');
+        
+        // If no container exists, create a new one
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'element-cards';
+            this.elementsContent.appendChild(container);
+        } else {
+            // Clear existing cards if container already exists
+            container.innerHTML = '';
+        }
         
         elements.forEach(element => {
             const card = this.createElementCard(element, type);

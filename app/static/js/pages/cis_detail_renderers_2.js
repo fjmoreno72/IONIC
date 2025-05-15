@@ -374,8 +374,28 @@ const CISDetailRenderers2 = {
      * @param {HTMLElement} container - The container to render into
      */
     renderNetworkInterfaceDetails: function(element, type, container) {
-        // Start with default rendering
+        // Start with default rendering, but we'll override the name row later
         this.renderDefaultDetails(element, type, container);
+        
+        // Find the name row in the default table
+        const table = container.querySelector('.detail-table tbody');
+        if (table) {
+            const nameRow = table.querySelector('tr:nth-child(2)'); // Name is typically the second row
+            
+            // Get IP address from configuration items if available
+            let ipAddress = "N/A";
+            if (element.configurationItems && Array.isArray(element.configurationItems)) {
+                const ipItem = element.configurationItems.find(item => item.Name === "IP Address");
+                if (ipItem && ipItem.AnswerContent) {
+                    ipAddress = ipItem.AnswerContent;
+                }
+            }
+            
+            // Update the name row to include IP address
+            if (nameRow && element.name) {
+                nameRow.querySelector('td').textContent = `${element.name} - ${ipAddress}`;
+            }
+        }
         
         // Add Network Interface specific details
         if (element.configurationItems && element.configurationItems.length > 0) {
@@ -385,27 +405,83 @@ const CISDetailRenderers2 = {
             configSection.innerHTML = '<h6>Configuration</h6>';
             container.appendChild(configSection);
             
-            // Create table for configuration items
-            const configTable = document.createElement('table');
-            configTable.className = 'detail-table table table-striped';
-            configSection.appendChild(configTable);
+            // Create scrollable container for configuration items if there are many
+            const scrollableContainer = document.createElement('div');
+            if (element.configurationItems.length > 20) {
+                scrollableContainer.style.maxHeight = '500px';
+                scrollableContainer.style.overflowY = 'auto';
+                scrollableContainer.style.border = '1px solid #dee2e6';
+                scrollableContainer.style.borderRadius = '4px';
+            }
+            configSection.appendChild(scrollableContainer);
             
-            let configContent = '';
+            // Create a two-column layout for configuration items
+            const twoColContainer = document.createElement('div');
+            twoColContainer.className = 'row';
+            scrollableContainer.appendChild(twoColContainer);
             
-            // Add each configuration item
-            element.configurationItems.forEach(item => {
-                if (item.Name && item.AnswerContent) {
-                    configContent += `
-                        <tr>
-                            <th scope="row">${item.Name}</th>
-                            <td>${item.AnswerContent || '<em>Not set</em>'}</td>
-                        </tr>
-                    `;
-                }
+            // Left column
+            const leftCol = document.createElement('div');
+            leftCol.className = 'col-md-6';
+            twoColContainer.appendChild(leftCol);
+            
+            // Right column
+            const rightCol = document.createElement('div');
+            rightCol.className = 'col-md-6';
+            twoColContainer.appendChild(rightCol);
+            
+            // Create tables for each column
+            const leftTable = document.createElement('table');
+            leftTable.className = 'detail-table table table-striped mb-0';
+            leftCol.appendChild(leftTable);
+            
+            const rightTable = document.createElement('table');
+            rightTable.className = 'detail-table table table-striped mb-0';
+            rightCol.appendChild(rightTable);
+            
+            // Prepare content for each column
+            let leftContent = '';
+            let rightContent = '';
+            
+            // Filter valid configuration items that have both name and content
+            const validItems = element.configurationItems.filter(item => 
+                item.Name && item.AnswerContent
+            );
+            
+            // Split items between columns
+            const midPoint = Math.ceil(validItems.length / 2);
+            
+            // Add items to left column
+            validItems.slice(0, midPoint).forEach(item => {
+                leftContent += `
+                    <tr>
+                        <th scope="row">${item.Name}</th>
+                        <td>${item.AnswerContent || '<em>Not set</em>'}</td>
+                    </tr>
+                `;
+            });
+            
+            // Add items to right column
+            validItems.slice(midPoint).forEach(item => {
+                rightContent += `
+                    <tr>
+                        <th scope="row">${item.Name}</th>
+                        <td>${item.AnswerContent || '<em>Not set</em>'}</td>
+                    </tr>
+                `;
             });
             
             // Set table content
-            configTable.innerHTML = `<tbody>${configContent}</tbody>`;
+            leftTable.innerHTML = `<tbody>${leftContent}</tbody>`;
+            rightTable.innerHTML = `<tbody>${rightContent}</tbody>`;
+            
+            // Add item count indicator if there are many items
+            if (validItems.length > 20) {
+                const countIndicator = document.createElement('div');
+                countIndicator.className = 'text-muted small mt-1';
+                countIndicator.textContent = `Showing all ${validItems.length} configuration items (scroll to view more)`;
+                configSection.appendChild(countIndicator);
+            }
         }
     },
     
@@ -534,17 +610,63 @@ const CISDetailRenderers2 = {
             configSection.innerHTML = '<h6>Configuration</h6>';
             container.appendChild(configSection);
             
-            // Create table for configuration items
-            const configTable = document.createElement('table');
-            configTable.className = 'detail-table table table-striped';
-            configSection.appendChild(configTable);
+            // Create scrollable container for configuration items if there are many
+            const scrollableContainer = document.createElement('div');
+            if (element.configurationItems.length > 20) {
+                scrollableContainer.style.maxHeight = '500px';
+                scrollableContainer.style.overflowY = 'auto';
+                scrollableContainer.style.border = '1px solid #dee2e6';
+                scrollableContainer.style.borderRadius = '4px';
+            }
+            configSection.appendChild(scrollableContainer);
             
-            let configContent = '';
+            // Create a two-column layout for configuration items
+            const twoColContainer = document.createElement('div');
+            twoColContainer.className = 'row';
+            scrollableContainer.appendChild(twoColContainer);
             
-            // Add each configuration item
-            element.configurationItems.forEach(item => {
+            // Left column
+            const leftCol = document.createElement('div');
+            leftCol.className = 'col-md-6';
+            twoColContainer.appendChild(leftCol);
+            
+            // Right column
+            const rightCol = document.createElement('div');
+            rightCol.className = 'col-md-6';
+            twoColContainer.appendChild(rightCol);
+            
+            // Create tables for each column
+            const leftTable = document.createElement('table');
+            leftTable.className = 'detail-table table table-striped mb-0';
+            leftCol.appendChild(leftTable);
+            
+            const rightTable = document.createElement('table');
+            rightTable.className = 'detail-table table table-striped mb-0';
+            rightCol.appendChild(rightTable);
+            
+            // Prepare content for each column
+            let leftContent = '';
+            let rightContent = '';
+            
+            // Split items between columns
+            const midPoint = Math.ceil(element.configurationItems.length / 2);
+            
+            // Add items to left column
+            element.configurationItems.slice(0, midPoint).forEach(item => {
                 if (item.Name) {
-                    configContent += `
+                    leftContent += `
+                        <tr>
+                            <th scope="row">${item.Name}</th>
+                            <td>${item.AnswerContent || item.DefaultValue || '<em>Not set</em>'}</td>
+                        </tr>
+                    `;
+                }
+            });
+            
+            // Add items to right column
+            element.configurationItems.slice(midPoint).forEach(item => {
+                if (item.Name) {
+                    rightContent += `
                         <tr>
                             <th scope="row">${item.Name}</th>
                             <td>${item.AnswerContent || item.DefaultValue || '<em>Not set</em>'}</td>
@@ -554,7 +676,16 @@ const CISDetailRenderers2 = {
             });
             
             // Set table content
-            configTable.innerHTML = `<tbody>${configContent}</tbody>`;
+            leftTable.innerHTML = `<tbody>${leftContent}</tbody>`;
+            rightTable.innerHTML = `<tbody>${rightContent}</tbody>`;
+            
+            // Add item count indicator if there are many items
+            if (element.configurationItems.length > 20) {
+                const countIndicator = document.createElement('div');
+                countIndicator.className = 'text-muted small mt-1';
+                countIndicator.textContent = `Showing all ${element.configurationItems.length} configuration items (scroll to view more)`;
+                configSection.appendChild(countIndicator);
+            }
         }
     },
     

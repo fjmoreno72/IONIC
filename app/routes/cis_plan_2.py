@@ -256,16 +256,23 @@ def update_config_item(interface_guid):
         item_name = get_json_field(data, 'item_name')
         answer_content = get_json_field(data, 'answer_content')
         
+        # Log the incoming request for debugging
+        logger.info(f"Updating configuration item: {item_name} for interface/GP instance: {interface_guid}")
+        logger.info(f"New answer content: {answer_content}")
+        
         updated = update_configuration_item(environment, interface_guid, item_name, answer_content)
         if not updated:
+            logger.warning(f"Failed to update configuration item {item_name} for {interface_guid}")
             return error_response(f"Failed to update configuration item", 404)
             
+        # Return success with the updated configuration item
         return success_response(updated)
     
     except ValueError as ve:
+        logger.error(f"Value error updating configuration item: {str(ve)}")
         return error_response(str(ve), 400)
     except Exception as e:
-        logger.error(f"Error updating configuration item: {e}")
+        logger.error(f"Error updating configuration item: {str(e)}")
         return error_response(str(e), 500)
 
 @cis_plan_bp_2.route('/api/v2/cis_plan/gp_instance/<gp_instance_guid>/refresh_config', methods=['POST'])

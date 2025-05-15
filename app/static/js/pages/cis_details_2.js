@@ -15,6 +15,9 @@ const CISDetails2 = {
     // State management
     currentElement: null,
     currentElementType: null,
+    currentElementId: null,
+    currentElementGuid: null,
+    currentParentPath: null,
     
     /**
      * Initialize the details component
@@ -46,13 +49,38 @@ const CISDetails2 = {
             const detail = event.detail;
             this.updateDetails(detail.element, detail.type);
         });
+        
+        // Set up event listener for node selection
+        document.addEventListener('cis:node-selected', (event) => {
+            const detail = event.detail;
+            // Store parent path for edit/delete operations
+            this.currentParentPath = this.extractParentPath(detail);
+        });
+    },
+    
+    /**
+     * Extract the parent path from event detail
+     * @param {Object} detail - The event detail object
+     * @returns {Object} The parent path object
+     */
+    extractParentPath: function(detail) {
+        if (!detail) return {};
+        
+        // Create a copy of the detail object without 'type', 'id', 'guid', and 'data'
+        const parentPath = {};
+        Object.keys(detail).forEach(key => {
+            if (key !== 'type' && key !== 'id' && key !== 'guid' && key !== 'data') {
+                parentPath[key] = detail[key];
+            }
+        });
+        
+        return parentPath;
     },
     
     /**
      * Clear the details panel content
      */
     clearDetails: function() {
- 
         // Clear content
         if (this.detailsContent) {
             this.detailsContent.innerHTML = '';
@@ -66,6 +94,9 @@ const CISDetails2 = {
         // Reset state
         this.currentElement = null;
         this.currentElementType = null;
+        this.currentElementId = null;
+        this.currentElementGuid = null;
+        this.currentParentPath = null;
         
         // Disable action buttons
         if (this.editElementBtn) {
@@ -88,6 +119,8 @@ const CISDetails2 = {
         // Update state
         this.currentElement = element;
         this.currentElementType = type;
+        this.currentElementId = element ? (element.id || element.gpid || element.spId) : null;
+        this.currentElementGuid = element ? element.guid : null;
         
         // If no element provided, show empty state
         if (!element) {
@@ -97,7 +130,7 @@ const CISDetails2 = {
         
         // Update title
         if (this.detailsTitle) {
-            this.detailsTitle.textContent = element.name || 'Details';
+            this.detailsTitle.textContent = element.name || element.id || 'Details';
         }
         
         // Enable/disable buttons based on element type
@@ -208,8 +241,20 @@ const CISDetails2 = {
             return;
         }
         
-        // Simple alert for now instead of modal
-        alert(`Edit functionality not implemented yet for ${this.formatElementType(this.currentElementType)}: ${this.currentElement.name || this.currentElement.id || 'Unnamed'}`); 
+        // Check if the CISEditDialogs2 component is available
+        if (typeof CISEditDialogs2 !== 'undefined' && CISEditDialogs2.showEditDialog) {
+            // Use the new edit dialog component
+            CISEditDialogs2.showEditDialog(
+                this.currentElement,
+                this.currentElementType,
+                this.currentElementId,
+                this.currentElementGuid,
+                this.currentParentPath
+            );
+        } else {
+            // Fallback to alert if edit dialog component not available
+            alert(`Edit functionality not implemented yet for ${this.formatElementType(this.currentElementType)}: ${this.currentElement.name || this.currentElement.id || 'Unnamed'}`);
+        }
     },
     
     /**
@@ -220,7 +265,19 @@ const CISDetails2 = {
             return;
         }
         
-        // Simple alert for now instead of modal
-        alert(`Delete functionality not implemented yet for ${this.formatElementType(this.currentElementType)}: ${this.currentElement.name || this.currentElement.id || 'Unnamed'}`);
+        // Check if the CISEditDialogs2 component is available
+        if (typeof CISEditDialogs2 !== 'undefined' && CISEditDialogs2.showDeleteDialog) {
+            // Use the new delete dialog component
+            CISEditDialogs2.showDeleteDialog(
+                this.currentElement,
+                this.currentElementType,
+                this.currentElementId,
+                this.currentElementGuid,
+                this.currentParentPath
+            );
+        } else {
+            // Fallback to alert if delete dialog component not available
+            alert(`Delete functionality not implemented yet for ${this.formatElementType(this.currentElementType)}: ${this.currentElement.name || this.currentElement.id || 'Unnamed'}`);
+        }
     }
 };

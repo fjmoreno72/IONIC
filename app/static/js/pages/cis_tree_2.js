@@ -134,7 +134,7 @@ const CISTree2 = {
     this.expandedNodes.add(null);
 
     if (this.fullTreeData && this.fullTreeData.missionNetworks) {
-      // Expand nodes up to asset level (not including network interfaces, GP/SP instances)
+      // Expand nodes up to asset level only (not including network interfaces, GP/SP instances)
       this.fullTreeData.missionNetworks.forEach(network => {
         if (network.guid) this.expandedNodes.add(network.guid);
 
@@ -150,12 +150,8 @@ const CISTree2 = {
                   domain.hwStacks.forEach(stack => {
                     if (stack.guid) this.expandedNodes.add(stack.guid);
                     
-                    // Also expand to show assets
-                    if (stack.assets) {
-                      stack.assets.forEach(asset => {
-                        if (asset.guid) this.expandedNodes.add(asset.guid);
-                      });
-                    }
+                    // We DO NOT automatically expand assets in the initial view
+                    // This will show assets in the tree but keep their children collapsed
                   });
                 }
               });
@@ -266,11 +262,19 @@ const CISTree2 = {
         // Apply styling
         CISUtil2.styleChildContainer(childContainer);
         
-        // Set expand state
-        const isExpanded = this.expandedNodes.has(entity.guid);
-        childContainer.style.display = isExpanded ? "block" : "none";
+        // Determine if this node should be expanded
+        // ONLY expand if it's not an asset, network interface, or GP instance
+        // This ensures these nodes are collapsed by default
+        const shouldBeExpanded = 
+          this.expandedNodes.has(entity.guid) && 
+          entityType !== "asset" && 
+          entityType !== "network_interface" && 
+          entityType !== "gp_instance";
+        
+        childContainer.style.display = shouldBeExpanded ? "block" : "none";
         
         // Configure expand icon
+        const isExpanded = childContainer.style.display === "block";
         this._configureExpandIcon(entityNode, childContainer, isExpanded);
         
         // Handle different types of children
@@ -414,7 +418,7 @@ const CISTree2 = {
       })
       .catch(error => {
         console.error(`Error fetching ${entityType} name for ${entityId}:`, error);
-      });
+    });
   },
 
   /**
@@ -427,14 +431,14 @@ const CISTree2 = {
   _getEntityDisplayName: function(entity, entityType) {
     switch (entityType) {
       case "network_interface":
-        // Get IP address from configuration items if available
-        let ipAddress = "N/A";
+      // Get IP address from configuration items if available
+      let ipAddress = "N/A";
         if (entity.configurationItems && Array.isArray(entity.configurationItems)) {
           const ipItem = entity.configurationItems.find(item => item.Name === "IP Address");
-          if (ipItem && ipItem.AnswerContent) {
-            ipAddress = ipItem.AnswerContent;
-          }
+        if (ipItem && ipItem.AnswerContent) {
+          ipAddress = ipItem.AnswerContent;
         }
+      }
         return `${entity.name} - ${ipAddress}`;
         
       case "gp_instance":
@@ -495,11 +499,11 @@ const CISTree2 = {
     const expandIcon = node.querySelector(".expand-icon");
     if (!expandIcon) return;
     
-    expandIcon.style.visibility = "visible";
-    expandIcon.innerHTML = isExpanded ? "&#9660;" : "&#9658;";
-    
-    expandIcon.onclick = (e) => {
-      e.stopPropagation();
+          expandIcon.style.visibility = "visible";
+          expandIcon.innerHTML = isExpanded ? "&#9660;" : "&#9658;";
+
+          expandIcon.onclick = (e) => {
+            e.stopPropagation();
       this.toggleNodeExpanded(node);
     };
   },
@@ -527,7 +531,7 @@ const CISTree2 = {
     });
     
     const event = new CustomEvent("cis:node-selected", { detail });
-    document.dispatchEvent(event);
+        document.dispatchEvent(event);
   },
 
   /**

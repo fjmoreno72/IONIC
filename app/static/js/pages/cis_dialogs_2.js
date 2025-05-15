@@ -57,7 +57,8 @@ const CISDialogs2 = {
         elementType: null,
         parentType: null,
         parentId: null,
-        parentName: null
+        parentName: null,
+        parentGuid: null
     },
     
     /**
@@ -174,8 +175,47 @@ const CISDialogs2 = {
             elementType,
             parentType,
             parentId,
-            parentName
+            parentName,
+            parentGuid: null
         };
+        
+        // Find the parent GUID, which is needed for the API call
+        if (parentType !== 'cisplan') {
+            // IMPORTANT FIX: For security domains, we need to make sure we're getting the correct domain
+            // in cases where multiple security domains across different mission networks have the same ID
+            
+            // Get the currently selected node to ensure we're adding to the correct hierarchy
+            const currentTreeNode = CISTree2 ? CISTree2.currentTreeNode : null;
+            let parentNode = null;
+            
+            if (parentType === 'security_domain' && currentTreeNode) {
+                // Need to find the specific security domain that was selected, not just any with the same ID
+                parentNode = currentTreeNode;
+                
+                // Double check that the node type and ID match what we expect
+                const nodeType = parentNode.getAttribute('data-type');
+                const nodeId = parentNode.getAttribute('data-id');
+                
+                if (nodeType !== parentType || nodeId !== parentId) {
+                    console.error(`Selected node type/ID (${nodeType}/${nodeId}) doesn't match expected parent (${parentType}/${parentId})`);
+                    this.showErrorToast(`Error: Cannot determine the correct security domain. Please try again.`);
+                    return;
+                }
+            } else {
+                // For other entity types, we can use the original query
+                parentNode = document.querySelector(`.tree-node[data-type="${parentType}"][data-id="${parentId}"]`);
+            }
+            
+            if (parentNode) {
+                // Get the parent GUID from the data-guid attribute
+                this.currentAddData.parentGuid = parentNode.getAttribute('data-guid');
+                console.log(`Using parent ${parentType} with ID ${parentId} and GUID ${this.currentAddData.parentGuid}`);
+            } else {
+                console.error(`Could not find parent node for ${parentType} with ID ${parentId}`);
+                this.showErrorToast(`Error: Could not find parent element for adding a new ${CISUtil2.getEntityTypeName(elementType)}`);
+                return;
+            }
+        }
         
         // Reset type selection state if we're showing the actual add dialog
         this.typeSelectionState.selectedType = null;
@@ -191,10 +231,10 @@ const CISDialogs2 = {
         
         // Add parent information
         const parentInfo = document.createElement('div');
-        parentInfo.className = 'mb-3';
+        parentInfo.className = 'alert alert-info mb-3';
         
         // Create formatted HTML with proper validation
-        let infoHTML = `<p><strong>Adding a new ${CISUtil2.getEntityTypeName(elementType)}</strong></p>`;
+        let infoHTML = `<p><strong>Adding a new ${CISUtil2.getEntityTypeName(elementType)}</strong> to:</p>`;
         
         if (parentType) {
             infoHTML += `<p>Parent Type: ${CISUtil2.getEntityTypeName(parentType)}</p>`;
@@ -208,8 +248,195 @@ const CISDialogs2 = {
             infoHTML += `<p>Parent Name: ${parentName}</p>`;
         }
         
+        // Display the parent GUID to make troubleshooting easier
+        if (this.currentAddData.parentGuid) {
+            infoHTML += `<p><small class="text-muted">Parent GUID: ${this.currentAddData.parentGuid}</small></p>`;
+        }
+        
         parentInfo.innerHTML = infoHTML;
         this.addModalBody.appendChild(parentInfo);
+        
+        // Create a form for the new element's properties
+        const form = document.createElement('form');
+        form.id = 'add-entity-form';
+        form.className = 'needs-validation';
+        
+        // Create form fields based on entity type
+        switch(elementType) {
+            case 'mission_network':
+                form.innerHTML = `
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                            placeholder="Enter mission network name" required>
+                    </div>
+                `;
+                break;
+            
+            case 'network_segment':
+                form.innerHTML = `
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                            placeholder="Enter network segment name" required>
+                    </div>
+                `;
+                break;
+            
+            case 'security_domain':
+                // For security domains, we need to fetch available classifications
+                form.innerHTML = `
+                    <div class="form-group">
+                        <label for="id">Security Classification</label>
+                        <select class="form-control" id="id" name="id" required>
+                            <option value="">Select a classification...</option>
+                            <option value="CL-UNCLASS">Unclassified</option>
+                            <option value="CL-RESTRICTED">Restricted</option>
+                            <option value="CL-SECRET">Secret</option>
+                        </select>
+                        <div class="mt-2 text-center">
+                            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="sr-only">Loading classifications...</span>
+                            </div>
+                            <span class="ml-2">Loading security classifications...</span>
+                        </div>
+                    </div>
+                `;
+                
+                // Load actual classifications from the API
+                CISApi2.getSecurityClassifications()
+                    .then(response => {
+                        if (response && response.status === 'success' && response.data) {
+                            const select = form.querySelector('select#id');
+                            const loadingIndicator = form.querySelector('.spinner-border').parentElement;
+                            
+                            if (select && loadingIndicator) {
+                                // Clear loading indicator
+                                loadingIndicator.style.display = 'none';
+                                
+                                // Clear existing options
+                                select.innerHTML = '<option value="">Select a classification...</option>';
+                                
+                                // Add each classification
+                                response.data.forEach(classification => {
+                                    const option = document.createElement('option');
+                                    option.value = classification.id;
+                                    option.textContent = classification.name || classification.id;
+                                    select.appendChild(option);
+                                });
+                            }
+                        } else {
+                            console.error('Failed to load security classifications');
+                            const loadingIndicator = form.querySelector('.spinner-border').parentElement;
+                            if (loadingIndicator) {
+                                loadingIndicator.innerHTML = '<div class="text-danger">Failed to load classifications. Using defaults.</div>';
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading security classifications:', error);
+                        const loadingIndicator = form.querySelector('.spinner-border').parentElement;
+                        if (loadingIndicator) {
+                            loadingIndicator.innerHTML = '<div class="text-danger">Error loading classifications. Using defaults.</div>';
+                        }
+                    });
+                break;
+                
+            case 'hw_stack':
+                form.innerHTML = `
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                            placeholder="Enter hardware stack name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cisParticipantID">CIS Participant ID</label>
+                        <input type="text" class="form-control" id="cisParticipantID" name="cisParticipantID" 
+                            placeholder="E.g., PAR-CIAV-000053">
+                    </div>
+                `;
+                break;
+                
+            case 'asset':
+                form.innerHTML = `
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                            placeholder="Enter asset name" required>
+                    </div>
+                `;
+                break;
+                
+            case 'network_interface':
+                form.innerHTML = `
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                            placeholder="Enter network interface name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ip_address">IP Address</label>
+                        <input type="text" class="form-control" id="ip_address" name="ip_address" 
+                            placeholder="E.g., 192.168.1.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="subnet">Subnet Mask</label>
+                        <input type="text" class="form-control" id="subnet" name="subnet" 
+                            placeholder="E.g., 255.255.255.0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fqdn">FQDN</label>
+                        <input type="text" class="form-control" id="fqdn" name="fqdn" 
+                            placeholder="E.g., server.domain.com">
+                    </div>
+                `;
+                break;
+                
+            case 'gp_instance':
+                form.innerHTML = `
+                    <div class="form-group">
+                        <label for="gpid">GP ID</label>
+                        <input type="text" class="form-control" id="gpid" name="gpid" required
+                            placeholder="E.g., GP-0039">
+                    </div>
+                    <div class="form-group">
+                        <label for="instanceLabel">Instance Label</label>
+                        <input type="text" class="form-control" id="instanceLabel" name="instanceLabel" 
+                            placeholder="Optional label">
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceId">Service ID</label>
+                        <input type="text" class="form-control" id="serviceId" name="serviceId" 
+                            placeholder="E.g., SRV-0016">
+                    </div>
+                `;
+                break;
+                
+            case 'sp_instance':
+                form.innerHTML = `
+                    <div class="form-group">
+                        <label for="spId">SP ID</label>
+                        <input type="text" class="form-control" id="spId" name="spId" required
+                            placeholder="E.g., SP-0267">
+                    </div>
+                    <div class="form-group">
+                        <label for="spVersion">SP Version</label>
+                        <input type="text" class="form-control" id="spVersion" name="spVersion" 
+                            placeholder="E.g., 1.0">
+                    </div>
+                `;
+                break;
+                
+            default:
+                form.innerHTML = `
+                    <div class="alert alert-warning">
+                        <p>Add form not implemented for entity type: ${elementType}</p>
+                    </div>
+                `;
+                break;
+        }
+        
+        this.addModalBody.appendChild(form);
         
         // Show the modal
         this.addModal.style.display = 'block';
@@ -225,22 +452,105 @@ const CISDialogs2 = {
     },
     
     /**
+     * Collect form data from the add entity form
+     * @returns {Object} Form data as an object
+     */
+    collectAddFormData: function() {
+        const form = document.getElementById('add-entity-form');
+        if (!form) return {};
+        
+        const formData = {};
+        
+        // Get all input fields
+        const inputs = form.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            if (input.name) {
+                formData[input.name] = input.value;
+            }
+        });
+        
+        return formData;
+    },
+    
+    /**
      * Handle the add element confirmation
      */
     handleAddElementConfirm: function() {
-        const { elementType, parentType, parentId, parentName } = this.currentAddData;
+        const { elementType, parentType, parentId, parentName, parentGuid } = this.currentAddData;
         
-        // In a real implementation, this would make an API call to add the element
-        // For now, we'll just simulate success and refresh the UI
+        // Show loading indicator
+        this.showLoadingOverlay('Creating new element...');
         
-        // Show success message
-        this.showSuccessToast(`Success on creating a new ${CISUtil2.getEntityTypeName(elementType)} on parent type ${CISUtil2.getEntityTypeName(parentType)}, ID ${parentId} and name ${parentName}`);
+        // Collect form data
+        const formData = this.collectAddFormData();
         
-        // Hide the modal
-        this.hideAddModal();
+        // Convert form data to API request format
+        const apiRequest = {
+            entity_type: elementType,
+            parent_guid: parentGuid,
+            attributes: formData
+        };
         
-        // Refresh the UI while maintaining the current position
-        this.refreshAfterAdd(parentType, parentId);
+        // Add debugging log to verify we're using the correct parent GUID
+        console.log(`Creating new ${elementType} with parent GUID: ${parentGuid}`);
+        
+        // Make API call to create entity
+        fetch('/api/v2/cis_plan/entity', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(apiRequest)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Hide the modal
+                this.hideAddModal();
+                
+                // Show success message
+                this.showSuccessToast(`Successfully created new ${CISUtil2.getEntityTypeName(elementType)}`);
+                
+                // Refresh the UI while maintaining the current position
+                this.refreshAfterAdd(parentType, parentId);
+            } else {
+                throw new Error(data.message || 'Failed to create element');
+            }
+        })
+        .catch(error => {
+            console.error('Error creating element:', error);
+            this.showErrorToast(`Failed to create element: ${error.message}`);
+            this.hideLoadingOverlay();
+        });
+    },
+    
+    /**
+     * Show a loading overlay
+     * @param {string} message - Message to display
+     */
+    showLoadingOverlay: function(message = 'Loading...') {
+        const overlay = document.createElement('div');
+        overlay.id = 'loading-overlay';
+        overlay.className = 'modal-backdrop fade show d-flex align-items-center justify-content-center';
+        overlay.innerHTML = `
+            <div class="text-center text-white">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="mt-2">${message}</div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    },
+    
+    /**
+     * Hide the loading overlay
+     */
+    hideLoadingOverlay: function() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+            overlay.remove();
+        }
     },
     
     /**
@@ -276,15 +586,18 @@ const CISDialogs2 = {
                     // After the tree has rendered and auto-expanded, select the parent node
                     setTimeout(() => {
                         this.selectNodeAfterRefresh(parentType, parentId);
+                        this.hideLoadingOverlay();
                     }, 300); // Wait for tree to fully render
                 } else {
                     console.error('Failed to refresh CIS Plan data');
                     this.showErrorToast('Failed to refresh data after adding element');
+                    this.hideLoadingOverlay();
                 }
             })
             .catch(error => {
                 console.error('Error refreshing CIS Plan data:', error);
                 this.showErrorToast('Error refreshing data: ' + error.message);
+                this.hideLoadingOverlay();
             });
     },
     

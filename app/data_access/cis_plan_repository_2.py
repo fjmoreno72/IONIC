@@ -613,10 +613,67 @@ def update_entity(environment: str, guid: str, attributes: dict) -> Optional[dic
         return None
     
     # Update the entity based on the provided attributes
+    config_items_updated = False
+    
     for key, value in attributes.items():
-        # Skip guid and id as they should not be changed
-        if key not in ['guid', 'id']:
+        # Skip guid as it should not be changed
+        if key == 'guid':
+            continue
+            
+        # Handle ID carefully - for some types it shouldn't be changed
+        if key == 'id' and entity_type in ['security_domain', 'gp_instance']:
+            logger.warning(f"Attempted to change ID of {entity_type} which is not allowed")
+            continue
+            
+        # Special handling for configuration items to ensure GUIDs are preserved
+        if key == 'configurationItems' and isinstance(value, list):
+            config_items_updated = True
+            
+            # Create a map of existing items by name for faster lookup
+            existing_items = {}
+            for item in entity.get('configurationItems', []):
+                if 'Name' in item:
+                    existing_items[item['Name']] = item
+            
+            # Process each configuration item in the update
+            new_config_items = []
+            
+            for new_item in value:
+                if 'Name' not in new_item:
+                    logger.warning(f"Skipping configuration item without a Name")
+                    continue
+                    
+                item_name = new_item['Name']
+                
+                # Check if this item already exists
+                if item_name in existing_items:
+                    # Preserve the original GUID
+                    new_item['guid'] = existing_items[item_name].get('guid', new_item.get('guid', str(uuid.uuid4())))
+                    
+                    # Log the update
+                    old_value = existing_items[item_name].get('AnswerContent', '')
+                    new_value = new_item.get('AnswerContent', '')
+                    if old_value != new_value:
+                        logger.info(f"Updating configuration item {item_name}: '{old_value}' → '{new_value}'")
+                else:
+                    # New item - ensure it has a GUID
+                    if 'guid' not in new_item:
+                        new_item['guid'] = str(uuid.uuid4())
+                    logger.info(f"Adding new configuration item: {item_name}")
+                
+                new_config_items.append(new_item)
+            
+            # Set the updated configuration items
+            entity['configurationItems'] = new_config_items
+        else:
+            # Standard attribute update
             entity[key] = value
+    
+    # Log the update details
+    if config_items_updated:
+        logger.info(f"Updated entity {entity_type} ({guid}) with {len(entity.get('configurationItems', []))} configuration items")
+    else:
+        logger.info(f"Updated entity {entity_type} ({guid})")
     
     _save_cis_plan(environment, data)
     return entity
@@ -854,19 +911,69 @@ def update_configuration_item(environment: str, interface_guid: str, item_name: 
     data = _load_cis_plan(environment)
     interface, interface_type, _, _ = find_entity_by_guid(data, interface_guid)
     
-    if not interface or interface_type not in ['network_interface', 'gp_instance']:
-        logger.error(f"Entity with GUID {interface_guid} is not a network interface or GP instance")
+    # Check if the interface is found
+    if not interface:
+        logger.error(f"Entity with GUID {interface_guid} not found")
         return None
+
+    # Check if the entity type is correct
+    if interface_type not in ['network_interface', 'gp_instance']:
+        logger.error(f"Entity with GUID {interface_guid} is not a network interface or GP instance (found type: {interface_type})")
+        return None
+    
+    # Log entity information for debugging
+    logger.info(f"Found {interface_type} with GUID {interface_guid}")
     
     # Find the configuration item
     config_items = interface.get('configurationItems', [])
+    
+    # Log the number of configuration items
+    logger.info(f"Found {len(config_items)} configuration items in the {interface_type}")
+    
+    # Check if there are any configuration items
+    if not config_items:
+        logger.warning(f"No configuration items found in {interface_type} with GUID {interface_guid}")
+        
+        # Initialize an empty array if needed
+        interface['configurationItems'] = []
+        
+        # Create a new configuration item if it doesn't exist
+        new_config_item = {
+            "Name": item_name,
+            "ConfigurationAnswerType": "Text Field (Single Line)",
+            "AnswerContent": answer_content,
+            "guid": str(uuid.uuid4())
+        }
+        
+        # Add the new configuration item
+        interface['configurationItems'].append(new_config_item)
+        _save_cis_plan(environment, data)
+        logger.info(f"Created new configuration item {item_name} in {interface_type} {interface_guid}")
+        return new_config_item
+    
+    # Try to find the configuration item by name
     config_item = next((item for item in config_items if item.get('Name') == item_name), None)
     
+    # If the item wasn't found, create a new one
     if not config_item:
-        logger.error(f"Configuration item {item_name} not found")
-        return None
+        logger.warning(f"Configuration item {item_name} not found in {interface_type} {interface_guid}, creating a new one")
+        new_config_item = {
+            "Name": item_name,
+            "ConfigurationAnswerType": "Text Field (Single Line)",
+            "AnswerContent": answer_content,
+            "guid": str(uuid.uuid4())
+        }
+        
+        # Add the new configuration item
+        interface['configurationItems'].append(new_config_item)
+        _save_cis_plan(environment, data)
+        logger.info(f"Created new configuration item {item_name} in {interface_type} {interface_guid}")
+        return new_config_item
     
-    # Update the configuration item
+    # If we found the item, update it
+    logger.info(f"Updating configuration item {item_name} in {interface_type} {interface_guid}")
+    old_value = config_item.get('AnswerContent', '')
     config_item['AnswerContent'] = answer_content
     _save_cis_plan(environment, data)
+    logger.info(f"Updated configuration item {item_name} from '{old_value}' to '{answer_content}'")
     return config_item

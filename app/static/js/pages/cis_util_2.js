@@ -455,11 +455,17 @@ const CISUtil2 = {
                 return element.id || 'Unnamed';
                 
             case 'network_interface':
-                // Special case for network interfaces - show IP address if available
-                if (element.ipAddress) {
-                    return `${element.name || element.id || 'Unnamed'} - ${element.ipAddress}`;
+                // Get IP address from configuration items if available
+                let ipAddress = "N/A";
+                if (element.configurationItems && Array.isArray(element.configurationItems)) {
+                    const ipItem = element.configurationItems.find(item => item.Name === "IP Address");
+                    if (ipItem && ipItem.AnswerContent) {
+                        ipAddress = ipItem.AnswerContent;
+                    }
                 }
-                return element.name || element.id || 'Unnamed';
+                
+                // Show name and IP address together
+                return `${element.name || element.id || 'Unnamed'} - ${ipAddress}`;
                 
             case 'gp_instance':
                 // Start with the gpid as fallback

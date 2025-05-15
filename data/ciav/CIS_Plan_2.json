@@ -2,7 +2,7 @@
   "fileName": "CIS_Plan_2.json",
   "missionNetworks": [
     {
-      "name": "Mission 1*",
+      "name": "Mission 1",
       "guid": "5ead1bb0-72f5-4a9c-b64c-8b8ac8ca2017",
       "id": "MN-0007",
       "networkSegments": [
@@ -22,19 +22,19 @@
                   "cisParticipantID": "PAR-CIAV-000053",
                   "assets": [
                     {
-                      "name": "Asset 1",
+                      "name": "Asset 111",
                       "guid": "959982ca-b5f8-4aa6-991c-f933dd899ad3",
                       "id": "AS-0001",
                       "networkInterfaces": [
                         {
-                          "name": "NET-X*",
+                          "name": "NET-X15",
                           "guid": "64894cc0-e44f-4bf2-9fce-6aab1e09403e",
                           "id": "NI-0001",
                           "configurationItems": [
                             {
                               "Name": "IP Address",
                               "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "192.168.1.2",
+                              "AnswerContent": "192.168.1.5",
                               "guid": "30c24c89-eb70-4ae8-be42-923ddf7b6bb3"
                             },
                             {
@@ -67,66 +67,306 @@
                           ],
                           "configurationItems": [
                             {
-                              "Name": "Bias",
+                              "AnswerContent": "1",
                               "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "3dfe562d-c8de-4cbf-9c95-973d8867e86f",
                               "DefaultValue": "\t 0",
-                              "HelpText": ""
+                              "HelpText": "",
+                              "Name": "Bias",
+                              "guid": "3dfe562d-c8de-4cbf-9c95-973d8867e86f"
                             },
                             {
-                              "Name": "MaximumOffset",
+                              "AnswerContent": "1",
                               "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "c33365ee-47d2-4e62-90e0-6a79b20ea322",
                               "DefaultValue": "1000",
-                              "HelpText": ""
+                              "HelpText": "",
+                              "Name": "MaximumOffset",
+                              "guid": "c33365ee-47d2-4e62-90e0-6a79b20ea322"
                             },
                             {
-                              "Name": "MaximumStratum",
+                              "AnswerContent": "1",
                               "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "f0b51eaa-7199-417e-966c-b5f2f82b625a",
                               "DefaultValue": "4",
-                              "HelpText": ""
+                              "HelpText": "",
+                              "Name": "MaximumStratum",
+                              "guid": "f0b51eaa-7199-417e-966c-b5f2f82b625a"
                             },
                             {
+                              "AnswerContent": "1",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "DefaultValue": "",
+                              "HelpText": "FQDN of the NTP server you are synchronizing to",
                               "Name": "TimeSourceFQDN",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "672261c6-5003-4f08-b118-08b1f2b7ecad",
-                              "DefaultValue": "",
-                              "HelpText": "FQDN of the NTP server you are synchronizing to"
+                              "guid": "672261c6-5003-4f08-b118-08b1f2b7ecad"
                             },
                             {
+                              "AnswerContent": "1",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "DefaultValue": "",
+                              "HelpText": "IP of the NTP server you are synchronizing to",
                               "Name": "TimeSourceIP",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "6b8b5fd1-4148-4644-8533-d437f45d78b3",
-                              "DefaultValue": "",
-                              "HelpText": "IP of the NTP server you are synchronizing to"
+                              "guid": "6b8b5fd1-4148-4644-8533-d437f45d78b3"
                             },
                             {
-                              "Name": "TimeZone",
+                              "AnswerContent": "1",
                               "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "AnswerContent": "",
-                              "guid": "e1d000db-2ffd-4d93-bee4-d1f8d892b27d",
                               "DefaultValue": "UTC",
-                              "HelpText": ""
+                              "HelpText": "",
+                              "Name": "TimeZone",
+                              "guid": "e1d000db-2ffd-4d93-bee4-d1f8d892b27d"
                             }
                           ]
                         }
                       ]
                     },
-                                        {
-                                            "name": "Asset 2",
-                                            "guid": "959982ca-b5f8-4aa6-991c-f933dd899adx",
-                                            "id": "AS-0002",
-                                            "networkInterfaces": [
-                                            ],
-                                            "gpInstances": [
-                                            ]
-                                        }
+                    {
+                      "name": "Asset 2",
+                      "guid": "959982ca-b5f8-4aa6-991c-f933dd899adx",
+                      "id": "AS-0002",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
+                  ]
+                },
+                {
+                  "name": "HWS-UNO",
+                  "guid": "c8f488bd-237e-46f3-a03c-84907a5c6705",
+                  "id": "HW-0002",
+                  "cisParticipantID": "",
+                  "assets": [
+                    {
+                      "name": "A1.1",
+                      "guid": "81d0ef73-0b80-4a93-a251-e0b1cee157e6",
+                      "id": "AS-0005",
+                      "networkInterfaces": [
+                        {
+                          "name": "N1.1*",
+                          "guid": "7f104dd6-95c9-442b-ad34-5744f0a3a9a7",
+                          "id": "NI-0002",
+                          "configurationItems": [
+                            {
+                              "AnswerContent": "192.168.1.11",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "Name": "IP Address",
+                              "guid": "ec83c145-4b06-46f6-9f70-381a911ccbe1"
+                            },
+                            {
+                              "AnswerContent": "255.255.1.1",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "Name": "Sub-Net",
+                              "guid": "42afa328-6965-4a62-a825-06a0913c4a09"
+                            },
+                            {
+                              "AnswerContent": "fin.test.now",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "Name": "FQDN",
+                              "guid": "63414ed4-ba80-48ee-a846-d37e34071392"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "N1.2*",
+                          "guid": "7c52ba7d-a39a-4eeb-9960-0515eb50ad00",
+                          "id": "NI-0003",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "192.168.8.1",
+                              "guid": "6f710084-cffb-4410-9111-c15893cf2a32"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "63e1adcb-2d5d-420a-b826-bfb9a8c9b089"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "8bed347a-ac63-4cd4-9ade-5e77ca69f4c1"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0001",
+                          "guid": "1cbf8965-f19f-4c0a-9ce7-998f323103d9",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0008",
+                          "spInstances": [
+                            {
+                              "guid": "aa7210cd-b671-423e-bd3b-1e67a08de0de",
+                              "spId": "SP-0007",
+                              "spVersion": ""
+                            }
+                          ],
+                          "configurationItems": [
+                            {
+                              "AnswerContent": "C2",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "DefaultValue": "Non C2",
+                              "HelpText": "pick either:  \"C2\"  or \"Non C2\"",
+                              "Name": "C2/NonC2",
+                              "guid": "7d9fef89-f79b-457f-b8a0-6ad1110be54d"
+                            },
+                            {
+                              "AnswerContent": "123",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "DefaultValue": "",
+                              "HelpText": "JRE ID assigned to you Data Link Server",
+                              "Name": "JRE ID",
+                              "guid": "24c15536-1cc3-4271-9a84-e772ebbc48d8"
+                            },
+                            {
+                              "AnswerContent": "UTC",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\"",
+                              "Name": "JREAP Time Sync (Preferred)",
+                              "guid": "d425bafd-4ddc-4168-9221-2287dc56eb8c"
+                            },
+                            {
+                              "AnswerContent": "RTT",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\"",
+                              "Name": "JREAP Time Sync (Supported)",
+                              "guid": "724aac1e-d60c-4ea6-b4a4-8ce158d25940"
+                            },
+                            {
+                              "AnswerContent": "a",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "DefaultValue": "",
+                              "HelpText": "",
+                              "Name": "JU Number",
+                              "guid": "d1f8f0d2-b851-4411-9f58-e995a4fdb541"
+                            },
+                            {
+                              "AnswerContent": "s",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "DefaultValue": "0.5",
+                              "HelpText": "Time in seconds",
+                              "Name": "Maximum Offset",
+                              "guid": "0792668d-177b-4214-b288-dbbff5e5f086"
+                            },
+                            {
+                              "AnswerContent": "d",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "DefaultValue": "semi-active",
+                              "HelpText": "pick either: \"active\", \"semi-active\", \"passive\".",
+                              "Name": "Platform Role",
+                              "guid": "3f77b69e-c2a1-4256-af39-281464646ec3"
+                            },
+                            {
+                              "AnswerContent": "d",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "DefaultValue": "",
+                              "HelpText": "Track number block assigned to Active Platform",
+                              "Name": "TN Block",
+                              "guid": "ba9fa0f9-1ddb-4107-9f84-4b3857e8369c"
+                            },
+                            {
+                              "AnswerContent": "d",
+                              "ConfigurationAnswerType": "URL",
+                              "DefaultValue": "",
+                              "HelpText": "URL to connect to the Track Store (i.e TSS URL)",
+                              "Name": "URL Track Store",
+                              "guid": "9a806da7-17bf-434f-b37d-9b3934b978f1"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "HWS-Mission1",
+                  "guid": "1ff8c7ad-7e9b-4233-a87d-c853255fb6a2",
+                  "id": "HW-0003",
+                  "cisParticipantID": "",
+                  "assets": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mission 2",
+      "guid": "ae5b239f-8b67-4042-a848-01a3a6878375",
+      "id": "MN-0008",
+      "networkSegments": [
+        {
+          "name": "Network Segment 2.1",
+          "guid": "869969af-8e18-486f-9949-b4546f648869",
+          "id": "NS-0002",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS",
+              "guid": "ceee1dc6-1051-40c6-80d0-7872703cf180",
+              "hwStacks": [
+                {
+                  "name": "HW-Stack-Mission2",
+                  "guid": "92c5a11c-a9e7-457d-9e7c-f753aeb4576b",
+                  "id": "HW-0004",
+                  "cisParticipantID": "",
+                  "assets": [
+                    {
+                      "name": "A2.1",
+                      "guid": "e9bcba64-1bc3-4288-a006-0671dd485d52",
+                      "id": "AS-0004",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CL-RESTRICTED",
+              "guid": "7db48441-8f81-4152-a8a2-160309e33275",
+              "hwStacks": []
+            }
+          ]
+        },
+        {
+          "name": "Network Segments 2.2",
+          "guid": "7f29e237-54d0-47c9-91f3-dc1cb7ad8bb2",
+          "id": "NS-0003",
+          "securityDomains": []
+        }
+      ]
+    },
+    {
+      "name": "Mission 3",
+      "guid": "a1f11aec-d241-4c42-9bf8-61a649e79891",
+      "id": "MN-0009",
+      "networkSegments": [
+        {
+          "name": "Network Segment 3.1",
+          "guid": "dcc9ccfb-33dc-4666-8468-db6546d997ca",
+          "id": "NS-0004",
+          "securityDomains": [
+            {
+              "id": "CL-UNCLASS",
+              "guid": "d05b728d-1772-4df7-912b-cd07276029f7",
+              "hwStacks": [
+                {
+                  "name": "HW-Stack-Mission3",
+                  "guid": "bcb0ab2d-8f99-4a9f-8121-d389fc020dca",
+                  "id": "HW-0005",
+                  "cisParticipantID": "",
+                  "assets": [
+                    {
+                      "name": "A3.1",
+                      "guid": "5eb08f1c-a53b-4921-b2c0-0dccf854feb5",
+                      "id": "AS-0003",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
                   ]
                 }
               ]

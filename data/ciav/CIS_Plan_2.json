@@ -19,7 +19,7 @@
                   "name": "POP-55",
                   "guid": "8fc3c9e1-7d34-41c7-ae0e-ac0dfce2a91a",
                   "id": "HW-0001",
-                  "cisParticipantID": "PAR-CIAV-000053",
+                  "cisParticipantID": "PAR-CIAV-000116",
                   "assets": [
                     {
                       "name": "Asset 111",
@@ -287,8 +287,41 @@
                   "id": "HW-0003",
                   "cisParticipantID": "",
                   "assets": []
+                },
+                {
+                  "name": "CAN STACK",
+                  "guid": "3271d951-81fd-435a-a5fd-b8776f5f679e",
+                  "id": "HW-0006",
+                  "cisParticipantID": "PAR-CIAV-000116",
+                  "assets": []
+                },
+                {
+                  "name": "C",
+                  "guid": "0e2fdb07-1230-468e-9e71-e40b1aa55e4f",
+                  "id": "HW-0007",
+                  "cisParticipantID": "PAR-CIAV-000121",
+                  "assets": []
+                },
+                {
+                  "name": "PEPE",
+                  "guid": "1bdbbcc7-9c55-405a-a253-5b7e19ad9919",
+                  "id": "HW-0008",
+                  "cisParticipantID": "PAR-CIAV-000116",
+                  "assets": []
+                },
+                {
+                  "name": "PEPE",
+                  "guid": "fa8e924e-4703-4985-975c-2e8567197868",
+                  "id": "HW-0009",
+                  "cisParticipantID": "PAR-CIAV-000029",
+                  "assets": []
                 }
               ]
+            },
+            {
+              "id": "CL-RESTRICTED",
+              "guid": "73f8208e-0887-4823-88af-76ab32e60b8d",
+              "hwStacks": []
             }
           ]
         }

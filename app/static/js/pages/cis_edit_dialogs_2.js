@@ -143,11 +143,163 @@ const CISEditDialogs2 = {
                             value="${entityData.name || ''}" required>
                     </div>
                     <div class="form-group">
-                        <label for="cisParticipantID">CIS Participant ID</label>
-                        <input type="text" class="form-control" id="cisParticipantID" name="cisParticipantID" 
-                            value="${entityData.cisParticipantID || ''}">
+                        <label for="cisParticipantID">CIS Participant</label>
+                        <select class="form-control" id="cisParticipantID" name="cisParticipantID">
+                            <option value="">-- Select Participant --</option>
+                        </select>
+                        <div class="loading-indicator mt-2" id="participant-loading">
+                            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="sr-only">Loading participants...</span>
+                            </div>
+                            <small class="text-muted ml-2">Loading participants...</small>
+                        </div>
                     </div>
                 `;
+                
+                // After appending the form to the DOM, initialize Select2
+                setTimeout(() => {
+                    const participantSelect = document.getElementById('cisParticipantID');
+                    const loadingIndicator = document.getElementById('participant-loading');
+                    
+                    // Debug info to help us understand what's happening
+                    console.log('Edit mode participant data:', {
+                        selectExists: !!participantSelect,
+                        loadingExists: !!loadingIndicator,
+                        jQueryExists: typeof jQuery !== 'undefined',
+                        currentParticipantID: entityData.cisParticipantID
+                    });
+                    
+                    if (participantSelect && typeof jQuery !== 'undefined') {
+                        try {
+                            // Initialize Select2
+                            jQuery(participantSelect).select2({
+                                placeholder: 'Search for a participant...',
+                                allowClear: true,
+                                width: '100%'
+                            });
+                            
+                            // Load participants from API
+                            this.loadParticipants().then(participants => {
+                                console.log('Loaded participants:', participants.length);
+                                
+                                // Remove loading indicator
+                                if (loadingIndicator) {
+                                    loadingIndicator.style.display = 'none';
+                                }
+                                
+                                // Add options to select
+                                participants.forEach(participant => {
+                                    const option = new Option(participant.text, participant.id, false, false);
+                                    jQuery(participantSelect).append(option);
+                                });
+                                
+                                // Set the current value if it exists - ensuring this happens AFTER options are added
+                                if (entityData.cisParticipantID) {
+                                    console.log('Setting current participant to:', entityData.cisParticipantID);
+                                    // First try to find if this participant ID exists in the options
+                                    let participantExists = false;
+                                    for (const participant of participants) {
+                                        if (participant.id === entityData.cisParticipantID) {
+                                            participantExists = true;
+                                            break;
+                                        }
+                                    }
+                                    
+                                    if (!participantExists) {
+                                        // If not found, add it as an option
+                                        console.log('Adding current participant as option as it wasn\'t in the list');
+                                        const option = new Option(entityData.cisParticipantID, entityData.cisParticipantID, false, false);
+                                        jQuery(participantSelect).append(option);
+                                    }
+                                    
+                                    // Now set it as selected and trigger change
+                                    jQuery(participantSelect).val(entityData.cisParticipantID).trigger('change');
+                                }
+                            }).catch(error => {
+                                console.error('Error loading participants for dropdown:', error);
+                                if (loadingIndicator) {
+                                    loadingIndicator.innerHTML = '<div class="text-danger">Error loading participants</div>';
+                                }
+                                
+                                // Even if API fails, still try to set the current participant
+                                if (entityData.cisParticipantID && participantSelect) {
+                                    // Add current participant as an option
+                                    const option = new Option(entityData.cisParticipantID, entityData.cisParticipantID, true, true);
+                                    jQuery(participantSelect).append(option);
+                                    jQuery(participantSelect).val(entityData.cisParticipantID).trigger('change');
+                                }
+                            });
+                        } catch (e) {
+                            console.error('Error initializing Select2:', e);
+                            // Fallback to regular select if Select2 fails
+                            if (loadingIndicator) {
+                                loadingIndicator.innerHTML = '<div class="text-warning">Using standard dropdown (Select2 failed to load)</div>';
+                            }
+                            
+                            // Still load participants for standard select
+                            this.loadParticipants().then(participants => {
+                                if (loadingIndicator) loadingIndicator.style.display = 'none';
+                                
+                                // Add options to standard select
+                                participants.forEach(participant => {
+                                    const option = document.createElement('option');
+                                    option.value = participant.id;
+                                    option.textContent = participant.text;
+                                    participantSelect.appendChild(option);
+                                });
+                                
+                                // Set current value
+                                if (entityData.cisParticipantID) {
+                                    participantSelect.value = entityData.cisParticipantID;
+                                }
+                            }).catch(error => {
+                                console.error('Error loading participants for standard dropdown:', error);
+                                if (loadingIndicator) {
+                                    loadingIndicator.innerHTML = '<div class="text-danger">Error loading participants</div>';
+                                }
+                            });
+                        }
+                    } else if (participantSelect) {
+                        // jQuery not available, use regular select
+                        console.warn('jQuery not available, using regular select for edit mode');
+                        if (loadingIndicator) {
+                            // Still load participants but use regular select
+                            this.loadParticipants().then(participants => {
+                                loadingIndicator.style.display = 'none';
+                                
+                                // Add options to select without jQuery
+                                participants.forEach(participant => {
+                                    const option = document.createElement('option');
+                                    option.value = participant.id;
+                                    option.textContent = participant.text;
+                                    participantSelect.appendChild(option);
+                                });
+                                
+                                // Set the current value if it exists
+                                if (entityData.cisParticipantID) {
+                                    participantSelect.value = entityData.cisParticipantID;
+                                }
+                            }).catch(error => {
+                                console.error('Error loading participants for dropdown:', error);
+                                loadingIndicator.innerHTML = '<div class="text-danger">Error loading participants</div>';
+                                
+                                // Even if API fails, still add current participant if available
+                                if (entityData.cisParticipantID) {
+                                    const option = document.createElement('option');
+                                    option.value = entityData.cisParticipantID;
+                                    option.textContent = entityData.cisParticipantID;
+                                    option.selected = true;
+                                    participantSelect.appendChild(option);
+                                }
+                            });
+                        }
+                    } else {
+                        console.error('Participant select element not found in edit form');
+                        if (loadingIndicator) {
+                            loadingIndicator.innerHTML = '<div class="text-danger">Error: Dropdown element not found</div>';
+                        }
+                    }
+                }, 100); // Short delay to ensure DOM is ready
                 break;
                 
             case 'asset':
@@ -1022,6 +1174,81 @@ const CISEditDialogs2 = {
         } else {
             // Fallback to alert if toast functionality not available
             alert('Error: ' + message);
+        }
+    },
+    
+    /**
+     * Load participants for dropdown
+     * @returns {Promise<Array>} Array of participant objects with id and name
+     */
+    loadParticipants: async function() {
+        try {
+            console.log('Loading participants for dropdown...');
+            const response = await fetch('/api/participants');
+            if (!response.ok) {
+                console.error(`Failed to fetch participants: ${response.status} ${response.statusText}`);
+                throw new Error(`Failed to fetch participants: ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            console.log('Participants API response status:', result.status);
+            
+            if (result.status === 'success' && Array.isArray(result.data)) {
+                // Transform the data into the format needed for Select2
+                const participants = result.data.map(participant => {
+                    // Handle various participant data formats
+                    return {
+                        id: participant.key || participant.id, // Use key or fallback to id
+                        text: participant.name || participant.id || 'Unknown participant', // Display name
+                        // Store any other useful data
+                        description: participant.description,
+                        nation: participant.nation
+                    };
+                });
+                
+                console.log(`Processed ${participants.length} participants for dropdown`);
+                return participants;
+            } else {
+                console.error("Failed to load participants:", result.message || "Unknown error");
+                return [];
+            }
+        } catch (error) {
+            console.error("Error loading participants:", error);
+            return [];
+        }
+    },
+    
+    /**
+     * Get participant name by ID
+     * This is a helper function to get the name of a participant when only the ID is known
+     * @param {string} participantId - The participant ID to look up
+     * @returns {Promise<string>} - The participant name or the original ID if not found
+     */
+    getParticipantNameById: async function(participantId) {
+        if (!participantId) return 'Unknown';
+        
+        try {
+            // First try the key_to_name endpoint which is faster
+            const response = await fetch(`/api/participants/key_to_name?key=${encodeURIComponent(participantId)}`);
+            if (response.ok) {
+                const data = await response.json();
+                if (data.status === 'success' && data.name) {
+                    return data.name;
+                }
+            }
+            
+            // If that fails, load all participants and search for the ID
+            const participants = await this.loadParticipants();
+            const participant = participants.find(p => p.id === participantId);
+            if (participant && participant.text) {
+                return participant.text;
+            }
+            
+            // If still not found, just return the ID
+            return participantId;
+        } catch (error) {
+            console.error('Error getting participant name:', error);
+            return participantId; // Return the ID as fallback
         }
     }
 };

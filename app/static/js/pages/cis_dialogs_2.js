@@ -153,8 +153,9 @@ const CISDialogs2 = {
      * @param {string} parentType - Type of parent element
      * @param {string} parentId - ID of parent element
      * @param {string} parentName - Name of parent element
+     * @param {string} parentGuid - GUID of parent element (if available)
      */
-    showAddElementDialog: function(elementType, parentType, parentId, parentName) {
+    showAddElementDialog: function(elementType, parentType, parentId, parentName, parentGuid) {
         // Validate inputs
         if (!elementType) {
             console.error('No element type specified for add dialog');
@@ -176,34 +177,24 @@ const CISDialogs2 = {
             parentType,
             parentId,
             parentName,
-            parentGuid: null
+            parentGuid: parentGuid  // Use the provided parentGuid if available
         };
         
-        // Find the parent GUID, which is needed for the API call
-        if (parentType !== 'cisplan') {
-            // IMPORTANT FIX: For security domains, we need to make sure we're getting the correct domain
-            // in cases where multiple security domains across different mission networks have the same ID
+        // Find the parent GUID if not provided, which is needed for the API call
+        if (!parentGuid && parentType !== 'cisplan') {
+            console.log(`Looking for parent node: type=${parentType}, id=${parentId}`);
             
-            // Get the currently selected node to ensure we're adding to the correct hierarchy
-            const currentTreeNode = CISTree2 ? CISTree2.currentTreeNode : null;
+            // Try to find the exact parent node in the tree
             let parentNode = null;
             
-            if (parentType === 'security_domain' && currentTreeNode) {
-                // Need to find the specific security domain that was selected, not just any with the same ID
-                parentNode = currentTreeNode;
-                
-                // Double check that the node type and ID match what we expect
-                const nodeType = parentNode.getAttribute('data-type');
-                const nodeId = parentNode.getAttribute('data-id');
-                
-                if (nodeType !== parentType || nodeId !== parentId) {
-                    console.error(`Selected node type/ID (${nodeType}/${nodeId}) doesn't match expected parent (${parentType}/${parentId})`);
-                    this.showErrorToast(`Error: Cannot determine the correct security domain. Please try again.`);
-                    return;
+            // First, try to find the direct match for the parent
+            const allParentTypeNodes = document.querySelectorAll(`.tree-node[data-type="${parentType}"]`);
+            for (const node of allParentTypeNodes) {
+                if (node.getAttribute('data-id') === parentId) {
+                    parentNode = node;
+                    console.log(`Found direct match for parent node: ${parentType}/${parentId}`);
+                    break;
                 }
-            } else {
-                // For other entity types, we can use the original query
-                parentNode = document.querySelector(`.tree-node[data-type="${parentType}"][data-id="${parentId}"]`);
             }
             
             if (parentNode) {
@@ -350,11 +341,82 @@ const CISDialogs2 = {
                             placeholder="Enter hardware stack name" required>
                     </div>
                     <div class="form-group">
-                        <label for="cisParticipantID">CIS Participant ID</label>
-                        <input type="text" class="form-control" id="cisParticipantID" name="cisParticipantID" 
-                            placeholder="E.g., PAR-CIAV-000053">
+                        <label for="cisParticipantID">CIS Participant</label>
+                        <select class="form-control" id="cisParticipantID" name="cisParticipantID">
+                            <option value="">-- Select Participant --</option>
+                        </select>
+                        <div class="loading-indicator mt-2" id="participant-loading">
+                            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="sr-only">Loading participants...</span>
+                            </div>
+                            <small class="text-muted ml-2">Loading participants...</small>
+                        </div>
                     </div>
                 `;
+                
+                // After form is appended to the DOM, initialize Select2
+                setTimeout(() => {
+                    const participantSelect = document.getElementById('cisParticipantID');
+                    if (participantSelect && typeof jQuery !== 'undefined') {
+                        try {
+                            // Initialize Select2
+                            jQuery(participantSelect).select2({
+                                placeholder: 'Search for a participant...',
+                                allowClear: true,
+                                width: '100%'
+                            });
+                            
+                            // Load participants from API
+                            this.loadParticipants().then(participants => {
+                                // Remove loading indicator
+                                const loadingIndicator = document.getElementById('participant-loading');
+                                if (loadingIndicator) {
+                                    loadingIndicator.style.display = 'none';
+                                }
+                                
+                                // Add options to select
+                                participants.forEach(participant => {
+                                    const option = new Option(participant.text, participant.id, false, false);
+                                    jQuery(participantSelect).append(option);
+                                });
+                            }).catch(error => {
+                                console.error('Error loading participants for dropdown:', error);
+                                const loadingIndicator = document.getElementById('participant-loading');
+                                if (loadingIndicator) {
+                                    loadingIndicator.innerHTML = '<div class="text-danger">Error loading participants</div>';
+                                }
+                            });
+                        } catch (e) {
+                            console.error('Error initializing Select2:', e);
+                            // Fallback to regular select if Select2 fails
+                            const loadingIndicator = document.getElementById('participant-loading');
+                            if (loadingIndicator) {
+                                loadingIndicator.innerHTML = '<div class="text-warning">Using standard dropdown (Select2 failed to load)</div>';
+                            }
+                        }
+                    } else if (participantSelect) {
+                        // jQuery not available, use regular select
+                        console.warn('jQuery not available, using regular select');
+                        const loadingIndicator = document.getElementById('participant-loading');
+                        if (loadingIndicator) {
+                            // Still load participants but use regular select
+                            this.loadParticipants().then(participants => {
+                                loadingIndicator.style.display = 'none';
+                                
+                                // Add options to select without jQuery
+                                participants.forEach(participant => {
+                                    const option = document.createElement('option');
+                                    option.value = participant.id;
+                                    option.textContent = participant.text;
+                                    participantSelect.appendChild(option);
+                                });
+                            }).catch(error => {
+                                console.error('Error loading participants for dropdown:', error);
+                                loadingIndicator.innerHTML = '<div class="text-danger">Error loading participants</div>';
+                            });
+                        }
+                    }
+                }, 100); // Short delay to ensure DOM is ready
                 break;
                 
             case 'asset':
@@ -1141,5 +1203,105 @@ const CISDialogs2 = {
      */
     showErrorToast: function(message) {
         this.showToast(message, 'error');
+    },
+    
+    /**
+     * Get participant name by ID
+     * This is a helper function to get the name of a participant when only the ID is known
+     * @param {string} participantId - The participant ID to look up
+     * @returns {Promise<string>} - The participant name or the original ID if not found
+     */
+    getParticipantNameById: async function(participantId) {
+        if (!participantId) return 'Unknown';
+        
+        try {
+            // First try the key_to_name endpoint which is faster
+            const response = await fetch(`/api/participants/key_to_name?key=${encodeURIComponent(participantId)}`);
+            if (response.ok) {
+                const data = await response.json();
+                if (data.status === 'success' && data.name) {
+                    return data.name;
+                }
+            }
+            
+            // If that fails, load all participants and search for the ID
+            const participants = await this.loadParticipants();
+            const participant = participants.find(p => p.id === participantId);
+            if (participant && participant.text) {
+                return participant.text;
+            }
+            
+            // If still not found, just return the ID
+            return participantId;
+        } catch (error) {
+            console.error('Error getting participant name:', error);
+            return participantId; // Return the ID as fallback
+        }
+    },
+    
+    /**
+     * Load participants for dropdown
+     * @returns {Promise<Array>} Array of participant objects with id and name
+     */
+    loadParticipants: async function() {
+        try {
+            console.log('Loading participants for dropdown...');
+            const response = await fetch('/api/participants');
+            if (!response.ok) {
+                console.error(`Failed to fetch participants: ${response.status} ${response.statusText}`);
+                throw new Error(`Failed to fetch participants: ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            console.log('Participants API response status:', result.status);
+            
+            if (result.status === 'success' && Array.isArray(result.data)) {
+                // Transform the data into the format needed for Select2
+                const participants = result.data.map(participant => {
+                    // Handle various participant data formats
+                    return {
+                        id: participant.key || participant.id, // Use key or fallback to id
+                        text: participant.name || participant.id || 'Unknown participant', // Display name
+                        // Store any other useful data
+                        description: participant.description,
+                        nation: participant.nation
+                    };
+                });
+                
+                console.log(`Processed ${participants.length} participants for dropdown`);
+                return participants;
+            } else {
+                console.error("Failed to load participants:", result.message || "Unknown error");
+                return [];
+            }
+        } catch (error) {
+            console.error("Error loading participants:", error);
+            return [];
+        }
+    },
+    
+    /**
+     * Find the direct parent node of a tree node in the DOM
+     * @param {HTMLElement} node - The tree node
+     * @returns {HTMLElement|null} - The parent node or null if not found
+     */
+    findDirectParent: function(node) {
+        if (!node) return null;
+        
+        // Walk up the DOM to find the parent tree node
+        let current = node.parentElement;
+        while (current) {
+            // If this is a tree-children container, its parent should be the parent tree node
+            if (current.classList.contains('tree-children')) {
+                // Get the parent of the tree-children, which should be a tree-node
+                const parentNode = current.parentElement;
+                if (parentNode && parentNode.classList.contains('tree-node')) {
+                    return parentNode;
+                }
+            }
+            current = current.parentElement;
+        }
+        
+        return null;
     }
 };

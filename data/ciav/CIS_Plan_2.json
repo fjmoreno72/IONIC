@@ -19,7 +19,7 @@
                   "name": "POP-55",
                   "guid": "8fc3c9e1-7d34-41c7-ae0e-ac0dfce2a91a",
                   "id": "HW-0001",
-                  "cisParticipantID": "PAR-CIAV-000116",
+                  "cisParticipantID": "PAR-CIAV-000121",
                   "assets": [
                     {
                       "name": "Asset 111",
@@ -146,7 +146,13 @@
                           "guid": "bbd51a13-6df8-4796-8b3b-ea57d3c50b9b",
                           "instanceLabel": "",
                           "serviceId": "SRV-0008",
-                          "spInstances": [],
+                          "spInstances": [
+                            {
+                              "guid": "c0bd3d02-05a3-452d-8ddc-c7dd64e37728",
+                              "spId": "SP-0004",
+                              "spVersion": "3.0.0"
+                            }
+                          ],
                           "configurationItems": []
                         },
                         {
@@ -183,6 +189,61 @@
                           ]
                         }
                       ]
+                    },
+                    {
+                      "name": "ASSET X",
+                      "guid": "79ea3eec-313b-4fa6-9071-141bab4bfcc7",
+                      "id": "AS-0006",
+                      "networkInterfaces": [
+                        {
+                          "name": "NX1",
+                          "guid": "9aa3df2e-2a71-46f1-8761-4a8ab4a78f74",
+                          "id": "NI-0004",
+                          "configurationItems": [
+                            {
+                              "AnswerContent": "192.0.0.2",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "Name": "IP Address",
+                              "guid": "0ed7c65e-eee4-4582-b583-921ad614eb2f"
+                            },
+                            {
+                              "AnswerContent": "asdfasfd",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "Name": "Sub-Net",
+                              "guid": "a653933b-cc5d-4fdc-bfd6-3f9fd2f60898"
+                            },
+                            {
+                              "AnswerContent": "asdfasdf",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "Name": "FQDN",
+                              "guid": "d671b606-4fe1-4386-a7ad-27eef666735a"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0135",
+                          "guid": "f67274d5-0525-4a7e-a0dc-ed5c901e8ca9",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0003",
+                          "spInstances": [
+                            {
+                              "guid": "6a9f883d-5cf0-46f4-b55b-5bf2829abe91",
+                              "spId": "SP-0007",
+                              "spVersion": "16.6 v5"
+                            }
+                          ],
+                          "configurationItems": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "POP",
+                      "guid": "a617e299-62b6-49fb-9874-c046e5a359a3",
+                      "id": "AS-0007",
+                      "networkInterfaces": [],
+                      "gpInstances": []
                     }
                   ]
                 },
@@ -259,6 +320,11 @@
                               "guid": "aa7210cd-b671-423e-bd3b-1e67a08de0de",
                               "spId": "SP-0007",
                               "spVersion": ""
+                            },
+                            {
+                              "guid": "25256792-0d72-4544-a9a1-16e522c5e092",
+                              "spId": "SP-0006",
+                              "spVersion": "2.1.3"
                             }
                           ],
                           "configurationItems": [
@@ -335,6 +401,31 @@
                               "guid": "9a806da7-17bf-434f-b37d-9b3934b978f1"
                             }
                           ]
+                        },
+                        {
+                          "gpid": "GP-0024",
+                          "guid": "9963ca00-ac20-493b-b7fe-f242cbb719ba",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0016",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Port",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "5006c356-ac10-47f8-abee-11e0d6850642",
+                              "DefaultValue": "443",
+                              "HelpText": "Port for the RAG Server"
+                            },
+                            {
+                              "Name": "Time Source",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "c533d605-0f4f-4a43-a1f6-602b87ce55d7",
+                              "DefaultValue": "GPS",
+                              "HelpText": "Pick either: \"GPS\", \"CDMA\", \"Radio Clock\", \"Atomic Clock\",  \"Modem\",  \"Other\"."
+                            }
+                          ]
                         }
                       ]
                     }
@@ -348,20 +439,6 @@
                   "assets": []
                 },
                 {
-                  "name": "CAN STACK",
-                  "guid": "3271d951-81fd-435a-a5fd-b8776f5f679e",
-                  "id": "HW-0006",
-                  "cisParticipantID": "PAR-CIAV-000116",
-                  "assets": []
-                },
-                {
-                  "name": "C",
-                  "guid": "0e2fdb07-1230-468e-9e71-e40b1aa55e4f",
-                  "id": "HW-0007",
-                  "cisParticipantID": "PAR-CIAV-000121",
-                  "assets": []
-                },
-                {
                   "name": "PEPE",
                   "guid": "1bdbbcc7-9c55-405a-a253-5b7e19ad9919",
                   "id": "HW-0008",
@@ -369,10 +446,10 @@
                   "assets": []
                 },
                 {
-                  "name": "PEPE",
-                  "guid": "fa8e924e-4703-4985-975c-2e8567197868",
+                  "name": "POPs",
+                  "guid": "9752bb20-09b8-47f5-921c-9e5bdf00dbe9",
                   "id": "HW-0009",
-                  "cisParticipantID": "PAR-CIAV-000029",
+                  "cisParticipantID": "PAR-CIAV-000030",
                   "assets": []
                 }
               ]
@@ -383,6 +460,18 @@
               "hwStacks": []
             }
           ]
+        },
+        {
+          "name": "NSX",
+          "guid": "5b7fcba8-26de-49e2-ab5a-61cb92d7b6ac",
+          "id": "NS-0005",
+          "securityDomains": []
+        },
+        {
+          "name": "NSX2",
+          "guid": "36b5fa05-5890-4be1-a967-eb801ff1a3de",
+          "id": "NS-0006",
+          "securityDomains": []
         }
       ]
     },

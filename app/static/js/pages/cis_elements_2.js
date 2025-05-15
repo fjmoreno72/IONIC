@@ -261,8 +261,47 @@ const CISElements2 = {
     showEmptyState: function(message) {
         if (!this.elementsContent) return;
         
-        // Clear the content
-        this.elementsContent.innerHTML = '';
+        // Don't clear the entire content - this was causing the title to disappear
+        // Instead, check if we already have a title element and preserve it
+        const existingTitle = this.elementsContent.querySelector('.elements-title');
+        
+        // If we don't have a title already, create one with current parent information
+        if (!existingTitle && this.currentParentType) {
+            const titleElement = document.createElement('div');
+            titleElement.className = 'elements-title mb-3';
+            
+            // Try to get a meaningful parent name
+            let parentName = '';
+            if (this.currentElement) {
+                if (this.currentParentType === 'cisplan') {
+                    parentName = 'CIS Plan';
+                } else if (this.currentElement.name) {
+                    parentName = this.currentElement.name;
+                } else if (this.currentElement.id) {
+                    parentName = this.currentElement.id;
+                } else if (this.currentElement.gpid) {
+                    parentName = this.currentElement.gpid;
+                }
+            }
+            
+            // Create title with parent name if available
+            if (parentName) {
+                titleElement.innerHTML = `<h5>${this.getEntityTypeName(this.currentParentType)} Elements - ${parentName}</h5>`;
+            } else {
+                titleElement.innerHTML = `<h5>${this.getEntityTypeName(this.currentParentType)} Elements</h5>`;
+            }
+            
+            // Clear any existing content but keep our new title
+            this.elementsContent.innerHTML = '';
+            this.elementsContent.appendChild(titleElement);
+        } else if (existingTitle) {
+            // If title exists, preserve it by keeping it and clearing the rest
+            const titleHTML = existingTitle.outerHTML;
+            this.elementsContent.innerHTML = titleHTML;
+        } else {
+            // Last resort - clear everything if we can't determine the parent
+            this.elementsContent.innerHTML = '';
+        }
         
         // Create a container for the empty state
         const emptyContainer = document.createElement('div');

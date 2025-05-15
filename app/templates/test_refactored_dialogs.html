@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIS Planner 2.0 - Test Refactored Utilities</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <!-- Custom CSS -->
+    <link href="/static/css/cis_planner_2.css" rel="stylesheet">
+    
+    <style>
+        /* Additional test styles */
+        #test-area {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .test-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .test-result {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            min-height: 100px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">CIS Planner 2.0 - Refactored Utilities Test</h1>
+        
+        <!-- Test utilities info -->
+        <div class="alert alert-info">
+            <p><strong>Purpose:</strong> This page tests the refactored utilities of CIS Planner 2.0.</p>
+            <p><strong>Loaded Utilities:</strong></p>
+            <ul>
+                <li>cis_ui_utils.js: UI utilities for toasts, modals, and overlays</li>
+                <li>cis_dropdown_utils.js: Dropdown utilities for Select2 and data loading</li>
+                <li>cis_form_utils.js: Form generation utilities for different entity types</li>
+            </ul>
+        </div>
+        
+        <!-- Modal for testing -->
+        <div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Add New Element</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-add-modal"></button>
+                    </div>
+                    <div class="modal-body" id="add-modal-body">
+                        <!-- Content will be dynamically populated -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel-add-btn">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="confirm-add-btn">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Test Area -->
+        <div id="test-area">
+            <div class="row">
+                <!-- UI Utils Tests -->
+                <div class="col-md-4">
+                    <div class="test-section">
+                        <h4>UI Utilities</h4>
+                        <button class="btn btn-primary mb-2" id="test-toast-success">Test Success Toast</button>
+                        <button class="btn btn-warning mb-2" id="test-toast-warning">Test Warning Toast</button>
+                        <button class="btn btn-danger mb-2" id="test-toast-error">Test Error Toast</button>
+                        <button class="btn btn-secondary mb-2" id="test-loading">Test Loading Overlay</button>
+                        <button class="btn btn-info mb-2" id="test-modal">Test Modal</button>
+                        <div class="test-result" id="ui-utils-result">
+                            <em>UI util test results will appear here</em>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dropdown Utils Tests -->
+                <div class="col-md-4">
+                    <div class="test-section">
+                        <h4>Dropdown Utilities</h4>
+                        <button class="btn btn-primary mb-2" id="test-participants">Test Participants Loading</button>
+                        <button class="btn btn-primary mb-2" id="test-services">Test Services Loading</button>
+                        <button class="btn btn-primary mb-2" id="test-select2">Test Select2 Init</button>
+                        <div class="test-result" id="dropdown-utils-result">
+                            <em>Dropdown util test results will appear here</em>
+                            <select class="form-control mt-2" id="test-select" style="display: none;"></select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Utils Tests -->
+                <div class="col-md-4">
+                    <div class="test-section">
+                        <h4>Form Utilities</h4>
+                        <div class="btn-group mb-2">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                Test Form Generation
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item test-form" data-type="mission_network">Mission Network</a></li>
+                                <li><a class="dropdown-item test-form" data-type="network_segment">Network Segment</a></li>
+                                <li><a class="dropdown-item test-form" data-type="security_domain">Security Domain</a></li>
+                                <li><a class="dropdown-item test-form" data-type="hw_stack">HW Stack</a></li>
+                                <li><a class="dropdown-item test-form" data-type="asset">Asset</a></li>
+                                <li><a class="dropdown-item test-form" data-type="gp_instance">GP Instance</a></li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-secondary mb-2" id="test-parent-info">Test Parent Info</button>
+                        <div class="test-result" id="form-utils-result">
+                            <em>Form util test results will appear here</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dialog Test -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="test-section">
+                        <h4>Dialog Integration Test</h4>
+                        <p>Test the refactored dialog functionality:</p>
+                        <button class="btn btn-success" id="test-add-dialog">Test Add Element Dialog</button>
+                        <div class="test-result" id="dialog-test-result">
+                            <em>Dialog test results will appear here</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast container -->
+    <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+    
+    <!-- jQuery (required for Select2) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <!-- CIS Planner 2.0 Utilities (order matters) -->
+    <script src="/static/js/pages/cis_util_2.js"></script>
+    <script src="/static/js/pages/cis_ui_utils.js"></script>
+    <script src="/static/js/pages/cis_dropdown_utils.js"></script>
+    <script src="/static/js/pages/cis_form_utils.js"></script>
+    
+    <!-- CIS Planner 2.0 Components -->
+    <script src="/static/js/pages/cis_api_2.js"></script>
+    <script src="/static/js/pages/cis_tree_2.js"></script>
+    <script src="/static/js/pages/cis_elements_2.js"></script>
+    <script src="/static/js/pages/cis_dialogs_2.js"></script>
+    <script src="/static/js/pages/cis_edit_dialogs_2.js"></script>
+    
+    <!-- Test Scripts -->
+    <script>
+        // Mock CISUtil2 for testing
+        if (typeof CISUtil2 === 'undefined') {
+            CISUtil2 = {
+                getEntityTypeName: function(type) {
+                    const typeNames = {
+                        'cisplan': 'CIS Plan',
+                        'mission_network': 'Mission Network',
+                        'network_segment': 'Network Segment',
+                        'security_domain': 'Security Domain',
+                        'hw_stack': 'HW Stack',
+                        'asset': 'Asset',
+                        'network_interface': 'Network Interface',
+                        'gp_instance': 'GP Instance',
+                        'sp_instance': 'SP Instance'
+                    };
+                    return typeNames[type] || type;
+                },
+                getChildEntityTypes: function(parentType) {
+                    const childTypes = {
+                        'cisplan': ['mission_network'],
+                        'mission_network': ['network_segment'],
+                        'network_segment': ['security_domain'],
+                        'security_domain': ['hw_stack'],
+                        'hw_stack': ['asset'],
+                        'asset': ['network_interface', 'gp_instance'],
+                        'gp_instance': ['sp_instance']
+                    };
+                    return childTypes[parentType] || [];
+                }
+            };
+        }
+        
+        // Mock CISApi2 for testing
+        if (typeof CISApi2 === 'undefined') {
+            CISApi2 = {
+                getSecurityClassifications: function() {
+                    return Promise.resolve({
+                        status: 'success',
+                        data: [
+                            { id: 'CL-UNCLASS', name: 'Unclassified' },
+                            { id: 'CL-RESTRICTED', name: 'Restricted' },
+                            { id: 'CL-SECRET', name: 'Secret' }
+                        ]
+                    });
+                }
+            };
+        }
+        
+        // Test UI Utils
+        document.getElementById('test-toast-success').addEventListener('click', function() {
+            CISUIUtils.showSuccessToast('This is a success toast!');
+            document.getElementById('ui-utils-result').innerHTML = 'Success toast displayed';
+        });
+        
+        document.getElementById('test-toast-warning').addEventListener('click', function() {
+            CISUIUtils.showWarningToast('This is a warning toast!');
+            document.getElementById('ui-utils-result').innerHTML = 'Warning toast displayed';
+        });
+        
+        document.getElementById('test-toast-error').addEventListener('click', function() {
+            CISUIUtils.showErrorToast('This is an error toast!');
+            document.getElementById('ui-utils-result').innerHTML = 'Error toast displayed';
+        });
+        
+        document.getElementById('test-loading').addEventListener('click', function() {
+            CISUIUtils.showLoadingOverlay('Testing loading overlay...');
+            document.getElementById('ui-utils-result').innerHTML = 'Loading overlay displayed';
+            
+            setTimeout(function() {
+                CISUIUtils.hideLoadingOverlay();
+                document.getElementById('ui-utils-result').innerHTML = 'Loading overlay removed after 2 seconds';
+            }, 2000);
+        });
+        
+        document.getElementById('test-modal').addEventListener('click', function() {
+            CISUIUtils.showModal('add-modal');
+            document.getElementById('ui-utils-result').innerHTML = 'Modal displayed';
+        });
+        
+        // Test Dropdown Utils
+        document.getElementById('test-participants').addEventListener('click', function() {
+            const result = document.getElementById('dropdown-utils-result');
+            result.innerHTML = 'Loading participants...';
+            
+            CISDropdownUtils.loadParticipants()
+                .then(participants => {
+                    result.innerHTML = `<p>Loaded ${participants.length} participants:</p>
+                        <ul>
+                            ${participants.slice(0, 3).map(p => `<li>${p.text} (${p.id})</li>`).join('')}
+                            ${participants.length > 3 ? '<li>...</li>' : ''}
+                        </ul>`;
+                })
+                .catch(error => {
+                    result.innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
+                });
+        });
+        
+        document.getElementById('test-services').addEventListener('click', function() {
+            const result = document.getElementById('dropdown-utils-result');
+            result.innerHTML = 'Loading services...';
+            
+            CISDropdownUtils.loadAllServices()
+                .then(services => {
+                    result.innerHTML = `<p>Loaded ${services.length} services:</p>
+                        <ul>
+                            ${services.slice(0, 3).map(s => `<li>${s.text}</li>`).join('')}
+                            ${services.length > 3 ? '<li>...</li>' : ''}
+                        </ul>`;
+                })
+                .catch(error => {
+                    result.innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
+                });
+        });
+        
+        document.getElementById('test-select2').addEventListener('click', function() {
+            const result = document.getElementById('dropdown-utils-result');
+            const select = document.getElementById('test-select');
+            
+            select.style.display = 'block';
+            result.innerHTML = 'Initializing Select2...';
+            
+            CISDropdownUtils.initSelect2WithFallback(
+                select,
+                {
+                    placeholder: 'Search for a participant...',
+                    allowClear: true,
+                    width: '100%'
+                },
+                CISDropdownUtils.loadParticipants
+            ).then(success => {
+                if (success) {
+                    result.innerHTML = 'Select2 initialized successfully with participants';
+                } else {
+                    result.innerHTML = 'Fallback to standard select with participants';
+                }
+            });
+        });
+        
+        // Test Form Utils
+        document.querySelectorAll('.test-form').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const type = this.dataset.type;
+                const result = document.getElementById('form-utils-result');
+                
+                result.innerHTML = '';
+                
+                const randomSuffix = CISUIUtils.generateRandomSuffix();
+                const form = CISFormUtils.generateEntityForm(type, null, 'add', randomSuffix);
+                
+                result.innerHTML = `<p>Generated ${type} form:</p>`;
+                result.appendChild(form);
+            });
+        });
+        
+        document.getElementById('test-parent-info').addEventListener('click', function() {
+            const result = document.getElementById('form-utils-result');
+            result.innerHTML = '';
+            
+            const parentInfo = CISFormUtils.createParentInfoBox('security_domain', 'CL-SECRET', '12345-abcde-67890');
+            
+            result.innerHTML = '<p>Generated parent info box:</p>';
+            result.appendChild(parentInfo);
+        });
+        
+        // Test Dialog Integration
+        document.getElementById('test-add-dialog').addEventListener('click', function() {
+            const result = document.getElementById('dialog-test-result');
+            result.innerHTML = 'Opening Add Element Dialog...';
+            
+            // Initialize CISDialogs2 if needed
+            if (typeof CISDialogs2 !== 'undefined' && typeof CISDialogs2.init === 'function') {
+                CISDialogs2.init();
+                
+                // Open the add dialog
+                CISDialogs2.showAddElementDialog(
+                    'hw_stack',      // Element type
+                    'security_domain',  // Parent type
+                    'CL-SECRET',      // Parent ID
+                    'Secret Domain',  // Parent name
+                    '12345-abcde-67890' // Parent GUID
+                );
+                
+                result.innerHTML = 'Add Element Dialog opened';
+            } else {
+                result.innerHTML = '<p class="text-danger">Error: CISDialogs2 not initialized</p>';
+            }
+        });
+    </script>
+</body>
+</html> 

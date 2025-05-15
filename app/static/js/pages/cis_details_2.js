@@ -225,7 +225,7 @@ const CISDetails2 = {
             'asset': 'Asset',
             'network_interface': 'Network Interface',
             'gp_instance': 'Generic Product Instance',
-            'sp_instance': 'Service Provider Instance'
+            'sp_instance': 'Specific Product Instance'
         };
         
         return typeMappings[type] || type.split('_')

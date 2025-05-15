@@ -600,7 +600,7 @@ def update_entity(environment: str, guid: str, attributes: dict) -> Optional[dic
     Args:
         environment (str): The environment identifier.
         guid (str): The GUID of the entity to update.
-        attributes (dict): The attributes to update.
+        attributes (dict): The attributes to update. May include a 'reset_config_items' flag.
         
     Returns:
         dict: The updated entity if successful, else None.
@@ -612,6 +612,39 @@ def update_entity(environment: str, guid: str, attributes: dict) -> Optional[dic
         logger.error(f"Entity with GUID {guid} not found")
         return None
     
+    # Check if there's a reset_config_items flag
+    reset_config_items = False
+    if isinstance(attributes, dict) and 'reset_config_items' in attributes:
+        reset_config_items = bool(attributes.pop('reset_config_items', False))
+        logger.info(f"Reset config items flag found and set to: {reset_config_items}")
+    
+    # Special handling for GP instances when the GP ID changes
+    if entity_type == 'gp_instance' and 'gpid' in attributes:
+        old_gpid = entity.get('gpid', '')
+        new_gpid = attributes.get('gpid', '')
+        
+        if new_gpid and new_gpid != old_gpid:
+            logger.info(f"GP ID changed from {old_gpid} to {new_gpid} - resetting configuration items")
+            reset_config_items = True
+            
+            # Remove existing configuration items if GP type has changed
+            if 'configurationItems' in entity:
+                logger.info(f"Removing {len(entity['configurationItems'])} existing configuration items")
+                entity['configurationItems'] = []
+                
+            # Set the new GP ID first
+            entity['gpid'] = new_gpid
+            
+            # Populate with new configuration items from the catalog
+            try:
+                # Populate with new configuration items immediately
+                logger.info(f"Populating configuration items for new GP ID: {new_gpid}")
+                _populate_gp_instance_config_items(entity, new_gpid)
+                logger.info(f"Added {len(entity.get('configurationItems', []))} new configuration items from catalog")
+            except Exception as e:
+                logger.error(f"Error populating GP instance config items: {e}")
+                # Continue with the update despite config population error
+    
     # Update the entity based on the provided attributes
     config_items_updated = False
     
@@ -620,13 +653,22 @@ def update_entity(environment: str, guid: str, attributes: dict) -> Optional[dic
         if key == 'guid':
             continue
             
+        # Skip reserved keys
+        if key in ['reset_config_items']:
+            continue
+            
         # Handle ID carefully - for some types it shouldn't be changed
         if key == 'id' and entity_type in ['security_domain', 'gp_instance']:
             logger.warning(f"Attempted to change ID of {entity_type} which is not allowed")
             continue
+        
+        # Skip configuration items if we've reset them due to GP change
+        if key == 'configurationItems' and reset_config_items:
+            logger.info(f"Skipping configurationItems update as they were reset due to GP change")
+            continue
             
         # Special handling for configuration items to ensure GUIDs are preserved
-        if key == 'configurationItems' and isinstance(value, list):
+        if key == 'configurationItems' and isinstance(value, list) and not reset_config_items:
             config_items_updated = True
             
             # Create a map of existing items by name for faster lookup

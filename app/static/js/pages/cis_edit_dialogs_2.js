@@ -434,9 +434,9 @@ const CISEditDialogs2 = {
                         <div class="loading-indicator mt-2" id="service-loading-${randomSuffix}">
                             <div class="spinner-border spinner-border-sm text-primary" role="status">
                                 <span class="sr-only">Loading services...</span>
-                            </div>
+                    </div>
                             <small class="text-muted ml-2">Loading services...</small>
-                        </div>
+                    </div>
                     </div>
                     <div class="form-group mb-4">
                         <label for="gpid_${randomSuffix}" class="form-label d-block mb-2">GP ID</label>
@@ -838,17 +838,236 @@ const CISEditDialogs2 = {
             case 'sp_instance':
                 form.innerHTML = `
                     <div class="form-group">
-                        <label for="spId_${randomSuffix}">SP ID</label>
-                        <input type="text" class="form-control" id="spId_${randomSuffix}" name="spId" 
-                            value="${entityData.spId || ''}" readonly autocomplete="new-password">
-                        <small class="form-text text-muted">SP ID cannot be changed</small>
+                        <label for="spId_${randomSuffix}">Specific Product</label>
+                        <div class="loading-indicator mb-2">
+                            <small class="text-muted">Loading specific products...</small>
+                            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        <select class="form-control" id="spId_${randomSuffix}" name="spId" required>
+                            <option value="">Select a Specific Product</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="spVersion_${randomSuffix}">SP Version</label>
-                        <input type="text" class="form-control" id="spVersion_${randomSuffix}" name="spVersion" 
-                            value="${entityData.spVersion || ''}" autocomplete="new-password">
+                        <div class="loading-indicator mb-2">
+                            <small class="text-muted">Loading versions...</small>
+                            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        <select class="form-control" id="spVersion_${randomSuffix}" name="spVersion">
+                            <option value="">First select a Specific Product</option>
+                        </select>
+                        <small class="form-text text-muted">Leave empty if no specific version is required</small>
                     </div>
                 `;
+                
+                // After form is added to DOM, initialize the dropdowns
+                if (typeof CISDropdownUtils !== 'undefined') {
+                    setTimeout(async () => {
+                        try {
+                            const spIdSelect = document.getElementById(`spId_${randomSuffix}`);
+                            const spVersionSelect = document.getElementById(`spVersion_${randomSuffix}`);
+                            const spLoadingIndicator = spIdSelect.closest('.form-group').querySelector('.loading-indicator');
+                            const versionLoadingIndicator = spVersionSelect.closest('.form-group').querySelector('.loading-indicator');
+                            
+                            if (!spIdSelect || !spVersionSelect) {
+                                console.error('SP form fields not found');
+                                return;
+                            }
+                            
+                            // Current SP ID for later selection
+                            const currentSpId = entityData.spId || '';
+                            const currentVersion = entityData.spVersion || '';
+                            
+                            // Initialize SP dropdown with Select2
+                            const select2Options = {
+                                placeholder: 'Select a Specific Product',
+                                allowClear: true,
+                                width: '100%',
+                                dropdownParent: spIdSelect.closest('.modal-body'),
+                                templateResult: (sp) => {
+                                    if (!sp.id) return sp.text;
+                                    return $(`<div>
+                                        <div style="font-weight: normal;">${sp.text}</div>
+                                        ${sp.description ? `<small>${sp.description}</small>` : ''}
+                                    </div>`);
+                                }
+                            };
+                            
+                            // Load SP data and initialize dropdown
+                            await CISDropdownUtils.initSelect2WithFallback(
+                                spIdSelect,
+                                select2Options,
+                                CISDropdownUtils.loadAllSPs,
+                                currentSpId, // Select the current SP by default
+                                // On change handler for SP selection
+                                function(e) {
+                                    const selectedSpId = e.target.value;
+                                    console.log(`Selected SP ID: ${selectedSpId}`);
+                                    
+                                    // Reset version dropdown
+                                    if (typeof jQuery !== 'undefined') {
+                                        $(spVersionSelect).empty();
+                                        $(spVersionSelect).append('<option value="">Select Version (Optional)</option>');
+                                    } else {
+                                        spVersionSelect.innerHTML = '<option value="">Select Version (Optional)</option>';
+                                    }
+                                    
+                                    if (!selectedSpId) {
+                                        spVersionSelect.disabled = true;
+                                        return;
+                                    }
+                                    
+                                    // Show loading indicator for versions
+                                    if (versionLoadingIndicator) {
+                                        versionLoadingIndicator.style.display = 'block';
+                                    }
+                                    
+                                    // Load versions for selected SP
+                                    CISDropdownUtils.loadSPVersions(selectedSpId)
+                                        .then(versions => {
+                                            // Hide loading indicator
+                                            if (versionLoadingIndicator) {
+                                                versionLoadingIndicator.style.display = 'none';
+                                            }
+                                            
+                                            // Enable version dropdown
+                                            spVersionSelect.disabled = false;
+                                            
+                                            // Add "No Version" option
+                                            if (typeof jQuery !== 'undefined') {
+                                                $(spVersionSelect).append('<option value="">No Version (Optional)</option>');
+                                            } else {
+                                                let noVersionOption = document.createElement('option');
+                                                noVersionOption.value = "";
+                                                noVersionOption.textContent = "No Version (Optional)";
+                                                spVersionSelect.appendChild(noVersionOption);
+                                            }
+                                            
+                                            // Add versions to dropdown
+                                            versions.forEach(version => {
+                                                if (typeof jQuery !== 'undefined') {
+                                                    $(spVersionSelect).append(new Option(version.text, version.id));
+                                                } else {
+                                                    let option = document.createElement('option');
+                                                    option.value = version.id;
+                                                    option.textContent = version.text;
+                                                    spVersionSelect.appendChild(option);
+                                                }
+                                            });
+                                            
+                                            // Select current version if exists
+                                            if (currentVersion) {
+                                                if (typeof jQuery !== 'undefined') {
+                                                    $(spVersionSelect).val(currentVersion).trigger('change');
+                                                } else {
+                                                    spVersionSelect.value = currentVersion;
+                                                }
+                                            }
+                                            
+                                            // Initialize select2 if available
+                                            if (typeof jQuery !== 'undefined') {
+                                                try {
+                                                    $(spVersionSelect).select2({
+                                                        placeholder: 'Select Version (Optional)',
+                                                        allowClear: true,
+                                                        width: '100%',
+                                                        dropdownParent: spVersionSelect.closest('.modal-body')
+                                                    });
+                                                } catch (e) {
+                                                    console.error('Error initializing select2 for version dropdown:', e);
+                                                }
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error(`Error loading versions for SP ${selectedSpId}:`, error);
+                                            if (versionLoadingIndicator) {
+                                                versionLoadingIndicator.innerHTML = '<div class="text-danger">Error loading versions</div>';
+                                            }
+                                            
+                                            // Still enable the dropdown for manual entry
+                                            spVersionSelect.disabled = false;
+                                            if (typeof jQuery !== 'undefined') {
+                                                $(spVersionSelect).append('<option value="">Enter version manually</option>');
+                                            } else {
+                                                spVersionSelect.innerHTML = '<option value="">Enter version manually</option>';
+                                            }
+                                        });
+                                }
+                            );
+                            
+                            // If we have a current SP ID, trigger loading of versions
+                            if (currentSpId) {
+                                // This will automatically trigger the loading of versions via the onChange handler
+                                if (typeof jQuery !== 'undefined') {
+                                    setTimeout(() => {
+                                        $(spIdSelect).trigger('change');
+                                    }, 200);
+                                } else {
+                                    // Manual trigger for non-jQuery
+                                    const event = new Event('change');
+                                    spIdSelect.dispatchEvent(event);
+                                }
+                            }
+                            
+                        } catch (error) {
+                            console.error('Error initializing SP dropdowns:', error);
+                            
+                            // Fallback to simple text inputs
+                            const spGroup = form.querySelector('.form-group:first-child');
+                            const versionGroup = form.querySelector('.form-group:nth-child(2)');
+                            
+                            if (spGroup) {
+                                spGroup.innerHTML = `
+                                    <label for="spId_${randomSuffix}">SP ID</label>
+                                    <input type="text" class="form-control" id="spId_${randomSuffix}" name="spId" 
+                                        value="${entityData.spId || ''}" required autocomplete="new-password">
+                                    <div class="mt-2 text-danger">
+                                        <small>Dropdown utility not available</small>
+                                    </div>
+                                `;
+                            }
+                            
+                            if (versionGroup) {
+                                versionGroup.innerHTML = `
+                                    <label for="spVersion_${randomSuffix}">SP Version</label>
+                                    <input type="text" class="form-control" id="spVersion_${randomSuffix}" name="spVersion" 
+                                        value="${entityData.spVersion || ''}" autocomplete="new-password">
+                                    <small class="form-text text-muted">Leave empty if no specific version is required</small>
+                                `;
+                            }
+                        }
+                    }, 100);
+                } else {
+                    // CISDropdownUtils not available - fallback to text inputs
+                    console.error('CISDropdownUtils not available for SP instance form initialization');
+                    
+                    const spGroup = form.querySelector('.form-group:first-child');
+                    const versionGroup = form.querySelector('.form-group:nth-child(2)');
+                    
+                    if (spGroup) {
+                        spGroup.innerHTML = `
+                            <label for="spId_${randomSuffix}">SP ID</label>
+                            <input type="text" class="form-control" id="spId_${randomSuffix}" name="spId" 
+                                value="${entityData.spId || ''}" required autocomplete="new-password">
+                            <div class="mt-2 text-danger">
+                                <small>Dropdown utility not available</small>
+                            </div>
+                        `;
+                    }
+                    
+                    if (versionGroup) {
+                        versionGroup.innerHTML = `
+                            <label for="spVersion_${randomSuffix}">SP Version</label>
+                            <input type="text" class="form-control" id="spVersion_${randomSuffix}" name="spVersion" 
+                                value="${entityData.spVersion || ''}" autocomplete="new-password">
+                            <small class="form-text text-muted">Leave empty if no specific version is required</small>
+                        `;
+                    }
+                }
                 break;
                 
             default:
@@ -1046,16 +1265,27 @@ const CISEditDialogs2 = {
     },
     
     /**
-     * Collect form data from the edit form
-     * @returns {Object} Form data as an object
+     * Collect form data from the edit entity form
+     * @param {HTMLFormElement} form - The form element to collect data from
+     * @returns {Object} Object containing the form data
      */
-    collectFormData: function() {
+    collectFormData: function(form) {
+        if (!form) {
+            form = document.getElementById('entity-edit-form');
+        }
+        
+        if (!form) {
+            console.error('Cannot collect data from missing form');
+            return {};
+        }
+        
         const formData = {};
         
-        // Get all input fields
-        const inputs = this.editForm.querySelectorAll('input:not(.config-item), select:not(.config-item), textarea:not(.config-item)');
+        // Get all input fields excluding config items
+        const inputs = form.querySelectorAll('input:not(.config-item):not([readonly]), select:not([readonly]), textarea:not([readonly])');
+        
         inputs.forEach(input => {
-            if (input.name && !input.readOnly) {
+            if (input.name) {
                 formData[input.name] = input.value;
             }
         });
@@ -1064,14 +1294,30 @@ const CISEditDialogs2 = {
     },
     
     /**
-     * Collect configuration item changes
+     * Collect configuration item changes from the edit form
+     * @param {HTMLFormElement} form - The form containing config items
      * @returns {Array} Array of configuration item changes
      */
-    collectConfigItemChanges: function() {
+    collectConfigItemChanges: function(form) {
+        if (!form) {
+            form = document.getElementById('entity-edit-form');
+        }
+        
+        if (!form) {
+            console.error('Cannot collect config items from missing form');
+            return [];
+        }
+        
+        // If we're resetting config items due to GP change, return empty array
+        if (form.getAttribute('data-reset-config') === 'true') {
+            console.log('GP changed - skipping config item collection as they will be reset');
+            return [];
+        }
+        
         const changes = [];
         
         // Get all config item inputs
-        const configInputs = this.editForm.querySelectorAll('input.config-item');
+        const configInputs = form.querySelectorAll('input.config-item');
         configInputs.forEach(input => {
             const name = input.getAttribute('data-name');
             const guid = input.getAttribute('data-guid');
@@ -1093,43 +1339,77 @@ const CISEditDialogs2 = {
      * Handle the edit confirmation
      */
     handleEditConfirm: function() {
-        const { type, id, guid, data: entityData } = this.currentElement;
+        if (!this.currentElement.type || !this.currentElement.id || !this.currentElement.guid) {
+            console.error('Missing required element information for edit');
+            return;
+        }
         
-        // Show loading indicator
-        this.showLoadingOverlay('Saving changes...');
+        // Show loading overlay
+        if (typeof CISUIUtils !== 'undefined' && CISUIUtils.showLoadingOverlay) {
+            CISUIUtils.showLoadingOverlay('Saving changes...');
+        } else {
+            this.showLoadingOverlay('Saving changes...');
+        }
         
-        // Collect form data
-        const formData = this.collectFormData();
+        // Check if this is a GP instance and GP type changed
+        const form = document.getElementById('entity-edit-form');
+        const isGpInstance = this.currentElement.type === 'gp_instance';
+        let gpChanged = false;
         
-        // Check if we're updating a GP instance and if the GP ID has changed
-        let gpIdChanged = false;
-        if (type === 'gp_instance' && entityData) {
-            const originalGpId = entityData.gpid || '';
-            const newGpId = formData.gpid || '';
+        if (isGpInstance) {
+            const originalGpId = this.currentElement.data.gpid || '';
+            const newGpId = form.querySelector('select[name="gpid"]')?.value || 
+                          form.querySelector('input[name="gpid"]')?.value || '';
             
-            // Set the flag if the GP ID has changed
-            gpIdChanged = (newGpId !== '' && newGpId !== originalGpId);
+            // Check if GP ID changed
+            gpChanged = (newGpId && newGpId !== originalGpId);
             
-            // Log this important change
-            if (gpIdChanged) {
-                console.log(`GP ID changed from ${originalGpId} to ${newGpId} - configuration items will be refreshed`);
+            // If GP changed, we need to mark configuration items for removal
+            if (gpChanged) {
+                console.log(`GP instance changed from ${originalGpId} to ${newGpId} - configuration items will be reset`);
+                form.setAttribute('data-reset-config', 'true');
             }
         }
         
-        // Collect config item changes if applicable
-        const configChanges = this.collectConfigItemChanges();
+        // Collect form data
+        const attributes = this.collectFormData(form);
+        // If GP changed, don't include config item changes
+        const configChanges = gpChanged ? [] : this.collectConfigItemChanges(form);
         
-        // Update the entity using the API
-        CISApi2.updateEntity(guid, formData)
-            .then(response => {
-                if (!response || response.status !== 'success') {
-                    throw new Error('Failed to update entity');
+        // Make API call to update element
+        const apiRequest = {
+            entity_type: this.currentElement.type,
+            guid: this.currentElement.guid,
+            attributes: attributes,
+            config_changes: configChanges
+        };
+        
+        // Add option to reset config items if GP changed
+        if (gpChanged) {
+            apiRequest.reset_config_items = true;
+        }
+        
+        // Log details of the update for debugging
+        console.log('Updating element with data:', apiRequest);
+        
+        // Make API call to update
+        fetch(`/api/v2/cis_plan/entity/${this.currentElement.guid}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(apiRequest)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status !== 'success') {
+                    throw new Error(data.message || 'Failed to update entity');
                 }
                 
                 // For GP Instances with changed GP ID, refresh config items
-                if (type === 'gp_instance' && gpIdChanged) {
+                if (isGpInstance && gpChanged) {
                     // After successful update, call the refresh endpoint to get the new configuration items
-                    return fetch(`/api/v2/cis_plan/gp_instance/${guid}/refresh_config`, {
+                    return fetch(`/api/v2/cis_plan/gp_instance/${this.currentElement.guid}/refresh_config`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -1140,21 +1420,21 @@ const CISEditDialogs2 = {
                         if (refreshResult.status !== 'success') {
                             console.warn('Configuration items refresh partial failure:', refreshResult.message);
                         }
-                        return response; // Continue with the original response
+                        return data; // Continue with the original response
                     })
                     .catch(error => {
                         console.warn('Configuration items refresh failed:', error);
-                        return response; // Continue with the original response despite config refresh failure
+                        return data; // Continue with the original response despite config refresh failure
                     });
                 }
                 
                 // Process configuration item changes if GP ID hasn't changed
                 const configPromises = [];
-                if (!gpIdChanged && configChanges.length > 0) {
+                if (!gpChanged && configChanges.length > 0) {
                     // First approach: Get the entity data again to get updated configuration items
                     // This ensures we have the latest state of the entity
                     configPromises.push(
-                        fetch(`/api/v2/cis_plan/entity/${guid}`)
+                        fetch(`/api/v2/cis_plan/entity/${this.currentElement.guid}`)
                             .then(resp => resp.json())
                             .then(entityData => {
                                 if (entityData.status !== 'success' || !entityData.data) {
@@ -1218,12 +1498,17 @@ const CISEditDialogs2 = {
                                     updatedEntity.configurationItems = configItems;
                                     
                                     // Update the entire entity to save all config changes at once
-                                    return fetch(`/api/v2/cis_plan/entity/${guid}`, {
+                                    return fetch(`/api/v2/cis_plan/entity/${this.currentElement.guid}`, {
                                         method: 'PUT',
                                         headers: {
                                             'Content-Type': 'application/json',
                                         },
-                                        body: JSON.stringify(updatedEntity)
+                                        body: JSON.stringify({
+                                            entity_type: this.currentElement.type,
+                                            attributes: {
+                                                configurationItems: updatedEntity.configurationItems
+                                            }
+                                        })
                                     })
                                     .then(resp => resp.json())
                                     .then(result => {
@@ -1246,17 +1531,17 @@ const CISEditDialogs2 = {
                 }
                 
                 // Wait for all updates to complete
-                return Promise.all([response, ...configPromises]);
+                return Promise.all([data, ...configPromises]);
             })
             .then(results => {
                 // Hide the modal
                 this.hideEditModal();
                 
                 // Show success message
-                this.showSuccessToast(`Successfully updated ${CISUtil2.getEntityTypeName(type)}`);
+                this.showSuccessToast(`Successfully updated ${CISUtil2.getEntityTypeName(this.currentElement.type)}`);
                 
                 // Refresh the UI while maintaining the current selection
-                this.refreshAfterEdit(type, id, guid);
+                this.refreshAfterEdit(this.currentElement.type, this.currentElement.id, this.currentElement.guid);
             })
             .catch(error => {
                 console.error('Error updating entity:', error);

@@ -120,7 +120,27 @@ def handle_entity(guid):
             
         elif request.method == 'PUT':
             data = request.get_json()
-            updated = update_entity(environment, guid, data)
+            logger.info(f"Received update for entity {guid}: {data}")
+            
+            # Handle different API payload formats
+            if isinstance(data, dict):
+                attributes = data.get('attributes', {})
+                
+                # Check if we're updating a GP instance and need to reset config items
+                if data.get('entity_type') == 'gp_instance' and data.get('reset_config_items', False):
+                    logger.info(f"Request to reset configuration items for GP instance {guid}")
+                    attributes['reset_config_items'] = True
+                
+                # Preserve reset_config_items flag if present in attributes
+                if isinstance(attributes, dict) and attributes.get('reset_config_items', False):
+                    logger.info(f"Reset configuration items flag found in attributes")
+                    # No need to do anything special here since update_entity handles this flag
+                
+                updated = update_entity(environment, guid, attributes)
+            else:
+                # Direct update with the data object
+                updated = update_entity(environment, guid, data)
+                
             if not updated:
                 return error_response(f"Failed to update entity with GUID {guid}", 404)
             return success_response(updated)
@@ -132,6 +152,7 @@ def handle_entity(guid):
             return success_response({"deleted": True})
             
     except ValueError as ve:
+        logger.error(f"Value error handling entity {guid}: {str(ve)}")
         return error_response(str(ve), 400)
     except Exception as e:
         logger.error(f"Error handling entity {guid}: {e}")

@@ -20,7 +20,12 @@ const CISDialogs2 = {
      * @returns {string} Random suffix string
      */
     generateRandomSuffix: function() {
-        this.currentRandomSuffix = Math.random().toString(36).substring(2, 8);
+        // Use the utility function if available, otherwise fall back to our implementation
+        if (typeof CISUIUtils !== 'undefined' && CISUIUtils.generateRandomSuffix) {
+            this.currentRandomSuffix = CISUIUtils.generateRandomSuffix();
+        } else {
+            this.currentRandomSuffix = Math.random().toString(36).substring(2, 8);
+        }
         return this.currentRandomSuffix;
     },
     
@@ -219,7 +224,13 @@ const CISDialogs2 = {
                 console.log(`Using parent ${parentType} with ID ${parentId} and GUID ${this.currentAddData.parentGuid}`);
             } else {
                 console.error(`Could not find parent node for ${parentType} with ID ${parentId}`);
+                
+                // Use UI Utils for toast message if available
+                if (typeof CISUIUtils !== 'undefined' && CISUIUtils.showErrorToast) {
+                    CISUIUtils.showErrorToast(`Error: Could not find parent element for adding a new ${CISUtil2.getEntityTypeName(elementType)}`);
+                } else {
                 this.showErrorToast(`Error: Could not find parent element for adding a new ${CISUtil2.getEntityTypeName(elementType)}`);
+                }
                 return;
             }
         }
@@ -236,84 +247,120 @@ const CISDialogs2 = {
         // Create the dialog content
         this.addModalBody.innerHTML = '';
         
-        // Add parent information in a clean, minimalistic style
+        // Add parent information in a clean, minimalistic style using the utility function
+        if (typeof CISFormUtils !== 'undefined' && CISFormUtils.createParentInfoBox) {
+            const parentInfo = CISFormUtils.createParentInfoBox(
+                parentType, 
+                parentId, 
+                this.currentAddData.parentGuid
+            );
+            this.addModalBody.appendChild(parentInfo);
+        } else {
+            // Fallback to inline creation if utility isn't available
         const parentInfo = document.createElement('div');
-        parentInfo.className = 'alert alert-info mb-4';
-        parentInfo.style.backgroundColor = '#e3f2fd';
-        parentInfo.style.border = '1px solid #90caf9';
-        parentInfo.style.borderRadius = '4px';
-        parentInfo.style.padding = '15px';
-        
-        // Create formatted HTML with proper validation - Clean, minimalistic format
-        let infoHTML = `
-            <h6 style="font-weight: 500; margin-bottom: 12px;">Adding a new ${CISUtil2.getEntityTypeName(elementType)} to:</h6>
-            <div style="margin-left: 10px;">
-                <p style="margin-bottom: 4px;"><strong>Parent Type:</strong> ${CISUtil2.getEntityTypeName(parentType)}</p>
-                <p style="margin-bottom: 4px;"><strong>Parent ID:</strong> ${parentId}</p>`;
-        
-        // Display the parent GUID as a smaller text only for debugging purposes
+            parentInfo.className = 'alert alert-info mb-4';
+            parentInfo.style.backgroundColor = '#e3f2fd';
+            parentInfo.style.border = '1px solid #90caf9';
+            parentInfo.style.borderRadius = '4px';
+            parentInfo.style.padding = '15px';
+            
+            let infoHTML = `
+                <h6 style="font-weight: 500; margin-bottom: 12px;">Adding a new ${CISUtil2.getEntityTypeName(elementType)} to:</h6>
+                <div style="margin-left: 10px;">
+                    <p style="margin-bottom: 4px;"><strong>Parent Type:</strong> ${CISUtil2.getEntityTypeName(parentType)}</p>
+                    <p style="margin-bottom: 4px;"><strong>Parent ID:</strong> ${parentId}</p>`;
+            
         if (this.currentAddData.parentGuid) {
-            infoHTML += `<p style="margin-bottom: 0; font-size: 0.8rem; color: #666;"><strong>Parent GUID:</strong> ${this.currentAddData.parentGuid}</p>`;
+                infoHTML += `<p style="margin-bottom: 0; font-size: 0.8rem; color: #666;"><strong>Parent GUID:</strong> ${this.currentAddData.parentGuid}</p>`;
         }
-        
-        infoHTML += `</div>`;
+            
+            infoHTML += `</div>`;
         
         parentInfo.innerHTML = infoHTML;
         this.addModalBody.appendChild(parentInfo);
+        }
         
-        // Create a form for the new element's properties
+        // Create a form for the new element's properties using the form utility
+        if (typeof CISFormUtils !== 'undefined' && CISFormUtils.generateEntityForm) {
+            const form = CISFormUtils.generateEntityForm(elementType, null, 'add', randomSuffix);
+            this.addModalBody.appendChild(form);
+            
+            // Initialize additional functionality based on entity type
+            this.initializeFormFunctionality(form, elementType, randomSuffix);
+        } else {
+            // Fallback to old implementation if utility isn't available
         const form = document.createElement('form');
         form.id = 'add-entity-form';
         form.className = 'needs-validation';
-        form.setAttribute('autocomplete', 'off'); // Disable autocomplete at the form level
+            form.setAttribute('autocomplete', 'off'); // Disable autocomplete at the form level
         
-        // Create form fields based on entity type
-        switch(elementType) {
-            case 'mission_network':
+            // Create form fields based on entity type - just a placeholder message in this fallback
                 form.innerHTML = `
-                    <div class="form-group">
-                        <label for="name_${randomSuffix}">Name</label>
-                        <input type="text" class="form-control" id="name_${randomSuffix}" name="name" 
-                            placeholder="Enter mission network name" required autocomplete="new-password">
+                <div class="alert alert-warning">
+                    <p>Form utility not available. Please include cis_form_utils.js</p>
                     </div>
                 `;
-                break;
             
-            case 'network_segment':
-                form.innerHTML = `
-                    <div class="form-group">
-                        <label for="name_${randomSuffix}">Name</label>
-                        <input type="text" class="form-control" id="name_${randomSuffix}" name="name" 
-                            placeholder="Enter network segment name" required autocomplete="new-password">
-                    </div>
-                `;
-                break;
-            
+            this.addModalBody.appendChild(form);
+        }
+        
+        // Show the modal - use UI utility if available
+        if (typeof CISUIUtils !== 'undefined' && CISUIUtils.showModal) {
+            CISUIUtils.showModal('add-modal');
+        } else {
+            this.addModal.style.display = 'block';
+        }
+    },
+    
+    /**
+     * Initialize additional functionality for specific form types
+     * @param {HTMLFormElement} form - The form element 
+     * @param {string} entityType - Type of entity
+     * @param {string} randomSuffix - Random suffix for field IDs
+     */
+    initializeFormFunctionality: function(form, entityType, randomSuffix) {
+        switch(entityType) {
             case 'security_domain':
-                // For security domains, we need to fetch available classifications
-                form.innerHTML = `
-                    <div class="form-group">
-                        <label for="id_${randomSuffix}">Security Classification</label>
-                        <select class="form-control" id="id_${randomSuffix}" name="id" required autocomplete="new-password">
-                            <option value="">Select a classification...</option>
-                            <option value="CL-UNCLASS">Unclassified</option>
-                            <option value="CL-RESTRICTED">Restricted</option>
-                            <option value="CL-SECRET">Secret</option>
-                        </select>
-                        <div class="mt-2 text-center">
-                            <div class="spinner-border spinner-border-sm text-primary" role="status">
-                                <span class="sr-only">Loading classifications...</span>
-                            </div>
-                            <span class="ml-2">Loading security classifications...</span>
-                        </div>
-                    </div>
-                `;
+                // Load security classifications
+                this.loadSecurityClassifications(form, randomSuffix);
+                break;
+            
+            case 'hw_stack':
+                // Initialize participant dropdown
+                setTimeout(() => {
+                    this.initializeParticipantDropdown(form, randomSuffix);
+                }, 100);
+                break;
+            
+            case 'gp_instance':
+                // Initialize service and GP dropdowns
+                setTimeout(() => {
+                    this.initializeServiceGPDropdowns(form, randomSuffix);
+                }, 100);
+                break;
                 
-                // Load actual classifications from the API
+            case 'sp_instance':
+                // Initialize SP form fields - use the form utility directly
+                if (typeof CISFormUtils !== 'undefined' && typeof CISFormUtils.initializeSPFormFields === 'function') {
+                    CISFormUtils.initializeSPFormFields(form, randomSuffix, false, null);
+                } else {
+                    console.error('CISFormUtils.initializeSPFormFields not available');
+                    this.showErrorToast('Form utilities not available for SP instance form');
+                }
+                break;
+        }
+    },
+    
+    /**
+     * Load security classifications for the dropdown
+     * @param {HTMLFormElement} form - The form element
+     * @param {string} randomSuffix - Random suffix for field IDs
+     */
+    loadSecurityClassifications: function(form, randomSuffix) {
                 CISApi2.getSecurityClassifications()
                     .then(response => {
                         if (response && response.status === 'success' && response.data) {
-                            const select = form.querySelector(`select#id_${randomSuffix}`);
+                    const select = form.querySelector(`select#id_${randomSuffix}`);
                             const loadingIndicator = form.querySelector('.spinner-border').parentElement;
                             
                             if (select && loadingIndicator) {
@@ -346,441 +393,265 @@ const CISDialogs2 = {
                             loadingIndicator.innerHTML = '<div class="text-danger">Error loading classifications. Using defaults.</div>';
                         }
                     });
-                break;
+    },
+    
+    /**
+     * Initialize the participant dropdown for HW stack
+     * @param {HTMLFormElement} form - The form element
+     * @param {string} randomSuffix - Random suffix for field IDs
+     */
+    initializeParticipantDropdown: function(form, randomSuffix) {
+        const participantSelect = form.querySelector(`#cisParticipantID_${randomSuffix}`);
+        if (!participantSelect) return;
+        
+        if (typeof CISDropdownUtils !== 'undefined') {
+            // Use dropdown utility if available
+            CISDropdownUtils.initSelect2WithFallback(
+                participantSelect,
+                {
+                    placeholder: 'Search for a participant...',
+                    allowClear: true,
+                    width: '100%'
+                },
+                CISDropdownUtils.loadParticipants
+            );
+        } else {
+            // Fallback to old implementation
+            this.oldInitializeParticipantDropdown(participantSelect, randomSuffix);
+        }
+    },
+    
+    /**
+     * Old implementation of initializing participant dropdown (fallback)
+     * @param {HTMLElement} participantSelect - The select element
+     * @param {string} randomSuffix - Random suffix for field IDs
+     */
+    oldInitializeParticipantDropdown: function(participantSelect, randomSuffix) {
+        const loadingIndicator = document.getElementById('participant-loading');
+        
+        if (participantSelect && typeof jQuery !== 'undefined') {
+            try {
+                // Initialize Select2
+                jQuery(participantSelect).select2({
+                    placeholder: 'Search for a participant...',
+                    allowClear: true,
+                    width: '100%'
+                });
                 
-            case 'hw_stack':
-                form.innerHTML = `
-                    <div class="form-group">
-                        <label for="name_${randomSuffix}">Name</label>
-                        <input type="text" class="form-control" id="name_${randomSuffix}" name="name" 
-                            placeholder="Enter hardware stack name" required autocomplete="new-password">
-                    </div>
-                    <div class="form-group">
-                        <label for="cisParticipantID_${randomSuffix}">CIS Participant</label>
-                        <select class="form-control" id="cisParticipantID_${randomSuffix}" name="cisParticipantID" autocomplete="new-password">
-                            <option value="">-- Select Participant --</option>
-                        </select>
-                        <div class="loading-indicator mt-2" id="participant-loading">
-                            <div class="spinner-border spinner-border-sm text-primary" role="status">
-                                <span class="sr-only">Loading participants...</span>
-                            </div>
-                            <small class="text-muted ml-2">Loading participants...</small>
-                        </div>
-                    </div>
-                `;
+                // Make search field autocomplete off
+                jQuery(participantSelect).on('select2:open', function() {
+                    setTimeout(function() {
+                        const searchField = document.querySelector('.select2-search__field');
+                        if (searchField) {
+                            searchField.setAttribute('autocomplete', 'new-password');
+                        }
+                    }, 100);
+                });
                 
-                // After form is appended to the DOM, initialize Select2
-                setTimeout(() => {
-                    const participantSelect = document.getElementById(`cisParticipantID_${randomSuffix}`);
-                    if (participantSelect && typeof jQuery !== 'undefined') {
-                        try {
-                            // Initialize Select2
-                            jQuery(participantSelect).select2({
-                                placeholder: 'Search for a participant...',
-                                allowClear: true,
-                                width: '100%'
-                            });
-                            
-                            // Make sure the search field inside Select2 also has autocomplete off
-                            jQuery(participantSelect).on('select2:open', function() {
-                                setTimeout(function() {
-                                    const searchField = document.querySelector('.select2-search__field');
-                                    if (searchField) {
-                                        searchField.setAttribute('autocomplete', 'new-password');
-                                    }
-                                }, 100);
-                            });
-                            
-                            // Load participants from API
-                            this.loadParticipants().then(participants => {
-                                // Remove loading indicator
-                                const loadingIndicator = document.getElementById('participant-loading');
-                                if (loadingIndicator) {
-                                    loadingIndicator.style.display = 'none';
-                                }
-                                
-                                // Add options to select
-                                participants.forEach(participant => {
-                                    const option = new Option(participant.text, participant.id, false, false);
-                                    jQuery(participantSelect).append(option);
-                                });
-                            }).catch(error => {
-                                console.error('Error loading participants for dropdown:', error);
-                                const loadingIndicator = document.getElementById('participant-loading');
-                                if (loadingIndicator) {
-                                    loadingIndicator.innerHTML = '<div class="text-danger">Error loading participants</div>';
-                                }
-                            });
-                        } catch (e) {
-                            console.error('Error initializing Select2:', e);
-                            // Fallback to regular select if Select2 fails
-                            const loadingIndicator = document.getElementById('participant-loading');
-                            if (loadingIndicator) {
-                                loadingIndicator.innerHTML = '<div class="text-warning">Using standard dropdown (Select2 failed to load)</div>';
-                            }
-                        }
-                    } else if (participantSelect) {
-                        // jQuery not available, use regular select
-                        console.warn('jQuery not available, using regular select');
-                        const loadingIndicator = document.getElementById('participant-loading');
-                        if (loadingIndicator) {
-                            // Still load participants but use regular select
-                            this.loadParticipants().then(participants => {
-                                loadingIndicator.style.display = 'none';
-                                
-                                // Add options to select without jQuery
-                                participants.forEach(participant => {
-                                    const option = document.createElement('option');
-                                    option.value = participant.id;
-                                    option.textContent = participant.text;
-                                    participantSelect.appendChild(option);
-                                });
-                            }).catch(error => {
-                                console.error('Error loading participants for dropdown:', error);
-                                loadingIndicator.innerHTML = '<div class="text-danger">Error loading participants</div>';
-                            });
-                        }
+                // Load participants from API
+                this.loadParticipants().then(participants => {
+                    // Remove loading indicator
+                    if (loadingIndicator) {
+                        loadingIndicator.style.display = 'none';
                     }
-                }, 100); // Short delay to ensure DOM is ready
-                break;
-                
-            case 'asset':
-                form.innerHTML = `
-                    <div class="form-group">
-                        <label for="name_${randomSuffix}">Name</label>
-                        <input type="text" class="form-control" id="name_${randomSuffix}" name="name" 
-                            placeholder="Enter asset name" required autocomplete="new-password">
-                    </div>
-                `;
-                break;
-                
-            case 'network_interface':
-                form.innerHTML = `
-                    <div class="form-group">
-                        <label for="name_${randomSuffix}">Name</label>
-                        <input type="text" class="form-control" id="name_${randomSuffix}" name="name" 
-                            placeholder="Enter network interface name" required autocomplete="new-password">
-                    </div>
-                    <div class="form-group">
-                        <label for="ip_address_${randomSuffix}">IP Address</label>
-                        <input type="text" class="form-control" id="ip_address_${randomSuffix}" name="ip_address" 
-                            placeholder="E.g., 192.168.1.1" autocomplete="new-password">
-                    </div>
-                    <div class="form-group">
-                        <label for="subnet_${randomSuffix}">Subnet Mask</label>
-                        <input type="text" class="form-control" id="subnet_${randomSuffix}" name="subnet" 
-                            placeholder="E.g., 255.255.255.0" autocomplete="new-password">
-                    </div>
-                    <div class="form-group">
-                        <label for="fqdn_${randomSuffix}">FQDN</label>
-                        <input type="text" class="form-control" id="fqdn_${randomSuffix}" name="fqdn" 
-                            placeholder="E.g., server.domain.com" autocomplete="new-password">
-                    </div>
-                `;
-                break;
-                
-            case 'gp_instance':
-                form.innerHTML = `
-                    <div class="form-group mb-4">
-                        <label for="serviceId_${randomSuffix}" class="form-label d-block mb-2">Service ID</label>
-                        <select class="form-control" id="serviceId_${randomSuffix}" name="serviceId" autocomplete="new-password">
-                            <option value="">-- Select Service --</option>
-                        </select>
-                        <div class="loading-indicator mt-2" id="service-loading-${randomSuffix}">
-                            <div class="spinner-border spinner-border-sm text-primary" role="status">
-                                <span class="sr-only">Loading services...</span>
-                            </div>
-                            <small class="text-muted ml-2">Loading services...</small>
-                        </div>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="gpid_${randomSuffix}" class="form-label d-block mb-2">GP ID</label>
-                        <select class="form-control" id="gpid_${randomSuffix}" name="gpid" required autocomplete="new-password">
-                            <option value="">-- Select GP --</option>
-                        </select>
-                        <div class="loading-indicator mt-2" id="gp-loading-${randomSuffix}">
-                            <div class="spinner-border spinner-border-sm text-primary" role="status">
-                                <span class="sr-only">Loading GPs...</span>
-                            </div>
-                            <small class="text-muted ml-2">Select a Service to load GPs...</small>
-                        </div>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="instanceLabel_${randomSuffix}" class="form-label d-block mb-2">Instance Label</label>
-                        <input type="text" class="form-control" id="instanceLabel_${randomSuffix}" name="instanceLabel" 
-                            placeholder="Optional label" autocomplete="new-password">
-                    </div>
-                `;
-                
-                // After form is appended to the DOM, add custom styling
-                setTimeout(() => {
-                    // Add custom styling to Select2 dropdowns when initialized
-                    const styleSelect2 = () => {
-                        // Add custom CSS to the document to style Select2 dropdowns
-                        const styleElement = document.createElement('style');
-                        styleElement.textContent = `
-                            .select2-container {
-                                width: 100% !important;
-                                margin-bottom: 10px;
-                            }
-                            .select2-selection {
-                                height: auto !important;
-                                min-height: 38px !important;
-                                padding: 0.375rem 0 !important;
-                            }
-                            .select2-selection__rendered {
-                                line-height: 1.5 !important;
-                                padding-left: 12px !important;
-                                display: flex !important;
-                                flex-direction: column !important;
-                            }
-                            .select2-selection__arrow {
-                                height: 36px !important;
-                            }
-                            .select2-selection--single {
-                                border: 1px solid #ced4da !important;
-                                border-radius: 4px !important;
-                            }
-                            .select2-search__field {
-                                padding: 8px 12px !important;
-                            }
-                            /* Ensure dropdown is on top of other elements */
-                            .select2-dropdown {
-                                z-index: 9999 !important;
-                            }
-                            /* Fix spacing between Select2 elements */
-                            .form-group + .form-group {
-                                margin-top: 20px;
-                            }
-                            /* Improved clear button (x) styling */
-                            .select2-selection__clear {
-                                display: block !important;
-                                float: right !important;
-                                margin-right: 20px !important;
-                                font-size: 1.2em !important;
-                                font-weight: bold !important;
-                                color: #6c757d !important;
-                                margin-top: -15px !important;
-                                cursor: pointer !important;
-                            }
-                            /* Format selected items more cleanly */
-                            .select2-selection__choice__display {
-                                padding: 0 5px !important;
-                            }
-                            /* Improve dropdown item appearance */
-                            .select2-results__option {
-                                padding: 8px 12px !important;
-                            }
-                            .select2-results__option--highlighted {
-                                background-color: rgba(var(--primary-color-rgb), 0.8) !important;
-                            }
-                        `;
-                        document.head.appendChild(styleElement);
-                    };
                     
-                    const serviceSelect = document.getElementById(`serviceId_${randomSuffix}`);
-                    const gpSelect = document.getElementById(`gpid_${randomSuffix}`);
-                    const serviceLoadingIndicator = document.getElementById(`service-loading-${randomSuffix}`);
-                    const gpLoadingIndicator = document.getElementById(`gp-loading-${randomSuffix}`);
-                    
-                    if (serviceSelect && gpSelect && typeof jQuery !== 'undefined') {
-                        try {
-                            // Add the custom styling for Select2
-                            styleSelect2();
-                            
-                            // Initialize Select2 for service dropdown with improved formatting
-                            jQuery(serviceSelect).select2({
-                                placeholder: 'Search for a service...',
-                                allowClear: true,
-                                width: '100%',
-                                dropdownParent: jQuery(serviceSelect).parent(), // Ensure proper positioning
-                                templateSelection: function(data) {
-                                    if (!data.id) return data.text;
-                                    
-                                    // Extract ID from text if in format "Name (ID)"
-                                    let id = data.id;
-                                    let name = data.text.replace(/\s*\([^)]*\)\s*$/, ''); // Remove "(ID)" part
-                                    
-                                    return jQuery('<div>').html(`
-                                        <div style="font-size: 0.8em; color: #6c757d; margin-bottom: -5px;">${id}</div>
-                                        <div style="font-weight: 500;">${name}</div>
-                                    `);
-                                }
-                            });
-                            
-                            // Initialize Select2 for GP dropdown with the same improved formatting
-                            jQuery(gpSelect).select2({
-                                placeholder: 'Search for a GP...',
-                                allowClear: true,
-                                width: '100%',
-                                dropdownParent: jQuery(gpSelect).parent(), // Ensure proper positioning
-                                templateSelection: function(data) {
-                                    if (!data.id) return data.text;
-                                    
-                                    // Extract ID from text if in format "Name (ID)"
-                                    let id = data.id;
-                                    let nameMatch = data.text.match(/(.*?)\s*\(([^)]*)\)\s*$/);
-                                    let name = nameMatch ? nameMatch[1] : data.text;
-                                    
-                                    return jQuery('<div>').html(`
-                                        <div style="font-size: 0.8em; color: #6c757d; margin-bottom: -5px;">${id}</div>
-                                        <div style="font-weight: 500;">${name}</div>
-                                    `);
-                                }
-                            });
-                            
-                            // Make sure the search fields inside Select2 also have autocomplete off
-                            jQuery(serviceSelect).on('select2:open', function() {
-                                setTimeout(function() {
-                                    const searchField = document.querySelector('.select2-search__field');
-                                    if (searchField) {
-                                        searchField.setAttribute('autocomplete', 'new-password');
-                                    }
-                                }, 100);
-                            });
-                            
-                            jQuery(gpSelect).on('select2:open', function() {
-                                setTimeout(function() {
-                                    const searchField = document.querySelector('.select2-search__field');
-                                    if (searchField) {
-                                        searchField.setAttribute('autocomplete', 'new-password');
-                                    }
-                                }, 100);
-                            });
-                            
-                            // Load all services
-                            this.loadAllServices().then(services => {
-                                if (serviceLoadingIndicator) {
-                                    serviceLoadingIndicator.style.display = 'none';
-                                }
-                                
-                                // Add options to service select
-                                services.forEach(service => {
-                                    const option = new Option(service.text, service.id, false, false);
-                                    jQuery(serviceSelect).append(option);
-                                });
-                                
-                                // Handle service selection change
-                                jQuery(serviceSelect).on('change', (e) => {
-                                    const selectedServiceId = e.target.value;
-                                    
-                                    // Clear GP dropdown
-                                    jQuery(gpSelect).empty().append(new Option('-- Select GP --', '', true, true));
-                                    
-                                    if (selectedServiceId) {
-                                        // Show loading for GPs
-                                        if (gpLoadingIndicator) {
-                                            gpLoadingIndicator.style.display = 'block';
-                                            gpLoadingIndicator.innerHTML = `
-                                                <div class="spinner-border spinner-border-sm text-primary" role="status">
-                                                    <span class="sr-only">Loading GPs...</span>
-                                                </div>
-                                                <small class="text-muted ml-2">Loading GPs for service ${selectedServiceId}...</small>
-                                            `;
-                                        }
-                                        
-                                        // Load GPs for the selected service
-                                        this.loadServiceGPs(selectedServiceId).then(gps => {
-                                            if (gpLoadingIndicator) {
-                                                gpLoadingIndicator.style.display = 'none';
-                                            }
-                                            
-                                            // Add options to GP select
-                                            const gpPromises = gps.map(gp => {
-                                                return this.getGPName(gp).then(gpName => {
-                                                    return {
-                                                        id: gp,
-                                                        text: `${gpName} (${gp})`
-                                                    };
-                                                }).catch(() => {
-                                                    return {
-                                                        id: gp,
-                                                        text: gp
-                                                    };
-                                                });
-                                            });
-                                            
-                                            Promise.all(gpPromises).then(gpOptions => {
-                                                gpOptions.forEach(gp => {
-                                                    const option = new Option(gp.text, gp.id, false, false);
-                                                    jQuery(gpSelect).append(option);
-                                                });
-                                            });
-                                        }).catch(error => {
-                                            console.error('Error loading GPs for service:', error);
-                                            if (gpLoadingIndicator) {
-                                                gpLoadingIndicator.innerHTML = '<div class="text-danger">Error loading GPs</div>';
-                                            }
-                                        });
-                                    } else {
-                                        // No service selected, show placeholder
-                                        if (gpLoadingIndicator) {
-                                            gpLoadingIndicator.innerHTML = '<small class="text-muted">Select a Service to load GPs...</small>';
-                                        }
-                                    }
-                                });
-                            }).catch(error => {
-                                console.error('Error loading services:', error);
-                                if (serviceLoadingIndicator) {
-                                    serviceLoadingIndicator.innerHTML = '<div class="text-danger">Error loading services</div>';
-                                }
-                                
-                                // FALLBACK: Convert selects to text inputs if API fails
-                                this.convertSelectToTextInput(serviceSelect, 'Service ID', 'serviceId', true);
-                                this.convertSelectToTextInput(gpSelect, 'GP ID', 'gpid', true);
-                                
-                                // Hide the GP loading indicator
-                                if (gpLoadingIndicator) {
-                                    gpLoadingIndicator.style.display = 'none';
-                                }
-                            });
-                        } catch (e) {
-                            console.error('Error initializing Select2 for service/GP selection:', e);
-                            // Fallback if Select2 fails
-                            if (serviceLoadingIndicator) {
-                                serviceLoadingIndicator.innerHTML = '<div class="text-warning">Using standard dropdown (Select2 failed)</div>';
-                            }
-                        }
+                    // Add options to select
+                    participants.forEach(participant => {
+                        const option = new Option(participant.text, participant.id, false, false);
+                        jQuery(participantSelect).append(option);
+                    });
+                }).catch(error => {
+                    console.error('Error loading participants for dropdown:', error);
+                    if (loadingIndicator) {
+                        loadingIndicator.innerHTML = '<div class="text-danger">Error loading participants</div>';
                     }
-                }, 100); // Short delay to ensure DOM is ready
-                break;
-                
-            case 'sp_instance':
-                form.innerHTML = `
-                    <div class="form-group">
-                        <label for="spId_${randomSuffix}">SP ID</label>
-                        <input type="text" class="form-control" id="spId_${randomSuffix}" name="spId" required
-                            placeholder="E.g., SP-0267" autocomplete="new-password">
-                    </div>
-                    <div class="form-group">
-                        <label for="spVersion_${randomSuffix}">SP Version</label>
-                        <input type="text" class="form-control" id="spVersion_${randomSuffix}" name="spVersion" 
-                            placeholder="E.g., 1.0" autocomplete="new-password">
-                    </div>
-                `;
-                break;
-                
-            default:
-                form.innerHTML = `
-                    <div class="alert alert-warning">
-                        <p>Add form not implemented for entity type: ${elementType}</p>
-                    </div>
-                `;
-                break;
+                });
+            } catch (e) {
+                console.error('Error initializing Select2:', e);
+                // Fallback to regular select if Select2 fails
+                if (loadingIndicator) {
+                    loadingIndicator.innerHTML = '<div class="text-warning">Using standard dropdown (Select2 failed to load)</div>';
+                }
+            }
+        } else if (participantSelect) {
+            // jQuery not available, use regular select
+            console.warn('jQuery not available, using regular select');
+            if (loadingIndicator) {
+                // Still load participants but use regular select
+                this.loadParticipants().then(participants => {
+                    loadingIndicator.style.display = 'none';
+                    
+                    // Add options to select without jQuery
+                    participants.forEach(participant => {
+                        const option = document.createElement('option');
+                        option.value = participant.id;
+                        option.textContent = participant.text;
+                        participantSelect.appendChild(option);
+                    });
+                }).catch(error => {
+                    console.error('Error loading participants for dropdown:', error);
+                    loadingIndicator.innerHTML = '<div class="text-danger">Error loading participants</div>';
+                });
+            }
+        }
+    },
+    
+    /**
+     * Initialize service and GP dropdowns for GP instance
+     * @param {HTMLFormElement} form - The form element
+     * @param {string} randomSuffix - Random suffix for field IDs
+     */
+    initializeServiceGPDropdowns: function(form, randomSuffix) {
+        const serviceSelect = form.querySelector(`#serviceId_${randomSuffix}`);
+        const gpSelect = form.querySelector(`#gpid_${randomSuffix}`);
+        
+        if (!serviceSelect || !gpSelect) return;
+        
+        if (typeof CISDropdownUtils !== 'undefined') {
+            // Add Select2 styling
+            CISDropdownUtils.addSelect2Styling();
+            
+            // Initialize service dropdown
+            CISDropdownUtils.initSelect2WithFallback(
+                serviceSelect,
+                {
+                    placeholder: 'Search for a service...',
+                    allowClear: true,
+                    width: '100%',
+                    dropdownParent: serviceSelect.parentNode,
+                    templateSelection: function(data) {
+                        if (!data.id) return data.text;
+                        
+                        // Extract ID from text if in format "Name (ID)"
+                        let id = data.id;
+                        let name = data.text.replace(/\s*\([^)]*\)\s*$/, ''); // Remove "(ID)" part
+                        
+                        return jQuery('<div>').html(`
+                            <div style="font-size: 0.8em; color: #6c757d; margin-bottom: -5px;">${id}</div>
+                            <div style="font-weight: 500;">${name}</div>
+                        `);
+                    }
+                },
+                CISDropdownUtils.loadAllServices,
+                null,
+                (e) => this.handleServiceChange(e, gpSelect, randomSuffix)
+            );
+            
+            // Initialize GP dropdown with empty data for now
+            CISDropdownUtils.initSelect2WithFallback(
+                gpSelect,
+                {
+                    placeholder: 'Search for a GP...',
+                    allowClear: true,
+                    width: '100%',
+                    dropdownParent: gpSelect.parentNode,
+                    templateSelection: function(data) {
+                        if (!data.id) return data.text;
+                        
+                        // Extract ID from text if in format "Name (ID)"
+                        let id = data.id;
+                        let nameMatch = data.text.match(/(.*?)\s*\(([^)]*)\)\s*$/);
+                        let name = nameMatch ? nameMatch[1] : data.text;
+                        
+                        return jQuery('<div>').html(`
+                            <div style="font-size: 0.8em; color: #6c757d; margin-bottom: -5px;">${id}</div>
+                            <div style="font-weight: 500;">${name}</div>
+                        `);
+                    }
+                }
+            );
+        } else {
+            // Fallback to old implementation
+            console.warn('CISDropdownUtils not available, using fallback for service/GP initialization');
+            // TODO: Implement fallback or show a warning
+        }
+    },
+    
+    /**
+     * Handle service dropdown change to load GP IDs
+     * @param {Event} e - Change event
+     * @param {HTMLElement} gpSelect - The GP select element
+     * @param {string} randomSuffix - Random suffix for field IDs
+     */
+    handleServiceChange: function(e, gpSelect, randomSuffix) {
+        const selectedServiceId = e.target.value;
+        
+        // Clear GP dropdown
+        if (typeof jQuery !== 'undefined') {
+            jQuery(gpSelect).empty().append(new Option('-- Select GP --', '', true, true));
+        } else {
+            gpSelect.innerHTML = '<option value="">-- Select GP --</option>';
         }
         
-        this.addModalBody.appendChild(form);
+        if (!selectedServiceId) return;
         
-        // Show the modal
-        this.addModal.style.display = 'block';
+        // Show loading for GPs
+        const gpLoadingIndicator = document.getElementById(`gp-loading-${randomSuffix}`);
+        if (gpLoadingIndicator) {
+            gpLoadingIndicator.style.display = 'block';
+            gpLoadingIndicator.innerHTML = `
+                <div class="spinner-border spinner-border-sm text-primary" role="status">
+                    <span class="sr-only">Loading GPs...</span>
+                    </div>
+                <small class="text-muted ml-2">Loading GPs for service ${selectedServiceId}...</small>
+            `;
+        }
+        
+        // Load GPs using dropdown utility
+        if (typeof CISDropdownUtils !== 'undefined') {
+            CISDropdownUtils.loadServiceGPs(selectedServiceId)
+                .then(gps => {
+                    if (gpLoadingIndicator) {
+                        gpLoadingIndicator.style.display = 'none';
+                    }
+                    
+                    // Process GP IDs to get names for each
+                    const gpPromises = gps.map(gp => {
+                        return CISDropdownUtils.getGPName(gp)
+                            .then(gpName => ({
+                                id: gp,
+                                text: `${gpName} (${gp})`
+                            }))
+                            .catch(() => ({
+                                id: gp,
+                                text: gp
+                            }));
+                    });
+                    
+                    // Add all options to dropdown
+                    Promise.all(gpPromises).then(gpOptions => {
+                        gpOptions.forEach(gp => {
+                            if (typeof jQuery !== 'undefined') {
+                                const option = new Option(gp.text, gp.id, false, false);
+                                jQuery(gpSelect).append(option);
+                            } else {
+                                const option = document.createElement('option');
+                                option.value = gp.id;
+                                option.textContent = gp.text;
+                                gpSelect.appendChild(option);
+                            }
+                        });
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading GPs for service:', error);
+                    if (gpLoadingIndicator) {
+                        gpLoadingIndicator.innerHTML = '<div class="text-danger">Error loading GPs</div>';
+                    }
+                });
+        }
     },
     
     /**
      * Hide the add element dialog
      */
     hideAddModal: function() {
+        if (typeof CISUIUtils !== 'undefined' && CISUIUtils.hideModal) {
+            CISUIUtils.hideModal('add-modal');
+        } else {
         if (this.addModal) {
             this.addModal.style.display = 'none';
+            }
         }
     },
     
@@ -790,6 +661,13 @@ const CISDialogs2 = {
      */
     collectAddFormData: function() {
         const form = document.getElementById('add-entity-form');
+        
+        // Use form utility if available
+        if (typeof CISFormUtils !== 'undefined' && CISFormUtils.collectFormData) {
+            return CISFormUtils.collectFormData(form);
+        }
+        
+        // Fallback implementation
         if (!form) return {};
         
         const formData = {};
@@ -811,8 +689,12 @@ const CISDialogs2 = {
     handleAddElementConfirm: function() {
         const { elementType, parentType, parentId, parentName, parentGuid } = this.currentAddData;
         
-        // Show loading indicator
+        // Show loading overlay - use UI utility if available
+        if (typeof CISUIUtils !== 'undefined' && CISUIUtils.showLoadingOverlay) {
+            CISUIUtils.showLoadingOverlay('Creating new element...');
+        } else {
         this.showLoadingOverlay('Creating new element...');
+        }
         
         // Collect form data
         const formData = this.collectAddFormData();
@@ -841,8 +723,12 @@ const CISDialogs2 = {
                 // Hide the modal
                 this.hideAddModal();
                 
-                // Show success message
+                // Show success message - use UI utility if available
+                if (typeof CISUIUtils !== 'undefined' && CISUIUtils.showSuccessToast) {
+                    CISUIUtils.showSuccessToast(`Successfully created new ${CISUtil2.getEntityTypeName(elementType)}`);
+                } else {
                 this.showSuccessToast(`Successfully created new ${CISUtil2.getEntityTypeName(elementType)}`);
+                }
                 
                 // Refresh the UI while maintaining the current position
                 this.refreshAfterAdd(parentType, parentId);
@@ -852,38 +738,21 @@ const CISDialogs2 = {
         })
         .catch(error => {
             console.error('Error creating element:', error);
+            
+            // Show error toast - use UI utility if available
+            if (typeof CISUIUtils !== 'undefined' && CISUIUtils.showErrorToast) {
+                CISUIUtils.showErrorToast(`Failed to create element: ${error.message}`);
+            } else {
             this.showErrorToast(`Failed to create element: ${error.message}`);
+            }
+            
+            // Hide loading overlay - use UI utility if available
+            if (typeof CISUIUtils !== 'undefined' && CISUIUtils.hideLoadingOverlay) {
+                CISUIUtils.hideLoadingOverlay();
+            } else {
             this.hideLoadingOverlay();
+            }
         });
-    },
-    
-    /**
-     * Show a loading overlay
-     * @param {string} message - Message to display
-     */
-    showLoadingOverlay: function(message = 'Loading...') {
-        const overlay = document.createElement('div');
-        overlay.id = 'loading-overlay';
-        overlay.className = 'modal-backdrop fade show d-flex align-items-center justify-content-center';
-        overlay.innerHTML = `
-            <div class="text-center text-white">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <div class="mt-2">${message}</div>
-            </div>
-        `;
-        document.body.appendChild(overlay);
-    },
-    
-    /**
-     * Hide the loading overlay
-     */
-    hideLoadingOverlay: function() {
-        const overlay = document.getElementById('loading-overlay');
-        if (overlay) {
-            overlay.remove();
-        }
     },
     
     /**
@@ -1457,15 +1326,11 @@ const CISDialogs2 = {
      * @param {string} message - The message to display
      */
     showSuccessToast: function(message) {
+        if (typeof CISUIUtils !== 'undefined' && CISUIUtils.showSuccessToast) {
+            CISUIUtils.showSuccessToast(message);
+        } else {
         this.showToast(message, 'success');
-    },
-    
-    /**
-     * Show a warning toast notification
-     * @param {string} message - The message to display
-     */
-    showWarningToast: function(message) {
-        this.showToast(message, 'warning');
+        }
     },
     
     /**
@@ -1473,48 +1338,61 @@ const CISDialogs2 = {
      * @param {string} message - The message to display
      */
     showErrorToast: function(message) {
-        this.showToast(message, 'error');
-    },
-    
-    /**
-     * Get participant name by ID
-     * This is a helper function to get the name of a participant when only the ID is known
-     * @param {string} participantId - The participant ID to look up
-     * @returns {Promise<string>} - The participant name or the original ID if not found
-     */
-    getParticipantNameById: async function(participantId) {
-        if (!participantId) return 'Unknown';
-        
-        try {
-            // First try the key_to_name endpoint which is faster
-            const response = await fetch(`/api/participants/key_to_name?key=${encodeURIComponent(participantId)}`);
-            if (response.ok) {
-                const data = await response.json();
-                if (data.status === 'success' && data.name) {
-                    return data.name;
-                }
-            }
-            
-            // If that fails, load all participants and search for the ID
-            const participants = await this.loadParticipants();
-            const participant = participants.find(p => p.id === participantId);
-            if (participant && participant.text) {
-                return participant.text;
-            }
-            
-            // If still not found, just return the ID
-            return participantId;
-        } catch (error) {
-            console.error('Error getting participant name:', error);
-            return participantId; // Return the ID as fallback
+        if (typeof CISUIUtils !== 'undefined' && CISUIUtils.showErrorToast) {
+            CISUIUtils.showErrorToast(message);
+        } else {
+            this.showToast(message, 'error');
         }
     },
     
     /**
-     * Load participants for dropdown
+     * Show a loading overlay
+     * @param {string} message - Message to display
+     */
+    showLoadingOverlay: function(message = 'Loading...') {
+        if (typeof CISUIUtils !== 'undefined' && CISUIUtils.showLoadingOverlay) {
+            CISUIUtils.showLoadingOverlay(message);
+        } else {
+            const overlay = document.createElement('div');
+            overlay.id = 'loading-overlay';
+            overlay.className = 'modal-backdrop fade show d-flex align-items-center justify-content-center';
+            overlay.innerHTML = `
+                <div class="text-center text-white">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="mt-2">${message}</div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+        }
+    },
+    
+    /**
+     * Hide the loading overlay
+     */
+    hideLoadingOverlay: function() {
+        if (typeof CISUIUtils !== 'undefined' && CISUIUtils.hideLoadingOverlay) {
+            CISUIUtils.hideLoadingOverlay();
+        } else {
+            const overlay = document.getElementById('loading-overlay');
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+    },
+    
+    /**
+     * Load participants for dropdown (fallback method if utility not available)
      * @returns {Promise<Array>} Array of participant objects with id and name
      */
     loadParticipants: async function() {
+        // Use dropdown utility if available
+        if (typeof CISDropdownUtils !== 'undefined' && CISDropdownUtils.loadParticipants) {
+            return CISDropdownUtils.loadParticipants();
+        }
+        
+        // Fallback implementation
         try {
             console.log('Loading participants for dropdown...');
             const response = await fetch('/api/participants');
@@ -1549,286 +1427,5 @@ const CISDialogs2 = {
             console.error("Error loading participants:", error);
             return [];
         }
-    },
-    
-    /**
-     * Find the direct parent node of a tree node in the DOM
-     * @param {HTMLElement} node - The tree node
-     * @returns {HTMLElement|null} - The parent node or null if not found
-     */
-    findDirectParent: function(node) {
-        if (!node) return null;
-        
-        // Walk up the DOM to find the parent tree node
-        let current = node.parentElement;
-        while (current) {
-            // If this is a tree-children container, its parent should be the parent tree node
-            if (current.classList.contains('tree-children')) {
-                // Get the parent of the tree-children, which should be a tree-node
-                const parentNode = current.parentElement;
-                if (parentNode && parentNode.classList.contains('tree-node')) {
-                    return parentNode;
-                }
-            }
-            current = current.parentElement;
-        }
-        
-        return null;
-    },
-    
-    /**
-     * Load all available services
-     * @returns {Promise<Array>} Array of service objects with id and name
-     */
-    loadAllServices: async function() {
-        try {
-            console.log('Loading all services for dropdown...');
-            // Try the API endpoint for all services
-            const response = await fetch('/api/services/all');
-            
-            if (!response.ok) {
-                // If that fails, try another common endpoint format
-                console.log('First services endpoint failed, trying alternative...');
-                const altResponse = await fetch('/api/services');
-                if (!altResponse.ok) {
-                    throw new Error(`Failed to fetch services: ${response.statusText}`);
-                }
-                return this.processServicesResponse(await altResponse.json());
-            }
-            
-            return this.processServicesResponse(await response.json());
-        } catch (error) {
-            console.error('Error loading services:', error);
-            // Return an empty array as fallback
-            return [];
-        }
-    },
-    
-    /**
-     * Process the services API response with different possible formats
-     * @param {Object} result - The API response data
-     * @returns {Array} Formatted array of service objects
-     */
-    processServicesResponse: function(result) {
-        let services = [];
-        
-        // Handle different API response formats
-        if (result.success && result.services) {
-            // Format: {success: true, services: [...]}
-            services = result.services;
-        } else if (result.status === 'success' && result.data) {
-            // Format: {status: 'success', data: [...]}
-            services = result.data;
-        } else if (Array.isArray(result)) {
-            // Format: Direct array of services
-            services = result;
-        } else if (result.services && Array.isArray(result.services)) {
-            // Format: {services: [...]}
-            services = result.services;
-        } else {
-            console.warn('Unexpected service API response format:', result);
-            return [];
-        }
-        
-        // Transform the data into the format needed for Select2
-        const formattedServices = services.map(service => {
-            // Handle various service data formats
-            const id = service.id || service.serviceId || service.service_id;
-            const name = service.name || service.serviceName || service.service_name || 'Unknown';
-            
-            return {
-                id: id,
-                text: `${name} (${id})`,
-                description: service.description
-            };
-        });
-        
-        console.log(`Loaded ${formattedServices.length} services for dropdown`);
-        return formattedServices;
-    },
-    
-    /**
-     * Load GPs for a specific service
-     * @param {string} serviceId - Service ID to get GPs for
-     * @returns {Promise<Array>} Array of GP IDs
-     */
-    loadServiceGPs: async function(serviceId) {
-        try {
-            console.log(`Loading GPs for service ${serviceId}...`);
-            // Try the endpoint specified by the user
-            const response = await fetch(`/api/services/${serviceId}/all_gps`);
-            
-            if (!response.ok) {
-                // If that fails, try alternative endpoints
-                console.log('First GP endpoint failed, trying alternatives...');
-                
-                // Try other potential endpoint formats
-                const alternatives = [
-                    `/api/services/${serviceId}/gps/all`,
-                    `/api/services/${serviceId}/gps`,
-                    `/api/services/${serviceId}/gp_ids`
-                ];
-                
-                for (const alt of alternatives) {
-                    try {
-                        console.log(`Trying alternative endpoint: ${alt}`);
-                        const altResponse = await fetch(alt);
-                        if (altResponse.ok) {
-                            console.log(`Alternative endpoint ${alt} succeeded`);
-                            return this.processGPsResponse(await altResponse.json());
-                        }
-                    } catch (e) {
-                        console.warn(`Failed to fetch from ${alt}:`, e);
-                    }
-                }
-                
-                throw new Error(`Failed to fetch GPs: ${response.statusText}`);
-            }
-            
-            return this.processGPsResponse(await response.json());
-        } catch (error) {
-            console.error(`Error loading GPs for service ${serviceId}:`, error);
-            return [];
-        }
-    },
-    
-    /**
-     * Process the GPs API response with different possible formats
-     * @param {Object} result - The API response data
-     * @returns {Array} Array of GP IDs
-     */
-    processGPsResponse: function(result) {
-        let gpIds = [];
-        
-        console.log('Processing GP response:', result);
-        
-        // Handle different API response formats
-        if (result.success && result.gp_ids) {
-            // Format from manually added selection: {success: true, gp_ids: [...]}
-            gpIds = result.gp_ids;
-            console.log('Found GP IDs in success/gp_ids format');
-        } else if (result.status === 'success' && result.data) {
-            // Common format: {status: 'success', data: [...]}
-            console.log('Found GP IDs in status/data format');
-            if (Array.isArray(result.data)) {
-                gpIds = result.data.map(gp => gp.id || gp.gpId || gp);
-            } else {
-                gpIds = Object.keys(result.data);
-            }
-        } else if (Array.isArray(result)) {
-            // Format: Direct array of GP IDs or objects
-            console.log('Found GP IDs in direct array format');
-            gpIds = result.map(gp => typeof gp === 'object' ? (gp.id || gp.gpId) : gp);
-        } else if (result.gps && Array.isArray(result.gps)) {
-            // Format: {gps: [...]}
-            console.log('Found GP IDs in gps array format');
-            gpIds = result.gps.map(gp => typeof gp === 'object' ? (gp.id || gp.gpId) : gp);
-        } else {
-            // Try to find any array property that might contain GP IDs
-            const arrayProps = Object.keys(result).filter(key => Array.isArray(result[key]));
-            if (arrayProps.length > 0) {
-                console.log(`Found potential GP arrays in properties: ${arrayProps.join(', ')}`);
-                // Try the first array property
-                const firstArrayProp = arrayProps[0];
-                gpIds = result[firstArrayProp].map(gp => 
-                    typeof gp === 'object' ? (gp.id || gp.gpId || gp.gp_id || Object.values(gp)[0]) : gp
-                );
-            } else {
-                console.warn('Unexpected GP API response format:', result);
-                return [];
-            }
-        }
-        
-        console.log(`Successfully processed ${gpIds.length} GPs:`, gpIds.slice(0, 5));
-        return gpIds;
-    },
-    
-    /**
-     * Get GP name by ID
-     * @param {string} gpId - GP ID to get name for
-     * @returns {Promise<string>} GP name
-     */
-    getGPName: async function(gpId) {
-        try {
-            console.log(`Getting name for GP ${gpId}...`);
-            const response = await fetch(`/api/gps/${gpId}/name`);
-            
-            if (!response.ok) {
-                throw new Error(`Failed to fetch GP name: ${response.statusText}`);
-            }
-            
-            const result = await response.json();
-            
-            // Handle different API response formats
-            if (result.error) {
-                throw new Error(result.error);
-            } else if (result.name) {
-                // Format from manually added selection: {id: '...', name: '...'}
-                return result.name;
-            } else if (result.status === 'success' && result.data) {
-                // Common format: {status: 'success', data: {name: '...'}}
-                return result.data.name || result.data.gpName || gpId;
-            } else {
-                // If we can't determine the format, just return the GP ID
-                return gpId;
-            }
-        } catch (error) {
-            console.error(`Error getting name for GP ${gpId}:`, error);
-            return gpId; // Fall back to using the ID as the name
-        }
-    },
-    
-    /**
-     * Convert a select element to text input
-     * @param {HTMLElement} selectElement - The select element to convert
-     * @param {string} placeholder - The placeholder text for the input
-     * @param {string} name - The name attribute for the input
-     * @param {boolean} required - Whether the input is required
-     * @param {string} initialValue - The initial value for the input (optional)
-     */
-    convertSelectToTextInput: function(selectElement, placeholder, name, required = false, initialValue = '') {
-        if (!selectElement) {
-            console.error('Cannot convert null select element to text input');
-            return;
-        }
-        
-        // Get the parent form group
-        const formGroup = selectElement.closest('.form-group');
-        if (!formGroup) {
-            console.error('Cannot find parent form group for select element');
-            return;
-        }
-        
-        // Create a new input element
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.className = 'form-control';
-        input.id = selectElement.id;
-        input.placeholder = `Enter ${placeholder}`;
-        input.name = name;
-        input.value = initialValue || selectElement.value; // Use initialValue if provided, otherwise use select value
-        input.setAttribute('autocomplete', 'new-password');
-        
-        if (required) {
-            input.required = true;
-        }
-        
-        // Replace the select with the input in the same form group
-        selectElement.parentNode.replaceChild(input, selectElement);
-        
-        // Update the label
-        const label = formGroup.querySelector('label');
-        if (label) {
-            label.setAttribute('for', input.id);
-            label.textContent = placeholder;
-        }
-        
-        // Hide the loading indicator if it exists
-        const loadingIndicator = formGroup.querySelector('.loading-indicator');
-        if (loadingIndicator) {
-            loadingIndicator.style.display = 'none';
-        }
-        
-        return input;
     }
 };

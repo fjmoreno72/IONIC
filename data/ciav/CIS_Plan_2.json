@@ -52,78 +52,137 @@
                           ]
                         }
                       ],
-                      "gpInstances": [
-                        {
-                          "gpid": "GP-0039",
-                          "guid": "d88e419a-ed0d-4f4a-9c42-00e1da1905e5",
-                          "instanceLabel": "",
-                          "serviceId": "SRV-0016",
-                          "spInstances": [
-                            {
-                              "guid": "5c5ac25c-bd4a-4fc8-be27-0bd5425b2ba2",
-                              "spId": "SP-0267",
-                              "spVersion": "3"
-                            }
-                          ],
-                          "configurationItems": [
-                            {
-                              "AnswerContent": "1",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "DefaultValue": "\t 0",
-                              "HelpText": "",
-                              "Name": "Bias",
-                              "guid": "3dfe562d-c8de-4cbf-9c95-973d8867e86f"
-                            },
-                            {
-                              "AnswerContent": "1",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "DefaultValue": "1000",
-                              "HelpText": "",
-                              "Name": "MaximumOffset",
-                              "guid": "c33365ee-47d2-4e62-90e0-6a79b20ea322"
-                            },
-                            {
-                              "AnswerContent": "1",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "DefaultValue": "4",
-                              "HelpText": "",
-                              "Name": "MaximumStratum",
-                              "guid": "f0b51eaa-7199-417e-966c-b5f2f82b625a"
-                            },
-                            {
-                              "AnswerContent": "1",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "DefaultValue": "",
-                              "HelpText": "FQDN of the NTP server you are synchronizing to",
-                              "Name": "TimeSourceFQDN",
-                              "guid": "672261c6-5003-4f08-b118-08b1f2b7ecad"
-                            },
-                            {
-                              "AnswerContent": "1",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "DefaultValue": "",
-                              "HelpText": "IP of the NTP server you are synchronizing to",
-                              "Name": "TimeSourceIP",
-                              "guid": "6b8b5fd1-4148-4644-8533-d437f45d78b3"
-                            },
-                            {
-                              "AnswerContent": "1",
-                              "ConfigurationAnswerType": "Text Field (Single Line)",
-                              "DefaultValue": "UTC",
-                              "HelpText": "",
-                              "Name": "TimeZone",
-                              "guid": "e1d000db-2ffd-4d93-bee4-d1f8d892b27d"
-                            }
-                          ]
-                        }
-                      ]
+                      "gpInstances": []
                     },
                     {
                       "name": "Asset 2",
                       "guid": "959982ca-b5f8-4aa6-991c-f933dd899adx",
                       "id": "AS-0002",
                       "networkInterfaces": [],
-                      "gpInstances": []
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0001",
+                          "guid": "77c7c94d-8be9-4abc-907a-5c7f280f2867",
+                          "instanceLabel": "NIRIS",
+                          "serviceId": "SRV-0008",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "C2/NonC2",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "fa69e3b3-ab63-41ab-a0ba-dedd22b71b2b",
+                              "DefaultValue": "Non C2",
+                              "HelpText": "pick either:  \"C2\"  or \"Non C2\""
+                            },
+                            {
+                              "Name": "JRE ID",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "c9b9e9f2-41fd-40b4-ab22-02dfc6d44f65",
+                              "DefaultValue": "",
+                              "HelpText": "JRE ID assigned to you Data Link Server"
+                            },
+                            {
+                              "Name": "JREAP Time Sync (Preferred)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "406b9780-9d91-4aca-8b27-b0300e273b85",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
+                            },
+                            {
+                              "Name": "JREAP Time Sync (Supported)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "9e4b217f-9884-4b50-9e73-5e5687ce7fb1",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
+                            },
+                            {
+                              "Name": "JU Number",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "226b3a14-6ec4-4378-8c5c-87c782043877",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Maximum Offset",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "4df0f349-79a0-4bb5-a91a-85a4f3e8f71c",
+                              "DefaultValue": "0.5",
+                              "HelpText": "Time in seconds"
+                            },
+                            {
+                              "Name": "Platform Role",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "fcac4525-78d2-40aa-9a24-1df0399a454c",
+                              "DefaultValue": "semi-active",
+                              "HelpText": "pick either: \"active\", \"semi-active\", \"passive\"."
+                            },
+                            {
+                              "Name": "TN Block",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "90052135-fa36-42bd-a526-fe0be0a13d0c",
+                              "DefaultValue": "",
+                              "HelpText": "Track number block assigned to Active Platform"
+                            },
+                            {
+                              "Name": "URL Track Store",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "253eb141-cb0c-42b6-8e75-81f7cc81931e",
+                              "DefaultValue": "",
+                              "HelpText": "URL to connect to the Track Store (i.e TSS URL)"
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0002",
+                          "guid": "bbd51a13-6df8-4796-8b3b-ea57d3c50b9b",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0008",
+                          "spInstances": [],
+                          "configurationItems": []
+                        },
+                        {
+                          "gpid": "GP-0028",
+                          "guid": "1eea2d46-35f0-46d8-b2c1-e64fd441ea63",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0016",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Port",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "1f24dddd-f81c-4708-a1f0-c48a8aa6aa41",
+                              "DefaultValue": "443",
+                              "HelpText": "Port for the RAG Server"
+                            },
+                            {
+                              "Name": "Time Source",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "df06e224-9375-40c0-811e-30669ea4692d",
+                              "DefaultValue": "GPS",
+                              "HelpText": "Pick either: \"GPS\", \"CDMA\", \"Radio Clock\", \"Atomic Clock\",  \"Modem\",  \"Other\"."
+                            },
+                            {
+                              "Name": "Stratum",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "d7f005c2-4a58-4591-82f8-cee1edce9358",
+                              "DefaultValue": "2",
+                              "HelpText": ""
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 },

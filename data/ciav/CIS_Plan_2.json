@@ -265,6 +265,134 @@
                       "id": "AS-0012",
                       "networkInterfaces": [],
                       "gpInstances": []
+                    },
+                    {
+                      "name": "Asset 2_Copy",
+                      "guid": "519d6937-2add-44cd-921f-a8527b9455a9",
+                      "id": "AS-0013",
+                      "networkInterfaces": [],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0001",
+                          "guid": "0e2ab64e-3b46-431a-9b7f-e01dca8c6667",
+                          "instanceLabel": "NIRIS",
+                          "serviceId": "",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "C2/NonC2",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "91edf6bf-3f9b-4c03-9cab-552bdf686a6b",
+                              "DefaultValue": "Non C2",
+                              "HelpText": "pick either:  \"C2\"  or \"Non C2\""
+                            },
+                            {
+                              "Name": "JRE ID",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "eb8d3412-c086-474d-9d0b-20fe0102eff1",
+                              "DefaultValue": "",
+                              "HelpText": "JRE ID assigned to you Data Link Server"
+                            },
+                            {
+                              "Name": "JREAP Time Sync (Preferred)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "cbe60766-04e6-4fb8-b4c4-8ce4c7920261",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
+                            },
+                            {
+                              "Name": "JREAP Time Sync (Supported)",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "45d48139-fcdc-48a4-9d55-a10a11d91987",
+                              "DefaultValue": "UTC",
+                              "HelpText": "pick either:  \"UTC\"  or \"RTT\""
+                            },
+                            {
+                              "Name": "JU Number",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "9292ae76-020f-4816-9ea5-9cbed7ed9dd0",
+                              "DefaultValue": "",
+                              "HelpText": ""
+                            },
+                            {
+                              "Name": "Maximum Offset",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "f7d2145c-63df-4590-908d-1000192245f7",
+                              "DefaultValue": "0.5",
+                              "HelpText": "Time in seconds"
+                            },
+                            {
+                              "Name": "Platform Role",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "3a5af6b2-54fe-4748-afcf-b24432df58db",
+                              "DefaultValue": "semi-active",
+                              "HelpText": "pick either: \"active\", \"semi-active\", \"passive\"."
+                            },
+                            {
+                              "Name": "TN Block",
+                              "ConfigurationAnswerType": "Text Field (Multi Line)",
+                              "AnswerContent": "",
+                              "guid": "9096203b-1586-4993-8595-c64e78b8bc00",
+                              "DefaultValue": "",
+                              "HelpText": "Track number block assigned to Active Platform"
+                            },
+                            {
+                              "Name": "URL Track Store",
+                              "ConfigurationAnswerType": "URL",
+                              "AnswerContent": "",
+                              "guid": "07b5edda-73e2-45da-b06e-f256681f08ab",
+                              "DefaultValue": "",
+                              "HelpText": "URL to connect to the Track Store (i.e TSS URL)"
+                            }
+                          ]
+                        },
+                        {
+                          "gpid": "GP-0002",
+                          "guid": "d294333c-d42d-4ccf-848b-6be32bbd2ffa",
+                          "instanceLabel": "",
+                          "serviceId": "",
+                          "spInstances": [
+                            {
+                              "guid": "5a679b6d-26a3-4e03-9b61-181945ce6d27",
+                              "spId": "SP-0004",
+                              "spVersion": "3.0.0"
+                            }
+                          ],
+                          "configurationItems": []
+                        },
+                        {
+                          "gpid": "GP-0028",
+                          "guid": "8f2175db-9196-4593-a3d2-debd3c1f6383",
+                          "instanceLabel": "",
+                          "serviceId": "",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "Port",
+                              "ConfigurationAnswerType": "Port",
+                              "AnswerContent": "",
+                              "guid": "e057b778-38aa-46ab-ba46-031786a2fac2",
+                              "DefaultValue": "443",
+                              "HelpText": "Port for the RAG Server"
+                            },
+                            {
+                              "Name": "Stratum",
+                              "ConfigurationAnswerType": "Static Drop Down",
+                              "AnswerContent": "",
+                              "guid": "2e12d746-29e8-448c-917d-c9588f3cdf92",
+                              "DefaultValue": "2",
+                              "HelpText": ""
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 },

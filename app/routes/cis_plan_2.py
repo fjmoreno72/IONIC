@@ -413,6 +413,11 @@ def copy_entity(guid):
         
         logger.info(f"Entity type determined: {entity_type}")
         
+        # Prevent copying security domains
+        if entity_type == 'security_domain':
+            logger.error(f"Security domains cannot be copied: {guid}")
+            return error_response("Security domains cannot be copied. They represent fixed classification levels.", 403)
+        
         # Set new name based on entity type
         original_name = original_entity.get('name', original_entity.get('id', 'Unnamed'))
         new_name = data.get('new_name', f"{original_name}_Copy")
@@ -538,7 +543,10 @@ def copy_entity(guid):
                 logger.error(f"Failed to create copy of {entity_type}")
                 return error_response(f"Failed to create copy of {entity_type}", 400)
             
-            logger.info(f"Successfully created copy with GUID: {created_entity.get('guid')}")
+            logger.info(f"Successfully created root copy with GUID: {created_entity.get('guid')}")
+            
+            # Now recursively copy all children
+            copy_children(environment, original_entity, created_entity, entity_type)
             
             # Return the new entity with its GUID
             return success_response({
@@ -560,3 +568,103 @@ def copy_entity(guid):
         import traceback
         logger.error(f"Traceback: {traceback.format_exc()}")
         return error_response(str(e), 500)
+
+def copy_children(environment, original_entity, new_entity, entity_type):
+    """
+    Recursively copy all children of an entity.
+    
+    Args:
+        environment (str): The environment identifier.
+        original_entity (dict): The original entity with children to copy.
+        new_entity (dict): The newly created entity to copy children to.
+        entity_type (str): The type of the parent entity.
+    """
+    # Define mappings for each entity type to its children
+    children_mappings = {
+        'mission_network': [('networkSegments', 'network_segment')],
+        'network_segment': [('securityDomains', 'security_domain')],
+        'security_domain': [('hwStacks', 'hw_stack')],
+        'hw_stack': [('assets', 'asset')],
+        'asset': [('networkInterfaces', 'network_interface'), ('gpInstances', 'gp_instance')],
+        'gp_instance': [('spInstances', 'sp_instance')]
+    }
+    
+    # If entity type doesn't have children mappings, return
+    if entity_type not in children_mappings:
+        return
+    
+    # Get the updated entity with its current state
+    updated_entity = get_entity_by_guid(environment, new_entity.get('guid'))
+    if not updated_entity:
+        logger.error(f"Could not find newly created entity with GUID {new_entity.get('guid')}")
+        return
+    
+    # Process each type of child for this entity type
+    for child_array_name, child_type in children_mappings[entity_type]:
+        # Check if original entity has this type of children
+        if child_array_name in original_entity and original_entity[child_array_name]:
+            # For each child in the original entity
+            for child in original_entity[child_array_name]:
+                try:
+                    # Skip security domains - they should not be copied
+                    if child_type == 'security_domain':
+                        # For network segments, we need to reference existing security domains instead of copying
+                        # Find the matching security domain in the target environment
+                        domain_id = child.get('id')
+                        if domain_id:
+                            logger.info(f"Security domains cannot be copied. Referencing existing security domain: {domain_id}")
+                            # We don't create a new security domain, just continue with the next child
+                            continue
+                    
+                    # Prepare attributes for the child copy
+                    child_attributes = {}
+                    
+                    # Add appropriate attributes based on child type
+                    if child_type == 'network_segment' or child_type == 'hw_stack' or child_type == 'asset' or child_type == 'network_interface':
+                        # These types have names
+                        child_attributes['name'] = child.get('name', 'Unnamed')
+                    
+                    if child_type == 'hw_stack':
+                        # HW stacks have a participant ID
+                        child_attributes['cisParticipantID'] = child.get('cisParticipantID', '')
+                    
+                    if child_type == 'network_interface':
+                        # Get configuration items for network interfaces
+                        for config_item in child.get('configurationItems', []):
+                            if config_item.get('Name') == 'IP Address':
+                                child_attributes['ip_address'] = ''  # Empty for the copy
+                            elif config_item.get('Name') == 'Sub-Net':
+                                child_attributes['subnet'] = ''  # Empty for the copy
+                            elif config_item.get('Name') == 'FQDN':
+                                child_attributes['fqdn'] = ''  # Empty for the copy
+                    
+                    if child_type == 'gp_instance':
+                        # GP instances need a GPID
+                        child_attributes['gpid'] = child.get('gpid')
+                        child_attributes['instanceLabel'] = child.get('instanceLabel', '')
+                    
+                    if child_type == 'sp_instance':
+                        # SP instances need an SPID
+                        child_attributes['spId'] = child.get('spId')
+                        child_attributes['spVersion'] = child.get('spVersion', '')
+                    
+                    # Create the child entity
+                    logger.info(f"Creating child {child_type} under parent {updated_entity.get('guid')}")
+                    created_child = create_entity(
+                        environment,
+                        child_type,
+                        updated_entity.get('guid'),
+                        child_attributes
+                    )
+                    
+                    if created_child:
+                        logger.info(f"Successfully created child {child_type} with GUID: {created_child.get('guid')}")
+                        # Recursively copy this child's children
+                        copy_children(environment, child, created_child, child_type)
+                    else:
+                        logger.error(f"Failed to create child {child_type}")
+                
+                except Exception as e:
+                    logger.error(f"Error copying child {child_type}: {str(e)}")
+                    # Continue with next child even if this one fails
+                    continue

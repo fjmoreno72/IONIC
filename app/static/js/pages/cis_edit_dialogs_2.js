@@ -5,6 +5,11 @@
  * Phase 2: Implements actual API calls to edit and delete CIS Plan elements.
  */
 
+// Test function to verify file structure
+function testFileStructure() {
+    console.log('CIS Edit Dialogs 2.0 file structure verified');
+}
+
 const CISEditDialogs2 = {
     // DOM element references
     editModal: null,
@@ -44,10 +49,19 @@ const CISEditDialogs2 = {
     // Form elements for edit dialog
     editForm: null,
     
+    // Flag to track if already initialized
+    initialized: false,
+    
     /**
      * Initialize the edit dialogs component
      */
     init: function() {
+        // Prevent multiple initializations
+        if (this.initialized) {
+            // console.log('CISEditDialogs2 already initialized, skipping');
+            return;
+        }
+        
         // Initialize edit modal DOM references
         this.editModal = document.getElementById('edit-modal');
         this.closeEditModalBtn = document.getElementById('close-edit-modal');
@@ -75,31 +89,64 @@ const CISEditDialogs2 = {
             return;
         }
         
+        // Remove any existing event listeners if possible
+        this.removeExistingEventListeners();
+        
         // Set up event listeners for the edit modal
-        this.closeEditModalBtn.addEventListener('click', () => {
-            this.hideEditModal();
-        });
-        
-        this.cancelEditBtn.addEventListener('click', () => {
-            this.hideEditModal();
-        });
-        
-        this.confirmEditBtn.addEventListener('click', () => {
-            this.handleEditConfirm();
-        });
+        this.closeEditModalBtn.addEventListener('click', this.hideEditModal.bind(this));
+        this.cancelEditBtn.addEventListener('click', this.hideEditModal.bind(this));
+        this.confirmEditBtn.addEventListener('click', this.handleEditConfirm.bind(this));
         
         // Set up event listeners for the delete modal
-        this.closeDeleteModalBtn.addEventListener('click', () => {
-            this.hideDeleteModal();
-        });
+        this.closeDeleteModalBtn.addEventListener('click', this.hideDeleteModal.bind(this));
+        this.cancelDeleteBtn.addEventListener('click', this.hideDeleteModal.bind(this));
         
-        this.cancelDeleteBtn.addEventListener('click', () => {
-            this.hideDeleteModal();
-        });
+        // For the confirmDeleteBtn, use a named function for easier debugging
+        // and to allow removal of the listener if needed
+        this._handleDeleteConfirmBound = this.handleDeleteConfirm.bind(this);
+        this.confirmDeleteBtn.addEventListener('click', this._handleDeleteConfirmBound);
         
-        this.confirmDeleteBtn.addEventListener('click', () => {
-            this.handleDeleteConfirm();
-        });
+        // Mark as initialized
+        this.initialized = true;
+        // console.log('CISEditDialogs2 initialized with bound event handlers');
+    },
+    
+    /**
+     * Remove existing event listeners if possible
+     * This helps prevent duplicate handlers
+     */
+    removeExistingEventListeners: function() {
+        // For edit modal buttons
+        if (this.closeEditModalBtn) {
+            this.closeEditModalBtn.replaceWith(this.closeEditModalBtn.cloneNode(true));
+            this.closeEditModalBtn = document.getElementById('close-edit-modal');
+        }
+        
+        if (this.cancelEditBtn) {
+            this.cancelEditBtn.replaceWith(this.cancelEditBtn.cloneNode(true));
+            this.cancelEditBtn = document.getElementById('cancel-edit-btn');
+        }
+        
+        if (this.confirmEditBtn) {
+            this.confirmEditBtn.replaceWith(this.confirmEditBtn.cloneNode(true));
+            this.confirmEditBtn = document.getElementById('confirm-edit-btn');
+        }
+        
+        // For delete modal buttons
+        if (this.closeDeleteModalBtn) {
+            this.closeDeleteModalBtn.replaceWith(this.closeDeleteModalBtn.cloneNode(true));
+            this.closeDeleteModalBtn = document.getElementById('close-delete-modal');
+        }
+        
+        if (this.cancelDeleteBtn) {
+            this.cancelDeleteBtn.replaceWith(this.cancelDeleteBtn.cloneNode(true));
+            this.cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+        }
+        
+        if (this.confirmDeleteBtn) {
+            this.confirmDeleteBtn.replaceWith(this.confirmDeleteBtn.cloneNode(true));
+            this.confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+        }
     },
     
     /**
@@ -111,7 +158,7 @@ const CISEditDialogs2 = {
     generateEditForm: function(entityType, entityData) {
         // Generate a random suffix to prevent form autocomplete
         const randomSuffix = this.generateRandomSuffix();
-        console.log(`Using random form field suffix for edit form: ${randomSuffix}`);
+        // console.log(`Using random form field suffix for edit form: ${randomSuffix}`);
         
         const form = document.createElement('form');
         form.id = 'entity-edit-form';
@@ -179,12 +226,14 @@ const CISEditDialogs2 = {
                     const loadingIndicator = document.getElementById('participant-loading');
                     
                     // Debug info to help us understand what's happening
+                    /*
                     console.log('Edit mode participant data:', {
                         selectExists: !!participantSelect,
                         loadingExists: !!loadingIndicator,
                         jQueryExists: typeof jQuery !== 'undefined',
                         currentParticipantID: entityData.cisParticipantID
                     });
+                    */
                     
                     if (participantSelect && typeof jQuery !== 'undefined') {
                         try {
@@ -207,7 +256,7 @@ const CISEditDialogs2 = {
                             
                             // Load participants from API
                             this.loadParticipants().then(participants => {
-                                console.log('Loaded participants:', participants.length);
+                                // console.log('Loaded participants:', participants.length);
                                 
                                 // Remove loading indicator
                                 if (loadingIndicator) {
@@ -222,7 +271,7 @@ const CISEditDialogs2 = {
                                 
                                 // Set the current value if it exists - ensuring this happens AFTER options are added
                                 if (entityData.cisParticipantID) {
-                                    console.log('Setting current participant to:', entityData.cisParticipantID);
+                                    // console.log('Setting current participant to:', entityData.cisParticipantID);
                                     // First try to find if this participant ID exists in the options
                                     let participantExists = false;
                                     for (const participant of participants) {
@@ -234,7 +283,7 @@ const CISEditDialogs2 = {
                                     
                                     if (!participantExists) {
                                         // If not found, add it as an option
-                                        console.log('Adding current participant as option as it wasn\'t in the list');
+                                        // console.log('Adding current participant as option as it wasn\'t in the list');
                                         const option = new Option(entityData.cisParticipantID, entityData.cisParticipantID, false, false);
                                         jQuery(participantSelect).append(option);
                                     }
@@ -906,7 +955,7 @@ const CISEditDialogs2 = {
                                 // On change handler for SP selection
                                 function(e) {
                                     const selectedSpId = e.target.value;
-                                    console.log(`Selected SP ID: ${selectedSpId}`);
+                                    // console.log(`Selected SP ID: ${selectedSpId}`);
                                     
                                     // Reset version dropdown
                                     if (typeof jQuery !== 'undefined') {
@@ -1185,73 +1234,57 @@ const CISEditDialogs2 = {
     },
     
     /**
-     * Show the delete confirmation dialog
-     * @param {Object} elementData - The element data
-     * @param {string} elementType - The element type
-     * @param {string} elementId - The element ID
-     * @param {string} elementGuid - The element GUID
-     * @param {Object} parentPath - Parent path references
+     * Show the delete confirmation dialog for an entity
+     * @param {string|Object} entityType - The entity type or element data object (for backwards compatibility)
+     * @param {string} entityId - The entity ID or element type (for backwards compatibility)
+     * @param {string} entityName - The entity name or element ID (for backwards compatibility)
+     * @param {string} entityGuid - The entity GUID
+     * @param {Object} parentPath - Path to parent entities
      */
-    showDeleteDialog: function(elementData, elementType, elementId, elementGuid, parentPath = {}) {
-        // Store the current element information
+    showDeleteDialog: function(entityType, entityId, entityName, entityGuid, parentPath) {
+        // Prevent showing the dialog if already in progress
+        if (this.refreshInProgress) {
+            console.warn("Refresh in progress, ignoring delete dialog request");
+            return;
+        }
+        
+        // Check if using old parameter format (backward compatibility)
+        let typeStr, idStr, nameStr, elementData;
+        
+        if (typeof entityType === 'object') {
+            // Old format: (elementData, elementType, elementId, elementGuid, parentPath)
+            elementData = entityType;
+            typeStr = String(entityId); // elementType was in the second parameter
+            idStr = entityName;         // elementId was in the third parameter
+            nameStr = elementData.name || idStr;
+            console.log("Using legacy parameter format for showDeleteDialog");
+        } else {
+            // New format: (entityType, entityId, entityName, entityGuid, parentPath)
+            // Ensure entityType is a string, extract from object if needed
+            typeStr = String(entityType);
+            idStr = entityId;
+            nameStr = entityName;
+            elementData = { name: nameStr };
+        }
+        
+        // Store the current element
         this.currentElement = {
-            type: elementType,
-            id: elementId,
-            guid: elementGuid,
-            name: elementData.name || elementId,
+            type: typeStr,
+            id: idStr,
+            guid: entityGuid,
+            name: nameStr,
             data: elementData,
             parentPath: parentPath
         };
         
-        // Update the modal title
-        const modalTitle = document.querySelector('#delete-modal .modal-title');
-        if (modalTitle) {
-            modalTitle.textContent = `Delete ${CISUtil2.getEntityTypeName(elementType)}`;
-        }
-        
-        // Create the dialog content
-        this.deleteModalBody.innerHTML = '';
-        
-        // Add warning message
-        const warningMessage = document.createElement('div');
-        warningMessage.className = 'alert alert-danger mb-4';
-        warningMessage.innerHTML = `
-            <p><strong>Warning:</strong> Are you sure you want to delete the following element?</p>
-            <p>This action cannot be undone.</p>
+        // Update the delete modal body
+        this.deleteModalBody.innerHTML = `
+            <p>Are you sure you want to delete this ${CISUtil2.getEntityTypeName(typeStr)}?</p>
+            <p><strong>Name:</strong> ${nameStr}</p>
+            <p class="text-danger">This action cannot be undone!</p>
         `;
-        this.deleteModalBody.appendChild(warningMessage);
         
-        // Add element information
-        const elementInfo = document.createElement('div');
-        elementInfo.className = 'card mb-3';
-        elementInfo.innerHTML = `
-            <div class="card-header bg-light">
-                <strong>Element to Delete</strong>
-            </div>
-            <div class="card-body">
-                <table class="table table-sm">
-                    <tr>
-                        <th>Type:</th>
-                        <td>${CISUtil2.getEntityTypeName(elementType)}</td>
-                    </tr>
-                    <tr>
-                        <th>ID:</th>
-                        <td>${elementId || 'N/A'}</td>
-                    </tr>
-                    <tr>
-                        <th>GUID:</th>
-                        <td>${elementGuid || 'N/A'}</td>
-                    </tr>
-                    <tr>
-                        <th>Name:</th>
-                        <td>${elementData.name || 'Unnamed'}</td>
-                    </tr>
-                </table>
-            </div>
-        `;
-        this.deleteModalBody.appendChild(elementInfo);
-        
-        // Show the modal
+        // Show the delete modal
         this.deleteModal.style.display = 'block';
     },
     
@@ -1310,7 +1343,7 @@ const CISEditDialogs2 = {
         
         // If we're resetting config items due to GP change, return empty array
         if (form.getAttribute('data-reset-config') === 'true') {
-            console.log('GP changed - skipping config item collection as they will be reset');
+            // console.log('GP changed - skipping config item collection as they will be reset');
             return [];
         }
         
@@ -1366,7 +1399,7 @@ const CISEditDialogs2 = {
             
             // If GP changed, we need to mark configuration items for removal
             if (gpChanged) {
-                console.log(`GP instance changed from ${originalGpId} to ${newGpId} - configuration items will be reset`);
+                // console.log(`GP instance changed from ${originalGpId} to ${newGpId} - configuration items will be reset`);
                 form.setAttribute('data-reset-config', 'true');
             }
         }
@@ -1390,7 +1423,7 @@ const CISEditDialogs2 = {
         }
         
         // Log details of the update for debugging
-        console.log('Updating element with data:', apiRequest);
+        // console.log('Updating element with data:', apiRequest);
         
         // Make API call to update
         fetch(`/api/v2/cis_plan/entity/${this.currentElement.guid}`, {
@@ -1516,9 +1549,9 @@ const CISEditDialogs2 = {
                                             throw new Error('Failed to update configuration items');
                                         }
                                         
-                                        console.log('Updated multiple configuration items:', changedItems.length);
+                                        // console.log('Updated multiple configuration items:', changedItems.length);
                                         changedItems.forEach(item => {
-                                            console.log(`- ${item.name}: ${item.oldValue} → ${item.newValue}`);
+                                            // console.log(`- ${item.name}: ${item.oldValue} → ${item.newValue}`);
                                         });
                                         
                                         return result;
@@ -1557,41 +1590,82 @@ const CISEditDialogs2 = {
     handleDeleteConfirm: function() {
         const { type, id, guid, name, parentPath } = this.currentElement;
         
+        // Ensure we have a clean type string for logging
+        const typeStr = typeof type === 'object' ? (type.type || 'unknown') : String(type);
+        
         // Show loading indicator
         this.showLoadingOverlay('Deleting...');
+        
+        // Add a safety timeout to prevent infinite loading state
+        const loadingTimeout = setTimeout(() => {
+            console.warn('Delete operation timed out after 20 seconds');
+            this.hideLoadingOverlay();
+            this.hideDeleteModal();
+            this.refreshInProgress = false;
+        }, 20000); // 20 second timeout
         
         // For delete, we need to determine the parent to select after deletion
         let parentType = null;
         let parentId = null;
         let parentGuid = null;
         
+        // Track if we found a valid parent
+        let foundValidParent = false;
+        
         // Determine the parent to select after deletion
         if (parentPath) {
             // Find the immediate parent type
-            const parentTypes = Object.keys(parentPath).filter(key => key !== type);
+            const parentTypes = Object.keys(parentPath).filter(key => key !== typeStr);
             if (parentTypes.length > 0) {
                 // Get the last parent in the hierarchy
                 const immediateParentType = parentTypes[parentTypes.length - 1];
                 const immediateParent = parentPath[immediateParentType];
                 
                 if (immediateParent) {
-                    parentType = immediateParentType;
-                    parentId = immediateParent.id || immediateParent.gpid || immediateParent.spId;
-                    parentGuid = immediateParent.guid;
+                    // IMPORTANT: Make sure the parent isn't the same as the node being deleted
+                    // This can happen when copying and deleting elements
+                    const possibleParentGuid = immediateParent.guid;
+                    
+                    if (possibleParentGuid && possibleParentGuid !== guid) {
+                        parentType = immediateParentType;
+                        parentId = immediateParent.id || immediateParent.gpid || immediateParent.spId;
+                        parentGuid = possibleParentGuid;
+                        foundValidParent = true;
+                    } else {
+                        // If parent is same as element being deleted, try to find a grandparent
+                        if (parentTypes.length > 1) {
+                            const grandparentType = parentTypes[parentTypes.length - 2];
+                            const grandparent = parentPath[grandparentType];
+                            
+                            if (grandparent && grandparent.guid !== guid) {
+                                parentType = grandparentType;
+                                parentId = grandparent.id || grandparent.gpid || grandparent.spId;
+                                parentGuid = grandparent.guid;
+                                foundValidParent = true;
+                            }
+                        }
+                    }
                 }
             }
         }
         
-        // If no parent found, default to CIS Plan root
-        if (!parentType) {
+        // If no parent found or parent is invalid, default to CIS Plan root
+        if (!foundValidParent) {
             parentType = 'cisplan';
             parentId = null;
             parentGuid = null;
         }
         
+        // Log what we're doing for debugging
+        // console.log(`Deleting element: type=${typeStr}, id=${id}, guid=${guid}, name=${name}`);
+        // console.log(`Will select parent after deletion: type=${parentType}, id=${parentId}, guid=${parentGuid}`);
+        
         // Call the API to delete the entity
         CISApi2.deleteEntity(guid)
             .then(success => {
+                // Clear the safety timeout since operation completed
+                clearTimeout(loadingTimeout);
+                
                 if (!success) {
                     throw new Error('Failed to delete entity');
                 }
@@ -1600,18 +1674,57 @@ const CISEditDialogs2 = {
                 this.hideDeleteModal();
                 
                 // Show success message
-                this.showSuccessToast(`Successfully deleted ${CISUtil2.getEntityTypeName(type)}: ${name}`);
+                this.showSuccessToast(`Successfully deleted ${CISUtil2.getEntityTypeName(typeStr)}: ${name}`);
                 
                 // Refresh the UI and select the parent
                 this.refreshAfterDelete(parentType, parentId, parentGuid);
             })
             .catch(error => {
+                // Clear the safety timeout since operation completed
+                clearTimeout(loadingTimeout);
+                
                 console.error('Error deleting entity:', error);
                 this.showErrorToast(`Failed to delete: ${error.message}`);
-                // Hide loading overlay
+                
+                // Hide loading overlay and modal
                 this.hideLoadingOverlay();
+                this.hideDeleteModal();
+                
+                // Reset any flags
+                this.refreshInProgress = false;
             });
     },
+    
+    /**
+     * Force reset any loading state and modals
+     * This is a safety measure to ensure the UI isn't left in a loading state
+     */
+    forceResetUIState: function() {
+        // console.log('Force resetting UI state to ensure clean state');
+        
+        // Hide all modals
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.style.display = 'none';
+        });
+        
+        // Remove any loading overlays
+        const overlays = document.querySelectorAll('#loading-overlay, .modal-backdrop, .loading-overlay');
+        overlays.forEach(overlay => {
+            overlay.remove();
+        });
+        
+        // Reset state flags
+        this.refreshInProgress = false;
+        
+        // Clear any pending timeout
+        if (this._pendingTimeouts) {
+            this._pendingTimeouts.forEach(timeout => clearTimeout(timeout));
+            this._pendingTimeouts = [];
+        }
+    },
+    
+    // Track pending timeouts
+    _pendingTimeouts: [],
     
     /**
      * Show a loading overlay
@@ -1630,6 +1743,17 @@ const CISEditDialogs2 = {
             </div>
         `;
         document.body.appendChild(overlay);
+        
+        // Set a backup timeout to clear loading overlay after 15 seconds
+        // This prevents UI from being permanently stuck in loading state
+        if (!this._pendingTimeouts) this._pendingTimeouts = [];
+        const timeout = setTimeout(() => {
+            console.warn('Loading overlay timeout triggered after 15 seconds');
+            this.hideLoadingOverlay();
+            this.forceResetUIState();
+        }, 15000);
+        
+        this._pendingTimeouts.push(timeout);
     },
     
     /**
@@ -1640,6 +1764,11 @@ const CISEditDialogs2 = {
         if (overlay) {
             overlay.remove();
         }
+        
+        // Also remove any modal backdrops that might be lingering
+        document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+            backdrop.remove();
+        });
     },
     
     /**
@@ -1649,8 +1778,14 @@ const CISEditDialogs2 = {
      * @param {string} elementGuid - GUID of the edited element
      */
     refreshAfterEdit: function(elementType, elementId, elementGuid) {
-        // Use the same approach as CISDialogs2.refreshAfterAdd
-        console.log('Refreshing after editing element:', elementType, elementId);
+        // Guard against multiple refresh calls
+        if (this.refreshInProgress) {
+            console.warn("Refresh already in progress, ignoring additional refresh request");
+            return;
+        }
+        
+        this.refreshInProgress = true;
+        // console.log(`Starting UI refresh after editing element: type=${elementType}, id=${elementId}, guid=${elementGuid}`);
         
         // Reset tree expansion state
         if (CISTree2) {
@@ -1673,24 +1808,36 @@ const CISEditDialogs2 = {
                         
                         // After the tree has rendered, select the edited node
                         setTimeout(() => {
+                            // console.log(`Tree rendered, now selecting edited node: ${elementType}/${elementId}`);
                             this.selectNodeAfterRefresh(elementType, elementId, elementGuid);
                             this.hideLoadingOverlay();
+                            
+                            // Reset refresh flag
+                            setTimeout(() => {
+                                this.refreshInProgress = false;
+                            }, 300);
                         }, 300); // Wait for tree to fully render
                     } else {
                         console.error('Failed to refresh CIS Plan data');
                         this.showErrorToast('Failed to refresh data after editing element');
                         this.hideLoadingOverlay();
+                        this.refreshInProgress = false;
                     }
                 })
                 .catch(error => {
                     console.error('Error refreshing CIS Plan data:', error);
                     this.showErrorToast('Error refreshing data: ' + error.message);
                     this.hideLoadingOverlay();
+                    this.refreshInProgress = false;
                 });
         } else {
             this.hideLoadingOverlay();
+            this.refreshInProgress = false;
         }
     },
+    
+    // Flag to track refresh operations in progress
+    refreshInProgress: false,
     
     /**
      * Refresh the UI after deleting an element
@@ -1699,12 +1846,30 @@ const CISEditDialogs2 = {
      * @param {string} parentGuid - GUID of the parent element to select
      */
     refreshAfterDelete: function(parentType, parentId, parentGuid) {
-        console.log('Refreshing after deleting element, will select parent:', parentType, parentId);
+        // Guard against multiple refresh calls
+        if (this.refreshInProgress) {
+            console.warn("Refresh already in progress, ignoring additional refresh request");
+            return;
+        }
+        
+        this.refreshInProgress = true;
+        // console.log(`Starting UI refresh after deletion. Will select parent: type=${parentType}, id=${parentId}, guid=${parentGuid}`);
+        
+        // Add a safety timeout to ensure refreshInProgress is eventually reset
+        const refreshTimeout = setTimeout(() => {
+            console.warn('Refresh operation timed out after 30 seconds');
+            this.hideLoadingOverlay();
+            this.refreshInProgress = false;
+            this.forceResetUIState();
+        }, 30000); // 30 second timeout
         
         // Use similar approach to refreshAfterEdit but select the parent
         if (CISTree2) {
             // We want to maintain expanded nodes state during refresh
             const expandedNodesState = new Set(CISTree2.expandedNodes);
+            
+            // Log the number of expanded nodes (not the entire array which may be causing loops)
+            // console.log(`Preserving ${expandedNodesState.size} expanded nodes during refresh`);
             
             // Reload the CIS Plan data
             CISApi2.fetchCISPlanData()
@@ -1722,12 +1887,32 @@ const CISEditDialogs2 = {
                         
                         // After the tree has rendered, select the parent node
                         setTimeout(() => {
-                            this.selectNodeAfterRefresh(parentType, parentId, parentGuid);
+                            clearTimeout(refreshTimeout); // Clear the safety timeout
+                            
+                            // console.log(`Tree rendered, now selecting parent node: ${parentType}/${parentId}`);
+                            
+                            // Attempt to select the parent node
+                            const nodeSelected = this.selectNodeAfterRefresh(parentType, parentId, parentGuid);
+                            
+                            // If node selection failed, select root node as fallback
+                            if (!nodeSelected && parentType !== 'cisplan') {
+                                // console.log("Failed to select parent node, falling back to root");
+                                this.selectNodeAfterRefresh('cisplan', null, null);
+                            }
+                            
                             this.hideLoadingOverlay();
+                            
+                            // Make absolutely sure all loading states are cleared
+                            setTimeout(() => {
+                                this.forceResetUIState();
+                            }, 500);
                             
                             // IMPROVEMENT: After a delete operation, we should check if we need to render elements explicitly
                             // This is necessary when deleting the last child element in a branch
                             setTimeout(() => {
+                                // Reset the refresh in progress flag
+                                this.refreshInProgress = false;
+                                
                                 // If no elements are being displayed (e.g., after deleting the last child element),
                                 // explicitly trigger a rendering of the parent's elements
                                 const detailsContainer = document.querySelector('#cis-details-container');
@@ -1736,7 +1921,7 @@ const CISEditDialogs2 = {
                                      detailsContainer.style.display === 'none' || 
                                      detailsContainer.innerHTML.trim() === '')) {
                                     
-                                    console.log('No elements shown after delete, rendering parent elements explicitly');
+                                    // console.log('No elements shown after delete, rendering parent elements explicitly');
                                     
                                     // Find the parent entity in the data
                                     if (parentType && parentId && CISElements2) {
@@ -1753,27 +1938,33 @@ const CISEditDialogs2 = {
                                         // If we have the parent data, render its elements
                                         if (parentData) {
                                             CISElements2.renderElements(parentType, parentData);
-                                        } else if (parentType === 'cisplan') {
-                                            // If the parent is the CIS Plan root, render mission networks
-                                            CISElements2.renderElements('cisplan', CISPlan2.cisPlanData);
                                         }
                                     }
                                 }
-                            }, 300); // Extra delay to ensure the tree has fully rendered and events have been processed
+                            }, 300);
                         }, 300); // Wait for tree to fully render
                     } else {
                         console.error('Failed to refresh CIS Plan data');
                         this.showErrorToast('Failed to refresh data after deleting element');
                         this.hideLoadingOverlay();
+                        clearTimeout(refreshTimeout);
+                        this.refreshInProgress = false;
+                        this.forceResetUIState();
                     }
                 })
                 .catch(error => {
+                    clearTimeout(refreshTimeout);
                     console.error('Error refreshing CIS Plan data:', error);
                     this.showErrorToast('Error refreshing data: ' + error.message);
                     this.hideLoadingOverlay();
+                    this.refreshInProgress = false;
+                    this.forceResetUIState();
                 });
         } else {
+            clearTimeout(refreshTimeout);
             this.hideLoadingOverlay();
+            this.refreshInProgress = false;
+            this.forceResetUIState();
         }
     },
     
@@ -1782,34 +1973,66 @@ const CISEditDialogs2 = {
      * @param {string} nodeType - Type of the node to select
      * @param {string} nodeId - ID of the node to select
      * @param {string} nodeGuid - GUID of the node to select
+     * @returns {boolean} Whether selection was successful
      */
     selectNodeAfterRefresh: function(nodeType, nodeId, nodeGuid) {
-        // Log the current expanded nodes state
+        // console.log(`Attempting to select node after refresh: type=${nodeType}, id=${nodeId}, guid=${nodeGuid}`);
+        
+        // Simple guard to prevent excessive logging
+        if (!nodeType && !nodeId && !nodeGuid) {
+            console.warn('No node identifiers provided for selection');
+            return false;
+        }
+        
+        // Log the current expanded nodes state - but only the count, not the full set
         if (CISTree2 && CISTree2.expandedNodes) {
-            console.log('Current expanded nodes before selection:', CISTree2.expandedNodes.size);
+            // console.log(`Current expanded nodes count: ${CISTree2.expandedNodes.size}`);
         }
         
-        // Try to select node by GUID first (most reliable)
-        if (nodeGuid && CISTree2.selectNodeByGuid(nodeGuid)) {
-            console.log('Selected node by GUID:', nodeGuid);
-            return;
-        }
-        
-        // Then try by type and ID
-        if (nodeType && nodeId && CISTree2.selectNodeByTypeAndId(nodeType, nodeId)) {
-            console.log('Selected node by type and ID:', nodeType, nodeId);
-            return;
-        }
-        
-        // If all else fails, just select the root
-        if (nodeType === 'cisplan' || !nodeType) {
-            const rootNode = document.querySelector('.tree-node[data-type="cisplan"]');
-            if (rootNode) {
-                console.log('Selecting root node as fallback');
-                CISTree2.selectTreeNode(rootNode);
-                rootNode.click();
+        try {
+            // Try to select node by GUID first (most reliable)
+            if (nodeGuid && CISTree2 && CISTree2.selectNodeByGuid) {
+                const selected = CISTree2.selectNodeByGuid(nodeGuid);
+                if (selected) {
+                    // console.log(`Successfully selected node by GUID: ${nodeGuid}`);
+                    return true;
+                } else {
+                    console.warn(`Failed to select node by GUID: ${nodeGuid}`);
+                }
             }
+            
+            // Then try by type and ID
+            if (nodeType && nodeId && CISTree2 && CISTree2.selectNodeByTypeAndId) {
+                const selected = CISTree2.selectNodeByTypeAndId(nodeType, nodeId);
+                if (selected) {
+                    // console.log(`Successfully selected node by type and ID: ${nodeType}/${nodeId}`);
+                    return true;
+                } else {
+                    console.warn(`Failed to select node by type and ID: ${nodeType}/${nodeId}`);
+                }
+            }
+            
+            // If all else fails, just select the root
+            if (nodeType === 'cisplan' || !nodeType) {
+                const rootNode = document.querySelector('.tree-node[data-type="cisplan"]');
+                if (rootNode && CISTree2 && CISTree2.selectTreeNode) {
+                    // console.log('Selecting root node as fallback');
+                    CISTree2.selectTreeNode(rootNode);
+                    
+                    // Use a custom event rather than click which might cause side effects
+                    const detail = { type: 'cisplan', id: null, guid: null, data: CISPlan2.cisPlanData };
+                    const event = new CustomEvent('cis:node-selected', { detail });
+                    document.dispatchEvent(event);
+                    return true;
+                } else {
+                    console.warn('Root node not found for fallback selection');
+                }
+            }
+        } catch (error) {
+            console.error('Error in selectNodeAfterRefresh:', error);
         }
+        
+        return false;
     },
     
     /**
@@ -1846,7 +2069,7 @@ const CISEditDialogs2 = {
      */
     loadParticipants: async function() {
         try {
-            console.log('Loading participants for dropdown...');
+            // console.log('Loading participants for dropdown...');
             const response = await fetch('/api/participants');
             if (!response.ok) {
                 console.error(`Failed to fetch participants: ${response.status} ${response.statusText}`);
@@ -1854,7 +2077,7 @@ const CISEditDialogs2 = {
             }
             
             const result = await response.json();
-            console.log('Participants API response status:', result.status);
+            // console.log('Participants API response status:', result.status);
             
             if (result.status === 'success' && Array.isArray(result.data)) {
                 // Transform the data into the format needed for Select2
@@ -1869,7 +2092,7 @@ const CISEditDialogs2 = {
                     };
                 });
                 
-                console.log(`Processed ${participants.length} participants for dropdown`);
+                // console.log(`Processed ${participants.length} participants for dropdown`);
                 return participants;
             } else {
                 console.error("Failed to load participants:", result.message || "Unknown error");
@@ -1921,13 +2144,13 @@ const CISEditDialogs2 = {
      */
     loadAllServices: async function() {
         try {
-            console.log('Loading all services for dropdown...');
+            // console.log('Loading all services for dropdown...');
             // Try the API endpoint for all services
             const response = await fetch('/api/services/all');
             
             if (!response.ok) {
                 // If that fails, try another common endpoint format
-                console.log('First services endpoint failed, trying alternative...');
+                // console.log('First services endpoint failed, trying alternative...');
                 const altResponse = await fetch('/api/services');
                 if (!altResponse.ok) {
                     throw new Error(`Failed to fetch services: ${response.statusText}`);
@@ -1982,7 +2205,7 @@ const CISEditDialogs2 = {
             };
         });
         
-        console.log(`Loaded ${formattedServices.length} services for dropdown`);
+        // console.log(`Loaded ${formattedServices.length} services for dropdown`);
         return formattedServices;
     },
     
@@ -1993,13 +2216,13 @@ const CISEditDialogs2 = {
      */
     loadServiceGPs: async function(serviceId) {
         try {
-            console.log(`Loading GPs for service ${serviceId}...`);
+            // console.log(`Loading GPs for service ${serviceId}...`);
             // Try the endpoint specified by the user
             const response = await fetch(`/api/services/${serviceId}/all_gps`);
             
             if (!response.ok) {
                 // If that fails, try alternative endpoints
-                console.log('First GP endpoint failed, trying alternatives...');
+                // console.log('First GP endpoint failed, trying alternatives...');
                 
                 // Try other potential endpoint formats
                 const alternatives = [
@@ -2010,10 +2233,10 @@ const CISEditDialogs2 = {
                 
                 for (const alt of alternatives) {
                     try {
-                        console.log(`Trying alternative endpoint: ${alt}`);
+                        // console.log(`Trying alternative endpoint: ${alt}`);
                         const altResponse = await fetch(alt);
                         if (altResponse.ok) {
-                            console.log(`Alternative endpoint ${alt} succeeded`);
+                            // console.log(`Alternative endpoint ${alt} succeeded`);
                             return this.processGPsResponse(await altResponse.json());
                         }
                     } catch (e) {
@@ -2039,16 +2262,16 @@ const CISEditDialogs2 = {
     processGPsResponse: function(result) {
         let gpIds = [];
         
-        console.log('Processing GP response:', result);
+        // console.log('Processing GP response:', result);
         
         // Handle different API response formats
         if (result.success && result.gp_ids) {
             // Format from manually added selection: {success: true, gp_ids: [...]}
             gpIds = result.gp_ids;
-            console.log('Found GP IDs in success/gp_ids format');
+            // console.log('Found GP IDs in success/gp_ids format');
         } else if (result.status === 'success' && result.data) {
             // Common format: {status: 'success', data: [...]}
-            console.log('Found GP IDs in status/data format');
+            // console.log('Found GP IDs in status/data format');
             if (Array.isArray(result.data)) {
                 gpIds = result.data.map(gp => gp.id || gp.gpId || gp);
             } else {
@@ -2056,17 +2279,17 @@ const CISEditDialogs2 = {
             }
         } else if (Array.isArray(result)) {
             // Format: Direct array of GP IDs or objects
-            console.log('Found GP IDs in direct array format');
+            // console.log('Found GP IDs in direct array format');
             gpIds = result.map(gp => typeof gp === 'object' ? (gp.id || gp.gpId) : gp);
         } else if (result.gps && Array.isArray(result.gps)) {
             // Format: {gps: [...]}
-            console.log('Found GP IDs in gps array format');
+            // console.log('Found GP IDs in gps array format');
             gpIds = result.gps.map(gp => typeof gp === 'object' ? (gp.id || gp.gpId) : gp);
         } else {
             // Try to find any array property that might contain GP IDs
             const arrayProps = Object.keys(result).filter(key => Array.isArray(result[key]));
             if (arrayProps.length > 0) {
-                console.log(`Found potential GP arrays in properties: ${arrayProps.join(', ')}`);
+                // console.log(`Found potential GP arrays in properties: ${arrayProps.join(', ')}`);
                 // Try the first array property
                 const firstArrayProp = arrayProps[0];
                 gpIds = result[firstArrayProp].map(gp => 
@@ -2078,7 +2301,7 @@ const CISEditDialogs2 = {
             }
         }
         
-        console.log(`Successfully processed ${gpIds.length} GPs:`, gpIds.slice(0, 5));
+        // console.log(`Successfully processed ${gpIds.length} GPs:`, gpIds.slice(0, 5));
         return gpIds;
     },
     
@@ -2089,7 +2312,7 @@ const CISEditDialogs2 = {
      */
     getGPName: async function(gpId) {
         try {
-            console.log(`Getting name for GP ${gpId}...`);
+            // console.log(`Getting name for GP ${gpId}...`);
             const response = await fetch(`/api/gps/${gpId}/name`);
             
             if (!response.ok) {

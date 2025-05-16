@@ -18,11 +18,53 @@ const CISPlan2 = {
         // Store component references
         this.CISTree2 = CISTree2;
         
-        // Initialize components
+        // Debug component availability
+        console.log('Initializing CIS Plan 2.0:');
+        console.log('CISTree2 available:', typeof CISTree2 !== 'undefined');
+        console.log('CISElements2 available:', typeof CISElements2 !== 'undefined');
+        console.log('CISDetails2 available:', typeof CISDetails2 !== 'undefined');
+        console.log('CISDialogs2 available:', typeof CISDialogs2 !== 'undefined');
+        console.log('CISUtil2 available:', typeof CISUtil2 !== 'undefined');
+        
+        // Initialize components in the correct order
+        console.log('Initializing CISUtil2...');
+        if (typeof CISUtil2 !== 'undefined' && CISUtil2.init) {
+            CISUtil2.init();
+        }
+        
+        console.log('Initializing CISDialogs2...');
+        if (typeof CISDialogs2 !== 'undefined') {
+            if (CISDialogs2.init) {
+                CISDialogs2.init();
+                // Verify the delete dialog method exists
+                console.log('CISDialogs2.showDeleteElementDialog available:', typeof CISDialogs2.showDeleteElementDialog === 'function');
+                
+                // Make method globally available in window for debugging
+                window.CISDialogs2 = CISDialogs2;
+            } else {
+                console.error('CISDialogs2.init method not found!');
+            }
+        } else {
+            console.error('CISDialogs2 component not found!');
+        }
+        
+        console.log('Initializing CISTree2...');
         CISTree2.init();
+        
+        console.log('Initializing CISElements2...');
         CISElements2.init();
+        
+        console.log('Initializing CISDetails2...');
         CISDetails2.init();
-        CISDialogs2.init();
+        
+        // Initialize CISEditDialogs2 (for edit and delete operations)
+        console.log('Initializing CISEditDialogs2...');
+        if (typeof CISEditDialogs2 !== 'undefined' && CISEditDialogs2.init) {
+            CISEditDialogs2.init();
+            console.log('CISEditDialogs2 properly initialized');
+        } else {
+            console.error('CISEditDialogs2 component not found or init method not available!');
+        }
         
         // Set up panel resizing
         this.setupPanelResizing();

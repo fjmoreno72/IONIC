@@ -141,20 +141,47 @@ const CISApi2 = {
      * @returns {Promise<boolean>} Whether the deletion was successful
      */
     deleteEntity: async function(guid) {
+        console.log(`CISApi2: Attempting to delete entity with GUID: ${guid}`);
+        
+        if (!guid) {
+            console.error('CISApi2: deleteEntity called without a valid GUID');
+            return false;
+        }
+        
         try {
             const response = await fetch(`/api/v2/cis_plan/entity/${guid}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
             
+            console.log(`CISApi2: Delete API response status: ${response.status} ${response.statusText}`);
+            
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || `HTTP error! Status: ${response.status}`);
+                // Try to get error details from response
+                let errorMessage = `HTTP error! Status: ${response.status}`;
+                try {
+                    const errorData = await response.json();
+                    errorMessage = errorData.message || errorMessage;
+                } catch (jsonError) {
+                    console.warn('CISApi2: Could not parse error response as JSON', jsonError);
+                }
+                
+                throw new Error(errorMessage);
             }
             
-            const data = await response.json();
-            return data.status === 'success';
+            try {
+                const data = await response.json();
+                console.log('CISApi2: Delete operation result:', data);
+                return data.status === 'success';
+            } catch (jsonError) {
+                console.warn('CISApi2: Could not parse success response as JSON', jsonError);
+                // If we can't parse the response but the request was successful, assume success
+                return response.ok;
+            }
         } catch (error) {
-            console.error(`Error deleting entity ${guid}:`, error);
+            console.error(`CISApi2: Error deleting entity ${guid}:`, error);
             this.showError(`Failed to delete entity: ${error.message}`);
             return false;
         }

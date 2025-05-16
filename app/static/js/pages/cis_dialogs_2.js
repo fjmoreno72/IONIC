@@ -12,6 +12,13 @@ const CISDialogs2 = {
     confirmAddBtn: null,
     addModalBody: null,
     
+    // Delete dialog elements
+    deleteModal: null,
+    closeDeleteModalBtn: null,
+    cancelDeleteBtn: null,
+    confirmDeleteBtn: null,
+    deleteModalBody: null,
+    
     // Random suffix for form field names to prevent autocomplete
     currentRandomSuffix: null,
     
@@ -38,17 +45,42 @@ const CISDialogs2 = {
         selectedType: null
     },
     
+    // Current element data for the add dialog
+    currentAddData: {
+        elementType: null,
+        parentType: null,
+        parentId: null,
+        parentName: null,
+        parentGuid: null
+    },
+    
+    // Current element data for the delete dialog
+    currentDeleteData: {
+        elementType: null,
+        elementId: null,
+        elementName: null,
+        elementGuid: null
+    },
+    
     /**
      * Initialize the dialogs component
      */
     init: function() {
-        // Initialize DOM references
+        // Initialize add modal DOM references
         this.addModal = document.getElementById('add-modal');
         this.closeAddModalBtn = document.getElementById('close-add-modal');
         this.cancelAddBtn = document.getElementById('cancel-add-btn');
         this.confirmAddBtn = document.getElementById('confirm-add-btn');
         this.addModalBody = document.getElementById('add-modal-body');
         
+        // Initialize delete modal DOM references - but only for reference, not for handlers
+        this.deleteModal = document.getElementById('delete-modal');
+        this.closeDeleteModalBtn = document.getElementById('close-delete-modal');
+        this.cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+        this.confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+        this.deleteModalBody = document.getElementById('delete-modal-body');
+        
+        // Verify DOM elements exist
         if (!this.addModal || !this.closeAddModalBtn || !this.cancelAddBtn || 
             !this.confirmAddBtn || !this.addModalBody) {
             console.error('Add modal DOM elements not found');
@@ -67,15 +99,11 @@ const CISDialogs2 = {
         this.confirmAddBtn.addEventListener('click', () => {
             this.handleAddElementConfirm();
         });
-    },
-    
-    // Current element data for the add dialog
-    currentAddData: {
-        elementType: null,
-        parentType: null,
-        parentId: null,
-        parentName: null,
-        parentGuid: null
+        
+        // DO NOT set up event listeners for delete functionality
+        // This is handled by CISEditDialogs2 component
+        // Leaving the references to deleteModal elements for backward compatibility
+        console.log('CISDialogs2 initialized - delete handlers are now managed by CISEditDialogs2');
     },
     
     /**
@@ -1427,5 +1455,51 @@ const CISDialogs2 = {
             console.error("Error loading participants:", error);
             return [];
         }
+    },
+    
+    /**
+     * Show delete confirmation dialog for an element
+     * @param {string} elementType - Type of element to delete
+     * @param {string} elementId - ID of element to delete
+     * @param {string} elementName - Name of element to delete
+     * @param {string} elementGuid - GUID of element to delete
+     */
+    showDeleteElementDialog: function(elementType, elementId, elementName, elementGuid) {
+        console.warn("CISDialogs2.showDeleteElementDialog is deprecated. Use CISEditDialogs2.showDeleteDialog instead.");
+        // Do nothing - all delete functionality has been moved to CISEditDialogs2
+        
+        // If CISEditDialogs2 is available, redirect to it
+        if (typeof CISEditDialogs2 !== 'undefined' && typeof CISEditDialogs2.showDeleteDialog === 'function') {
+            console.log("Redirecting to CISEditDialogs2.showDeleteDialog");
+            // Find the element data if possible
+            let elementData = {
+                name: elementName || elementId || 'Unnamed',
+                id: elementId
+            };
+            
+            // Call the new component's method
+            CISEditDialogs2.showDeleteDialog(
+                elementData,
+                elementType,
+                elementId,
+                elementGuid
+            );
+        }
+    },
+    
+    /**
+     * Hide the delete modal
+     */
+    hideDeleteModal: function() {
+        console.warn("CISDialogs2.hideDeleteModal is deprecated. Use CISEditDialogs2.hideDeleteModal instead.");
+        // Do nothing - all delete functionality has been moved to CISEditDialogs2
+    },
+    
+    /**
+     * Handle delete element confirmation
+     */
+    handleDeleteElementConfirm: function() {
+        console.warn("CISDialogs2.handleDeleteElementConfirm is deprecated. Use CISEditDialogs2.handleDeleteConfirm instead.");
+        // Do nothing - all delete functionality has been moved to CISEditDialogs2
     }
 };

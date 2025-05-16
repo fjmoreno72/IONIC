@@ -273,15 +273,113 @@ const CISDetails2 = {
      * Show delete confirmation dialog for the selected element
      */
     showDeleteDialog: function() {
-        if (CISDialogs2 && typeof CISDialogs2.showDeleteElementDialog === 'function') {
-            CISDialogs2.showDeleteElementDialog(
-                this.currentElementType,
-                this.currentElementId,
-                this.currentElement.name || this.currentElementId,
-                this.currentElementGuid
+        // Check if we have the current element selected
+        if (!this.currentElement || !this.currentElementGuid) {
+            console.error('No element selected for deletion', {
+                currentElement: this.currentElement,
+                currentElementGuid: this.currentElementGuid,
+                currentElementType: this.currentElementType,
+                currentElementId: this.currentElementId
+            });
+            return;
+        }
+        
+        // Ensure we have a valid element type string
+        let elementTypeStr = this.currentElementType;
+        if (typeof elementTypeStr === 'object') {
+            console.warn('Element type is an object, extracting type property:', elementTypeStr);
+            elementTypeStr = elementTypeStr.type || 'unknown';
+        }
+        elementTypeStr = String(elementTypeStr);
+        
+        console.log('Preparing to delete element:', {
+            type: elementTypeStr,
+            id: this.currentElementId,
+            guid: this.currentElementGuid,
+            name: this.currentElement.name || this.currentElementId
+        });
+
+        // Use CISEditDialogs2 for deletion - this is the correct component
+        if (typeof CISEditDialogs2 !== 'undefined' && typeof CISEditDialogs2.showDeleteDialog === 'function') {
+            console.log('Using CISEditDialogs2 for deletion with correct parameter order...');
+            
+            // FIXED: Pass parameters in the correct order
+            // Parameter order should be: elementType, elementId, elementName, elementGuid, parentPath
+            CISEditDialogs2.showDeleteDialog(
+                elementTypeStr,                                      // Element type (as string)
+                this.currentElementId,                               // Element ID
+                this.currentElement.name || this.currentElementId,   // Element name
+                this.currentElementGuid,                             // Element GUID
+                this.currentParentPath                               // Parent path
             );
         } else {
-            console.error('CISDialogs2 component not found or showDeleteElementDialog method not available');
+            console.error('CISEditDialogs2 component not found or showDeleteDialog method not available');
+            this.fallbackDeleteConfirmation();
+        }
+    },
+    
+    /**
+     * Fallback delete confirmation if modal is not available
+     */
+    fallbackDeleteConfirmation: function() {
+        // Fallback implementation if CISEditDialogs2 is not available
+        const confirmDelete = confirm(`Are you sure you want to delete this ${this.formatElementType(this.currentElementType)}?\n\nName: ${this.currentElement.name || this.currentElementId}\nThis action cannot be undone.`);
+        
+        if (confirmDelete) {
+            // Show loading indicator
+            if (typeof CISUtil2 !== 'undefined' && CISUtil2.showLoading) {
+                CISUtil2.showLoading("Deleting element...");
+            }
+            
+            // Call the API to delete the element
+            fetch(`/api/v2/cis_plan/entity/${this.currentElementGuid}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                // Hide loading indicator
+                if (typeof CISUtil2 !== 'undefined' && CISUtil2.hideLoading) {
+                    CISUtil2.hideLoading();
+                }
+                
+                if (response.status === 'success') {
+                    // Show success message
+                    if (typeof CISUtil2 !== 'undefined' && CISUtil2.showNotification) {
+                        CISUtil2.showNotification("Element deleted successfully", "success");
+                    } else {
+                        alert("Element deleted successfully");
+                    }
+                    
+                    // Refresh the UI
+                    const refreshEvent = new CustomEvent('cis:refresh-ui');
+                    document.dispatchEvent(refreshEvent);
+                } else {
+                    // Show error message
+                    const errorMsg = response.message || "Failed to delete element";
+                    if (typeof CISUtil2 !== 'undefined' && CISUtil2.showNotification) {
+                        CISUtil2.showNotification(errorMsg, "error");
+                    } else {
+                        alert(errorMsg);
+                    }
+                }
+            })
+            .catch(error => {
+                // Hide loading indicator
+                if (typeof CISUtil2 !== 'undefined' && CISUtil2.hideLoading) {
+                    CISUtil2.hideLoading();
+                }
+                
+                // Show error message
+                console.error("Error deleting element:", error);
+                if (typeof CISUtil2 !== 'undefined' && CISUtil2.showNotification) {
+                    CISUtil2.showNotification(`Error deleting element: ${error.message}`, "error");
+                } else {
+                    alert(`Error deleting element: ${error.message}`);
+                }
+            });
         }
     },
     

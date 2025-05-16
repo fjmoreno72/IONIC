@@ -606,15 +606,36 @@ def copy_children(environment, original_entity, new_entity, entity_type):
             # For each child in the original entity
             for child in original_entity[child_array_name]:
                 try:
-                    # Skip security domains - they should not be copied
+                    # Handle security domains specially - they should be referenced, not copied
                     if child_type == 'security_domain':
                         # For network segments, we need to reference existing security domains instead of copying
-                        # Find the matching security domain in the target environment
                         domain_id = child.get('id')
                         if domain_id:
-                            logger.info(f"Security domains cannot be copied. Referencing existing security domain: {domain_id}")
-                            # We don't create a new security domain, just continue with the next child
-                            continue
+                            logger.info(f"Creating reference to existing security domain: {domain_id}")
+                            
+                            # Create a reference to the existing security domain in the new network segment
+                            security_domain_attributes = {
+                                'id': domain_id,  # Use the existing ID (classification level)
+                            }
+                            
+                            # Create the security domain reference
+                            created_security_domain = create_entity(
+                                environment,
+                                'security_domain',
+                                updated_entity.get('guid'),
+                                security_domain_attributes
+                            )
+                            
+                            if created_security_domain:
+                                logger.info(f"Successfully created reference to security domain {domain_id} with GUID: {created_security_domain.get('guid')}")
+                                
+                                # Now recursively copy the children of this security domain (hw_stacks)
+                                copy_children(environment, child, created_security_domain, 'security_domain')
+                            else:
+                                logger.error(f"Failed to create reference to security domain {domain_id}")
+                        
+                        # Continue to next child after handling the security domain
+                        continue
                     
                     # Prepare attributes for the child copy
                     child_attributes = {}

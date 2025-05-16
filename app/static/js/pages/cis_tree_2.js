@@ -134,7 +134,7 @@ const CISTree2 = {
     this.expandedNodes.add(null);
 
     if (this.fullTreeData && this.fullTreeData.missionNetworks) {
-      // Expand nodes up to asset level only (not including network interfaces, GP/SP instances)
+      // Expand nodes only up to security domain level (not including hw stacks)
       this.fullTreeData.missionNetworks.forEach(network => {
         if (network.guid) this.expandedNodes.add(network.guid);
 
@@ -145,15 +145,9 @@ const CISTree2 = {
             if (segment.securityDomains) {
               segment.securityDomains.forEach(domain => {
                 if (domain.guid) this.expandedNodes.add(domain.guid);
-
-                if (domain.hwStacks) {
-                  domain.hwStacks.forEach(stack => {
-                    if (stack.guid) this.expandedNodes.add(stack.guid);
-                    
-                    // We DO NOT automatically expand assets in the initial view
-                    // This will show assets in the tree but keep their children collapsed
-                  });
-                }
+                
+                // We DO NOT add hwStacks GUIDs to the expandedNodes Set
+                // This will make hwStacks collapsed by default
               });
             }
           });
@@ -820,5 +814,114 @@ const CISTree2 = {
   getEntityIcon: function (type) {
     // Use the centralized utility function
     return CISUtil2.getEntityIcon(type);
+  },
+
+  /**
+   * Copy the currently selected element
+   * @param {string} guid - GUID of the element to copy
+   * @param {string} name - Name of the element to copy (for confirmation dialog)
+   */
+  copyElement: function(guid, name) {
+    if (!guid) {
+      console.error("Cannot copy element: missing GUID");
+      return;
+    }
+    
+    // Show confirmation dialog
+    const confirmCopy = confirm(`Do you want to create a copy of "${name}"?`);
+    if (!confirmCopy) return;
+    
+    // Show loading indicator (assuming CISUtil2 has this helper)
+    if (typeof CISUtil2 !== 'undefined' && CISUtil2.showLoading) {
+      CISUtil2.showLoading("Creating copy...");
+    }
+    
+    // Call the API to copy the element
+    fetch(`/api/v2/cis_plan/entity/${guid}/copy`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        new_name: `${name}_Copy`
+      })
+    })
+    .then(response => response.json())
+    .then(response => {
+      // Hide loading indicator
+      if (typeof CISUtil2 !== 'undefined' && CISUtil2.hideLoading) {
+        CISUtil2.hideLoading();
+      }
+      
+      if (response.status === 'success') {
+        // Show success message
+        if (typeof CISUtil2 !== 'undefined' && CISUtil2.showNotification) {
+          CISUtil2.showNotification("Element copied successfully", "success");
+        } else {
+          alert("Element copied successfully");
+        }
+        
+        // Refresh the tree to show the new element
+        this.refreshOrReloadTree();
+        
+        // Select the new element if we have its GUID
+        if (response.data && response.data.newEntityGuid) {
+          setTimeout(() => {
+            this.selectNodeByGuid(response.data.newEntityGuid);
+          }, 500); // Give the tree time to render
+        }
+      } else {
+        // Show error message
+        const errorMsg = response.message || "Failed to copy element";
+        if (typeof CISUtil2 !== 'undefined' && CISUtil2.showNotification) {
+          CISUtil2.showNotification(errorMsg, "error");
+        } else {
+          alert(errorMsg);
+        }
+      }
+    })
+    .catch(error => {
+      // Hide loading indicator
+      if (typeof CISUtil2 !== 'undefined' && CISUtil2.hideLoading) {
+        CISUtil2.hideLoading();
+      }
+      
+      // Show error message
+      console.error("Error copying element:", error);
+      if (typeof CISUtil2 !== 'undefined' && CISUtil2.showNotification) {
+        CISUtil2.showNotification("Error copying element", "error");
+      } else {
+        alert("Error copying element");
+      }
+    });
+  },
+
+  /**
+   * Refresh the tree or reload if needed
+   */
+  refreshOrReloadTree: function() {
+    // Fetch the latest CIS Plan data
+    fetch('/api/v2/cis_plan')
+      .then(response => response.json())
+      .then(response => {
+        if (response.status === 'success' && response.data) {
+          // Remember expanded nodes
+          const expandedNodes = new Set(this.expandedNodes);
+          
+          // Render the tree with the updated data
+          this.renderTree(response.data);
+          
+          // Restore expanded nodes state
+          this.restoreExpandedNodes(expandedNodes);
+        } else {
+          // If we couldn't get the data, reload the page
+          window.location.reload();
+        }
+      })
+      .catch(error => {
+        console.error("Error refreshing tree:", error);
+        // If there was an error, reload the page
+        window.location.reload();
+      });
   }
 };

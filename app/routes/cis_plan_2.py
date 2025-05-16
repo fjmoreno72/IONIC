@@ -19,7 +19,8 @@ from app.data_access.cis_plan_repository_2 import (
     get_entity_path,
     get_entity_hierarchy,
     update_configuration_item,
-    refresh_gp_instance_config_items
+    refresh_gp_instance_config_items,
+    find_entity_by_guid
 )
 
 # Initialize the blueprint
@@ -368,3 +369,194 @@ def cis_plan_view_2():
     except Exception as e:
         logger.error(f"Error rendering CIS Plan view: {e}")
         return str(e), 500
+
+@cis_plan_bp_2.route('/api/v2/cis_plan/entity/<guid>/copy', methods=['POST'])
+def copy_entity(guid):
+    """
+    Create a copy of an entity and all its children.
+    
+    Optional JSON fields:
+    - new_name: The name for the copied entity (defaults to original name + "_Copy")
+    """
+    try:
+        logger.info(f"Starting copy operation for entity with GUID: {guid}")
+        environment = get_environment()
+        data = request.get_json() or {}
+        
+        # Get the original entity
+        original_entity = get_entity_by_guid(environment, guid)
+        if not original_entity:
+            logger.error(f"Entity with GUID {guid} not found for copying")
+            return error_response(f"Entity with GUID {guid} not found", 404)
+        
+        logger.info(f"Found entity to copy: {original_entity.get('name', 'Unnamed')}")
+        
+        # Determine the entity type
+        entity_type = ''
+        if 'entity_type' in original_entity:
+            entity_type = original_entity['entity_type']
+        elif 'networkSegments' in original_entity:
+            entity_type = 'mission_network'
+        elif 'securityDomains' in original_entity:
+            entity_type = 'network_segment'
+        elif 'hwStacks' in original_entity:
+            entity_type = 'security_domain'
+        elif 'assets' in original_entity:
+            entity_type = 'hw_stack'
+        elif 'networkInterfaces' in original_entity or 'gpInstances' in original_entity:
+            entity_type = 'asset'
+        elif 'spInstances' in original_entity:
+            entity_type = 'gp_instance'
+        else:
+            logger.error(f"Cannot determine entity type for GUID {guid}")
+            return error_response(f"Cannot determine entity type for GUID {guid}", 400)
+        
+        logger.info(f"Entity type determined: {entity_type}")
+        
+        # Set new name based on entity type
+        original_name = original_entity.get('name', original_entity.get('id', 'Unnamed'))
+        new_name = data.get('new_name', f"{original_name}_Copy")
+        logger.info(f"New name for copied entity: {new_name}")
+        
+        # For non-mission-network entities, get the parent GUID
+        parent_guid = None
+        if entity_type != 'mission_network':
+            try:
+                # Get the parent directly using find_entity_by_guid
+                cis_data = get_all_cis_plan(environment)
+                _, _, _, parent_entity = find_entity_by_guid(cis_data, guid)
+                
+                if parent_entity:
+                    parent_guid = parent_entity.get('guid')
+                    logger.info(f"Found parent GUID directly: {parent_guid}")
+                else:
+                    logger.warning(f"Could not find parent for entity {guid}")
+                    return error_response(f"Could not find parent for entity {guid}", 400)
+            except Exception as e:
+                logger.error(f"Error finding parent for {guid}: {str(e)}")
+                return error_response(f"Error finding parent: {str(e)}", 500)
+        
+        logger.info(f"Using parent GUID: {parent_guid}")
+        
+        # Prepare minimal attributes based on entity type
+        try:
+            attributes = {}
+            
+            if entity_type == 'mission_network':
+                attributes = {
+                    'name': new_name,
+                }
+            elif entity_type == 'network_segment':
+                attributes = {
+                    'name': new_name,
+                }
+            elif entity_type == 'security_domain':
+                # For security domains, we must use the exact same ID since they represent classifications
+                if not original_entity.get('id'):
+                    logger.error("Security domain ID is missing")
+                    return error_response("Security domain ID is required for copying", 400)
+                    
+                # Check if a security domain with this ID already exists under the parent
+                parent_entity = get_entity_by_guid(environment, parent_guid)
+                if parent_entity:
+                    existing_domains = parent_entity.get('securityDomains', [])
+                    domain_id = original_entity.get('id')
+                    
+                    if any(sd.get('id') == domain_id for sd in existing_domains):
+                        logger.error(f"Security domain with ID {domain_id} already exists in this segment")
+                        return error_response(f"Security domain with ID {domain_id} already exists in this segment", 400)
+                
+                attributes = {
+                    'id': original_entity.get('id'),
+                }
+            elif entity_type == 'hw_stack':
+                attributes = {
+                    'name': new_name,
+                    'cisParticipantID': original_entity.get('cisParticipantID', ''),
+                }
+            elif entity_type == 'asset':
+                attributes = {
+                    'name': new_name,
+                }
+            elif entity_type == 'network_interface':
+                attributes = {
+                    'name': new_name,
+                    'ip_address': '',  # Default empty value
+                    'subnet': '',      # Default empty value
+                    'fqdn': ''         # Default empty value
+                }
+            elif entity_type == 'gp_instance':
+                # For GP instances, we need the GPID
+                gpid = original_entity.get('gpid')
+                if not gpid:
+                    logger.error("GP ID is required for creating a GP instance")
+                    return error_response("GP ID is required for copying a GP instance", 400)
+                attributes = {
+                    'gpid': gpid,
+                    'instanceLabel': f"{original_entity.get('instanceLabel', '')}_Copy"
+                }
+            elif entity_type == 'sp_instance':
+                # For SP instances, we need the SPID
+                spid = original_entity.get('spId')
+                if not spid:
+                    logger.error("SP ID is required for creating an SP instance")
+                    return error_response("SP ID is required for copying an SP instance", 400)
+                attributes = {
+                    'spId': spid,
+                    'spVersion': original_entity.get('spVersion', '')
+                }
+            else:
+                # Generic fallback for unknown entity types
+                attributes = {}
+                
+                # Include name or id as appropriate
+                if 'name' in original_entity:
+                    attributes['name'] = new_name
+                if 'id' in original_entity and entity_type != 'security_domain':
+                    # For non-security domains, we'd generate a new ID in create_entity
+                    # For security domains, we use the existing ID
+                    pass
+                
+                # Add any other basic attributes but skip nested objects
+                for key, value in original_entity.items():
+                    if key not in ['guid', 'name', 'id'] and not isinstance(value, (dict, list)):
+                        attributes[key] = value
+                
+                logger.info(f"Created fallback attributes for unknown entity type {entity_type}")
+                
+            logger.info(f"Prepared attributes for new entity: {attributes}")
+            
+            # Create the copied entity in the database
+            created_entity = create_entity(
+                environment, 
+                entity_type,
+                parent_guid, 
+                attributes
+            )
+            
+            if not created_entity:
+                logger.error(f"Failed to create copy of {entity_type}")
+                return error_response(f"Failed to create copy of {entity_type}", 400)
+            
+            logger.info(f"Successfully created copy with GUID: {created_entity.get('guid')}")
+            
+            # Return the new entity with its GUID
+            return success_response({
+                "copied": True,
+                "originalGuid": guid,
+                "newEntityGuid": created_entity.get('guid'),
+                "newEntity": created_entity
+            }, 201)
+            
+        except Exception as e:
+            logger.error(f"Error creating entity attributes: {str(e)}")
+            return error_response(f"Error creating entity attributes: {str(e)}", 500)
+    
+    except ValueError as ve:
+        logger.error(f"Value error copying entity: {str(ve)}")
+        return error_response(str(ve), 400)
+    except Exception as e:
+        logger.error(f"Error copying entity: {str(e)}")
+        import traceback
+        logger.error(f"Traceback: {traceback.format_exc()}")
+        return error_response(str(e), 500)

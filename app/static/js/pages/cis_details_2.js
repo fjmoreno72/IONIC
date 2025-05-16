@@ -11,6 +11,7 @@ const CISDetails2 = {
     detailsTitle: null,
     editElementBtn: null,
     deleteElementBtn: null,
+    copyElementBtn: null,
     
     // State management
     currentElement: null,
@@ -28,8 +29,9 @@ const CISDetails2 = {
         this.detailsTitle = document.getElementById('details-title');
         this.editElementBtn = document.getElementById('edit-element-btn');
         this.deleteElementBtn = document.getElementById('delete-element-btn');
+        this.copyElementBtn = document.getElementById('copy-element-btn');
         
-        if (!this.detailsContent || !this.editElementBtn || !this.deleteElementBtn) {
+        if (!this.detailsContent || !this.editElementBtn || !this.deleteElementBtn || !this.copyElementBtn) {
             console.error('Details panel DOM elements not found');
             return;
         }
@@ -42,6 +44,11 @@ const CISDetails2 = {
         // Set up delete button
         this.deleteElementBtn.addEventListener('click', () => {
             this.showDeleteDialog();
+        });
+        
+        // Set up copy button
+        this.copyElementBtn.addEventListener('click', () => {
+            this.copyElement();
         });
         
         // Set up event listener for details update
@@ -135,11 +142,16 @@ const CISDetails2 = {
         
         // Enable/disable buttons based on element type
         const isRoot = type === 'cisplan';
+        const canCopy = ['mission_network', 'network_segment', 'security_domain', 'hw_stack', 'asset'].includes(type);
+        
         if (this.editElementBtn) {
             this.editElementBtn.disabled = isRoot;
         }
         if (this.deleteElementBtn) {
             this.deleteElementBtn.disabled = isRoot;
+        }
+        if (this.copyElementBtn) {
+            this.copyElementBtn.disabled = isRoot || !canCopy;
         }
         
         // Render appropriate details based on type
@@ -261,23 +273,90 @@ const CISDetails2 = {
      * Show delete confirmation dialog for the selected element
      */
     showDeleteDialog: function() {
-        if (!this.currentElement) {
+        if (CISDialogs2 && typeof CISDialogs2.showDeleteElementDialog === 'function') {
+            CISDialogs2.showDeleteElementDialog(
+                this.currentElementType,
+                this.currentElementId,
+                this.currentElement.name || this.currentElementId,
+                this.currentElementGuid
+            );
+        } else {
+            console.error('CISDialogs2 component not found or showDeleteElementDialog method not available');
+        }
+    },
+    
+    /**
+     * Copy the currently selected element
+     */
+    copyElement: function() {
+        if (!this.currentElementGuid || !this.currentElement) {
+            console.error('No element selected for copying');
             return;
         }
         
-        // Check if the CISEditDialogs2 component is available
-        if (typeof CISEditDialogs2 !== 'undefined' && CISEditDialogs2.showDeleteDialog) {
-            // Use the new delete dialog component
-            CISEditDialogs2.showDeleteDialog(
-                this.currentElement,
-                this.currentElementType,
-                this.currentElementId,
-                this.currentElementGuid,
-                this.currentParentPath
-            );
-        } else {
-            // Fallback to alert if delete dialog component not available
-            alert(`Delete functionality not implemented yet for ${this.formatElementType(this.currentElementType)}: ${this.currentElement.name || this.currentElement.id || 'Unnamed'}`);
-        }
+        const elementName = this.currentElement.name || this.currentElementId || 'this element';
+        
+        // Show confirmation dialog
+        const confirmCopy = confirm(`Do you want to create a copy of "${elementName}"?`);
+        if (!confirmCopy) return;
+        
+        // Show loading indicator
+        CISUtil2.showLoading("Creating copy...");
+        
+        // Call the API to copy the element
+        fetch(`/api/v2/cis_plan/entity/${this.currentElementGuid}/copy`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                new_name: `${elementName}_Copy`
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(response => {
+            // Hide loading indicator
+            CISUtil2.hideLoading();
+            
+            if (response.status === 'success') {
+                // Show success message
+                CISUtil2.showNotification("Element copied successfully", "success");
+                
+                // Refresh the CIS Plan tree view
+                const refreshEvent = new CustomEvent('cis:refresh-ui');
+                document.dispatchEvent(refreshEvent);
+                
+                // Select the new element if we have its GUID
+                if (response.data && response.data.newEntityGuid) {
+                    setTimeout(() => {
+                        // Create and dispatch event to select the new node
+                        const selectNodeEvent = new CustomEvent('cis:select-tree-node', {
+                            detail: {
+                                guid: response.data.newEntityGuid
+                            }
+                        });
+                        document.dispatchEvent(selectNodeEvent);
+                    }, 500); // Give the tree time to render
+                }
+            } else {
+                // Show error message
+                const errorMsg = response.message || "Failed to copy element";
+                CISUtil2.showNotification(errorMsg, "error");
+                console.error("Copy failed:", response);
+            }
+        })
+        .catch(error => {
+            // Hide loading indicator
+            CISUtil2.hideLoading();
+            
+            // Show error message
+            console.error("Error copying element:", error);
+            CISUtil2.showNotification(`Error copying element: ${error.message}`, "error");
+        });
     }
 };

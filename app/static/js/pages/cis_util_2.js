@@ -589,5 +589,163 @@ const CISUtil2 = {
         });
         
         return card;
+    },
+    
+    /**
+     * Show a loading indicator overlay
+     * @param {string} message - Optional message to display
+     */
+    showLoading: function(message = 'Loading...') {
+        // Check if a loading overlay already exists
+        let loadingOverlay = document.getElementById('loading-overlay');
+        
+        if (!loadingOverlay) {
+            // Create the loading overlay if it doesn't exist
+            loadingOverlay = document.createElement('div');
+            loadingOverlay.id = 'loading-overlay';
+            loadingOverlay.style.position = 'fixed';
+            loadingOverlay.style.top = '0';
+            loadingOverlay.style.left = '0';
+            loadingOverlay.style.width = '100%';
+            loadingOverlay.style.height = '100%';
+            loadingOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            loadingOverlay.style.zIndex = '9999';
+            loadingOverlay.style.display = 'flex';
+            loadingOverlay.style.alignItems = 'center';
+            loadingOverlay.style.justifyContent = 'center';
+            
+            // Create the loading spinner and message
+            const loadingContent = document.createElement('div');
+            loadingContent.style.backgroundColor = 'white';
+            loadingContent.style.padding = '20px';
+            loadingContent.style.borderRadius = '5px';
+            loadingContent.style.textAlign = 'center';
+            
+            const spinner = document.createElement('div');
+            spinner.className = 'spinner-border text-primary';
+            spinner.setAttribute('role', 'status');
+            spinner.style.display = 'block';
+            spinner.style.margin = '0 auto 10px auto';
+            
+            const messageElement = document.createElement('div');
+            messageElement.id = 'loading-message';
+            messageElement.textContent = message;
+            
+            loadingContent.appendChild(spinner);
+            loadingContent.appendChild(messageElement);
+            loadingOverlay.appendChild(loadingContent);
+            
+            document.body.appendChild(loadingOverlay);
+        } else {
+            // Update the message if the overlay already exists
+            const messageElement = document.getElementById('loading-message');
+            if (messageElement) {
+                messageElement.textContent = message;
+            }
+            
+            // Make sure it's visible
+            loadingOverlay.style.display = 'flex';
+        }
+    },
+    
+    /**
+     * Hide the loading indicator overlay
+     */
+    hideLoading: function() {
+        const loadingOverlay = document.getElementById('loading-overlay');
+        if (loadingOverlay) {
+            loadingOverlay.style.display = 'none';
+        }
+    },
+    
+    /**
+     * Show a notification toast
+     * @param {string} message - The message to display
+     * @param {string} type - The type of notification (success, error, warning, info)
+     * @param {number} duration - How long to show the notification in milliseconds
+     */
+    showNotification: function(message, type = 'info', duration = 3000) {
+        // Check if the notification container exists
+        let notificationContainer = document.getElementById('notification-container');
+        
+        if (!notificationContainer) {
+            // Create the notification container if it doesn't exist
+            notificationContainer = document.createElement('div');
+            notificationContainer.id = 'notification-container';
+            notificationContainer.style.position = 'fixed';
+            notificationContainer.style.top = '20px';
+            notificationContainer.style.right = '20px';
+            notificationContainer.style.zIndex = '10000';
+            document.body.appendChild(notificationContainer);
+        }
+        
+        // Create the notification element
+        const notification = document.createElement('div');
+        notification.className = 'notification-toast';
+        notification.style.backgroundColor = 'white';
+        notification.style.border = '1px solid #ddd';
+        notification.style.borderRadius = '5px';
+        notification.style.padding = '15px';
+        notification.style.marginBottom = '10px';
+        notification.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+        notification.style.minWidth = '250px';
+        notification.style.position = 'relative';
+        notification.style.opacity = '0';
+        notification.style.transition = 'opacity 0.3s ease';
+        
+        // Set the border color based on the notification type
+        switch (type) {
+            case 'success':
+                notification.style.borderLeft = '5px solid #28a745';
+                break;
+            case 'error':
+                notification.style.borderLeft = '5px solid #dc3545';
+                break;
+            case 'warning':
+                notification.style.borderLeft = '5px solid #ffc107';
+                break;
+            case 'info':
+            default:
+                notification.style.borderLeft = '5px solid #17a2b8';
+                break;
+        }
+        
+        // Create message and close button
+        notification.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>${message}</div>
+                <button style="background: none; border: none; cursor: pointer; font-size: 18px;">&times;</button>
+            </div>
+        `;
+        
+        // Add the notification to the container
+        notificationContainer.appendChild(notification);
+        
+        // Trigger reflow to ensure transition works
+        notification.offsetHeight;
+        
+        // Show the notification
+        notification.style.opacity = '1';
+        
+        // Set up close button
+        const closeButton = notification.querySelector('button');
+        closeButton.addEventListener('click', function() {
+            notification.style.opacity = '0';
+            setTimeout(function() {
+                notificationContainer.removeChild(notification);
+            }, 300);
+        });
+        
+        // Automatically remove after the specified duration
+        setTimeout(function() {
+            if (notification.parentNode === notificationContainer) {
+                notification.style.opacity = '0';
+                setTimeout(function() {
+                    if (notification.parentNode === notificationContainer) {
+                        notificationContainer.removeChild(notification);
+                    }
+                }, 300);
+            }
+        }, duration);
     }
 };

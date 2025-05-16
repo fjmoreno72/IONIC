@@ -191,7 +191,7 @@
                       ]
                     },
                     {
-                      "name": "ASSET X",
+                      "name": "ASSET X*",
                       "guid": "79ea3eec-313b-4fa6-9071-141bab4bfcc7",
                       "id": "AS-0006",
                       "networkInterfaces": [
@@ -242,6 +242,27 @@
                       "name": "POP",
                       "guid": "a617e299-62b6-49fb-9874-c046e5a359a3",
                       "id": "AS-0007",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "POP-POP",
+                      "guid": "32e75fad-44aa-4202-b4b4-ff2efc42b687",
+                      "id": "AS-0008",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "POP_Copy",
+                      "guid": "05fd2f3d-1462-412e-9162-1027cd91c588",
+                      "id": "AS-0011",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "Asset 111_Copy",
+                      "guid": "33b0fc75-1128-4fed-ade5-dadd74f10f90",
+                      "id": "AS-0012",
                       "networkInterfaces": [],
                       "gpInstances": []
                     }
@@ -436,7 +457,15 @@
                   "guid": "1ff8c7ad-7e9b-4233-a87d-c853255fb6a2",
                   "id": "HW-0003",
                   "cisParticipantID": "",
-                  "assets": []
+                  "assets": [
+                    {
+                      "name": "1",
+                      "guid": "f8a65ccb-62d4-463a-b8bb-4d8e156516c6",
+                      "id": "AS-0009",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
+                  ]
                 },
                 {
                   "name": "PEPE",
@@ -451,13 +480,50 @@
                   "id": "HW-0009",
                   "cisParticipantID": "PAR-CIAV-000030",
                   "assets": []
+                },
+                {
+                  "name": "POP-POP*",
+                  "guid": "8de586b3-bf15-4387-8fff-b509e3468b6a",
+                  "id": "HW-0010",
+                  "cisParticipantID": "PAR-CIAV-000026",
+                  "assets": []
+                },
+                {
+                  "name": "POPs_Copy",
+                  "guid": "e7f2b4a5-e2e5-4600-b976-19557a3df573",
+                  "id": "HW-0012",
+                  "cisParticipantID": "PAR-CIAV-000030",
+                  "assets": []
+                },
+                {
+                  "name": "PEPE_Copy",
+                  "guid": "3b220458-f392-45fb-8a0c-10c82dff63c0",
+                  "id": "HW-0013",
+                  "cisParticipantID": "PAR-CIAV-000116",
+                  "assets": []
                 }
               ]
             },
             {
               "id": "CL-RESTRICTED",
               "guid": "73f8208e-0887-4823-88af-76ab32e60b8d",
-              "hwStacks": []
+              "hwStacks": [
+                {
+                  "name": "1",
+                  "guid": "fcf2e970-0235-4951-b675-3fc1fef7950c",
+                  "id": "HW-0011",
+                  "cisParticipantID": "PAR-CIAV-000029",
+                  "assets": [
+                    {
+                      "name": "12",
+                      "guid": "53bd7fcb-3edb-4997-952e-f69eabffcebb",
+                      "id": "AS-0010",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

@@ -778,13 +778,29 @@ def _validate_participant(participant_key: str) -> bool:
 @cis_plan_bp.route('/cis_plan_view')
 @cis_plan_bp.route('/cis_plan_view/')
 def cis_plan_view():
-    """Render the CIS Plan view page."""
+    """Redirect to CIS Plan 2 view page."""
     try:
-        environment = get_environment()
-        return render_template('pages/cis_plan.html')
+        # Redirect to the new CIS Plan 2 view
+        return redirect('/cis_plan_view_2')
     except Exception as e:
-        current_app.logger.error(f"Error rendering CIS Plan view: {e}")
+        current_app.logger.error(f"Error redirecting to CIS Plan 2 view: {e}")
         # Redirect to home on error
         return redirect(url_for('views.index'))
+
+# Add route to redirect requests for old JS files
+@cis_plan_bp.route('/static/js/pages/cis_plan.js')
+def redirect_cis_plan_js():
+    """Redirect to new CIS Plan 2 JS file."""
+    return redirect('/static/js/pages/cis_plan_2.js')
+
+@cis_plan_bp.route('/static/js/pages/cis_api.js')
+def redirect_cis_api_js():
+    """Redirect to new CIS API 2 JS file."""
+    return redirect('/static/js/pages/cis_api_2.js')
+
+@cis_plan_bp.route('/static/js/pages/cis_plan_pointer.js')
+def redirect_cis_plan_pointer_js():
+    """Redirect to new CIS Plan 2 JS file as there's no direct pointer equivalent."""
+    return redirect('/static/js/pages/cis_plan_2.js')
 
 # The API endpoint is now defined in api.py

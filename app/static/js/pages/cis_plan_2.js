@@ -36,7 +36,7 @@ const CISPlan2 = {
         // Add refresh button handler
         document.getElementById('refreshButton').addEventListener('click', () => {
             
-            // Reset the tree's expanded nodes state
+            // Reset the tree's expanded nodes state to default (expand only to hw_stack level)
             if (this.CISTree2) {
                 this.CISTree2.expandedNodes = new Set();
                 this.CISTree2._expandedInitialized = false;

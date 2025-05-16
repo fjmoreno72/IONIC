@@ -390,4 +390,21 @@ body {
 .modal-body textarea,
 .modal-footer button {
     pointer-events: all !important;
+}
+
+/* Copy button styles */
+.card-actions {
+    display: none;
+}
+
+.copy-btn {
+    display: none;
+}
+
+.element-card .card {
+    position: relative;
+}
+
+.copy-btn i {
+    margin-right: 4px;
 } 

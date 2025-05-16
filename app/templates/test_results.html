@@ -11,6 +11,57 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
     {# Link to the same CSS as test_case for consistency, or create a new one if needed #}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <style>
+        /* Responsive overrides */
+        @media (max-width: 768px) {
+            .filters-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-item {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+            
+            .search-container {
+                width: 100%;
+                margin-top: 8px;
+            }
+            
+            .test-cases-table-container {
+                overflow-x: auto;
+            }
+            
+            .test-cases-table {
+                min-width: 800px; /* Ensure table has minimum width for scrolling */
+            }
+            
+            #paginationControls {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+        
+        /* General improvements */
+        .controls-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .date-filter {
+            min-width: 140px;
+        }
+        
+        .filter-item label {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
 <body class="logged-in">
     {% include 'nav_menu.html' %}
@@ -25,28 +76,39 @@
                 <div class="filters-container">
                     {# New Filters - Use wider container for multi-select #}
                     <div class="filter-item" style="min-width: 200px;">
-                        <label for="objectiveFilter" class="form-label form-label-sm visually-hidden">Objectives</label> {# Added label for accessibility #}
+                        <label for="objectiveFilter" class="form-label form-label-sm">Objectives</label>
                         <select id="objectiveFilter" class="form-select form-select-sm" multiple>
                             {# Options added dynamically, placeholder handled by Choices.js #}
                         </select>
                     </div>
                     <div class="filter-item">
+                        <label for="statusFilter" class="form-label form-label-sm">Status</label>
                         <select id="statusFilter" class="form-select form-select-sm">
                             <option value="">All Statuses</option>
                             <!-- Status options will be added dynamically -->
                         </select>
                     </div>
                     <div class="filter-item">
+                        <label for="overallResultFilter" class="form-label form-label-sm">Result</label>
                         <select id="overallResultFilter" class="form-select form-select-sm">
                             <option value="">All Overall Results</option>
                             <!-- Overall Result options will be added dynamically -->
                         </select>
                     </div>
                     <div class="filter-item" style="min-width: 200px;">
-                         <label for="participantFilter" class="form-label form-label-sm visually-hidden">Participants</label> {# Added label for accessibility #}
+                        <label for="participantFilter" class="form-label form-label-sm">Participants</label>
                         <select id="participantFilter" class="form-select form-select-sm" multiple>
                              {# Options added dynamically, placeholder handled by Choices.js #}
                         </select>
+                    </div>
+                    {# Date Range Filter #}
+                    <div class="filter-item date-filter">
+                        <label for="plannedDateStartFilter" class="form-label form-label-sm">From:</label>
+                        <input type="date" id="plannedDateStartFilter" class="form-control form-control-sm">
+                    </div>
+                    <div class="filter-item date-filter">
+                        <label for="plannedDateEndFilter" class="form-label form-label-sm">To:</label>
+                        <input type="date" id="plannedDateEndFilter" class="form-control form-control-sm">
                     </div>
                 </div>
 
@@ -68,6 +130,7 @@
                             <th class="sortable" data-sort="coordinator">Coordinator <i class="fas fa-sort"></i></th>
                             <th>Partners</th> {# Not making partners sortable for now #}
                             <th>Observers</th> {# Not making observers sortable for now #}
+                            <th class="sortable" data-sort="plannedDate">Planned Date <i class="fas fa-sort"></i></th>
                             <th class="sortable" data-sort="overallResult">Overall Result <i class="fas fa-sort"></i></th>
                         </tr>
                     </thead>

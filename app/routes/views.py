@@ -191,6 +191,18 @@ def work_in_progress():
     logging.info("Accessing work in progress page")
     return render_template('work_in_progress.html')
 
+@views_bp.route('/statistics')
+@login_required
+def statistics():
+    """
+    Render the statistics page.
+
+    Returns:
+        Rendered statistics template
+    """
+    logging.info("Accessing statistics page")
+    return render_template('statistics.html')
+
 @views_bp.route('/test_results')
 @login_required
 def test_results():

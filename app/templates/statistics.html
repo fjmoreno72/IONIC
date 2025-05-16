@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Statistics - IOCore2 Coverage Analysis Tool</title>
+    {% include 'components/head_favicons.html' %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test_case.css') }}">
+    <!-- Chart.js for data visualization - Load a specific older version for better compatibility -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script>
+        // Add this to ensure Chart.js is properly initialized
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js failed to load properly');
+                // Try to reload the script
+                const chartScript = document.createElement('script');
+                chartScript.src = 'https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js';
+                chartScript.onload = function() {
+                    console.log('Chart.js loaded successfully on retry');
+                    // Initialize statistics if available
+                    if (typeof fetchStatisticsData === 'function') {
+                        fetchStatisticsData();
+                    }
+                };
+                document.head.appendChild(chartScript);
+            }
+        });
+    </script>
+    <style>
+        .chart-container {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--card-shadow);
+            height: 400px;
+            position: relative;
+            width: 100%; /* Ensure full width */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+        
+        .chart-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block; /* Remove extra space */
+        }
+        
+        .filters-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-item {
+            min-width: 150px;
+            flex: 1;
+        }
+        
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        /* Better responsive design */
+        @media (max-width: 992px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-item {
+                min-width: 120px;
+                flex-basis: calc(50% - 10px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .filters-row {
+                flex-direction: column;
+            }
+            
+            .filter-item {
+                width: 100%;
+                min-width: 100%;
+                flex-basis: 100%;
+                margin-bottom: 8px;
+            }
+            
+            .chart-container {
+                height: 350px;
+                padding: 15px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chart-container {
+                height: 300px;
+                padding: 10px 5px;
+            }
+        }
+        
+        /* General improvements */
+        .date-filter {
+            min-width: 140px;
+        }
+        
+        .filter-item label {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 0.8rem;
+        }
+        
+        /* Improved loading state */
+        #loadingStats {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .filter-item select, .filter-item input {
+            width: 100%;
+        }
+        
+        /* Fix for chart resize calculation */
+        .test-cases-container {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="logged-in">
+    {% include 'nav_menu.html' %}
+
+    <div class="container-fluid px-2 px-sm-4">
+        <div class="test-cases-container">
+            <div class="test-cases-header mb-4">
+                <h2><i class="fas fa-chart-bar me-2"></i>Test Statistics</h2>
+            </div>
+            
+            <div class="filters-row">
+                <div class="filter-item">
+                    <label for="objectiveStatFilter" class="form-label form-label-sm">Objectives</label>
+                    <select id="objectiveStatFilter" class="form-select form-select-sm" multiple>
+                        <!-- Options added dynamically -->
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="statusStatFilter" class="form-label form-label-sm">Status</label>
+                    <select id="statusStatFilter" class="form-select form-select-sm">
+                        <option value="">All Statuses</option>
+                        <!-- Options added dynamically -->
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="participantStatFilter" class="form-label form-label-sm">Participants</label>
+                    <select id="participantStatFilter" class="form-select form-select-sm" multiple>
+                        <!-- Options added dynamically -->
+                    </select>
+                </div>
+                <div class="filter-item date-filter">
+                    <label for="dateRangeStart" class="form-label form-label-sm">From</label>
+                    <input type="date" id="dateRangeStart" class="form-control form-control-sm">
+                </div>
+                <div class="filter-item date-filter">
+                    <label for="dateRangeEnd" class="form-label form-label-sm">To</label>
+                    <input type="date" id="dateRangeEnd" class="form-control form-control-sm">
+                </div>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-container">
+                    <canvas id="testsPerDayChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="testsByStatusChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="testsByObjectiveChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="testsByParticipantChart"></canvas>
+                </div>
+            </div>
+            
+            <div id="loadingStats" class="loading-indicator">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            
+            <div id="noStatsData" class="no-results d-none">
+                <p>No test results available for statistics.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    
+    <!-- Our custom JS - load after all external scripts -->
+    <script src="{{ url_for('static', filename='js/statistics.js') }}"></script>
+</body>
+</html> 

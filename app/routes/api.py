@@ -1048,6 +1048,9 @@ def get_test_results_data_file():
                     for observer in observers_list:
                         participants.add(observer)
                     
+                    # Extract planned date if available
+                    planned_date = test.get('PlannedDate')
+                    
                     results_data.append({
                         "key": test.get('Key'),
                         "objectiveKey": objective_key,
@@ -1056,6 +1059,7 @@ def get_test_results_data_file():
                         "coordinator": coordinator,
                         "partners": partners_list,
                         "observers": observers_list,
+                        "plannedDate": planned_date,
                         "overallResult": overall_result
                     })
             else:
@@ -1086,6 +1090,9 @@ def get_test_results_data_file():
                             for partner in partners_list:
                                 participants.add(partner)
 
+                            # Extract planned date if available
+                            planned_date = test.get('PlannedDate')
+                            
                             results_data.append({
                                 "key": test.get('Key'),
                                 "objectiveKey": objective_key,
@@ -1094,6 +1101,7 @@ def get_test_results_data_file():
                                 "coordinator": coordinator,
                                 "partners": partners_list,
                                 "observers": observers_list,
+                                "plannedDate": planned_date,
                                 "overallResult": overall_result
                             })
 

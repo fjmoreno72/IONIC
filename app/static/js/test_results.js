@@ -6,6 +6,7 @@ let currentSortField = 'objectiveKey'; // Default sort
 let sortDirection = 'asc';
 let objectiveChoices = null; // Choices.js instances
 let participantChoices = null;
+let dateRangeFilter = null; // Date range filter for planned dates
 
 // --- Filter Elements ---
 const objectiveFilter = document.getElementById('objectiveFilter');
@@ -13,6 +14,8 @@ const statusFilter = document.getElementById('statusFilter');
 const overallResultFilter = document.getElementById('overallResultFilter');
 const participantFilter = document.getElementById('participantFilter');
 const searchInput = document.getElementById('searchInput');
+const plannedDateStartFilter = document.getElementById('plannedDateStartFilter');
+const plannedDateEndFilter = document.getElementById('plannedDateEndFilter');
 
 // --- Pagination Elements ---
 const itemsPerPageSelect = document.getElementById('itemsPerPageSelect');
@@ -153,6 +156,28 @@ function updatePaginationControls() {
     }
 }
 
+// Helper function to create and append cell
+const addCell = (row, content, className = '') => {
+    const cell = document.createElement('td');
+    cell.textContent = content ?? ''; // Use nullish coalescing for default empty string
+    if (className) cell.className = className;
+    row.appendChild(cell);
+    return cell;
+};
+
+// Format date string to display format
+function formatDate(dateString) {
+    if (!dateString) return '';
+    try {
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) return dateString; // Return original if invalid
+        return date.toLocaleDateString();
+    } catch (e) {
+        console.error("Error formatting date:", e);
+        return dateString; // Return original on error
+    }
+}
+
 // Update table with filtered and paginated data
 function updateTable() {
     if (!tableBody || !loadingIndicator || !noResults) return;
@@ -171,28 +196,25 @@ function updateTable() {
 
     if (paginatedItems.length === 0) {
         noResults.classList.remove('d-none');
-        tableBody.innerHTML = `<tr><td colspan="7" class="text-center">No test results found matching your criteria.</td></tr>`; // Colspan already matches (7 columns total)
+        tableBody.innerHTML = `<tr><td colspan="9" class="text-center">No test results found matching your criteria.</td></tr>`; // Updated colspan to 9 to include planned date
     } else {
         noResults.classList.add('d-none');
         paginatedItems.forEach(result => {
             const row = document.createElement('tr');
 
-            // Helper function to create and append cell
-            const addCell = (content) => {
-                const cell = document.createElement('td');
-                cell.textContent = content ?? ''; // Use nullish coalescing for default empty string
-                row.appendChild(cell);
-                return cell;
-            };
-
-            addCell(result.key);
-            addCell(result.objectiveKey);
-            addCell(result.testName);
-            addCell(result.status);
-            addCell(result.coordinator);
-            addCell(result.partners?.join(', ')); // Display partners array as string
-            addCell(result.observers?.join(', ')); // Display observers array as string
-            addCell(result.overallResult);
+            addCell(row, result.key);
+            addCell(row, result.objectiveKey);
+            addCell(row, result.testName);
+            addCell(row, result.status);
+            addCell(row, result.coordinator);
+            addCell(row, result.partners?.join(', ')); // Display partners array as string
+            addCell(row, result.observers?.join(', ')); // Display observers array as string
+            
+            // Display the planned date with proper formatting
+            const plannedDate = result.plannedDate ? formatDate(result.plannedDate) : '';
+            addCell(row, plannedDate);
+            
+            addCell(row, result.overallResult);
 
             tableBody.appendChild(row);
         });
@@ -212,6 +234,10 @@ function applyFilters() {
     const statusFilterValue = statusFilter ? statusFilter.value : '';
     const overallResultFilterValue = overallResultFilter ? overallResultFilter.value : '';
     const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+    
+    // Get date range values
+    const startDate = plannedDateStartFilter ? new Date(plannedDateStartFilter.value) : null;
+    const endDate = plannedDateEndFilter ? new Date(plannedDateEndFilter.value) : null;
 
     filteredTestResults = allTestResults.filter(result => {
         // Multi-select checks: Check if array is empty OR if the result's value is included
@@ -225,7 +251,22 @@ function applyFilters() {
         const matchesStatus = statusFilterValue === '' || result.status === statusFilterValue;
         const matchesOverallResult = overallResultFilterValue === '' || result.overallResult === overallResultFilterValue;
 
-        // Search term check (updated to include key and observers)
+        // Date range check
+        let matchesDateRange = true;
+        if (startDate && !isNaN(startDate.getTime())) {
+            const plannedDate = result.plannedDate ? new Date(result.plannedDate) : null;
+            if (plannedDate && !isNaN(plannedDate.getTime())) {
+                matchesDateRange = plannedDate >= startDate;
+            }
+        }
+        if (endDate && !isNaN(endDate.getTime())) {
+            const plannedDate = result.plannedDate ? new Date(result.plannedDate) : null;
+            if (plannedDate && !isNaN(plannedDate.getTime())) {
+                matchesDateRange = matchesDateRange && plannedDate <= endDate;
+            }
+        }
+
+        // Search term check (updated to include key, observers, and plannedDate)
         const matchesSearch = searchTerm === '' ||
             (result.key && result.key.toLowerCase().includes(searchTerm)) ||
             (result.objectiveKey && result.objectiveKey.toLowerCase().includes(searchTerm)) ||
@@ -234,9 +275,10 @@ function applyFilters() {
             (result.coordinator && result.coordinator.toLowerCase().includes(searchTerm)) ||
             (result.partners && result.partners.some(p => p.toLowerCase().includes(searchTerm))) ||
             (result.observers && result.observers.some(o => o.toLowerCase().includes(searchTerm))) ||
-            (result.overallResult && result.overallResult.toLowerCase().includes(searchTerm));
+            (result.overallResult && result.overallResult.toLowerCase().includes(searchTerm)) ||
+            (result.plannedDate && result.plannedDate.toLowerCase().includes(searchTerm));
 
-        return matchesObjective && matchesStatus && matchesOverallResult && matchesParticipant && matchesSearch;
+        return matchesObjective && matchesStatus && matchesOverallResult && matchesParticipant && matchesDateRange && matchesSearch;
     });
 
     sortTestResults(); // Sort the newly filtered list
@@ -268,21 +310,23 @@ function toggleTheme() {
     localStorage.setItem('theme', theme);
 }
 
-// Column resizing functionality (Keep as is, but ensure it works with new table)
+// Column resizing functionality
 function setupColumnResizing() {
     const table = document.querySelector('.test-cases-table'); // Keep class or update if changed
     if (!table) return;
     const headers = table.querySelectorAll('th');
-
+    
+    // Calculate a minimum width based on viewport width
+    const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    const minColumnWidth = viewportWidth < 768 ? 40 : 50; // Smaller minimum on mobile
+    
     headers.forEach(header => {
         // Check if resize handle already exists
         if (header.querySelector('.resize-handle')) {
              // Remove existing handle before adding a new one to prevent duplicates
              header.querySelector('.resize-handle').remove();
         }
-        // Don't add handle to non-sortable columns if desired (e.g., Partners)
-        // if (!header.classList.contains('sortable')) return;
-
+        
         const resizeHandle = document.createElement('div');
         resizeHandle.className = 'resize-handle';
         header.appendChild(resizeHandle);
@@ -297,15 +341,40 @@ function setupColumnResizing() {
             e.stopPropagation(); // Prevent triggering sort
         });
 
+        // Add touch support for mobile
+        resizeHandle.addEventListener('touchstart', function(e) {
+            if (e.touches.length === 1) {
+                startX = e.touches[0].pageX;
+                startWidth = header.offsetWidth;
+                document.addEventListener('touchmove', touchResize);
+                document.addEventListener('touchend', stopTouchResize);
+                e.preventDefault(); // Prevent scrolling during resize
+                e.stopPropagation();
+            }
+        });
+
         function resize(e) {
-            const width = Math.max(50, startWidth + (e.pageX - startX)); // Ensure min width 50px
+            const width = Math.max(minColumnWidth, startWidth + (e.pageX - startX)); // Ensure min width
             header.style.width = `${width}px`;
             header.style.minWidth = `${width}px`; // Set minWidth as well
+        }
+        
+        function touchResize(e) {
+            if (e.touches.length === 1) {
+                const width = Math.max(minColumnWidth, startWidth + (e.touches[0].pageX - startX));
+                header.style.width = `${width}px`;
+                header.style.minWidth = `${width}px`;
+            }
         }
 
         function stopResize() {
             document.removeEventListener('mousemove', resize);
             document.removeEventListener('mouseup', stopResize);
+        }
+        
+        function stopTouchResize() {
+            document.removeEventListener('touchmove', touchResize);
+            document.removeEventListener('touchend', stopTouchResize);
         }
     });
 }
@@ -332,6 +401,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (overallResultFilter) overallResultFilter.addEventListener('change', applyFilters);
     if (participantFilter) participantFilter.addEventListener('change', applyFilters);
     if (searchInput) searchInput.addEventListener('input', applyFilters);
+    
+    // Date filter listeners
+    if (plannedDateStartFilter) plannedDateStartFilter.addEventListener('change', applyFilters);
+    if (plannedDateEndFilter) plannedDateEndFilter.addEventListener('change', applyFilters);
 
     // Pagination listeners
     if (itemsPerPageSelect) {

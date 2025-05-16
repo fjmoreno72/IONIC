@@ -13,6 +13,8 @@ const CISTree2 = {
   currentTreeNode: null,
   expandedNodes: new Set(),
   fullTreeData: null,
+  searchResults: [],
+  currentSearchIndex: -1,
 
   /**
    * Initialize the tree component
@@ -23,6 +25,523 @@ const CISTree2 = {
       console.error("Tree content element not found");
       return;
     }
+    
+    // Initialize search UI
+    this.initSearchUI();
+  },
+
+  /**
+   * Initialize the search UI components
+   */
+  initSearchUI: function() {
+    // Create search container
+    const searchContainer = document.createElement('div');
+    searchContainer.className = 'tree-search-container';
+    searchContainer.style.padding = '10px';
+    searchContainer.style.marginBottom = '10px';
+    searchContainer.style.display = 'flex';
+    searchContainer.style.alignItems = 'center';
+    searchContainer.style.gap = '5px';
+    
+    // Create search input
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = 'Search tree...';
+    searchInput.className = 'tree-search-input';
+    searchInput.style.flex = '1';
+    searchInput.style.padding = '5px 10px';
+    searchInput.style.borderRadius = '4px';
+    searchInput.style.border = '1px solid #ccc';
+    
+    // Search button
+    const searchButton = document.createElement('button');
+    searchButton.textContent = 'Search';
+    searchButton.className = 'tree-search-button';
+    searchButton.style.padding = '5px 10px';
+    searchButton.style.borderRadius = '4px';
+    searchButton.style.backgroundColor = '#4a90e2';
+    searchButton.style.color = 'white';
+    searchButton.style.border = 'none';
+    searchButton.style.cursor = 'pointer';
+    
+    // Next result button
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next';
+    nextButton.className = 'tree-search-next';
+    nextButton.style.padding = '5px 10px';
+    nextButton.style.borderRadius = '4px';
+    nextButton.style.backgroundColor = '#4a90e2';
+    nextButton.style.color = 'white';
+    nextButton.style.border = 'none';
+    nextButton.style.cursor = 'pointer';
+    nextButton.style.display = 'none'; // Hidden initially
+    
+    // Results counter
+    const resultsCounter = document.createElement('span');
+    resultsCounter.className = 'tree-search-counter';
+    resultsCounter.style.display = 'none'; // Hidden initially
+    
+    // Add elements to container
+    searchContainer.appendChild(searchInput);
+    searchContainer.appendChild(searchButton);
+    searchContainer.appendChild(nextButton);
+    searchContainer.appendChild(resultsCounter);
+    
+    // Insert search container before tree content
+    if (this.treeContent && this.treeContent.parentNode) {
+      this.treeContent.parentNode.insertBefore(searchContainer, this.treeContent);
+    }
+    
+    // Add event listeners
+    searchButton.addEventListener('click', () => {
+      this.performSearch(searchInput.value);
+    });
+    
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        this.performSearch(searchInput.value);
+      }
+    });
+    
+    nextButton.addEventListener('click', () => {
+      this.navigateToNextSearchResult();
+    });
+  },
+
+  /**
+   * Perform search on the tree
+   * @param {string} searchTerm - Text to search for
+   */
+  performSearch: function(searchTerm) {
+    if (!searchTerm || searchTerm.trim() === '') {
+      // Reset search UI if search term is empty
+      this.resetSearch();
+      return;
+    }
+    
+    searchTerm = searchTerm.trim();
+    
+    // Reset previous search results
+    this.searchResults = [];
+    this.currentSearchIndex = -1;
+    
+    // First, search in visible DOM nodes (faster for already-visible elements)
+    const treeNodes = document.querySelectorAll('.tree-node');
+    const visibleResults = [];
+    
+    treeNodes.forEach(node => {
+      const nodeText = node.querySelector('.tree-node-text');
+      if (nodeText && nodeText.textContent.toLowerCase().includes(searchTerm.toLowerCase())) {
+        visibleResults.push(node);
+      }
+    });
+    
+    // Store visible results
+    this.searchResults = visibleResults;
+    
+    // Check if we need to search through data model for collapsed items
+    if (this.searchResults.length === 0) {
+      // Search through entire data structure
+      const dataResults = this.searchFullTreeData(searchTerm);
+      
+      if (dataResults.length > 0) {
+        // Show notification that we found items that are currently collapsed
+        const message = `Found ${dataResults.length} results in collapsed sections.`;
+        if (typeof CISUtil2 !== 'undefined' && CISUtil2.showNotification) {
+          CISUtil2.showNotification(message, "info", 3000);
+        } else {
+          console.log(message);
+        }
+        
+        // Store data results for later navigation
+        this._dataSearchResults = dataResults;
+        this._dataSearchTerm = searchTerm;
+        this._dataSearchIndex = -1;
+        
+        // Create a search results panel
+        this._showDataSearchResults(dataResults, searchTerm);
+        return;
+      }
+    }
+    
+    // Update search UI with visible results
+    this.updateSearchUI();
+    
+    // Navigate to first result if available
+    if (this.searchResults.length > 0) {
+      this.navigateToNextSearchResult();
+    }
+  },
+  
+  /**
+   * Show search results panel for data-based search results
+   * @param {Array} results - Search results from data model
+   * @param {string} searchTerm - The search term
+   * @private
+   */
+  _showDataSearchResults: function(results, searchTerm) {
+    // Clear any existing results panel
+    let resultsPanel = document.querySelector('.tree-search-results-panel');
+    if (resultsPanel) {
+      resultsPanel.remove();
+    }
+    
+    // Create new results panel
+    resultsPanel = document.createElement('div');
+    resultsPanel.className = 'tree-search-results-panel';
+    
+    // Style the panel
+    Object.assign(resultsPanel.style, {
+      position: 'absolute',
+      right: '20px',
+      top: '70px',
+      width: '300px',
+      maxHeight: '400px',
+      overflowY: 'auto',
+      backgroundColor: '#fff',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+      zIndex: '1000',
+      padding: '10px'
+    });
+    
+    // Create header
+    const header = document.createElement('div');
+    header.style.fontWeight = 'bold';
+    header.style.marginBottom = '10px';
+    header.style.display = 'flex';
+    header.style.justifyContent = 'space-between';
+    header.innerHTML = `Results for "${searchTerm}" <span class="results-close" style="cursor:pointer">✕</span>`;
+    resultsPanel.appendChild(header);
+    
+    // Add results
+    results.forEach((result, index) => {
+      const resultItem = document.createElement('div');
+      resultItem.className = 'tree-search-result-item';
+      resultItem.style.padding = '5px';
+      resultItem.style.cursor = 'pointer';
+      resultItem.style.borderBottom = '1px solid #eee';
+      resultItem.style.textOverflow = 'ellipsis';
+      resultItem.style.overflow = 'hidden';
+      resultItem.style.whiteSpace = 'nowrap';
+      
+      // Create path breadcrumbs
+      const path = result.path.map(p => this._getEntityDisplayName(p.entity, p.type)).join(' > ');
+      resultItem.textContent = path;
+      
+      // Highlight the result item on hover
+      resultItem.addEventListener('mouseover', () => {
+        resultItem.style.backgroundColor = '#f0f0f0';
+      });
+      
+      resultItem.addEventListener('mouseout', () => {
+        resultItem.style.backgroundColor = '';
+      });
+      
+      // Navigate to this result when clicked
+      resultItem.addEventListener('click', () => {
+        this._navigateToDataSearchResult(result, index);
+      });
+      
+      resultsPanel.appendChild(resultItem);
+    });
+    
+    // Add close handler
+    const closeBtn = header.querySelector('.results-close');
+    closeBtn.addEventListener('click', () => {
+      resultsPanel.remove();
+    });
+    
+    // Add the panel to the document
+    document.body.appendChild(resultsPanel);
+  },
+  
+  /**
+   * Navigate to a search result from data model
+   * @param {Object} result - The search result
+   * @param {number} index - Index in the results array
+   * @private
+   */
+  _navigateToDataSearchResult: function(result, index) {
+    if (!result || !result.path || result.path.length === 0) return;
+    
+    // Update search index
+    this._dataSearchIndex = index;
+    
+    // Extract path and entity info
+    const pathObjs = result.path;
+    const entity = result.entity;
+    const entityType = result.entityType;
+    
+    // Expand all nodes along the path
+    this._expandPathToEntity(pathObjs);
+    
+    // After expanding, find the node in the DOM and navigate to it
+    setTimeout(() => {
+      // Try to find the node by GUID first
+      let found = false;
+      if (entity.guid) {
+        found = this.selectNodeByGuid(entity.guid);
+      }
+      
+      // If not found by GUID, try by type and ID
+      if (!found && entity.id) {
+        found = this.selectNodeByTypeAndId(entityType, entity.id);
+      }
+      
+      // If still not found, try to find by matching text content
+      if (!found) {
+        const entityName = this._getEntityDisplayName(entity, entityType);
+        const allNodes = document.querySelectorAll(`.tree-node[data-type="${entityType}"]`);
+        
+        for (const node of allNodes) {
+          const nodeText = node.querySelector('.tree-node-text');
+          if (nodeText && nodeText.textContent === entityName) {
+            this.navigateToNode(node);
+            found = true;
+            break;
+          }
+        }
+      }
+      
+      // If we found the node, close the results panel
+      if (found) {
+        const resultsPanel = document.querySelector('.tree-search-results-panel');
+        if (resultsPanel) {
+          resultsPanel.remove();
+        }
+      }
+    }, 300); // Small delay to allow DOM to update after expanding
+  },
+  
+  /**
+   * Expand all nodes along a path to a specific entity
+   * @param {Array} pathObjs - Array of path objects with entity and type
+   * @private
+   */
+  _expandPathToEntity: function(pathObjs) {
+    // Skip if no path
+    if (!pathObjs || pathObjs.length === 0) return;
+    
+    // Start from the top of the tree
+    let currentContainer = this.treeContent;
+    
+    // Iterate through each path segment
+    for (let i = 0; i < pathObjs.length; i++) {
+      const pathObj = pathObjs[i];
+      const entity = pathObj.entity;
+      const entityType = pathObj.type;
+      
+      // Skip the root element
+      if (i === 0 && entityType === "cisplan") continue;
+      
+      // Look for this entity in the current container
+      let found = false;
+      
+      // Try to find by GUID first
+      if (entity.guid) {
+        const nodeWithGuid = currentContainer.querySelector(`.tree-node[data-guid="${entity.guid}"]`);
+        if (nodeWithGuid) {
+          // Found the node, expand it
+          if (nodeWithGuid) {
+            // Ensure this node is expanded
+            const isExpanded = this.toggleNodeExpanded(nodeWithGuid);
+            
+            // If not expanded, expand it
+            if (!isExpanded) {
+              this.toggleNodeExpanded(nodeWithGuid);
+            }
+            
+            // Move to its children container
+            const childContainer = nodeWithGuid.querySelector('.tree-children');
+            if (childContainer) {
+              currentContainer = childContainer;
+              found = true;
+            }
+          }
+        }
+      }
+      
+      // If not found by GUID, try by type and ID
+      if (!found && entity.id) {
+        const nodeWithTypeAndId = currentContainer.querySelector(
+          `.tree-node[data-type="${entityType}"][data-id="${entity.id}"]`
+        );
+        
+        if (nodeWithTypeAndId) {
+          // Ensure this node is expanded
+          const isExpanded = this.toggleNodeExpanded(nodeWithTypeAndId);
+          
+          // If not expanded, expand it
+          if (!isExpanded) {
+            this.toggleNodeExpanded(nodeWithTypeAndId);
+          }
+          
+          // Move to its children container
+          const childContainer = nodeWithTypeAndId.querySelector('.tree-children');
+          if (childContainer) {
+            currentContainer = childContainer;
+            found = true;
+          }
+        }
+      }
+      
+      // If still not found, try searching by name in nodes of this type
+      if (!found) {
+        const entityName = this._getEntityDisplayName(entity, entityType);
+        const nodesOfType = currentContainer.querySelectorAll(`.tree-node[data-type="${entityType}"]`);
+        
+        for (const node of nodesOfType) {
+          const nodeText = node.querySelector('.tree-node-text');
+          if (nodeText && nodeText.textContent === entityName) {
+            // Ensure this node is expanded
+            const isExpanded = this.toggleNodeExpanded(node);
+            
+            // If not expanded, expand it
+            if (!isExpanded) {
+              this.toggleNodeExpanded(node);
+            }
+            
+            // Move to its children container
+            const childContainer = node.querySelector('.tree-children');
+            if (childContainer) {
+              currentContainer = childContainer;
+              found = true;
+              break;
+            }
+          }
+        }
+      }
+      
+      // If we couldn't find this path segment, stop expanding
+      if (!found) break;
+    }
+  },
+  
+  /**
+   * Update search UI elements
+   */
+  updateSearchUI: function() {
+    const nextButton = document.querySelector('.tree-search-next');
+    const resultsCounter = document.querySelector('.tree-search-counter');
+    
+    if (this.searchResults.length > 0) {
+      // Show next button and counter
+      nextButton.style.display = 'inline-block';
+      resultsCounter.style.display = 'inline-block';
+      
+      // Update counter text
+      const currentIndex = this.currentSearchIndex >= 0 ? this.currentSearchIndex + 1 : 0;
+      resultsCounter.textContent = `${currentIndex} of ${this.searchResults.length}`;
+    } else {
+      // Hide next button and update counter
+      nextButton.style.display = 'none';
+      resultsCounter.style.display = 'inline-block';
+      resultsCounter.textContent = 'No results found';
+    }
+  },
+  
+  /**
+   * Navigate to the next search result
+   */
+  navigateToNextSearchResult: function() {
+    if (this.searchResults.length === 0) return;
+    
+    // Increment index and loop back to beginning if needed
+    this.currentSearchIndex = (this.currentSearchIndex + 1) % this.searchResults.length;
+    
+    // Get the node to navigate to
+    const targetNode = this.searchResults[this.currentSearchIndex];
+    
+    // Navigate to the node
+    this.navigateToNode(targetNode);
+    
+    // Update search UI
+    this.updateSearchUI();
+  },
+  
+  /**
+   * Navigate to a specific node in the tree
+   * @param {HTMLElement} node - The node to navigate to
+   */
+  navigateToNode: function(node) {
+    if (!node) return;
+    
+    // First expand all parent nodes
+    this.expandParents(node);
+    
+    // Scroll the node into view
+    node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Apply highlighting to the found node
+    this.highlightSearchResult(node);
+    
+    // Select the node
+    this.selectTreeNode(node);
+    
+    // Dispatch click event to show details
+    node.dispatchEvent(new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      view: window
+    }));
+  },
+  
+  /**
+   * Highlight a search result node
+   * @param {HTMLElement} node - The node to highlight
+   */
+  highlightSearchResult: function(node) {
+    // Remove previous highlights
+    document.querySelectorAll('.tree-node-search-highlight').forEach(el => {
+      el.classList.remove('tree-node-search-highlight');
+    });
+    
+    // Add highlight class to current result
+    node.classList.add('tree-node-search-highlight');
+    
+    // Add CSS for highlighting if needed
+    this.ensureSearchStylesExist();
+  },
+  
+  /**
+   * Ensure search highlight styles exist in the document
+   */
+  ensureSearchStylesExist: function() {
+    if (!document.getElementById('tree-search-styles')) {
+      const style = document.createElement('style');
+      style.id = 'tree-search-styles';
+      style.textContent = `
+        .tree-node-search-highlight {
+          background-color: rgba(255, 255, 0, 0.3);
+          border-radius: 3px;
+          outline: 2px solid #ffcc00;
+          transition: background-color 0.3s, outline 0.3s;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  },
+  
+  /**
+   * Reset search state and UI
+   */
+  resetSearch: function() {
+    this.searchResults = [];
+    this.currentSearchIndex = -1;
+    
+    // Update UI
+    const nextButton = document.querySelector('.tree-search-next');
+    const resultsCounter = document.querySelector('.tree-search-counter');
+    
+    if (nextButton) nextButton.style.display = 'none';
+    if (resultsCounter) resultsCounter.style.display = 'none';
+    
+    // Remove highlights
+    document.querySelectorAll('.tree-node-search-highlight').forEach(el => {
+      el.classList.remove('tree-node-search-highlight');
+    });
   },
 
   /**
@@ -113,6 +632,9 @@ const CISTree2 = {
 
       // Select the root node by default
       this.selectRootNodeByDefault();
+      
+      // Reset any previous search state
+      this.resetSearch();
     } else {
       console.warn("No mission networks found in data");
       childContainer.innerHTML = '<div class="tree-node-empty">No mission networks found</div>';
@@ -587,7 +1109,7 @@ const CISTree2 = {
     }
   },
 
-  /**
+     /**
    * Apply consistent styling to all levels of the tree
    */
   applyConsistentStylingToTree: function () {
@@ -600,6 +1122,104 @@ const CISTree2 = {
       container.style.paddingLeft = "10px";
       container.style.borderLeft = "2px solid #ccc";
     });
+  },
+  
+  /**
+   * Search through entire tree data including collapsed nodes
+   * @param {string} searchTerm - Text to search for
+   * @returns {Array} Array of matching nodes with their paths
+   */
+  searchFullTreeData: function(searchTerm) {
+    if (!searchTerm || !this.fullTreeData) return [];
+    
+    const results = [];
+    const lcSearchTerm = searchTerm.toLowerCase();
+    
+    // Helper function to recursively search through data
+    const searchInData = (entity, entityType, path = []) => {
+      if (!entity) return;
+      
+      // Check if the entity matches the search term
+      const entityName = this._getEntityDisplayName(entity, entityType);
+      const currentPath = [...path, { type: entityType, entity }];
+      
+      if (entityName && entityName.toLowerCase().includes(lcSearchTerm)) {
+        results.push({
+          entity,
+          entityType,
+          path: currentPath
+        });
+      }
+      
+      // Search in children based on entity type
+      switch (entityType) {
+        case "mission_network":
+          if (entity.networkSegments) {
+            entity.networkSegments.forEach(segment => {
+              searchInData(segment, "network_segment", currentPath);
+            });
+          }
+          break;
+          
+        case "network_segment":
+          if (entity.securityDomains) {
+            entity.securityDomains.forEach(domain => {
+              searchInData(domain, "security_domain", currentPath);
+            });
+          }
+          break;
+          
+        case "security_domain":
+          if (entity.hwStacks) {
+            entity.hwStacks.forEach(stack => {
+              searchInData(stack, "hw_stack", currentPath);
+            });
+          }
+          break;
+          
+        case "hw_stack":
+          if (entity.assets) {
+            entity.assets.forEach(asset => {
+              searchInData(asset, "asset", currentPath);
+            });
+          }
+          break;
+          
+        case "asset":
+          // Search in network interfaces
+          if (entity.networkInterfaces) {
+            entity.networkInterfaces.forEach(netInterface => {
+              searchInData(netInterface, "network_interface", currentPath);
+            });
+          }
+          
+          // Search in GP instances
+          if (entity.gpInstances) {
+            entity.gpInstances.forEach(gpInstance => {
+              searchInData(gpInstance, "gp_instance", currentPath);
+            });
+          }
+          break;
+          
+        case "gp_instance":
+          // Search in SP instances
+          if (entity.spInstances) {
+            entity.spInstances.forEach(spInstance => {
+              searchInData(spInstance, "sp_instance", currentPath);
+            });
+          }
+          break;
+      }
+    };
+    
+    // Start search from mission networks
+    if (this.fullTreeData.missionNetworks) {
+      this.fullTreeData.missionNetworks.forEach(network => {
+        searchInData(network, "mission_network");
+      });
+    }
+    
+    return results;
   },
 
   /**

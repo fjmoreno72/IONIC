@@ -60,6 +60,9 @@
                     <div class="panel-header">
                         <div class="panel-title">Details</div>
                         <div>
+                            <button id="move-element-btn" class="action-button" disabled>
+                                <i class="fa-solid fa-arrows-up-down-left-right"></i> Move
+                            </button>
                             <button id="copy-element-btn" class="action-button" disabled>
                                 <i class="fa-solid fa-clone"></i> Copy
                             </button>
@@ -129,6 +132,26 @@
     </div>
 </div>
 
+<!-- Move Element Modal -->
+<div id="move-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">Move Element</div>
+            <span class="close-modal" id="close-move-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>Select a new parent for the element:</p>
+            <div id="move-tree-container" class="tree-container">
+                <!-- Tree will be rendered here -->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="nav-button" id="cancel-move-btn">Cancel</button>
+            <button class="action-button" id="confirm-move-btn" disabled><i class="fa-solid fa-arrow-right-to-bracket"></i> Move Here</button>
+        </div>
+    </div>
+</div>
+
 <!-- Toast notification container -->
 <div id="toast-container" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1500;"></div>
     
@@ -184,6 +207,7 @@
 <script src="{{ url_for('static', filename='js/pages/cis_details_2.js') }}"></script>
 <script src="{{ url_for('static', filename='js/pages/cis_dialogs_2.js') }}"></script>
 <script src="{{ url_for('static', filename='js/pages/cis_edit_dialogs_2.js') }}"></script>
+<script src="{{ url_for('static', filename='js/pages/cis_move_dialog_2.js') }}"></script>
 <script src="{{ url_for('static', filename='js/pages/cis_plan_2.js') }}"></script>
 
 <!-- jQuery/Select2 initialization helper -->

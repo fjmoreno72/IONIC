@@ -267,12 +267,64 @@
 }
 
 .modal-body {
-    margin-bottom: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.tree-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.move-tree {
+    font-size: 0.9rem;
+}
+
+.move-tree-list {
+    list-style-type: none;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.move-tree-list:first-child {
+    padding-left: 0;
+}
+
+.move-tree-item {
+    margin: 5px 0;
+}
+
+.move-tree-node {
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.move-tree-node.selectable:hover {
+    background-color: #f0f0f0;
+}
+
+.move-tree-node.non-selectable {
+    color: #999;
+    cursor: not-allowed;
+}
+
+.move-tree-node.selected-parent {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .modal-footer {
     display: flex;
     justify-content: flex-end;
+    padding: 15px 0 0 0;
+    border-top: 1px solid #eee;
 }
 
 .resizer {

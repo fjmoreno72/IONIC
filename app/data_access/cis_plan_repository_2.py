@@ -105,56 +105,182 @@ def find_entity_by_guid(data: dict, guid: str) -> Tuple[Optional[dict], Optional
             - The parent array containing the entity
             - The parent entity object
     """
+    # Add better error handling for input validation
+    if not isinstance(data, dict):
+        logger.error(f"Data passed to find_entity_by_guid is not a dictionary. Type: {type(data)}")
+        return None, None, None, None
+        
+    if not isinstance(guid, str):
+        logger.error(f"GUID passed to find_entity_by_guid is not a string. Type: {type(guid)}, Value: {guid}")
+        return None, None, None, None
+        
+    if not guid:
+        logger.error("Empty GUID passed to find_entity_by_guid")
+        return None, None, None, None
+        
+    logger.info(f"Searching for entity with GUID: {guid}")
+    
     # Check mission networks
-    for mn in data.get('missionNetworks', []):
-        if mn.get('guid') == guid:
-            return mn, 'mission_network', data.get('missionNetworks', []), None
+    mission_networks = data.get('missionNetworks', [])
+    if not isinstance(mission_networks, list):
+        logger.error(f"missionNetworks is not a list. Type: {type(mission_networks)}")
+        return None, None, None, None
+        
+    for mn in mission_networks:
+        if not isinstance(mn, dict):
+            logger.error(f"Mission network is not a dictionary. Type: {type(mn)}")
+            continue
+            
+        mn_guid = mn.get('guid')
+        if mn_guid == guid:
+            logger.info(f"Found mission network with GUID: {guid}")
+            return mn, 'mission_network', mission_networks, None
 
         # Check network segments
-        for segment in mn.get('networkSegments', []):
-            if segment.get('guid') == guid:
-                return segment, 'network_segment', mn.get('networkSegments', []), mn
+        network_segments = mn.get('networkSegments', [])
+        if not isinstance(network_segments, list):
+            logger.error(f"networkSegments in mission network {mn_guid} is not a list")
+            continue
+            
+        for segment in network_segments:
+            if not isinstance(segment, dict):
+                logger.error(f"Network segment is not a dictionary. Type: {type(segment)}")
+                continue
+                
+            segment_guid = segment.get('guid')
+            if segment_guid == guid:
+                logger.info(f"Found network segment with GUID: {guid}")
+                return segment, 'network_segment', network_segments, mn
 
             # Check security domains
-            for domain in segment.get('securityDomains', []):
-                if domain.get('guid') == guid:
-                    return domain, 'security_domain', segment.get('securityDomains', []), segment
+            security_domains = segment.get('securityDomains', [])
+            if not isinstance(security_domains, list):
+                logger.error(f"securityDomains in network segment {segment_guid} is not a list")
+                continue
+                
+            for domain in security_domains:
+                if not isinstance(domain, dict):
+                    logger.error(f"Security domain is not a dictionary. Type: {type(domain)}")
+                    continue
+                    
+                domain_guid = domain.get('guid')
+                if domain_guid == guid:
+                    logger.info(f"Found security domain with GUID: {guid}")
+                    return domain, 'security_domain', security_domains, segment
 
                 # Check HW stacks
-                for stack in domain.get('hwStacks', []):
-                    if stack.get('guid') == guid:
-                        return stack, 'hw_stack', domain.get('hwStacks', []), domain
+                hw_stacks = domain.get('hwStacks', [])
+                if not isinstance(hw_stacks, list):
+                    logger.error(f"hwStacks in security domain {domain_guid} is not a list")
+                    continue
+                    
+                for stack in hw_stacks:
+                    if not isinstance(stack, dict):
+                        logger.error(f"HW stack is not a dictionary. Type: {type(stack)}")
+                        continue
+                        
+                    stack_guid = stack.get('guid')
+                    if stack_guid == guid:
+                        logger.info(f"Found hw_stack with GUID: {guid}")
+                        return stack, 'hw_stack', hw_stacks, domain
 
                     # Check assets
-                    for asset in stack.get('assets', []):
-                        if asset.get('guid') == guid:
-                            return asset, 'asset', stack.get('assets', []), stack
+                    assets = stack.get('assets', [])
+                    if not isinstance(assets, list):
+                        logger.error(f"assets in hw stack {stack_guid} is not a list")
+                        continue
+                        
+                    for asset in assets:
+                        if not isinstance(asset, dict):
+                            logger.error(f"Asset is not a dictionary. Type: {type(asset)}")
+                            continue
+                            
+                        asset_guid = asset.get('guid')
+                        if asset_guid == guid:
+                            logger.info(f"Found asset with GUID: {guid}")
+                            return asset, 'asset', assets, stack
 
                         # Check network interfaces
-                        for interface in asset.get('networkInterfaces', []):
-                            if interface.get('guid') == guid:
-                                return interface, 'network_interface', asset.get('networkInterfaces', []), asset
+                        network_interfaces = asset.get('networkInterfaces', [])
+                        if not isinstance(network_interfaces, list):
+                            logger.error(f"networkInterfaces in asset {asset_guid} is not a list")
+                            continue
+                            
+                        for interface in network_interfaces:
+                            if not isinstance(interface, dict):
+                                logger.error(f"Network interface is not a dictionary. Type: {type(interface)}")
+                                continue
+                                
+                            interface_guid = interface.get('guid')
+                            if interface_guid == guid:
+                                logger.info(f"Found network_interface with GUID: {guid}")
+                                return interface, 'network_interface', network_interfaces, asset
                                 
                             # Check configuration items
-                            for config_item in interface.get('configurationItems', []):
-                                if config_item.get('guid') == guid:
-                                    return config_item, 'configuration_item', interface.get('configurationItems', []), interface
+                            config_items = interface.get('configurationItems', [])
+                            if not isinstance(config_items, list):
+                                logger.error(f"configurationItems in interface {interface_guid} is not a list")
+                                continue
+                                
+                            for config_item in config_items:
+                                if not isinstance(config_item, dict):
+                                    logger.error(f"Configuration item is not a dictionary. Type: {type(config_item)}")
+                                    continue
+                                    
+                                config_item_guid = config_item.get('guid')
+                                if config_item_guid == guid:
+                                    logger.info(f"Found configuration_item with GUID: {guid}")
+                                    return config_item, 'configuration_item', config_items, interface
 
                         # Check GP instances
-                        for gp_instance in asset.get('gpInstances', []):
-                            if gp_instance.get('guid') == guid:
-                                return gp_instance, 'gp_instance', asset.get('gpInstances', []), asset
+                        gp_instances = asset.get('gpInstances', [])
+                        if not isinstance(gp_instances, list):
+                            logger.error(f"gpInstances in asset {asset_guid} is not a list")
+                            continue
+                            
+                        for gp_instance in gp_instances:
+                            if not isinstance(gp_instance, dict):
+                                logger.error(f"GP instance is not a dictionary. Type: {type(gp_instance)}")
+                                continue
+                                
+                            gp_instance_guid = gp_instance.get('guid')
+                            if gp_instance_guid == guid:
+                                logger.info(f"Found gp_instance with GUID: {guid}")
+                                return gp_instance, 'gp_instance', gp_instances, asset
 
                             # Check SP instances
-                            for sp_instance in gp_instance.get('spInstances', []):
-                                if sp_instance.get('guid') == guid:
-                                    return sp_instance, 'sp_instance', gp_instance.get('spInstances', []), gp_instance
+                            sp_instances = gp_instance.get('spInstances', [])
+                            if not isinstance(sp_instances, list):
+                                logger.error(f"spInstances in GP instance {gp_instance_guid} is not a list")
+                                continue
+                                
+                            for sp_instance in sp_instances:
+                                if not isinstance(sp_instance, dict):
+                                    logger.error(f"SP instance is not a dictionary. Type: {type(sp_instance)}")
+                                    continue
+                                    
+                                sp_instance_guid = sp_instance.get('guid')
+                                if sp_instance_guid == guid:
+                                    logger.info(f"Found sp_instance with GUID: {guid}")
+                                    return sp_instance, 'sp_instance', sp_instances, gp_instance
                                     
                             # Check GP configuration items
-                            for config_item in gp_instance.get('configurationItems', []):
-                                if config_item.get('guid') == guid:
-                                    return config_item, 'configuration_item', gp_instance.get('configurationItems', []), gp_instance
+                            gp_config_items = gp_instance.get('configurationItems', [])
+                            if not isinstance(gp_config_items, list):
+                                logger.error(f"configurationItems in GP instance {gp_instance_guid} is not a list")
+                                continue
+                                
+                            for config_item in gp_config_items:
+                                if not isinstance(config_item, dict):
+                                    logger.error(f"GP configuration item is not a dictionary. Type: {type(config_item)}")
+                                    continue
+                                    
+                                config_item_guid = config_item.get('guid')
+                                if config_item_guid == guid:
+                                    logger.info(f"Found configuration_item (GP) with GUID: {guid}")
+                                    return config_item, 'configuration_item', gp_config_items, gp_instance
     
+    logger.warning(f"Entity with GUID {guid} not found anywhere in the CIS plan")
     return None, None, None, None
 
 def get_entity_path(data: dict, guid: str) -> List[Tuple[str, str]]:
@@ -190,23 +316,70 @@ def get_entity_path(data: dict, guid: str) -> List[Tuple[str, str]]:
         
     return path
 
-def get_entity_hierarchy(data: dict, guid: str) -> Dict[str, str]:
+def get_entity_hierarchy(environment_or_data: Union[str, Dict], guid: str) -> Dict[str, Any]:
     """
     Get all parent GUIDs for an entity.
     
     Args:
-        data (dict): The CIS Plan data.
+        environment_or_data: Either the environment identifier string or a CIS plan data dictionary.
         guid (str): The GUID of the entity.
         
     Returns:
-        Dictionary with parent entity types as keys and their GUIDs as values.
+        Dictionary with parent entity types as keys and their GUIDs as values,
+        plus a 'parent' key containing the immediate parent entity.
     """
+    logger.info(f"Getting hierarchy for entity with GUID {guid}")
+    
+    # Handle either environment string or direct data
+    data = environment_or_data
+    if isinstance(environment_or_data, str):
+        # If given an environment string, load the data
+        data = _load_cis_plan(environment_or_data)
+    
+    if not isinstance(data, dict):
+        logger.error(f"Loaded data is not a dictionary. Type: {type(data)}")
+        return {}
+    
     hierarchy = {}
     path = get_entity_path(data, guid)
     
-    for entity_type, entity_guid in path:
+    if not path:
+        logger.warning(f"No path found for entity with GUID {guid}")
+        return hierarchy
+    
+    logger.info(f"Entity path: {path}")
+    
+    # Build the hierarchy from the path
+    for i, (entity_type, entity_guid) in enumerate(path):
         hierarchy[entity_type] = entity_guid
+    
+    # Find the immediate parent
+    if len(path) > 1:
+        # The entity itself is at the last position in the path
+        # So its parent is the second-to-last position
+        parent_type, parent_guid = path[-2]
+        logger.info(f"Found parent: type={parent_type}, guid={parent_guid}")
         
+        # Get the parent entity details
+        parent_entity, _, _, _ = find_entity_by_guid(data, parent_guid)
+        if parent_entity:
+            # Include the parent entity object itself, not just the GUID
+            hierarchy['parent'] = {
+                'type': parent_type,
+                'guid': parent_guid,
+                'entity': parent_entity
+            }
+        else:
+            logger.warning(f"Could not find parent entity with GUID {parent_guid}")
+            # Still provide the basic parent info
+            hierarchy['parent'] = {
+                'type': parent_type,
+                'guid': parent_guid,
+                'entity': None
+            }
+    else:
+        logger.info(f"Entity with GUID {guid} has no parent (it's a top-level entity)")
+    
     return hierarchy
 
 # --- ID Generation Functions ---
@@ -944,11 +1117,11 @@ def update_configuration_item(environment: str, interface_guid: str, item_name: 
     Args:
         environment (str): The environment identifier.
         interface_guid (str): The GUID of the network interface or GP instance.
-        item_name (str): The name of the configuration item.
-        answer_content (str): The new content for the configuration item.
+        item_name (str): The name of the configuration item to update.
+        answer_content (str): The new answer content for the configuration item.
         
     Returns:
-        dict: The updated configuration item if successful, else None.
+        Optional[dict]: The updated configuration item, or None if not found.
     """
     data = _load_cis_plan(environment)
     interface, interface_type, _, _ = find_entity_by_guid(data, interface_guid)
@@ -1019,3 +1192,119 @@ def update_configuration_item(environment: str, interface_guid: str, item_name: 
     _save_cis_plan(environment, data)
     logger.info(f"Updated configuration item {item_name} from '{old_value}' to '{answer_content}'")
     return config_item
+
+def move_entity(environment: str, entity_guid: str, new_parent_guid: str) -> Optional[dict]:
+    """
+    Move an entity from its current parent to a new parent.
+    
+    Args:
+        environment (str): The environment identifier.
+        entity_guid (str): The GUID of the entity to move.
+        new_parent_guid (str): The GUID of the new parent.
+        
+    Returns:
+        Optional[dict]: The moved entity if successful, None otherwise.
+    """
+    try:
+        # More detailed logging
+        logger.info(f"Starting move_entity: entity_guid={entity_guid}, new_parent_guid={new_parent_guid}")
+        
+        # Load the current data
+        data = _load_cis_plan(environment)
+        
+        # Find the entity to move
+        entity, entity_type, parent_array, parent = find_entity_by_guid(data, entity_guid)
+        logger.info(f"Found entity: {entity_type}, parent_array type: {type(parent_array)}, parent type: {type(parent)}")
+        
+        if not entity or not entity_type or not parent_array:
+            logger.error(f"Could not find entity with GUID {entity_guid} to move")
+            return None
+            
+        # Find the new parent
+        new_parent, new_parent_type, _, _ = find_entity_by_guid(data, new_parent_guid)
+        logger.info(f"Found new parent: {new_parent_type}, type: {type(new_parent)}")
+        
+        if not new_parent or not new_parent_type:
+            logger.error(f"Could not find new parent with GUID {new_parent_guid}")
+            return None
+            
+        # Determine which array in the new parent will hold this entity
+        target_array_name = None
+        if entity_type == 'network_segment' and new_parent_type == 'mission_network':
+            target_array_name = 'networkSegments'
+        elif entity_type == 'hw_stack' and new_parent_type == 'security_domain':
+            target_array_name = 'hwStacks'
+        elif entity_type == 'asset' and new_parent_type == 'hw_stack':
+            target_array_name = 'assets'
+        elif entity_type in ['network_interface', 'gp_instance'] and new_parent_type == 'asset':
+            if entity_type == 'network_interface':
+                target_array_name = 'networkInterfaces'
+            else:
+                target_array_name = 'gpInstances'
+        elif entity_type == 'sp_instance' and new_parent_type == 'gp_instance':
+            target_array_name = 'spInstances'
+        
+        logger.info(f"Target array name: {target_array_name}")
+        
+        if not target_array_name:
+            # Get the valid parent types for this entity type
+            valid_parent_types = {
+                'network_segment': 'mission_network',
+                'security_domain': 'network_segment',
+                'hw_stack': 'security_domain',
+                'asset': 'hw_stack',
+                'network_interface': 'asset',
+                'gp_instance': 'asset',
+                'sp_instance': 'gp_instance'
+            }
+            
+            # Generate a helpful error message with valid parent types
+            valid_parent = valid_parent_types.get(entity_type, "unknown")
+            logger.error(f"Invalid parent-child relationship: {new_parent_type} cannot contain {entity_type}. Valid parent type is: {valid_parent}")
+            return None
+            
+        # Ensure the target array exists
+        if target_array_name not in new_parent:
+            logger.info(f"Creating new array '{target_array_name}' in parent")
+            new_parent[target_array_name] = []
+            
+        # Detailed parent array information
+        logger.info(f"Parent array length: {len(parent_array)}")
+        logger.info(f"Parent array items GUIDs: {[item.get('guid', 'unknown') if isinstance(item, dict) else 'non-dict-item' for item in parent_array]}")
+            
+        # Remove from current parent
+        entity_copy = None
+        for i, item in enumerate(parent_array):
+            if not isinstance(item, dict):
+                logger.error(f"Item {i} in parent array is not a dictionary, it's a {type(item)}")
+                continue
+                
+            current_guid = item.get('guid')
+            if current_guid == entity_guid:
+                logger.info(f"Found entity to move at index {i}")
+                # Remove from old parent
+                entity_copy = parent_array.pop(i)
+                
+                # Add to new parent
+                logger.info(f"Adding entity to new parent array '{target_array_name}'")
+                new_parent[target_array_name].append(entity_copy)
+                
+                # Save the updated data
+                _save_cis_plan(environment, data)
+                
+                # Get parent GUID safely
+                parent_guid = "unknown"
+                if parent is not None and isinstance(parent, dict):
+                    parent_guid = parent.get('guid', 'unknown')
+                
+                logger.info(f"Moved entity {entity_guid} from parent {parent_guid} to {new_parent_guid}")
+                return entity_copy
+                
+        if not entity_copy:
+            logger.error(f"Entity {entity_guid} not found in parent array during move operation")
+        return None
+    except Exception as e:
+        logger.error(f"Error moving entity {entity_guid} to parent {new_parent_guid}: {str(e)}")
+        import traceback
+        logger.error(f"Traceback: {traceback.format_exc()}")
+        return None

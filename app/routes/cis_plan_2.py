@@ -20,7 +20,8 @@ from app.data_access.cis_plan_repository_2 import (
     get_entity_hierarchy,
     update_configuration_item,
     refresh_gp_instance_config_items,
-    find_entity_by_guid
+    find_entity_by_guid,
+    move_entity
 )
 
 # Initialize the blueprint
@@ -689,3 +690,311 @@ def copy_children(environment, original_entity, new_entity, entity_type):
                     logger.error(f"Error copying child {child_type}: {str(e)}")
                     # Continue with next child even if this one fails
                     continue
+
+@cis_plan_bp_2.route('/api/v2/cis_plan/entity/move', methods=['PUT'])
+def move_entity_route():
+    """
+    Move an entity from one parent to another.
+    
+    Required JSON fields:
+    - elementId: The GUID of the entity to move.
+    - newParentId: The GUID of the new parent entity.
+    
+    Returns:
+    - The updated entity after moving.
+    """
+    try:
+        environment = get_environment()
+        data = request.get_json()
+        logger.info(f"Received move entity request: {data}")
+        
+        if not data:
+            return error_response("Request body is empty", 400)
+        
+        # Validate required fields
+        elementId = data.get('elementId')
+        newParentId = data.get('newParentId')
+        
+        if not elementId:
+            logger.error("Missing elementId in request")
+            return error_response("Missing elementId in request", 400)
+            
+        if not newParentId:
+            logger.error("Missing newParentId in request")
+            return error_response("Missing newParentId in request", 400)
+            
+        # Ensure GUIDs are strings
+        elementId = str(elementId)
+        newParentId = str(newParentId)
+        
+        logger.info(f"Moving element {elementId} to parent {newParentId}")
+        
+        # Get the element and the new parent
+        element = get_entity_by_guid(environment, elementId)
+        if not element:
+            logger.error(f"Element with GUID {elementId} not found")
+            return error_response(f"Element with GUID {elementId} not found", 404)
+            
+        new_parent = get_entity_by_guid(environment, newParentId)
+        if not new_parent:
+            logger.error(f"New parent with GUID {newParentId} not found")
+            return error_response(f"New parent with GUID {newParentId} not found", 404)
+            
+        # Get current parent information
+        hierarchy = get_entity_hierarchy(environment, elementId)
+        logger.info(f"Element hierarchy: {hierarchy}")
+        
+        if not hierarchy or 'parent' not in hierarchy:
+            logger.error(f"Could not determine current parent for element {elementId}")
+            return error_response(f"Could not determine current parent for element {elementId}", 400)
+            
+        current_parent_guid = None
+        if 'parent' in hierarchy and isinstance(hierarchy['parent'], dict):
+            current_parent_guid = hierarchy['parent'].get('guid')
+        else:
+            logger.error(f"Hierarchy parent information is invalid: {hierarchy.get('parent')}")
+            return error_response(f"Invalid parent information in hierarchy", 400)
+            
+        if not current_parent_guid:
+            logger.error(f"Element {elementId} does not have a parent")
+            return error_response(f"Element {elementId} does not have a parent", 400)
+            
+        # Check if the parent is actually changing
+        if current_parent_guid == newParentId:
+            logger.info(f"Element {elementId} is already a child of parent {newParentId}")
+            return success_response(element, message="Element is already a child of this parent")
+            
+        # Prevent moving to descendant to avoid circular references
+        new_parent_hierarchy = get_entity_hierarchy(environment, newParentId)
+        if any(parent.get('guid') == elementId for parent in new_parent_hierarchy.values() if isinstance(parent, dict)):
+            logger.error(f"Cannot move element to its own descendant (would create circular reference)")
+            return error_response("Cannot move element to its own descendant", 400)
+            
+        # Check if the new parent can accept this child
+        entity_type = determine_entity_type(element)
+        new_parent_type = determine_entity_type(new_parent)
+        logger.info(f"Entity type: {entity_type}, New parent type: {new_parent_type}")
+        
+        can_accept = can_parent_accept_child(new_parent, element)
+        logger.info(f"Parent accept check result: {can_accept}")
+        
+        if not can_accept['allowed']:
+            logger.error(f"Cannot move this element: {can_accept['reason']}")
+            return error_response(f"Cannot move this element to the specified parent: {can_accept['reason']}", 400)
+            
+        # Update the element's parent reference
+        updated = move_entity(environment, elementId, newParentId)
+        if not updated:
+            logger.error(f"Failed to update parent reference for element {elementId}")
+            return error_response(f"Failed to update parent reference for element {elementId}", 500)
+            
+        logger.info(f"Successfully moved element {elementId} to parent {newParentId}")
+        return success_response(updated)
+        
+    except ValueError as ve:
+        logger.error(f"Value error in move_entity: {str(ve)}")
+        return error_response(str(ve), 400)
+    except Exception as e:
+        logger.error(f"Error moving entity: {e}")
+        import traceback
+        logger.error(f"Traceback: {traceback.format_exc()}")
+        return error_response(str(e), 500)
+
+def determine_entity_type(entity):
+    """
+    Determine the entity type based on its properties.
+    
+    Args:
+        entity (dict): The entity object.
+        
+    Returns:
+        str: The entity type.
+    """
+    if not entity:
+        return None
+        
+    # Check for type specific properties
+    if 'entity_type' in entity:
+        return entity['entity_type']
+    elif 'networkSegments' in entity:
+        return 'mission_network'
+    elif 'securityDomains' in entity:
+        return 'network_segment'
+    elif entity.get('id', '').startswith('CL-') or 'hwStacks' in entity:
+        return 'security_domain'
+    elif 'assets' in entity:
+        return 'hw_stack'
+    elif 'networkInterfaces' in entity or 'gpInstances' in entity:
+        return 'asset'
+    elif 'spInstances' in entity or 'gpid' in entity:
+        return 'gp_instance'
+    elif 'spId' in entity:
+        return 'sp_instance'
+    elif 'configurationItems' in entity and 'gpid' not in entity:
+        return 'network_interface'
+    else:
+        logger.warning(f"Could not determine entity type. Entity keys: {entity.keys()}")
+        return 'unknown'
+
+def can_parent_accept_child(parent, child):
+    """
+    Check if a parent entity can accept a given child entity.
+    
+    Args:
+        parent (dict): The parent entity.
+        child (dict): The child entity to check.
+        
+    Returns:
+        dict: Object with 'allowed' (bool) and 'reason' (str) if not allowed.
+    """
+    # First, validate input
+    if not isinstance(parent, dict):
+        logger.error(f"Parent is not a dictionary. Type: {type(parent)}")
+        return {'allowed': False, 'reason': 'Invalid parent object'}
+        
+    if not isinstance(child, dict):
+        logger.error(f"Child is not a dictionary. Type: {type(child)}")
+        return {'allowed': False, 'reason': 'Invalid child object'}
+    
+    # Extract parent type
+    parent_type = parent.get('entity_type', None)
+    if not parent_type:
+        if parent.get('id', '').startswith('CL-'):
+            parent_type = 'security_domain'
+        elif 'networkSegments' in parent:
+            parent_type = 'mission_network'
+        elif 'securityDomains' in parent:
+            parent_type = 'network_segment'
+        elif 'assets' in parent:
+            parent_type = 'hw_stack'
+        elif 'networkInterfaces' in parent or 'gpInstances' in parent:
+            parent_type = 'asset'
+        elif 'spInstances' in parent or 'gpid' in parent:
+            parent_type = 'gp_instance'
+        else:
+            logger.error(f"Could not determine parent type. Parent keys: {parent.keys()}")
+            return {'allowed': False, 'reason': 'Could not determine parent type'}
+    
+    # Extract child type
+    child_type = child.get('entity_type', None)
+    if not child_type:
+        if 'networkSegments' in child:
+            child_type = 'mission_network'
+        elif 'securityDomains' in child:
+            child_type = 'network_segment'
+        elif 'assets' in child:
+            child_type = 'hw_stack'
+        elif 'networkInterfaces' in child or 'gpInstances' in child:
+            child_type = 'asset'
+        elif 'configurationItems' in child and 'gpid' not in child:
+            child_type = 'network_interface'
+        elif 'gpid' in child:
+            child_type = 'gp_instance'
+        elif 'spId' in child:
+            child_type = 'sp_instance'
+        else:
+            logger.error(f"Could not determine child type. Child keys: {child.keys()}")
+            return {'allowed': False, 'reason': 'Could not determine child type'}
+    
+    logger.info(f"Parent type: {parent_type}, Child type: {child_type}")
+    
+    # Define valid parent-child relationships (which parent types can accept which child types)
+    valid_relationships = {
+        'mission_network': ['network_segment'],
+        'network_segment': ['security_domain'],
+        'security_domain': ['hw_stack'],
+        'hw_stack': ['asset'],
+        'asset': ['network_interface', 'gp_instance'],
+        'gp_instance': ['sp_instance']
+    }
+    
+    if parent_type not in valid_relationships:
+        logger.error(f"Parent type {parent_type} cannot have children")
+        return {'allowed': False, 'reason': f'Parent type {parent_type} cannot have children'}
+        
+    valid_child_types = valid_relationships.get(parent_type, [])
+    if child_type not in valid_child_types:
+        logger.error(f"Parent type {parent_type} cannot accept child type {child_type}. Valid types: {valid_child_types}")
+        return {'allowed': False, 'reason': f'Parent type {parent_type} cannot accept child type {child_type}'}
+        
+    logger.info(f"Relationship check passed: {parent_type} can accept {child_type}")
+    return {'allowed': True}
+
+@cis_plan_bp_2.route('/api/v2/cis_plan/tree', methods=['GET'])
+def get_tree_data():
+    """
+    Get a tree representation of the CIS Plan structure for UI rendering.
+    This simplified tree is used for navigation and selection in the move dialog.
+    
+    Returns:
+        A list of tree nodes with nested children.
+    """
+    try:
+        environment = get_environment()
+        data = get_all_cis_plan(environment)
+        
+        # Convert the CIS plan data into a tree structure
+        tree = []
+        
+        # Add mission networks as top-level nodes
+        for mn in data.get('missionNetworks', []):
+            mn_node = {
+                'id': mn.get('guid'),
+                'name': mn.get('name'),
+                'type': 'mission_network',
+                'children': []
+            }
+            
+            # Add network segments
+            for segment in mn.get('networkSegments', []):
+                segment_node = {
+                    'id': segment.get('guid'),
+                    'name': segment.get('name'),
+                    'type': 'network_segment',
+                    'children': []
+                }
+                
+                # Add security domains
+                for domain in segment.get('securityDomains', []):
+                    domain_node = {
+                        'id': domain.get('guid'),
+                        'name': domain.get('id', 'Unknown'),  # Security domains use 'id' for name
+                        'type': 'security_domain',
+                        'children': []
+                    }
+                    
+                    # Add HW stacks
+                    for stack in domain.get('hwStacks', []):
+                        stack_node = {
+                            'id': stack.get('guid'),
+                            'name': stack.get('name'),
+                            'type': 'hw_stack',
+                            'children': []
+                        }
+                        
+                        # Add assets
+                        for asset in stack.get('assets', []):
+                            asset_node = {
+                                'id': asset.get('guid'),
+                                'name': asset.get('name'),
+                                'type': 'asset',
+                                'children': []
+                            }
+                            
+                            # We don't need to go deeper than assets for the tree view
+                            # but we'll add empty children arrays to maintain structure
+                            stack_node['children'].append(asset_node)
+                        
+                        domain_node['children'].append(stack_node)
+                    
+                    segment_node['children'].append(domain_node)
+                
+                mn_node['children'].append(segment_node)
+            
+            tree.append(mn_node)
+        
+        return success_response(tree)
+        
+    except Exception as e:
+        logger.error(f"Error generating tree data: {e}")
+        return error_response(str(e), 500)

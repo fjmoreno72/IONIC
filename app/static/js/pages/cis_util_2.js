@@ -747,5 +747,47 @@ const CISUtil2 = {
                 }, 300);
             }
         }, duration);
+    },
+    
+    /**
+     * Get the property name for child entities of a given type
+     * @param {string} type - The entity type
+     * @returns {string} The property name for child entities
+     */
+    getChildrenPropertyName: function(type) {
+        const propertyMap = {
+            'cisplan': 'missionNetworks',
+            'mission_network': 'networkSegments',
+            'network_segment': 'securityDomains',
+            'security_domain': 'hwStacks',
+            'hw_stack': 'assets',
+            'asset': 'networkInterfaces',  // Note: assets also have gpInstances
+            'gp_instance': 'spInstances',
+            'network_interface': 'configurationItems',
+            'sp_instance': 'configurationItems'
+        };
+        
+        return propertyMap[type] || null;
+    },
+    
+    /**
+     * Show a notification to the user
+     * @param {string} message - The message to display
+     * @param {string} type - The type of notification (success, error, info, warning)
+     */
+    showNotification: function(message, type = 'info') {
+        // Use toast notification if available
+        if (typeof showToast === 'function') {
+            showToast(message, type);
+            return;
+        }
+        
+        // Fallback to console and alert if no toast function is available
+        console.log(`Notification (${type}): ${message}`);
+        
+        // Only show alerts for errors
+        if (type === 'error') {
+            alert(message);
+        }
     }
 };

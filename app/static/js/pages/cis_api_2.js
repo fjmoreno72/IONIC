@@ -438,7 +438,68 @@ const CISApi2 = {
         } else if (typeof CISDialogs2 !== 'undefined' && CISDialogs2.showErrorToast) {
             CISDialogs2.showErrorToast(message);
         } else {
-            alert(message);
+            console.error(`CIS API Error: ${message}`);
+            alert(`Error: ${message}`);
         }
+    },
+    
+    /**
+     * Move an element from one parent to another
+     * @param {Object} moveData - Object containing elementId and newParentId
+     * @returns {Promise<Object>} The moved element data
+     */
+    moveElement: function(moveData) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const response = await fetch('/api/v2/cis_plan/entity/move', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(moveData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resolve(data);
+                } else {
+                    console.error('Move element error:', data);
+                    reject(new Error(data.message || 'Failed to move element'));
+                }
+            } catch (error) {
+                console.error('Error moving element:', error);
+                reject(error);
+            }
+        });
+    },
+
+    /**
+     * Get the CIS tree structure for the move dialog
+     * @returns {Promise<Object>} The tree structure data
+     */
+    getTreeData: function() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const response = await fetch('/api/v2/cis_plan/tree', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resolve(data);
+                } else {
+                    console.error('Get tree data error:', data);
+                    reject(new Error(data.message || 'Failed to get tree data'));
+                }
+            } catch (error) {
+                console.error('Error getting tree data:', error);
+                reject(error);
+            }
+        });
     }
 };

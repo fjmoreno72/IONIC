@@ -4,7 +4,7 @@ IOCore2-specific API client implementation.
 import json
 import logging
 from datetime import datetime
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Tuple
 
 import requests
 from requests.exceptions import HTTPError # Import HTTPError
@@ -625,12 +625,14 @@ class IOCore2ApiClient(ApiClient):
             logging.exception(f"Unexpected error getting actors: {str(e)}")
             raise
 
-    def get_system_health(self) -> Dict[str, Any]:
+    def get_system_health(self) -> Tuple[Dict[str, Any], float]:
         """
         Get system health data from IOCore2 /api/system/health endpoint.
 
         Returns:
-            Dictionary with health data.
+            Tuple containing:
+                - Dictionary with health data
+                - Request time in milliseconds
 
         Raises:
             ApiRequestError: If API request fails
@@ -648,16 +650,22 @@ class IOCore2ApiClient(ApiClient):
             # Parse response
             data = response.json()
 
-            # Return success response
+            # Calculate request time
             end_time = datetime.now()
             total_duration = (end_time - start_time).total_seconds()
-            logging.info(f"System health data fetched in {total_duration:.2f}s")
+            request_time_ms = round(total_duration * 1000, 2)  # Convert to milliseconds
+            logging.info(f"System health data fetched in {request_time_ms:.2f}ms")
 
-            # The remote API likely returns the data directly, maybe nested under 'data' or similar.
-            # We'll return the raw JSON data for the backend route to handle.
-            return data
+            # Return both the data and request time
+            return data, request_time_ms
 
         except HTTPError as e:
+            # Calculate request time even for errors
+            end_time = datetime.now()
+            total_duration = (end_time - start_time).total_seconds()
+            request_time_ms = round(total_duration * 1000, 2)  # Convert to milliseconds
+            logging.warning(f"HTTP error response received in {request_time_ms:.2f}ms")
+            
             # Specifically handle 503 errors, attempting to parse the body
             if e.response.status_code == 503:
                 logging.warning(f"Received 503 status from {api_url}. Attempting to parse body.")
@@ -668,7 +676,7 @@ class IOCore2ApiClient(ApiClient):
                     # Add a flag to indicate it was a 503 error
                     error_data['is_503_error'] = True
                     error_data['status_code'] = 503
-                    return error_data
+                    return error_data, request_time_ms
                 except ValueError: # Handles JSONDecodeError if 503 body isn't JSON
                     logging.error(f"Failed to parse JSON from 503 response body: {e.response.text}")
                     raise ApiRequestError(

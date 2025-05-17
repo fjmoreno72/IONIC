@@ -823,7 +823,17 @@ def get_remote_system_health():
             return jsonify({'success': False, 'error': 'Not authenticated'}), 401
 
         # Call the new method on the client
-        health_data = client.get_system_health()
+        health_data, request_time_ms = client.get_system_health()
+
+        # Add request time to the response data
+        if isinstance(health_data, dict):
+            health_data['request_time_ms'] = request_time_ms
+        else:
+            # If health_data is not a dict, wrap it in one
+            health_data = {
+                'data': health_data,
+                'request_time_ms': request_time_ms
+            }
 
         # Return the data received from the remote API directly
         # Assuming the remote API returns a JSON object
@@ -831,17 +841,17 @@ def get_remote_system_health():
 
     except InvalidSession:
         logging.warning("Session expired while fetching remote system health.")
-        return jsonify({'success': False, 'error': 'Your session has expired. Please log in again.'}), 401
+        return jsonify({'success': False, 'error': 'Your session has expired. Please log in again.', 'request_time_ms': 0}), 401
     except DataFormatError as e:
         logging.error(f"Data format error fetching remote system health: {e.message}")
-        return jsonify({'success': False, 'error': f'Invalid data format from remote API: {e.message}'}), 502 # Bad Gateway
+        return jsonify({'success': False, 'error': f'Invalid data format from remote API: {e.message}', 'request_time_ms': 0}), 502 # Bad Gateway
     except ApiRequestError as e:
         logging.error(f"API request error fetching remote system health: {e.message}")
         # Return a generic error message to the client, log details
-        return jsonify({'success': False, 'error': 'Failed to fetch remote system health data.'}), 502 # Bad Gateway
+        return jsonify({'success': False, 'error': 'Failed to fetch remote system health data.', 'request_time_ms': 0}), 502 # Bad Gateway
     except Exception as e:
         logging.exception("Unexpected error fetching remote system health")
-        return jsonify({'success': False, 'error': 'An unexpected internal error occurred.'}), 500
+        return jsonify({'success': False, 'error': 'An unexpected internal error occurred.', 'request_time_ms': 0}), 500
 
 
 # Removed conflicting /api/affiliates route (handled in views.py)

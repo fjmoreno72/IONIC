@@ -315,6 +315,27 @@
                 opacity: 1;
             }
         }
+        
+        /* Heartbeat animation for the heart icon */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.25); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.25); }
+            60% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+        
+        .heartbeat-icon {
+            display: inline-block;
+            color: #e74c3c; /* Red heart color */
+            transform-origin: center;
+            animation: heartbeat 1.5s ease infinite;
+        }
+        
+        [data-theme="dark"] .heartbeat-icon {
+            color: #ff6b6b; /* Lighter red for dark mode */
+        }
     </style>
 </head>
 <body>
@@ -324,7 +345,7 @@
         </div>
         <div class="header">
             <!-- Use the server_url variable passed from Flask -->
-            <h1><i class="fas fa-heartbeat"></i> {{ server_url | replace('https://', '') | replace('http://', '') }} - System Health Monitor</h1>
+            <h1><i class="fas fa-heartbeat heartbeat-icon"></i> {{ server_url | replace('https://', '') | replace('http://', '') }} - System Health Monitor</h1>
             <div class="last-updated" id="lastUpdated"><i class="fas fa-sync-alt"></i> Last updated: Never</div>
             <div id="errorMessage" class="error-message"></div>
         </div>
@@ -568,9 +589,9 @@
                 
                 // API request time
                 if (id === 'requestTimeValue') {
-                    if (value < 500) {
+                    if (value < 2000) {
                         metricCard.classList.add('status-good');
-                    } else if (value < 1000) {
+                    } else if (value < 3000) {
                         metricCard.classList.add('status-warning');
                     } else {
                         metricCard.classList.add('status-critical');

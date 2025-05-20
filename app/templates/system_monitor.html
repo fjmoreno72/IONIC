@@ -438,6 +438,82 @@
         [data-theme="dark"] .heartbeat-icon {
             color: #ff6b6b; /* Lighter red for dark mode */
         }
+
+        .metric-status {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .metric-status.healthy {
+            background-color: #22c55e;
+            color: white;
+        }
+
+        .metric-status.unhealthy {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .metric-status.degraded {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .metric-description {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+
+        [data-theme="dark"] .metric-description {
+            color: #94a3b8;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .metric-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .detail-value {
+            font-family: monospace;
+            color: var(--primary-color);
+        }
+
+        /* Add to CSS for .chart-row if not present */
+        /*
+        .chart-row {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        */
     </style>
 </head>
 <body>
@@ -452,74 +528,161 @@
             <div id="errorMessage" class="error-message"></div>
         </div>
 
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <h3><i class="fas fa-microchip icon"></i> CPU Host</h3>
-                <div id="cpuHostValue" class="metric-value">--</div>
-                <div class="metric-unit">%</div>
-            </div>
-            <div class="metric-card">
-                <h3><i class="fas fa-database icon"></i> CPU SQL</h3>
-                <div id="cpuSqlValue" class="metric-value">--</div>
-                <div class="metric-unit">%</div>
-            </div>
-            <div class="metric-card">
-                <h3><i class="fas fa-memory icon"></i> Memory Host</h3>
-                <div id="memoryHostValue" class="metric-value">--</div>
-                <div class="metric-unit">MB Available</div>
-                <div id="memoryHostPercentage" class="metric-percentage-bar">
-                    <div class="percentage-fill"></div>
-                </div>
-                <div class="metric-percentage-text">-- % of <span id="totalMemory"></span> MB</div>
-            </div>
-            <div class="metric-card">
-                <h3><i class="fas fa-server icon"></i> Memory SQL</h3>
-                <div id="memorySqlValue" class="metric-value">--</div>
-                <div class="metric-unit">MB Used</div>
-            </div>
-            <div class="metric-card">
-                <h3><i class="fas fa-hdd icon"></i> Disk Usage</h3>
-                <div id="diskUsageValue" class="metric-value">--</div>
-                <div class="metric-unit">%</div>
-            </div>
-            <div class="metric-card">
-                <h3><i class="fas fa-tachometer-alt icon"></i> API Request Time</h3>
-                <div id="requestTimeValue" class="metric-value">--</div>
-                <div class="metric-unit">ms</div>
-            </div>
-        </div>
-
-        <!-- Grid container for charts -->
-        <div class="charts-grid">
-            <div class="chart-container">
-                <button class="chart-expand-btn" onclick="expandChart('cpuHostChart', 'CPU Host Usage')">
-                    <i class="fas fa-expand"></i>
+        <!-- Charts: each in its own row -->
+        <div class="chart-row" style="margin-bottom: 30px;">
+            <div class="chart-container" style="width: 100%; max-width: 1000px; margin: 0 auto;">
+                <button class="chart-expand-btn" onclick="expandChart('dbConnectionChart', 'Database Connection')">
+                    <i class="fas fa-database icon"></i> <span>Expand</span>
                 </button>
                 <canvas id="cpuHostChart"></canvas>
             </div>
-            <div class="chart-container">
-                <button class="chart-expand-btn" onclick="expandChart('cpuSqlChart', 'CPU SQL Usage')">
-                    <i class="fas fa-expand"></i>
+        </div>
+        <div class="chart-row" style="margin-bottom: 30px;">
+            <div class="chart-container" style="width: 100%; max-width: 1000px; margin: 0 auto;">
+                <button class="chart-expand-btn" onclick="expandChart('siteResourcesChart', 'Site Resources')">
+                    <i class="fas fa-microchip icon"></i> <span>Expand</span>
                 </button>
                 <canvas id="cpuSqlChart"></canvas>
             </div>
-            <div class="chart-container">
-                <button class="chart-expand-btn" onclick="expandChart('memoryHostChart', 'Memory Host Available')">
-                    <i class="fas fa-expand"></i>
+        </div>
+        <div class="chart-row" style="margin-bottom: 40px;">
+            <div class="chart-container" style="width: 100%; max-width: 1000px; margin: 0 auto;">
+                <button class="chart-expand-btn" onclick="expandChart('serverResourcesChart', 'Server Resources')">
+                    <i class="fas fa-server icon"></i> <span>Expand</span>
                 </button>
                 <canvas id="memoryHostChart"></canvas>
             </div>
-            <div class="chart-container">
-                <button class="chart-expand-btn" onclick="expandChart('memorySqlChart', 'Memory SQL Used')">
-                    <i class="fas fa-expand"></i>
-                </button>
-                <canvas id="memorySqlChart"></canvas>
+        </div>
+
+        <!-- First row of metrics: Database Connection, Site Resources, Server Resources -->
+        <div class="metrics-grid" style="margin-bottom: 30px;">
+            <!-- Database Connection Section -->
+            <div class="metric-card">
+                <h3><i class="fas fa-database icon"></i> Database Connection</h3>
+                <div class="metric-status" id="databaseStatus">--</div>
+                <div class="metric-description" id="databaseDescription">--</div>
+                <div class="metric-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Host Memory:</span>
+                        <span class="detail-value" id="hostMemory">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">SQL Memory:</span>
+                        <span class="detail-value" id="sqlMemory">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Host CPU:</span>
+                        <span class="detail-value" id="hostCpu">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">SQL CPU:</span>
+                        <span class="detail-value" id="sqlCpu">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Duration:</span>
+                        <span class="detail-value" id="databaseDuration">--</span>
+                    </div>
+                </div>
             </div>
-            <div class="chart-container">
-                <button class="chart-expand-btn" onclick="expandChart('requestTimeChart', 'API Request Time')">
-                    <i class="fas fa-expand"></i>
-                </button>
-                <canvas id="requestTimeChart"></canvas>
+            <!-- Site Resource Utilization Section -->
+            <div class="metric-card">
+                <h3><i class="fas fa-microchip icon"></i> Site Resources</h3>
+                <div class="metric-status" id="siteResourcesStatus">--</div>
+                <div class="metric-description" id="siteResourcesDescription">--</div>
+                <div class="metric-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Process CPU:</span>
+                        <span class="detail-value" id="processCpu">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Process Memory:</span>
+                        <span class="detail-value" id="processMemory">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Duration:</span>
+                        <span class="detail-value" id="siteResourcesDuration">--</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Server Resource Utilization Section -->
+            <div class="metric-card">
+                <h3><i class="fas fa-server icon"></i> Server Resources</h3>
+                <div class="metric-status" id="serverResourcesStatus">--</div>
+                <div class="metric-description" id="serverResourcesDescription">--</div>
+                <div class="metric-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Processor Time:</span>
+                        <span class="detail-value" id="processorTime">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Available Memory:</span>
+                        <span class="detail-value" id="availableMemory">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Duration:</span>
+                        <span class="detail-value" id="serverResourcesDuration">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second row of metrics: Site Certificate, Server Drives, Quartz Scheduler -->
+        <div class="metrics-grid">
+            <!-- Site Certificate Section -->
+            <div class="metric-card">
+                <h3><i class="fas fa-certificate icon"></i> Site Certificate</h3>
+                <div class="metric-status" id="siteCertificateStatus">--</div>
+                <div class="metric-description" id="siteCertificateDescription">--</div>
+                <div class="metric-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Expiration Date:</span>
+                        <span class="detail-value" id="certificateExpiration">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Duration:</span>
+                        <span class="detail-value" id="certificateDuration">--</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Server Drives Section -->
+            <div class="metric-card">
+                <h3><i class="fas fa-hdd icon"></i> Server Drives</h3>
+                <div class="metric-status" id="drivesStatus">--</div>
+                <div class="metric-description" id="drivesDescription">--</div>
+                <div class="metric-details">
+                    <div class="detail-item">
+                        <span class="detail-label">C: Drive:</span>
+                        <span class="detail-value" id="driveC">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">D: Drive:</span>
+                        <span class="detail-value" id="driveD">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">E: Drive:</span>
+                        <span class="detail-value" id="driveE">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">F: Drive:</span>
+                        <span class="detail-value" id="driveF">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Duration:</span>
+                        <span class="detail-value" id="drivesDuration">--</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Quartz Scheduler Section -->
+            <div class="metric-card">
+                <h3><i class="fas fa-clock icon"></i> Quartz Scheduler</h3>
+                <div class="metric-status" id="schedulerStatus">--</div>
+                <div class="metric-description" id="schedulerDescription">--</div>
+                <div class="metric-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Duration:</span>
+                        <span class="detail-value" id="schedulerDuration">--</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -541,32 +704,34 @@
     <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
     <script>
-        const MAX_DATA_POINTS = 120; // Store 120 minutes (2 hours) of data
+        const MAX_DATA_POINTS = 360; // Store 360 minutes (6 hours) of data
         const POLLING_INTERVAL = 60000; // 60 seconds
         const TOTAL_MEMORY_MB = 64000; // Total memory in MB - configure as needed
 
         // Global charts object to store all chart instances
         const charts = {};
 
-        // Chart Colors (inspired by MONITOR/js/config.js) - Keep Disk/Network for potential future use
+        // Chart Colors
         const chartColors = {
             light: {
-                cpuHost: '#e74c3c',
-                cpuSql: '#3498db',
-                memoryHost: '#2ecc71',
-                memorySql: '#9b59b6',
-                disk: '#f1c40f',
-                network: '#e67e22',
-                requestTime: '#FF5733' // New color for API request time
+                hostMemory: '#3498db',
+                sqlMemory: '#9b59b6',
+                hostCpu: '#e67e22',
+                sqlCpu: '#e74c3c',
+                processCpu: '#2ecc71',
+                processMemory: '#f1c40f',
+                processorTime: '#1abc9c',
+                availableMemory: '#34495e'
             },
             dark: {
-                cpuHost: '#ff6b6b',
-                cpuSql: '#74b9ff',
-                memoryHost: '#55efc4',
-                memorySql: '#a29bfe',
-                disk: '#f39c12',
-                network: '#fd79a8',
-                requestTime: '#FF7E67' // New color for API request time in dark mode
+                hostMemory: '#74b9ff',
+                sqlMemory: '#a29bfe',
+                hostCpu: '#fdcb6e',
+                sqlCpu: '#ff7675',
+                processCpu: '#00b894',
+                processMemory: '#ffeaa7',
+                processorTime: '#00cec9',
+                availableMemory: '#636e72'
             }
         };
 
@@ -658,240 +823,440 @@
         }
 
         // Initialize Charts
-        charts.cpuHostChart = new Chart(
+        charts.dbConnectionChart = new Chart(
             document.getElementById('cpuHostChart').getContext('2d'),
-            createChartConfig('CPU Host (%)', colors.cpuHost, 'Usage (%)', 0, 100)
+            {
+                type: 'line',
+                data: {
+                    labels: sharedLabels,
+                    datasets: [
+                        {
+                            label: 'Host Memory (MB)',
+                            borderColor: colors.hostMemory,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-mem',
+                        },
+                        {
+                            label: 'SQL Memory (MB)',
+                            borderColor: colors.sqlMemory,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-mem',
+                        },
+                        {
+                            label: 'Host CPU (%)',
+                            borderColor: colors.hostCpu,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-cpu',
+                        },
+                        {
+                            label: 'SQL CPU (%)',
+                            borderColor: colors.sqlCpu,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-cpu',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: { display: false },
+                            ticks: { autoSkip: true, maxTicksLimit: 10 }
+                        },
+                        'y-mem': {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Memory (MB)' },
+                            beginAtZero: true,
+                            grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
+                        },
+                        'y-cpu': {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'CPU (%)' },
+                            min: 0,
+                            max: 100,
+                            beginAtZero: true,
+                            grid: { drawOnChartArea: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: true, position: 'top' },
+                        title: { display: true, text: 'Database Connection', padding: { top: 10, bottom: 10 } },
+                        tooltip: { mode: 'index', intersect: false }
+                    }
+                }
+            }
         );
-        charts.cpuSqlChart = new Chart(
+        charts.siteResourcesChart = new Chart(
             document.getElementById('cpuSqlChart').getContext('2d'),
-            createChartConfig('CPU SQL (%)', colors.cpuSql, 'Usage (%)', 0, 100)
+            {
+                type: 'line',
+                data: {
+                    labels: sharedLabels,
+                    datasets: [
+                        {
+                            label: 'Process CPU (%)',
+                            borderColor: colors.processCpu,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Process Memory (%)',
+                            borderColor: colors.processMemory,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: { display: false },
+                            ticks: { autoSkip: true, maxTicksLimit: 10 }
+                        },
+                        y: {
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Usage (%)' },
+                            min: 0,
+                            max: 100,
+                            beginAtZero: true,
+                            grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: true, position: 'top' },
+                        title: { display: true, text: 'Site Resources', padding: { top: 10, bottom: 10 } },
+                        tooltip: { mode: 'index', intersect: false }
+                    }
+                }
+            }
         );
-        charts.memoryHostChart = new Chart(
+        charts.serverResourcesChart = new Chart(
             document.getElementById('memoryHostChart').getContext('2d'),
-            createChartConfig('Memory Host (MB Available)', colors.memoryHost, 'Memory (MB)') // Auto-scales max
-        );
-        charts.memorySqlChart = new Chart(
-            document.getElementById('memorySqlChart').getContext('2d'),
-            createChartConfig('Memory SQL (MB Used)', colors.memorySql, 'Memory (MB)') // Auto-scales max
-        );
-        charts.requestTimeChart = new Chart(
-            document.getElementById('requestTimeChart').getContext('2d'),
-            createChartConfig('API Request Time (ms)', colors.requestTime, 'Time (ms)')
-        );
-
-        const allCharts = [charts.cpuHostChart, charts.cpuSqlChart, charts.memoryHostChart, charts.memorySqlChart, charts.requestTimeChart];
-
-        // Function to update metric cards and apply status indicators
-        function updateMetricCard(id, value, unit = '', precision = 1) {
-            const element = document.getElementById(id);
-            if (!element) return;
-            
-            if (value === null || value === undefined || isNaN(value)) {
-                element.textContent = '--';
-            } else {
-                element.textContent = typeof value === 'number' ? value.toFixed(precision) : value;
-            }
-            
-            const unitElement = element ? element.nextElementSibling : null;
-            if (unitElement && unitElement.classList.contains('metric-unit')) {
-                unitElement.textContent = (value === null || value === undefined || isNaN(value)) ? '' : unit;
-            }
-            
-            // Add status indicators based on metric types
-            const metricCard = element.closest('.metric-card');
-            if (!metricCard) return;
-            
-            // Remove any previous status classes
-            metricCard.classList.remove('status-good', 'status-warning', 'status-critical');
-            
-            // Only add status if we have a value
-            if (value !== null && value !== undefined && !isNaN(value)) {
-                // CPU utilization
-                if (id === 'cpuHostValue' || id === 'cpuSqlValue') {
-                    if (value < 50) {
-                        metricCard.classList.add('status-good');
-                    } else if (value < 80) {
-                        metricCard.classList.add('status-warning');
-                    } else {
-                        metricCard.classList.add('status-critical');
-                    }
-                }
-                
-                // Disk usage
-                if (id === 'diskUsageValue') {
-                    if (value < 70) {
-                        metricCard.classList.add('status-good');
-                    } else if (value < 90) {
-                        metricCard.classList.add('status-warning');
-                    } else {
-                        metricCard.classList.add('status-critical');
-                    }
-                }
-                
-                // API request time
-                if (id === 'requestTimeValue') {
-                    if (value < 2000) {
-                        metricCard.classList.add('status-good');
-                    } else if (value < 3000) {
-                        metricCard.classList.add('status-warning');
-                    } else {
-                        metricCard.classList.add('status-critical');
-                    }
-                }
-                
-                // Memory SQL
-                if (id === 'memorySqlValue') {
-                    // For memory SQL, we would need to know the total to determine status
-                    // For now, we'll just use a simple threshold
-                    if (value < 10000) {
-                        metricCard.classList.add('status-good');
-                    } else if (value < 20000) {
-                        metricCard.classList.add('status-warning');
-                    } else {
-                        metricCard.classList.add('status-critical');
+            {
+                type: 'line',
+                data: {
+                    labels: sharedLabels,
+                    datasets: [
+                        {
+                            label: 'Processor Time (%)',
+                            borderColor: colors.processorTime,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Available Memory (MB)',
+                            borderColor: colors.availableMemory,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: { display: false },
+                            ticks: { autoSkip: true, maxTicksLimit: 10 }
+                        },
+                        y: {
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Value' },
+                            beginAtZero: true,
+                            grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: true, position: 'top' },
+                        title: { display: true, text: 'Server Resources', padding: { top: 10, bottom: 10 } },
+                        tooltip: { mode: 'index', intersect: false }
                     }
                 }
             }
-        }
+        );
 
-        // Function to update memory percentage bar
-        function updateMemoryPercentage(availableMB, totalMB) {
-            const percentageElement = document.querySelector('.percentage-fill');
-            const percentageTextElement = document.querySelector('.metric-percentage-text');
-            const memoryCard = document.querySelector('.metric-card:nth-child(3)'); // Memory Host card
-            
-            if (!percentageElement || !percentageTextElement || !availableMB || !totalMB || !memoryCard) {
+        const allCharts = [
+            charts.dbConnectionChart,
+            charts.siteResourcesChart,
+            charts.serverResourcesChart
+        ];
+
+        // Document ready function
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verify all required elements exist
+            const requiredElements = [
+                'lastUpdated',
+                'errorMessage',
+                'siteCertificateStatus',
+                'siteCertificateDescription',
+                'certificateExpiration',
+                'certificateDuration',
+                'databaseStatus',
+                'databaseDescription',
+                'hostMemory',
+                'sqlMemory',
+                'hostCpu',
+                'sqlCpu',
+                'databaseDuration',
+                'drivesStatus',
+                'drivesDescription',
+                'driveC',
+                'driveD',
+                'driveE',
+                'driveF',
+                'drivesDuration',
+                'siteResourcesStatus',
+                'siteResourcesDescription',
+                'processCpu',
+                'processMemory',
+                'siteResourcesDuration',
+                'serverResourcesStatus',
+                'serverResourcesDescription',
+                'processorTime',
+                'availableMemory',
+                'serverResourcesDuration',
+                'schedulerStatus',
+                'schedulerDescription',
+                'schedulerDuration'
+            ];
+
+            // Check if all elements exist
+            const missingElements = requiredElements.filter(id => !document.getElementById(id));
+            if (missingElements.length > 0) {
+                console.error('Missing required elements:', missingElements);
+                const errorDiv = document.getElementById('errorMessage');
+                if (errorDiv) {
+                    errorDiv.textContent = `Error: Missing required elements: ${missingElements.join(', ')}`;
+                    errorDiv.style.display = 'block';
+                }
                 return;
             }
-            
-            // Calculate percentage of available memory
-            const availablePercent = (availableMB / totalMB) * 100;
-            const usedPercent = 100 - availablePercent;
-            
-            // Update the width of the fill element
-            percentageElement.style.width = `${availablePercent}%`;
-            
-            // Set color based on percentage available (green to red gradient)
-            // When 100% available -> green, when 0% available -> red
-            let color;
-            // Remove any previous status classes
-            memoryCard.classList.remove('status-good', 'status-warning', 'status-critical');
-            
-            if (availablePercent >= 75) {
-                color = '#22c55e'; // Green
-                memoryCard.classList.add('status-good');
-            } else if (availablePercent >= 50) {
-                color = '#84cc16'; // Light green/yellow
-                memoryCard.classList.add('status-good');
-            } else if (availablePercent >= 25) {
-                color = '#f59e0b'; // Orange/amber
-                memoryCard.classList.add('status-warning');
-            } else {
-                color = '#ef4444'; // Red
-                memoryCard.classList.add('status-critical');
+
+            // Initialize all elements with default values
+            const statusElements = document.querySelectorAll('.metric-status');
+            statusElements.forEach(el => {
+                el.textContent = '--';
+                el.className = 'metric-status';
+            });
+
+            const descriptionElements = document.querySelectorAll('.metric-description');
+            descriptionElements.forEach(el => el.textContent = '--');
+
+            const detailElements = document.querySelectorAll('.detail-value');
+            detailElements.forEach(el => el.textContent = '--');
+
+            // Initial fetch and start polling
+            updateMetrics();
+            setInterval(updateMetrics, POLLING_INTERVAL); // Poll every 60 seconds
+        });
+
+        // Function to safely update element content
+        function safeUpdateElement(id, content, className = null) {
+            const element = document.getElementById(id);
+            if (!element) {
+                console.warn(`Element with id '${id}' not found`);
+                return;
             }
-            
-            percentageElement.style.backgroundColor = color;
-            
-            // Update text
-            percentageTextElement.innerHTML = `${availablePercent.toFixed(1)}% of <span id="totalMemory">${totalMB.toLocaleString()}</span> MB`;
+            if (content !== undefined && content !== null) {
+                element.textContent = content;
+            }
+            if (className) {
+                element.className = className;
+            }
         }
 
         // Function to update metrics and chart
         async function updateMetrics() {
             const errorDiv = document.getElementById('errorMessage');
+            const lastUpdatedElement = document.getElementById('lastUpdated');
+            
+            if (!errorDiv || !lastUpdatedElement) {
+                console.error('Required elements not found');
+                return;
+            }
+
             try {
-                // Update the sync icon to show it's refreshing
-                const lastUpdatedElement = document.getElementById('lastUpdated');
                 lastUpdatedElement.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Updating...';
                 
-                const startTime = performance.now(); // Track request start time locally
-                const response = await fetch('/api/remote_system_health'); // Use the new proxy endpoint
-                const clientRequestTime = performance.now() - startTime; // Calculate client-side request time
-
+                const response = await fetch('/api/remote_system_health');
                 if (!response.ok) {
-                    let errorMsg = `Error: ${response.status} ${response.statusText}`;
-                    try {
-                        const errorData = await response.json();
-                        errorMsg = errorData.error || errorMsg;
-                        if (response.status === 401) { // Unauthorized / Session expired
-                           errorMsg += " Please log in again.";
-                           // Optionally redirect to login page: window.location.href = '/login';
-                        }
-                    } catch (e) { /* Ignore if error response is not JSON */ }
-                    throw new Error(errorMsg);
+                    throw new Error(`Error: ${response.status} ${response.statusText}`);
                 }
 
                 const data = await response.json();
-
-                // Extract data using correct paths from sample JSON, with safety checks
-                const dbConnectionData = data?.entries?.['database-connection']?.data;
-                const serverResourcesData = data?.entries?.['server-resource-utilization']?.data;
-                const driveData = data?.entries?.['server-drives']?.data?.Summary?.[0]; // Assuming first drive is C:
-
-                const cpuHost = dbConnectionData?.host_cpu_usedPct ?? null;
-                const cpuSql = dbConnectionData?.sqlserver_cpu_usedPct ?? null;
-                // Displaying AVAILABLE host memory, not used
-                const memoryHostAvailable = serverResourcesData?.['Memory/Available Mbytes'] ?? null;
-                const memorySqlUsed = dbConnectionData?.sqlserver_memory_usedMB ?? null;
-
-                let diskUsagePercent = null;
-                if (driveData && driveData.totalMb > 0) {
-                    diskUsagePercent = ((driveData.totalMb - driveData.availableMb) / driveData.totalMb) * 100;
+                if (!data || !data.entries) {
+                    throw new Error('Invalid data format received from API');
                 }
 
-                // Get API request time from the response data
-                const apiRequestTime = data?.request_time_ms ?? clientRequestTime;
+                const timestamp = new Date().toLocaleTimeString();
+                if (sharedLabels.length >= MAX_DATA_POINTS) sharedLabels.shift();
+                sharedLabels.push(timestamp);
 
-                // Use UTC time instead of local time
-                const timestamp = new Date().toUTCString().split(' ')[4]; // Extract HH:MM:SS from UTC string
+                // Update Site Certificate
+                const certificateData = data.entries['site-certificate'];
+                if (certificateData) {
+                    safeUpdateElement('siteCertificateStatus', certificateData.status, `metric-status ${certificateData.status.toLowerCase()}`);
+                    safeUpdateElement('siteCertificateDescription', certificateData.description);
+                    safeUpdateElement('certificateExpiration', certificateData.data['Expiration date']);
+                    safeUpdateElement('certificateDuration', certificateData.duration);
+                }
 
-                // Update metric cards
-                updateMetricCard('cpuHostValue', cpuHost, '%', 1);
-                updateMetricCard('cpuSqlValue', cpuSql, '%', 1);
-                updateMetricCard('memoryHostValue', memoryHostAvailable, 'MB Available', 0);
-                updateMetricCard('memorySqlValue', memorySqlUsed, 'MB Used', 0);
-                updateMetricCard('diskUsageValue', diskUsagePercent, '% Used (C:)', 1);
-                updateMetricCard('requestTimeValue', apiRequestTime, 'ms', 1);
+                // Update Database Connection
+                const dbData = data.entries['database-connection'];
+                if (dbData) {
+                    const hostMem = dbData.data.host_memory_availableMB || 0;
+                    const sqlMem = dbData.data.sqlserver_memory_usedMB || 0;
+                    const hostCpu = dbData.data.host_cpu_usedPct || 0;
+                    const sqlCpu = dbData.data.sqlserver_cpu_usedPct || 0;
 
-                // Update memory percentage bar
-                updateMemoryPercentage(memoryHostAvailable, TOTAL_MEMORY_MB);
+                    // Restore card updates
+                    safeUpdateElement('databaseStatus', dbData.status, `metric-status ${dbData.status.toLowerCase()}`);
+                    safeUpdateElement('databaseDescription', dbData.description);
+                    safeUpdateElement('hostMemory', `${hostMem} MB`);
+                    safeUpdateElement('sqlMemory', `${sqlMem} MB`);
+                    safeUpdateElement('hostCpu', `${hostCpu}%`);
+                    safeUpdateElement('sqlCpu', `${sqlCpu}%`);
+                    safeUpdateElement('databaseDuration', dbData.duration);
+
+                    const dbChart = charts.dbConnectionChart.data.datasets;
+                    if (dbChart[0].data.length >= MAX_DATA_POINTS) dbChart[0].data.shift();
+                    if (dbChart[1].data.length >= MAX_DATA_POINTS) dbChart[1].data.shift();
+                    if (dbChart[2].data.length >= MAX_DATA_POINTS) dbChart[2].data.shift();
+                    if (dbChart[3].data.length >= MAX_DATA_POINTS) dbChart[3].data.shift();
+                    dbChart[0].data.push(hostMem);
+                    dbChart[1].data.push(sqlMem);
+                    dbChart[2].data.push(hostCpu);
+                    dbChart[3].data.push(sqlCpu);
+                    console.log('DB Host Memory:', hostMem, 'SQL Memory:', sqlMem, 'Host CPU:', hostCpu, 'SQL CPU:', sqlCpu);
+                    console.log('DB Chart Datasets Lengths:', dbChart.map(ds => ds.data.length));
+                    charts.dbConnectionChart.update();
+                }
+
+                // Update Server Drives
+                const drivesData = data.entries['server-drives'];
+                if (drivesData && drivesData.data && Array.isArray(drivesData.data.Summary)) {
+                    safeUpdateElement('drivesStatus', drivesData.status, `metric-status ${drivesData.status.toLowerCase()}`);
+                    safeUpdateElement('drivesDescription', drivesData.description);
+                    
+                    drivesData.data.Summary.forEach(drive => {
+                        const driveId = drive.drive.replace(':\\', '').toUpperCase();
+                        const usagePercent = ((drive.totalMb - drive.availableMb) / drive.totalMb * 100).toFixed(1);
+                        safeUpdateElement(`drive${driveId}`, 
+                            `${usagePercent}% (${drive.availableMb.toLocaleString()} MB available of ${drive.totalMb.toLocaleString()} MB)`);
+                    });
+                    safeUpdateElement('drivesDuration', drivesData.duration);
+                }
+
+                // Update Site Resource Utilization
+                const siteResourcesData = data.entries['site-resource-utilization'];
+                if (siteResourcesData) {
+                    const processCpu = (siteResourcesData.data['process.cpu.utilization'] || 0) * 100;
+                    const processMemory = siteResourcesData.data['dotnet.process.memory.virtual.utilization'] || 0;
+
+                    // Restore card updates
+                    safeUpdateElement('siteResourcesStatus', siteResourcesData.status, `metric-status ${siteResourcesData.status.toLowerCase()}`);
+                    safeUpdateElement('siteResourcesDescription', siteResourcesData.description);
+                    safeUpdateElement('processCpu', `${processCpu.toFixed(2)}%`);
+                    safeUpdateElement('processMemory', `${processMemory.toFixed(2)}%`);
+                    safeUpdateElement('siteResourcesDuration', siteResourcesData.duration);
+
+                    const siteChart = charts.siteResourcesChart.data.datasets;
+                    if (siteChart[0].data.length >= MAX_DATA_POINTS) siteChart[0].data.shift();
+                    if (siteChart[1].data.length >= MAX_DATA_POINTS) siteChart[1].data.shift();
+                    siteChart[0].data.push(processCpu);
+                    siteChart[1].data.push(processMemory);
+                    console.log('Site Resources CPU:', processCpu, 'Memory:', processMemory);
+                    console.log('Site Resources Datasets Lengths:', siteChart.map(ds => ds.data.length));
+                    charts.siteResourcesChart.update();
+                }
+
+                // Update Server Resource Utilization
+                const serverResourcesData = data.entries['server-resource-utilization'];
+                if (serverResourcesData) {
+                    const processorTime = serverResourcesData.data['Processor/% Processor Time/_Total'] || 0;
+                    const availableMemory = serverResourcesData.data['Memory/Available Mbytes'] || 0;
+
+                    // Restore card updates
+                    safeUpdateElement('serverResourcesStatus', serverResourcesData.status, `metric-status ${serverResourcesData.status.toLowerCase()}`);
+                    safeUpdateElement('serverResourcesDescription', serverResourcesData.description);
+                    safeUpdateElement('processorTime', `${processorTime.toFixed(2)}%`);
+                    safeUpdateElement('availableMemory', `${availableMemory.toLocaleString()} MB`);
+                    safeUpdateElement('serverResourcesDuration', serverResourcesData.duration);
+
+                    const serverChart = charts.serverResourcesChart.data.datasets;
+                    if (serverChart[0].data.length >= MAX_DATA_POINTS) serverChart[0].data.shift();
+                    if (serverChart[1].data.length >= MAX_DATA_POINTS) serverChart[1].data.shift();
+                    serverChart[0].data.push(processorTime);
+                    serverChart[1].data.push(availableMemory);
+                    console.log('Server Resources Processor Time:', processorTime, 'Available Memory:', availableMemory);
+                    console.log('Server Resources Datasets Lengths:', serverChart.map(ds => ds.data.length));
+                    charts.serverResourcesChart.update();
+                }
+
+                // Update Quartz Scheduler
+                const schedulerData = data.entries['quartz-scheduler'];
+                if (schedulerData) {
+                    safeUpdateElement('schedulerStatus', schedulerData.status, `metric-status ${schedulerData.status.toLowerCase()}`);
+                    safeUpdateElement('schedulerDescription', schedulerData.description);
+                    safeUpdateElement('schedulerDuration', schedulerData.duration);
+                }
 
                 // Update last updated time
                 lastUpdatedElement.innerHTML = `<i class="fas fa-check-circle" style="color: #22c55e;"></i> Last updated: ${new Date().toLocaleString()}`;
-                errorDiv.style.display = 'none'; // Hide error message on success
-
-                // Update chart data for all charts
-                sharedLabels.push(timestamp); // Add timestamp to shared labels array
-                charts.cpuHostChart.data.datasets[0].data.push(cpuHost);
-                charts.cpuSqlChart.data.datasets[0].data.push(cpuSql);
-                charts.memoryHostChart.data.datasets[0].data.push(memoryHostAvailable);
-                charts.memorySqlChart.data.datasets[0].data.push(memorySqlUsed);
-                charts.requestTimeChart.data.datasets[0].data.push(apiRequestTime);
-
-                // Keep only last MAX_DATA_POINTS data points
-                if (sharedLabels.length > MAX_DATA_POINTS) {
-                    sharedLabels.shift(); // Remove oldest timestamp
-                    allCharts.forEach(chart => chart.data.datasets[0].data.shift()); // Remove oldest data point from each chart
-                }
-
-                // Update all charts
-                allCharts.forEach(chart => chart.update('none')); // Use 'none' animation for smoother updates
+                errorDiv.style.display = 'none';
 
             } catch (error) {
                 console.error('Error fetching remote system health:', error);
                 errorDiv.textContent = `Failed to load system health data: ${error.message}`;
                 errorDiv.style.display = 'block';
-                // Update last updated time to show error
-                document.getElementById('lastUpdated').innerHTML = `<i class="fas fa-exclamation-circle" style="color: #ef4444;"></i> Last updated: ${new Date().toLocaleString()} (with errors)`;
+                lastUpdatedElement.innerHTML = `<i class="fas fa-exclamation-circle" style="color: #ef4444;"></i> Last updated: ${new Date().toLocaleString()} (with errors)`;
                 
-                // Optionally clear cards or show '--'
-                updateMetricCard('cpuHostValue', null);
-                updateMetricCard('cpuSqlValue', null);
-                updateMetricCard('memoryHostValue', null);
-                updateMetricCard('memorySqlValue', null);
-                updateMetricCard('diskUsageValue', null);
-                updateMetricCard('requestTimeValue', null);
+                // Clear all status indicators
+                const statusElements = document.querySelectorAll('.metric-status');
+                statusElements.forEach(el => {
+                    el.textContent = '--';
+                    el.className = 'metric-status';
+                });
+
+                // Clear all descriptions
+                const descriptionElements = document.querySelectorAll('.metric-description');
+                descriptionElements.forEach(el => el.textContent = '--');
+
+                // Clear all detail values
+                const detailElements = document.querySelectorAll('.detail-value');
+                detailElements.forEach(el => el.textContent = '--');
             }
         }
 
@@ -900,7 +1265,6 @@
 
         function expandChart(chartId, title) {
             const originalChart = charts[chartId];
-            
             // Check if chart exists and has data
             if (!originalChart || !originalChart.data || !originalChart.data.labels) {
                 console.error(`Chart ${chartId} not found or not initialized`);
@@ -910,98 +1274,51 @@
             const modal = document.getElementById('chartModal');
             const modalTitle = document.getElementById('modalChartTitle');
             const modalCanvas = document.getElementById('modalChart');
-            
-            // Set the modal title
-            modalTitle.textContent = title;
-            
+            // Set the modal title with icon
+            let iconHtml = '';
+            if (chartId === 'dbConnectionChart') iconHtml = '<i class="fas fa-database icon"></i> ';
+            else if (chartId === 'siteResourcesChart') iconHtml = '<i class="fas fa-microchip icon"></i> ';
+            else if (chartId === 'serverResourcesChart') iconHtml = '<i class="fas fa-server icon"></i> ';
+            modalTitle.innerHTML = iconHtml + title;
             // Create a new chart instance for the modal
             if (modalChart) {
                 modalChart.destroy();
             }
-            
             try {
                 // Clone the original chart's data and options
+                // Handle multiple y-axes and datasets
+                const datasets = originalChart.data.datasets.map(ds => ({
+                    ...ds,
+                    data: [...ds.data],
+                    pointRadius: 2,
+                    borderWidth: 2
+                }));
+                // Clone all y-axes
+                const scales = {};
+                for (const [key, axis] of Object.entries(originalChart.options.scales)) {
+                    scales[key] = { ...axis };
+                }
                 const chartConfig = {
                     type: 'line',
                     data: {
                         labels: [...originalChart.data.labels],
-                        datasets: [{
-                            ...originalChart.data.datasets[0],
-                            data: [...originalChart.data.datasets[0].data],
-                            pointRadius: 2,
-                            borderWidth: 2
-                        }]
+                        datasets: datasets
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                display: true,
-                                title: {
-                                    display: false
-                                },
-                                ticks: {
-                                    autoSkip: true,
-                                    maxTicksLimit: 10
-                                }
-                            },
-                            y: {
-                                display: true,
-                                position: 'left',
-                                title: {
-                                    display: true,
-                                    text: originalChart.options.scales.y.title.text
-                                },
-                                min: originalChart.options.scales.y.min,
-                                max: originalChart.options.scales.y.max,
-                                beginAtZero: true,
-                                grid: {
-                                    color: getCurrentTheme() === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-                                }
-                            }
-                        },
+                        scales: scales,
                         plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top'
-                            },
-                            title: {
-                                display: true,
-                                text: title,
-                                padding: {
-                                    top: 10,
-                                    bottom: 10
-                                }
-                            },
-                            tooltip: {
-                                mode: 'index',
-                                intersect: false,
-                                callbacks: {
-                                    label: function(context) {
-                                        let label = context.dataset.label || '';
-                                        if (label) { label += ': '; }
-                                        if (context.parsed.y !== null) {
-                                            label += context.parsed.y.toFixed(2);
-                                            const yAxisLabel = originalChart.options.scales.y.title.text;
-                                            if (yAxisLabel.includes('%')) label += '%';
-                                            if (yAxisLabel.includes('MB')) label += ' MB';
-                                            if (yAxisLabel.includes('ms')) label += ' ms';
-                                        }
-                                        return label;
-                                    }
-                                }
-                            }
+                            legend: { display: true, position: 'top' },
+                            title: { display: true, text: title, padding: { top: 10, bottom: 10 } },
+                            tooltip: { mode: 'index', intersect: false }
                         }
                     }
                 };
-                
                 // Create the new chart
                 modalChart = new Chart(modalCanvas, chartConfig);
-                
                 // Show the modal
                 modal.classList.add('active');
-                
                 // Prevent body scrolling when modal is open
                 document.body.style.overflow = 'hidden';
             } catch (error) {
@@ -1050,11 +1367,14 @@
             const gridColor = newTheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
 
             // Update colors and grid for all charts
-            charts.cpuHostChart.data.datasets[0].borderColor = newColors.cpuHost;
-            charts.cpuSqlChart.data.datasets[0].borderColor = newColors.cpuSql;
-            charts.memoryHostChart.data.datasets[0].borderColor = newColors.memoryHost;
-            charts.memorySqlChart.data.datasets[0].borderColor = newColors.memorySql;
-            charts.requestTimeChart.data.datasets[0].borderColor = newColors.requestTime;
+            charts.dbConnectionChart.data.datasets[0].borderColor = newColors.hostMemory;
+            charts.dbConnectionChart.data.datasets[1].borderColor = newColors.sqlMemory;
+            charts.dbConnectionChart.data.datasets[2].borderColor = newColors.hostCpu;
+            charts.dbConnectionChart.data.datasets[3].borderColor = newColors.sqlCpu;
+            charts.siteResourcesChart.data.datasets[0].borderColor = newColors.processCpu;
+            charts.siteResourcesChart.data.datasets[1].borderColor = newColors.processMemory;
+            charts.serverResourcesChart.data.datasets[0].borderColor = newColors.processorTime;
+            charts.serverResourcesChart.data.datasets[1].borderColor = newColors.availableMemory;
             // Update grid colors
             allCharts.forEach(chart => {
                 chart.options.scales.y.grid.color = gridColor;
@@ -1064,16 +1384,6 @@
 
         // Set initial theme
         document.documentElement.setAttribute('data-theme', currentTheme);
-
-        // Document ready function
-        document.addEventListener('DOMContentLoaded', function() {
-            // Format and display the total memory
-            document.getElementById('totalMemory').textContent = TOTAL_MEMORY_MB.toLocaleString();
-            
-            // Initial fetch and start polling
-            updateMetrics();
-            setInterval(updateMetrics, POLLING_INTERVAL); // Poll every 60 seconds
-        });
     </script>
 </body>
 </html>

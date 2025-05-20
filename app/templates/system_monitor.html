@@ -208,6 +208,103 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
+        /* Chart expand button */
+        .chart-expand-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            z-index: 2;
+        }
+
+        .chart-expand-btn:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .chart-expand-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modal overlay for expanded chart */
+        .chart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chart-modal.active {
+            display: flex;
+        }
+
+        .chart-modal-content {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .chart-modal-close {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px 12px;
+            font-size: 1.2em;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .chart-modal-close:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .chart-modal-close i {
+            font-size: 1.1em;
+        }
+
+        .chart-modal-close .close-text {
+            font-size: 0.9em;
+        }
+
+        .chart-modal-title {
+            margin: 0 0 20px 0;
+            color: var(--text-primary);
+            font-size: 1.2em;
+            font-weight: 600;
+            padding-right: 100px; /* Make space for the close button */
+        }
+
+        .chart-modal-chart {
+            width: 100%;
+            height: calc(90vh - 100px);
+            min-height: 400px;
+        }
+
         .theme-toggle {
             position: fixed;
             bottom: 20px;
@@ -282,6 +379,11 @@
             
             h1 {
                 font-size: 1.5em;
+            }
+
+            .chart-modal-content {
+                width: 95%;
+                padding: 15px;
             }
         }
 
@@ -390,21 +492,49 @@
         <!-- Grid container for charts -->
         <div class="charts-grid">
             <div class="chart-container">
+                <button class="chart-expand-btn" onclick="expandChart('cpuHostChart', 'CPU Host Usage')">
+                    <i class="fas fa-expand"></i>
+                </button>
                 <canvas id="cpuHostChart"></canvas>
             </div>
             <div class="chart-container">
+                <button class="chart-expand-btn" onclick="expandChart('cpuSqlChart', 'CPU SQL Usage')">
+                    <i class="fas fa-expand"></i>
+                </button>
                 <canvas id="cpuSqlChart"></canvas>
             </div>
             <div class="chart-container">
+                <button class="chart-expand-btn" onclick="expandChart('memoryHostChart', 'Memory Host Available')">
+                    <i class="fas fa-expand"></i>
+                </button>
                 <canvas id="memoryHostChart"></canvas>
             </div>
             <div class="chart-container">
+                <button class="chart-expand-btn" onclick="expandChart('memorySqlChart', 'Memory SQL Used')">
+                    <i class="fas fa-expand"></i>
+                </button>
                 <canvas id="memorySqlChart"></canvas>
             </div>
             <div class="chart-container">
+                <button class="chart-expand-btn" onclick="expandChart('requestTimeChart', 'API Request Time')">
+                    <i class="fas fa-expand"></i>
+                </button>
                 <canvas id="requestTimeChart"></canvas>
             </div>
-            <!-- Disk and Network charts could be added here if needed later -->
+        </div>
+    </div>
+
+    <!-- Modal for expanded chart -->
+    <div id="chartModal" class="chart-modal">
+        <div class="chart-modal-content">
+            <button class="chart-modal-close" onclick="closeChartModal()">
+                <i class="fas fa-compress"></i>
+                <span class="close-text">Minimize</span>
+            </button>
+            <h3 class="chart-modal-title" id="modalChartTitle"></h3>
+            <div class="chart-modal-chart">
+                <canvas id="modalChart"></canvas>
+            </div>
         </div>
     </div>
 
@@ -414,6 +544,9 @@
         const MAX_DATA_POINTS = 120; // Store 120 minutes (2 hours) of data
         const POLLING_INTERVAL = 60000; // 60 seconds
         const TOTAL_MEMORY_MB = 64000; // Total memory in MB - configure as needed
+
+        // Global charts object to store all chart instances
+        const charts = {};
 
         // Chart Colors (inspired by MONITOR/js/config.js) - Keep Disk/Network for potential future use
         const chartColors = {
@@ -448,10 +581,6 @@
 
         // Helper function to create chart configuration
         function createChartConfig(label, borderColor, yAxisLabel, min = 0, max = undefined) {
-            // Extract icon from label if it contains an icon tag
-            let titleText = label;
-            let titleFont = {};
-            
             return {
                 type: 'line',
                 data: {
@@ -462,36 +591,49 @@
                         data: [],
                         fill: false,
                         tension: 0.1,
-                        pointRadius: 0 // Hide points for cleaner look with many data points
+                        pointRadius: 0
                     }]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false, // Important for fixed height container
+                    maintainAspectRatio: false,
                     scales: {
                         x: {
                             display: true,
-                            title: { display: false }, // No title on individual charts
-                            ticks: { autoSkip: true, maxTicksLimit: 10 }
+                            title: {
+                                display: false
+                            },
+                            ticks: {
+                                autoSkip: true,
+                                maxTicksLimit: 10
+                            }
                         },
                         y: {
-                            type: 'linear',
                             display: true,
                             position: 'left',
-                            title: { display: true, text: yAxisLabel },
+                            title: {
+                                display: true,
+                                text: yAxisLabel
+                            },
                             min: min,
-                            max: max, // Use undefined for auto-scaling max
+                            max: max,
                             beginAtZero: true,
-                            grid: { color: currentTheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }
+                            grid: {
+                                color: currentTheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+                            }
                         }
                     },
                     plugins: {
-                        legend: { display: false }, // Hide legend for single dataset charts
-                        title: { // Use chart title instead of legend
+                        legend: {
+                            display: false
+                        },
+                        title: {
                             display: true,
-                            text: titleText,
-                            padding: { top: 10, bottom: 10 },
-                            font: titleFont
+                            text: label,
+                            padding: {
+                                top: 10,
+                                bottom: 10
+                            }
                         },
                         tooltip: {
                             mode: 'index',
@@ -502,7 +644,6 @@
                                     if (label) { label += ': '; }
                                     if (context.parsed.y !== null) {
                                         label += context.parsed.y.toFixed(2);
-                                        // Add unit based on axis label
                                         if (yAxisLabel.includes('%')) label += '%';
                                         if (yAxisLabel.includes('MB')) label += ' MB';
                                         if (yAxisLabel.includes('ms')) label += ' ms';
@@ -517,28 +658,28 @@
         }
 
         // Initialize Charts
-        const cpuHostChart = new Chart(
+        charts.cpuHostChart = new Chart(
             document.getElementById('cpuHostChart').getContext('2d'),
             createChartConfig('CPU Host (%)', colors.cpuHost, 'Usage (%)', 0, 100)
         );
-        const cpuSqlChart = new Chart(
+        charts.cpuSqlChart = new Chart(
             document.getElementById('cpuSqlChart').getContext('2d'),
             createChartConfig('CPU SQL (%)', colors.cpuSql, 'Usage (%)', 0, 100)
         );
-        const memoryHostChart = new Chart(
+        charts.memoryHostChart = new Chart(
             document.getElementById('memoryHostChart').getContext('2d'),
             createChartConfig('Memory Host (MB Available)', colors.memoryHost, 'Memory (MB)') // Auto-scales max
         );
-        const memorySqlChart = new Chart(
+        charts.memorySqlChart = new Chart(
             document.getElementById('memorySqlChart').getContext('2d'),
             createChartConfig('Memory SQL (MB Used)', colors.memorySql, 'Memory (MB)') // Auto-scales max
         );
-        const requestTimeChart = new Chart(
+        charts.requestTimeChart = new Chart(
             document.getElementById('requestTimeChart').getContext('2d'),
             createChartConfig('API Request Time (ms)', colors.requestTime, 'Time (ms)')
         );
 
-        const allCharts = [cpuHostChart, cpuSqlChart, memoryHostChart, memorySqlChart, requestTimeChart];
+        const allCharts = [charts.cpuHostChart, charts.cpuSqlChart, charts.memoryHostChart, charts.memorySqlChart, charts.requestTimeChart];
 
         // Function to update metric cards and apply status indicators
         function updateMetricCard(id, value, unit = '', precision = 1) {
@@ -702,7 +843,8 @@
                 // Get API request time from the response data
                 const apiRequestTime = data?.request_time_ms ?? clientRequestTime;
 
-                const timestamp = new Date().toLocaleTimeString(); // Use local time for label
+                // Use UTC time instead of local time
+                const timestamp = new Date().toUTCString().split(' ')[4]; // Extract HH:MM:SS from UTC string
 
                 // Update metric cards
                 updateMetricCard('cpuHostValue', cpuHost, '%', 1);
@@ -721,11 +863,11 @@
 
                 // Update chart data for all charts
                 sharedLabels.push(timestamp); // Add timestamp to shared labels array
-                cpuHostChart.data.datasets[0].data.push(cpuHost);
-                cpuSqlChart.data.datasets[0].data.push(cpuSql);
-                memoryHostChart.data.datasets[0].data.push(memoryHostAvailable);
-                memorySqlChart.data.datasets[0].data.push(memorySqlUsed);
-                requestTimeChart.data.datasets[0].data.push(apiRequestTime);
+                charts.cpuHostChart.data.datasets[0].data.push(cpuHost);
+                charts.cpuSqlChart.data.datasets[0].data.push(cpuSql);
+                charts.memoryHostChart.data.datasets[0].data.push(memoryHostAvailable);
+                charts.memorySqlChart.data.datasets[0].data.push(memorySqlUsed);
+                charts.requestTimeChart.data.datasets[0].data.push(apiRequestTime);
 
                 // Keep only last MAX_DATA_POINTS data points
                 if (sharedLabels.length > MAX_DATA_POINTS) {
@@ -753,6 +895,153 @@
             }
         }
 
+        // Chart expansion functionality
+        let modalChart = null;
+
+        function expandChart(chartId, title) {
+            const originalChart = charts[chartId];
+            
+            // Check if chart exists and has data
+            if (!originalChart || !originalChart.data || !originalChart.data.labels) {
+                console.error(`Chart ${chartId} not found or not initialized`);
+                return;
+            }
+
+            const modal = document.getElementById('chartModal');
+            const modalTitle = document.getElementById('modalChartTitle');
+            const modalCanvas = document.getElementById('modalChart');
+            
+            // Set the modal title
+            modalTitle.textContent = title;
+            
+            // Create a new chart instance for the modal
+            if (modalChart) {
+                modalChart.destroy();
+            }
+            
+            try {
+                // Clone the original chart's data and options
+                const chartConfig = {
+                    type: 'line',
+                    data: {
+                        labels: [...originalChart.data.labels],
+                        datasets: [{
+                            ...originalChart.data.datasets[0],
+                            data: [...originalChart.data.datasets[0].data],
+                            pointRadius: 2,
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
+                                    display: false
+                                },
+                                ticks: {
+                                    autoSkip: true,
+                                    maxTicksLimit: 10
+                                }
+                            },
+                            y: {
+                                display: true,
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: originalChart.options.scales.y.title.text
+                                },
+                                min: originalChart.options.scales.y.min,
+                                max: originalChart.options.scales.y.max,
+                                beginAtZero: true,
+                                grid: {
+                                    color: getCurrentTheme() === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top'
+                            },
+                            title: {
+                                display: true,
+                                text: title,
+                                padding: {
+                                    top: 10,
+                                    bottom: 10
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) { label += ': '; }
+                                        if (context.parsed.y !== null) {
+                                            label += context.parsed.y.toFixed(2);
+                                            const yAxisLabel = originalChart.options.scales.y.title.text;
+                                            if (yAxisLabel.includes('%')) label += '%';
+                                            if (yAxisLabel.includes('MB')) label += ' MB';
+                                            if (yAxisLabel.includes('ms')) label += ' ms';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+                
+                // Create the new chart
+                modalChart = new Chart(modalCanvas, chartConfig);
+                
+                // Show the modal
+                modal.classList.add('active');
+                
+                // Prevent body scrolling when modal is open
+                document.body.style.overflow = 'hidden';
+            } catch (error) {
+                console.error('Error expanding chart:', error);
+                // Clean up if there's an error
+                if (modalChart) {
+                    modalChart.destroy();
+                    modalChart = null;
+                }
+            }
+        }
+
+        function closeChartModal() {
+            const modal = document.getElementById('chartModal');
+            modal.classList.remove('active');
+            
+            // Re-enable body scrolling
+            document.body.style.overflow = '';
+            
+            // Destroy the modal chart
+            if (modalChart) {
+                modalChart.destroy();
+                modalChart = null;
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('chartModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeChartModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('chartModal').classList.contains('active')) {
+                closeChartModal();
+            }
+        });
+
         // Theme toggling
         function toggleTheme() {
             const newTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
@@ -761,11 +1050,11 @@
             const gridColor = newTheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
 
             // Update colors and grid for all charts
-            cpuHostChart.data.datasets[0].borderColor = newColors.cpuHost;
-            cpuSqlChart.data.datasets[0].borderColor = newColors.cpuSql;
-            memoryHostChart.data.datasets[0].borderColor = newColors.memoryHost;
-            memorySqlChart.data.datasets[0].borderColor = newColors.memorySql;
-            requestTimeChart.data.datasets[0].borderColor = newColors.requestTime;
+            charts.cpuHostChart.data.datasets[0].borderColor = newColors.cpuHost;
+            charts.cpuSqlChart.data.datasets[0].borderColor = newColors.cpuSql;
+            charts.memoryHostChart.data.datasets[0].borderColor = newColors.memoryHost;
+            charts.memorySqlChart.data.datasets[0].borderColor = newColors.memorySql;
+            charts.requestTimeChart.data.datasets[0].borderColor = newColors.requestTime;
             // Update grid colors
             allCharts.forEach(chart => {
                 chart.options.scales.y.grid.color = gridColor;

@@ -595,6 +595,10 @@
                         <span class="detail-value" id="processCpu">--</span>
                     </div>
                     <div class="detail-item">
+                        <span class="detail-label">Process CPU (raw):</span>
+                        <span class="detail-value" id="processCpuRaw">--</span>
+                    </div>
+                    <div class="detail-item">
                         <span class="detail-label">Process Memory:</span>
                         <span class="detail-value" id="processMemory">--</span>
                     </div>
@@ -613,6 +617,10 @@
                     <div class="detail-item">
                         <span class="detail-label">Processor Time:</span>
                         <span class="detail-value" id="processorTime">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Processor Time (raw):</span>
+                        <span class="detail-value" id="processorTimeRaw">--</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Available Memory:</span>
@@ -917,7 +925,8 @@
                             data: [],
                             fill: false,
                             tension: 0.1,
-                            pointRadius: 0
+                            pointRadius: 0,
+                            yAxisID: 'y-cpu'
                         },
                         {
                             label: 'Process Memory (%)',
@@ -925,7 +934,8 @@
                             data: [],
                             fill: false,
                             tension: 0.1,
-                            pointRadius: 0
+                            pointRadius: 0,
+                            yAxisID: 'y-mem'
                         }
                     ]
                 },
@@ -938,14 +948,25 @@
                             title: { display: false },
                             ticks: { autoSkip: true, maxTicksLimit: 10 }
                         },
-                        y: {
+                        'y-cpu': {
+                            type: 'linear',
                             display: true,
                             position: 'left',
-                            title: { display: true, text: 'Usage (%)' },
+                            title: { display: true, text: 'CPU Usage (%)' },
                             min: 0,
                             max: 100,
                             beginAtZero: true,
                             grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
+                        },
+                        'y-mem': {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'Memory Usage (%)' },
+                            min: 0,
+                            max: 100,
+                            beginAtZero: true,
+                            grid: { drawOnChartArea: false }
                         }
                     },
                     plugins: {
@@ -969,7 +990,8 @@
                             data: [],
                             fill: false,
                             tension: 0.1,
-                            pointRadius: 0
+                            pointRadius: 0,
+                            yAxisID: 'y-proc'
                         },
                         {
                             label: 'Available Memory (MB)',
@@ -977,7 +999,8 @@
                             data: [],
                             fill: false,
                             tension: 0.1,
-                            pointRadius: 0
+                            pointRadius: 0,
+                            yAxisID: 'y-mem'
                         }
                     ]
                 },
@@ -990,12 +1013,23 @@
                             title: { display: false },
                             ticks: { autoSkip: true, maxTicksLimit: 10 }
                         },
-                        y: {
+                        'y-mem': {
+                            type: 'linear',
                             display: true,
                             position: 'left',
-                            title: { display: true, text: 'Value' },
+                            title: { display: true, text: 'Available Memory (MB)' },
                             beginAtZero: true,
                             grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
+                        },
+                        'y-proc': {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'Processor Time (%)' },
+                            min: 0,
+                            max: 100,
+                            beginAtZero: true,
+                            grid: { drawOnChartArea: false }
                         }
                     },
                     plugins: {
@@ -1182,13 +1216,15 @@
                 // Update Site Resource Utilization
                 const siteResourcesData = data.entries['site-resource-utilization'];
                 if (siteResourcesData) {
-                    const processCpu = (siteResourcesData.data['process.cpu.utilization'] || 0) * 100;
+                    const processCpuRaw = siteResourcesData.data['process.cpu.utilization'] || 0;
+                    const processCpu = processCpuRaw;
                     const processMemory = siteResourcesData.data['dotnet.process.memory.virtual.utilization'] || 0;
 
                     // Restore card updates
                     safeUpdateElement('siteResourcesStatus', siteResourcesData.status, `metric-status ${siteResourcesData.status.toLowerCase()}`);
                     safeUpdateElement('siteResourcesDescription', siteResourcesData.description);
                     safeUpdateElement('processCpu', `${processCpu.toFixed(2)}%`);
+                    safeUpdateElement('processCpuRaw', processCpuRaw);
                     safeUpdateElement('processMemory', `${processMemory.toFixed(2)}%`);
                     safeUpdateElement('siteResourcesDuration', siteResourcesData.duration);
 
@@ -1205,13 +1241,15 @@
                 // Update Server Resource Utilization
                 const serverResourcesData = data.entries['server-resource-utilization'];
                 if (serverResourcesData) {
-                    const processorTime = serverResourcesData.data['Processor/% Processor Time/_Total'] || 0;
+                    const processorTimeRaw = serverResourcesData.data['Processor/% Processor Time/_Total'] || 0;
+                    const processorTime = processorTimeRaw;
                     const availableMemory = serverResourcesData.data['Memory/Available Mbytes'] || 0;
 
                     // Restore card updates
                     safeUpdateElement('serverResourcesStatus', serverResourcesData.status, `metric-status ${serverResourcesData.status.toLowerCase()}`);
                     safeUpdateElement('serverResourcesDescription', serverResourcesData.description);
                     safeUpdateElement('processorTime', `${processorTime.toFixed(2)}%`);
+                    safeUpdateElement('processorTimeRaw', processorTimeRaw);
                     safeUpdateElement('availableMemory', `${availableMemory.toLocaleString()} MB`);
                     safeUpdateElement('serverResourcesDuration', serverResourcesData.duration);
 

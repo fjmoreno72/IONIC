@@ -9481,3 +9481,327 @@ app.core.exceptions.ApiRequestError: Request failed: HTTPSConnectionPool(host='i
 2025-05-27 08:25:22 - 127.0.0.1 - - [27/May/2025 08:25:22] "GET /api/remote_system_health HTTP/1.1" 200 -
 2025-05-27 08:26:23 - 127.0.0.1 - - [27/May/2025 08:26:23] "GET /api/remote_system_health HTTP/1.1" 200 -
 2025-05-27 08:27:23 - 127.0.0.1 - - [27/May/2025 08:27:23] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET / HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /static/ASC/icons/ASCs.svg HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /static/js/pages/ascs_new.js HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /static/js/components/ascForm.js HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /static/js/components/gpSpEditForm.js HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /api/services HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /api/affiliates HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /api/gps HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /api/sps HTTP/1.1" 200 -
+2025-05-27 11:06:27 - 127.0.0.1 - - [27/May/2025 11:06:27] "GET /api/models HTTP/1.1" 200 -
+2025-05-27 11:06:28 - 127.0.0.1 - - [27/May/2025 11:06:28] "GET /api/ascs HTTP/1.1" 200 -
+2025-05-27 11:06:28 - 127.0.0.1 - - [27/May/2025 11:06:28] "GET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1" 200 -
+2025-05-27 11:06:28 - 127.0.0.1 - - [27/May/2025 11:06:28] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:06:30 - 127.0.0.1 - - [27/May/2025 11:06:30] "GET /logout HTTP/1.1" 200 -
+2025-05-27 11:06:30 - 127.0.0.1 - - [27/May/2025 11:06:30] "GET / HTTP/1.1" 200 -
+2025-05-27 11:06:30 - 127.0.0.1 - - [27/May/2025 11:06:30] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-05-27 11:06:30 - 127.0.0.1 - - [27/May/2025 11:06:30] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:06:30 - 127.0.0.1 - - [27/May/2025 11:06:30] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:06:30 - 127.0.0.1 - - [27/May/2025 11:06:30] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:13:29 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-27 11:13:29 - [33mPress CTRL+C to quit[0m
+2025-05-27 11:13:29 -  * Restarting with stat
+2025-05-27 11:13:30 -  * Debugger is active!
+2025-05-27 11:13:30 -  * Debugger PIN: 288-963-664
+2025-05-27 11:13:56 -  * Detected change in '/Users/fjmoreno72/WORK/IONIC4/test_login.py', reloading
+2025-05-27 11:13:56 -  * Restarting with stat
+2025-05-27 11:13:56 -  * Debugger is active!
+2025-05-27 11:13:56 -  * Debugger PIN: 288-963-664
+2025-05-27 11:15:09 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.110:5007
+2025-05-27 11:15:09 - [33mPress CTRL+C to quit[0m
+2025-05-27 11:15:13 - 127.0.0.1 - - [27/May/2025 11:15:13] "GET / HTTP/1.1" 200 -
+2025-05-27 11:15:13 - 127.0.0.1 - - [27/May/2025 11:15:13] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-05-27 11:15:13 - 127.0.0.1 - - [27/May/2025 11:15:13] "GET /static/img/CIAV_LOGO.png HTTP/1.1" 200 -
+2025-05-27 11:15:13 - 127.0.0.1 - - [27/May/2025 11:15:13] "GET /static/img/CWIX_LOGO.png HTTP/1.1" 200 -
+2025-05-27 11:15:13 - 127.0.0.1 - - [27/May/2025 11:15:13] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:15:13 - 127.0.0.1 - - [27/May/2025 11:15:13] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "POST /login HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "GET /asc_ascs HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/components/ascForm.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/js/components/gpSpEditForm.js HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "GET /api/affiliates HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "GET /api/gps HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "GET /api/sps HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "GET /api/models HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "GET /api/services HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "GET /api/ascs HTTP/1.1" 200 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:15:32 - 127.0.0.1 - - [27/May/2025 11:15:32] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-05-27 11:15:37 - 127.0.0.1 - - [27/May/2025 11:15:37] "GET /logout HTTP/1.1" 200 -
+2025-05-27 11:15:37 - 127.0.0.1 - - [27/May/2025 11:15:37] "GET / HTTP/1.1" 200 -
+2025-05-27 11:15:37 - 127.0.0.1 - - [27/May/2025 11:15:37] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:15:37 - 127.0.0.1 - - [27/May/2025 11:15:37] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:15:37 - 127.0.0.1 - - [27/May/2025 11:15:37] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:15:37 - 127.0.0.1 - - [27/May/2025 11:15:37] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "POST /login HTTP/1.1" 200 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "GET /asc_ascs HTTP/1.1" 200 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/components/ascForm.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/js/components/gpSpEditForm.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "GET /api/gps HTTP/1.1" 200 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "GET /api/affiliates HTTP/1.1" 200 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "GET /api/services HTTP/1.1" 200 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "GET /api/models HTTP/1.1" 200 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "GET /api/sps HTTP/1.1" 200 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "GET /api/ascs HTTP/1.1" 200 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:16:17 - 127.0.0.1 - - [27/May/2025 11:16:17] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-05-27 11:16:19 - 127.0.0.1 - - [27/May/2025 11:16:19] "GET /system_monitor HTTP/1.1" 200 -
+2025-05-27 11:16:19 - 127.0.0.1 - - [27/May/2025 11:16:19] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:16:19 - 127.0.0.1 - - [27/May/2025 11:16:19] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:16:19 - 127.0.0.1 - - [27/May/2025 11:16:19] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:19 - 127.0.0.1 - - [27/May/2025 11:16:19] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:19 - 127.0.0.1 - - [27/May/2025 11:16:19] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:19 - 127.0.0.1 - - [27/May/2025 11:16:19] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:16:19 - 127.0.0.1 - - [27/May/2025 11:16:19] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:16:20 - 127.0.0.1 - - [27/May/2025 11:16:20] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:16:20 - 127.0.0.1 - - [27/May/2025 11:16:20] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:17:20 - 127.0.0.1 - - [27/May/2025 11:17:20] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:18:20 - 127.0.0.1 - - [27/May/2025 11:18:20] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:19:20 - 127.0.0.1 - - [27/May/2025 11:19:20] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:19:56 - 127.0.0.1 - - [27/May/2025 11:19:56] "GET /logout HTTP/1.1" 200 -
+2025-05-27 11:19:56 - 127.0.0.1 - - [27/May/2025 11:19:56] "GET / HTTP/1.1" 200 -
+2025-05-27 11:19:56 - 127.0.0.1 - - [27/May/2025 11:19:56] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:19:56 - 127.0.0.1 - - [27/May/2025 11:19:56] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:19:56 - 127.0.0.1 - - [27/May/2025 11:19:56] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:19:56 - 127.0.0.1 - - [27/May/2025 11:19:56] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "POST /login HTTP/1.1" 200 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "GET /asc_ascs HTTP/1.1" 200 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/components/ascForm.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/js/components/gpSpEditForm.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "GET /api/affiliates HTTP/1.1" 200 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "GET /api/gps HTTP/1.1" 200 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "GET /api/services HTTP/1.1" 200 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "GET /api/sps HTTP/1.1" 200 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "GET /api/models HTTP/1.1" 200 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "GET /api/ascs HTTP/1.1" 200 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:20:25 - 127.0.0.1 - - [27/May/2025 11:20:25] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "GET /system_monitor HTTP/1.1" 200 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:20:28 - 127.0.0.1 - - [27/May/2025 11:20:28] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:21:28 - 127.0.0.1 - - [27/May/2025 11:21:28] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:22:28 - 127.0.0.1 - - [27/May/2025 11:22:28] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:23:29 - 127.0.0.1 - - [27/May/2025 11:23:29] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:24:28 - 127.0.0.1 - - [27/May/2025 11:24:28] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:25:28 - 127.0.0.1 - - [27/May/2025 11:25:28] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "GET /test_results HTTP/1.1" 200 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "[36mGET /static/js/test_results.js HTTP/1.1[0m" 304 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:25:38 - 127.0.0.1 - - [27/May/2025 11:25:38] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:25:41 - 127.0.0.1 - - [27/May/2025 11:25:41] "GET /api/test_results_data HTTP/1.1" 200 -
+2025-05-27 11:25:43 - 127.0.0.1 - - [27/May/2025 11:25:43] "GET /system_monitor HTTP/1.1" 200 -
+2025-05-27 11:25:43 - 127.0.0.1 - - [27/May/2025 11:25:43] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:25:43 - 127.0.0.1 - - [27/May/2025 11:25:43] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 11:25:43 - 127.0.0.1 - - [27/May/2025 11:25:43] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:25:43 - 127.0.0.1 - - [27/May/2025 11:25:43] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:25:43 - 127.0.0.1 - - [27/May/2025 11:25:43] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:25:43 - 127.0.0.1 - - [27/May/2025 11:25:43] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 11:25:43 - 127.0.0.1 - - [27/May/2025 11:25:43] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:25:43 - 127.0.0.1 - - [27/May/2025 11:25:43] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:25:48 - 127.0.0.1 - - [27/May/2025 11:25:48] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:26:48 - 127.0.0.1 - - [27/May/2025 11:26:48] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:27:43 - 127.0.0.1 - - [27/May/2025 11:27:43] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:28:43 - 127.0.0.1 - - [27/May/2025 11:28:43] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:29:44 - 127.0.0.1 - - [27/May/2025 11:29:44] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:30:44 - 127.0.0.1 - - [27/May/2025 11:30:44] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:31:30 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.110:5007
+2025-05-27 11:31:30 - [33mPress CTRL+C to quit[0m
+2025-05-27 11:31:39 - 127.0.0.1 - - [27/May/2025 11:31:39] "GET /system_monitor HTTP/1.1" 200 -
+2025-05-27 11:31:39 - 127.0.0.1 - - [27/May/2025 11:31:39] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-05-27 11:31:39 - 127.0.0.1 - - [27/May/2025 11:31:39] "GET /static/img/CWIX_LOGO.png HTTP/1.1" 200 -
+2025-05-27 11:31:39 - 127.0.0.1 - - [27/May/2025 11:31:39] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-05-27 11:31:39 - 127.0.0.1 - - [27/May/2025 11:31:39] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-05-27 11:31:39 - 127.0.0.1 - - [27/May/2025 11:31:39] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-05-27 11:31:39 - 127.0.0.1 - - [27/May/2025 11:31:39] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-05-27 11:31:39 - 127.0.0.1 - - [27/May/2025 11:31:39] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:31:40 - 127.0.0.1 - - [27/May/2025 11:31:40] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:31:40 - 127.0.0.1 - - [27/May/2025 11:31:40] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-05-27 11:31:40 - 127.0.0.1 - - [27/May/2025 11:31:40] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:32:40 - 127.0.0.1 - - [27/May/2025 11:32:40] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:33:40 - 127.0.0.1 - - [27/May/2025 11:33:40] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:34:40 - 127.0.0.1 - - [27/May/2025 11:34:40] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:35:40 - 127.0.0.1 - - [27/May/2025 11:35:40] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:36:40 - 127.0.0.1 - - [27/May/2025 11:36:40] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:37:01 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.110:5007
+2025-05-27 11:37:01 - [33mPress CTRL+C to quit[0m
+2025-05-27 11:37:05 - 127.0.0.1 - - [27/May/2025 11:37:05] "GET /system_monitor HTTP/1.1" 200 -
+2025-05-27 11:37:05 - 127.0.0.1 - - [27/May/2025 11:37:05] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-05-27 11:37:05 - 127.0.0.1 - - [27/May/2025 11:37:05] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-05-27 11:37:05 - 127.0.0.1 - - [27/May/2025 11:37:05] "GET /static/img/CWIX_LOGO.png HTTP/1.1" 200 -
+2025-05-27 11:37:05 - 127.0.0.1 - - [27/May/2025 11:37:05] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-05-27 11:37:05 - 127.0.0.1 - - [27/May/2025 11:37:05] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-05-27 11:37:05 - 127.0.0.1 - - [27/May/2025 11:37:05] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-05-27 11:37:05 - 127.0.0.1 - - [27/May/2025 11:37:05] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:37:06 - 127.0.0.1 - - [27/May/2025 11:37:06] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:37:06 - 127.0.0.1 - - [27/May/2025 11:37:06] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-05-27 11:37:06 - 127.0.0.1 - - [27/May/2025 11:37:06] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:38:06 - 127.0.0.1 - - [27/May/2025 11:38:06] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:39:06 - 127.0.0.1 - - [27/May/2025 11:39:06] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:40:07 - 127.0.0.1 - - [27/May/2025 11:40:07] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:41:06 - 127.0.0.1 - - [27/May/2025 11:41:06] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:42:07 - 127.0.0.1 - - [27/May/2025 11:42:07] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:43:06 - 127.0.0.1 - - [27/May/2025 11:43:06] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:44:32 - 127.0.0.1 - - [27/May/2025 11:44:32] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:45:06 - 127.0.0.1 - - [27/May/2025 11:45:06] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:45:26 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.110:5007
+2025-05-27 11:45:26 - [33mPress CTRL+C to quit[0m
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "GET /system_monitor HTTP/1.1" 200 -
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "GET /static/img/CWIX_LOGO.png HTTP/1.1" 200 -
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "GET /static/img/iocore2_logo.png HTTP/1.1" 200 -
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "GET /static/js/core/app.js HTTP/1.1" 200 -
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "GET /static/js/services/apiService.js HTTP/1.1" 200 -
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "GET /static/js/services/uiService.js HTTP/1.1" 200 -
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "GET /static/js/services/authService.js HTTP/1.1" 200 -
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 11:45:29 - 127.0.0.1 - - [27/May/2025 11:45:29] "GET /static/favicon/favicon.ico HTTP/1.1" 200 -
+2025-05-27 11:45:30 - 127.0.0.1 - - [27/May/2025 11:45:30] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 11:46:30 - Unexpected error during system health fetch or processing: API request failed with status code: 404
+Traceback (most recent call last):
+  File "/Users/fjmoreno72/WORK/IONIC4/app/api/iocore2.py", line 648, in get_system_health
+    response = self.get(api_url) # Use the base class get method
+  File "/Users/fjmoreno72/WORK/IONIC4/app/api/client.py", line 155, in get
+    raise ApiRequestError(
+    ...<3 lines>...
+    )
+app.core.exceptions.ApiRequestError: API request failed with status code: 404
+2025-05-27 11:46:30 - API request error fetching remote system health: Unexpected error processing system health response: API request failed with status code: 404
+2025-05-27 11:46:30 - 127.0.0.1 - - [27/May/2025 11:46:30] "[35m[1mGET /api/remote_system_health HTTP/1.1[0m" 502 -
+2025-05-27 11:46:40 - 127.0.0.1 - - [27/May/2025 11:46:40] "GET /logout HTTP/1.1" 200 -
+2025-05-27 11:46:40 - 127.0.0.1 - - [27/May/2025 11:46:40] "GET / HTTP/1.1" 200 -
+2025-05-27 11:46:40 - 127.0.0.1 - - [27/May/2025 11:46:40] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:46:40 - 127.0.0.1 - - [27/May/2025 11:46:40] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 11:46:40 - 127.0.0.1 - - [27/May/2025 11:46:40] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 11:46:40 - 127.0.0.1 - - [27/May/2025 11:46:40] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 12:05:08 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.110:5007
+2025-05-27 12:05:08 - [33mPress CTRL+C to quit[0m
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "POST /login HTTP/1.1" 200 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "GET /asc_ascs HTTP/1.1" 200 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/components/ascForm.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/js/components/gpSpEditForm.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "GET /api/gps HTTP/1.1" 200 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "GET /api/affiliates HTTP/1.1" 200 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "GET /api/sps HTTP/1.1" 200 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "GET /api/services HTTP/1.1" 200 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "GET /api/models HTTP/1.1" 200 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "GET /api/ascs HTTP/1.1" 200 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 12:05:45 - 127.0.0.1 - - [27/May/2025 12:05:45] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-05-27 12:05:47 - 127.0.0.1 - - [27/May/2025 12:05:47] "GET /system_monitor HTTP/1.1" 200 -
+2025-05-27 12:05:47 - 127.0.0.1 - - [27/May/2025 12:05:47] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:47 - 127.0.0.1 - - [27/May/2025 12:05:47] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-27 12:05:47 - 127.0.0.1 - - [27/May/2025 12:05:47] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-27 12:05:47 - 127.0.0.1 - - [27/May/2025 12:05:47] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:47 - 127.0.0.1 - - [27/May/2025 12:05:47] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:47 - 127.0.0.1 - - [27/May/2025 12:05:47] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-27 12:05:47 - 127.0.0.1 - - [27/May/2025 12:05:47] "GET /check_auth HTTP/1.1" 200 -
+2025-05-27 12:05:47 - 127.0.0.1 - - [27/May/2025 12:05:47] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-27 12:05:48 - 127.0.0.1 - - [27/May/2025 12:05:48] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 12:06:48 - 127.0.0.1 - - [27/May/2025 12:06:48] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 12:07:48 - 127.0.0.1 - - [27/May/2025 12:07:48] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-27 12:08:48 - 127.0.0.1 - - [27/May/2025 12:08:48] "GET /api/remote_system_health HTTP/1.1" 200 -

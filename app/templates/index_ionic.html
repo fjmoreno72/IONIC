@@ -158,6 +158,11 @@
                 </div>
                 <input type="hidden" id="selected-env" name="selected-env">
                 <div class="mb-3">
+                    <label for="api-url" class="form-label">API URL</label>
+                    <input type="url" class="form-control" id="api-url" name="api-url" required placeholder="API URL will be populated based on environment selection">
+                    <div class="form-text">Default URL is set by environment selection. You can override it for testing purposes.</div>
+                </div>
+                <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" id="username" name="username" required autocomplete="username">
                 </div>
@@ -194,12 +199,28 @@
                 // --- Logo Interaction and Default Selection ---
                 const logos = document.querySelectorAll('.env-logo');
                 const hiddenEnvInput = document.getElementById('selected-env');
+                const apiUrlInput = document.getElementById('api-url');
                 const ciavLogo = document.getElementById('ciav-logo'); // Get CIAV logo specifically
+
+                // Environment URL mapping
+                const envUrls = {
+                    'ciav': 'https://iocore2-ciav.ivv.ncia.nato.int',
+                    'cwix': 'https://iocore2-cwix.ivv.ncia.nato.int'
+                };
+
+                function updateApiUrl(environment) {
+                    if (envUrls[environment]) {
+                        apiUrlInput.value = envUrls[environment];
+                    }
+                }
 
                 logos.forEach(logo => {
                     logo.addEventListener('click', function() {
                         // Set hidden input value
                         hiddenEnvInput.value = this.dataset.env;
+
+                        // Update API URL
+                        updateApiUrl(this.dataset.env);
 
                         // Update visual selection
                         logos.forEach(l => l.style.borderColor = 'transparent'); // Reset others
@@ -211,6 +232,7 @@
                 if (ciavLogo) {
                     ciavLogo.style.borderColor = '#0d6efd'; // Highlight CIAV logo visually
                     hiddenEnvInput.value = 'ciav';         // Set the hidden input value
+                    updateApiUrl('ciav');                  // Set the default API URL
                 }
                 // --- End Logo Interaction ---
             });
@@ -220,9 +242,16 @@
                 e.preventDefault();
 
                 const selectedEnv = document.getElementById('selected-env').value;
+                const apiUrl = document.getElementById('api-url').value;
+                
                 if (!selectedEnv) {
                     alert('Please select an environment (CIAV or CWIX) by clicking its logo.');
                     return; // Stop submission if no environment is selected
+                }
+
+                if (!apiUrl) {
+                    alert('Please provide an API URL.');
+                    return;
                 }
 
                 try {
@@ -234,6 +263,7 @@
                         },
                         body: JSON.stringify({
                             environment: selectedEnv, // Send selected environment identifier
+                            api_url: apiUrl, // Send the API URL (default or custom)
                             username: document.getElementById('username').value,
                             password: document.getElementById('password').value
                         })

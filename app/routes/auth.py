@@ -29,6 +29,7 @@ def login():
     environment = data.get('environment')
     username = data.get('username')
     password = data.get('password')
+    api_url = data.get('api_url')  # Get custom API URL from request
     
     # Validate required fields
     if not environment or not username or not password:
@@ -37,22 +38,23 @@ def login():
             'error': 'Missing required fields (environment, username, password)'
         }), 400 # Add 400 status code for bad request
         
-    # Determine API URL based on environment
-    api_url = None
-    if environment == 'ciav':
-        api_url = 'https://iocore2-ciav.ivv.ncia.nato.int'
-    elif environment == 'cwix':
-        api_url = 'https://iocore2-cwix.ivv.ncia.nato.int'
-    else:
-        return jsonify({
-            'success': False,
-            'error': 'Invalid environment selected'
-        }), 400 # Add 400 status code
+    # Use provided API URL or determine default based on environment
+    if not api_url:
+        # Fallback to default URLs if no custom URL provided
+        if environment == 'ciav':
+            api_url = 'https://iocore2-ciav.ivv.ncia.nato.int'
+        elif environment == 'cwix':
+            api_url = 'https://iocore2-cwix.ivv.ncia.nato.int'
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Invalid environment selected and no API URL provided'
+            }), 400 # Add 400 status code
 
-    if not api_url: # Should be caught by else, but double-check
+    if not api_url: # Double-check we have a URL
          return jsonify({
             'success': False,
-            'error': 'Could not determine API URL for the selected environment'
+            'error': 'Could not determine API URL'
         }), 500 # Internal server error if logic fails
     
     # Authenticate user
@@ -63,7 +65,7 @@ def login():
         session['cookies'] = result['cookies']
         session['url'] = api_url # Store the actual URL used
         session['environment'] = environment # Store the selected environment identifier
-        logging.info(f"User {username} logged in successfully to {environment} environment")
+        logging.info(f"User {username} logged in successfully to {environment} environment using URL: {api_url}")
         
     return jsonify(result)
 

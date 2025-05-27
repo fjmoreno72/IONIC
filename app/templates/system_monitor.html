@@ -257,7 +257,7 @@
             border-radius: 8px;
             padding: 20px;
             width: 90%;
-            max-width: 1200px;
+            max-width: none;
             max-height: 90vh;
             position: relative;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -962,7 +962,7 @@
                             fill: false,
                             tension: 0.1,
                             pointRadius: 0,
-                            yAxisID: 'y-cpu'
+                            yAxisID: 'y-left'
                         },
                         {
                             label: 'Process Memory (%)',
@@ -971,7 +971,25 @@
                             fill: false,
                             tension: 0.1,
                             pointRadius: 0,
-                            yAxisID: 'y-mem'
+                            yAxisID: 'y-left'
+                        },
+                        {
+                            label: 'Process CPU Utilization (%)',
+                            borderColor: '#ff6b6b',
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-right'
+                        },
+                        {
+                            label: 'Virtual Memory Utilization (%)',
+                            borderColor: '#4ecdc4',
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-right'
                         }
                     ]
                 },
@@ -984,23 +1002,22 @@
                             title: { display: false },
                             ticks: { autoSkip: true, maxTicksLimit: 10 }
                         },
-                        'y-cpu': {
+                        'y-left': {
                             type: 'linear',
                             display: true,
                             position: 'left',
-                            title: { display: true, text: 'CPU Usage (%)' },
+                            title: { display: true, text: 'Process CPU & Memory (%)' },
                             min: 0,
                             max: 100,
                             beginAtZero: true,
                             grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
                         },
-                        'y-mem': {
+                        'y-right': {
                             type: 'linear',
                             display: true,
                             position: 'right',
-                            title: { display: true, text: 'Memory Usage (%)' },
+                            title: { display: true, text: 'CPU Util. & Virtual Memory (%)' },
                             min: 0,
-                            max: 100,
                             beginAtZero: true,
                             grid: { drawOnChartArea: false }
                         }
@@ -1325,15 +1342,16 @@
                     throw new Error('Invalid data format received from API');
                 }
 
-                // Update response time chart
+                // Update shared labels first
+                const timestamp = new Date().toLocaleTimeString();
+                if (sharedLabels.length >= MAX_DATA_POINTS) sharedLabels.shift();
+                sharedLabels.push(timestamp);
+
+                // Update response time chart (after labels are updated)
                 const responseTimeChart = charts.responseTimeChart.data.datasets[0];
                 if (responseTimeChart.data.length >= MAX_DATA_POINTS) responseTimeChart.data.shift();
                 responseTimeChart.data.push(responseTime);
                 charts.responseTimeChart.update();
-
-                const timestamp = new Date().toLocaleTimeString();
-                if (sharedLabels.length >= MAX_DATA_POINTS) sharedLabels.shift();
-                sharedLabels.push(timestamp);
 
                 // Update Site Certificate
                 const certificateData = data.entries['site-certificate'];
@@ -1421,23 +1439,32 @@
                     safeUpdateElement('siteResourcesDuration', siteResourcesData.duration);
 
                     const siteChart = charts.siteResourcesChart.data.datasets;
+                    // Get the utilization values (convert from decimal to percentage)
+                    const processCpuUtilization = (processCpuRaw * 100);
+                    const virtualMemoryUtilization = (processMemory * 100);
+                    
+                    // Shift old data if we exceed max points
                     if (siteChart[0].data.length >= MAX_DATA_POINTS) siteChart[0].data.shift();
                     if (siteChart[1].data.length >= MAX_DATA_POINTS) siteChart[1].data.shift();
-                    siteChart[0].data.push(processCpu);
-                    siteChart[1].data.push(processMemory);
-                    console.log('Site Resources CPU:', processCpu, 'Memory:', processMemory);
+                    if (siteChart[2].data.length >= MAX_DATA_POINTS) siteChart[2].data.shift();
+                    if (siteChart[3].data.length >= MAX_DATA_POINTS) siteChart[3].data.shift();
+                    
+                    // Add new data points
+                    siteChart[0].data.push(processCpu);                    // Process CPU (%)
+                    siteChart[1].data.push(processMemory);                 // Process Memory (%)
+                    siteChart[2].data.push(processCpuUtilization);         // Process CPU Utilization (%)
+                    siteChart[3].data.push(virtualMemoryUtilization);      // Virtual Memory Utilization (%)
+                    
+                    console.log('Site Resources - CPU:', processCpu, 'Memory:', processMemory, 'CPU Util:', processCpuUtilization, 'VM Util:', virtualMemoryUtilization);
                     console.log('Site Resources Datasets Lengths:', siteChart.map(ds => ds.data.length));
                     charts.siteResourcesChart.update();
 
-                    // Update Active Circuits Chart only if not already updated by system resources
-                    if (document.getElementById('activeCircuits').textContent !== '--' && 
-                        charts.activeCircuitsChart.data.datasets[0].data.length === 0) {
-                        const circuitsChart = charts.activeCircuitsChart.data.datasets[0];
-                        if (circuitsChart.data.length >= MAX_DATA_POINTS) circuitsChart.data.shift();
-                        circuitsChart.data.push(activeCircuits);
-                        console.log('Site Active Circuits:', activeCircuits);
-                        charts.activeCircuitsChart.update();
-                    }
+                    // Update Active Circuits Chart with site resources data
+                    const circuitsChart = charts.activeCircuitsChart.data.datasets[0];
+                    if (circuitsChart.data.length >= MAX_DATA_POINTS) circuitsChart.data.shift();
+                    circuitsChart.data.push(activeCircuits);
+                    console.log('Site Active Circuits:', activeCircuits);
+                    charts.activeCircuitsChart.update();
                 }
 
                 // Update Server Resource Utilization
@@ -1468,12 +1495,18 @@
                         safeUpdateElement('activeCircuits', systemActiveCircuits);
                         safeUpdateElement('maxConcurrentCircuits', systemMaxConcurrentCircuits);
                         
-                        // Update Active Circuits Chart with system data
-                        const circuitsChart = charts.activeCircuitsChart.data.datasets[0];
-                        if (circuitsChart.data.length >= MAX_DATA_POINTS) circuitsChart.data.shift();
-                        circuitsChart.data.push(systemActiveCircuits);
-                        console.log('System Active Circuits:', systemActiveCircuits);
-                        charts.activeCircuitsChart.update();
+                        // Only update Active Circuits Chart if we have system data for it and it differs from site data
+                        if (systemActiveCircuits > 0) {
+                            const circuitsChart = charts.activeCircuitsChart.data.datasets[0];
+                            // Replace the last data point with system data if it exists
+                            if (circuitsChart.data.length > 0) {
+                                circuitsChart.data[circuitsChart.data.length - 1] = systemActiveCircuits;
+                            } else {
+                                circuitsChart.data.push(systemActiveCircuits);
+                            }
+                            console.log('System Active Circuits (override):', systemActiveCircuits);
+                            charts.activeCircuitsChart.update();
+                        }
                     }
 
                     const serverChart = charts.serverResourcesChart.data.datasets;
@@ -1541,6 +1574,7 @@
             else if (chartId === 'siteResourcesChart') iconHtml = '<i class="fas fa-microchip icon"></i> ';
             else if (chartId === 'serverResourcesChart') iconHtml = '<i class="fas fa-server icon"></i> ';
             else if (chartId === 'activeCircuitsChart') iconHtml = '<i class="fas fa-project-diagram icon"></i> ';
+            else if (chartId === 'responseTimeChart') iconHtml = '<i class="fas fa-clock icon"></i> ';
             modalTitle.innerHTML = iconHtml + title;
             // Create a new chart instance for the modal
             if (modalChart) {
@@ -1635,6 +1669,8 @@
             charts.dbConnectionChart.data.datasets[3].borderColor = newColors.sqlCpu;
             charts.siteResourcesChart.data.datasets[0].borderColor = newColors.processCpu;
             charts.siteResourcesChart.data.datasets[1].borderColor = newColors.processMemory;
+            charts.siteResourcesChart.data.datasets[2].borderColor = '#ff6b6b';
+            charts.siteResourcesChart.data.datasets[3].borderColor = '#4ecdc4';
             charts.serverResourcesChart.data.datasets[0].borderColor = newColors.processorTime;
             charts.serverResourcesChart.data.datasets[1].borderColor = newColors.availableMemory;
             // Update grid colors

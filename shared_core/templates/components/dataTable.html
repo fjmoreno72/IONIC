@@ -1,0 +1,52 @@
+{# components/dataTable.html - Reusable data table component #}
+{# Include required CSS files #}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/dataTable.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/design-system.css') }}">
+
+<div class="table-responsive test-cases-table-container">
+    <table class="table table-striped table-hover table-sm test-cases-table" id="{{ table_id }}">
+    <thead>
+      <tr>
+        {% for col in columns %}
+          <th scope="col" 
+              class="{% if col.sortable %}sortable{% endif %} {% if col.class %}{{ col.class }}{% endif %}" 
+              {% if col.sortable %}data-sort="{{ col.sort_key }}"{% endif %}
+              {% if col.width %}style="width: {{ col.width }};"{% endif %}>
+            {{ col.label }} 
+            {% if col.sortable %}<i class="fas fa-sort"></i>{% endif %}
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody id="{{ table_body_id }}">
+      <!-- Data will be loaded here via JavaScript -->
+    </tbody>
+  </table>
+  
+  <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+
+{# Pagination controls #}
+<div class="d-flex justify-content-between align-items-center mt-3" id="paginationControls">
+  <div>
+    <label for="{{ items_per_page_id }}" class="form-label form-label-sm me-2">Items per page:</label>
+    <select id="{{ items_per_page_id }}" class="form-select form-select-sm d-inline-block" style="width: auto;">
+      <option value="25" selected>25</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+    </select>
+  </div>
+  <div class="d-flex align-items-center">
+    <span id="{{ page_info_id }}" class="me-3 text-muted">Page 1 of 1 (0 items total)</span>
+    <button id="{{ prev_button_id }}" class="btn btn-outline-secondary btn-sm me-1" disabled>
+      <i class="fas fa-chevron-left"></i> Previous
+    </button>
+    <button id="{{ next_button_id }}" class="btn btn-outline-secondary btn-sm" disabled>
+      Next <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</div>

@@ -188,12 +188,15 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin-bottom: 30px;
+            width: 100%;
+            overflow: hidden;
         }
 
         .response-time-chart {
             width: 100%;
             margin-top: 20px;
             margin-bottom: 30px;
+            overflow: hidden;
         }
 
         .chart-container {
@@ -205,6 +208,13 @@
             position: relative;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: box-shadow 0.2s ease;
+            overflow: hidden;
+            min-width: 0; /* Allow grid items to shrink below content size */
+        }
+
+        .chart-container canvas {
+            max-width: 100% !important;
+            height: auto !important;
         }
         
         .chart-container:hover {
@@ -357,19 +367,31 @@
         }
 
         /* Responsive adjustments */
-        @media (max-width: 1366px) {
+        @media (max-width: 1200px) {
             .charts-grid {
                 grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+                gap: 15px;
+            }
+            
+            .chart-container {
+                height: 250px;
+                padding: 15px;
             }
         }
 
         @media (max-width: 768px) {
-            .container {
-                width: 95%; /* Use more space on small screens */
+            .container-fluid {
+                padding: 10px;
             }
             
             .charts-grid {
                 grid-template-columns: 1fr; /* 1 column on mobile */
+                gap: 15px;
+            }
+            
+            .chart-container {
+                height: 220px;
+                padding: 15px;
             }
             
             .metric-card {
@@ -387,6 +409,21 @@
             .chart-modal-content {
                 width: 95%;
                 padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .charts-grid {
+                gap: 10px;
+            }
+            
+            .chart-container {
+                height: 200px;
+                padding: 10px;
+            }
+            
+            .container-fluid {
+                padding: 5px;
             }
         }
 
@@ -1682,6 +1719,82 @@
 
         // Set initial theme
         document.documentElement.setAttribute('data-theme', currentTheme);
+
+        // Handle window resize to make charts responsive
+        function handleResize() {
+            console.log('Handling resize...', Object.keys(charts));
+            
+            // Simple and reliable resize approach
+            Object.entries(charts).forEach(([key, chart]) => {
+                if (chart && typeof chart.resize === 'function') {
+                    try {
+                        console.log(`Resizing chart: ${key}`);
+                        
+                        // Reset any manual canvas sizing first
+                        if (chart.canvas) {
+                            chart.canvas.style.width = '';
+                            chart.canvas.style.height = '';
+                        }
+                        
+                        // Let Chart.js handle the resize naturally
+                        chart.resize();
+                        chart.update('none');
+                        
+                    } catch (error) {
+                        console.error(`Error resizing chart ${key}:`, error);
+                    }
+                }
+            });
+            
+            // Also resize modal chart if it exists
+            if (modalChart && typeof modalChart.resize === 'function') {
+                try {
+                    console.log('Resizing modal chart');
+                    
+                    // Reset any manual canvas sizing first
+                    if (modalChart.canvas) {
+                        modalChart.canvas.style.width = '';
+                        modalChart.canvas.style.height = '';
+                    }
+                    
+                    modalChart.resize();
+                    modalChart.update('none');
+                } catch (error) {
+                    console.error('Error resizing modal chart:', error);
+                }
+            }
+            
+            console.log('Resize handling completed');
+        }
+
+        // Add resize event listener with debouncing to improve performance
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            console.log('Window resize event triggered');
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(handleResize, 250); // Increased delay for better performance
+        });
+
+        // Also trigger resize on orientation change for mobile devices
+        window.addEventListener('orientationchange', function() {
+            console.log('Orientation change event triggered');
+            setTimeout(handleResize, 500); // Longer delay for orientation changes
+        });
+
+        // Alternative approach: use ResizeObserver if available (but only for container-fluid to avoid excessive calls)
+        if (window.ResizeObserver) {
+            const resizeObserver = new ResizeObserver(entries => {
+                console.log('ResizeObserver triggered for', entries.length, 'elements');
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(handleResize, 150);
+            });
+            
+            // Only observe the main container to reduce excessive calls
+            const mainContainer = document.querySelector('.container-fluid');
+            if (mainContainer) {
+                resizeObserver.observe(mainContainer);
+            }
+        }
     </script>
 </body>
 </html>

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Resource Monitor</title>
     {% include 'components/head_favicons.html' %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    {% include 'nav_menu.html' %}
     <style>
         :root {
             --primary-color: #003366;
@@ -30,7 +30,6 @@
             background-color: var(--background-color);
             color: var(--text-primary);
             margin: 0;
-            padding: 20px;
             transition: background-color 0.2s ease;
             background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
             background-size: 25px 25px;
@@ -40,10 +39,8 @@
             background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
         }
 
-        .container {
-            width: 85%;
-            max-width: 1800px;
-            margin: 0 auto;
+        .container-fluid {
+            padding: 20px;
         }
 
         .header {
@@ -186,11 +183,17 @@
             background-color: #334155;
         }
 
-        .charts-grid { /* New style for grid layout */
+        .charts-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .response-time-chart {
+            width: 100%;
             margin-top: 20px;
+            margin-bottom: 30px;
         }
 
         .chart-container {
@@ -198,8 +201,8 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
-            height: 280px; /* Slightly reduce height for 3-column layout */
-            position: relative; /* Needed for chart responsiveness */
+            height: 280px;
+            position: relative;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: box-shadow 0.2s ease;
         }
@@ -516,8 +519,9 @@
         */
     </style>
 </head>
-<body>
-    <div class="container">
+<body class="logged-in">
+    {% include 'nav_menu.html' %}
+    <div class="container-fluid px-4">
         <div class="header-logo">
             <i class="fas fa-server"></i> <span>SysMonitor</span>
         </div>
@@ -528,29 +532,43 @@
             <div id="errorMessage" class="error-message"></div>
         </div>
 
-        <!-- Charts: each in its own row -->
-        <div class="chart-row" style="margin-bottom: 30px;">
-            <div class="chart-container" style="width: 100%; max-width: 1000px; margin: 0 auto;">
+        <!-- Charts: two columns layout -->
+        <div class="charts-grid">
+            <!-- First row -->
+            <div class="chart-container">
+                <button class="chart-expand-btn" onclick="expandChart('siteResourcesChart', 'Site Resources')">
+                    <i class="fas fa-microchip icon"></i> <span>Expand</span>
+                </button>
+                <canvas id="cpuSqlChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <button class="chart-expand-btn" onclick="expandChart('serverResourcesChart', 'Server Resources')">
+                    <i class="fas fa-server icon"></i> <span>Expand</span>
+                </button>
+                <canvas id="memoryHostChart"></canvas>
+            </div>
+            <!-- Second row -->
+            <div class="chart-container">
+                <button class="chart-expand-btn" onclick="expandChart('activeCircuitsChart', 'Active Circuits')">
+                    <i class="fas fa-project-diagram icon"></i> <span>Expand</span>
+                </button>
+                <canvas id="activeCircuitsChart"></canvas>
+            </div>
+            <div class="chart-container">
                 <button class="chart-expand-btn" onclick="expandChart('dbConnectionChart', 'Database Connection')">
                     <i class="fas fa-database icon"></i> <span>Expand</span>
                 </button>
                 <canvas id="cpuHostChart"></canvas>
             </div>
         </div>
-        <div class="chart-row" style="margin-bottom: 30px;">
-            <div class="chart-container" style="width: 100%; max-width: 1000px; margin: 0 auto;">
-                <button class="chart-expand-btn" onclick="expandChart('siteResourcesChart', 'Site Resources')">
-                    <i class="fas fa-microchip icon"></i> <span>Expand</span>
+
+        <!-- API Response Time Chart -->
+        <div class="response-time-chart">
+            <div class="chart-container" style="height: 200px;">
+                <button class="chart-expand-btn" onclick="expandChart('responseTimeChart', 'API Response Time')">
+                    <i class="fas fa-clock icon"></i> <span>Expand</span>
                 </button>
-                <canvas id="cpuSqlChart"></canvas>
-            </div>
-        </div>
-        <div class="chart-row" style="margin-bottom: 40px;">
-            <div class="chart-container" style="width: 100%; max-width: 1000px; margin: 0 auto;">
-                <button class="chart-expand-btn" onclick="expandChart('serverResourcesChart', 'Server Resources')">
-                    <i class="fas fa-server icon"></i> <span>Expand</span>
-                </button>
-                <canvas id="memoryHostChart"></canvas>
+                <canvas id="responseTimeChart"></canvas>
             </div>
         </div>
 
@@ -601,6 +619,22 @@
                     <div class="detail-item">
                         <span class="detail-label">Process Memory:</span>
                         <span class="detail-value" id="processMemory">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Process CPU Utilization:</span>
+                        <span class="detail-value" id="processCpuUtilization">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Virtual Memory Utilization:</span>
+                        <span class="detail-value" id="virtualMemoryUtilization">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Active Circuits:</span>
+                        <span class="detail-value" id="activeCircuits">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Max Concurrent Circuits:</span>
+                        <span class="detail-value" id="maxConcurrentCircuits">--</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Duration:</span>
@@ -729,7 +763,8 @@
                 processCpu: '#2ecc71',
                 processMemory: '#f1c40f',
                 processorTime: '#1abc9c',
-                availableMemory: '#34495e'
+                availableMemory: '#34495e',
+                activeCircuits: '#8b5cf6'
             },
             dark: {
                 hostMemory: '#74b9ff',
@@ -739,7 +774,8 @@
                 processCpu: '#00b894',
                 processMemory: '#ffeaa7',
                 processorTime: '#00cec9',
-                availableMemory: '#636e72'
+                availableMemory: '#636e72',
+                activeCircuits: '#a78bfa'
             }
         };
 
@@ -1041,10 +1077,134 @@
             }
         );
 
+        // Initialize Active Circuits Chart
+        charts.activeCircuitsChart = new Chart(
+            document.getElementById('activeCircuitsChart').getContext('2d'),
+            {
+                type: 'line',
+                data: {
+                    labels: sharedLabels,
+                    datasets: [
+                        {
+                            label: 'Active Circuits',
+                            borderColor: colors.activeCircuits,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: { display: false },
+                            ticks: { autoSkip: true, maxTicksLimit: 10 }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Circuit Count' },
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1,
+                                precision: 0
+                            },
+                            grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: true, position: 'top' },
+                        title: { display: true, text: 'Active Circuits', padding: { top: 10, bottom: 10 } },
+                        tooltip: { 
+                            mode: 'index', 
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) {
+                                        label += Math.round(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        );
+
+        // Initialize Response Time Chart
+        charts.responseTimeChart = new Chart(
+            document.getElementById('responseTimeChart').getContext('2d'),
+            {
+                type: 'line',
+                data: {
+                    labels: sharedLabels,
+                    datasets: [
+                        {
+                            label: 'Response Time',
+                            borderColor: '#10b981',
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: { display: false },
+                            ticks: { autoSkip: true, maxTicksLimit: 10 }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Response Time (ms)' },
+                            beginAtZero: true,
+                            grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: true, position: 'top' },
+                        title: { display: true, text: 'API Response Time', padding: { top: 10, bottom: 10 } },
+                        tooltip: { 
+                            mode: 'index', 
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y.toFixed(2) + ' ms';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        );
+
         const allCharts = [
             charts.dbConnectionChart,
             charts.siteResourcesChart,
-            charts.serverResourcesChart
+            charts.serverResourcesChart,
+            charts.activeCircuitsChart,
+            charts.responseTimeChart
         ];
 
         // Document ready function
@@ -1075,6 +1235,10 @@
                 'siteResourcesDescription',
                 'processCpu',
                 'processMemory',
+                'processCpuUtilization',
+                'virtualMemoryUtilization',
+                'activeCircuits',
+                'maxConcurrentCircuits',
                 'siteResourcesDuration',
                 'serverResourcesStatus',
                 'serverResourcesDescription',
@@ -1144,7 +1308,14 @@
             try {
                 lastUpdatedElement.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Updating...';
                 
+                // Start timing the API request
+                const startTime = performance.now();
+                
                 const response = await fetch('/api/remote_system_health');
+                // Calculate response time right after the fetch completes
+                const endTime = performance.now();
+                const responseTime = endTime - startTime;
+
                 if (!response.ok) {
                     throw new Error(`Error: ${response.status} ${response.statusText}`);
                 }
@@ -1153,6 +1324,12 @@
                 if (!data || !data.entries) {
                     throw new Error('Invalid data format received from API');
                 }
+
+                // Update response time chart
+                const responseTimeChart = charts.responseTimeChart.data.datasets[0];
+                if (responseTimeChart.data.length >= MAX_DATA_POINTS) responseTimeChart.data.shift();
+                responseTimeChart.data.push(responseTime);
+                charts.responseTimeChart.update();
 
                 const timestamp = new Date().toLocaleTimeString();
                 if (sharedLabels.length >= MAX_DATA_POINTS) sharedLabels.shift();
@@ -1219,6 +1396,8 @@
                     const processCpuRaw = siteResourcesData.data['process.cpu.utilization'] || 0;
                     const processCpu = processCpuRaw;
                     const processMemory = siteResourcesData.data['dotnet.process.memory.virtual.utilization'] || 0;
+                    const activeCircuits = siteResourcesData.data['active.circuits'] || 0;
+                    const maxConcurrentCircuits = siteResourcesData.data['max.concurrent.circuits'] || 0;
 
                     // Restore card updates
                     safeUpdateElement('siteResourcesStatus', siteResourcesData.status, `metric-status ${siteResourcesData.status.toLowerCase()}`);
@@ -1226,6 +1405,19 @@
                     safeUpdateElement('processCpu', `${processCpu.toFixed(2)}%`);
                     safeUpdateElement('processCpuRaw', processCpuRaw);
                     safeUpdateElement('processMemory', `${processMemory.toFixed(2)}%`);
+                    // Only update if not already set by system resources
+                    if (document.getElementById('processCpuUtilization').textContent === '--') {
+                        safeUpdateElement('processCpuUtilization', `${(processCpuRaw * 100).toFixed(2)}%`);
+                    }
+                    if (document.getElementById('virtualMemoryUtilization').textContent === '--') {
+                        safeUpdateElement('virtualMemoryUtilization', `${(processMemory * 100).toFixed(2)}%`);
+                    }
+                    if (document.getElementById('activeCircuits').textContent === '--') {
+                        safeUpdateElement('activeCircuits', activeCircuits);
+                    }
+                    if (document.getElementById('maxConcurrentCircuits').textContent === '--') {
+                        safeUpdateElement('maxConcurrentCircuits', maxConcurrentCircuits);
+                    }
                     safeUpdateElement('siteResourcesDuration', siteResourcesData.duration);
 
                     const siteChart = charts.siteResourcesChart.data.datasets;
@@ -1236,6 +1428,16 @@
                     console.log('Site Resources CPU:', processCpu, 'Memory:', processMemory);
                     console.log('Site Resources Datasets Lengths:', siteChart.map(ds => ds.data.length));
                     charts.siteResourcesChart.update();
+
+                    // Update Active Circuits Chart only if not already updated by system resources
+                    if (document.getElementById('activeCircuits').textContent !== '--' && 
+                        charts.activeCircuitsChart.data.datasets[0].data.length === 0) {
+                        const circuitsChart = charts.activeCircuitsChart.data.datasets[0];
+                        if (circuitsChart.data.length >= MAX_DATA_POINTS) circuitsChart.data.shift();
+                        circuitsChart.data.push(activeCircuits);
+                        console.log('Site Active Circuits:', activeCircuits);
+                        charts.activeCircuitsChart.update();
+                    }
                 }
 
                 // Update Server Resource Utilization
@@ -1244,6 +1446,12 @@
                     const processorTimeRaw = serverResourcesData.data['Processor/% Processor Time/_Total'] || 0;
                     const processorTime = processorTimeRaw;
                     const availableMemory = serverResourcesData.data['Memory/Available Mbytes'] || 0;
+                    
+                    // Get the new system resource values (if they exist here)
+                    const systemProcessCpuUtilization = serverResourcesData.data['process.cpu.utilization'] || 0;
+                    const systemVirtualMemoryUtilization = serverResourcesData.data['dotnet.process.memory.virtual.utilization'] || 0;
+                    const systemActiveCircuits = serverResourcesData.data['active.circuits'] || 0;
+                    const systemMaxConcurrentCircuits = serverResourcesData.data['max.concurrent.circuits'] || 0;
 
                     // Restore card updates
                     safeUpdateElement('serverResourcesStatus', serverResourcesData.status, `metric-status ${serverResourcesData.status.toLowerCase()}`);
@@ -1252,6 +1460,21 @@
                     safeUpdateElement('processorTimeRaw', processorTimeRaw);
                     safeUpdateElement('availableMemory', `${availableMemory.toLocaleString()} MB`);
                     safeUpdateElement('serverResourcesDuration', serverResourcesData.duration);
+                    
+                    // Update the site resources card with system values if they exist in this section
+                    if (systemProcessCpuUtilization > 0 || systemVirtualMemoryUtilization > 0 || systemActiveCircuits > 0 || systemMaxConcurrentCircuits > 0) {
+                        safeUpdateElement('processCpuUtilization', `${(systemProcessCpuUtilization * 100).toFixed(2)}%`);
+                        safeUpdateElement('virtualMemoryUtilization', `${(systemVirtualMemoryUtilization * 100).toFixed(2)}%`);
+                        safeUpdateElement('activeCircuits', systemActiveCircuits);
+                        safeUpdateElement('maxConcurrentCircuits', systemMaxConcurrentCircuits);
+                        
+                        // Update Active Circuits Chart with system data
+                        const circuitsChart = charts.activeCircuitsChart.data.datasets[0];
+                        if (circuitsChart.data.length >= MAX_DATA_POINTS) circuitsChart.data.shift();
+                        circuitsChart.data.push(systemActiveCircuits);
+                        console.log('System Active Circuits:', systemActiveCircuits);
+                        charts.activeCircuitsChart.update();
+                    }
 
                     const serverChart = charts.serverResourcesChart.data.datasets;
                     if (serverChart[0].data.length >= MAX_DATA_POINTS) serverChart[0].data.shift();
@@ -1317,6 +1540,7 @@
             if (chartId === 'dbConnectionChart') iconHtml = '<i class="fas fa-database icon"></i> ';
             else if (chartId === 'siteResourcesChart') iconHtml = '<i class="fas fa-microchip icon"></i> ';
             else if (chartId === 'serverResourcesChart') iconHtml = '<i class="fas fa-server icon"></i> ';
+            else if (chartId === 'activeCircuitsChart') iconHtml = '<i class="fas fa-project-diagram icon"></i> ';
             modalTitle.innerHTML = iconHtml + title;
             // Create a new chart instance for the modal
             if (modalChart) {

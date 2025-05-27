@@ -641,18 +641,19 @@ class IOCore2ApiClient(ApiClient):
         """
         api_url = "api/system/health"
         logging.info(f"Getting system health data from {api_url}")
-        start_time = datetime.now()
-
+        
         try:
             # Make request
+            start_time = datetime.now()
             response = self.get(api_url) # Use the base class get method
-
+            end_time = datetime.now()
             # Parse response
             data = response.json()
 
             # Calculate request time
-            end_time = datetime.now()
+            #end_time = datetime.now()
             total_duration = (end_time - start_time).total_seconds()
+            print(f"System health data fetched in {total_duration:.2f}s")
             request_time_ms = round(total_duration * 1000, 2)  # Convert to milliseconds
             logging.info(f"System health data fetched in {request_time_ms:.2f}ms")
 

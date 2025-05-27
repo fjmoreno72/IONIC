@@ -20,6 +20,7 @@ import { AuthService } from '../services/authService.js';
     fetchSREQReport: () => ApiService.fetchSREQReport(),
     fetchTestCases: () => ApiService.fetchTestCases(),
     fetchTestResults: () => ApiService.fetchTestResults(),
+    fetchTestResultsNew: () => ApiService.fetchTestResultsNew(),
     fetchPatterns: () => ApiService.fetchPatterns(),
     fetchActors: () => ApiService.fetchActors(),
     
@@ -112,6 +113,7 @@ import { AuthService } from '../services/authService.js';
       window.fetchSREQReport = this.fetchSREQReport;
       window.fetchTestCases = this.fetchTestCases;
       window.fetchTestResults = this.fetchTestResults;
+      window.fetchTestResultsNew = this.fetchTestResultsNew;
       window.fetchPatterns = this.fetchPatterns;
       window.fetchActors = this.fetchActors;
       window.logout = this.logout;

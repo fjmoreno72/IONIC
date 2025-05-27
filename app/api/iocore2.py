@@ -3,6 +3,7 @@ IOCore2-specific API client implementation.
 """
 import json
 import logging
+import time
 from datetime import datetime
 from typing import Dict, Any, Optional, Tuple
 
@@ -332,7 +333,6 @@ class IOCore2ApiClient(ApiClient):
                 message=f"Invalid JSON response: {str(e)}",
                 details={"url": api_url}
             )
-
 
     def get_participants(self, environment: str) -> Dict[str, Any]:
         """
@@ -725,3 +725,219 @@ class IOCore2ApiClient(ApiClient):
             if p.get("key") == participant_key:
                 return p.get("name")
         return None
+
+    def get_test_results_new(self, environment: str) -> Dict[str, Any]:
+        """
+        Get test results data from IOCore2 using the new job-based API with token authentication and polling.
+
+        Args:
+            environment: The environment ('ciav' or 'cwix') to use for saving data.
+
+        Returns:
+            Dictionary with success status and data
+
+        Raises:
+            ApiRequestError: If API request fails
+            InvalidSession: If session is expired
+        """
+        export_url = "api/public/feed/Export"
+
+        logging.info("=" * 60)
+        logging.info("STARTING NEW TEST RESULTS API (Job-based)")
+        logging.info("=" * 60)
+        logging.info(f"Base URL: {self.base_url}")
+        logging.info(f"Export endpoint: {export_url}")
+        logging.info(f"Environment: {environment}")
+        start_time = datetime.now()
+        logging.info(f"Start time: {start_time}")
+
+        try:
+            # Step 1: Note - using session-based authentication (existing login cookies)
+            # The new API should ideally use token auth, but for compatibility 
+            # we'll use the existing session authentication
+            logging.info("=== STEP 1: Authentication ===")
+            logging.info("Using session-based authentication for new API")
+            logging.info(f"Session cookies available: {len(self.session.cookies)} cookies")
+
+            # Step 2: Start the export job
+            start_request_body = {
+                "$type": "Schema",
+                "schema": "TestExecutionReport", 
+                "checkOnly": True
+            }
+
+            logging.info("=== STEP 2: Starting export job for TestExecutionReport ===")
+            logging.info(f"Request body: {start_request_body}")
+            logging.info(f"Endpoint: {export_url}")
+            
+            step2_start = datetime.now()
+            start_response = self.post(
+                export_url,
+                json=start_request_body
+            )
+            step2_duration = (datetime.now() - step2_start).total_seconds()
+            
+            logging.info(f"Export job start request completed in {step2_duration:.2f} seconds")
+            logging.info(f"Response status: {start_response.status_code}")
+            
+            start_result = start_response.json()
+            logging.info(f"Start response: {start_result}")
+            
+            job_id = start_result["jobId"]
+            logging.info(f"=== Export job started with ID: {job_id} ===")
+
+            # Step 3: Poll for job completion
+            check_status_body = {
+                "$type": "Job",
+                "jobId": job_id,
+                "checkOnly": True
+            }
+
+            logging.info("=== STEP 3: Starting job polling ===")
+            logging.info(f"Status check body: {check_status_body}")
+            
+            max_attempts = 60  # Maximum 5 minutes (60 * 5 seconds)
+            attempt = 0
+            polling_start_time = datetime.now()
+            
+            while attempt < max_attempts:
+                attempt_start = datetime.now()
+                elapsed_total = (attempt_start - polling_start_time).total_seconds()
+                
+                logging.info(f"=== Polling attempt {attempt + 1}/{max_attempts} (Total elapsed: {elapsed_total:.1f}s) ===")
+                
+                status_response = self.post(
+                    export_url,
+                    json=check_status_body
+                )
+                
+                request_duration = (datetime.now() - attempt_start).total_seconds()
+                logging.info(f"Status check request took {request_duration:.2f} seconds")
+
+                status_result = status_response.json()
+                logging.info(f"Status response: {status_result}")
+                
+                status = status_result["status"]
+                logging.info(f"*** Current job status: {status} ***")
+
+                if status == "Completed":
+                    total_polling_time = (datetime.now() - polling_start_time).total_seconds()
+                    logging.info(f"*** JOB COMPLETED! Total polling time: {total_polling_time:.2f} seconds ***")
+                    break
+                elif status in ("Failed", "Cancelled"):
+                    logging.error(f"Job failed with status: {status}")
+                    logging.error(f"Full status response: {status_result}")
+                    raise ApiRequestError(
+                        message=f"Job failed with status: {status}",
+                        details={"job_id": job_id, "status": status, "response": status_result}
+                    )
+                elif status not in ("Processing", "Pending"):
+                    logging.warning(f"Unexpected job status: {status} - continuing anyway")
+                
+                # Wait before checking again
+                logging.info("Waiting 5 seconds before next status check...")
+                time.sleep(5)
+                attempt += 1
+
+            if attempt >= max_attempts:
+                total_polling_time = (datetime.now() - polling_start_time).total_seconds()
+                logging.error(f"Job polling TIMEOUT after {total_polling_time:.2f} seconds ({max_attempts} attempts)")
+                raise ApiRequestError(
+                    message=f"Job polling timeout - job did not complete within expected time ({total_polling_time:.2f}s)",
+                    details={"job_id": job_id, "max_attempts": max_attempts, "total_time": total_polling_time}
+                )
+
+            # Step 4: Download the results
+            final_request_body = {
+                "$type": "Download",
+                "jobId": job_id
+            }
+
+            logging.info("=== STEP 4: Downloading job results ===")
+            logging.info(f"Download request body: {final_request_body}")
+            
+            download_start = datetime.now()
+            download_response = self.post(
+                export_url,
+                json=final_request_body
+            )
+            download_duration = (datetime.now() - download_start).total_seconds()
+            
+            logging.info(f"Download request completed in {download_duration:.2f} seconds")
+            logging.info(f"Download response status: {download_response.status_code}")
+
+            # Parse the final results
+            parse_start = datetime.now()
+            data = download_response.json()
+            parse_duration = (datetime.now() - parse_start).total_seconds()
+            
+            data_size = len(str(data)) if data else 0
+            logging.info(f"JSON parsing completed in {parse_duration:.2f} seconds")
+            logging.info(f"Response data size: {data_size} characters")
+            logging.info("*** Successfully downloaded and parsed job results ***")
+
+            # Save to file using dynamic path based on the provided environment
+            json_file_path = get_dynamic_data_path("test_results_new.json", environment=environment)
+            write_json_file(data, json_file_path)
+            logging.info(f"Saved new test results to {json_file_path}")
+
+            # After successfully getting test results, get objectives and participants
+            try:
+                logging.info(f"Attempting to fetch objectives after test results for environment: {environment}")
+                self.get_objectives(environment=environment)
+                
+                # After getting objectives, get participants
+                logging.info(f"Attempting to fetch participants after objectives for environment: {environment}")
+                self.get_participants(environment=environment)
+            except Exception as obj_err:
+                # Log the error but don't fail the overall operation for test results
+                logging.error(f"Failed to get objectives or participants after getting test results: {str(obj_err)}")
+
+            # Return success response for test results
+            end_time = datetime.now()
+            total_duration = (end_time - start_time).total_seconds()
+            data_count = len(data) if isinstance(data, list) else 0
+            
+            logging.info("=" * 60)
+            logging.info("NEW TEST RESULTS API COMPLETED SUCCESSFULLY")
+            logging.info("=" * 60)
+            logging.info(f"Total execution time: {total_duration:.2f} seconds")
+            logging.info(f"Data records count: {data_count}")
+            logging.info(f"Job ID: {job_id}")
+            logging.info(f"File saved to: {json_file_path}")
+            logging.info("=" * 60)
+            
+            return {
+                'success': True,
+                'count': data_count,
+                'duration': total_duration,
+                'data': data,
+                'job_id': job_id
+            }
+            
+        except ValueError as e:
+            error_time = datetime.now()
+            elapsed_time = (error_time - start_time).total_seconds()
+            logging.error("=" * 60)
+            logging.error("JSON PARSING ERROR in new test results API")
+            logging.error("=" * 60)
+            logging.error(f"Error after {elapsed_time:.2f} seconds: {str(e)}")
+            logging.error("=" * 60)
+            raise DataFormatError(
+                message=f"Invalid JSON response: {str(e)}",
+                details={"endpoint": export_url, "elapsed_time": elapsed_time}
+            )
+        except Exception as e:
+            error_time = datetime.now()
+            elapsed_time = (error_time - start_time).total_seconds()
+            logging.error("=" * 60)
+            logging.error("GENERAL ERROR in new test results API")
+            logging.error("=" * 60)
+            logging.error(f"Error after {elapsed_time:.2f} seconds: {str(e)}")
+            logging.error(f"Error type: {type(e).__name__}")
+            logging.exception("Full traceback:")
+            logging.error("=" * 60)
+            raise ApiRequestError(
+                message=f"Failed to get test results using new API: {str(e)}",
+                details={"endpoint": export_url, "elapsed_time": elapsed_time, "error_type": type(e).__name__}
+            )

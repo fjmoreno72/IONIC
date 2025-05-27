@@ -492,6 +492,48 @@ def get_test_results():
             'error': str(e)
         })
 
+@api_bp.route('/get_test_results_new')
+@login_required
+def get_test_results_new():
+    """
+    Fetch test results data from IOCore2 API using the new job-based API.
+
+    Returns:
+        JSON response with results and redirect to statistics page if successful
+    """
+    try:
+        client = get_api_client()
+        if not client:
+            return jsonify({
+                'success': False,
+                'error': 'Not authenticated'
+            })
+
+        # Get test results data using new API
+        environment = session.get('environment', 'ciav')
+        result = client.get_test_results_new(environment=environment)
+
+        # Return success response with redirect instruction
+        return jsonify({
+            'success': True,
+            'count': result.get('count', 0),
+            'duration': result.get('duration', 0),
+            'job_id': result.get('job_id'),
+            'message': 'Test results data fetched and saved successfully using new API',
+            'redirect': '/statistics'  # Instruct frontend to redirect to statistics page
+        })
+    except InvalidSession:
+        return jsonify({
+            'success': False,
+            'error': 'Your session has expired. Please log in again.'
+        })
+    except Exception as e:
+        logging.exception("Error getting test results with new API")
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        })
+
 @api_bp.route('/get_patterns')
 @login_required
 def get_patterns():

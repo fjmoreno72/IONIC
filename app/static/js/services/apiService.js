@@ -338,6 +338,97 @@ export class ApiService {
   }
 
   /**
+   * Fetches test results data from the server using the new job-based API
+   */
+  static async fetchTestResultsNew() {
+    try {
+      // Show the loading spinner
+      UiService.showLoader();
+      
+      // Create a timer overlay with a green theme for new test results
+      const timerOverlay = UiService.createTimerOverlay({
+        title: 'Fetching Test Results (NEW API)',
+        subtitle: 'This may take several minutes due to job processing...',
+        backgroundColor: 'rgba(34, 139, 34, 0.8)',
+        timerId: 'test-results-new-timer',
+        timerColor: '#90ee90'
+      });
+      
+      // Start timer
+      let seconds = 0;
+      const timerElement = document.getElementById('test-results-new-timer');
+      const updateInterval = setInterval(() => {
+        seconds += 1;
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        const timeText = minutes > 0 ? 
+          `${minutes}m ${remainingSeconds}s elapsed` : 
+          `${seconds}s elapsed`;
+        timerElement.textContent = timeText;
+      }, 1000);
+      
+      // Make the request
+      const response = await fetch('/get_test_results_new');
+      
+      // Stop timer
+      clearInterval(updateInterval);
+      
+      // Get text and try to parse
+      const text = await response.text();
+      let data;
+      
+      try {
+        data = JSON.parse(text);
+        
+        // Remove timer overlay
+        UiService.removeTimerOverlay();
+        
+        if (data.success) {
+          const countText = typeof data.count === 'number' ? 
+            `${data.count} items` : '';
+          const jobText = data.job_id ? ` (Job ID: ${data.job_id})` : '';
+          
+          UiService.showSuccessMessage(`Test Results data fetched using NEW API (${countText})${jobText}`);
+          
+          // If there's a redirect instruction, navigate to the statistics page
+          if (data.redirect) {
+            setTimeout(() => {
+              window.location.href = data.redirect;
+            }, 1500); // Small delay to show the success message
+          }
+        } else {
+          alert('Failed to fetch test results with new API: ' + (data.error || 'Unknown error'));
+        }
+      } catch (parseError) {
+        // Clean up the timer overlay
+        UiService.removeTimerOverlay();
+        
+        // Check for session expiration
+        if (AuthService.checkSessionExpiredInHtml(text)) {
+          return;
+        }
+        
+        // If we receive HTML but it's not a session expiration
+        if (text.includes("<!DOCTYPE html>") || text.includes("<html")) {
+          alert('Error parsing response. The request was received but returned HTML instead of JSON.');
+          return;
+        }
+        
+        // Some other parsing error
+        alert('Error parsing response: ' + parseError.message);
+      }
+    } catch (error) {
+      // Clean up timer overlay in case of error
+      UiService.removeTimerOverlay();
+      
+      alert('Error fetching test results with new API: ' + error.message);
+    } finally {
+      // Always hide the loader
+      UiService.hideLoader();
+    }
+  }
+
+  /**
    * Fetches patterns data from the server
    */
   static async fetchPatterns() {

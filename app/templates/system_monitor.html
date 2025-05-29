@@ -646,18 +646,6 @@
                 <div class="metric-description" id="siteResourcesDescription">--</div>
                 <div class="metric-details">
                     <div class="detail-item">
-                        <span class="detail-label">Process CPU:</span>
-                        <span class="detail-value" id="processCpu">--</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Process CPU (raw):</span>
-                        <span class="detail-value" id="processCpuRaw">--</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Process Memory:</span>
-                        <span class="detail-value" id="processMemory">--</span>
-                    </div>
-                    <div class="detail-item">
                         <span class="detail-label">Process CPU Utilization:</span>
                         <span class="detail-value" id="processCpuUtilization">--</span>
                     </div>
@@ -993,40 +981,22 @@
                     labels: sharedLabels,
                     datasets: [
                         {
-                            label: 'Process CPU (%)',
+                            label: 'Process CPU Utilization (%)',
                             borderColor: colors.processCpu,
                             data: [],
                             fill: false,
                             tension: 0.1,
                             pointRadius: 0,
-                            yAxisID: 'y-left'
+                            yAxisID: 'y'
                         },
                         {
-                            label: 'Process Memory (%)',
+                            label: 'Virtual Memory Utilization (%)',
                             borderColor: colors.processMemory,
                             data: [],
                             fill: false,
                             tension: 0.1,
                             pointRadius: 0,
-                            yAxisID: 'y-left'
-                        },
-                        {
-                            label: 'Process CPU Utilization (%)',
-                            borderColor: '#ff6b6b',
-                            data: [],
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0,
-                            yAxisID: 'y-right'
-                        },
-                        {
-                            label: 'Virtual Memory Utilization (%)',
-                            borderColor: '#4ecdc4',
-                            data: [],
-                            fill: false,
-                            tension: 0.1,
-                            pointRadius: 0,
-                            yAxisID: 'y-right'
+                            yAxisID: 'y'
                         }
                     ]
                 },
@@ -1039,24 +1009,14 @@
                             title: { display: false },
                             ticks: { autoSkip: true, maxTicksLimit: 10 }
                         },
-                        'y-left': {
+                        y: {
                             type: 'linear',
                             display: true,
                             position: 'left',
-                            title: { display: true, text: 'Process CPU & Memory (%)' },
+                            title: { display: true, text: 'Utilization (%)' },
                             min: 0,
-                            max: 100,
                             beginAtZero: true,
                             grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
-                        },
-                        'y-right': {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            title: { display: true, text: 'CPU Util. & Virtual Memory (%)' },
-                            min: 0,
-                            beginAtZero: true,
-                            grid: { drawOnChartArea: false }
                         }
                     },
                     plugins: {
@@ -1287,8 +1247,6 @@
                 'drivesDuration',
                 'siteResourcesStatus',
                 'siteResourcesDescription',
-                'processCpu',
-                'processMemory',
                 'processCpuUtilization',
                 'virtualMemoryUtilization',
                 'activeCircuits',
@@ -1297,6 +1255,7 @@
                 'serverResourcesStatus',
                 'serverResourcesDescription',
                 'processorTime',
+                'processorTimeRaw',
                 'availableMemory',
                 'serverResourcesDuration',
                 'schedulerStatus',
@@ -1448,51 +1407,32 @@
                 // Update Site Resource Utilization
                 const siteResourcesData = data.entries['site-resource-utilization'];
                 if (siteResourcesData) {
-                    const processCpuRaw = siteResourcesData.data['process.cpu.utilization'] || 0;
-                    const processCpu = processCpuRaw;
-                    const processMemory = siteResourcesData.data['dotnet.process.memory.virtual.utilization'] || 0;
+                    const processCpuUtilization = (siteResourcesData.data['process.cpu.utilization'] || 0) * 100;
+                    const virtualMemoryUtilization = siteResourcesData.data['dotnet.process.memory.virtual.utilization'] || 0;
                     const activeCircuits = siteResourcesData.data['active.circuits'] || 0;
                     const maxConcurrentCircuits = siteResourcesData.data['max.concurrent.circuits'] || 0;
 
-                    // Restore card updates
+                    // Update card values
                     safeUpdateElement('siteResourcesStatus', siteResourcesData.status, `metric-status ${siteResourcesData.status.toLowerCase()}`);
                     safeUpdateElement('siteResourcesDescription', siteResourcesData.description);
-                    safeUpdateElement('processCpu', `${processCpu.toFixed(2)}%`);
-                    safeUpdateElement('processCpuRaw', processCpuRaw);
-                    safeUpdateElement('processMemory', `${processMemory.toFixed(2)}%`);
-                    // Only update if not already set by system resources
-                    if (document.getElementById('processCpuUtilization').textContent === '--') {
-                        safeUpdateElement('processCpuUtilization', `${(processCpuRaw * 100).toFixed(2)}%`);
-                    }
-                    if (document.getElementById('virtualMemoryUtilization').textContent === '--') {
-                        safeUpdateElement('virtualMemoryUtilization', `${(processMemory * 100).toFixed(2)}%`);
-                    }
-                    if (document.getElementById('activeCircuits').textContent === '--') {
-                        safeUpdateElement('activeCircuits', activeCircuits);
-                    }
-                    if (document.getElementById('maxConcurrentCircuits').textContent === '--') {
-                        safeUpdateElement('maxConcurrentCircuits', maxConcurrentCircuits);
-                    }
+                    safeUpdateElement('processCpuUtilization', `${processCpuUtilization.toFixed(2)}%`);
+                    safeUpdateElement('virtualMemoryUtilization', `${virtualMemoryUtilization.toFixed(2)}%`);
+                    safeUpdateElement('activeCircuits', activeCircuits);
+                    safeUpdateElement('maxConcurrentCircuits', maxConcurrentCircuits);
                     safeUpdateElement('siteResourcesDuration', siteResourcesData.duration);
 
+                    // Update chart data
                     const siteChart = charts.siteResourcesChart.data.datasets;
-                    // Get the utilization values (convert from decimal to percentage)
-                    const processCpuUtilization = (processCpuRaw * 100);
-                    const virtualMemoryUtilization = (processMemory * 100);
                     
                     // Shift old data if we exceed max points
                     if (siteChart[0].data.length >= MAX_DATA_POINTS) siteChart[0].data.shift();
                     if (siteChart[1].data.length >= MAX_DATA_POINTS) siteChart[1].data.shift();
-                    if (siteChart[2].data.length >= MAX_DATA_POINTS) siteChart[2].data.shift();
-                    if (siteChart[3].data.length >= MAX_DATA_POINTS) siteChart[3].data.shift();
                     
                     // Add new data points
-                    siteChart[0].data.push(processCpu);                    // Process CPU (%)
-                    siteChart[1].data.push(processMemory);                 // Process Memory (%)
-                    siteChart[2].data.push(processCpuUtilization);         // Process CPU Utilization (%)
-                    siteChart[3].data.push(virtualMemoryUtilization);      // Virtual Memory Utilization (%)
+                    siteChart[0].data.push(processCpuUtilization);          // Process CPU Utilization (%)
+                    siteChart[1].data.push(virtualMemoryUtilization);       // Virtual Memory Utilization (%)
                     
-                    console.log('Site Resources - CPU:', processCpu, 'Memory:', processMemory, 'CPU Util:', processCpuUtilization, 'VM Util:', virtualMemoryUtilization);
+                    console.log('Site Resources - CPU Util:', processCpuUtilization, 'VM Util:', virtualMemoryUtilization, 'Active Circuits:', activeCircuits);
                     console.log('Site Resources Datasets Lengths:', siteChart.map(ds => ds.data.length));
                     charts.siteResourcesChart.update();
 
@@ -1526,24 +1466,29 @@
                     safeUpdateElement('serverResourcesDuration', serverResourcesData.duration);
                     
                     // Update the site resources card with system values if they exist in this section
-                    if (systemProcessCpuUtilization > 0 || systemVirtualMemoryUtilization > 0 || systemActiveCircuits > 0 || systemMaxConcurrentCircuits > 0) {
+                    // Only override with server resource values if they exist and are meaningful
+                    if (systemProcessCpuUtilization > 0) {
                         safeUpdateElement('processCpuUtilization', `${(systemProcessCpuUtilization * 100).toFixed(2)}%`);
-                        safeUpdateElement('virtualMemoryUtilization', `${(systemVirtualMemoryUtilization * 100).toFixed(2)}%`);
+                    }
+                    if (systemVirtualMemoryUtilization > 0) {
+                        safeUpdateElement('virtualMemoryUtilization', `${systemVirtualMemoryUtilization.toFixed(2)}%`);
+                    }
+                    if (systemActiveCircuits > 0) {
                         safeUpdateElement('activeCircuits', systemActiveCircuits);
-                        safeUpdateElement('maxConcurrentCircuits', systemMaxConcurrentCircuits);
                         
                         // Only update Active Circuits Chart if we have system data for it and it differs from site data
-                        if (systemActiveCircuits > 0) {
-                            const circuitsChart = charts.activeCircuitsChart.data.datasets[0];
-                            // Replace the last data point with system data if it exists
-                            if (circuitsChart.data.length > 0) {
-                                circuitsChart.data[circuitsChart.data.length - 1] = systemActiveCircuits;
-                            } else {
-                                circuitsChart.data.push(systemActiveCircuits);
-                            }
-                            console.log('System Active Circuits (override):', systemActiveCircuits);
-                            charts.activeCircuitsChart.update();
+                        const circuitsChart = charts.activeCircuitsChart.data.datasets[0];
+                        // Replace the last data point with system data if it exists
+                        if (circuitsChart.data.length > 0) {
+                            circuitsChart.data[circuitsChart.data.length - 1] = systemActiveCircuits;
+                        } else {
+                            circuitsChart.data.push(systemActiveCircuits);
                         }
+                        console.log('System Active Circuits (override):', systemActiveCircuits);
+                        charts.activeCircuitsChart.update();
+                    }
+                    if (systemMaxConcurrentCircuits > 0) {
+                        safeUpdateElement('maxConcurrentCircuits', systemMaxConcurrentCircuits);
                     }
 
                     const serverChart = charts.serverResourcesChart.data.datasets;
@@ -1706,8 +1651,6 @@
             charts.dbConnectionChart.data.datasets[3].borderColor = newColors.sqlCpu;
             charts.siteResourcesChart.data.datasets[0].borderColor = newColors.processCpu;
             charts.siteResourcesChart.data.datasets[1].borderColor = newColors.processMemory;
-            charts.siteResourcesChart.data.datasets[2].borderColor = '#ff6b6b';
-            charts.siteResourcesChart.data.datasets[3].borderColor = '#4ecdc4';
             charts.serverResourcesChart.data.datasets[0].borderColor = newColors.processorTime;
             charts.serverResourcesChart.data.datasets[1].borderColor = newColors.availableMemory;
             // Update grid colors

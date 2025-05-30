@@ -13541,3 +13541,277 @@ app.core.exceptions.ApiRequestError: API request failed with status code: 404
 2025-05-29 20:08:47 - 127.0.0.1 - - [29/May/2025 20:08:47] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
 2025-05-29 20:08:51 - 127.0.0.1 - - [29/May/2025 20:08:51] "POST /update_ascs HTTP/1.1" 200 -
 2025-05-29 20:08:53 - 127.0.0.1 - - [29/May/2025 20:08:53] "POST /update_ascs HTTP/1.1" 200 -
+2025-05-30 07:43:05 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.68.110:5007
+2025-05-30 07:43:05 - [33mPress CTRL+C to quit[0m
+2025-05-30 14:12:06 - Logging system configured with level DEBUG
+2025-05-30 14:12:06 - Starting IOCore2 Coverage Analysis Tool
+2025-05-30 14:12:07 - Applying authentication system patches...
+2025-05-30 14:12:07 - Authentication system patches applied successfully
+2025-05-30 14:12:07 - Enhanced authentication system applied
+2025-05-30 14:12:07 - Configured Flask app logging with level DEBUG
+2025-05-30 14:12:07 - Configured Flask app logging with level DEBUG
+2025-05-30 14:12:07 - Logging system configured with level DEBUG
+2025-05-30 14:12:07 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-05-30 14:12:07 - Static files: /Users/fjmoreno72/WORK/IONIC4/app/static
+2025-05-30 14:12:07 - Template files: templates
+2025-05-30 14:12:07 - Running in PRODUCTION mode
+2025-05-30 14:12:07 - Listening on 0.0.0.0:5007
+2025-05-30 14:12:07 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.5:5007
+2025-05-30 14:12:07 - [33mPress CTRL+C to quit[0m
+2025-05-30 14:12:13 - 127.0.0.1 - - [30/May/2025 14:12:13] "GET / HTTP/1.1" 200 -
+2025-05-30 14:12:13 - 127.0.0.1 - - [30/May/2025 14:12:13] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:12:13 - 127.0.0.1 - - [30/May/2025 14:12:13] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:12:13 - 127.0.0.1 - - [30/May/2025 14:12:13] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-30 14:12:14 - 127.0.0.1 - - [30/May/2025 14:12:14] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-30 14:12:41 - SSL verification is disabled. This is insecure.
+2025-05-30 14:12:41 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-05-30 14:12:42 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /IdentityManagement/Account/Login?ReturnUrl=%2FHome HTTP/1.1" 200 6194
+2025-05-30 14:12:42 - Found verification token using method: BeautifulSoup input tag
+2025-05-30 14:12:42 - Found additional field: RememberMe
+2025-05-30 14:12:42 - https://iocore2-cwix.ivv.ncia.nato.int:443 "POST /IdentityManagement/Account/Login?ReturnUrl=%2FHome HTTP/1.1" 302 122
+2025-05-30 14:12:42 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /Home HTTP/1.1" 302 137
+2025-05-30 14:12:43 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /RepositoryDashboard HTTP/1.1" 200 198794
+2025-05-30 14:12:43 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-05-30 14:12:43 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-05-30 14:12:43 - User francisco.moreno@ncia.nato.int logged in successfully to cwix environment using URL: https://iocore2-cwix.ivv.ncia.nato.int
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "POST /login HTTP/1.1" 200 -
+2025-05-30 14:12:43 - Accessing ASC ASCs page
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "GET /asc_ascs HTTP/1.1" 200 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/components/ascForm.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/js/components/gpSpEditForm.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "GET /check_auth HTTP/1.1" 200 -
+2025-05-30 14:12:43 - Attempting to read affiliates from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_affiliates.json
+2025-05-30 14:12:43 - Attempting to read services from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_servicesm.json
+2025-05-30 14:12:43 - Attempting to read affiliates from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_affiliates.json
+2025-05-30 14:12:43 - Attempting to read services from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_servicesm.json
+2025-05-30 14:12:43 - API Route: /api/gps GET endpoint called.
+2025-05-30 14:12:43 - API Route: /api/gps GET endpoint called.
+2025-05-30 14:12:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_gps.json
+2025-05-30 14:12:43 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_models.json
+2025-05-30 14:12:43 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_gps.json
+2025-05-30 14:12:43 - Successfully read 28 services from /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_servicesm.json.
+2025-05-30 14:12:43 - Successfully read 28 services from /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_servicesm.json.
+2025-05-30 14:12:43 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_affiliates.json.
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "GET /api/sps HTTP/1.1" 200 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "GET /api/services HTTP/1.1" 200 -
+2025-05-30 14:12:43 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_affiliates.json.
+2025-05-30 14:12:43 - Repository: JSON loaded successfully. Found 139 items.
+2025-05-30 14:12:43 - Repository: JSON loaded successfully. Found 4 items.
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "GET /api/affiliates HTTP/1.1" 200 -
+2025-05-30 14:12:43 - Repository: JSON loaded successfully. Found 139 items.
+2025-05-30 14:12:43 - API Route: Retrieved 139 GPs from repository.
+2025-05-30 14:12:43 - API Route: Retrieved 139 GPs from repository.
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "GET /api/models HTTP/1.1" 200 -
+2025-05-30 14:12:43 - API Route: Returning GP data successfully.
+2025-05-30 14:12:43 - API Route: Returning GP data successfully.
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "GET /api/gps HTTP/1.1" 200 -
+2025-05-30 14:12:43 - [2025-05-30T14:12:43.432608] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_ascs.json
+2025-05-30 14:12:43 - ASCs file stats - Last modified: 2025-05-29T20:08:53.381525, Size: 63239 bytes
+2025-05-30 14:12:43 - Successfully loaded 56 ASCs from file
+2025-05-30 14:12:43 - First few ASC IDs loaded: ['ASC-0001', 'ASC-0005', 'ASC-0006', 'ASC-0007', 'ASC-0008']
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "GET /api/ascs HTTP/1.1" 200 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-30 14:12:43 - 127.0.0.1 - - [30/May/2025 14:12:43] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-05-30 14:12:49 - Accessing system monitor
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "GET /system_monitor HTTP/1.1" 200 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "GET /static/js/chart.min.js HTTP/1.1" 200 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "GET /static/css/fontawesome.min.css HTTP/1.1" 200 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "GET /static/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 -
+2025-05-30 14:12:49 - SSL verification is disabled. This is insecure.
+2025-05-30 14:12:49 - Getting system health data from api/system/health
+2025-05-30 14:12:49 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "GET /check_auth HTTP/1.1" 200 -
+2025-05-30 14:12:49 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-30 14:12:49 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-05-30 14:12:49 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.22 seconds
+2025-05-30 14:12:49 - System health data fetched in 219.30ms
+2025-05-30 14:12:49 - 127.0.0.1 - - [30/May/2025 14:12:49] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-30 14:13:06 - User logged out
+2025-05-30 14:13:06 - 127.0.0.1 - - [30/May/2025 14:13:06] "GET /logout HTTP/1.1" 200 -
+2025-05-30 14:13:06 - 127.0.0.1 - - [30/May/2025 14:13:06] "GET / HTTP/1.1" 200 -
+2025-05-30 14:13:06 - 127.0.0.1 - - [30/May/2025 14:13:06] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-30 14:13:06 - 127.0.0.1 - - [30/May/2025 14:13:06] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:13:06 - 127.0.0.1 - - [30/May/2025 14:13:06] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:13:06 - 127.0.0.1 - - [30/May/2025 14:13:06] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-30 14:13:09 - SSL verification is disabled. This is insecure.
+2025-05-30 14:13:09 - Starting new HTTPS connection (1): iocore2-ciav.ivv.ncia.nato.int:443
+2025-05-30 14:13:09 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /IdentityManagement/Account/Login?ReturnUrl=%2FHome HTTP/1.1" 200 6194
+2025-05-30 14:13:09 - Found verification token using method: BeautifulSoup input tag
+2025-05-30 14:13:09 - Found additional field: RememberMe
+2025-05-30 14:13:09 - https://iocore2-ciav.ivv.ncia.nato.int:443 "POST /IdentityManagement/Account/Login?ReturnUrl=%2FHome HTTP/1.1" 302 122
+2025-05-30 14:13:10 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /Home HTTP/1.1" 302 131
+2025-05-30 14:13:11 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /UnitDashboard HTTP/1.1" 200 39597
+2025-05-30 14:13:11 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-05-30 14:13:11 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-05-30 14:13:11 - User francisco.moreno@ncia.nato.int logged in successfully to ciav environment using URL: https://iocore2-ciav.ivv.ncia.nato.int
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "POST /login HTTP/1.1" 200 -
+2025-05-30 14:13:11 - Accessing ASC ASCs page
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "GET /asc_ascs HTTP/1.1" 200 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/css/test_case.css HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/css/components/dataTable.css HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/css/components/design-system.css HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/ASC/icons/ASCs.svg HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/pages/ascs_new.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/components/tableCore.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/components/ascForm.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/components/columnResizer.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/components/dialogManager.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/js/components/gpSpEditForm.js HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "GET /check_auth HTTP/1.1" 200 -
+2025-05-30 14:13:11 - Attempting to read affiliates from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_affiliates.json
+2025-05-30 14:13:11 - Attempting to read services from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_servicesm.json
+2025-05-30 14:13:11 - Attempting to read affiliates from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_affiliates.json
+2025-05-30 14:13:11 - Attempting to read services from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_servicesm.json
+2025-05-30 14:13:11 - API Route: /api/gps GET endpoint called.
+2025-05-30 14:13:11 - API Route: /api/gps GET endpoint called.
+2025-05-30 14:13:11 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_gps.json
+2025-05-30 14:13:11 - Repository: Attempting to read GP data from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_gps.json
+2025-05-30 14:13:11 - Successfully read 28 services from /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_servicesm.json.
+2025-05-30 14:13:11 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_affiliates.json.
+2025-05-30 14:13:11 - Successfully read 28 services from /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_servicesm.json.
+2025-05-30 14:13:11 - Successfully read 38 affiliates from /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_affiliates.json.
+2025-05-30 14:13:11 - Repository: Attempting to read models data from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_models.json
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "GET /api/services HTTP/1.1" 200 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "GET /api/affiliates HTTP/1.1" 200 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "GET /api/sps HTTP/1.1" 200 -
+2025-05-30 14:13:11 - Repository: JSON loaded successfully. Found 139 items.
+2025-05-30 14:13:11 - Repository: JSON loaded successfully. Found 4 items.
+2025-05-30 14:13:11 - Repository: JSON loaded successfully. Found 139 items.
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "GET /api/models HTTP/1.1" 200 -
+2025-05-30 14:13:11 - API Route: Retrieved 139 GPs from repository.
+2025-05-30 14:13:11 - API Route: Retrieved 139 GPs from repository.
+2025-05-30 14:13:11 - API Route: Returning GP data successfully.
+2025-05-30 14:13:11 - API Route: Returning GP data successfully.
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "GET /api/gps HTTP/1.1" 200 -
+2025-05-30 14:13:11 - [2025-05-30T14:13:11.818874] Reading ASCs data from: /Users/fjmoreno72/WORK/IONIC4/app/static/ASC/data/_ascs.json
+2025-05-30 14:13:11 - ASCs file stats - Last modified: 2025-05-29T20:08:53.381525, Size: 63239 bytes
+2025-05-30 14:13:11 - Successfully loaded 56 ASCs from file
+2025-05-30 14:13:11 - First few ASC IDs loaded: ['ASC-0001', 'ASC-0005', 'ASC-0006', 'ASC-0007', 'ASC-0008']
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "GET /api/ascs HTTP/1.1" 200 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-30 14:13:11 - 127.0.0.1 - - [30/May/2025 14:13:11] "[36mGET /static/ASC/image/flags/flag_nato_cs.png HTTP/1.1[0m" 304 -
+2025-05-30 14:18:20 - Logging system configured with level DEBUG
+2025-05-30 14:18:20 - Starting IOCore2 Coverage Analysis Tool
+2025-05-30 14:18:21 - Applying authentication system patches...
+2025-05-30 14:18:21 - Authentication system patches applied successfully
+2025-05-30 14:18:21 - Enhanced authentication system applied
+2025-05-30 14:18:21 - Configured Flask app logging with level DEBUG
+2025-05-30 14:18:21 - Configured Flask app logging with level DEBUG
+2025-05-30 14:18:21 - Logging system configured with level DEBUG
+2025-05-30 14:18:21 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-05-30 14:18:21 - Static files: /Users/fjmoreno72/WORK/IONIC4/app/static
+2025-05-30 14:18:21 - Template files: templates
+2025-05-30 14:18:21 - Running in PRODUCTION mode
+2025-05-30 14:18:21 - Listening on 0.0.0.0:5007
+2025-05-30 14:18:21 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://172.20.10.5:5007
+2025-05-30 14:18:21 - [33mPress CTRL+C to quit[0m
+2025-05-30 14:18:27 - User logged out
+2025-05-30 14:18:27 - 127.0.0.1 - - [30/May/2025 14:18:27] "GET /logout HTTP/1.1" 200 -
+2025-05-30 14:18:27 - 127.0.0.1 - - [30/May/2025 14:18:27] "GET / HTTP/1.1" 200 -
+2025-05-30 14:18:27 - 127.0.0.1 - - [30/May/2025 14:18:27] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-30 14:18:27 - 127.0.0.1 - - [30/May/2025 14:18:27] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:18:27 - 127.0.0.1 - - [30/May/2025 14:18:27] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:18:27 - 127.0.0.1 - - [30/May/2025 14:18:27] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-30 14:18:29 - SSL verification is disabled. This is insecure.
+2025-05-30 14:18:29 - Starting new HTTPS connection (1): iocore2-ciav.ivv.ncia.nato.int:443
+2025-05-30 14:18:29 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /IdentityManagement/Account/Login?ReturnUrl=%2FHome HTTP/1.1" 200 6194
+2025-05-30 14:18:29 - Found verification token using method: BeautifulSoup input tag
+2025-05-30 14:18:29 - Found additional field: RememberMe
+2025-05-30 14:18:29 - https://iocore2-ciav.ivv.ncia.nato.int:443 "POST /IdentityManagement/Account/Login?ReturnUrl=%2FHome HTTP/1.1" 302 122
+2025-05-30 14:18:30 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /Home HTTP/1.1" 302 131
+2025-05-30 14:18:30 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /UnitDashboard HTTP/1.1" 200 39597
+2025-05-30 14:18:30 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-05-30 14:18:30 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-05-30 14:18:30 - User francisco.moreno@ncia.nato.int logged in successfully to ciav environment using URL: https://iocore2-ciav.ivv.ncia.nato.int
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "POST /login HTTP/1.1" 200 -
+2025-05-30 14:18:30 - Accessing system monitor
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "GET /system_monitor HTTP/1.1" 200 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/js/chart.min.js HTTP/1.1[0m" 304 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/css/fontawesome.min.css HTTP/1.1[0m" 304 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/img/CIAV_LOGO.png HTTP/1.1[0m" 304 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:18:30 - 127.0.0.1 - - [30/May/2025 14:18:30] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-05-30 14:18:31 - SSL verification is disabled. This is insecure.
+2025-05-30 14:18:31 - Getting system health data from api/system/health
+2025-05-30 14:18:31 - 127.0.0.1 - - [30/May/2025 14:18:31] "GET /check_auth HTTP/1.1" 200 -
+2025-05-30 14:18:31 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-05-30 14:18:31 - Starting new HTTPS connection (1): iocore2-ciav.ivv.ncia.nato.int:443
+2025-05-30 14:18:31 - 127.0.0.1 - - [30/May/2025 14:18:31] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-05-30 14:18:33 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-05-30 14:18:33 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 2.05 seconds
+2025-05-30 14:18:33 - System health data fetched in 2052.12ms
+2025-05-30 14:18:33 - 127.0.0.1 - - [30/May/2025 14:18:33] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-30 14:19:31 - SSL verification is disabled. This is insecure.
+2025-05-30 14:19:31 - Getting system health data from api/system/health
+2025-05-30 14:19:31 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-05-30 14:19:31 - Starting new HTTPS connection (1): iocore2-ciav.ivv.ncia.nato.int:443
+2025-05-30 14:19:31 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-05-30 14:19:31 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 0.19 seconds
+2025-05-30 14:19:31 - System health data fetched in 192.16ms
+2025-05-30 14:19:31 - 127.0.0.1 - - [30/May/2025 14:19:31] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-30 14:20:31 - SSL verification is disabled. This is insecure.
+2025-05-30 14:20:31 - Getting system health data from api/system/health
+2025-05-30 14:20:31 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-05-30 14:20:31 - Starting new HTTPS connection (1): iocore2-ciav.ivv.ncia.nato.int:443
+2025-05-30 14:20:31 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-05-30 14:20:31 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 0.22 seconds
+2025-05-30 14:20:31 - System health data fetched in 216.47ms
+2025-05-30 14:20:31 - 127.0.0.1 - - [30/May/2025 14:20:31] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-30 14:21:31 - SSL verification is disabled. This is insecure.
+2025-05-30 14:21:31 - Getting system health data from api/system/health
+2025-05-30 14:21:31 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-05-30 14:21:31 - Starting new HTTPS connection (1): iocore2-ciav.ivv.ncia.nato.int:443
+2025-05-30 14:21:31 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-05-30 14:21:31 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 0.24 seconds
+2025-05-30 14:21:31 - System health data fetched in 237.19ms
+2025-05-30 14:21:31 - 127.0.0.1 - - [30/May/2025 14:21:31] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-05-30 14:22:31 - SSL verification is disabled. This is insecure.
+2025-05-30 14:22:31 - Getting system health data from api/system/health
+2025-05-30 14:22:31 - Making GET request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health
+2025-05-30 14:22:31 - Starting new HTTPS connection (1): iocore2-ciav.ivv.ncia.nato.int:443
+2025-05-30 14:22:31 - https://iocore2-ciav.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-05-30 14:22:31 - Request to https://iocore2-ciav.ivv.ncia.nato.int/api/system/health completed in 0.19 seconds
+2025-05-30 14:22:31 - System health data fetched in 190.22ms
+2025-05-30 14:22:31 - 127.0.0.1 - - [30/May/2025 14:22:31] "GET /api/remote_system_health HTTP/1.1" 200 -

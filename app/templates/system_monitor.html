@@ -987,7 +987,7 @@
                             fill: false,
                             tension: 0.1,
                             pointRadius: 0,
-                            yAxisID: 'y'
+                            yAxisID: 'y-cpu'
                         },
                         {
                             label: 'Virtual Memory Utilization (%)',
@@ -996,7 +996,7 @@
                             fill: false,
                             tension: 0.1,
                             pointRadius: 0,
-                            yAxisID: 'y'
+                            yAxisID: 'y-memory'
                         }
                     ]
                 },
@@ -1009,14 +1009,24 @@
                             title: { display: false },
                             ticks: { autoSkip: true, maxTicksLimit: 10 }
                         },
-                        y: {
+                        'y-memory': {
                             type: 'linear',
                             display: true,
                             position: 'left',
-                            title: { display: true, text: 'Utilization (%)' },
+                            title: { display: true, text: 'Memory (%)' },
                             min: 0,
+                            max: 100,
                             beginAtZero: true,
                             grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
+                        },
+                        'y-cpu': {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'CPU (%)' },
+                            min: 0,
+                            beginAtZero: true,
+                            grid: { drawOnChartArea: false }
                         }
                     },
                     plugins: {

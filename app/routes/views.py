@@ -27,16 +27,14 @@ def index():
     Render the index (login) page.
     
     Returns:
-        Rendered index template or redirect to tree view if already logged in
+        Rendered index template or redirect to system monitor if already logged in
     """
     from flask import session
     
-    # Redirect to tree view if already logged in
+    # Redirect to system monitor if already logged in
     if 'cookies' in session:
-        #return redirect(url_for('views.view_tree_func'))
-        return render_template("pages/ascs_new.html", default_url=settings.DEFAULT_URL)
+        return redirect(url_for('views.system_monitor'))
         
-    #return render_template('index_ionic.html', default_url=settings.DEFAULT_URL)
     return render_template("index_ionic.html", default_url=settings.DEFAULT_URL)
 
 @views_bp.route('/view_tree')

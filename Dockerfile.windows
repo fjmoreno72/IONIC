@@ -1,0 +1,35 @@
+# Use Windows Server Core with Python pre-installed
+FROM python:3.11-windowsservercore
+
+# Set working directory
+WORKDIR C:\\app
+
+# Install Git (needed for some pip packages)
+RUN powershell -Command \
+    "Invoke-WebRequest -Uri 'https://github.com/git-for-windows/git/releases/download/v2.42.0.windows.2/Git-2.42.0.2-64-bit.exe' -OutFile 'git-installer.exe'; \
+    Start-Process -FilePath 'git-installer.exe' -Args '/VERYSILENT /NORESTART /NOCANCEL /SP- /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /COMPONENTS=\"icons,ext\\reg\\shellhere,assoc,assoc_sh\"' -Wait; \
+    Remove-Item 'git-installer.exe'"
+
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install pyinstaller
+
+# Copy application files
+COPY . .
+
+# Download static dependencies
+RUN python download_dependencies.py
+
+# Build the executable
+RUN pyinstaller app.spec
+
+# Create output directory
+RUN mkdir C:\\output
+
+# Copy built executable and launcher to output
+RUN copy dist\\SystemMonitor.exe C:\\output\\
+RUN copy dist\\SystemMonitor_Launcher.bat C:\\output\\
+
+# Default command
+CMD ["cmd", "/c", "echo Build completed! Check C:\\output\\ for the executable"] 

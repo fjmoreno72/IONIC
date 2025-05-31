@@ -877,7 +877,7 @@ class IOCore2ApiClient(ApiClient):
             logging.info("*** Successfully downloaded and parsed job results ***")
 
             # Save to file using dynamic path based on the provided environment
-            json_file_path = get_dynamic_data_path("test_results_new.json", environment=environment)
+            json_file_path = get_dynamic_data_path("test_results.json", environment=environment)
             write_json_file(data, json_file_path)
             logging.info(f"Saved new test results to {json_file_path}")
 

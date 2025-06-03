@@ -25,7 +25,14 @@ LOG_LEVEL = os.environ.get("IONIC2_LOG_LEVEL", "ERROR")
 
 # API request settings
 REQUEST_TIMEOUT = (400, 400)  # (connect timeout, read timeout)
-VERIFY_SSL = False # Disable SSL verification (necessary for internal CAs without local trust)
-# To properly verify, provide the path to the CA bundle file below
-# or install the CA certificate in the system's trust store.
-CUSTOM_CA_BUNDLE = None # Example: "/path/to/your/ca-bundle.pem"
+
+# SSL Configuration
+# You can enable SSL verification in several ways:
+# 1. Set environment variable: IONIC2_VERIFY_SSL=true
+# 2. Change VERIFY_SSL below to True
+# 3. Provide a custom CA bundle path in CUSTOM_CA_BUNDLE
+VERIFY_SSL = os.environ.get("IONIC2_VERIFY_SSL", "False").lower() == "true"  # Set to "True" to enable by default
+
+# Custom CA Bundle - provide path to your organization's CA certificate file
+# Example: "/path/to/nato-ca-bundle.pem" or "/usr/local/share/ca-certificates/nato-ca.crt"
+CUSTOM_CA_BUNDLE = os.environ.get("IONIC2_CA_BUNDLE", None)

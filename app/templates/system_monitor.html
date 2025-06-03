@@ -470,12 +470,30 @@
         
         .heartbeat-icon {
             display: inline-block;
-            color: #e74c3c; /* Red heart color */
             transform-origin: center;
             animation: heartbeat 1.5s ease infinite;
+            transition: color 0.3s ease;
         }
         
-        [data-theme="dark"] .heartbeat-icon {
+        /* Different heartbeat colors based on system health */
+        .heartbeat-icon.healthy {
+            color: #22c55e; /* Green for all healthy */
+        }
+        
+        .heartbeat-icon.degraded {
+            color: #f59e0b; /* Orange for warning/degraded */
+        }
+        
+        .heartbeat-icon.unhealthy {
+            color: #ef4444; /* Red for critical/unhealthy */
+        }
+        
+        /* Default colors for light/dark theme when status is unknown */
+        .heartbeat-icon.unknown {
+            color: #e74c3c; /* Default red color */
+        }
+        
+        [data-theme="dark"] .heartbeat-icon.unknown {
             color: #ff6b6b; /* Lighter red for dark mode */
         }
 
@@ -564,7 +582,7 @@
         </div>
         <div class="header">
             <!-- Use the server_url variable passed from Flask -->
-            <h1><i class="fas fa-heartbeat heartbeat-icon"></i> {{ server_url | replace('https://', '') | replace('http://', '') }} - System Health Monitor</h1>
+            <h1><i class="fas fa-heartbeat heartbeat-icon unknown"></i> {{ server_url | replace('https://', '') | replace('http://', '') }} - System Health Monitor</h1>
             <div class="last-updated" id="lastUpdated"><i class="fas fa-sync-alt"></i> Last updated: Never</div>
             <div id="errorMessage" class="error-message"></div>
         </div>
@@ -1298,6 +1316,9 @@
             const detailElements = document.querySelectorAll('.detail-value');
             detailElements.forEach(el => el.textContent = '--');
 
+            // Update initial heartbeat status
+            updateHeartbeatStatus();
+
             // Initial fetch and start polling
             updateMetrics();
             setInterval(updateMetrics, POLLING_INTERVAL); // Poll every 60 seconds
@@ -1315,6 +1336,53 @@
             }
             if (className) {
                 element.className = className;
+            }
+        }
+
+        // Function to calculate overall system health and update heartbeat icon
+        function updateHeartbeatStatus() {
+            const statusElements = [
+                'siteCertificateStatus',
+                'databaseStatus', 
+                'drivesStatus',
+                'siteResourcesStatus',
+                'serverResourcesStatus',
+                'schedulerStatus'
+            ];
+            
+            let hasUnhealthy = false;
+            let hasDegraded = false;
+            let hasHealthy = false;
+            
+            statusElements.forEach(elementId => {
+                const element = document.getElementById(elementId);
+                if (element && element.textContent && element.textContent !== '--') {
+                    const status = element.textContent.toLowerCase();
+                    if (status === 'unhealthy') {
+                        hasUnhealthy = true;
+                    } else if (status === 'degraded') {
+                        hasDegraded = true;
+                    } else if (status === 'healthy') {
+                        hasHealthy = true;
+                    }
+                }
+            });
+            
+            const heartbeatIcon = document.querySelector('.heartbeat-icon');
+            if (heartbeatIcon) {
+                // Remove all status classes
+                heartbeatIcon.classList.remove('healthy', 'degraded', 'unhealthy', 'unknown');
+                
+                // Determine overall status (priority: unhealthy > degraded > healthy > unknown)
+                if (hasUnhealthy) {
+                    heartbeatIcon.classList.add('unhealthy');
+                } else if (hasDegraded) {
+                    heartbeatIcon.classList.add('degraded');
+                } else if (hasHealthy) {
+                    heartbeatIcon.classList.add('healthy');
+                } else {
+                    heartbeatIcon.classList.add('unknown');
+                }
             }
         }
 
@@ -1523,6 +1591,9 @@
                 lastUpdatedElement.innerHTML = `<i class="fas fa-check-circle" style="color: #22c55e;"></i> Last updated: ${new Date().toLocaleString()}`;
                 errorDiv.style.display = 'none';
 
+                // Update heartbeat status
+                updateHeartbeatStatus();
+
             } catch (error) {
                 console.error('Error fetching remote system health:', error);
                 errorDiv.textContent = `Failed to load system health data: ${error.message}`;
@@ -1543,6 +1614,9 @@
                 // Clear all detail values
                 const detailElements = document.querySelectorAll('.detail-value');
                 detailElements.forEach(el => el.textContent = '--');
+                
+                // Update heartbeat status after clearing all data
+                updateHeartbeatStatus();
             }
         }
 

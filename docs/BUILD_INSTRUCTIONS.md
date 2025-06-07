@@ -62,7 +62,8 @@ set IONIC2_HOST=0.0.0.0
 
 ### Step 4: Build Executable
 ```bash
-pyinstaller app.spec
+pyinstaller app.spec (no funciona en windows)
+python -m PyInstaller app.spec (si funciona)
 ```
 
 ## 📁 File Structure After Build

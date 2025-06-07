@@ -587,6 +587,16 @@
             <div id="errorMessage" class="error-message"></div>
         </div>
 
+        <!-- Combined Metrics Chart - Main Overview -->
+        <div class="response-time-chart">
+            <div class="chart-container" style="height: 280px;">
+                <button class="chart-expand-btn" onclick="expandChart('combinedMetricsChart', 'Combined System Metrics')">
+                    <i class="fas fa-chart-line icon"></i> <span>Expand</span>
+                </button>
+                <canvas id="combinedMetricsChart"></canvas>
+            </div>
+        </div>
+
         <!-- Charts: two columns layout -->
         <div class="charts-grid">
             <!-- First row -->
@@ -1242,12 +1252,126 @@
             }
         );
 
+        // Initialize Combined Metrics Chart
+        charts.combinedMetricsChart = new Chart(
+            document.getElementById('combinedMetricsChart').getContext('2d'),
+            {
+                type: 'line',
+                data: {
+                    labels: sharedLabels,
+                    datasets: [
+                        {
+                            label: 'Process CPU Utilization (%)',
+                            borderColor: colors.processCpu,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-percentage'
+                        },
+                        {
+                            label: 'Virtual Memory Utilization (%)',
+                            borderColor: colors.processMemory,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-percentage'
+                        },
+                        {
+                            label: 'Host CPU (%)',
+                            borderColor: colors.hostCpu,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-percentage'
+                        },
+                        {
+                            label: 'SQL CPU (%)',
+                            borderColor: colors.sqlCpu,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-percentage'
+                        },
+                        {
+                            label: 'Active Circuits',
+                            borderColor: colors.activeCircuits,
+                            data: [],
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            yAxisID: 'y-circuits'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: { display: false },
+                            ticks: { autoSkip: true, maxTicksLimit: 10 }
+                        },
+                        'y-percentage': {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Percentage (%)' },
+                            min: 0,
+                            max: 100,
+                            beginAtZero: true,
+                            grid: { color: currentTheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
+                        },
+                        'y-circuits': {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'Active Circuits' },
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1,
+                                precision: 0
+                            },
+                            grid: { drawOnChartArea: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: true, position: 'top' },
+                        title: { display: true, text: 'Combined System Metrics', padding: { top: 10, bottom: 10 } },
+                        tooltip: { 
+                            mode: 'index', 
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) {
+                                        if (label.includes('Circuits')) {
+                                            label += Math.round(context.parsed.y);
+                                        } else {
+                                            label += context.parsed.y.toFixed(2) + '%';
+                                        }
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        );
+
         const allCharts = [
             charts.dbConnectionChart,
             charts.siteResourcesChart,
             charts.serverResourcesChart,
             charts.activeCircuitsChart,
-            charts.responseTimeChart
+            charts.responseTimeChart,
+            charts.combinedMetricsChart
         ];
 
         // Document ready function
@@ -1588,6 +1712,55 @@
                     safeUpdateElement('schedulerDuration', schedulerData.duration);
                 }
 
+                // Update Combined Metrics Chart with collected data
+                const combinedChart = charts.combinedMetricsChart.data.datasets;
+                
+                // Get the latest values for all metrics
+                let latestProcessCpu = 0;
+                let latestVirtualMemory = 0;
+                let latestActiveCircuits = 0;
+                let latestHostCpu = 0;
+                let latestSqlCpu = 0;
+                
+                // Get values from site resources
+                if (siteResourcesData) {
+                    latestProcessCpu = siteResourcesData.data['process.cpu.utilization'] || 0;
+                    latestVirtualMemory = siteResourcesData.data['dotnet.process.memory.virtual.utilization'] || 0;
+                    latestActiveCircuits = siteResourcesData.data['active.circuits'] || 0;
+                }
+                
+                // Get values from database connection
+                if (dbData) {
+                    latestHostCpu = dbData.data.host_cpu_usedPct || 0;
+                    latestSqlCpu = dbData.data.sqlserver_cpu_usedPct || 0;
+                }
+                
+                // Override with server resources data if available
+                if (serverResourcesData) {
+                    const systemProcessCpuUtilization = serverResourcesData.data['process.cpu.utilization'] || 0;
+                    const systemVirtualMemoryUtilization = serverResourcesData.data['dotnet.process.memory.virtual.utilization'] || 0;
+                    const systemActiveCircuits = serverResourcesData.data['active.circuits'] || 0;
+                    
+                    if (systemProcessCpuUtilization > 0) latestProcessCpu = systemProcessCpuUtilization;
+                    if (systemVirtualMemoryUtilization > 0) latestVirtualMemory = systemVirtualMemoryUtilization;
+                    if (systemActiveCircuits > 0) latestActiveCircuits = systemActiveCircuits;
+                }
+                
+                // Shift old data if we exceed max points
+                combinedChart.forEach(dataset => {
+                    if (dataset.data.length >= MAX_DATA_POINTS) dataset.data.shift();
+                });
+                
+                // Add new data points
+                combinedChart[0].data.push(latestProcessCpu);        // Process CPU Utilization (%)
+                combinedChart[1].data.push(latestVirtualMemory);     // Virtual Memory Utilization (%)
+                combinedChart[2].data.push(latestHostCpu);           // Host CPU (%)
+                combinedChart[3].data.push(latestSqlCpu);            // SQL CPU (%)
+                combinedChart[4].data.push(latestActiveCircuits);    // Active Circuits
+                
+                console.log('Combined Metrics - Process CPU:', latestProcessCpu, 'VM:', latestVirtualMemory, 'Circuits:', latestActiveCircuits, 'Host CPU:', latestHostCpu, 'SQL CPU:', latestSqlCpu);
+                charts.combinedMetricsChart.update();
+
                 // Update last updated time
                 lastUpdatedElement.innerHTML = `<i class="fas fa-check-circle" style="color: #22c55e;"></i> Last updated: ${new Date().toLocaleString()}`;
                 errorDiv.style.display = 'none';
@@ -1738,6 +1911,11 @@
             charts.siteResourcesChart.data.datasets[1].borderColor = newColors.processMemory;
             charts.serverResourcesChart.data.datasets[0].borderColor = newColors.processorTime;
             charts.serverResourcesChart.data.datasets[1].borderColor = newColors.availableMemory;
+            charts.combinedMetricsChart.data.datasets[0].borderColor = newColors.processCpu;
+            charts.combinedMetricsChart.data.datasets[1].borderColor = newColors.processMemory;
+            charts.combinedMetricsChart.data.datasets[2].borderColor = newColors.hostCpu;
+            charts.combinedMetricsChart.data.datasets[3].borderColor = newColors.sqlCpu;
+            charts.combinedMetricsChart.data.datasets[4].borderColor = newColors.activeCircuits;
             // Update grid colors
             allCharts.forEach(chart => {
                 chart.options.scales.y.grid.color = gridColor;

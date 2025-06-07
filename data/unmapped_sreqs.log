@@ -37850,3 +37850,1063 @@ app.core.exceptions.ApiRequestError: Request failed: HTTPSConnectionPool(host='i
  * Running on http://127.0.0.1:5007
  * Running on http://192.168.1.14:5007
 2025-06-07 16:11:57 - [33mPress CTRL+C to quit[0m
+2025-06-07 16:14:03 - SSL verification is disabled. This is insecure.
+2025-06-07 16:14:03 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 16:14:03 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /IdentityManagement/Account/Login?ReturnUrl=%2FHome HTTP/1.1" 200 6194
+2025-06-07 16:14:03 - Found verification token using method: BeautifulSoup input tag
+2025-06-07 16:14:03 - Found additional field: RememberMe
+2025-06-07 16:14:03 - https://iocore2-cwix.ivv.ncia.nato.int:443 "POST /IdentityManagement/Account/Login?ReturnUrl=%2FHome HTTP/1.1" 302 122
+2025-06-07 16:14:03 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /Home HTTP/1.1" 302 137
+2025-06-07 16:14:04 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /RepositoryDashboard HTTP/1.1" 200 198648
+2025-06-07 16:14:04 - User francisco.moreno@ncia.nato.int authenticated successfully
+2025-06-07 16:14:04 - User francisco.moreno@ncia.nato.int authenticated successfully using enhanced login
+2025-06-07 16:14:04 - User francisco.moreno@ncia.nato.int logged in successfully to cwix environment using URL: https://iocore2-cwix.ivv.ncia.nato.int
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "POST /login HTTP/1.1" 200 -
+2025-06-07 16:14:04 - Accessing system monitor
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "GET /system_monitor HTTP/1.1" 200 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/js/chart.min.js HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/css/fontawesome.min.css HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-06-07 16:14:04 - SSL verification is disabled. This is insecure.
+2025-06-07 16:14:04 - Getting system health data from api/system/health
+2025-06-07 16:14:04 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "GET /check_auth HTTP/1.1" 200 -
+2025-06-07 16:14:04 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 16:14:04 - 127.0.0.1 - - [07/Jun/2025 16:14:04] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-06-07 16:14:06 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 16:14:06 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 2.14 seconds
+2025-06-07 16:14:06 - System health data fetched in 2138.74ms
+2025-06-07 16:14:06 - 127.0.0.1 - - [07/Jun/2025 16:14:06] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 16:15:04 - SSL verification is disabled. This is insecure.
+2025-06-07 16:15:04 - Getting system health data from api/system/health
+2025-06-07 16:15:04 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 16:15:04 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 16:15:04 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 16:15:04 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.20 seconds
+2025-06-07 16:15:04 - System health data fetched in 201.64ms
+2025-06-07 16:15:04 - 127.0.0.1 - - [07/Jun/2025 16:15:04] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 16:16:04 - SSL verification is disabled. This is insecure.
+2025-06-07 16:16:04 - Getting system health data from api/system/health
+2025-06-07 16:16:04 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 16:16:04 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 16:16:04 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 16:16:04 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.26 seconds
+2025-06-07 16:16:04 - System health data fetched in 257.05ms
+2025-06-07 16:16:04 - 127.0.0.1 - - [07/Jun/2025 16:16:04] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 16:17:04 - SSL verification is disabled. This is insecure.
+2025-06-07 16:17:04 - Getting system health data from api/system/health
+2025-06-07 16:17:04 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 16:17:04 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 16:17:04 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 16:17:04 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.24 seconds
+2025-06-07 16:17:04 - System health data fetched in 238.34ms
+2025-06-07 16:17:04 - 127.0.0.1 - - [07/Jun/2025 16:17:04] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 16:18:04 - SSL verification is disabled. This is insecure.
+2025-06-07 16:18:04 - Getting system health data from api/system/health
+2025-06-07 16:18:04 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 16:18:04 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 16:18:04 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 16:18:04 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 16:18:04 - System health data fetched in 247.15ms
+2025-06-07 16:18:04 - 127.0.0.1 - - [07/Jun/2025 16:18:04] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:14:27 - Logging system configured with level DEBUG
+2025-06-07 19:14:27 - Starting IOCore2 Coverage Analysis Tool
+2025-06-07 19:14:27 - Applying authentication system patches...
+2025-06-07 19:14:27 - Authentication system patches applied successfully
+2025-06-07 19:14:27 - Enhanced authentication system applied
+2025-06-07 19:14:27 - Configured Flask app logging with level DEBUG
+2025-06-07 19:14:27 - Configured Flask app logging with level DEBUG
+2025-06-07 19:14:27 - Logging system configured with level DEBUG
+2025-06-07 19:14:27 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-06-07 19:14:27 - Static files: /Users/fjmoreno72/WORK/IONIC4/app/static
+2025-06-07 19:14:27 - Template files: templates
+2025-06-07 19:14:27 - Running in PRODUCTION mode
+2025-06-07 19:14:27 - Listening on 0.0.0.0:5007
+2025-06-07 19:14:27 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.1.14:5007
+2025-06-07 19:14:27 - [33mPress CTRL+C to quit[0m
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-07 19:14:42 - Accessing system monitor
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "GET /system_monitor HTTP/1.1" 200 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/css/fontawesome.min.css HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/js/chart.min.js HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - SSL verification is disabled. This is insecure.
+2025-06-07 19:14:42 - Getting system health data from api/system/health
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "GET /check_auth HTTP/1.1" 200 -
+2025-06-07 19:14:42 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:14:42 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-06-07 19:14:42 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:14:42 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.22 seconds
+2025-06-07 19:14:42 - System health data fetched in 217.78ms
+2025-06-07 19:14:42 - 127.0.0.1 - - [07/Jun/2025 19:14:42] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:16:50 - Logging system configured with level DEBUG
+2025-06-07 19:16:50 - Starting IOCore2 Coverage Analysis Tool
+2025-06-07 19:16:50 - Applying authentication system patches...
+2025-06-07 19:16:50 - Authentication system patches applied successfully
+2025-06-07 19:16:50 - Enhanced authentication system applied
+2025-06-07 19:16:50 - Configured Flask app logging with level DEBUG
+2025-06-07 19:16:50 - Configured Flask app logging with level DEBUG
+2025-06-07 19:16:50 - Logging system configured with level DEBUG
+2025-06-07 19:16:50 - IOCore2 Coverage Analysis Tool started - PRODUCTION mode
+2025-06-07 19:16:50 - Static files: /Users/fjmoreno72/WORK/IONIC4/app/static
+2025-06-07 19:16:50 - Template files: templates
+2025-06-07 19:16:50 - Running in PRODUCTION mode
+2025-06-07 19:16:50 - Listening on 0.0.0.0:5007
+2025-06-07 19:16:50 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5007
+ * Running on http://192.168.1.14:5007
+2025-06-07 19:16:50 - [33mPress CTRL+C to quit[0m
+2025-06-07 19:16:55 - Accessing system monitor
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "GET /system_monitor HTTP/1.1" 200 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/css/fontawesome.min.css HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/js/chart.min.js HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/js/core/app.js HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/img/iocore2_logo.png HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/img/CWIX_LOGO.png HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/js/services/apiService.js HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/js/services/uiService.js HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/js/services/authService.js HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - SSL verification is disabled. This is insecure.
+2025-06-07 19:16:55 - Getting system health data from api/system/health
+2025-06-07 19:16:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "GET /check_auth HTTP/1.1" 200 -
+2025-06-07 19:16:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/favicon/site.webmanifest HTTP/1.1[0m" 304 -
+2025-06-07 19:16:55 - 127.0.0.1 - - [07/Jun/2025 19:16:55] "[36mGET /static/favicon/favicon.ico HTTP/1.1[0m" 304 -
+2025-06-07 19:16:58 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:16:58 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 3.79 seconds
+2025-06-07 19:16:58 - System health data fetched in 3790.31ms
+2025-06-07 19:16:58 - 127.0.0.1 - - [07/Jun/2025 19:16:58] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:17:55 - SSL verification is disabled. This is insecure.
+2025-06-07 19:17:55 - Getting system health data from api/system/health
+2025-06-07 19:17:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:17:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:17:58 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:17:58 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 2.98 seconds
+2025-06-07 19:17:58 - System health data fetched in 2978.88ms
+2025-06-07 19:17:58 - 127.0.0.1 - - [07/Jun/2025 19:17:58] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:18:55 - SSL verification is disabled. This is insecure.
+2025-06-07 19:18:55 - Getting system health data from api/system/health
+2025-06-07 19:18:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:18:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:18:59 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:18:59 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 4.15 seconds
+2025-06-07 19:18:59 - System health data fetched in 4147.44ms
+2025-06-07 19:18:59 - 127.0.0.1 - - [07/Jun/2025 19:18:59] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:19:55 - SSL verification is disabled. This is insecure.
+2025-06-07 19:19:55 - Getting system health data from api/system/health
+2025-06-07 19:19:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:19:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:19:58 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:19:58 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 3.58 seconds
+2025-06-07 19:19:58 - System health data fetched in 3579.80ms
+2025-06-07 19:19:58 - 127.0.0.1 - - [07/Jun/2025 19:19:58] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:20:55 - SSL verification is disabled. This is insecure.
+2025-06-07 19:20:55 - Getting system health data from api/system/health
+2025-06-07 19:20:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:20:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:21:01 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:21:01 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.75 seconds
+2025-06-07 19:21:01 - System health data fetched in 5752.56ms
+2025-06-07 19:21:01 - 127.0.0.1 - - [07/Jun/2025 19:21:01] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:21:55 - SSL verification is disabled. This is insecure.
+2025-06-07 19:21:55 - Getting system health data from api/system/health
+2025-06-07 19:21:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:21:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:22:01 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:22:01 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.92 seconds
+2025-06-07 19:22:01 - System health data fetched in 5924.82ms
+2025-06-07 19:22:01 - 127.0.0.1 - - [07/Jun/2025 19:22:01] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:22:55 - SSL verification is disabled. This is insecure.
+2025-06-07 19:22:55 - Getting system health data from api/system/health
+2025-06-07 19:22:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:22:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:23:01 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:23:01 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.87 seconds
+2025-06-07 19:23:01 - System health data fetched in 5866.59ms
+2025-06-07 19:23:01 - 127.0.0.1 - - [07/Jun/2025 19:23:01] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:24:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:24:50 - Getting system health data from api/system/health
+2025-06-07 19:24:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:24:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:24:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:24:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.23 seconds
+2025-06-07 19:24:51 - System health data fetched in 231.87ms
+2025-06-07 19:24:51 - 127.0.0.1 - - [07/Jun/2025 19:24:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:25:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:25:50 - Getting system health data from api/system/health
+2025-06-07 19:25:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:25:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:25:54 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:25:54 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 4.22 seconds
+2025-06-07 19:25:54 - System health data fetched in 4221.98ms
+2025-06-07 19:25:54 - 127.0.0.1 - - [07/Jun/2025 19:25:54] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:26:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:26:50 - Getting system health data from api/system/health
+2025-06-07 19:26:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:26:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:26:54 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:26:54 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 4.10 seconds
+2025-06-07 19:26:54 - System health data fetched in 4099.87ms
+2025-06-07 19:26:54 - 127.0.0.1 - - [07/Jun/2025 19:26:54] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:27:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:27:50 - Getting system health data from api/system/health
+2025-06-07 19:27:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:27:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:27:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:27:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 19:27:50 - System health data fetched in 205.98ms
+2025-06-07 19:27:50 - 127.0.0.1 - - [07/Jun/2025 19:27:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:28:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:28:50 - Getting system health data from api/system/health
+2025-06-07 19:28:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:28:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:28:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:28:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.41 seconds
+2025-06-07 19:28:56 - System health data fetched in 5408.16ms
+2025-06-07 19:28:56 - 127.0.0.1 - - [07/Jun/2025 19:28:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:29:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:29:50 - Getting system health data from api/system/health
+2025-06-07 19:29:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:29:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:29:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:29:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.20 seconds
+2025-06-07 19:29:50 - System health data fetched in 203.74ms
+2025-06-07 19:29:50 - 127.0.0.1 - - [07/Jun/2025 19:29:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:30:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:30:50 - Getting system health data from api/system/health
+2025-06-07 19:30:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:30:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:30:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:30:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.31 seconds
+2025-06-07 19:30:51 - System health data fetched in 310.06ms
+2025-06-07 19:30:51 - 127.0.0.1 - - [07/Jun/2025 19:30:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:31:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:31:50 - Getting system health data from api/system/health
+2025-06-07 19:31:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:31:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:31:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:31:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 19:31:50 - System health data fetched in 212.87ms
+2025-06-07 19:31:50 - 127.0.0.1 - - [07/Jun/2025 19:31:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:32:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:32:50 - Getting system health data from api/system/health
+2025-06-07 19:32:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:32:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:32:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:32:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 19:32:51 - System health data fetched in 253.87ms
+2025-06-07 19:32:51 - 127.0.0.1 - - [07/Jun/2025 19:32:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:33:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:33:50 - Getting system health data from api/system/health
+2025-06-07 19:33:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:33:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:33:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:33:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.26 seconds
+2025-06-07 19:33:51 - System health data fetched in 259.15ms
+2025-06-07 19:33:51 - 127.0.0.1 - - [07/Jun/2025 19:33:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:34:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:34:50 - Getting system health data from api/system/health
+2025-06-07 19:34:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:34:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:34:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:34:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.27 seconds
+2025-06-07 19:34:51 - System health data fetched in 269.82ms
+2025-06-07 19:34:51 - 127.0.0.1 - - [07/Jun/2025 19:34:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:35:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:35:50 - Getting system health data from api/system/health
+2025-06-07 19:35:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:35:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:35:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:35:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 19:35:50 - System health data fetched in 205.60ms
+2025-06-07 19:35:50 - 127.0.0.1 - - [07/Jun/2025 19:35:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:36:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:36:50 - Getting system health data from api/system/health
+2025-06-07 19:36:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:36:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:36:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:36:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.40 seconds
+2025-06-07 19:36:56 - System health data fetched in 5401.29ms
+2025-06-07 19:36:56 - 127.0.0.1 - - [07/Jun/2025 19:36:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:37:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:37:50 - Getting system health data from api/system/health
+2025-06-07 19:37:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:37:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:37:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:37:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 19:37:50 - System health data fetched in 211.27ms
+2025-06-07 19:37:50 - 127.0.0.1 - - [07/Jun/2025 19:37:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:38:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:38:50 - Getting system health data from api/system/health
+2025-06-07 19:38:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:38:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:38:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:38:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.32 seconds
+2025-06-07 19:38:56 - System health data fetched in 5316.27ms
+2025-06-07 19:38:56 - 127.0.0.1 - - [07/Jun/2025 19:38:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:39:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:39:50 - Getting system health data from api/system/health
+2025-06-07 19:39:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:39:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:39:55 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:39:55 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.21 seconds
+2025-06-07 19:39:55 - System health data fetched in 5213.22ms
+2025-06-07 19:39:55 - 127.0.0.1 - - [07/Jun/2025 19:39:55] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:40:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:40:50 - Getting system health data from api/system/health
+2025-06-07 19:40:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:40:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:40:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:40:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.26 seconds
+2025-06-07 19:40:51 - System health data fetched in 255.45ms
+2025-06-07 19:40:51 - 127.0.0.1 - - [07/Jun/2025 19:40:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:41:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:41:50 - Getting system health data from api/system/health
+2025-06-07 19:41:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:41:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:41:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:41:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.32 seconds
+2025-06-07 19:41:56 - System health data fetched in 5316.26ms
+2025-06-07 19:41:56 - 127.0.0.1 - - [07/Jun/2025 19:41:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:42:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:42:50 - Getting system health data from api/system/health
+2025-06-07 19:42:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:42:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:42:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:42:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.26 seconds
+2025-06-07 19:42:51 - System health data fetched in 264.44ms
+2025-06-07 19:42:51 - 127.0.0.1 - - [07/Jun/2025 19:42:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:43:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:43:50 - Getting system health data from api/system/health
+2025-06-07 19:43:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:43:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:43:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:43:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.69 seconds
+2025-06-07 19:43:56 - System health data fetched in 5689.05ms
+2025-06-07 19:43:56 - 127.0.0.1 - - [07/Jun/2025 19:43:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:44:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:44:50 - Getting system health data from api/system/health
+2025-06-07 19:44:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:44:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:44:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:44:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.61 seconds
+2025-06-07 19:44:56 - System health data fetched in 5606.20ms
+2025-06-07 19:44:56 - 127.0.0.1 - - [07/Jun/2025 19:44:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:45:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:45:50 - Getting system health data from api/system/health
+2025-06-07 19:45:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:45:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:45:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:45:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 19:45:50 - System health data fetched in 206.89ms
+2025-06-07 19:45:50 - 127.0.0.1 - - [07/Jun/2025 19:45:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:46:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:46:50 - Getting system health data from api/system/health
+2025-06-07 19:46:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:46:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:46:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:46:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 19:46:51 - System health data fetched in 252.07ms
+2025-06-07 19:46:51 - 127.0.0.1 - - [07/Jun/2025 19:46:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:47:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:47:50 - Getting system health data from api/system/health
+2025-06-07 19:47:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:47:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:47:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:47:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.20 seconds
+2025-06-07 19:47:50 - System health data fetched in 203.85ms
+2025-06-07 19:47:50 - 127.0.0.1 - - [07/Jun/2025 19:47:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:48:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:48:50 - Getting system health data from api/system/health
+2025-06-07 19:48:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:48:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:48:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:48:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.52 seconds
+2025-06-07 19:48:56 - System health data fetched in 5517.46ms
+2025-06-07 19:48:56 - 127.0.0.1 - - [07/Jun/2025 19:48:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:49:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:49:50 - Getting system health data from api/system/health
+2025-06-07 19:49:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:49:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:50:24 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:50:24 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 34.11 seconds
+2025-06-07 19:50:24 - System health data fetched in 34105.74ms
+2025-06-07 19:50:24 - 127.0.0.1 - - [07/Jun/2025 19:50:24] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:50:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:50:50 - Getting system health data from api/system/health
+2025-06-07 19:50:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:50:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:50:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 19:50:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.44 seconds
+2025-06-07 19:50:56 - System health data fetched in 5442.40ms
+2025-06-07 19:50:56 - 127.0.0.1 - - [07/Jun/2025 19:50:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:51:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:51:50 - Getting system health data from api/system/health
+2025-06-07 19:51:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:51:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:51:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 19:51:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 19:51:50 - System health data fetched in 210.68ms
+2025-06-07 19:51:50 - 127.0.0.1 - - [07/Jun/2025 19:51:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:52:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:52:50 - Getting system health data from api/system/health
+2025-06-07 19:52:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:52:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:52:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 19:52:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.45 seconds
+2025-06-07 19:52:56 - System health data fetched in 5449.72ms
+2025-06-07 19:52:56 - 127.0.0.1 - - [07/Jun/2025 19:52:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:53:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:53:50 - Getting system health data from api/system/health
+2025-06-07 19:53:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:53:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:53:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 19:53:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 19:53:50 - System health data fetched in 210.66ms
+2025-06-07 19:53:50 - 127.0.0.1 - - [07/Jun/2025 19:53:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:54:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:54:50 - Getting system health data from api/system/health
+2025-06-07 19:54:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:54:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:54:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 19:54:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.46 seconds
+2025-06-07 19:54:56 - System health data fetched in 5461.49ms
+2025-06-07 19:54:56 - 127.0.0.1 - - [07/Jun/2025 19:54:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:55:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:55:50 - Getting system health data from api/system/health
+2025-06-07 19:55:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:55:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:55:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 19:55:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.20 seconds
+2025-06-07 19:55:50 - System health data fetched in 204.49ms
+2025-06-07 19:55:50 - 127.0.0.1 - - [07/Jun/2025 19:55:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:56:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:56:50 - Getting system health data from api/system/health
+2025-06-07 19:56:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:56:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:56:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 19:56:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 19:56:51 - System health data fetched in 248.54ms
+2025-06-07 19:56:51 - 127.0.0.1 - - [07/Jun/2025 19:56:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:57:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:57:50 - Getting system health data from api/system/health
+2025-06-07 19:57:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:57:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:57:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:57:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 19:57:50 - System health data fetched in 207.03ms
+2025-06-07 19:57:50 - 127.0.0.1 - - [07/Jun/2025 19:57:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:58:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:58:50 - Getting system health data from api/system/health
+2025-06-07 19:58:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:58:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:58:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 19:58:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 19:58:51 - System health data fetched in 253.80ms
+2025-06-07 19:58:51 - 127.0.0.1 - - [07/Jun/2025 19:58:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 19:59:50 - SSL verification is disabled. This is insecure.
+2025-06-07 19:59:50 - Getting system health data from api/system/health
+2025-06-07 19:59:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 19:59:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 19:59:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 19:59:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.20 seconds
+2025-06-07 19:59:50 - System health data fetched in 201.98ms
+2025-06-07 19:59:50 - 127.0.0.1 - - [07/Jun/2025 19:59:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:00:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:00:50 - Getting system health data from api/system/health
+2025-06-07 20:00:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:00:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:00:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:00:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.34 seconds
+2025-06-07 20:00:56 - System health data fetched in 5339.38ms
+2025-06-07 20:00:56 - 127.0.0.1 - - [07/Jun/2025 20:00:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:01:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:01:50 - Getting system health data from api/system/health
+2025-06-07 20:01:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:01:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:01:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:01:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.42 seconds
+2025-06-07 20:01:56 - System health data fetched in 5421.78ms
+2025-06-07 20:01:56 - 127.0.0.1 - - [07/Jun/2025 20:01:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:02:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:02:50 - Getting system health data from api/system/health
+2025-06-07 20:02:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:02:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:02:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:02:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.41 seconds
+2025-06-07 20:02:56 - System health data fetched in 5413.82ms
+2025-06-07 20:02:56 - 127.0.0.1 - - [07/Jun/2025 20:02:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:03:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:03:50 - Getting system health data from api/system/health
+2025-06-07 20:03:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:03:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:03:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:03:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 20:03:50 - System health data fetched in 245.87ms
+2025-06-07 20:03:50 - 127.0.0.1 - - [07/Jun/2025 20:03:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:04:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:04:50 - Getting system health data from api/system/health
+2025-06-07 20:04:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:04:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:04:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:04:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 20:04:50 - System health data fetched in 249.74ms
+2025-06-07 20:04:50 - 127.0.0.1 - - [07/Jun/2025 20:04:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:05:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:05:50 - Getting system health data from api/system/health
+2025-06-07 20:05:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:05:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:05:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:05:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.35 seconds
+2025-06-07 20:05:56 - System health data fetched in 5353.92ms
+2025-06-07 20:05:56 - 127.0.0.1 - - [07/Jun/2025 20:05:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:06:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:06:50 - Getting system health data from api/system/health
+2025-06-07 20:06:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:06:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:06:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:06:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.34 seconds
+2025-06-07 20:06:56 - System health data fetched in 5341.18ms
+2025-06-07 20:06:56 - 127.0.0.1 - - [07/Jun/2025 20:06:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:07:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:07:50 - Getting system health data from api/system/health
+2025-06-07 20:07:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:07:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:07:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:07:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 20:07:50 - System health data fetched in 208.69ms
+2025-06-07 20:07:50 - 127.0.0.1 - - [07/Jun/2025 20:07:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:08:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:08:50 - Getting system health data from api/system/health
+2025-06-07 20:08:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:08:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:08:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:08:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.24 seconds
+2025-06-07 20:08:56 - System health data fetched in 5244.53ms
+2025-06-07 20:08:56 - 127.0.0.1 - - [07/Jun/2025 20:08:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:09:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:09:50 - Getting system health data from api/system/health
+2025-06-07 20:09:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:09:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:09:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:09:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.20 seconds
+2025-06-07 20:09:50 - System health data fetched in 196.75ms
+2025-06-07 20:09:50 - 127.0.0.1 - - [07/Jun/2025 20:09:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:10:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:10:50 - Getting system health data from api/system/health
+2025-06-07 20:10:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:10:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:10:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:10:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 20:10:50 - System health data fetched in 252.45ms
+2025-06-07 20:10:50 - 127.0.0.1 - - [07/Jun/2025 20:10:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:11:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:11:50 - Getting system health data from api/system/health
+2025-06-07 20:11:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:11:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:11:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:11:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 20:11:50 - System health data fetched in 212.02ms
+2025-06-07 20:11:50 - 127.0.0.1 - - [07/Jun/2025 20:11:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:12:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:12:50 - Getting system health data from api/system/health
+2025-06-07 20:12:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:12:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:12:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:12:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.45 seconds
+2025-06-07 20:12:56 - System health data fetched in 5448.89ms
+2025-06-07 20:12:56 - 127.0.0.1 - - [07/Jun/2025 20:12:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:13:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:13:50 - Getting system health data from api/system/health
+2025-06-07 20:13:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:13:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:13:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:13:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 20:13:50 - System health data fetched in 213.59ms
+2025-06-07 20:13:50 - 127.0.0.1 - - [07/Jun/2025 20:13:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:14:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:14:50 - Getting system health data from api/system/health
+2025-06-07 20:14:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:14:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:14:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:14:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.45 seconds
+2025-06-07 20:14:56 - System health data fetched in 5449.00ms
+2025-06-07 20:14:56 - 127.0.0.1 - - [07/Jun/2025 20:14:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:15:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:15:50 - Getting system health data from api/system/health
+2025-06-07 20:15:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:15:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:15:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:15:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.23 seconds
+2025-06-07 20:15:50 - System health data fetched in 234.32ms
+2025-06-07 20:15:50 - 127.0.0.1 - - [07/Jun/2025 20:15:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:16:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:16:50 - Getting system health data from api/system/health
+2025-06-07 20:16:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:16:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:16:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:16:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.26 seconds
+2025-06-07 20:16:51 - System health data fetched in 261.48ms
+2025-06-07 20:16:51 - 127.0.0.1 - - [07/Jun/2025 20:16:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:17:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:17:50 - Getting system health data from api/system/health
+2025-06-07 20:17:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:17:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:17:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:17:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.44 seconds
+2025-06-07 20:17:56 - System health data fetched in 5444.30ms
+2025-06-07 20:17:56 - 127.0.0.1 - - [07/Jun/2025 20:17:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:18:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:18:50 - Getting system health data from api/system/health
+2025-06-07 20:18:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:18:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:18:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:18:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.35 seconds
+2025-06-07 20:18:56 - System health data fetched in 5351.92ms
+2025-06-07 20:18:56 - 127.0.0.1 - - [07/Jun/2025 20:18:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:19:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:19:50 - Getting system health data from api/system/health
+2025-06-07 20:19:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:19:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:19:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:19:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.21 seconds
+2025-06-07 20:19:50 - System health data fetched in 209.29ms
+2025-06-07 20:19:50 - 127.0.0.1 - - [07/Jun/2025 20:19:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:20:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:20:50 - Getting system health data from api/system/health
+2025-06-07 20:20:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:20:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:20:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:20:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.35 seconds
+2025-06-07 20:20:56 - System health data fetched in 5353.82ms
+2025-06-07 20:20:56 - 127.0.0.1 - - [07/Jun/2025 20:20:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:21:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:21:50 - Getting system health data from api/system/health
+2025-06-07 20:21:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:21:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:21:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:21:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.35 seconds
+2025-06-07 20:21:56 - System health data fetched in 5347.14ms
+2025-06-07 20:21:56 - 127.0.0.1 - - [07/Jun/2025 20:21:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:22:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:22:50 - Getting system health data from api/system/health
+2025-06-07 20:22:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:22:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:22:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:22:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 20:22:51 - System health data fetched in 252.84ms
+2025-06-07 20:22:51 - 127.0.0.1 - - [07/Jun/2025 20:22:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:23:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:23:50 - Getting system health data from api/system/health
+2025-06-07 20:23:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:23:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:23:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:23:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.45 seconds
+2025-06-07 20:23:56 - System health data fetched in 5454.54ms
+2025-06-07 20:23:56 - 127.0.0.1 - - [07/Jun/2025 20:23:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:24:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:24:50 - Getting system health data from api/system/health
+2025-06-07 20:24:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:24:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:24:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:24:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.26 seconds
+2025-06-07 20:24:51 - System health data fetched in 255.77ms
+2025-06-07 20:24:51 - 127.0.0.1 - - [07/Jun/2025 20:24:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:25:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:25:50 - Getting system health data from api/system/health
+2025-06-07 20:25:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:25:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:25:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:25:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.19 seconds
+2025-06-07 20:25:50 - System health data fetched in 193.97ms
+2025-06-07 20:25:50 - 127.0.0.1 - - [07/Jun/2025 20:25:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:26:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:26:50 - Getting system health data from api/system/health
+2025-06-07 20:26:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:26:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:26:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:26:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.26 seconds
+2025-06-07 20:26:51 - System health data fetched in 263.47ms
+2025-06-07 20:26:51 - 127.0.0.1 - - [07/Jun/2025 20:26:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:27:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:27:50 - Getting system health data from api/system/health
+2025-06-07 20:27:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:27:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:27:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:27:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.22 seconds
+2025-06-07 20:27:50 - System health data fetched in 218.94ms
+2025-06-07 20:27:50 - 127.0.0.1 - - [07/Jun/2025 20:27:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:28:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:28:50 - Getting system health data from api/system/health
+2025-06-07 20:28:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:28:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:28:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:28:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 20:28:50 - System health data fetched in 249.66ms
+2025-06-07 20:28:50 - 127.0.0.1 - - [07/Jun/2025 20:28:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:29:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:29:50 - Getting system health data from api/system/health
+2025-06-07 20:29:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:29:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:29:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:29:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.26 seconds
+2025-06-07 20:29:51 - System health data fetched in 264.46ms
+2025-06-07 20:29:51 - 127.0.0.1 - - [07/Jun/2025 20:29:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:30:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:30:50 - Getting system health data from api/system/health
+2025-06-07 20:30:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:30:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:30:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:30:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.50 seconds
+2025-06-07 20:30:56 - System health data fetched in 5502.45ms
+2025-06-07 20:30:56 - 127.0.0.1 - - [07/Jun/2025 20:30:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:31:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:31:50 - Getting system health data from api/system/health
+2025-06-07 20:31:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:31:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:31:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:31:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.26 seconds
+2025-06-07 20:31:50 - System health data fetched in 256.12ms
+2025-06-07 20:31:50 - 127.0.0.1 - - [07/Jun/2025 20:31:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:32:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:32:50 - Getting system health data from api/system/health
+2025-06-07 20:32:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:32:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:32:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:32:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.55 seconds
+2025-06-07 20:32:56 - System health data fetched in 5548.94ms
+2025-06-07 20:32:56 - 127.0.0.1 - - [07/Jun/2025 20:32:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:33:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:33:50 - Getting system health data from api/system/health
+2025-06-07 20:33:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:33:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:33:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:33:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.24 seconds
+2025-06-07 20:33:50 - System health data fetched in 242.19ms
+2025-06-07 20:33:50 - 127.0.0.1 - - [07/Jun/2025 20:33:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:34:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:34:50 - Getting system health data from api/system/health
+2025-06-07 20:34:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:34:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:34:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:34:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.24 seconds
+2025-06-07 20:34:50 - System health data fetched in 243.29ms
+2025-06-07 20:34:50 - 127.0.0.1 - - [07/Jun/2025 20:34:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:35:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:35:50 - Getting system health data from api/system/health
+2025-06-07 20:35:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:35:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:35:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:35:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.24 seconds
+2025-06-07 20:35:50 - System health data fetched in 243.39ms
+2025-06-07 20:35:50 - 127.0.0.1 - - [07/Jun/2025 20:35:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:36:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:36:50 - Getting system health data from api/system/health
+2025-06-07 20:36:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:36:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:36:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:36:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.54 seconds
+2025-06-07 20:36:56 - System health data fetched in 5542.81ms
+2025-06-07 20:36:56 - 127.0.0.1 - - [07/Jun/2025 20:36:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:37:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:37:50 - Getting system health data from api/system/health
+2025-06-07 20:37:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:37:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:37:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:37:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.22 seconds
+2025-06-07 20:37:50 - System health data fetched in 219.25ms
+2025-06-07 20:37:50 - 127.0.0.1 - - [07/Jun/2025 20:37:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:38:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:38:50 - Getting system health data from api/system/health
+2025-06-07 20:38:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:38:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:38:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:38:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.47 seconds
+2025-06-07 20:38:56 - System health data fetched in 5465.88ms
+2025-06-07 20:38:56 - 127.0.0.1 - - [07/Jun/2025 20:38:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:39:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:39:50 - Getting system health data from api/system/health
+2025-06-07 20:39:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:39:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:39:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:39:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 20:39:50 - System health data fetched in 249.67ms
+2025-06-07 20:39:50 - 127.0.0.1 - - [07/Jun/2025 20:39:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:40:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:40:50 - Getting system health data from api/system/health
+2025-06-07 20:40:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:40:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:40:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:40:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.68 seconds
+2025-06-07 20:40:56 - System health data fetched in 5682.09ms
+2025-06-07 20:40:56 - 127.0.0.1 - - [07/Jun/2025 20:40:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:41:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:41:50 - Getting system health data from api/system/health
+2025-06-07 20:41:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:41:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:41:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:41:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 20:41:50 - System health data fetched in 250.13ms
+2025-06-07 20:41:50 - 127.0.0.1 - - [07/Jun/2025 20:41:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:42:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:42:50 - Getting system health data from api/system/health
+2025-06-07 20:42:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:42:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:42:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:42:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 20:42:50 - System health data fetched in 247.35ms
+2025-06-07 20:42:50 - 127.0.0.1 - - [07/Jun/2025 20:42:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:43:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:43:50 - Getting system health data from api/system/health
+2025-06-07 20:43:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:43:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:43:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:43:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.44 seconds
+2025-06-07 20:43:56 - System health data fetched in 5440.37ms
+2025-06-07 20:43:56 - 127.0.0.1 - - [07/Jun/2025 20:43:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:44:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:44:50 - Getting system health data from api/system/health
+2025-06-07 20:44:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:44:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:44:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:44:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.24 seconds
+2025-06-07 20:44:50 - System health data fetched in 243.34ms
+2025-06-07 20:44:50 - 127.0.0.1 - - [07/Jun/2025 20:44:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:45:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:45:50 - Getting system health data from api/system/health
+2025-06-07 20:45:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:45:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:45:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:45:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.24 seconds
+2025-06-07 20:45:50 - System health data fetched in 237.50ms
+2025-06-07 20:45:50 - 127.0.0.1 - - [07/Jun/2025 20:45:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:46:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:46:50 - Getting system health data from api/system/health
+2025-06-07 20:46:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:46:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:46:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:46:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.26 seconds
+2025-06-07 20:46:56 - System health data fetched in 5255.37ms
+2025-06-07 20:46:56 - 127.0.0.1 - - [07/Jun/2025 20:46:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:47:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:47:50 - Getting system health data from api/system/health
+2025-06-07 20:47:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:47:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:47:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:47:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.55 seconds
+2025-06-07 20:47:56 - System health data fetched in 5552.43ms
+2025-06-07 20:47:56 - 127.0.0.1 - - [07/Jun/2025 20:47:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:48:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:48:50 - Getting system health data from api/system/health
+2025-06-07 20:48:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:48:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:48:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:48:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.64 seconds
+2025-06-07 20:48:56 - System health data fetched in 5639.48ms
+2025-06-07 20:48:56 - 127.0.0.1 - - [07/Jun/2025 20:48:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:49:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:49:50 - Getting system health data from api/system/health
+2025-06-07 20:49:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:49:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:49:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:49:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.22 seconds
+2025-06-07 20:49:50 - System health data fetched in 225.06ms
+2025-06-07 20:49:50 - 127.0.0.1 - - [07/Jun/2025 20:49:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:50:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:50:50 - Getting system health data from api/system/health
+2025-06-07 20:50:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:50:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:50:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 20:50:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.44 seconds
+2025-06-07 20:50:56 - System health data fetched in 5442.60ms
+2025-06-07 20:50:56 - 127.0.0.1 - - [07/Jun/2025 20:50:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:51:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:51:50 - Getting system health data from api/system/health
+2025-06-07 20:51:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:51:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:51:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:51:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.54 seconds
+2025-06-07 20:51:56 - System health data fetched in 5544.37ms
+2025-06-07 20:51:56 - 127.0.0.1 - - [07/Jun/2025 20:51:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:52:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:52:50 - Getting system health data from api/system/health
+2025-06-07 20:52:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:52:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:52:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:52:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.23 seconds
+2025-06-07 20:52:50 - System health data fetched in 227.78ms
+2025-06-07 20:52:50 - 127.0.0.1 - - [07/Jun/2025 20:52:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:53:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:53:50 - Getting system health data from api/system/health
+2025-06-07 20:53:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:53:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:53:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:53:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.22 seconds
+2025-06-07 20:53:50 - System health data fetched in 220.80ms
+2025-06-07 20:53:50 - 127.0.0.1 - - [07/Jun/2025 20:53:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:54:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:54:50 - Getting system health data from api/system/health
+2025-06-07 20:54:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:54:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:54:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:54:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.38 seconds
+2025-06-07 20:54:56 - System health data fetched in 5376.78ms
+2025-06-07 20:54:56 - 127.0.0.1 - - [07/Jun/2025 20:54:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:55:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:55:50 - Getting system health data from api/system/health
+2025-06-07 20:55:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:55:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:55:51 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:55:51 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.31 seconds
+2025-06-07 20:55:51 - System health data fetched in 305.72ms
+2025-06-07 20:55:51 - 127.0.0.1 - - [07/Jun/2025 20:55:51] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:56:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:56:50 - Getting system health data from api/system/health
+2025-06-07 20:56:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:56:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:56:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:56:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.22 seconds
+2025-06-07 20:56:50 - System health data fetched in 222.01ms
+2025-06-07 20:56:50 - 127.0.0.1 - - [07/Jun/2025 20:56:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:57:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:57:50 - Getting system health data from api/system/health
+2025-06-07 20:57:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:57:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:57:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:57:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.22 seconds
+2025-06-07 20:57:50 - System health data fetched in 223.30ms
+2025-06-07 20:57:50 - 127.0.0.1 - - [07/Jun/2025 20:57:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:58:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:58:50 - Getting system health data from api/system/health
+2025-06-07 20:58:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:58:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:58:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:58:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.24 seconds
+2025-06-07 20:58:50 - System health data fetched in 244.06ms
+2025-06-07 20:58:50 - 127.0.0.1 - - [07/Jun/2025 20:58:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 20:59:50 - SSL verification is disabled. This is insecure.
+2025-06-07 20:59:50 - Getting system health data from api/system/health
+2025-06-07 20:59:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 20:59:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 20:59:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 20:59:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.92 seconds
+2025-06-07 20:59:56 - System health data fetched in 5919.29ms
+2025-06-07 20:59:56 - 127.0.0.1 - - [07/Jun/2025 20:59:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:00:50 - SSL verification is disabled. This is insecure.
+2025-06-07 21:00:50 - Getting system health data from api/system/health
+2025-06-07 21:00:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:00:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:00:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 21:00:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.66 seconds
+2025-06-07 21:00:56 - System health data fetched in 5660.40ms
+2025-06-07 21:00:56 - 127.0.0.1 - - [07/Jun/2025 21:00:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:01:50 - SSL verification is disabled. This is insecure.
+2025-06-07 21:01:50 - Getting system health data from api/system/health
+2025-06-07 21:01:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:01:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:01:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 21:01:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.93 seconds
+2025-06-07 21:01:56 - System health data fetched in 5927.18ms
+2025-06-07 21:01:56 - 127.0.0.1 - - [07/Jun/2025 21:01:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:02:50 - SSL verification is disabled. This is insecure.
+2025-06-07 21:02:50 - Getting system health data from api/system/health
+2025-06-07 21:02:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:02:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:02:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 21:02:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.73 seconds
+2025-06-07 21:02:56 - System health data fetched in 5732.97ms
+2025-06-07 21:02:56 - 127.0.0.1 - - [07/Jun/2025 21:02:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:03:50 - SSL verification is disabled. This is insecure.
+2025-06-07 21:03:50 - Getting system health data from api/system/health
+2025-06-07 21:03:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:03:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:03:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 21:03:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.78 seconds
+2025-06-07 21:03:56 - System health data fetched in 5779.90ms
+2025-06-07 21:03:56 - 127.0.0.1 - - [07/Jun/2025 21:03:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:04:50 - SSL verification is disabled. This is insecure.
+2025-06-07 21:04:50 - Getting system health data from api/system/health
+2025-06-07 21:04:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:04:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:04:50 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 21:04:50 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 0.25 seconds
+2025-06-07 21:04:50 - System health data fetched in 247.48ms
+2025-06-07 21:04:50 - 127.0.0.1 - - [07/Jun/2025 21:04:50] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:05:50 - SSL verification is disabled. This is insecure.
+2025-06-07 21:05:50 - Getting system health data from api/system/health
+2025-06-07 21:05:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:05:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:05:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 21:05:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.55 seconds
+2025-06-07 21:05:56 - System health data fetched in 5546.32ms
+2025-06-07 21:05:56 - 127.0.0.1 - - [07/Jun/2025 21:05:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:06:50 - SSL verification is disabled. This is insecure.
+2025-06-07 21:06:50 - Getting system health data from api/system/health
+2025-06-07 21:06:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:06:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:06:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 21:06:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.56 seconds
+2025-06-07 21:06:56 - System health data fetched in 5558.97ms
+2025-06-07 21:06:56 - 127.0.0.1 - - [07/Jun/2025 21:06:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:07:50 - SSL verification is disabled. This is insecure.
+2025-06-07 21:07:50 - Getting system health data from api/system/health
+2025-06-07 21:07:50 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:07:50 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:07:56 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 21:07:56 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 5.36 seconds
+2025-06-07 21:07:56 - System health data fetched in 5363.38ms
+2025-06-07 21:07:56 - 127.0.0.1 - - [07/Jun/2025 21:07:56] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:07:58 - SSL verification is disabled. This is insecure.
+2025-06-07 21:07:58 - Getting system health data from api/system/health
+2025-06-07 21:07:58 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:07:58 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:08:06 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 21:08:06 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 7.97 seconds
+2025-06-07 21:08:06 - System health data fetched in 7972.43ms
+2025-06-07 21:08:06 - 127.0.0.1 - - [07/Jun/2025 21:08:06] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:08:55 - SSL verification is disabled. This is insecure.
+2025-06-07 21:08:55 - Getting system health data from api/system/health
+2025-06-07 21:08:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:08:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:09:01 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 21:09:01 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 6.49 seconds
+2025-06-07 21:09:01 - System health data fetched in 6491.03ms
+2025-06-07 21:09:01 - 127.0.0.1 - - [07/Jun/2025 21:09:01] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:09:55 - SSL verification is disabled. This is insecure.
+2025-06-07 21:09:55 - Getting system health data from api/system/health
+2025-06-07 21:09:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:09:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:10:01 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 200 None
+2025-06-07 21:10:01 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 6.30 seconds
+2025-06-07 21:10:01 - System health data fetched in 6304.09ms
+2025-06-07 21:10:01 - 127.0.0.1 - - [07/Jun/2025 21:10:01] "GET /api/remote_system_health HTTP/1.1" 200 -
+2025-06-07 21:10:55 - SSL verification is disabled. This is insecure.
+2025-06-07 21:10:55 - Getting system health data from api/system/health
+2025-06-07 21:10:55 - Making GET request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health
+2025-06-07 21:10:55 - Starting new HTTPS connection (1): iocore2-cwix.ivv.ncia.nato.int:443
+2025-06-07 21:11:01 - https://iocore2-cwix.ivv.ncia.nato.int:443 "GET /api/system/health HTTP/1.1" 503 None
+2025-06-07 21:11:01 - Request to https://iocore2-cwix.ivv.ncia.nato.int/api/system/health completed in 6.29 seconds
+2025-06-07 21:11:01 - System health data fetched in 6286.45ms
+2025-06-07 21:11:01 - 127.0.0.1 - - [07/Jun/2025 21:11:01] "GET /api/remote_system_health HTTP/1.1" 200 -

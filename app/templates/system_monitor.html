@@ -1043,6 +1043,7 @@
                             position: 'right',
                             title: { display: true, text: 'CPU (%)' },
                             min: 0,
+                            max: 100,
                             beginAtZero: true,
                             grid: { drawOnChartArea: false }
                         }
@@ -1485,7 +1486,7 @@
                 // Update Site Resource Utilization
                 const siteResourcesData = data.entries['site-resource-utilization'];
                 if (siteResourcesData) {
-                    const processCpuUtilization = (siteResourcesData.data['process.cpu.utilization'] || 0) * 100;
+                    const processCpuUtilization = siteResourcesData.data['process.cpu.utilization'] || 0;
                     const virtualMemoryUtilization = siteResourcesData.data['dotnet.process.memory.virtual.utilization'] || 0;
                     const activeCircuits = siteResourcesData.data['active.circuits'] || 0;
                     const maxConcurrentCircuits = siteResourcesData.data['max.concurrent.circuits'] || 0;
@@ -1546,7 +1547,7 @@
                     // Update the site resources card with system values if they exist in this section
                     // Only override with server resource values if they exist and are meaningful
                     if (systemProcessCpuUtilization > 0) {
-                        safeUpdateElement('processCpuUtilization', `${(systemProcessCpuUtilization * 100).toFixed(2)}%`);
+                        safeUpdateElement('processCpuUtilization', `${systemProcessCpuUtilization.toFixed(2)}%`);
                     }
                     if (systemVirtualMemoryUtilization > 0) {
                         safeUpdateElement('virtualMemoryUtilization', `${systemVirtualMemoryUtilization.toFixed(2)}%`);

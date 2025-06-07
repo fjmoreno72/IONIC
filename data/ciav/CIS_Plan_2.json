@@ -14,7 +14,98 @@
             {
               "id": "CL-UNCLASS",
               "guid": "8fc3c9e1-7d34-41c7-ae0e-ac0dfce2a82x",
-              "hwStacks": []
+              "hwStacks": [
+                {
+                  "name": "HW-Stack-Mission2_Copy",
+                  "guid": "449be5cd-2ea5-4934-adab-caaa90f43469",
+                  "id": "HW-0006",
+                  "cisParticipantID": "",
+                  "assets": [
+                    {
+                      "name": "A2.1",
+                      "guid": "b1a84385-6878-42e8-b87c-92d1691db888",
+                      "id": "AS-0008",
+                      "networkInterfaces": [
+                        {
+                          "name": "111",
+                          "guid": "9acad461-ca8d-40c4-b423-eeedb9bfb7b8",
+                          "id": "NI-0006",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "816c4687-5a2b-41f9-a2c6-b05b2b92100d"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "2e6d4e60-9e2c-4d76-9a80-433ab769d906"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "58ddfe44-4dd7-4bd5-bd00-7c44d75d96ca"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0003",
+                          "guid": "cb642c9a-3e4c-47ef-846b-604acbf28b78",
+                          "instanceLabel": "MAIN NIRIS",
+                          "serviceId": "SRV-0008",
+                          "spInstances": [],
+                          "configurationItems": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Asset 111",
+                      "guid": "f6d43f77-ba89-4a85-8838-f34bf54c138a",
+                      "id": "AS-0009",
+                      "networkInterfaces": [
+                        {
+                          "name": "NET-X15",
+                          "guid": "31c0222d-d7f0-43dd-9964-7091f425c062",
+                          "id": "NI-0005",
+                          "configurationItems": [
+                            {
+                              "Name": "IP Address",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "8e919367-09d9-48b4-9cda-98e3de518ec0"
+                            },
+                            {
+                              "Name": "Sub-Net",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "e039039b-929b-4cfd-8f87-c3fe403b2e42"
+                            },
+                            {
+                              "Name": "FQDN",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "02bdf377-3d09-4f8f-b66c-a4efd2e9e25c"
+                            }
+                          ]
+                        }
+                      ],
+                      "gpInstances": []
+                    },
+                    {
+                      "name": "POP",
+                      "guid": "8791ff63-88d9-44b0-b6f7-522364bf0b86",
+                      "id": "AS-0010",
+                      "networkInterfaces": [],
+                      "gpInstances": []
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

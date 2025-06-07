@@ -97,6 +97,11 @@
                               "guid": "433cfbd2-d583-436b-a071-5047dd6e094c",
                               "spId": "SP-0104",
                               "spVersion": "4.0"
+                            },
+                            {
+                              "guid": "0ee46c7f-68df-4f3e-8402-b64b9a59dacc",
+                              "spId": "SP-0253",
+                              "spVersion": "3.11.0"
                             }
                           ],
                           "configurationItems": [
@@ -869,7 +874,25 @@
                       "guid": "592b3d1f-8aea-41d3-95c3-059ca5c96a55",
                       "id": "AS-0004",
                       "networkInterfaces": [],
-                      "gpInstances": []
+                      "gpInstances": [
+                        {
+                          "gpid": "GP-0120",
+                          "guid": "c7e50a12-3aab-4bf5-84e7-828305c1ea67",
+                          "instanceLabel": "",
+                          "serviceId": "SRV-0005",
+                          "spInstances": [],
+                          "configurationItems": [
+                            {
+                              "Name": "URL",
+                              "ConfigurationAnswerType": "Text Field (Single Line)",
+                              "AnswerContent": "",
+                              "guid": "9b96a87c-9401-4ab9-96eb-f620d5928684",
+                              "DefaultValue": "",
+                              "HelpText": "URL for the portal"
+                            }
+                          ]
+                        }
+                      ]
                     },
                     {
                       "name": "NIRIS*",

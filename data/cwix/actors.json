@@ -265,17 +265,6 @@
     },
     {
         "actorType": "functional",
-        "id": "f9aeab45-08e0-4ee7-81d7-522a96fe1903",
-        "key": "ACT-CIAV-000433",
-        "name": "A-MTU Flight Controller",
-        "itemId": "f9aeab45-08e0-4ee7-81d7-522a96fe1903",
-        "version": {
-            "number": 1,
-            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
-        }
-    },
-    {
-        "actorType": "functional",
         "id": "d9079553-fd4e-40ae-852c-0bc411b0ed3c",
         "key": "ACT-CIAV-000382",
         "name": "Administrative Support Specialist",
@@ -632,6 +621,17 @@
         "key": "ACT-CIAV-000328",
         "name": "Amphibious Units",
         "itemId": "b9e7e138-7ac3-474c-a517-3167eede365e",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "functional",
+        "id": "f9aeab45-08e0-4ee7-81d7-522a96fe1903",
+        "key": "ACT-CIAV-000433",
+        "name": "A-MTU Flight Controller",
+        "itemId": "f9aeab45-08e0-4ee7-81d7-522a96fe1903",
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
@@ -1366,6 +1366,17 @@
     },
     {
         "actorType": "technical",
+        "id": "e8095f66-af09-4474-b28a-f4314e4e0811",
+        "key": "ACT-CWIX-000361",
+        "name": "CC405",
+        "itemId": "e9ee98cd-e0c2-4b94-bb7a-72b14b32796c",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-09T17:58:12.9578125+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "5ae855f4-70a3-4e68-ac56-2c60fb780c57",
         "key": "ACT-CWIX-000276",
         "name": "CC-435 GBR GEO",
@@ -1373,6 +1384,17 @@
         "version": {
             "number": 1,
             "createdOn": "2025-03-11T18:11:00.0776928+01:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "960d291f-73a3-449d-a8f3-b26d3dab0410",
+        "key": "ACT-CWIX-000385",
+        "name": "CC493",
+        "itemId": "2aae685b-bc21-4aa0-832d-fd53f0403dbe",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-22T11:19:24.8366737+02:00"
         }
     },
     {
@@ -1406,28 +1428,6 @@
         "version": {
             "number": 1,
             "createdOn": "2025-05-06T09:43:56.7262492+02:00"
-        }
-    },
-    {
-        "actorType": "technical",
-        "id": "e8095f66-af09-4474-b28a-f4314e4e0811",
-        "key": "ACT-CWIX-000361",
-        "name": "CC405",
-        "itemId": "e9ee98cd-e0c2-4b94-bb7a-72b14b32796c",
-        "version": {
-            "number": 1,
-            "createdOn": "2025-04-09T17:58:12.9578125+02:00"
-        }
-    },
-    {
-        "actorType": "technical",
-        "id": "960d291f-73a3-449d-a8f3-b26d3dab0410",
-        "key": "ACT-CWIX-000385",
-        "name": "CC493",
-        "itemId": "2aae685b-bc21-4aa0-832d-fd53f0403dbe",
-        "version": {
-            "number": 1,
-            "createdOn": "2025-04-22T11:19:24.8366737+02:00"
         }
     },
     {
@@ -2775,6 +2775,17 @@
         }
     },
     {
+        "actorType": "functional",
+        "id": "5f524c7c-7969-4316-aa3f-1b13f2086486",
+        "key": "ACT-CWIX-000419",
+        "name": "Data Catalogue",
+        "itemId": "38f29c1c-4dc9-4f46-8ca1-43d901b3dc80",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-27T19:56:46.0508185+02:00"
+        }
+    },
+    {
         "actorType": "technical",
         "id": "4f8f48ef-98e2-4c36-95a6-4909212ae189",
         "key": "ACT-CWIX-000171",
@@ -3250,39 +3261,6 @@
         }
     },
     {
-        "actorType": "technical",
-        "id": "62ecc6da-d548-4034-b5c0-a02b774eeeca",
-        "key": "ACT-CWIX-000369",
-        "name": "e-Delivery Access Point 1",
-        "itemId": "a6797215-1d7b-41fa-b6b9-66111a91eb0c",
-        "version": {
-            "number": 1,
-            "createdOn": "2025-04-15T16:16:37.5177577+02:00"
-        }
-    },
-    {
-        "actorType": "technical",
-        "id": "ef5d8aec-9fca-4dae-a897-12c92b1c391c",
-        "key": "ACT-CWIX-000370",
-        "name": "e-Delivery Access Point 2",
-        "itemId": "e76914bd-8a04-4495-8097-9edc4d53f406",
-        "version": {
-            "number": 1,
-            "createdOn": "2025-04-15T16:17:29.0458111+02:00"
-        }
-    },
-    {
-        "actorType": "technical",
-        "id": "e6f5222f-e6e3-41fe-8724-c006564e29f9",
-        "key": "ACT-CIAV-000150",
-        "name": "E-Node",
-        "itemId": "e6f5222f-e6e3-41fe-8724-c006564e29f9",
-        "version": {
-            "number": 1,
-            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
-        }
-    },
-    {
         "actorType": "functional",
         "id": "8e87755e-10b9-47c2-8f20-083caa1313b0",
         "key": "ACT-CIAV-000414",
@@ -3302,6 +3280,28 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "62ecc6da-d548-4034-b5c0-a02b774eeeca",
+        "key": "ACT-CWIX-000369",
+        "name": "e-Delivery Access Point 1",
+        "itemId": "a6797215-1d7b-41fa-b6b9-66111a91eb0c",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:16:37.5177577+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "ef5d8aec-9fca-4dae-a897-12c92b1c391c",
+        "key": "ACT-CWIX-000370",
+        "name": "e-Delivery Access Point 2",
+        "itemId": "e76914bd-8a04-4495-8097-9edc4d53f406",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-04-15T16:17:29.0458111+02:00"
         }
     },
     {
@@ -3464,6 +3464,17 @@
         "key": "ACT-CIAV-000125",
         "name": "End users",
         "itemId": "fe9d7592-ab74-4ceb-aaef-ade53faf4b26",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "e6f5222f-e6e3-41fe-8724-c006564e29f9",
+        "key": "ACT-CIAV-000150",
+        "name": "E-Node",
+        "itemId": "e6f5222f-e6e3-41fe-8724-c006564e29f9",
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
@@ -4750,17 +4761,6 @@
     },
     {
         "actorType": "technical",
-        "id": "bbd56855-2072-4836-9014-8b4e8adc0ca1",
-        "key": "ACT-CWIX-000174",
-        "name": "IEG-4774/4778",
-        "itemId": "9069f611-8529-4cda-976e-52133b5b95ac",
-        "version": {
-            "number": 1,
-            "createdOn": "2024-11-04T14:07:24.0232769+01:00"
-        }
-    },
-    {
-        "actorType": "technical",
         "id": "f91b77ae-9472-4322-92bf-2066697be808",
         "key": "ACT-CWIX-000027",
         "name": "IEG(JREAP-C)",
@@ -4794,6 +4794,17 @@
         }
     },
     {
+        "actorType": "technical",
+        "id": "bbd56855-2072-4836-9014-8b4e8adc0ca1",
+        "key": "ACT-CWIX-000174",
+        "name": "IEG-4774/4778",
+        "itemId": "9069f611-8529-4cda-976e-52133b5b95ac",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-11-04T14:07:24.0232769+01:00"
+        }
+    },
+    {
         "actorType": "functional",
         "id": "54d389ef-0a94-4bae-b90a-cd3d315b539a",
         "key": "ACT-CIAV-000496",
@@ -4810,17 +4821,6 @@
         "key": "ACT-CIAV-000529",
         "name": "IM Senior Official (IMSO)",
         "itemId": "20da2290-43d0-4ff8-bb6a-0bd0eebfbca0",
-        "version": {
-            "number": 1,
-            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
-        }
-    },
-    {
-        "actorType": "functional",
-        "id": "5b457e63-41e7-40b8-86e1-1f343589af4b",
-        "key": "ACT-CIAV-000446",
-        "name": "In-Transit Evacuation Facility (IEF)",
-        "itemId": "5b457e63-41e7-40b8-86e1-1f343589af4b",
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
@@ -5141,6 +5141,17 @@
         "key": "ACT-CIAV-000373",
         "name": "Interlocutor (Mil-Civ)",
         "itemId": "12bbe916-5b7e-4458-91d1-ae2e1d9cfea0",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "functional",
+        "id": "5b457e63-41e7-40b8-86e1-1f343589af4b",
+        "key": "ACT-CIAV-000446",
+        "name": "In-Transit Evacuation Facility (IEF)",
+        "itemId": "5b457e63-41e7-40b8-86e1-1f343589af4b",
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
@@ -7362,17 +7373,6 @@
     },
     {
         "actorType": "technical",
-        "id": "63ec51df-c05c-43e4-9ae1-563903351c1c",
-        "key": "ACT-CWIX-000089",
-        "name": "MIP-JDSS Mediator",
-        "itemId": "2e694a64-3ac7-4981-aa4c-7b22893632ac",
-        "version": {
-            "number": 1,
-            "createdOn": "2024-10-21T15:01:44.1266899+00:00"
-        }
-    },
-    {
-        "actorType": "technical",
         "id": "ca1b2194-37c6-4d62-84e8-2222f7819b6f",
         "key": "ACT-CWIX-000082",
         "name": "MIP3 Consumer",
@@ -7457,6 +7457,17 @@
         "version": {
             "number": 1,
             "createdOn": "2024-10-21T15:44:26.663296+00:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "63ec51df-c05c-43e4-9ae1-563903351c1c",
+        "key": "ACT-CWIX-000089",
+        "name": "MIP-JDSS Mediator",
+        "itemId": "2e694a64-3ac7-4981-aa4c-7b22893632ac",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-10-21T15:01:44.1266899+00:00"
         }
     },
     {
@@ -8437,6 +8448,17 @@
     },
     {
         "actorType": "technical",
+        "id": "4dc4b242-f470-4c94-a357-9b49fc2dea9b",
+        "key": "ACT-CIAV-000073",
+        "name": "Other HQ",
+        "itemId": "4dc4b242-f470-4c94-a357-9b49fc2dea9b",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "a6bfd361-7a0f-4b1b-bffb-0b0bdb6fd829",
         "key": "ACT-CWIX-000263",
         "name": "OTH-G Provider",
@@ -8463,17 +8485,6 @@
         "key": "ACT-CIAV-000235",
         "name": "OTH-T Gold Producer",
         "itemId": "cc69744e-02d2-494b-ae3e-d26a0443e88b",
-        "version": {
-            "number": 1,
-            "createdOn": "2024-09-13T15:04:49.4906504+02:00"
-        }
-    },
-    {
-        "actorType": "technical",
-        "id": "4dc4b242-f470-4c94-a357-9b49fc2dea9b",
-        "key": "ACT-CIAV-000073",
-        "name": "Other HQ",
-        "itemId": "4dc4b242-f470-4c94-a357-9b49fc2dea9b",
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
@@ -8565,28 +8576,6 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
-        }
-    },
-    {
-        "actorType": "technical",
-        "id": "1a24fa42-2613-4ddd-b840-14a078a68465",
-        "key": "ACT-CIAV-002519",
-        "name": "P-function",
-        "itemId": "270e125d-162d-4794-8899-a1fb0b201a4b",
-        "version": {
-            "number": 1,
-            "createdOn": "2024-09-24T12:33:05.1288007+02:00"
-        }
-    },
-    {
-        "actorType": "technical",
-        "id": "c6e74fd9-71c3-407a-a81f-b57d00b0179f",
-        "key": "ACT-CWIX-000411",
-        "name": "P-Node PCS_A",
-        "itemId": "05c77802-dd38-401f-83b9-9f0535dd9813",
-        "version": {
-            "number": 1,
-            "createdOn": "2025-05-14T16:48:39.3745652+02:00"
         }
     },
     {
@@ -8735,6 +8724,17 @@
     },
     {
         "actorType": "technical",
+        "id": "1a24fa42-2613-4ddd-b840-14a078a68465",
+        "key": "ACT-CIAV-002519",
+        "name": "P-function",
+        "itemId": "270e125d-162d-4794-8899-a1fb0b201a4b",
+        "version": {
+            "number": 1,
+            "createdOn": "2024-09-24T12:33:05.1288007+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "67801d15-3ede-4122-acf3-f89670449314",
         "key": "ACT-CIAV-000149",
         "name": "Picture Manager",
@@ -8820,6 +8820,17 @@
         "version": {
             "number": 2,
             "createdOn": "2024-11-21T13:32:01.6216186+01:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "c6e74fd9-71c3-407a-a81f-b57d00b0179f",
+        "key": "ACT-CWIX-000411",
+        "name": "P-Node PCS_A",
+        "itemId": "05c77802-dd38-401f-83b9-9f0535dd9813",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-05-14T16:48:39.3745652+02:00"
         }
     },
     {
@@ -10025,6 +10036,17 @@
     },
     {
         "actorType": "technical",
+        "id": "1f750d31-69da-4b8b-a965-7e82a3121755",
+        "key": "ACT-CWIX-000423",
+        "name": "SIP Infrastructure OPCIS/TACCIS",
+        "itemId": "cdfe31ff-0a9e-422b-8b71-39193c32dfc6",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-06-03T12:36:34.6871512+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
         "id": "c43d97f4-410b-4ac8-bc32-258136a3caf4",
         "key": "ACT-CIAV-000626",
         "name": "SITAWARE Initiator",
@@ -10662,6 +10684,17 @@
         "version": {
             "number": 1,
             "createdOn": "2024-09-13T15:04:49.4906504+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "530ea698-eed4-421b-a48c-a102f4344fe4",
+        "key": "ACT-CWIX-000422",
+        "name": "Tactical Voice Gateway",
+        "itemId": "0404a8c2-bc2b-42b7-b323-70df73cef847",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-06-03T12:34:36.2877171+02:00"
         }
     },
     {
@@ -11747,6 +11780,29 @@
         "version": {
             "number": 1,
             "createdOn": "2024-10-28T16:09:07.9905616+00:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "fbfcf3bf-78bd-4776-83e8-f97673273c1b",
+        "key": "ACT-CWIX-000421",
+        "name": "VoIP Callmanager OPCIS",
+        "itemId": "31e047ba-01f8-4d49-83cb-7d324f9cd605",
+        "version": {
+            "number": 1,
+            "createdOn": "2025-06-03T12:33:50.7690893+02:00"
+        }
+    },
+    {
+        "actorType": "technical",
+        "id": "14e93139-b4b6-4a7c-b779-d284dd60c6d5",
+        "key": "ACT-CWIX-000420",
+        "name": "VoIP Callmanager TACCIS",
+        "itemId": "f69a27cf-08ef-4e8b-8c2c-d2628c34097f",
+        "predecessor": "6cbaeadc-2319-434d-a2f8-8da8ef722308",
+        "version": {
+            "number": 2,
+            "createdOn": "2025-06-03T12:33:40.3836916+02:00"
         }
     },
     {

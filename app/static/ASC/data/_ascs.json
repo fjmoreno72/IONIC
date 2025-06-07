@@ -122,9 +122,13 @@
     "status": "In Progress"
   },
   {
+    "id": "ASC-0005",
     "affiliateId": "AFF-0027",
-    "ascScore": "100%",
     "environment": "Static",
+    "serviceId": "SRV-0021",
+    "model": "MOD-0001",
+    "ascScore": "100%",
+    "status": "In Progress",
     "gpInstances": [
       {
         "gpId": "GP-0005",
@@ -136,7 +140,7 @@
             "guid": "1901a62d-2f3f-46d6-af6f-c6b5d2216790",
             "spId": "SP-0007",
             "spScore": "100%",
-            "spVersion": "17.0v24"
+            "spVersion": "19.0.0"
           }
         ]
       },
@@ -154,12 +158,7 @@
           }
         ]
       }
-    ],
-    "guid": "0be1f7c6-659e-498d-a277-cae50352e236",
-    "id": "ASC-0005",
-    "model": "MOD-0001",
-    "serviceId": "SRV-0021",
-    "status": "Validated"
+    ]
   },
   {
     "affiliateId": "AFF-0027",
@@ -2638,6 +2637,80 @@
     "id": "ASC-0059",
     "model": "MOD-0001",
     "serviceId": "SRV-0012",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0005",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0034",
+        "gpScore": "0%",
+        "guid": "4b6fda2f-3e25-46ee-8de0-8fb399afd601",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "guid": "e27e9d9b-6ea4-4082-87d2-b2882e88278c",
+    "id": "ASC-0060",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0025",
+    "status": "Initial"
+  },
+  {
+    "affiliateId": "AFF-0004",
+    "ascScore": "0%",
+    "environment": "Static",
+    "gpInstances": [
+      {
+        "gpId": "GP-0007",
+        "gpScore": "0%",
+        "guid": "337f31b2-f712-48d2-bcda-58f9ce562c47",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0090",
+        "gpScore": "0%",
+        "guid": "7d99e227-8e1f-4da8-87ce-e86a01360f70",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0008",
+        "gpScore": "0%",
+        "guid": "6c6af7f5-9ced-44c4-b8e9-5f09ac8fe133",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      },
+      {
+        "gpId": "GP-0090",
+        "gpScore": "0%",
+        "guid": "1c722d42-ecb8-4c86-8126-a26e77a2de1d",
+        "instanceLabel": "",
+        "models": [
+          "MOD-0001"
+        ],
+        "spInstances": []
+      }
+    ],
+    "guid": "996fdc62-ab96-4992-b380-4eac49bd055a",
+    "id": "ASC-0061",
+    "model": "MOD-0001",
+    "serviceId": "SRV-0017",
     "status": "Initial"
   }
 ]
